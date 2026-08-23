@@ -1,7 +1,7 @@
 $ docker run -d --rm \
-    --name oracle-ords \
+    --name %%name=oracle-ords%% \
     --network oracle \
-    -p 8181:8181 \
+    -p %%port=8181%%:8181 \
     -e IGNORE_APEX=TRUE \
     -v ./ords_secrets/:/opt/oracle/variables \
     -v ords_config:/etc/ords/config/ \

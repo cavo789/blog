@@ -32,11 +32,15 @@ There are tons of *self-hosted monitoring tools*; one of them is [Uptime Kuma](h
 
 As read in the [official documentation](https://github.com/louislam/uptime-kuma#-docker), you can easily start it using the command below.
 
+<Vars port="3001" name="uptime-kuma" labels={{ port: "Host port", name: "Container name" }} />
+
 <Terminal typewriter>
-$ {`docker run -d --restart=always -p 3001:3001 -v \${PWD}:/app/data --name uptime-kuma louislam/uptime-kuma:1`}
+$ {`docker run -d --restart=always -p %%port=3001%%:3001 -v \${PWD}:/app/data --name %%name=uptime-kuma%% louislam/uptime-kuma:1`}
 </Terminal>
 
-![Dashboard](./images/dashboard.webp)
+<BrowserWindow url="http://localhost:%%port=3001%%">
+  ![Dashboard](./images/dashboard.webp)
+</BrowserWindow>
 
 <AlertBox variant="info" title="Remember to add a volume">
 The `-v ${PWD}:/app/data` flag (a <Link to="/blog/docker-volume">volume</Link>) is important if you want to keep track of the sites you'll add to the dashboard (i.e. if you restart the tool). If you wish, only, play once with the interface first, you can omit it so nothing will be written on the disk.

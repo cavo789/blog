@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:28.613Z",
+  "generated": "2026-08-23T17:53:58.119Z",
   "source": "index.md",
-  "sourceHash": "7fdeb37cf85c744b9e168308c856f7e98f957823",
+  "sourceHash": "164224e2b72b7512a48e61ab8ca18f5603570b1b",
   "questions": [
     {
       "question": "How do I set up a Python development environment on Windows using Docker and VSCode devcontainers?",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the DOS batch script in this article?",
+      "question": "What are the steps to create a Python Docker image for my project on Windows?",
       "anchor": "time-to-start"
     },
     {
-      "question": "How do I create a Python Docker image and what command should I use?",
+      "question": "How do I start a Docker container and enter it in Windows using VSCode devcontainers?",
       "anchor": "build-the-python-docker-image"
     },
     {
-      "question": "What is the purpose of creating a Docker container in this article?",
+      "question": "What are the commands to run Python scripts inside the Docker container on Windows?",
       "anchor": "create-a-docker-container"
     },
     {
-      "question": "How do I enter the Python Docker container and what commands should I use?",
+      "question": "How do I add Python's addons in VSCode when using a Devcontainer on Windows?",
       "anchor": "entering-the-container"
     },
     {
-      "question": "What is the purpose of starting Visual Studio Code inside a Docker container in this article?",
+      "question": "What is the file/folder structure required for setting up a Python development environment on Windows using Docker and VSCode devcontainers?",
       "anchor": "starting-vscode-and-start-your-developer-journey"
     },
     {
-      "question": "How do I add Python's addons to VSCode when using a Devcontainer?",
+      "question": "How do I create a DOS batch file to run commands like Python scripts inside the container on Windows?",
       "anchor": "can-i-add-pythons-addons-in-vscode"
     },
     {
-      "question": "What is the purpose of creating a file/folder structure in this article?",
+      "question": "What is the command to quit the Docker container and return to my MS-DOS console on Windows using VSCode devcontainers?",
       "anchor": "create-a-filefolder-structure"
     }
   ]

@@ -13,7 +13,7 @@ services:
     container_name: app
     env_file: .env
     ports:
-      - "8000:8000"
+      - "%%port=8000%%:8000"
     user: "1001:1001"
     security_opt:
       - no-new-privileges:true

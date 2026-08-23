@@ -115,6 +115,7 @@ The first file to create will be used to build our Docker image. Please create a
 
 Next to the `Dockerfile`, we'll create our `compose.yaml` one. Please create that file with the following content:
 
+<Vars name="app_python" labels={{ name: "Container name" }} />
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 

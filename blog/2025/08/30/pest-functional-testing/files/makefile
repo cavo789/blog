@@ -11,16 +11,16 @@ build:
 
 .PHONY: remove
 remove:
-	docker rm demo_pest --force
+	docker rm %%name=demo_pest%% --force
 
 .PHONY: up
 up:
-	docker run --detach -v ./tests:/var/www/html/tests --name demo_pest pestphp
+	docker run --detach -v ./tests:/var/www/html/tests --name %%name=demo_pest%% pestphp
 
 .PHONY: bash
 bash:
-	docker exec -it demo_pest /bin/bash
+	docker exec -it %%name=demo_pest%% /bin/bash
 
 .PHONY: start
 start:
-	docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"
+	docker exec -it %%name=demo_pest%% sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"

@@ -26,15 +26,17 @@ And yes, nothing less. We're going to install a **Microsoft SQL Server 2022** on
 
 The official Microsoft SQL Server Docker repository can be retrieved on [https://hub.docker.com/_/microsoft-mssql-server](https://hub.docker.com/_/microsoft-mssql-server).
 
+<Vars port="1433" name="sqlserverdb" labels={{ port: "Host port", name: "Container name" }} />
+
 First, we'll download and run an instance of SQL Server 2022 by running the following instruction:
 
 <Terminal typewriter>
-$ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=2Secure*Password2" -p 1433:1433 --name sqlserverdb -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest
+$ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=2Secure*Password2" -p %%port=1433%%:1433 --name %%name=sqlserverdb%% -h mysqlserver -d mcr.microsoft.com/mssql/server:2022-latest
 </Terminal>
 
 With the above command, we'll accept the terms of the *End-User License Agreement* and we're setting the password of the user `SA` to `2Secure*Password2`.
 
-The port that we'll use on our host is port `1433` (mapped to the port `1433` of the container), our SQL Server instance will be called `sqlserverdb`(intern name used by Docker) and we'll name our host `mysqlserver`.
+The port that we'll use on our host is port <Var name="port">1433</Var> (mapped to the port `1433` of the container), our SQL Server instance will be called <Var name="name">sqlserverdb</Var> (intern name used by Docker) and we'll name our host `mysqlserver`.
 
 We can check the list of running containers thanks to docker container list:
 
@@ -42,7 +44,7 @@ We can check the list of running containers thanks to docker container list:
 $ docker container list
 
 [...] IMAGE                                       [...] NAMES
-[...] mcr.microsoft.com/mssql/server:2022-latest  [...] sqlserverdb
+[...] mcr.microsoft.com/mssql/server:2022-latest  [...] %%name=sqlserverdb%%
 </Terminal>
 
 <AlertBox variant="info" title="The output above has been simplified">
@@ -72,7 +74,7 @@ Use the value below for the authentication:
 />
 
 <AlertBox variant="info" title="Why these values?">
-`1433` is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `MSSQL_SA_PASSWORD` environment variable in our `docker run` command.)
+<Var name="port">1433</Var> is the port number we've declared in our `docker run` instruction, the default *admin* user is `SA` and the password has been initialized earlier to `2Secure*Password2` (see the `MSSQL_SA_PASSWORD` environment variable in our `docker run` command.)
 
 </AlertBox>
 
@@ -99,7 +101,7 @@ Congratulations, you've created a `MyDB` database with a `dbo.Person` table:
 ![The database has been created](./images/database_created.webp)
 
 <AlertBox variant="info" title="Think to refresh the `Object Explorer`">
-If, after having fired the query, you don't see yet your database in the `Object Explorer` pane, think to refresh it. Click anywhere in the pane and press <kbd>F5</kbd> or, right-click on the `localhost, 1433` top-item and select `Refresh` in the contextual menu.
+If, after having fired the query, you don't see yet your database in the `Object Explorer` pane, think to refresh it. Click anywhere in the pane and press <kbd>F5</kbd> or, right-click on the <Code>localhost, <Var name="port">1433</Var></Code> top-item and select `Refresh` in the contextual menu.
 
 </AlertBox>
 

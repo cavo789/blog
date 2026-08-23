@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:32.740Z",
+  "generated": "2026-08-23T17:53:40.905Z",
   "source": "index.md",
-  "sourceHash": "9050304262373c2d056cb7f506dc4d9e4feabfe8",
+  "sourceHash": "2583d7f8d7c18d2e99631d516b99f427cc5722ed",
   "questions": [
     {
-      "question": "How do I configure my Docker localhost to use SSL (HTTPS)?",
+      "question": "How do I configure my localhost to use SSL?",
       "anchor": ""
     },
     {
-      "question": "What are the steps to set up SSL on an Apache container using mkcert?",
+      "question": "What tools are used to generate trusted certificates for Apache, Nginx, and PHP containers?",
       "anchor": "create-the-ssl-certificate"
     },
     {
-      "question": "How can I generate a trusted certificate for Apache, Nginx, and PHP containers?",
+      "question": "How can I update my Apache configuration file to use SSL?",
       "anchor": "updating-our-apache-configuration-file"
     },
     {
-      "question": "What is the purpose of the SSL certificate in this Docker setup?",
-      "anchor": "create-the-ssl-certificate"
-    },
-    {
-      "question": "How do I configure Apache to use an SSL certificate?",
+      "question": "What changes need to be made in the compose.yaml file to enable SSL for my Docker containers?",
       "anchor": "updating-our-composeyaml-file"
     },
     {
-      "question": "What are the benefits of using mkcert for generating SSL certificates locally?",
-      "anchor": "updating-our-apache-configuration-file"
+      "question": "How can I update my Dockerfile to include SSL configuration?",
+      "anchor": "and-finally-updating-our-dockerfile-file"
     },
     {
-      "question": "How can I install the mkcert root CA in my browser when running outside WSL2?",
+      "question": "What is the purpose of the mkcert tool in this guide?",
+      "anchor": "create-the-ssl-certificate"
+    },
+    {
+      "question": "How do I install the mkcert root CA into my browser when running outside WSL2?",
       "anchor": "bonus---install-the-mkcert-root-ca-in-your-browser"
     },
     {
-      "question": "What are some bonus sections covered in this article about configuring SSL for nginx and PHP?",
-      "anchor": "run-the-site"
+      "question": "Where can I find the root CA file for mkcert?",
+      "anchor": "find-the-root-ca-file"
     }
   ]
 }

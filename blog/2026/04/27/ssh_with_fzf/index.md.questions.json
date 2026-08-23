@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:02:48.080Z",
+  "generated": "2026-08-23T17:55:31.991Z",
   "source": "index.md",
-  "sourceHash": "d663c0e5a286b3665af372f99807fb91eb230497",
+  "sourceHash": "df93809865dd7a38ba069ee82a6f77401c8abcda",
   "questions": [
     {
-      "question": "What are some common problems with managing multiple SSH connections?",
-      "anchor": ""
+      "question": "How do I install FZF on my machine?",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How can I break my SSH configuration into project-specific files?",
-      "anchor": "look-at-the-amazingconf-file"
-    },
-    {
-      "question": "What is the purpose of the amazing.conf file in this article?",
-      "anchor": "add-the-sshf-function"
-    },
-    {
-      "question": "How do I create a custom shell function using FZF for SSH hosts?",
-      "anchor": "using-filtering-options"
-    },
-    {
-      "question": "What are some contextual information that can be displayed about an SSH host in the TUI?",
-      "anchor": "my-real-use-case"
-    },
-    {
-      "question": "How does the sshf function work in this article?",
-      "anchor": "using-filtering-options"
-    },
-    {
-      "question": "What are some advantages of using FZF for managing SSH connections?",
+      "question": "What is the purpose of creating an SSHf function in this article?",
       "anchor": "install-fzf"
     },
     {
-      "question": "What is a doc-block and how is it used in the amazing.conf file?",
+      "question": "How can I view a list of all hosts using the TUI?",
+      "anchor": "ssh-configuration"
+    },
+    {
+      "question": "What are some contextual information that can be displayed about selected hosts?",
+      "anchor": "look-at-the-amazingconf-file"
+    },
+    {
+      "question": "How does the SSHf function work with FZF to create a fast, searchable TUI for SSH connections?",
       "anchor": "add-the-sshf-function"
+    },
+    {
+      "question": "What is the difference between using the 'sshf' function and directly typing an SSH command?",
+      "anchor": "using-filtering-options"
+    },
+    {
+      "question": "How can I add rich documentation to my SSH configurations?",
+      "anchor": "my-real-use-case"
+    },
+    {
+      "question": "What are some advanced custom actions that can be triggered from the search menu in the TUI?",
+      "anchor": ""
     }
   ]
 }

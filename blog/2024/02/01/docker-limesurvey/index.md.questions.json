@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:36.523Z",
+  "generated": "2026-08-23T17:52:48.585Z",
   "source": "index.md",
-  "sourceHash": "d57ebf81de398945462e8147e35a8c9604285cfa",
+  "sourceHash": "a5e22b15daf601387d245e6be4dd393fdc46c0d6",
   "questions": [
     {
-      "question": "How do I set up LimeSurvey using Docker Compose?",
+      "question": "How do I install LimeSurvey using Docker Compose?",
       "anchor": ""
     },
     {
-      "question": "What are the steps to create a sandbox site for LimeSurvey?",
+      "question": "What is a complete guide on setting up and running LimeSurvey with Docker Compose?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I create a sandbox site to explore all features of LimeSurvey using Docker?",
       "anchor": "limesurvey-running-in-two-minutes"
     },
     {
-      "question": "How can I use volumes with Docker to persist data in LimeSurvey?",
-      "anchor": "first-login"
-    },
-    {
-      "question": "Why is it important to pin MySQL versions when using Docker Compose for LimeSurvey?",
-      "anchor": "using-volumes"
-    },
-    {
-      "question": "How can I download an old version of LimeSurvey for testing purposes?",
-      "anchor": "download-an-old-version"
-    },
-    {
-      "question": "What are the health checks used to ensure LimeSurvey is ready after startup?",
-      "anchor": "limesurvey-running-in-two-minutes"
-    },
-    {
-      "question": "How do I log in to the administration interface of LimeSurvey?",
+      "question": "What are the steps to download and run required images for LimeSurvey and MySQL using Docker Compose?",
       "anchor": "lets-play"
     },
     {
-      "question": "What are the steps to create a survey list, participants, and statistics on my machine using Docker Compose?",
-      "anchor": ""
+      "question": "How do I check if LimeSurvey is ready after running Docker Compose commands?",
+      "anchor": "first-login"
+    },
+    {
+      "question": "What are the credentials to use for accessing the administration interface of LimeSurvey?",
+      "anchor": "using-volumes"
+    },
+    {
+      "question": "How do I keep my work and configuration items when using volumes with Docker Compose?",
+      "anchor": "download-an-old-version"
+    },
+    {
+      "question": "What is the end of life date for MySQL 5.7, and why is it important to pin it in this article?",
+      "anchor": "conclusion"
     }
   ]
 }

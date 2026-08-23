@@ -2,6 +2,6 @@ services:
   app:
     build: .
     ports:
-      - "8000:80"
+      - "%%port=8000%%:80"
     volumes:
       - ./main.py:/code/main.py

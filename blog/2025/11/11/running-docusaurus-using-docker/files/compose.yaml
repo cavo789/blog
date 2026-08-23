@@ -6,7 +6,7 @@ services:
       context: .
       target: ${TARGET:-development}
       dockerfile: Dockerfile
-    container_name: docusaurus
+    container_name: %%name=docusaurus%%
     ports:
       - "443:443"
 

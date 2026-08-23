@@ -318,9 +318,22 @@
  * the article can silently look like it's lying about what it shows. */
 
 .token {
+  font-family: var(--ifm-font-family-monospace);
   border-bottom: 1.5px dotted var(--ifm-color-primary);
   border-radius: 2px;
   padding: 0 1px;
+  transition: background-color 0.5s ease;
+}
+
+/* Prose usage (<Var>, see readme.md) — a real <code> tag so Infima's own
+ * `code` element styling (background pill, padding, border-radius) applies
+ * for free and matches the ordinary `` `backtick` `` spans it sits next to
+ * (e.g. `` `http://localhost:` `` + <Var>8080</Var>): without this the token
+ * read as a plain-text gap breaking up what looked like one continuous
+ * command (see TODO 0104 review feedback). Only the dotted underline is this
+ * component's own addition on top of that inherited pill. */
+.tokenInline {
+  border-bottom: 1.5px dotted var(--ifm-color-primary);
   transition: background-color 0.5s ease;
 }
 
@@ -330,6 +343,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .token,
+  .tokenInline,
   .fab {
     transition: none;
   }

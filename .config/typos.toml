@@ -22,8 +22,8 @@ extend-ignore-re = [
   "\\b[a-f0-9]{12,64}\\b",
 
   # 4. Inline exclusion for Markdown: any line carrying the marker
-  #    <!-- spellchecker:disable-line --> is skipped entirely.
-  "(?Rm)^.*<!--\\s*spellchecker:disable-line\\s*-->.*$"
+  #    <!-- typos:disable-line --> is skipped entirely.
+  "(?Rm)^.*<!--\\s*typos:disable-line\\s*-->.*$"
 ]
 
 [default.extend-words]

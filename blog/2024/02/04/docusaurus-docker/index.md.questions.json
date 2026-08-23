@@ -1,57 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:48.090Z",
+  "generated": "2026-08-23T17:52:53.078Z",
   "source": "index.md",
-  "sourceHash": "63374e735c0e6b7d4affce2bca3de92491d30bf8",
+  "sourceHash": "e8c688ef6da07a74f3bc1e8c8a6dc16654021d6d",
   "questions": [
     {
-      "question": "How do I create a Docusaurus Docker image?",
+      "question": "How do I create a Docker image for Docusaurus?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of the .dockerignore file in this setup?",
       "anchor": "create-your-own-docusaurus-image"
     },
     {
-      "question": "What are the benefits of using Docker with Docusaurus?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "How can I run my blog posts in Markdown files with Docusaurus?",
-      "anchor": "under-the-hood--the-dockerfile-line-by-line-skip-this-if-you-just-want-it-running"
-    },
-    {
-      "question": "How do I set up hot-reloading for my Docusaurus site?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What is the purpose of the Dockerfile in this tutorial?",
+      "question": "How do I mount my blog content folder inside the Docker container?",
       "anchor": "create-a-dockerignore-file"
     },
     {
-      "question": "How can I manage my blog content within a containerized environment using Docker?",
-      "anchor": "run-docusaurus"
-    },
-    {
-      "question": "What are some best practices for creating a Docusaurus Docker image?",
-      "anchor": "create-your-own-docusaurus-image"
-    },
-    {
-      "question": "How do I create a .dockerignore file to optimize my Docker image?",
+      "question": "What are some tips for optimizing hot reload with Docusaurus and Docker?",
       "anchor": "create-a-composeyaml-file"
     },
     {
-      "question": "What is the purpose of the compose.yaml file in this tutorial?",
+      "question": "How can I create multiple blog posts automatically using this setup?",
       "anchor": "create-simple-blog-items"
     },
     {
-      "question": "How can I create simple blog items automatically with Docusaurus?",
-      "anchor": "stop-and-restart"
-    },
-    {
-      "question": "How do I run my Docusaurus site using Docker?",
+      "question": "What is the default port number used by Docusaurus when running with Docker?",
       "anchor": "run-docusaurus"
     },
     {
-      "question": "What are some tips for optimizing the performance of a Dockerized Docusaurus site?",
-      "anchor": "under-the-hood--the-dockerfile-line-by-line-skip-this-if-you-just-want-it-running"
+      "question": "How do I change the port number used by Docusaurus when running with Docker?",
+      "anchor": "run-docusaurus"
+    },
+    {
+      "question": "What is the purpose of the compose.yaml file in this setup?",
+      "anchor": "create-a-composeyaml-file"
     }
   ]
 }

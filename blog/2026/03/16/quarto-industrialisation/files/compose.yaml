@@ -4,7 +4,7 @@ services:
     volumes:
       - .:/workspace
     ports:
-      - "4242:4242"
+      - "%%port=4242%%:4242"
     environment:
       - PYTHONPATH=/workspace/scripts
     command: >

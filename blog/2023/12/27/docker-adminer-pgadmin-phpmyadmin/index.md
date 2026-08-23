@@ -28,13 +28,21 @@ This can be done in just one command line instruction.
 
 ## One command, your database in a browser
 
+<Vars
+  network="joomla_default"
+  db_container="joomla-joomladb-1"
+  port_adminer="8088"
+  port_phpmyadmin="8089"
+  labels={{ network: "Docker network", db_container: "Database container", port_adminer: "Adminer port", port_phpmyadmin: "phpMyAdmin port" }}
+/>
+
 <Terminal typewriter>
-$ docker run -d --rm --name adminer --network joomla_default --link joomla-joomladb-1:db -p 8088:8080 adminer
+$ docker run -d --rm --name adminer --network %%network=joomla_default%% --link %%db_container=joomla-joomladb-1%%:db -p %%port_adminer=8088%%:8080 adminer
 </Terminal>
 
-Surf to `http://127.0.0.1:8088` and your database is right there:
+Surf to `http://127.0.0.1:`<Var name="port_adminer">8088</Var> and your database is right there:
 
-<BrowserWindow url="http://127.0.0.1:8088">
+<BrowserWindow url="http://127.0.0.1:%%port_adminer=8088%%">
   ![adminer](./images/adminer.webp)
 </BrowserWindow>
 
@@ -50,12 +58,12 @@ We'll use `docker container list` to get the list of containers; we just want th
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-For our example, we want to connect to the MySQL 8.x `joomla-joomladb-1` container.
+For our example, we want to connect to the MySQL 8.x <Var name="db_container">joomla-joomladb-1</Var> container.
 
 The second thing to determine is the name of the network used by that container. We'll use `docker inspect` here (read my article <Link to="/blog/docker-inspect">Docker inspect - Retrieve network's information</Link>).
 
 <Terminal typewriter>
-$ docker inspect joomla-joomladb-1 | jq -r '.[0].NetworkSettings.Networks'
+$ docker inspect %%db_container=joomla-joomladb-1%% | jq -r '.[0].NetworkSettings.Networks'
 </Terminal>
 
 ```json
@@ -74,7 +82,7 @@ $ docker inspect joomla-joomladb-1 | jq -r '.[0].NetworkSettings.Networks'
 }
 ```
 
-The name of the network used by `joomla-joomladb-1` is thus `joomla_default` as you can see in the returned JSON string.
+The name of the network used by <Var name="db_container">joomla-joomladb-1</Var> is thus <Var name="network">joomla_default</Var> as you can see in the returned JSON string.
 
 ## Run Adminer
 
@@ -87,7 +95,7 @@ $ {`docker run -d --rm --name adminer --network <network_name> --link <container
 The flag `--network` should thus be set to the name of the used network and `--link` is a two part value, the name of the container to connect followed by `:db`.
 
 <AlertBox variant="info" title="Use your own port using the `-p` flag">
-In the example, we'll make adminer available on port `8088`. Don't hesitate to use any other free ones.
+In the example, we'll make adminer available on port <Var name="port_adminer">8088</Var>. Don't hesitate to use any other free ones.
 
 </AlertBox>
 
@@ -99,10 +107,10 @@ On the Adminer login screen:
 - `Password`: associated password,
 - `Database`: can stay empty to get all, initialize it to the name of the database to open otherwise.
 
-To retrieve the name of the server, it's the name of the service as defined in your `compose.yaml` file but you can retrieve it also using this command: `docker inspect joomla-joomladb-1 | grep com.docker.compose.service`. Just replace `joomla-joomladb-1` by the name of your container.
+To retrieve the name of the server, it's the name of the service as defined in your `compose.yaml` file but you can retrieve it also using this command: `docker inspect` <Var name="db_container">joomla-joomladb-1</Var> `| grep com.docker.compose.service`. Just replace <Var name="db_container">joomla-joomladb-1</Var> by the name of your container.
 
 <AlertBox variant="info" title="Using parametrized hyperlink">
-If you already know some of these values, you can provide them in a link, like `http://127.0.0.1:8088?server=joomladb&username=root&db=joomla_db`.
+If you already know some of these values, you can provide them in a link, like `http://127.0.0.1:`<Var name="port_adminer">8088</Var>`?server=joomladb&username=root&db=joomla_db`.
 
 </AlertBox>
 
@@ -121,16 +129,16 @@ $ {`docker run -d --rm --name phpmyadmin --network <network_name> --link <contai
 and thus, with values from our example,
 
 <Terminal typewriter>
-$ docker run -d --rm --name phpmyadmin --network joomla_default  --link joomla-joomladb-1:db -p 8089:80 phpmyadmin
+$ docker run -d --rm --name phpmyadmin --network %%network=joomla_default%%  --link %%db_container=joomla-joomladb-1%%:db -p %%port_phpmyadmin=8089%%:80 phpmyadmin
 </Terminal>
 
-To open phpmyadmin, start your browser and navigate to `http://127.0.0.1:8089` since we have defined port `8089` here.
+To open phpmyadmin, start your browser and navigate to `http://127.0.0.1:`<Var name="port_phpmyadmin">8089</Var> since we have defined that port here.
 
-<BrowserWindow url="http://127.0.0.1:8089">
+<BrowserWindow url="http://127.0.0.1:%%port_phpmyadmin=8089%%">
   ![phpmyadmin](./images/phpmyadmin.webp)
 </BrowserWindow>
 
-<BrowserWindow url="http://127.0.0.1:8089">
+<BrowserWindow url="http://127.0.0.1:%%port_phpmyadmin=8089%%">
   ![List of databases](./images/phpmyadmin_databases.webp)
 </BrowserWindow>
 

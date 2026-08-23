@@ -1,0 +1,1 @@
+$ curl http://localhost:%%restPort=3000%%/todos?select=id,task | jq

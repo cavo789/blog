@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-18T10:14:37.807Z",
+  "generated": "2026-08-23T17:57:07.640Z",
   "source": "index.md",
-  "sourceHash": "ed2995410ef7fb5cc40b48367f8edb1404c59598",
+  "sourceHash": "d57386bf21e75a8ae46438c88999445c21bca2b7",
   "questions": [
     {
-      "question": "What does syntax highlighting do in Zsh?",
+      "question": "What does syntax highlighting do in the console?",
       "anchor": ""
     },
     {
-      "question": "How can I install zsh-syntax-highlighting for Zsh?",
+      "question": "How can I install zsh-syntax-highlighting?",
       "anchor": "installation"
     },
     {
-      "question": "What are the benefits of using syntax highlighting in Zsh consoles?",
-      "anchor": "how-to-use-it"
-    },
-    {
-      "question": "How does syntax highlighting work in Zsh consoles?",
+      "question": "Can you explain how syntax highlighting works in Zsh?",
       "anchor": "what-syntax-highlighting-looks-like"
     },
     {
-      "question": "Can I use zsh-syntax-highlighting with other plugins like autosuggestions?",
-      "anchor": "conclusion"
+      "question": "What are the benefits of using syntax highlighting in the console?",
+      "anchor": ""
     },
     {
-      "question": "What are the installation steps for zsh-syntax-highlighting?",
-      "anchor": "installation"
-    },
-    {
-      "question": "How can I customize syntax highlighting in Zsh consoles?",
+      "question": "How does the plugin work to provide syntax highlighting?",
       "anchor": "how-to-use-it"
     },
     {
-      "question": "What commands turn green and red in Zsh consoles with syntax highlighting?",
+      "question": "Can you describe how to use zsh-syntax-highlighting with Docker?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "What are some examples of valid commands in Zsh that turn green?",
       "anchor": "what-syntax-highlighting-looks-like"
+    },
+    {
+      "question": "How can I troubleshoot issues with syntax highlighting in Zsh?",
+      "anchor": ""
     }
   ]
 }

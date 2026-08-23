@@ -1,41 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:58.757Z",
+  "generated": "2026-08-23T17:52:59.485Z",
   "source": "index.md",
-  "sourceHash": "b439d02dec76416b77a59aa6245b16d78dc05b66",
+  "sourceHash": "9134cc52df63244b87bba7629ab6fd42fa283984",
   "questions": [
     {
-      "question": "How do I add Admonitions to my Docusaurus articles?",
+      "question": "What are essential Docusaurus authoring features?",
+      "anchor": ""
+    },
+    {
+      "question": "How do you activate the *Read More* feature in blog mode?",
+      "anchor": "read-more"
+    },
+    {
+      "question": "What is an Admonition and how to use it in Docusaurus?",
       "anchor": "admonitions"
     },
     {
-      "question": "What is the inline style notation in Docusaurus for changing text color?",
+      "question": "How can I add inline styling to my Docusaurus articles?",
       "anchor": "inline-style"
     },
     {
-      "question": "How do I create and use the Highlight component in Docusaurus articles?",
+      "question": "What is the Highlight component and how to use it?",
       "anchor": "highlight-component"
     },
     {
-      "question": "What is the purpose of the Highlight lines feature in Docusaurus articles?",
+      "question": "How do you highlight changes in code blocks using Docusaurus?",
       "anchor": "highlight-lines"
     },
     {
-      "question": "How do I use Docusaurus to highlight changes in code blocks?",
-      "anchor": "highlight-lines"
-    },
-    {
-      "question": "What are two authoring habits worth adopting early for writing Docusaurus articles?",
+      "question": "What are some best authoring habits for Docusaurus articles?",
       "anchor": ""
     },
     {
-      "question": "How can I add a *Read More* link to my Docusaurus article?",
+      "question": "What is the purpose of the *Read More* feature in blog mode?",
+      "anchor": "read-more"
+    },
+    {
+      "question": "How do you create and use Admonitions in Docusaurus articles?",
       "anchor": "admonitions"
     },
     {
-      "question": "What are the essential features of Docusaurus articles that you must not forget?",
-      "anchor": ""
+      "question": "How can I apply inline styling to text in my Docusaurus articles?",
+      "anchor": "inline-style"
+    },
+    {
+      "question": "What is the Highlight component and how do you use it in Docusaurus?",
+      "anchor": "highlight-component"
+    },
+    {
+      "question": "How can I highlight changes in code blocks using Docusaurus?",
+      "anchor": "highlight-lines"
     }
   ]
 }

@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:45:12.286Z",
+  "generated": "2026-08-23T17:51:55.049Z",
   "source": "index.md",
-  "sourceHash": "b14f957122b2a29ba8bfcbd13012bfdc78c57c9e",
+  "sourceHash": "b0fb93c7506df8303a5bb649a5aa6b6bbad955f7",
   "questions": [
     {
-      "question": "What are the new features in Docker Desktop 4.26?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I use the PHP+Apache template with Docker Desktop 4.26?",
+      "question": "How do you create a Docker container with PHP and Apache using Docker Desktop?",
       "anchor": "composeyaml"
     },
     {
-      "question": "What is the bug in Docker Desktop 4.26's PHP+Apache template and how do I fix it?",
-      "anchor": "composeyaml"
-    },
-    {
-      "question": "How can I run a PHP script inside an Apache container using Docker?",
-      "anchor": "run-the-container"
-    },
-    {
-      "question": "What are the steps to create a Dockerfile for running PHP with Apache?",
-      "anchor": "dockerfile"
-    },
-    {
-      "question": "What is the purpose of the .dockerignore file in Docker?",
+      "question": "What is the purpose of the .dockerignore file when building a Docker image for a PHP application?",
       "anchor": "dockerignore"
     },
     {
-      "question": "How can I copy files from my machine to a Docker container using Docker Compose?",
+      "question": "How can I run an interactive shell inside a running Docker container?",
+      "anchor": "enter-in-the-container"
+    },
+    {
+      "question": "What is the default port number used by the Docker container for Apache when using PHP with the new Docker init feature?",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "How do you specify the source folder in the Dockerfile when using the PHP+Apache template?",
       "anchor": "run-the-container"
     },
     {
-      "question": "What are some best practices for running PHP scripts inside Docker containers?",
+      "question": "What is the recommended way to run a PHP script quickly without any generated files at all?",
       "anchor": ""
+    },
+    {
+      "question": "How can I update the Dockerfile to use the correct image and copy the content of the current folder into the container's /html directory?",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "What is the purpose of the port number specified in the compose.yaml file when using PHP with Apache?",
+      "anchor": "composeyaml"
     }
   ]
 }

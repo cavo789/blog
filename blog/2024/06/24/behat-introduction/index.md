@@ -93,6 +93,8 @@ Let's start...
 
 - Create a file called `compose.yaml` with this content:
 
+<Vars name="php-app" labels={{ name: "Container name" }} />
+
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 - Run `docker compose up --detach` to create your Docker container

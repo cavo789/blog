@@ -209,7 +209,7 @@ The second thing to do is to create the file `scripts/startup/populate_db.sh` wi
 Now, make the script executable: `chmod +x scripts/startup/populate_db.sh`.
 
 <AlertBox variant="info" title="Tables will be owned by the system user">
-Pay attention to the `CONNECT system/admin@orclpdb1` statement: we'll first connect as the system user before creating the tables. So, tables will be accessible by that user i.e. the `system` user.
+Pay attention to the `CONNECT system/admin@` <Var name="pdb">orclpdb1</Var> ` statement: we'll first connect as the system user before creating the tables. So, tables will be accessible by that user i.e. the `system` user.
 
 </AlertBox>
 
@@ -239,6 +239,15 @@ $ docker network create oracle
 
 ### Ready to create the container
 
+<Vars
+  name="oracle-db"
+  port="1521"
+  port_oem="5500"
+  cdb="ORCLCDB"
+  pdb="ORCLPDB1"
+  labels={{ name: "Container name", port: "Listener port", port_oem: "OEM Express port", cdb: "CDB name", pdb: "PDB name" }}
+/>
+
 We're ready to create our container by running this command:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
@@ -250,12 +259,12 @@ This is terribly slow... Oracle will need something like 10 minutes before the c
 
 The `docker run` was terribly complex; here is a breakdown:
 
-- `--name oracle-db`: Our running container will be named `oracle_db` (so we can access to it later on by running `docker exec -it oracle-db [...]`),
+- `--name oracle-db`: Our running container will be named <Var name="name">oracle-db</Var> (so we can access to it later on by running `docker exec -it oracle-db [...]`),
 - `--network oracle`: We will create our container on the `oracle` network,
-- `-p 1521:1521`: Oracle use a port number 1521 (Oracle Listener) and we'll expose that port on our machine,
-- `-p 5500:5500`: Optional. Oracle use a second port number 5500 (OEM Express) and we'll expose that port too so we'll be able to access to `http://localhost:5500`,
-- `-e ORACLE_SID=ORCLCDB`: The Oracle Database SID (SID stands for *System identifier*) is a very important setting. We'll keep the default value which is `ORCLCDB` (remember; `CDB` stands for `Container database`)
-- `-e ORACLE_PDB=ORCLPDB1`: The Oracle Database PDB name. Here too, we'll keep the default value which is `ORCLPDB1`. (remember; `PDB` stands for `pluggable database`).
+- `-p 1521:1521`: Oracle use a port number <Var name="port">1521</Var> (Oracle Listener) and we'll expose that port on our machine,
+- `-p 5500:5500`: Optional. Oracle use a second port number <Var name="port_oem">5500</Var> (OEM Express) and we'll expose that port too so we'll be able to access to `http://localhost:`<Var name="port_oem">5500</Var>,
+- `-e ORACLE_SID=ORCLCDB`: The Oracle Database SID (SID stands for *System identifier*) is a very important setting. We'll keep the default value which is <Var name="cdb">ORCLCDB</Var> (remember; `CDB` stands for `Container database`)
+- `-e ORACLE_PDB=ORCLPDB1`: The Oracle Database PDB name. Here too, we'll keep the default value which is <Var name="pdb">ORCLPDB1</Var>. (remember; `PDB` stands for `pluggable database`).
 - `-e ORACLE_PWD=admin`: The Oracle database SYS, SYSTEM and PDBADMIN password. There is no default value since the password is auto generated and should be retrieved from the logs (`docker log`). This parameter modifies the password for the SYS, SYSTEM and PDBADMIN users.
 - `-v OracleDBData:/opt/oracle/oradata`: We'll persist the database on our disk but we don't care *where*, we'll let Docker manage it. We've previously created a Docker volume named `OracleDBData`.
 - `-v ./scripts/startup/:/docker-entrypoint-initdb.d/startup`: This will allow us to create files locally in the `./scripts/startup` folder (like our SQL files) and run them inside the container once the main Oracle database is ready. And, indeed, we've previously created the script `populate_db.sh`, `sql/hr_create.sql` and `sql/hr_populate.sql` files in our `scripts/startup` folder.
@@ -266,10 +275,10 @@ From now on, our Oracle database server is running as a Docker container. We'll 
 
 Here are the constants to remember:
 
-- `1521` is the port number to use when connecting to the Oracle DB service,
-- `oracle-db` is the name of our container,
-- `ORCLCDB` is the name of our CDB,
-- `ORCLPDB1` is the name of our pluggable database,
+- <Var name="port">1521</Var> is the port number to use when connecting to the Oracle DB service,
+- <Var name="name">oracle-db</Var> is the name of our container,
+- <Var name="cdb">ORCLCDB</Var> is the name of our CDB,
+- <Var name="pdb">ORCLPDB1</Var> is the name of our pluggable database,
 - `admin` is the password to use and
 - `system` is the user used when we've created the database
 
@@ -285,7 +294,7 @@ And now, you understand why connection strings were:
 
 ## Running an interactive console in the DB container
 
-If you need to jump in the container, simply run `docker exec -it oracle-db bash`.
+If you need to jump in the container, simply run `docker exec -it ` <Var name="name">oracle-db</Var> ` bash`.
 
 As a fictive example, we can go to the `/docker-entrypoint-initdb.d/startup` folder inside the container and run our `./populate_db.sh` script again (again because was fired by Oracle during the creation of the container):
 
@@ -299,13 +308,13 @@ Type `exit` to quit the console and go back to your host prompt.
 
 So the `docker run` command will take something like 10 minutes to run.
 
-If you've Docker Desktop, switch to its interface, click on the `Containers` link and click on your `oracle-db` container to see the log.  Wait until you see:
+If you've Docker Desktop, switch to its interface, click on the `Containers` link and click on your <Var name="name">oracle-db</Var> container to see the log.  Wait until you see:
 
 You'll get the same "ready to use" screen already teased at the top of this article.
 
-You can also use the command line: `docker logs oracle-db --follow` and wait until we see the `DATABASE IS READY TO USE!` message. Press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit the log.
+You can also use the command line: `docker logs ` <Var name="name">oracle-db</Var> ` --follow` and wait until we see the `DATABASE IS READY TO USE!` message. Press <kbd>CTRL</kbd>+<kbd>C</kbd> to quit the log.
 
-Now, we can jump in the `oracle-db` container and run SQL*Plus by running `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` (remember: we'll connect to the `PDB`; not the `CDB`).
+Now, we can jump in the <Var name="name">oracle-db</Var> container and run SQL*Plus by running `docker exec -it ` <Var name="name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba` (remember: we'll connect to the `PDB`; not the `CDB`).
 
 <AlertBox variant="info" title="Am I connected on the container database or in a pluggable database?">
 Just run, in the SQL*Plus console, the `SHOW CON_NAME;` command.
@@ -326,7 +335,7 @@ Previously, we've created our tables using the `scripts/startup/populate_db.sh` 
 
 The `CONNECT` statement will use the `system` Oracle user. Tables that will be created in the `system` schema.
 
-If we run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` and try to display records of the `COUNTRIES` table; it will not work unless we specify the schema:
+If we run `docker exec -it ` <Var name="name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba` and try to display records of the `COUNTRIES` table; it will not work unless we specify the schema:
 
 ![The system schema](./images/system_schema.webp)
 
@@ -334,7 +343,7 @@ This is because the `sys` user uses the `sys` schema by default (we can see this
 
 This is why, because our tables are in the `system` schema; we can access them by running `SELECT * FROM SYSTEM.COUNTRIES;`.
 
-But, we can also change our user, no more using `sys` but `system` by running `CONNECT system/admin@orclpdb1`.
+But, we can also change our user, no more using `sys` but `system` by running `CONNECT system/admin@` <Var name="pdb">orclpdb1</Var>.
 
 ![Connect using the system account](./images/connect_as_system.webp)
 
@@ -342,8 +351,8 @@ But, we can also change our user, no more using `sys` but `system` by running `C
 
 This understood, here is how we can see our data:
 
-- Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`,
-- Then, in SQL*Plus, run `CONNECT system/admin@orclpdb1`,
+- Run `docker exec -it ` <Var name="name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba`,
+- Then, in SQL*Plus, run `CONNECT system/admin@` <Var name="pdb">orclpdb1</Var>,
 - For esthetic purposes, we'll run `SET WRAP OFF` and `SET PAGESIZE 1000` and
 - we can access our tables like this: `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM EMPLOYEES;`
 
@@ -356,13 +365,13 @@ This understood, here is how we can see our data:
 
 ### Accessing the Oracle Enterprise Manager Database Express
 
-Earlier, when running our `docker run` command, we've mapped the port `5500` from the container on our host. That port is the one used by Oracle Enterprise Manager Database Express (aka `OEM Express`).
+Earlier, when running our `docker run` command, we've mapped the port <Var name="port_oem">5500</Var> from the container on our host. That port is the one used by Oracle Enterprise Manager Database Express (aka `OEM Express`).
 
-This is a web application we can reach by surfing to `https://localhost:5500/em/`.
+This is a web application we can reach by surfing to `https://localhost:` <Var name="port_oem">5500</Var>`/em/`.
 
-Connect to it using `system` / `admin` and `orclpdb1` as container name.
+Connect to it using `system` / `admin` and <Var name="pdb">orclpdb1</Var> as container name.
 
-<BrowserWindow url="https://localhost:5500/em/">
+<BrowserWindow url="https://localhost:%%port_oem=5500%%/em/">
   <img
     alt="Oracle Enterprise Manager Database Express"
     src={require("./images/oem_express.webp").default}
@@ -418,7 +427,7 @@ Now, by unfolding the list of tables, we can see ours:
 Another way would be to use the official sql*plus Docker image like this:
 
 <Terminal typewriter>
-$ docker run --rm -it --network oracle oracletools/sqlplus:v19.18_lin SYS/admin@oracle-db:1521/orclpdb1 as sysdba
+$ docker run --rm -it --network oracle oracletools/sqlplus:v19.18_lin SYS/admin@%%name=oracle-db%%:%%port=1521%%/%%pdb=orclpdb1%% as sysdba
 </Terminal>
 
 Once connected, for instance, we can get the list of countries like this:
@@ -426,12 +435,12 @@ Once connected, for instance, we can get the list of countries like this:
 ![Oracle sqlplus](./images/oracle_sqlplus_countries.webp)
 
 <AlertBox variant="note" title="Intern versus extern">
-For this article, it was not really needed to use that image. Until now, we've more than once used SQL*Plus like when we've fired `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` to connect to the database.
+For this article, it was not really needed to use that image. Until now, we've more than once used SQL*Plus like when we've fired `docker exec -it ` <Var name="name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba` to connect to the database.
 
-The difference is: `docker exec -it oracle-db [...]` jumps into our database container and runs sqlplus *internally* (from within the container where the database is stored) while `docker run [...] oracle oracletools/sqlplus:v19.18_lin [...]` runs sqlplus *outside* as a separate container.
+The difference is: `docker exec -it ` <Var name="name">oracle-db</Var> ` [...]` jumps into our database container and runs sqlplus *internally* (from within the container where the database is stored) while `docker run [...] oracle oracletools/sqlplus:v19.18_lin [...]` runs sqlplus *outside* as a separate container.
 
 </AlertBox>
 
 ## Going further
 
-Now that the `oracle-db` container is running, two follow-up articles reuse it directly: <Link to="/blog/docker-oracle-ords">Transform an Oracle DB as OpenData using Oracle REST Data Services</Link> and <Link to="/blog/oracle-dotnet-nodejs-php-python">Accessing an Oracle database using .Net, NodeJS, PHP and Python</Link>.
+Now that the <Var name="name">oracle-db</Var> container is running, two follow-up articles reuse it directly: <Link to="/blog/docker-oracle-ords">Transform an Oracle DB as OpenData using Oracle REST Data Services</Link> and <Link to="/blog/oracle-dotnet-nodejs-php-python">Accessing an Oracle database using .Net, NodeJS, PHP and Python</Link>.

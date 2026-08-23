@@ -31,15 +31,23 @@ The easiest way, on Windows, is to use [Docker Desktop](https://www.docker.com/p
 
 ## One command, a working PHP server
 
+<Vars
+  name_a="step_1_1a"
+  port_a="80"
+  name_b="step_1_1b"
+  port_b="801"
+  labels={{ name_a: "PHP 8.3 container", port_a: "PHP 8.3 port", name_b: "PHP 8.4 container", port_b: "PHP 8.4 port" }}
+/>
+
 Start a new console (DOS, Powershell or Linux) and run this:
 
 <Terminal typewriter>
-$ docker run --detach --name step_1_1a -p 80:80 php:8.3-apache
+$ docker run --detach --name %%name_a=step_1_1a%% -p %%port_a=80%%:80 php:8.3-apache
 </Terminal>
 
-Drop an `index.php` file calling `phpinfo()` in it (we'll see how, below), surf to `http://127.0.0.1:80`, and here is a PHP 8.3 server answering on your machine:
+Drop an `index.php` file calling `phpinfo()` in it (we'll see how, below), surf to <Code>http://127.0.0.1:<Var name="port_a">80</Var></Code>, and here is a PHP 8.3 server answering on your machine:
 
-<BrowserWindow url="http://127.0.0.1/">
+<BrowserWindow url="http://127.0.0.1:%%port_a=80%%/">
   <img
     alt="phpinfo - PHP 8.3"
     src={require("./images/phpinfo_8_3.webp").default}
@@ -65,11 +73,11 @@ On subsequent runs, the PHP image is already present, so it is no longer downloa
 
 </AlertBox>
 
-Explanation of the arguments used in our `docker run --detach --name step_1_1a -p 80:80 php:8.3-apache` command
+Explanation of the arguments used in our <Code>docker run --detach --name <Var name="name_a">step_1_1a</Var> -p <Var name="port_a">80</Var>:80 php:8.3-apache</Code> command
 
 - `--detach`: by default, `docker run` executes the container and closes it as soon as the job is finished. If the image were a virus scanner, `docker run` would run a scan and close the container when the scan is complete. Here, we want to keep our site "listening",
-- `--name step_1_1a`: just for simplicity's sake, let's give our container a name. This is a recommended practice for clearly identifying containers,
-- `-p 80:80`: our PHP+Apache image runs on port `80`, so we want to map this "internal" port to port `80` on our computer. This allows us to access the web site.
+- `--name` <Var name="name_a">step_1_1a</Var>: just for simplicity's sake, let's give our container a name. This is a recommended practice for clearly identifying containers,
+- <Code>-p <Var name="port_a">80</Var>:80</Code>: our PHP+Apache image runs on port `80`, so we want to map this "internal" port to port <Var name="port_a">80</Var> on our computer. This allows us to access the web site.
 - `php:8.3-apache`: the name of the used image. We ask php+apache, version 8.3.
 
 ![The PHP container is running](./images/php_container_is_running.webp)
@@ -81,7 +89,7 @@ We can see that the PHP image is now present in Docker Desktop, and that an appl
 With the instruction below, we can launch a Linux console and display the contents of the image *as if* it were a folder on our hard disk:
 
 <Terminal typewriter>
-$ docker exec -it step_1_1a /bin/bash
+$ docker exec -it %%name_a=step_1_1a%% /bin/bash
 </Terminal>
 
 Once in the console, let's quickly create an `index.php` file and exit the console; we will not need it again.
@@ -101,11 +109,11 @@ Have you ever tried to change your PHP version if you are using EasyPHP, WAMP or
 By going to the page [https://hub.docker.com/_/php?tab=tags](https://hub.docker.com/_/php?tab=tags) and searching for `-apache` images, you'll find every published version. Let's change `8.3` to `8.4` and, for example, use another port (we will use `801` this time).
 
 <Terminal typewriter>
-$ docker run --detach --name step_1_1b -p 801:80 php:8.4-apache
+$ docker run --detach --name %%name_b=step_1_1b%% -p %%port_b=801%%:80 php:8.4-apache
 </Terminal>
 
 <Terminal typewriter>
-$ docker exec -it step_1_1b /bin/bash
+$ docker exec -it %%name_b=step_1_1b%% /bin/bash
 </Terminal>
 
 <Terminal typewriter>
@@ -114,7 +122,7 @@ $ echo "phpinfo();" >> index.php
 $ exit
 </Terminal>
 
-<BrowserWindow url="http://127.0.0.1:801/">
+<BrowserWindow url="http://127.0.0.1:%%port_b=801%%/">
   <img
     alt="phpinfo - PHP 8.4"
     src={require("./images/phpinfo_8_4.webp").default}
@@ -132,12 +140,14 @@ This is just crazy. Think of the benefits: you are developing a PHP script and w
 
 Before creating the `index.php` file, the site answers, but with a *Forbidden* page:
 
-![localhost-is-forbidden](./images/localhost_is_forbidden.webp)
+<BrowserWindow url="http://127.0.0.1:%%port_a=80%%/">
+  ![localhost-is-forbidden](./images/localhost_is_forbidden.webp)
+</BrowserWindow>
 
 It works in the sense that *something is listening and has responded*, but does not display anything, since we haven't set anything up yet: Apache is ready, there's simply no `index.php` file yet. That's the difference between "the container runs" and "the site works".
 
 <AlertBox variant="note">
-In this chapter, as we discover Docker, we've used different port numbers each time to access our local site (`80` then `801`). This is only to keep both containers alive at the same time; two containers can't publish the same port on your machine.
+In this chapter, as we discover Docker, we've used different port numbers each time to access our local site (<Var name="port_a">80</Var> then <Var name="port_b">801</Var>). This is only to keep both containers alive at the same time; two containers can't publish the same port on your machine.
 
 </AlertBox>
 

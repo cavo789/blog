@@ -1,0 +1,1 @@
+$ curl "http://localhost:%%port=8000%%/items/?skip=0&limit=20"

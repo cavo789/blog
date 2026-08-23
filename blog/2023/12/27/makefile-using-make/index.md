@@ -29,6 +29,14 @@ So, you can define an `up` command (you choose the name of the command) which wi
 
 ## One word instead of that command
 
+<Vars
+  port_adminer="8088"
+  port_phpmyadmin="8089"
+  network="kingsbridge_default"
+  db="joomladb"
+  labels={{ port_adminer: "Adminer port", port_phpmyadmin: "phpMyAdmin port", network: "Docker network", db: "Database container" }}
+/>
+
 Here is a `make phpmyadmin` call, and just below it, the Docker command it stands for:
 
 <Terminal typewriter source="./files/terminal-1.txt" />

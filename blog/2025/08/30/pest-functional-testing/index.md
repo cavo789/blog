@@ -105,12 +105,14 @@ The build phase can be slow because a lot of things should be downloaded. The fi
 
 ## Create the container
 
+<Vars name="demo_pest" labels={{ name: "Container name" }} />
+
 Once the image has been created; we can now create our Docker container:
 
 <Terminal typewriter>
 $ make up
 
-docker run --detach -v ./tests:/var/www/html/tests --name demo_pest pestphp
+docker run --detach -v ./tests:/var/www/html/tests --name %%name=demo_pest%% pestphp
 12e700df85b54becb9eb537a09c5711265aaca730529c461b0e53a17b6928875
 </Terminal>
 
@@ -150,6 +152,6 @@ Congratulations, we've just tested 10 features in less than 26 seconds — the s
 - We also have to create a specific user in the Docker image to match our local one. This is because when a test fails, Pest (running in Docker) will create an image and that one should be created on our host machine with our UID/GID,
 - The `make up` action defined in the `makefile` is mounting our local `tests` folder in the container. It means that if we create new tests files or update existing ones, they will be immediately synchronized with the running container; nothing special to do here,
 - To reduce the need for configuration files, a `WEBSITE` operating system variable has been defined (see the `makefile`). That variable will be created in the container. A PHP script will then refer to the variable like this `getenv('WEBSITE')`.
-- There is a `--parallel` flag for Pest. If you want to run your different tests files in parallel, edit the `makefile`, search for `docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"` and replace with `docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest --parallel"`
+- There is a `--parallel` flag for Pest. If you want to run your different tests files in parallel, edit the `makefile`, search for <Code>docker exec -it <Var name="name">demo_pest</Var> sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"</Code> and replace with <Code>docker exec -it <Var name="name">demo_pest</Var> sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest --parallel"</Code>
 
 <Snippet filename="makefile.diff" source="./files/makefile.diff" />

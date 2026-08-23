@@ -2,9 +2,9 @@ name: demo
 
 services:
 
-  counter:
+  %%name=counter%%:
     build: .
-    container_name: counter
+    container_name: %%name=counter%%
     image: demo/counter
     # highlight-next-line
     user: 1000:1000

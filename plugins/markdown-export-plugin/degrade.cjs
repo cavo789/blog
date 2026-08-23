@@ -447,6 +447,22 @@ const COMPONENT_RULES = {
     return [];
   },
 
+  // Inline prose sibling of the marker (see the VAR_MARKER_RE comment above):
+  // `<Var name="…">default</Var>` inside a paragraph. children is already
+  // the literal default text — keep it, drop the wrapper.
+  Var(node) {
+    return node.children || [];
+  },
+
+  // `<Code>text<Var name="…">default</Var>text</Code>` (see Code.js) — one
+  // code span mixing literal text and a `<Var>`. The tree walk is bottom-up
+  // (see transformChildren below), so `node.children` here already has each
+  // nested `<Var>` resolved to its plain default text; flatten it into one
+  // `inlineCode`, same as a literal `<code>`/`<kbd>` HTML tag two rules up.
+  Code(node) {
+    return [{ type: "inlineCode", value: mdastToText(node.children) }];
+  },
+
   // --- Wrappers whose children already carry the content ------------------
   TLDR(node) {
     return [paragraph([strongText("TL;DR")]), ...(node.children || [])];
@@ -496,7 +512,9 @@ const COMPONENT_RULES = {
   BrowserWindow(node) {
     const attrs = getAttrs(node);
     const caption =
-      typeof attrs.url === "string" ? `Screenshot — ${attrs.url}` : "Screenshot";
+      typeof attrs.url === "string"
+        ? `Screenshot — ${resolveVarMarkers(attrs.url)}`
+        : "Screenshot";
     return [
       {
         type: "blockquote",

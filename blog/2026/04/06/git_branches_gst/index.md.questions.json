@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:02:32.629Z",
+  "generated": "2026-08-23T17:55:27.389Z",
   "source": "index.md",
-  "sourceHash": "e7b7e8592071b9aaa15b158702e62cbcbce24a62",
+  "sourceHash": "641f933a26e61908bec664d06130ac3ff0320bbf",
   "questions": [
     {
-      "question": "How do I configure ZSH to automatically display my most recently modified Git branches when I enter a repository or check its status?",
+      "question": "How do I configure ZSH to automatically display my most recently updated Git branches?",
       "anchor": "a-real-world-example"
     },
     {
-      "question": "What is the purpose of the custom script added to my Zsh configuration for displaying recent Git branches?",
+      "question": "What is a real-world example of how to use this script with ZSH?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "How does the Dockerfile build and run a repository with three branches committed at different dates?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the purpose of the gst-demo container in the Dockerfile example?",
       "anchor": "how-it-works"
     },
     {
-      "question": "How does the function that automatically displays recent Git branches work?",
-      "anchor": "how-it-works"
-    },
-    {
-      "question": "Why is it important to note that this script exclusively queries your local Git repository and avoids executing a remote command?",
+      "question": "How does the custom function check if you are inside a Git repository before displaying branches?",
       "anchor": "local-branches-only"
     },
     {
-      "question": "What are the potential drawbacks of using this script in a project with multiple collaborators?",
+      "question": "What is the purpose of the ZSH alias defined in the script?",
       "anchor": "conclusion"
     },
     {
-      "question": "How can I modify the script to display recent branches from both local and remote repositories?",
-      "anchor": "local-branches-only"
+      "question": "How does the script retrieve and display the local branches sorted by their last commit date in descending order?",
+      "anchor": ""
     },
     {
-      "question": "What are some alternative methods for displaying recent Git branches in Zsh, besides using a custom script?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "How can I customize the appearance of the displayed branch names in my Zsh configuration?",
-      "anchor": "how-it-works"
+      "question": "What is the purpose of the ZSH hook that triggers when changing directories?",
+      "anchor": ""
     }
   ]
 }

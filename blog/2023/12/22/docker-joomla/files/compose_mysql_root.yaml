@@ -5,4 +5,4 @@ services:
     [...]
     environment:
       // highlight-next-line
-      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=%%dbPassword=example%%

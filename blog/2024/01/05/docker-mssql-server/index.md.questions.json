@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:24.922Z",
+  "generated": "2026-08-23T17:52:35.065Z",
   "source": "index.md",
-  "sourceHash": "1b917e0ae71da0804e7091e1bb46edd287c4e59b",
+  "sourceHash": "bd52dd2371756b4f410594404062340f972b5559",
   "questions": [
     {
       "question": "How do I install Microsoft SQL Server 2022 using Docker?",
       "anchor": ""
     },
     {
-      "question": "What are the steps to connect to a MSSQL Server 2022 container with SSMS?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create a sample database and table in SQL Server 2022 using Docker and SSMS?",
+      "question": "What is the command to run an instance of SQL Server 2022 in Docker?",
       "anchor": "create-the-database-the-table-and-add-some-records"
     },
     {
-      "question": "What is the default authentication method for connecting to a MSSQL Server 2022 container with SSMS?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create a PowerShell script to connect to and query a SQL Server database in a Docker container?",
+      "question": "How do I connect to a SQL Server instance running in Docker using SSMS?",
       "anchor": "write-a-powershell-script-and-connect-to-the-database"
     },
     {
-      "question": "What is the URL for downloading the official Microsoft SQL Server Docker repository?",
-      "anchor": ""
+      "question": "What is the default password for the admin user in SQL Server 2022 when running it in Docker?",
+      "anchor": "create-the-database-the-table-and-add-some-records"
     },
     {
-      "question": "How do I check the list of running containers using Docker?",
-      "anchor": ""
+      "question": "How do I create a sample database and table using SSMS after running SQL Server 2022 in Docker?",
+      "anchor": "write-a-powershell-script-and-connect-to-the-database"
     },
     {
-      "question": "What are some alternatives to SSMS for accessing a Docker database container?",
+      "question": "What is the command to run an instance of SQL Server 2022 in Docker with specific environment variables?",
+      "anchor": "create-the-database-the-table-and-add-some-records"
+    },
+    {
+      "question": "How do I connect to a SQL Server instance running in Docker using PowerShell?",
+      "anchor": "write-a-powershell-script-and-connect-to-the-database"
+    },
+    {
+      "question": "What is the command to create a DOS or PowerShell script to query a SQL Server database running in Docker?",
       "anchor": "write-a-powershell-script-and-connect-to-the-database"
     }
   ]

@@ -5,7 +5,7 @@ services:
     image: joomla
     restart: always
     ports:
-      - 8080:80
+      - %%port=8080%%:80
     environment:
       - JOOMLA_DB_HOST=joomladb
       - JOOMLA_DB_PASSWORD=example

@@ -34,9 +34,11 @@ Impossible to not try immediately and ... wow ... that's TRUE!
 
 <!-- truncate -->
 
-Here's the result: surf to `http://127.0.0.1:82` and get your first JSON answer.
+<Vars port="82" labels={{ port: "Host port" }} />
 
-<BrowserWindow url="http://127.0.0.1:82">
+Here's the result: surf to `http://127.0.0.1:`<Var name="port">82</Var> and get your first JSON answer.
+
+<BrowserWindow url="http://127.0.0.1:%%port=82%%">
   <img
     alt="Hello World"
     src={require("./images/hello_world.webp").default}
@@ -83,27 +85,27 @@ You know what? It's already done.
 We need to build our Docker image and run it:
 
 <Terminal typewriter>
-$ docker build -t python-fastapi . && docker run -p 82:82 python-fastapi
+$ docker build -t python-fastapi . && docker run -p %%port=82%%:82 python-fastapi
 </Terminal>
 
-Once done, just surf to `http://127.0.0.1:82` and you'll obtain the same JSON answer already shown at the top of this article; crazy no?
+Once done, just surf to <Code>http://127.0.0.1:<Var name="port">82</Var></Code> and you'll obtain the same JSON answer already shown at the top of this article; crazy no?
 
 ## Automated documentation of your API
 
 And it's just the beginning: FastAPI comes with a self-documented API based on the OpenAPI schema. *That schema is not just documentation: it can be linted too, see <Link to="/blog/belgif-api-linter">Validate your OpenAPI schema against the Belgif REST standards</Link>.*
 
-Please jump to `http://127.0.0.1:82/docs` and you'll see it in action:
+Please jump to <Code>http://127.0.0.1:<Var name="port">82</Var>/docs</Code> and you'll see it in action:
 
-<BrowserWindow url="http://127.0.0.1:82/docs">
+<BrowserWindow url="http://127.0.0.1:%%port=82%%/docs">
   <img
     alt="Automated documentation - Swagger UI"
     src={require("./images/doc.webp").default}
   />
 </BrowserWindow>
 
-There is a second, alternative template called ReDoc. You can access it using the `redoc` endpoint i.e. `http://127.0.0.1:82/redoc`:
+There is a second, alternative template called ReDoc. You can access it using the `redoc` endpoint i.e. <Code>http://127.0.0.1:<Var name="port">82</Var>/redoc</Code>:
 
-<BrowserWindow url="http://127.0.0.1:82/redoc">
+<BrowserWindow url="http://127.0.0.1:%%port=82%%/redoc">
   <img
     alt="Automated documentation - Redoc"
     src={require("./images/redoc.webp").default}
@@ -118,7 +120,7 @@ For this, we'll update our `main.py` script and because we'll probably make more
 
 Why? <Link to="/blog/docker-volume">Mounting our folder</Link> inside the container will allow us to make changes to the script and just refresh the web page to see the change.
 
-The only thing we need to do is to run our container like this: `docker run -v .:/app -p 82:82 python-fastapi` ... but it didn't work as expected.
+The only thing we need to do is to run our container like this: <Code>docker run -v .:/app -p <Var name="port">82</Var>:82 python-fastapi</Code> ... but it didn't work as expected.
 
 <AlertBox variant="info" title="FastAPI is using Uvicorn under the hood">
 Uvicorn is a web server implementation for Python. Uvicorn has a built-in cache mechanism so even if we've updated the source of our `main.py` script, we'll still get the old version.
@@ -152,7 +154,7 @@ Now, please copy/paste the following content to your existing `Dockerfile`:
 Rebuild the image and run a new container, now with a volume, by running these commands:
 
 <Terminal typewriter>
-$ docker build -t python-fastapi . && docker run -v .:/app -p 82:82 python-fastapi
+$ docker build -t python-fastapi . && docker run -v .:/app -p %%port=82%%:82 python-fastapi
 </Terminal>
 
 Now we have a Docker image with hot reload and we've mounted our folder in the container.
@@ -180,9 +182,9 @@ As an exercise; just remove the initialisation part of the  `jokes` array and, i
 
 </AlertBox>
 
-Go back to your browser and surf to the `jokes` endpoint (`http://127.0.0.1:82/jokes`) and, hop, you've a random joke.
+Go back to your browser and surf to the `jokes` endpoint (<Code>http://127.0.0.1:<Var name="port">82</Var>/jokes</Code>) and, hop, you've a random joke.
 
-<BrowserWindow url="http://127.0.0.1:82/jokes">
+<BrowserWindow url="http://127.0.0.1:%%port=82%%/jokes">
   <img
     alt="Getting a random joke"
     src={require("./images/random_joke.webp").default}
@@ -191,9 +193,9 @@ Go back to your browser and surf to the `jokes` endpoint (`http://127.0.0.1:82/j
 
 Just refresh the page; again and again. Every time you'll get a random joke (from a list of 5).
 
-If you want a specific one, just put an ID after like `http://127.0.0.1:82/jokes/1`
+If you want a specific one, just put an ID after like <Code>http://127.0.0.1:<Var name="port">82</Var>/jokes/1</Code>
 
-<BrowserWindow url="http://127.0.0.1:82/jokes/1">
+<BrowserWindow url="http://127.0.0.1:%%port=82%%/jokes/1">
   <img
     alt="A specific joke"
     src={require("./images/specific_joke.webp").default}
@@ -201,15 +203,15 @@ If you want a specific one, just put an ID after like `http://127.0.0.1:82/jokes
 </BrowserWindow>
 
 <AlertBox variant="note">
-Please note that the array start at position 0 so the first joke is this one: `http://127.0.0.1:82/jokes/0`.
+Please note that the array start at position 0 so the first joke is this one: <Code>http://127.0.0.1:<Var name="port">82</Var>/jokes/0</Code>.
 
 </AlertBox>
 
 #### Our jokes endpoints are documented automatically
 
-And looking back to the documentation (`http://127.0.0.1:82/docs`); we've now three routes and, take a look, the Python docstring is used to describe the route.
+And looking back to the documentation (<Code>http://127.0.0.1:<Var name="port">82</Var>/docs</Code>); we've now three routes and, take a look, the Python docstring is used to describe the route.
 
-<BrowserWindow url="http://127.0.0.1:82/docs">
+<BrowserWindow url="http://127.0.0.1:%%port=82%%/docs">
   <img
     alt="Swagger UI - With new routes"
     src={require("./images/doc_with_jokes.webp").default}

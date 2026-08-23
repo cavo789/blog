@@ -1,49 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:30.520Z",
+  "generated": "2026-08-23T17:52:43.417Z",
   "source": "index.md",
-  "sourceHash": "4f7898bfceb67b4b6fe9284665ab28328d329f29",
+  "sourceHash": "b3590bd9b00bdceb885df800ac6fc6c19ce9c65a",
   "questions": [
     {
-      "question": "How do I install PostgREST?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What is the purpose of PostgREST?",
-      "anchor": ""
+      "question": "What is PostgREST?",
+      "anchor": "what-postgrest-does-for-you"
     },
     {
       "question": "Why use PostgREST instead of writing queries in my application code?",
-      "anchor": "what-postgrest-does-for-you"
-    },
-    {
-      "question": "How do I create a PostgreSQL database and populate it with data for testing?",
-      "anchor": "lets-play"
-    },
-    {
-      "question": "What are the benefits of using PostgREST over writing queries in my application code?",
-      "anchor": "what-postgrest-does-for-you"
-    },
-    {
-      "question": "How do I configure PostgREST to use a different port than the default?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are some examples of queries that can be made using PostgREST?",
-      "anchor": "step-1---create-and-populate-our-postgresql-database"
+      "question": "How does PostgREST work with database permissions?",
+      "anchor": "why-it-works"
     },
     {
-      "question": "How do I filter data in a PostgREST query?",
-      "anchor": "step-2---install-and-execute-postgrest"
-    },
-    {
-      "question": "What are some common use cases for PostgREST?",
+      "question": "What is the difference between PostgREST and traditional RESTful APIs?",
       "anchor": "what-postgrest-does-for-you"
     },
     {
-      "question": "How do I handle joins in a PostgREST query?",
+      "question": "Can I use PostgREST to query a PostgreSQL database without writing any backend code?",
+      "anchor": "what-postgrest-does-for-you"
+    },
+    {
+      "question": "How do I create and populate a PostgreSQL database for testing with Docker?",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "What is the configuration file for PostgREST, and how do I set it up to use a different port?",
+      "anchor": "step-1---create-and-populate-our-postgresql-database"
+    },
+    {
+      "question": "How can I stop the PostgREST service running in a Docker container?",
+      "anchor": "step-2---install-and-execute-postgrest"
+    },
+    {
+      "question": "What are some common queries that can be made using PostgREST?",
       "anchor": "more-queries"
+    },
+    {
+      "question": "Can I use filters with PostgREST to retrieve specific data from a table?",
+      "anchor": "using-a-filter"
+    },
+    {
+      "question": "How do I query the API from a frontend application?",
+      "anchor": "from-the-frontend"
+    },
+    {
+      "question": "What is under the hood of PostgREST, and how does it handle pagination, casting, and output formats?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     }
   ]
 }

@@ -5,8 +5,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { type CSSProperties, type ReactNode, type JSX } from "react";
+import React, { useMemo, type CSSProperties, type ReactNode, type JSX } from "react";
 import clsx from "clsx";
+import { useVarResolver } from "@site/src/components/Vars/store";
+import { substitutePlainText } from "@site/src/components/Vars/substitute";
 
 import styles from "./styles.module.css";
 
@@ -25,6 +27,14 @@ export default function BrowserWindow({
   style,
   bodyStyle,
 }: Props): JSX.Element {
+  // Same `%%name=default%%` marker Terminal/Snippet resolve (see
+  // src/components/Vars/substitute.js) — the address bar is decorative text
+  // only (never a real iframe navigation, see IframeWindow.tsx for that
+  // separate case), so a plain string swap is enough: no VarToken/dotted
+  // underline here, matching Snippet's own `code=`/`source=` string path.
+  const resolve = useVarResolver();
+  const resolvedUrl = useMemo(() => substitutePlainText(url, resolve), [url, resolve]);
+
   return (
     <div className={styles.browserWindow} style={{ ...style, minHeight }}>
       <div className={styles.browserWindowHeader}>
@@ -34,7 +44,7 @@ export default function BrowserWindow({
           <span className={styles.dot} style={{ background: "#58cb42" }} />
         </div>
         <div className={clsx(styles.browserWindowAddressBar, "text--truncate")}>
-          {url}
+          {resolvedUrl}
         </div>
         <div className={styles.browserWindowMenuIcon}>
           <div>

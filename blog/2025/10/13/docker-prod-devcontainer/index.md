@@ -59,9 +59,11 @@ One for the deploy and a second one to extend the first with additional tools an
 
 One Dockerfile, no copy-paste, and both images build from the exact same instructions: a minimal, rootless production container, and a devcontainer that extends it with the tools you need to develop.
 
-Here's the production container answering on `http://localhost:8000`:
+<Vars port="8000" labels={{ port: "Host port" }} />
 
-<BrowserWindow url="http://localhost:8000" minHeight={300}>
+Here's the production container answering on `http://localhost:`<Var name="port">8000</Var>:
+
+<BrowserWindow url="http://localhost:%%port=8000%%" minHeight={300}>
   <div style={{ padding: '1rem' }}>
     <p>\{"message":"Hello, FastAPI - PRODUCTION!"\}</p>
   </div>
@@ -221,9 +223,9 @@ $ docker compose up --detach
 
 </Terminal>
 
-Since our demo project is a FastAPI Python application, simply start a browser and go to the `http://localhost:8000` location to see the message from FastAPI. The output is a JSON one:
+Since our demo project is a FastAPI Python application, simply start a browser and go to the <Code>http://localhost:<Var name="port">8000</Var></Code> location to see the message from FastAPI. The output is a JSON one:
 
-<BrowserWindow url="http://localhost:8000" minHeight={300}>
+<BrowserWindow url="http://localhost:%%port=8000%%" minHeight={300}>
   <div style={{ padding: '1rem' }}>
     <p>\{"message":"Hello, FastAPI - PRODUCTION!"\}</p>
   </div>
@@ -419,9 +421,9 @@ The idea is thus to provide contextual help to the developer and to tell him, he
 
 ### Let's test
 
-If we return to the `http://localhost:8000` URL we can still get the JSON answer (so the container is well running).
+If we return to the <Code>http://localhost:<Var name="port">8000</Var></Code> URL we can still get the JSON answer (so the container is well running).
 
-<BrowserWindow url="http://localhost:8000" minHeight={300}>
+<BrowserWindow url="http://localhost:%%port=8000%%" minHeight={300}>
   <div style={{ padding: '1rem' }}>
     <p>\{"message":"Hello, FastAPI - PRODUCTION!"\}</p>
   </div>
@@ -433,7 +435,7 @@ But now, in VSCode, if you edit the `src/main.py` script and update the Hello me
 
 You just need to save the change, go back to the browser window and refresh the page:
 
-<BrowserWindow url="http://localhost:8000" minHeight={300}>
+<BrowserWindow url="http://localhost:%%port=8000%%" minHeight={300}>
   <div style={{ padding: '1rem' }}>
     <p>\{"message":"Hello, FastAPI - I'm running from the Devcontainer!"\}</p>
   </div>

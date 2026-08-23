@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-18T10:14:48.266Z",
+  "generated": "2026-08-23T17:53:36.414Z",
   "source": "index.md",
-  "sourceHash": "812445cc04708d31b1cd7b36c8ede3b637eaf55f",
+  "sourceHash": "87fbf268e85a785f1993bcb7fda3e70d4173ec82",
   "questions": [
     {
-      "question": "What is eza and how does it improve upon ls?",
+      "question": "What is eza and how does it replace ls?",
       "anchor": ""
     },
     {
-      "question": "How do I install eza on my Linux system?",
-      "anchor": "install-eza"
+      "question": "How do I install eza on my Linux machine?",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What are some useful flags to use with the eza command for a better file listing experience?",
+      "question": "What are the benefits of using eza over the standard ls command?",
       "anchor": "result"
     },
     {
-      "question": "Can you explain how to set up an alias for eza in my shell configuration file?",
+      "question": "Can you provide an example of how to use eza with Docker?",
       "anchor": "install-eza"
     },
     {
-      "question": "What is the purpose of the `--icons` flag when using eza?",
-      "anchor": "result"
-    },
-    {
-      "question": "How can I customize the appearance of the eza command output on my Linux system?",
-      "anchor": "install-eza"
-    },
-    {
-      "question": "What is the difference between `exa` and `eza`? Are they related to each other?",
+      "question": "What are some useful flags for using eza in the command line?",
       "anchor": ""
     },
     {
-      "question": "How can I use eza to list files with a specific time format?",
-      "anchor": "result"
+      "question": "How can I customize my Linux prompt to use Powerlevel10k?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "What are some alternative replacements for ls that offer similar functionality to eza?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I set up a custom alias for ls using eza?",
+      "anchor": "install-eza"
     }
   ]
 }

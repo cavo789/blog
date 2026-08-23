@@ -130,6 +130,8 @@ Copy/paste the content below in a file on your system called `.docker.env` (in L
 
 Copy/paste the content below in a file on your system called `compose.yaml`.
 
+<Vars name="app_python" labels={{ name: "Container name" }} />
+
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 Copy/paste the content below in a file on your system called `Dockerfile`.

@@ -1,45 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:23.304Z",
+  "generated": "2026-08-23T17:55:56.622Z",
   "source": "index.md",
-  "sourceHash": "d97c1f5d349e6d872992e52759c3c71dbf5a31fb",
+  "sourceHash": "0853d71b5ea441474f27e61988c8d3456f15f403",
   "questions": [
     {
-      "question": "What is Delta?",
+      "question": "How does Delta work with git diff?",
+      "anchor": "before-and-after"
+    },
+    {
+      "question": "What is delta's syntax highlighting feature?",
       "anchor": "what-is-delta"
     },
     {
-      "question": "How does Delta work?",
-      "anchor": "what-is-delta"
-    },
-    {
-      "question": "What are the benefits of using Delta for git diff?",
-      "anchor": "what-is-delta"
-    },
-    {
-      "question": "How do I install Delta?",
+      "question": "Can you explain how Delta handles side-by-side views in git diffs?",
       "anchor": "install"
     },
     {
-      "question": "How do I configure Git to use Delta?",
+      "question": "How does delta highlight changes at the character level?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "What are some scenarios where word-level diff is particularly useful with delta?",
+      "anchor": "what-is-delta"
+    },
+    {
+      "question": "Can you describe how Delta intercepts and renders raw git diff output?",
       "anchor": "configure-git-to-use-delta"
     },
     {
-      "question": "What are the different modes available in Delta for viewing diffs?",
+      "question": "How can I install Delta on my system?",
       "anchor": "side-by-side-mode"
     },
     {
-      "question": "What themes are available for Delta?",
-      "anchor": "themes"
-    },
-    {
-      "question": "How do I navigate between hunks in Delta?",
+      "question": "What are the benefits of using delta over other syntax-highlighting pagers like ripgrep or eza?",
       "anchor": "navigation-between-hunks"
     },
     {
-      "question": "Can Delta be used with other TUI git clients like GitKraken or SourceTree?",
-      "anchor": "delta-works-everywhere-git-does"
+      "question": "How do I configure git to use Delta as a pager replacement?",
+      "anchor": "side-by-side-mode"
+    },
+    {
+      "question": "What are some common configurations for side-by-side mode in Delta?",
+      "anchor": "configure-git-to-use-delta"
+    },
+    {
+      "question": "Can you explain how Delta handles navigation between diff hunks?",
+      "anchor": "navigation-between-hunks"
+    },
+    {
+      "question": "How does Delta compare to other syntax-highlighting pagers like ripgrep or eza in terms of functionality and ease of use?",
+      "anchor": "themes"
     }
   ]
 }

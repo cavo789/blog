@@ -56,6 +56,17 @@ If you don't have Docker yet, please consult my "[Install Docker and play with P
 
 ## Two minutes, one file, your Joomla is running
 
+<Vars
+  port="8080"
+  name="kingsbridge"
+  dbPassword="example"
+  labels={{
+    port: "Joomla port",
+    name: "Project / container prefix",
+    dbPassword: "Database (root) password",
+  }}
+/>
+
 Click on the `Generate install script` below and copy/paste the script in a terminal:
 
 <ProjectSetup folderName="/tmp/joomla" createFolder={true}>
@@ -69,15 +80,15 @@ Click on the `Generate install script` below and copy/paste the script in a term
   </Guideline>
 </ProjectSetup>
 
-Run `docker compose up --detach`, wait for the images to download, then open `http://localhost:8080`:
+Run `docker compose up --detach`, wait for the images to download, then open `http://localhost:`<Var name="port">8080</Var>:
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   ![Joomla installer](./images/joomla_installation_screen.webp)
 </BrowserWindow>
 
 Answer the installer's questions and, a few seconds later, you're here:
 
-<BrowserWindow url="http://localhost:8080/aministrator/index.php">
+<BrowserWindow url="http://localhost:%%port=8080%%/aministrator/index.php">
 ![Joomla administration dashboard](./images/admin_dashboard.webp)
 </BrowserWindow>
 
@@ -156,7 +167,7 @@ At the end, once images have been downloaded, the console will show something li
 
 The two images have been downloaded, and the network plus the two containers listed earlier have been created.
 
-At this stage, your site is already being installed. Go to the URL `http://127.0.0.1:8080` to view it (make sure to use the `http` protocol and not `https`).
+At this stage, your site is already being installed. Go to the URL `http://127.0.0.1:`<Var name="port">8080</Var> to view it (make sure to use the `http` protocol and not `https`).
 
 <AlertBox variant="note" title="Not yet ready">
   You may get an error page `ERR_EMPTY_RESPONSE`; this is because, for example,
@@ -190,7 +201,7 @@ Let us introduce a minor, optional change: we will give a name to your Docker pr
   defaultOpen={true}
 />
 
-We won't be restarting your Docker containers yet. For now, the `kingsbridge` name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.
+We won't be restarting your Docker containers yet. For now, the <Var name="name">kingsbridge</Var> name won't be considered. For this to be the case, we would need to launch `docker compose down` followed by `docker compose up --detach`, but let us wait a little longer before doing so.
 
 ## Docker images
 
@@ -217,25 +228,25 @@ We're almost done. Please run `docker container list` to get the list of contain
 
 <Terminal typewriter source="./files/terminal-11.txt" />
 
-We have two running containers (your two services). Pay attention to the `PORTS` column: your `joomla` container is listening on the port `8080` and your `mysql` container is listening on port `3306`.
+We have two running containers (your two services). Pay attention to the `PORTS` column: your `joomla` container is listening on the port <Var name="port">8080</Var> and your `mysql` container is listening on port `3306`.
 
-Hey, port `8080`, does that mean anything to you? That is a port for a web page, isn't it?
+Hey, port <Var name="port">8080</Var>, does that mean anything to you? That is a port for a web page, isn't it?
 
-Let us try by starting your favorite browser and navigating to `http://localhost:8080` (_or `http://127.0.0.1:8080`, it's strictly the same_) and... Wow! The Joomla installer shown at the beginning of this article is waiting for you.
+Let us try by starting your favorite browser and navigating to `http://localhost:`<Var name="port">8080</Var> (_or `http://127.0.0.1:8080`, it's strictly the same_) and... Wow! The Joomla installer shown at the beginning of this article is waiting for you.
 
 ## Install Joomla
 
-Back to `http://localhost:8080` and we will continue the installation.
+Back to `http://localhost:`<Var name="port">8080</Var> and we will continue the installation.
 
 On the first screen, just select your preferred language then enter a name for your Joomla site:
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   ![Name your site](./images/admin_step_1.webp)
 </BrowserWindow>
 
 When Joomla will ask for your admin credentials, just fill in the value of your choice:
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   ![Login data](./images/joomla_admin_login_data.webp)
 </BrowserWindow>
 
@@ -261,19 +272,19 @@ These values can be retrieved inside the `compose.yaml` file. If you have named 
   defaultOpen={true}
 />
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   ![Joomla Database configuration](./images/joomla_admin_database_configuration.webp)
 </BrowserWindow>
 
 And, after a few seconds, tadaaa...
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   ![Joomla installation is done](./images/joomla_admin_ready.webp)
 </BrowserWindow>
 
 The administrator page:
 
-<BrowserWindow url="http://localhost:8080/administrator">
+<BrowserWindow url="http://localhost:%%port=8080%%/administrator">
   ![Joomla installation is done](./images/joomla_start_administrator.webp)
 </BrowserWindow>
 
@@ -309,7 +320,7 @@ We will stop them by running `docker compose down`:
 
 <Terminal typewriter source="./files/terminal-8.txt" />
 
-If you go back to `http://localhost:8080` with your browser and refresh the page; the site didn't exist anymore.
+If you go back to `http://localhost:`<Var name="port">8080</Var> with your browser and refresh the page; the site didn't exist anymore.
 
 Run `docker compose up --detach` again.
 
@@ -333,7 +344,7 @@ As mentioned earlier, everything is done in RAM. By stopping a Docker container,
 </AlertBox>
 
 <AlertBox variant="info">
-Remember the change we made earlier. We had added the name `kingsbridge` as the project name in your `compose.yaml` file, and we've named the two containers. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but `kingsbridge-app` and `kingsbridge-db`. This because changes made to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
+Remember the change we made earlier. We had added the name <Var name="name">kingsbridge</Var> as the project name in your `compose.yaml` file, and we've named the two containers. You can see that after relaunching `docker compose up`, this time it's no longer `joomla-joomlaxxxx` but <Var name="name">kingsbridge</Var>-app and <Var name="name">kingsbridge</Var>-db. This because changes made to the yaml file are processed only after a `down / up` command. If you modify the yaml file, you should restart Docker containers.
 
 </AlertBox>
 
@@ -452,28 +463,28 @@ Then I jump in the Joomla container and type the same command again and, yes, in
 
 ## Using alias
 
-Docker will always start your project on your localhost and on a port like `http://127.0.0.1:8080`.
+Docker will always start your project on your localhost and on a port like `http://127.0.0.1:`<Var name="port">8080</Var>.
 
-Instead of using the IP address, it would be much nicer to use an alias like `http://kingsbridge:8080`.
+Instead of using the IP address, it would be much nicer to use an alias like `http://`<Var name="name">kingsbridge</Var>`:`<Var name="port">8080</Var>.
 
-For this, on Windows, edit the file `C:\Windows\System32\Drivers\etc\hosts` and add the `kingsbridge` line as below illustrated:
+For this, on Windows, edit the file `C:\Windows\System32\Drivers\etc\hosts` and add the <Var name="name">kingsbridge</Var> line as below illustrated:
 
 <Snippet
   filename="C:\Windows\System32\Drivers\etc\hosts"
   source="./files/windows_hosts.txt"
 />
 
-Save the file. Now you can surf to `http://kingsbridge:8080`
+Save the file. Now you can surf to `http://`<Var name="name">kingsbridge</Var>`:`<Var name="port">8080</Var>
 
-<BrowserWindow url="http://kingsbridge:8080">
+<BrowserWindow url="http://%%name=kingsbridge%%:%%port=8080%%">
   ![Using the Kingsbridge alias](./images/using_alias.webp)
 </BrowserWindow>
 
 <AlertBox variant="note">
   When creating an alias in the host file, some people prefer to use the
-  `.local` suffix like in `127.0.0.1 kingsbridge.local` to make clear it's a
-  localhost site. If you prefer this, so the URL will be
-  `http://kingsbridge.local:8080`
+  `.local` suffix like in `127.0.0.1` <Var name="name">kingsbridge</Var>`.local` to make clear
+  it's a localhost site. If you prefer this, so the URL will be `http://`
+  <Var name="name">kingsbridge</Var>`.local:`<Var name="port">8080</Var>
 </AlertBox>
 
 ## Using another port
@@ -482,27 +493,27 @@ Imagine you have another project, not the `Kingsbridge` one this time. Can you h
 
 You just need to make sure to use another, unused, port.
 
-Consider the `Shiring` project `compose.yaml` file
+Consider the `shiring` project `compose.yaml` file
 
 <Snippet filename="compose.yaml" source="./files/compose_shiring.yaml" />
 
 We will use the port `8081` for that project and, in your host file, we will add `127.0.0.1 shiring`.
 
-So, now and at the same time, we can access to `http://kingsbridge:8080` and to `http://shiring:8081` without conflicts since we have used a separate port number.
+So, now and at the same time, we can access to `http://`<Var name="name">kingsbridge</Var>`:`<Var name="port">8080</Var> and to `http://shiring:8081` without conflicts since we have used a separate port number.
 
-Kingsbridge can be a Joomla 4.4 / PHP 7.4 website while Shiring is on Joomla 5.0 / PHP 8.2 without any conflict. **And that's just astonishingly simple, if you think back to the way you worked before Docker.**
+Kingsbridge can be a Joomla 4.4 / PHP 7.4 website while shiring is on Joomla 5.0 / PHP 8.2 without any conflict. **And that's just astonishingly simple, if you think back to the way you worked before Docker.**
 
 <AlertBox variant="info">
-Using another port isn't mandatory. You can have several websites on the same port as `8080`. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port then start the second one.
+Using another port isn't mandatory. You can have several websites on the same port as <Var name="port">8080</Var>. But, in that case, we won't be able to use these websites at the same time. You can start the first one and when trying to start the second one, Docker will say *port already in use*. This isn't a problem; you can just run `docker compose stop` for the first one so free the port then start the second one.
 
 <Terminal typewriter>$ docker compose stop</Terminal>
 
 </AlertBox>
 
 <AlertBox variant="note">
-  In this article, I'm using port `8080` because Joomla has used it in his
+  In this article, I'm using port <Var name="port">8080</Var> because Joomla has used it in his
   default `compose.yaml` file. You're not forced to use that one, you can
-  perfectly use `80` and not `8080`. In my daily work, I'm using ports `80`,
+  perfectly use `80` and not <Var name="port">8080</Var>. In my daily work, I'm using ports `80`,
   `81`, `82`, `83`, ... varying the second figures for my projects.
 </AlertBox>
 

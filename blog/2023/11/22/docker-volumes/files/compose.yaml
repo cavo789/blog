@@ -2,7 +2,7 @@ name: demo
 
 services:
 
-  counter:
+  %%name=counter%%:
     build: .
-    container_name: counter
+    container_name: %%name=counter%%
     image: demo/counter

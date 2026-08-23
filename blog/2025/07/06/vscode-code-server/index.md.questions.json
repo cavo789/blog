@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:39.756Z",
+  "generated": "2026-08-23T17:54:37.336Z",
   "source": "index.md",
-  "sourceHash": "9fd3a10a2129a325952ab2597d97050d1541e66b",
+  "sourceHash": "fe0f546099ed09a551bcc0ab96ff7f8dc393de69",
   "questions": [
     {
       "question": "How do I run VSCode in my browser using Docker?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is code-server and how does it work?",
+      "question": "What are the benefits of running VSCode in a browser?",
       "anchor": "why-it-works"
     },
     {
-      "question": "Why do we need to install Docker on our machine to use code-server?",
+      "question": "Is it possible to use VSCode on a machine without installing it?",
       "anchor": ""
     },
     {
-      "question": "How can I mount my project in the container when using code-server?",
+      "question": "How does Docker help with running VSCode in the browser?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are the configuration options for code-server?",
       "anchor": "installation"
     },
     {
-      "question": "What is the purpose of persisting configuration in code-server?",
-      "anchor": "installation"
-    },
-    {
-      "question": "How do I map the user used inside the container with my local one?",
-      "anchor": "installation"
-    },
-    {
-      "question": "What are the different ways to start VSCode in a browser using Docker?",
+      "question": "How do I find and use the password for code-server?",
       "anchor": "getting-the-password"
     },
     {
-      "question": "What is the difference between code-server and VSCode?",
+      "question": "Can I run VSCode in a browser on any machine without installing it?",
       "anchor": ""
+    },
+    {
+      "question": "What is the purpose of using Docker with VSCode?",
+      "anchor": "why-it-works"
     }
   ]
 }

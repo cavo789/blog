@@ -4,7 +4,7 @@ services:
     image: alexandreelise/frankenphp-joomla:hardened-mysql-0.1.1
     restart: always
     ports:
-      - 80:80
+      - %%port=80%%:80
       - 443:443
     environment:
       - MYSQL_ROOT_PASSWORD=test

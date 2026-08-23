@@ -3,9 +3,9 @@ name: tools
 services:
   ollama:
     image: ollama/ollama
-    container_name: ollama
+    container_name: %%name=ollama%%
     ports:
-      - "11434:11434"
+      - "%%port=11434%%:11434"
     volumes:
       - ollama_data:/root/.ollama
     restart: always

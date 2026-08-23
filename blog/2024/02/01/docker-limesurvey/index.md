@@ -33,9 +33,9 @@ To do this, we'll use the [https://github.com/martialblog/docker-limesurvey](htt
 
 ## LimeSurvey, running in two minutes
 
-One `compose.yaml` file, one `docker compose up --detach`, and here is what waits for you on `http://localhost:8080/admin`:
+One `compose.yaml` file, one `docker compose up --detach`, and here is what waits for you on `http://localhost:`<Var name="port">8080</Var>`/admin`:
 
-<BrowserWindow url="http://localhost:8080/admin">
+<BrowserWindow url="http://localhost:%%port=8080%%/admin">
   ![LimeSurvey dashboard](./images/dashboard.webp)
 </BrowserWindow>
 
@@ -46,6 +46,13 @@ A full LimeSurvey installation — survey list, participants, statistics — run
 Please start a Linux shell and run `mkdir -p /tmp/limesurvey && cd $_` to create a folder called `limesurvey` in your Linux temporary folder and jump in it.
 
 Please then create a `compose.yaml` file in that folder with this content:
+
+<Vars
+  port="8080"
+  app_name="limesurvey-app"
+  db_name="limesurvey-db"
+  labels={{ port: "Host port", app_name: "LimeSurvey container", db_name: "Database container" }}
+/>
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
@@ -66,7 +73,7 @@ For clarity, the output of `docker container list` has been simplified here abov
 
 The `service_healthy` condition in the compose file ensures LimeSurvey won't start until MySQL is ready, which eliminates the connectivity errors you might have read about in older tutorials. Still, please wait **one or two minutes** (depending on your machine) for LimeSurvey to initialize its database tables.
 
-Go to `http://localhost:8080` and if you see `ERR_CONNECTION_REFUSED`, wait a little longer and refresh. When it's ready, you should see the default LimeSurvey welcome page.
+Go to `http://localhost:`<Var name="port">8080</Var> and if you see `ERR_CONNECTION_REFUSED`, wait a little longer and refresh. When it's ready, you should see the default LimeSurvey welcome page.
 
 <AlertBox variant="info" title="Look at the logs">
 If you have been waiting a long time and something seems wrong, run `docker compose logs -f` to inspect the logs. You should see `[core:notice] [pid 1] AH00094: Command line: 'apache2 -D FOREGROUND'` when LimeSurvey is ready, meaning the web server is up and accepting connections.
@@ -76,15 +83,15 @@ Press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop following the logs.
 
 ## First login
 
-When LimeSurvey is ready, you'll see the following page on `http://localhost:8080`:
+When LimeSurvey is ready, you'll see the following page on `http://localhost:`<Var name="port">8080</Var>:
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   ![LimeSurvey welcome page](./images/homepage.webp)
 </BrowserWindow>
 
-Go to `http://localhost:8080/admin` to start the administration interface. The credentials to use are `admin` / `admin` (as defined in the `compose.yaml` file, see variables `ADMIN_USER` and `ADMIN_PASSWORD`).
+Go to `http://localhost:`<Var name="port">8080</Var>`/admin` to start the administration interface. The credentials to use are `admin` / `admin` (as defined in the `compose.yaml` file, see variables `ADMIN_USER` and `ADMIN_PASSWORD`).
 
-<BrowserWindow url="http://localhost:8080/admin">
+<BrowserWindow url="http://localhost:%%port=8080%%/admin">
   ![LimeSurvey administration page](./images/admin.webp)
 </BrowserWindow>
 
@@ -130,7 +137,7 @@ Our `compose.yaml` will then become:
 
 <Snippet filename="compose.yaml" source="./files/compose.part3.yaml" />
 
-Just run `docker compose up --detach` and surf to `http://localhost:8080` and, congratulations, you have a local LimeSurvey v3.22.6 website.
+Just run `docker compose up --detach` and surf to `http://localhost:`<Var name="port">8080</Var> and, congratulations, you have a local LimeSurvey v3.22.6 website.
 
 ## Conclusion
 

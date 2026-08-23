@@ -32,6 +32,8 @@ One of the easiest ways to do is to create a `.ini` file on your disk and <Link 
 
 Most probably, you'll have a `compose.yaml` file, please edit the file.
 
+<Vars port="8080" labels={{ port: "Host port" }} />
+
 For the illustration, below you'll find a copy of the simplest `compose.yaml` file you can retrieve in my <Link to="/blog/docker-joomla">Create your Joomla website using Docker</Link> blog post. *You can have yours of course*. This is just for example.
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />

@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:52.756Z",
+  "generated": "2026-08-23T17:54:17.737Z",
   "source": "index.md",
-  "sourceHash": "bd17dc1d8a23a55d5d307143bcf4776e753c28f4",
+  "sourceHash": "2723d6d7f582802eef5f627d32239f2dab638251",
   "questions": [
     {
-      "question": "How do I install the zsh-ssh-config-suggestions plugin for SSH autosuggestions in ZSH?",
+      "question": "What are SSH autosuggestions in ZSH?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of the zsh-ssh-config-suggestions plugin and how does it work with my ~/.ssh/config file?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I use the zsh-ssh-config-suggestions plugin to streamline my SSH workflow?",
+      "question": "How do I install the zsh-ssh-config-suggestions plugin?",
       "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
     },
     {
-      "question": "What are some benefits of using the zsh-ssh-config-suggestions plugin for SSH connections?",
+      "question": "What is the purpose of the zsh-ssh-config-suggestions plugin?",
       "anchor": ""
     },
     {
-      "question": "How can I install Oh-My-ZSH and add the zsh-ssh-config-suggestions plugin to my ZSH configuration?",
+      "question": "Why use SSH autosuggestions in ZSH?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are some alternative plugins for SSH autosuggestions in ZSH besides the zsh-ssh-config-suggestions plugin?",
+      "question": "How does the zsh-ssh-config-suggestions plugin work?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "What is a config file for SSH connections?",
       "anchor": ""
     },
     {
-      "question": "How can I configure additional aliases in my ~/.ssh/config file to use with the zsh-ssh-config-suggestions plugin?",
+      "question": "How can I configure the zsh-ssh-config-suggestions plugin?",
       "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
     },
     {
-      "question": "What are some tips for using the zsh-ssh-config-suggestions plugin effectively in my SSH workflow?",
-      "anchor": ""
+      "question": "What are the benefits of using the zsh-ssh-config-suggestions plugin?",
+      "anchor": "why-it-works"
     }
   ]
 }

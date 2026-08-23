@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:12.615Z",
+  "generated": "2026-08-23T17:51:45.413Z",
   "source": "index.md",
-  "sourceHash": "8f8dfde29bcbc3dc8570420004f9ec0afc63c28f",
+  "sourceHash": "d59ead5e094debb17f9dc317a5f7d71191f2770e",
   "questions": [
     {
-      "question": "What are Docker volumes and why use them?",
+      "question": "What are volumes in Docker?",
       "anchor": "what-a-volume-changes"
     },
     {
-      "question": "How do I create a Docker volume to persist data?",
+      "question": "Why do we need volumes in Docker?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I set up a demo to illustrate different volume strategies?",
+      "anchor": "setting-up-the-demo"
+    },
+    {
+      "question": "What is the difference between no volume, Docker-managed volume, and mounted volume in Docker?",
       "anchor": "volumes-managed-by-docker"
     },
     {
-      "question": "What is the difference between Docker-managed volumes and mounted volumes?",
+      "question": "How do I persist data using a Docker-managed volume?",
       "anchor": "mounted-volumes"
     },
     {
+      "question": "How do I access files in a mounted volume from within the container?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
       "question": "Where are Docker-managed volumes stored by default?",
-      "anchor": "location-of-the-volumes-managed-by-docker"
-    },
-    {
-      "question": "How can I access files in a Docker volume using Docker Desktop or the VSCode Docker extension?",
-      "anchor": "accessing-files-in-the-volume-using-docker-desktop"
-    },
-    {
-      "question": "What are some common use cases for Docker volumes?",
       "anchor": "getting-your-own-files-back-from-a-mounted-volume"
     },
     {
-      "question": "How do I share data between a running Docker container and my computer?",
-      "anchor": "accessing-files-in-the-volume-using-vscode"
-    },
-    {
-      "question": "What is the difference between no volume at all, Docker-managed volumes, and mounted volumes?",
-      "anchor": "why-it-works"
+      "question": "How can I access files in a mounted volume using Docker Desktop or VSCode?",
+      "anchor": "location-of-the-volumes-managed-by-docker"
     }
   ]
 }

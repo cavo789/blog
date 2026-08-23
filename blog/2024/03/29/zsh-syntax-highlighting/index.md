@@ -45,7 +45,7 @@ Make a typo and the very same word turns red before you even press <kbd>ENTER</k
 
 ![Highlight in red](./images/docker_compose.webp)
 
-That color appears **while you type**, not after the command has failed. You know you've mistyped `docekr` before losing a second to a `command not found`. <!-- spellchecker:disable-line -->
+That color appears **while you type**, not after the command has failed. You know you've mistyped `docekr` before losing a second to a `command not found`. <!-- typos:disable-line -->
 
 ## How to use it
 
@@ -79,7 +79,7 @@ $ docker run --rm -it syntax-demo
 </Terminal>
 
 Type `head` and the word turns green as you finish typing it — the command exists. Backspace it,
-type `heat` or `docekr` instead, and it turns red before you even press <kbd>ENTER</kbd>: same
+type `heat` or `docekr` instead, and it turns red before you even press <kbd>ENTER</kbd>: same <!-- typos:disable-line -->
 scene as the two screenshots above, live in your own terminal.
 
 ## Installation

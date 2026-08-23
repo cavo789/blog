@@ -9,7 +9,7 @@ services:
     volumes:
       - ./data:/data
     ports:
-      - 2000:3000
+      - %%port=2000%%:3000
     env_file:
       - .env
     user: ${UID:-1000}:${GID:-1000}

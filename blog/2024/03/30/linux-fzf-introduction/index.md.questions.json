@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-18T10:14:43.401Z",
+  "generated": "2026-08-23T17:53:19.338Z",
   "source": "index.md",
-  "sourceHash": "8a7e2e8f9c1d3f6d6215a33916bb79280a973691",
+  "sourceHash": "13e8427e8b554ef7603f56720bf957614bb5deb5",
   "questions": [
     {
-      "question": "What is Fuzzy Finder and how does it enhance the Linux command line?",
+      "question": "What is Fuzzy Finder?",
       "anchor": ""
     },
     {
-      "question": "How can I use CTRL+R to search for commands in my history using Fuzzy Finder?",
-      "anchor": "installation"
+      "question": "How does CTRL + R work in the console with Fuzzy Finder?",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What are the keybindings available with Fuzzy Finder and how do they work?",
-      "anchor": "playing-with-the-history"
-    },
-    {
-      "question": "How can I search for files using Fuzzy Finder in the current directory and subdirectories?",
-      "anchor": "getting-a-list-of-files"
-    },
-    {
-      "question": "What are some common use cases for Fuzzy Finder in the Linux command line?",
+      "question": "What are the keybindings available with Fuzzy Finder?",
       "anchor": "keybindings"
     },
     {
-      "question": "What is the purpose of the installation process for Fuzzy Finder and how do I perform it?",
-      "anchor": "installation"
-    },
-    {
-      "question": "How can I use CTRL+T to select files interactively in the Linux command line using Fuzzy Finder?",
+      "question": "What are some examples of using Fuzzy Finder for file selection?",
       "anchor": "getting-a-list-of-files"
     },
     {
-      "question": "What are some advanced search options available with Fuzzy Finder for searching through my history and file lists?",
+      "question": "How does Fuzzy Finder enhance the history search in the console?",
       "anchor": "installation"
+    },
+    {
+      "question": "Can you explain how to install Fuzzy Finder and its key bindings?",
+      "anchor": "playing-with-the-history"
+    },
+    {
+      "question": "What are some real-world applications of using Fuzzy Finder in the context of Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How does Fuzzy Finder handle searching for commands in the console history?",
+      "anchor": "seeing-it-in-action-with-docker"
     }
   ]
 }

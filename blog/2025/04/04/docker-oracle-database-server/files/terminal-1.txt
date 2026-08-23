@@ -1,10 +1,10 @@
 $ docker run -d \
-    --name oracle-db \
+    --name %%name=oracle-db%% \
     --network oracle \
-    -p 1521:1521 \
-    -p 5500:5500 \
-    -e ORACLE_SID=ORCLCDB \
-    -e ORACLE_PDB=ORCLPDB1 \
+    -p %%port=1521%%:1521 \
+    -p %%port_oem=5500%%:5500 \
+    -e ORACLE_SID=%%cdb=ORCLCDB%% \
+    -e ORACLE_PDB=%%pdb=ORCLPDB1%% \
     -e ORACLE_PWD=admin \
     -v OracleDBData:/opt/oracle/oradata \
     -v ./scripts/startup/:/docker-entrypoint-initdb.d/startup \

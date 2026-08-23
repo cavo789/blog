@@ -1,41 +1,53 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:02:58.168Z",
+  "generated": "2026-08-23T17:55:41.875Z",
   "source": "index.md",
-  "sourceHash": "770dfb90421cf9cc2d2bdddf38555ccd907bae95",
+  "sourceHash": "116b56aff22f18aef69f28169ea4c0f62ee6f55c",
   "questions": [
     {
-      "question": "What is the Belgif REST standards?",
-      "anchor": "belgif-standards"
-    },
-    {
-      "question": "How do I install and run the Belgif linter in a Docker container?",
-      "anchor": "installation--create-a-dummy-application"
-    },
-    {
-      "question": "What are some common linting errors that FastAPI applications might encounter when validating against the Belgif REST standards?",
-      "anchor": "fastapi-tips"
-    },
-    {
-      "question": "How can I resolve the issue of redundant title properties in my OpenAPI schema using the Belgif linter?",
-      "anchor": "oas-descr---title-property-has-to-be-removed"
-    },
-    {
-      "question": "What is the purpose of the oas-comp helper function and how can it be used to fix camelCase naming conventions in my FastAPI application?",
-      "anchor": "openapi-opid---lowercamelcase-for-operationid"
-    },
-    {
-      "question": "How do I handle warnings reported by the Belgif linter in my OpenAPI schema?",
-      "anchor": "adding-the-belgif-linter"
-    },
-    {
-      "question": "What are some best practices for designing robust APIs that comply with the Belgif REST standards?",
+      "question": "How can I validate my FastAPI OpenAPI schema against the Belgif REST standards using Docker?",
       "anchor": "seeing-the-linter-run"
     },
     {
-      "question": "How can I validate my FastAPI application against the Belgif REST standards using Docker and the official Belgif linter?",
+      "question": "What are some of the common linting errors that FastAPI's default OpenAPI schema generation may conflict with when validating against the Belgif REST standards?",
+      "anchor": "belgif-standards"
+    },
+    {
+      "question": "How do I set up the official Belgif linter inside a Docker container to easily identify compliance errors?",
+      "anchor": "installation--create-a-dummy-application"
+    },
+    {
+      "question": "What are some actionable, step-by-step solutions and custom Python helper functions provided in this article to resolve common FastAPI linting violations?",
+      "anchor": "adding-the-belgif-linter"
+    },
+    {
+      "question": "How can I check if my API is compliant with the Belgif REST standards using the official Belgif OpenAPI linter as documented in the documentation section?",
+      "anchor": "fastapi-tips"
+    },
+    {
+      "question": "What are some of the specific linting errors that FastAPI's default OpenAPI schema generation may conflict with when validating against the Belgif REST standards?",
+      "anchor": "oas-tags---managing-tags"
+    },
+    {
+      "question": "How can I run a custom command where we'll collect both STDERR and STDOUT in just one output stream then we'll run a few commands to purge specific messages from the output (the ones we can't solve) while running the Belgif linter?",
       "anchor": "oas-contra---dont-use-openapi-31-yet"
+    },
+    {
+      "question": "What are some of the steps involved in checking an OpenAPI file after setting up the official Belgif linter inside a Docker container to easily identify compliance errors?",
+      "anchor": "oas-descr---title-property-has-to-be-removed"
+    },
+    {
+      "question": "How can I run 'docker compose up --build -d' to create your API website and wait a few seconds before opening my browser, surf to http://localhost:8000/docs to open your site and see your API OpenData documentation?",
+      "anchor": "oas-comp---component-names-should-use-uppercamelcase-notation"
+    },
+    {
+      "question": "What are some of the endpoints defined in the code that defines a root endpoint that returns a simple JSON, an endpoint that accepts an integer as a path parameter and an optional string query parameter, and an endpoint that accepts and query parameters for pagination?",
+      "anchor": "openapi-opid---lowercamelcase-for-operationid"
+    },
+    {
+      "question": "What are some of the steps involved in running the FastAPI application after starting 'docker compose up --build -d' to see your API OpenData documentation?",
+      "anchor": "the-openapipy-helper"
     }
   ]
 }

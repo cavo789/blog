@@ -9,7 +9,7 @@ services:
         - DOCKER_GID=1000
         # The name of the user in Docker; didn't have any importance
         - USERNAME=johndoe
-    container_name: php-app
+    container_name: %%name=php-app%%
     working_dir: /opt/behat
     volumes:
       # We'll synchronize our local project folder (on our machine) with the Docker container

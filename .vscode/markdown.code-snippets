@@ -20,7 +20,7 @@
   "docusaurus.browserwindow": {
     "prefix": "BrowserWindow",
     "body": [
-      "<BrowserWindow url=\"https://www.avonture.be/blog/${1:any-url}\">",
+      "<BrowserWindow url=\"http://localhost/blog/${1:any-url}\">",
       "    ![${2:caption}](./images/${3:image-name}.webp)",
       "</BrowserWindow>",
     ],
@@ -172,5 +172,64 @@
       "</ProjectSetup>",
     ],
     "description": "Docusaurus - ProjectSetup component",
+  },
+  // --- Vars / reactive values -------------------------------------------------
+  // Decision rule, in order:
+  //   0. A plain ``` fenced code block (```bash, ```js, ```tree, ...)?
+  //      NEITHER %%..%% NOR <Var> ever works in there -- fenced blocks are
+  //      never scanned, and JSX can't be nested inside one either. First
+  //      convert the fence to <Terminal>/<Snippet>, THEN apply rule 1 below.
+  //      If the block is one line typed inline and that line is a bare
+  //      http(s):// URL, don't inline it in the .md either (MDX's autolink
+  //      parser breaks on the %%) -- put it in a files/*.txt and load it via
+  //      source= instead (see e.g. files/terminal-*.txt in this repo).
+  //   1. Inside <Terminal>/<Snippet> content (inline OR an external source= file)?
+  //      -> VarMarker (%%name=default%%).
+  //   2. Elsewhere (plain prose paragraph or list item)?
+  //      -> is it the WHOLE mention, with no literal text glued to it?
+  //         yes -> VarProse.  no (e.g. "-p 8181:8181", a URL) -> VarCode.
+  //   3. Literally the url="" prop of <BrowserWindow>? -> VarBrowserWindow
+  //      (the one component whose string prop also resolves %%..%%).
+  //   4. A markdown link target `[text](url)`, or any other component prop
+  //      typed as a plain string (e.g. ConnectionInfo's `value`)? Can't be
+  //      made reactive at all -- no snippet for this, leave it literal.
+  "docusaurus.varsDeclare": {
+    "prefix": "VarsDeclare",
+    "body": [
+      "<Vars",
+      "  ${1:name}=\"${2:default}\"",
+      "  labels={{ ${1:name}: \"${3:Human-friendly label}\" }}",
+      "/>",
+    ],
+    "description": "Docusaurus - <Vars> declaration (once per article, near the top, before the first Terminal/Snippet that uses one)",
+  },
+  "docusaurus.varMarker": {
+    "prefix": "VarMarker",
+    "body": ["%%${1:name}=${2:default}%%"],
+    "description": "Docusaurus - Vars marker: ONLY inside <Terminal>/<Snippet> (inline children or an external source= file). If typed inline and the line is a bare http(s):// URL, MDX's autolink parser breaks on the %% -- move that content to a files/*.txt and load it via source= instead.",
+  },
+  "docusaurus.varProse": {
+    "prefix": "VarProse",
+    "body": ["<Var name=\"${1:name}\">${2:default}</Var>"],
+    "description": "Docusaurus - Reactive value alone in prose (not inside Terminal/Snippet), nothing else glued to it. Keep the default identical to the matching <Vars> prop.",
+  },
+  "docusaurus.varCode": {
+    "prefix": "VarCode",
+    "body": [
+      "<Code>{`${1:before }`}<Var name=\"${2:name}\">${3:default}</Var>{`${4: after}`}</Code>",
+    ],
+    "description": "Docusaurus - Reactive value mixed with literal text in prose, e.g. '-p 8181:8181' or 'http://localhost:8181/path' (one merged <code> pill, no gap between fragments). Always safe to use as-is, even when the literal text contains < > { } or a <placeholder>/${VAR} shell expansion -- the {`...`} wrapping keeps it inert JS text instead of MDX markup. Escape any literal $ inside as \\$ (and \\${ for a shell expansion) so MDX doesn't try to interpolate it. Add more {`literal`}<Var>...</Var> pairs by hand for more than one variable on the same line.",
+  },
+  "docusaurus.varBrowserWindow": {
+    "prefix": "VarBrowserWindow",
+    "body": [
+      "<BrowserWindow url=\"${1:http://localhost:}%%${2:name}=${3:default}%%${4:/path}\">",
+    ],
+    "description": "Docusaurus - BrowserWindow url prop: the one component prop outside Terminal/Snippet that also resolves %%name=default%% markers directly.",
+  },
+  "docusaurus.typoIgnore": {
+    "prefix": "typo",
+    "body": ["<!-- typos:disable-line -->"],
+    "description": "Docusaurus - Ignore a typos-cli false positive on this line. Append at the end of the offending line (see .config/typos.toml, rule 4).",
   },
 }

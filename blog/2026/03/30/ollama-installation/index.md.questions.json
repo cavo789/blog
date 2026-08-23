@@ -1,41 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:02:27.242Z",
+  "generated": "2026-08-23T17:55:22.345Z",
   "source": "index.md",
-  "sourceHash": "5b7dfef9a5f6fe4c3e9c2966be046220c90e67ee",
+  "sourceHash": "b253c863d0bf4b3a14c55f0df44e461a818fcdfc",
   "questions": [
     {
       "question": "How do I install Ollama locally using Docker?",
-      "anchor": "do-you-need-a-local-llm"
+      "anchor": "canirunai"
     },
     {
-      "question": "What is the command to run a model in the terminal?",
-      "anchor": "try-it-in-your-terminal"
+      "question": "What is the command to run an LLM model in Ollama?",
+      "anchor": "wslconfig-file"
     },
     {
-      "question": "Can I use my own language with Ollama?",
+      "question": "Can I use a local LLM for code autocompletion and refactoring?",
       "anchor": "should-i-speak-english-with-the-model"
-    },
-    {
-      "question": "Is it important to have a local LLM for privacy reasons?",
-      "anchor": "do-you-need-a-local-llm"
     },
     {
       "question": "How do I download an LLM model using Docker?",
       "anchor": "installing-and-running-ollama"
     },
     {
-      "question": "What is the difference between small and large LLMs based on speed and accuracy?",
-      "anchor": "download-an-llm-model"
+      "question": "What are the different types of LLM models available in Ollama?",
+      "anchor": "do-you-need-a-local-llm"
     },
     {
-      "question": "How do I choose an LLM model based on my available system memory?",
-      "anchor": "installing-and-running-ollama"
+      "question": "How does Ollama handle memory usage and free up RAM when not in use?",
+      "anchor": "remove-a-model"
     },
     {
-      "question": "What is the purpose of the .wslconfig file in Ollama?",
-      "anchor": "wslconfig-file"
+      "question": "What is the difference between using a terminal and typing questions directly on the command line with Ollama?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I integrate Ollama tools into my workflow using Open WebUI and VSCode extensions?",
+      "anchor": "using-a-vscode-extension"
+    },
+    {
+      "question": "What are some privacy benefits of running a local LLM on your host?",
+      "anchor": "do-you-need-a-local-llm"
+    },
+    {
+      "question": "How can I automate tasks without worrying about reaching quota limits when using Ollama?",
+      "anchor": "should-i-speak-english-with-the-model"
+    },
+    {
+      "question": "What are some use cases for running a local LLM on your host?",
+      "anchor": "try-it-in-your-terminal"
+    },
+    {
+      "question": "How can I remove a model from my local installation of Ollama?",
+      "anchor": "freeing-up-ram-with-ollama-stop"
     }
   ]
 }

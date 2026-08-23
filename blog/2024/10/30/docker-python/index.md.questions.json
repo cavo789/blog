@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:53.952Z",
+  "generated": "2026-08-23T17:53:52.697Z",
   "source": "index.md",
-  "sourceHash": "bf87fac1982439d4f506664617d09bcbc51b522c",
+  "sourceHash": "a4d4a4f0d87eb85a0a8ff2354235cd5821290a49",
   "questions": [
     {
-      "question": "How do I start my Docker container for Python development?",
-      "anchor": "lets-see-it-running"
+      "question": "How do I set up a Docker devcontainer for Python development?",
+      "anchor": ""
     },
     {
-      "question": "What is a devcontainer and why should I use it?",
-      "anchor": "what-have-we-done-so-far"
-    },
-    {
-      "question": "How can I install the required extensions in VSCode for Python development?",
-      "anchor": "srcrequirementstxt"
-    },
-    {
-      "question": "Where do I create my first script in the devcontainer environment?",
-      "anchor": "lets-create-the-files-for-our-docker-environment"
-    },
-    {
-      "question": "What is the purpose of the src/requirements.txt file?",
-      "anchor": "lets-start-creating-our-first-script"
-    },
-    {
-      "question": "How can I run commands inside the Docker container from my host machine?",
-      "anchor": "dockerfile"
-    },
-    {
-      "question": "What are some tools that can be added to the devcontainer image for Python development?",
+      "question": "What is a VSCode devcontainer and how does it work?",
       "anchor": "now-lets-create-our-devcontainer-environment"
     },
     {
-      "question": "How do I create a new folder and jump into it in the devcontainer environment?",
-      "anchor": "makefile"
+      "question": "How can I create my first script in the devcontainer environment?",
+      "anchor": "lets-create-the-files-for-our-docker-environment"
+    },
+    {
+      "question": "What are the steps to build a Docker image for Python development using the devcontainer?",
+      "anchor": "srcrequirementstxt"
+    },
+    {
+      "question": "How do I synchronize files between my host and the devcontainer environment?",
+      "anchor": "lets-create-the-files-for-our-docker-environment"
+    },
+    {
+      "question": "What are some tools that can be added to the Docker image for Python development using the devcontainer?",
+      "anchor": "now-lets-create-our-devcontainer-environment"
+    },
+    {
+      "question": "How can I use the One Docker Image for Production and Devcontainers - The Clean Way article to keep tooling out of the deployed image?",
+      "anchor": "now-lets-create-our-devcontainer-environment"
+    },
+    {
+      "question": "What are some best practices for creating a reusable Python devcontainer for VSCode?",
+      "anchor": "now-lets-create-our-devcontainer-environment"
     }
   ]
 }

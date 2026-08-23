@@ -1,22 +1,22 @@
-name: kingsbridge
+name: %%name=kingsbridge%%
 
 services:
   joomla:
     image: joomla
-    container_name: kingsbridge-app
+    container_name: %%name=kingsbridge%%-app
     restart: always
     ports:
-      - 8080:80
+      - %%port=8080%%:80
     environment:
       - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
+      - JOOMLA_DB_PASSWORD=%%dbPassword=example%%
     depends_on:
       - joomladb
 
   joomladb:
     // highlight-next-line
     image: mariadb:11.1.2
-    container_name: kingsbridge-db
+    container_name: %%name=kingsbridge%%-db
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=%%dbPassword=example%%

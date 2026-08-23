@@ -1,4 +1,4 @@
-$ docker compose exec counter /counter.sh
+$ docker compose exec %%name=counter%% /counter.sh
 Creating /data/counter.txt ...
 
 /counter.sh: line 6: can't create /data/counter.txt: nonexistent directory

@@ -28,17 +28,24 @@ Let's take a look...
 
 ## Three commands, one WordPress site
 
+<Vars
+  port="8080"
+  db_name="db_wordpress"
+  app_name="app_wordpress"
+  labels={{ port: "WordPress host port", db_name: "Database container", app_name: "WordPress container" }}
+/>
+
 Here they are, in full:
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-Surf to `http://127.0.0.1:8080` and WordPress greets you with its installation wizard:
+Surf to `http://127.0.0.1:`<Var name="port">8080</Var> and WordPress greets you with its installation wizard:
 
-<BrowserWindow url="http://127.0.0.1:8080">
+<BrowserWindow url="http://127.0.0.1:%%port=8080%%">
   ![Running WordPress](./images/run_wp.webp)
 </BrowserWindow>
 
-<BrowserWindow url="http://127.0.0.1:8080">
+<BrowserWindow url="http://127.0.0.1:%%port=8080%%">
   ![Installing WordPress](./images/installing_wordpress.webp)
 </BrowserWindow>
 
@@ -73,35 +80,35 @@ For this article, I propose to use MySQL 8.x or, if you prefer it, MariaDB 11.x.
 For MySQL 8.x:
 
 <Terminal typewriter>
-$ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.4
+$ docker run -d --name %%db_name=db_wordpress%% --hostname %%db_name=db_wordpress%% --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mysql:8.4
 </Terminal>
 
 For MariaDB:
 
 <Terminal typewriter>
-$ docker run -d --name db_wordpress --hostname db_wordpress --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mariadb:11.4
+$ docker run -d --name %%db_name=db_wordpress%% --hostname %%db_name=db_wordpress%% --network wordpress -e MYSQL_RANDOM_ROOT_PASSWORD=1 -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wpuser -e MYSQL_PASSWORD=example mariadb:11.4
 </Terminal>
 
-Once started by Docker, the MySQL / MariaDB container will create an empty database called `wordpress`, a user called `wpuser` and his password will be `example` (as defined by our variables `MYSQL_DATABASE`, `MYSQL_USER` and `MYSQL_PASSWORD`). The container will be named `db_wordpress` (as defined by `--hostname`).
+Once started by Docker, the MySQL / MariaDB container will create an empty database called `wordpress`, a user called `wpuser` and his password will be `example` (as defined by our variables `MYSQL_DATABASE`, `MYSQL_USER` and `MYSQL_PASSWORD`). The container will be named <Var name="db_name">db_wordpress</Var> (as defined by `--hostname`).
 
 ## Third step, we need WordPress
 
 And now, we need a second container for WordPress itself. I propose to use the latest version available at that time:
 
 <Terminal typewriter>
-$ docker run -d --name app_wordpress --hostname app_wordpress --network wordpress -p 8080:80 -e WORDPRESS_DB_HOST=db_wordpress -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:php8.3-apache
+$ docker run -d --name %%app_name=app_wordpress%% --hostname %%app_name=app_wordpress%% --network wordpress -p %%port=8080%%:80 -e WORDPRESS_DB_HOST=%%db_name=db_wordpress%% -e WORDPRESS_DB_NAME=wordpress -e WORDPRESS_DB_USER=wpuser -e WORDPRESS_DB_PASSWORD=example wordpress:php8.3-apache
 </Terminal>
 
-That command runs WordPress in an Apache container and makes the site available at `http://127.0.0.1:8080` — the screen shown at the beginning of this article.
+That command runs WordPress in an Apache container and makes the site available at `http://127.0.0.1:`<Var name="port">8080</Var> — the screen shown at the beginning of this article.
 
-The `-p 8080:80` flag is the only one about your host machine: change `8080` if that port is already taken. All the others describe how WordPress reaches the database container, by its `--hostname`, over the `wordpress` network.
+The `-p ` <Var name="port">8080</Var>`:80` flag is the only one about your host machine: change the port if it is already taken. All the others describe how WordPress reaches the database container, by its `--hostname`, over the `wordpress` network.
 
 ## Optional, start phpmyadmin
 
 As we've seen in the <Link to="/blog/docker-adminer-pgadmin-phpmyadmin">Using Adminer, pgadmin or phpmyadmin to access your Docker database container</Link> article, we can access a database container using f.i. phpMyAdmin. To do this, just run the following command in a terminal:
 
 <Terminal typewriter>
-$ docker run -d --rm --network wordpress --name phpmyadmin -e PMA_HOST=db_wordpress -p 8089:80 phpmyadmin
+$ docker run -d --rm --network wordpress --name phpmyadmin -e PMA_HOST=%%db_name=db_wordpress%% -p 8089:80 phpmyadmin
 </Terminal>
 
 By surfing to `http://127.0.0.1:8089`, you can connect to the database. Credentials to use for the connection are `wpuser` / `example`.

@@ -1,2 +1,2 @@
-- docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"
-+ docker exec -it demo_pest sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest --parallel"
+- docker exec -it %%name=demo_pest%% sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest"
++ docker exec -it %%name=demo_pest%% sh -c "WEBSITE=$(WEBSITE) vendor/bin/pest --parallel"

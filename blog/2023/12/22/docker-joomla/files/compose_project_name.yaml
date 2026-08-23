@@ -1,12 +1,12 @@
 // highlight-next-line
-name: kingsbridge
+name: %%name=kingsbridge%%
 services:
   joomla:
     // highlight-next-line
-    container_name: kingsbridge-app
+    container_name: %%name=kingsbridge%%-app
     [...]
 
   joomladb:
     // highlight-next-line
-    container_name: kingsbridge-db
+    container_name: %%name=kingsbridge%%-db
     [...]

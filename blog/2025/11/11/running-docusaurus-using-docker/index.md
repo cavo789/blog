@@ -85,6 +85,8 @@ You should now see the project structure in your editor.
 
 ### Create required files
 
+<Vars name="docusaurus" labels={{ name: "Container name" }} />
+
 In the root of the project, create the following files:
 
 <ProjectSetup folderName="/tmp/docux-blog">

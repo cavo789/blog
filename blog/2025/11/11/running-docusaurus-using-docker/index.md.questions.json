@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:47.474Z",
+  "generated": "2026-08-23T17:55:03.374Z",
   "source": "index.md",
-  "sourceHash": "418f51fe63aff62b499daea50c97f9ded035a5f5",
+  "sourceHash": "52bd1c32a511723de2acae75dab3a11993eca44d",
   "questions": [
     {
-      "question": "How do I create a single Docker image for production builds with Docusaurus?",
+      "question": "What are some advantages of using Docker for Docusaurus blog development?",
+      "anchor": "what-are-the-advantages-of-such-approach"
+    },
+    {
+      "question": "How do I create a base Docker image for my Docusaurus blog?",
       "anchor": "create-the-base-docker-image"
     },
     {
-      "question": "What is DevContainers and how does it enhance the development experience with VS Code?",
-      "anchor": "using-devcontainers-for-development"
-    },
-    {
-      "question": "How do I set up a .devcontainer folder to use DevContainers for Docusaurus development?",
-      "anchor": "create-the-devcontainer-folder"
-    },
-    {
-      "question": "What commands are used to build and run the production Docker image for Docusaurus?",
+      "question": "What are the steps to build and run the production image for my Docusaurus blog?",
       "anchor": "build-and-run-the-production-image"
     },
     {
-      "question": "What is the purpose of using a base Docker image for Docusaurus development?",
-      "anchor": "create-the-base-docker-image"
+      "question": "How can I use VS Code DevContainers for consistent development of my Docusaurus blog?",
+      "anchor": "using-devcontainers-for-development"
     },
     {
-      "question": "How do I install LanguageTool in VSCode to improve content quality with Docusaurus?",
-      "anchor": "using-languagetool-in-vscode"
+      "question": "What are some tools integrated with VS Code DevContainers to improve content quality in my Docusaurus blog?",
+      "anchor": "create-the-devcontainer-folder"
     },
     {
-      "question": "What is Code Spell Checker and how can it be integrated into the development environment for Docusaurus?",
-      "anchor": "code-spell-checker"
+      "question": "How do I run the terminal from within a VS Code DevContainer for my Docusaurus blog?",
+      "anchor": "running-the-terminal-from-the-devcontainer"
     },
     {
-      "question": "How do I set up Markdown linting in VSCode for Docusaurus projects?",
-      "anchor": "markdown-lint"
+      "question": "What are some best practices for maintaining a clean, reproducible setup for my Docusaurus blog using Docker and VS Code DevContainers?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I create required files for my Docusaurus blog project?",
+      "anchor": "create-required-files"
     }
   ]
 }

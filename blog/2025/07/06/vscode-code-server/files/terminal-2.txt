@@ -1,4 +1,4 @@
-$ {`docker run -d --name code-server -p 8080:8080 \
+$ {`docker run -d --name %%name=code-server%% -p %%port=8080%%:8080 \
   -v "\${HOME}/.config:/home/coder/.config" \
   -v ".:/home/coder/project" \
   -u "\$(id -u):\$(id -g)" \

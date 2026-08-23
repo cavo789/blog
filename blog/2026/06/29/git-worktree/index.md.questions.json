@@ -1,57 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:35.948Z",
+  "generated": "2026-08-23T17:56:01.774Z",
   "source": "index.md",
-  "sourceHash": "5fc20d2b44bbe75f28062d3ef6f8606e544957ff",
+  "sourceHash": "ad73ab4ac4376c4e9847028afffaa51a19c1fa93",
   "questions": [
     {
-      "question": "How do I use git worktree to manage multiple branches simultaneously?",
+      "question": "What are git worktrees and how do they help with juggling multiple branches?",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using git worktree over stashing in a hotfix scenario?",
-      "anchor": "the-basic-commands"
+      "question": "How does git worktree differ from a stash in terms of functionality and management?",
+      "anchor": "the-stash-workflow-and-its-pain"
     },
     {
-      "question": "How can I add a new branch to a worktree and check it out at the same time?",
+      "question": "What are the basic commands for adding, listing, and removing worktrees using git?",
       "anchor": "what-git-worktree-does"
     },
     {
-      "question": "What happens if there is a conflict when working with multiple branches using git worktree?",
-      "anchor": "the-basic-commands"
+      "question": "How do I use git worktree to manage Docker stacks while working on multiple branches simultaneously?",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How can I list all the worktrees currently checked out in my repository?",
-      "anchor": "add-a-worktree"
-    },
-    {
-      "question": "What are some practical tips for managing worktrees effectively?",
+      "question": "What are the practical tips for effectively using git worktrees in a development environment?",
       "anchor": "practical-tips"
     },
     {
-      "question": "What is the purpose of a git worktree and how does it differ from a branch?",
-      "anchor": "what-git-worktree-does"
-    },
-    {
-      "question": "How can I remove a worktree from my repository and what happens to the associated branch?",
-      "anchor": "list-all-worktrees"
-    },
-    {
-      "question": "What is the difference between a git stash and a git worktree in terms of their functionality?",
-      "anchor": "the-basic-commands"
-    },
-    {
-      "question": "How can I navigate between different worktrees using a ZSH function?",
-      "anchor": "a-zsh-function-to-navigate-between-worktrees"
-    },
-    {
-      "question": "What is the name convention for worktrees and how should it be used?",
+      "question": "How can I name my worktrees consistently to avoid confusion and improve manageability?",
       "anchor": "name-worktrees-consistently"
     },
     {
-      "question": "How can I use git worktree with Visual Studio Code to manage multiple branches effectively?",
-      "anchor": "prune-stale-worktrees"
+      "question": "What are the limitations of using git worktrees, especially when working with Docker containers?",
+      "anchor": "one-constraint-a-branch-can-only-be-in-one-worktree-at-a-time"
+    },
+    {
+      "question": "How can I navigate between different worktrees in a ZSH environment?",
+      "anchor": "docker--worktrees-each-branch-gets-its-own-stack"
     }
   ]
 }

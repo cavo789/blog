@@ -56,11 +56,13 @@ By opening `compose.yaml` with Visual Studio Code, you'll see a lot of comments.
 
 By default, everything is commented except:
 
+<Vars port="8080" labels={{ port: "Host port" }} />
+
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 Ok, that just means that we'll not use a standard, pre-existing, Docker image but we'll build yours and the definition of that image is located in the current folder (`context: .`). The definition of your Docker image has to be written in the, standard, `Dockerfile`.
 
-The second thing we see here is the port number we've chosen. The Docker container will be published on the port `8080`.
+The second thing we see here is the port number we've chosen. The Docker container will be published on the port <Var name="port">8080</Var>.
 
 ## Dockerfile
 
@@ -81,9 +83,9 @@ So, we can see we'll use the `php:8.2-apache` image (since we've asked for PHP `
 
 Ok, nothing really difficult until now. We'll create the image by running `docker compose up --build`.
 
-Once built, we can surf to `http://localhost:8080` and ... ouch.
+Once built, we can surf to `http://localhost:`<Var name="port">8080</Var> and ... ouch.
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   ![Forbidden](./images/forbidden.webp)
 </BrowserWindow>
 
@@ -95,7 +97,9 @@ Please create the `index.php` file with this content:
 
 Go back to your console, press <kbd>CTRL</kbd>-<kbd>C</kbd> to stop the first container and run `docker compose up --detach --build` this time (so the console won't be blocked and the container stay running in background).
 
-![phpinfo](./images/phpinfo.webp)
+<BrowserWindow url="http://localhost:%%port=8080%%">
+  ![phpinfo](./images/phpinfo.webp)
+</BrowserWindow>
 
 ## Enter in the container
 

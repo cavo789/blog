@@ -118,6 +118,8 @@ Later in your article, you ask 'Please edit the file and make this and *please e
 
 With `// highlight-next-line`, it's really easy to highlight changes, for instance:
 
+<Vars port="8080" labels={{ port: "Host port" }} />
+
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 You can immediately see where I've made some changes in the file's content.

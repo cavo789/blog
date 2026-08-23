@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:46:04.014Z",
+  "generated": "2026-08-23T17:52:10.261Z",
   "source": "index.mdx",
-  "sourceHash": "19eb3861928e3c9b60b8a59962a612feabe72d9e",
+  "sourceHash": "e09c0f60904c8c60a7d4ed3d42a253a4cb546d67",
   "questions": [
     {
-      "question": "How do I install Joomla using Docker on Windows?",
-      "anchor": "the-container-will-be-restarted-by-windows"
-    },
-    {
-      "question": "What are the steps to create a Joomla website with Docker on Linux or WSL?",
+      "question": "How do I install Joomla locally using Docker?",
       "anchor": ""
     },
     {
-      "question": "How do I configure Docker Compose for Joomla development?",
+      "question": "What is Docker Compose used for in this article?",
       "anchor": "what-just-happened"
     },
     {
-      "question": "What are the essential components of a Docker Compose file for Joomla?",
-      "anchor": "before-starting"
+      "question": "Why are the containers created by Docker named joomla-joomlaxxx and mysql?",
+      "anchor": "why-joomla-joomlaxxx-names"
     },
     {
-      "question": "How can I persist data in a Docker container for Joomla?",
-      "anchor": "everything-is-done-in-ram"
+      "question": "How do I install Joomla using a CLI one-liner in this article?",
+      "anchor": "bonus---install-joomla-with-a-cli-one-liner"
     },
     {
-      "question": "What are the differences between MySQL and MariaDB when using Joomla with Docker?",
+      "question": "What is the purpose of persisting your site on disk in Docker?",
+      "anchor": "install-joomla"
+    },
+    {
+      "question": "How can I change ports for multiple projects in Docker?",
+      "anchor": "docker-images"
+    },
+    {
+      "question": "What are some alternative databases you can use with this article's setup?",
       "anchor": "did-you-prefer-postgresql-or-mariadb"
     },
     {
-      "question": "How can I run CLI commands to manage Joomla services in a Docker container?",
-      "anchor": "start-a-cli-command"
-    },
-    {
-      "question": "What are some tips for working with Docker on Windows when setting up Joomla?",
-      "anchor": "working-with-windows"
+      "question": "What is the advantage of using a Linux console over an MS-DOS / PowerShell console for Docker commands?",
+      "anchor": ""
     }
   ]
 }

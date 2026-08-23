@@ -29,10 +29,18 @@ What if we can solve this for free? How? Simply by installing a LLM locally, on 
 
 ## Try It in Your Terminal
 
+<Vars
+  name="ollama"
+  port="11434"
+  webui_name="open-webui"
+  port_webui="4000"
+  labels={{ name: "Ollama container", port: "Ollama port", webui_name: "Open WebUI container", port_webui: "Open WebUI port" }}
+/>
+
 Once Ollama is running and a model is pulled (covered under Installation below), the command is `ollama run <model_name>`:
 
 <Terminal typewriter wrap={true}>
-$ docker exec -it ollama ollama run llama3.1:8b
+$ docker exec -it %%name=ollama%% ollama run llama3.1:8b
 </Terminal>
 
 You can now start to ask anything like a comparison between Quarto and Docusaurus:
@@ -99,7 +107,7 @@ Look at the last column **available**. I actually have ~10GB free, so I can easi
 Start a new terminal and run this command:
 
 <Terminal typewriter wrap={true}>
-$ docker exec -it ollama ollama pull llama3.1:8b
+$ docker exec -it %%name=ollama%% ollama pull llama3.1:8b
 </Terminal>
 
 <AlertBox variant="note" title="We're using Docker right?">
@@ -145,7 +153,7 @@ Because it selectively uses its experts, mixtral is an incredibly versatile and 
 If you want to retrieve models you've already installed:
 
 <Terminal typewriter wrap={true}>
-$ docker exec -it ollama ollama list
+$ docker exec -it %%name=ollama%% ollama list
 </Terminal>
 
 The entire list of existing models is online: [https://ollama.com/library](https://ollama.com/library)
@@ -160,9 +168,9 @@ Let's edit our `compose.yaml` file and add a new service:
 
 Run `docker compose up --detach` to download the `open-webui` image (~1.7G) and create the container.
 
-Now, simply surf to `http://localhost:4000` and you'll have your interface and, you can start to interact with your local LLM.
+Now, simply surf to `http://localhost:`<Var name="port_webui">4000</Var> and you'll have your interface and, you can start to interact with your local LLM.
 
-<BrowserWindow url="http://localhost:4000">
+<BrowserWindow url="http://localhost:%%port_webui=4000%%">
   ![Asking for suggestions for a gift for my wife](./images/open_webui.webp)
 </BrowserWindow>
 
@@ -209,7 +217,7 @@ When you're typing some text in VSCode, you wish immediate autocompletion and no
 For this, you'll need to use a faster model; let's use `qwen2.5-coder:1.5b` (1.5 billion parameters, around ~1G).
 
 <Terminal typewriter wrap={true}>
-$ docker exec -it ollama ollama pull qwen2.5-coder:1.5b
+$ docker exec -it %%name=ollama%% ollama pull qwen2.5-coder:1.5b
 </Terminal>
 
 Update your `.continue/config.yaml` file (on Windows side) with this new content:
@@ -249,7 +257,7 @@ If you've a powerful CPU and/or GPU with 24GB or more, you can add a stronger mo
 <Snippet filename=".continue/config.yaml" source="./files/continue/config_with_expert.yaml" defaultOpen={false} />
 
 <Terminal typewriter wrap={true}>
-$ docker exec -it ollama ollama pull qwen3-coder:30b
+$ docker exec -it %%name=ollama%% ollama pull qwen3-coder:30b
 </Terminal>
 
 This model is noticeably more accurate than the fast assistant, and — thanks to the Mixture-of-Experts architecture — still reasonably quick despite its size. Save it for intensive code analysis tasks such as code refactoring, generating complex unit tests, and so on.
@@ -272,13 +280,13 @@ By visiting that web page, the system will calculate which AI models can run on 
 
 ### Freeing Up RAM with ollama stop
 
-If you ever need to instantly reclaim your system's memory, you can force a model to unload by running `docker exec -it ollama ollama stop <model_name>`.
+If you ever need to instantly reclaim your system's memory, you can force a model to unload by running `docker exec -it ` <Var name="name">ollama</Var> ` ollama stop <model_name>`.
 
 However, this manual step usually isn't necessary, as Ollama is designed to automatically unload models from your RAM after a few minutes of inactivity. It's simply a handy command to keep in your back pocket for those times you need immediate control over your resources!
 
 ### Remove a model
 
-Simply run `docker exec -it ollama ollama rm <model_name>`.
+Simply run `docker exec -it ` <Var name="name">ollama</Var> ` ollama rm <model_name>`.
 
 ### .wslconfig file
 

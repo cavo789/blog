@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:34.317Z",
+  "generated": "2026-08-23T17:54:29.030Z",
   "source": "index.md",
-  "sourceHash": "869c9ac44a56cc5cdd0e216f1213c841883a6a45",
+  "sourceHash": "e9afd986a4ff27a082e849b0d23c69dc5cd14153",
   "questions": [
     {
-      "question": "How do I install Oracle REST Data Services (ORDS) in Docker?",
+      "question": "How do I set up Oracle REST Data Services (ORDS) in Docker to transform my Oracle DB into OpenData?",
+      "anchor": ""
+    },
+    {
+      "question": "What prerequisites are needed to run ORDS on an Oracle database using Docker?",
       "anchor": "some-prerequisites"
     },
     {
-      "question": "What is the connection string required to configure ORDS?",
+      "question": "How do I create a volume for the ORDS configuration in Docker?",
+      "anchor": "download-a-docker-image-for-oracle-rest-data-services"
+    },
+    {
+      "question": "What is the connection string required to start ORDS and how do I configure it?",
       "anchor": "configure-the-connection-string"
     },
     {
-      "question": "How do I create an Oracle ORDS container without APEX installed?",
-      "anchor": "we-need-to-create-our-user-in-our-database"
+      "question": "How do I create an Oracle ORDS container using Docker?",
+      "anchor": "create-an-oracle-ords-container"
     },
     {
-      "question": "What are the steps to map ports for ORDS in Docker?",
-      "anchor": "using-paging-filtering-and-ordering-options-on-the-querystring-optional--skip-if-the-default-endpoint-is-enough"
-    },
-    {
-      "question": "How do I create a volume for ORDS configuration files?",
-      "anchor": "create-a-volume-for-the-ords-configuration"
-    },
-    {
-      "question": "What is APEX and why don't we need it in this setup?",
+      "question": "What are the steps to run a SQL*Plus console and retrieve the connection string for ORDS?",
       "anchor": "create-the-container"
     },
     {
-      "question": "How do I configure the connection string for ORDS?",
-      "anchor": "configure-the-connection-string"
+      "question": "How do I create an ORDS container without installing APEX using Docker?",
+      "anchor": "we-need-to-create-our-user-in-our-database"
     },
     {
-      "question": "What are some prerequisites before setting up ORDS?",
-      "anchor": ""
+      "question": "What is the purpose of the `conn_string.txt` file in the ORDS configuration directory?",
+      "anchor": "configure-the-connection-string"
     }
   ]
 }

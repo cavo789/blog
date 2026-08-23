@@ -1,14 +1,14 @@
-name: kingsbridge
+name: %%name=kingsbridge%%
 
 services:
   joomla:
     image: joomla
     restart: always
     ports:
-      - 8080:80
+      - %%port=8080%%:80
     environment:
       - JOOMLA_DB_HOST=joomladb
-      - JOOMLA_DB_PASSWORD=example
+      - JOOMLA_DB_PASSWORD=%%dbPassword=example%%
     depends_on:
       joomladb:
         condition: service_healthy
@@ -23,7 +23,7 @@ services:
     image: mysql:8.0.13
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=example
+      - MYSQL_ROOT_PASSWORD=%%dbPassword=example%%
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 20s

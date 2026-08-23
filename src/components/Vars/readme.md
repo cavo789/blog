@@ -94,9 +94,30 @@ independent copy of the same regex) by `degrade.cjs` for the exported `.md`/`llm
 
 Only `<Terminal>` and `<Snippet>` resolve markers. A raw ` ``` ` fenced code block is not
 scanned — use `<Snippet>` instead. An inline single-backtick code span in prose is never
-rewritten, even when the same value is marked elsewhere on the page — scanning free-form prose
-for values that merely look like a marked one risks rewriting a sentence that wasn't about that
-value at all.
+auto-rewritten, even when the same value is marked elsewhere on the page — scanning free-form
+prose for values that merely look like a marked one risks rewriting a sentence that wasn't about
+that value at all. When a prose sentence genuinely states the value as a fact (not a passing
+mention), use `<Var>` (below) instead of a code span.
+
+### `<Var>` — the inline sibling, for prose
+
+`Var.js` is a separate, small component for exactly one case: a sentence in plain prose states a
+reader-adjustable value as a fact, e.g. _"the `kingsbridge` name won't be considered."_ A marker
+can't help here — MDX text nodes are never routed through `substituteChildren`, so a
+`%%name=default%%` typed directly into a paragraph would render as literal, unresolved text.
+`<Var>` is a real component instead, reading from the same store:
+
+```jsx
+For now, the <Var name="name">kingsbridge</Var> name won't be considered.
+```
+
+Its child is the plain default string — the `=default` half of a marker, not a marker itself
+(there is nothing to parse). Keep it identical to the value the sibling `<Vars>` declares for
+that name. Reserve it for sentences that state the value as a fact the reader would expect to
+update, not every passing mention — wrapping every word turns prose into a wall of dotted
+underlines. A `<BrowserWindow url="...">` prop or an image caption can never use it either way:
+JSX components don't work inside string props, so a screenshot's own URL/caption stays static
+even after a reader edits the value — an inherent limit, not a bug.
 
 `<Snippet>`'s `code` string path (`source=`/`code=`) resolves the same markers, but as a plain
 text swap before the string reaches Prism — no dotted-underline token there, since injecting a

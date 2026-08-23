@@ -48,15 +48,17 @@ One `docker run codercom/code-server` command, and here's the result: a full VS 
 
 ## Installation
 
+<Vars port="8080" name="code-server" labels={{ port: "Host port", name: "Container name" }} />
+
 By running the instruction below, you'll download (once) the `codercom/code-server` Docker image then run a container as a daemon.
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
-Once triggered successfully, just open your browser and visit `http://127.0.0.1:8080` to start VSCode in the browser.
+Once triggered successfully, just open your browser and visit `http://127.0.0.1:`<Var name="port">8080</Var> to start VSCode in the browser.
 
 <AlertBox variant="info" title="The `docker run` explained">
 * `-d`: the code-server will run as a daemon service,
-* `-p 8080:8080`: we'll expose the service on our port 8080,
+* <Code>-p <Var name="port">8080</Var>:8080</Code>: we'll expose the service on our port <Var name="port">8080</Var>,
 * `--name`: it's just for giving a descriptive name to our container (optional),
 * `-v "${HOME}/.config:/home/coder/.config"`: save the code-server configuration on your host, in your home directory.
 * `-v ".:/home/coder/project"`: mount your current directory in the container so you can work on it in code-server,
@@ -69,9 +71,9 @@ The code-server configuration is thus stored in your home directory, in the fold
 
 ## Getting the Password
 
-By opening `http://127.0.0.1:8080` you'll get this screen:
+By opening <Code>http://127.0.0.1:<Var name="port">8080</Var></Code> you'll get this screen:
 
-<BrowserWindow url="http://127.0.0.1:8080">
+<BrowserWindow url="http://127.0.0.1:%%port=8080%%">
   ![Asking for a password](./images/prompt_for_password.webp)
 </BrowserWindow>
 

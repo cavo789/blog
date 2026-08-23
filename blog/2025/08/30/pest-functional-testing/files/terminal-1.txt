@@ -1,6 +1,6 @@
 $ make start
 
-docker exec -it demo_pest sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
+docker exec -it %%name=demo_pest%% sh -c "WEBSITE=https://www.avonture.be vendor/bin/pest"
 
   PASS  Tests\Browser\HomepageTest
   ✓ it loads the homepage                                                 2.39s

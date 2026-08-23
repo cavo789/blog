@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:20.295Z",
+  "generated": "2026-08-23T17:53:04.407Z",
   "source": "index.md",
-  "sourceHash": "8a7a08744e8f5e6e4bb3667276f51975d468dde6",
+  "sourceHash": "9a87501c7bbfe531b5bcf3c334593a99cbe92bb5",
   "questions": [
     {
-      "question": "How do I install Oh-My-ZSH on Linux?",
+      "question": "How do I install Zsh and Oh-My-ZSH on Linux?",
       "anchor": "installation"
     },
     {
-      "question": "What are the benefits of using Powerlevel10k as a prompt in Zsh?",
+      "question": "What is Powerlevel10k theme in Oh-My-ZSH?",
       "anchor": "powerlevel10k"
     },
     {
-      "question": "How do I install Powerlevel10k on my Linux machine?",
+      "question": "What are some daily-use features of Zsh and Oh-My-ZSH?",
       "anchor": "some-features-i-use-daily"
     },
     {
-      "question": "What are some of the default features that Oh-My-ZSH provides out-of-the-box?",
-      "anchor": "why-its-worth-the-ten-minutes"
-    },
-    {
-      "question": "How can I customize my Zsh prompt to show repository information and pending changes?",
-      "anchor": "powerlevel10k"
-    },
-    {
-      "question": "What are some of the daily-use features that Oh-My-ZSH provides?",
+      "question": "How do I create a folder in one step using the take function in Zsh?",
       "anchor": "some-features-i-use-daily"
     },
     {
-      "question": "How can I install Powerlevel10k on my Linux machine using a throwaway container first?",
-      "anchor": "powerlevel10k"
+      "question": "What are some Git aliases like gst and git-branch in Zsh?",
+      "anchor": "some-features-i-use-daily"
     },
     {
-      "question": "What are some of the benefits of using Oh-My-ZSH and Powerlevel10k together?",
-      "anchor": "why-its-worth-the-ten-minutes"
+      "question": "How do I jump up multiple parent directories using the ..driven autocompletion in Zsh?",
+      "anchor": "some-features-i-use-daily"
+    },
+    {
+      "question": "What is Docker and how can it be used to test Oh-My-ZSH features?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "How do I install Oh-My-ZSH on a Windows Subsystem for Linux (WSL)?",
+      "anchor": "installation"
     }
   ]
 }

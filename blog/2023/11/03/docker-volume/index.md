@@ -28,19 +28,21 @@ When running Docker without specifying a volume, everything that is done during 
 
 ## What `-v` does for you
 
+<Vars port="81" name="step_1_2" labels={{ port: "Host port", name: "Container name" }} />
+
 Start a PHP + Apache container, sharing your current folder with the folder Apache serves:
 
 <Terminal typewriter>
-$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html php:8.3-apache
+$ docker run --detach --name %%name=step_1_2%% -p %%port=81%%:80 -v $(pwd):/var/www/html php:8.3-apache
 </Terminal>
 
 Now create an `index.php` file in that folder. On your disk, in your editor, not in the container:
 
 <Snippet filename="index.php" source="./files/index.php" />
 
-Surf to `http://127.0.0.1:81/` and the container is already serving it:
+Surf to <Code>http://127.0.0.1:<Var name="port">81</Var>/</Code> and the container is already serving it:
 
-<BrowserWindow url="http://127.0.0.1:81/">
+<BrowserWindow url="http://127.0.0.1:%%port=81%%/">
   ![Hello world!](./images/hello_world.webp)
 </BrowserWindow>
 
@@ -63,17 +65,17 @@ If you're using Windows (MS DOS), replace `$(pwd)` with `%CD%` in the instructio
 
 Explanation of the arguments used in that command:
 
-- `--name step_1_2` : for clarity, we use another name,
-- `-p 81:80` : this time, we'll use port `81` on our computer and map it to port `80` on the container,
+- `--name` <Var name="name">step_1_2</Var> : for clarity, we use another name,
+- <Code>-p <Var name="port">81</Var>:80</Code> : this time, we'll use port <Var name="port">81</Var> on our computer and map it to port `80` on the container,
 - `-v $(pwd):/var/www/html`: the `-v` instruction is used to define a volume. Here, we'll synchronize the container's `/var/www/html` folder with `$(pwd)` (or `${PWD}` in Linux notation), which corresponds to the current folder on our computer.
 
 To create the `index.php` file, if you have Visual Studio Code on your machine, in the Linux console, run this: `cd /tmp/docker-volume && code index.php`. This will start vscode and you will be able to create the script.
 
 ## The same container, before the file existed
 
-If you surf to `http://127.0.0.1:81/` *before* creating `index.php`, you get this instead:
+If you surf to <Code>http://127.0.0.1:<Var name="port">81</Var>/</Code> *before* creating `index.php`, you get this instead:
 
-<BrowserWindow url="http://127.0.0.1:81/">
+<BrowserWindow url="http://127.0.0.1:%%port=81%%/">
   ![Localhost is forbidden](./images/localhost_is_forbidden.webp)
 </BrowserWindow>
 
@@ -98,7 +100,7 @@ Files or folders created in the Docker container will be owned by the current us
 To make sure files/folders created in the container will be owned by you and not `root`, change the command line like this:
 
 <Terminal typewriter>
-{`$ docker run --detach --name step_1_2 -p 81:80 -v $(pwd):/var/www/html -u \${UID}:\${GID} php:8.3-apache`}
+{`$ docker run --detach --name %%name=step_1_2%% -p %%port=81%%:80 -v $(pwd):/var/www/html -u \${UID}:\${GID} php:8.3-apache`}
 </Terminal>
 
 The new flag `-u ${UID}:${GID}` will reuse your current user id and your current group id and pass this information to Docker. Now, the current user in the Docker container will not be `root` anymore but a user having your local uid/gid. So, files/folders created in the Docker container will be owned, on your disk, by you.

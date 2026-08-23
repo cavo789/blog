@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:21.357Z",
+  "generated": "2026-08-23T17:54:02.794Z",
   "source": "index.md",
-  "sourceHash": "c10757aa7401d06bc22bbe97f8ed9dc25ad71199",
+  "sourceHash": "ed8dae029015882d2398fb65c05a4ca25b12a33c",
   "questions": [
     {
-      "question": "How can I quickly dockerize my PHP application using Docker init?",
+      "question": "How do I quickly dockerize my PHP application with Apache using Docker init?",
       "anchor": ""
     },
     {
-      "question": "What are the steps to use Docker init for a PHP application?",
+      "question": "What are the steps to use Docker init for quick PHP dockerization?",
       "anchor": "get-some-scripts"
     },
     {
-      "question": "How does Docker init detect the presence of a PHP file?",
+      "question": "Can you explain how Docker init automatically generates necessary Docker files and shows secure database integration?",
       "anchor": "docker-init"
     },
     {
-      "question": "What is the purpose of the .dockerignore file in Docker?",
+      "question": "How does Docker init detect the presence of a PHP file when creating a container?",
       "anchor": "lets-take-a-look-on-created-files"
     },
     {
-      "question": "What are the key features of the compose.yaml file in Docker?",
+      "question": "What are the questions asked by Docker init during the wizard-based process for quick PHP dockerization?",
       "anchor": "dockerignore"
     },
     {
-      "question": "How do I use the Dockerfile to create a PHP application container?",
+      "question": "How do I specify which port to use for the application when creating a container using Docker init?",
       "anchor": "composeyaml"
     },
     {
-      "question": "What is the role of PHP with Apache in Docker init?",
+      "question": "What is the purpose of the .dockerignore file in a Docker project?",
       "anchor": "dockerfile"
     },
     {
-      "question": "How can I specify which port to use for my PHP application when using Docker init?",
+      "question": "How does the compose.yaml file teach Docker how to make more than one container work together?",
       "anchor": "readmedockermd"
     }
   ]

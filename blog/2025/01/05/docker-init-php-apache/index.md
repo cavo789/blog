@@ -54,6 +54,8 @@ You've now a local version of the script. It's a single `index.php` script; noth
 
 ## Docker init
 
+<Vars port="8080" labels={{ port: "Host port" }} />
+
 Just start `docker init` in the console:
 
 ![Starting docker init](./images/docker_init.webp)
@@ -64,7 +66,7 @@ The next question will be about the version of PHP, type the one you wish (f.i. 
 
 The third question will be about the relative path to use for the project. In our case, our PHP script is located in the root folder of our project (not in f.i.`/app`) so just press <kbd>Enter</kbd>.
 
-Now, you'll need to specify which port should be used for the application, I'll use the port `8080` but you can use the one you wish (as soon as not yet used).
+Now, you'll need to specify which port should be used for the application, I'll use the port <Var name="port">8080</Var> but you can use the one you wish (as soon as not yet used).
 
 And that's it.
 
@@ -72,9 +74,9 @@ And that's it.
 
 It's too simple, isn't it? Let's try the suggested commands and see if the site actually works.
 
-First, create the container by running the `docker compose up --build` command then, once finished, just open your browser and surf to your local site (in my case `http://localhost:8080`) and ...
+First, create the container by running the `docker compose up --build` command then, once finished, just open your browser and surf to your local site (in my case `http://localhost:`<Var name="port">8080</Var>) and ...
 
-<BrowserWindow url="http://localhost:8080">
+<BrowserWindow url="http://localhost:%%port=8080%%">
   <img
     alt="The application is running"
     src={require("./images/localhost.webp").default}

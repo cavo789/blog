@@ -67,6 +67,8 @@ This assumes Ollama is already running as a Docker container, the way I set it u
 
 Following my usual habit of one folder per tool under `~/tools`, let's create `~/tools/anythingllm/compose.yaml`:
 
+<Vars port="3001" labels={{ port: "Host port" }} />
+
 <Snippet filename="compose.yaml" source="./files/compose.yaml" defaultOpen={true} />
 
 Before starting it, create the `.env` file it references, holding a random secret AnythingLLM uses to sign session tokens:
@@ -114,7 +116,7 @@ $ docker compose up --detach
 
 ### First-run setup
 
-Browse to `http://localhost:3001` (or `http://192.168.0.218:3001` from another machine on the network). The onboarding wizard asks for:
+Browse to `http://localhost:`<Var name="port">3001</Var> (or <Code>http://192.168.0.218:<Var name="port">3001</Var></Code> from another machine on the network). The onboarding wizard asks for:
 
 <StepsCard
   variant="steps"
@@ -127,7 +129,7 @@ Browse to `http://localhost:3001` (or `http://192.168.0.218:3001` from another m
   ]}
 />
 
-<BrowserWindow url="http://localhost:3001/workspace/blog">
+<BrowserWindow url="http://localhost:%%port=3001%%/workspace/blog">
     ![Where did I mention Mermaid](./images/mermaid.webp)
 </BrowserWindow>
 
@@ -158,12 +160,7 @@ The GUI is one of three doors, and the other two are better suited to bulk:
 
 I went with the API, because what I actually want indexed is this blog: 248 articles, each one an `index.md` in its own dated folder. Generate a key under *Settings → Tools → Developer API*, and a single call looks like this:
 
-<Terminal wrap={true}>
-$ curl -X POST http://localhost:3001/api/v1/document/upload \
-    -H "Authorization: Bearer $ANYTHINGLLM_API_KEY" \
-    -F "file=@blog/2026/08/17/anythingllm-chat-with-your-docs/index.md" \
-    -F "addToWorkspaces=blog"
-</Terminal>
+<Terminal wrap={true} source="./files/terminal-upload.txt" />
 
 The `addToWorkspaces` field is what makes this a one-step operation: without it the document lands in AnythingLLM's document library but isn't embedded into anything, and you'd still have to go tick boxes in the UI.
 
@@ -276,7 +273,7 @@ At this point, everything — the documents themselves, their embeddings, the La
 
 Here's the constraint that changes everything: my actual documentation — the stuff under `~/repositories` — lives on my **work** PC, and it's staying there. Not synced, not copied, not uploaded anywhere for convenience.
 
-That rules out the simplest option, which would be "just open `http://192.168.0.218:3001` from my work PC's browser and upload files there." It would technically work — but uploading a file to that page sends its content over the network to the home PC's container, where AnythingLLM stores the parsed text, the vector embeddings, and a cached copy, inside `anythingllm_storage`, on a disk that isn't mine at the office. That's exactly the kind of copy I ruled out. The browser is just the window; the documents themselves land wherever the **server** behind that page is actually running.
+That rules out the simplest option, which would be "just open <Code>http://192.168.0.218:<Var name="port">3001</Var></Code> from my work PC's browser and upload files there." It would technically work — but uploading a file to that page sends its content over the network to the home PC's container, where AnythingLLM stores the parsed text, the vector embeddings, and a cached copy, inside `anythingllm_storage`, on a disk that isn't mine at the office. That's exactly the kind of copy I ruled out. The browser is just the window; the documents themselves land wherever the **server** behind that page is actually running.
 
 So the fix follows directly from that: run the AnythingLLM **server** itself on the work PC — same Docker container, same `compose.yaml` — and only reach out to the home PC for the one thing that doesn't touch document content: the model doing the actual thinking.
 

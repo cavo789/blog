@@ -1,49 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:41.131Z",
+  "generated": "2026-08-23T17:56:06.619Z",
   "source": "index.md",
-  "sourceHash": "8a399745c677ad0b05c435d23eeb7f65a63da22c",
+  "sourceHash": "7e8fe9e036c9d2fc6ce998515b2943dba2e8154a",
   "questions": [
+    {
+      "question": "What are some of the key features of ripgrep?",
+      "anchor": "what-is-ripgrep"
+    },
+    {
+      "question": "How does ripgrep differ from grep in terms of performance?",
+      "anchor": ""
+    },
+    {
+      "question": "Can you explain the smart defaults that make ripgrep better for day-to-day use?",
+      "anchor": "what-is-ripgrep"
+    },
     {
       "question": "How do I install ripgrep on Ubuntu/WSL2?",
       "anchor": "installation-on-ubuntu--wsl2"
     },
     {
-      "question": "What are some smart defaults of ripgrep?",
+      "question": "What is the Dockerfile used to demonstrate ripgrep's smart defaults?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "How do I configure ripgrep with a custom ~/.ripgreprc file?",
       "anchor": "configuration--ripgreprc"
     },
     {
-      "question": "Why is ripgrep faster than traditional grep tools?",
-      "anchor": ""
-    },
-    {
-      "question": "How does ripgrep handle Unicode natively?",
+      "question": "What are some of the ZSH functions provided by ripgrep for searching code?",
       "anchor": "zsh-setup--zshrc"
     },
     {
-      "question": "What are some configuration options for ripgrep?",
+      "question": "How can I use rgf to perform interactive search with fzf?",
       "anchor": "zsh-functions--zshfns"
-    },
-    {
-      "question": "How can I search hidden files in ripgrep?",
-      "anchor": "rgf--interactive-search-with-fzf"
-    },
-    {
-      "question": "What is the difference between grep and ripgrep?",
-      "anchor": "ripgrep-vs-grep--a-side-by-side-look"
-    },
-    {
-      "question": "How does ripgrep handle binary files?",
-      "anchor": "rgtodo--surface-all-technical-debt-at-once"
-    },
-    {
-      "question": "What are some real-world use cases of ripgrep?",
-      "anchor": "rgenv--track-down-environment-variable-usage"
-    },
-    {
-      "question": "How can I search multiple file types at once with ripgrep?",
-      "anchor": "real-world-use-cases"
     }
   ]
 }

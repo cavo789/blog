@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:45:33.997Z",
+  "generated": "2026-08-23T17:52:04.148Z",
   "source": "index.md",
-  "sourceHash": "8aa9d350ecd936c167753e43dc8dd08c77532538",
+  "sourceHash": "f91466b3e847028a8a63095dec2aece8443fc932",
   "questions": [
     {
-      "question": "How do I use xmlstarlet to format XML output?",
-      "anchor": "beautifying-the-file"
+      "question": "How do I use xmlstarlet to filter XML data?",
+      "anchor": "understanding-the-xpath-expression"
     },
     {
-      "question": "What is xmlstarlet used for in Linux command line?",
+      "question": "What is the purpose of xmlstarlet in Linux command line?",
       "anchor": ""
     },
     {
-      "question": "Can you explain how to install xmlstarlet on a Linux system?",
-      "anchor": "installing-xmlstarlet"
-    },
-    {
-      "question": "How do I extract specific nodes from an XML file using XPath expressions with xmlstarlet?",
-      "anchor": "understanding-the-xpath-expression"
-    },
-    {
-      "question": "What is the purpose of the -v option in the xmlstarlet command?",
-      "anchor": "beautifying-the-file"
-    },
-    {
-      "question": "How do I use xmlstarlet to filter XML nodes based on attributes?",
-      "anchor": "understanding-the-xpath-expression"
-    },
-    {
-      "question": "What is the difference between xmlstarlet and jq for data manipulation in Linux?",
+      "question": "How can I install xmlstarlet on my system?",
       "anchor": "conclusion"
     },
     {
-      "question": "How do I use xmlstarlet to beautify XML files on a Linux system?",
+      "question": "What are the steps to create a new file using xmlstarlet?",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "How do I use XPath expressions with xmlstarlet to filter XML data?",
+      "anchor": "understanding-the-xpath-expression"
+    },
+    {
+      "question": "What is the difference between xmlstarlet and jq for Linux command line?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I beautify an XML file using xmlstarlet?",
       "anchor": "beautifying-the-file"
+    },
+    {
+      "question": "What is the purpose of Docker in this article?",
+      "anchor": "seeing-it-in-action-with-docker"
     }
   ]
 }

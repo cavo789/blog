@@ -30,6 +30,8 @@ This article focuses on the different kinds of volumes and when to reach for eac
 
 ## What a volume changes
 
+<Vars name="counter" labels={{ name: "Container name" }} />
+
 To illustrate the notion of persistence, we're going to work with a Docker image that does one single thing: count how many times it has been executed. Let's call it five times:
 
 <Terminal typewriter source="./files/terminal-8.txt" />
@@ -37,7 +39,7 @@ To illustrate the notion of persistence, we're going to work with a Docker image
 Now stop and start the container by running `docker compose down ; docker compose up --detach`, then call the counter again:
 
 <Terminal typewriter>
-$ docker compose exec counter /counter.sh
+$ docker compose exec %%name=counter%% /counter.sh
 You have executed this script 1 times.
 </Terminal>
 
@@ -101,10 +103,10 @@ We can verify our container is running using `docker container list` (simplified
 $ docker container list
 
 CONTAINER ID   IMAGE          STATUS          NAMES
-6296459f7827   demo/counter   Up 30 seconds   counter
+6296459f7827   demo/counter   Up 30 seconds   %%name=counter%%
 </Terminal>
 
-`docker compose exec counter /counter.sh` is the command used above to execute our script.
+`docker compose exec ` <Var name="name">counter</Var> ` /counter.sh` is the command used above to execute our script.
 
 ## Volumes managed by Docker
 
@@ -152,7 +154,7 @@ Update the `compose.yaml` file like this:
 
 The syntax now is just slightly different: we don't have a `volumes` entry at the bottom of the file but we've used a relative notation like `./data:/data`.  So, the `./data` local folder (on your hard disk) has to be synchronized with the `/data` folder of the container.
 
-By running `docker compose up --detach && docker compose exec counter /counter.sh` we'll run our counter and expect to see `You have executed this script 1 times.` but you'll probably get an error:
+By running `docker compose up --detach && docker compose exec ` <Var name="name">counter</Var> ` /counter.sh` we'll run our counter and expect to see `You have executed this script 1 times.` but you'll probably get an error:
 
 <Terminal typewriter source="./files/terminal-5.txt" />
 
@@ -192,7 +194,7 @@ We need to pass to Docker our current user id and group id so Docker will be abl
 
 Let's try again but, first remove the incorrect file: `sudo rm -f data/counter.txt`
 
-Then run `docker compose down && docker compose up --detach && docker compose exec counter /counter.sh`
+Then run `docker compose down && docker compose up --detach && docker compose exec ` <Var name="name">counter</Var> ` /counter.sh`
 
 Now, the file will be yours:
 
@@ -231,7 +233,7 @@ By double-clicking on the filename, you'll start a basic text editor where you c
 A new call to our counter shows that we have hacked the number:
 
 <Terminal typewriter>
-$ docker compose exec counter /counter.sh
+$ docker compose exec %%name=counter%% /counter.sh
 You have executed this script 51 times.
 </Terminal>
 
@@ -258,7 +260,7 @@ Now, you can edit that file from vscode, make changes and save them.
 ![VSCode - Accessing to files in the container](./images/vscode.webp)
 
 <Terminal typewriter>
-$ docker compose exec counter /counter.sh
+$ docker compose exec %%name=counter%% /counter.sh
 You have executed this script 101 times.
 </Terminal>
 

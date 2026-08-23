@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:50.286Z",
+  "generated": "2026-08-23T17:54:41.678Z",
   "source": "index.md",
-  "sourceHash": "d41d864f58e6b2c85140daf5548e69466ac5912e",
+  "sourceHash": "ea9acd537d4094b501bd615c7302649476accb3a",
   "questions": [
     {
       "question": "How do I install karakeep using Docker Compose?",
       "anchor": "lets-install-karakeep"
     },
     {
-      "question": "What are some of the key features of karakeep?",
-      "anchor": "tips---select-a-list-before-adding-an-item"
+      "question": "What are some of the features of karakeep?",
+      "anchor": "extra-features"
     },
     {
-      "question": "How does karakeep handle images and links in its lists?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "Can I search for bookmarks, notes, and images together using karakeep?",
+      "question": "Why did I choose karakeep over Heimdall?",
       "anchor": "add-a-bookmark"
     },
     {
-      "question": "What is the difference between karakeep and Heimdall in terms of their search capabilities?",
-      "anchor": "adding-to-a-list"
-    },
-    {
-      "question": "How do I configure the user ID and group ID in the Docker Compose file for karakeep?",
+      "question": "What is the purpose of the user ID and group ID in the Docker Compose file?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of the Docker volume used by karakeep?",
+      "question": "How do I create a new list in karakeep?",
       "anchor": "adding-to-a-list"
     },
     {
-      "question": "How do I create a new list in karakeep and add items to it?",
+      "question": "What are some tips for using karakeep effectively?",
+      "anchor": "tips---select-a-list-before-adding-an-item"
+    },
+    {
+      "question": "What is the difference between storing data on the hard disk and using a Docker volume?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How do I export my data from karakeep?",
       "anchor": "extra-features"
     }
   ]

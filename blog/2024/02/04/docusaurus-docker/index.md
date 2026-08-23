@@ -34,21 +34,23 @@ In this first article, we're going to learn how to install Docusaurus... ouch, s
 
 ## Three files, one command
 
+<Vars port="3000" labels={{ port: "Host port" }} />
+
 Three files in an empty folder — a `Dockerfile`, a `.dockerignore` and a `compose.yaml` — then:
 
 <Terminal typewriter>
 $ docker compose up --detach --build
 </Terminal>
 
-A few minutes later (only the first time), `http://localhost:3000` answers:
+A few minutes later (only the first time), `http://localhost:`<Var name="port">3000</Var> answers:
 
-<BrowserWindow url="http://localhost:3000">
+<BrowserWindow url="http://localhost:%%port=3000%%">
   ![Docusaurus homepage](./images/homepage.webp)
 </BrowserWindow>
 
 And the `Blog` menu lists the Markdown files sitting in the `blog` folder of your own machine:
 
-<BrowserWindow url="http://localhost:3000/blog">
+<BrowserWindow url="http://localhost:%%port=3000%%/blog">
   ![Our posts](./images/posts.webp)
 </BrowserWindow>
 
@@ -123,12 +125,12 @@ Just in case you're interested by the `tree` utility and don't have yet, simply 
 
 ### Run Docusaurus
 
-At this stage of the tutorial, you've all required files and a few blog posts so, let's start everything with the `docker compose up --detach --build` command shown at the beginning of this article. Your blog is then accessible on your computer here: `http://localhost:3000`.
+At this stage of the tutorial, you've all required files and a few blog posts so, let's start everything with the `docker compose up --detach --build` command shown at the beginning of this article. Your blog is then accessible on your computer here: `http://localhost:`<Var name="port">3000</Var>.
 
 <AlertBox variant="info" title="Which port number to use?">
-The port number is the one you've mentioned in the `compose.yaml` file in line `3000:3000`.
+The port number is the one you've mentioned in the `compose.yaml` file in line <Var name="port">3000</Var>`:3000`.
 
-If you wish another port like `3002` f.i., just edit the yaml file and replace `3000:3000` with `3002:3000` and rerun the `docker compose up --detach` command.
+If you wish another port like `3002` f.i., just edit the yaml file and replace <Code><Var name="port">3000</Var>:3000</Code> with `3002:3000` and rerun the `docker compose up --detach` command.
 
 </AlertBox>
 
@@ -149,13 +151,13 @@ For ease of use, go to this tutorial: [https://docusaurus.io/docs/blog#adding-po
 
 Copy/paste the `2019-09-05-hello-docusaurus.md` example to your `2024-02-07-really-better.md` file.
 
-<BrowserWindow url="http://localhost:3000/blog/2019-09-05-hello-docusaurus.md">
+<BrowserWindow url="http://localhost:%%port=3000%%/blog/2019-09-05-hello-docusaurus.md">
   ![Our new article](./images/vscode-article.webp)
 </BrowserWindow>
 
 Just go back to your browser and refresh the page (press <kbd>F5</kbd>). Your new post is there!
 
-<BrowserWindow url="http://localhost:3000/blog/2024-02-07-really-better.md">
+<BrowserWindow url="http://localhost:%%port=3000%%/blog/2024-02-07-really-better.md">
   ![Your new post is there](./images/with-new-post.webp)
 </BrowserWindow>
 
@@ -173,7 +175,7 @@ Just go back to your browser and refresh the page (press <kbd>F5</kbd>). Your ne
 
 Since the `blog` folder is stored on your computer, we can stop the blog and start it again without losing anything.
 
-To illustrate this, we can run `docker compose stop && docker compose rm --force` to stop and kill the container. Then run `docker compose up --detach --build` to rebuild it. By surfing back to `http://localhost:3000`, as you'll see, you've still your blog with your latest changes. Nothing was lost.
+To illustrate this, we can run `docker compose stop && docker compose rm --force` to stop and kill the container. Then run `docker compose up --detach --build` to rebuild it. By surfing back to <Code>http://localhost:<Var name="port">3000</Var></Code>, as you'll see, you've still your blog with your latest changes. Nothing was lost.
 
 ## What's next?
 

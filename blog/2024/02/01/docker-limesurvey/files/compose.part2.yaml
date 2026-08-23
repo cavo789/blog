@@ -3,11 +3,11 @@ name: limesurvey
 services:
   limesurvey-app:
     image: docker.io/martialblog/limesurvey:latest
-    container_name: limesurvey-app
+    container_name: %%app_name=limesurvey-app%%
     restart: always
     environment:
       - DB_TYPE=mysql
-      - DB_HOST=limesurvey-db
+      - DB_HOST=%%db_name=limesurvey-db%%
       - DB_NAME=limesurvey
       - DB_USERNAME=admin
       - DB_PASSWORD=admin
@@ -20,16 +20,16 @@ services:
       # highlight-next-line
       - limesurvey:/var/www/html/upload/surveys
     ports:
-      - 8080:8080
+      - %%port=8080%%:8080
     depends_on:
       # highlight-next-line
-      limesurvey-db:
+      %%db_name=limesurvey-db%%:
         # highlight-next-line
         condition: service_healthy
 
-  limesurvey-db:
+  %%db_name=limesurvey-db%%:
     image: docker.io/mysql:8.4
-    container_name: limesurvey-db
+    container_name: %%db_name=limesurvey-db%%
     # highlight-next-line
     volumes:
       # highlight-next-line

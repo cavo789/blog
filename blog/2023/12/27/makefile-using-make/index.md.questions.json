@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:46:48.929Z",
+  "generated": "2026-08-23T17:52:25.224Z",
   "source": "index.md",
-  "sourceHash": "f3d142187fc10f1a7f641ad829a6b12aac9a290e",
+  "sourceHash": "9109d4b0c2ee1370ea07e189fe970ba0aef317dd",
   "questions": [
     {
-      "question": "What is a makefile used for in Linux?",
+      "question": "What is a Linux makefile?",
       "anchor": ""
     },
     {
-      "question": "Why use a makefile instead of memorizing Docker commands?",
+      "question": "When should I use a Linux makefile?",
       "anchor": "why-bother"
     },
     {
-      "question": "How does the indentation in a makefile work?",
+      "question": "How do I create a basic makefile for Docker commands?",
       "anchor": "whats-inside-the-makefile"
     },
     {
-      "question": "What is the purpose of creating a makefile at the root of a project?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I check if GNU make is installed on my system?",
-      "anchor": "why-bother"
-    },
-    {
-      "question": "What are some common targets in a makefile for Docker commands?",
+      "question": "What are the benefits of using a Linux makefile for project setup?",
       "anchor": "one-word-instead-of-that-command"
     },
     {
-      "question": "What is the purpose of using echo commands inside a makefile?",
+      "question": "How can I centralize Docker commands in a single file using a Linux makefile?",
       "anchor": "whats-inside-the-makefile"
     },
     {
-      "question": "How can I create a self-documenting makefile with help screens?",
-      "anchor": "conclusion"
+      "question": "What are the advantages of using a Linux makefile for project management?",
+      "anchor": "why-bother"
+    },
+    {
+      "question": "How can I automate project setup, logging, and environment management using a Linux makefile?",
+      "anchor": "whats-inside-the-makefile"
+    },
+    {
+      "question": "What are the commands available in a Linux makefile?",
+      "anchor": "whats-inside-the-makefile"
     }
   ]
 }

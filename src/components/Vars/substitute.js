@@ -92,7 +92,22 @@ export function substituteChildren(children, resolve, renderToken) {
       return createElement(Fragment, { key: `var-frag-${keySeed++}` }, parts);
     }
     if (Array.isArray(node)) {
-      return node.map(walk);
+      // A genuine JS array of children (as opposed to compile-time JSX
+      // children, which never need keys) — React requires a `key` on every
+      // element once it's rendered from an array. The original array may
+      // have been keyed already by MDX (rare) or not at all (the common
+      // case for a Terminal's multi-line literal content); either way,
+      // `walk()` can produce a *new* array via `.map()`, so every entry
+      // needs an explicit, stable key regardless of what it had before.
+      return node.map((child, index) => {
+        const walked = walk(child);
+        if (typeof walked === "string" || typeof walked === "number") return walked;
+        if (isValidElement(walked)) {
+          const seedKey = walked.key ?? `var-child-${index}`;
+          return cloneElement(walked, { key: seedKey });
+        }
+        return walked;
+      });
     }
     if (isValidElement(node) && "children" in (node.props || {})) {
       return cloneElement(node, {}, walk(node.props.children));

@@ -81,11 +81,11 @@ In order to be able to start ORDS, the official doc states we need to create a f
 <Terminal typewriter>
 $ mkdir -p ords_secrets
 $ chmod 777 ords_secrets
-$ echo 'CONN_STRING=SYS/admin@oracle-db:1521/ORCLPDB1' > ords_secrets/conn_string.txt
+$ echo 'CONN_STRING=SYS/admin@%%db_name=oracle-db%%:%%db_port=1521%%/%%pdb=ORCLPDB1%%' > ords_secrets/conn_string.txt
 </Terminal>
 
 <AlertBox variant="info">
-If you've a doubt about which value has to be used as `service_name`; start a sqlplus console (`docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`) and run `SELECT global_name FROM global_name;` in SQL*Plus.
+If you've a doubt about which value has to be used as `service_name`; start a sqlplus console (`docker exec -it ` <Var name="db_name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba`) and run `SELECT global_name FROM global_name;` in SQL*Plus.
 
 ![Getting service name](./images/getting_service_name.webp)
 
@@ -99,6 +99,15 @@ For our needs, we just want ORDS; we don't need APEX. For this purpose, we'll in
 
 ### Create the container
 
+<Vars
+  name="oracle-ords"
+  port="8181"
+  db_name="oracle-db"
+  db_port="1521"
+  pdb="ORCLPDB1"
+  labels={{ name: "ORDS container", port: "ORDS port", db_name: "Database container", db_port: "Database port", pdb: "PDB name" }}
+/>
+
 To create our ORDS (without APEX) container; please run:
 
 <Terminal typewriter source="./files/terminal-2.txt" />
@@ -108,14 +117,14 @@ To create our ORDS (without APEX) container; please run:
 - `-d`: the ORDS will run as a daemon service,
 - `--rm`: once the service is terminated, the Docker container will be removed,
 - `--network`: we should run ORDS on the same network than our database; i.e. `oracle`
-- `-p 8181:8181`: we've to map the intern port 8181 used by ORDS on our host and, for simplicity, we'll expose the port 8181 also,
+- <Code>-p <Var name="port">8181</Var>:8181</Code>: we've to map the intern port `8181` used by ORDS on our host and, for simplicity, we'll expose the port <Var name="port">8181</Var> also,
 - `-e IGNORE_APEX=TRUE`: as mentioned, we want ORDS; not APEX so tells Docker to not install APEX,
 - `-v ./ords_secrets/:/opt/oracle/variables`: as stated in the documentation, we need to provide a file called `conn_string.txt` and to map that file in the `/opt/oracle/variables` inside the container and, finally,
 - `-v ords_config:/etc/ords/config/`: we'll use a self-managed Docker volume to keep the configuration files of ORDS.
 
 </AlertBox>
 
-That command will add the ORDS layer in your database (based on the connection string; which is `ORCLPDB1` for us).
+That command will add the ORDS layer in your database (based on the connection string; which is <Var name="pdb">ORCLPDB1</Var> for us).
 
 ![Installation of ORDS](./images/ords_installation.webp)
 
@@ -133,7 +142,7 @@ If you need to run the container once more; here is the command line:
 
 Before being able to use ORDS and access objects using an HTTP request, we should create a new user in our database and give it some rights.
 
-Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` to start a SQL*Plus console and connect to the PDB database.
+Run `docker exec -it ` <Var name="db_name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba` to start a SQL*Plus console and connect to the PDB database.
 
 We need to create a user for ORDS; let's say user `hr`. Please run this statement: `CREATE USER hr IDENTIFIED BY admin;`
 
@@ -143,7 +152,7 @@ Then grant permissions: `GRANT CONNECT, RESOURCE, UNLIMITED TABLESPACE TO hr;`
 
 Once created, we need to exit the console (started using the `sys` user) and reconnect with our user.
 
-Type thus `exit` to quit the sqlplus console and run `docker exec -it oracle-db sqlplus hr/admin@ORCLPDB1`.
+Type thus `exit` to quit the sqlplus console and run `docker exec -it ` <Var name="db_name">oracle-db</Var> ` sqlplus hr/admin@` <Var name="pdb">ORCLPDB1</Var>.
 
 Once back in the sqlplus console (logged in as user `hr`), please run : `EXECUTE ORDS.ENABLE_SCHEMA;`.
 
@@ -158,9 +167,9 @@ If you get an error at this level, it means ORDS wasn't installed in your databa
 
 #### Start ORDS web interface
 
-At this stage, we've installed ORDS, configured our database to use it and we've created a user called `hr`. We can surf to `http://localhost:8181/ords` and connect to the ORDS dashboard:
+At this stage, we've installed ORDS, configured our database to use it and we've created a user called `hr`. We can surf to `http://localhost:` <Var name="port">8181</Var>`/ords` and connect to the ORDS dashboard:
 
-<BrowserWindow url="http://localhost:8181/ords/_/landing">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/_/landing">
   <img
     alt="ORDS Welcome page"
     src={require("./images/ords_welcome_page.webp").default}
@@ -174,18 +183,18 @@ APEX wasn't installed and thus disabled
 
 Use `hr` and `admin`, our custom user, for the login page:
 
-<BrowserWindow url="http://localhost:8181/ords/_/landing">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/_/landing">
   <img
     alt="ORDS login page"
     src={require("./images/ords_login.webp").default}
   />
 </BrowserWindow>
 
-Right now, we can ask ORDS to see the list of objects already accessible; simply surf to `http://localhost:8181/ords/hr/open-api-catalog/` to get ... an empty list.
+Right now, we can ask ORDS to see the list of objects already accessible; simply surf to `http://localhost:` <Var name="port">8181</Var>`/ords/hr/open-api-catalog/` to get ... an empty list.
 
-This is normal since we should specify which object (a table, a view, a stored procedure) can be accessible or not. But, yes, by accessing `http://localhost:8181/ords/hr/open-api-catalog/` and getting a JSON answer; we can confirm ORDS is running fine.
+This is normal since we should specify which object (a table, a view, a stored procedure) can be accessible or not. But, yes, by accessing `http://localhost:` <Var name="port">8181</Var>`/ords/hr/open-api-catalog/` and getting a JSON answer; we can confirm ORDS is running fine.
 
-The `http://localhost:8181/ords/hr/open-api-catalog/` page is called the **Schema Metadata** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-55736274-502E-4511-B232-829924334FA2)).
+The `http://localhost:` <Var name="port">8181</Var>`/ords/hr/open-api-catalog/` page is called the **Schema Metadata** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-55736274-502E-4511-B232-829924334FA2)).
 
 #### REST enable database objects
 
@@ -219,7 +228,7 @@ This is normal, we've just created our `hr` user and the associated `hr` schema 
 
 ##### Adding an employee view in our hr schema
 
-Let's connect to our database and display the list of employees: please run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba`; then `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM SYSTEM.EMPLOYEES;`.
+Let's connect to our database and display the list of employees: please run `docker exec -it ` <Var name="db_name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba`; then `SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL FROM SYSTEM.EMPLOYEES;`.
 
 ![Getting the list of employees](./images/system_employees.webp)
 
@@ -231,7 +240,7 @@ Now, we're sure we've access to the table, let's create a view in our `hr` schem
 If we wish to check our view:
 
 - Type `exit` in the sqlplus console since you're connected as `sys`,
-- In the Linux console, run `docker exec -it oracle-db sqlplus hr/admin@ORCLPDB1` to connect as `hr` then
+- In the Linux console, run `docker exec -it ` <Var name="db_name">oracle-db</Var> ` sqlplus hr/admin@` <Var name="pdb">ORCLPDB1</Var>  to connect as `hr` then
 - run `SELECT * FROM HR.EMPLOYEES;`.
 
 As you can see, you'll obtain the list of employees.
@@ -263,9 +272,9 @@ Click on the `Next` button and just pay attention on the `SQL` tab:
 
 You'll get the DDL to run in a console if you want to REST enable the table by code; not by using the GUI.
 
-The last part is to jump now in the ORDS website (`http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop`). Please refresh the page and you'll now see you've one object in the `AUTOREST` area:
+The last part is to jump now in the ORDS website (`http://localhost:` <Var name="port">8181</Var>`/ords/hr/_sdw/?nav=rest-workshop`). Please refresh the page and you'll now see you've one object in the `AUTOREST` area:
 
-<BrowserWindow url="http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/hr/_sdw/?nav=rest-workshop">
   <img
     alt="There is one object in the AUTOREST area"
     src={require("./images/ords_autorest_1.webp").default}
@@ -274,7 +283,7 @@ The last part is to jump now in the ORDS website (`http://localhost:8181/ords/hr
 
 Click on that area and you'll see the object (which is a view) we'll REST enabled previously:
 
-<BrowserWindow url="http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/hr/_sdw/?nav=rest-workshop">
   <img
     alt="Employees is AUTOREST enabled"
     src={require("./images/ords_employees_is_enabled.webp").default}
@@ -283,37 +292,37 @@ Click on that area and you'll see the object (which is a view) we'll REST enable
 
 Look at the *Open in a new tab* icon on the image above. Click on that button and you'll get your records as a JSON response:
 
-<BrowserWindow url="http://localhost:8181/ords/hr/employees/">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/hr/employees/">
   <img
     alt="Getting the list of employees as JSON REST answer"
     src={require("./images/getting_employees_as_json_browser.webp").default}
   />
 </BrowserWindow>
 
-The `http://localhost:8181/ords/hr/employees/` is called the **Object Data** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-0B17836D-E5B5-4B45-A9DA-0ABF62426EDF))
+The `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/` is called the **Object Data** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-0B17836D-E5B5-4B45-A9DA-0ABF62426EDF))
 
-Since it's nothing more than a URL, you can use it with any tools you want, f.i. using `curl`. The command to run is `curl http://localhost:8181/ords/hr/employees/ | jq` — the same output already teased at the top of this article.
+Since it's nothing more than a URL, you can use it with any tools you want, f.i. using `curl`. The command to run is <Code>curl http://localhost:<Var name="port">8181</Var>/ords/hr/employees/ | jq</Code> — the same output already teased at the top of this article.
 
 ###### And what about the OpenAPI catalog
 
-Please go back to your browser and access `http://localhost:8181/ords/hr/open-api-catalog/` again.
+Please go back to your browser and access `http://localhost:` <Var name="port">8181</Var>`/ords/hr/open-api-catalog/` again.
 
 This time, you'll see that you've one item called `EMPLOYEES`.
 
-If you want to get the description of that *resource*, the page `http://localhost:8181/ords/hr/open-api-catalog/employees/` can be visited to get f.i. the list of fields exposed.
+If you want to get the description of that *resource*, the page `http://localhost:` <Var name="port">8181</Var>`/ords/hr/open-api-catalog/employees/` can be visited to get f.i. the list of fields exposed.
 
 That page is called the **Object Metadata** ([documentation](https://docs.oracle.com/en/database/oracle/oracle-rest-data-services/21.4/aelig/developing-REST-applications.html#GUID-B870CF7E-4A19-4646-ACB4-84CC9FD5967E))
 
 Let's create a new view for the fun:
 
-- Run `docker exec -it oracle-db sqlplus sys/admin@ORCLPDB1 as sysdba` then
+- Run `docker exec -it ` <Var name="db_name">oracle-db</Var> ` sqlplus sys/admin@` <Var name="pdb">ORCLPDB1</Var> ` as sysdba` then
 - In the SQL console, please run `GRANT SELECT ON SYSTEM.DEPARTMENTS TO HR;` followed by
 - `CREATE VIEW HR.DEPARTMENTS AS SELECT DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID FROM SYSTEM.DEPARTMENTS;` and
 - Jump in the Oracle SQL Developer interface, refresh the list of view, right-click on the new `departments` view
 
-Now, by refreshing `http://localhost:8181/ords/hr/open-api-catalog/` again, you'll see you've now a second item called `DEPARTMENTS`.
+Now, by refreshing `http://localhost:` <Var name="port">8181</Var>`/ords/hr/open-api-catalog/` again, you'll see you've now a second item called `DEPARTMENTS`.
 
-<BrowserWindow url="http://localhost:8181/ords/hr/open-api-catalog/">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/hr/open-api-catalog/">
   <img
     alt="Accessing the metadata-catalog"
     src={require("./images/metadata_catalog.webp").default}
@@ -322,9 +331,9 @@ Now, by refreshing `http://localhost:8181/ords/hr/open-api-catalog/` again, you'
 
 ##### Working with REST
 
-Go to `http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop` or, from the hamburger menu, click on the `REST` item.
+Go to `http://localhost:` <Var name="port">8181</Var>`/ords/hr/_sdw/?nav=rest-workshop` or, from the hamburger menu, click on the `REST` item.
 
-<BrowserWindow url="http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/hr/_sdw/?nav=rest-workshop">
   <img
     alt="REST dashboard"
     src={require("./images/rest_dashboard.webp").default}
@@ -333,7 +342,7 @@ Go to `http://localhost:8181/ords/hr/_sdw/?nav=rest-workshop` or, from the hambu
 
 ### Using Paging, Filtering and Ordering Options on the Querystring (optional — skip if the default endpoint is enough)
 
-When accessing to an endpoint (like `http://localhost:8181/ords/hr/employees/`), we can manipulate the URL to add parameters like paging, filtering or ordering options.
+When accessing to an endpoint (like `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/`), we can manipulate the URL to add parameters like paging, filtering or ordering options.
 
 These are called **JSON QBE** for JSON query-by-example.
 
@@ -345,11 +354,11 @@ See the official documentation: [https://docs.oracle.com/en/database/oracle/simp
 
 Unless specifically configured, ORDS will use pagination, i.e. it will limit the list of records to 25 rows.
 
-So, if you've more than 25 employees, the endpoint `http://localhost:8181/ords/hr/employees/` will only return the first 25 of them.
+So, if you've more than 25 employees, the endpoint `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/` will only return the first 25 of them.
 
-By accessing a "full" page like `http://localhost:8181/ords/hr/employees/`, we'll in fact just receive a specific number of records (as configured in ORDS). At the end of the JSON answer, there will be navigation links:
+By accessing a "full" page like `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/`, we'll in fact just receive a specific number of records (as configured in ORDS). At the end of the JSON answer, there will be navigation links:
 
-<BrowserWindow url="http://localhost:8181/ords/hr/employees/">
+<BrowserWindow url="http://localhost:%%port=8181%%/ords/hr/employees/">
   <img
     alt="Pagination"
     src={require("./images/pagination.webp").default}
@@ -362,9 +371,9 @@ So, while `hasMore` is `true`, there are still records to obtain with a subseque
 
 There are two parameters to control paging of result data: `offset` and `limit`.
 
-So we can run multiple requests like `http://localhost:8181/ords/hr/employees/?offset=25`, `http://localhost:8181/ords/hr/employees/?offset=50` and so on.
+So we can run multiple requests like `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?offset=25`, `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?offset=50` and so on.
 
-We can define the number of records by page using the `limit` querystring parameter: `http://localhost:8181/ords/hr/employees/?limit=100`.
+We can define the number of records by page using the `limit` querystring parameter: `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?limit=100`.
 
 <AlertBox variant="note">
 The official documentation strongly discourages removing the limit (and thus asking for all records at once). For this reason there is no way to remove the limit. If you really wish to get the full list, try with a very high number like `limit=1000000` (one million).
@@ -377,9 +386,9 @@ The general syntax is using `/?q={"column":{"$eq":"value"}}`.
 
 ##### Greater than
 
-For instance, who earn more than 20,000€ as salary? `http://localhost:8181/ords/hr/employees/?q={"salary":{"$gt":20000}}` will apply a filter on `salary > 20000`.
+For instance, who earn more than 20,000€ as salary? `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?q={"salary":{"$gt":20000}}` will apply a filter on `salary > 20000`.
 
-<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"salary":{"$gt":20000}}'}>
+<BrowserWindow url={'http://localhost:%%port=8181%%/ords/hr/employees/?q={"salary":{"$gt":20000}}'}>
   <img
     alt="Who earns more than 20k"
     src={require("./images/salary_more_20000.webp").default}
@@ -388,9 +397,9 @@ For instance, who earn more than 20,000€ as salary? `http://localhost:8181/ord
 
 ##### Equal
 
-To find all employees called `Steven`: `http://localhost:8181/ords/hr/employees/?q={"first_name":{"$eq":"Steven"}}`
+To find all employees called `Steven`: `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?q={"first_name":{"$eq":"Steven"}}`
 
-<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"first_name":{"$eq":"Steven"}}'}>
+<BrowserWindow url={'http://localhost:%%port=8181%%/ords/hr/employees/?q={"first_name":{"$eq":"Steven"}}'}>
   <img
     alt="Steven"
     src={require("./images/firstname_is_steven.webp").default}
@@ -399,18 +408,18 @@ To find all employees called `Steven`: `http://localhost:8181/ords/hr/employees/
 
 ##### Instring / contains / like
 
-Employees with the pattern `alex` in their first name: `http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"}}` (will match f.i. `Alexander` or `Alexis`).
+Employees with the pattern `alex` in their first name: `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?q={"first_name":{"$instr":"alex"}}` (will match f.i. `Alexander` or `Alexis`).
 
-<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"}}'}>
+<BrowserWindow url={'http://localhost:%%port=8181%%/ords/hr/employees/?q={"first_name":{"$instr":"alex"}}'}>
   <img
     alt="Contains Alex"
     src={require("./images/contains_alex.webp").default}
   />
 </BrowserWindow>
 
-Who is working as ICT? Here the like operator will be the one to use: `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"IT_%"}}` (`IT_%` means *starts with*)
+Who is working as ICT? Here the like operator will be the one to use: `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?q={"job_id":{"$like":"IT_%"}}` (`IT_%` means *starts with*)
 
-<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"IT_%"}}'}>
+<BrowserWindow url={'http://localhost:%%port=8181%%/ords/hr/employees/?q={"job_id":{"$like":"IT_%"}}'}>
   <img
     alt="Who works for IT"
     src={require("./images/starting_with_it.webp").default}
@@ -419,9 +428,9 @@ Who is working as ICT? Here the like operator will be the one to use: `http://lo
 
 ##### Complex filtering
 
-We can also use AND like in this example: `http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"},"salary":{"$gt":5000}}` i.e. retrieve all people having `alex` in their first name and earning more than 5,000€
+We can also use AND like in this example: `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?q={"first_name":{"$instr":"alex"},"salary":{"$gt":5000}}` i.e. retrieve all people having `alex` in their first name and earning more than 5,000€
 
-<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"first_name":{"$instr":"alex"},"salary":{"$gt":5000}}'}>
+<BrowserWindow url={'http://localhost:%%port=8181%%/ords/hr/employees/?q={"first_name":{"$instr":"alex"},"salary":{"$gt":5000}}'}>
   <img
     alt="Contains Alex and earn more than 5,000"
     src={require("./images/alex_5000.webp").default}
@@ -429,13 +438,13 @@ We can also use AND like in this example: `http://localhost:8181/ords/hr/employe
 </BrowserWindow>
 
 <AlertBox variant="info" title="Using complex filtering">
-The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employee who:
+The following URL `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}` will return every employee who:
 
 - working as clerk (`job_id` ending by the `CLERK` word),
 - having a salary greater than 2,899€ and
 - hired as from 1st January 2017.
 
-<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}'}>
+<BrowserWindow url={'http://localhost:%%port=8181%%/ords/hr/employees/?q={"job_id":{"$like":"%CLERK"},"salary":{"$gt":2899},"hire_date":{"$gt":{"$date":"2016-12-31T12:59:59Z"}}}'}>
   <img
     alt="Using a combination of filters"
     src={require("./images/filtering_complex.webp").default}
@@ -448,9 +457,9 @@ The following URL `http://localhost:8181/ords/hr/employees/?q={"job_id":{"$like"
 
 The general syntax is using `/?q={"$orderby":{"fieldname1":"asc","fieldname2":"desc"}}`.
 
-To sort on the first name desc and, then based on the salary (the higher first): `http://localhost:8181/ords/hr/employees/?q={"$orderby":{"first_name":"desc","salary":"desc"}}`.
+To sort on the first name desc and, then based on the salary (the higher first): `http://localhost:` <Var name="port">8181</Var>`/ords/hr/employees/?q={"$orderby":{"first_name":"desc","salary":"desc"}}`.
 
-<BrowserWindow url={'http://localhost:8181/ords/hr/employees/?q={"$orderby":{"first_name":"desc","salary":"desc"}}'}>
+<BrowserWindow url={'http://localhost:%%port=8181%%/ords/hr/employees/?q={"$orderby":{"first_name":"desc","salary":"desc"}}'}>
   <img
     alt="Ordering on the firstname and salary DESC"
     src={require("./images/ordering.webp").default}

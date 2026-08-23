@@ -60,9 +60,9 @@ $ unzip master.zip && rm master.zip && mv Sedna-master src
 $ docker run -d --name %%name=static-site%% -p %%port=80%%:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4
 </Terminal>
 
-Once these commands have been fired, please jump to `http://localhost` and you'll get this:
+Once these commands have been fired, please jump to <Code>http://localhost:<Var name="port">80</Var></Code> and you'll get this:
 
-<BrowserWindow url="http://localhost">
+<BrowserWindow url="http://localhost:%%port=80%%">
   ![Website running as http](./images/running_http.webp)
 </BrowserWindow>
 
@@ -78,7 +78,7 @@ $ docker container rm %%name=static-site%% --force
 
 ### Creation of some files we will need
 
-As we've seen, we can run `docker run -d --name static-site -p 80:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4` and bingo, the site is running with http.
+As we've seen, we can run `docker run -d --name` <Var name="name">static-site</Var> `-p` <Var name="port">80</Var>`:80 -v ./src:/usr/local/apache2/htdocs httpd:2.4` and bingo, the site is running with http.
 
 We can't use this single line for https because, among other things, we need to use an SSL certificate and we need to configure Apache to use it.
 
@@ -110,9 +110,9 @@ If we take a look on Docker Desktop, list of containers, we'll see our project (
 
 ![Docker Desktop - Running on port 80](./images/docker_desktop_80.webp)
 
-By accessing `http://localhost` with the browser, we'll get our site, up and running:
+By accessing <Code>http://localhost:<Var name="port">80</Var></Code> with the browser, we'll get our site, up and running:
 
-<BrowserWindow url="http://localhost">
+<BrowserWindow url="http://localhost:%%port=80%%">
   ![Website running as http](./images/running_http.webp)
 </BrowserWindow>
 

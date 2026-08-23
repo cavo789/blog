@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:47.731Z",
+  "generated": "2026-08-23T17:53:47.589Z",
   "source": "index.md",
-  "sourceHash": "6504cc080ce554a199097fdf803d04d5ce00eaff",
+  "sourceHash": "21349dd2314bcf7bc5ce212338cbab12b0dead68",
   "questions": [
     {
       "question": "How do I run Firefox in my browser using Docker?",
       "anchor": "start-firefox-in-your-browser"
     },
     {
-      "question": "What is Docker used for running graphical Linux applications like Firefox and GIMP?",
-      "anchor": ""
-    },
-    {
-      "question": "Can you explain how to start GIMP in your browser with Docker?",
+      "question": "What is the command to start GIMP in the browser?",
       "anchor": "start-gimp-in-your-browser"
     },
     {
-      "question": "How do I run Firefox in a DOS environment using Docker?",
-      "anchor": "start-firefox-in-your-browser"
+      "question": "Can you explain how to run a Linux GUI application like Firefox inside a Docker container and access it through my web browser?",
+      "anchor": ""
     },
     {
-      "question": "What is the difference between running GUI applications in Docker and having them open as real windows on your desktop?",
+      "question": "How do I start an MS-DOS environment to run graphical applications in Docker?",
+      "anchor": "start-gimp-in-your-browser"
+    },
+    {
+      "question": "What is the command to run GIMP in a DOS environment and access it through my web browser?",
+      "anchor": "start-gimp-in-your-browser"
+    },
+    {
+      "question": "How can I use Docker to run graphical applications like Firefox and GIMP on Windows instead of Linux?",
       "anchor": "conclusion"
     },
     {
-      "question": "How do I run GIMP in a DOS environment using Docker?",
+      "question": "What are the differences between running graphical applications in a browser tab and as real windows on your desktop using Docker?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How do I create a subfolder called 'meerkat' for copying an avatar of a meerkat when starting GIMP in the browser?",
       "anchor": "start-gimp-in-your-browser"
-    },
-    {
-      "question": "What is the command to start Firefox in your browser using Docker?",
-      "anchor": "start-firefox-in-your-browser"
-    },
-    {
-      "question": "What are some graphical interfaces that can be run as if they were web applications using Docker?",
-      "anchor": ""
     }
   ]
 }

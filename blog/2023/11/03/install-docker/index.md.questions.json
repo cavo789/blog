@@ -1,37 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:47:40.031Z",
+  "generated": "2026-08-23T17:51:30.068Z",
   "source": "index.md",
-  "sourceHash": "f6278acf3016c129629984a5e1074daa58bbd3fb",
+  "sourceHash": "f768772870abec4559dd389c83c99594f7207c54",
   "questions": [
     {
-      "question": "What is Docker used for?",
-      "anchor": "one-command-a-working-php-server"
-    },
-    {
-      "question": "Why are Docker images useful?",
+      "question": "What are Docker images and why do they matter?",
       "anchor": "why-docker-images"
     },
     {
-      "question": "How do I install Docker on Windows?",
+      "question": "How can I install Docker on Windows using Docker Desktop?",
       "anchor": "setting-it-up"
     },
     {
-      "question": "What is the command to run a PHP+Apache server with Docker?",
-      "anchor": "creating-our-php-script"
+      "question": "What is the command to start a PHP+Apache server with Docker?",
+      "anchor": "one-command-a-working-php-server"
     },
     {
-      "question": "How can I switch between PHP versions using Docker?",
+      "question": "How do I switch between PHP versions in Docker without conflicts?",
       "anchor": "changing-the-php-version-in-one-word"
     },
     {
-      "question": "What are some popular Docker images for running PHP applications?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+      "question": "What are some of the benefits of using Docker images for web development?",
+      "anchor": "why-docker-images"
     },
     {
-      "question": "How do I create a PHP script inside a Docker container?",
-      "anchor": "conclusion"
+      "question": "How can I create a PHP script inside a Docker container?",
+      "anchor": "creating-our-php-script"
+    },
+    {
+      "question": "What is the command to run a Docker container in detached mode and assign it a name?",
+      "anchor": "one-command-a-working-php-server"
+    },
+    {
+      "question": "How can I access the running PHP+Apache server from my browser?",
+      "anchor": "one-command-a-working-php-server"
     }
   ]
 }

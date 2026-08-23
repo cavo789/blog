@@ -1,48 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:47:50.582Z",
+  "generated": "2026-08-23T17:51:35.123Z",
   "source": "index.md",
-  "sourceHash": "a067871b18b8c0c3389cccfcb282c01ada36b50f",
+  "sourceHash": "8e9649d73b3b2078a955c979f940062f3bec3d85",
   "questions": [
     {
-      "question": "How do I create a Docusaurus blog using Docker?",
+      "question": "How do I use Docker to create a Docusaurus blog?",
       "anchor": ""
     },
     {
-      "question": "What are some essential plugins for a Docusaurus blog?",
+      "question": "What are some essential plugins for creating a Docusaurus blog?",
       "anchor": "adding-plugins"
     },
     {
-      "question": "How do I configure my Docusaurus blog to use local search and sitemap?",
+      "question": "How do I configure local search, sitemap, image zoom, and Giscus comments in a Docusaurus blog?",
       "anchor": "adding-plugins"
     },
     {
-      "question": "What is the purpose of the Giscus comment system in a Docusaurus blog?",
-      "anchor": "adding-plugins"
+      "question": "What are the steps to build a static version of a Docusaurus blog?",
+      "anchor": "build-static-version-of-the-blog"
     },
     {
-      "question": "How do I add image zoom functionality to my Docusaurus blog?",
-      "anchor": "adding-plugins"
+      "question": "How do I deploy a Docusaurus blog over FTP using WinSCP?",
+      "anchor": "push-to-github"
     },
     {
-      "question": "What is the difference between using Docker and running Docusaurus with Node.js on a local machine?",
-      "anchor": ""
+      "question": "What is withcabin and how can I use it for GDPR compliant stats in a Docusaurus blog?",
+      "anchor": "adding-withcabin-for-gdpr-compliant-stats"
     },
     {
-      "question": "How do I configure my Docusaurus blog to use the classic theme?",
-      "anchor": "using-docusaurus"
-    },
-    {
-      "question": "What are some common settings for a Docusaurus blog?",
-      "anchor": "some-settings"
-    },
-    {
-      "question": "How do I create and edit articles in my Docusaurus blog using Markdown?",
+      "question": "How do I create a new article on my Docusaurus blog using my preferred editor?",
       "anchor": "make-my-first-article"
     },
     {
-      "question": "What are some best practices for maintaining a Docusaurus blog?",
+      "question": "What are the benefits of using Docker to create a Docusaurus blog?",
       "anchor": ""
     }
   ]

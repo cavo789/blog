@@ -48,6 +48,8 @@ So, please run `mkdir -p  ~/tools/memos && cd $_` to create a folder in your hom
 
 Then, please create a file called `compose.yaml` with this content:
 
+<Vars port="5230" labels={{ port: "Host port" }} />
+
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
 <AlertBox variant="note">
@@ -65,9 +67,9 @@ In just six seconds, memos has been installed on my machine and a container has 
 
 ![Installing memos](./images/installation.webp)
 
-Go to `http://localhost:5230` and you'll see the website is already running:
+Go to `http://localhost:`<Var name="port">5230</Var> and you'll see the website is already running:
 
-<BrowserWindow url="http://localhost:5230">
+<BrowserWindow url="http://localhost:%%port=5230%%">
   ![First run](./images/first_run.webp)
 </BrowserWindow>
 
@@ -78,7 +80,7 @@ See on the bottom left; it's possible to select another language; French is supp
 
 I'll create my account (`admin/admin` since I'm working on my localhost) and I'm ready to create my first note. It took me less than one minute until now.
 
-<BrowserWindow url="http://localhost:5230">
+<BrowserWindow url="http://localhost:%%port=5230%%">
   ![The memos homepage](./images/homepage.webp)
 </BrowserWindow>
 
@@ -92,7 +94,7 @@ Click in the `Any thoughts...` edit box and start to type your thought... For in
 - [ ] Develop user login endpoint (`/login`) with JWT token generation.
 ```
 
-<BrowserWindow url="http://localhost:5230">
+<BrowserWindow url="http://localhost:%%port=5230%%">
   ![My first note](./images/first_note.webp)
 </BrowserWindow>
 
@@ -100,7 +102,7 @@ By pressing the `Save` button, the note is created. It's clean and, tomorrow, oh
 
 Imagine it's tomorrow and I've achieved the first one, I just need to check the box and it's automatically saved:
 
-<BrowserWindow url="http://localhost:5230">
+<BrowserWindow url="http://localhost:%%port=5230%%">
   ![The first task is done](./images/first_task_is_done.webp)
 </BrowserWindow>
 
@@ -132,7 +134,7 @@ Write the missing documentation for the new user authentication module, covering
 Review the Dockerfile for the user authentication service to ensure optimal image size and security practices. #docker #python
 ```
 
-<BrowserWindow url="http://localhost:5230">
+<BrowserWindow url="http://localhost:%%port=5230%%">
   ![A few more tasks](./images/few_tasks.webp)
 </BrowserWindow>
 
@@ -140,7 +142,7 @@ Review the Dockerfile for the user authentication service to ensure optimal imag
 
 When you've used tags, you'll see them immediately bottom left under `Tags`. Simply click on a tag to filter on it. You can click on more than one if you want. In the example below, I've three notes for `Python` and just one with the Docker tag:
 
-<BrowserWindow url="http://localhost:5230/?filter=tagSearch%3Apython%2CtagSearch%3Adocker">
+<BrowserWindow url="http://localhost:%%port=5230%%/?filter=tagSearch%3Apython%2CtagSearch%3Adocker">
   ![Filtering using tags](./images/filtering_using_tags.webp)
 </BrowserWindow>
 

@@ -61,12 +61,14 @@ Create a `Dockerfile` with the content below.
   <Snippet filename="Dockerfile" source="./files/Dockerfile" />
 </ProjectSetup>
 
-Next, we need to build our Docker image and create the container. To build it, run `docker build -t ssh-server .`. Then, create the container with `docker run -d -p 2222:22 --name remote-dev ssh-server`.
+<Vars port="2222" name="remote-dev" labels={{ port: "Host port", name: "Container name" }} />
+
+Next, we need to build our Docker image and create the container. To build it, run `docker build -t ssh-server .`. Then, create the container with <Code>docker run -d -p <Var name="port">2222</Var>:22 --name <Var name="name">remote-dev</Var> ssh-server</Code>.
 
 <Terminal typewriter>
 $ docker build -t ssh-server .
 
-$ docker run -d -p 2222:22 --name remote-dev ssh-server
+$ docker run -d -p %%port=2222%%:22 --name %%name=remote-dev%% ssh-server
 </Terminal>
 
 The container acts as an SSH server and (for this demo) creates a user `christophe` with the password `p@ssword`.
@@ -105,11 +107,11 @@ Click the `+` button to create a new connection:
 
 You will be prompted to enter the SSH connection string.
 
-In our example, it will be `ssh christophe@localhost -p 2222` because:
+In our example, it will be <Code>ssh christophe@localhost -p <Var name="port">2222</Var></Code> because:
 
 -   The user defined in our `Dockerfile` is `christophe`,
 -   Our server is `localhost` (since it's a Docker container running on our machine), and
--   The port number to use is `2222` (the one we specified in the `docker run` command).
+-   The port number to use is <Var name="port">2222</Var> (the one we specified in the `docker run` command).
 
 VS Code will then ask which SSH configuration file you want to update.
 
@@ -123,7 +125,7 @@ VS Code will create or update the chosen SSH config file and display something l
 
 ![The SSH config file](./images/ssh_config_file.webp)
 
-Now, if you click the **SSH** target in the left pane, you will see the `remote-dev` server with a connect icon next to it:
+Now, if you click the **SSH** target in the left pane, you will see the <Var name="name">remote-dev</Var> server with a connect icon next to it:
 
 ![The server is present under SSH](./images/ssh_unfolded.webp)
 
@@ -131,7 +133,7 @@ Select the remote OS type (Linux), authenticate, and then open the user's home f
 
 <AlertBox variant="note" title="The hostname is the Docker container ID" />
 
-For illustration, exit VS Code, go back to your terminal, and run `ssh christophe@localhost -p 2222`.
+For illustration, exit VS Code, go back to your terminal, and run <Code>ssh christophe@localhost -p <Var name="port">2222</Var></Code>.
 
 We can see our `hello.sh` file:
 

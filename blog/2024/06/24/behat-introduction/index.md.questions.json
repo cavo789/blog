@@ -1,41 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:24.763Z",
+  "generated": "2026-08-23T17:53:31.757Z",
   "source": "index.md",
-  "sourceHash": "ea21f3267b68428a07dfe2f5ff41b96554f186ee",
+  "sourceHash": "c5ccbe3cda3147487a3d2bc6ca4fa91db27f9cd2",
   "questions": [
     {
-      "question": "What is BDD?",
-      "anchor": "introduction-to-bdd---behavior-driven-development"
+      "question": "What are Behavior-Driven Development (BDD) and how does it work in PHP?",
+      "anchor": ""
     },
     {
-      "question": "How does Behat work in PHP?",
-      "anchor": "writing-your-steps-in-php"
-    },
-    {
-      "question": "What are the benefits of using Behavior-Driven Development (BDD) with Behat?",
-      "anchor": "introduction-to-bdd---behavior-driven-development"
-    },
-    {
-      "question": "How do I write scenarios in plain English for BDD with Behat?",
+      "question": "How can I set up a testing environment with Chrome and Mink for Behat?",
       "anchor": "result"
     },
     {
-      "question": "What are some common assertions used in BDD tests with Behat?",
+      "question": "What is the purpose of writing Gherkin scenarios in Behat?",
+      "anchor": "lets-install-behat"
+    },
+    {
+      "question": "How do I implement step definitions to automate functional tests using Behat and Mink?",
+      "anchor": "writing-your-steps-in-php"
+    },
+    {
+      "question": "What are some common assertions you can use in Behat scenarios?",
       "anchor": "using-mink"
     },
     {
-      "question": "How do I set up a testing environment for BDD with Behat and Chrome?",
-      "anchor": "set-up-the-project"
+      "question": "How does Behat help with continuous communication, deliberate discovery, and test-automation?",
+      "anchor": "installing-the-mink-extension"
     },
     {
-      "question": "What are some best practices for writing high-quality BDD tests with Behat?",
+      "question": "What is the purpose of writing scenarios even before coding in BDD?",
+      "anchor": "time-to-run-chrome"
+    },
+    {
+      "question": "How can I write assertions in pure English or French using Behat and Mink?",
+      "anchor": "writing-our-iclickonthemenuitem-method"
+    },
+    {
+      "question": "What is the purpose of the behat.yaml file in a Behat project?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "How can I run Behat tests using the command line?",
       "anchor": "behatyaml"
     },
     {
-      "question": "How do I run my BDD scenarios using the command line?",
-      "anchor": "writing-your-steps-in-php"
+      "question": "What are some common use cases for Behat in PHP development?",
+      "anchor": "blogfeature"
+    },
+    {
+      "question": "How does Behat help with regression testing in a large proprietary application?",
+      "anchor": "composerjson"
     }
   ]
 }

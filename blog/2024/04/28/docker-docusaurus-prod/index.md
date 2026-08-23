@@ -46,9 +46,13 @@ Now, we'll learn to do the same for your own Docusaurus instance. Ladies and gen
 
 That single `docker run` command from the AlertBox above gets you this, running entirely offline:
 
-![Homepage of your running Docusaurus instance](./images/homepage.webp)
+<BrowserWindow url="http://localhost">
+  ![Homepage of your running Docusaurus instance](./images/homepage.webp)
+</BrowserWindow>
 
-![Our blog](./images/blog.webp)
+<BrowserWindow url="http://localhost/blog">
+  ![Our blog](./images/blog.webp)
+</BrowserWindow>
 
 The rest of this article builds the image that produces this — a multi-stage `Dockerfile` that
 turns any Docusaurus site into a single, self-contained ~87MB image.
@@ -198,21 +202,23 @@ Now that our image is created, we can do a few things like just running it and g
 
 ### Run the image i.e. create a container and run the site
 
+<Vars port="80" name="blog" labels={{ port: "Host port", name: "Container name" }} />
+
 To do this, just run the following command:
 
 <Terminal typewriter>
-$ docker run -d --publish 80:80 --name blog johndoe/blog
+$ docker run -d --publish %%port=80%%:80 --name %%name=blog%% johndoe/blog
 </Terminal>
 
 Very quickly, you'll get a very long ID as result like f.i. `cae6989bee2a2339a4c0116be2b86ee3dae0b46d47a6c53dcb6e50098726c0b1`. Just ignore this at this moment, it just means your container has been created successfully.
 
-Now, start your browser and surf to `http://localhost` — that's the homepage and blog shown at the top of this article.
+Now, start your browser and surf to <Code>http://localhost:<Var name="port">80</Var></Code> — that's the homepage and blog shown at the top of this article.
 
 As mentioned, the site will be running on your computer i.e. offline. You can disconnect from the Internet, everything is running in RAM; on your machine.
 
 If you're curious, just run `docker ps` (or `docker container list` which is a synonym) to see the list of containers. You'll see yours.
 
-By running `docker container stop blog` (`blog` is the name we've defined in the `docker run` used above in this chapter); we can stop the blog. Return to your browser, surf on `http://localhost` and you'll see, the site is no more active. Run `docker container start blog` to reactivate it.
+By running <Code>docker container stop <Var name="name">blog</Var></Code> (<Var name="name">blog</Var> is the name we've defined in the `docker run` used above in this chapter); we can stop the blog. Return to your browser, surf on <Code>http://localhost:<Var name="port">80</Var></Code> and you'll see, the site is no more active. Run <Code>docker container start <Var name="name">blog</Var></Code> to reactivate it.
 
 ### Start an interactive shell session
 
@@ -243,6 +249,6 @@ Now, push your image by running `docker image push` followed by your image name;
 
 ### Retrieve it from Docker Hub
 
-The circle is now complete... You can tell your friends and colleagues that they can now use your image by just running the command `docker pull <your_image> && docker run -d -p 80:80 --name blog <your_image>` as I stated in the preface of this article.
+The circle is now complete... You can tell your friends and colleagues that they can now use your image by just running the command <Code>{`docker pull <your_image> && docker run -d -p `}<Var name="port">80</Var>{`:80 --name `}<Var name="name">blog</Var>{` <your_image>`}</Code> as I stated in the preface of this article.
 
 Enjoy!

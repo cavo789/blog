@@ -31,11 +31,11 @@ In this article, we'll explore how to use the official Belgif OpenAPI linter via
 
 ## Seeing the Linter Run
 
+<Vars port="8000" labels={{ port: "Host port" }} />
+
 Once the `belgif-lint` container is in place (covered under Installation below), checking an `openapi.json` file is two commands:
 
-<Terminal typewriter wrap={true}>
-$ curl -s http://localhost:8000/openapi.json > openapi.json
-</Terminal>
+<Terminal typewriter wrap={true} source="./files/terminal-openapi.txt" />
 
 <Terminal typewriter wrap={true}>
 $ docker compose run --rm belgif-lint
@@ -98,31 +98,25 @@ To run it, simply start `docker compose up --build -d` in your terminal:
 $ docker compose up --build -d
 </Terminal>
 
-Then surf to `http://localhost:8000/docs` to see your application running.
+Then surf to `http://localhost:`<Var name="port">8000</Var>`/docs` to see your application running.
 
 You can test it using `curl` or your browser:
 
 1.  **Root endpoint:**
 
-    ```bash
-    curl http://localhost:8000/
-    ```
+    <Terminal typewriter wrap={true} source="./files/terminal-root.txt" />
 
     You should see: `{"Hello":"World"}`
 
 2.  **Item with path and query parameter:**
 
-    ```bash
-    curl "http://localhost:8000/items/5?q=somequery"
-    ```
+    <Terminal typewriter wrap={true} source="./files/terminal-item.txt" />
 
     You should see: `{"item_id":5,"q":"somequery"}`
 
 3.  **Items with pagination:**
 
-    ```bash
-    curl "http://localhost:8000/items/?skip=0&limit=20"
-    ```
+    <Terminal typewriter wrap={true} source="./files/terminal-pagination.txt" />
 
     You should see: `{"skip":0,"limit":20}`
 

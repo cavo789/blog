@@ -44,6 +44,8 @@ But it does give you a much nicer way of accessing your site than the outdated b
 
 ## Creating your dashboard
 
+<Vars port="80" labels={{ port: "Host port" }} />
+
 Please create a dummy folder and jump in it:
 
 <Terminal>

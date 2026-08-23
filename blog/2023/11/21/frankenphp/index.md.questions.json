@@ -1,9 +1,9 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:07.586Z",
+  "generated": "2026-08-23T17:51:40.906Z",
   "source": "index.md",
-  "sourceHash": "969d3d97fc4a288e4476fb9373fe5ec1c3cc59ef",
+  "sourceHash": "e2a4ec8cfcb37771797635f96d8ca4e585ca648d",
   "questions": [
     {
       "question": "What does FrankenPHP give you?",
@@ -18,24 +18,24 @@
       "anchor": "getting-it-running"
     },
     {
-      "question": "What happens during the long minutes of setup?",
+      "question": "What happens during the slow first-run MySQL connection warmup?",
       "anchor": "what-happens-during-those-long-minutes"
     },
     {
-      "question": "What is under the hood of FrankenPHP?",
+      "question": "What does a real site look like on FrankenPHP?",
       "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "How do I run a Joomla installation with FrankenPHP?",
-      "anchor": "getting-it-running"
+      "question": "How do I run a Joomla installation using Docker and FrankenPHP?",
+      "anchor": "conclusion"
     },
     {
-      "question": "What are the commands to start the containers for FrankenPHP and Joomla?",
-      "anchor": "getting-it-running"
-    },
-    {
-      "question": "What is the command to get the list of running containers?",
+      "question": "Why is the database connection slow when running a Joomla website on FrankenPHP?",
       "anchor": "what-happens-during-those-long-minutes"
+    },
+    {
+      "question": "What are the steps to set up a Joomla website using Docker and FrankenPHP?",
+      "anchor": "getting-it-running"
     }
   ]
 }

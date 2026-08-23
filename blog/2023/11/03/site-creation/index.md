@@ -30,9 +30,9 @@ Here are the steps I followed to create this blog.
 
 Since I really like the simplicity of Docker, I will not install Node.js on my machine but use the official Docker image. *This article shows the raw `docker run` approach; if you prefer a ready-made `Dockerfile` and a `compose.yaml`, jump to <Link to="/blog/docusaurus-docker">Running Docusaurus with Docker</Link>.*
 
-<Terminal typewriter>
-$ {`docker run --rm --name blog --user \$UID:\$GID -it -v \${PWD}/:/project -w /project node /bin/bash`}
-</Terminal>
+<Vars name="blog" port="3000" labels={{ name: "Container name", port: "Dev server port" }} />
+
+<Terminal typewriter source="./files/terminal-0.txt" />
 
 The instruction above will download Node.js (the latest version) on my machine if it is not already present and create a running instance (called a *container* of it). The flag `--user $UID:$GID` is used to start the container using the same credentials as my local one (i.e., reuse my local Unix `christophe` user so files/folders created in the container will be owned by my local user).
 
@@ -61,25 +61,20 @@ The installation step is now finished; I will exit the container and return to m
 
 ## Run the website
 
-Back to my computer, I will now go inside my `blog` folder (`cd blog`) and run the Docker command again but this time with the `-p 3000:3000` extra parameter. This parameter will expose the port `3000` from the container to my machine so I can see the website by surfing to `http://localhost:3000`.
+Back to my computer, I will now go inside my `blog` folder (`cd blog`) and run the Docker command again but this time with the <Code>-p <Var name="port">3000</Var>:3000</Code> extra parameter. This parameter will expose the port <Var name="port">3000</Var> from the container to my machine so I can see the website by surfing to `http://localhost:`<Var name="port">3000</Var>.
 
 Instead of running an interactive shell session I prefer to run `/bin/bash -c "npx docusaurus start"` to run the Docusaurus watcher and serve my files:
 
-<Terminal typewriter>
-$ cd blog
-...
-$ {`docker run --rm -it --name blog --user \$UID:\$GID -v \${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"`}
-...
-</Terminal>
+<Terminal typewriter files="files/terminal-2.txt" />
 
-After a few seconds, the container is ready to use and I surf to my site by going to `http://localhost:3000`.
+After a few seconds, the container is ready to use and I surf to my site by going to <Code>http://localhost:<Var name="port">3000</Var></Code>.
 
-<BrowserWindow url="http://localhost:3000">
+<BrowserWindow url="http://localhost:%%port=3000%%">
   ![Homepage](./images/homepage.webp)
 </BrowserWindow>
 
 <AlertBox variant="highlyImportant" title="The --host 0.0.0.0 flag">
-It is really crucial to use the `--host 0.0.0.0` flag when calling `npx docusaurus start`. This will allow external access to the website. If missing, browsing to `http://localhost:3000` (or running `curl http://127.0.0.1:3000`) will display an error `Empty reply from server`.
+It is really crucial to use the `--host 0.0.0.0` flag when calling `npx docusaurus start`. This will allow external access to the website. If missing, browsing to <Code>http://localhost:<Var name="port">3000</Var></Code> (or running <Code>curl http://127.0.0.1:<Var name="port">3000</Var></Code>) will display an error `Empty reply from server`.
 </AlertBox>
 
 ## Some settings
@@ -121,7 +116,7 @@ When my blog post contains only text and no images or linked files, I can just c
 
 </AlertBox>
 
-In the previous chapter, npx was executed using the `docker run --rm -it --name blog --user $UID:$GID -v ${PWD}/:/project -w /project -p 3000:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"` command so, any changes made to the blog will be immediately synchronized with Docker meaning, I just need to save my article and npx will reload my site; very easy and convenient.
+In the previous chapter, npx was executed using the <Code>{`docker run --rm -it --name `}<Var name="name">blog</Var>{` --user \$UID:\$GID -v \${PWD}/:/project -w /project -p `}<Var name="port">3000</Var>{`:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"`}</Code> command so, any changes made to the blog will be immediately synchronized with Docker meaning, I just need to save my article and npx will reload my site; very easy and convenient.
 
 ### Using some layouts
 

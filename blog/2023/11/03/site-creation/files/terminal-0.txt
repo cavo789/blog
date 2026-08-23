@@ -1,0 +1,1 @@
+docker run --rm --name %%name=blog%% --user $UID:$GID -it -v ${PWD}/:/project -w /project node /bin/bash

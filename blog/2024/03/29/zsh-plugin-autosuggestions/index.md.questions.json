@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:25.113Z",
+  "generated": "2026-08-23T17:53:09.037Z",
   "source": "index.md",
-  "sourceHash": "a8c0834f9d951f37dda98c3757e83a9978be35b6",
+  "sourceHash": "e40e195c66a457e27e3609056530e0176599eb61",
   "questions": [
     {
-      "question": "How do I install zsh-autosuggestions on my Linux system?",
+      "question": "How do I install the zsh-autosuggestions plugin?",
       "anchor": "installation"
     },
     {
-      "question": "What is the purpose of the zsh-autosuggestions plugin and how does it work?",
-      "anchor": "three-characters-and-the-command-is-already-there"
-    },
-    {
-      "question": "How can I accept, cycle through, or ignore command suggestions in ZSH?",
+      "question": "What are the benefits of using the zsh-autosuggestions plugin?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are the benefits of using zsh-autosuggestions for Linux users?",
-      "anchor": "conclusion"
+      "question": "Can I use the zsh-autosuggestions plugin without installing Oh-My-Zsh?",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How does the zsh-autosuggestions plugin learn from my shell history and improve over time?",
+      "question": "How does the zsh-autosuggestions plugin learn from my history?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are some examples of how to use the zsh-autosuggestions plugin in ZSH?",
+      "question": "Can I customize the zsh-autosuggestions plugin to suggest commands from other sources?",
       "anchor": ""
     },
     {
-      "question": "How can I customize the zsh-autosuggestions plugin for my specific needs?",
-      "anchor": "installation"
+      "question": "How can I see the suggestions in action with Docker?",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What are some alternative plugins similar to zsh-autosuggestions for Linux users?",
-      "anchor": "conclusion"
+      "question": "What are some tips for using the zsh-autosuggestions plugin effectively?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Can I use the zsh-autosuggestions plugin on a Windows Subsystem for Linux (WSL)?",
+      "anchor": ""
     }
   ]
 }

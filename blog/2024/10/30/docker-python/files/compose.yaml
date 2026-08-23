@@ -1,4 +1,4 @@
-name: app_python
+name: %%name=app_python%%
 
 services:
   app_python:
@@ -21,7 +21,7 @@ services:
     user: ${DOCKER_OS_USERID:-1000}:${DOCKER_OS_GROUPID:-1000}
     env_file:
       - .docker.env
-    container_name: app_python
+    container_name: %%name=app_python%%
     volumes:
       # Our codebase on our host
       - .:${DOCKER_APP_HOME}

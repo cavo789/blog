@@ -1,5 +1,5 @@
 $ docker container list
 
 [...] IMAGE                         [...] NAMES
-[...] martialblog/limesurvey:latest [...] limesurvey-app
-[...] mysql:8.4                     [...] limesurvey-db
+[...] martialblog/limesurvey:latest [...] %%app_name=limesurvey-app%%
+[...] mysql:8.4                     [...] %%db_name=limesurvey-db%%

@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:17:58.585Z",
+  "generated": "2026-08-23T17:54:11.939Z",
   "source": "index.md",
-  "sourceHash": "17804fe16ba619add1cab6a08c81340835519d4d",
+  "sourceHash": "884855311afcf0e05ef76b37f31e1240803244d7",
   "questions": [
     {
-      "question": "How do I create a Python JSON API with FastAPI in under a minute?",
+      "question": "How do I create a Python JSON API using FastAPI in one minute?",
       "anchor": ""
     },
     {
-      "question": "What is Docker setup and how does it work in this article?",
-      "anchor": "why-it-works"
+      "question": "What is Docker setup required for building my first Python JSON API with FastAPI?",
+      "anchor": ""
     },
     {
-      "question": "How can I automate the documentation of my API using Swagger/ReDoc?",
+      "question": "How does the Swagger/ReDoc documentation work in FastAPI?",
       "anchor": "automated-documentation-of-your-api"
     },
     {
-      "question": "What is hot-reload and how does it work in this article?",
-      "anchor": "lets-play---creating-a-joke-generator"
+      "question": "What is hot-reload for rapid development in FastAPI?",
+      "anchor": "automated-documentation-of-your-api"
     },
     {
-      "question": "How can I build a joke generator script with FastAPI?",
-      "anchor": "recreating-the-docker-image-for-hot-reload-skip-this-if-docker-run--v-app-already-refreshed-for-you"
+      "question": "Why is it possible to create a Python JSON API with FastAPI in just one minute?",
+      "anchor": ""
     },
     {
-      "question": "What are the benefits of using Docker for developing Python JSON APIs?",
-      "anchor": "why-it-works"
+      "question": "What are the key features of FastAPI that make it easy to build APIs quickly?",
+      "anchor": ""
     },
     {
-      "question": "What is the size of the final image created by this article's Docker setup?",
-      "anchor": "why-it-works"
+      "question": "How do I run my Python JSON API with FastAPI using Docker?",
+      "anchor": "running-our-api"
     },
     {
-      "question": "How can I access the Swagger documentation for my API?",
+      "question": "What is the OpenAPI schema and how can it be validated against Belgian REST standards?",
       "anchor": "automated-documentation-of-your-api"
     }
   ]

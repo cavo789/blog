@@ -1,0 +1,3 @@
+$ cd blog
+
+docker run --rm -it --name %%name=blog%% --user $UID:$GID -v ${PWD}/:/project -w /project -p %%port=3000%%:3000 node /bin/bash -c "npx docusaurus start --host 0.0.0.0"

@@ -28,6 +28,8 @@ import TOCInline from "@theme/TOCInline";
 import Trees from "@site/src/components/Trees";
 import Folder from "@site/src/components/Trees/Folder";
 import File from "@site/src/components/Trees/File";
+import Code from "@site/src/components/Vars/Code";
+import Var from "@site/src/components/Vars/Var";
 import Vars from "@site/src/components/Vars";
 
 import ProjectSetup, {
@@ -47,6 +49,7 @@ export default {
   CardImage,
   Column,
   Columns,
+  Code,
   ConnectionInfo,
   Details,
   DownloadButton,
@@ -70,6 +73,7 @@ export default {
   TLDR,
   TOCInline,
   Trees,
+  Var,
   Vars,
   // Add the lazy loading and async decoding attributes to all images
   // img: (props) => (

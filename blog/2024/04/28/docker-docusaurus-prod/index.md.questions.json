@@ -1,41 +1,45 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:31.991Z",
+  "generated": "2026-08-23T17:53:25.089Z",
   "source": "index.md",
-  "sourceHash": "665fdf76f99d378474e54a1e4f366be95fde3d6d",
+  "sourceHash": "9363f656375fc35faabe2f21e7333cfbcc0ddaa1",
   "questions": [
     {
-      "question": "How to package an entire Docusaurus site into a Docker image?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the purpose of creating a multi-stage Dockerfile for Docusaurus?",
+      "question": "How to create a Docker image for Docusaurus?",
       "anchor": "result"
     },
     {
-      "question": "What are the benefits of using a multi-stage Dockerfile for building a Docusaurus site?",
-      "anchor": "result"
-    },
-    {
-      "question": "How does the three-stage Dockerfile work in this article?",
+      "question": "What are the benefits of using multi-stage Docker images for Docusaurus?",
       "anchor": "create-a-dummy-blog-if-needed"
     },
     {
-      "question": "What is the purpose of stage 1 in the multi-stage Dockerfile?",
+      "question": "What is the size difference between the Node base stage and the final image in the multi-stage Dockerfile?",
       "anchor": "prepare-our-docusaurus-installation-for-docker"
     },
     {
-      "question": "What are the steps involved in building a Docusaurus site using Docker?",
+      "question": "How does the multi-stage Dockerfile ensure an improved cache layer system for Docusaurus?",
       "anchor": "create-a-dockerfile-file"
     },
     {
-      "question": "How do I create a dummy blog for testing purposes with Docusaurus and Docker?",
+      "question": "What are the different web servers available in the multi-stage Dockerfile and which one is recommended for creating a small, self-contained image?",
       "anchor": "create-a-dockerignore-file"
     },
     {
-      "question": "What are the steps to prepare a Docusaurus installation for Docker?",
+      "question": "How to create a dummy blog if you don't have a Docusaurus installation yet?",
       "anchor": "small-summary"
+    },
+    {
+      "question": "What are the steps to prepare your Docusaurus installation for Docker?",
+      "anchor": "build-our-docker-image"
+    },
+    {
+      "question": "How to create a Dockerfile file for Docusaurus?",
+      "anchor": "and-use-it"
+    },
+    {
+      "question": "What are the stages in the multi-stage Dockerfile and what is their purpose?",
+      "anchor": "run-the-image-ie-create-a-container-and-run-the-site"
     }
   ]
 }

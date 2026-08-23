@@ -42,7 +42,7 @@ Once karakeep is running, adding something is really piece of cake: just click i
 
 I'll type `https://awesome-docker-compose.com/apps`, save it and immediately, I'll get this:
 
-<BrowserWindow url="http://localhost:2000/dashboard/bookmarks">
+<BrowserWindow url="http://localhost:%%port=2000%%/dashboard/bookmarks">
   ![Awesome Docker](./images/awesome_docker.webp)
 </BrowserWindow>
 
@@ -58,6 +58,8 @@ As you can see, karakeep has grabbed a picture of the web page — no manual thu
 ## Let's Install karakeep
 
 Please create a folder like `mkdir ~/tools/karakeep && cd $_`. In that folder, please create a `compose.yaml` file with the content below:
+
+<Vars port="2000" labels={{ port: "Host port" }} />
 
 <Snippet filename="compose.yaml" source="./files/compose.yaml" />
 
@@ -81,9 +83,9 @@ To avoid this situation, I might as well keep the files immediately on my hard d
 
 Once the `compose.yaml` file has been created, in your console, now, just run `docker compose up --build --detach`.
 
-You now have karakeep running. Surf to `http://localhost:2000/` and you'll get this screen:
+You now have karakeep running. Surf to `http://localhost:`<Var name="port">2000</Var>`/` and you'll get this screen:
 
-<BrowserWindow url="http://localhost:2000/">
+<BrowserWindow url="http://localhost:%%port=2000%%/">
   ![karakeep - Logon screen](./images/logon.webp)
 </BrowserWindow>
 
@@ -91,7 +93,7 @@ Because it's your first time, click on `Sign Up` and let's create a new user. ka
 
 You'll get the dashboard:
 
-<BrowserWindow url="http://localhost:2000/dashboard/bookmarks">
+<BrowserWindow url="http://localhost:%%port=2000%%/dashboard/bookmarks">
   ![karakeep - Dashboard](./images/dashboard.webp)
 </BrowserWindow>
 

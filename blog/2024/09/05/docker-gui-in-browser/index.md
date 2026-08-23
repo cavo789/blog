@@ -27,29 +27,41 @@ But first, let's take a look at a few graphical interfaces, such as Firefox or G
 
 ## Start Firefox in your browser
 
+<Vars
+  port="3000"
+  port_alt="3001"
+  labels={{ port: "Web UI port", port_alt: "Secondary port" }}
+/>
+
 Imagine you're a web developer and just want to check if your site can be displayed on a specific version of Firefox (without having to install the version, of course). Here it is, running in a container and rendered straight in Chrome:
 
-![Start Firefox inside Docker in Chrome](./images/firefox_in_chrome.webp)
+<BrowserWindow url="http://localhost:%%port=3000%%">
+  ![Start Firefox inside Docker in Chrome](./images/firefox_in_chrome.webp)
+</BrowserWindow>
 
 To reproduce this, copy/paste the command below in your console (coming from [https://hub.docker.com/r/linuxserver/firefox](https://hub.docker.com/r/linuxserver/firefox)):
 
 <Terminal typewriter source="./files/terminal-2.txt" />
 
-Then open your browser and surf to `http://localhost:3000` to start Firefox. You can then surf to any amazing site.
+Then open your browser and surf to `http://localhost:`<Var name="port">3000</Var> to start Firefox. You can then surf to any amazing site.
 
  <AlertBox variant="info" title="On my screenshot above, you'll see I'm using the port 5000 instead (this because my blog is running on port 3000)" />
 
 And, for fun, here is the same but I've started Firefox in Docker in an MS-DOS environment and, then, I've used Edge instead of Chrome:
 
-![Start Firefox inside Docker in Edge](./images/firefox_in_edge.webp)
+<BrowserWindow url="http://localhost:%%port=3000%%">
+  ![Start Firefox inside Docker in Edge](./images/firefox_in_edge.webp)
+</BrowserWindow>
 
-The command I've used in DOS is: `docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -e FIREFOX_CLI=https://www.linuxserver.io/ -p 3000:3000 -p 3001:3001 -v %CD%\temp:/config --shm-size="1gb" --restart unless-stopped lscr.io/linuxserver/firefox:latest`.
+The command I've used in DOS is: `docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -e FIREFOX_CLI=https://www.linuxserver.io/ -p ` <Var name="port">3000</Var>`:3000 -p ` <Var name="port_alt">3001</Var>`:3001 -v %CD%\temp:/config --shm-size="1gb" --restart unless-stopped lscr.io/linuxserver/firefox:latest`.
 
 ## Start GIMP in your browser
 
 Another example is running GIMP (image processing software) in the browser:
 
-![Running GIMP in Docker](./images/gimp_in_docker.webp)
+<BrowserWindow url="http://localhost:%%port=3000%%">
+  ![Running GIMP in Docker](./images/gimp_in_docker.webp)
+</BrowserWindow>
 
 Take a look at [https://github.com/linuxserver/docker-gimp?tab=readme-ov-file#docker-cli-click-here-for-more-info](https://github.com/linuxserver/docker-gimp?tab=readme-ov-file#docker-cli-click-here-for-more-info). You'll find there a command to run in your console.
 
@@ -57,9 +69,9 @@ First, make sure to create a subfolder called `config` and, in my example below,
 
 <Terminal typewriter source="./files/terminal-1.txt" />
 
-Like earlier, now, just start your browser and surf to `http://localhost:3000` to start GIMP — that's the screenshot above.
+Like earlier, now, just start your browser and surf to `http://localhost:`<Var name="port">3000</Var> to start GIMP — that's the screenshot above.
 
-The MS-DOS version of the CLI is: `docker run -d --name=gimp --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -p 3000:3000 -p 3001:3001 -v %CD%/config:/config -v ./images:/images -w /images --restart unless-stopped lscr.io/linuxserver/gimp:latest`.
+The MS-DOS version of the CLI is: `docker run -d --name=gimp --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Etc/UTC -p ` <Var name="port">3000</Var>`:3000 -p ` <Var name="port_alt">3001</Var>`:3001 -v %CD%/config:/config -v ./images:/images -w /images --restart unless-stopped lscr.io/linuxserver/gimp:latest`.
 
 ## Conclusion
 

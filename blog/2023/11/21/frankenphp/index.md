@@ -36,7 +36,9 @@ So, what does a real site look like on it? Let's run a full Joomla installation 
 
 A complete Joomla site, in https, served by FrankenPHP, started with two commands:
 
-![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.webp)
+<BrowserWindow url="https://localhost:54408">
+  ![Joomla is now running on FrankenPHP](./images/frankenphp_joomla_homepage.webp)
+</BrowserWindow>
 
 You will perhaps not see a major increase in speed on your machine since you are the only visitor, but it is nice to think that you are surfing so fast locally.
 
@@ -53,6 +55,8 @@ To be honest, before being able to see my Joomla localhost homepage, I waited mo
 - You don't have to assemble any of this: [Alexandre Elisé](https://github.com/alexandreelise) publishes a ready-made FrankenPHP + Joomla image, so the whole setup is a `compose.yaml` file and a `docker compose up`.
 
 ## Getting it running
+
+<Vars port="80" labels={{ port: "HTTP host port" }} />
 
 I invite you to play with it on your development machine (unless you have your own servers; you certainly won't be able to use FrankenPHP at your hosting company).
 
