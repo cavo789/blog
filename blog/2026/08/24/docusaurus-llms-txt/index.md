@@ -6,11 +6,11 @@ image: /img/v2/llms-txt.webp
 series: Creating Docusaurus components
 mainTag: docusaurus
 tags: [docusaurus, ai, markdown]
-date: 2026-11-10
+date: 2026-08-24
 description: A growing share of your readers arrive through an AI assistant — and what they get is your HTML, wrapped in navigation, React widgets and collapsed accordions. This article generates a plain-Markdown mirror of every article, a /llms.txt index, and per-series full-text bundles, by degrading the MDX source rather than converting the rendered HTML. Includes the fallback rule that makes the export impossible to break.
 language: en
 ai_assisted: true
-draft: true
+blueskyRecordKey:
 ---
 
 <!-- cspell:ignore llms mdxjs unified remark stringify hast maintag preprocessContent -->
@@ -18,14 +18,10 @@ draft: true
 ![Your Blog Is Unreadable to an AI. Here Is the Fix.](/img/v2/llms-txt.webp)
 
 <TLDR>
-More and more of my readers never see my site: they ask an assistant, and the assistant reads it for them. What it finds is HTML wrapped in navigation, React widgets, and 107 collapsed `<Snippet>` accordions — so the published page is genuinely *less complete* than the source I wrote. The fix is a build-time plugin that emits a plain-Markdown mirror of every article, a `/llms.txt` index and one full-text bundle per series. The key decision: degrade the **MDX source**, never the rendered HTML — and never let an unknown component fail the export.
+`llms.txt` is a proposed convention for making a site legible to AI assistants — and an unproven one: no major assistant (ChatGPT, Claude, Perplexity) publicly confirms reading it. I explored it anyway, mostly because this blog is already written with Claude Code doing most of the file work, so maintaining a `llms.txt` mirror costs almost nothing. What I found while building it: the published HTML, wrapped in navigation, React widgets, and 107 collapsed `<Snippet>` accordions, is genuinely *less complete* than the source I wrote. The fix is a build-time plugin that emits a plain-Markdown mirror of every article, a `/llms.txt` index and one full-text bundle per series. The key decision: degrade the **MDX source**, never the rendered HTML — and never let an unknown component fail the export.
 </TLDR>
 
-I noticed it in a small way first. Someone thanked me for an article, and when I asked how they had found it, they said they had not — they had asked an assistant a question and it had quoted me.
-
-So I went and looked at what an assistant actually receives when it fetches one of my pages. It gets a React application: a navbar, a table of contents, a reading-progress bar, a <Link to="/blog/docusaurus-reactions">reactions widget</Link>, a comments block, and — buried in there — my article. Worse, this blog uses `defaultOpen={false}` on <Link to="/blog/docusaurus-snippets">`<Snippet>`</Link> **107 times**, so every one of those code files is folded away in an accordion.
-
-That last part is the one that stung. The page I publish is *less complete than the file I wrote*. Whatever is reading it — an assistant, a crawler, a human in a hurry — sees less than I put in.
+I wanted to explore the `llms.txt` track, mostly out of curiosity, not because I had any evidence readers were arriving through an assistant. The idea — proposed by [Answer.AI's Jeremy Howard](https://www.answer.ai/posts/2024-09-03-llmstxt.html) in September 2024 — is to publish a plain-Markdown index of a site at `/llms.txt`, so an assistant does not have to fight a React app to find the actual content. It is far from an established practice: none of ChatGPT, Claude, or Perplexity publicly confirm that their retrieval pipeline reads the file, and it may never catch on the way `robots.txt` or `sitemap.xml` did. What tipped it for me is that this blog is already written with Claude Code doing most of the file work, so keeping a `llms.txt` mirror in sync would not be a chore I carry by hand — it would just be another build step. When trying something costs that little, you just try it.
 
 <!-- truncate -->
 
@@ -35,7 +31,7 @@ One `yarn build`, three artifacts, all static:
 
 <Terminal source="./files/build_output.txt" />
 
-The first is `/llms.txt` — the site index, in the format [llmstxt.org](https://llmstxt.org) proposes: a title, a one-line summary, and then every article as a link plus its description, grouped by topic:
+The first is `/llms.txt` (see mine [online](https://www.avonture.be/llms.txt))— the site index, in the format [llmstxt.org](https://llmstxt.org) proposes: a title, a one-line summary, and then every article as a link plus its description, grouped by topic:
 
 <Terminal title="curl https://www.avonture.be/llms.txt" source="./files/llms_txt.txt" />
 
@@ -43,13 +39,13 @@ The second is a plain-Markdown mirror of every single article, at its own URL pl
 
 <Snippet filename="/blog/docusaurus-go-top.md" source="./files/mirror_sample.txt" defaultOpen={true} />
 
-The third is the one I would not have thought of on my own: **one full-text bundle per <Link to="/blog/docusaurus-series">series</Link>**, at `/llms/<series-slug>.txt`, concatenating every article of that series in reading order. The Docusaurus components bundle is 710 KB of pure Markdown — 23 articles that an assistant can pull in a single request instead of 23.
+The third is the one I would not have thought of on my own: **one full-text bundle per <Link to="/blog/docusaurus-series">series</Link>**, at `/llms/<series-slug>.txt`, concatenating every article of that series in reading order. The [Docusaurus components](https://www.avonture.be/llms/creating-docusaurus-components.txt) bundle is 710 KB of pure Markdown — 23 articles that an assistant can pull in a single request instead of 23.
 
 ## Why the Source, and Never the HTML
 
 Every tool in this space converts rendered HTML back to Markdown. That is the wrong direction, and the reason is not aesthetic:
 
-- **The HTML has already lost information.** Those 107 collapsed accordions, the components that render nothing until hydration, the images behind lazy loading — an HTML-to-Markdown pass can only recover what the HTML contains, and the HTML contains less than the source.
+- **The HTML has already lost information.** This blog folds 107 code snippets into collapsed `<Snippet>` accordions, some components render nothing until hydration, and images sit behind lazy loading — an HTML-to-Markdown pass can only recover what the HTML contains, and the HTML contains less than the source.
 - **The source is already Markdown.** An MDX file is Markdown with some JSX sprinkled in it. Going source → Markdown means handling a few dozen component names; going HTML → Markdown means reverse-engineering an entire rendering pipeline.
 - **The generated file is genuinely better than the page.** `<Snippet source="./files/compose.yaml">` becomes a fenced code block containing the whole file. A reader of the mirror gets the code the reader of the page has to click to reveal.
 - **Nothing is invented.** Every component on this blog either wraps content the author typed, or points at a file on disk. There is no component that fabricates content at runtime — so a source-level degradation can be complete by construction.
@@ -60,7 +56,7 @@ The result is not a lossy export of my site. It is a *more complete* version of 
 
 ### The degradation table
 
-The whole thing is a remark pipeline: parse the MDX source into an AST, walk it, replace each JSX node with plain-Markdown nodes, then stringify. Each component gets one rule:
+My articles are not plain Markdown: they are MDX, Markdown with a few dozen custom React components mixed in — `<Snippet>` for a collapsible code block, `<AlertBox>` for a callout, `<Link>` for a cross-reference, and so on. Each one exists to add a bit of interactivity to the page, and each one is exactly what a Markdown mirror cannot render as-is. So the plugin has to know, one component at a time, what plain Markdown it should turn into. The whole thing is a remark pipeline: parse the MDX source into an AST, walk it, replace each JSX node with plain-Markdown nodes, then stringify. Each component gets one rule:
 
 | Component | Uses | Degradation |
 | --- | ---: | --- |
@@ -97,15 +93,9 @@ plugins: [
 ],
 ```
 
-### Two lines of server configuration
-
-`/blog/my-slug` is a *directory* containing `index.html`, so its sibling `/blog/my-slug.md` creates no route conflict at all — that one is free. But Apache has no built-in MIME mapping for `.md`, so without this the browser offers a download instead of displaying the file:
-
-```apacheconf title="static/.htaccess"
-AddType text/markdown .md
-
-AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript text/markdown
-```
+<AlertBox variant="warning" title="Self-hosted? Watch the MIME type">
+`/blog/my-slug` (like `/blog/docusaurus-llms-txt` for this article) is a *directory* containing `index.html`, so its sibling `/blog/my-slug.md` creates no route conflict — that one is free. But Apache has no built-in MIME mapping for `.md`, so without `AddType text/markdown .md` in `.htaccess`, the browser offers a download instead of displaying the file.
+</AlertBox>
 
 ## The One Rule That Makes This Safe
 
@@ -125,13 +115,11 @@ And it caught something I never would have looked for. Look again at the build o
 
 Those are not components. `remark-directive` — needed to handle Docusaurus admonitions — parses `:name` as an inline directive, so `nginx:latest` in prose, `host:host-gateway` in a compose snippet and `%USERPROFILE%` in a Windows path all get tokenized as directives. They degrade harmlessly through the generic fallback, but I only know they exist because the warning prints them. Ten small facts about my own corpus that no test would have told me.
 
-## Making It Discoverable (the part I got wrong first)
+## Making It Discoverable
 
-I generated all three artifacts, admired them, and shipped. Then I checked, and the per-series bundles were **orphaned on disk** — nothing anywhere linked to them. Generating a file is not publishing it.
+Generating a file is not publishing it: without a link pointing at it, nothing — crawler or human — ever finds `/llms.txt` or a per-series bundle on its own. Four hooks close that gap, each targeting a different consumer:
 
-Four hooks fixed that, and they are worth listing because each targets a different consumer:
-
-**1. `llms.txt` links its own bundles.** The index now opens with a "Series (full-text bundles)" section. It is the only place they are ever referenced.
+**1. `llms.txt` links its own bundles.** The index opens with a "Series (full-text bundles)" section. It is the only place they are ever referenced.
 
 **2. A site-wide `<link rel="alternate">`,** in `headTags`, so it is server-rendered on every page — exactly how RSS has always been discovered:
 
@@ -159,40 +147,15 @@ The human-facing "View this series as plain Markdown" link on `/series/<slug>` i
 
 And then there is the part no code can do for you: **submitting to the directories**. The correct ones are the ones the official spec page links to. I got `llmstxt.site` and `directory.llmstxt.cloud` registered; `llmstxthub.com` had a broken submission form the day I tried. Worth ten minutes.
 
-## Under the Hood (skip this if you just want the files)
-
-Three findings that cost real time.
-
-### `format: "mdx"` is load-bearing, and it is not the obvious choice
-
-`@mdx-js/mdx`'s processor only attaches the JSX tokenizer when `format !== "md"`. Under `format: "md"`, a `<Snippet …/>` parses as an inert `html` text node — which is precisely what Docusaurus wants for its own raw-HTML passthrough, and completely useless here: nothing would ever reach the degradation table. Setting `format: "mdx"` gives real JSX nodes for every file regardless of whether its extension is `.md` or `.mdx`.
-
-### You have to reproduce Docusaurus's own preprocessing
-
-Two raw-text passes run on the source *before* parsing in Docusaurus's real pipeline, and skipping either reintroduces a crash on genuine corpus content:
-
-- `escapeMarkdownHeadingIds` turns `## Title {#custom-id}` into an escaped form, so the MDX expression tokenizer never tries to parse `#custom-id` as JavaScript.
-- `admonitionTitleToDirectiveLabel` rewrites Docusaurus's `:::tip Free text title` shorthand into the bracket-label syntax `remark-directive` actually understands.
-
-Both are public `@docusaurus/utils` exports. The admonition AST pass is not — it lives at an internal path, so it is required inside a `try`/`catch`: if a future release moves it, admonitions fall through the generic fallback instead of taking the build down.
-
-### `require()` of an ESM-only package, from CommonJS
-
-`unified` and every `remark-*` package are ESM-only, and this plugin is CommonJS like all the others in the project. That combination used to be impossible; on Node 20.19+ it resolves synchronously, with each import reading `.default` as the interop exposes it. Verified against the actual runtime before writing a line — this is not something to assume from documentation.
-
-### What "100% coverage" actually rests on
-
-I checked the corpus for the two things that could break a source-level parse, one by one:
-
-- Stray angle brackets that look like JSX (`<SOAP-ENV:Envelope>`, `<FilesMatch>`, `<DateTime>`) — **all** inside fenced code blocks, where remark produces a `code` node and never looks for JSX.
-- Top-level `export` statements or JSX expressions — zero real ones; the four that grep found are also inside fences.
-
-That is why the guarantee holds *for this corpus*. Run the same check on yours before trusting the number.
-
 ## Conclusion
 
-The thing I keep coming back to is that this was never really about AI. I built a plain-Markdown mirror of my blog because an assistant was reading it badly — and what I ended up with is a version of every article that is more complete than the page I publish, that anyone can `curl`, paste into an editor, diff, or archive.
+What I like about the result has less to do with AI adoption than I expected going in:
 
-The audience that motivated the work turned out to be the least interesting beneficiary of it.
+- **Anyone can `curl` an article and get it whole.** Not just a bot — a script, a colleague, me on a slow connection — gets the full text with no HTML, no JavaScript, no navigation to strip out by hand first.
+- **The blog is bot-friendly regardless of whether `llms.txt` itself ever catches on.** A plain-Markdown version of every article now exists as a side effect, independent of that convention's fate.
+- **A Markdown file drops straight into a text editor or an LLM's context window.** No more select-all-and-delete-the-navbar before an article is actually usable somewhere else.
+- **`/llms.txt` doubles as an inventory of the blog** — every article, one line each, grouped by topic. A table of contents I did not have before, generated for free.
+- **The per-series bundles turn 23 requests into one.** Handy for an assistant pulling context, just as handy for a reader who wants an entire series in a single file to read or archive.
+- **None of it needs to be remembered.** It is a build step, not a habit — which is exactly why an unproven convention was worth one hour to try in the first place.
 
-If you take one idea from here, take the fallback rule: **unknown input degrades, never fails, and always warns.** It is what lets you ship a transformation table over a hundred-component corpus without lying awake wondering which article will break the build next.
+If the 107 collapsed <Link to="/blog/docusaurus-snippets">`<Snippet>`</Link> accordions that started this whole thing are new to you, that component is worth its own read.

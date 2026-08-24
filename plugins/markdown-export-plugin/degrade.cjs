@@ -4,7 +4,7 @@
  * Turns a raw blog-post source (the .md/.mdx file exactly as the author typed it —
  * NOT the rendered HTML) into a plain, self-contained Markdown document: no React,
  * no JSX, no collapsed accordions. Used by plugins/markdown-export-plugin/index.cjs
- * to write the `/blog/<slug>.md` mirrors and the `/llms*.txt` indexes (see TODO 0082).
+ * to write the `/blog/<slug>.md` mirrors and the `/llms*.txt` indexes.
  *
  * THE ONE RULE THAT MUST NEVER BE BROKEN
  * ----------------------------------------------------------------------------
@@ -37,7 +37,7 @@ const { unified } = require("unified");
 // mdxJsxFlowElement/mdxJsxTextElement nodes for every file regardless of its .md/.mdx
 // extension (verified against this corpus's few .md files that even have top-level
 // `import` statements — they still parse fine). Confirmed empirically while writing
-// this file — see TODO 0082.
+// this file.
 const { createProcessor } = require("@mdx-js/mdx");
 // Used only by the small standalone `inlineParser` below (parseInlineMarkdown) —
 // the main parser gets its own parsing from createProcessor, which attaches
@@ -301,7 +301,7 @@ function mdastToText(node) {
 }
 
 // ---------------------------------------------------------------------------
-// Reader-adjustable values (TODO 0088) — `%%name=default%%`, written
+// Reader-adjustable values — `%%name=default%%`, written
 // directly inside `<Terminal>`/`<Snippet>` text by the author (`%%`, not
 // `{{`, because a bare `{` inside literal MDX children opens a JS expression
 // — see src/components/Vars/substitute.js for the full rationale; this is
@@ -314,7 +314,7 @@ function mdastToText(node) {
 // itself, so resolving it here needs no lookup against a `<Vars>` node
 // elsewhere in the tree: a plain regex swap. Without this, the exported
 // `.md`/`llms.txt` would show the literal marker — invalid input for a
-// reader or an LLM to copy-paste, see the todo's own acceptance criteria.
+// reader or an LLM to copy-paste.
 // ---------------------------------------------------------------------------
 
 const VAR_MARKER_RE = /%%(\w+)=([^%]*)%%/g;
@@ -346,7 +346,7 @@ function parseInlineMarkdown(text) {
 }
 
 // ---------------------------------------------------------------------------
-// Custom-component degradation table (Table A from TODO 0082).
+// Custom-component degradation table.
 // Each handler receives the JSX node (children already recursively degraded
 // into plain mdast) and the shared ctx, and returns an array of mdast nodes.
 // ---------------------------------------------------------------------------
@@ -439,7 +439,7 @@ const COMPONENT_RULES = {
     return [codeBlock(resolveVarMarkers(code), "bash")];
   },
 
-  // Reader-values bar (TODO 0088) — UI only, nothing for the plain-Markdown
+  // Reader-values bar — UI only, nothing for the plain-Markdown
   // mirror to show. The values it declares are already the same defaults
   // baked into every `%%name=default%%` marker (resolveVarMarkers above), so
   // dropping this node loses no information.
@@ -806,8 +806,8 @@ function transformNode(node, ctx) {
   }
   if (node.type === "mdxFlowExpression" || node.type === "mdxTextExpression") {
     // A bare {expression} in prose, outside any attribute. None exist in this
-    // corpus outside of code fences (verified for TODO 0082) — best-effort
-    // fallback rather than a crash if one ever appears.
+    // corpus outside of code fences (verified) — best-effort fallback rather
+    // than a crash if one ever appears.
     return typeof node.value === "string" && node.value.trim()
       ? [textNode(node.value)]
       : [];

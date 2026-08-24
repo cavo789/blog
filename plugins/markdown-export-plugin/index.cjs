@@ -1,7 +1,7 @@
 /**
  * @fileoverview Docusaurus Plugin: markdown-export-plugin
  *
- * Purpose (TODO 0082):
+ * Purpose:
  * Writes a plain-Markdown mirror of every published blog post next to its HTML
  * page (`/blog/<slug>` → `/blog/<slug>.md`), plus a site-wide `/llms.txt` index
  * and a per-series `/llms/<series-slug>.txt` bundle — so a reader (human or an

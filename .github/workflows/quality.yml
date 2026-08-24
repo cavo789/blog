@@ -104,9 +104,6 @@ jobs:
         !contains(github.event.head_commit.message, '[skip_ci]')
       )
     timeout-minutes: 10
-    # Informational on purpose: a missing cross-link is a writing remark, not a
-    # reason to turn the whole run red. Findings show up as annotations.
-    continue-on-error: true
     steps:
       - name: Checkout code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -123,7 +120,15 @@ jobs:
           node-version: 24
 
       # The script has no dependency, so no `yarn install` here.
+      # continue-on-error lives here, not at the job level: a job-level flag keeps
+      # the *workflow run* green but still reports this *job* itself as failed (red
+      # X in the checks list) — the opposite of "informational". At step level, a
+      # failing step still shows a warning triangle but the job's own conclusion
+      # becomes success, matching the intent below.
       - name: Check articles added or modified in this push/PR
+        continue-on-error: true
+        # Informational on purpose: a missing cross-link is a writing remark, not a
+        # reason to turn the whole run red. Findings show up as annotations.
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             base="${{ github.event.pull_request.base.sha }}"

@@ -190,6 +190,8 @@ Date:   Mon May 19 14:32:10 2026 +0200
 
 `remark-gfm v4` introduced a breaking API change. You now know exactly what to investigate — and you found it in seven steps instead of eighty.
 
+If the diff itself is hard to read at a glance, pipe it through <Link to="/blog/git-delta">delta</Link> instead of the default `git diff` pager — syntax highlighting makes a one-line change like this one jump out immediately.
+
 ## Step 4 — Exit bisect mode
 
 Always exit bisect mode when done. Git has been checking out arbitrary commits; this command restores your working tree to the branch you started from:
@@ -204,7 +206,7 @@ If you forget to run `git bisect reset`, you'll be in a detached HEAD state — 
 
 ## Automating bisect with a test script
 
-Manual bisect works well when the test is a visual check or a quick command. But if your test takes longer or needs to be exact, automate it.
+Manual bisect works well when the test is a visual check or a quick command. But if your test takes longer or needs to be exact, automate it — the same instinct behind <Link to="/blog/git-precommit">pre-commit hooks</Link>: let git run the check for you instead of remembering to do it yourself.
 
 Write a script that exits with code `0` if the commit is good, and any non-zero code if it's bad:
 
@@ -239,6 +241,8 @@ Run `chmod +x bisect-test.sh` before using it with `git bisect run`. Otherwise y
 </AlertBox>
 
 ## Useful commands during a bisect session
+
+If you find yourself running bisect often, alias the `start`/`bad`/`good` sequence in your <Link to="/blog/git-config">`.gitconfig`</Link> instead of retyping it every time.
 
 ### See where you are
 
