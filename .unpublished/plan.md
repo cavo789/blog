@@ -510,3 +510,31 @@ brouillon récent (voir section « pipeline de déploiement » ci-dessus).
 
 Date de publication `2026-09-01` — un simple placeholder, à ajuster selon le calendrier éditorial
 réel au moment de la publication.
+
+## Nouveau brouillon standalone (créé 2026-08-25) — Easter egg "shake to reveal"
+
+`docusaurus-shake-easter-egg` (« Shake Your Phone, Startle the Meerkat »). Série *Creating
+Docusaurus components*, même série que `/blog/docusaurus-easter-eggs` (le "9e" easter egg,
+mais publié comme article indépendant, pas comme mise à jour de l'article existant). Documente
+le nouveau composant `src/components/ShakeEasterEgg/` (détection de secouage via `devicemotion`,
+overlay plein écran avec le suricate effrayé) déjà câblé dans `src/theme/Root.js`.
+
+**Deux liens internes** vers des articles déjà publiés : `/blog/docusaurus-easter-eggs` (le
+pattern de montage global dans `Root.js`) et `/blog/gemini-meerkat` (génération des images du
+mascotte via Gemini — pertinent car l'article raconte le bug de transparence rencontré en
+générant `suricate_scared.png/webp`). Vérifié avec `yarn links:check`.
+
+**Android uniquement pour l'instant** — le composant n'implémente pas encore le flux de
+permission iOS (`DeviceMotionEvent.requestPermission()`, nécessite un tap explicite). L'article
+le documente comme limitation connue plutôt que de le cacher.
+
+⚠️ **Lien réciproque à poser à la publication** : `/blog/docusaurus-easter-eggs` devrait gagner
+une mention de ce 9e easter egg (et un `<Link>` vers `/blog/docusaurus-shake-easter-egg`) une
+fois ce brouillon publié — pas avant, sinon lien mort tant que le brouillon reste exclu du build.
+
+⚠️ **Bannière réutilisée, pas dédiée** : `image: /img/v2/easter_eggs.webp`, identique à celle de
+l'article existant faute de mieux (aucune des 153 bannières ne couvre "secouer son téléphone").
+À remplacer par une bannière dédiée si Christophe en fait créer une avant publication.
+
+Date de publication `2026-09-08` — placeholder, aucune contrainte de séquence avec un autre
+brouillon (ne dépend d'aucun autre par nom, aucun autre n'en dépend).

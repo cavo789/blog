@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useLocation } from "@docusaurus/router";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import KonamiEasterEgg from "@site/src/components/KonamiEasterEgg";
+import ShakeEasterEgg from "@site/src/components/ShakeEasterEgg";
 import MatomoRouteTracker from "@site/src/components/Analytics/MatomoRouteTracker";
 import OfflineNotice from "@site/src/components/OfflineNotice";
 
@@ -119,6 +120,7 @@ export default function Root({ children }) {
       {children}
       <MatomoRouteTracker />
       <KonamiEasterEgg />
+      <ShakeEasterEgg />
       <OfflineNotice />
     </>
   );

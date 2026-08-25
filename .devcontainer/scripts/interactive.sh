@@ -187,6 +187,13 @@ function codelint() {
 }
 
 # @cat Quality Control
+# @cmd format
+# @desc Auto-fix formatting with Prettier (fixes what the pre-commit hook flags)
+function format() {
+    yarn format
+}
+
+# @cat Quality Control
 # @cmd spellcheck
 # @desc Spell-check all blog content with cspell (Docker)
 function spellcheck() {
@@ -348,6 +355,7 @@ export -f version
 export -f check
 export -f lint
 export -f codelint
+export -f format
 export -f spellcheck
 export -f tags
 export -f eli5

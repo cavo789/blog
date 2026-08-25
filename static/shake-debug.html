@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shake debug</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 16px;
+        background: #111;
+        color: #0f0;
+        font-family: monospace;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      h1 {
+        font-size: 18px;
+        color: #fff;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #333;
+        padding: 4px 0;
+      }
+      .warn {
+        color: #f55;
+        font-weight: bold;
+      }
+      .ok {
+        color: #5f5;
+        font-weight: bold;
+      }
+      #jerk {
+        font-size: 28px;
+        font-weight: bold;
+      }
+      #status {
+        margin-top: 12px;
+        padding: 8px;
+        border: 1px solid #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Shake debug</h1>
+
+    <div class="row"><span>DeviceMotionEvent</span><span id="hasApi">?</span></div>
+    <div class="row"><span>isSecureContext</span><span id="secure">?</span></div>
+    <div class="row"><span>location</span><span id="loc">?</span></div>
+    <div class="row">
+      <span>requestPermission (iOS-style)</span><span id="hasPerm">?</span>
+    </div>
+    <div class="row"><span>Permissions API query</span><span id="permQuery">?</span></div>
+
+    <div id="status">Waiting for the first devicemotion event…</div>
+
+    <div class="row"><span>events received</span><span id="count">0</span></div>
+    <div class="row"><span>x</span><span id="x">-</span></div>
+    <div class="row"><span>y</span><span id="y">-</span></div>
+    <div class="row"><span>z</span><span id="z">-</span></div>
+    <div class="row"><span>jerk (threshold 60)</span><span id="jerk">-</span></div>
+    <div class="row"><span>max jerk seen</span><span id="maxJerk">0</span></div>
+
+    <script>
+      document.getElementById("hasApi").textContent = window.DeviceMotionEvent
+        ? "present"
+        : "MISSING";
+      document.getElementById("hasApi").className = window.DeviceMotionEvent
+        ? "ok"
+        : "warn";
+
+      document.getElementById("secure").textContent = window.isSecureContext;
+      document.getElementById("secure").className = window.isSecureContext
+        ? "ok"
+        : "warn";
+
+      document.getElementById("loc").textContent =
+        location.protocol + "//" + location.host;
+
+      document.getElementById("hasPerm").textContent =
+        window.DeviceMotionEvent &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+          ? "present (unexpected on Android)"
+          : "absent (normal on Android)";
+
+      if (navigator.permissions && navigator.permissions.query) {
+        navigator.permissions
+          .query({ name: "accelerometer" })
+          .then((r) => {
+            document.getElementById("permQuery").textContent = r.state;
+            document.getElementById("permQuery").className =
+              r.state === "denied" ? "warn" : "ok";
+          })
+          .catch((e) => {
+            document.getElementById("permQuery").textContent =
+              "not queryable (" + e.message + ")";
+          });
+      } else {
+        document.getElementById("permQuery").textContent = "Permissions API unavailable";
+      }
+
+      let count = 0;
+      let lastSample = null;
+      let lastTime = 0;
+      let maxJerk = 0;
+      let timeoutId = window.setTimeout(() => {
+        if (count === 0) {
+          const status = document.getElementById("status");
+          status.textContent =
+            "No devicemotion event received after 3s. The sensor is blocked, unsupported, " +
+            "or this device/browser needs a permission grant.";
+          status.className = "warn";
+        }
+      }, 3000);
+
+      window.addEventListener("devicemotion", (event) => {
+        window.clearTimeout(timeoutId);
+        const status = document.getElementById("status");
+        status.textContent = "Receiving devicemotion events ✓";
+        status.className = "ok";
+
+        const acceleration = event.accelerationIncludingGravity;
+        if (!acceleration || acceleration.x === null) {
+          status.textContent =
+            "Events fire, but accelerationIncludingGravity is null — check the " +
+            "'Motion sensors' site permission (tap the icon left of the address bar).";
+          status.className = "warn";
+          return;
+        }
+
+        count += 1;
+        document.getElementById("count").textContent = count;
+
+        const { x, y, z } = acceleration;
+        document.getElementById("x").textContent = x.toFixed(2);
+        document.getElementById("y").textContent = y.toFixed(2);
+        document.getElementById("z").textContent = z.toFixed(2);
+
+        const now = Date.now();
+        if (lastSample) {
+          const deltaTime = now - lastTime;
+          if (deltaTime > 0) {
+            const jerk =
+              ((Math.abs(x - lastSample.x) +
+                Math.abs(y - lastSample.y) +
+                Math.abs(z - lastSample.z)) /
+                deltaTime) *
+              1000;
+            document.getElementById("jerk").textContent = jerk.toFixed(1);
+            if (jerk > maxJerk) {
+              maxJerk = jerk;
+              document.getElementById("maxJerk").textContent = maxJerk.toFixed(1);
+            }
+          }
+        }
+        lastSample = { x, y, z };
+        lastTime = now;
+      });
+    </script>
+  </body>
+</html>
