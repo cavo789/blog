@@ -86,7 +86,10 @@ independent copy of the same regex) by `degrade.cjs` for the exported `.md`/`llm
   (rendered through a portal into `document.body`, same rationale as `Snippet`'s ELI5 tooltip)
   and unfolds the same fields on click. A full-width `position: sticky` bar was considered and
   rejected: it would fight Docusaurus's own sticky navbar/table of contents and permanently eat
-  reading height.
+  reading height. Hidden below 600px (`styles.module.css`, `.fab`): editing a value only pays off
+  when copy/pasting the resulting command into a terminal, a PC activity — on a phone it's just
+  another bottom-corner widget competing with the site's chat bubble and scroll-to-top button.
+  The inline bar itself stays on mobile; only the pinned/floating copy is dropped.
 - **Persistence** — `localStorage`, keyed by the article's own path (`docusaurus:vars:<pathname>`),
   so a reader's values survive a reload of _that_ article but never leak into another one.
 

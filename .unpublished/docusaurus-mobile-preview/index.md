@@ -47,7 +47,7 @@ The browser will flag the certificate as untrusted first — expected, and safe 
 ## Why It Works
 
 - **The dev server already listens on every interface, not just the computer itself.** `docker-entrypoint.sh` starts it as `yarn start --host 0.0.0.0`; without that flag, it would only answer requests originating from inside its own container, invisible to anything else — including the computer's own Wi-Fi adapter.
-- **The port is already forwarded, before this trick is ever needed.** [`devcontainer.json`](.devcontainer/devcontainer.json) declares `forwardPorts: [3000, ...]`, so the chain from the devcontainer, through Docker, out to the computer is already wired — nothing to configure here.
+- **The port is already forwarded, before this trick is ever needed.** `devcontainer.json` declares `forwardPorts: [3000, ...]`, so the chain from the devcontainer, through Docker, out to the computer is already wired — nothing to configure here.
 - **HTTPS is deliberate, not incidental.** A growing list of browser APIs — motion sensors, clipboard access, service workers, camera and microphone — refuse to run outside a secure context. A dev server answering over plain HTTP would hide exactly the behavior a real, deployed HTTPS site will have.
 - **Same Wi-Fi is the entire requirement.** Nothing is routed through the internet, no router configuration, no account — the phone and the computer just need to be able to see each other on the local subnet. The one common exception is covered next.
 
@@ -55,7 +55,7 @@ The browser will flag the certificate as untrusted first — expected, and safe 
 
 Some networks won't allow this: guest Wi-Fi and a fair number of public or corporate networks enable **client isolation**, which deliberately stops devices on the same network from reaching each other, even though both are connected to the same access point. If the phone times out instead of showing a certificate warning, this is the most likely reason — and no amount of double-checking the IP address will fix it.
 
-VS Code's own port forwarding sidesteps the whole question. In the **Ports** panel (already listing 3000, since [`devcontainer.json`](.devcontainer/devcontainer.json) declares it), right-click the port and change its visibility from *Private* to *Public*. That hands back a forwarding URL reachable from anywhere with the link — the connection itself is terminated with a real, browser-trusted certificate, so there's no warning to click through on the phone this time either. It works across networks, at the cost of a very real trade-off: while a port is Public, anyone holding that link can reach the dev server, not just the phone it was meant for. Switch it back to *Private* — or stop forwarding it entirely — once done testing.
+VS Code's own port forwarding sidesteps the whole question. In the **Ports** panel (already listing 3000, since `devcontainer.json` declares it), right-click the port and change its visibility from *Private* to *Public*. That hands back a forwarding URL reachable from anywhere with the link — the connection itself is terminated with a real, browser-trusted certificate, so there's no warning to click through on the phone this time either. It works across networks, at the cost of a very real trade-off: while a port is Public, anyone holding that link can reach the dev server, not just the phone it was meant for. Switch it back to *Private* — or stop forwarding it entirely — once done testing.
 
 ## Under the Hood (skip this if you just want to use it)
 

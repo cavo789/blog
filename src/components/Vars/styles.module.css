@@ -348,3 +348,13 @@
     transition: none;
   }
 }
+
+/* Editing a value only matters when copy/pasting the resulting command into a
+ * terminal — a PC activity, not a phone one. On a small screen the pinned
+ * trigger is pure clutter on top of the site's own two bottom-corner
+ * widgets, so it's dropped entirely rather than shrunk like they are. */
+@media (max-width: 600px) {
+  .fab {
+    display: none;
+  }
+}

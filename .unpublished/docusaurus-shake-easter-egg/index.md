@@ -44,7 +44,7 @@ Check that this site is allowed to read **Motion sensors** — tap the icon left
 ## Why It Works
 
 - **Shake detection needs one number, not three.** A `devicemotion` event reports acceleration on three axes (x, y, z); comparing each to a threshold barely works, because ordinary handling already wobbles all three constantly. What actually marks a deliberate shake is *how fast* those three numbers change between two consecutive readings — summed across axes and normalized by the time between samples, that collapses to a single "jerk" value with one clean threshold to tune.
-- **Android has no `requestPermission()` prompt; iOS does.** iOS Safari 13+ requires an explicit `DeviceMotionEvent.requestPermission()` call tied to a tap — it cannot be requested proactively on page load — so this version ships Android-only on purpose; the iOS permission flow is a follow-up. Android's story turned out to have its own wrinkle, covered in [Under the Hood](#under-the-hood-skip-this-if-you-just-want-to-use-it).
+- **Android has no `requestPermission()` prompt; iOS does.** iOS Safari 13+ requires an explicit `DeviceMotionEvent.requestPermission()` call tied to a tap — it cannot be requested proactively on page load — so this version ships Android-only on purpose; the iOS permission flow is a follow-up. Android's story turned out to have its own wrinkle, covered in [How to Debug If the Shake Does Nothing](#how-to-debug-if-the-shake-does-nothing).
 - **A cooldown, not a boolean flag, stops the retrigger.** The overlay stays on screen for over two seconds; without a minimum gap between triggers, the tail end of the same shake gesture would relaunch it immediately. Comparing timestamps is simpler than a lock, and it can't get stuck "on" if a cleanup step is ever skipped.
 - **It's one component, mounted once, globally** — [the same pattern already used for the Konami code and the tab-away favicon swap](/blog/docusaurus-easter-eggs): no new route, no per-page wiring, one more line in `Root.js`.
 - **The haptic buzz is a bonus, not a requirement.** A short `navigator.vibrate()` call adds a physical "yelp" alongside the visual one — and on browsers that silently ignore it outside a user gesture (which a sensor event isn't), the easter egg still works fine, just without the buzz.
@@ -85,13 +85,29 @@ Standing up from a desk to physically shake a phone, twenty times in a row, to c
 
 Two calls, 150 ms apart, with a large enough jump between the two acceleration readings to cross the jerk threshold — that's the entire "physical" gesture, reduced to two numbers. This is also, honestly, how the screenshot above was produced: a headless browser, a mobile viewport, and this exact snippet dispatched through the page — not a real phone.
 
+## How to Debug If the Shake Does Nothing
+
+Two checks, in order — both take under a minute and neither requires touching the code.
+
+### 1. Allow Motion sensors for the site
+
+Chrome for Android has its own per-site **Motion sensors** permission, separate from anything this component controls. Tap the icon left of the address bar (padlock, "i", or a warning triangle if the certificate is self-signed) → **Permissions** → make sure **Motion sensors** is set to *Allow*, not *Block*. If it's not listed there, check **Chrome ⋮ → Settings → Site settings → Motion sensors** for a global block instead. Reload the page after changing it — this alone was the fix the one real device this was tested on needed.
+
+### 2. Watch the raw sensor data
+
+When step 1 doesn't explain it, a small standalone diagnostic page settles the rest — no build step, no remote DevTools setup, just live numbers on the phone's own screen:
+
+<Snippet filename="static/shake-debug.html" source="static/shake-debug.html" defaultOpen={false} />
+
+Visit `/shake-debug.html` on the same origin as the rest of the site and it reports, live: whether `DeviceMotionEvent` exists at all, `navigator.permissions.query({ name: "accelerometer" })`'s state (`"granted"` / `"denied"` / `"prompt"`), a running count of events received, the live `x`/`y`/`z` readings, and the computed jerk value against the current threshold. Three distinct failure signatures to read off it:
+
+- **No events at all, count stuck at 0** — the browser or OS is blocking the sensor entirely, or `DeviceMotionEvent` isn't supported (iOS without the permission flow, see the limitation above).
+- **Events arrive, but `x`/`y`/`z` stay `null`** — this is the Motion sensors permission from step 1, confirmed: the browser fires the event out of habit but withholds the data.
+- **Real numbers, but the max jerk never crosses the threshold** — not a bug, just a threshold calibrated for a different hand; see the tuning note below.
+
+This is also, worth admitting plainly, how the bug in step 1 was actually found in the first place: the shake did nothing on a real phone, this page showed events climbing with `x`/`y`/`z` stuck at `null`, and the permission query spelled out exactly why in one word — `"denied"`.
+
 ## Under the Hood (skip this if you just want to use it)
-
-### Android isn't permission-free either
-
-"Android needs no permission" turned out to be half true. `devicemotion` fires without any `requestPermission()` call, exactly as advertised — but Chrome for Android has its own per-site **Motion sensors** permission (Site info → Permissions), separate from the iOS-style API, and on at least one real device it defaulted to blocked. With it blocked, the event still fires on schedule — no error, no rejected promise, nothing in the console — but `event.accelerationIncludingGravity` comes back `null`. Silent, and easy to mistake for a bug in the detection code rather than a permission the browser never told anyone about.
-
-The tell, diagnosed with a small standalone HTML page dropped in `static/` (no build step, just live `x`/`y`/`z` and a running event counter — cheaper than wiring up remote DevTools for a five-minute check): `navigator.permissions.query({ name: "accelerometer" })` reported `"denied"` while the event count kept climbing. Once the permission was flipped to *Allow* in Chrome's site settings, real values started flowing immediately — no code changed, no redeploy, nothing to fix but a browser setting. If a `devicemotion`-based feature seems to do nothing on Android, check that permission before suspecting the JavaScript.
 
 ### The image was the hard part, not the code
 
