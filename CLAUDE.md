@@ -103,6 +103,11 @@ Status subfolders: `DONE/`, `PARTIAL/`, `BLOCKED/`, `WONT_DO/`.
 Language: **French** (private, never published).
 Format and numbering: **`todo-authoring`** skill — load it before writing any TODO.
 
+`0000-slug.md` files are the exception: standing aggregates, never processed by `/todo` or ranked by
+`/todo-plan`. `0000-suggestions-articles-a-publier.md` is the article-idea backlog — maintained by
+`/suggestions-add` (append) and `/suggestions-write` (pick + draft + mark done in place), distinct
+from `0000-freshness-journal.md`/`0000-reader-review-journal.md` which are pure logs.
+
 ### Auto-memory
 
 `.claude/memory/` — Claude's persistent session memory (blog map, conventions, writing style, …).
@@ -114,8 +119,8 @@ These files are loaded at conversation start; run `/refresh` to update them afte
   reachable through a matching slash command — there is no other discovery path.
 - **Commands** (`./claude/commands/`) are the only self-discoverable layer (`/` autocompletes them).
   Review commands wrap the matching agent; workflow commands (`/todo`, `/todo-add`, `/todo-plan`,
-  `/freshness`, `/links`, `/refresh`, `/reader_review`, `/review_blog`, `/deep_review`) drive
-  direct implementation or batch processing.
+  `/suggestions-add`, `/suggestions-write`, `/freshness`, `/links`, `/refresh`, `/reader_review`,
+  `/review_blog`, `/deep_review`) drive direct implementation or batch processing.
 - **Skills** (`./claude/skills/`) are methodologies Claude loads by contextual trigger or because a
   command/agent explicitly binds one. Never typed directly.
 - **Rules** (`./claude/rules/`) load deterministically off a `paths:` glob — every time a matching
@@ -139,6 +144,8 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 | `/todo`                     | _(none)_                             | `todo-authoring` (via lock scripts)                                   |
 | `/todo-add`                 | _(none)_                             | `todo-authoring`                                                      |
 | `/todo-plan`                | _(none)_                             | _(inline, via `todo_parse_backlog.sh`)_                               |
+| `/suggestions-add`          | _(none)_                             | _(inline, see command)_                                               |
+| `/suggestions-write`        | _(none)_                             | `blog-post-structure`                                                 |
 
 ### Rule → skill map
 

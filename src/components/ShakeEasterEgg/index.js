@@ -4,10 +4,10 @@ import scaredImg from "@site/static/img/meerkat/suricate_scared.webp";
 import styles from "./styles.module.css";
 
 // "Jerk" (rate of change of acceleration) threshold that counts as a shake.
-// First field-tested value (28) fired from a quick tilt, not just a real
-// shake — raised to require a deliberate gesture. Raise further if it still
-// fires too easily, lower it if a real shake stops triggering it.
-const SHAKE_JERK_THRESHOLD = 60;
+// History: 28 (initial) fired from a mere tilt; 60 (first field fix) still
+// fired too easily across a full day of real-world phone use. Raise further
+// if it still fires too easily, lower it if a real shake stops triggering it.
+const SHAKE_JERK_THRESHOLD = 100;
 
 // Ignore devicemotion samples firing faster than this: some devices report
 // at 60Hz+, which would otherwise make every tiny jitter look like a spike.

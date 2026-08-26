@@ -59,13 +59,21 @@ src/components/ShakeEasterEgg/
   exit gets a CSS fade instead of popping out abruptly, whether it ends by
   timeout or by tap.
 
-## ⚠️ Known limitation — iOS not supported yet
+## ⚠️ Known limitation — iOS is intentionally unsupported
 
 iOS Safari 13+ requires an explicit `DeviceMotionEvent.requestPermission()`
 call tied to a user gesture (a tap) before it will fire `devicemotion` events
-at all — it cannot be requested proactively on page load. This component
-does not implement that permission dance yet, so on iOS the shake simply
-never triggers (silent no-op, no error).
+at all — it cannot be requested proactively on page load, and the call only
+exists on iOS, never on Android. This component does not implement that
+permission dance, so on iOS the shake simply never triggers (silent no-op,
+no error) — and this is a deliberate decision, not an unfinished one. Every
+other easter egg on this site is invisible until a visitor stumbles onto it
+on purpose (a key sequence, a hidden comment, a tab left in the background);
+satisfying `requestPermission()`'s user-gesture requirement would mean either
+a visible "enable this" button (breaking that rule) or firing the request on
+the visitor's very first unrelated tap (a native permission dialog appearing
+out of nowhere). Neither fits, so this ships Android-only, permanently, by
+choice — not a gap waiting to be filled.
 
 Android Chrome needs no `requestPermission()` call, but has its own per-site
 **Motion sensors** permission (Site info → Permissions) that can be blocked —
