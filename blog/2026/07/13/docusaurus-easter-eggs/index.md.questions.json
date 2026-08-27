@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-18T10:15:16.227Z",
+  "generated": "2026-08-27T06:41:31.470Z",
   "source": "index.md",
-  "sourceHash": "3649ce8dcc760509bdfea51e5e3d16caff6a728e",
+  "sourceHash": "448c3aeecc07716e4d2f301e70c0d324933f4dca",
   "questions": [
     {
-      "question": "What is the ASCII-art meerkat in the page source?",
+      "question": "What is an ASCII-art meerkat in the page source?",
       "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source"
     },
     {
-      "question": "How do I find the console.log wink for DevTools visitors?",
+      "question": "How does the console.log wink work for DevTools visitors?",
       "anchor": "2-a-consolelog-wink-for-devtools-visitors"
     },
     {
-      "question": "Can you explain how the 404 page with a sense of humor works?",
+      "question": "What are the rotating 404 messages on this blog?",
       "anchor": "3-a-404-page-with-a-sense-of-humor"
     },
     {
@@ -22,20 +22,20 @@
       "anchor": "4-the-star-of-the-show-a-konami-code-easter-egg"
     },
     {
-      "question": "How does the hidden sitemap comment work?",
+      "question": "What is the hidden sitemap comment in this blog?",
       "anchor": "5-tab-away-easter-egg-title-and-favicon-swap"
     },
     {
-      "question": "What are some of the bugs we found and caught along the way?",
-      "anchor": "the-bug-that-nearly-killed-the-fun"
-    },
-    {
-      "question": "Can you explain how the tab-away easter egg works?",
+      "question": "How does the tab-away title/favicon swap work on this blog?",
       "anchor": "6-a-wink-in-the-http-headers"
     },
     {
-      "question": "How does the print stylesheet footer work on this blog?",
+      "question": "What are the hidden bugs found on this blog?",
       "anchor": "7-print-stylesheet-easter-egg"
+    },
+    {
+      "question": "What is the print stylesheet easter egg on this blog?",
+      "anchor": "8-sitemapxml-gets-a-comment-too"
     }
   ]
 }
