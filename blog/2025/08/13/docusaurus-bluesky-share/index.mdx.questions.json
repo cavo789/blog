@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:09.780Z",
+  "generated": "2026-08-27T18:58:44.595Z",
   "source": "index.mdx",
-  "sourceHash": "2edaae9eab4997025d2cc0a8bcb1ae2deb96a84f",
+  "sourceHash": "e5955312873fcf5c21855178aeadaacd4d0dc6d6",
   "questions": [
     {
-      "question": "How do you create a custom React component for adding a 'Share on Bluesky' button in Docusaurus?",
+      "question": "How do I create a custom Docusaurus React component?",
       "anchor": "time-to-create-our-bluesky-docusaurus-component"
     },
     {
-      "question": "What is the purpose of the 'Swizzle' action in Docusaurus and how does it help override templates?",
+      "question": "What is the purpose of the 'Share on Bluesky' button in this article?",
       "anchor": "result"
     },
     {
-      "question": "How do you extract the original template file to modify for adding a 'Share on Bluesky' button?",
+      "question": "How do I override how a blog post is rendered by Docusaurus?",
       "anchor": "we-need-to-override-how-the-article-is-rendered-by-docusaurus"
     },
     {
-      "question": "What steps are involved in keeping things under control when overriding templates in Docusaurus?",
+      "question": "What is the content of the 'override' file in Docusaurus?",
       "anchor": "extract-the-original-file"
     },
     {
-      "question": "How do you test if the correct file is modified for adding a 'Share on Bluesky' button?",
+      "question": "How do I extract the original template for a blog post in Docusaurus?",
       "anchor": "keep-things-under-control"
     },
     {
-      "question": "What modifications can be made to the extracted template file to add a 'Share on Bluesky' button?",
+      "question": "What is the purpose of the 'Swizzle' action in Docusaurus?",
+      "anchor": "we-need-to-override-how-the-article-is-rendered-by-docusaurus"
+    },
+    {
+      "question": "How do I keep things under control when overriding a blog post's template in Docusaurus?",
       "anchor": "playing-and-adding-a-stupid-message-to-every-blog-post"
     },
     {
-      "question": "How do you integrate your custom component into Docusaurus blog posts after creating it?",
-      "anchor": "45-and-finally-our-css"
-    },
-    {
-      "question": "What are some best practices for maintaining the original template files in a Docusaurus project?",
+      "question": "What is the purpose of the 'override' file in Docusaurus?",
       "anchor": "extract-the-original-file"
     }
   ]

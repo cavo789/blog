@@ -1,14 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:33:23.780Z",
+  "generated": "2026-08-27T18:59:00.121Z",
   "source": "index.js",
-  "sourceHash": "94cb120aebdc6226c6be6898303d11e724ed52d4",
+  "sourceHash": "1279e681c2788398e30e5122be49bae3b2d9f603",
   "lang": "javascript",
   "explanations": {
-    "22": "This helper function checks whether we're viewing a single blog post or a list of posts, and returns a CSS class name only for list view to add spacing.",
-    "24": "The question mark returns one value if the condition is true, otherwise the colon returns the other value—this is called a ternary operator.",
-    "31": "This creates an AI icon component only if the post's metadata says it was AI-assisted AND we're on the full post page (not a preview card).",
-    "52": "This checks if the frontMatter explicitly says tried_it is false; if it's anything else (true or missing), the TriedIt component will render."
+    "23": "useBlogPost() is a hook from Docusaurus that tells you whether you're viewing a full blog post page or just seeing a preview card in a list.",
+    "24": "This returns a CSS class name only when we're in list view (not on the full post page), or undefined if we're on the actual post page.",
+    "31": "This checks two things: whether the post is marked as AI-assisted in its metadata, AND whether we're viewing the full post page (not a card); it only renders the AIIcon component if both are true.",
+    "57": "This checks if tried_it is explicitly set to false in the post's settings; if it's not false (meaning it's true or missing), the TriedIt component will render."
   }
 }

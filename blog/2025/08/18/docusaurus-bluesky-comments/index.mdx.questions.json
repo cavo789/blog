@@ -1,49 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:15.931Z",
+  "generated": "2026-08-27T18:58:52.167Z",
   "source": "index.mdx",
-  "sourceHash": "5dcb2ad546e92249f0088323c1d992552b42d880",
+  "sourceHash": "27cf5927a22fa08b1514c6d9600f5b3b56730c9f",
   "questions": [
     {
       "question": "How do I integrate Bluesky comments into my Docusaurus blog posts?",
-      "anchor": "what-youll-get"
-    },
-    {
-      "question": "What are the features added in this second part of the 'Bluesky Docusaurus component' series?",
       "anchor": ""
     },
     {
-      "question": "How do I link my Docusaurus blog posts to Bluesky posts using a frontmatter key?",
+      "question": "What are the features of the Bluesky component in this article?",
       "anchor": "what-youll-get"
     },
     {
-      "question": "What are the steps to update the React component to fetch and display Bluesky comments, likes, and repost counts?",
-      "anchor": "what-youll-get"
-    },
-    {
-      "question": "How do I configure my Docusaurus site with my Bluesky handle?",
-      "anchor": "what-youll-get"
-    },
-    {
-      "question": "What is the layout of our Bluesky generic component?",
+      "question": "How can I link a Docusaurus blog post to a Bluesky post?",
       "anchor": "15-the-layout-of-our-bluesky-generic-component"
     },
     {
-      "question": "What is the 'Like, share or comment on Bluesky' button used for in this article?",
+      "question": "What is the layout of our Bluesky generic component in this article?",
       "anchor": "25-our-like-share-or-comment-button"
     },
     {
-      "question": "How do I get the number of likes and reposts using our component?",
+      "question": "How can I display the number of likes and reposts on my Docusaurus blog posts?",
       "anchor": "35-our-component-for-getting-the-number-of-likes-and-reposts"
     },
     {
-      "question": "What is the process to retrieve all comments from your Bluesky post?",
+      "question": "What is the facepile merge described in this article?",
       "anchor": "45-retrieving-all-comments"
     },
     {
-      "question": "What are the new CSS styles added in this article?",
+      "question": "How can I retrieve all comments from a Bluesky post on my Docusaurus blog posts?",
       "anchor": "55-our-new-css"
+    },
+    {
+      "question": "What is the CSS used in this article for displaying Bluesky components?",
+      "anchor": "update-the-docusaurus-configuration-file"
     }
   ]
 }
