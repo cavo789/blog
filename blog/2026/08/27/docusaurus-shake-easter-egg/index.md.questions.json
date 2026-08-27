@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-27T06:41:12.464Z",
+  "source": "index.md",
+  "sourceHash": "543e59a4900cec363972e6d649bee802ee5403f7",
+  "questions": [
+    {
+      "question": "What is the purpose of this blog's shake detection feature?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the shake detection math work in this article?",
+      "anchor": "shake-your-phone-see-what-happens"
+    },
+    {
+      "question": "Why is there a difference in how Android and iOS handle motion sensors for easter eggs?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What are some common ways to install and test the shake detection feature on a phone?",
+      "anchor": "why-ios-is-left-out-on-purpose"
+    },
+    {
+      "question": "How can I debug if the shake detection feature doesn't work as expected?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What are some potential bugs or issues with the shake detection feature on a real phone?",
+      "anchor": "testing-it-without-shaking-anything"
+    },
+    {
+      "question": "How can I allow Motion sensors for this site in Chrome for Android?",
+      "anchor": "how-to-debug-if-the-shake-does-nothing"
+    },
+    {
+      "question": "What are some ways to watch the raw sensor data for the shake detection feature?",
+      "anchor": "1-allow-motion-sensors-for-the-site"
+    },
+    {
+      "question": "What is under the hood of the shake detection feature, and why did they choose not to include it in the article?",
+      "anchor": "2-watch-the-raw-sensor-data"
+    },
+    {
+      "question": "What was the hardest part of implementing the shake detection feature on a real phone?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How can I tune the jerk threshold for the shake detection feature on a real phone?",
+      "anchor": "the-image-was-the-hard-part-not-the-code"
+    },
+    {
+      "question": "What is the conclusion of this article about shake detection features on technical blogs?",
+      "anchor": "tuning-the-jerk-threshold-on-a-real-phone"
+    }
+  ]
+}
