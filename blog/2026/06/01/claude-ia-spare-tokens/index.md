@@ -3,6 +3,7 @@ slug: claude-ia-spare-tokens
 title: Claude Code - Optimizing Token Usage
 authors: [christophe]
 image: /img/v2/claude-code-tokens.webp
+series: Claude Code
 mainTag: ai
 tags:
   - ai
@@ -83,7 +84,10 @@ The choice of model directly impacts token consumption — the more capable the 
 
 ## CLAUDE.md File
 
-Loaded at every startup — every byte here costs tokens before your first message. Write in telegraphic style; `SOLID` and `SRP` are understood without full sentences.
+Loaded at every startup — every byte here costs tokens before your first message. Write in telegraphic style; `SOLID` and `SRP` are understood without full sentences. If an instruction keeps growing because it needs to explain *why*, not just state the *what*, it may not belong here at all —
+<Link to="/blog/claude-code-workflow">a later article</Link> covers moving that kind of standing
+rule into a skill, an agent or a rule file instead of retyping it into `CLAUDE.md` every time it
+grows.
 
 ### Data Fetching Rules
 

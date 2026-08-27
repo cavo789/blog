@@ -13,6 +13,13 @@ const SERIES_DATA = [
     color: "#0ea5e9",
   },
   {
+    name: "Claude Code",
+    description:
+      "Build a layered Claude Code workflow — commands, hooks, skills, agents, rules — and keep token usage under control.",
+    image: "/img/series/claude-code.webp",
+    color: "#d97757",
+  },
+  {
     name: "Coding using a devcontainer",
     description: "Develop consistently across machines using VS Code Dev Containers.",
     image: "/img/series/devcontainer.webp",

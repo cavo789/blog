@@ -4,6 +4,7 @@ title: "Claude Code - From Slash Commands to a Layered Workflow"
 description: "How this blog's .claude/ folder grew from a handful of slash commands into commands, hooks, skills, agents and rules working together — a practical learning path, including where a deterministic script beats asking the AI."
 authors: [christophe]
 image: /img/v2/vibe_coding_claude.webp
+series: Claude Code
 mainTag: ai
 tags: [ai]
 date: 2026-08-28

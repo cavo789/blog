@@ -13,6 +13,16 @@
   margin-bottom: 0 !important;
 }
 
+/* Series banners are dense, text-heavy posters — great as a full-width hero on a
+   series' own page, overwhelming at card size next to 20+ others. Crop to the top
+   (title + character, the least busy part on every banner) instead of shrinking the
+   whole poster down to illegibility. Scoped to this grid only — the shared
+   PostCard image treatment (contain) stays untouched everywhere else it's used. */
+.seriesGrid :global(.card__image) {
+  object-fit: cover;
+  object-position: top;
+}
+
 @media (max-width: 996px) {
   .seriesGrid {
     grid-template-columns: repeat(2, 1fr);
