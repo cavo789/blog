@@ -71,6 +71,48 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions-write`.
   détecte les fautes automatiquement à l'écriture/au commit, l'autre laisse le lecteur les signaler
   après publication — deux angles complémentaires, pas un doublon.
 
+### [ ] act — exécuter les GitHub Actions en local avant de pousser
+
+- Idée de Christophe (2026-08-27) : `act` (nektos/act) fait tourner les workflows
+  `.github/workflows/*.yml` tels quels dans des conteneurs Docker qui émulent les runners GitHub —
+  donc valider (et itérer sur) une Action en local, sans push, sans attendre le CI distant.
+- Vérifié par grep — `nektos`/`act -j`/"actions en local" n'apparaissent nulle part sur le blog ni
+  en draft ; pas de doublon direct.
+- Chevauchement partiel avec `/blog/dagger-python` (même objectif "valider le pipeline localement
+  avant push/CI") mais mécanisme différent : Dagger redéfinit les étapes comme des fonctions Python
+  portables, alors qu'`act` rejoue la syntaxe GitHub Actions native — à mentionner explicitement en
+  intro pour ne pas donner l'impression de refaire le même article avec un autre outil.
+- Distinct aussi du draft `docusaurus-github-actions-ssh-deploy` (déploiement *via* GitHub Actions,
+  execution distante) — ici l'angle est l'inverse : rejouer les Actions *en local*.
+- Angle concret suggéré par Christophe : un workflow de code formatting / code quality (ex. Prettier,
+  ESLint, Stylelint — déjà utilisés sur ce blog) exécuté et validé avec `act` avant de pousser.
+
+### [ ] gitlab-ci-local — exécuter son pipeline GitLab CI en local avant de pousser
+
+- Idée de Christophe (2026-08-27), pendant de l'idée `act` ci-dessus mais volontairement **séparée** :
+  même problème ("push and pray") et même famille d'outils, mais deux publics différents (GitHub =
+  grand public, GitLab CI = plutôt usage pro/entreprise) et deux syntaxes de config assez éloignées
+  pour qu'un seul article mélangeant les deux devienne confus.
+- Outil : [`gitlab-ci-local`](https://github.com/firecow/gitlab-ci-local) (firecow), actif et
+  maintenu — `gitlab-runner exec`, l'équivalent officiel, est déprécié depuis GitLab Runner 16.0 sans
+  vrai remplaçant natif à ce jour. Rejoue le `.gitlab-ci.yml` tel quel (stages, jobs, images Docker,
+  variables) sans réécriture, contrairement à l'angle Dagger de `/blog/dagger-python`.
+- Vérifié par grep : `gitlab-ci-local` n'apparaît nulle part sur le blog ni en draft — pas de doublon.
+  Chevauchement partiel et assumé avec `/blog/dagger-python` (même objectif, mécanisme différent — à
+  mentionner en intro comme pour `act`).
+- **Demande explicite de Christophe : article riche en exemples concrets**, basé sur ses vrais
+  `.gitlab-ci.yml` complexes utilisés au bureau pour du code quality — à couvrir large plutôt qu'un
+  seul cas jouet :
+  - formatting/lint génériques : shellcheck, shellfmt
+  - PHP : php-cs-fixer, phpcbf — et surtout l'usage d'une image Docker externe toute faite comme
+    [`jakzal/phpqa`](https://github.com/jakzal/phpqa) (déjà couverte pour son usage direct dans
+    `/blog/php-jakzal-phpqa` — bridge naturel : même image, nouvel angle "rejouée par gitlab-ci-local
+    avant de pousser")
+  - Python : ruff, mypy (déjà couverts comme outils dans `/blog/python-qa` — même bridge)
+  - Distinct de `/blog/git-precommit` (shellcheck/shellfmt y sont déjà mentionnés, mais côté hook
+    pre-commit local, pas côté rejeu d'un pipeline CI complet) — à citer comme approche complémentaire,
+    pas concurrente.
+
 ### [ ] Kubernetes — premiers pas : concepts, à quels besoins ça répond, et un mini-lab pratique
 
 - Idée de Christophe (2026-08-26) : aucun tutoriel Kubernetes sur le blog. Vérifié par grep —

@@ -1,0 +1,9 @@
+---
+description: Draft a pull-request description from the current branch's diff against main
+argument-hint: "[base-branch] (optional — defaults to main)"
+allowed-tools: Bash(git diff*), Bash(git log*), Read
+---
+
+# PR description
+
+Look at `git diff $ARGUMENTS...HEAD` and `git log $ARGUMENTS...HEAD --oneline`. Draft a pull-request description: a one-paragraph summary of the "why", then a bulleted "what changed". Do not include a test plan unless the diff touches test files.
