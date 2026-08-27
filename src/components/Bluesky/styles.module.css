@@ -4,9 +4,25 @@
 }
 
 .blueskyContainer {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  margin: 2rem 0 0.5rem;
+  padding: 1.1rem 1.25rem 1.4rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  background: var(--ifm-background-surface-color);
+}
+
+.blueskyHeadline {
+  display: block;
+  font-weight: 500;
+  color: var(--ifm-color-content);
+  margin-bottom: 0.75rem;
+}
+
+.blueskyAccountNote {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: smaller;
+  color: var(--ifm-color-emphasis-600);
 }
 
 .blueskyCommentsContainer {
@@ -67,8 +83,7 @@
 }
 
 .blueskyCommentLikes::before {
-  content: "♡\a0";
-  color: red;
+  content: "❤️\a0";
 }
 
 .blueskyCommentLikes::after {
@@ -76,7 +91,7 @@
 }
 
 .blueskyCommentReposts::before {
-  content: "↺\a0";
+  content: "🔁\a0";
 }
 
 .blueskyCommentReposts::after {
@@ -139,6 +154,47 @@ img.blueskyCommentEmbedThumb {
 
 [data-theme="dark"] .blueskyNoCommentYetCTA {
   color: var(--ifm-color-primary-light);
+}
+
+.blueskyPostLikes {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blueskyLikersAvatars {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.4rem;
+}
+
+.blueskyLikersAvatarLink {
+  margin-left: -1rem;
+  line-height: 0;
+}
+
+.blueskyLikersAvatarLink:first-child {
+  margin-left: 0;
+}
+
+.blueskyLikersAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--ifm-background-color);
+  display: block;
+}
+
+.blueskyLikersAvatarMore {
+  margin-left: 0.4rem;
+  font-size: smaller;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.blueskyEngagementRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .blueskyButton {

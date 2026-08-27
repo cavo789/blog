@@ -1,79 +1,84 @@
-import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.module.css";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
-export default function BlueskyLikes({ metadata }) {
-  const { siteConfig } = useDocusaurusContext();
-  const blueSkyConfig = siteConfig?.customFields?.bluesky;
-  const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
+const MAX_AVATARS = 10;
 
-  const [postStats, setPostStats] = useState({
-    likes: null,
-    reposts: null,
-    loading: true,
-  });
+// Bluesky facets are keyed by "liked", "reposted", "commented" — a person can carry more than one.
+function describeActions(actions) {
+  const verbs = [];
+  if (actions.has("liked")) verbs.push("liked");
+  if (actions.has("reposted")) verbs.push("reposted");
+  if (actions.has("commented")) verbs.push("commented on");
 
-  useEffect(() => {
-    if (!blueskyRecordKey || !blueSkyConfig?.handle) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- resets stats when the post/config identity changes; the effect also fetches below, it's not derivable at render time
-      setPostStats({ likes: null, reposts: null, loading: false });
-      return;
-    }
+  if (verbs.length === 1) return verbs[0];
+  return `${verbs.slice(0, -1).join(", ")} and ${verbs[verbs.length - 1]}`;
+}
 
-    const fetchData = async () => {
-      try {
-        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
-        const url = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(
-          postUri,
-        )}&depth=0`;
-
-        const res = await fetch(url);
-        if (!res.ok) throw new Error("Failed to fetch post data");
-
-        const data = await res.json();
-        const { likeCount, repostCount } = data.thread.post;
-
-        setPostStats({
-          likes: likeCount,
-          reposts: repostCount,
-          loading: false,
-        });
-      } catch (e) {
-        console.error("Error fetching Bluesky stats:", e);
-        setPostStats({ likes: null, reposts: null, loading: false });
-      }
-    };
-
-    fetchData();
-  }, [blueskyRecordKey, blueSkyConfig?.handle]);
-
-  if (postStats.loading || postStats.likes === null) {
+export default function BlueskyLikes({ stats }) {
+  if (stats.loading || stats.likes === null) {
     return null;
   }
+
+  const shown = stats.engaged.slice(0, MAX_AVATARS);
+  const extraEngaged = stats.engaged.length - shown.length;
 
   return (
     <span className={styles.blueskyPostLikes}>
       <span
         className={styles.blueskyCommentLikes}
-        title={`The original post has ${postStats.likes} likes on Bluesky`}
+        title={`The original post has ${stats.likes} likes on Bluesky`}
       >
-        {postStats.likes}
+        {stats.likes}
       </span>
       <span
         className={styles.blueskyCommentReposts}
-        title={`The original post has been shared ${postStats.reposts} times on Bluesky`}
+        title={`The original post has been shared ${stats.reposts} times on Bluesky`}
       >
-        {postStats.reposts}
+        {stats.reposts}
       </span>
+      {shown.length > 0 && (
+        <span className={styles.blueskyLikersAvatars}>
+          {shown.map((person, index) => (
+            <a
+              key={person.did}
+              href={`https://bsky.app/profile/${person.handle}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.blueskyLikersAvatarLink}
+              style={{ zIndex: shown.length - index }}
+              title={`${person.displayName} (@${person.handle}) ${describeActions(
+                person.actions,
+              )} this post`}
+            >
+              <img
+                src={person.avatar}
+                alt={`${person.displayName}'s avatar`}
+                className={styles.blueskyLikersAvatar}
+              />
+            </a>
+          ))}
+          {extraEngaged > 0 && (
+            <span className={styles.blueskyLikersAvatarMore}>+{extraEngaged}</span>
+          )}
+        </span>
+      )}
     </span>
   );
 }
 
 BlueskyLikes.propTypes = {
-  metadata: PropTypes.shape({
-    frontMatter: PropTypes.shape({
-      blueskyRecordKey: PropTypes.string,
-    }),
+  stats: PropTypes.shape({
+    loading: PropTypes.bool.isRequired,
+    likes: PropTypes.number,
+    reposts: PropTypes.number,
+    engaged: PropTypes.arrayOf(
+      PropTypes.shape({
+        did: PropTypes.string.isRequired,
+        handle: PropTypes.string.isRequired,
+        displayName: PropTypes.string.isRequired,
+        avatar: PropTypes.string,
+        actions: PropTypes.instanceOf(Set).isRequired,
+      }),
+    ).isRequired,
   }).isRequired,
 };

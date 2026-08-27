@@ -43,6 +43,11 @@ export default function BlogPostItem({ children, className }) {
         {/* Only display our RelatedPosts and Bluesky components on the post page; not the blog view */}
         {isBlogPostPage && (
           <>
+            {/* Bluesky comes first: it and RelatedPosts are both exit points
+                (off-site vs. another post), and whichever renders first wins
+                the click of a reader who just finished and is ready to act.
+                Bluesky engagement is the current priority ask. */}
+            <Bluesky metadata={metadata} />
             {/* Readers who reach the end of an article should meet the next one
                 to read before the reaction, comment and typo report blocks.
                 Buried under those widgets, these links were never seen. */}
@@ -50,7 +55,6 @@ export default function BlogPostItem({ children, className }) {
             <TypoReport metadata={metadata} />
             <Reaction metadata={metadata} />
             {frontMatter.tried_it !== false && <TriedIt metadata={metadata} />}
-            <Bluesky metadata={metadata} />
           </>
         )}
         <ScrollToTopButton />
