@@ -219,4 +219,6 @@ Registered the same way as the [ASCII-art injector](/blog/docusaurus-ascii-art):
 
 None of these change how a single reader reads a single article. That was the whole point — a blog's job is still to be read, not to perform tricks at the reader. But for the developers, the crawlers, the DevTools-curious, and the people who actually print articles or inspect response headers, there's now a little more personality hiding just under the surface. So cool no?
 
+That list has since grown by one: every egg above assumes a keyboard or an open DevTools panel, which is no use to anyone reading on a phone — so <Link to="/blog/docusaurus-shake-easter-egg">shaking the phone</Link> now startles the mascot full-screen for a couple of seconds, no keyboard involved.
+
 If you're running your own Docusaurus blog and have a mascot, a logo, or even just a favorite color: pick one or two of these — they're all small, self-contained, and none of them require touching your actual content. Start with the one that matches where your readers already are (DevTools console if your audience is developers, HTTP headers if it's other bloggers who poke at things, print CSS if people print your recipes or tutorials) and grow from there.

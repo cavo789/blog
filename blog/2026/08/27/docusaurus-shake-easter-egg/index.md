@@ -2,23 +2,22 @@
 slug: docusaurus-shake-easter-egg
 title: "Shake Your Phone, Startle the Meerkat"
 authors: [christophe, claude]
-image: /img/v2/easter_eggs.webp
+image: /img/v2/shaked_meerkat.webp
 mainTag: docusaurus
 tags: [docusaurus, react, component]
-date: 2026-09-08
+date: 2026-08-27
 description: "A ninth easter egg for this blog, built for readers on a phone: shake it — in Chrome or in the installed PWA — and the meerkat mascot takes over the full screen, startled, for about two seconds. Covers the devicemotion 'jerk' math behind shake detection, the three-phase overlay animation, how to test it from a desktop DevTools console with no accelerometer at all, and a real bug caught along the way — an AI image generator that drew a transparent-background placeholder as literal opaque pixels instead of real alpha."
 language: en
 ai_assisted: true
-draft: true
 series: Creating Docusaurus components
 ---
 
 <!-- cspell:ignore devicemotion accelerationIncludingGravity avonture RGBA meerkat's -->
 
-![Shake Your Phone, Startle the Meerkat](/img/v2/easter_eggs.webp)
+![Shake Your Phone, Startle the Meerkat](/img/v2/shaked_meerkat.webp)
 
 <TLDR>
-This blog already hides [eight small easter eggs](/blog/docusaurus-easter-eggs), but every one of them assumes a keyboard or an open DevTools panel — no use to a reader on a phone. This adds a ninth: shake the phone and the mascot appears full-screen, startled, for about two seconds. Covers the shake-detection math (a "jerk" threshold computed between consecutive `devicemotion` samples), the three-phase overlay animation (pop in, tremble, fade out), how to trigger and test it from a desktop DevTools console with no accelerometer involved, and a real bug caught along the way: an AI image generator that drew the checkerboard pattern used to *represent* transparency as literal opaque pixels, caught by reading the raw PNG bytes rather than trusting a preview. Android only, deliberately and permanently — iOS Safari's motion-permission prompt needs a tap, and every way to provide one conflicts with this site's "invisible until you stumble onto it" rule for easter eggs.
+This blog already hides [eight small easter eggs](/blog/docusaurus-easter-eggs), but every one of them assumes a keyboard or an open DevTools panel — no use to a reader on a phone. This adds a ninth: shake the phone and the mascot appears full-screen, startled, for about two seconds. Covers the shake-detection math (a "jerk" threshold computed between consecutive `devicemotion` samples), the three-phase overlay animation (pop in, tremble, fade out), how to trigger and test it from a desktop DevTools console with no accelerometer involved, and a real bug caught along the way: an AI image generator that drew the checkerboard pattern used to *represent* transparency as literal opaque pixels, caught by reading the raw PNG bytes rather than trusting a preview. **Android only**, deliberately and permanently — iOS Safari's motion-permission prompt needs a tap, and every way to provide one conflicts with this site's "invisible until you stumble onto it" rule for easter eggs.
 </TLDR>
 
 Every easter egg on this blog so far assumes a keyboard: <kbd>CTRL</kbd>+<kbd>U</kbd> to view source, a ten-key Konami sequence, a `console.log` that only shows up with DevTools open. All reasonable on a laptop — and invisible to anyone reading on a phone, which on a technical blog is still a meaningful share of the traffic. A phone has no arrow keys, but it has something a laptop doesn't: an accelerometer, sitting one `window.addEventListener("devicemotion", …)` away, on any page served over HTTPS.
@@ -127,16 +126,16 @@ This is also, worth admitting plainly, how the bug in step 1 was actually found 
 
 ### The image was the hard part, not the code
 
-The component itself came together in one pass. Getting a **real** transparent-background image of a startled meerkat took three tries — and the failure is worth knowing about if you're generating art with an AI image tool for anything that needs to composite over other content.
+The component itself came together in one pass. Getting a **real** transparent-background image of the startled meerkat needed more care than the code — worth knowing if you're generating art with an AI image tool for anything that has to composite over other content.
 
-The site's mascot art is [generated with Google Gemini](/blog/gemini-meerkat), feeding an existing reference image so new poses stay visually consistent. The first two attempts, asked for a "transparent background," came back as JPEG and WebP files that *looked* transparent in a preview — right up until the gray-and-white checkerboard pattern used by every image editor to *represent* transparency turned out to be drawn as literal, opaque pixels. The model had taken the on-screen convention for "nothing here" and painted it as if it were part of the scene.
+The site's mascot art is [generated with Google Gemini](/blog/gemini-meerkat), feeding an existing reference image so new poses stay visually consistent. For a full-screen overlay, "transparent background" isn't a style preference, it's a hard requirement: the file needs a real alpha channel, not just something that *looks* transparent in a preview. The prompt asked for a PNG export specifically, with an explicit line telling the model not to render the gray-and-white checkerboard pattern editors use to *represent* transparency as if it were part of the picture — that pattern is a UI convention, not pixels to draw.
 
-Two format facts made this easy to catch for certain, rather than guess from a preview:
+Two format facts make the result easy to verify, rather than trust a preview:
 
-- JPEG cannot store transparency at all, structurally — no amount of re-exporting fixes that.
-- A WebP or PNG file can carry an alpha channel, but doesn't have to. PNG stores this as one byte in its `IHDR` chunk: `6` means RGBA with a real alpha channel, `2` means plain RGB with none. Reading that byte — or just sampling a corner pixel and checking whether its alpha is actually `0` — settles the question without opening an editor.
+- JPEG cannot store transparency at all, structurally — a PNG (or WebP) export is non-negotiable from the start.
+- A PNG's `IHDR` chunk carries one byte for exactly this: `6` means RGBA with a real alpha channel, `2` means plain RGB with none. Reading that byte — or just sampling a corner pixel and checking whether its alpha is actually `0` — settles the question without opening an editor.
 
-Both checks came back negative on the first two attempts: no alpha channel, full opacity, a checkerboard baked in as pixels. Asking Gemini to export as PNG specifically, with a one-line warning not to render the transparency convention as content, produced a file that finally passed both checks — corners at alpha `0`, character fully opaque, verified pixel by pixel rather than by eye.
+The final file passed both checks: alpha `6` in the `IHDR` chunk, corners at alpha `0`, character fully opaque — verified pixel by pixel rather than by eye.
 
 ### Tuning the jerk threshold on a real phone
 
