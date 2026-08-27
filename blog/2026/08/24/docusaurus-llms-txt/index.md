@@ -10,7 +10,7 @@ date: 2026-08-24
 description: A growing share of your readers arrive through an AI assistant — and what they get is your HTML, wrapped in navigation, React widgets and collapsed accordions. This article generates a plain-Markdown mirror of every article, a /llms.txt index, and per-series full-text bundles, by degrading the MDX source rather than converting the rendered HTML. Includes the fallback rule that makes the export impossible to break.
 language: en
 ai_assisted: true
-blueskyRecordKey:
+blueskyRecordKey: 3mtslipixls2v
 ---
 
 <!-- cspell:ignore llms mdxjs unified remark stringify hast maintag preprocessContent -->

@@ -10,6 +10,7 @@ description: "A ninth easter egg for this blog, built for readers on a phone: sh
 language: en
 ai_assisted: true
 series: Creating Docusaurus components
+blueskyRecordKey: 3mu2ayngsmc2s
 ---
 
 <!-- cspell:ignore devicemotion accelerationIncludingGravity avonture RGBA meerkat's -->
