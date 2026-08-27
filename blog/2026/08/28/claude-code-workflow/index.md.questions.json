@@ -1,45 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-27T14:33:01.142Z",
+  "generated": "2026-08-27T15:56:01.707Z",
   "source": "index.md",
-  "sourceHash": "00b90b60e1852a58b377926544f8e60fb2fa083b",
+  "sourceHash": "acd5ca5e80f6b76b534f78b81723d538c18adf13",
   "questions": [
     {
-      "question": "What are the five layers in Claude Code and what do they do?",
+      "question": "What are the five layers in Claude Code's workflow and what do they do?",
       "anchor": ""
     },
     {
-      "question": "Why is a layered setup better than a single command approach for this blog's .claude/ folder?",
-      "anchor": "what-five-layers-look-like-in-practice"
+      "question": "How does Claude Code use plain Bash scripts to enforce rules without involving AI?",
+      "anchor": "always-on-no-invocation-needed-rules"
     },
     {
-      "question": "What are the steps to build a skill in Claude Code and how does it work?",
-      "anchor": "why-a-layered-setup-works"
-    },
-    {
-      "question": "How do I use hooks in Claude Code to block or auto-approve deterministically?",
-      "anchor": "start-here-your-first-slash-command"
-    },
-    {
-      "question": "What are the benefits of using plain Bash scripts instead of asking the AI for every step?",
+      "question": "What is the purpose of hooks in Claude Code's workflow and how do they work?",
       "anchor": "draw-a-hard-line-hooks"
     },
     {
-      "question": "How does Claude Code enforce the short version automatically when a matching file is open?",
+      "question": "How does the skill system in Claude Code ensure that standards are met without asking AI for guidance?",
       "anchor": "encode-your-standards-skills-checked-by-agents"
     },
     {
-      "question": "What are some examples of always-on rules in Claude Code and how do they work?",
-      "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
-    },
-    {
-      "question": "What are some best practices for building commands in Claude Code and how do they differ from building skills or rules?",
-      "anchor": "wiring-it-all-together"
-    },
-    {
-      "question": "Why are read-only agents important in Claude Code and how do they work?",
+      "question": "What is the zero-token script and how does it work in Claude Code's workflow?",
       "anchor": "why-the-reviewer-agents-cant-edit"
+    },
+    {
+      "question": "Why do plain Bash scripts often serve as the foundation for rules in Claude Code's workflow?",
+      "anchor": "always-on-no-invocation-needed-rules"
+    },
+    {
+      "question": "How does Claude Code use skills to enforce standards without relying on AI?",
+      "anchor": "encode-your-standards-skills-checked-by-agents"
+    },
+    {
+      "question": "What is the role of agents in Claude Code's workflow and how do they work?",
+      "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
     }
   ]
 }

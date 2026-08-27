@@ -1,49 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:12.499Z",
+  "generated": "2026-08-27T15:55:55.685Z",
   "source": "index.md",
-  "sourceHash": "4be34ed91a112dc0d1f20590d512c3d05ec1b792",
+  "sourceHash": "0584bb57556a991e813e5fcd4f6d2facefaa5c49",
   "questions": [
     {
       "question": "How do I reduce token consumption in Claude Code?",
       "anchor": ""
     },
     {
-      "question": "What are the practical techniques to optimize token usage in Claude Code?",
-      "anchor": ""
-    },
-    {
-      "question": "Which model choice impacts token consumption in Claude Code?",
-      "anchor": "reducing-context"
-    },
-    {
-      "question": "How does CLAUDE.md file affect token consumption in Claude Code?",
+      "question": "What are the benefits of using a CLAUDE.md file for context management in Claude Code?",
       "anchor": "model-choice"
     },
     {
-      "question": "What are the data fetching rules to reduce token usage in Claude Code?",
+      "question": "How can I optimize my data-fetching rules to reduce token consumption in Claude Code?",
       "anchor": "claudemd-file"
     },
     {
-      "question": "What is the output mode and how does it impact token consumption in Claude Code?",
-      "anchor": "data-fetching-rules"
-    },
-    {
-      "question": "How can I generate code using Claude Code with minimal token usage?",
-      "anchor": "output-mode"
-    },
-    {
-      "question": "What are the off-peak and peak hours for Claude Code and how do they affect token consumption?",
-      "anchor": "code-generation"
-    },
-    {
-      "question": "How can I save tokens by working during off-peak hours in Claude Code?",
+      "question": "What is the impact of off-peak and peak hours on token usage in Claude Code?",
       "anchor": "off-peak-and-peak-hours"
     },
     {
-      "question": "What are the extra tips to reduce token usage in Claude Code?",
-      "anchor": "extra"
+      "question": "How can I use the aggressive output mode to save tokens in Claude Code?",
+      "anchor": "output-mode"
+    },
+    {
+      "question": "What are some tips for reducing context consumption in Claude Code?",
+      "anchor": "reducing-context"
+    },
+    {
+      "question": "What is the difference between restrictive and balanced data-fetching rules in Claude Code?",
+      "anchor": "claudemd-file"
+    },
+    {
+      "question": "What is the recommended output mode for saving tokens in Claude Code?",
+      "anchor": "output-mode"
     }
   ]
 }

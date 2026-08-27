@@ -96,8 +96,8 @@ for (const jsonPath of files) {
 
   const currentHash = hashSource(fs.readFileSync(sourcePath, "utf-8"));
   if (currentHash !== record.sourceHash) {
-    console.warn(`⚠  STALE — ${relSource} changed since its sidecar was generated`);
-    console.warn(`   Fix with: yarn questions --force ${relSource}`);
+    // No per-file warning here — staleSources feeds the single batched command printed
+    // below, so nothing tempts a one-by-one `yarn questions --force` per file.
     staleSources.push(relSource);
     stale++;
   } else {
@@ -120,9 +120,11 @@ if (!quiet || actionable) {
     `\nquestions freshness: ${fresh} fresh, ${stale} stale, ${excluded} excluded, ${orphaned} orphaned (of ${files.length} sidecar file(s)).`,
   );
 }
-if (staleSources.length > 1) {
+if (staleSources.length > 0) {
   const list = staleSources.map((f) => `"${f}"`).join(" ");
-  console.log(`   Fix all ${staleSources.length} at once:`);
+  console.log(
+    `⚠  STALE — ${staleSources.length} file(s) changed since their sidecar was generated:`,
+  );
   console.log(`   for f in ${list}; do yarn questions --force "$f"; done`);
 }
 

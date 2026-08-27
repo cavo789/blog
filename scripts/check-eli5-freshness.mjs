@@ -90,8 +90,8 @@ for (const jsonPath of files) {
 
   const currentHash = hashSource(fs.readFileSync(sourcePath, "utf-8"));
   if (currentHash !== record.sourceHash) {
-    console.warn(`⚠  STALE — ${relSource} changed since its annotation was generated`);
-    console.warn(`   Fix with: yarn eli5 ${relSource} --force`);
+    // No per-file warning here — staleSources feeds the single batched command printed
+    // below, so nothing tempts a one-by-one `yarn eli5 --force` per file.
     staleSources.push(relSource);
     stale++;
   } else {
@@ -108,9 +108,11 @@ if (!quiet || actionable) {
   );
 }
 // One command for the whole batch, so a multi-file drift is not seven copy/pastes.
-if (staleSources.length > 1) {
+if (staleSources.length > 0) {
   const list = staleSources.map((f) => `"${f}"`).join(" ");
-  console.log(`   Fix all ${staleSources.length} at once:`);
+  console.log(
+    `⚠  STALE — ${staleSources.length} file(s) changed since their annotation was generated:`,
+  );
   console.log(`   for f in ${list}; do yarn eli5 "$f" --force; done`);
 }
 
