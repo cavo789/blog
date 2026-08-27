@@ -15,11 +15,14 @@ tags:
   - react
 language: en
 blueskyRecordKey: 3lwbehu3h2k2i
+updates:
+  - date: 2026-08-27
+    note: Add a live screenshot of the Share button and link to the unified engagement facepile (likes + reposts + commenters) added to the companion article.
 ---
 
 ![Create our own Docusaurus React component and provide a "Share on Bluesky" button](/img/v2/docusaurus_bluesky.webp)
 
-<!-- cspell:ignore reposts,clsx,blogpostitem,3lwbehu3h2k2i -->
+<!-- cspell:ignore reposts,clsx,blogpostitem,3lwbehu3h2k2i,facepile,commenters -->
 
 <TLDR>
   This post guides you through creating a 'Share on Bluesky' button for your
@@ -45,14 +48,22 @@ In this first article in a series of two, we'll see how we can create our Docusa
 
 And, tadaaa 🎉🎉🎉, here is a "Share on Bluesky" button in action, below a blog post:
 
-![The Bluesky Share button](./images/share_button.webp)
+<BrowserWindow url="http://localhost/">
+  ![The Bluesky Share button](./images/share_button.webp)
+</BrowserWindow>
 
 That's the whole point of this article: a small custom React component, swizzled into Docusaurus's `BlogPostItem`, with nothing more exotic than a `<button>` and an SVG icon. Let's build it.
 
 <AlertBox variant="info">
-In a second article, we'll also create interactions with Bluesky like retrieving the number of likes, reposts and comments posted on Bluesky and display them below our articles but that's for a next article.
+In a second article (see [Show Bluesky comments on Docusaurus and, too, number of likes/reposts](/blog/docusaurus-bluesky-comments)), we went further: retrieving the number of likes, reposts and comments posted on Bluesky and displaying them below our articles as a single, unified "engagement facepile".
 
 </AlertBox>
+
+This is what this very button looks like today, live on this blog, for a fresh article that hasn't collected any Bluesky interaction yet:
+
+<BrowserWindow url="http://localhost/">
+  ![The Share button, live on the blog today](./images/share_button_live.webp)
+</BrowserWindow>
 
 Because I had absolutely no idea on how to start; let's ask some AI to generate a skeleton. I've asked something like "_Hello my friend, I would like to show a Bluesky share button below my article on my Docusaurus blog. Give me a skeleton; please._"
 
@@ -115,7 +126,9 @@ Save the file and refresh your page using your browser and tadaaa 🎉🎉🎉..
 
 On the image here above, we can see our stupid message:
 
-![Are you ready?](./images/are_you_ready.webp)
+<BrowserWindow url="http://localhost/">
+  ![Are you ready?](./images/are_you_ready.webp)
+</BrowserWindow>
 
 <AlertBox variant="note">
 If it didn't work, please stop and restart your Docusaurus server. On my case (I'm using Docker), I just need to stop and restart my container.

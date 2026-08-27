@@ -15,9 +15,12 @@ tags:
   - react
 language: en
 blueskyRecordKey: 3lwnnydhdk22x
+updates:
+  - date: 2026-08-27
+    note: Add real screenshots of the engagement block and describe the unified "engagement facepile" — likes, reposts and commenters are now merged into a single, deduplicated avatar stack instead of a separate likers-only row.
 ---
 
-<!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,3lwnnydhdk22x -->
+<!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,3lwnnydhdk22x,facepile,facepiles,deduplicated,reposters,commenters -->
 
 ![Show Bluesky comments on Docusaurus and, too, number of likes/reposts](/img/v2/docusaurus_bluesky.webp)
 
@@ -38,9 +41,26 @@ This is not really interactive right? Let's see in this article how to make the 
 
 ## What You'll Get
 
-Once wired up, every article gets a "Like, share or comment on Bluesky" button, the live likes/reposts count, and the list of comments straight from your Bluesky post — right below the article, no separate comment system to host.
+Once wired up, every article gets a "Like, share or comment on Bluesky" button, a single **engagement facepile** merging likes, reposts and commenters into one deduplicated avatar stack, and the list of comments straight from your Bluesky post — right below the article, no separate comment system to host.
 
-<!-- TODO(author): capture a real screenshot of the rendered Bluesky block (button + likes/reposts counter + comments list) from the bottom of a published article here before the next edit — not reproducible in this session (requires a live, deployed Docusaurus build). Meanwhile, scroll to the bottom of this very article: the block rendered there is exactly what this component produces. -->
+Here is that block, live on three different articles of this very blog, at three different levels of engagement:
+
+<BrowserWindow url="http://localhost/">
+  ![Engagement facepile with five people involved: likes, reposts and avatars stacked](./images/engagement_facepile_many.webp)
+</BrowserWindow>
+
+<BrowserWindow url="http://localhost/">
+  ![Engagement facepile together with the comments thread it links to](./images/engagement_facepile_comments.webp)
+</BrowserWindow>
+
+<BrowserWindow url="http://localhost/">
+  ![A smaller engagement facepile: two likes, one repost](./images/engagement_facepile_repost.webp)
+</BrowserWindow>
+
+<AlertBox variant="info">
+Notice there's no separate "likers" row and "commenters" row: a person who both liked **and** commented on the post shows up as a single avatar, sorted first — that's the whole point of the facepile merge described below.
+
+</AlertBox>
 
 <StepsCard
   title="The workflow will be:"
@@ -106,6 +126,11 @@ The highlighted lines are the new ones compared to the previous version of the f
   filename="src/components/Bluesky/likes.js"
   source="src/components/Bluesky/likes.js"
 />
+
+<AlertBox variant="note">
+An earlier version of this component only showed the avatars of the people who **liked** the post. That was misleading: a reader could see "5 likes" next to only 3 avatars, because reposters and commenters weren't counted. The current version fetches likers, reposters and commenters in parallel, merges them into a single `Map` keyed by the person's Bluesky `did` (so the same person liking **and** commenting only appears once), and sorts that list by number of actions — someone who liked *and* commented outranks someone who only liked. Up to ten avatars are shown, the rest collapse into a `+N` badge, and each avatar's tooltip spells out what that person actually did (`"liked and commented on this post"`).
+
+</AlertBox>
 
 ## 4/5 Retrieving all comments
 
