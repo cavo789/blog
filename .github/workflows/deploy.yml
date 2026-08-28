@@ -98,6 +98,24 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile --prefer-offline
 
+      # Gate the deploy on type-checking and JS/JSX linting BEFORE the build.
+      # `yarn build` uses @docusaurus/faster (SWC), which strips TypeScript types
+      # without checking them, so a type error compiles and can still ship a
+      # component that throws at render time on a page the build never exercised.
+      # `tsc --noEmit` is the only thing that catches those. ESLint (js/jsx only)
+      # is here for the same reason: react-hooks / no-floating-promises findings
+      # are latent runtime bugs, not style nits.
+      #
+      # This is a deliberate exception to the rule stated in quality.yml — style
+      # lint (stylelint, snippet checks) must NOT block publishing, so it stays
+      # informational-only over there. Only the two bug-catching checks gate the
+      # live site here. Both run in seconds; the cost is negligible next to the
+      # build + rsync that follow.
+      - name: Type-check and lint (blocks the deploy on failure)
+        run: |
+          yarn lint:types
+          yarn lint:js
+
       - name: Build website
         run: yarn build
 

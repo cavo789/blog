@@ -103,13 +103,13 @@ So the plugin writes it straight to disk as a static asset instead, and the clie
 
 The fetch is cached at module scope, so the palette and the `/faq` page share one download — and a failed fetch clears the cache rather than poisoning it, so a reader who searched before the dev server finished building can simply try again:
 
-<Snippet filename="src/components/AskMyBlog/questionsIndex.js" source="src/components/AskMyBlog/questionsIndex.js" defaultOpen={false} />
+<Snippet filename="src/components/AskMyBlog/questionsIndex.ts" source="src/components/AskMyBlog/questionsIndex.ts" defaultOpen={false} />
 
 And the search box itself:
 
 <ProjectSetup folderName="src/components/AskMyBlog">
-  <Snippet filename="src/components/AskMyBlog/index.js" source="src/components/AskMyBlog/index.js" defaultOpen={false} />
-  <Snippet filename="src/components/AskMyBlog/utils.js" source="src/components/AskMyBlog/utils.js" defaultOpen={false} />
+  <Snippet filename="src/components/AskMyBlog/index.tsx" source="src/components/AskMyBlog/index.tsx" defaultOpen={false} />
+  <Snippet filename="src/components/AskMyBlog/utils.ts" source="src/components/AskMyBlog/utils.ts" defaultOpen={false} />
   <Snippet filename="src/components/AskMyBlog/styles.module.css" source="src/components/AskMyBlog/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 
@@ -125,8 +125,8 @@ Two adaptations were needed for that unusually short document length.
 
 **A tokenizer that splits compounds without losing them.** `CaesiumCLT` tokenized naively is one indivisible token, so a reader typing "caesium" matches nothing. Inserting a boundary before lowercasing fixes that — but then `WordPress` becomes `word` + `press`, and someone typing "wordpress" as one word matches neither half. The fix is a union rather than a replacement: keep both the split form and the whole form.
 
-```javascript title="src/components/AskMyBlog/utils.js"
-export function tokenize(text) {
+```ts title="src/components/AskMyBlog/utils.ts"
+export function tokenize(text: string): string[] {
   const withBoundaries = text.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
   const split = withBoundaries.toLowerCase().match(/[a-z0-9]+/g) || [];
   const whole = text.toLowerCase().match(/[a-z0-9]+/g) || [];

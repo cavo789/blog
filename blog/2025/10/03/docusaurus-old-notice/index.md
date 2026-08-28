@@ -49,7 +49,7 @@ Let's build it.
 You'll need to create two new files in your own Docusaurus site:
 
 <ProjectSetup folderName="/your_docusaurus_site" createFolder={false}>
-  <Snippet filename="src/components/Blog/OldPostNotice/index.js" source="src/components/Blog/OldPostNotice/index.js" />
+  <Snippet filename="src/components/Blog/OldPostNotice/index.tsx" source="src/components/Blog/OldPostNotice/index.tsx" />
   <Snippet filename="src/components/Blog/OldPostNotice/styles.module.css" source="src/components/Blog/OldPostNotice/styles.module.css" />
 </ProjectSetup>
 

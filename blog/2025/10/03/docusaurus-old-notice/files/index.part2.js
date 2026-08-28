@@ -4,7 +4,7 @@ import {blogPostContainerID} from '@docusaurus/utils-common';
 import {useBlogPost} from '@docusaurus/plugin-content-blog/client';
 import MDXContent from '@theme/MDXContent';
 // highlight-next-line
-import OldPostNotice from "@site/src/components/Blog/OldPostNotice/index.js";
+import OldPostNotice from "@site/src/components/Blog/OldPostNotice";
 
 export default function BlogPostItemContent({children, className}) {
   const {isBlogPostPage} = useBlogPost();

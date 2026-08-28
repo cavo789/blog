@@ -6,7 +6,7 @@ TODO 0088 (`.todos/`) for the original brief.
 
 ## 📁 Location
 
-This component lives at `src/components/Vars/index.js`.
+This component lives at `src/components/Vars/index.tsx`.
 
 ## 🚀 Usage
 
@@ -65,19 +65,19 @@ Two syntaxes were rejected first:
 
 `%` carries no meaning in Markdown/MDX/YAML and `=` doesn't trigger remark-directive, so
 `%%name=default%%` is safe both inline and loaded from a `source=` file, and silent in the
-export tool. See `substitute.js` for the full contract, shared verbatim (as a second,
+export tool. See `substitute.ts` for the full contract, shared verbatim (as a second,
 independent copy of the same regex) by `degrade.cjs` for the exported `.md`/`llms.txt`.
 
 ## How it works
 
-- **`store.js`** — a small external store (`useSyncExternalStore`), not React Context: `<Vars>`
+- **`store.ts`** — a small external store (`useSyncExternalStore`), not React Context: `<Vars>`
   sits as a sibling of the `<Terminal>`/`<Snippet>` blocks that need its values, not an
   ancestor, so there's no component that could wrap "the rest of the article" the way a
   Provider normally would. `getServerSnapshot` always returns "no override," so SSR and the
   first client render show the marker's own embedded default — a reader's saved value (if any)
   is applied afterwards, from a mount-only effect, never during render.
-- **`substitute.js`** — parses `%%name=default%%`, shared by `Terminal` and `Snippet`.
-- **`VarToken.js`** — renders one resolved marker as a `<span>` with the permanent dotted
+- **`substitute.ts`** — parses `%%name=default%%`, shared by `Terminal` and `Snippet`.
+- **`VarToken.tsx`** — renders one resolved marker as a `<span>` with the permanent dotted
   underline; deliberately takes its resolved value as `children` (not a custom `value` prop) so
   `Terminal`'s copy button — which recurses into `element.props.children` for any element it
   doesn't otherwise recognize — copies the live value for free.
@@ -104,7 +104,7 @@ mention), use `<Var>` (below) instead of a code span.
 
 ### `<Var>` — the inline sibling, for prose
 
-`Var.js` is a separate, small component for exactly one case: a sentence in plain prose states a
+`Var.tsx` is a separate, small component for exactly one case: a sentence in plain prose states a
 reader-adjustable value as a fact, e.g. _"the `kingsbridge` name won't be considered."_ A marker
 can't help here — MDX text nodes are never routed through `substituteChildren`, so a
 `%%name=default%%` typed directly into a paragraph would render as literal, unresolved text.

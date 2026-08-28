@@ -1,7 +1,13 @@
 {
   "extends": "@docusaurus/tsconfig",
   "compilerOptions": {
-    "baseUrl": "."
+    "baseUrl": ".",
+    // @docusaurus/tsconfig does NOT enable strict. Turned on here (2026-08-28,
+    // before starting the level-5 components of the JS->TSX migration) so the
+    // type-check actually earns its keep: strictNullChecks catches
+    // "possibly undefined" property access and noImplicitAny stops untyped
+    // callback params (post, a, b in the Blog/* sorts) from silently becoming any.
+    "strict": true
   },
   "include": ["src/**/*", "scripts/**/*", "docusaurus.config.js"]
 }

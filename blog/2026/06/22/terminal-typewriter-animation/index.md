@@ -302,7 +302,7 @@ No external library. No canvas. Just state and timers.
 You'll need to create three new files to your own Docusaurus site. The fourth file is optional and this is the component's documentation:
 
 <ProjectSetup folderName="/your_docusaurus_site" createFolder={false}>
-  <Snippet filename="src/components/Terminal/index.js" source="src/components/Terminal/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/Terminal/index.tsx" source="src/components/Terminal/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/Terminal/icon.svg" source="src/components/Terminal/icon.svg" defaultOpen={false} />
   <Snippet filename="src/components/Terminal/styles.module.css" source="src/components/Terminal/styles.module.css" defaultOpen={false} />
   <Snippet filename="src/components/Terminal/readme.md" source="src/components/Terminal/readme.md" defaultOpen={false} />

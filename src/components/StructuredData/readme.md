@@ -4,7 +4,7 @@ Injects [JSON-LD](https://json-ld.org/) structured data into the `<head>` of Doc
 
 ## 📦 Location
 
-Please save the script here: `src/components/StructuredData/index.jsx`
+Please save the script here: `src/components/StructuredData/index.tsx`
 
 ## 🚀 Features
 

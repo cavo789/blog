@@ -22,7 +22,7 @@ Out-of-the-box, here is how the component will looks like:
 Make sure your project uses React and Docusaurus 3.x. Then place the component in your desired location:
 
 ```bash
-src/components/GithubProjects/GithubProjects.js
+src/components/GithubProjects/index.tsx
 src/components/GithubProjects/styles.module.css
 ```
 

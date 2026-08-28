@@ -54,9 +54,9 @@ We'll have to create a new component, and to swizzle the BlogPostPage, so the co
 
 ### Create the Updated component
 
-Please create a new folder called `src/components/Blog/Updated` where you'll create two files: `index.js` and `styles.module.css`.
+Please create a new folder called `src/components/Blog/Updated` where you'll create two files: `index.tsx` and `styles.module.css`.
 
-<Snippet filename="src/components/Blog/Updated/index.js" source="src/components/Blog/Updated/index.js" />
+<Snippet filename="src/components/Blog/Updated/index.tsx" source="src/components/Blog/Updated/index.tsx" />
 
 <Snippet filename="src/components/Blog/Updated/styles.module.css" source="src/components/Blog/Updated/styles.module.css" />
 

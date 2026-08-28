@@ -6,7 +6,7 @@ import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import clsx from "clsx";
 
 // highlight-next-line
-import SeriesPosts from "@site/src/components/Blog/SeriesPosts/index.js";
+import SeriesPosts from "@site/src/components/Blog/SeriesPosts";
 
 // apply a bottom margin in list view
 function useContainerClassName() {

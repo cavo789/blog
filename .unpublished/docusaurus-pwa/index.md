@@ -279,8 +279,8 @@ show a small, dismissible pill instead of hoping Chrome's own (increasingly rare
 up on its own:
 
 <Snippet
-  filename="src/components/InstallPwaHint/index.js"
-  source="src/components/InstallPwaHint/index.js"
+  filename="src/components/InstallPwaHint/index.tsx"
+  source="src/components/InstallPwaHint/index.tsx"
   defaultOpen={false}
 />
 

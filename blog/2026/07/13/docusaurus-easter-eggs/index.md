@@ -95,7 +95,7 @@ More info about what's Konami code is?  Consult [this page](https://en.wikipedia
 
 ### The component
 
-<Snippet filename="src/components/KonamiEasterEgg/index.js" source="src/components/KonamiEasterEgg/index.js" />
+<Snippet filename="src/components/KonamiEasterEgg/index.tsx" source="src/components/KonamiEasterEgg/index.tsx" />
 
 The logic keeps a `useRef` cursor into a `KONAMI_CODE` array of [`KeyboardEvent.code`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code) values (not `.key` — `.code` reflects the physical key position, so the sequence works the same on an AZERTY keyboard as on a QWERTY one). Each keydown either advances the cursor, resets it, or — on a full match — mounts a runner `<img>` for 3 seconds:
 
@@ -126,7 +126,7 @@ After shipping this, real-world testing turned up a genuine bug: typed slowly an
 
 The fix is one guard clause:
 
-```jsx title="src/components/KonamiEasterEgg/index.js (excerpt)"
+```jsx title="src/components/KonamiEasterEgg/index.tsx (excerpt)"
 const handleKeyDown = (event) => {
   // Ignore auto-repeated keydowns fired while a key is held down: a
   // slightly-too-long "ArrowUp" press would otherwise inject extra
@@ -145,7 +145,7 @@ The key-repeat fix shipped, tests were green — and the feature still didn't wo
 
 The fix is to match on [`event.key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) instead — the actual character produced, which respects whatever layout the visitor has configured:
 
-```jsx title="src/components/KonamiEasterEgg/index.js (excerpt)"
+```jsx title="src/components/KonamiEasterEgg/index.tsx (excerpt)"
 // event.code reflects the physical key position on a QWERTY reference
 // layout, so on an AZERTY keyboard the key printed "A" reports 'KeyQ'.
 // event.key reflects the actual character produced, which matches what

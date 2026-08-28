@@ -14,7 +14,7 @@ A reusable Docusaurus component that displays a warning message when a blog post
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/Blog/OldPostNotice/index.js
+src/components/Blog/OldPostNotice/index.tsx
 src/components/Blog/OldPostNotice/styles.module.css
 ```
 

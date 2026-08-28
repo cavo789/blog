@@ -26,7 +26,7 @@ Perfect for surfacing:
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/Blog/AlertBox/index.js
+src/components/Blog/AlertBox/index.tsx
 src/components/Blog/AlertBox/styles.module.css
 ```
 

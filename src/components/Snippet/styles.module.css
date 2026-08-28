@@ -175,6 +175,9 @@ code:hover {
 .variant_toml {
   border-color: #f36d25;
 }
+.variant_ts {
+  border-color: #3178c6;
+}
 .variant_txt {
   border-color: #6a737d;
 }

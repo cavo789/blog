@@ -4,7 +4,7 @@ A timeline component that renders a blog post's revision history from its `updat
 
 ## 📁 Location
 
-`src/components/Blog/Updated/index.js`. Rendered automatically for every blog post from `src/theme/BlogPostItem/Content/index.js` — no manual import needed in `.mdx` files.
+`src/components/Blog/Updated/index.tsx`. Rendered automatically for every blog post from `src/theme/BlogPostItem/Content/index.js` — no manual import needed in `.mdx` files.
 
 ## 🚀 Usage
 
@@ -33,4 +33,4 @@ Entries are sorted newest first regardless of the order they're written in. The 
 The `updates` array is also read by:
 
 - `src/components/StructuredData/index.jsx` — uses the most recent `date` as `dateModified` in the SEO JSON-LD.
-- `src/components/Blog/OldPostNotice/index.js` — uses the most recent `date` instead of the publish date when deciding whether to show the "this article may be outdated" warning.
+- `src/components/Blog/OldPostNotice/index.tsx` — uses the most recent `date` instead of the publish date when deciding whether to show the "this article may be outdated" warning.

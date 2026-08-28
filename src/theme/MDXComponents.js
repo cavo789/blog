@@ -32,10 +32,7 @@ import Code from "@site/src/components/Vars/Code";
 import Var from "@site/src/components/Vars/Var";
 import Vars from "@site/src/components/Vars";
 
-import ProjectSetup, {
-  EmptyFolder,
-  Guideline,
-} from "@site/src/components/ProjectSetup/index.js";
+import ProjectSetup, { EmptyFolder, Guideline } from "@site/src/components/ProjectSetup";
 
 export default {
   // Reusing the default mapping

@@ -1,5 +1,5 @@
 // [...]
-import Updated from "@site/src/components/Blog/Updated/index.js";
+import Updated from "@site/src/components/Blog/Updated";
 
 export default function BlogPostContent({ children }) {
   // [...]

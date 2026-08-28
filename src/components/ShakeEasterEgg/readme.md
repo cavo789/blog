@@ -39,14 +39,14 @@ export default function Root({ children }) {
 
 ```bash
 src/components/ShakeEasterEgg/
-├── index.js              # devicemotion listener + shake detection + overlay
+├── index.tsx             # devicemotion listener + shake detection + overlay
 ├── styles.module.css      # Full-screen overlay, pop-in/tremble/fade keyframes
 └── readme.md              # Documentation (this file)
 ```
 
 ## 🧠 How it works
 
-- `index.js` accumulates `devicemotion` samples (`accelerationIncludingGravity`)
+- `index.tsx` accumulates `devicemotion` samples (`accelerationIncludingGravity`)
   and computes the "jerk" (rate of change of acceleration summed across the
   three axes) between consecutive samples. A jerk spike above
   `SHAKE_JERK_THRESHOLD`, outside the `COOLDOWN_MS` window, triggers the
@@ -85,11 +85,11 @@ its state (`"granted"` / `"denied"` / `"prompt"`).
 
 ## 🎨 Customization
 
-- **Sensitivity**: tune `SHAKE_JERK_THRESHOLD` in `index.js` — lower it if a
+- **Sensitivity**: tune `SHAKE_JERK_THRESHOLD` in `index.tsx` — lower it if a
   deliberate shake doesn't trigger the egg, raise it if normal handling
   triggers it by accident. Not yet tuned against a physical device.
 - **Timing**: `VISIBLE_DURATION_MS`, `EXIT_DURATION_MS` and `COOLDOWN_MS` in
-  `index.js` control how long the overlay stays up, how fast it fades, and
+  `index.tsx` control how long the overlay stays up, how fast it fades, and
   how soon it can retrigger. Keep `EXIT_DURATION_MS` in sync with the
   `overlay-out` keyframes duration in `styles.module.css`.
 - **Sprite**: swap the `scaredImg` import for any other transparent-background

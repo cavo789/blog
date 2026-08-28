@@ -63,7 +63,7 @@ There is a limit to this reasoning, and it is worth stating before you go and ad
 The component is deliberately thin. When the panel is closed, nothing search-related is mounted at all — so the 468 KB question corpus is still only fetched by a reader who actually opens it:
 
 <ProjectSetup folderName="src/components/AskMyBlogWidget">
-  <Snippet filename="src/components/AskMyBlogWidget/index.js" source="src/components/AskMyBlogWidget/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/AskMyBlogWidget/index.tsx" source="src/components/AskMyBlogWidget/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/AskMyBlogWidget/styles.module.css" source="src/components/AskMyBlogWidget/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 

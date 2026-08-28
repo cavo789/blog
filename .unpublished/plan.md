@@ -273,7 +273,7 @@ Christophe a sélectionné 10 sujets lors d'une session de brainstorming. Deux p
 
 | Slug | Angle | Dépendance |
 | --- | --- | --- |
-| `docusaurus-copy-as-markdown` | Reproduire le composant `src/components/CopyAsMarkdown` (bouton « Copy as Markdown » / « View raw » dans l'en-tête d'article) sur son propre blog Docusaurus. Couvre un plugin `postBuild` simplifié (mirroir `.md` par article) puis le composant React réel de ce repo (`<Snippet source="src/components/CopyAsMarkdown/index.js">`, source réelle, pas une copie). Volontairement plus simple que `plugins/markdown-export-plugin` (qui dégrade les composants MDX custom) — signalé en « Under the Hood » sans en détailler le code. | Aucune dépendance sur des brouillons non publiés. Liens internes vers `/blog/docusaurus-reactions`, `/blog/docusaurus-go-top` et `/blog/docusaurus-snippets` (tous déjà publiés). |
+| `docusaurus-copy-as-markdown` | Reproduire le composant `src/components/CopyAsMarkdown` (bouton « Copy as Markdown » / « View raw » dans l'en-tête d'article) sur son propre blog Docusaurus. Couvre un plugin `postBuild` simplifié (mirroir `.md` par article) puis le composant React réel de ce repo (`<Snippet source="src/components/CopyAsMarkdown/index.tsx">`, source réelle, pas une copie). Volontairement plus simple que `plugins/markdown-export-plugin` (qui dégrade les composants MDX custom) — signalé en « Under the Hood » sans en détailler le code. | Aucune dépendance sur des brouillons non publiés. Liens internes vers `/blog/docusaurus-reactions`, `/blog/docusaurus-go-top` et `/blog/docusaurus-snippets` (tous déjà publiés). |
 
 **Avant de publier `docusaurus-copy-as-markdown` :**
 

@@ -13,7 +13,7 @@ import TypoReport from "@site/src/components/TypoReport";
 import clsx from "clsx";
 
 // Our posts components
-import RelatedPosts from "@site/src/components/Blog/RelatedPosts/index.js";
+import RelatedPosts from "@site/src/components/Blog/RelatedPosts";
 
 // Our Bluesky component
 import Bluesky from "@site/src/components/Bluesky/index.js";

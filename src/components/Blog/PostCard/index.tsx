@@ -1,0 +1,116 @@
+import type { JSX } from "react";
+import Card from "@site/src/components/Card";
+import CardBody from "@site/src/components/Card/CardBody";
+import CardImage from "@site/src/components/Card/CardImage";
+import Link from "@docusaurus/Link";
+import Translate from "@docusaurus/Translate";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { formatPostDate } from "@site/src/components/Blog/utils/date";
+import { createSlug } from "@site/src/components/Blog/utils/slug";
+import { getTagLabel } from "@site/src/data/tags";
+import styles from "./styles.module.css";
+
+interface Post {
+  permalink: string;
+  image?: string;
+  title: string;
+  description?: string;
+  date?: string;
+  counter?: string;
+  mainTag?: string;
+  readingTime?: number;
+}
+
+interface Props {
+  post: Post;
+  layout?: "big" | "small";
+  defaultImage?: string;
+  lazyImage?: boolean;
+}
+
+export default function PostCard({
+  post,
+  layout = "big",
+  defaultImage = "/img/default.jpg",
+  lazyImage = true,
+}: Props): JSX.Element {
+  const { permalink, image, title, description, date, counter, mainTag, readingTime } = post;
+  const { i18n } = useDocusaurusContext();
+  const formattedDate = formatPostDate(date, i18n.currentLocale);
+
+  if (layout === "small") {
+    return (
+      <div className={`col col--4 ${styles.cardSmallWrapper}`}>
+        <div className={`card ${styles.cardSmall}`}>
+          <div className="card__image">
+            <img
+              src={image || defaultImage}
+              alt={title}
+              loading="lazy"
+              className={styles.cardSmallImage}
+            />
+          </div>
+          <div className={`card__body ${styles.cardSmallBody}`}>
+            <h3>
+              <Link to={permalink}>{title}</Link>
+            </h3>
+            {counter && <div className={styles.cardSmallCounter}>{counter}</div>}
+            {formattedDate && <p className={styles.date}><span>{formattedDate}</span></p>}
+          </div>
+          <div className={`card__footer ${styles.cardSmallFooter}`}>
+            <Link className="button button--primary button--sm" to={permalink}>
+              <Translate id="blog.postCard.readMore">Read more</Translate>
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Default "big" layout
+  return (
+    <div className="col col--3 margin-bottom--lg">
+      <Card className={styles.cardEnhanced} shadow="md">
+        <CardImage
+          cardImageUrl={image || defaultImage}
+          alt={title}
+          title={title}
+          lazy={lazyImage}
+          className={styles.cardImageEnhanced}
+        />
+        <CardBody className={styles.cardBodyEnhanced}>
+          {mainTag && (
+            <Link
+              to={`/blog/tags/${createSlug(mainTag)}`}
+              className={styles.cardTagBadge}
+            >
+              {getTagLabel(mainTag)}
+            </Link>
+          )}
+          <h3 className={styles.cardTitle}>
+            <Link
+              to={permalink}
+              aria-label={`Read article: ${title}`}
+              className={styles.cardTitleLink}
+            >
+              {title}&nbsp;→
+            </Link>
+          </h3>
+          {description && <p className={styles.description}>{description}</p>}
+          {counter && <p className={styles.counter}>{counter}</p>}
+          {(formattedDate || readingTime) && (
+            <p className={styles.date}>
+              {formattedDate && <span>{formattedDate}</span>}
+              {readingTime && (
+                <span className={styles.readingTime}>
+                  {" "}
+                  · {Math.ceil(readingTime)} min read
+                </span>
+              )}
+            </p>
+          )}
+        </CardBody>
+      </Card>
+    </div>
+  );
+}

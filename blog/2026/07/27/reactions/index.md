@@ -53,7 +53,7 @@ Browser                          Your Server
 | File | Role |
 |---|---|
 | `api/reactions.php` | PHP backend: stores votes, sends emails |
-| `src/components/Reaction/index.js` | React component rendered at the bottom of every post |
+| `src/components/Reaction/index.tsx` | React component rendered at the bottom of every post |
 | `src/components/Reaction/styles.module.css` | CSS module for the widget |
 | `src/theme/BlogPostItem/index.js` | Swizzled Docusaurus component that injects the widget |
 | `src/pages/reactions-dashboard.js` | Admin page to visualize all votes |
@@ -249,19 +249,29 @@ On first access, the slug entry is created with zeroed counters. The POST branch
 
 ## Step 2 — The React component
 
-Create the folder `src/components/Reaction/` and the file `index.js` inside it.
+Create the folder `src/components/Reaction/` and the file `index.tsx` inside it.
 
-<Snippet filename="src/components/Reaction/index.js" source="src/components/Reaction/index.js" defaultOpen={false} />
+<Snippet filename="src/components/Reaction/index.tsx" source="src/components/Reaction/index.tsx" defaultOpen={false} />
 
 ### 2.1 — Imports and setup
 
-```javascript title="src/components/Reaction/index.js"
-import { useState, useEffect, useCallback } from "react";
+```tsx title="src/components/Reaction/index.tsx"
+import { useState, useEffect, useCallback, type JSX } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 
-export default function Reaction({ metadata }) {
+interface Props {
+  metadata?: {
+    permalink?: string;
+  };
+}
+
+interface Counts {
+  helpful: number;
+  not_helpful: number;
+}
+
+export default function Reaction({ metadata }: Props): JSX.Element | null {
   const { siteConfig } = useDocusaurusContext();
   const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/reactions.php`;
@@ -270,35 +280,45 @@ export default function Reaction({ metadata }) {
 
 `metadata` is the object that Docusaurus passes to every blog post component. We use `metadata.permalink` — the URL path of the article — as the slug. The two `replace` calls strip the leading and trailing slashes so, the slug matches what `sanitizeSlug` on the PHP side produces: `blog/my-article`, not `/blog/my-article/`.
 
+The `Props` interface only needs `metadata.permalink`; everything else Docusaurus passes is ignored. `Counts` is the `{ helpful, not_helpful }` shape the PHP endpoint returns — reused below for the `counts` state.
+
 `siteConfig.url` is your production URL from `docusaurus.config.js`. The component builds the API URL from it dynamically, which means it also works correctly in development (where `url` will point to `https://localhost:3000` if you configure it that way, but in practice the component is only mounted after Docusaurus resolves the site config).
 
 `storageKey` gives every article its own entry in `localStorage` (`reaction_blog-my-article`), preventing a vote on one article from affecting another.
 
 ### 2.2 — State
 
-```javascript title="src/components/Reaction/index.js"
-  const [counts, setCounts] = useState(null);
-  const [voted, setVoted] = useState(() => {
-    try { return localStorage.getItem(storageKey); } catch { return null; }
-  });
+```tsx title="src/components/Reaction/index.tsx"
+  const [counts, setCounts] = useState<Counts | null>(null);
+  const [voted, setVoted] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState(false);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem(storageKey);
+      if (stored) setVoted(stored);
+    } catch {}
+  }, [storageKey]);
 ```
 
-`counts` holds the `{ helpful, not_helpful }` object returned by the API. It starts as `null` (not yet loaded).
+`counts` holds the `{ helpful, not_helpful }` object returned by the API. It starts as `null` (not yet loaded). `submitError` is a flag flipped on when a vote POST fails, so the render can show a retry message.
 
-`voted` holds the previous vote for this article, read from `localStorage` on first render. The lazy initializer (the function form of `useState`) runs only once and is wrapped in a `try/catch` because `localStorage` can throw in private browsing modes or when storage is full. If there is no previous vote, `localStorage.getItem` returns `null`, which is exactly what we want.
+`voted` holds the previous vote for this article. It starts as `null` and is only populated **after mount**, inside a `useEffect` that reads `localStorage`. The `try/catch` is there because `localStorage` can throw in private browsing modes or when storage is full.
 
-<AlertBox variant="note" title="SSR compatibility">
-Docusaurus uses server-side rendering. The lazy initializer inside `useState` only runs in the browser, never on the server, so there is no need to guard it with `typeof window !== "undefined"`. For anything outside `useState`, `useEffect`, or event handlers, always add that guard or you will get a build error.
+<AlertBox variant="note" title="Why not read localStorage in useState?">
+Docusaurus server-renders every page. If `voted` were seeded from `localStorage` in a `useState` initializer, the server would produce `null` (no `localStorage` there) while the browser would produce the stored `"helpful"` — the two HTML trees disagree, and React throws a hydration mismatch. Deferring the read to `useEffect` keeps the first client render identical to the server's, then updates. Anything outside `useState`, `useEffect`, or an event handler still needs a `typeof window !== "undefined"` guard.
 </AlertBox>
 
 ### 2.3 — Loading counts on mount
 
-```javascript title="src/components/Reaction/index.js"
+```tsx title="src/components/Reaction/index.tsx"
   useEffect(() => {
     if (!slug) return;
     fetch(`${apiUrl}?slug=${encodeURIComponent(slug)}`)
       .then((r) => (r.ok ? r.json() : null))
-      .then((data) => { if (data) setCounts(data); })
+      .then((data) => {
+        if (data) setCounts(data);
+      })
       .catch(() => {});
   }, [slug, apiUrl]);
 ```
@@ -307,30 +327,41 @@ On mount, the component fetches the current counts for this article. The `encode
 
 ### 2.4 — Sending a vote
 
-```javascript title="src/components/Reaction/index.js"
-  const handleVote = useCallback(async (vote) => {
-    try {
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, vote }),
-      });
-      if (!res.ok) return;
-      const data = await res.json();
-      setCounts(data);
-      setVoted(vote);
-      try { localStorage.setItem(storageKey, vote); } catch {}
-    } catch {}
-  }, [slug, apiUrl, storageKey]);
+```tsx title="src/components/Reaction/index.tsx"
+  const handleVote = useCallback(
+    async (vote: string) => {
+      setSubmitError(false);
+      try {
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ slug, vote }),
+        });
+        if (!res.ok) {
+          setSubmitError(true);
+          return;
+        }
+        const data = await res.json();
+        setCounts(data);
+        setVoted(vote);
+        try {
+          localStorage.setItem(storageKey, vote);
+        } catch {}
+      } catch {
+        setSubmitError(true);
+      }
+    },
+    [slug, apiUrl, storageKey],
+  );
 ```
 
-`handleVote` POSTs `{ slug, vote }` as JSON. On success, it updates the displayed counts with the fresh values returned by the server, sets `voted` to the chosen value (switching the UI from "vote buttons" to "thank you" state), and saves the vote to `localStorage`.
+`handleVote` POSTs `{ slug, vote }` as JSON. On success, it updates the displayed counts with the fresh values returned by the server, sets `voted` to the chosen value (switching the UI from "vote buttons" to "thank you" state), and saves the vote to `localStorage`. Any failure — a non-OK response or a thrown `fetch` — sets `submitError`, which surfaces the retry message in the render below; `localStorage` write failures are swallowed since the vote itself already went through.
 
 `useCallback` memoizes the function so it does not get recreated on every render, which is important since it is passed as an `onClick` prop.
 
 ### 2.5 — Rendering
 
-```javascript title="src/components/Reaction/index.js"
+```tsx title="src/components/Reaction/index.tsx"
   if (!slug) return null;
 
   return (
@@ -354,6 +385,11 @@ On mount, the component fetches the current counts for this article. The `encode
               👎 Not really
             </button>
           </div>
+          {submitError && (
+            <span className={styles.submitError}>
+              Could not save your vote — please try again.
+            </span>
+          )}
         </>
       ) : (
         <div className={styles.thanks}>
@@ -375,19 +411,13 @@ On mount, the component fetches the current counts for this article. The `encode
     </div>
   );
 }
-
-Reaction.propTypes = {
-  metadata: PropTypes.shape({
-    permalink: PropTypes.string,
-  }).isRequired,
-};
 ```
 
-The rendering has two states. Before voting (`!voted`): the question and two buttons. After voting (`voted` is set): a thank-you message personalized to the vote choice, plus the vote counts — which are now visible since the reader has expressed their opinion.
+The rendering has two states. Before voting (`!voted`): the question, two buttons, and — only when `submitError` is set — a retry message under them. After voting (`voted` is set): a thank-you message personalized to the vote choice, plus the vote counts — which are now visible since the reader has expressed their opinion.
 
 The `aria-label` attributes make the buttons accessible to screen readers: emoji-only labels like "👍 Helpful" are not always read correctly by screen readers, so an explicit label helps.
 
-The `PropTypes` definition at the bottom documents the expected shape of the `metadata` prop and produces a console warning in development if something is wrong.
+The `Props` and `Counts` interfaces at the top are the whole contract: the compiler flags a wrong `metadata` shape or a misused count field at build time, so there is no runtime `PropTypes` check to add.
 
 ---
 
@@ -580,7 +610,7 @@ In the list below, I've not included `src/theme/BlogPostItem/index.js` because, 
 <ProjectSetup folderName="Reaction widget">
   <Snippet filename="api/.env" source="api/.env.example" defaultOpen={false} />
   <Snippet filename="api/reactions.php" source="api/reactions.php" defaultOpen={false} />
-  <Snippet filename="src/components/Reaction/index.js" source="src/components/Reaction/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/Reaction/index.tsx" source="src/components/Reaction/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/Reaction/styles.module.css" source="src/components/Reaction/styles.module.css" defaultOpen={false} />
   <Snippet filename="src/pages/reactions-dashboard.js" source="src/pages/reactions-dashboard.js" defaultOpen={false} />
 </ProjectSetup>

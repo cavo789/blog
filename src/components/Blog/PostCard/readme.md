@@ -7,7 +7,7 @@ A reusable React component for Docusaurus that renders a blog post preview card 
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/Blog/PostCard/index.js
+src/components/Blog/PostCard/index.tsx
 src/components/Blog/PostCard/styles.module.css
 ```
 

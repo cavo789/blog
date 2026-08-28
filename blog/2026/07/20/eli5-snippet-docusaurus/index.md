@@ -68,7 +68,7 @@ The system has three moving parts that work independently:
         ↓  finds Dockerfile.eli5.json alongside it
         ↓  injects eli5json="..." prop into <Snippet>
 
-  ③ src/components/Snippet/index.js    (runs in the browser)
+  ③ src/components/Snippet/index.tsx   (runs in the browser)
         ↓  parses eli5json prop
         ↓  renders Prism-highlighted code line by line
         ↓  overlays ? badges with tooltips
@@ -331,7 +331,7 @@ This approach means **the author does not need to change a single line of MDX**.
 
 The <Link to="/blog/docusaurus-snippets">Snippet component</Link> needs two changes: a new `Eli5CodeBlock` subcomponent that renders code line by line with badges, and a small update to the main `Snippet` function to parse `eli5json` and route to the new renderer.
 
-<Snippet filename="src/components/Snippet/index.js" source="src/components/Snippet/index.js" />
+<Snippet filename="src/components/Snippet/index.tsx" source="src/components/Snippet/index.tsx" />
 
 ### How the renderer works
 

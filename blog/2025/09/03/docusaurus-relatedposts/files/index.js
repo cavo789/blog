@@ -5,7 +5,7 @@ import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
 import clsx from "clsx";
 
-import RelatedPosts from "@site/src/components/Blog/RelatedPosts/index.js";
+import RelatedPosts from "@site/src/components/Blog/RelatedPosts";
 
 // apply a bottom margin in list view
 function useContainerClassName() {

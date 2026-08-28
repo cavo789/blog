@@ -22,7 +22,7 @@ Another example for the `remember` variant:
 
 ## 📁 Location
 
-This component lives at `src/components/StepsCard/index.js`.
+This component lives at `src/components/StepsCard/index.tsx`.
 
 ## 🚀 Usage
 

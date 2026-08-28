@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 import { getIcons } from "@iconify/utils";
 
 // Every "prefix:name" currently passed to <LogoIcon name="..." /> across the codebase
-// (src/components/Snippet/index.js VARIANTS map + src/pages/about.mdx).
+// (src/components/Snippet/index.tsx VARIANTS map + src/pages/about.mdx).
 const ICON_NAMES = [
   "bi:filetype-php",
   "codicon:sync-ignored",
@@ -33,6 +33,7 @@ const ICON_NAMES = [
   "logos:github",
   "logos:javascript",
   "logos:mattermost",
+  "logos:typescript-icon",
   "ph:empty",
   "ph:file-css",
   "ph:file-csv",

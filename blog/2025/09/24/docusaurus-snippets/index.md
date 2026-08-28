@@ -72,9 +72,9 @@ Hello world! Proud to be here!!!
 
 ## Creation of our Snippets component
 
-Please create the `src/components/Snippet/index.js` file with this content *(look at the icon, we can see it's a Javascript code; the border is also set to a yellow one)*:
+Please create the `src/components/Snippet/index.tsx` file with this content:
 
-<Snippet filename="src/components/Snippet/index.js" source="src/components/Snippet/index.js" />
+<Snippet filename="src/components/Snippet/index.tsx" source="src/components/Snippet/index.tsx" />
 
 Also create the stylesheet *(CSS icon and blue border here)*:
 
@@ -98,11 +98,11 @@ In very short:
   variant="steps"
   steps={[
     "Please run `yarn add @iconify/react` to install the iconify library",
-    "Please create this file `src/components/Blog/LogoIcon/index.js`"
+    "Please create this file `src/components/Blog/LogoIcon/index.tsx`"
   ]}
 />
 
-<Snippet filename="src/components/Blog/LogoIcon/index.js" source="src/components/Blog/LogoIcon/index.js" />
+<Snippet filename="src/components/Blog/LogoIcon/index.tsx" source="src/components/Blog/LogoIcon/index.tsx" />
 
 ## Using the Snippets component
 
@@ -229,9 +229,9 @@ This is a markdown example.
 
 ## Demo, get content from the disk
 
-Unlike the previous chapter, here, the syntax `<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js" />` has been used. So, the source code is injected dynamically during the previewing/rendering of the blog. If the source file is updated, the article will be updated too. Both are synchronized.
+Unlike the previous chapter, here, the syntax `<Snippet filename="src/components/Blog/PostCard/index.tsx" source="src/components/Blog/PostCard/index.tsx" />` has been used. So, the source code is injected dynamically during the previewing/rendering of the blog. If the source file is updated, the article will be updated too. Both are synchronized.
 
-<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js" />
+<Snippet filename="src/components/Blog/PostCard/index.tsx" source="src/components/Blog/PostCard/index.tsx" />
 
 <Snippet filename="src/components/Blog/PostCard/readme.md" source="src/components/Blog/PostCard/readme.md" />
 

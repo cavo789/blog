@@ -100,9 +100,9 @@ We will also need a second helper. Please create the `src/components/Blog/utils/
 
 ### 1.2. Our SeriesPosts component
 
-Now, we will create our component. Please create the `src/components/Blog/SeriesPosts/index.js` file with the following code:
+Now, we will create our component. Please create the `src/components/Blog/SeriesPosts/index.tsx` file with the following code:
 
-<Snippet filename="src/components/Blog/SeriesPosts/index.js" source="src/components/Blog/SeriesPosts/index.js" />
+<Snippet filename="src/components/Blog/SeriesPosts/index.tsx" source="src/components/Blog/SeriesPosts/index.tsx" />
 
 This JavaScript code will retrieve the list of all blog posts. Then, it will extract a property called `series` (which may or may not be present in your blog post's YAML front matter). If a post has the `series` property, the script will compare its value with the value of the current blog post.
 
@@ -204,9 +204,9 @@ As you can see, there is some Markdown content (adapt it to fit your needs) and 
 
 ### 2.2 Creation of the SeriesCards component
 
-Please create the `src/components/Blog/SeriesCards/index.js` file with this content:
+Please create the `src/components/Blog/SeriesCards/index.tsx` file with this content:
 
-<Snippet filename="src/components/Blog/SeriesCards/index.js" source="src/components/Blog/SeriesCards/index.js" />
+<Snippet filename="src/components/Blog/SeriesCards/index.tsx" source="src/components/Blog/SeriesCards/index.tsx" />
 
 We need a new helper, `src/components/Blog/utils/series.js`:
 
@@ -216,9 +216,9 @@ In short, the `SeriesCards` component is quite simple. It will just retrieve all
 
 ### 2.3 Creation of the PostCard component
 
-We also need a component for displaying a post as a card. Please create the `src/components/Blog/PostCard/index.js` file with this content:
+We also need a component for displaying a post as a card. Please create the `src/components/Blog/PostCard/index.tsx` file with this content:
 
-<Snippet filename="src/components/Blog/PostCard/index.js" source="src/components/Blog/PostCard/index.js" />
+<Snippet filename="src/components/Blog/PostCard/index.tsx" source="src/components/Blog/PostCard/index.tsx" />
 
 Create `src/components/Blog/PostCard/styles.module.css` as well:
 
@@ -226,13 +226,13 @@ Create `src/components/Blog/PostCard/styles.module.css` as well:
 
 The `PostCard` component is using the [Reusable Card component of Docux](/blog/docusaurus-cards#using-the-reusable-card-component-of-docux). If you do not have it yet, please create at least these four files:
 
-<Snippet filename="src/components/Card/index.js" source="src/components/Card/index.js" />
+<Snippet filename="src/components/Card/index.tsx" source="src/components/Card/index.tsx" />
 
 <Snippet filename="src/components/Card/styles.module.css" source="src/components/Card/styles.module.css" />
 
-<Snippet filename="src/components/Card/CardBody/index.js" source="src/components/Card/CardBody/index.js" />
+<Snippet filename="src/components/Card/CardBody/index.tsx" source="src/components/Card/CardBody/index.tsx" />
 
-<Snippet filename="src/components/Card/CardImage/index.js" source="src/components/Card/CardImage/index.js" />
+<Snippet filename="src/components/Card/CardImage/index.tsx" source="src/components/Card/CardImage/index.tsx" />
 
 ### Testing our /series URL
 
@@ -264,9 +264,9 @@ For this, we will need a plugin. Please create the `plugins/docusaurus-plugin-se
 
 <Snippet filename="plugins/docusaurus-plugin-series-route/index.cjs" source="plugins/docusaurus-plugin-series-route/index.cjs" />
 
-As you can see in the plugin's source code, we need a new component: `src/components/Blog/Series/SeriesArticlesPage.js`. Let's create it:
+As you can see in the plugin's source code, we need a new component: `src/components/Blog/Series/SeriesArticlesPage.tsx`. Let's create it:
 
-<Snippet filename="src/components/Blog/Series/SeriesArticlesPage.js" source="src/components/Blog/Series/SeriesArticlesPage.js" />
+<Snippet filename="src/components/Blog/Series/SeriesArticlesPage.tsx" source="src/components/Blog/Series/SeriesArticlesPage.tsx" />
 
 And we need to load this plugin, so we will need to update the `docusaurus.config.js` file again:
 

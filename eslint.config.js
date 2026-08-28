@@ -64,7 +64,7 @@ export default [
       "no-empty": ["error", { allowEmptyCatch: true }],
       // New/opinionated rule in eslint-plugin-react-hooks v7, prone to false
       // positives on intentional SSR-hydration patterns already documented in
-      // this codebase (see src/components/Reaction/index.js) — kept visible,
+      // this codebase (see src/components/Reaction/index.tsx) — kept visible,
       // not blocking.
       "react-hooks/set-state-in-effect": "warn",
       "react/no-unescaped-entities": "warn",
@@ -108,6 +108,9 @@ export default [
       "react/prop-types": "off",
       "react-hooks/set-state-in-effect": "warn",
       "react/no-unescaped-entities": "warn",
+      // Same policy as the JS block: an empty `catch {}` is a deliberate
+      // "best-effort, ignore failure" (e.g. localStorage in private mode).
+      "no-empty": ["error", { allowEmptyCatch: true }],
     },
   },
 ];

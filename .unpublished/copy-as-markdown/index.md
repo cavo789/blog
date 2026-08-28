@@ -108,11 +108,11 @@ const config = {
 
 This is the actual, current source running on this blog — not a simplified excerpt:
 
-<Snippet filename="src/components/CopyAsMarkdown/index.js" source="src/components/CopyAsMarkdown/index.js" defaultOpen={false} />
+<Snippet filename="src/components/CopyAsMarkdown/index.tsx" source="src/components/CopyAsMarkdown/index.tsx" defaultOpen={false} />
 
 ### 2.1 — State and the derived URL
 
-```javascript title="src/components/CopyAsMarkdown/index.js"
+```javascript title="src/components/CopyAsMarkdown/index.tsx"
 const [status, setStatus] = useState("idle"); // idle | copying | copied | error
 const mdUrl = `${metadata.permalink.replace(/\/$/, "")}.md`;
 ```
@@ -121,7 +121,7 @@ const mdUrl = `${metadata.permalink.replace(/\/$/, "")}.md`;
 
 ### 2.2 — The copy handler
 
-```javascript title="src/components/CopyAsMarkdown/index.js"
+```javascript title="src/components/CopyAsMarkdown/index.tsx"
 const handleCopy = useCallback(async () => {
   setStatus("copying");
   try {
@@ -145,7 +145,7 @@ A `fetch` for the mirror, a `writeText` to the clipboard, and a single `catch` a
 
 ### 2.3 — Auto-reset
 
-```javascript title="src/components/CopyAsMarkdown/index.js"
+```javascript title="src/components/CopyAsMarkdown/index.tsx"
 useEffect(() => {
   if (status !== "copied" && status !== "error") return;
   const timer = setTimeout(() => setStatus("idle"), 2000);
@@ -157,7 +157,7 @@ Once `status` lands on `copied` or `error`, this effect schedules a return to `i
 
 ### 2.4 — Rendering
 
-```javascript title="src/components/CopyAsMarkdown/index.js"
+```javascript title="src/components/CopyAsMarkdown/index.tsx"
 return (
   <div className={styles.wrapper}>
     <button
@@ -231,7 +231,7 @@ export default function BlogPostItem({ children, className }) {
 
 <ProjectSetup folderName="Copy as Markdown">
   <Snippet filename="plugins/markdown-mirror-plugin/index.cjs" source="./files/markdown-mirror-plugin.cjs" defaultOpen={false} />
-  <Snippet filename="src/components/CopyAsMarkdown/index.js" source="src/components/CopyAsMarkdown/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/CopyAsMarkdown/index.tsx" source="src/components/CopyAsMarkdown/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/CopyAsMarkdown/styles.module.css" source="src/components/CopyAsMarkdown/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 

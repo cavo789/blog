@@ -28,7 +28,7 @@ export default function BrowserWindow({
   bodyStyle,
 }: Props): JSX.Element {
   // Same `%%name=default%%` marker Terminal/Snippet resolve (see
-  // src/components/Vars/substitute.js) — the address bar is decorative text
+  // src/components/Vars/substitute.ts) — the address bar is decorative text
   // only (never a real iframe navigation, see IframeWindow.tsx for that
   // separate case), so a plain string swap is enough: no VarToken/dotted
   // underline here, matching Snippet's own `code=`/`source=` string path.

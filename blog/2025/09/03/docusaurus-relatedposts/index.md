@@ -73,9 +73,9 @@ So, just copy and paste the content of the file below and create the `src/compon
 
 ## Our RelatedPosts component
 
-Now, please create the file `src/components/Blog/RelatedPosts/index.js`:
+Now, please create the file `src/components/Blog/RelatedPosts/index.tsx`:
 
-<Snippet filename="src/components/Blog/RelatedPosts/index.js" source="src/components/Blog/RelatedPosts/index.js" />
+<Snippet filename="src/components/Blog/RelatedPosts/index.tsx" source="src/components/Blog/RelatedPosts/index.tsx" />
 
 ## Overriding the BlogPostItem template
 

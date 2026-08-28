@@ -35,7 +35,7 @@ The best way to show you how to use `ProjectSetup` is to use the component itsel
   <Guideline>
     Install the dependency: `npm install @iconify/react`
   </Guideline>
-  <Snippet filename="src/components/Blog/LogoIcon/index.js" source="src/components/Blog/LogoIcon/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/Blog/LogoIcon/index.tsx" source="src/components/Blog/LogoIcon/index.tsx" defaultOpen={false} />
 </ProjectSetup>
 
 At this stage, you can think, oh damned, it can be tedious to write the HTML code behind this nice **📦 Project setup: src/components/Blog/LogoIcon** box here above. In fact, not at all. All the rendering is handled by the `ProjectSetup` component itself. Here below the Markdown code I've written in my Docusaurus article:
@@ -45,12 +45,12 @@ At this stage, you can think, oh damned, it can be tedious to write the HTML cod
   <Guideline>
     Install the dependency: `npm install @iconify/react`
   </Guideline>
-  <Snippet filename="src/components/Blog/LogoIcon/index.js" source="src/components/Blog/LogoIcon/index.js" />
+  <Snippet filename="src/components/Blog/LogoIcon/index.tsx" source="src/components/Blog/LogoIcon/index.tsx" />
 </ProjectSetup>
 ```
 
 <AlertBox variant="tip" title="Always up-to-date">
-And you know what? The `Snippet` component used here is smart enough to read the file structure and content of the `src/components/Blog/LogoIcon/index.js` file, and to render it in this nice interactive way. You just have to write the Markdown code above, and the component does the rest. Your documentation is always up-to-date with the actual file content, and you don't have to worry about formatting or styling. You just write the Markdown code, and the component takes care of the rest.
+And you know what? The `Snippet` component used here is smart enough to read the file structure and content of the `src/components/Blog/LogoIcon/index.tsx` file, and to render it in this nice interactive way. You just have to write the Markdown code above, and the component does the rest. Your documentation is always up-to-date with the actual file content, and you don't have to worry about formatting or styling. You just write the Markdown code, and the component takes care of the rest.
 </AlertBox>
 
 ## What is ProjectSetup?
@@ -83,9 +83,9 @@ Now, let's set up the `Snippet` component. It has more dependencies.
 
 <ProjectSetup folderName="src/components/Snippet">
   <Guideline>
-    Install dependencies: `npm install prop-types clsx`
+    Install dependencies: `npm install clsx`
   </Guideline>
-  <Snippet filename="src/components/Snippet/index.js" source="src/components/Snippet/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/Snippet/index.tsx" source="src/components/Snippet/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/Snippet/styles.module.css" source="src/components/Snippet/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 
@@ -98,7 +98,7 @@ Finally, here's how to install the `ProjectSetup` component itself.
     Install dependencies: `npm install jszip`
   </Guideline>
 
-  <Snippet filename="src/components/ProjectSetup/index.js" source="src/components/ProjectSetup/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/ProjectSetup/index.tsx" source="src/components/ProjectSetup/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/ProjectSetup/styles.module.css" source="src/components/ProjectSetup/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 

@@ -9,7 +9,7 @@ Each card links to a dedicated series page and shows the number of published and
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/Blog/SeriesCards/index.js
+src/components/Blog/SeriesCards/index.tsx
 ```
 
 ## ✨ Features

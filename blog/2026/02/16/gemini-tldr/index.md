@@ -73,7 +73,7 @@ First, we need a way to display the summary nicely in Docusaurus. I use a simple
 
 The component code is as follows:
 
-<Snippet filename="src/components/TLDR/index.js" source="src/components/TLDR/index.js" />
+<Snippet filename="src/components/TLDR/index.tsx" source="src/components/TLDR/index.tsx" />
 
 <Snippet filename="src/components/TLDR/styles.module.css" source="src/components/TLDR/styles.module.css" />
 
@@ -159,7 +159,7 @@ You'll find below all the files you'll need to set this up in your own Docusauru
   <Snippet filename=".scripts/python_tldr/main.py" source="./files/main.py" />
   <Snippet filename=".scripts/python_tldr/src/ai_service.py" source="./files/src/ai_service.py" />
   <Snippet filename=".scripts/python_tldr/src/file_manager.py" source="./files/src/file_manager.py" />
-  <Snippet filename="src/components/TLDR/index.js" source="src/components/TLDR/index.js" />
+  <Snippet filename="src/components/TLDR/index.tsx" source="src/components/TLDR/index.tsx" />
   <Snippet filename="src/components/TLDR/styles.module.css" source="src/components/TLDR/styles.module.css" />
 </ProjectSetup>
 

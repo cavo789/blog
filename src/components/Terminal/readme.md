@@ -18,7 +18,7 @@ Out-of-the-box, here is how the component will looks like:
 
 ## 📁 Location
 
-This component lives at `src/components/Terminal/index.js`.
+This component lives at `src/components/Terminal/index.tsx`.
 
 ## 🚀 Usage
 

@@ -67,9 +67,9 @@ Both paths spend something that belongs to every visitor — attention, trust, o
 
 ## Installation
 
-The whole thing is two files plus one import. Given a transparent-background image of the mascot looking startled — more on how that image was actually produced, and the mistake that nearly shipped, in [Under the Hood](#under-the-hood-skip-this-if-you-just-want-to-use-it) below — the detection and the overlay live entirely in `index.js`:
+The whole thing is two files plus one import. Given a transparent-background image of the mascot looking startled — more on how that image was actually produced, and the mistake that nearly shipped, in [Under the Hood](#under-the-hood-skip-this-if-you-just-want-to-use-it) below — the detection and the overlay live entirely in `index.tsx`:
 
-<Snippet filename="src/components/ShakeEasterEgg/index.js" source="src/components/ShakeEasterEgg/index.js" />
+<Snippet filename="src/components/ShakeEasterEgg/index.tsx" source="src/components/ShakeEasterEgg/index.tsx" />
 
 And the full-screen overlay, its pop-in/tremble/fade animation, and the `prefers-reduced-motion` fallback live in the CSS module:
 
@@ -155,6 +155,6 @@ iOS staying out for good, [not for lack of trying but by design](#why-ios-is-lef
     "**`SHAKE_JERK_THRESHOLD`** (default `100`, up from `28` then `60` after real-world use kept firing too easily) — raise it further if the egg still fires too easily, lower it if a deliberate shake does nothing",
     "**`COOLDOWN_MS`** (default `4000`) — minimum time between two triggers",
     "**`VISIBLE_DURATION_MS`** (default `2200`) / **`EXIT_DURATION_MS`** (default `250`) — how long the overlay stays up and how fast it fades; keep the CSS `overlay-out` duration in sync with the latter",
-    "All four live at the top of `src/components/ShakeEasterEgg/index.js`",
+    "All four live at the top of `src/components/ShakeEasterEgg/index.tsx`",
   ]}
 />
