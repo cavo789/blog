@@ -212,6 +212,13 @@ function tags() {
 }
 
 # @cat Content
+# @cmd yaml
+# @desc Run the YAML front matter manager utility
+function yaml() {
+    python3 .scripts/yaml-manager.py "$@"
+}
+
+# @cat Content
 # @cmd eli5
 # @desc Generate ELI5 tips (whole blog, or: eli5 blog/2026/07)
 function eli5() {
@@ -358,6 +365,7 @@ export -f codelint
 export -f format
 export -f spellcheck
 export -f tags
+export -f yaml
 export -f eli5
 export -f faq
 export -f questions

@@ -36,10 +36,10 @@ In this post, I'll share how I enforced lazy loading on this Docusaurus blog and
 
 ## Running the Check
 
-Once the script and its container are in place (covered below), auditing every image on the site is one command:
+Once the script (shown further down) and its container are in place, auditing every image on the site was one command:
 
 <Terminal typewriter wrap={true}>
-$ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.61.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python .scripts/check-images.py"
+$ docker run -it --rm -v .:/app -w /app --entrypoint /bin/sh mcr.microsoft.com/playwright/python:v1.61.0-jammy -c "pip install --root-user-action=ignore beautifulsoup4 pillow playwright requests >/dev/null && python check-images.py"
 </Terminal>
 
 I'll get a report in the console indicating any images that are missing the `loading="lazy"` attribute, especially if they are large.
@@ -88,9 +88,13 @@ The script performs the following actions:
 4.  **Inspects** every `<img>` tag to verify the presence of `loading="lazy"`.
 5.  **Checks** image dimensions using `Pillow` to flag large images that definitely should be lazy-loaded.
 
-<Snippet filename=".scripts/check-images.py" source=".scripts/check-images.py" defaultOpen={false} />
+<Snippet filename="check-images.py" source="./files/check-images.py" defaultOpen={false} />
 
-You know me very well now; I like to containerize things. So, I'm not using Python or Playwright directly on my host machine but rather inside a Docker container. That container mounts the current directory, installs the required packages, and runs `.scripts/check-images.py` — the exact command shown at the top of this article.
+You know me very well now; I like to containerize things. So, I wasn't using Python or Playwright directly on my host machine but rather inside a Docker container. That container mounts the current directory, installs the required packages, and runs `check-images.py` — the exact command shown at the top of this article.
+
+<AlertBox variant="note">
+This script has since been retired from my own toolkit and is kept here only as a reference; the code above still works as documented.
+</AlertBox>
 
 ### Additional Checks
 
