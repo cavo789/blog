@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:43.194Z",
+  "generated": "2026-08-28T10:52:48.919Z",
   "source": "index.md",
-  "sourceHash": "f62225f2805a47f2f56ef207ca5fd379e4549050",
+  "sourceHash": "5ce9b9f298330baa62822dc4165f5de847f29f0e",
   "questions": [
     {
-      "question": "How do I enforce lazy loading on Docusaurus images?",
+      "question": "How do I ensure all images on my Docusaurus blog are lazy-loaded?",
       "anchor": "running-the-check"
     },
     {
-      "question": "What is lazy loading and why is it important for performance?",
+      "question": "What is lazy loading, and why is it important for performance?",
       "anchor": ""
     },
     {
-      "question": "How can I verify the lazy loading behavior of my Docusaurus images using a script?",
+      "question": "How can I automate the verification of lazy-loading behavior on my Docusaurus blog?",
       "anchor": "step-1-enforcing-lazy-loading-in-docusaurus"
     },
     {
-      "question": "What are some challenges when verifying lazy loading behavior on a large website like mine?",
+      "question": "What are some common challenges when implementing lazy loading in a Docusaurus site?",
       "anchor": ""
     },
     {
-      "question": "How can I simulate user scrolling to verify lazy loading behavior with Playwright?",
-      "anchor": "step-2-trust-but-verify"
+      "question": "How do I override the default image component in Docusaurus to enforce lazy loading?",
+      "anchor": "running-the-check"
     },
     {
-      "question": "What is the purpose of the Python script in verifying lazy loading behavior on my Docusaurus site?",
-      "anchor": "the-challenge-scrolling"
+      "question": "What are some best practices for optimizing images on a Docusaurus blog?",
+      "anchor": ""
     },
     {
-      "question": "How can I ensure that all images on my Docusaurus blog have the correct lazy loading attributes?",
+      "question": "How can I simulate user scrolling in Playwright to test lazy-loading behavior on my Docusaurus site?",
       "anchor": "step-1-enforcing-lazy-loading-in-docusaurus"
     },
     {
-      "question": "What is the benefit of using a containerized Python and Playwright script to verify lazy loading behavior?",
+      "question": "What are some common issues when implementing lazy loading in a Docusaurus blog, and how do I troubleshoot them?",
       "anchor": ""
     }
   ]
