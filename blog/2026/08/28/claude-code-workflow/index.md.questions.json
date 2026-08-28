@@ -1,41 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-27T15:56:01.707Z",
+  "generated": "2026-08-28T09:10:31.494Z",
   "source": "index.md",
-  "sourceHash": "acd5ca5e80f6b76b534f78b81723d538c18adf13",
+  "sourceHash": "8f57401218635c73ccb6b67889d44bc06c37171e",
   "questions": [
     {
-      "question": "What are the five layers in Claude Code's workflow and what do they do?",
+      "question": "What are the five layers of Claude Code?",
       "anchor": ""
     },
     {
-      "question": "How does Claude Code use plain Bash scripts to enforce rules without involving AI?",
-      "anchor": "always-on-no-invocation-needed-rules"
+      "question": "Why is a layered setup beneficial for Claude Code?",
+      "anchor": "what-five-layers-look-like-in-practice"
     },
     {
-      "question": "What is the purpose of hooks in Claude Code's workflow and how do they work?",
+      "question": "How do I start using Claude Code with slash commands?",
+      "anchor": "why-a-layered-setup-works"
+    },
+    {
+      "question": "What are hooks in Claude Code and how do they work?",
+      "anchor": "start-here-your-first-slash-command"
+    },
+    {
+      "question": "How can I encode standards using skills and agents in Claude Code?",
       "anchor": "draw-a-hard-line-hooks"
     },
     {
-      "question": "How does the skill system in Claude Code ensure that standards are met without asking AI for guidance?",
+      "question": "Can you explain the practical example of this blog's time-to-value check in Claude Code?",
       "anchor": "encode-your-standards-skills-checked-by-agents"
     },
     {
-      "question": "What is the zero-token script and how does it work in Claude Code's workflow?",
-      "anchor": "why-the-reviewer-agents-cant-edit"
+      "question": "What are always-on rules in Claude Code and how do they work?",
+      "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
     },
     {
-      "question": "Why do plain Bash scripts often serve as the foundation for rules in Claude Code's workflow?",
+      "question": "How can I use plain Bash scripts without involving the AI in Claude Code?",
       "anchor": "always-on-no-invocation-needed-rules"
     },
     {
-      "question": "How does Claude Code use skills to enforce standards without relying on AI?",
-      "anchor": "encode-your-standards-skills-checked-by-agents"
+      "question": "What is the purpose of wiring it all together in Claude Code?",
+      "anchor": "wiring-it-all-together"
     },
     {
-      "question": "What is the role of agents in Claude Code's workflow and how do they work?",
-      "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
+      "question": "Can you explain how the reviewer agents can't edit in Claude Code?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How can I use a zero-token script in Claude Code?",
+      "anchor": "why-the-reviewer-agents-cant-edit"
+    },
+    {
+      "question": "What is the conclusion of this article on Claude Code?",
+      "anchor": "the-zero-token-script-one-more-time"
     }
   ]
 }

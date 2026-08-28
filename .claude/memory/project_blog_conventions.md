@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a
-  modified: 2026-07-27T16:03:05.390Z
+  modified: 2026-08-28T10:04:57.829Z
 ---
 
 ## Directory Structure
@@ -42,7 +42,7 @@ date: 2026-01-15                 # required — YYYY-MM-DD
 
 # Optional fields:
 series: "Creating Docusaurus components"  # groups posts into a series
-blueskyRecordKey: abc123xyz              # enables Bluesky comments widget
+blueskyRecordKey: abc123xyz              # optional manual override — Bluesky post is auto-detected otherwise, see [[project-components]]
 ai_assisted: true                        # shows AI badge + AI co-author
 tried_it: false                          # opt-OUT — TriedIt widget shows by default on every post; set false to hide it on non-tutorial content
 language: en                             # language code

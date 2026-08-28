@@ -196,6 +196,7 @@ export default function BlueskyComments({ metadata }) {
           encodeURIComponent(postUri);
 
         const res = await fetch(url);
+        if (!res.ok) throw new Error("Failed to fetch post thread");
         const data = await res.json();
 
         const allComments = [];
@@ -213,6 +214,8 @@ export default function BlueskyComments({ metadata }) {
 
         setComments(allComments);
       } catch (err) {
+        // Offline, blocked by the visitor, or Bluesky unreachable: stay silent
+        // rather than surface a raw error — same outcome as no comments to show.
         console.error(err);
         setError(true);
       }
@@ -220,8 +223,7 @@ export default function BlueskyComments({ metadata }) {
     fetchComments();
   }, [blueskyRecordKey, blueSkyConfig?.handle]);
 
-  if (!blueskyRecordKey) return null;
-  if (error) return <p>Error loading comments.</p>;
+  if (!blueskyRecordKey || error) return null;
   if (comments === null) return <p>Loading comments…</p>;
 
   const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueskyRecordKey}`;

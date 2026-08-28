@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a
-  modified: 2026-07-28T04:42:04.123Z
+  modified: 2026-08-28T10:05:24.104Z
 ---
 
 ## Globally Registered MDX Components
@@ -185,7 +185,7 @@ Used instead of raw `<a>` for internal/external links with proper Docusaurus rou
 |---|---|---|
 | `RelatedPosts` | `src/components/Blog/RelatedPosts/` | Auto-shown at bottom of posts |
 | `MobileQuickLinks` | `src/components/Blog/MobileQuickLinks/` | Mobile-only (<997px) 3-link list under the TL;DR; skipped for series posts; rendered by `TLDR` |
-| `Bluesky` | `src/components/Bluesky/` | Comments widget, keyed by `blueskyRecordKey` |
+| `Bluesky` | `src/components/Bluesky/` | Engagement widget (share/like/repost/comments). Auto-detects the matching Bluesky post at runtime by scanning the account's own post history for a link to the article's URL (`useBlueskyRecordKey` hook) — `blueskyRecordKey` frontmatter is now an optional manual override (post-rename or re-promotion disambiguation), not a requirement. See `src/components/Bluesky/readme.md` for the resolution algorithm and the offline/blocked-API fallback behavior. |
 | `Reaction` | `src/components/Reaction/` | Helpful/not helpful vote widget |
 | `ReadingProgress` | `src/components/ReadingProgress/` | Top progress bar |
 | `ScrollToTopButton` | `src/components/ScrollToTopButton/` | Floating back-to-top button |

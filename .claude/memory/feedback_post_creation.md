@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a
-  modified: 2026-08-20T17:34:58.492Z
+  modified: 2026-08-28T10:05:15.094Z
 ---
 
 Always add `draft: true` to any post created in `.unpublished/`. Without it, the post may surface unexpectedly in development or tools that don't respect the folder exclusion.
@@ -52,7 +52,15 @@ date:
 description:
 language:        # optional
 ai_assisted:     # optional
-blueskyRecordKey: # optional, leave empty string if not yet known
+blueskyRecordKey: # optional — omit entirely; the Bluesky post is auto-detected at runtime (see [[project-components]]), only set this by hand to override
 draft:           # only for .unpublished/ posts
 series:          # optional
 ```
+
+---
+
+Never tell the user they must share on Bluesky, retrieve the record key from the post URL, then edit and redeploy to link the two (the old two-deploy workflow described in the `docusaurus-bluesky-comments` article).
+
+**Why:** As of 2026-08-28, `useBlueskyRecordKey` (`src/components/Bluesky/useBlueskyEngagement.js`) auto-detects the matching Bluesky post at runtime by searching the account's own post history for a link to the article's URL — no frontmatter edit or second deploy needed for the normal case. See [[project-components]] for how it works and when the manual key is still needed.
+
+**How to apply:** Don't add `blueskyRecordKey` when drafting a new post's frontmatter. Only mention/set it if the user hits one of the two known override cases: the article's slug was renamed after being shared, or the article was promoted more than once and a specific post needs to be forced.
