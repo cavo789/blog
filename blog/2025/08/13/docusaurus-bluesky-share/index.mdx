@@ -246,6 +246,43 @@ If it didn't work, please stop and restart your Docusaurus server. On my case (I
 
 Refresh a blog post page and you'll see the same button we already teased at the top of this article, now live on your own site.
 
+## All Files at a Glance
+
+Here is the full set of files created in this article. Use the button below to copy them all at once, or download them as a ready-to-extract ZIP:
+
+<ProjectSetup folderName="Bluesky share button" createFolder={false}>
+  <Guideline>
+    Add these files to your existing Docusaurus site, then restart your dev server so the
+    swizzled `BlogPostItem` picks up the new component.
+  </Guideline>
+
+  <Snippet
+    filename="src/theme/BlogPostItem/index.js"
+    source="./files/BlogPostItem_3.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/index.js"
+    source="./files/Bluesky.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/share.js"
+    source="src/components/Bluesky/share.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/bluesky.svg"
+    source="src/components/Bluesky/bluesky.svg"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/styles.module.css"
+    source="src/components/Bluesky/styles.module.css"
+    defaultOpen={false}
+  />
+</ProjectSetup>
+
 In a next article, we'll learn how to interact with Bluesky:
 
 - Providing a button below the article to jump to the Bluesky posts so your visitors will be able to:

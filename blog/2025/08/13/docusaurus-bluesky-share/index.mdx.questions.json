@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-27T18:58:44.595Z",
+  "generated": "2026-08-28T11:29:47.380Z",
   "source": "index.mdx",
-  "sourceHash": "e5955312873fcf5c21855178aeadaacd4d0dc6d6",
+  "sourceHash": "617832f2b179492ed30f5caa1f4501992adae458",
   "questions": [
     {
-      "question": "How do I create a custom Docusaurus React component?",
+      "question": "How do I create a custom Docusaurus React component that adds a 'Share on Bluesky' button?",
       "anchor": "time-to-create-our-bluesky-docusaurus-component"
     },
     {
-      "question": "What is the purpose of the 'Share on Bluesky' button in this article?",
+      "question": "What is the purpose of the 'Swizzle' action in Docusaurus?",
       "anchor": "result"
     },
     {
-      "question": "How do I override how a blog post is rendered by Docusaurus?",
+      "question": "How do I extract the original file using the Swizzle action in Docusaurus?",
       "anchor": "we-need-to-override-how-the-article-is-rendered-by-docusaurus"
     },
     {
-      "question": "What is the content of the 'override' file in Docusaurus?",
-      "anchor": "extract-the-original-file"
+      "question": "What is the layout of the Bluesky generic component that we need to create?",
+      "anchor": "15-the-layout-of-our-bluesky-generic-component"
     },
     {
-      "question": "How do I extract the original template for a blog post in Docusaurus?",
-      "anchor": "keep-things-under-control"
+      "question": "How do I add a 'Share on Bluesky' button to the article using the extracted file?",
+      "anchor": "25-our-share-on-bluesky-button"
     },
     {
-      "question": "What is the purpose of the 'Swizzle' action in Docusaurus?",
-      "anchor": "we-need-to-override-how-the-article-is-rendered-by-docusaurus"
+      "question": "What is the SVG icon used in the 'Share on Bluesky' button component?",
+      "anchor": "35-the-bluesky-logo"
     },
     {
-      "question": "How do I keep things under control when overriding a blog post's template in Docusaurus?",
-      "anchor": "playing-and-adding-a-stupid-message-to-every-blog-post"
+      "question": "How do I implement the custom React component in Docusaurus to display the 'Share on Bluesky' button below each blog post?",
+      "anchor": "45-and-finally-our-css"
     },
     {
-      "question": "What is the purpose of the 'override' file in Docusaurus?",
-      "anchor": "extract-the-original-file"
+      "question": "What is the purpose of the 'Final remarks' section in this article?",
+      "anchor": "final-remarks---take-care-about-the-swizzle-command"
     }
   ]
 }

@@ -88,7 +88,7 @@ So, from now, you've clearly made the link between your article and your Bluesky
 
 In the previous article (see [Create our own Docusaurus React component and provide a "Share on Bluesky" button](/blog/docusaurus-bluesky-share)), we've created the `src/components/Bluesky/index.js` file. Please edit that file and use this new content:
 
-## 1/5 The layout of our Bluesky generic component
+## 1/6 The layout of our Bluesky generic component
 
 Here is our new Bluesky layout for our component:
 
@@ -113,14 +113,23 @@ The highlighted lines are the new ones compared to the previous version of the f
   ]}
 />
 
-## 2/5 Our "Like, share or comment" button
+## 2/6 The shared data-fetching hook
+
+Both `index.js` (for the headline copy) and `likes.js` (for the counts and the facepile) need the same Bluesky data, so instead of fetching it twice, we centralize everything in one custom hook: `useBlueskyEngagement.js`. It resolves the `blueskyRecordKey` (from your front matter or, if you didn't set one, by matching the article's URL against your own Bluesky post history) and fetches likes, reposts and comments in a single pass.
+
+<Snippet
+  filename="src/components/Bluesky/useBlueskyEngagement.js"
+  source="src/components/Bluesky/useBlueskyEngagement.js"
+/>
+
+## 3/6 Our "Like, share or comment" button
 
 <Snippet
   filename="src/components/Bluesky/post.js"
   source="src/components/Bluesky/post.js"
 />
 
-## 3/5 Our component for getting the number of likes and reposts
+## 4/6 Our component for getting the number of likes and reposts
 
 <Snippet
   filename="src/components/Bluesky/likes.js"
@@ -132,14 +141,14 @@ An earlier version of this component only showed the avatars of the people who *
 
 </AlertBox>
 
-## 4/5 Retrieving all comments
+## 5/6 Retrieving all comments
 
 <Snippet
   filename="src/components/Bluesky/comments.js"
   source="src/components/Bluesky/comments.js"
 />
 
-## 5/5 Our new CSS
+## 6/6 Our new CSS
 
 <Snippet
   filename="src/components/Bluesky/styles.module.css"
@@ -161,3 +170,46 @@ You have to edit the `docusaurus.config.js` file and add a new section called `c
 For sure, use yours; not mine ;-)
 
 </AlertBox>
+
+## All Files at a Glance
+
+Here is the full set of files this article touched — the update to `index.js`, and the four new files (`useBlueskyEngagement.js`, `post.js`, `likes.js`, `comments.js`) plus the refreshed CSS. Use the button below to copy them all at once, or download them as a ready-to-extract ZIP:
+
+<ProjectSetup folderName="Bluesky engagement" createFolder={false}>
+  <Guideline>
+    These files replace the ones created in the [first article](/blog/docusaurus-bluesky-share).
+    Don't forget to also add the `customFields.bluesky` block to your `docusaurus.config.js` (see
+    above), then restart your Docusaurus dev server.
+  </Guideline>
+
+  <Snippet
+    filename="src/components/Bluesky/index.js"
+    source="src/components/Bluesky/index.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/useBlueskyEngagement.js"
+    source="src/components/Bluesky/useBlueskyEngagement.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/post.js"
+    source="src/components/Bluesky/post.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/likes.js"
+    source="src/components/Bluesky/likes.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/comments.js"
+    source="src/components/Bluesky/comments.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/styles.module.css"
+    source="src/components/Bluesky/styles.module.css"
+    defaultOpen={false}
+  />
+</ProjectSetup>
