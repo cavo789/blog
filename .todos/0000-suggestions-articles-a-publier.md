@@ -131,3 +131,35 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions-write`.
   quoi".
 - Portée à cadrer avant rédaction : sujet plus vaste qu'un article "un outil, un article" habituel —
   probablement à découper (partie concepts + partie lab) plutôt qu'un seul post dense.
+
+### [ ] n8n — automatisation self-hébergée déclenchée par évènement (webhooks/cron), pas juste du chat/CLI
+
+- Vérifié par grep : aucune mention de `n8n` dans `blog/` ni `.unpublished/`. `zapier`/`make.com`/
+  `automat` ne renvoient que des faux positifs sans rapport (composants Docusaurus, plugins, etc.).
+  `bluesky` est le piège connu documenté dans la mémoire blog-map (footer de partage présent sur
+  quasi tous les posts) — vérifié un par un, rien de pertinent en dehors des deux articles BlueSky
+  déjà publiés. Pas de doublon.
+- Angle différenciant vs l'existant : contrairement aux fonctions zsh `ai-*` (invocation manuelle en
+  terminal, série "Ollama daily use") et aux skills Claude Code (`/freshness`, `/links`, `/refresh`,
+  invocation à la demande), n8n est **déclenché par évènement** (cron, webhook, flux RSS) sans
+  intervention humaine — Docker-first (image officielle, s'intègre dans la stack existante
+  Ollama/AnythingLLM sur le host), et orchestre plusieurs API à la fois via une interface node-based
+  plutôt qu'un seul script ciblé.
+- Exemples concrets à forte valeur ajoutée, tous vérifiés comme non couverts :
+  1. **Nouveau post → annonce BlueSky automatique** : n8n surveille le flux RSS du blog et poste
+     l'annonce via l'API AT Protocol dès qu'un nouveau post apparaît — referme la boucle entre les
+     deux articles BlueSky déjà publiés (`docusaurus-bluesky-share`, `docusaurus-bluesky-comments`,
+     partage côté lecteur) et le geste manuel actuel de l'auteur (annoncer soi-même), juste après la
+     révision de la série (commits `942ee940`/`a3fcc2c3`).
+  2. **Digest quotidien de la stack Docker maison** : interroge l'API Docker et les endpoints
+     Ollama/AnythingLLM sur le host, envoie un résumé (santé conteneurs, modèles chargés, espace
+     disque) — complément naturel du trio lazydocker/Portainer/Traefik déjà en draft (dashboards
+     qu'on consulte) en ajoutant "les choses qui préviennent toutes seules".
+  3. **Agrégateur d'échecs CI** : reçoit les webhooks GitHub Actions et GitLab CI et les normalise
+     vers un seul canal de notification — pont entre les deux écosystèmes actuellement traités par
+     des articles séparés et encore à l'état de proposition (`act`, `gitlab-ci-local`).
+  4. **Contrôle planifié des liens externes** : cron + noeud HTTP Request sur les URLs externes des
+     posts publiés, alerte en cas de 404/timeout — couche infra légère et sans LLM, à présenter
+     explicitement comme complémentaire (pas un doublon) du skill `/freshness`, qui fait une revue
+     qualitative pilotée par Claude plutôt qu'un contrôle mécanique planifié.
+- Bridge naturel avec le plus gros cluster du blog (Docker) et avec la série BlueSky révisée ce jour.

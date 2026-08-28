@@ -10,6 +10,7 @@ tags: [ai]
 date: 2026-08-28
 ai_assisted: true
 language: en
+blueskyRecordKey: 3mu4sz2et3c2u
 ---
 
 ![Claude Code - From Slash Commands to a Layered Workflow](/img/v2/vibe_coding_claude.webp)
@@ -40,13 +41,29 @@ previous one couldn't.
 ## What Five Layers Look Like In Practice
 
 Five ingredients make this possible, and each gets its own section further down — this is just the
-short version so the demo below doesn't read like alphabet soup: a **command** is what you type
-yourself (`/something`); a **skill** is a checklist Claude reads on its own, without being asked; an
-**agent** runs that checklist in its own separate, restricted window, away from your main
-conversation; a **rule** loads itself automatically the moment a matching file is open; and a
-**hook** can block an action outright, no negotiation possible. Keep those five words in mind — here's
-what a critical read of a blog post looks like today, once all five are in place, before it ever gets
-published:
+short version so the demo below doesn't read like alphabet soup:
+
+<StepsCard
+  variant="remember"
+  title="Five Words to Keep In Mind"
+  steps={[
+    { content: "**Command** — what you type yourself (`/something`)." },
+    { content: "**Skill** — a checklist Claude reads on its own, without being asked." },
+    { content: "**Agent** — runs that checklist in its own separate, restricted window, away from your main conversation." },
+    { content: "**Rule** — loads itself automatically the moment a matching file is open." },
+    { content: "**Hook** — can block an action outright, no negotiation possible." }
+  ]}
+/>
+
+Two of these five never wait for a human: a **rule** loads itself the instant a matching file
+opens, and a **hook** fires on every matching tool call — no typing involved, and Claude has no say
+either way. The other three are triggered by hand, and chain together the way the demo below shows
+it: you type a **command**, the command calls an **agent**, and the agent applies a **skill** to do
+the actual judging — though, as covered further down, a skill can also auto-load on its own when
+its description matches the task at hand, without a command in the loop at all.
+
+Here's what a critical read of a blog post looks like today, once all five are in place, before it
+ever gets published:
 
 > */reader_review git-precommit*
 
