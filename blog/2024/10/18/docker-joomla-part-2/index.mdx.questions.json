@@ -1,41 +1,53 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:36.340Z",
+  "generated": "2026-08-28T19:51:28.480Z",
   "source": "index.mdx",
-  "sourceHash": "6566b3766ac844c4c930ad1a192276a792552e68",
+  "sourceHash": "6e83e776320dbf15e403c503075cc4ae7d007d89",
   "questions": [
     {
-      "question": "How do I create a Joomla website using Docker in one command?",
+      "question": "How do I create a Joomla website using Docker with advanced automation?",
       "anchor": ""
     },
     {
-      "question": "What are the three configuration files needed to set up a Joomla site with Docker?",
-      "anchor": "create-the-three-configuration-files"
-    },
-    {
-      "question": "How can I configure my Joomla website using Docker to persist data on disk?",
+      "question": "What are the benefits of using Docker for Joomla development?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of the orchestration file (compose.yaml) in setting up a Joomla site with Docker?",
-      "anchor": "our-orchestration-file-composeyaml"
+      "question": "How can I automate my Joomla site deployment process using Docker and Compose?",
+      "anchor": "create-the-three-configuration-files"
     },
     {
-      "question": "How can I use a Makefile to simplify managing multiple Joomla projects on one machine?",
+      "question": "What is the purpose of the .env configuration file in this Docker setup?",
+      "anchor": "well-use-a-configuration-file-called-env"
+    },
+    {
+      "question": "How do I manage multiple Joomla projects on the same machine using Docker and Compose?",
+      "anchor": "updated-composeyaml"
+    },
+    {
+      "question": "What is the role of the makefile in automating Joomla site deployment with Docker?",
       "anchor": "lets-make-our-lives-simpler-and-lazier-using-a-makefile"
     },
     {
-      "question": "What are the steps involved in starting and stopping my Joomla website using Docker?",
-      "anchor": "time-to-starting-the-website"
+      "question": "How can I check the configuration before starting the Joomla website?",
+      "anchor": "before-starting"
     },
     {
-      "question": "How can I configure advanced settings for my Joomla site with Docker to ensure conflict-free operation across concurrent instances?",
-      "anchor": "advanced-configuration-for-joomla"
+      "question": "What are the steps to wake up or keep my Joomla website running?",
+      "anchor": "check-our-configuration"
     },
     {
-      "question": "What are the different versions of Joomla and PHP that can be used in combination with Docker to create a Joomla website?",
-      "anchor": "starting-three-different-projects"
+      "question": "How do I stop and remove containers for a Joomla website in Docker?",
+      "anchor": "lets-wake-up-joomla"
+    },
+    {
+      "question": "What is the purpose of the updated compose.yaml file in this Docker setup?",
+      "anchor": "updated-env"
+    },
+    {
+      "question": "What are the steps to start multiple Joomla projects simultaneously using Docker and Compose?",
+      "anchor": "start-all-three-projects-in-just-one-command"
     }
   ]
 }

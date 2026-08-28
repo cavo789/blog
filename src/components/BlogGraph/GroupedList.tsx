@@ -9,12 +9,15 @@
  *   room to be legible (BlogGraph swaps to this below the mobile breakpoint).
  */
 
-import PropTypes from "prop-types";
 import Link from "@docusaurus/Link";
-import { groupByMainTag, humanizeTag } from "./utils";
+import { groupByMainTag, humanizeTag, type BlogGraphNode } from "./utils";
 import styles from "./styles.module.css";
 
-export default function GroupedList({ nodes }) {
+interface Props {
+  nodes: BlogGraphNode[];
+}
+
+export default function GroupedList({ nodes }: Props) {
   const groups = groupByMainTag(nodes);
 
   return (
@@ -37,14 +40,3 @@ export default function GroupedList({ nodes }) {
     </div>
   );
 }
-
-GroupedList.propTypes = {
-  nodes: PropTypes.arrayOf(
-    PropTypes.shape({
-      permalink: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      mainTag: PropTypes.string,
-      date: PropTypes.string,
-    }),
-  ).isRequired,
-};

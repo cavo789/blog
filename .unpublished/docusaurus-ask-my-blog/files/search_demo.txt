@@ -1,5 +1,5 @@
 $ node --input-type=module -e "
-import { buildSearchIndex, search } from './src/components/AskMyBlog/utils.js';
+import { buildSearchIndex, search } from './src/components/AskMyBlog/utils.ts';
 import fs from 'fs';
 const corpus = JSON.parse(fs.readFileSync('.docusaurus/questions-index-plugin/static/questions-index.json', 'utf8'));
 const index = buildSearchIndex(corpus);

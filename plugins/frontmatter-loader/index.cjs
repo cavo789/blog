@@ -6,7 +6,7 @@
  *
  * Why this exists
  * ---------------
- * `src/components/Blog/utils/posts.js` needs the front matter of every article
+ * `src/components/Blog/utils/posts.ts` needs the front matter of every article
  * under `blog/`. It gets it with `require.context("…/blog", true, /\.mdx?$/)`.
  *
  * Without this loader, that context makes Webpack compile *every* file under

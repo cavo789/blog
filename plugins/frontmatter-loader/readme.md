@@ -16,7 +16,7 @@ The body is discarded. YAML dates stay real `Date` objects, exactly like the fro
 
 ## 🧩 Why It Exists
 
-`src/components/Blog/utils/posts.js` needs the front matter of every article to build listings, series pages, related posts and counters. It collects them with `require.context()` over `blog/`.
+`src/components/Blog/utils/posts.ts` needs the front matter of every article to build listings, series pages, related posts and counters. It collects them with `require.context()` over `blog/`.
 
 Left alone, that context hands every file under `blog/` to the Webpack rule installed by `@docusaurus/plugin-content-blog`. That rule's `createAssets()` hook throws:
 

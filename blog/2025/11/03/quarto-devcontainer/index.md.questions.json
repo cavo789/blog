@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:42.222Z",
+  "generated": "2026-08-28T19:52:05.264Z",
   "source": "index.md",
-  "sourceHash": "c42cccbd15d1772928d2f7ae9fc203d26c9a10b2",
+  "sourceHash": "cd1a6caeb229e1592d1d66ac0e80346644ad16f4",
   "questions": [
     {
-      "question": "What is a Quarto project?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I convert any Quarto project into a devcontainer?",
+      "question": "How do I create a Docker image for my Quarto project?",
       "anchor": "well-need-to-create-three-files"
     },
     {
-      "question": "What are the three files needed to create a Docker image for a Quarto project?",
+      "question": "What is the purpose of the Dockerfile in this setup?",
       "anchor": "extra-information-optional--skip-if-the-defaults-work-for-you"
     },
     {
-      "question": "Why is it important to install sudo during the creation of the Docker image?",
-      "anchor": "installation-of-sudo"
+      "question": "How does Quarto work with Docker containers?",
+      "anchor": ""
     },
     {
-      "question": "What is the purpose of the build arguments file in a Quarto project?",
-      "anchor": "build-arguments-optional--read-only-the-ones-you-need"
+      "question": "What are the benefits of using a devcontainer for Quarto projects?",
+      "anchor": "opening-our-project-as-a-devcontainer"
     },
     {
-      "question": "How do I install Chromium in a Quarto project's Docker image?",
+      "question": "Can I customize the pre-commit hooks in my devcontainer configuration?",
+      "anchor": "installation-of-pre-commit-hooks"
+    },
+    {
+      "question": "How do I install additional extensions in VSCode within a Devcontainer?",
       "anchor": "installation-of-chromium"
     },
     {
-      "question": "What is pre-commit and how does it work with Quarto projects?",
-      "anchor": "what-is-pre-commit"
+      "question": "What is the purpose of the .devcontainer folder in this setup?",
+      "anchor": "installation-of-sudo"
     },
     {
-      "question": "How can I create a devcontainer for my Quarto project?",
+      "question": "How can I quickly add dependencies using pre-commit hooks in my devcontainer?",
       "anchor": "installation-of-pre-commit-hooks"
     }
   ]

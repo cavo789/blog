@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:18:22.587Z",
+  "generated": "2026-08-28T19:52:32.231Z",
   "source": "index.md",
-  "sourceHash": "f37177bebeb09da0a3a72d8af2e62a9c39f51123",
+  "sourceHash": "b2c439c297007b5263f02ae9c11aba55b7d89408",
   "questions": [
     {
       "question": "How do I use the ProjectSetup component in my Docusaurus blog posts?",
       "anchor": "seeing-it-work"
     },
     {
-      "question": "What are the core features of the ProjectSetup component?",
+      "question": "What is the killer feature of the ProjectSetup component?",
       "anchor": "what-is-projectsetup"
     },
     {
-      "question": "How does the ProjectSetup component generate a shell script for setting up the project?",
+      "question": "Can you explain how to generate an install script using the ProjectSetup component?",
       "anchor": "core-features"
     },
     {
-      "question": "What is the purpose of the LogoIcon and CodeSnippet components in the ProjectSetup component?",
+      "question": "How can I download the project as a ZIP file using the ProjectSetup component?",
       "anchor": "dependencies"
     },
     {
-      "question": "How can I download the entire project as a ZIP file using the ProjectSetup component?",
+      "question": "What are the core features of the ProjectSetup component?",
       "anchor": "installing-the-rest"
     },
     {
-      "question": "What are some post-installation guidelines that can be added to the ProjectSetup component?",
+      "question": "What is LogoIcon and how can I use it with the ProjectSetup component?",
       "anchor": "1-installing-snippet"
     },
     {
-      "question": "How does the ProjectSetup component handle file content and rendering in Markdown files?",
+      "question": "How can I integrate the ProjectSetup component into my Docusaurus blog posts?",
       "anchor": "2-installing-projectsetup"
     },
     {
-      "question": "What are some dependencies required for using the ProjectSetup component in a Docusaurus project?",
+      "question": "What are the dependencies of the ProjectSetup component and how do they work together?",
       "anchor": "3-the-project_setup-help-page"
     }
   ]

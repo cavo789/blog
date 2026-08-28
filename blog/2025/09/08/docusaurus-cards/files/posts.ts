@@ -24,7 +24,7 @@
  * - `series`: Series name (optional); used by the SeriesBlogPost component
  *
  * 🛠️ Usage:
- * ```js
+ * ```ts
  * import { getBlogMetadata } from './getBlogMetadata';
  * const posts = getBlogMetadata();
  * ```
@@ -34,18 +34,32 @@
  * where Webpack's `require.context` is available.
  */
 
+export interface BlogPostMetadata {
+  title: string;
+  description?: string;
+  image?: string;
+  draft: boolean;
+  unlisted: boolean;
+  permalink: string;
+  tags: string[];
+  mainTag: string | null;
+  authors: string[];
+  date?: string;
+  series: string | null;
+}
+
 const posts = require.context("../../../../blog", true, /\.mdx?$/);
 
-export function getBlogMetadata() {
+export function getBlogMetadata(): BlogPostMetadata[] {
   return posts
     .keys()
-    .map((key) => {
-      const post = posts(key);
+    .map((key): BlogPostMetadata => {
+      const post = posts(key) as { frontMatter: Record<string, unknown> };
 
       const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
 
-      let permalink;
-      if (post.frontMatter.slug) {
+      let permalink: string;
+      if (typeof post.frontMatter.slug === "string") {
         permalink = post.frontMatter.slug.startsWith("/")
           ? post.frontMatter.slug
           : `/blog/${post.frontMatter.slug.replace(/^\//, "")}`;
@@ -53,23 +67,23 @@ export function getBlogMetadata() {
         permalink = `/blog/${dir}/`;
       }
 
-      let imageUrl = post.frontMatter.image;
+      let imageUrl = post.frontMatter.image as string | undefined;
       if (imageUrl && imageUrl.startsWith("./")) {
         imageUrl = `/blog/${dir}/${imageUrl.replace("./", "")}`;
       }
 
       return {
-        title: post.frontMatter.title,
-        description: post.frontMatter.description,
+        title: post.frontMatter.title as string,
+        description: post.frontMatter.description as string | undefined,
         image: imageUrl,
-        draft: post.frontMatter.draft || false,
-        unlisted: post.frontMatter.unlisted || false,
+        draft: Boolean(post.frontMatter.draft),
+        unlisted: Boolean(post.frontMatter.unlisted),
         permalink,
-        tags: post.frontMatter.tags || [],
-        mainTag: post.frontMatter.mainTag || null,
-        authors: post.frontMatter.authors || [],
-        date: post.frontMatter.date,
-        series: post.frontMatter.series || null,
+        tags: (post.frontMatter.tags as string[]) || [],
+        mainTag: (post.frontMatter.mainTag as string) || null,
+        authors: (post.frontMatter.authors as string[]) || [],
+        date: post.frontMatter.date as string | undefined,
+        series: (post.frontMatter.series as string) || null,
       };
     })
     .filter(Boolean);

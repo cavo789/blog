@@ -1,11 +1,15 @@
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
+import type {
+  EngagedPerson,
+  EngagementAction,
+  EngagementStats,
+} from "./useBlueskyEngagement";
 
 const MAX_AVATARS = 10;
 
 // Bluesky facets are keyed by "liked", "reposted", "commented" — a person can carry more than one.
-function describeActions(actions) {
-  const verbs = [];
+function describeActions(actions: Set<EngagementAction>): string {
+  const verbs: string[] = [];
   if (actions.has("liked")) verbs.push("liked");
   if (actions.has("reposted")) verbs.push("reposted");
   if (actions.has("commented")) verbs.push("commented on");
@@ -14,12 +18,16 @@ function describeActions(actions) {
   return `${verbs.slice(0, -1).join(", ")} and ${verbs[verbs.length - 1]}`;
 }
 
-export default function BlueskyLikes({ stats }) {
+interface Props {
+  stats: EngagementStats;
+}
+
+export default function BlueskyLikes({ stats }: Props) {
   if (stats.loading || stats.likes === null) {
     return null;
   }
 
-  const shown = stats.engaged.slice(0, MAX_AVATARS);
+  const shown: EngagedPerson[] = stats.engaged.slice(0, MAX_AVATARS);
   const extraEngaged = stats.engaged.length - shown.length;
 
   return (
@@ -65,20 +73,3 @@ export default function BlueskyLikes({ stats }) {
     </span>
   );
 }
-
-BlueskyLikes.propTypes = {
-  stats: PropTypes.shape({
-    loading: PropTypes.bool.isRequired,
-    likes: PropTypes.number,
-    reposts: PropTypes.number,
-    engaged: PropTypes.arrayOf(
-      PropTypes.shape({
-        did: PropTypes.string.isRequired,
-        handle: PropTypes.string.isRequired,
-        displayName: PropTypes.string.isRequired,
-        avatar: PropTypes.string,
-        actions: PropTypes.instanceOf(Set).isRequired,
-      }),
-    ).isRequired,
-  }).isRequired,
-};

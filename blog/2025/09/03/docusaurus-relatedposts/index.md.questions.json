@@ -1,36 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:36.605Z",
+  "generated": "2026-08-28T19:08:51.991Z",
   "source": "index.md",
-  "sourceHash": "92c99643147535b6fdbfb3f3e45fd7a4f2b61e99",
+  "sourceHash": "837d0fd5fe2540b2b3aa62fc7fa0e5c81f64a766",
   "questions": [
     {
       "question": "How do I add related posts to my Docusaurus blog?",
       "anchor": ""
     },
     {
-      "question": "What is a Card component used for in this article?",
+      "question": "What is a Card component in Docusaurus for displaying related posts?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I extract information from blog posts to display related posts in Docusaurus?",
       "anchor": "we-need-a-card-component"
     },
     {
-      "question": "How can I extract information from blog posts?",
+      "question": "What is the purpose of the RelatedPosts component in Docusaurus for displaying related posts?",
       "anchor": "we-need-a-way-to-extract-information-from-blog-posts"
     },
     {
-      "question": "What is the purpose of the RelatedPosts component?",
+      "question": "How can I override the BlogPostItem template in Docusaurus to display related posts?",
       "anchor": "our-relatedposts-component"
     },
     {
-      "question": "How do I override Docusaurus's BlogPostItem template to display related posts?",
+      "question": "What are the steps to configure and edit blog posts to display related posts in Docusaurus?",
       "anchor": "overriding-the-blogpostitem-template"
     },
     {
-      "question": "What configurations need to be made in my blog posts for the RelatedPosts component to work?",
+      "question": "Why do I not see Related Posts on my Docusaurus blog?",
       "anchor": "editing-our-blog-posts"
     },
     {
-      "question": "Why do I not see related posts on my Docusaurus blog?",
+      "question": "How can I ensure that the RelatedPosts component correctly displays related posts based on tags in Docusaurus?",
       "anchor": "conclusion"
     }
   ]

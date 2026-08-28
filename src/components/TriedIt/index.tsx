@@ -1,17 +1,27 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, type JSX } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 
-export default function TriedIt({ metadata }) {
+interface Props {
+  metadata?: {
+    permalink?: string;
+  };
+}
+
+interface Counts {
+  worked: number;
+  didnt_work: number;
+}
+
+export default function TriedIt({ metadata }: Props): JSX.Element | null {
   const { siteConfig } = useDocusaurusContext();
   const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/tried-it.php`;
   const storageKey = `tried_it_${slug}`;
 
-  const [counts, setCounts] = useState(null);
+  const [counts, setCounts] = useState<Counts | null>(null);
   // null until the client-side effect runs — avoids SSR/hydration mismatch (#418).
-  const [voted, setVoted] = useState(null);
+  const [voted, setVoted] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -32,7 +42,7 @@ export default function TriedIt({ metadata }) {
   }, [slug, apiUrl]);
 
   const handleVote = useCallback(
-    async (vote) => {
+    async (vote: string) => {
       try {
         const res = await fetch(apiUrl, {
           method: "POST",
@@ -97,9 +107,3 @@ export default function TriedIt({ metadata }) {
     </div>
   );
 }
-
-TriedIt.propTypes = {
-  metadata: PropTypes.shape({
-    permalink: PropTypes.string,
-  }).isRequired,
-};

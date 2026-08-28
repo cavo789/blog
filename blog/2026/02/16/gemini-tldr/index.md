@@ -31,6 +31,13 @@ So, I decided to automate the generation of TL;DR summaries using Google's Gemin
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Before and After", to: "#before-and-after" },
+    { label: "Get All the Files", to: "#conclusion" },
+  ]}
+/>
+
 ## Before and After
 
 The script takes an entire article — every paragraph, every heading — and reduces it to a few sentences. Here's a real example, taken straight from <Link to="/blog/lovable-dev-ai">the Lovable.dev article</Link> on this blog.

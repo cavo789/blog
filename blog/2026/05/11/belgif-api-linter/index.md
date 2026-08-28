@@ -29,6 +29,13 @@ In this article, we'll explore how to use the official Belgif OpenAPI linter via
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Seeing the Linter Run", to: "#seeing-the-linter-run" },
+    { label: "Installation — Create a dummy application", to: "#installation--create-a-dummy-application" },
+  ]}
+/>
+
 ## Seeing the Linter Run
 
 <Vars port="8000" labels={{ port: "Host port" }} />

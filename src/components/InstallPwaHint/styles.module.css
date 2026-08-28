@@ -1,4 +1,4 @@
-/* Same visual language as CommandPalette/Hint.js's pill (see that file's
+/* Same visual language as CommandPalette/Hint.tsx's pill (see that file's
    styles.module.css for the shared .hintButton/.hintDismiss look) — this one is
    independent because it lives in its own component directory, not because the
    design should ever diverge. Positioned bottom-left, mirrored from that hint's

@@ -3,7 +3,7 @@
  * Handles: **bold**, *italic*, `code`, and [link](url).
  * Intended for use with dangerouslySetInnerHTML on trusted static content.
  */
-export function parseMarkdown(text) {
+export function parseMarkdown(text: string | null | undefined): string {
   if (!text) return "";
   return text
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
@@ -11,6 +11,6 @@ export function parseMarkdown(text) {
     .replace(/`(.*?)`/g, "<code>$1</code>")
     .replace(
       /\[([^\]]+)\]\(([^)]+)\)/g,
-      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'
+      '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>',
     );
 }

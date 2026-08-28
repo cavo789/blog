@@ -12,35 +12,30 @@
  * - Uses Infima utility classes for layout and spacing.
  * - Custom styles can be applied via `styles.module.css`.
  *
- * Location: src/components/Blog/PostCard/index.js
+ * Location: src/components/Blog/PostCard/index.tsx
  */
 
+import type { JSX } from "react";
 import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
 import CardImage from "@site/src/components/Card/CardImage";
 import Link from "@docusaurus/Link";
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 
-/**
- * Renders a formatted date string.
- * @param {Object} props
- * @param {string} props.date - The date string to format.
- * @param {string} props.layout - The layout variant ('big' or 'small').
- * @returns {JSX.Element | null}
- */
-const FormattedDate = ({ date, layout }) => {
+interface FormattedDateProps {
+  date?: string;
+  layout: "big" | "small";
+}
+
+/** Renders a formatted date string. */
+function FormattedDate({ date, layout }: FormattedDateProps): JSX.Element | null {
   if (!date) {
     return null;
   }
   return (
     <p
       className={layout === "small" ? "" : styles.date}
-      style={
-        layout === "small"
-          ? { color: "#888", fontSize: "0.95em", marginBottom: 8 }
-          : {}
-      }
+      style={layout === "small" ? { color: "#888", fontSize: "0.95em", marginBottom: 8 } : {}}
     >
       <span>
         {new Date(date).toLocaleDateString("en-US", {
@@ -51,28 +46,32 @@ const FormattedDate = ({ date, layout }) => {
       </span>
     </p>
   );
-};
+}
 
-/**
- * @param {Object} props
- * @param {Object} props.post - Blog post metadata.
- * @param {string} [props.layout='big'] - The layout variant: 'big' or 'small'.
- * @param {string} props.defaultImage - Fallback image used when no image is provided.
- * @returns {JSX.Element}
- */
+interface Post {
+  permalink: string;
+  image?: string;
+  title: string;
+  description?: string;
+  date?: string;
+}
+
+interface Props {
+  post: Post;
+  layout?: "big" | "small";
+  defaultImage?: string;
+}
+
 export default function PostCard({
   post,
   layout = "big",
   defaultImage = "/img/default.jpg",
-}) {
+}: Props): JSX.Element {
   const { permalink, image, title, description, date } = post;
 
   if (layout === "small") {
     return (
-      <div
-        className="col col--4"
-        style={{ marginBottom: "2rem", display: "flex" }}
-      >
+      <div className="col col--4" style={{ marginBottom: "2rem", display: "flex" }}>
         <div
           className="card"
           style={{
@@ -126,11 +125,7 @@ export default function PostCard({
   return (
     <div className="col col--3 margin-bottom--lg">
       <Card shadow="md">
-        <CardImage
-          cardImageUrl={image || defaultImage}
-          alt={title}
-          title={title}
-        />
+        <CardImage cardImageUrl={image || defaultImage} alt={title} title={title} />
         <CardBody className="padding-vert--md text--center" textAlign="center">
           <h3>
             <Link href={permalink} aria-label={`Read article: ${title}`}>
@@ -144,14 +139,3 @@ export default function PostCard({
     </div>
   );
 }
-
-PostCard.propTypes = {
-  post: PropTypes.shape({
-    permalink: PropTypes.string.isRequired,
-    image: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string,
-  }).isRequired,
-  layout: PropTypes.oneOf(["big", "small"]),
-  defaultImage: PropTypes.string,
-};

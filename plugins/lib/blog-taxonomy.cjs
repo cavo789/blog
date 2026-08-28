@@ -36,7 +36,7 @@ function findPosts(dir) {
   return found;
 }
 
-// Mirrors src/components/Blog/utils/slug.js's createSlug() exactly. Duplicated
+// Mirrors src/components/Blog/utils/slug.ts's createSlug() exactly. Duplicated
 // rather than imported: that file is ESM written for Webpack/browser bundling
 // (`export function`), which a plain Node `require()` here cannot load without
 // a bundler. Keep both in sync if the slugify algorithm ever changes — a drift
@@ -67,7 +67,7 @@ function loadFrontMatter(siteDir) {
     const { attributes: data } = frontMatter(fs.readFileSync(file, "utf-8"));
 
     // A Markdown file under blog/ without a title isn't an article (a fragment,
-    // a note) — same rule src/components/Blog/utils/posts.js applies.
+    // a note) — same rule src/components/Blog/utils/posts.ts applies.
     if (!data.title) continue;
 
     attributes.push(data);

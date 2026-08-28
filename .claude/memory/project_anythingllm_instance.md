@@ -5,13 +5,18 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 90614b9a-a9c5-4fab-8215-58074b589b67
-  modified: 2026-08-10T09:39:05.610Z
+  modified: 2026-08-28T16:52:17.100Z
 ---
 
 Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the host.
 
-- **From inside the blog devcontainer, AnythingLLM is at `http://172.17.0.1:3001`** — `localhost:3001`
-  and `host.docker.internal:3001` both fail. Verify with `curl http://172.17.0.1:3001/api/ping`.
+- **From inside the blog devcontainer, AnythingLLM is at `http://172.17.0.1:3200`** (moved off the
+  default 3001 on 2026-08-28; 3001 no longer answers). `localhost` and `host.docker.internal` both
+  fail regardless of port. Verify with `curl http://172.17.0.1:3200/api/ping`.
+- The `.scripts/anythingllm-*.sh` port-probe is hardcoded to 3001 (kept in sync with the published
+  article copy, which teaches the default). The non-default port is pinned via
+  `ANYTHINGLLM_URL=http://172.17.0.1:3200` in the gitignored `.env`, which `.devcontainer/compose.yaml`
+  injects as an env_file — so the scripts pick it up without being edited.
 - Its real `compose.yaml` is at `/home/christophe/tools/ollama/compose.yaml` on the **host** —
   not visible from the devcontainer, so runtime settings must be changed through the API
   (`POST /api/system/update-env`, values must be **strings** or it 500s) rather than by editing the file.

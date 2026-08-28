@@ -21,7 +21,7 @@ Out-of-the-box, here is how the component will looks like:
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/SeriesPosts/SeriesPosts.js
+src/components/Blog/SeriesPosts/index.tsx
 src/components/SeriesPosts/styles.module.css
 ```
 

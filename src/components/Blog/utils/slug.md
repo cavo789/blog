@@ -22,7 +22,7 @@ const slug = createSlug(title); // Output: "cafe-au-lait-croissants"
 
 ## Location
 
-Place this file in: `src/components/Blog/utils/slug.js`
+Place this file in: `src/components/Blog/utils/slug.ts`
 
 ## 📄 License
 

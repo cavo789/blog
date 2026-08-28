@@ -21,7 +21,7 @@ repos:
         exclude: '^(blog|\.unpublished)/.+/files/'
       - id: check-json
         # .vscode/ uses JSONC (comments allowed); blog files/ contains JSON snippets
-        exclude: '^(\.vscode/|blog/.+/files/|\.unpublished/.+/files/)'
+        exclude: '^(tsconfig\.json|\.vscode/|blog/.+/files/|\.unpublished/.+/files/)'
       - id: check-merge-conflict
       - id: check-added-large-files
         args: [--maxkb=1000]

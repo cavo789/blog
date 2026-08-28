@@ -29,6 +29,13 @@ Both doors were open. Both of them only worked for someone who had already read 
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "What Changed", to: "#what-changed" },
+    { label: "Building the Bubble", to: "#building-the-bubble" },
+  ]}
+/>
+
 ## What Changed
 
 Two things, neither of them a new feature:
@@ -90,7 +97,7 @@ The palette and the bubble panel are independent floating dialogs, each openable
 
 The fix is eight lines, and it lives in the palette's own bus module — so neither component has to import the other:
 
-```javascript title="src/components/CommandPalette/paletteBus.js"
+```typescript title="src/components/CommandPalette/paletteBus.ts"
 let activeCloser = null;
 
 export function setActiveOverlay(closeFn) {
@@ -114,7 +121,7 @@ Both the palette's pill and the bubble's pulse ring are first-visit hints, and b
 
 The palette's delay is deliberately different per page type, and the reason is worth stating: 10 seconds on an article exists so the pill never interrupts someone who has just started reading. The homepage has no reading to interrupt and is where visitors bounce fastest, so it gets 4 seconds — still long enough not to look like a load-time pop-up.
 
-```javascript title="src/components/CommandPalette/Hint.js"
+```typescript title="src/components/CommandPalette/Hint.tsx"
 function delayFor(pathname) {
   if (HOME_PATH.test(pathname)) return HOME_DELAY_MS;
   if (ARTICLE_PATH.test(pathname)) return ARTICLE_DELAY_MS;

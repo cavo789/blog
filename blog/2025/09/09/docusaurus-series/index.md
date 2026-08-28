@@ -77,7 +77,7 @@ In this first chapter, we will create our `SeriesPosts` component so that when y
 
 ### 1.1. We need some helpers
 
-If you do not have it yet, please create the `src/components/Blog/utils/posts.js` file. It will contain a helper function that we can reuse for several components.
+If you do not have it yet, please create the `src/components/Blog/utils/posts.ts` file. It will contain a helper function that we can reuse for several components.
 
 That helper will scan each Markdown file with an `.md` or `.mdx` extension in the `blog` subfolder.
 
@@ -90,13 +90,13 @@ For each file, the script will look at the YAML front matter and use some of its
 
 Some properties are custom, like `mainTag` (see my [Displaying related posts below our Docusaurus article](/blog/docusaurus-relatedposts) article) and, for our current needs, the `series` property.
 
-So, just copy and paste the content of the file below and create the `src/components/Blog/utils/posts.js` file in your project's structure.
+So, just copy and paste the content of the file below and create the `src/components/Blog/utils/posts.ts` file in your project's structure.
 
-<Snippet filename="src/components/Blog/utils/posts.js" source="src/components/Blog/utils/posts.js" />
+<Snippet filename="src/components/Blog/utils/posts.ts" source="src/components/Blog/utils/posts.ts" />
 
-We will also need a second helper. Please create the `src/components/Blog/utils/slug.js` file:
+We will also need a second helper. Please create the `src/components/Blog/utils/slug.ts` file:
 
-<Snippet filename="src/components/Blog/utils/slug.js" source="src/components/Blog/utils/slug.js" />
+<Snippet filename="src/components/Blog/utils/slug.ts" source="src/components/Blog/utils/slug.ts" />
 
 ### 1.2. Our SeriesPosts component
 
@@ -208,9 +208,9 @@ Please create the `src/components/Blog/SeriesCards/index.tsx` file with this con
 
 <Snippet filename="src/components/Blog/SeriesCards/index.tsx" source="src/components/Blog/SeriesCards/index.tsx" />
 
-We need a new helper, `src/components/Blog/utils/series.js`:
+We need a new helper, `src/components/Blog/utils/series.ts`:
 
-<Snippet filename="src/components/Blog/utils/series.js" source="src/components/Blog/utils/series.js" />
+<Snippet filename="src/components/Blog/utils/series.ts" source="src/components/Blog/utils/series.ts" />
 
 In short, the `SeriesCards` component is quite simple. It will just retrieve all series from your existing blog posts and then display them as cards. Nothing more.
 

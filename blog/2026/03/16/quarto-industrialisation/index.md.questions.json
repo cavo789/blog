@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:55:13.911Z",
+  "generated": "2026-08-28T19:52:49.034Z",
   "source": "index.md",
-  "sourceHash": "74fb0f87c60bf86037b1075043706d410fe7e346",
+  "sourceHash": "c5e832fea27a0df8ac06012c396b0e716dd56127",
   "questions": [
     {
-      "question": "What are the key components of a self-documenting ecosystem using Quarto and Docker?",
+      "question": "How do I build a self-documenting ecosystem for multiple projects using Quarto and Docker?",
       "anchor": ""
     },
     {
-      "question": "How does the Orchestrator (compose.yaml) work in this setup?",
+      "question": "What is Doc-as-Code and how does it differ from just saving Markdown in Git?",
       "anchor": "-the-wow-moment"
     },
     {
-      "question": "What is the purpose of the Engine (Dockerfile)?",
+      "question": "How can I automate the documentation process using Quarto and Docker?",
       "anchor": "why-it-works"
     },
     {
-      "question": "How can I generate a Mermaid diagram using the Python scripts in this setup?",
+      "question": "What is the difference between static Markdown and runtime execution in Doc-as-Code?",
       "anchor": "installation--the-wow-lab-build-your-first-doc-engine-in-5-minutes"
     },
     {
-      "question": "What is Doc-as-Code and how does it work with Quarto?",
+      "question": "How does the Secrets Resolver work with live API calls in Quarto documentation?",
+      "anchor": "visualizing-the-invisible-mermaid--caching"
+    },
+    {
+      "question": "What is a Mermaid diagram and how can it be generated from Python scripts using Quarto?",
+      "anchor": "the-living-documentation-authenticated-api-calls"
+    },
+    {
+      "question": "How does the Orchestrator (compose.yaml) work in this self-documenting ecosystem setup?",
       "anchor": "1-the-orchestrator-composeyaml"
     },
     {
-      "question": "How can I add a new file to the project and see it reflected in the documentation?",
+      "question": "What is the purpose of the Engine (Dockerfile) in this setup?",
       "anchor": "2-the-engine-dockerfile"
-    },
-    {
-      "question": "What is the purpose of the Secrets Resolver in this setup?",
-      "anchor": "3-the-experience-devcontainerdevcontainerjson"
-    },
-    {
-      "question": "How does Quarto handle runtime execution of code blocks in documents?",
-      "anchor": "4-our-python-scripts"
     }
   ]
 }

@@ -36,8 +36,8 @@ Each series offers you a progressive learning path to master a specific area of 
 
 ## 🧩 Dependencies
 
-- `generateSeriesList` from `src/components/Blog/utils/series.js`
-- `PostCard` component for rendering individual cards (`src/components/Blog/PostCard/index.js`)
+- `generateSeriesList` from `src/components/Blog/utils/series.ts`
+- `PostCard` component for rendering individual cards (`src/components/Blog/PostCard/index.tsx`)
 
 ## 🛠️ Customization
 

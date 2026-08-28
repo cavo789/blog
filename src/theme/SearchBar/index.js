@@ -2,7 +2,7 @@
  * Swizzled `@theme/SearchBar` (TODO 0084): replaces `docusaurus-plugin-pagefind`'s own
  * DocSearch-style modal — which owns its own `Ctrl+K`/`Cmd+K` binding — with a plain button
  * that opens the site-wide command palette instead. The palette's own `/` mode still runs
- * real Pagefind full-text search (`../../components/CommandPalette/utils.js`), so the search
+ * real Pagefind full-text search (`../../components/CommandPalette/utils.ts`), so the search
  * engine isn't lost, only its dedicated modal — "replace it, don't double it", per the TODO's
  * constraints.
  *

@@ -27,6 +27,13 @@ For those who prefer, the component also offers the option to download the proje
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Seeing It Work", to: "#seeing-it-work" },
+    { label: "Installing the Rest", to: "#installing-the-rest" },
+  ]}
+/>
+
 ## Seeing It Work
 
 The best way to show you how to use `ProjectSetup` is to use the component itself. Here is how you can install the `LogoIcon` component in your own Docusaurus project.

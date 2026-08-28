@@ -27,6 +27,13 @@ I use Markdown for all my documentation and exports (PDF, DOCX, etc.), so it mad
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "See it in Action", to: "#the-result" },
+    { label: "Installation", to: "#installation" },
+  ]}
+/>
+
 ## The Result
 
 Once the devcontainer is built and the preview server is running (covered under Installation below), your slideshow opens live in the browser — written in Markdown, previewed instantly:

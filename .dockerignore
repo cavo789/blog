@@ -34,7 +34,7 @@ localhost-key.pem
 .prettierignore
 .prettierrc.json
 .stylelintrc.json
-eslint.config.js
+eslint.config.mjs
 
 .gitignore
 .dockerignore

@@ -1,11 +1,17 @@
-import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import type {
+  BlueskyEmbed,
+  BlueskyMetadata,
+  BlueskyPostRecord,
+  BlueskyReplyNode,
+  BlueskySiteConfig,
+} from "./useBlueskyEngagement";
 
 // Bluesky facet indices are UTF-8 byte offsets, not JS string indices.
 // TextEncoder/TextDecoder ensures correct slicing for non-ASCII text (emoji, accents…).
-function renderPostText(record) {
+function renderPostText(record: BlueskyPostRecord): ReactNode {
   const text = record.text;
   const facets = record.facets || [];
   if (facets.length === 0) return text;
@@ -14,7 +20,7 @@ function renderPostText(record) {
   const decoder = new TextDecoder();
   const bytes = encoder.encode(text);
 
-  const parts = [];
+  const parts: ReactNode[] = [];
   let lastIndex = 0;
 
   facets.forEach((facet, idx) => {
@@ -52,10 +58,14 @@ function renderPostText(record) {
   return parts;
 }
 
-function renderEmbed(embed) {
+function renderEmbed(embed: BlueskyEmbed | null | undefined): ReactNode {
   if (!embed) return null;
 
-  if (embed.$type === "app.bsky.embed.external#view") {
+  // Narrowed by property presence, not by `$type` equality: `BlueskyEmbed`'s catch-all
+  // member types `$type` as a plain `string` (any other embed kind the API can return —
+  // video, record quote, …), so a literal-equality check can't exclude it and `embed.external`
+  // wouldn't narrow.
+  if ("external" in embed) {
     const { uri, title, thumb } = embed.external;
 
     return (
@@ -73,7 +83,7 @@ function renderEmbed(embed) {
     );
   }
 
-  if (embed.$type === "app.bsky.embed.images#view") {
+  if ("images" in embed) {
     return (
       <div className={styles.blueskyCommentImages}>
         {embed.images.map((image, index) => (
@@ -91,7 +101,11 @@ function renderEmbed(embed) {
   return null;
 }
 
-function BlueskyComment({ reply }) {
+interface FlattenedReply extends BlueskyReplyNode {
+  depth: number;
+}
+
+function BlueskyComment({ reply }: { reply: FlattenedReply }) {
   const recordKey = reply.post.uri.split("/").pop();
   const profileUrl = `https://bsky.app/profile/${reply.post.author.handle}`;
   const commentUrl = `https://bsky.app/profile/${reply.post.author.handle}/post/${recordKey}`;
@@ -155,40 +169,29 @@ function BlueskyComment({ reply }) {
   );
 }
 
-BlueskyComment.propTypes = {
-  reply: PropTypes.shape({
-    post: PropTypes.shape({
-      uri: PropTypes.string.isRequired,
-      indexedAt: PropTypes.string.isRequired,
-      likeCount: PropTypes.number.isRequired,
-      repostCount: PropTypes.number,
-      author: PropTypes.shape({
-        handle: PropTypes.string.isRequired,
-        displayName: PropTypes.string.isRequired,
-        avatar: PropTypes.string.isRequired,
-      }).isRequired,
-      record: PropTypes.shape({
-        text: PropTypes.string.isRequired,
-        facets: PropTypes.array,
-      }).isRequired,
-      embed: PropTypes.object,
-    }).isRequired,
-    depth: PropTypes.number.isRequired,
-  }).isRequired,
-};
+interface PostThreadResponse {
+  thread: {
+    replies?: BlueskyReplyNode[];
+  };
+}
 
-export default function BlueskyComments({ metadata }) {
+interface Props {
+  metadata: BlueskyMetadata;
+}
+
+export default function BlueskyComments({ metadata }: Props) {
   const { siteConfig } = useDocusaurusContext();
-  const blueSkyConfig = siteConfig?.customFields?.bluesky;
+  const blueSkyConfig = siteConfig?.customFields?.bluesky as
+    BlueskySiteConfig | undefined;
   const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
-  const [comments, setComments] = useState(null);
+  const [comments, setComments] = useState<FlattenedReply[] | null>(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!blueskyRecordKey || !blueSkyConfig?.handle) return;
 
-    async function fetchComments() {
+    const fetchComments = async () => {
       try {
         const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
         const url =
@@ -197,10 +200,10 @@ export default function BlueskyComments({ metadata }) {
 
         const res = await fetch(url);
         if (!res.ok) throw new Error("Failed to fetch post thread");
-        const data = await res.json();
+        const data = (await res.json()) as PostThreadResponse;
 
-        const allComments = [];
-        const flattenReplies = (arr, depth) => {
+        const allComments: FlattenedReply[] = [];
+        const flattenReplies = (arr: BlueskyReplyNode[] | undefined, depth: number) => {
           if (!arr) return;
           for (const r of arr) {
             allComments.push({ ...r, depth });
@@ -219,14 +222,14 @@ export default function BlueskyComments({ metadata }) {
         console.error(err);
         setError(true);
       }
-    }
+    };
     fetchComments();
   }, [blueskyRecordKey, blueSkyConfig?.handle]);
 
   if (!blueskyRecordKey || error) return null;
   if (comments === null) return <p>Loading comments…</p>;
 
-  const postUrl = `https://bsky.app/profile/${blueSkyConfig.handle}/post/${blueskyRecordKey}`;
+  const postUrl = `https://bsky.app/profile/${blueSkyConfig?.handle}/post/${blueskyRecordKey}`;
 
   if (comments.length === 0)
     return (
@@ -252,11 +255,3 @@ export default function BlueskyComments({ metadata }) {
     </div>
   );
 }
-
-BlueskyComments.propTypes = {
-  metadata: PropTypes.shape({
-    frontMatter: PropTypes.shape({
-      blueskyRecordKey: PropTypes.string,
-    }),
-  }).isRequired,
-};

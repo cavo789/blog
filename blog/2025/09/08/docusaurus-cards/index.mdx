@@ -147,8 +147,8 @@ There are three files we should create
 ## The slug generator
 
 <Snippet
-  filename="src/components/Blog/utils/slug.js"
-  source="src/components/Blog/utils/slug.js"
+  filename="src/components/Blog/utils/slug.ts"
+  source="src/components/Blog/utils/slug.ts"
 />
 
 ## The getBlogMetaData function
@@ -156,8 +156,8 @@ There are three files we should create
 We need a function to loop all our existing blog posts (all `.md` or `.mdx` files under the `blog` folder) and collect information like the post title, image, slug and so on.
 
 <Snippet
-  filename="src/components/Blog/utils/posts.js"
-  source="./files/posts.js"
+  filename="src/components/Blog/utils/posts.ts"
+  source="./files/posts.ts"
 />
 
 ## Our PostCard component
@@ -167,8 +167,8 @@ And, finally, we need our PostCard component; the one that will display a blog p
 You can see, in the top of the code, that we're importing a few parts of the [Card component](https://docusaurus.community/knowledge/component-library/new/Card/) of Docux.
 
 <Snippet
-  filename="src/components/Blog/PostCard/index.js"
-  source="./files/index.js"
+  filename="src/components/Blog/PostCard/index.tsx"
+  source="./files/index.tsx"
 />
 
 Finally, we'll create a CSS file to allow us to do some customization:
@@ -216,6 +216,6 @@ If you want your blog posts to be listed from the newest one to the oldest, plea
 But make sure every blog post you have has a `date` field in its YAML front matter.
 
 <Snippet
-  filename="src/components/Blog/Tags/TagArticlesPage.js"
-  source="./files/TagArticlesPage.js"
+  filename="src/components/Blog/Tags/TagArticlesPage.tsx"
+  source="./files/TagArticlesPage.tsx"
 />

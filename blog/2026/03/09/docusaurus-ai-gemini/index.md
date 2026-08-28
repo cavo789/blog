@@ -33,6 +33,13 @@ Here's how you can do the same for your own blog.
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "See it in Action", to: "#the-result" },
+    { label: "Step 2: Creating the AIIcon Component", to: "#step-2-creating-the-aiicon-component" },
+  ]}
+/>
+
 ## The Result
 
 Here's what a single `ai_assisted: true` flag produces, rendered on an actual post of this blog:

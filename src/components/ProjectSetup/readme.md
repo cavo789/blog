@@ -88,7 +88,7 @@ In some cases, you may want to provide files that should be created inside an ex
 ```jsx
 <ProjectSetup folderName="/your_docusaurus_site" createFolder={false}>
   <Snippet
-    filename="src/components/MyNewComponent/index.js"
+    filename="src/components/MyNewComponent/index.tsx"
     code={`// Your component code`}
   />
   <Snippet

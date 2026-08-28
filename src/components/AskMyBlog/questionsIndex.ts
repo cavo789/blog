@@ -9,7 +9,7 @@
  *
  * Fetched once and cached at module scope (shared between `AskMyBlog` and `CommandPalette`,
  * whichever opens search first) — same "fetch a static build-time asset" bridge
- * `CommandPalette/utils.js` already uses for Pagefind.
+ * `CommandPalette/utils.ts` already uses for Pagefind.
  */
 
 import type { QuestionEntry } from "./utils";

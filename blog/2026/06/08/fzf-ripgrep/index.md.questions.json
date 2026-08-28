@@ -1,57 +1,53 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:55:48.714Z",
+  "generated": "2026-08-28T19:53:11.948Z",
   "source": "index.md",
-  "sourceHash": "61337fbdc07ca6a290c76842abc80debfd42e851",
+  "sourceHash": "930e1339316a3ae23dc2dd9687514cecb06fc27b",
   "questions": [
     {
-      "question": "How do I use ripgrep and fzf together for code searching?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the purpose of adding a bat preview panel to ripgrep + fzf?",
+      "question": "What is FZF + ripgrep?",
       "anchor": "seeing-the-preview-panel"
     },
     {
-      "question": "Why should I use ripgrep instead of grep for code searching?",
+      "question": "Why use ripgrep instead of grep?",
       "anchor": "why-ripgrep-instead-of-grep"
     },
     {
-      "question": "What are the prerequisites for setting up ripgrep, bat, and fzf together?",
+      "question": "What are the prerequisites for using FZF + ripgrep?",
       "anchor": "prerequisites"
     },
     {
-      "question": "How does the rgf function work in this article?",
+      "question": "How do I install and configure FZF, ripgrep, and bat?",
       "anchor": "ripgrep"
     },
     {
-      "question": "What are some real-world scenarios that can be searched using ripgrep + fzf?",
+      "question": "What is the rgf function in this article?",
       "anchor": "bat"
     },
     {
-      "question": "How can I use rgf to find all TODOs in the project?",
-      "anchor": "seeing-it-in-action-with-docker"
-    },
-    {
-      "question": "How can I track down where a function is called using rgf?",
-      "anchor": "step-1--connect-ripgrep-to-fzf"
-    },
-    {
-      "question": "How can I locate a hardcoded value using rgf?",
-      "anchor": "step-2--add-a-bat-preview-panel"
-    },
-    {
-      "question": "How can I search within a specific folder using rgf?",
-      "anchor": "step-3--the-rgf-function"
-    },
-    {
-      "question": "What are some advanced features of the rgf function that can be used for more complex searches?",
+      "question": "What are some real-world scenarios for using FZF + ripgrep?",
       "anchor": "real-world-scenarios"
     },
     {
-      "question": "How can I bind rgf to a keyboard shortcut in ZSH?",
-      "anchor": "find-all-todos-in-the-project"
+      "question": "How do I search for a specific environment variable in my codebase?",
+      "anchor": "track-down-where-a-function-is-called"
+    },
+    {
+      "question": "How can I track down where a function is called in my codebase?",
+      "anchor": "locate-a-hardcoded-value"
+    },
+    {
+      "question": "How do I locate hardcoded values in my codebase?",
+      "anchor": "search-within-a-specific-folder"
+    },
+    {
+      "question": "How can I search within a specific folder using FZF + ripgrep?",
+      "anchor": "going-further"
+    },
+    {
+      "question": "What are some advanced features of the rgf function in this article?",
+      "anchor": "bind-rgf-to-a-keyboard-shortcut"
     }
   ]
 }

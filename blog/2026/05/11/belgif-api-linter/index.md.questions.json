@@ -1,53 +1,37 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:55:41.875Z",
+  "generated": "2026-08-28T19:53:00.873Z",
   "source": "index.md",
-  "sourceHash": "116b56aff22f18aef69f28169ea4c0f62ee6f55c",
+  "sourceHash": "3c0bc70b1e96b5f34804b0087853649b33251de0",
   "questions": [
     {
-      "question": "How can I validate my FastAPI OpenAPI schema against the Belgif REST standards using Docker?",
-      "anchor": "seeing-the-linter-run"
+      "question": "How do I validate my FastAPI OpenAPI schema against the Belgif REST standards?",
+      "anchor": ""
     },
     {
-      "question": "What are some of the common linting errors that FastAPI's default OpenAPI schema generation may conflict with when validating against the Belgif REST standards?",
+      "question": "What is the Belgif REST standards and why are they important for Belgian public sector APIs?",
       "anchor": "belgif-standards"
     },
     {
-      "question": "How do I set up the official Belgif linter inside a Docker container to easily identify compliance errors?",
+      "question": "How do I install and run the official Belgif OpenAPI linter using Docker?",
       "anchor": "installation--create-a-dummy-application"
     },
     {
-      "question": "What are some actionable, step-by-step solutions and custom Python helper functions provided in this article to resolve common FastAPI linting violations?",
+      "question": "What are some common linting errors that FastAPI applications may encounter when validating against the Belgif REST standards?",
       "anchor": "adding-the-belgif-linter"
     },
     {
-      "question": "How can I check if my API is compliant with the Belgif REST standards using the official Belgif OpenAPI linter as documented in the documentation section?",
+      "question": "How can I resolve the most common linting errors caused by FastAPI's default behaviors to ensure my API gets a clean bill of health?",
       "anchor": "fastapi-tips"
     },
     {
-      "question": "What are some of the specific linting errors that FastAPI's default OpenAPI schema generation may conflict with when validating against the Belgif REST standards?",
-      "anchor": "oas-tags---managing-tags"
-    },
-    {
-      "question": "How can I run a custom command where we'll collect both STDERR and STDOUT in just one output stream then we'll run a few commands to purge specific messages from the output (the ones we can't solve) while running the Belgif linter?",
-      "anchor": "oas-contra---dont-use-openapi-31-yet"
-    },
-    {
-      "question": "What are some of the steps involved in checking an OpenAPI file after setting up the official Belgif linter inside a Docker container to easily identify compliance errors?",
+      "question": "What are some best practices for designing robust APIs that comply with the Belgif REST standards?",
       "anchor": "oas-descr---title-property-has-to-be-removed"
     },
     {
-      "question": "How can I run 'docker compose up --build -d' to create your API website and wait a few seconds before opening my browser, surf to http://localhost:8000/docs to open your site and see your API OpenData documentation?",
-      "anchor": "oas-comp---component-names-should-use-uppercamelcase-notation"
-    },
-    {
-      "question": "What are some of the endpoints defined in the code that defines a root endpoint that returns a simple JSON, an endpoint that accepts an integer as a path parameter and an optional string query parameter, and an endpoint that accepts and query parameters for pagination?",
+      "question": "How can I use the official Belgif OpenAPI linter via Docker and how to validate my FastAPI application against some potential errors?",
       "anchor": "openapi-opid---lowercamelcase-for-operationid"
-    },
-    {
-      "question": "What are some of the steps involved in running the FastAPI application after starting 'docker compose up --build -d' to see your API OpenData documentation?",
-      "anchor": "the-openapipy-helper"
     }
   ]
 }

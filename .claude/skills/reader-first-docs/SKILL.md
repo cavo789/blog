@@ -32,11 +32,17 @@ code dump the reader has no context for, not after a recap of what they just rea
 ## Article structure anchor points
 
 ```bash
-grep -n '<!-- truncate -->\|^## \|<Terminal\|<Snippet\|<Prerequisite\|apt install\|^!\[\|```mermaid\|```plaintext\|<ProjectSetup\|<StepsCard' <path>
+grep -n '<!-- truncate -->\|^## \|<Terminal\|<Snippet\|<Prerequisite\|apt install\|^!\[\|```mermaid\|```plaintext\|<ProjectSetup\|<StepsCard\|<QuickJump' <path>
 wc -l <path>
 ```
 
 Let `T` = line of `<!-- truncate -->`, `E` = last line of the file, `BODY = E − T`.
+
+**`<QuickJump>` is scaffolding, not content.** If a `<QuickJump ... />` sits between `T` and the
+first real content line, move `T` to the line right after it before computing anything — it never
+counts as install/abstraction/proof and never inflates `BODY` or the TTV percentage. Treat it the
+same way the excerpt before `<!-- truncate -->` is treated: present, useful to the reader, outside
+the measurement.
 
 All three passes below work from `T` as the zero point. The excerpt before `T` is not evaluated —
 it is already the reader's entry point and has its own quality signal (the 30-second test reads it).

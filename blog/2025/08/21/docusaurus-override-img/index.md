@@ -48,9 +48,9 @@ We need to do several things so let's start with the first one: we need to creat
 
 Writing a component for Docusaurus is quite easy. You should create a new folder in the existing `src/components` one.
 
-In this article, we'll create a `Image` component so let's create the `src/components/Image/index.js` file with this content:
+In this article, we'll create a `Image` component so let's create the `src/components/Image/index.tsx` file with this content:
 
-<Snippet filename="src/components/Image/index.js" source="./files/index.js" />
+<Snippet filename="src/components/Image/index.tsx" source="./files/index.tsx" />
 
 Our `Image` component will ask three parameters but just the `img` one is required. We can pass too a title (`title`) and the alternate text (`alt`).
 

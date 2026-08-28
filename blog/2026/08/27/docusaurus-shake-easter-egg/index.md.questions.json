@@ -1,41 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-27T06:53:59.649Z",
+  "generated": "2026-08-28T16:47:18.917Z",
   "source": "index.md",
-  "sourceHash": "ea0d5879f1113d49e6e6ec29db5e9eb96a957514",
+  "sourceHash": "ac30b2b0ed6975ca409a7bc4cd1f4a1ef49bf48f",
   "questions": [
     {
-      "question": "What is the purpose of this blog's shake detection feature?",
-      "anchor": ""
-    },
-    {
-      "question": "How does the shake detection math work in this article?",
+      "question": "How do I trigger the shake effect on my phone?",
       "anchor": "shake-your-phone-see-what-happens"
     },
     {
-      "question": "Why does Android have no motion sensor permission prompt, while iOS does?",
+      "question": "What is the jerk threshold used for detecting shakes in this blog's shake detection algorithm?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the cooldown mechanism used to prevent retriggering of the shake effect?",
+      "question": "Why does Android not require an explicit permission prompt for motion sensors like iOS?",
       "anchor": "why-ios-is-left-out-on-purpose"
     },
     {
-      "question": "How can I test the shake detection feature without actually shaking my phone?",
+      "question": "How does the cooldown mechanism work to prevent retriggering of the shake effect?",
       "anchor": "installation"
     },
     {
-      "question": "What is the hard part of this blog's shake detection implementation, and how was it solved?",
+      "question": "What is the purpose of the haptic buzz in the shake detection feature?",
       "anchor": "testing-it-without-shaking-anything"
     },
     {
-      "question": "How can I tune the jerk threshold on a real phone to improve the shake detection accuracy?",
+      "question": "Why does iOS Safari require an explicit tap to trigger motion sensor readings, and what are the two options available?",
       "anchor": "how-to-debug-if-the-shake-does-nothing"
     },
     {
-      "question": "Why is this blog's shake detection feature only available on Android, and not iOS?",
+      "question": "How does this blog's shake detection algorithm handle acceleration on multiple axes?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the difference between a jerk threshold and a boolean flag in detecting shakes?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Why is it important to allow motion sensors for this blog's shake detection feature?",
       "anchor": "1-allow-motion-sensors-for-the-site"
+    },
+    {
+      "question": "How can I test the shake detection feature from a desktop DevTools console without an accelerometer?",
+      "anchor": "2-watch-the-raw-sensor-data"
+    },
+    {
+      "question": "What is the purpose of the real bug caught in this blog's shake detection implementation, and how did it occur?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How does the three-phase overlay animation work in the shake detection feature?",
+      "anchor": "installation"
     }
   ]
 }

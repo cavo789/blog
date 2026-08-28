@@ -29,6 +29,13 @@ Let's stop pretending: we all know unit tests are necessary, and almost nobody e
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "What ai-test Does For You", to: "#what-ai-test-does-for-you" },
+    { label: "Installing It", to: "#installing-it" },
+  ]}
+/>
+
 ## What `ai-test` Does For You
 
 Take `greet.sh`, a small script that asks for a name and a language. One command, and a full Bats suite comes back — trimmed to three tests below, the real run produced more than fifteen:

@@ -29,6 +29,13 @@ The usual answer to that is embeddings: turn everything into vectors, compare me
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "What It Looks Like", to: "#what-it-looks-like" },
+    { label: "Serving 2,050 Questions Three Different Ways", to: "#serving-2050-questions-three-different-ways" },
+  ]}
+/>
+
 ## What It Looks Like
 
 Type a problem in your own words on the `/faq` page and you get questions, not page titles — each one pointing at the exact heading that answers it:

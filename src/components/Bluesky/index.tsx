@@ -2,11 +2,21 @@ import BlueskyComments from "./comments";
 import BlueskyLikes from "./likes";
 import BlueskyPost from "./post";
 import BlueskyShare from "./share";
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import useBlueskyEngagement, { useBlueskyRecordKey } from "./useBlueskyEngagement";
+import type { BlueskyMetadata, EngagedPerson } from "./useBlueskyEngagement";
 
-function engagementHeadline({ blueskyRecordKey, loading, unavailable, engaged }) {
+function engagementHeadline({
+  blueskyRecordKey,
+  loading,
+  unavailable,
+  engaged,
+}: {
+  blueskyRecordKey: string | null;
+  loading: boolean;
+  unavailable: boolean;
+  engaged: EngagedPerson[];
+}): string {
   if (!blueskyRecordKey) {
     return "🦋 Enjoyed this article? Share it on Bluesky";
   }
@@ -22,14 +32,18 @@ function engagementHeadline({ blueskyRecordKey, loading, unavailable, engaged })
   return `🦋 ${count} ${count === 1 ? "person is" : "people are"} already talking about this on Bluesky — join them`;
 }
 
-export default function Bluesky({ metadata }) {
+interface Props {
+  metadata: BlueskyMetadata;
+}
+
+export default function Bluesky({ metadata }: Props) {
   // The frontmatter key always wins (manual override); otherwise it's looked up
   // from the account's own Bluesky post history, matched against this article's
   // URL — see useBlueskyRecordKey for why and how.
   const { recordKey, resolving } = useBlueskyRecordKey(metadata);
-  const effectiveMetadata = {
+  const effectiveMetadata: BlueskyMetadata = {
     ...metadata,
-    frontMatter: { ...metadata.frontMatter, blueskyRecordKey: recordKey },
+    frontMatter: { ...metadata.frontMatter, blueskyRecordKey: recordKey ?? undefined },
   };
   const stats = useBlueskyEngagement(effectiveMetadata);
 
@@ -74,11 +88,3 @@ export default function Bluesky({ metadata }) {
     </div>
   );
 }
-
-Bluesky.propTypes = {
-  metadata: PropTypes.shape({
-    frontMatter: PropTypes.shape({
-      blueskyRecordKey: PropTypes.string,
-    }),
-  }).isRequired,
-};

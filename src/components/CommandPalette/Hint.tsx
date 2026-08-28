@@ -22,13 +22,13 @@ const ARTICLE_PATH = /^\/blog\/(?!tags|archive|authors|page)/;
 const HOME_PATH = /^\/$/;
 
 /** Delay before showing the pill on this path, or `null` on a path that never shows it. */
-function delayFor(pathname) {
+function delayFor(pathname: string): number | null {
   if (HOME_PATH.test(pathname)) return HOME_DELAY_MS;
   if (ARTICLE_PATH.test(pathname)) return ARTICLE_DELAY_MS;
   return null;
 }
 
-function isMac() {
+function isMac(): boolean {
   return (
     typeof navigator !== "undefined" && /Mac|iPhone|iPad/.test(navigator.platform ?? "")
   );

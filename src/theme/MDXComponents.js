@@ -17,6 +17,7 @@ import Link from "@docusaurus/Link";
 import LogoIcon from "@site/src/components/Blog/LogoIcon";
 import MDXComponents from "@theme-original/MDXComponents";
 import Prerequisite from "@site/src/components/Prerequisite";
+import QuickJump from "@site/src/components/QuickJump";
 import ShortcutList from "@site/src/components/ShortcutList";
 import Snippet from "@site/src/components/Snippet";
 import StepsCard from "@site/src/components/StepsCard";
@@ -61,6 +62,7 @@ export default {
   LogoIcon,
   Prerequisite,
   ProjectSetup,
+  QuickJump,
   ShortcutList,
   Snippet,
   StepsCard,

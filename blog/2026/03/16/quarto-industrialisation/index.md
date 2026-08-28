@@ -31,6 +31,13 @@ Let's see how we can industrialize our documentation process with Quarto and Doc
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: 'The "Wow" Moment', to: "#-the-wow-moment" },
+    { label: "Installation — The Wow Lab", to: "#installation--the-wow-lab-build-your-first-doc-engine-in-5-minutes" },
+  ]}
+/>
+
 ## 🚀 The "Wow" Moment
 
 Once the lab is running (covered under Installation below), open the folder in VS Code, click **"Reopen in Container"**, then in the terminal type: `./scripts/preview.sh`.

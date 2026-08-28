@@ -9,7 +9,7 @@ import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 // highlight-next-line
 // import our Bluesky component
 // highlight-next-line
-import Bluesky from "@site/src/components/Bluesky/index.js";
+import Bluesky from "@site/src/components/Bluesky";
 
 // apply a bottom margin in list view
 function useContainerClassName() {

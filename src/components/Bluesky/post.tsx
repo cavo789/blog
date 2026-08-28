@@ -1,11 +1,16 @@
 import Icon from "./bluesky.svg";
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import type { BlueskyMetadata, BlueskySiteConfig } from "./useBlueskyEngagement";
 
-export default function BlueskyPost({ metadata }) {
+interface Props {
+  metadata: BlueskyMetadata;
+}
+
+export default function BlueskyPost({ metadata }: Props) {
   const { siteConfig } = useDocusaurusContext();
-  const blueSkyConfig = siteConfig?.customFields?.bluesky;
+  const blueSkyConfig = siteConfig?.customFields?.bluesky as
+    BlueskySiteConfig | undefined;
   const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
   if (!blueSkyConfig?.handle || !blueskyRecordKey) {
@@ -22,16 +27,10 @@ export default function BlueskyPost({ metadata }) {
       className={styles.blueskyButton}
       aria-label="See the post on Bluesky"
     >
-      <Icon alt="Bluesky Icon" className={styles.blueskyLogo} />
+      {/* alt dropped: SVGProps has no such prop — was a no-op DOM attribute even before this
+          migration, and the link's own aria-label already names the icon. */}
+      <Icon className={styles.blueskyLogo} />
       Like, share or comment on Bluesky
     </a>
   );
 }
-
-BlueskyPost.propTypes = {
-  metadata: PropTypes.shape({
-    frontMatter: PropTypes.shape({
-      blueskyRecordKey: PropTypes.string,
-    }),
-  }).isRequired,
-};

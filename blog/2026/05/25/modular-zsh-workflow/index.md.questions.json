@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:18:04.712Z",
+  "generated": "2026-08-28T19:53:05.634Z",
   "source": "index.md",
-  "sourceHash": "f9a9bc71d3237ce8e8b89356834ce6184b3d4e04",
+  "sourceHash": "a17ed3fe3945d9283602b089f14d6bca947a8250",
   "questions": [
     {
-      "question": "What are the benefits of modularizing ZSH functions into standalone files?",
-      "anchor": ""
+      "question": "What are the benefits of moving ZSH functions to standalone files?",
+      "anchor": "the-secret-sauce-fpath-and-autoload"
     },
     {
-      "question": "How does lazy loading improve shell startup time with ZSH's autoload mechanism?",
+      "question": "How does the fpath and autoload mechanism work in ZSH?",
       "anchor": "the-problem-with-the-monolith"
     },
     {
-      "question": "What are the three main benefits of moving functions to a dedicated folder in ZSH?",
-      "anchor": "the-secret-sauce-fpath-and-autoload"
-    },
-    {
-      "question": "How does fpath and autoload work in ZSH for loading function definitions?",
-      "anchor": "the-secret-sauce-fpath-and-autoload"
-    },
-    {
-      "question": "What is the purpose of the repo function in this article?",
+      "question": "What is the purpose of the repo function?",
       "anchor": "-the-super-function-repo-universal-project-navigator"
     },
     {
-      "question": "Why should I version-control my functions folder separately and share it across different machines?",
+      "question": "Why should I use standalone files for my ZSH functions?",
       "anchor": "why-this-is-better-in-a-standalone-file"
     },
     {
-      "question": "What are the benefits of using fzf for searching git repositories in the repo function?",
+      "question": "How do I set up the repo function in ZSH?",
+      "anchor": "how-to-set-it-up"
+    },
+    {
+      "question": "What is the purpose of fzf and how does it work with the repo function?",
+      "anchor": "4-use-it"
+    },
+    {
+      "question": "How can I use the repo function to navigate my projects?",
       "anchor": "-the-super-function-repo-universal-project-navigator"
     },
     {
-      "question": "How do I set up the repo function to use fzf and other tools like VSCode or Neovim?",
-      "anchor": "why-this-is-better-in-a-standalone-file"
+      "question": "What are some benefits of using standalone files for ZSH functions in terms of performance and maintainability?",
+      "anchor": "the-secret-sauce-fpath-and-autoload"
     }
   ]
 }

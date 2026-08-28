@@ -156,6 +156,18 @@
     ],
     "description": "Docusaurus - Prerequisite component (install + verify a CLI tool)",
   },
+  "docusaurus.quickJump": {
+    "prefix": "QuickJump",
+    "body": [
+      "<QuickJump",
+      "  links={[",
+      "    { label: \"$1\", to: \"#$2\" },",
+      "    { label: \"$3\", to: \"#$4\" },",
+      "  ]}",
+      "/>",
+    ],
+    "description": "Docusaurus - QuickJump component (place right after <!-- truncate -->)",
+  },
   "docusaurus.projectSetup": {
     "prefix": "ProjectSetup",
     "body": [

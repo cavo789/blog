@@ -32,6 +32,13 @@ There is a better way.
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Seeing the Preview Panel", to: "#seeing-the-preview-panel" },
+    { label: "Step 3 — The rgf function", to: "#step-3--the-rgf-function" },
+  ]}
+/>
+
 ## Seeing the Preview Panel
 
 Pipe `ripgrep` into `fzf` with a `bat` preview attached, and this is the result — a live, syntax-highlighted panel that updates as you move the selection:

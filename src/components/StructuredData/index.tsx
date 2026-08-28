@@ -33,9 +33,11 @@ function StructuredData({ metadata, assets }: Props): JSX.Element | null {
     const resolvedImage = assets?.image ?? (frontMatter?.image as string | undefined);
 
     // `updates` is a project-specific front matter field, so Docusaurus types it
-    // as `unknown` — cast to the shape this component relies on.
-    const updates = frontMatter?.updates as
-      { date?: string; note?: string }[] | undefined;
+    // as `unknown` — cast to the shape this component relies on. Every entry
+    // authored under blog/ has both keys (see the `updates:` front matter
+    // convention), so `date` is required, which keeps `new Date(entry.date)`
+    // below well-typed under strictNullChecks.
+    const updates = frontMatter?.updates as { date: string; note?: string }[] | undefined;
     const mostRecentUpdate = updates?.length
       ? [...updates].sort(
           (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),

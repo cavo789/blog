@@ -56,7 +56,7 @@ Reader selects text
 | `api/typo-notifications.json` | Per-article email throttle |
 | `api/.env` | Secrets (`IP_HASH_SALT`, `NONCE_SECRET`) |
 | `api/.htaccess` | Blocks direct HTTP access to JSON files |
-| `src/components/TypoReport/index.js` | React component |
+| `src/components/TypoReport/index.tsx` | React component |
 | `src/components/TypoReport/styles.module.css` | CSS module |
 | `src/theme/BlogPostItem/index.js` | Mount point (swizzled theme file) |
 | `src/pages/typo-dashboard.js` | Admin dashboard (token-gated) |
@@ -508,25 +508,37 @@ const left = Math.min(window.scrollX + rect.left, window.innerWidth - 296);
 
 ### Full implementation
 
-Create `src/components/TypoReport/index.js`:
+Create `src/components/TypoReport/index.tsx`:
 
-```jsx
-import { useState, useEffect, useRef, useCallback } from "react";
+```tsx
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  type FormEvent,
+  type JSX,
+} from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 
-const STORAGE_KEY = "typo_reports";
+const STORAGE_KEY = "typo_reports"; // [{ts, hash}]
 const MAX_PER_HOUR = 5;
 
 const FEEDBACK_TYPES = [
-  { id: "typo",       icon: "🔤", label: "Typo" },
-  { id: "incorrect",  icon: "❌", label: "Incorrect" },
-  { id: "outdated",   icon: "⏰", label: "Outdated" },
+  { id: "typo", icon: "🔤", label: "Typo" },
+  { id: "incorrect", icon: "❌", label: "Incorrect" },
+  { id: "outdated", icon: "⏰", label: "Outdated" },
   { id: "suggestion", icon: "💡", label: "Suggestion" },
 ];
 
-function fnv1a(str) {
+interface StoredReport {
+  ts: number;
+  hash: string;
+}
+
+// FNV-1a 32-bit hash (no crypto needed for client-side dedup)
+function fnv1a(str: string): string {
   let hash = 0x811c9dc5;
   for (let i = 0; i < str.length; i++) {
     hash ^= str.charCodeAt(i);
@@ -535,9 +547,12 @@ function fnv1a(str) {
   return hash.toString(16);
 }
 
-function getStored() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }
-  catch { return []; }
+function getStored(): StoredReport[] {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  } catch {
+    return [];
+  }
 }
 
 function isLocalRateLimited() {
@@ -545,12 +560,12 @@ function isLocalRateLimited() {
   return getStored().filter((r) => r.ts > now - 3_600_000).length >= MAX_PER_HOUR;
 }
 
-function isLocalDuplicate(slug, text) {
+function isLocalDuplicate(slug: string, text: string) {
   const hash = fnv1a(slug + "|" + text.toLowerCase());
   return getStored().some((r) => r.hash === hash);
 }
 
-function recordLocalSubmission(slug, text) {
+function recordLocalSubmission(slug: string, text: string) {
   const now = Date.now();
   const hash = fnv1a(slug + "|" + text.toLowerCase());
   const pruned = getStored().filter((r) => r.ts > now - 86_400_000);
@@ -559,60 +574,78 @@ function recordLocalSubmission(slug, text) {
   } catch {}
 }
 
-export default function TypoReport({ metadata }) {
+interface Props {
+  metadata?: {
+    permalink?: string;
+  };
+}
+
+type Phase = "idle" | "selecting" | "confirming" | "submitting" | "done" | "error";
+
+export default function TypoReport({ metadata }: Props): JSX.Element | null {
   const { siteConfig } = useDocusaurusContext();
-  const slug   = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
+  const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/typo.php`;
 
   // State machine: idle → selecting → confirming → submitting → done | error
-  const [phase, setPhase]               = useState("idle");
+  const [phase, setPhase] = useState<Phase>("idle");
   const [selectedText, setSelectedText] = useState("");
-  const [tooltipPos, setTooltipPos]     = useState({ top: 0, left: 0 });
+  const [tooltipPos, setTooltipPos] = useState({ top: 0, left: 0 });
   const [feedbackType, setFeedbackType] = useState("");
-  const [comment, setComment]           = useState("");
+  const [comment, setComment] = useState("");
 
-  const nonceRef   = useRef(null);
-  const wrapperRef = useRef(null);
-  const contextRef = useRef("");
+  const nonceRef = useRef<string | null>(null);
+  const articleRef = useRef<HTMLElement | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const contextRef = useRef(""); // ±100 chars around selection
 
+  // Fetch nonce + wire up DOM listeners on mount.
   useEffect(() => {
     if (!slug) return;
 
     fetch(`${apiUrl}?nonce`)
-      .then((r) => r.ok ? r.json() : null)
-      .then((d) => { if (d?.nonce) nonceRef.current = d.nonce; })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.nonce) nonceRef.current = data.nonce;
+      })
       .catch(() => {});
 
-    const article = document.querySelector("article")
-      || document.querySelector(".theme-doc-markdown");
+    const article =
+      document.querySelector<HTMLElement>("article") ||
+      document.querySelector<HTMLElement>(".theme-doc-markdown");
     if (!article) return;
+    articleRef.current = article;
 
-    function handleSelection() {
+    // Arrow-assigned, not a `function` declaration: that lets TS carry the
+    // `if (!article) return` narrowing above into this closure, so `article` is
+    // non-null on lines below without a `!` assertion.
+    const handleSelection = () => {
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed) return;
+
       const text = sel.toString().trim();
       if (text.length < 3) return;
 
       const range = sel.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+
       if (!article.contains(range.commonAncestorContainer)) return;
 
-      const rect     = range.getBoundingClientRect();
       const fullText = article.innerText || "";
-      const idx      = fullText.indexOf(text);
-      contextRef.current = idx !== -1
-        ? fullText.slice(Math.max(0, idx - 100), idx + text.length + 100)
-        : "";
+      const idx = fullText.indexOf(text);
+      contextRef.current =
+        idx !== -1 ? fullText.slice(Math.max(0, idx - 100), idx + text.length + 100) : "";
+
+      const top = window.scrollY + rect.bottom + 8;
+      const left = Math.min(window.scrollX + rect.left, window.innerWidth - 296);
 
       setSelectedText(text);
-      setTooltipPos({
-        top:  window.scrollY + rect.bottom + 8,
-        left: Math.min(window.scrollX + rect.left, window.innerWidth - 296),
-      });
+      setTooltipPos({ top, left });
       setPhase("selecting");
-    }
+    };
 
-    function handleMouseDown(e) {
-      if (wrapperRef.current && !wrapperRef.current.contains(e.target)) {
+    function handleMouseDown(e: MouseEvent) {
+      if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
         setPhase("idle");
       }
     }
@@ -627,54 +660,74 @@ export default function TypoReport({ metadata }) {
     };
   }, [slug, apiUrl]);
 
-  const handleTypeSelect = useCallback((type) => {
-    if (isLocalRateLimited()) { setPhase("error"); return; }
-    if (isLocalDuplicate(slug, selectedText)) { setPhase("done"); return; }
-    setFeedbackType(type);
-    setComment("");
-    setPhase("confirming");
-  }, [slug, selectedText]);
+  const handleTypeSelect = useCallback(
+    (type: string) => {
+      if (isLocalRateLimited()) {
+        setPhase("error");
+        return;
+      }
+      if (isLocalDuplicate(slug, selectedText)) {
+        setPhase("done");
+        return;
+      }
+      setFeedbackType(type);
+      setComment("");
+      setPhase("confirming");
+    },
+    [slug, selectedText],
+  );
 
-  const handleSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    setPhase("submitting");
+  const handleSubmit = useCallback(
+    async (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setPhase("submitting");
 
-    let nonce = nonceRef.current;
-    if (!nonce) {
+      let nonce = nonceRef.current;
+      if (!nonce) {
+        try {
+          const r = await fetch(`${apiUrl}?nonce`);
+          const d = r.ok ? await r.json() : null;
+          nonce = d?.nonce ?? null;
+          nonceRef.current = nonce;
+        } catch {}
+      }
+
+      const honeypot =
+        (e.currentTarget.elements.namedItem("website") as HTMLInputElement | null)
+          ?.value ?? "";
+
       try {
-        const r = await fetch(`${apiUrl}?nonce`);
-        const d = r.ok ? await r.json() : null;
-        nonce = d?.nonce ?? null;
-        nonceRef.current = nonce;
-      } catch {}
-    }
+        const res = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            slug,
+            text: selectedText,
+            type: feedbackType,
+            comment,
+            context: contextRef.current,
+            website: honeypot,
+            nonce: nonce ?? "",
+          }),
+        });
+        if (!res.ok) {
+          setPhase("error");
+          return;
+        }
+        recordLocalSubmission(slug, selectedText);
+        setPhase("done");
+      } catch {
+        setPhase("error");
+      }
+    },
+    [slug, selectedText, feedbackType, comment, apiUrl],
+  );
 
-    try {
-      const res = await fetch(apiUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          slug,
-          text:    selectedText,
-          type:    feedbackType,
-          comment,
-          context: contextRef.current,
-          website: e.target.elements["website"]?.value ?? "",
-          nonce:   nonce ?? "",
-        }),
-      });
-      if (!res.ok) { setPhase("error"); return; }
-      recordLocalSubmission(slug, selectedText);
-      setPhase("done");
-    } catch {
-      setPhase("error");
-    }
-  }, [slug, selectedText, feedbackType, comment, apiUrl]);
-
-  const handleBack    = useCallback(() => setPhase("selecting"), []);
-  const handleCancel  = useCallback(() => setPhase("idle"), []);
+  const handleBack = useCallback(() => setPhase("selecting"), []);
+  const handleCancel = useCallback(() => setPhase("idle"), []);
   const handleDismiss = useCallback(() => setPhase("idle"), []);
 
+  // SSR-safe: render nothing when idle.
   if (phase === "idle") return null;
 
   const typeInfo = FEEDBACK_TYPES.find((t) => t.id === feedbackType);
@@ -700,14 +753,18 @@ export default function TypoReport({ metadata }) {
               </button>
             ))}
           </div>
-          <button className={styles.cancelSmall} onClick={handleCancel}>Cancel</button>
+          <button className={styles.cancelSmall} onClick={handleCancel}>
+            Cancel
+          </button>
         </div>
       )}
 
       {phase === "confirming" && (
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.selectedPreview}>
-            "{selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}"
+            &quot;
+            {selectedText.length > 80 ? selectedText.slice(0, 80) + "…" : selectedText}
+            &quot;
           </div>
           {typeInfo && (
             <div className={styles.typeBadge}>
@@ -724,11 +781,21 @@ export default function TypoReport({ metadata }) {
             value={comment}
             onChange={(e) => setComment(e.target.value)}
           />
-          <input name="website" className={styles.honeypot}
-            tabIndex={-1} autoComplete="off" defaultValue="" />
+          {/* Honeypot — bots fill this, humans don't see it */}
+          <input
+            name="website"
+            className={styles.honeypot}
+            tabIndex={-1}
+            autoComplete="off"
+            defaultValue=""
+          />
           <div className={styles.actions}>
-            <button type="submit" className={styles.btnPrimary}>Send</button>
-            <button type="button" className={styles.btnSecondary} onClick={handleCancel}>Cancel</button>
+            <button type="submit" className={styles.btnPrimary}>
+              Send
+            </button>
+            <button type="button" className={styles.btnSecondary} onClick={handleCancel}>
+              Cancel
+            </button>
           </div>
           <p className={styles.disclaimer}>One-way signal — no reply will be sent.</p>
         </form>
@@ -739,30 +806,39 @@ export default function TypoReport({ metadata }) {
       {phase === "done" && (
         <div className={styles.status}>
           Thanks for the feedback! ✓
-          <button className={styles.dismissBtn} onClick={handleDismiss} aria-label="Dismiss">✕</button>
+          <button
+            className={styles.dismissBtn}
+            onClick={handleDismiss}
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
         </div>
       )}
 
       {phase === "error" && (
         <div className={styles.statusError}>
           Could not send.
-          <button className={styles.dismissBtn} onClick={handleDismiss} aria-label="Dismiss">✕</button>
+          <button
+            className={styles.dismissBtn}
+            onClick={handleDismiss}
+            aria-label="Dismiss"
+          >
+            ✕
+          </button>
         </div>
       )}
     </div>
   );
 }
-
-TypoReport.propTypes = {
-  metadata: PropTypes.shape({ permalink: PropTypes.string }).isRequired,
-};
 ```
 
-Three things worth noting:
+Four things worth noting:
 
 - `touchend` is registered alongside `mouseup` so the widget works on touch devices.
 - `handleTypeSelect` runs the rate-limit and dedup checks when the type is chosen, not on selection — this avoids burning a rate-limit slot when the user just selects text to copy.
 - The `disclaimer` paragraph ("One-way signal — no reply will be sent") is intentional: readers should not expect a response, and making that explicit prevents frustration.
+- `handleSelection` is assigned to a `const` (an arrow function) rather than declared with `function handleSelection() {}`. That is not a style preference: TypeScript only carries the `if (!article) return` narrowing above into a closure created *after* the guard runs — a hoisted function declaration could in principle be called before it, so TS won't trust `article` to still be non-null inside one, forcing a `!` assertion that the `const` form avoids entirely.
 
 ---
 

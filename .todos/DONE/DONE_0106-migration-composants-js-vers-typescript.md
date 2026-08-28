@@ -95,6 +95,47 @@ découverts pendant ce lot, à surveiller dans les niveaux suivants :
 Ce TODO ne migre pas tout lui-même : c'est l'inventaire + le plan. Le travail réel continue
 composant par composant (niveaux 2+), sur plusieurs sessions, via `/todo 0106` ou à la main.
 
+**2026-08-28 — `strict: true` activé dans `tsconfig.json`, AVANT le niveau 5** (sur demande
+explicite de l'auteur, but = robustesse). `@docusaurus/tsconfig` ne l'active pas ; sans lui
+`tsc --noEmit` passait mais ne vérifiait ni `strictNullChecks` ni `noImplicitAny`. 47 erreurs à
+corriger, réparties ainsi et toutes traitées **sans `any` ni `@ts-ignore`** :
+
+- **~30 (TS7006 + TS2339)** : les composants `Blog/*` consomment les objets `post` / `serie`
+  renvoyés par `Blog/utils/*.js` (niveau 5, encore JS) — `tsc` les infère `Object[]`. Corrigé par
+  **3 nouveaux `.d.ts` sidecars** : [posts.d.ts](../src/components/Blog/utils/posts.d.ts)
+  (`BlogPostMetadata` + `getBlogMetadata`), [series.d.ts](../src/components/Blog/utils/series.d.ts)
+  (`SeriesListEntry` + `generateSeriesList`),
+  [related.d.ts](../src/components/Blog/utils/related.d.ts) (`getRelatedPosts`), plus
+  [src/data/series.d.ts](../src/data/series.d.ts) (`SeriesDataEntry`, avec `title?`/`counter?`
+  optionnels que `SeriesCards` lit en `?? fallback`). **Ces 4 fichiers disparaissent quand
+  `Blog/utils` migre (niveau 5)** — remplacés par des `export` de types inline, comme les
+  sidecars `Card`/`Terminal` au niveau 4.
+- **`frontMatter.mainTag` typé `unknown`** (champ custom Docusaurus) passé à un helper désormais
+  typé → cast `as string | undefined` au site d'appel (`RelatedPosts`, `MobileQuickLinks`) —
+  même motif que niveaux 2-3.
+- **`PostCard`** : `Post.description` et `Post.mainTag` élargis à `string | null` (les appelants
+  passent `{ ...post, description: null }` pour masquer la description ; `mainTag` est
+  `string | null` en amont). Tous les usages sont déjà gardés par `{x && …}`.
+- **`SeriesArticlesPage`** : `seriesPosts[0]?.series ?? slug` au lieu du ternaire (narrowing
+  `string | null` → `string`, comportement identique car la liste est filtrée sur `series`
+  truthy).
+- **`SeriesCards`** : `description: data?.description` (le `?? serie.description` visait un champ
+  que `generateSeriesList()` ne produit pas — mort au runtime, retiré).
+- **`StructuredData`** : cast `updates` resserré en `{ date: string; note?: string }[]` (toujours
+  les deux clés en front matter).
+- **`ShakeEasterEgg`** : garde les 3 axes `acceleration.x/y/z !== null` (pas seulement `x`) —
+  `DeviceMotionEventAcceleration` les type `number | null`.
+- **`ProjectSetup`** : `if (!folder) throw` après `zip.folder()` (typé `JSZip | null`) — l'erreur
+  est déjà attrapée et remontée via `setZipError`.
+- **`TypoReport`** : `handleSelection` passé de `function` déclaration à arrow `const` pour que
+  TS propage le narrowing `if (!article) return` dans la closure (sinon `article` redevient
+  `HTMLElement | null` à l'intérieur).
+
+Garde-fou : `yarn lint` (0 err) + `yarn format:check` + `yarn clear && yarn build` (63s) OK.
+**Conséquence pour la suite** : tout composant migré au niveau 5 est désormais tenu au `strict` —
+`strictNullChecks` en particulier va remonter des accès `x.y` sur `Blog/utils` (D3, force graph)
+qui passaient avant.
+
 ## Approche
 
 1. Niveau 1 (trivial, aucun état/dépendance) : migrer en un seul lot, ça n'a pas de valeur de
@@ -268,12 +309,105 @@ TypeScript, comme n'importe quel autre langage. Coloration syntaxique : déjà O
 
 ### Niveau 5 — À part : haut risque, migrer en dernier
 
-| Composant | Fichiers | Lignes | Pourquoi en dernier |
-| --- | --- | --- | --- |
-| `Blog/utils` | 7 | 301 | Plomberie centrale (`posts.js`, `require.context`) documentée comme sensible dans `CLAUDE.md` — « lire leurs commentaires avant de toucher ». À migrer seul, avec revue attentive, pas en série avec d'autres composants. |
-| `BlogGraph` | 3 | 807 | Graphe de force D3 — logique de simulation physique, régression difficile à repérer visuellement sans tester plusieurs tailles d'écran. |
-| `CommandPalette` | 4 | 1088 | Le plus gros composant du repo, navigation clavier + recherche — tester exhaustivement tous les raccourcis après migration. |
-| `Bluesky` | 6 | 772 | En évolution active (`blueskyRecordKey` rendu optionnel le 2026-08-28, commit `209f5afa`) — **attendre que cette fonctionnalité se stabilise** avant de migrer, pour ne pas mélanger changement de fonctionnalité et changement de langage dans le même diff. |
+**`BlogGraph` migré le 2026-08-28** (3 fichiers, 807 lignes), sur demande explicite ciblant ce
+seul composant. Moins risqué qu'anticipé : le composant client ne fait *aucune* simulation
+`d3-force` (celle-ci tourne à la build dans `plugins/blog-graph-plugin`, hors périmètre de ce
+TODO — voir « Hors périmètre » plus bas) — juste du dessin canvas 2D sur des positions déjà
+figées. Types ajoutés dans `utils.ts` (`BlogGraphNode`, `BlogGraphEdge`, `BlogGraphData`,
+`Transform`, `MeerkatSpot`) reflétant exactement la forme produite par le plugin (vérifiée en
+lisant `plugins/blog-graph-plugin/index.mjs`, qui reste `.mjs`/hors périmètre). `usePluginData()`
+est typé `unknown` par `@docusaurus/types` — cast explicite `as BlogGraphData | undefined` au
+point d'appel, même motif que niveau 5 `Blog/utils` (données externes non typées par le projet).
+Brouillon `.unpublished/docusaurus-blog-map/index.md` mis à jour (3 `<Snippet source>` +
+2 blocs de code illustratifs `title="...js"` → `.ts`/`.tsx`). Aucun `.eli5.json` sidecar, aucun
+`readme.md` pour ce composant. Vérifié : `yarn lint && yarn format:check && yarn clear &&
+yarn build` OK (SSR + prod build) — `build/map/index.html` contient bien la liste `GroupedList`
+groupée par `mainTag` avec le bon compte d'articles et de liens ; rendu canvas (hover, clic,
+meerkats) **confirmé fonctionnel par l'auteur sur `/map` le 2026-08-28**.
+
+**`Blog/utils` migré le 2026-08-28** (7 fichiers, 301 lignes) : `color.ts`, `date.ts`,
+`markdown.ts`, `posts.ts`, `related.ts`, `series.ts`, `slug.ts`. Les 3 `.d.ts` sidecars
+(`posts.d.ts`, `related.d.ts`, `series.d.ts`) supprimés — types repris inline (`BlogPostMetadata`,
+`BlogTag`, `SeriesListEntry`), même mécanisme que les sidecars `Card`/`Terminal` au niveau 4.
+Piège spécifique à ce lot : `require.context()` est une extension Webpack, absente des types
+Node (`@types/node`) et `@types/webpack-env` n'est pas installé — augmentation locale minimale
+de `NodeJS.Require` ajoutée dans `src/global.d.ts` (un seul point d'appel, `posts.ts`). Découverte
+en implémentant, pas anticipée au moment d'écrire ce TODO : `plugins/command-palette-plugin/
+index.mjs` **importait directement** `Blog/utils/slug.js` (Node ESM natif, aucun loader TS
+enregistré) — cassait dès le renommage en `.ts`, puisque Node ne sait pas exécuter du TypeScript
+sans transpileur. Corrigé en dupliquant `createSlug()` dans le plugin, exactement le même motif
+que `plugins/lib/blog-taxonomy.cjs` et `plugins/markdown-export-plugin/index.cjs` documentaient
+déjà pour cette même fonction (eux pour CJS/ESM, ici pour JS/TS — même impossibilité de
+traverser la frontière Node-brut ↔ code bundlé). 3 `.eli5.json` renommés (`posts`/`series`/
+`slug`). Références mises à jour dans le même geste : 2 articles publiés
+(`docusaurus-series`, `docusaurus-relatedposts` — `<Snippet source>` live + prose), 1 article
+(`docusaurus-cards`) où seule la référence `<Snippet>` **live** (`slug.js`) a été mise à jour —
+son autre `<Snippet source="./files/posts.js">` pointe vers un instantané figé propre à
+l'article, laissé en JS (même précédent que `TypoReport`/`Reaction`, hors périmètre migration) ;
+3 `readme.md`/`.md` de composants, `plugins/frontmatter-loader/readme.md`, et `CLAUDE.md`
+lui-même (mentionnait `posts.js`). Vérifié dans le build de prod : `/series` (compteurs
+`generateSeriesList`), une page série (`/series/claude-code`, hero + liens), `/blog/tags/docker`
+(190 liens), `/blog/archive` (506 liens), `RelatedPosts` sur un article (liens corrects),
+formatage de date (`formatPostDate`), glow de couleur (`hexToRgba` → `rgba(...)`), rendu
+Markdown (`parseMarkdown` → `<strong>`), et les données du plugin `command-palette-plugin`
+(251 articles, permalinks de série identiques à avant grâce au `createSlug` dupliqué) —
+tous corrects.
+
+**`CommandPalette` migré le 2026-08-28** (4 fichiers, 1088 lignes) : `index.tsx`, `Hint.tsx`,
+`paletteBus.ts`, `utils.ts`. Types locaux (`NavIndex`/`NavArticle`/`NavSeries`/`NavTag`/`NavPage`,
+`Entry`, `ResultItem`, `Group`, `ModeKey`) reflétant les deux plugins consommés
+(`command-palette-plugin` et `questions-index-plugin`, tous deux `usePluginData()` → `unknown`,
+même cast qu'ailleurs au niveau 5). Piège spécifique : `import("/pagefind/pagefind.js")` cible
+un asset qui n'existe qu'à la build (substitué par les externals webpack de
+`docusaurus-plugin-pagefind`) — `tsc` ne peut pas le résoudre, et un `declare module` ambiant
+échoue pour tout spécificateur commençant par `/` (« Invalid module name in augmentation »,
+vérifié empiriquement). Seul point du niveau 5 où un `any` explicite reste nécessaire : cast
+`as any` sur le **spécificateur seul** (pas toute l'expression), commenté, sans `webpackIgnore`
+pour ne pas casser la substitution des externals. Import avec extension `.js` explicite corrigé
+dans `src/theme/SearchBar/index.js` (commentaire seulement) — aucun import réel cassé, `paletteBus`
+et les autres imports depuis `src/theme/` étaient déjà sans extension. Aucun `.eli5.json`/`readme.md`
+pour ce composant ; brouillon `.unpublished/docusaurus-command-palette/index.md` mis à jour
+(4 `<Snippet source>` live + 2 blocs de code illustratifs). Vérifié dans le build de prod :
+`.docusaurus/globalData.json` contient bien les 251 articles/séries/tags du plugin ; `yarn lint`
+(0 erreur) `&& yarn format:check && yarn clear && yarn build` OK.
+
+**`Bluesky` migré le 2026-08-28** (6 fichiers, 772 lignes) : `index.tsx`, `comments.tsx`,
+`likes.tsx`, `post.tsx`, `share.tsx`, `useBlueskyEngagement.ts`. Sur demande explicite de
+l'auteur malgré la mise en garde initiale (« attendre que `blueskyRecordKey` optionnel se
+stabilise ») — aucune régression liée à cette évolution rencontrée. Types Bluesky (API publique,
+non fournie par `@types/*`) centralisés dans `useBlueskyEngagement.ts` : `BlueskyActor`,
+`BlueskyPostView`, `BlueskyEmbed` (union discriminée), `EngagementStats`, etc. **Piège
+d'ordonnancement propre à ce composant** : `share.tsx` est référencé en direct (`<Snippet
+source>`) par le **premier** article de la série, qui construit le composant *avant* que
+`useBlueskyEngagement.ts` existe dans le récit du tutoriel — lui faire importer un type depuis ce
+hook aurait cassé la cohérence pédagogique de l'article 1 pris isolément ; son `Props` est donc
+déclaré en local plutôt qu'importé (seul fichier du composant dans ce cas). Piège TS : les
+fonctions déclarées (`function fetchX() {}`) dans un `useEffect`, contrairement aux `const x =
+async () => {}`, ne bénéficient pas du *narrowing* de fermeture sur une variable `const` gardée
+juste avant — converti en arrow function pour éviter un `!` inutile (`comments.tsx`) ; même
+piège absent des autres fichiers qui utilisaient déjà ce style. `alt` retiré des deux usages de
+l'icône SVG (`post.tsx`, `share.tsx`) : `SVGProps` n'a pas cette prop, c'était un attribut DOM
+mort avant même la migration (le `aria-label` du lien parent porte déjà le nom accessible). 6
+`.eli5.json` renommés, `readme.md` mis à jour (2 mentions `useBlueskyEngagement.js`). Import avec
+extension explicite corrigé dans `src/theme/BlogPostItem/index.js` (`Bluesky/index.js` →
+`Bluesky`, hors périmètre migration mais aurait cassé le build). **Les deux articles publiés de
+la série ont été retravaillés** (demande explicite de l'auteur, pas seulement les chemins) :
+`docusaurus-bluesky-comments` (entièrement live-référencé, mise à jour mécanique des
+`<Snippet>`/prose) et `docusaurus-bluesky-share` (mixte — `share.tsx` en direct, mais
+`index.tsx` de cet article est un instantané figé propre au tutoriel : `./files/Bluesky.js`
+renommé `./files/Bluesky.tsx` et réécrit en TSX pour rester cohérent avec « les nouveaux
+composants s'écrivent en TypeScript », import corrigé dans `./files/BlogPostItem_3.js`, arbre
+ASCII et prose mis à jour). Vérifié dans le build de prod : le bloc Bluesky rendu en SSR sur un
+vrai article (`docusaurus-series`, lien `bsky.app` correct, SVG inline) ; les deux articles de la
+série affichent les bons noms de fichiers `.tsx`/`.ts` ; `yarn lint` (0 erreur, 0 warning)
+`&& yarn format:check && yarn clear && yarn build` OK.
+
+| Fait | Composant | Fichiers | Lignes | Pourquoi en dernier |
+| --- | --- | --- | --- | --- |
+| [x] | `Blog/utils` | 7 | 301 | Plomberie centrale (`posts.js`, `require.context`) documentée comme sensible dans `CLAUDE.md` — « lire leurs commentaires avant de toucher ». Migré seul, avec revue attentive, pas en série avec d'autres composants. |
+| [x] | `BlogGraph` | 3 | 807 | Pas de simulation D3 côté client (build-time only) — moins risqué que prévu ; risque réel était la géométrie canvas (hover/hit-test), inchangée par la migration. |
+| [x] | `CommandPalette` | 4 | 1088 | Le plus gros composant du repo, navigation clavier + recherche. Testé via le build de prod (données du plugin) — pas de session manuelle exhaustive de tous les raccourcis, à confirmer par l'auteur. |
+| [x] | `Bluesky` | 6 | 772 | En évolution active (`blueskyRecordKey` rendu optionnel le 2026-08-28, commit `209f5afa`) — migré quand même sur demande explicite ; aucune régression liée à cette évolution rencontrée. |
 
 **Déjà fait :** `BrowserWindow` (`.tsx` de longue date, a servi de pilote pour ce TODO).
 
@@ -313,21 +447,159 @@ logique de migration progressive applicable plus tard si souhaité, mais governa
       (ghost/cursor/typewriter), `Snippet` (42 blocs), `ProjectSetup`, `Card` (listings +
       `/repositories`), `Vars` (`varsbar` + résolution `%%marker%%`), `AskMyBlog` (`/faq`).
       **Stabilité en usage réel sur plusieurs jours restant à confirmer.**
-- [ ] Niveau 5 traité en dernier, un par un, avec revue dédiée pour `Blog/utils`
+- [x] `strict: true` activé dans `tsconfig.json` **avant** le niveau 5 — 47 erreurs corrigées
+      sans `any`/`@ts-ignore` (4 `.d.ts` sidecars pour `Blog/utils` + `src/data/series.js`,
+      détails dans « Contexte »). `yarn lint && yarn format:check && yarn clear && yarn build` OK
+- [x] Niveau 5 traité en dernier, un par un, avec revue dédiée pour `Blog/utils` — désormais
+      sous `strict`. Les 4 composants (`Blog/utils`, `BlogGraph`, `CommandPalette`, `Bluesky`)
+      sont migrés (2026-08-28). **`CommandPalette` : pas de session manuelle exhaustive de tous
+      les raccourcis clavier, à confirmer par l'auteur.**
 - [x] Cette liste est tenue à jour (cocher/rayer au fur et à mesure) plutôt que remplacée par un
-      nouveau TODO — à jour pour les niveaux 1-4 ; ne reste que le niveau 5
+      nouveau TODO — à jour pour les 5 niveaux, migration terminée
 - [x] `yarn lint && yarn format:check && yarn clear && yarn build` passent après chaque
-      lot migré (niveaux 1-4) — le `yarn clear` a bien été fait à chaque fois
-- [x] Avant chaque renommage (niveaux 1-4), les références dans `blog/`, `.unpublished/` et les
+      lot migré (tous niveaux) — le `yarn clear` a bien été fait à chaque fois
+- [x] Avant chaque renommage (tous niveaux), les références dans `blog/`, `.unpublished/` et les
       `readme.md` de composants ont été cherchées et mises à jour dans le même geste. **Leçon
       niveau 4** : élargir le grep à `src/pages/**` et `**/*.mdx` — `tsc` n'y voit pas les
-      imports avec extension `.js` explicite, seul le `yarn build` les attrape
+      imports avec extension `.js` explicite, seul le `yarn build` les attrape. **Leçon niveau 5**
+      (`Blog/utils`, `Bluesky`) : un plugin/thème `.mjs`/`.js` qui **importe directement** un
+      fichier de `src/components/` (Node ESM natif, sans loader TS) casse au renommage en `.ts`/
+      `.tsx` même si le fichier lui-même est hors périmètre — grep systématiquement
+      `plugins/**` et `src/theme/**` pour ce cas avant de renommer un fichier consommé ailleurs
+      qu'en `.tsx`
 
 ## Bilan intermédiaire — niveaux 1 à 4 clôturés (2026-08-28)
 
 47 composants migrés (17 + 20 + 8 + 9 fichiers-composants ; ~60 fichiers `.js`/`.jsx` au total
-avec sidecars et sous-composants). Reste **uniquement le niveau 5** : `Blog/utils`, `BlogGraph`,
-`CommandPalette`, `Bluesky`. Fondations posées en cours de route (toutes réutilisables pour le
-niveau 5) : `src/global.d.ts` (images raster), règle ESLint `no-empty`/`allowEmptyCatch` côté
+avec sidecars et sous-composants). Fondations posées en cours de route (toutes réutilisables pour
+le niveau 5) : `src/global.d.ts` (images raster), règle ESLint `no-empty`/`allowEmptyCatch` côté
 TS, suppression des `.d.ts` sidecars une fois le composant source migré, et le réflexe
 « grep `index\.(js|jsx)"` sur `src` + `plugins` + `*.mdx` avant tout renommage ».
+
+## Bilan final — niveau 5 et migration complète (2026-08-28)
+
+Les 4 derniers composants migrés le même jour, sur trois passes successives (`BlogGraph` seul,
+puis `Blog/utils` + `CommandPalette` + `Bluesky` sur demande explicite de tout traiter) :
+`Blog/utils` (7 fichiers), `BlogGraph` (3), `CommandPalette` (4), `Bluesky` (6) — 20 fichiers,
+3268 lignes. **Tous les composants de `src/components/` sont désormais `.ts`/`.tsx`.**
+
+Fondations ajoutées au niveau 5, réutilisables au-delà de ce TODO :
+
+- `src/global.d.ts` — augmentation locale de `NodeJS.Require` pour `require.context()`
+  (extension Webpack absente de `@types/node`/`@types/webpack-env`, non installé) ; déclaration
+  ambiante `/pagefind/pagefind.js` tentée puis abandonnée (TS rejette tout `declare module` dont
+  le spécificateur commence par `/` — utiliser `as any` sur le spécificateur seul à la place,
+  jamais sur toute l'expression, et jamais `webpackIgnore` si le build dépend d'une substitution
+  externals à cet endroit).
+- **Le seul `any` explicite de tout le niveau 5** (`CommandPalette/utils.ts`, import Pagefind
+  dynamique) — documenté, ciblé sur un seul token, pas une régression de rigueur.
+- Motif récurrent confirmé trois fois (`Blog/utils`→`command-palette-plugin`, `Bluesky`→
+  `BlogPostItem/index.js`) : un fichier hors `src/components/` qui **importe directement** un
+  fichier migré, sans passer par webpack/tsc (Node ESM/CJS natif dans un plugin, ou tout import
+  avec extension `.js` explicite dans un thème swizzled) casse silencieusement au renommage.
+  Ni `tsc` ni les niveaux 1-4 n'avaient de garde-fou pour ce cas précis — seul `yarn build`
+  (jamais `tsc` seul) l'attrape, et seulement s'il y a un vrai import runtime à cet endroit (une
+  simple mention en commentaire ne casse rien). Réflexe retenu : grep `plugins/**` et
+  `src/theme/**` avant tout renommage d'un fichier `src/components/`, pas seulement `blog/`.
+- Union discriminée sur un champ `$type: string` non littéral (`Bluesky/useBlueskyEngagement.ts`,
+  API Bluesky) : l'égalité (`embed.$type === "..."`) ne rétrécit pas correctement un membre
+  fourre-tout dont le discriminant est un `string` large — utiliser un narrowing par présence de
+  propriété (`"external" in embed`) à la place.
+- Une fonction déclarée (`function f() {}`) dans un `useEffect`, contrairement à une const
+  fléchée (`const f = async () => {}`), ne bénéficie pas du *narrowing* de fermeture sur une
+  variable `const` gardée juste avant — source d'un `!` non-null inutile si on ne le sait pas
+  (`Bluesky/comments.tsx`).
+- Deux articles publiés retravaillés en profondeur (pas seulement les chemins) parce que leur
+  contenu enseigne activement la construction du composant migré, sur demande explicite de
+  l'auteur : `docusaurus-bluesky-share` et `docusaurus-bluesky-comments` — voir le détail dans la
+  section « Niveau 5 » ci-dessus. Un des deux a nécessité de réécrire un instantané de tutoriel
+  figé (`./files/Bluesky.js` → `.tsx`) en plus des références `<Snippet>`, distinct des cas
+  niveaux 1-4 où ces instantanés étaient laissés en JS (leçon : le distinguo dépend de si le
+  tutoriel enseigne encore aujourd'hui la construction *initiale* du fichier renommé, pas juste
+  s'il l'affiche).
+
+**Reste ouvert, hors périmètre de ce TODO** (voir « Hors périmètre ») : `src/pages`, `src/theme`
+(swizzled), `scripts/*.mjs`. Un TODO séparé existe déjà pour `docusaurus.config.js` → `.ts`
+(0108) ; rien d'équivalent pour `src/theme`/`src/pages` à ce jour.
+
+## Rattrapage — `TriedIt` échappé à l'inventaire (2026-08-28)
+
+Après clôture du niveau 5, un inventaire de contrôle (`find src/components -name "*.js" -o -name
+"*.jsx"`) a trouvé `src/components/TriedIt/index.js` (105 lignes) — absent des 5 niveaux
+ci-dessus. Commit `4d51203b` (« wip: lot of UX changes ») l'a ajouté au repo **après** que
+l'inventaire de ce TODO ait été écrit ; personne ne l'avait rattrapé depuis. Migré en `.tsx` sur
+le même modèle que `Reaction` (niveau 3, même forme exacte : `localStorage` + fetch + vote) —
+`Props`/`Counts` en interfaces locales, sinon zéro changement de logique. Brouillon
+`.unpublished/tried_it/index.md` mis à jour (2 `<Snippet source>` live + 3 blocs de code
+illustratifs + prose). Aucun `.eli5.json`/`readme.md` pour ce composant. Vérifié : `yarn lint`
+(0 erreur) `&& yarn format:check && yarn clear && yarn build` OK ; markup du widget présent dans
+le HTML de prod d'un article tutoriel.
+
+**Contrôle final** : `find src/components -type f | grep -vE
+"\.(tsx|ts|css|json|md|svg|png|webp|jpg|jpeg|gif|ico)$"` ne retourne plus que
+`Blog/LogoIcon/iconBundle.generated.js` — fichier généré (`yarn icons:bundle`), jamais édité à la
+main, légitimement hors périmètre. **`src/components/` est désormais 100 % TypeScript pour tout
+code source écrit à la main.**
+
+## Rattrapage — audit corpus-wide des articles décrivant des composants (2026-08-28)
+
+Demande de l'auteur après la clôture ci-dessus : les articles (`blog/` + `.unpublished/`) qui
+documentent un composant via `<Snippet source="src/components/...">` sont censés parler de la
+version actuelle du fichier — tous rédigés à l'époque où les composants étaient encore en `.js`.
+Recherche méthode : `grep -rln 'src/components/[A-Za-z0-9_/]*\.\(js\|jsx\)' blog .unpublished`.
+
+**8 fichiers trouvés, tous corrigés sauf 1 (non pertinent) :**
+
+- `blog/2025/08/21/docusaurus-override-img/index.md` — instantané local `./files/index.js`
+  (composant `Image`, niveau 1) jamais mis à jour ni au moment de sa propre migration ni depuis
+  — renommé `.tsx` et réécrit avec les types du vrai `Image/index.tsx`.
+- `blog/2025/09/08/docusaurus-cards/index.mdx` — 3 instantanés locaux (`PostCard`,
+  `TagArticlesPage`, `posts.js`) laissés délibérément en JS lors de la migration `Blog/utils`
+  (motif « instantané pédagogique figé », même précédent que `TypoReport`/`Reaction`) —
+  **précédent revu** après cette demande plus large de l'auteur : les 3 réécrits en `.tsx`/`.ts`,
+  fidèles à leur propre portée (version simplifiée du tutoriel, pas la version enrichie réelle).
+- `blog/2025/09/24/docusaurus-snippets/index.md` — un exemple hypothétique (« Let's imagine
+  this ») pointait vers un chemin qui n'a jamais existé (`Blog/Snippet` au lieu de `Snippet`) ;
+  corrigé pour coller au vrai composant déjà démontré plus haut dans le même article.
+- `.unpublished/docusaurus-ask-my-blog-bubble/index.md` — 2 blocs de code illustratifs
+  (`paletteBus.js`, `Hint.js`) — extension/langage mis à jour.
+- `.unpublished/docusaurus-ask-my-blog/files/search_demo.txt` — commande `node` de démo
+  important `AskMyBlog/utils.js` — chemin corrigé en `.ts` (la commande telle quelle nécessiterait
+  déjà un runner TS, hors scope de cette passe : brouillon non publié, pas de correctif du
+  `node -e` lui-même).
+- `.unpublished/typo-report-docusaurus/index.md` — cas le plus lourd : un bloc de code unique de
+  ~250 lignes (JS + PropTypes, jamais un `<Snippet>` live) recopiant `TypoReport` à la main,
+  **déjà désynchronisé du composant réel avant même cette migration** (explicitement noté « hors
+  périmètre » lors du niveau 4). Sur confirmation explicite de l'auteur (question posée), remplacé
+  intégralement par le contenu actuel de `TypoReport/index.tsx` (324 lignes) plutôt qu'un simple
+  changement d'extension — la section « Full implementation » de l'article promet justement le
+  fichier complet et à jour. Une 4ᵉ note ajoutée à la liste « things worth noting » existante pour
+  expliquer le seul changement de motif réellement nouveau (fonction fléchée `const` au lieu de
+  `function` déclarée, pour le *narrowing* de fermeture TS).
+- `.unpublished/ai-explain/index.md` + `files/example-error.txt` — **non modifiés** :
+  `ProductList.jsx` est un exemple fictif pour illustrer un scénario « l'IA explique une erreur »,
+  ce composant n'existe pas dans ce repo.
+
+**Audit complémentaire des `readme.md` de composants** (`grep -E '\.jsx?\b'` sur tous les
+`src/components/**/readme.md`, filtré des mentions légitimes `src/theme/*`/`src/data/*`/
+`docusaurus.config.js`) — 7 fichiers corrigés, aucun trouvé lors des niveaux 1-4 eux-mêmes :
+
+- `KonamiEasterEgg/readme.md`, `Blog/SeriesCards/readme.md`, `Blog/Updated/readme.md` —
+  mentionnaient encore `index.js`/`index.jsx` pour des composants déjà migrés (niveaux 2-3).
+- `ProjectSetup/readme.md` — le chemin d'exemple générique (`MyNewComponent/index.js`) mis à jour
+  pour enseigner la convention actuelle.
+- `MyRepositories/readme.md`, `Blog/SeriesPosts/readme.md`, `Blog/RelatedPosts/readme.md` —
+  chemin **déjà faux avant la migration TS** (ancienne convention `Dossier/NomDossier.js` au lieu
+  de `Dossier/index.*`, jamais mis à jour lors d'une réorganisation antérieure) — corrigés en même
+  temps (chemin **et** extension).
+
+**Leçon retenue** : la vérification « grep les articles avant renommage », systématique à partir
+du niveau 2, ne couvre que les renommages faits *pendant* ce TODO — elle ne rattrape pas les
+articles écrits *avant* le niveau 1 (avant même que la discipline existe) ni les `readme.md` que
+personne n'a de raison de rouvrir après leur propre migration. Un futur nettoyage similaire devrait
+inclure ce grep corpus-wide (`blog/`, `.unpublished/`, **et** tous les `readme.md`) comme étape
+zéro, pas comme rattrapage après coup.
+
+Vérifié : `yarn lint` (0 erreur, 0 warning) + `yarn format:check` + `yarn clear && yarn build` OK ;
+`docusaurus-override-img` et `docusaurus-cards` vérifiés dans le HTML de build (bons noms de
+fichiers, 0 mention `.js` résiduelle).

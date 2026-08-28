@@ -1,14 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:14.632Z",
-  "source": "index.js",
-  "sourceHash": "602e403e122cf640f9fda163b508e4db792a9fa0",
-  "lang": "javascript",
+  "generated": "2026-08-28T16:45:32.130Z",
+  "source": "index.tsx",
+  "sourceHash": "7f626c34ddf3d53d69e98bfbb20739593ace6c16",
+  "lang": "typescript",
   "explanations": {
-    "24": "This function converts single characters to lowercase (like 'A' to 'a') but leaves multi-character key names like 'ArrowUp' unchanged, because arrow keys shouldn't be lowercased.",
-    "30": "progressRef stores a number that persists across re-renders without causing the component to re-render; it tracks how many keys in the Konami sequence the user has correctly typed so far.",
-    "46": "event.repeat is true when the user holds down a key and the OS fires repeated 'keydown' events; we skip those to avoid breaking sequences where the same key appears twice in a row.",
-    "61": "If the user pressed the wrong key, we either reset to 1 (if they happened to press the first key of the sequence) or reset to 0 (starting fresh), so they can retry the whole sequence."
+    "45": "This function converts single characters to lowercase (so 'B' becomes 'b') but leaves multi-character key names like 'ArrowUp' unchanged, because those don't have a meaningful lowercase version.",
+    "51": "We use useRef instead of useState here because we need to track progress through the code sequence without triggering a re-render every time the player presses a key.",
+    "67": "When you hold down a key, the OS fires multiple keydown events automatically; we ignore these repeats so holding arrow keys doesn't accidentally advance the sequence.",
+    "73": "We call preventDefault to stop the browser from scrolling when arrow keys are pressed, so the page doesn't jump around while the player is typing the Konami code.",
+    "83": "If the wrong key is pressed, we check if it's the first key of the sequence; if so, we set progress to 1 (giving that keypress credit toward a fresh attempt), otherwise we reset to 0."
   }
 }

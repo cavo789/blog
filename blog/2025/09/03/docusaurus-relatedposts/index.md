@@ -54,7 +54,7 @@ Return to this article after you have created the five files.
 
 ## We need a way to extract information from blog posts
 
-If you haven't already, please create the `src/components/Blog/utils/posts.js` file. It will contain a helper function that we can reuse for several components.
+If you haven't already, please create the `src/components/Blog/utils/posts.ts` file. It will contain a helper function that we can reuse for several components.
 
 That helper will scan each Markdown file with an `.md` or `.mdx` extension in the `blog` subfolder.
 
@@ -67,9 +67,9 @@ For each file, the script will look at the YAML front matter and use some of its
 
 Some properties, like `mainTag`, are custom.
 
-So, just copy and paste the content of the file below and create the `src/components/Blog/utils/posts.js` file in your project's structure.
+So, just copy and paste the content of the file below and create the `src/components/Blog/utils/posts.ts` file in your project's structure.
 
-<Snippet filename="src/components/Blog/utils/posts.js" source="src/components/Blog/utils/posts.js" />
+<Snippet filename="src/components/Blog/utils/posts.ts" source="src/components/Blog/utils/posts.ts" />
 
 ## Our RelatedPosts component
 
@@ -128,4 +128,4 @@ The `RelatedPosts` component will then search for `docusaurus` across your posts
 
 ## Conclusion
 
-A `mainTag` field, a `posts.js` helper, a `<Card>` you likely already have, and one theme override: that's the whole recipe for a "Related Posts" block that needs no manual curation. See <Link to="/blog/docusaurus-series">Organize Your Docusaurus Content with a Custom Series Component</Link> for articles that follow a deliberate reading order instead of a shared tag, and <Link to="/blog/docusaurus-tags">Tags management in Docusaurus</Link> to keep your `mainTag`/`tags` consistent across the whole blog.
+A `mainTag` field, a `posts.ts` helper, a `<Card>` you likely already have, and one theme override: that's the whole recipe for a "Related Posts" block that needs no manual curation. See <Link to="/blog/docusaurus-series">Organize Your Docusaurus Content with a Custom Series Component</Link> for articles that follow a deliberate reading order instead of a shared tag, and <Link to="/blog/docusaurus-tags">Tags management in Docusaurus</Link> to keep your `mainTag`/`tags` consistent across the whole blog.

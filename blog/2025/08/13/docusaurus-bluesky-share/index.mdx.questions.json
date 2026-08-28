@@ -1,41 +1,45 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-28T11:29:47.380Z",
+  "generated": "2026-08-28T19:51:35.727Z",
   "source": "index.mdx",
-  "sourceHash": "617832f2b179492ed30f5caa1f4501992adae458",
+  "sourceHash": "b2fdccbd1a18f5f9eebfd34d6844bc058f9eb5ed",
   "questions": [
     {
-      "question": "How do I create a custom Docusaurus React component that adds a 'Share on Bluesky' button?",
-      "anchor": "time-to-create-our-bluesky-docusaurus-component"
-    },
-    {
-      "question": "What is the purpose of the 'Swizzle' action in Docusaurus?",
+      "question": "How do I add a 'Share on Bluesky' button to my Docusaurus blog posts?",
       "anchor": "result"
     },
     {
-      "question": "How do I extract the original file using the Swizzle action in Docusaurus?",
+      "question": "What is the purpose of creating a custom React component for adding a 'Share on Bluesky' button in Docusaurus?",
       "anchor": "we-need-to-override-how-the-article-is-rendered-by-docusaurus"
     },
     {
-      "question": "What is the layout of the Bluesky generic component that we need to create?",
+      "question": "How do I override how blog posts are rendered in Docusaurus using the Swizzle feature?",
+      "anchor": "extract-the-original-file"
+    },
+    {
+      "question": "What is the process of extracting the original template file and modifying it to add a 'Share on Bluesky' button to my Docusaurus blog posts?",
+      "anchor": "keep-things-under-control"
+    },
+    {
+      "question": "How do I keep things under control when overriding the default blog post theme in Docusaurus using Swizzle?",
+      "anchor": "playing-and-adding-a-stupid-message-to-every-blog-post"
+    },
+    {
+      "question": "What is the content of the file I need to modify to add a 'Share on Bluesky' button to my Docusaurus blog posts?",
+      "anchor": "time-to-create-our-bluesky-docusaurus-component"
+    },
+    {
+      "question": "How do I ensure that the 'Share on Bluesky' button works correctly after adding it to my Docusaurus blog posts?",
       "anchor": "15-the-layout-of-our-bluesky-generic-component"
     },
     {
-      "question": "How do I add a 'Share on Bluesky' button to the article using the extracted file?",
+      "question": "What is the purpose of the file I created by running the Swizzle command in Docusaurus?",
       "anchor": "25-our-share-on-bluesky-button"
     },
     {
-      "question": "What is the SVG icon used in the 'Share on Bluesky' button component?",
+      "question": "How do I test if the 'Share on Bluesky' button works correctly after adding it to my Docusaurus blog posts?",
       "anchor": "35-the-bluesky-logo"
-    },
-    {
-      "question": "How do I implement the custom React component in Docusaurus to display the 'Share on Bluesky' button below each blog post?",
-      "anchor": "45-and-finally-our-css"
-    },
-    {
-      "question": "What is the purpose of the 'Final remarks' section in this article?",
-      "anchor": "final-remarks---take-care-about-the-swizzle-command"
     }
   ]
 }

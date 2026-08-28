@@ -27,6 +27,13 @@ In this article I'll walk you through every file, every decision, and every line
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "The Big Picture", to: "#the-big-picture" },
+    { label: "All Files at a Glance", to: "#all-files-at-a-glance" },
+  ]}
+/>
+
 <BrowserWindow url="https://www.avonture.be/blog/docusaurus-easter-eggs">
   ![Reactions](./images/reactions.webp)
 </BrowserWindow>

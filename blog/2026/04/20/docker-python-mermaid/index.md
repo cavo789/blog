@@ -27,6 +27,13 @@ Let's see how to automate the documentation using Docker, Python and Mermaid.
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "See it in Action", to: "#the-result" },
+    { label: "All needed files", to: "#all-needed-files" },
+  ]}
+/>
+
 ## The Result
 
 Point the pipeline built in this article at a real `compose.yaml`, and one command produces this:

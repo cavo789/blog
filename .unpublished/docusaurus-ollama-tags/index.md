@@ -21,6 +21,13 @@ Tagging blog posts by hand does not scale — and neither does spotting, across 
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "See it in Action", to: "#the-result" },
+    { label: "Installation", to: "#installation" },
+  ]}
+/>
+
 ## The Result
 
 Once both scripts have run, `output/all_articles_with_tags.json` holds the generated tags for every post:

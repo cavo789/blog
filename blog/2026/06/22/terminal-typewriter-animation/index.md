@@ -29,6 +29,13 @@ A typewriter animation restores that sequence. The command appears letter by let
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "The new typewriter prop", to: "#the-new-typewriter-prop" },
+    { label: "Create the component", to: "#create-the-component" },
+  ]}
+/>
+
 If you're a regular reader of my blog, you know that I've developed a component called `Terminal` that lets me list a series of commands I've run in a Linux-style console—and it looks pretty realistic. It's the console counterpart of <Link to="/blog/docusaurus-snippets">the component I use for showing code snippets</Link>. Here's an example:
 
 <Terminal title="user@machine: ~/project">

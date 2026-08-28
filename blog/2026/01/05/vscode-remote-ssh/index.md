@@ -30,6 +30,13 @@ My use case was simple: I needed to run a Python script on a Linux server that c
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "See it in Action", to: "#the-result" },
+    { label: "Installation — Simulate a Server Locally with Docker", to: "#installation--simulate-a-server-locally-with-docker" },
+  ]}
+/>
+
 ## The Result
 
 Once the Remote - SSH extension is connected (covered below), VS Code edits and runs commands directly on the remote host — no upload, no local copy:

@@ -1,41 +1,49 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:02:43.467Z",
+  "generated": "2026-08-28T19:52:54.937Z",
   "source": "index.md",
-  "sourceHash": "6f2558c32175721931138587583127b003e75d25",
+  "sourceHash": "f2fed3ebb85c3f309077c1c531741c6cd1859a23",
   "questions": [
     {
-      "question": "What is Docker and how does it help in building a custom Docker image equipped with Python and Mermaid CLI for generating dynamic architecture diagrams directly from your codebase?",
+      "question": "What is Documentation as Code?",
       "anchor": ""
     },
     {
-      "question": "How can I generate a mindmap using the script that reads a Docker compose.yaml file and generates a visual diagram of my project's services and their configurations?",
-      "anchor": "finally-we-need-a-python-script"
-    },
-    {
-      "question": "What is the purpose of the Puppeteer configuration file used for rendering Mermaid diagrams in the Docker image?",
-      "anchor": "well-read-a-docker-composeyaml-and-create-a-mindmap"
-    },
-    {
-      "question": "How can I customize the output format when rendering a Mermaid pseudocode to an image using the Python script?",
-      "anchor": "more-examples"
-    },
-    {
-      "question": "What is the command to build the Docker image for the documentation as code solution?",
+      "question": "How does Docker and Mermaid work together in this article?",
       "anchor": "why-mermaid"
     },
     {
-      "question": "How can I generate a mindmap using the script that reads a folder structure and creates a visual diagram of my project's files and their categories?",
-      "anchor": "another-example"
-    },
-    {
-      "question": "What is the purpose of the Mermaid CLI tool used for generating dynamic architecture diagrams directly from your codebase?",
+      "question": "Where can I find the Dockerfile used in this article?",
       "anchor": "installation--lets-create-the-docker-image"
     },
     {
-      "question": "How can I update the color scheme of the rendered diagram using the Python script?",
+      "question": "What is Puppeteer, and why do we need it for rendering Mermaid diagrams?",
+      "anchor": "prepare-mermaid-rendering"
+    },
+    {
+      "question": "How can I customize the appearance of the rendered images using a configuration file?",
       "anchor": "finally-we-need-a-python-script"
+    },
+    {
+      "question": "What is the purpose of the Python script in this article?",
+      "anchor": "well-read-a-docker-composeyaml-and-create-a-mindmap"
+    },
+    {
+      "question": "How do we read and parse a Docker compose.yaml file to generate a mindmap?",
+      "anchor": "more-examples"
+    },
+    {
+      "question": "Can I customize the color scheme of the rendered images using the configuration file?",
+      "anchor": "another-example"
+    },
+    {
+      "question": "How can I use AI engines to generate Python scripts for generating Mermaid pseudocode?",
+      "anchor": "last-example"
+    },
+    {
+      "question": "What are some examples of how we can use this tool to generate diagrams from different data sources?",
+      "anchor": "all-needed-files"
     }
   ]
 }

@@ -25,6 +25,13 @@ In this article, I'll show you why you should move your logic into standalone fi
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Teleporting to a Project", to: "#teleporting-to-a-project" },
+    { label: "How to Set It Up", to: "#how-to-set-it-up" },
+  ]}
+/>
+
 ## Teleporting to a Project
 
 Once `repo` is set up (covered below), typing a fragment of a project name jumps straight into it — no `cd`, no typing the full path:

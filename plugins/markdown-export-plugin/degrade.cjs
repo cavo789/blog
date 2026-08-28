@@ -411,6 +411,25 @@ const COMPONENT_RULES = {
     return out;
   },
 
+  // Props-only (no children) — a small "Quick Jump: A | B" line, links resolved
+  // against the same in-page anchors the headings below stringify to, so they
+  // stay meaningful in the flat mirror.
+  QuickJump(node) {
+    const attrs = getAttrs(node);
+    const links = Array.isArray(attrs.links) ? attrs.links : [];
+    if (links.length === 0) return [];
+    const title = typeof attrs.title === "string" ? attrs.title : "Quick Jump";
+    const linkNodes = links.flatMap((link, index) => {
+      const item = {
+        type: "link",
+        url: typeof link?.to === "string" ? link.to : "",
+        children: [textNode(typeof link?.label === "string" ? link.label : "")],
+      };
+      return index === 0 ? [item] : [textNode(" | "), item];
+    });
+    return [paragraph([strongText(`${title}:`), textNode(" "), ...linkNodes])];
+  },
+
   Snippet(node, ctx) {
     const attrs = getAttrs(node);
     let code;

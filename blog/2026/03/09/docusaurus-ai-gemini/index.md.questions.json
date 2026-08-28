@@ -1,49 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:18:49.811Z",
+  "generated": "2026-08-28T19:52:43.494Z",
   "source": "index.md",
-  "sourceHash": "69e86525caa777c760ab1e3fd0ee5d098b0495d0",
+  "sourceHash": "6ad4853446a1a72331dcc0286404fdf08b3a2785",
   "questions": [
     {
-      "question": "How do I indicate AI-assisted content in a Docusaurus blog?",
+      "question": "How do I show AI-assisted content in my Docusaurus blog?",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of adding an icon and co-author to indicate AI-assisted content on a Docusaurus blog post?",
+      "question": "What is the purpose of adding an 'AI Assisted' icon and co-author to a Docusaurus blog post?",
       "anchor": "the-result"
     },
     {
-      "question": "How do I add the 'AI Assisted' flag to my blog posts in Docusaurus?",
+      "question": "How do I add an AI-assisted flag to my Docusaurus blog posts?",
       "anchor": "why-do-this"
     },
     {
-      "question": "What are two examples of content where AI has been used significantly and how does this affect transparency with readers?",
+      "question": "What components are involved in displaying the 'AI Assisted' icon and co-author on a Docusaurus blog post?",
       "anchor": "step-1-the-ai_assisted-front-matter"
     },
     {
-      "question": "How do I create a visual component for the 'AI Assisted' indicator in my Docusaurus blog posts?",
+      "question": "How can I customize the 'AI Assisted' icon and co-author display in my Docusaurus blog posts?",
       "anchor": "step-2-creating-the-aiicon-component"
     },
     {
-      "question": "What steps are involved in displaying the icon and co-author on a blog post with AI assistance using Docusaurus?",
+      "question": "How do I add an AI-assisted flag to my Docusaurus blog posts programmatically?",
       "anchor": "step-3-displaying-the-icon-with-swizzling"
     },
     {
-      "question": "How can I add 'Google Gemini' as an author to my blog posts when they have been assisted by AI?",
+      "question": "What is the role of swizzling in customizing Docusaurus theme components for AI-assisted content display?",
       "anchor": "31-modify-srcthemeblogpostitemindexjs"
     },
     {
-      "question": "What are the steps involved in modifying Docusaurus theme components to display the 'AI Assisted' icon and co-author on blog posts?",
+      "question": "How can I add a co-author to my Docusaurus blog posts programmatically?",
       "anchor": "32-modify-srcthemeblogpostitemheaderindexjs"
-    },
-    {
-      "question": "How can I centralize the logic for indicating AI assistance within my Docusaurus blog using swizzling?",
-      "anchor": "33-modify-srcthemeblogpostitemheaderinfoindexjs"
-    },
-    {
-      "question": "What is the purpose of adding a 'AI Assisted' flag to my blog posts in Docusaurus?",
-      "anchor": "step-4-adding-google-gemini-as-an-author"
     }
   ]
 }

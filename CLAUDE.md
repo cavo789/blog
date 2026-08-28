@@ -41,10 +41,10 @@ tool.** Doing so kills the entrypoint's correctly-configured HTTPS server; a bar
 back as plain HTTP bound to `localhost` only, so the browser's TLS handshake then fails silently
 ("site not responding") even though something is listening on the port.
 
-If the dev server genuinely needs a restart (stale cache, crash, port conflict), use the `reset`
-function from `.devcontainer/scripts/interactive.sh` — it restores the exact
-`HTTPS`/`SSL_CRT_FILE`/`SSL_KEY_FILE`/`--host 0.0.0.0` invocation:
-`bash -c 'source .devcontainer/scripts/interactive.sh; reset'`.
+If the dev server genuinely needs a restart (stale cache, crash, port conflict), use the `start`
+function from `.devcontainer/scripts/interactive.sh` — it kills whatever holds port 3000, clears
+the cache, and restores the exact `HTTPS`/`SSL_CRT_FILE`/`SSL_KEY_FILE`/`--host 0.0.0.0`
+invocation: `bash -c 'source .devcontainer/scripts/interactive.sh; start'`.
 
 ## Architecture
 
@@ -67,7 +67,7 @@ visible in `yarn start`, absent from the production build, listings, RSS and sit
 article can be committed and pushed, then published later by deleting the single line.
 `.unpublished/` is for drafts not yet worth committing to the blog tree at all.
 The two plumbing pieces that make this work are `plugins/frontmatter-loader/` and the
-`require.context` call in `src/components/Blog/utils/posts.js` — read their comments before
+`require.context` call in `src/components/Blog/utils/posts.ts` — read their comments before
 touching either.
 
 Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.

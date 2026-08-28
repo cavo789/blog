@@ -22,7 +22,7 @@
  *    `setGlobalData`: that component tree is mounted on every page (`src/theme/Layout`), so a
  *    `usePluginData` reference — even an unused one — would have gotten the whole ~470 KB
  *    corpus bundled into every page's JS. A plain `fetch()` (same bridge pattern
- *    `CommandPalette/utils.js` already uses for Pagefind) keeps that cost opt-in: only a
+ *    `CommandPalette/utils.ts` already uses for Pagefind) keeps that cost opt-in: only a
  *    reader who actually opens the search box pays for it, once, cached after that.
  *
  * An article with no `.questions.json` yet (not generated) simply contributes nothing — the

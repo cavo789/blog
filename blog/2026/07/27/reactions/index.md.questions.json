@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:57.301Z",
+  "generated": "2026-08-28T19:53:23.367Z",
   "source": "index.md",
-  "sourceHash": "daf73c0bcca39760fbca956753751b3b8b02304d",
+  "sourceHash": "081abfa7df0694798126cb6ac5f9cd43c4cb801c",
   "questions": [
     {
-      "question": "How do I set up the email notification configuration for the PHP backend?",
+      "question": "How do I configure the PHP backend for my Docusaurus blog?",
       "anchor": "the-big-picture"
     },
     {
-      "question": "What is the purpose of the token in the PHP backend configuration file?",
-      "anchor": "the-big-picture"
-    },
-    {
-      "question": "Why is it important to set a minimum number of seconds between two notification emails for each article?",
-      "anchor": "the-big-picture"
-    },
-    {
-      "question": "What is the public domain used in the PHP backend configuration file, and why is it important to change this value?",
-      "anchor": "the-big-picture"
-    },
-    {
-      "question": "How does the CORS block in the PHP backend script work?",
+      "question": "What is the purpose of the CORS block in the PHP script?",
       "anchor": "step-1--the-php-backend"
     },
     {
-      "question": "What is the purpose of the CORS block in the PHP backend script, and why is it important to include it?",
-      "anchor": "step-1--the-php-backend"
+      "question": "How can I customize the email notification throttling settings?",
+      "anchor": "11--configuration"
     },
     {
-      "question": "How does the CORS block in the PHP backend script handle browser preflight requests?",
-      "anchor": "step-1--the-php-backend"
+      "question": "What are the key constants and decisions made during configuration of the PHP backend?",
+      "anchor": "12--cors"
     },
     {
-      "question": "What are some best practices for setting up email notifications in a PHP backend script?",
-      "anchor": "the-big-picture"
+      "question": "How do I modify the swizzled Docusaurus component to inject the widget at the bottom of every post?",
+      "anchor": "step-3--the-css-module"
+    },
+    {
+      "question": "What are the two JSON files created by the PHP backend during runtime?",
+      "anchor": "all-files-at-a-glance"
+    },
+    {
+      "question": "How can I customize the email notification recipient address in the PHP script?",
+      "anchor": "13--email-notification-with-per-article-throttling"
+    },
+    {
+      "question": "What is the purpose of the admin dashboard page for monitoring approval rates across all articles?",
+      "anchor": "step-5--the-admin-dashboard"
     }
   ]
 }

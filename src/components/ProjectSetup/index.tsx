@@ -198,6 +198,12 @@ export default function ProjectSetup({
       // Remove leading slashes to ensure a valid zip folder path (fixes issues with "/tmp/...")
       const safeFolderName = folderName.replace(/^\/+/, "");
       const folder = zip.folder(safeFolderName);
+      // JSZip.folder() is typed `JSZip | null`; it only returns null on an
+      // invalid name, which `safeFolderName` already guards against. The throw
+      // is caught below and surfaced through setZipError().
+      if (!folder) {
+        throw new Error(`Could not create the "${safeFolderName}" zip folder.`);
+      }
 
       folders.forEach((f) => folder.folder(f));
       fileList.forEach(({ fileName, content }) => folder.file(fileName, content.trim()));

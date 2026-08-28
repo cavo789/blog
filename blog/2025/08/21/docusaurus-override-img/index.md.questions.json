@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:20.660Z",
+  "generated": "2026-08-28T19:51:49.436Z",
   "source": "index.md",
-  "sourceHash": "a120a992334be82d0707f48b65464fc75086a042",
+  "sourceHash": "2c208c451835294f8eaf43c182f4c385334d40cc",
   "questions": [
     {
-      "question": "How do I customize Docusaurus's image rendering process?",
+      "question": "How do I customize how Docusaurus generates <img> tags?",
+      "anchor": ""
+    },
+    {
+      "question": "What is the purpose of creating a custom React component for image rendering in Docusaurus?",
       "anchor": "1-creation-of-our-image-component"
     },
     {
-      "question": "What is a custom React component for handling images in Docusaurus?",
+      "question": "How do I style the Image component with CSS and force lazy loading?",
       "anchor": "2-tell-docusaurus-about-our-component"
     },
     {
-      "question": "How can I add lazy loading to my Docusaurus image components?",
+      "question": "What is the difference between using the standard Markdown <img> tag and my custom Image component in Docusaurus?",
       "anchor": "3-using-the-image-component"
     },
     {
-      "question": "How do I skip the first image in a blog post when using a custom React component for images?",
+      "question": "How can I skip the first image in a blog post when converting it to my custom Image component?",
       "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
     },
     {
-      "question": "What is a plugin for Docusaurus that can intercept and replace Markdown image tags with custom components?",
+      "question": "What is the purpose of writing and registering a plugin for Docusaurus to replace standard Markdown images with my custom Image component?",
       "anchor": "conclusion"
     },
     {
-      "question": "How do I create a custom React component to handle images in Docusaurus?",
+      "question": "How can I handle relative paths, absolute paths, or external image URLs when using Docusaurus's built-in image conversion functionality?",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the Image plugin in Docusaurus?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I tell Docusaurus about my custom React component for handling images?",
+      "question": "What is the difference between editing blog posts manually and using a plugin to automate the replacement of standard Markdown images with custom Image components in Docusaurus?",
       "anchor": ""
     }
   ]

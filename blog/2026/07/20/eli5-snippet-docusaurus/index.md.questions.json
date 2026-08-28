@@ -1,57 +1,57 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:52.285Z",
+  "generated": "2026-08-28T16:47:02.233Z",
   "source": "index.md",
-  "sourceHash": "4055f73d8b554919af526b277676e336605674b5",
+  "sourceHash": "7ca703cef2ac2b5f7d3de0d045e5fa626bfb1ca5",
   "questions": [
     {
       "question": "What is AI-Powered Code Tooltips in Docusaurus?",
       "anchor": ""
     },
     {
-      "question": "How does AI-Powered Code Tooltips work in Docusaurus?",
+      "question": "How does this tool work with Claude?",
       "anchor": ""
     },
     {
-      "question": "What are the three parts of AI-Powered Code Tooltips?",
-      "anchor": "what-it-looks-like"
+      "question": "What are the three moving parts of the system?",
+      "anchor": "architecture"
     },
     {
-      "question": "How do I add AI-Powered Code Tooltips to my Docusaurus blog?",
+      "question": "What is the difference between AI calls happening at authoring time and read time?",
+      "anchor": "architecture"
+    },
+    {
+      "question": "How does language detection work in this tool?",
       "anchor": "step-1--the-annotation-script"
     },
     {
-      "question": "What is the output format for AI-Powered Code Tooltips?",
+      "question": "What are the key details of the prompt sent to Claude?",
+      "anchor": "step-1--the-annotation-script"
+    },
+    {
+      "question": "What is JSON cleaning and why is it important?",
+      "anchor": "step-1--the-annotation-script"
+    },
+    {
+      "question": "How does incremental generation work in this tool?",
+      "anchor": "step-1--the-annotation-script"
+    },
+    {
+      "question": "What is the usage of this tool?",
+      "anchor": "usage"
+    },
+    {
+      "question": "What are the options available for the batch script?",
       "anchor": "the-output-format"
     },
     {
-      "question": "How does the batch script work in AI-Powered Code Tooltips?",
+      "question": "How does the bulk script work?",
       "anchor": "step-2--the-batch-script"
     },
     {
-      "question": "What are the options reference for AI-Powered Code Tooltips?",
-      "anchor": "options-reference"
-    },
-    {
-      "question": "How does the bulk script find files to annotate in AI-Powered Code Tooltips?",
+      "question": "How does the skip rule work in this tool?",
       "anchor": "how-the-bulk-script-works"
-    },
-    {
-      "question": "What is the skip rule in AI-Powered Code Tooltips and how is it idempotent?",
-      "anchor": "how-it-finds-files-to-annotate"
-    },
-    {
-      "question": "How do I annotate my existing articles with AI-Powered Code Tooltips?",
-      "anchor": "the-skip-rule--idempotent-by-design"
-    },
-    {
-      "question": "What are the phases in the migration workflow for AI-Powered Code Tooltips?",
-      "anchor": "annotating-your-existing-articles"
-    },
-    {
-      "question": "How does the renderer work in AI-Powered Code Tooltips?",
-      "anchor": "step-4--update-the-snippet-component"
     }
   ]
 }

@@ -30,6 +30,13 @@ In this article, I'll share some of the ZSH functions I use for Docker managemen
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Start a new terminal session in a running Docker container", to: "#start-a-new-terminal-session-in-a-running-docker-container" },
+    { label: "How to install", to: "#how-to-install" },
+  ]}
+/>
+
 Because these functions rely on `fzf`, if you don't have `fzf` installed, you can install it using your package manager (e.g., `sudo apt-get install fzf` on Debian-based systems). New to it? Check out <Link to="/blog/linux-fzf-introduction">Introduction to fzf - Fuzzy Finder</Link> first.
 
 ## Start a new terminal session in a running Docker container

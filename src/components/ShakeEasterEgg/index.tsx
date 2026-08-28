@@ -69,7 +69,15 @@ export default function ShakeEasterEgg(): JSX.Element | null {
 
     const handleMotion = (event: DeviceMotionEvent) => {
       const acceleration = event.accelerationIncludingGravity;
-      if (!acceleration || acceleration.x === null) return;
+      // All three axes must be present: DeviceMotionEventAcceleration types each
+      // as `number | null`, and the jerk maths below reads x, y and z.
+      if (
+        !acceleration ||
+        acceleration.x === null ||
+        acceleration.y === null ||
+        acceleration.z === null
+      )
+        return;
 
       const now = Date.now();
       const deltaTime = now - lastSampleTime.current;

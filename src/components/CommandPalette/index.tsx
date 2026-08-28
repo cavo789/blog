@@ -19,17 +19,24 @@
  * rather than a dead entry — see TODO 0084's "Activation progressive" section.
  */
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type KeyboardEvent,
+} from "react";
 import { createPortal } from "react-dom";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import { useColorMode } from "@docusaurus/theme-common";
-import PropTypes from "prop-types";
 import ShortcutList from "@site/src/components/ShortcutList";
 import {
   buildSearchIndex as buildQuestionIndex,
   search as searchQuestions,
+  type QuestionEntry,
 } from "@site/src/components/AskMyBlog/utils";
 import { loadQuestionsIndex } from "@site/src/components/AskMyBlog/questionsIndex";
 import { registerPalette, setActiveOverlay } from "./paletteBus";
@@ -41,12 +48,24 @@ import {
   recordRecentlyViewed,
   searchEntries,
   searchPagefind,
+  type EntrySection,
+  type NavArticle,
+  type NavIndex,
+  type PagefindResult,
 } from "./utils";
 import styles from "./styles.module.css";
 
 const GITHUB_EDIT_BASE = "https://github.com/cavo789/blog/edit/main/";
 
-const MODES = [
+type ModeKey = "fuzzy" | "fulltext" | "ask" | "tags" | "headings" | "actions";
+
+interface ModeDef {
+  prefix: string;
+  key: ModeKey;
+  label: string;
+}
+
+const MODES: ModeDef[] = [
   { prefix: "", key: "fuzzy", label: "Jump to article, series, tag or page" },
   { prefix: "/", key: "fulltext", label: "Full-text search (Pagefind)" },
   { prefix: "?", key: "ask", label: "Ask my blog a question" },
@@ -55,44 +74,91 @@ const MODES = [
   { prefix: ">", key: "actions", label: "Run an action" },
 ];
 
-function normalizePath(pathname) {
+interface QuestionsIndexData {
+  meta: { articleCount?: number; questionCount: number };
+  themes?: { key: string; label: string; permalink: string; count: number }[];
+}
+
+type View = "palette" | "shortcuts" | null;
+
+interface ResultItem {
+  id: string;
+  kind: "navigate" | "heading" | "action";
+  title: string;
+  subtitle?: string;
+  permalink?: string;
+  preview?: NavArticle | null;
+}
+
+interface Group {
+  key: string;
+  label: string;
+  items: ResultItem[];
+  loading?: boolean;
+  unavailable?: boolean;
+  hint?: string;
+}
+
+interface ActionItem {
+  id: string;
+  label: string;
+}
+
+interface PagefindState {
+  term: string | null;
+  loading: boolean;
+  results: PagefindResult[] | null;
+}
+
+function normalizePath(pathname: string): string {
   return pathname.replace(/\/$/, "") || "/";
 }
 
-function parseModeAndTerm(raw) {
+function parseModeAndTerm(raw: string): { mode: ModeKey; term: string } {
   const found = MODES.find((m) => m.prefix && raw.startsWith(m.prefix));
   if (found) return { mode: found.key, term: raw.slice(found.prefix.length).trimStart() };
   return { mode: "fuzzy", term: raw };
 }
 
+function isTypingTarget(el: Element | null): boolean {
+  if (!el) return false;
+  const tag = el.tagName;
+  return tag === "INPUT" || tag === "TEXTAREA" || (el as HTMLElement).isContentEditable;
+}
+
 export default function CommandPalette() {
-  const navIndex = usePluginData("command-palette-plugin");
+  const navIndex = usePluginData("command-palette-plugin") as NavIndex | undefined;
   // Small summary only (theme labels/counts) — the full corpus is fetched lazily below, only
   // once the reader actually switches into "?" mode. See
-  // src/components/AskMyBlog/questionsIndex.js for why: this component is mounted on every
+  // src/components/AskMyBlog/questionsIndex.ts for why: this component is mounted on every
   // page (src/theme/Layout), so a `usePluginData` reference to the full ~470 KB corpus here
   // would have shipped it in every page's JS.
-  const { meta: questionsMeta } = usePluginData("questions-index-plugin") ?? {
-    meta: { questionCount: 0 },
-  };
+  const { meta: questionsMeta } = (usePluginData("questions-index-plugin") as
+    QuestionsIndexData | undefined) ?? { meta: { questionCount: 0 } };
   const { withBaseUrl } = useBaseUrlUtils();
-  const [questions, setQuestions] = useState(null);
+  const [questions, setQuestions] = useState<QuestionEntry[] | "unavailable" | null>(
+    null,
+  );
   const { colorMode, setColorMode } = useColorMode();
   const history = useHistory();
   const location = useLocation();
 
-  const [view, setView] = useState(null); // null | "palette" | "shortcuts"
+  const [view, setView] = useState<View>(null);
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(0);
   // `term` tags which query the results/loading flag belong to, so a stale in-flight search
   // for a previous term is simply ignored instead of needing to be reset out-of-band.
-  const [pagefind, setPagefind] = useState({ term: null, loading: false, results: null });
-  const [toast, setToast] = useState(null);
+  const [pagefind, setPagefind] = useState<PagefindState>({
+    term: null,
+    loading: false,
+    results: null,
+  });
+  const [toast, setToast] = useState<string | null>(null);
 
-  const dialogRef = useRef(null);
-  const inputRef = useRef(null);
-  const previouslyFocused = useRef(null);
-  const clearOverlayRef = useRef(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const previouslyFocused = useRef<HTMLElement | null>(null);
+  const clearOverlayRef = useRef<(() => void) | null>(null);
 
   const entries = useMemo(() => buildEntries(navIndex), [navIndex]);
   // `questions` is null (not loaded yet), "unavailable" (fetch failed — e.g. offline, see
@@ -137,7 +203,7 @@ export default function CommandPalette() {
 
   const open = useCallback(
     (initialQuery = "") => {
-      previouslyFocused.current = document.activeElement;
+      previouslyFocused.current = document.activeElement as HTMLElement | null;
       setView("palette");
       setQuery(initialQuery);
       setActiveIndex(0);
@@ -149,13 +215,7 @@ export default function CommandPalette() {
   useEffect(() => registerPalette(open), [open]);
 
   useEffect(() => {
-    function isTypingTarget(el) {
-      if (!el) return false;
-      const tag = el.tagName;
-      return tag === "INPUT" || tag === "TEXTAREA" || el.isContentEditable;
-    }
-
-    function onKeyDown(event) {
+    function onKeyDown(event: globalThis.KeyboardEvent) {
       const isMod = event.metaKey || event.ctrlKey;
       const typingElsewhere =
         isTypingTarget(document.activeElement) &&
@@ -185,7 +245,7 @@ export default function CommandPalette() {
 
       if (event.key === "?" && !isTypingTarget(document.activeElement)) {
         event.preventDefault();
-        previouslyFocused.current = document.activeElement;
+        previouslyFocused.current = document.activeElement as HTMLElement | null;
         setView("shortcuts");
       }
     }
@@ -203,9 +263,9 @@ export default function CommandPalette() {
   useEffect(() => {
     if (!view) return undefined;
 
-    function onTab(event) {
+    function onTab(event: globalThis.KeyboardEvent) {
       if (event.key !== "Tab" || !dialogRef.current) return;
-      const focusable = dialogRef.current.querySelectorAll(
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
         'button, [href], input, [tabindex]:not([tabindex="-1"])',
       );
       if (focusable.length === 0) return;
@@ -261,12 +321,14 @@ export default function CommandPalette() {
   }, [navIndex, location.pathname]);
 
   const runAction = useCallback(
-    (id) => {
+    (id: string) => {
       switch (id) {
         case "copy-markdown": {
-          const mdUrl = `${currentArticle.permalink.replace(/\/$/, "")}.md`;
+          const mdUrl = `${currentArticle!.permalink.replace(/\/$/, "")}.md`;
           fetch(mdUrl)
-            .then((res) => (res.ok ? res.text() : Promise.reject(new Error(res.status))))
+            .then((res) =>
+              res.ok ? res.text() : Promise.reject(new Error(String(res.status))),
+            )
             .then((text) => navigator.clipboard.writeText(text))
             .then(() => setToast("Copied article as Markdown"))
             .catch(() => setToast("Could not copy — is this a production build?"));
@@ -274,7 +336,7 @@ export default function CommandPalette() {
         }
         case "view-markdown":
           window.open(
-            `${currentArticle.permalink.replace(/\/$/, "")}.md`,
+            `${currentArticle!.permalink.replace(/\/$/, "")}.md`,
             "_blank",
             "noopener,noreferrer",
           );
@@ -285,7 +347,7 @@ export default function CommandPalette() {
           break;
         case "edit-github":
           window.open(
-            `${GITHUB_EDIT_BASE}${currentArticle.file}`,
+            `${GITHUB_EDIT_BASE}${currentArticle!.file}`,
             "_blank",
             "noopener,noreferrer",
           );
@@ -312,7 +374,7 @@ export default function CommandPalette() {
     [currentArticle, colorMode, setColorMode, history, close],
   );
 
-  const actions = useMemo(() => {
+  const actions = useMemo<ActionItem[]>(() => {
     const onArticle = Boolean(currentArticle);
     return [
       onArticle && { id: "copy-markdown", label: "Copy this article as Markdown" },
@@ -326,12 +388,12 @@ export default function CommandPalette() {
         label: `Switch to ${colorMode === "dark" ? "light" : "dark"} theme`,
       },
       { id: "shortcuts", label: "Keyboard shortcuts" },
-    ].filter(Boolean);
+    ].filter((a): a is ActionItem => Boolean(a));
   }, [currentArticle, colorMode]);
 
   // ── Results per mode ─────────────────────────────────────────────────────────────────
 
-  const groups = useMemo(() => {
+  const groups = useMemo<Group[]>(() => {
     if (!navIndex) return [];
 
     if (!query.trim()) return []; // empty state handled separately
@@ -359,7 +421,7 @@ export default function CommandPalette() {
           label: "Full text",
           items: pagefind.results.map((r) => ({
             id: r.permalink,
-            kind: "navigate",
+            kind: "navigate" as const,
             title: r.title,
             subtitle: r.excerpt,
             permalink: r.permalink,
@@ -389,7 +451,7 @@ export default function CommandPalette() {
           label: "Ask my blog",
           items: results.map((r) => ({
             id: `${r.permalink}#${r.anchor}`,
-            kind: "navigate",
+            kind: "navigate" as const,
             title: r.question,
             subtitle: r.title,
             permalink: r.anchor ? `${r.permalink}#${r.anchor}` : r.permalink,
@@ -401,7 +463,7 @@ export default function CommandPalette() {
     if (mode === "tags") {
       const pool = navIndex.tags.map((t) => ({
         id: t.permalink,
-        kind: "navigate",
+        kind: "navigate" as const,
         title: t.label,
         subtitle: `${t.count} article${t.count === 1 ? "" : "s"}`,
         permalink: t.permalink,
@@ -418,7 +480,7 @@ export default function CommandPalette() {
     if (mode === "headings") {
       const pool = getPageHeadings().map((h) => ({
         id: h.id,
-        kind: "heading",
+        kind: "heading" as const,
         title: h.text,
         subtitle: `h${h.level}`,
       }));
@@ -429,7 +491,11 @@ export default function CommandPalette() {
     }
 
     if (mode === "actions") {
-      const pool = actions.map((a) => ({ id: a.id, kind: "action", title: a.label }));
+      const pool = actions.map((a) => ({
+        id: a.id,
+        kind: "action" as const,
+        title: a.label,
+      }));
       const items = term.trim()
         ? pool.filter((item) => item.title.toLowerCase().includes(term.toLowerCase()))
         : pool;
@@ -438,7 +504,7 @@ export default function CommandPalette() {
 
     // Default fuzzy mode, grouped by section.
     const matched = searchEntries(entries, term || query, 40);
-    const bySection = {
+    const bySection: Record<EntrySection, Group> = {
       articles: { key: "articles", label: "Articles", items: [] },
       series: { key: "series", label: "Series", items: [] },
       tags: { key: "tags", label: "Tags", items: [] },
@@ -452,7 +518,7 @@ export default function CommandPalette() {
         title: entry.title,
         subtitle: entry.subtitle,
         permalink: entry.permalink,
-        preview: entry.section === "articles" ? entry.data : null,
+        preview: entry.section === "articles" ? (entry.data as NavArticle) : null,
       });
     }
     return Object.values(bySection).filter((g) => g.items.length > 0);
@@ -472,11 +538,11 @@ export default function CommandPalette() {
   const activeItem = flatItems[activeIndex] ?? null;
 
   const selectItem = useCallback(
-    (item) => {
+    (item: ResultItem | null) => {
       if (!item) return;
       if (item.kind === "navigate") {
         close();
-        history.push(item.permalink);
+        history.push(item.permalink!);
       } else if (item.kind === "heading") {
         close();
         window.location.hash = item.id;
@@ -488,7 +554,7 @@ export default function CommandPalette() {
   );
 
   const onInputKeyDown = useCallback(
-    (event) => {
+    (event: KeyboardEvent<HTMLInputElement>) => {
       if (event.key === "ArrowDown") {
         event.preventDefault();
         setActiveIndex((i) => Math.min(i + 1, Math.max(flatItems.length - 1, 0)));
@@ -608,7 +674,21 @@ export default function CommandPalette() {
   );
 }
 
-function ResultGroups({ groups, flatItems, activeIndex, onHover, onSelect }) {
+interface ResultGroupsProps {
+  groups: Group[];
+  flatItems: ResultItem[];
+  activeIndex: number;
+  onHover: (index: number) => void;
+  onSelect: (item: ResultItem) => void;
+}
+
+function ResultGroups({
+  groups,
+  flatItems,
+  activeIndex,
+  onHover,
+  onSelect,
+}: ResultGroupsProps) {
   if (groups.every((g) => g.items.length === 0)) {
     return groups[0]?.loading ? (
       <p className={styles.empty}>Searching…</p>
@@ -632,7 +712,7 @@ function ResultGroups({ groups, flatItems, activeIndex, onHover, onSelect }) {
       {group.items.length > 0 && <div className={styles.groupLabel}>{group.label}</div>}
       <ul className={styles.groupList}>
         {group.items.map((item) => {
-          const index = indexByItem.get(item);
+          const index = indexByItem.get(item) ?? -1;
           const isActive = index === activeIndex;
           return (
             <li
@@ -655,22 +735,27 @@ function ResultGroups({ groups, flatItems, activeIndex, onHover, onSelect }) {
     </div>
   ));
 }
-ResultGroups.propTypes = {
-  groups: PropTypes.array.isRequired,
-  flatItems: PropTypes.array.isRequired,
-  activeIndex: PropTypes.number.isRequired,
-  onHover: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-};
 
-function EmptyState({ recentlyViewed, continueSeries, hasQuestions, onSelect }) {
+interface EmptyStateProps {
+  recentlyViewed: NavArticle[];
+  continueSeries: NavArticle | null;
+  hasQuestions: boolean;
+  onSelect: (permalink: string) => void;
+}
+
+function EmptyState({
+  recentlyViewed,
+  continueSeries,
+  hasQuestions,
+  onSelect,
+}: EmptyStateProps) {
   const prefixHints = [
     { prefix: "/", label: "full-text search" },
     hasQuestions && { prefix: "?", label: "ask my blog" },
     { prefix: "#", label: "jump to a tag" },
     { prefix: ":", label: "jump to a heading" },
     { prefix: ">", label: "run an action" },
-  ].filter(Boolean);
+  ].filter((h): h is { prefix: string; label: string } => Boolean(h));
 
   return (
     <div className={styles.emptyState}>
@@ -713,14 +798,8 @@ function EmptyState({ recentlyViewed, continueSeries, hasQuestions, onSelect }) 
     </div>
   );
 }
-EmptyState.propTypes = {
-  recentlyViewed: PropTypes.array.isRequired,
-  continueSeries: PropTypes.object,
-  hasQuestions: PropTypes.bool.isRequired,
-  onSelect: PropTypes.func.isRequired,
-};
 
-function PreviewPanel({ article }) {
+function PreviewPanel({ article }: { article: NavArticle }) {
   return (
     <div className={styles.preview}>
       <h3 className={styles.previewTitle}>{article.title}</h3>
@@ -731,7 +810,7 @@ function PreviewPanel({ article }) {
         {article.date ? <span>{article.date}</span> : null}
         {article.series ? <span>{article.series}</span> : null}
       </div>
-      {article.tags?.length > 0 ? (
+      {article.tags.length > 0 ? (
         <div className={styles.previewTags}>
           {article.tags.map((tag) => (
             <span key={tag} className={styles.previewTag}>
@@ -743,6 +822,3 @@ function PreviewPanel({ article }) {
     </div>
   );
 }
-PreviewPanel.propTypes = {
-  article: PropTypes.object.isRequired,
-};

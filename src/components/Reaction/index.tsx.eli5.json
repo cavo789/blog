@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:33:04.880Z",
-  "source": "index.js",
-  "sourceHash": "c260b377312d5c43d942a5fe4c9185c4dbe4fd55",
-  "lang": "javascript",
+  "generated": "2026-08-28T16:24:31.385Z",
+  "source": "index.tsx",
+  "sourceHash": "1a0c40399db1c24c517598e5684bb99c159394dd",
+  "lang": "typescript",
   "explanations": {
-    "8": "The regex replaces leading and trailing slashes, so '/docs/intro/' becomes 'docs/intro' — the ?? at the end provides an empty string fallback if permalink is missing.",
-    "13": "We keep voted as null initially so that the server and browser render the same HTML at first, preventing React from complaining about mismatches — localStorage only exists in the browser, not on the server.",
-    "22": "This eslint comment tells React 'ignore the rule against setState in effects here' because we intentionally do this once to sync with localStorage after the page loads.",
-    "30": "If the response status is OK, parse it as JSON; otherwise return null to skip the data update.",
-    "60": "useCallback dependencies include slug, apiUrl, and storageKey — if any of these change, the function gets redefined so it always uses the latest values."
+    "18": "The replace() removes leading and trailing slashes from the URL path, and ?? '' provides an empty string as a fallback if the permalink doesn't exist.",
+    "23": "This comment explains why voted starts as null instead of being read from localStorage immediately — it prevents React from seeing different HTML on the server vs. the browser.",
+    "32": "The eslint-disable comment tells React's linter to ignore a rule that normally forbids reading localStorage in effects, because in this case it's intentional and safe.",
+    "34": "The empty catch block silently ignores any errors (like localStorage not being available), allowing the component to work even when localStorage fails.",
+    "40": "This line checks if the network response was successful (res.ok), and if so parses it as JSON, otherwise returns null to avoid crashing on bad responses.",
+    "63": "The inner try-catch around localStorage.setItem gracefully handles the case where localStorage might not be available, without interrupting the vote submission.",
+    "70": "The dependency array tells React to recreate handleVote whenever slug, apiUrl, or storageKey change, which prevents stale values from being captured inside the function.",
+    "89": "The template literal concatenates two class names together — when voted, the button gets both the base btn style and the btnNeutral style for different appearance."
   }
 }

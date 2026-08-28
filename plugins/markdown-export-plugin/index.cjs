@@ -40,7 +40,7 @@ function findPosts(dir) {
   return found;
 }
 
-// Mirrors src/components/Blog/utils/slug.js's createSlug() exactly. Duplicated
+// Mirrors src/components/Blog/utils/slug.ts's createSlug() exactly. Duplicated
 // rather than imported: that file is ESM written for Webpack/browser bundling
 // (`export function`), which a plain Node `require()` here cannot load without
 // a bundler. Keep both in sync if the slugify algorithm ever changes.
@@ -56,7 +56,7 @@ function createSlug(text) {
     .replace(/^-+|-+$/g, "");
 }
 
-// Mirrors src/components/Blog/utils/posts.js's permalink derivation exactly —
+// Mirrors src/components/Blog/utils/posts.ts's permalink derivation exactly —
 // same "why duplicated" rationale as createSlug above.
 function permalinkFor(attributes, dir) {
   if (attributes.slug) {

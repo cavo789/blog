@@ -442,15 +442,15 @@
   border-radius: 999px;
 }
 
-/* stylelint-disable-next-line color-no-hex -- status-badge palette, see note above */
 .badgeDraft {
   background: rgb(231, 76, 60, 0.15);
+  /* stylelint-disable-next-line color-no-hex -- fixed status-badge palette (#e74c3c), matches the rgb() background/border above */
   color: #e74c3c;
   border: 1px solid rgb(231, 76, 60, 0.35);
 }
-/* stylelint-disable-next-line color-no-hex -- status-badge palette, see note above */
 .badgeUnlisted {
   background: rgb(243, 156, 18, 0.15);
+  /* stylelint-disable-next-line color-no-hex -- fixed status-badge palette (#f39c12), matches the rgb() background/border above */
   color: #f39c12;
   border: 1px solid rgb(243, 156, 18, 0.35);
 }

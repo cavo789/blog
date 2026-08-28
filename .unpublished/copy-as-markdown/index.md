@@ -27,6 +27,13 @@ So I built a small "Copy as Markdown" button that sits right in the article head
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "What Gets Copied", to: "#what-gets-copied" },
+    { label: "All Files at a Glance", to: "#all-files-at-a-glance" },
+  ]}
+/>
+
 ## What Gets Copied
 
 Here's the file the button actually fetches, produced by a `postBuild` step you'll write in a moment — this is the literal text that lands in the clipboard when a reader clicks the button:

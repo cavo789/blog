@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:48.185Z",
+  "generated": "2026-08-28T19:09:04.613Z",
   "source": "index.md",
-  "sourceHash": "190408b79d231ddbef41b16c5e82ec398c98ad5f",
+  "sourceHash": "c5f698fe46c3933be470e5120870cdaed8fca4b3",
   "questions": [
     {
-      "question": "How do I create a custom SeriesPosts component for Docusaurus?",
+      "question": "How do I create a custom SeriesPosts component for organizing Docusaurus blog posts?",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of creating a custom SeriesPosts component in Docusaurus?",
+      "question": "What is the purpose of using a custom SeriesPosts component in Docusaurus?",
       "anchor": ""
     },
     {
-      "question": "How do I create a helper function to scan Markdown files for blog posts and extract properties like title, slug, image, and series name?",
+      "question": "How do I create a helper function to scan Markdown files and extract properties for blog posts?",
       "anchor": "part-1---creation-of-the-seriesposts-component"
     },
     {
-      "question": "What is the purpose of creating another helper function in Docusaurus?",
-      "anchor": "part-1---creation-of-the-seriesposts-component"
-    },
-    {
-      "question": "How do I create a component called SeriesPosts in Docusaurus that retrieves and displays blog posts with series information?",
+      "question": "What is the purpose of the 'This article is part of...' message in the SeriesPosts component?",
       "anchor": "11-we-need-some-helpers"
     },
     {
-      "question": "What is the purpose of creating a banner on individual articles to display series information in Docusaurus?",
-      "anchor": "12-our-seriesposts-component"
+      "question": "How do I create a second helper function for fetching post data in the SeriesPosts component?",
+      "anchor": "part-1---creation-of-the-seriesposts-component"
     },
     {
-      "question": "How do I create a dedicated page that lists all blog posts as cards to navigate through series in Docusaurus?",
-      "anchor": "13-editing-our-articles"
+      "question": "What is the purpose of the 'series' property in blog posts and how does it work with the SeriesPosts component?",
+      "anchor": "11-we-need-some-helpers"
     },
     {
-      "question": "What is the purpose of creating a /src/data/series.js file for customizing series information in Docusaurus?",
+      "question": "How do I create a custom local plugin to handle dynamic series routes in Docusaurus?",
       "anchor": "25-handling-the-seriesslug-url"
+    },
+    {
+      "question": "What are some techniques used all over this series, and how do they work with the SeriesPosts component?",
+      "anchor": ""
     }
   ]
 }

@@ -30,6 +30,13 @@ So I built a second, narrower widget: `TriedIt`. Same backend philosophy as `Rea
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "The Big Picture", to: "#the-big-picture" },
+    { label: "All Files at a Glance", to: "#all-files-at-a-glance" },
+  ]}
+/>
+
 ## The Big Picture
 
 ```text
@@ -50,7 +57,7 @@ Browser                          Your Server
 | File | Role |
 | --- | --- |
 | `api/tried-it.php` | PHP backend: stores `worked` / `didnt_work` votes, sends alert emails |
-| `src/components/TriedIt/index.js` | React widget shown on tutorial posts |
+| `src/components/TriedIt/index.tsx` | React widget shown on tutorial posts |
 | `src/components/TriedIt/styles.module.css` | CSS module for the widget |
 | `src/theme/BlogPostItem/index.js` | Already-swizzled component, extended with one import and one conditional line |
 
@@ -180,11 +187,11 @@ Note that `maybeAlert()` runs on *every* POST, not just failures — it needs th
 
 ## Step 2 — The React Component
 
-`src/components/TriedIt/index.js` follows the exact same shape as `Reaction`: read `localStorage` on mount, fetch the current counts, POST a vote on click.
+`src/components/TriedIt/index.tsx` follows the exact same shape as `Reaction`: read `localStorage` on mount, fetch the current counts, POST a vote on click.
 
 ### 2.1 — Identity and avoiding a hydration mismatch
 
-```javascript title="src/components/TriedIt/index.js"
+```typescript title="src/components/TriedIt/index.tsx"
 const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
 const apiUrl = `${siteConfig.url}/api/tried-it.php`;
 const storageKey = `tried_it_${slug}`;
@@ -207,7 +214,7 @@ Docusaurus pre-renders pages on the server, where `localStorage` doesn't exist. 
 
 Unchanged in spirit from `Reaction`:
 
-```javascript title="src/components/TriedIt/index.js"
+```typescript title="src/components/TriedIt/index.tsx"
 useEffect(() => {
   if (!slug) return;
   fetch(`${apiUrl}?slug=${encodeURIComponent(slug)}`)
@@ -236,7 +243,7 @@ Both fetches fail silently (`catch(() => {})`). If the network is down or the en
 
 ### 2.3 — Rendering
 
-```javascript title="src/components/TriedIt/index.js"
+```typescript title="src/components/TriedIt/index.tsx"
 {!voted ? (
   <>
     <span className={styles.question}>Did you try the steps in this article?</span>
@@ -266,7 +273,7 @@ The wording is deliberately specific — "Did you try the steps in this article?
 
 ### 2.4 — The complete file
 
-<Snippet filename="src/components/TriedIt/index.js" source="src/components/TriedIt/index.js" defaultOpen={false} />
+<Snippet filename="src/components/TriedIt/index.tsx" source="src/components/TriedIt/index.tsx" defaultOpen={false} />
 
 ---
 
@@ -387,7 +394,7 @@ It's tempting to branch on `process.env.NODE_ENV` and swap in a local API URL du
 
 <ProjectSetup folderName="TriedIt widget">
   <Snippet filename="api/tried-it.php" source="api/tried-it.php" defaultOpen={false} />
-  <Snippet filename="src/components/TriedIt/index.js" source="src/components/TriedIt/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/TriedIt/index.tsx" source="src/components/TriedIt/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/TriedIt/styles.module.css" source="src/components/TriedIt/styles.module.css" defaultOpen={false} />
   <Snippet filename="src/theme/BlogPostItem/index.js" source="src/theme/BlogPostItem/index.js" defaultOpen={false} />
 </ProjectSetup>

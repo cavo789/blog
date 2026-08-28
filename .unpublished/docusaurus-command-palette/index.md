@@ -29,6 +29,13 @@ So `Ctrl+K` now does everything on this site, and the navbar became a fallback r
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Six Modes, One Input", to: "#six-modes-one-input" },
+    { label: "Building It", to: "#building-it" },
+  ]}
+/>
+
 ## Six Modes, One Input
 
 Press <kbd>Ctrl</kbd>+<kbd>K</kbd> (or <kbd>⌘</kbd>+<kbd>K</kbd>) anywhere on the site and you get this:
@@ -86,10 +93,10 @@ It reuses the same corpus loader as my <Link to="/blog/docusaurus-blog-map">blog
 ### The palette itself
 
 <ProjectSetup folderName="src/components/CommandPalette">
-  <Snippet filename="src/components/CommandPalette/index.js" source="src/components/CommandPalette/index.js" defaultOpen={false} />
-  <Snippet filename="src/components/CommandPalette/utils.js" source="src/components/CommandPalette/utils.js" defaultOpen={false} />
-  <Snippet filename="src/components/CommandPalette/paletteBus.js" source="src/components/CommandPalette/paletteBus.js" defaultOpen={false} />
-  <Snippet filename="src/components/CommandPalette/Hint.js" source="src/components/CommandPalette/Hint.js" defaultOpen={false} />
+  <Snippet filename="src/components/CommandPalette/index.tsx" source="src/components/CommandPalette/index.tsx" defaultOpen={false} />
+  <Snippet filename="src/components/CommandPalette/utils.ts" source="src/components/CommandPalette/utils.ts" defaultOpen={false} />
+  <Snippet filename="src/components/CommandPalette/paletteBus.ts" source="src/components/CommandPalette/paletteBus.ts" defaultOpen={false} />
+  <Snippet filename="src/components/CommandPalette/Hint.tsx" source="src/components/CommandPalette/Hint.tsx" defaultOpen={false} />
   <Snippet filename="src/components/CommandPalette/styles.module.css" source="src/components/CommandPalette/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 
@@ -130,7 +137,7 @@ Each one is a few lines in a `switch`. "Copy as Markdown" fetches the `.md` mirr
 
 This one needs no index at all. It reads the current document:
 
-```javascript title="src/components/CommandPalette/utils.js"
+```typescript title="src/components/CommandPalette/utils.ts"
 export function getPageHeadings() {
   const main = document.querySelector("article") ?? document.querySelector("main");
   if (!main) return [];
@@ -157,7 +164,7 @@ The moment a visitor most needs search is when they have just landed on a page t
 
 The default mode uses subsequence matching, VS Code style: every character of the query must appear in the target, in order, but not necessarily next to each other. Scoring rewards consecutive runs and word-start hits so that `cmdk` ranks "Command Palette" above a coincidental scatter match, and a small length penalty breaks ties in favor of shorter titles:
 
-```javascript title="src/components/CommandPalette/utils.js"
+```typescript title="src/components/CommandPalette/utils.ts"
 const atWordStart = found === 0 || /[\s/_-]/.test(t[found - 1]);
 consecutive = found === tIndex ? consecutive + 1 : 0;
 
@@ -175,7 +182,7 @@ The fix is to inject the palette as an extra child *inside* `<Layout>`. Its DOM 
 
 The navbar search box, the 404 page and the first-visit hint are three independent React trees that all need to open the one mounted palette. Threading a context through every swizzled theme component for that would have been absurd, so there is a twelve-line module holding a single listener:
 
-```javascript title="src/components/CommandPalette/paletteBus.js"
+```typescript title="src/components/CommandPalette/paletteBus.ts"
 let listener = null;
 
 export function registerPalette(onOpen) {
@@ -198,7 +205,7 @@ A missing module behind a native `import()` fails as a fetch error, which webpac
 
 And a plain `response.ok` check is not enough, because webpack-dev-server's SPA history fallback answers the missing path with a **200** serving `index.html` — which `import()` then fails to parse as a module. Hence the content-type check:
 
-```javascript title="src/components/CommandPalette/utils.js"
+```typescript title="src/components/CommandPalette/utils.ts"
 const probe = await fetch("/pagefind/pagefind.js", { method: "HEAD" });
 const contentType = probe.headers.get("content-type") ?? "";
 if (!probe.ok || !contentType.includes("javascript")) return null;

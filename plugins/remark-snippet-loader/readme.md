@@ -95,7 +95,7 @@ If the `source` path does not start with a dot (`.` or `..`), the path is resolv
 
 - **Syntax Example:**
 
-  `<Snippet sourcefilename="share.js" ="src/components/Bluesky/share.js" />`
+  `<Snippet sourcefilename="share.tsx" ="src/components/Bluesky/share.tsx" />`
 
 - **Use Case**: Essential for embedding core files that reside outside the documentation directory, such as source code components, public assets, or top-level configuration files (`package.json`, etc.).
 

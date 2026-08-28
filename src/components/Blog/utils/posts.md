@@ -12,7 +12,7 @@ A utility function for extracting structured metadata from MDX blog posts in a D
 
 ## Location
 
-Place this file in: `src/components/Blog/utils/posts.js`
+Place this file in: `src/components/Blog/utils/posts.ts`
 
 ## 🧪 Usage
 

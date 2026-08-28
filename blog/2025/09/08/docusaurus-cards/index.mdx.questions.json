@@ -1,48 +1,48 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:42.508Z",
+  "generated": "2026-08-28T19:51:54.962Z",
   "source": "index.mdx",
-  "sourceHash": "2e353322d0796940d2bbf64364cb0089d431af3f",
+  "sourceHash": "a7344b0ca4fe524ea3ee37fc92a5900fe4c7e722",
   "questions": [
     {
-      "question": "How can I display Docusaurus blog posts as cards?",
+      "question": "How can I customize Docusaurus blog post layouts?",
       "anchor": ""
     },
     {
-      "question": "What are reusable components in Docux for creating card layouts?",
+      "question": "What are reusable components in Docusaurus for blog posts?",
       "anchor": "using-the-reusable-card-component-of-docux"
     },
     {
-      "question": "How do I create a custom component to display post-specific information in Docusaurus?",
+      "question": "How do I override the default tag page in Docusaurus?",
       "anchor": "nice-it-works-lets-continue-with-a-practical-sample"
     },
     {
-      "question": "How can I override the /blog/tags/tag page in Docusaurus using a plugin?",
+      "question": "What is a slug generator in Docusaurus?",
       "anchor": "overriding-the-blogtagstag-page-by-creating-a-plugin"
     },
     {
-      "question": "What is the purpose of creating a TagArticlesPage component in Docusaurus?",
+      "question": "How can I generate blog post metadata in Docusaurus?",
       "anchor": "creating-the-tagarticlespage"
     },
     {
-      "question": "How do I generate slugs for blog posts in Docusaurus?",
+      "question": "What is the PostCard component used for in Docusaurus?",
       "anchor": "the-slug-generator"
     },
     {
-      "question": "What function is used to collect metadata for blog posts in Docusaurus?",
+      "question": "Where should I store images for my Docusaurus blog posts?",
       "anchor": "the-getblogmetadata-function"
     },
     {
-      "question": "How can I create a PostCard component to display blog posts as cards in Docusaurus?",
+      "question": "How can I create a card layout for Docusaurus blog posts?",
       "anchor": "our-postcard-component"
     },
     {
-      "question": "What is the purpose of creating a CSS file for customizing card layouts in Docusaurus?",
+      "question": "What is the purpose of plugins in Docusaurus?",
       "anchor": "we-need-to-load-our-plugin"
     },
     {
-      "question": "How do I load a plugin in Docusaurus to override the default blog tags page?",
+      "question": "How do I customize CSS in Docusaurus blog post layouts?",
       "anchor": "extra"
     }
   ]

@@ -44,6 +44,13 @@ Let's see how to do this; you'll see, it's so simple.
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Let's get a simple Quarto project first", to: "#lets-get-a-simple-quarto-project-first" },
+    { label: "We'll need to create three files", to: "#well-need-to-create-three-files" },
+  ]}
+/>
+
 ## Let's get a simple Quarto project first
 
 For sure, if you've one, just jump in your project. Here, for this blog post, we'll just reuse an existing one.

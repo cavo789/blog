@@ -23,7 +23,7 @@ Out-of-the-box, here is how the component will looks like:
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/RelatedPosts/RelatedPosts.js
+src/components/Blog/RelatedPosts/index.tsx
 ```
 
 Ensure you have a `getBlogMetadata()` utility that returns blog metadata including `title`, `date`, `tags`, `mainTag`, `description`, `image` and `permalink`.

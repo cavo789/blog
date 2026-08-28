@@ -44,6 +44,13 @@ In this first article in a series of two, we'll see how we can create our Docusa
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "See it in Action", to: "#result" },
+    { label: "All Files at a Glance", to: "#all-files-at-a-glance" },
+  ]}
+/>
+
 ## Result
 
 And, tadaaa 🎉🎉🎉, here is a "Share on Bluesky" button in action, below a blog post:
@@ -153,36 +160,36 @@ We'll proceed step by step and keeping in mind a few things:
 
 ### 1/5 The layout of our Bluesky generic component
 
-The first file we'll create will be our `index.js` file i.e. our global Bluesky component.
+The first file we'll create will be our `index.tsx` file i.e. our global Bluesky component.
 
 In this article, we'll just foresee a "Share on Bluesky" button but in the second article, we'll add some more features.
 
-This `index.js` will be the **entry point** of the component.
+This `index.tsx` will be the **entry point** of the component.
 
-Please create the `src/components/Bluesky/index.js` file with this content:
+Please create the `src/components/Bluesky/index.tsx` file with this content:
 
 <Snippet
-  filename="src/components/Bluesky/index.js"
-  source="./files/Bluesky.js"
+  filename="src/components/Bluesky/index.tsx"
+  source="./files/Bluesky.tsx"
 />
 
 **This is our React `<Bluesky />` component! Simple no? Right now, it's just a div containing another component called `<BlueskyShare />`**.
 
-If you look at the code here above, we have to create two new files: `share.js` and `styles.module.css`.
+If you look at the code here above, we have to create two new files: `share.tsx` and `styles.module.css`.
 
 ### 2/5 Our "Share on Bluesky" button
 
-Ok, now, we have to create a second file called `src/components/Bluesky/share.js` and to copy/paste this content in it:
+Ok, now, we have to create a second file called `src/components/Bluesky/share.tsx` and to copy/paste this content in it:
 
 <Snippet
-  filename="src/components/Bluesky/share.js"
-  source="src/components/Bluesky/share.js"
+  filename="src/components/Bluesky/share.tsx"
+  source="src/components/Bluesky/share.tsx"
 />
 
 As you can see, we've defined a function called `BlueskyShare` and that function ask a parameter called `metadata`.
 
 <AlertBox variant="info">
-Look back in the `src/components/Bluesky/index.js` we've just created before. We had this line: `<BlueskyShare metadata={metadata} />` so, yes, we're well passing that parameter.
+Look back in the `src/components/Bluesky/index.tsx` we've just created before. We had this line: `<BlueskyShare metadata={metadata} />` so, yes, we're well passing that parameter.
 
 The `metadata` parameter is an object initialized by Docusaurus and that will contain all the front matter data from the Markdown file of the current blog post. It includes properties like title, description, date, tags, and any other custom fields you've defined in the front matter.
 
@@ -222,8 +229,8 @@ You should have this:
 .
 ├── components/Bluesky
 │   ├── bluesky.svg
-│   ├── index.js
-│   ├── share.js
+│   ├── index.tsx
+│   ├── share.tsx
 │   └── styles.module.css
 ...
 └── theme/BlogPostItem
@@ -262,13 +269,13 @@ Here is the full set of files created in this article. Use the button below to c
     defaultOpen={false}
   />
   <Snippet
-    filename="src/components/Bluesky/index.js"
-    source="./files/Bluesky.js"
+    filename="src/components/Bluesky/index.tsx"
+    source="./files/Bluesky.tsx"
     defaultOpen={false}
   />
   <Snippet
-    filename="src/components/Bluesky/share.js"
-    source="src/components/Bluesky/share.js"
+    filename="src/components/Bluesky/share.tsx"
+    source="src/components/Bluesky/share.tsx"
     defaultOpen={false}
   />
   <Snippet

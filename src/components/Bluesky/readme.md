@@ -77,7 +77,7 @@ import Bluesky from "@site/src/components/Bluesky";
 
 ## 🔍 How Auto-Detection Works
 
-When no `blueskyRecordKey` is set, `useBlueskyRecordKey` (in `useBlueskyEngagement.js`) resolves it at runtime, in the visitor's browser:
+When no `blueskyRecordKey` is set, `useBlueskyRecordKey` (in `useBlueskyEngagement.ts`) resolves it at runtime, in the visitor's browser:
 
 1. Fetches the configured account's own post history via Bluesky's public `getAuthorFeed` endpoint (paginated, capped at 5 pages — replies excluded).
 2. For each post, reads the URL from its `app.bsky.embed.external` link-card embed — the same card the Share button produces — and normalizes it (trailing slash and query string stripped).
@@ -100,7 +100,7 @@ This component uses the following subcomponents:
 - `BlueskyPost` – Interaction UI for existing posts
 - `BlueskyLikes` – Displays like/repost counts
 - `BlueskyComments` – Shows comments or engagement CTA
-- `useBlueskyRecordKey` (in `useBlueskyEngagement.js`) – Resolves the record key: frontmatter override, or auto-detected from the account's post history
+- `useBlueskyRecordKey` (in `useBlueskyEngagement.ts`) – Resolves the record key: frontmatter override, or auto-detected from the account's post history
 
 ## 🎨 Styling
 

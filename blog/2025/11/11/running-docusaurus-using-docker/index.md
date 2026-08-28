@@ -40,6 +40,13 @@ Let’s walk through the complete workflow.
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "Retrieve a Docusaurus blog", to: "#retrieve-a-docusaurus-blog" },
+    { label: "Create the base Docker image", to: "#create-the-base-docker-image" },
+  ]}
+/>
+
 Here's where we're headed: `make build` once, `make up`, and the blog is already running.
 
 <BrowserWindow url="https://localhost/blog">

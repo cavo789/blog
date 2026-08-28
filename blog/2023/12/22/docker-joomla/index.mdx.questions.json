@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:10.261Z",
+  "generated": "2026-08-28T19:51:22.122Z",
   "source": "index.mdx",
-  "sourceHash": "e09c0f60904c8c60a7d4ed3d42a253a4cb546d67",
+  "sourceHash": "a6815caf07ca55ffce8feb05d6ce18b8ee75de31",
   "questions": [
     {
-      "question": "How do I install Joomla locally using Docker?",
+      "question": "How do I install Joomla using Docker on my local machine?",
       "anchor": ""
     },
     {
-      "question": "What is Docker Compose used for in this article?",
+      "question": "What is a Docker Compose file and how does it work in this article?",
       "anchor": "what-just-happened"
     },
     {
-      "question": "Why are the containers created by Docker named joomla-joomlaxxx and mysql?",
+      "question": "Why is the database service named 'db' in the Docker Compose file?",
       "anchor": "why-joomla-joomlaxxx-names"
     },
     {
-      "question": "How do I install Joomla using a CLI one-liner in this article?",
-      "anchor": "bonus---install-joomla-with-a-cli-one-liner"
+      "question": "How can I change the port that Joomla listens on?",
+      "anchor": "start-a-cli-command"
     },
     {
-      "question": "What is the purpose of persisting your site on disk in Docker?",
-      "anchor": "install-joomla"
-    },
-    {
-      "question": "How can I change ports for multiple projects in Docker?",
-      "anchor": "docker-images"
-    },
-    {
-      "question": "What are some alternative databases you can use with this article's setup?",
+      "question": "What are some alternative databases I can use with this setup (PostgreSQL or MariaDB)?",
       "anchor": "did-you-prefer-postgresql-or-mariadb"
     },
     {
-      "question": "What is the advantage of using a Linux console over an MS-DOS / PowerShell console for Docker commands?",
-      "anchor": ""
+      "question": "How do I install Joomla using a CLI one-liner command?",
+      "anchor": "bonus---install-joomla-with-a-cli-one-liner"
+    },
+    {
+      "question": "What is the purpose of the 'network' created by Docker Compose?",
+      "anchor": "two-minutes-one-file-your-joomla-is-running"
+    },
+    {
+      "question": "How can I use an alias to run Docker commands more efficiently?",
+      "anchor": "using-alias"
     }
   ]
 }

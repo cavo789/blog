@@ -1,41 +1,53 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:18:28.202Z",
+  "generated": "2026-08-28T19:53:18.484Z",
   "source": "index.md",
-  "sourceHash": "79ae60acaf1506776c44617709e2ef7aa261585b",
+  "sourceHash": "f736435fa52a13504d81595cf0b508f1258ce166",
   "questions": [
     {
-      "question": "What is a typewriter animation in Docusaurus Terminal?",
-      "anchor": ""
-    },
-    {
-      "question": "How does the new typewriter prop work in the Docusaurus Terminal component?",
+      "question": "What are the three new props for the typewriter terminal component?",
       "anchor": "the-new-typewriter-prop"
     },
     {
-      "question": "What is the speed scaling feature of the typewriter animation in the Docusaurus Terminal component?",
+      "question": "How does the animation start in the typewriter terminal component?",
       "anchor": "animation-starts-only-when-visible"
     },
     {
-      "question": "How are the lines classified in the typewriter animation in the Docusaurus Terminal component?",
+      "question": "What is the speed scaling mechanism for the typewriter terminal component?",
       "anchor": "speed-scales-automatically-with-line-count"
     },
     {
-      "question": "What is the implementation sketch of the typewriter animation in the Docusaurus Terminal component?",
+      "question": "How are the lines classified in the typewriter terminal component?",
+      "anchor": "how-the-lines-are-classified"
+    },
+    {
+      "question": "What are zero breaking changes in the typewriter terminal component?",
+      "anchor": "zero-breaking-changes"
+    },
+    {
+      "question": "What is the implementation sketch for the typewriter terminal component?",
       "anchor": "implementation-sketch"
     },
     {
-      "question": "How can I create a typewriter animation using the Docusaurus Terminal component?",
+      "question": "How do you create the typewriter terminal component in Docusaurus?",
       "anchor": "create-the-component"
     },
     {
-      "question": "What is the purpose of the click-to-skip escape hatch in the typewriter animation in the Docusaurus Terminal component?",
+      "question": "What is a typewriter animation and how does it improve CLI tutorials?",
+      "anchor": ""
+    },
+    {
+      "question": "How do you add the typewriter prop to an existing Docusaurus Terminal component?",
       "anchor": "the-new-typewriter-prop"
     },
     {
-      "question": "How can I add a typewriter animation to my CLI tutorials using the Docusaurus Terminal component?",
+      "question": "What are the steps to create a typewriter animation in your Markdown content for Docusaurus?",
       "anchor": ""
+    },
+    {
+      "question": "How does the typewriter terminal component work with command lines and output lines?",
+      "anchor": "the-new-typewriter-prop"
     }
   ]
 }

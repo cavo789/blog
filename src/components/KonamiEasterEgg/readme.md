@@ -35,14 +35,14 @@ export default function Root({ children }) {
 
 ```bash
 src/components/KonamiEasterEgg/
-├── index.js              # Key-sequence listener + run animation trigger
+├── index.tsx              # Key-sequence listener + run animation trigger
 ├── styles.module.css      # Fixed-position runner + keyframes
 └── readme.md              # Documentation (this file)
 ```
 
 ## 🧠 How it works
 
-- `index.js` keeps a ref-based cursor into the `KONAMI_CODE` array of
+- `index.tsx` keeps a ref-based cursor into the `KONAMI_CODE` array of
   `KeyboardEvent.code` values. Each keydown either advances the cursor,
   resets it, or — on a full match — triggers the run animation.
 - When triggered, an `<img>` using
@@ -53,9 +53,9 @@ src/components/KonamiEasterEgg/
 
 ## 🎨 Customization
 
-- **Sequence**: edit the `KONAMI_CODE` array in `index.js` to change the
+- **Sequence**: edit the `KONAMI_CODE` array in `index.tsx` to change the
   required key combo.
-- **Duration / speed**: change `RUN_DURATION_MS` in `index.js` and the
+- **Duration / speed**: change `RUN_DURATION_MS` in `index.tsx` and the
   matching `animation` duration in `styles.module.css` (`run-across 3s`) —
   keep both in sync.
 - **Sprite**: swap the `runningImg` import for any other transparent-background

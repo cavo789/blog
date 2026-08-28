@@ -43,6 +43,13 @@ End it with the promise in **one sentence**: what the reader will be able to do.
 
 Then `<!-- truncate -->`.
 
+**Optional, right after `<!-- truncate -->`:** `<QuickJump links={[...]} />` when the article has
+two or more distinct destinations a reader might want without reading linearly — most often an
+article built around `<ProjectSetup>`, where "give me the files" and "show me it working" are
+different intents. It is scaffolding, not proof: `reader-first-docs` moves `T` past it before
+measuring TTV, so it never counts as the result and never delays it. Skip it on a short,
+single-thread article — it shouldn't compete with the `<TLDR>` for the reader's first glance.
+
 ### 2. The result — before any effort is asked
 
 The command, and its **real output**. Nothing has been installed yet. Nothing has been

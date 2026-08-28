@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:52.070Z",
+  "generated": "2026-08-28T16:46:28.939Z",
   "source": "index.md",
-  "sourceHash": "0da5309635cb8e0b6648f6eee1a854c27cf7b724",
+  "sourceHash": "e34c7969985a7044cba01957188dc9ce9d7ca3d5",
   "questions": [
     {
-      "question": "How do I add a changelog to my Docusaurus blog posts?",
+      "question": "How to add and display a detailed changelog in Docusaurus blog posts?",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the component in this article?",
-      "anchor": "the-result"
-    },
-    {
-      "question": "Why does the component use an array instead of a separate changelog file?",
+      "question": "What is the purpose of using multiple dated notes in a changelog for Docusaurus blog posts?",
       "anchor": "why-it-works"
     },
     {
-      "question": "How do I create the updated component for Docusaurus blog posts?",
+      "question": "How do I create a custom React component to parse an array from the post's YAML frontmatter?",
       "anchor": "installation"
     },
     {
-      "question": "What is the purpose of swizzling the BlogPostPage in this article?",
+      "question": "What is the difference between Docusaurus's native date entry and the multi-entry changelog solution presented in this article?",
       "anchor": "create-the-updated-component"
     },
     {
-      "question": "How do I add an entry to a post's frontmatter to display the changelog?",
+      "question": "How do I swizzle the BlogPostPage to automatically display the update history of a post with multiple dated notes?",
       "anchor": "override-the-blogpostpage-template"
     },
     {
-      "question": "What is the minimum code needed to inject the new component into the BlogPostPage template?",
+      "question": "What are the minimum lines to add at the right place in the BlogPostPage template file to inject the new component?",
       "anchor": "more-demos"
     },
     {
-      "question": "How does the component parse the YAML frontmatter of a blog post?",
+      "question": "How do I use the custom changelog component in my Docusaurus blog posts?",
       "anchor": "use-the-component"
+    },
+    {
+      "question": "What is the purpose of using a detailed changelog for Docusaurus blog posts and how does it benefit readers?",
+      "anchor": "conclusion"
     }
   ]
 }

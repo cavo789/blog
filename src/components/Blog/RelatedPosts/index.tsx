@@ -36,7 +36,9 @@ export default function RelatedPosts({
   description = false,
 }: Props): JSX.Element | null {
   const { metadata } = useBlogPost();
-  const mainTag = metadata.frontMatter.mainTag;
+  // `mainTag` is a project-specific front matter field, so Docusaurus types it
+  // as `unknown` — narrow it to what getRelatedPosts() expects.
+  const mainTag = metadata.frontMatter.mainTag as string | undefined;
   const tags = metadata.frontMatter.tags || [];
 
   if (!mainTag && tags.length === 0) {

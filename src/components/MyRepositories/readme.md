@@ -14,7 +14,7 @@ A React layout component for Docusaurus that displays a user's public GitHub rep
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/MyRepositories/MyRepositories.js
+src/components/MyRepositories/index.tsx
 src/components/MyRepositories/styles.module.css
 ```
 

@@ -24,6 +24,13 @@ By using a [Docker Alpine/OpenSSL](https://hub.docker.com/r/alpine/openssl) imag
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "What this looks like", to: "#what-this-looks-like" },
+    { label: "The scripts", to: "#the-scripts" },
+  ]}
+/>
+
 ## What this looks like
 
 Imagine a text file like `secrets.md` with this content:

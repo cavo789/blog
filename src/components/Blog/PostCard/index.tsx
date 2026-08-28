@@ -14,10 +14,13 @@ interface Post {
   permalink: string;
   image?: string;
   title: string;
-  description?: string;
+  // `null` is accepted alongside `undefined`: LatestPosts / RelatedPosts pass
+  // `{ ...post, description: null }` to render a card without its description,
+  // and getBlogMetadata() types `mainTag` as `string | null`.
+  description?: string | null;
   date?: string;
   counter?: string;
-  mainTag?: string;
+  mainTag?: string | null;
   readingTime?: number;
 }
 

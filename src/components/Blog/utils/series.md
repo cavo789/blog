@@ -12,7 +12,7 @@ Generates structured metadata for blog article series in Docusaurus.
 
 ## Location
 
-Place this file in: `src/components/Blog/utils/series.js`
+Place this file in: `src/components/Blog/utils/series.ts`
 
 ## 🚀 Usage
 

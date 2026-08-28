@@ -9,7 +9,7 @@
  * Firefox never fire it, so this pill simply never appears there. That's the known, accepted
  * gap already documented in TODO 0090 ("iOS reste une limite connue"), not a bug in this file.
  *
- * Mirrors `CommandPalette/Hint.js`'s pattern: shown at most once ever per browser (the
+ * Mirrors `CommandPalette/Hint.tsx`'s pattern: shown at most once ever per browser (the
  * localStorage flag is set the moment it's *shown*, not only on dismiss/install), bottom-left
  * rather than that hint's bottom-right so the two can never stack on top of each other or the
  * bottom-right AskMyBlogWidget bubble.

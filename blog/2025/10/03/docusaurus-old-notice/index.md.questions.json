@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:16.155Z",
+  "generated": "2026-08-28T16:46:23.210Z",
   "source": "index.md",
-  "sourceHash": "163e42ef690c88b744fcbdbd57777b54fc2a90ed",
+  "sourceHash": "0e3f8771785b71d4d401138ba983921f58c54ecd",
   "questions": [
     {
-      "question": "How do I use a Docusaurus component to alert readers about an old blog post?",
+      "question": "How do I use this component to alert readers when an article is over a year old?",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the 'swizzle' method in Docusaurus and how can it be used?",
-      "anchor": "override-blogpostpage-template"
-    },
-    {
-      "question": "How do I customize the warning banner for older blog posts in Docusaurus?",
-      "anchor": "marking-a-reviewed-post"
-    },
-    {
-      "question": "What is the 'reviewed' field used for in a Docusaurus blog post and how does it affect the warning banner?",
-      "anchor": "marking-a-reviewed-post"
-    },
-    {
-      "question": "How can I position the warning banner before the content of an older blog post in Docusaurus?",
-      "anchor": "position-of-the-warning"
-    },
-    {
-      "question": "What is the 'img' tag behavior in Docusaurus and how does it differ for the first image of a post?",
-      "anchor": "position-of-the-warning"
-    },
-    {
-      "question": "How can I create a custom component in Docusaurus to alert readers about old blog posts?",
+      "question": "What Docusaurus template should I swizzle to inject the warning banner in my blog post page?",
       "anchor": "create-the-component"
     },
     {
-      "question": "What is the process for overriding the BlogPostPage template in Docusaurus and how do I inject my custom component?",
+      "question": "How can I customize the warning banner's color based on whether an article is reviewed or not?",
       "anchor": "override-blogpostpage-template"
+    },
+    {
+      "question": "What YAML field should I include in my blog post front matter to use this component?",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "How can I display the warning banner before the post content on my Docusaurus site?",
+      "anchor": "position-of-the-warning"
+    },
+    {
+      "question": "What is the purpose of the 'reviewed' field in this component?",
+      "anchor": "override-blogpostpage-template"
+    },
+    {
+      "question": "How can I extract and display the first image as a banner on my blog post?",
+      "anchor": "position-of-the-warning"
+    },
+    {
+      "question": "What is the special treatment given to the first image in Docusaurus?",
+      "anchor": ""
     }
   ]
 }

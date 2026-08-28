@@ -11,9 +11,9 @@
  * Reuses `scripts/lib/blog-corpus.mjs` (see that file's own header on why script and plugin
  * share one corpus loader) for the article list, `src/data/series.js` for series colors, and
  * `blog/tags.yml` (via `js-yaml`, already a dependency — see `plugins/yaml-webpack-plugin`)
- * for tag labels. `createSlug` is imported straight from `src/components/Blog/utils/slug.js`
- * so a series' palette permalink is byte-for-byte the same slug `/series/:slug` resolves —
- * both a pure string function, safe to run in Node.
+ * for tag labels. `createSlug` is duplicated below (see that function's own comment) rather
+ * than imported, so a series' palette permalink is byte-for-byte the same slug `/series/:slug`
+ * resolves.
  */
 
 import { readFileSync } from "node:fs";
@@ -21,8 +21,25 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 import { loadPosts } from "../../scripts/lib/blog-corpus.mjs";
-import { createSlug } from "../../src/components/Blog/utils/slug.js";
 import SERIES_DATA from "../../src/data/series.js";
+
+// Mirrors src/components/Blog/utils/slug.ts's createSlug() exactly. Duplicated rather than
+// imported: that file is TypeScript (Blog/utils migrated to .ts in TODO 0106's level 5), and
+// this plugin runs under plain Node ESM at build/dev time with no TS loader registered — same
+// "can't cross into Webpack/TS-only code from plain Node" rationale as
+// plugins/lib/blog-taxonomy.cjs and plugins/markdown-export-plugin/index.cjs already document
+// for the same function. Keep all three in sync if the slugify algorithm ever changes.
+function createSlug(text) {
+  return text
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

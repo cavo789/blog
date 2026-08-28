@@ -1,40 +1,52 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-28T11:29:14.840Z",
+  "generated": "2026-08-28T19:51:43.379Z",
   "source": "index.mdx",
-  "sourceHash": "78577f69b37a02b51a5850281e92cb96bcfbb452",
+  "sourceHash": "89c774ee2c851afd1c869dd681b71e96e1113b43",
   "questions": [
     {
-      "question": "How do I integrate Bluesky comments into my Docusaurus blog posts?",
-      "anchor": "what-youll-get"
-    },
-    {
-      "question": "What are the features of the Bluesky Docusaurus component?",
+      "question": "How do I integrate Bluesky comments, likes, and repost counts into my Docusaurus blog posts?",
       "anchor": ""
     },
     {
-      "question": "How can I display a 'Like, share or comment on Bluesky' button in my Docusaurus blog posts?",
-      "anchor": "26-the-shared-data-fetching-hook"
+      "question": "What features does this article add to the Bluesky Docusaurus component?",
+      "anchor": "what-youll-get"
     },
     {
-      "question": "What is the purpose of the shared data-fetching hook in the Bluesky Docusaurus component?",
+      "question": "How can I link my blog posts to Bluesky posts using frontmatter keys?",
+      "anchor": "all-files-at-a-glance"
+    },
+    {
+      "question": "What is a facepile and how does it work in this article?",
       "anchor": "16-the-layout-of-our-bluesky-generic-component"
     },
     {
-      "question": "How do I retrieve all comments from my Bluesky post directly on my Docusaurus blog posts?",
+      "question": "What are the benefits of having a like, share or comment on Bluesky button in my Docusaurus blog posts?",
+      "anchor": "what-youll-get"
+    },
+    {
+      "question": "How do I create and use the shared data-fetching hook for Bluesky comments, likes, and repost counts?",
+      "anchor": "16-the-layout-of-our-bluesky-generic-component"
+    },
+    {
+      "question": "What is the current version of the component that fetches likers, reposters, and commenters in parallel?",
+      "anchor": "26-the-shared-data-fetching-hook"
+    },
+    {
+      "question": "How can I sort the list of people who liked and commented on a post by number of actions?",
+      "anchor": "36-our-like-share-or-comment-button"
+    },
+    {
+      "question": "What is the CSS used to style the like, share or comment button in this article?",
       "anchor": "46-our-component-for-getting-the-number-of-likes-and-reposts"
     },
     {
-      "question": "What is the new CSS used in the Bluesky Docusaurus component?",
-      "anchor": "56-retrieving-all-comments"
-    },
-    {
-      "question": "How do I update the Docusaurus configuration file to enable Bluesky integration?",
+      "question": "How do I update the Docusaurus configuration file to retrieve likes, shares, and comments from my Bluesky account?",
       "anchor": "update-the-docusaurus-configuration-file"
     },
     {
-      "question": "What are the files updated or created in this article for Bluesky integration?",
+      "question": "What are the full set of files that this article touched?",
       "anchor": "all-files-at-a-glance"
     }
   ]

@@ -38,7 +38,9 @@ export default function SeriesCards(): JSX.Element {
         return {
           ...serie,
           counter: data?.counter ?? serie.counter,
-          description: data?.description ?? serie.description,
+          // generateSeriesList() produces no `description`; only SERIES_DATA may
+          // carry one.
+          description: data?.description,
           image: imagePath,
           title: data?.title ?? serie.title,
         };

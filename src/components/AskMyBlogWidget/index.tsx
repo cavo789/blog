@@ -30,7 +30,7 @@ export default function AskMyBlogWidget(): JSX.Element {
   const clearOverlayRef = useRef<(() => void) | null>(null);
 
   // First-visit discoverability, shown at most once ever — same mechanic as
-  // CommandPalette/Hint.js, offset from its 10s delay so the two don't animate in together.
+  // CommandPalette/Hint.tsx, offset from its 10s delay so the two don't animate in together.
   useEffect(() => {
     if (localStorage.getItem(HINT_STORAGE_KEY)) return undefined;
     const timer = setTimeout(() => {

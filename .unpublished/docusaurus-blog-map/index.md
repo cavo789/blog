@@ -29,6 +29,13 @@ So I built a page that draws the blog as a graph. Here is what came out of it.
 
 <!-- truncate -->
 
+<QuickJump
+  links={[
+    { label: "What the Map Page Shows You", to: "#what-the-map-page-shows-you" },
+    { label: "Building It", to: "#building-it" },
+  ]}
+/>
+
 ## What the Map Page Shows You
 
 One page, `/map`, one picture. Every published article is a dot. The bigger the dot, the more other articles link to it. Lines connect posts that are genuinely related, and hovering one dims everything that is not its neighbor:
@@ -87,9 +94,9 @@ One decision in there is worth pulling out: **the node colors are not a new pale
 `BlogGraph` reads that global data, draws it on a `<canvas>`, and swaps itself out for a plain list below 768px:
 
 <ProjectSetup folderName="src/components/BlogGraph">
-  <Snippet filename="src/components/BlogGraph/index.js" source="src/components/BlogGraph/index.js" defaultOpen={false} />
-  <Snippet filename="src/components/BlogGraph/utils.js" source="src/components/BlogGraph/utils.js" defaultOpen={false} />
-  <Snippet filename="src/components/BlogGraph/GroupedList.js" source="src/components/BlogGraph/GroupedList.js" defaultOpen={false} />
+  <Snippet filename="src/components/BlogGraph/index.tsx" source="src/components/BlogGraph/index.tsx" defaultOpen={false} />
+  <Snippet filename="src/components/BlogGraph/utils.ts" source="src/components/BlogGraph/utils.ts" defaultOpen={false} />
+  <Snippet filename="src/components/BlogGraph/GroupedList.tsx" source="src/components/BlogGraph/GroupedList.tsx" defaultOpen={false} />
   <Snippet filename="src/components/BlogGraph/styles.module.css" source="src/components/BlogGraph/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 
@@ -145,7 +152,7 @@ Pick a niche topic from the filter and you might get three articles. The canvas 
 
 The second signal, node count relative to the default view, catches that case but would squash a genuinely tall, tight cluster. So `computeCanvasHeight()` computes both and keeps **whichever is smaller**. Neither blind spot can produce an oversized canvas on its own:
 
-```javascript title="src/components/BlogGraph/utils.js"
+```typescript title="src/components/BlogGraph/utils.ts"
 const ratio = contentAspectRatio(nodes) ?? maxRatio;
 const aspectHeight = clamp(Math.round(containerWidth * ratio) + padding);
 
@@ -165,7 +172,7 @@ Drawing 247 titles is unreadable, so only the eight most-connected visible nodes
 
 The node and edge colors are read from the site's own CSS variables so nothing is hardcoded — but a canvas is a bitmap, and toggling dark mode repaints nothing. The fix is a `MutationObserver` on `<html>`'s `data-theme` attribute that bumps a counter, which is in the redraw effect's dependency array:
 
-```javascript title="src/components/BlogGraph/index.js"
+```typescript title="src/components/BlogGraph/index.tsx"
 useEffect(() => {
   const observer = new MutationObserver(() => setThemeVersion((v) => v + 1));
   observer.observe(document.documentElement, {

@@ -16,7 +16,7 @@ import clsx from "clsx";
 import RelatedPosts from "@site/src/components/Blog/RelatedPosts";
 
 // Our Bluesky component
-import Bluesky from "@site/src/components/Bluesky/index.js";
+import Bluesky from "@site/src/components/Bluesky";
 
 // apply a bottom margin in list view
 function useContainerClassName() {

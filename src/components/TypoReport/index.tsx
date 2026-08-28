@@ -107,7 +107,10 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
     if (!article) return;
     articleRef.current = article;
 
-    function handleSelection() {
+    // Arrow-assigned, not a `function` declaration: that lets TS carry the
+    // `if (!article) return` narrowing above into this closure, so `article` is
+    // non-null on lines 120/122 without a `!` assertion.
+    const handleSelection = () => {
       const sel = window.getSelection();
       if (!sel || sel.isCollapsed) return;
 
@@ -130,7 +133,7 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
       setSelectedText(text);
       setTooltipPos({ top, left });
       setPhase("selecting");
-    }
+    };
 
     function handleMouseDown(e: MouseEvent) {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {

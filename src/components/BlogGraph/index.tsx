@@ -40,6 +40,10 @@ import {
   selectVisibleEdges,
   selectVisibleNodes,
   toCanvasSpace,
+  type BlogGraphData,
+  type BlogGraphNode,
+  type MeerkatSpot,
+  type Transform,
 } from "./utils";
 import styles from "./styles.module.css";
 import meerkatHubRunning from "@site/static/img/meerkat/suricate_running.webp";
@@ -51,11 +55,13 @@ import meerkatOrphanLying from "@site/static/img/meerkat/suricate_sleeping_lying
 import meerkatOrphanTowel from "@site/static/img/meerkat/suricate_towel.webp";
 import meerkatOrphanMeditating from "@site/static/img/meerkat/suricate_meditating.webp";
 
+type MeerkatKind = "hub" | "orphan";
+
 // One pose per rank, not one flat image per kind — see pickMeerkatNodes() in ./utils. Most of
 // these are individual poses cropped out of the site's own
 // static/img/meerkat/suricate_positions_*.webp sprite sheets (each a 3×3 grid of poses) and
 // background-removed; suricate_running.webp and sleeping.webp were already standalone.
-const MEERKAT_SOURCES = {
+const MEERKAT_SOURCES: Record<MeerkatKind, string[]> = {
   hub: [meerkatHubRunning, meerkatHubTrophy, meerkatHubSuperhero],
   orphan: [
     meerkatOrphanSleeping,
@@ -66,13 +72,24 @@ const MEERKAT_SOURCES = {
   ],
 };
 
+// { hub: [HTMLImageElement, …], orphan: [HTMLImageElement, …] }, same shape and rank order as
+// MEERKAT_SOURCES, filled in as each image loads (a failed load leaves a hole at that rank).
+type MeerkatImages = Partial<Record<MeerkatKind, (HTMLImageElement | undefined)[]>>;
+
+interface LabelCandidate {
+  node: BlogGraphNode;
+  x: number;
+  y: number;
+  dimmed: boolean;
+}
+
 const MOBILE_BREAKPOINT = 768;
 const DIMMED_ALPHA = 0.15;
 const HOVER_HIT_PADDING = 3;
 const LABEL_FONT =
   "12px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
-const EDGE_ALPHA = { link: 0.55, series: 0.4, tag: 0.18 };
-const EDGE_WIDTH = { link: 1.4, series: 1, tag: 0.7 };
+const EDGE_ALPHA: Record<string, number> = { link: 0.55, series: 0.4, tag: 0.18 };
+const EDGE_WIDTH: Record<string, number> = { link: 1.4, series: 1, tag: 0.7 };
 const LABEL_HEIGHT = 14;
 const LABEL_PADDING = 2;
 
@@ -82,9 +99,12 @@ const LABEL_PADDING = 2;
  * permanently-labeled hubs). A crowded mainTag filter can otherwise stack a dozen titles on
  * top of each other, which is exactly the "hairball" outcome the spec says must not ship.
  */
-function selectNonOverlappingLabels(ctx, candidates) {
-  const placed = [];
-  const drawnRects = [];
+function selectNonOverlappingLabels(
+  ctx: CanvasRenderingContext2D,
+  candidates: LabelCandidate[],
+): LabelCandidate[] {
+  const placed: LabelCandidate[] = [];
+  const drawnRects: { left: number; right: number; top: number; bottom: number }[] = [];
 
   for (const candidate of candidates) {
     const width = ctx.measureText(candidate.node.title).width;
@@ -112,7 +132,7 @@ function selectNonOverlappingLabels(ctx, candidates) {
 }
 
 /** Reads the current theme's own colors so the canvas never hardcodes a hex value. */
-function readThemeColors() {
+function readThemeColors(): { edge: string; label: string } {
   const style = getComputedStyle(document.documentElement);
   return {
     edge: style.getPropertyValue("--ifm-color-emphasis-500").trim() || "#999999",
@@ -121,13 +141,22 @@ function readThemeColors() {
 }
 
 /** The preloaded image for a pickMeerkatNodes() spot, or null if unassigned/not loaded yet. */
-function resolveMeerkatImage(spot, images) {
+function resolveMeerkatImage(
+  spot: MeerkatSpot | undefined,
+  images: MeerkatImages,
+): HTMLImageElement | null {
   if (!spot) return null;
   return images[spot.kind]?.[spot.rank] ?? null;
 }
 
 /** Draws `image` centered on (cx, cy), scaled to cover a `size` × `size` box (crop, not stretch). */
-function drawImageCover(ctx, image, cx, cy, size) {
+function drawImageCover(
+  ctx: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  cx: number,
+  cy: number,
+  size: number,
+) {
   const naturalWidth = image.naturalWidth || image.width;
   const naturalHeight = image.naturalHeight || image.height;
   const scale = Math.max(size / naturalWidth, size / naturalHeight);
@@ -137,29 +166,28 @@ function drawImageCover(ctx, image, cx, cy, size) {
 }
 
 export default function BlogGraph() {
-  const graph = usePluginData("blog-graph-plugin");
+  const graph = usePluginData("blog-graph-plugin") as BlogGraphData | undefined;
   const history = useHistory();
 
-  const wrapRef = useRef(null);
-  const canvasRef = useRef(null);
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [mainTag, setMainTag] = useState("");
-  const [hovered, setHovered] = useState(null);
+  const [hovered, setHovered] = useState<string | null>(null);
   const [containerWidth, setContainerWidth] = useState(0);
   // Bumped on theme toggle so the draw effect re-reads the (now different) CSS variables —
   // canvas has no way to react to a CSS variable change on its own.
   const [themeVersion, setThemeVersion] = useState(0);
-  // { hub: [HTMLImageElement, …], orphan: [HTMLImageElement, …] }, same shape and rank order
-  // as MEERKAT_SOURCES, filled in as each image loads. Starts empty, so the draw effect just
-  // falls back to a flat color until (and unless) an image is ready.
-  const [meerkatImages, setMeerkatImages] = useState({});
+  // Starts empty, so the draw effect just falls back to a flat color until (and unless) an
+  // image is ready.
+  const [meerkatImages, setMeerkatImages] = useState<MeerkatImages>({});
 
   useEffect(() => {
     let cancelled = false;
-    const load = (kind, rank, src) =>
-      new Promise((resolve) => {
+    const load = (kind: MeerkatKind, rank: number, src: string) =>
+      new Promise<[MeerkatKind, number, HTMLImageElement | null]>((resolve) => {
         const image = new Image();
         image.onload = () => resolve([kind, rank, image]);
         // A failed load (offline, blocked asset) just means that node keeps its flat color —
@@ -168,17 +196,17 @@ export default function BlogGraph() {
         image.src = src;
       });
 
-    const loads = Object.entries(MEERKAT_SOURCES).flatMap(([kind, sources]) =>
-      sources.map((src, rank) => load(kind, rank, src)),
+    const loads = (Object.entries(MEERKAT_SOURCES) as [MeerkatKind, string[]][]).flatMap(
+      ([kind, sources]) => sources.map((src, rank) => load(kind, rank, src)),
     );
 
     Promise.all(loads).then((entries) => {
       if (cancelled) return;
-      const loaded = {};
+      const loaded: MeerkatImages = {};
       for (const [kind, rank, image] of entries) {
         if (!image) continue;
         if (!loaded[kind]) loaded[kind] = [];
-        loaded[kind][rank] = image;
+        loaded[kind]![rank] = image;
       }
       setMeerkatImages(loaded);
     });
@@ -223,7 +251,9 @@ export default function BlogGraph() {
 
   const mainTags = useMemo(() => {
     if (!graph) return [];
-    return [...new Set(graph.nodes.map((node) => node.mainTag).filter(Boolean))].sort();
+    return [
+      ...new Set(graph.nodes.map((node) => node.mainTag).filter(Boolean)),
+    ].sort() as string[];
   }, [graph]);
 
   const visibleNodes = useMemo(() => {
@@ -291,7 +321,7 @@ export default function BlogGraph() {
     [hovered, visibleEdges],
   );
 
-  const transform = useMemo(
+  const transform: Transform = useMemo(
     () => fitTransform(visibleNodes, canvasSize.width || 1, canvasSize.height || 1),
     [visibleNodes, canvasSize],
   );
@@ -309,6 +339,7 @@ export default function BlogGraph() {
     canvas.style.height = `${canvasSize.height}px`;
 
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
 
@@ -375,9 +406,9 @@ export default function BlogGraph() {
     ctx.textBaseline = "middle";
     ctx.font = LABEL_FONT;
 
-    const candidates = [];
-    const queued = new Set();
-    const queueCandidate = (node) => {
+    const candidates: LabelCandidate[] = [];
+    const queued = new Set<string>();
+    const queueCandidate = (node: BlogGraphNode | undefined | null) => {
       if (!node || queued.has(node.permalink)) return;
       queued.add(node.permalink);
       const point = toCanvasSpace(node, transform);
@@ -430,14 +461,14 @@ export default function BlogGraph() {
   ]);
 
   const handleMouseMove = useCallback(
-    (event) => {
+    (event: React.MouseEvent<HTMLCanvasElement>) => {
       const canvas = canvasRef.current;
       if (!canvas) return;
       const rect = canvas.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
 
-      let found = null;
+      let found: string | null = null;
       for (const node of visibleNodes) {
         const point = toCanvasSpace(node, transform);
         const spot = specialNodeKinds.get(node.permalink);

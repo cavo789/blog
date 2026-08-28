@@ -5,10 +5,12 @@
  * component and MDX page in between.
  */
 
-let listener = null;
+type OpenListener = (initialQuery: string) => void;
+
+let listener: OpenListener | null = null;
 
 /** Called once, by the mounted `<CommandPalette>`, to receive open requests. */
-export function registerPalette(onOpen) {
+export function registerPalette(onOpen: OpenListener): () => void {
   listener = onOpen;
   return () => {
     if (listener === onOpen) listener = null;
@@ -16,7 +18,7 @@ export function registerPalette(onOpen) {
 }
 
 /** Opens the palette, optionally pre-filling the input (e.g. a failed 404 URL). */
-export function openPalette(initialQuery = "") {
+export function openPalette(initialQuery = ""): void {
   listener?.(initialQuery);
 }
 
@@ -27,9 +29,9 @@ export function openPalette(initialQuery = "") {
 // once. Whichever opens second closes whichever was open first — both sides just call
 // `setActiveOverlay(close)` when they open, and the `clear` closure it returns when they
 // close, neither needs to know the other exists.
-let activeCloser = null;
+let activeCloser: (() => void) | null = null;
 
-export function setActiveOverlay(closeFn) {
+export function setActiveOverlay(closeFn: () => void): () => void {
   if (activeCloser && activeCloser !== closeFn) activeCloser();
   activeCloser = closeFn;
   return () => {

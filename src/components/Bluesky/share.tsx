@@ -1,9 +1,20 @@
 import Icon from "./bluesky.svg";
-import PropTypes from "prop-types";
 import styles from "./styles.module.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
-export default function BlueskyShare({ metadata }) {
+// Declared locally rather than imported from useBlueskyEngagement — this file (built in the
+// series' first article) stands on its own before that hook exists in the tutorial's timeline.
+interface Props {
+  metadata: {
+    title?: string;
+    permalink?: string;
+    frontMatter?: {
+      blueskyRecordKey?: string;
+    };
+  };
+}
+
+export default function BlueskyShare({ metadata }: Props) {
   const { siteConfig } = useDocusaurusContext();
   const blueskyRecordKey = metadata?.frontMatter?.blueskyRecordKey;
 
@@ -28,18 +39,10 @@ export default function BlueskyShare({ metadata }) {
       className={styles.blueskyButton}
       aria-label="Share this post on Bluesky"
     >
-      <Icon alt="Bluesky Icon" className={styles.blueskyLogo} />
+      {/* alt dropped: SVGProps has no such prop — was a no-op DOM attribute even before this
+          migration, and the link's own aria-label already names the icon. */}
+      <Icon className={styles.blueskyLogo} />
       Share on Bluesky
     </a>
   );
 }
-
-BlueskyShare.propTypes = {
-  metadata: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    permalink: PropTypes.string.isRequired,
-    frontMatter: PropTypes.shape({
-      blueskyRecordKey: PropTypes.string,
-    }),
-  }).isRequired,
-};

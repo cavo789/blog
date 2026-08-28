@@ -42,8 +42,10 @@ export default function SeriesArticlesPage(): JSX.Element {
     return createSlug(post.series) === slug;
   });
 
-  const originalSeriesName =
-    seriesPosts.length > 0 ? seriesPosts[0].series : slug;
+  // seriesPosts is filtered on a truthy `series`, so the first entry's `series`
+  // is always a string here; `?? slug` covers the empty-list case (and satisfies
+  // the `string | null` type without a cast).
+  const originalSeriesName = seriesPosts[0]?.series ?? slug;
 
   const seriesData = SERIES_DATA.find((s) => s.name === originalSeriesName);
 

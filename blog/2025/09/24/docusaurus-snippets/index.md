@@ -125,7 +125,7 @@ Let's do much, much better: don't copy/paste the code to the article but read it
 
 Let's imagine this:
 
-`<Snippet filename="src/components/Blog/Snippet/index.js" source="src/components/Blog/Snippet/index.js" />`
+`<Snippet filename="src/components/Snippet/index.tsx" source="src/components/Snippet/index.tsx" />`
 
 - `filename` is thus the title to show in the article, so the reader knows the file should be named like that
 - `source` is the relative path (from your Docusaurus root folder) when the file can be retrieved. In this scenario, we don't have to put the source code in the file but Docusaurus will do the job for us:
@@ -137,7 +137,7 @@ You have two types of paths: from your root folder or relative to the blog post.
 
 If you use the `source="./files/example.js"` syntax (the path is starting with a dot), the file will be relative to your blog post.
 
-The second possible syntax is without the dot like `source="src/components/Blog/Snippet/index.js"` and, in this case, the filename will be relative to your Docusaurus root folder i.e. the folder where the `docusaurus.config.js` file is saved.
+The second possible syntax is without the dot like `source="src/components/Snippet/index.tsx"` and, in this case, the filename will be relative to your Docusaurus root folder i.e. the folder where the `docusaurus.config.js` file is saved.
 
 </AlertBox>
 

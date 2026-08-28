@@ -46,7 +46,9 @@ export default function MobileQuickLinks({ count = 3 }: Props): JSX.Element | nu
   }
 
   const related = getRelatedPosts({
-    mainTag: frontMatter.mainTag,
+    // `mainTag` is a project-specific front matter field → Docusaurus types it
+    // as `unknown`; narrow it to what getRelatedPosts() expects.
+    mainTag: frontMatter.mainTag as string | undefined,
     tags: frontMatter.tags || [],
     excludePermalink: permalink,
     count,
