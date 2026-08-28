@@ -22,7 +22,11 @@ This document outlines the governance guidelines to be followed for maintaining 
 
 ## React & Docusaurus Best Practices
 
-- **Functional Components:** Use React functional components with Hooks. No Typescript at all.
+- **Functional Components:** Use React functional components with Hooks.
+- **TypeScript preferred:** New components are written in TypeScript (`.tsx`). Don't create new
+  `.jsx`/`.js` components. Existing JS components are migrated gradually, file by file — see
+  `.todos/` for the migration backlog. PropTypes are for JS components only; TS components rely on
+  their type annotations instead (checked via `tsc --noEmit`, wired into `yarn lint`).
 - **Modular CSS:** Prefer CSS Modules or Docusaurus-native styling approaches.
 - **Component Structure:** Store reusable components in `@site/src/components`.
 - **Performance:** Optimize builds using multi-stage Docker builds (BuildKit).
@@ -31,7 +35,8 @@ This document outlines the governance guidelines to be followed for maintaining 
 ## Tooling & Quality Control
 
 - **Linters:** Code and Markdown must be compatible with strict linting (ESLint, Prettier, Dockerlint, Markdownlint).
-  - JS/JSX: `eslint.config.js` (functional-components + Hooks rules, PropTypes). Run via `yarn lint:js`, or `codelint` from the devcontainer terminal (`yarn lint` also runs stylelint).
+  - JS/JSX: `eslint.config.js` (functional-components + Hooks rules, PropTypes). Run via `yarn lint:js`, or `codelint` from the devcontainer terminal (`yarn lint` also runs stylelint and TS type-checking).
+  - TS/TSX: same `eslint.config.js` (typescript-eslint recommended rules) plus `tsconfig.json` for real type-checking. Run via `yarn lint:types` (`tsc --noEmit`), included in `yarn lint`.
   - CSS: `.stylelintrc.json` (`stylelint-config-standard` + a `color-no-hex` warning pointing at `.todos/039-hardcoded-hex-colors-no-token-system.md`). Run via `yarn lint:css`.
   - Formatting: `.prettierrc.json` is configured but the existing codebase hasn't been reformatted yet (`yarn format:check` currently fails on ~166 pre-existing files) — not yet wired into CI, run manually.
   - CI: `.github/workflows/quality.yml` runs `yarn lint` on every push/PR, separate from `deploy.yml` so a lint failure never blocks publishing the live site.

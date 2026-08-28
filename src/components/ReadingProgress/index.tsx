@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState, type JSX } from "react";
 import styles from "./styles.module.css";
 
-export default function ReadingProgress() {
+export default function ReadingProgress(): JSX.Element {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {

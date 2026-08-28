@@ -10,21 +10,27 @@
  * - Applies scoped styling via CSS modules
  * - Supports optional `alt` and `title` attributes for accessibility and tooltips
  * - Enables lazy loading for performance optimization
- *
- * 📦 Props:
- * @param {object} props
- * @param {string} props.src - Path to the image (e.g. `/img/example.png` or `./images/example.png`)
- * @param {string} [props.title] - Tooltip text shown on hover
- * @param {string} [props.alt] - Alternative text for accessibility (if missing, reuse the Title property)
  */
 
-import PropTypes from "prop-types";
+import type { JSX } from "react";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-export default function Image({ src, alt, title }) {
+
+interface Props {
+  /** Path to the image (e.g. `/img/example.png`), or a `require()`d asset */
+  src: string | { default: string };
+  /** Tooltip text shown on hover */
+  title?: string;
+  /** Alternative text for accessibility (if missing, reuse the Title property) */
+  alt?: string;
+}
+
+export default function Image({ src, alt, title }: Props): JSX.Element {
   const isAbsolutePath = typeof src === "string" && src.startsWith("/");
   const resolvedUrl = useBaseUrl(isAbsolutePath ? src : undefined);
-  const imgSrc = isAbsolutePath ? resolvedUrl : src;
+  // `src` may be a require()'d asset object rather than a string when not an
+  // absolute path; cast to preserve the original (untyped) JS behavior as-is.
+  const imgSrc = (isAbsolutePath ? resolvedUrl : src) as string;
 
   return (
     <div className={styles.container}>
@@ -32,9 +38,3 @@ export default function Image({ src, alt, title }) {
     </div>
   );
 }
-
-Image.propTypes = {
-  src: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  alt: PropTypes.string,
-  title: PropTypes.string,
-};

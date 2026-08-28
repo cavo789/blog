@@ -29,7 +29,9 @@
     "links:check": "node scripts/internal-link-opportunities.mjs --post",
     "lint:js": "eslint .",
     "lint:css": "stylelint \"src/**/*.css\" --max-warnings 350",
-    "lint": "yarn lint:js && yarn lint:css",
+    "lint:types": "tsc --noEmit",
+    "lint:snippets": "node scripts/check-snippet-sources.mjs",
+    "lint": "yarn lint:js && yarn lint:css && yarn lint:types && yarn lint:snippets",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -80,9 +82,12 @@
   "devDependencies": {
     "@anthropic-ai/sdk": "^0.104.1",
     "@docusaurus/module-type-aliases": "^3.10.2",
+    "@docusaurus/tsconfig": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
     "@eslint/js": "^10.0.1",
     "@types/node": "^24.5.2",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-plugin-react": "^7.37.5",
@@ -92,7 +97,9 @@
     "playwright": "^1.61.1",
     "prettier": "^3.9.5",
     "stylelint": "^17.14.0",
-    "stylelint-config-standard": "^40.0.0"
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^5.7",
+    "typescript-eslint": "^8.68.0"
   },
   "browserslist": {
     "production": [

@@ -7,7 +7,7 @@ import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
  * Displays a one-line summary of how many series exist and how many
  * published articles they contain in total.
  */
-export default function SeriesStats() {
+export default function SeriesStats(): React.JSX.Element {
   const seriesCount = generateSeriesList().length;
   const articleCount = getBlogMetadata().filter((post) => post.series).length;
 

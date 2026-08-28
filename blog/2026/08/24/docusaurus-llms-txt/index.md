@@ -137,7 +137,7 @@ Generating a file is not publishing it: without a link pointing at it, nothing â
 
 **3. A per-article equivalent,** pointing at that article's own mirror, injected by a tiny component wired into the blog post page:
 
-<Snippet filename="src/components/MarkdownAlternate/index.jsx" source="src/components/MarkdownAlternate/index.jsx" defaultOpen={true} />
+<Snippet filename="src/components/MarkdownAlternate/index.tsx" source="src/components/MarkdownAlternate/index.tsx" defaultOpen={true} />
 
 **4. A breadcrumb in `robots.txt`.** There is no standard directive for this â€” it is a comment, read by anything already parsing that file and looking for one. It cost two lines.
 

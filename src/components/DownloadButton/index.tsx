@@ -1,16 +1,30 @@
-import React from "react";
-import PropTypes from "prop-types";
+import type { JSX } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-export default function DownloadButton({ file, label = "Download", title }) {
+interface Props {
+  // Either a plain URL string, or a webpack `require('./file.zip')` result
+  // (an object exposing the URL via `.default`).
+  file?: string | { default: string };
+  label?: string;
+  title?: string;
+}
+
+export default function DownloadButton({
+  file,
+  label = "Download",
+  title,
+}: Props): JSX.Element | null {
   if (!file) {
     return null;
   }
 
-  // Handle the case where the user passes `require('./file.zip')`
-  // directly without appending `.default`
-  const fileUrl = typeof file === "object" && file.default ? file.default : file;
+  // Handle the case where the user passes `require('./file.zip')` directly
+  // without appending `.default`. Cast to preserve the original (untyped) JS
+  // behavior as-is — an object without `.default` was already unsupported.
+  const fileUrl = (
+    typeof file === "object" && file.default ? file.default : file
+  ) as string;
 
   // Try to extract the file name to set the default download attribute
   const fileName = typeof fileUrl === "string" ? fileUrl.split("/").pop() : "download";
@@ -41,14 +55,3 @@ export default function DownloadButton({ file, label = "Download", title }) {
     </a>
   );
 }
-
-DownloadButton.propTypes = {
-  // Either a plain URL string, or a webpack `require('./file.zip')` result
-  // (an object exposing the URL via `.default`).
-  file: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.shape({ default: PropTypes.string }),
-  ]),
-  label: PropTypes.string,
-  title: PropTypes.string,
-};

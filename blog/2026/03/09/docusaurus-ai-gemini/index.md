@@ -58,7 +58,7 @@ This flag will be the trigger for all the logic we'll build next.
 First, let's create the visual component for our indicator. This is a simple React component that displays an icon and the text "AI Assisted."
 
 <ProjectSetup folderName="src/components/Blog/AIIcon" createFolder={true} >
-  <Snippet filename="src/components/Blog/AIIcon/index.js" source="src/components/Blog/AIIcon/index.js" defaultOpen={false} />
+  <Snippet filename="src/components/Blog/AIIcon/index.tsx" source="src/components/Blog/AIIcon/index.tsx" defaultOpen={false} />
   <Snippet filename="src/components/Blog/AIIcon/index.module.css" source="src/components/Blog/AIIcon/index.module.css" defaultOpen={false} />
 </ProjectSetup>
 

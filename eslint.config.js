@@ -1,9 +1,10 @@
 // ESLint flat config — enforces the React conventions documented in AGENTS.md:
-// functional components + Hooks only, no TypeScript (except the documented
-// BrowserWindow exception), PropTypes required.
+// functional components + Hooks only, PropTypes required for JS/JSX (TS/TSX
+// get equivalent safety from tsc, see tsconfig.json + `yarn lint:types`).
 import js from "@eslint/js";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
 import globals from "globals";
 
 export default [
@@ -73,6 +74,40 @@ export default [
     files: ["src/components/**/*.{js,jsx}"],
     rules: {
       "react/prop-types": "error",
+    },
+  },
+  ...tseslint.configs.recommended.map((config) => ({
+    ...config,
+    files: ["**/*.{ts,tsx}"],
+  })),
+  {
+    files: ["**/*.{ts,tsx}"],
+    plugins: {
+      react,
+      "react-hooks": reactHooks,
+    },
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      parserOptions: {
+        ecmaFeatures: { jsx: true },
+      },
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+      },
+    },
+    settings: {
+      react: { version: "detect" },
+    },
+    rules: {
+      ...react.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      "react/react-in-jsx-scope": "off",
+      // TS/TSX components don't use PropTypes — types are the contract.
+      "react/prop-types": "off",
+      "react-hooks/set-state-in-effect": "warn",
+      "react/no-unescaped-entities": "warn",
     },
   },
 ];

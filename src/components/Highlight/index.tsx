@@ -4,17 +4,18 @@
  * A simple React component used to emphasize inline content with a custom background color.
  * Typically used in blog posts or documentation pages within a Docusaurus site.
  *
- * Props:
- * - children (ReactNode): The content to be highlighted.
- * - color (string): The background color to apply to the highlight.
- *
  * Example usage:
  * <Highlight color="#ff4081">Important note</Highlight>
  */
 
-import PropTypes from "prop-types";
+import type { JSX, ReactNode } from "react";
 
-export default function Highlight({ children, color }) {
+interface Props {
+  children: ReactNode;
+  color: string;
+}
+
+export default function Highlight({ children, color }: Props): JSX.Element {
   return (
     <span
       style={{
@@ -28,8 +29,3 @@ export default function Highlight({ children, color }) {
     </span>
   );
 }
-
-Highlight.propTypes = {
-  children: PropTypes.node.isRequired,
-  color: PropTypes.string.isRequired,
-};

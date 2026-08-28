@@ -1,8 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { type JSX, type ReactNode } from "react";
 import styles from "./styles.module.css";
 
-export default function ShortcutList({ items = [] }) {
+interface ShortcutItem {
+  keys: string[];
+  desc: ReactNode;
+}
+
+interface Props {
+  items: ShortcutItem[];
+}
+
+export default function ShortcutList({ items = [] }: Props): JSX.Element | null {
   if (!items || items.length === 0) return null;
 
   return (
@@ -23,12 +31,3 @@ export default function ShortcutList({ items = [] }) {
     </ul>
   );
 }
-
-ShortcutList.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      keys: PropTypes.arrayOf(PropTypes.string).isRequired,
-      desc: PropTypes.node.isRequired,
-    }),
-  ).isRequired,
-};

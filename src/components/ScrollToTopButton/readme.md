@@ -30,7 +30,7 @@ Ce composant affiche un bouton flottant en bas à droite de l'écran qui :
 
 ```bash
 src/components/ScrollToTopButton/
-├── index.js              # Composant React principal
+├── index.tsx             # Composant React principal
 ├── styles.module.css     # Styles CSS modulaires
 └── README.md            # Documentation (ce fichier)
 ```
@@ -55,7 +55,7 @@ export default function Layout(props) {
 
 ### Configuration
 
-Vous pouvez modifier le seuil d'apparition en changeant la valeur dans `index.js` :
+Vous pouvez modifier le seuil d'apparition en changeant la valeur dans `index.tsx` :
 
 ```javascript
 if (window.scrollY > 300) {
@@ -69,7 +69,7 @@ if (window.scrollY > 300) {
 ### Changer l'image
 
 1. Placez votre image dans le dossier `static/img/` de votre projet
-2. Modifiez l'import dans `index.js` :
+2. Modifiez l'import dans `index.tsx` :
 
 ```jsx
 import buttontop from "@site/static/img/votre-image.png"; // Remplacez par votre image

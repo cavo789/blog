@@ -70,9 +70,9 @@ Used very occasionally, this is a very simple way of changing the style of conte
 
 If your ambition is to highlight some text, there is a better solution: the **Highlight component**.
 
-Please create the `src/components/Highlight/index.js` file:
+Please create the `src/components/Highlight/index.tsx` file:
 
-<Snippet filename="src/components/Highlight/index.js" source="src/components/Highlight/index.js" />
+<Snippet filename="src/components/Highlight/index.tsx" source="src/components/Highlight/index.tsx" />
 
 Then edit (or create) the `src/theme/MDXComponents.js` file. If the file already exists, just add the highlighted lines below. If not yet present, create the file with the content below:
 

@@ -163,3 +163,36 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions-write`.
      explicitement comme complémentaire (pas un doublon) du skill `/freshness`, qui fait une revue
      qualitative pilotée par Claude plutôt qu'un contrôle mécanique planifié.
 - Bridge naturel avec le plus gros cluster du blog (Docker) et avec la série BlueSky révisée ce jour.
+
+### [ ] Redis — cache d'une vraie API rate-limitée (GitHub, compte cavo789), avec une image Docker ready-to-use
+
+- Idée de Christophe (2026-08-28, affinée le même jour). Vérifié par grep — aucun article dédié à
+  Redis, toutes les mentions existantes sont de passage (Redis vu dans l'UI de
+  `/blog/laravel-telescope`, cité comme exemple générique dans `/blog/docker-health-condition`,
+  service `redis` du vote-app dans `/blog/docker-compose-viz`, cache d'une app générée par IA dans
+  `/blog/lovable-dev-ai`) — aucun doublon direct.
+- **Angle "why Docusaurus" écarté** : vérifié explicitement — le composant `Bluesky` appelle l'API
+  BlueSky uniquement côté navigateur (`useEffect`/`fetch`, jamais pendant `yarn build`), et les
+  scripts ELI5/questions (Ollama) ont déjà leur propre cache fichier (hash SHA1 par article,
+  `scripts/lib/eli5-hash.mjs`) mieux adapté qu'un Redis externe pour un usage single-machine. Donc
+  pas de cas d'usage Redis réel dans ce repo lui-même — l'article ne doit pas prétendre le contraire.
+- **Cas réel retenu à la place** : l'API publique GitHub (`api.github.com`, non-authentifiée, quota
+  60 req/h/IP) sur le propre compte de Christophe
+  ([github.com/cavo789](https://github.com/cavo789)) — lister les dépôts (`GET /users/cavo789/repos`,
+  ~85 repos vus au total, mélange public/private ; seuls les publics remontent sans authentification).
+  Démo en deux temps : (1) sans cache — chaque exécution du script retape le quota GitHub et prend le
+  même temps ; (2) avec Redis — premier appel identique, appels suivants servis depuis le cache en
+  quelques ms, quota GitHub épargné. Chronométrage réel (`time`) sur un compte et des données
+  authentiques, pas une donnée jouet.
+- Toujours porté par une image Docker `redis` officielle ready-to-use (`docker compose`), avec le
+  même scénario rejoué en Bash (`redis-cli` + `curl`), Python (`redis-py` + `requests`) et PHP
+  (`predis`/`phpredis` + cURL) pour montrer l'interopérabilité multi-langage du cache.
+- Pistes pour l'effet "wow", à garder :
+  - `redis-cli MONITOR` en direct dans un second terminal pendant les scripts, pour voir les
+    commandes `GET`/`SET`/`EXPIRE` arriver en temps réel.
+  - TTL court démontré (ex. 60 s, cohérent avec le quota horaire GitHub) : le cache expire, l'appel
+    redevient lent, preuve que ce n'est pas un `SET` définitif.
+  - Bonus rate-limiting : un compteur `INCR`+`EXPIRE` pour suivre/illustrer le quota GitHub restant
+    en direct, deuxième cas d'usage classique de Redis au-delà du cache pur.
+- Bridge naturel avec le cluster Docker (21 articles) et avec `/blog/docker-compose-viz` (qui montre
+  déjà un service `redis` sans jamais expliquer ce qu'il fait réellement).

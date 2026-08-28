@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, type JSX } from "react";
 import clsx from "clsx";
 import { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 import buttontop from "@site/static/img/meerkat/suricate_no_background.webp";
 
-export default function ScrollToTopButton() {
+export default function ScrollToTopButton(): JSX.Element {
   const [isVisible, setIsVisible] = useState(false);
   const [fly, setFly] = useState(false);
 

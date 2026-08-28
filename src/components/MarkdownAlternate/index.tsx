@@ -5,10 +5,11 @@
 // scoped to a single page instead of the whole site — the site-wide
 // counterpart (pointing at /llms.txt) lives in docusaurus.config.js's
 // headTags, since that one applies to every page, not just blog posts.
+import type { JSX } from "react";
 import Head from "@docusaurus/Head";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 
-export default function MarkdownAlternate() {
+export default function MarkdownAlternate(): JSX.Element {
   const { metadata } = useBlogPost();
 
   return (

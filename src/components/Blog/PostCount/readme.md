@@ -22,7 +22,7 @@ We have published 42 articles on our blog!
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/Blog/PostCount/index.js
+src/components/Blog/PostCount/index.tsx
 ```
 
 Ensure you have a `getBlogMetadata()` utility that returns blog metadata including draft status. To do this, simply do this: `import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";`.

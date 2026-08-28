@@ -62,6 +62,19 @@ Use the `<Snippet>` component in any `.mdx` file:
 | `source`   | Required. The path to the file you want to embed.        |
 | `filename` | Optional. The file name to display above the code block. |
 
+## ⚠️ Missing source files fail the build
+
+If `source` cannot be read (typo, deleted/renamed file), the plugin throws — `docusaurus build`
+stops with an error naming the offending `<Snippet>`/`<Terminal>`, the article, and the resolved
+path. This is deliberate: an earlier version degraded to a `// Error loading source file` comment
+instead, which let 4 published articles silently ship broken code blocks during a component
+rename (see `.todos/0106-migration-composants-js-vers-typescript.md`). A published article should
+never contain that placeholder — a red build is strictly better than a green one that lied.
+
+`scripts/check-snippet-sources.mjs` (`yarn lint:snippets`, part of `yarn lint`) runs the same
+resolution logic ahead of a full build, in under a second, so a dangling reference is caught at
+lint time rather than after a ~60s `yarn build`.
+
 ## 📁 Path Resolution Logic
 
 The plugin is designed to support two primary path resolution modes based on the value of the `source` attribute:

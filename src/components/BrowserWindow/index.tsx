@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useMemo, type CSSProperties, type ReactNode, type JSX } from "react";
+import React, { useMemo, type CSSProperties, type JSX } from "react";
 import clsx from "clsx";
 import { useVarResolver } from "@site/src/components/Vars/store";
 import { substitutePlainText } from "@site/src/components/Vars/substitute";

@@ -1,9 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { type JSX } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
 
-export default function ConnectionInfo({ items = [], title }) {
+interface ConnectionItem {
+  label: string;
+  value: string;
+}
+
+interface Props {
+  items: ConnectionItem[];
+  title?: string;
+}
+
+export default function ConnectionInfo({ items = [], title }: Props): JSX.Element | null {
   if (!items || items.length === 0) return null;
 
   return (
@@ -28,13 +37,3 @@ export default function ConnectionInfo({ items = [], title }) {
     </div>
   );
 }
-
-ConnectionInfo.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-  title: PropTypes.string,
-};

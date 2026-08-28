@@ -1,13 +1,15 @@
 // Injects article-specific Open Graph tags that Docusaurus does not generate.
 // Docusaurus sets og:type=website for all pages; this overrides it to "article"
 // and adds article:* tags used by Facebook, LinkedIn, and social scrapers.
+import type { JSX } from "react";
 import Head from "@docusaurus/Head";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 
-export default function OpenGraphArticle() {
+export default function OpenGraphArticle(): JSX.Element {
   const { metadata } = useBlogPost();
   const { date, frontMatter, authors, tags } = metadata;
-  const lastUpdated = frontMatter?.lastUpdated || date;
+  // `lastUpdated` is a custom front matter field, untyped by Docusaurus (hence the cast).
+  const lastUpdated = (frontMatter?.lastUpdated as string | undefined) || date;
 
   return (
     <Head>

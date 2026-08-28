@@ -13,10 +13,17 @@
  * </Details>
  */
 
-import PropTypes from "prop-types";
+import type { JSX, ReactNode } from "react";
 import "./styles.module.css";
 
-export default function Details({ label, children }) {
+interface Props {
+  /** The label */
+  label: ReactNode;
+  /** Content to render inside the hero container */
+  children: ReactNode;
+}
+
+export default function Details({ label, children }: Props): JSX.Element {
   return (
     <details className={`alert alert--info`}>
       <summary>{label}</summary>
@@ -24,11 +31,3 @@ export default function Details({ label, children }) {
     </details>
   );
 }
-
-Details.propTypes = {
-  /** The label */
-  label: PropTypes.node.isRequired,
-
-  /** Content to render inside the hero container */
-  children: PropTypes.node.isRequired,
-};

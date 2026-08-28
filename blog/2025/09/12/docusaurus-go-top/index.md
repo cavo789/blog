@@ -50,7 +50,7 @@ Docux has created a [ScrollToTopButton Docusaurus component](https://github.com/
 
 Please create the two files below in your blog directory structure:
 
-<Snippet filename="src/components/ScrollToTopButton/index.js" source="src/components/ScrollToTopButton/index.js" />
+<Snippet filename="src/components/ScrollToTopButton/index.tsx" source="src/components/ScrollToTopButton/index.tsx" />
 
 <Snippet filename="src/components/ScrollToTopButton/styles.module.css" source="src/components/ScrollToTopButton/styles.module.css" />
 

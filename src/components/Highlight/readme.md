@@ -7,7 +7,7 @@ A lightweight React component for emphasizing inline text with a customizable ba
 Place the component in your Docusaurus project:
 
 ```bash
-src/components/Highlight/index.js
+src/components/Highlight/index.tsx
 ```
 
 ## 🚀 Usage

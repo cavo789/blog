@@ -82,7 +82,9 @@ Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.
   `Prerequisite`, `InteractiveCode`, `TriedIt`, `Reaction`, `Bluesky`, `DownloadButton`, …).
   Reusable in any MDX file.
 
-All components: functional, no TypeScript, no class components.
+All components: functional, no class components. TypeScript is preferred starting today — new
+components are `.tsx`, not `.js`/`.jsx`. Existing JS components are migrated gradually, one at a
+time (tracked in `.todos/`); there's no rush and no big-bang rewrite.
 Styling: CSS Modules (`styles.module.css`) + Infima variables — no hardcoded hex except where
 a token's source of truth requires it (documented via `/* stylelint-disable color-no-hex */`).
 Global registration in `src/theme/MDXComponents.js` — usable in MDX without import.
