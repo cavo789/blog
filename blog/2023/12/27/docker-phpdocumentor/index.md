@@ -35,7 +35,9 @@ $ docker run -it --rm -u $(id -u):$(id -g) -v .:/data phpdoc/phpdoc:3
 
 And here is what lands in the `.phpdoc` folder — this one was generated from the WordPress codebase:
 
-![WordPress 6.4.2 PHP documentation](./images/wordpress_phpdoc.webp)
+<BrowserWindow url="http://localhost/">
+  ![WordPress 6.4.2 PHP documentation](./images/wordpress_phpdoc.webp)
+</BrowserWindow>
 
 A browsable site with the namespaces, the classes, their methods and the docblocks you wrote. Nothing was installed on your machine: phpDocumentor, PHP and every dependency live inside the image, which disappears with the container thanks to `--rm`.
 

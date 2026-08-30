@@ -257,6 +257,6 @@ Here is the complete object returned by the API, as `jq` renders it:
 
 Two things to remember: `jq` alone makes any JSON readable, and `jq '.some.path'` extracts exactly the node you need — which is what turns an API answer into something a shell script can consume.
 
-`jq` quickly becomes a reflex: I use it in <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link> to read `docker inspect` output, for instance.
+`jq` quickly becomes a reflex: I use it in <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link> to read `docker inspect` output, and in <Link to="/blog/docusaurus-ollama-tags">building a blog post analyzer with Ollama</Link> to format the local LLM's JSON responses, for instance.
 
 For the times when the console is not the right tool for JSON, this blog has three more: <Link to="/blog/json-crack">Rendering a JSON file as a mind map</Link>, <Link to="/blog/json-lint">JSON - Online linter</Link> and <Link to="/blog/json-faker">JSON - Faker & Mockup</Link>.

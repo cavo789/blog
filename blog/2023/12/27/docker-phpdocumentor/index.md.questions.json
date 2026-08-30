@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:46:44.648Z",
+  "generated": "2026-08-30T08:11:06.472Z",
   "source": "index.md",
-  "sourceHash": "f5fe360007d65e54e6ccd6f901df81cc8a1a9541",
+  "sourceHash": "1683f67a3fe70b9f605a47f2e40777f1d057dd34",
   "questions": [
     {
-      "question": "How do I generate PHP documentation with Docker?",
+      "question": "How do I generate PHP documentation using Docker?",
       "anchor": "one-command-a-full-documentation-website"
     },
     {
-      "question": "What is phpDocumentor?",
+      "question": "What is phpDocumentor and how does it work with Docker?",
       "anchor": "the-configuration-file"
     },
     {
-      "question": "How can I configure phpDocumentor to scan my codebase?",
+      "question": "Where can I find the configuration file for phpDocumentor?",
       "anchor": "the-configuration-file"
     },
     {
-      "question": "Where do the generated documentation files go?",
+      "question": "How do I run phpDocumentor using Docker?",
       "anchor": "one-command-a-full-documentation-website"
     },
     {
-      "question": "Is there a specific configuration file required for phpDocumentor?",
-      "anchor": "the-configuration-file"
-    },
-    {
-      "question": "What is the purpose of the config file in phpDocumentor?",
-      "anchor": "the-configuration-file"
-    },
-    {
-      "question": "How do I access the generated documentation site on Windows using WSL2?",
+      "question": "What is a browsable documentation site and how does it work?",
       "anchor": "one-command-a-full-documentation-website"
     },
     {
-      "question": "What are some common docblocks used in PHP codebases?",
-      "anchor": "conclusion"
+      "question": "What are the steps to generate documentation for a PHP codebase using Docker?",
+      "anchor": ""
+    },
+    {
+      "question": "How can I access the generated documentation site after running phpDocumentor?",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "What is the configuration file for phpDocumentor and how do I create it?",
+      "anchor": "the-configuration-file"
     }
   ]
 }

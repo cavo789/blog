@@ -7,7 +7,7 @@ services:
   ollama:
     image: ollama/ollama
     ports:
-      - "11434:11434"
+      - "11444:11434"
     volumes:
       - ollama_data:/root/.ollama
     # Uncomment the following lines if you have an NVIDIA GPU and want to use it

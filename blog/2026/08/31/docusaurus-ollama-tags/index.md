@@ -5,9 +5,8 @@ description: "A Dockerized devcontainer with two Python scripts: the first sends
 authors: [christophe, claude]
 image: /img/v2/ollama_docusaurus_tags.webp
 mainTag: ai
-draft: true
-tags: [ai, ollama]
-date: 2026-12-31
+tags: [ai, docusaurus, ollama]
+date: 2026-08-31
 ai_assisted: true
 ---
 
@@ -32,7 +31,7 @@ Tagging blog posts by hand does not scale — and neither does spotting, across 
 
 Once both scripts have run, `output/all_articles_with_tags.json` holds the generated tags for every post:
 
-![The generated tags](./images/the_generated_tags.png)
+![The generated tags](./images/the_generated_tags.webp)
 
 The second script then compares those tags across posts. `suggested_interlinks.json` is the first output worth looking at:
 
@@ -56,7 +55,7 @@ The second output file, `tag_analysis.json`, shows the tags and their occurrence
 
 Please run the following command in your terminal to copy the directory structure and files for this tutorial:
 
-<ProjectSetup folderName="/tmp/joomla" createFolder={true} >
+<ProjectSetup folderName="/tmp/tags" createFolder={true} >
   <Guideline>
   </Guideline>
   <Snippet filename=".devcontainer/devcontainer.json" source="./files/.devcontainer/devcontainer.json" />
@@ -72,38 +71,38 @@ Please run the following command in your terminal to copy the directory structur
   <Snippet filename="requirements.txt" source="./files/requirements.txt" />
 </ProjectSetup>
 
-Once done, please run `code .` to open the current directory in Visual Studio Code then press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> and select `Remote-Containers: Reopen in Container` to open the project in a development container.
+Once done, please run `code .` to open the current directory in Visual Studio Code then press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> and select `Devcontainers: Reopen in Container` to open the project in a development container.
 
 It will take a few minutes to build the container and install the dependencies. Once the devcontainer is running, you'll see in your Docker Desktop that the two containers are running:
 
-![The containers are running](./images/containers_are_running.png)
+![The containers are running](./images/containers_are_running.webp)
 
 ### Download the LLM model
 
 Then, return to your terminal (on your host) and run the following command to download the LLM model:
 
 <Terminal wrap={true}>
-$ docker exec -it blog_analyzer-ollama-1 ollama pull llama3:8b
+$ docker exec -it tags-ollama-1 ollama pull llama3:8b
 </Terminal>
 
-![Download the LLM model](./images/download_the_llm_model.png)
+![Download the LLM model](./images/download_the_llm_model.webp)
 
 ### Test the Ollama service
 
 So we've just downloaded the LLM model, now let's test that the Ollama service is working correctly. Run the following command in your terminal (on your host):
 
 <Terminal wrap={true}>
-$ curl --silent http://localhost:11434/api/tags | jq
+$ curl --silent http://localhost:11444/api/tags | jq
 </Terminal>
 
-![Testing the Ollama service](./images/testing_ollama_tags.png)
+![Testing the Ollama service](./images/testing_ollama_tags.webp)
 
 <AlertBox variant="note" title="If you don't have jq">
-The `jq` command is used to format the JSON output for better readability. If you don't have `jq` installed, you can simply run the `curl` command without it to see the raw JSON response.
+The `jq` command is used to format the JSON output for better readability. If you don't have `jq` installed, check out <Link to="/blog/linux-jq">The jq utility for Linux</Link> to learn how to install and use it, or simply run the `curl` command without it to see the raw JSON response.
 </AlertBox>
 
 ```bash
-curl --silent http://localhost:11434/api/generate \
+curl --silent http://localhost:11444/api/generate \
   -d '{\
     "model": "llama3:8b", \
     "prompt": "Explain in one sentence why Docker is so amazing.", \
@@ -111,7 +110,7 @@ curl --silent http://localhost:11434/api/generate \
   }' | jq .response
 ```
 
-![Why Docker is great?](./images/docker_is_great.png)
+![Why Docker is great?](./images/docker_is_great.webp)
 
 Ok, the service is working, and we can see that the `tags` endpoint is available. This endpoint will be used by our Python scripts to send the content of the blog posts and receive the generated tags.
 
@@ -121,15 +120,21 @@ Ok, the service is working, and we can see that the `tags` endpoint is available
 
 Go back to Visual Studio Code, jump in the terminal (in VSCode) and run the `scripts/01_generate_tags.py` file. This script will read all the markdown files in the `data/posts` directory, send their content to the LLM model running in the container, and save the generated tags in a JSON file.
 
-![Running the tag generation script](./images/running_01_generate_tags.png)
+![Running the tag generation script](./images/running_01_generate_tags.webp)
 
 And, indeed, you can see that the `output/all_articles_with_tags.json` file has been created — the tags shown earlier under "The Result" are exactly what this run produced.
+
+<AlertBox variant="info" title="Host port vs container port">
+Notice that `scripts/01_generate_tags.py` calls `http://ollama:11434/api/generate`, not `http://ollama:11444/api/generate` like the `curl` commands above.
+
+**On your host**, `curl` must use `11444` — the port published by `compose.yaml` (`"11444:11434"`). But `01_generate_tags.py` runs **inside the `app` container**, on the same Docker Compose network as `ollama`. From there, `11444` doesn't exist: containers on that network reach each other through the container's own port, `11434`. Mixing the service name (only resolvable inside the Compose network) with the host-published port is a classic trap, and it results in a `Connection refused`.
+</AlertBox>
 
 ### Run the analyze and link script
 
 The second script, `scripts/02_analyze_and_link.py`, reads the generated tags from that JSON file and produces the `suggested_interlinks.json` and `tag_analysis.json` files shown above.
 
-![Running the analyze and link script](./images/running_02_analyze_and_link.png)
+![Running the analyze and link script](./images/running_02_analyze_and_link.webp)
 
 ## Under the Hood (skip this if you just want to use it)
 
@@ -158,19 +163,19 @@ You can add any of these models to your local environment instantly. Simply run 
 **To pull the standard Llama 3 (8B) model:**
 
 <Terminal wrap={true}>
-$ docker exec -it blog_analyzer-ollama-1 ollama pull llama3:8b
+$ docker exec -it tags-ollama-1 ollama pull llama3:8b
 </Terminal>
 
 **To pull the highly capable Llama 3 (70B) model:**
 
 <Terminal wrap={true}>
-$ docker exec -it blog_analyzer-ollama-1 ollama pull llama3:70b
+$ docker exec -it tags-ollama-1 ollama pull llama3:70b
 </Terminal>
 
 **To pull the Mistral model:**
 
 <Terminal wrap={true}>
-$ docker exec -it blog_analyzer-ollama-1 ollama pull mistral
+$ docker exec -it tags-ollama-1 ollama pull mistral
 </Terminal>
 
 > **Note:** The `70b` model is significantly larger (~40GB). Ensure you have enough disk space and, more importantly, at least 48GB of RAM available to ensure the model runs smoothly without slowing down your system.

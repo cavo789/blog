@@ -50,7 +50,12 @@ const config = {
   // when a flow is genuinely non-linear (branches, loops, several actors): a real terminal
   // output or a plaintext arrow diagram is usually clearer — see
   // .claude/skills/blog-post-structure/SKILL.md
-  markdown: { mermaid: true },
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
+  },
   themes: ["@docusaurus/theme-mermaid"],
 
   onBrokenAnchors: "throw",

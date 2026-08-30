@@ -1,540 +1,234 @@
 # Plan de publication — Brouillons dans `.unpublished/`
 
-Notes de travail sur un ordre de publication sensé pour les brouillons présents dans `.unpublished/`.
-Ce n'est pas un article de blog — juste un fichier de planification, pour moi (Claude) et pour
-Christophe. Jamais publié, donc écrit en français.
+Jamais publié, écrit en français. Pour la logique détaillée derrière chaque ligne, voir la section
+**Détails et contraintes** plus bas — ce tableau est la version courte à lire en premier.
 
-> **Maintenance :** ce fichier doit être mis à jour à chaque fois qu'un nouveau brouillon est créé
-> dans `.unpublished/`, ou qu'un brouillon existant est publié (déplacé vers `blog/`) ou supprimé.
+> **Maintenance :** mettre à jour ce fichier à chaque nouveau brouillon, chaque publication (déplacé
+> vers `blog/`) ou chaque suppression. **Avant toute lecture de ce plan, vérifier que chaque slug
+> cité existe encore sous `.unpublished/<slug>/` — un slug qui n'y est plus a été publié entretemps
+> et doit être retiré du plan, pas juste laissé tel quel.**
 
-## Pourquoi l'ordre compte ici
+## Ordre de publication recommandé
 
-La plupart des brouillons sont indépendants et peuvent sortir n'importe quand. La série "Ollama
-daily use" ne l'est pas : plusieurs articles font un lien vers un article précédent, ou
-supposent dans leur texte qu'un article précédent est déjà publié.
+49 brouillons ont un `index.md` (50e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
 
-**Contraintes dures (lien cassé ou chronologie incohérente sinon) :**
+Fondations de la série Ollama déjà publiées entretemps : `ollama-test-generator` (2026-08-03) et
+`ollama-git-precommit` (2026-08-10). `ollama-ai-standup` peut donc sortir dès maintenant, sans
+attendre aucun autre brouillon.
 
-- `ollama-test-generator` (**ai-test**) doit être le premier de la série. Il définit la fondation
-  partagée — `~/.zsh/fns/_ollama.zsh` (`_ollama_query`, `_ollama_check`, `_git_staged_diff`, le
-  registre `AI_COMMANDS`/`AI_PARAMS`, les helpers FZF, le dispatcher `ai` lui-même) — que tous les
-  autres articles `ai-*` supposent déjà en place.
-- `ollama-git-precommit` (**ai-review + ai-secrets + ai-commit**) fait un lien direct vers
-  `/blog/ollama-test-generator`. Doit venir juste après ai-test. Ces trois fonctions sont désormais
-  réunies dans un seul article (fusion opérée 2026-07-30).
-- `docling` doit être publié avant `ollama-ai-docs` (**ai-summarize** + `_ai_extract_text`) — ce dernier
-  fait un lien direct vers `/blog/docling` et son helper `_ai-docs.zsh` appelle `docling-convert`.
+| # | Slug | Contrainte |
+| --- | --- | --- |
+| 1 | `winscp-putty` ou `git-bisect` | Respiration, aucune contrainte |
+| 2 | `ollama-ai-standup` | Avant #3 et #4 (le reste de la série) |
+| 3 | `ollama-ai-fix` | Après #2 |
+| 4 | `xdebug-docker-vscode` | Respiration, aucune contrainte |
+| 5 | `ollama-ai-ci` | Après #2 et #3 |
+| 6 | `typo-report-docusaurus` ou `tried_it` | Respiration, aucune contrainte |
+| 7 | `ollama-ai-ask` | Aucune contrainte |
+| 8 | `removing-algolia-for-pagefind` | Aucune contrainte |
+| 9 | `ollama-ai-diagram` | Aucune contrainte |
+| 10 | `ollama-ai-data` | Doit précéder `duckdb-json-csv` (#12) |
+| 11 | `docling` | Doit précéder #12, #13, #14 |
+| 12 | `python-security-bandit-audit` | Après `docling` (#11) |
+| 13 | `ollama-ai-translate` | Libre, mais avant #14 de préférence |
+| 14 | `ollama-ai-docs` | Après `docling` (#11) ; avant #15 |
+| 15 | `ollama-ai-diff` | Ferme la série — après #14 |
+| 16 | `duckdb-json-csv` | Après `docling` (#11) et `ollama-ai-data` (#10) |
+| 17 | `python-ai-helper` | Se lit mieux une fois ai-test/ai-review publiés (déjà le cas) |
+| 18 | `ai-explain` | Dernier de la série Ollama — après tous les articles ci-dessus |
+| 19 | `lazydocker` | Ouvre la mini-série Docker — avant #29 et #30 |
+| 20 | `linux-yq` | Aucune contrainte |
+| 21 | `direnv` | Aucune contrainte |
+| 22 | `navi` | Aucune contrainte |
+| 23 | `hyperfine` | Aucune contrainte |
+| 24 | `git-interactive-rebase` | Aucune contrainte |
+| 25 | `vscode-gitlens` | Aucune contrainte |
+| 26 | `vscode-profiles` | Aucune contrainte |
+| 27 | `vscode-multi-root-git-worktree` | Aucune contrainte |
+| 28 | `vscode-snippets-for-docusaurus` | Aucune contrainte |
+| 29 | `portainer` | Après `lazydocker` (#19) |
+| 30 | `traefik` | Après `lazydocker` (#19) et `portainer` (#29) |
+| 31 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
+| 32 | `docker-dive` | Après `lazydocker` (#19), sinon retirer le lien en conclusion |
+| 33 | `ai-agent-in-devcontainer` | Aucune contrainte |
+| 34 | `atuin-bash-history` | Aucune contrainte |
+| 35 | `oha-http-load-testing` | Aucune contrainte |
+| 36 | `ssh-proxyjump` | Aucune contrainte |
+| 37 | `caddy` | Aucune contrainte |
+| 38 | `open-webui-advanced` | Aucune contrainte |
+| 39 | `mcp-python-server` | Aucune contrainte |
+| 40 | `copy-as-markdown` | Aucune contrainte |
+| 41 | `blog-time-to-value-audit` | Aucune contrainte |
+| 42 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #43-44 |
+| 43 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #44 |
+| 44 | `docusaurus-command-palette` | Après #42 et #43 |
+| 45 | `docusaurus-ask-my-blog-bubble` | Après #42, #43, #44 |
+| 46 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
+| 47 | `docusaurus-pwa` | Aucune contrainte |
+| 48 | `docusaurus-mobile-preview` | Aucune contrainte |
+
+`ollama-refactor-code` n'apparaît pas : ce ne sont que des fichiers `files/`, aucun `index.md`.
+
+---
+
+## Détails et contraintes
+
+*(Notes de travail pour Claude — historique des décisions, réserves techniques à lever avant
+publication, chiffres vérifiés. Non nécessaire à la lecture rapide de l'ordre ci-dessus.)*
+
+### Déjà publiés entretemps (retirés du plan le 2026-08-30)
+
+Le plan précédent gardait ces cinq brouillons dans le tableau alors qu'ils avaient déjà été
+déplacés vers `blog/` — corrigé après relecture par Christophe :
+
+- `ollama-test-generator` → `blog/2026/08/03/ollama-test-generator`
+- `ollama-git-precommit` → `blog/2026/08/10/ollama-git-precommit`
+- `anythingllm-chat-with-your-docs` → `blog/2026/08/17/anythingllm-chat-with-your-docs`
+- `docusaurus-llms-txt` → `blog/2026/08/24/docusaurus-llms-txt`
+- `docusaurus-shake-easter-egg` → `blog/2026/08/27/docusaurus-shake-easter-egg`
+
+Conséquence : les contraintes qui en dépendaient tombent — `portainer` n'a plus besoin d'attendre
+`anythingllm-chat-with-your-docs`, `ollama-ai-standup` n'a plus besoin d'attendre `ollama-test-generator`
+ni `ollama-git-precommit` (déjà publiés).
+
+### Série "Ollama daily use" — pourquoi cet ordre
+
+Fondation (`ollama-test-generator`, `ai-test`) et premier bloc pre-commit (`ollama-git-precommit`,
+`ai-review` + `ai-secrets` + `ai-commit` fusionnés le 2026-07-30) déjà publiés — plus de contrainte
+d'ordre sur eux, ils sont déjà en ligne pour tout brouillon qui les cite.
+
+- `docling` doit être publié avant `ollama-ai-docs` (**ai-summarize** + `_ai_extract_text`) — ce
+  dernier fait un lien direct vers `/blog/docling` et son helper `_ai-docs.zsh` appelle
+  `docling-convert`.
 - `ollama-ai-docs` doit être publié avant `ollama-ai-diff` (**ai-diff**) — le mode "deux fichiers"
-  d'ai-diff réutilise directement `_ai_extract_text`, défini dans `_ai-docs.zsh` (l'article ai-docs).
-  Transitivement, `docling` doit donc aussi précéder `ai-diff`.
-- `ollama-ai-translate` (**ai-translate**) est **indépendant** — il fonctionne sans Docling (texte/pipe),
-  et sa dépendance sur `_ai_extract_text` est optionnelle (graceful fallback). Pas de contrainte d'ordre
-  stricte. Peut précéder ou suivre `ollama-ai-docs`, mais si publié APRÈS, mettre à jour l'AlertBox
-  "supersedes" pour refléter que `/blog/ollama-ai-docs` est déjà publié.
+  d'ai-diff réutilise `_ai_extract_text`, défini dans `_ai-docs.zsh`. Transitivement, `docling`
+  doit donc aussi précéder `ai-diff`.
+- `ollama-ai-translate` (**ai-translate**) est indépendant — fonctionne sans Docling (texte/pipe),
+  dépendance sur `_ai_extract_text` optionnelle (graceful fallback). Si publié après
+  `ollama-ai-docs`, mettre à jour l'AlertBox "supersedes".
+- `ollama-ai-fix` cite `ai-standup`, `ai-test` et `ai-commit` comme déjà existants (contrainte
+  souple — pas de lien cassé si l'ordre n'est pas respecté, juste une incohérence de texte ;
+  `ai-test`/`ai-commit` sont de toute façon déjà publiés).
+- `ollama-ai-ci` cite `ai-fix` et `ai-standup` comme déjà existants (contrainte souple).
+- `ollama-ai-ask`, `ollama-ai-data`, `ollama-ai-diagram` ne citent aucun autre brouillon de la
+  série par nom — libres.
+- `duckdb-json-csv` (hors série) fait un lien dur vers `/blog/docling` ET `/blog/ollama-ai-data` —
+  doit venir après les deux.
+- `python-security-bandit-audit` (hors série) fait un lien dur vers `/blog/docling`.
+- `ai-explain` (ELI5 terminal) est le dernier article prévu de la série — à publier après tous les
+  autres brouillons `ollama-ai-*` restants.
 
-**Contraintes souples (pas de lien cassé, mais le texte cite la fonction comme "déjà couverte") :**
+### Intercaler avec le reste de `.unpublished/`
 
-- `ollama-ai-fix` — cite `ai-standup`, `ai-test` et `ai-commit` comme déjà existants.
-- `ollama-ai-ci` — cite `ai-fix` et `ai-standup` comme déjà existants.
+Des articles "Ollama" d'affilée serait trop pour les lecteurs réguliers — d'où les respirations
+placées dans le tableau (`winscp-putty`/`git-bisect`, `xdebug-docker-vscode`,
+`typo-report-docusaurus`/`tried_it`, `removing-algolia-for-pagefind`). Les positions libres entre
+elles peuvent être permutées sans casser de contrainte.
 
-**Aucune contrainte :** `ollama-ai-ask`, `ollama-ai-data` et `ollama-ai-diagram` ne citent aucun autre
-brouillon de la série par nom — libres de se placer où le rythme éditorial le suggère.
+### Mini-série Docker : lazydocker → Portainer → Traefik (créée 2026-07-27)
 
-**Deux brouillons hors série dépendent quand même de la série** (ajoutés 2026-07-27, ponts
-thématiques demandés par Christophe) :
+Chaîne de dépendances **dures** (vrais `<Link>`), ordre strict :
 
-- `duckdb-json-csv` fait un lien **dur** vers `/blog/docling` ET `/blog/ollama-ai-data` (deux
-  mentions) — doit venir après les deux.
-- `python-security-bandit-audit` fait un lien **dur** vers `/blog/docling` — doit venir après lui.
-- `xdebug-docker-vscode` n'a aucune dépendance (ne lie que `php-devcontainer` et `vscode-devcontainer`,
-  déjà publiés) — libre.
+- `lazydocker` : premier obligatoire — cité par `portainer` et `traefik`.
+- `portainer` : cite `lazydocker` (dépendance sur `anythingllm-chat-with-your-docs` levée, déjà
+  publié depuis le 2026-08-17).
+- `traefik` : cite `lazydocker` ET `portainer` — doit venir après les deux.
 
-## Ordre proposé — "Ollama daily use" + docling
+Les trois peuvent être espacés dans le calendrier tant que l'ordre relatif 1→2→3 est respecté.
 
-| # | Slug | Fonction(s) | Pourquoi ici |
-| --- | --- | --- | --- |
-| 1 | `ollama-test-generator` | `ai-test` | Premier obligatoire — définit `_ollama.zsh` complet (`_ollama_check`, `_git_staged_diff`, `AI_PARAMS`, FZF helpers, `ai`) |
-| 2 | `ollama-git-precommit` | `ai-review` + `ai-secrets` + `ai-commit` | Deuxième obligatoire — lien vers #1 ; article fusionné couvrant les trois checks pre-commit en un seul article |
-| 3 | `ollama-ai-standup` | `ai-standup` | Nécessaire avant #4 et #5 (qui le citent tous les deux) |
-| 4 | `ollama-ai-fix` | `ai-fix` | Cite `ai-standup`, `ai-test`, `ai-commit` comme antérieurs |
-| 5 | `ollama-ai-ci` | `ai-ci` | Cite `ai-fix`, `ai-standup` comme antérieurs ; plus lourd (token API externe) |
-| 6 | `ollama-ai-ask` | `ai-ask` | Libre ; lecture courte et facile après le plus lourd ai-ci |
-| 7 | `ollama-ai-diagram` | `ai-diagram` | Libre ; pont IA × doc-as-code, angle encore différent |
-| 8 | `ollama-ai-data` | `ai-data` | Libre, mais doit précéder `duckdb-json-csv` (hors série) qui le cite |
-| 9 | `docling` | — (hors série) | Doit précéder #10, #11, et les deux ponts hors série `duckdb-json-csv`/`python-security-bandit-audit` |
-| 10 | `ollama-ai-translate` | `ai-translate` | Libre — fonctionne sans Docling (mode texte/pipe). Peut précéder ou suivre #9 ; si publié après #10bis, mettre à jour la note de l'AlertBox "supersedes" |
-| 10bis | `ollama-ai-docs` | `ai-summarize` + `_ai_extract_text` | Dépend de #9 ; doit précéder #11. **Note :** `ai-translate` a désormais son propre article (#10) — retirer la définition de `ai-translate` de `_ai-docs.zsh` avant publication, et mettre à jour le titre de l'article (supprimer "ai-translate &") |
-| 11 | `ollama-ai-diff` | `ai-diff` | Dernier obligatoire de la série — dépend de #10bis (`_ai_extract_text`) et transitivement de #9 ; bonne conclusion, referme la boucle avec `delta`/`git diff` |
+**Avant de publier `lazydocker` :** vérifier que le tag `ARG LAZYDOCKER_VERSION=0.23.3` existe
+toujours sur [github.com/jesseduffield/lazydocker/releases](https://github.com/jesseduffield/lazydocker/releases).
+Aucun des trois `Dockerfile`/`compose.yaml` n'a été buildé ni testé contre un vrai hôte Docker.
+Captures d'écran manquantes pour les trois (TUI lazydocker, dashboard Portainer, dashboard
+Traefik) — à faire une fois testé.
 
-C'est l'ordre minimal qui respecte toutes les contraintes ci-dessus. La fusion de commit/review/secrets en
-`ollama-git-precommit` (#2) a réduit la série de 13 à 11 articles. Les positions #6/#7/#8 sont libres
-entre elles ; #9→#10→#11 doit rester dans cet ordre relatif.
+### Mini-série "navigation du blog" (créée 2026-08-12) — série *Creating Docusaurus components*
 
-**`duckdb-json-csv` et `python-security-bandit-audit`** (hors série, ponts thématiques) peuvent sortir
-n'importe quand **après #11** (`docling`) — pas besoin d'attendre la fin complète de la série (#13).
-**`xdebug-docker-vscode`** n'a aucune contrainte, à placer librement dans le calendrier.
+Chaîne de dépendances dure via `<Link>` :
 
-## Intercaler avec le reste de `.unpublished/`
-
-Treize articles à saveur "Ollama" d'affilée, c'est beaucoup pour les lecteurs réguliers. Les autres
-brouillons n'ont aucune dépendance envers cette série ni entre eux (sauf mention contraire) — je
-casserais donc la séquence. Numérotation mise à jour après l'ajout d'`ai-secrets` et `ai-diagram` :
-
-| Emplacement | Suggestion |
-| --- | --- |
-| Avant #1 | `winscp-putty` ou `git-bisect` — court, sans rapport, vide le stock de brouillons plus anciens |
-| Entre #2 et #3 | `docusaurus-ollama-tags` — même saveur "LLM local" mais un usage complètement différent (analyse de tags de blog), lu comme de la variété |
-| Entre #3 et #4 | `xdebug-docker-vscode` — aucune dépendance, rupture nette avec le contenu terminal (PHP/VSCode/debugging) après deux articles centrés sur le `git diff` staged |
-| Entre #4 et #5 | `typo-report-docusaurus` ou `tried_it` — deux articles de composants Docusaurus, coupure nette avec le contenu terminal |
-| Entre #5 et #6 | `removing-algolia-for-pagefind` — court, orienté infra, bonne respiration |
-| Entre #6 et #7 | `anythingllm-chat-with-your-docs` — même thème Ollama, mais un angle radicalement différent (application self-hosted complète pour "chatter" avec ses documents, pas une fonction zsh) ; assez développé pour tenir seul comme respiration dans la série |
-| Après #9 (`docling`) | `python-security-bandit-audit` — dépendance dure sur `docling` (voir plus haut), aucune sur le reste de la série ; bon point de sortie vers un thème différent (sécurité Python) |
-| Après #9, avant ou après #11 | `duckdb-json-csv` — dépendance dure sur `docling` ET `ollama-ai-data` (#8) ; cite `ai-data` en conclusion donc se lit mieux s'il ne suit pas *trop* loin derrière |
-| Après #11 | `python-ai-helper` — une fois ai-test/ai-review publiés, l'approche plus lourde (Docker, Python uniquement) de cet ancien brouillon se lit comme "l'alternative costaude" plutôt qu'une idée redondante ; mérite une petite relecture pour faire le lien avec la série à ce moment-là |
-
-`ollama-refactor-code` n'apparaît pas dans ce plan — ce ne sont encore que des fichiers source dans
-`files/`, aucun `index.md` n'a été écrit, ce n'est donc pas candidat à la publication pour l'instant.
-
-La chaîne `lazydocker` → `portainer` → `traefik` (voir section dédiée plus bas) est totalement
-indépendante de la série Ollama et peut s'intercaler n'importe où dans ce calendrier global, du moment
-que son ordre interne 1→2→3 est respecté et que `portainer` suit bien `anythingllm-chat-with-your-docs`
-s'il n'est pas encore publié.
-
-## Avant de publier #1 (bloquant dans tous les cas)
-
-- `src/data/series.js` contient déjà l'entrée "Ollama daily use", mais `/img/series/ollama.webp`
-  n'existe pas encore sur disque — la page `/series` affichera une image cassée tant qu'elle n'est pas
-  créée (~1000-1500px, WebP, dans le style des autres bannières de série).
-- Aucun des scripts zsh de cette série n'a été exécuté contre une vraie instance Ollama — la logique a
-  été soigneusement raisonnée, mais `_ollama_query`, `_git_staged_diff`, `_ai_ci_gitlab_info`,
-  `docling-convert`, les appels à l'API GitLab dans `ai-ci`, et le mécanisme `print -z`/`fzf` dans
-  `ai-data` méritent un vrai passage de test sur ta machine, pas seulement une relecture.
-- Le FZF interactif multi-param (nouveau dans `_ollama.zsh` depuis 2026-07-30 — `AI_PARAMS`, helpers
-  `_ai_prompt_file/language/number/text`, boucle de collecte dans `ai()`) n'a pas été testé en conditions
-  réelles : en particulier la séquence "file + language" pour `ai-translate` et le "number optionnel"
-  pour `ai-standup` (Enter sans valeur = utiliser le défaut de la fonction).
-- Le Dockerfile de `docling` (image de base CUDA, passthrough GPU) est le seul élément de ce lot
-  construit à partir de la documentation plutôt que d'un cycle build-and-test réel ici — à builder une
-  fois contre ta carte 24GB avant de considérer l'article comme final.
-- `ollama-ai-diff` et `ollama-ai-docs` partagent `_ai-docs.zsh` — vérifier que les deux copies restent
-  identiques si l'une des deux est modifiée après coup (même logique que `_ollama.zsh`, dupliqué dans
-  chaque dossier de brouillon pour que chaque article reste autoportant).
-- `ollama-ai-diagram` : même réserve que le reste de la série, logique raisonnée mais jamais exécutée
-  contre un vrai Ollama ni un vrai `fzf`.
-
-## Avant de publier les ponts thématiques hors série (ajoutés 2026-07-27)
-
-- `duckdb-json-csv` : le `Dockerfile` télécharge le binaire CLI officiel depuis GitHub Releases —
-  URL et version (`v1.5.5`) vérifiées réellement via l'API GitHub au moment de la rédaction (pas une
-  supposition), mais jamais buildée ici. Vérifier que le tag existe encore avant de builder.
-- `xdebug-docker-vscode` : configuration Xdebug 3.x/VSCode raisonnée à partir de connaissances stables
-  et bien établies (pas vérifiée via une source fraîche comme Docling/DuckDB), mais jamais testée en
-  conditions réelles ici — en particulier `pathMappings` dans `launch.json`, la cause n°1 de
-  breakpoints qui ne se déclenchent jamais si le chemin ne correspond pas exactement à ton setup.
-- `python-security-bandit-audit` : les identifiants d'avisory (`GHSA-...`) dans la démo `pip-audit`
-  sont illustratifs (formatés correctement mais pas vérifiés contre la base réelle pour ces versions
-  exactes) — clairement indiqué dans l'article lui-même, pas la peine de le corriger sans re-vérifier.
-
-## Nouvelle mini-série : lazydocker → Portainer → Traefik (créée 2026-07-27)
-
-Trois brouillons créés à la suite d'une demande de Christophe pour des articles sur des images Docker
-qui ont du sens dans son usage quotidien. Contrairement au reste de `.unpublished/`, ces trois-là
-forment une chaîne de dépendances **dures** (vrais composants `<Link>`, pas de simples mentions) — dans
-cet ordre précis, sans exception :
-
-| # | Slug | Angle | Pourquoi cet ordre |
-| --- | --- | --- | --- |
-| 1 | `lazydocker` | TUI terminal pour Docker, containerisé (Dockerfile + wrapper global) | Premier obligatoire — `portainer` et `traefik` le citent tous les deux via `<Link>` |
-| 2 | `portainer` | Dashboard web officiel (image `portainer-ce`), comparé à lazydocker | Cite `lazydocker` ET `anythingllm-chat-with-your-docs` (le paragraphe sur l'absence d'authentification d'Ollama) — doit donc aussi suivre ce brouillon-là s'il n'est pas encore publié |
-| 3 | `traefik` | Reverse proxy par labels Docker, routage vers Portainer + Open WebUI | Cite `lazydocker` ET `portainer` via `<Link>` — doit venir après les deux |
-
-**Contrainte dure supplémentaire :** `portainer` fait un lien direct vers
-`/blog/anythingllm-chat-with-your-docs` (le comparatif "Ollama sans authentification"). Si ce brouillon
-n'est pas encore publié au moment de sortir `portainer`, soit le publier avant, soit retirer ce lien
-avant publication.
-
-**Aucune dépendance externe cassée** — les trois articles font aussi des `<Link>` vers des posts déjà
-publiés (`docker-out-of-docker-dood`, `zsh-docker-functions`, `ollama-installation`,
-`accessing-ollama-across-your-local-network`), tous vérifiés existants sur le disque au moment de la
-création (2026-07-27).
-
-**Où les intercaler :** les trois se suivent forcément, mais rien n'empêche de les espacer dans le
-calendrier de publication global (ex. un article entre `lazydocker` et `portainer` pour varier) tant que
-l'ordre relatif 1→2→3 est respecté.
-
-**Avant de publier `lazydocker` (premier de la chaîne) :**
-
-- Le `Dockerfile` télécharge un binaire lazydocker via une release GitHub à une version épinglée
-  (`ARG LAZYDOCKER_VERSION=0.23.3`, choisie de mémoire) — vérifier que ce tag existe encore sur
-  [github.com/jesseduffield/lazydocker/releases](https://github.com/jesseduffield/lazydocker/releases)
-  avant de builder, sinon ajuster l'ARG.
-- Aucun des trois `Dockerfile`/`compose.yaml` de ce lot n'a été buildé ni testé contre un vrai hôte
-  Docker — Dockerfile et labels ont été raisonnés à partir de la documentation officielle de chaque
-  outil, pas d'un cycle build-and-test réel ici (même réserve que pour `docling`).
-- Captures d'écran manquantes pour les trois : le TUI de lazydocker, le dashboard Portainer, le
-  dashboard Traefik. Contrairement aux fonctions ZSH fzf (`dex`, `dstop`, ...) qui ont de vraies
-  captures dans `zsh-docker-functions`, ces trois interfaces plein écran/web n'ont pas encore été
-  capturées — à faire une fois testé, avant publication.
-
-## Nouveaux brouillons VSCode (créés 2026-07-27)
-
-Cinq brouillons créés à la suite d'une demande de Christophe sur l'optimisation de son workflow VSCode
-(outil utilisé quotidiennement). Contrairement à la mini-série Docker ci-dessus, ces cinq-là sont
-**indépendants entre eux** — aucun ordre de publication imposé — sauf un lien externe :
-
-| Slug | Angle | Dépendance |
+| # | Slug | Dépend de |
 | --- | --- | --- |
-| `vscode-gitlens` | Blame inline, historique de fichier/ligne, comparaison de branches | Aucune (liens vers `git-worktree` et `git-delta`, déjà publiés) |
-| `vscode-snippets-for-docusaurus` | Tour du vrai fichier `.vscode/markdown.code-snippets` de ce repo, avec deux entrées obsolètes identifiées (`CoreConcept`/`HighlyImportant`, plus des composants enregistrés — ce sont maintenant des variantes d'`AlertBox`) | Aucune (lien vers `docusaurus-snippets`, déjà publié — sujet différent : le composant React vs. la fonctionnalité éditeur) |
-| `vscode-profiles` | Documente le vrai setup de Christophe : profil quotidien (thème sombre) vs profil "DevContainer" (thème clair forcé, Claude Code installé uniquement là) | Aucune |
-| `vscode-multi-root-git-worktree` | Un `.code-workspace` multi-root pour voir tous les worktrees actifs dans une seule fenêtre — suite logique de la section "Worktrees work with VS Code" de l'article `git-worktree` | Aucune (article déjà publié) |
-| `vscode-extension-bisect` | L'outil intégré `Help: Start Extension Bisect`, même principe de recherche binaire que `git bisect`, callback assumé | **Dépendance dure** : fait un `<Link>` vers `/blog/git-bisect`, encore à l'état de brouillon — doit être publié avant `vscode-extension-bisect` |
+| 1 | `docusaurus-blog-map` | Aucune — ne lie que des articles publiés |
+| 2 | `docusaurus-ask-my-blog` | Aucune — ne lie que des articles publiés |
+| 3 | `docusaurus-command-palette` | #1 et #2 |
+| 4 | `docusaurus-ask-my-blog-bubble` | #1, #2 et #3 |
 
-**Avant de publier `vscode-extension-bisect` :** vérifier que `git-bisect` (brouillon existant, voir plus
-haut dans ce fichier) est publié en premier, sinon retirer temporairement le lien.
+`yarn links:check` signale actuellement des liens non résolus sur #3 et #4 — attendu, résolu en
+publiant dans l'ordre 1→2→3→4.
 
-**Avant de publier `vscode-snippets-for-docusaurus` :** le `<Snippet source=".vscode/markdown.code-snippets">`
-pointe directement vers le vrai fichier du repo (pas une copie dans `./files/`) — l'article restera
-donc automatiquement à jour si ce fichier change, mais si les deux entrées obsolètes signalées dans
-l'article (`CoreConcept`/`HighlyImportant`) sont supprimées du fichier avant publication, relire le
-paragraphe qui les mentionne pour ajuster le texte en conséquence.
+Solide : tous les `<Snippet source="…">` pointent vers les vrais fichiers du repo. Chiffres
+mesurés réellement le 2026-08-12 (247 nœuds / 1026 arêtes / 680 liens internes / 25 séries /
+40 thèmes ; 2050 questions retenues sur 2055 ; index 468 Ko brut / 63 Ko gzip). Validé par un
+`yarn build` complet (63 s, 415 fichiers HTML). Si publication tardive, relancer les mesures.
 
-## Nouveau brouillon standalone (créé 2026-07-30)
+**Avant de publier (les quatre) :** captures d'écran réelles manquantes (maquettes ASCII en
+attendant) ; liens réciproques à poser dans `/blog/docusaurus-series` et
+`/blog/docusaurus-eli5-snippet-tooltips` à la publication de #1/#2 ; #4 décrit la bulle en bas à
+droite (`right: 30px; bottom: 100px`) — corriger si déplacée ; #2 contient un exemple de session
+`yarn questions:edit` illustratif, pas une vraie exécution.
 
-| Slug | Angle | Dépendance |
-| --- | --- | --- |
-| `ai-agent-in-devcontainer` | Retour sur la décision de Symfony Docker de supprimer Claude Code comme agent IA par défaut et de le remplacer par un guide. Couvre OpenCode (open source, recommandé), configuration avec Ollama en local via `host.docker.internal`, et le network sandbox iptables/dnsmasq pour l'autonomie. | Liens vers `/blog/ollama-installation` et `/blog/accessing-ollama-across-your-local-network` (publiés) + `/blog/docker-prod-devcontainer` (publié) — aucune dépendance sur des brouillons non publiés. Aucune contrainte d'ordre. |
-| `docker-dive` | Analyse des images Docker avec `dive` — de zéro optimisation à multi-stage, avec bonus FROM scratch. Angle pédagogique : un mauvais Dockerfile progressivement amélioré, dive comme outil de diagnostic et gate CI. | **Dépendance souple** : le Conclusion mentionne `lazydocker` via `<Link to="/blog/lazydocker">`. Si ce brouillon est publié avant `lazydocker`, retirer ce lien ou remplacer par `/blog/docker-prod-devcontainer`. |
+### Nouveaux brouillons VSCode (créés 2026-07-27)
 
-**Avant de publier `ai-agent-in-devcontainer` :**
+Indépendants entre eux, sauf :
 
-- Article basé sur une source externe (article d'Antoine Benevaut + doc GitHub Symfony Docker) — vérifier que les liens GitHub sont toujours valides et que le guide d'intégration OpenCode dans Symfony Docker n'a pas évolué depuis.
-- Le contenu n'a pas été testé personnellement (OpenCode non installé ici) — `tried_it: false` positionné en conséquence. Avant publication, idéalement tester le flow OpenCode + Ollama dans un devcontainer réel.
-- L'article recommande `host.docker.internal:11434` pour Ollama — valable sur Docker Desktop (Mac/Windows) et versions récentes de Docker Engine sur Linux. À mentionner si la cible est Windows/WSL.
+- `vscode-extension-bisect` fait un `<Link>` dur vers `/blog/git-bisect` (encore brouillon) — doit
+  venir après.
+- `vscode-snippets-for-docusaurus` : le `<Snippet>` pointe vers le vrai fichier du repo — relire le
+  paragraphe sur les entrées obsolètes (`CoreConcept`/`HighlyImportant`) si elles sont supprimées
+  du fichier avant publication.
 
-**Avant de publier `docker-dive` :**
+### Réserves techniques à lever avant publication (par brouillon)
 
-- Les images `myapp:bad`, `myapp:v2`, `myapp:v3`, `myapp:multistage`, `myserver:scratch` et les sorties `dive --ci` n'ont pas été construites ni testées sur une vraie machine — les tailles et scores d'efficacité dans les fichiers `terminal_dive_*.txt` sont illustratifs mais réalistes. Vérifier les chiffres après avoir buildé les images réelles.
-- Le lien vers `/blog/lazydocker` en conclusion ne sera valide qu'une fois `lazydocker` publié (voir mini-série Docker dans ce fichier). Si `docker-dive` sort en premier, remplacer ce lien par `/blog/docker-prod-devcontainer`.
-- L'argument `--break-system-packages` de pip3 dans `Dockerfile.bad` / `Dockerfile.v3` est nécessaire sur `ubuntu:24.04` (PEP 668) mais inhabituel — ajouter une note dans l'article si des lecteurs signalent des erreurs.
-- Vérifier que `wagoodman/dive:latest` fonctionne avec le Docker socket courant (version API).
+- **Série Ollama (tous) :** `/img/series/ollama.webp` n'existe pas encore sur disque (page
+  `/series` cassée tant que non créée). Aucun script zsh de la série n'a été exécuté contre une
+  vraie instance Ollama. Le FZF interactif multi-param (`AI_PARAMS`, helpers
+  `_ai_prompt_file/language/number/text`) n'a pas été testé en conditions réelles. `ollama-ai-diff`
+  et `ollama-ai-docs` partagent `_ai-docs.zsh`, dupliqué dans chaque dossier — vérifier que les
+  deux copies restent identiques après modification.
+- **`docling` :** Dockerfile (image CUDA, passthrough GPU) construit à partir de la doc, jamais
+  buildé — à tester contre la carte 24GB avant de considérer l'article final.
+- **`duckdb-json-csv` :** URL/version du binaire CLI (`v1.5.5`) vérifiées via l'API GitHub à la
+  rédaction, jamais buildée — revérifier que le tag existe encore.
+- **`xdebug-docker-vscode` :** config Xdebug 3.x/VSCode raisonnée mais jamais testée en conditions
+  réelles, en particulier `pathMappings` dans `launch.json`.
+- **`python-security-bandit-audit` :** identifiants d'avisory (`GHSA-...`) dans la démo `pip-audit`
+  illustratifs, indiqué dans l'article lui-même.
+- **`atuin-bash-history` :** version épinglée `v18.16.1` — revérifier sur
+  [github.com/atuinsh/atuin/releases](https://github.com/atuinsh/atuin/releases) avant
+  publication. Dockerfile jamais buildé/testé. Liens réciproques à poser dans `/blog/linux-history`
+  et `/blog/linux-fzf-introduction`.
+- **`oha-http-load-testing` :** sorties `<Terminal>` illustratives, non exécutées contre
+  localhost:3000. Vérifier `ghcr.io/hatoo/oha:latest` et la version dans `<Prerequisite>`
+  (`oha 0.6.4`). Liens réciproques à poser dans `/blog/running-docusaurus-with-docker` et
+  `/blog/bruno`.
+- **`ai-agent-in-devcontainer` :** basé sur une source externe (article Antoine Benevaut + doc
+  GitHub Symfony Docker) — vérifier que les liens sont toujours valides. Non testé personnellement
+  (`tried_it: false`).
+- **`docker-dive` :** images de démo (`myapp:bad`, `myapp:v2`, etc.) non construites — chiffres
+  illustratifs mais réalistes, à vérifier après build réel. Lien vers `/blog/lazydocker` en
+  conclusion à retirer/remplacer si `docker-dive` sort avant `lazydocker`.
+- **`copy-as-markdown` :** validé par un `yarn build` complet (247 miroirs générés sans erreur,
+  aucun lien cassé). Le plugin montré dans l'article est pédagogique/simplifié, jamais ajouté au
+  vrai `docusaurus.config.js` (ce blog utilise `plugins/markdown-export-plugin`, plus complet).
+- **`blog-time-to-value-audit` :** chiffres réels du 2026-08-12 (318 articles audités, 180
+  RESTRUCTURE / 109 MINOR / 29 OK, médiane TTV 42 %). Pas de `series:` (délibéré). Expose
+  publiquement que 180 articles étaient mal structurés — décision éditoriale assumée. Bannière
+  `/img/v2/clean_code.webp` approximative, une bannière dédiée serait mieux.
+- **`docusaurus-github-actions-ssh-deploy` :** entièrement vérifié et à jour au 2026-08-18 (build
+  reproductible documenté, durcissement SSH testé, chronométrage réel 89s+12s, `--delete` ciblé en
+  trois passes). `files/deploy.yml` est anonymisé (`avonture.be` → `example.com`) — ne jamais faire
+  un `cp` aveugle depuis le vrai workflow. Lien réciproque vers `/blog/github-action` **à poser à
+  la publication** (phrase prête, juste à insérer). Tag `rsync` à créer dans `tags.yml` si utilisé.
+- **`docusaurus-pwa` :** aucune dépendance. Bannière `/img/v2/docusaurus_tips.webp` approximative
+  (déjà réutilisée sur deux autres articles de la série) — à remplacer si une bannière dédiée est
+  créée. Date placeholder `2026-09-01`.
+- **`docusaurus-mobile-preview` :** aucune dépendance sur un brouillon non publié — deux liens vers
+  `/blog/docker-localhost-ssl` et `/blog/vscode-devcontainer`, tous deux déjà publiés. Date
+  placeholder `2026-09-15`.
 
-## Nouveau brouillon standalone (créé 2026-07-30) — Atuin
+### Correction apportée à un article déjà publié (2026-07-27)
 
-| Slug | Angle | Dépendance |
-| --- | --- | --- |
-| `atuin-bash-history` | Atuin remplace l'historique shell plat par une base SQLite avec timestamps, exit code, durée et répertoire. Article en deux parties : démo Docker (Dockerfile fourni + `bash-preexec`) puis installation permanente sur Bash et ZSH, avec comparatif Atuin vs. FZF+history sous forme de tableau. | Aucune dépendance sur des brouillons non publiés. Liens internes vers `/blog/linux-history`, `/blog/linux-fzf-introduction`, `/blog/fzf-ripgrep`, `/blog/modular-zsh-workflow` (tous déjà publiés). |
-
-**Avant de publier `atuin-bash-history` :**
-
-- La version épinglée dans le Dockerfile est `v18.16.1` — vérifier sur [github.com/atuinsh/atuin/releases](https://github.com/atuinsh/atuin/releases) que c'est toujours la dernière stable avant publication, ajuster si besoin (mettre à jour l'URL dans `files/Dockerfile` et la mention dans l'article).
-- Le Dockerfile a été raisonné à partir de la documentation officielle et du fichier fourni par Christophe — à builder et tester avec `docker build -t atuin-demo . && docker run --rm -it atuin-demo` pour vérifier le flux complet.
-- L'URL du script `bash-preexec` (`https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh`) doit être testée lors du build — c'est la `main` branch, un `--depth=1 clone` serait plus reproductible si cette URL disparaît à terme.
-- Les liens réciproques à ajouter au moment de la publication (dans les articles déjà publiés) : `/blog/linux-history` (section sur les alternatives) et `/blog/linux-fzf-introduction` (mentionner Atuin comme alternative plus structurée).
-
-## Nouveau brouillon standalone (créé 2026-07-30) — oha
-
-| Slug | Angle | Dépendance |
-| --- | --- | --- |
-| `oha-http-load-testing` | `oha` est un générateur de charge HTTP écrit en Rust avec TUI temps réel. L'article le démontre contre le dev server Docusaurus local (`http://localhost:3000`) pour éviter d'attaquer un vrai site. Couvre l'installation (cargo + binaire + Docker), lecture du rapport (histogramme + percentiles), montée en charge, durée fixe, et export JSON. Fichier `files/compose.yaml` fourni. | Aucune dépendance sur des brouillons non publiés. Liens internes vers `/blog/ripgrep`, `/blog/linux-eza`, `/blog/running-docusaurus-with-docker` (tous déjà publiés), et `/blog/bruno` (déjà publié). |
-
-**Avant de publier `oha-http-load-testing` :**
-
-- Les sorties `<Terminal>` sont illustratives (basées sur le comportement réel d'oha, mais non exécutées ici contre localhost:3000). Tester les commandes sur le vrai dev server avant de publier pour vérifier que les chiffres sont dans des ordres de grandeur réalistes.
-- Vérifier que `ghcr.io/hatoo/oha:latest` existe toujours (image officielle GitHub Container Registry).
-- Vérifier la version dans `checkOutput` du composant `<Prerequisite>` (`oha 0.6.4`) — ajuster à la dernière stable depuis [github.com/hatoo/oha/releases](https://github.com/hatoo/oha/releases).
-- Liens réciproques à ajouter au moment de la publication : dans `/blog/running-docusaurus-with-docker` (mentionner oha comme outil pour tester les performances) et dans `/blog/bruno` (mentionner oha comme complément load-test vs. Bruno pour tests fonctionnels).
-
-## 10 nouveaux articles (confirmés 2026-07-31)
-
-Christophe a sélectionné 10 sujets lors d'une session de brainstorming. Deux phases :
-
-### Phase 1 — à rédiger en priorité (drafts créés 2026-07-31)
-
-| Slug | Titre | Dépendances |
-| --- | --- | --- |
-| `linux-yq` | yq — YAML processor (jq pour les fichiers YAML) | Aucune. Lien réciproque vers `/blog/linux-jq` à ajouter à la publication. |
-| `direnv` | direnv — auto-load .env au cd | Aucune. Lien réciproque vers `/blog/bash-load-env` à ajouter. |
-| `navi` | navi — cheatsheets interactives avec fzf | Aucune. Liens réciproques vers `/blog/linux-fzf-introduction` et `/blog/fzf-ripgrep`. |
-| `hyperfine` | hyperfine — benchmarking CLI | Aucune. Liens réciproques vers `/blog/ripgrep` et `/blog/linux-eza`. |
-| `git-interactive-rebase` | git rebase -i — nettoyer l'historique | Aucune. Liens réciproques vers `/blog/git-delta` et `/blog/git-worktree`. |
-
-### Phase 2 — à rédiger ensuite (pas encore écrits)
-
-| Slug (prévu) | Titre | Notes |
-| --- | --- | --- |
-| `ssh-proxyjump` | SSH ProxyJump + tunnels | Bastion host, LocalForward, fonction ZSH `stun` avec fzf. **Draft créé 2026-07-31.** |
-| `caddy` | Caddy — HTTPS automatique | Serveur web + reverse proxy, Caddyfile, `tls internal` pour dev local. **Draft créé 2026-07-31.** |
-| `open-webui-advanced` | Open WebUI — au-delà du chat | RAG local, presets modèles, Tools/Functions. `tried_it: false` positionné — vérifier l'interface avant publication. **Draft créé 2026-07-31.** |
-| `mcp-python-server` | MCP — serveur Python pour Claude Code | Python `mcp` SDK (FastMCP), `docker-inspector` avec 6 tools. Le code n'a pas été testé contre un vrai Claude Code — vérifier les chemins dans `settings.json` avant publication. **Draft créé 2026-07-31.** |
-| `ai-explain` | ai-explain — ELI5 terminal (série Ollama) | Dernier article de la série — publier APRÈS les 11 articles de la série. **Draft créé 2026-07-31.** |
-
-## Nouveau brouillon standalone (créé 2026-08-11) — Copy as Markdown
-
-| Slug | Angle | Dépendance |
-| --- | --- | --- |
-| `docusaurus-copy-as-markdown` | Reproduire le composant `src/components/CopyAsMarkdown` (bouton « Copy as Markdown » / « View raw » dans l'en-tête d'article) sur son propre blog Docusaurus. Couvre un plugin `postBuild` simplifié (mirroir `.md` par article) puis le composant React réel de ce repo (`<Snippet source="src/components/CopyAsMarkdown/index.tsx">`, source réelle, pas une copie). Volontairement plus simple que `plugins/markdown-export-plugin` (qui dégrade les composants MDX custom) — signalé en « Under the Hood » sans en détailler le code. | Aucune dépendance sur des brouillons non publiés. Liens internes vers `/blog/docusaurus-reactions`, `/blog/docusaurus-go-top` et `/blog/docusaurus-snippets` (tous déjà publiés). |
-
-**Avant de publier `docusaurus-copy-as-markdown` :**
-
-- `readme.md` du composant a été créé en même temps (`src/components/CopyAsMarkdown/readme.md`) — il pointe déjà vers cet article via son slug ; vérifier que le lien reste correct si le slug change.
-- Le plugin `plugins/markdown-mirror-plugin/index.cjs` montré dans l'article est un fichier pédagogique simplifié (`.unpublished/copy-as-markdown/files/`), testé localement (247 mirroirs générés sans erreur) mais jamais ajouté à `docusaurus.config.js` de ce repo — ce blog utilise déjà le vrai `plugins/markdown-export-plugin`, plus complet.
-- Article validé par un `yarn build` complet (copie temporaire dans `blog/`, supprimée après) : compile sans erreur MDX, aucun lien interne cassé.
-- Lien réciproque à ajouter au moment de la publication : aucun strictement nécessaire (l'article ne dépend d'aucun autre brouillon), mais envisager une mention dans `/blog/docusaurus-reactions` ou `/blog/docusaurus-snippets` (« autres composants de cette série ») si Christophe le souhaite.
-
-## Mini-série « navigation du blog » (créée 2026-08-12) — 4 articles, série *Creating Docusaurus components*
-
-Quatre brouillons documentant les fonctionnalités construites les 11 et 12 août 2026 : la carte du
-corpus ([[0081]]), l'index de questions ([[0083]]), la palette de commandes ([[0084]]) et la
-découvrabilité ([[0089]]). **Chaîne de dépendances dure** — les articles se citent mutuellement via
-`<Link>`, dans cet ordre précis :
-
-| # | Slug | Date placeholder | Angle | Dépend de |
-| --- | --- | --- | --- | --- |
-| 1 | `docusaurus-blog-map` | 2026-10-13 | `/map` : graphe force-directed du corpus, layout d3-force calculé **au build** dans Node, canvas + fallback liste. Trois types d'arêtes (link/series/tag) et le double seuil tag (layout vs payload). | Aucune — ne lie que des articles publiés |
-| 2 | `docusaurus-ask-my-blog` | 2026-10-20 | `/faq` : génération Ollama de 8-12 questions par article (sidecars `.questions.json`), plugin d'agrégation à trois formes, recherche BM25 côté client. | Aucune — ne lie que des articles publiés |
-| 3 | `docusaurus-command-palette` | 2026-10-27 | `Ctrl+K` : six modes par préfixe, index de navigation build-time, swizzle `SearchBar` + `Layout`, sonde Pagefind. | **#1 et #2** (`<Link>` durs) |
-| 4 | `docusaurus-ask-my-blog-bubble` | 2026-11-03 | La bulle flottante comme troisième porte vers l'index de questions (la première qui ne suppose aucune connaissance préalable) + le hint première visite ; l'exclusion mutuelle des overlays. | **#1, #2 et #3** (`<Link>` durs) |
-
-`yarn links:check` signale actuellement 2 liens non résolus sur #3 et 3 sur #4 — c'est attendu et
-c'est exactement la chaîne ci-dessus. Publier dans l'ordre 1 → 2 → 3 → 4 les résout tous.
-
-**Ce qui est solide dans ces quatre articles :** tous les `<Snippet source="…">` pointent vers les
-**vrais fichiers du repo** (pas des copies dans `files/`), donc les articles restent
-automatiquement à jour si le code change. Tous les chiffres cités ont été mesurés réellement le
-2026-08-12 (247 nœuds / 1026 arêtes / 680 liens internes / 25 séries / 40 thèmes ; 2050 questions
-retenues sur 2055, 5 doublons supprimés ; index 468 Ko brut / 63 Ko gzip ; 1355 paires de tags dont
-1153 en poids 2). Les sorties `<Terminal>` sont de vraies exécutions (génération Ollama en 11 s,
-recherches BM25 réelles), pas des maquettes.
-
-**Avant de publier (les quatre) :**
-
-- **Captures d'écran manquantes.** Les quatre articles utilisent des maquettes ASCII en bloc
-  `plaintext` pour montrer l'interface (palette, page map, grille de la home, bulle). C'est
-  volontaire — aucun `![](./images/…)` cassé ne peut faire échouer le build — mais une vraie
-  capture dans un `<BrowserWindow>` serait nettement meilleure pour la lecture. À faire au moment
-  de la publication de chaque article.
-- **Liens réciproques non posés.** Rien n'a été ajouté dans les articles déjà publiés, pour ne pas
-  créer de lien cassé en production vers un brouillon. À la publication de #1 et #2, envisager une
-  mention dans `/blog/docusaurus-series` (couleurs de série réutilisées par la map) et
-  `/blog/docusaurus-eli5-snippet-tooltips` (même convention de sidecar généré).
-- **Chiffres à re-vérifier.** Le corpus grossit d'un article par semaine : si la publication a lieu
-  bien après octobre 2026, relancer les mesures (247 articles, 2050 questions, etc.) avant de
-  publier, sinon les compteurs cités dans le texte seront faux.
-- **#4 uniquement :** l'article décrit la bulle comme étant **en bas à droite** — c'est ce que fait
-  `src/components/AskMyBlogWidget/styles.module.css` (`right: 30px; bottom: 100px`, empilée
-  au-dessus du bouton scroll-to-top). Si la bulle est un jour déplacée à gauche, corriger le texte
-  et la maquette ASCII.
-- **#2 uniquement :** l'exemple de session `yarn questions:edit` est une **illustration** (format de
-  sortie réel du script, contenu inventé) — contrairement aux deux autres blocs `<Terminal>` de cet
-  article qui sont de vraies exécutions. Le laisser tel quel ou le remplacer par une vraie session
-  au moment de la publication.
-- ✅ **Déjà validé par un `yarn build` complet** (2026-08-12) : les quatre brouillons ont été copiés
-  temporairement dans `blog/` aux dates ci-dessus, `draft: true` retiré, build réussi en 63 s
-  (415 fichiers HTML, 251 articles mirrorés) — aucune erreur de compilation MDX, tous les
-  `<Snippet source="…">` résolus. Copies supprimées après. À refaire si le texte change beaucoup.
-  Attention : `onBrokenLinks: "ignore"` dans `docusaurus.config.js`, donc ce build **ne valide pas**
-  les liens internes — c'est `yarn links:check` qui joue ce rôle (voir la chaîne de dépendances
-  ci-dessus).
-
-## Deux brouillons complémentaires (créés 2026-08-12) — llms.txt et audit de lisibilité
-
-Issus des chantiers du 10-11 août, indépendants de la mini-série ci-dessus et **sans aucune
-dépendance sur un brouillon non publié**. Publiables quand on veut.
-
-| Slug | Date placeholder | Série | Angle |
-| --- | --- | --- | --- |
-| `docusaurus-llms-txt` | 2026-11-10 | *Creating Docusaurus components* | [[0082]] — `/llms.txt`, miroirs `.md` par article, bundles full-text par série. Le cœur : on dégrade le **MDX source**, jamais le HTML rendu ; règle de repli « composant inconnu → on garde les children » + warning au build. Plus les quatre crochets de découvrabilité et les soumissions aux annuaires. |
-| `blog-time-to-value-audit` | 2026-11-17 | *(aucune — article sur l'écriture, pas sur un composant)* | La campagne `/reader_review` : 318 articles audités, 180 verdicts RESTRUCTURE. Métrique TTV mécanique, les trois passes, l'échelle OK/MINOR/RESTRUCTURE et la règle « MINOR ne produit jamais de TODO ». |
-
-**Chiffres réels mesurés le 2026-08-12** (à re-vérifier si publication tardive) : 247 articles
-mirrorés / 247, 0 échec, 25 bundles de série, `llms.txt` = 73 Ko, bundle *Creating Docusaurus
-components* = 710 Ko ; 917 `<Snippet>` / 779 `<Link>` / 546 `<AlertBox>` / 455 `<Terminal>` /
-107 `defaultOpen={false}`. Audit : 318 lignes de journal, 180 RESTRUCTURE / 109 MINOR / 29 OK,
-médiane TTV 42 %, 60 articles à 100 %, répartition 52 🟢 / 62 🟠 / 191 🔴. Avant/après
-`docker-volumes` : 38 % → 3,2 % (vérifié sur le fichier actuel).
-
-**Avant de publier :**
-
-- ✅ **`yarn build` complet validé** (2026-08-12) : les deux copiés temporairement dans `blog/`,
-  `draft: true` retiré, build réussi en 64 s. Copies supprimées après.
-  ⚠️ **Piège découvert à cette occasion** : un fichier de démo nommé `files/*.md` sous `blog/`
-  est compilé comme MDX par le plugin blog (`include: **/*.{md,mdx}`) et casse le build sur ses
-  propres liens d'images. Le fichier d'exemple a été renommé en `files/mirror_sample.txt`, avec
-  `filename="/blog/docusaurus-go-top.md"` sur le `<Snippet>` pour garder la coloration Markdown
-  (le loader déduit le langage de `filename` avant `source`). **Ne jamais mettre de `.md` dans un
-  `files/`** — utiliser `.txt`, comme le fait déjà `copy-as-markdown`.
-- **`docusaurus-llms-txt` : faux positif connu de `yarn links:check`** — le lien absolu
-  `https://www.avonture.be/blog/docusaurus-go-top.md` (vers le vrai miroir généré) est compté
-  comme lien interne cassé. C'est correct de le garder : le fichier existe réellement après
-  `yarn build`.
-- **Recouvrement avec `copy-as-markdown`** : ce dernier couvre le bouton + un plugin miroir
-  *simplifié*, `docusaurus-llms-txt` couvre `llms.txt`, les bundles, la table de dégradation et
-  la découvrabilité. Aucun conflit, mais ajouter un `<Link>` réciproque entre les deux au moment
-  de publier le second des deux.
-- **Bannières** : `docusaurus-llms-txt` utilise `/img/v2/markdown.webp` (texte incrusté
-  « Clean, Readable Documentation / Simplify Your Technical Writing » — très bon match, mais déjà
-  utilisée par `copy-as-markdown` et `markitdown`). `blog-time-to-value-audit` utilise
-  `/img/v2/clean_code.webp` (« Clean Code wins ») : le visuel loupe/audit colle, le texte parle de
-  *code* alors que l'article parle de *prose* — **une bannière dédiée serait nettement mieux**.
-- **`blog-time-to-value-audit` n'a pas de `series:`** — délibéré, aucune série existante ne
-  couvre l'écriture. À reconsidérer si une série « écrire mieux » est créée un jour.
-- **`blog-time-to-value-audit` expose publiquement que 180 articles du blog étaient mal
-  structurés.** C'est assumé comme étant le hook de l'article (un audit sur son propre corpus est
-  plus crédible qu'un conseil abstrait), mais c'est une décision éditoriale à confirmer.
-- Liens réciproques à poser au moment de la publication : `/blog/docker-volumes` (cité comme cas
-  d'école dans l'audit) et `/blog/docusaurus-snippets` (cité par les deux).
-
-## Nouveau brouillon standalone (créé 2026-08-17) — pipeline de déploiement
-
-| Slug | Date placeholder | Série | Angle |
-| --- | --- | --- | --- |
-| `docusaurus-github-actions-ssh-deploy` | 2026-08-24 | *(aucune)* | Comment je publie le blog : `git push` → GitHub Actions build + vérifications → `rsync` sur SSH. Plus le tour de force `draft: true` retiré depuis github.com, donc publication depuis un téléphone. Tutoriel destiné à quiconque a Docusaurus + GitHub + un hébergement SFTP/SSH. |
-
-Aucune dépendance sur un autre brouillon. Publiable dès que les points ci-dessous sont réglés.
-
-**Avant de publier :**
-
-- ✅ **Section « The Catch: Your Build Must Be Reproducible » ajoutée (2026-08-18)** — le manque le
-  plus grave du premier jet : tout le bénéfice (1,76 Mo au lieu de 165) dépend d'un build
-  déterministe, et rien ne prévient quand ça casse. La section donne la recette de diagnostic
-  (deux builds, comparaison md5, à froid) et le motif de correction (dériver la date du contenu,
-  pas de l'horloge). Ajouté aussi : avertissement sur le premier run qui transfère tout,
-  mention de `[skip ci]` natif, et note sur les deux endroits du workflow à adapter (URLs du smoke
-  test, liste `--exclude`).
-- ✅ **Durcissement SSH documenté dans l'article (2026-08-18)** : deux entrées ajoutées dans
-  « Under the Hood » — la clé de déploiement contrainte par `restrict,command="rrsync -wo ..."`
-  (avec les trois commandes de vérification, toutes testées en réel), et l'épinglage de la clé
-  d'hôte via `SSH_KNOWN_HOSTS`. Les deux pièges sont signalés : `REMOTE_PATH` devient `/` sous
-  rrsync, et `--chmod` doit être retiré (hors liste blanche). Vérifié : les `--exclude` ne sont
-  jamais envoyés au serveur, donc leur absence de la liste blanche est sans effet.
-- ✅ **Chronométrage bout-en-bout réel (2026-08-18)** : 89 s de build + 12 s de transfert en
-  production, soit moins de deux minutes entre le `git push` et la mise en ligne.
-- ⚠️ **Recoupement avec `/blog/github-action`** (« GitHub - Use Actions to deploy this blog »,
-  publié 2026-01-14, 70 lignes, `review_date: 2026-07-30`). L'ancien article décrit la version FTP
-  du même pipeline. Le nouveau ne le remplace pas : il le cite comme point de départ valable pour un
-  hébergement FTP-only. **Décision éditoriale à confirmer** — soit on garde les deux avec le lien
-  croisé actuel, soit on réécrit l'ancien pour qu'il pointe explicitement vers le nouveau.
-- ✅ **Chiffres réels intégrés, puis corrigés (2026-08-18)** : le premier jet présentait
-  « 61 fichiers / 1,76 Mo » comme le coût de publication d'un article — **faux**, ces chiffres
-  venaient d'un dry run sans aucun changement de contenu. Les vrais chiffres, issus du déploiement
-  du 18/08 : éditer un article change **413 pages HTML** (l'index de navigation global est embarqué
-  dans `main.js`, donc son hash bouge et toutes les pages le référencent), soit 43,05 Mo de
-  « transferred file size » — mais **287 Ko réellement envoyés**, l'algorithme delta ayant reconnu
-  42,64 Mo de blocs déjà présents. `files/rsync-stats.txt` contient cette sortie authentique.
-  Repères : déploiement sans changement de contenu ≈ 1,76 Mo (churn Pagefind seul) ; déploiement
-  avec article ≈ 3,6 Mo sur les trois passes. Historique : premier rsync après migration =
-  758 fichiers / 52,62 Mo (rattrapage du build FTP pré-correctifs) ; premier `--delete` ciblé =
-  613 orphelins supprimés (487 chunks JS + 126 index Pagefind).
-- ⚠️ **Métrique du résumé de run corrigée (2026-08-18)** : le tableau `$GITHUB_STEP_SUMMARY`
-  affichait `Total transferred file size` (43 Mo) au lieu de `Total bytes sent` (287 Ko). La
-  première mesure la taille des fichiers concernés, pas le coût réseau.
-- ✅ **Erreur factuelle corrigée (2026-08-18)** : l'article affirmait que le build refuse de passer
-  sur un lien interne cassé. **Faux sur ce blog** — `docusaurus.config.js` fixe
-  `onBrokenLinks: "ignore"`, délibérément, parce que les routes dynamiques `/blog/tags/*` et
-  `/series/*` produisent 15 faux positifs. Ce qui arrête réellement le build : erreur MDX, ancre
-  cassée (`onBrokenAnchors: "throw"`), route dupliquée, plus les contrôles du workflow (sitemap/RSS
-  vides ou XML invalide).
-- ⚠️ **`files/deploy.yml` n'est PLUS une copie brute du workflow réel (2026-08-18)** — il a été
-  **anonymisé** : `avonture.be` → `example.com`, « Deploy blog on avonture.be » → « Deploy blog »,
-  `deploy-avonture` → `deploy-blog`. **Ne jamais faire un `cp` aveugle depuis
-  `.github/workflows/deploy.yml`** : il faut re-appliquer ces substitutions. Idem pour
-  `files/git-push.txt` (`cavo789/blog.git` → `me/blog.git`). Dans `index.md`, tous les chemins
-  serveur utilisent `/home/me/`. Seul `authors: [christophe, claude]` reste — c'est la signature,
-  pas une fuite. Vérification : `grep -rniE "avonbjpf|n0c|5022|avonture|cavo789" .` ne doit
-  remonter que la ligne `authors:`. Reste à re-synchroniser si le workflow évolue. Resynchronisé le 2026-08-18 (résumé de
-  transfert, Node 24, variantes `[skip-ci]`, `--delete` ciblé). Reste possiblement à venir :
-  `SSH_KNOWN_HOSTS` pour remplacer le TOFU de `ssh-keyscan`.
-- ✅ **`--delete` ciblé implémenté (2026-08-18)** : transfert en trois passes. Passe 1 = le site
-  sans `--delete` (la racine web contient `api/` avec des données de lecteurs et un `.env`, plus
-  `.well-known/` = `acme-challenge/` pour le SSL et `atproto-did` pour le handle Bluesky — rien de
-  tout ça n'est dans le dépôt). Passes 2 et 3 = `assets/` et `pagefind/` avec `--delete`, périmètre
-  borné par les chemins eux-mêmes. Christophe a confirmé n'avoir rien déposé à la main dans ces
-  deux dossiers. Motif principal : Pagefind redécoupe son index à chaque build et laisse ~59
-  orphelins par déploiement. La section « Under the Hood » de l'article a été réécrite en
-  conséquence.
-- ✅ **Bannière dédiée créée par Christophe (2026-08-18)** : `/img/v2/publishing_blog.webp`,
-  inutilisée ailleurs. Remplace `github_profile_automate.webp` qui n'était qu'un pis-aller.
-- ⚠️ **Lien réciproque depuis `/blog/github-action` : À POSER À LA PUBLICATION.** L'article
-  `github-action` a été mis à jour le 2026-08-18 (AlertBox `important` après `<!-- truncate -->`,
-  nouvelle section « Why I Moved to SSH », entrée `updates:`), mais **sans** le `<Link>` vers ce
-  brouillon. Raison : `onBrokenLinks: "ignore"` fait que rien ne préviendrait, et le lien
-  renverrait un 404 aux lecteurs jusqu'à la publication. La phrase d'accroche est prête, il ne
-  reste qu'à insérer le lien à la fin de la section « Why I Moved to SSH ».
-  ⚠️ **Piège découvert à cette occasion** : une `AlertBox` contenant un lien d'ancre (`#section`)
-  placée **avant** `<!-- truncate -->` casse le build — l'extrait est rendu sur les pages de tags,
-  où l'ancre n'existe pas, et `onBrokenAnchors: "throw"` bloque. Placer ce genre d'encadré après
-  le `truncate`.
-- ✅ **Correction annexe sur `/blog/github-action`** : son `<Snippet>` pointait sur
-  `.github/workflows/deploy.yml`, le fichier vivant du dépôt — il affichait donc notre workflow
-  rsync dans un article qui parle de FTP. La version FTP a été figée dans
-  `blog/2024/01/14/github-action/files/deploy.yml` (extraite de `d17b42b3`).
-- Le tag `rsync` n'existe pas dans `blog/tags.yml` ; l'article utilise `[github, docusaurus, ssh]`.
-  À créer si on veut le référencer.
-
-## Correction apportée à un article déjà publié (2026-07-27)
-
-`/blog/ollama-installation` (publié 2026-03-30) a été corrigé suite à une vérification demandée par
-Christophe : section Continue mise à jour (config.yaml au lieu de config.json désormais déprécié,
-mention du rachat de Continue.dev par Cursor/Anysphere en juin 2026 et du statut figé du dépôt,
-remplacement de `gemma2:27b` par `qwen3-coder:30b` comme modèle "plus puissant" recommandé — reflète
-son usage réel actuel). Une entrée `updates:` a été ajoutée au frontmatter. Les anciens fichiers
-`files/continue/config*.json` (et leurs `.eli5.json` générés) ont été supprimés, remplacés par des
-`.yaml` équivalents. Non re-vérifié : l'affirmation de l'article comme quoi la config Continue doit
-être dans le dossier home Windows plutôt que côté WSL — laissée telle quelle avec une réserve ajoutée
-dans le texte, Christophe n'a pas encore retesté ce point.
-
-## Nouveau brouillon standalone (créé 2026-08-18) — PWA installable
-
-`docusaurus-pwa` (« From Browser Tab to Home Screen: Making a Docusaurus Blog Installable »).
-Série *Discovering Docusaurus*, `mainTag: docusaurus`, `tags: [docusaurus]` — pas de tag `pwa`
-dédié dans `tags.yml`, à créer si l'article se multiplie un jour (auditer les tags à la
-publication). Raconte tout ce qui a été fait sur ce blog pour l'installabilité PWA (manifeste,
-icônes générées, `@docusaurus/plugin-pwa`, dégradation honnête de la recherche hors ligne, pastille
-d'installation visible) — écrit comme un tutoriel final, sans raconter les essais-erreurs
-(demande explicite de Christophe).
-
-**Aucune dépendance dure ou souple** — ne cite aucun autre brouillon de `.unpublished/` par nom.
-Trois liens internes vers des articles déjà publiés : `/blog/docusaurus-reactions` (endpoint
-d'écriture `api/reactions.php`, cité comme exemple de ce que le service worker ne doit jamais
-mettre en cache), `/blog/docusaurus-docker-own-blog` (emplacement de `static/.htaccess`), et
-`/blog/docusaurus-old-notice` (précédent de montage global dans `Layout`). Libre de se placer où
-le rythme éditorial le suggère — aucune contrainte de séquence avec un autre brouillon.
-
-⚠️ **Image de bannière approximative** : `image: /img/v2/docusaurus_tips.webp` — aucune image
-existante ne correspond vraiment au thème (installation d'app, hors ligne, mobile), c'est la
-meilleure approximation générique parmi les 153 bannières disponibles (déjà réutilisée sur deux
-autres articles de la même série). À remplacer par une bannière dédiée si Christophe en fait
-créer une avant publication — comme cela a été fait pour `publishing_blog.webp` sur un autre
-brouillon récent (voir section « pipeline de déploiement » ci-dessus).
-
-Date de publication `2026-09-01` — un simple placeholder, à ajuster selon le calendrier éditorial
-réel au moment de la publication.
-
-## Nouveau brouillon standalone (créé 2026-08-25) — Easter egg "shake to reveal"
-
-`docusaurus-shake-easter-egg` (« Shake Your Phone, Startle the Meerkat »). Série *Creating
-Docusaurus components*, même série que `/blog/docusaurus-easter-eggs` (le "9e" easter egg,
-mais publié comme article indépendant, pas comme mise à jour de l'article existant). Documente
-le nouveau composant `src/components/ShakeEasterEgg/` (détection de secouage via `devicemotion`,
-overlay plein écran avec le suricate effrayé) déjà câblé dans `src/theme/Root.js`.
-
-**Deux liens internes** vers des articles déjà publiés : `/blog/docusaurus-easter-eggs` (le
-pattern de montage global dans `Root.js`) et `/blog/gemini-meerkat` (génération des images du
-mascotte via Gemini — pertinent car l'article raconte le bug de transparence rencontré en
-générant `suricate_scared.png/webp`). Vérifié avec `yarn links:check`.
-
-**Android uniquement pour l'instant** — le composant n'implémente pas encore le flux de
-permission iOS (`DeviceMotionEvent.requestPermission()`, nécessite un tap explicite). L'article
-le documente comme limitation connue plutôt que de le cacher.
-
-⚠️ **Lien réciproque à poser à la publication** : `/blog/docusaurus-easter-eggs` devrait gagner
-une mention de ce 9e easter egg (et un `<Link>` vers `/blog/docusaurus-shake-easter-egg`) une
-fois ce brouillon publié — pas avant, sinon lien mort tant que le brouillon reste exclu du build.
-
-⚠️ **Bannière réutilisée, pas dédiée** : `image: /img/v2/easter_eggs.webp`, identique à celle de
-l'article existant faute de mieux (aucune des 153 bannières ne couvre "secouer son téléphone").
-À remplacer par une bannière dédiée si Christophe en fait créer une avant publication.
-
-Date de publication `2026-09-08` — placeholder, aucune contrainte de séquence avec un autre
-brouillon (ne dépend d'aucun autre par nom, aucun autre n'en dépend).
+`/blog/ollama-installation` (publié 2026-03-30) corrigé : section Continue mise à jour
+(`config.yaml` au lieu de `config.json`, rachat de Continue.dev par Cursor/Anysphere en juin 2026,
+`qwen3-coder:30b` comme modèle recommandé). Entrée `updates:` ajoutée. Non re-vérifié :
+l'affirmation sur l'emplacement de la config Continue (dossier home Windows vs. WSL).

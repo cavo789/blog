@@ -5,6 +5,11 @@
 # Production
 /build
 
+# `yarn start`-only copy of admin-data-plugin's output — see plugins/admin-data-plugin
+# for why this can't just live under /build. `yarn build` writes its own copy straight
+# into build/admin-data/, never through here.
+/static/admin-data/
+
 # Generated files
 .docusaurus
 # `yarn start`'s own copy of the above, kept separate so a concurrent `yarn build` can never

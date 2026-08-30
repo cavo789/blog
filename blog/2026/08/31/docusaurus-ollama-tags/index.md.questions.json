@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-08-30T08:11:14.861Z",
+  "source": "index.md",
+  "sourceHash": "f0012aa2e01e535ba835d3ecc3f24b71a851d399",
+  "questions": [
+    {
+      "question": "How do I install and run the blog post analyzer with a local LLM?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What is the purpose of the two Python scripts in the devcontainer?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "How do I test the Ollama service after downloading it?",
+      "anchor": "copy-the-directory-structure-and-files"
+    },
+    {
+      "question": "What is the JSON file that holds the generated tags for every post?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How do I run the tag generation script in Visual Studio Code?",
+      "anchor": "run-the-analyze-and-link-script"
+    },
+    {
+      "question": "What is the endpoint used by the Python scripts to send content and receive tags from the LLM model?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "How do I compare tags across posts to suggest interlinks on its own?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of using a local LLM for tagging blog posts?",
+      "anchor": "the-result"
+    }
+  ]
+}

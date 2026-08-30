@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:51:59.615Z",
+  "generated": "2026-08-30T08:11:01.849Z",
   "source": "index.md",
-  "sourceHash": "353d47bb3365c511ecb2fe79dc988cee54d845a3",
+  "sourceHash": "76a2d64b07605c757f9cc7b000f7801668604673",
   "questions": [
     {
-      "question": "How do I use jq to filter JSON data from the command line?",
+      "question": "What is jq used for in Linux?",
+      "anchor": ""
+    },
+    {
+      "question": "How does jq pretty-print JSON data?",
+      "anchor": "the-same-answer-twice"
+    },
+    {
+      "question": "What is the filter expression to retrieve a specific node from JSON using jq?",
       "anchor": "filtering-the-output"
     },
     {
-      "question": "What is the purpose of using jq in a shell script?",
-      "anchor": "lets-play"
-    },
-    {
-      "question": "Can you explain how to use jq with Docker containers for API responses?",
+      "question": "How do I see an example of jq in action with Docker?",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How do I install the jq utility on my Linux system?",
+      "question": "What is the command to install jq on my system?",
       "anchor": "installing-jq"
     },
     {
-      "question": "What is the basic usage of jq when it's not used with any arguments?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "How can I use jq to read JSON data from a file?",
+      "question": "What are some free JSON APIs that can be used with jq?",
       "anchor": "lets-play"
     },
     {
-      "question": "What is the purpose of the .results[0].name filter expression in jq?",
-      "anchor": "filtering-the-output"
+      "question": "How do I use jq without any arguments to prettify JSON output?",
+      "anchor": "conclusion"
     },
     {
-      "question": "How does jq help with troubleshooting Docker container output?",
-      "anchor": "conclusion"
+      "question": "What are some practical applications of jq in shell scripting and debugging Docker containers?",
+      "anchor": ""
     }
   ]
 }

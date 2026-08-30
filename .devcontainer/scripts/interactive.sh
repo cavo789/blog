@@ -76,10 +76,9 @@ function static() {
     done
 
     printf "🏗️  Building Docusaurus...\n"
-    if ! yarn docusaurus clear; then
-        printf "❌ 'docusaurus clear' failed, see errors above.\n" >&2
-        return 1
-    fi
+    # No `docusaurus clear` here — this is just "preview the built site locally", not the
+    # correctness gate (that's `verify`, which clears deliberately). Keeping the webpack
+    # persistent cache lets unchanged rebuilds skip most of the work.
     if ! yarn docusaurus build; then
         printf "❌ 'docusaurus build' failed, see errors above.\n" >&2
         return 1

@@ -77,7 +77,7 @@ never reach for the fanciest one:
 | --- | --- | --- |
 | 1. **Real terminal output** | Default. Almost always already available. | `<Terminal source="./files/…" />` |
 | 2. **Words and arrows** | A flow with several actors or files | A `plaintext` fenced block + a "file → role" table. See the "The Big Picture" section of `blog/2026/07/27/reactions/index.md` |
-| 3. **A screenshot** | There is a UI to see | `![alt](./images/….webp)` |
+| 3. **A screenshot** | There is a UI to see | `![alt](./images/….webp)` — **if it shows a web page (a web UI, an admin panel, a dashboard, an API response viewed in a browser), wrap it in `<BrowserWindow url="…">`** with the exact address named in the prose. Never for desktop apps (VS Code, Docker Desktop, a terminal, Excel, a file explorer) — those stay plain. Full rule: `AGENTS.md` → *Blog Content Guidelines*. |
 | 4. **Mermaid** | Genuinely non-linear: branches, loops, several parties | ` ```mermaid ` fence (the theme is enabled site-wide) |
 
 A linear pipeline does **not** need Mermaid. A terminal output beats every diagram, because
@@ -214,5 +214,7 @@ Each of these was measured on a real article of this blog:
 6. Are the 2 to 4 internal `<Link>` still inline in the prose (`yarn links:check <path>`)?
 7. Does the same port/name/version repeat across 2+ commands, hardcoded instead of a `<Vars>`
    marker? (See movement 4.)
+8. Does any screenshot show a web page (browser, web UI, dashboard) **without** being wrapped
+   in `<BrowserWindow url="…">`? (Must be no — see movement 2, rung 3.)
 
 `/reader_review <path>` runs the same checks and puts a number on question 1.

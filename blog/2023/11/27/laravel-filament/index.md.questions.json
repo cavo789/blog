@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:25.859Z",
+  "generated": "2026-08-30T08:10:57.215Z",
   "source": "index.md",
-  "sourceHash": "6f41fc96bd4fe0744fce2afbebc8d4b40c98fb70",
+  "sourceHash": "a587ff517544330ff74dfeeada9d89f4da4e37ca",
   "questions": [
     {
-      "question": "What is Laravel Filament?",
+      "question": "What are the benefits of using Laravel Filament in a real project?",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "How does Filament simplify admin interface development with Laravel?",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "Why should I consider using Laravel Filament instead of Laravel Nova?",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "What are the main features and benefits of Laravel Filament?",
       "anchor": ""
     },
     {
-      "question": "How do I use Laravel Filament for building admin interfaces?",
+      "question": "How does Filament generate CRUD screens from a single PHP class?",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "Can you explain how Filament handles authorization in relation to Laravel's policies?",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "What are the additional features and plugins available for Filament?",
       "anchor": ""
     },
     {
-      "question": "Is Laravel Filament a free alternative to Laravel Nova?",
-      "anchor": ""
-    },
-    {
-      "question": "What technologies does Laravel Filament use?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I see the benefits of using Laravel Filament for development?",
-      "anchor": ""
-    },
-    {
-      "question": "Where can I learn more about Laravel Filament?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some other articles related to Laravel Filament on this blog?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the difference between Laravel Filament and Laravel Nova?",
+      "question": "How does Filament compare to other back-office tools like Nova or Backpack?",
       "anchor": ""
     }
   ]
