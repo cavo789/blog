@@ -8,6 +8,7 @@ mainTag: ai
 tags: [ai, docusaurus, ollama]
 date: 2026-08-31
 ai_assisted: true
+blueskyRecordKey: 3mubxxg7g7s2t
 ---
 
 ![Playing with Ollama - Create a blog post analyzer with a local LLM](/img/v2/ollama_docusaurus_tags.webp)
