@@ -1,41 +1,53 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-30T08:11:14.861Z",
+  "generated": "2026-08-30T08:31:56.140Z",
   "source": "index.md",
-  "sourceHash": "f0012aa2e01e535ba835d3ecc3f24b71a851d399",
+  "sourceHash": "fdbd201bdb753c39564b11f1ddc5d8d4dba1ab9b",
   "questions": [
     {
-      "question": "How do I install and run the blog post analyzer with a local LLM?",
-      "anchor": "installation"
-    },
-    {
-      "question": "What is the purpose of the two Python scripts in the devcontainer?",
-      "anchor": "the-result"
-    },
-    {
-      "question": "How do I test the Ollama service after downloading it?",
-      "anchor": "copy-the-directory-structure-and-files"
-    },
-    {
-      "question": "What is the JSON file that holds the generated tags for every post?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How do I run the tag generation script in Visual Studio Code?",
+      "question": "How do I run the tag generation script?",
       "anchor": "run-the-analyze-and-link-script"
     },
     {
-      "question": "What is the endpoint used by the Python scripts to send content and receive tags from the LLM model?",
+      "question": "What is the purpose of the analyze and link script?",
       "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "How do I compare tags across posts to suggest interlinks on its own?",
+      "question": "How does the Ollama service work?",
+      "anchor": "installation"
+    },
+    {
+      "question": "Can I use this tool for Docusaurus-specific content?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of using a local LLM for tagging blog posts?",
-      "anchor": "the-result"
+      "question": "What is the difference between the first and second scripts?",
+      "anchor": ""
+    },
+    {
+      "question": "How do I test the Ollama service before running the tag generation script?",
+      "anchor": "installation"
+    },
+    {
+      "question": "Where can I find the generated tags for each post?",
+      "anchor": "run-the-analyze-and-link-script"
+    },
+    {
+      "question": "What is the relationship between the two scripts in this tool?",
+      "anchor": ""
+    },
+    {
+      "question": "How does the script compare tags across posts to suggest interlinks?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "Can I use this tool for any folder of Markdown files?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the purpose of the LLM model in this tool?",
+      "anchor": "installation"
     }
   ]
 }
