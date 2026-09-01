@@ -1,8 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:41.862Z",
+  "generated": "2026-09-01T18:55:55.628Z",
   "source": "login.feature",
+  "sourceHash": "40da7f440f41adf2502ef3e8b4c2cdc1799e2616",
   "lang": "feature",
-  "explanations": {}
+  "summary": "This is a Gherkin feature file that describes a user login test scenario in plain English. It outlines one test case where a user successfully logs in with correct credentials and ends up on the dashboard—this is the kind of specification that both developers and non-technical stakeholders can read and understand.",
+  "explanations": {
+    "1": "The 'Feature' keyword marks the start of a feature file and gives it a title; think of it as the test suite name.",
+    "2": "A 'Scenario' is a single test case within the feature—in this case, we're testing what happens when someone logs in correctly.",
+    "3": "The 'Given' step describes the initial state or precondition—the user needs to be positioned at the login page before we test anything.",
+    "4": "The 'When' step describes the action the user takes—entering their username and password.",
+    "5": "The 'Then' step describes the expected outcome or assertion—if login works, the user should see the dashboard page instead."
+  }
 }

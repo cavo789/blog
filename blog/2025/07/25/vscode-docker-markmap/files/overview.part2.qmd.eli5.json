@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:26.093Z",
+  "generated": "2026-09-01T18:49:51.391Z",
   "source": "overview.part2.qmd",
+  "sourceHash": "e48b7737523bbf7e5adbfdc3eb57d233105b97ed",
   "lang": "qmd",
+  "summary": "This is a configuration object for Markmap, a tool that visualizes markdown as interactive mind maps. It contains two settings: custom CSS styling that controls the appearance of the map's visual elements (lines, nodes, links, and highlights), and default options that configure how the map behaves and renders (colors, fonts, spacing, and animation duration).",
   "explanations": {
-    "2": "This is a CSS string that styles the visual appearance of a markmap diagram—things like line colors, node circles, and link styling.",
-    "3": "This is a JSON string containing default configuration options for markmap, including spacing, timing, and a JavaScript function for coloring nodes; note that the function is stored as a string and would need to be evaluated as code later."
+    "2": "This long string contains CSS rules that style the markmap visualization—defining colors and sizes for connection lines, node circles, and link text to create a dark-themed appearance.",
+    "3": "This is a stringified JSON object with options that control markmap's behavior: the color function uses a rainbow gradient, sets the font size to 20px, controls spacing between nodes, and sets animations to take 1000 milliseconds."
   }
 }

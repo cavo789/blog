@@ -1,15 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:46.870Z",
+  "generated": "2026-09-01T19:03:42.160Z",
   "source": "project_viz.py",
+  "sourceHash": "6a2b872c722a2853d0e2cc9650c9a0b907e5e510",
   "lang": "python",
+  "summary": "This function reads configuration from a Dockerfile and Docker Compose file, extracts key information like the parent image, volume mappings, and exposed ports, then generates and prints a Mermaid diagram that visualizes how these components connect together.",
   "explanations": {
-    "16": "The regex pattern searches for the word FROM followed by whitespace and captures whatever comes after it; group(1) gets that captured part.",
-    "18": "strip() removes any extra whitespace from the beginning and end of the matched parent image name.",
-    "23": "This chains two .get() calls: first it safely gets the 'services' dictionary (or an empty dict if missing), then from that result it gets the 'docs' service.",
-    "25": "This line splits the volume string on colons to extract just the host path, but only if a colon exists; otherwise it uses the whole string.",
-    "32": "The stroke-dasharray: 5 5 creates a dashed border line with a pattern of 5 pixels solid, 5 pixels gap.",
-    "50": "The f-string inside the regular string won't actually interpolate; the mermaid content is static because the f was on line 38, not here."
+    "6": "Path() creates a reference to a file path; it doesn't read the file yet, just represents where it is.",
+    "14": "The .exists() method checks if the file actually exists on disk before we try to read it.",
+    "16": "re.search() looks for the first match of a pattern in the text; the pattern r\"FROM\\s+(.+)\" finds the word FROM followed by whitespace and captures whatever comes after it.",
+    "18": "from_match.group(1) retrieves the captured part (everything after FROM), and .strip() removes leading/trailing whitespace.",
+    "22": "yaml.safe_load() parses the YAML file into Python dictionaries and lists, so you can access the data like nested objects.",
+    "23": "The .get() method safely retrieves a value from a dictionary, returning an empty dict {} if the key doesn't exist, preventing errors.",
+    "25": "This extracts the left side of a volume mount (before the colon), which is the local folder path; for example, 'docs:/app' becomes 'docs'.",
+    "27": "str() converts the port number to a string so it can be included in text later.",
+    "38": "The f-string prefix lets us insert the parent_image variable directly into the text using curly braces.",
+    "51": "\"\\n\".join() combines all the lines in the mermaid list with newline characters between them, creating one multi-line string to print."
   }
 }

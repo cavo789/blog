@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:12.901Z",
+  "generated": "2026-09-01T18:58:20.218Z",
   "source": "compose.yaml",
+  "sourceHash": "5041ba1a5ddfc889640aa9b8f9a212f9bfad7d6f",
   "lang": "yaml",
+  "summary": "This YAML file defines a Docker Compose service called 'docusaurus' that builds a container from a Dockerfile in the current directory. The service exposes port 443, uses a configurable build target (defaulting to 'development'), and runs an infinite sleep command to keep the container alive.",
   "explanations": {
-    "7": "The ${TARGET:-development} syntax means 'use the TARGET variable if it's set, otherwise default to development' — it's a fallback mechanism.",
-    "13": "This command keeps the container running indefinitely instead of exiting, which is useful for development when you want to exec into the container later."
+    "7": "The ${TARGET:-development} syntax means 'use the TARGET variable if it's set, otherwise default to the string development'. This lets you change which stage of a multi-stage Dockerfile gets built without editing this file.",
+    "9": "The %%name=docusaurus%% is a template variable that will be replaced with the value of the 'name' field from line 1, making the container name match the service name.",
+    "13": "The 'sleep infinity' command starts an infinite loop so the container keeps running indefinitely instead of exiting immediately after startup — useful for containers you want to interact with later."
   }
 }

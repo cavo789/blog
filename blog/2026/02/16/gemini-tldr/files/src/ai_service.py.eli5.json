@@ -1,16 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:25.937Z",
+  "generated": "2026-09-01T19:01:49.937Z",
   "source": "ai_service.py",
+  "sourceHash": "3e00f0bf2180fc93e00afac5c3e9e69b7a712a37",
   "lang": "python",
+  "summary": "This class wraps Google's Gemini API to generate TL;DR summaries of articles. It includes smart retry logic that waits longer and longer if the API hits rate limits (HTTP 429), but fails immediately on other errors. The retry mechanism uses exponential backoff—waiting 5 seconds, then 10, then 20, up to 5 total attempts—before giving up.",
   "explanations": {
-    "4": "Final is a type hint that means this variable will never change after it's set—it's like declaring a constant.",
-    "17": "The underscore prefix means this is a private variable meant for internal use only, not for code outside this class to access.",
-    "19": "The pipe symbol (|) is Python's way of saying the parameter can be either a string or None—it's a union type.",
-    "42": "This loop will run up to 5 times, and the attempt variable starts at 0 and counts up (0, 1, 2, 3, 4).",
-    "55": "This line first removes markdown quote symbols (>) from the start, then trims whitespace from both ends of the response text.",
-    "60": "This checks if we've used up all our retries—if attempt is 4 and max_retries is 5, we've failed 5 times and should give up.",
-    "64": "This calculates exponential backoff: each time we retry, we wait twice as long as before (5s, 10s, 20s, 40s, etc.)."
+    "17": "Final means this constant can't be changed after the class is defined, so we're declaring that the model name is locked in.",
+    "19": "This constructor takes an API key (or None) and raises an error if it's missing, since we need it to authenticate with Google.",
+    "30": "The prompt is a string template that tells Gemini what to do—it's instructing it to act as an editor and produce a specific format summary.",
+    "42": "This loop attempts the API call up to 5 times, with the attempt variable tracking which try we're on (0, 1, 2, etc.).",
+    "44": "We're calling the Gemini API through the client object, asking it to generate content based on our prompt.",
+    "47": "GenerateContentConfig is a settings object where we set temperature to 0.3, which makes the model less creative and more deterministic.",
+    "52": "We're checking if the API returned actual text; if it's empty, something went wrong even though the call technically succeeded.",
+    "55": "We're cleaning up the response by removing leading '>' characters (which Gemini sometimes adds) and extra whitespace on both ends.",
+    "59": "Error code 429 means 'quota exceeded' or 'rate limited'—so we want to retry; other error codes mean real problems we should fail on.",
+    "60": "If we've already used all our retries and still got a 429, there's no point waiting again, so we throw an error.",
+    "64": "This calculates exponential backoff: 2^0 = 1, 2^1 = 2, 2^2 = 4, etc., so delays are 5, 10, 20, 40, 80 seconds."
   }
 }

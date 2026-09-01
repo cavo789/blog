@@ -1,8 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:49.783Z",
+  "generated": "2026-09-01T18:56:13.795Z",
   "source": "hello_world.pas",
+  "sourceHash": "39b28d9827743f770f23951290330a2be7d55b7a",
   "lang": "pas",
-  "explanations": {}
+  "summary": "This is a simple Pascal program that prints the text 'Hello, world!' to the console. It's the classic first program people write when learning a new language, demonstrating the basic structure of a Pascal program with a program declaration, a begin-end block, and a single output statement.",
+  "explanations": {
+    "1": "This line declares that we're writing a Pascal program and gives it the name 'HelloWorld'.",
+    "2": "The 'begin' keyword marks the start of the main block of code that will actually run when the program executes.",
+    "3": "writeln is a built-in function that prints text to the screen and then moves to a new line; the text in single quotes is what gets printed.",
+    "4": "The 'end.' keyword (with a period) marks the end of the program — the period is required syntax in Pascal to signal the program is complete."
+  }
 }

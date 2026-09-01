@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:52.617Z",
+  "generated": "2026-09-01T18:33:04.650Z",
   "source": "makefile.part19",
+  "sourceHash": "71ee9e7a042b97f6b89766a81b9a2b4c71fd283d",
   "lang": "part19",
+  "summary": "This is a Makefile snippet that defines a custom recipe prefix and creates a simple target called 'changeExt'. When you run this target, it prints 'It works' to the output. The first line changes Makefile's recipe prefix from tab characters to the '>' character, which is unusual but valid.",
   "explanations": {
-    "1": "This line changes how Makefiles recognize recipe lines; normally recipes need a tab character at the start, but this tells Make to use '>' instead.",
-    "5": "The '@' symbol tells Make not to print this command itself before running it, so only the output appears."
+    "1": "By default, Makefile recipes (the commands under a target) must start with a tab character. This line changes that requirement so recipes can start with '>' instead, making them more readable if you prefer.",
+    "3": "This defines a Makefile target named 'changeExt' — it's a label for a set of commands you can run by typing 'make changeExt'.",
+    "5": "The '@' symbol tells make to run this command silently without echoing the command itself to the terminal. 'printf' is then used to print the text 'It works' followed by a newline."
   }
 }

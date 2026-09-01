@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:10.879Z",
+  "generated": "2026-09-01T18:35:17.150Z",
   "source": "string.sh",
+  "sourceHash": "c79b1b46b7d125a664e7daf48809e3662726b05f",
   "lang": "bash",
+  "summary": "This is a bash function that converts text to uppercase. It uses the `tr` command, a standard Unix tool that translates characters from one set to another, to swap all lowercase letters for their uppercase equivalents.",
   "explanations": {
-    "30": "This uses the `tr` command to translate all lowercase letters ([:lower:]) into their uppercase equivalents ([:upper:]); it reads from stdin (the pipe) and outputs the result."
+    "30": "`tr '[:lower:]' '[:upper:]'` reads from standard input (the piped text) and replaces every character in the lowercase set with the corresponding character in the uppercase set, then outputs the result."
   }
 }

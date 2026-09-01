@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-28T16:45:32.130Z",
+  "generated": "2026-09-01T19:08:41.775Z",
   "source": "index.tsx",
   "sourceHash": "7f626c34ddf3d53d69e98bfbb20739593ace6c16",
   "lang": "typescript",
+  "summary": "This component implements the classic Konami Code easter egg (up, up, down, down, left, right, left, right, b, a) that triggers a meerkat running animation. It listens for keyboard input, tracks progress through the sequence while handling edge cases like keyboard layouts and modifier keys, and displays an animated meerkat image for 3 seconds when the full code is entered.",
   "explanations": {
-    "45": "This function converts single characters to lowercase (so 'B' becomes 'b') but leaves multi-character key names like 'ArrowUp' unchanged, because those don't have a meaningful lowercase version.",
-    "51": "We use useRef instead of useState here because we need to track progress through the code sequence without triggering a re-render every time the player presses a key.",
-    "67": "When you hold down a key, the OS fires multiple keydown events automatically; we ignore these repeats so holding arrow keys doesn't accidentally advance the sequence.",
-    "73": "We call preventDefault to stop the browser from scrolling when arrow keys are pressed, so the page doesn't jump around while the player is typing the Konami code.",
-    "83": "If the wrong key is pressed, we check if it's the first key of the sequence; if so, we set progress to 1 (giving that keypress credit toward a fresh attempt), otherwise we reset to 0."
+    "18": "This creates a Set of arrow key names so we can quickly check if a key is an arrow without searching through an array each time.",
+    "26": "We exclude modifier keys like Shift from triggering resets because holding Shift to capitalize 'B' and 'A' fires a Shift keydown event that would otherwise incorrectly interrupt the sequence.",
+    "45": "This function converts single-character keys to lowercase (so 'B' becomes 'b') but leaves multi-character key names like 'ArrowUp' unchanged, ensuring consistent comparison with our Konami code sequence.",
+    "51": "We use a ref instead of state here because we need to track progress through the sequence without triggering re-renders on every keystroke.",
+    "53": "useCallback ensures the triggerRun function maintains the same identity across renders, which matters because it's a dependency in the useEffect below.",
+    "67": "event.repeat is true when a key fires repeatedly because the user is holding it down; we skip these to prevent a long key press from injecting extra events and breaking sequences like 'up, up'.",
+    "83": "If the pressed key doesn't match what we expect, we reset to 0 unless it's the first key of the Konami code—in that case, we set progress to 1 because this key could be the start of a new sequence attempt."
   }
 }

@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:48.161Z",
+  "generated": "2026-09-01T18:47:44.179Z",
   "source": "php_lint.txt",
+  "sourceHash": "956fc533bd926310ef0aa9ed3e87c9d875a1a91e",
   "lang": "plaintext",
+  "summary": "This is a documentation file (likely in YAML frontmatter format) that describes a PHP linting tool configuration. It sets up metadata about the linter including its command name, configuration file location, and references to documentation partials that will be included when this page is rendered.",
   "explanations": {
-    "5": "This section defines data that will be shared with template partials (reusable chunks of content) when rendering the page.",
-    "13": "This is a hint to spell-checkers to ignore the word 'phplint' so it doesn't flag it as a misspelling.",
-    "21": "This pulls in a reusable template file from a parent directory to avoid repeating the same content on every similar page."
+    "5": "partial-data is a section that holds reusable configuration values which can be referenced by template includes later in the file.",
+    "6": "command specifies the actual terminal command name users would run to execute this linter (lint-php).",
+    "21": "This template syntax includes a reusable partial (a snippet of content) from another file so you don't have to repeat the same explanation about project types across multiple documentation pages.",
+    "29": "Similar to line 21, this pulls in a reusable section about how to configure linters so the instructions don't need to be written separately for each tool."
   }
 }

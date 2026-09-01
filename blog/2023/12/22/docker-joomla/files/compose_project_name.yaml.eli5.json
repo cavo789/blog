@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:35.502Z",
+  "generated": "2026-09-01T18:23:27.064Z",
   "source": "compose_project_name.yaml",
+  "sourceHash": "d2a47c42b825d968352a349b5195f498da94a9a1",
   "lang": "yaml",
+  "summary": "This YAML file defines a Docker Compose configuration for a Joomla application with two services: a web application container and a database container. Both containers use a template variable %%name=kingsbridge%% that gets substituted with 'kingsbridge' to create their container names, making it easy to redeploy the same setup with different names.",
   "explanations": {
-    "1": "This is a special comment that tells a documentation tool (like a code renderer) to highlight the next line of code visually.",
-    "5": "This is a special comment that tells a documentation tool to highlight the next line of code visually.",
-    "10": "This is a special comment that tells a documentation tool to highlight the next line of code visually."
+    "2": "This sets a variable named 'name' with a default value of 'kingsbridge'. The %% syntax indicates this is a template variable that can be overridden when the file is processed.",
+    "6": "The container_name uses the template variable from line 2, so this container will be named 'kingsbridge-app'. This gets substituted when Docker Compose runs.",
+    "11": "Similarly, this database container will be named 'kingsbridge-db' using the same template variable, keeping the naming consistent across all containers."
   }
 }

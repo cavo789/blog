@@ -1,11 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:22.955Z",
+  "generated": "2026-09-01T18:24:51.343Z",
   "source": "style.css",
+  "sourceHash": "b0a235ef50e70cd5f645e695f50af60d0f906dff",
   "lang": "css",
+  "summary": "This CSS defines styling for logo elements in a presentation framework (likely Reveal.js). It positions logos in different locations on slides—one in the bottom-right corner with a height constraint, another in the top-left with a fixed pixel size—and ensures they display as fixed elements that don't get constrained by normal width limits.",
   "explanations": {
-    "3": "unset removes any previously-applied value for that property, so the left positioning won't interfere with the right positioning we're setting on line 6.",
-    "22": "This looks like a typo — it should probably be '100px' not '100x', which isn't a valid CSS unit and won't work as intended."
+    "3": "unset removes any inherited or previously-set left positioning so the element isn't pulled to the left side.",
+    "5": "max-height limits how tall the logo can grow, even if its container is larger, keeping it at a reasonable 2.2rem size.",
+    "6": "right: 12px positions the element 12 pixels away from the right edge of the screen.",
+    "10": "unset removes the bottom positioning so this logo variant can use top positioning instead.",
+    "13": "max-height: unset removes any height restrictions so this logo can use its full 100px height without being capped.",
+    "21": "position: fixed makes the logo stay in place relative to the viewport even when scrolling, rather than moving with the content.",
+    "22": "width: 100x is likely a typo—should probably be 100% or 100px—but with unset max-width, the element's width isn't artificially constrained."
   }
 }

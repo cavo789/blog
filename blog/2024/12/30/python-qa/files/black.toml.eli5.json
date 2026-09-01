@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:43.865Z",
+  "generated": "2026-09-01T18:44:20.037Z",
   "source": "black.toml",
+  "sourceHash": "1dbec9cc81c74e580ea35d532f6316c42928c69f",
   "lang": "toml",
+  "summary": "This configuration section tells Black, a Python code formatter, to format code with a maximum line length of 120 characters and to use Python 3.13 syntax rules. Black is a tool that automatically reformats Python code to follow consistent style rules across a project.",
   "explanations": {
-    "8": "This tells Black (a code formatter) to format your code assuming it will run on Python 3.13, which lets Black use newer language features when cleaning up your code."
+    "4": "line-length = 120 means Black will try to keep lines of code at or below 120 characters wide before wrapping them to the next line.",
+    "8": "target-version = ['py313'] tells Black to format the code using Python 3.13 syntax and features; you can include multiple versions in the list if you need to support older Python versions too."
   }
 }

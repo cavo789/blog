@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:34.848Z",
+  "generated": "2026-09-01T19:00:32.845Z",
   "source": "network.json",
+  "sourceHash": "904723cc9c9fe4c12a00f52047365af5e803c7e1",
   "lang": "json",
+  "summary": "This is a Docker network configuration object describing how a container named 'facade' is connected to a network. It specifies the container's IP address (192.168.0.4), gateway, MAC address, and other network identifiers that Docker uses to route traffic to and from this container.",
   "explanations": {
-    "3": "IPAMConfig is set to null, meaning no custom IP address management configuration is being applied to this network.",
-    "7": "The same alias 'facade' appears twice in the list, which is redundant but won't cause an error.",
-    "12": "NetworkID is a long hex string that uniquely identifies this Docker network across your system.",
-    "13": "EndpointID is like a unique ticket for this container on this specific network—it's how Docker tracks the connection.",
-    "17": "IPPrefixLen of 24 means the network uses a /24 subnet mask (255.255.255.0), allowing 256 total addresses.",
-    "20": "GlobalIPv6PrefixLen is 0 because this network isn't using IPv6 addresses—no public IPv6 routing is set up."
+    "3": "IPAMConfig being null means Docker is using its default IP address management settings rather than custom ones.",
+    "4": "Links is an empty array, meaning this container isn't directly linked to other containers (an older Docker networking feature).",
+    "6": "Aliases are alternate names the container can be reached by on the network; 'facade' is listed twice here, which is redundant.",
+    "12": "NetworkID is a unique identifier for the entire Docker network this container belongs to.",
+    "13": "EndpointID is a unique identifier for this specific container's connection to the network.",
+    "17": "IPPrefixLen of 24 means the subnet mask is 255.255.255.0, allowing 254 usable IP addresses on this network.",
+    "21": "DNSNames are the hostnames other containers can use to find this one; they include both the service name and the container's ID."
   }
 }

@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:40.885Z",
+  "generated": "2026-09-01T18:20:17.790Z",
   "source": ".part23.htaccess",
+  "sourceHash": "c1f1472a7c0ab653f14c3fdd5b3e7be7063a3eef",
   "lang": "htaccess",
+  "summary": "This line tells the web server to permanently redirect any requests for /old.php to a new location at http://www.yoursite.com/new.php. The 301 status code signals to browsers and search engines that this is a permanent move, so they'll update their records accordingly.",
   "explanations": {
-    "1": "A 301 redirect is a permanent move that tells browsers and search engines to go to a new URL instead; this line sends anyone visiting /old.php to the new location at http://www.yoursite.com/new.php."
+    "1": "Redirect 301 means 'send a permanent redirect response' — the 301 is the HTTP status code that tells clients this resource has moved for good. /old.php is the old path the user might request, and the long URL is where they should actually go instead."
   }
 }

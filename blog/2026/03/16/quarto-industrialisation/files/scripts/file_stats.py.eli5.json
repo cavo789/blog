@@ -1,13 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:40.833Z",
+  "generated": "2026-09-01T19:03:34.013Z",
   "source": "file_stats.py",
+  "sourceHash": "8f2eb0d6d6f1e6ef5fc52d1726f39bc7fa11b827",
   "lang": "python",
+  "summary": "This function scans a directory recursively to find all files, counts them by file extension while skipping common ignored folders like .git and node_modules, then generates and prints a Mermaid pie chart showing the distribution of file types in the project.",
   "explanations": {
-    "12": "The rglob('*') method recursively searches through all folders and files starting from the directory, kind of like asking 'show me everything inside this folder and all its subfolders'.",
-    "13": "This checks if the file is actually a file (not a folder) AND that none of its parent folder names are in the ignored_folders set—it's our way of skipping files in .git, node_modules, etc.",
-    "14": "If the file has no extension (like a README file), we give it the label 'No extension' instead of leaving it blank.",
-    "21": "This removes the dot from extensions like '.py' to make them look nicer in the chart (so '.py' becomes 'PY'), but leaves non-extension labels like 'No extension' unchanged."
+    "7": "Path is being used instead of os.path because it provides a more modern, object-oriented way to work with file paths that works consistently across Windows and Unix systems.",
+    "9": "This set defines folder names that should be completely ignored during the scan—things like version control directories and package caches that clutter the statistics.",
+    "12": "rglob('*') recursively searches the directory and all subdirectories, returning every file and folder it finds.",
+    "13": "This checks two things: that the item is actually a file (not a folder), and that none of the folder names in its path are in our ignored list—if any ignored folder is in the path, we skip it entirely.",
+    "14": "If the file has an extension (the part after the dot), convert it to lowercase; otherwise, use the string 'No extension' as a placeholder.",
+    "17": "Counter tallies up how many times each extension appears, essentially building a frequency table of all the different file types.",
+    "20": "We're iterating through the Counter results, which gives us each unique extension and how many files have that extension.",
+    "21": "This cleans up the extension for display—if it starts with a dot, remove the dot and make it uppercase (so '.py' becomes 'PY'), otherwise use it as-is."
   }
 }

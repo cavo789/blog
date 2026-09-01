@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:21.211Z",
+  "generated": "2026-09-01T19:06:31.672Z",
   "source": "compose_belgif_no_warnings.yaml",
+  "sourceHash": "672741a605207093b9e4e60cf7acd757c568feeb",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines two services: an app service built from the current directory that exposes port 8000, and a belgif-lint service that runs Maven to validate an OpenAPI specification file. The belgif-lint service uses a shell to run a Maven command while filtering out noisy warning messages from the output.",
   "explanations": {
-    "5": "The left number (8000) is the port on your computer; the right number (80) is the port inside the container—traffic coming to your machine on 8000 gets forwarded to the container's port 80.",
-    "7": "This mounts your local main.py file into the container at /code/main.py so changes you make locally are immediately visible inside the running container.",
-    "13": "The ':ro' at the end means 'read-only'—the container can see these files but cannot modify them, which protects your source code from accidental changes.",
-    "14": "This creates a persistent storage volume named 'maven-cache' that survives even after the container stops, so Maven doesn't have to re-download dependencies every time.",
-    "17": "Normally this container would run Maven directly, but we're replacing that with a bash shell so we can chain multiple commands together using pipes (the | symbol on line 29).",
-    "21": "The '>' character means the command continues on the next lines—it's a way to write a really long command in a readable format without actually pressing Enter.",
-    "28": "'2>&1' merges error messages (stderr) and normal output (stdout) into one stream so the grep filters catch all the noise equally."
+    "5": "The double percent signs around 'port=8000' indicate this is a template variable that will be replaced with an actual port number at runtime, then mapped to port 80 inside the container.",
+    "7": "This mounts the main.py file from your local machine into the running container at /code/main.py, so changes you make locally are immediately reflected in the container.",
+    "11": "This specifies a pre-built Docker image (Maven with Java 17) instead of building from a Dockerfile, which is faster than building from scratch.",
+    "13": "The ':ro' suffix means 'read-only', so the container can read your local files but cannot modify them.",
+    "14": "This creates a named volume called maven-cache to store Maven's downloaded dependencies, so they persist between container runs and don't need to be re-downloaded each time.",
+    "17": "By overriding the entrypoint to /bin/sh -c, we allow the command to use shell features like pipes (|) and redirection (2>&1) that wouldn't work with the default Maven entrypoint.",
+    "21": "The '>' character allows the command to span multiple lines in YAML; all the lines below are concatenated into a single command string.",
+    "22": "'set +e' tells the shell to continue even if a command fails, so the container won't exit if Maven finds validation errors."
   }
 }

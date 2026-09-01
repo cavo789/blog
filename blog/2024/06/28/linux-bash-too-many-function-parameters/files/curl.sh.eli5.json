@@ -1,17 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:26.718Z",
+  "generated": "2026-09-01T18:32:19.999Z",
   "source": "curl.sh",
+  "sourceHash": "3d0063f6d14b0c91e8ab1925c8f3e41c4d3ac87f",
   "lang": "bash",
+  "summary": "This script demonstrates a bash function that accepts an associative array (a hash map) as a parameter and uses it to build and execute a curl command with optional headers, authentication tokens, HTTP methods, and proxy settings. The function shows a pattern for handling optional configuration values with sensible defaults, then dynamically constructs a curl command string and executes it.",
   "explanations": {
-    "8": "This creates a reference to the array passed as the first argument — think of it as an alias so we can access the original array's contents inside the function.",
-    "14": "This checks if the 'header' key exists in the array; if it doesn't exist, it sets header to an empty string, otherwise it uses the value from the array.",
-    "15": "Same pattern as line 14, but for the 'method' key with a default value of 'GET' instead of empty.",
-    "16": "Same pattern as line 14, but for the 'payload' key.",
-    "17": "Same pattern as line 14, but for the 'proxy' key.",
-    "18": "Same pattern as line 14, but for the 'token' key.",
-    "31": "The eval keyword executes the string stored in cmd as if you had typed it directly — this is powerful but risky because it can run unexpected code if the string contains special characters.",
-    "33": "The $? variable holds the exit status (success or failure code) of the last command, so this checks if the curl command failed."
+    "4": "This tells bash to stop execution immediately if a variable is referenced before being defined, catching typos and uninitialized values early.",
+    "5": "This tells bash to stop execution immediately if any command exits with a non-zero status code (indicating failure), rather than continuing to the next line.",
+    "8": "This creates a local reference to the array passed as the first parameter—think of it as an alias or pointer, so `arrCall` acts like the original array without copying it.",
+    "11": "The `-r` flag makes this variable read-only after assignment, preventing accidental modification of the endpoint URL.",
+    "14": "This checks if the `header` key exists in the array; if it doesn't, set header to an empty string, otherwise use the value from the array.",
+    "24": "This builds the base curl command string with the HTTP method and endpoint, starting with a simple structure that will be enhanced with optional parameters.",
+    "26": "The `-n` flag checks if the variable is non-empty; if payload has a value, append it to the curl command using the `--data` flag.",
+    "31": "The `eval` executes the curl command string as if you'd typed it directly, and the `$()` captures its output into the `json` variable; the `!` inverts the exit status to catch failures.",
+    "41": "This declares an associative array (like a dictionary or object) with key-value pairs, where the keys are option names and values are their settings.",
+    "48": "Pass the array by name without the `$` prefix—if you used `$arr`, you'd pass the array's string representation instead of a reference to the actual array."
   }
 }

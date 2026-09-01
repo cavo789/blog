@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:25.744Z",
+  "generated": "2026-09-01T18:43:39.758Z",
   "source": "mypy.ini",
+  "sourceHash": "71d1cc13029893ae3062aac720e68846d50fcf19",
   "lang": "ini",
+  "summary": "This is a mypy configuration file that enables strict type checking for a Python project. It turns on all available type safety checks, then disables just one problematic check (attr-defined) that was causing false positives. The configuration targets Python 3.13 and stores its cache in a temporary directory.",
   "explanations": {
-    "10": "This tells mypy to ignore a specific type-checking error (attr-defined) that's giving false positives in this codebase.",
-    "12": "This sets where mypy stores its cache files so it doesn't have to re-check everything from scratch every time.",
-    "15": "This enforces that every function must have type hints (like def foo(x: int) -> str:) or mypy will complain.",
-    "17": "This makes mypy stricter about Optional types — if something might be None, you have to explicitly say Optional[SomeType] instead of just SomeType."
+    "5": "strict = True enables all of mypy's strictest type-checking rules at once, rather than having to enable them individually.",
+    "10": "This disables the 'attr-defined' error code specifically, allowing the code to run despite mypy incorrectly reporting that certain attributes don't exist.",
+    "12": "This tells mypy where to store its cache files (temporary data it uses to speed up future checks), set to the /tmp directory which gets cleaned up by the system.",
+    "15": "This requires that every function must have type hints for its parameters and return value; mypy will error if any are missing or incomplete.",
+    "23": "This tells mypy to assume the code is being run on Python version 3.13, so it can check for compatibility and use features available in that version."
   }
 }

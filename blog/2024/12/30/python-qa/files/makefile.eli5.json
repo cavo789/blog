@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:50.512Z",
+  "generated": "2026-09-01T18:44:01.671Z",
   "source": "makefile",
+  "sourceHash": "002f0f8d7ff24dbea709e6c657d39896b4f95a6b",
   "lang": "makefile",
+  "summary": "This Makefile defines a 'qa' target that runs a sequence of nine Python code quality and analysis tools in order, printing a formatted table header and status messages for each step. Each tool checks different aspects like code style, unused variables, type correctness, and docstring compliance, culminating in a congratulations message if all checks pass.",
   "explanations": {
-    "2": ".PHONY is a special Makefile keyword that tells Make these are not real files—they're just command names you can run.",
-    "4": "The \\e[1;37m and \\e[m are escape codes that add bold white color to the terminal output; %-35s means 'left-align this text in a 35-character wide space'.",
-    "6": "This printf line is malformed—it has four format specifiers (%s) but only provides three arguments, so the last part won't print correctly.",
-    "10": "The @ symbol before a command hides that command from being printed to the terminal; without it, you'd see the command echoed before it runs."
+    "2": "The .PHONY declaration tells Make that 'qa' is a task name, not a file to create—this prevents conflicts if a file named 'qa' happens to exist.",
+    "4": "The printf with ANSI escape codes (\\e[1;37m) creates bold white text formatting; the %-35s and similar format specifiers pad the text to fixed column widths to make a neat table.",
+    "7": "The @ symbol at the start hides the command itself from being printed to the console—you'll only see the output of pylint, not the command that ran it.",
+    "10": "This autoflake command recursively scans the entire current directory (.) for unused variables and imports, removing them automatically.",
+    "22": "The config-file flag points mypy to a configuration file rather than using default settings, allowing you to customize which type-checking rules apply.",
+    "25": "Pyright reads its configuration from a JSON file in the .config directory, which specifies how strict the type checking should be and what code to include or exclude."
   }
 }

@@ -1,15 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:50.924Z",
+  "generated": "2026-09-01T18:19:23.351Z",
   "source": ".part8.htaccess",
   "sourceHash": "e8876de72735841885b357712ed155a64620ecac",
   "lang": "htaccess",
+  "summary": "This Apache configuration file automatically redirects all incoming requests to use HTTPS and add 'www.' to the domain name if it's missing. It does this in two separate steps—first forcing HTTPS, then adding www—because some security certificate services prefer it that way.",
   "explanations": {
-    "1": "IfModule checks if Apache has the mod_rewrite module installed; the code inside only runs if it does.",
-    "7": "This condition checks if HTTPS is not already enabled (!=on means 'not equal to on').",
-    "8": "[L,R=301] means 'L' stops processing further rules, and 'R=301' sends a permanent redirect response to the browser.",
-    "12": "!^www\\. means 'if the domain does NOT start with www.' — the backslash escapes the dot so it matches a literal period.",
-    "13": "This rule redirects to www with https, but only if the previous HTTPS redirect already happened (due to the [L] flag above)."
+    "1": "This checks if Apache's mod_rewrite module is loaded; if it is, the rules inside will apply.",
+    "4": "This turns on the rewrite engine, which allows Apache to modify URLs before serving pages.",
+    "7": "This condition checks if the connection is NOT already using HTTPS (the secure protocol).",
+    "8": "If the condition above is true, this rule rewrites the URL to use HTTPS while keeping the rest of the address the same; [L,R=301] means 'stop processing rules here (L) and send a permanent redirect (301)'.",
+    "12": "This condition checks if the domain does NOT already start with 'www.'",
+    "13": "If the condition above is true, this rule rewrites the URL to add 'www.' to the front of the domain."
   }
 }

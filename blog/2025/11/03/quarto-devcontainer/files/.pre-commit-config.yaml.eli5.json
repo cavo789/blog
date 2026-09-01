@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:11.607Z",
+  "generated": "2026-09-01T18:58:17.368Z",
   "source": ".pre-commit-config.yaml",
+  "sourceHash": "ccf7ea1624864efd5b1a844c6feed9474a025f54",
   "lang": "yaml",
+  "summary": "This is a pre-commit configuration file that sets up automated checks to run before code is committed to a repository. It excludes certain directories from checking, then defines multiple tools that validate file quality — checking for large files, YAML syntax, markdown formatting, broken links, and spelling errors — to catch common issues before they're committed.",
   "explanations": {
-    "2": "This line tells pre-commit to skip checking files in those three directories (the ^ means start of path, and | means 'or').",
-    "23": "The args list here passes a command-line flag to the markdownlint tool telling it where to find its configuration file.",
-    "32": "This line specifies the exact command that will run; it's needed here because this is a custom 'local' hook, not a standard pre-built one.",
-    "33": "This declares that the hook runs a Node.js tool, so pre-commit knows to look for it in your Node environment rather than your system PATH.",
-    "45": "This awk/yq command extracts only the YAML section between the first pair of --- lines in .qmd files, then validates that YAML syntax.",
-    "48": "The {} gets replaced with each filename that matches, so the script processes files one at a time.",
-    "64": "This exclusion pattern prevents the spell checker from looking inside the _extensions folder, which typically contains third-party code you don't want checked."
+    "2": "This pattern tells pre-commit to skip checking files in these three directories: the build output folder, the git metadata folder, and the quarto cache folder.",
+    "7": "This specifies which version of the pre-commit-hooks repository to use — think of it like pinning a dependency so you get consistent behavior across machines.",
+    "24": "This tells the markdown linter where to find its configuration file, so it knows which style rules to enforce.",
+    "33": "This declares that the markdown-link-check tool is written in Node.js, so pre-commit knows it needs to use Node to run it.",
+    "45": "This bash command extracts just the YAML header (everything between the first pair of --- lines) from a Quarto file, then validates it with yq; it's checking that the metadata at the top of each file is properly formatted.",
+    "48": "The {} placeholder gets replaced with the actual filename being checked, so each Quarto file gets validated one at a time.",
+    "49": "This restricts the hook to only run on files ending in .qmd (Quarto markdown files), not on every file in the repo.",
+    "64": "This tells cspell to skip checking anything inside _extensions folders, which contain third-party code that shouldn't be spell-checked."
   }
 }

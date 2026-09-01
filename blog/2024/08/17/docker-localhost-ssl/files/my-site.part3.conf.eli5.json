@@ -1,10 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:54.972Z",
+  "generated": "2026-09-01T18:36:18.893Z",
   "source": "my-site.part3.conf",
+  "sourceHash": "a8760ca3221e2f02ff40f4de58122bce28601872",
   "lang": "conf",
+  "summary": "This Nginx configuration sets up two web servers on the same machine: one listening on standard HTTP port 80, and another listening on HTTPS port 443 with SSL encryption enabled. Both servers serve files from the same directory and respond to requests for localhost.",
   "explanations": {
-    "11": "The [::] syntax means IPv6 (the newer internet address format), so this line makes the server listen on port 443 for both IPv4 and IPv6 connections."
+    "2": "Port 80 is the default HTTP port that web browsers use when you don't specify a port number in the URL.",
+    "10": "Port 443 is the standard HTTPS port used for encrypted web traffic; the ssl keyword tells Nginx to use SSL/TLS security on this connection.",
+    "11": "[::]:443 is the IPv6 equivalent of listening on port 443, so this server accepts both IPv4 and IPv6 connections.",
+    "15": "This points to the public certificate file that proves this server's identity to clients connecting via HTTPS.",
+    "16": "This is the private key that matches the certificate and must be kept secret; Nginx uses it to decrypt data and prove ownership of the certificate."
   }
 }

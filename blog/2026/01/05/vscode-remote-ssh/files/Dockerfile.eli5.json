@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:42.089Z",
+  "generated": "2026-09-01T19:00:43.509Z",
   "source": "Dockerfile",
+  "sourceHash": "059f3b95da68d5fb14476e8dfa9cbc1e89f2532a",
   "lang": "docker",
+  "summary": "This Dockerfile creates a container based on Ubuntu that runs an SSH server, allowing you to connect to it remotely. It installs SSH, creates a test user named christophe with a password, configures SSH settings to allow password-based login, and starts the SSH daemon when the container runs.",
   "explanations": {
-    "5": "The backslash at the end of this line lets us continue the command on the next line, so we can keep related commands together and readable.",
-    "7": "This removes cached package files that apt downloaded, which shrinks the Docker image size since we don't need them anymore.",
-    "8": "This deletes the apt package lists to save more space in the image—Docker images should be as small as possible.",
-    "12": "The -rm flags create the home directory and use bash as the shell; useradd is the command to add a new user account to the system.",
-    "13": "We're piping the username and password into chpasswd, which is a tool that changes passwords by reading them from input.",
-    "16": "sed is a text editor tool that finds and replaces patterns in files; the 's/' means substitute, and the ^ means start of line.",
-    "25": "CMD tells Docker what command to run when the container starts; -D means sshd runs in the foreground so Docker can track it."
+    "5": "The backslash at the end of this line tells Docker to continue this command on the next line, so all these apt commands run as one logical operation rather than three separate layers.",
+    "7": "This removes the package manager's cache files to shrink the image size, since we don't need them after installation is complete.",
+    "8": "This deletes the package lists that apt downloaded, further reducing the image size since these files aren't needed once packages are installed.",
+    "12": "The `-rm` flag removes the user's login shell entry after creation (a security thing), `-d` sets their home directory, and `-s` sets their default shell to bash.",
+    "13": "This pipes the username and password through the `chpasswd` command, which is a safe way to set passwords in scripts without exposing them in the command history.",
+    "16": "The `sed` command finds lines starting with '#PermitRootLogin' and replaces them to disable root login; the `^` means 'start of line' and the `.*` means 'anything after that'.",
+    "23": "This tells Docker that the container will listen on port 22 (the standard SSH port), though it doesn't actually open it—you need to map it when running the container.",
+    "25": "The `-D` flag runs sshd in the foreground (not as a background daemon), which is important for Docker containers so the process stays active and the container keeps running."
   }
 }

@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:41.468Z",
+  "generated": "2026-09-01T18:37:33.682Z",
   "source": "Pest.php",
+  "sourceHash": "a532c887f96f1991635d6d3c030706c0f54dffbe",
   "lang": "php",
-  "explanations": {}
+  "summary": "This line configures a test suite to use the TestCase class from the Tests namespace and apply it to all test files in the 'Features' directory. It's a setup instruction that tells the testing framework how to run feature tests.",
+  "explanations": {
+    "1": "The uses() function registers a base class for multiple tests, and the ->in('Features') method tells it to apply this configuration only to test files in that specific directory."
+  }
 }

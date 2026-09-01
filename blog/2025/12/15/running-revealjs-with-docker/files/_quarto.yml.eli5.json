@@ -1,14 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:16.116Z",
+  "generated": "2026-09-01T19:00:08.291Z",
   "source": "_quarto.yml",
+  "sourceHash": "dd60b04e09fe968a591e06bd3ba935433c450ccf",
   "lang": "yaml",
+  "summary": "This is a Quarto configuration file that sets up a reveal.js presentation project. It tells Quarto to render all .qmd files and then applies a bunch of styling and behavior settings to make the slides look and function a certain way—like setting the aspect ratio to widescreen, enabling scrollable slides, and adding a background image to the title slide.",
   "explanations": {
-    "3": "This tells the system to process all files ending in .qmd (Quarto markdown files) and turn them into presentations.",
-    "13": "This setting makes slides progress linearly one after another instead of allowing free navigation between them.",
-    "18": "This controls which heading level (in this case, the smallest heading size, level 6) will create a new slide.",
-    "19": "This displays the slide number as 'current slide / total slides' (like '3/10') at the bottom of each slide.",
-    "22": "This sets a background image for your title slide using a file path to a webp image in an images folder."
+    "3": "The render field tells Quarto which files to process; the wildcard *.qmd means 'all files ending in .qmd in this directory'.",
+    "6": "revealjs is the format being configured—it's the library that actually creates the interactive HTML slideshow.",
+    "7": "This points to an external CSS file that will add custom styling on top of the default reveal.js styles.",
+    "10": "Setting this to false means line numbers won't appear next to code blocks in the slides.",
+    "13": "linear mode means you navigate through slides in order, rather than seeing a grid or other navigation interface.",
+    "14": "convex is the type of animation transition that plays between slides when you move to the next one.",
+    "18": "slide-level: 6 means that heading level 6 (######) in your markdown will be treated as the start of a new slide.",
+    "19": "slide-number: c/t displays the current slide number and total slides (like '5/20') on each slide."
   }
 }

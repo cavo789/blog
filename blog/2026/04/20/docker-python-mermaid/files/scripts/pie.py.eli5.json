@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:34.525Z",
+  "generated": "2026-09-01T19:05:22.195Z",
   "source": "pie.py",
+  "sourceHash": "a81e57279e326cb9c98e6e9a280455a73f458848",
   "lang": "python",
+  "summary": "This script scans a folder, categorizes files by type (code, config, docs, etc.), and generates a pie chart visualization showing the distribution of file types. It walks through the directory structure, counts files in each category, formats the data for Mermaid (a charting library), and runs a command-line tool to render it as an image.",
   "explanations": {
-    "6": "os.path.splitext splits a filename into two parts: the name and the extension, so [1] grabs just the extension part like '.py'.",
-    "22": "dirs[:] = ... replaces the list in-place so that os.walk won't descend into hidden folders (starting with '.') or __pycache__; this saves time scanning.",
-    "26": "counts.get(cat, 0) returns the current count for that category, or 0 if it doesn't exist yet, so we can safely add 1 to it.",
-    "54": "subprocess.run executes the mmdc command-line tool with these arguments to convert the Mermaid diagram file into a PNG image; check=True makes it error if the command fails."
+    "6": "os.path.splitext splits a filename into the name and extension parts, then [1] grabs just the extension (the part after the dot), and .lower() makes it lowercase so '.PY' matches '.py'.",
+    "22": "dirs[:] = [...] modifies the list in-place; this tells os.walk to skip hidden folders (starting with a dot) and Python cache folders, so they won't be descended into.",
+    "26": "counts.get(cat, 0) safely retrieves the count for this category, defaulting to 0 if it doesn't exist yet, so we can add 1 without an error on the first occurrence.",
+    "29": "This returns a minimal Mermaid pie chart syntax when the folder has no files, so the script doesn't crash and still produces valid output.",
+    "46": "os.path.abspath converts a relative path (like '.') into a full absolute path, ensuring consistent behavior regardless of what directory the user runs the script from.",
+    "54": "subprocess.run executes an external command (mmdc, the Mermaid CLI tool) with specific arguments to convert the .mmd file into a PNG image with custom styling.",
+    "62": "After the pie chart is generated, we delete the temporary .mmd file since it's no longer needed."
   }
 }

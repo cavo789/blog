@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:03.183Z",
-  "source": "TagArticlesPage.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:53:00.169Z",
+  "source": "TagArticlesPage.tsx",
+  "sourceHash": "b5d990f4431bf023eff33f5ef54c55956f243815",
+  "lang": "typescript",
+  "summary": "This is a React page component that displays all blog posts tagged with a specific tag. It extracts the tag from the URL, finds the matching posts, and renders them as cards. If no tag is specified or no posts match the tag, it shows an appropriate error message instead.",
   "explanations": {
-    "12": "matchPath is checking if the current URL matches the pattern '/blog/tags/:slug', where ':slug' is a variable part of the URL we want to capture.",
-    "16": "The question mark after 'match' means 'only try to access params.slug if match exists', so we don't crash if the URL didn't match the pattern.",
-    "36": "This helper function handles tags that can be either plain strings or objects with a label property — it extracts whichever format is being used.",
-    "42": "We're converting the tag's display name to a URL-friendly slug and comparing it against the slug from the URL to find matching tags.",
-    "55": "Subtracting dates in descending order sorts posts from newest to oldest — the bigger date value comes first."
+    "11": "This type says a tag can be either a plain string or an object with a label property, since tags might be stored in different formats.",
+    "15": "matchPath is a routing function that checks if the current URL matches a pattern; here it's looking for URLs like /blog/tags/my-tag-name and extracting the slug part.",
+    "19": "The slug is the URL-safe version of the tag name (like 'my-tag-name' instead of 'My Tag Name'); the code safely gets it from the URL match result.",
+    "39": "This helper function extracts the displayable text from a tag — if it's a plain string, return it as-is; if it's an object, grab its label property.",
+    "44": "The code searches through each post's tags array looking for one that, when converted to a slug, matches the slug from the URL.",
+    "45": "createSlug converts the tag label to a URL-safe format so we can compare it against the slug from the URL.",
+    "56": "This filters posts to only those containing a tag whose slug version matches the URL slug, so we find all posts under this tag.",
+    "58": "The posts are sorted by date in descending order (newest first) by subtracting dates and getting their time values as numbers.",
+    "99": "The map function transforms each post object into a PostCard component; the key prop helps React track which cards are which if the list changes."
   }
 }

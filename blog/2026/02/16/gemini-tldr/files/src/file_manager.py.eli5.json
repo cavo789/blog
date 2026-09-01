@@ -1,17 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:29.337Z",
+  "generated": "2026-09-01T19:01:54.308Z",
   "source": "file_manager.py",
+  "sourceHash": "1148b4bfab0f9a35d2473d902576f61ea38db68e",
   "lang": "python",
+  "summary": "This FileManager class reads markdown files and injects a TLDR (summary) section into them at a smart location. It finds where the frontmatter (metadata block at the top) ends, then looks for the first image after that, and inserts the TLDR right after the image so it appears prominently without disrupting the file structure.",
   "explanations": {
-    "2": "Final is a type hint that means this value cannot be changed after it's set — it's a constant.",
-    "9": "These underscores at the start signal that these are private constants meant only for use inside this class.",
-    "33": "splitlines() breaks the entire file content into a list of individual lines, removing the line break characters.",
-    "39": "The second argument (1) tells index() to start searching from position 1, skipping the first delimiter we already found.",
-    "41": "This catches the case where there's an opening --- but no closing ---, so we give up and insert at the top instead.",
-    "52": "This creates a multi-line string by chaining strings together with the f before each part.",
-    "59": "insert() adds the formatted TLDR at the specific position in the list without replacing what's already there.",
-    "60": "join() takes all the list items and glues them back together into one string, using a newline between each line."
+    "9": "Final means this string constant can't be reassigned later—it's a guaranteed contract that this delimiter value never changes.",
+    "13": "The constructor validates the file exists before storing it; if someone passes a path to a non-existent file, we fail immediately rather than later when trying to read.",
+    "39": "We're finding the second occurrence of '---' (the closing delimiter of frontmatter) by starting the search at index 1 instead of 0; this skips the opening delimiter we already found on line 37.",
+    "41": "If there's no closing '---' found, the except catches the ValueError that index() raises, and we just start inserting at the beginning of the file.",
+    "45": "We loop through lines starting from wherever the frontmatter ended, not from the very beginning, so we only look for images in the content area, not in the metadata block.",
+    "59": "We insert the formatted TLDR string at the calculated position, which shifts all existing lines after that position down by one."
   }
 }

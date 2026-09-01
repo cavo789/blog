@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:45.271Z",
+  "generated": "2026-09-01T18:57:39.350Z",
   "source": "launch.json",
+  "sourceHash": "f009ac5fb807ce68a10b3c121ac9551399887864",
   "lang": "json",
+  "summary": "This is a VS Code debug configuration file that sets up remote debugging for a Python FastAPI application. It tells the debugger to connect to a Python process already running on localhost at port 5679, and maps your local source files to the remote paths so breakpoints work correctly.",
   "explanations": {
-    "6": "debugpy is the debugging protocol that Python uses; this tells VS Code to use Python's debugger instead of a generic one.",
-    "7": "attach means VS Code will connect to a debugger that's already running somewhere, rather than starting a new one.",
-    "8": "connect specifies where to find the running debugger—here it's on your local machine at a specific port number.",
-    "12": "justMyCode set to true means the debugger will skip stepping into Python library code and only debug your own project files.",
-    "13": "pathMappings tells the debugger how to translate file paths between your computer and wherever the code is actually running."
+    "6": "The name is just a label that appears in VS Code's debug dropdown so you can identify this configuration.",
+    "7": "\"attach\" means the debugger will connect to an already-running Python process, rather than launching a new one.",
+    "8": "This object specifies where to find the Python process you want to debug — in this case, on your local machine at port 5679.",
+    "12": "Setting this to true means the debugger will only step through your own code, not through third-party libraries, keeping debugging less cluttered.",
+    "13": "This mapping tells the debugger how to translate file paths so it can find your source code; your local 'src' folder corresponds to the '.' (current directory) on the remote side."
   }
 }

@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:39.567Z",
+  "generated": "2026-09-01T18:21:58.401Z",
   "source": "decrypt.cmd",
+  "sourceHash": "f76fcbcb7dc73b1af3c9afb6be010cb159fa6ff8",
   "lang": "batch",
+  "summary": "This batch script clears the screen and then runs a Docker container to decrypt a file using AES-256 encryption. It mounts a local Windows directory into the container and uses OpenSSL to decrypt the secrets.encrypted file, outputting the decrypted result.",
   "explanations": {
-    "1": "The @echo off command hides each command from being printed to the screen as the script runs, so you only see the output, not the commands themselves.",
-    "5": "This runs a Docker container (a isolated mini-computer environment) that decrypts a file using AES encryption, with -v mounting a folder from your PC into the container and -w setting the working directory inside it."
+    "1": "This disables the echo of commands themselves, so only the command output appears on screen rather than both the commands and their results.",
+    "3": "This clears all text from the command prompt window, giving a fresh blank screen.",
+    "5": "The --rm flag deletes the container after it finishes running; -it lets you interact with it; -v C:\\temp:/data mounts your C:\\temp folder inside the container as /data; -w /data sets /data as the working directory. The openssl enc command decrypts the file using a password you'll be prompted to enter."
   }
 }

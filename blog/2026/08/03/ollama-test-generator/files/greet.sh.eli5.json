@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:28.423Z",
+  "generated": "2026-09-01T19:10:59.252Z",
   "source": "greet.sh",
   "sourceHash": "16b95319f49526b14265edaee9522e4aad9e4151",
   "lang": "bash",
+  "summary": "This script defines reusable functions to greet someone by name in different languages. It normalizes the user's input by trimming whitespace and capitalizing the first letter, then uses that cleaned name to print a greeting in English, French, or Dutch. The script only runs interactively if executed directly, not if sourced by another script.",
   "explanations": {
-    "11": "This uses parameter expansion to remove everything from the start of the string up to the first non-whitespace character, effectively trimming the left side without calling an external program.",
-    "12": "Similarly, this trims the right side by removing everything from the last non-whitespace character to the end of the string.",
-    "19": "The ${name^} syntax capitalizes just the first letter of the string (it's a bash 4+ feature for case transformation).",
-    "26": "The ${2:-en} syntax means 'use the second argument if it was provided, otherwise use the default value en'.",
-    "31": "The ${lang,,} converts the language to lowercase before checking it, so 'EN', 'En', and 'en' all match the same case branch.",
-    "52": "This checks if the script was run directly versus being imported by another script; it only runs main() when someone executes the file, not when they source it for reuse."
+    "11": "This removes leading whitespace from the name by finding the first non-space character and stripping everything before it — all done with parameter expansion rather than calling an external command like sed.",
+    "12": "This removes trailing whitespace by finding the last non-space character and stripping everything after it, using the same parameter expansion technique.",
+    "14": "After trimming, we check if anything is left in the name variable. If it's empty (the user only gave spaces), we report an error and exit the function with a failure status.",
+    "19": "The ${name^} syntax capitalizes just the first letter of the name — this is a bash parameter expansion feature.",
+    "26": "This sets lang to the second argument if provided, otherwise defaults to 'en' for English — the :- operator means 'use this default if the variable is unset or empty'.",
+    "29": "We capture the output of normalize_name in the clean variable, but the || return 1 means if normalize_name fails (returns a non-zero status), this function immediately exits with that same failure status rather than continuing.",
+    "31": "The ${lang,,} converts the language to lowercase so that 'EN', 'En', and 'en' all match the same case branch — the double comma is bash's lowercase conversion operator.",
+    "52": "This checks whether the script is being run directly (BASH_SOURCE[0] equals the script name) versus being sourced by another script. If sourced, the functions are available but main() won't automatically run, letting test suites use the functions without interactive prompts."
   }
 }

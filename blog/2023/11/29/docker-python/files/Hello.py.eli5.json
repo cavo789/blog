@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:21.331Z",
+  "generated": "2026-09-01T18:21:27.157Z",
   "source": "Hello.py",
+  "sourceHash": "e343a35cf2fa04782749dab102d45129cdb0b644",
   "lang": "python",
+  "summary": "This program prints the text 'Hello World!' to the screen. It's the simplest possible Python program, often used as a first test to verify that Python is working correctly.",
   "explanations": {}
 }

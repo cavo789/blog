@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:21.448Z",
+  "generated": "2026-09-01T18:45:36.728Z",
   "source": ".zshrc",
+  "sourceHash": "5757681f9995bbf8f7b28b6d78b93267b4e1df37",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a zsh shell configuration snippet that defines a list of plugins to load. It shows how to add the 'zsh-ssh-config-suggestions' plugin to your existing plugin list, alongside the built-in 'git' plugin.",
+  "explanations": {
+    "1": "This line starts defining an array variable called 'plugins' in bash/zsh syntax using parentheses.",
+    "4": "This adds a specific plugin name to the array — zsh-ssh-config-suggestions is a plugin that provides autocomplete suggestions based on your SSH config file."
+  }
 }

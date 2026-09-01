@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:15.439Z",
+  "generated": "2026-09-01T18:36:53.155Z",
   "source": "compose.part5.yaml",
+  "sourceHash": "4479fa004079051d1f1070caa232ec637d98a8eb",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration mounts the SSH credentials from your local machine into a container so that the app service can authenticate using your SSH keys. The ${HOME} variable expands to your user's home directory, making the config portable across different machines.",
   "explanations": {
-    "7": "This line mounts your computer's SSH keys (stored in ~/.ssh) into the container at /christophe/.ssh, so the app inside can use your SSH credentials."
+    "7": "The dash creates a list item; the part before the colon is the path on your actual computer (your SSH folder), and the part after is where it appears inside the container (at /christophe/.ssh). The ${HOME} variable gets replaced with your actual home directory path when Docker runs this."
   }
 }

@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:38.787Z",
+  "generated": "2026-09-01T19:00:37.642Z",
   "source": "config",
+  "sourceHash": "042042cc06d7540eadadaa83b51e275ed60f1811",
   "lang": "plaintext",
+  "summary": "This is an SSH configuration block that defines connection settings for a remote server. When you try to connect to 'planethoster', SSH will automatically use these predefined values instead of requiring you to specify them each time.",
   "explanations": {
-    "1": "This is an SSH configuration block where 'Host planethoster' is a nickname you can use instead of typing the full server details every time.",
-    "5": "IdentityFile specifies which private key file SSH should use to authenticate—think of it like telling SSH 'use this specific key to prove who I am'."
+    "1": "This creates a named alias called 'planethoster' that you can use as shorthand when connecting with SSH (instead of typing the full hostname).",
+    "5": "This tells SSH which private key file to use for authentication when connecting to this host. The tilde (~) means your home directory."
   }
 }

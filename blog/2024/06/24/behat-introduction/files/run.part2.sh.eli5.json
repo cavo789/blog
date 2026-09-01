@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:23.916Z",
+  "generated": "2026-09-01T18:32:13.759Z",
   "source": "run.part2.sh",
+  "sourceHash": "e05abe98fe0479e77fa3fe5fb030949dcf3a888a",
   "lang": "bash",
+  "summary": "This script starts a headless Chrome browser in the background with remote debugging enabled, captures its process ID, runs a Behat test suite against it, and then cleans up by killing the Chrome process when done.",
   "explanations": {
-    "8": "nohup runs the chrome command in the background so the script doesn't wait for it to finish, and the backslash lets us continue the command on the next line.",
-    "10": "The > /dev/null 2>&1 & redirects all output to nowhere and the & at the end puts chrome in the background so we can continue with the script.",
-    "13": "$! is a special variable that holds the process ID (PID) of the last command we ran in the background, so we can shut it down later.",
-    "15": "This tells the shell checker to ignore warnings about unquoted variables on line 16, which is safe here because behat handles spaces in filenames correctly.",
-    "19": "We're using braces like ${chromePID} instead of $chromePID to clearly show where the variable name ends, especially useful if there were text right after it."
+    "3": "Clears the terminal screen to start with a clean display.",
+    "8": "nohup runs the command immune to hangups so Chrome keeps running even if the script's terminal closes; the backslash at the end continues the command on the next line.",
+    "10": "Redirects all output to /dev/null (discarding it), and the & at the end runs Chrome in the background so the script doesn't wait for it to finish.",
+    "13": "$! is a special variable that holds the process ID of the last background command, so we can refer to Chrome later.",
+    "15": "This tells the shell linter to ignore warnings about unquoted variables on the next line — we're intentionally using them unquoted here.",
+    "16": "Sets PHP's memory limit to unlimited (-1) and then runs Behat, which is a testing framework that will execute automated tests.",
+    "18": "Checks if chromePID is greater than 0, meaning Chrome was actually started successfully."
   }
 }

@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:32.104Z",
+  "generated": "2026-09-01T18:18:53.072Z",
   "source": "index.php",
   "sourceHash": "274b797e09c8a0819586b38f2b89ed6ccbfd111b",
   "lang": "php",
+  "summary": "This snippet demonstrates the difference between two ways of handling JSON decoding errors in PHP. The first attempt silently fails and returns null, while the second attempt throws an exception when the JSON is invalid, making the error explicit and catchable.",
   "explanations": {
-    "5": "json_decode expects valid JSON text, but \"Ipso lorem\" is just plain text, so it silently returns null instead of throwing an error.",
-    "9": "The JSON_THROW_ON_ERROR flag makes json_decode throw an exception when it gets invalid JSON instead of silently returning null, which helps you catch bugs faster."
+    "5": "json_decode() tries to parse the string as JSON, but 'Ipso lorem' is not valid JSON syntax, so it returns null silently without raising any error.",
+    "9": "Adding JSON_THROW_ON_ERROR as a flag makes json_decode() throw an exception instead of silently returning null when it encounters invalid JSON, which helps catch bugs earlier."
   }
 }

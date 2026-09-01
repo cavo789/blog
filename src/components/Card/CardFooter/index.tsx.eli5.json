@@ -1,11 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:52.474Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:52:40.204Z",
+  "source": "index.tsx",
+  "sourceHash": "0c1eb0e1ac85fccecbd5876feed7b271a57e8804",
+  "lang": "typescript",
+  "summary": "This is a React component that renders a card footer section. It accepts styling options like text alignment, weight, and color, combines them into CSS class names using a utility function, and renders a div with those classes plus any custom className or inline styles passed in.",
   "explanations": {
-    "4": "clsx is a utility library that combines multiple CSS class names together, filtering out any empty ones so you don't end up with extra spaces in your class attribute.",
-    "22": "This line is different from the others because it uses styles.truncate (from the imported CSS module) instead of a plain string, which means truncate is a CSS class defined in that specific module file rather than a global class name."
+    "6": "Props is extending CardTextOptions, which means this Props interface inherits all the properties from CardTextOptions and adds its own properties (className, style, children) on top.",
+    "18": "Setting italic to false by default means if the caller doesn't provide an italic prop, it will be treated as false automatically.",
+    "24": "buildTextClasses is a utility function being called with all the text styling options; it returns an object with multiple CSS class strings (text, textColor, etc.) that will be applied to the footer.",
+    "34": "styles.truncate is being passed as a second argument to buildTextClasses, likely telling it where to find the CSS module class for text truncation if needed.",
+    "38": "clsx is a utility that combines multiple class names together, filtering out any that are undefined or empty, so only valid classes end up in the final className string."
   }
 }

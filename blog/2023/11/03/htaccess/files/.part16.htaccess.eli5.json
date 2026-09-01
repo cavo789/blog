@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:11.085Z",
+  "generated": "2026-09-01T18:19:54.405Z",
   "source": ".part16.htaccess",
   "sourceHash": "c07369407b564bc73052f70167b43a45ac307182",
   "lang": "htaccess",
+  "summary": "This snippet uses Apache's mod_headers module to add a security header that prevents browsers from trying to guess the type of content being served. By setting X-Content-Type-Options to 'nosniff', we're telling the browser 'trust what I tell you this file is, don't try to be clever about it', which prevents certain types of attacks where a malicious file might be misinterpreted.",
   "explanations": {
-    "1": "This checks if the mod_headers module is available on the server before trying to use header commands.",
-    "2": "This tells browsers not to guess what type of file is being sent, preventing them from executing files as scripts when they shouldn't be."
+    "1": "IfModule checks whether the mod_headers Apache module is installed and enabled; if it's not available, Apache will skip the block inside instead of throwing an error.",
+    "2": "Header always set adds an HTTP response header that gets sent to every browser request; 'always' means send it even if there's an error response, and X-Content-Type-Options nosniff tells browsers not to sniff the MIME type of the response."
   }
 }

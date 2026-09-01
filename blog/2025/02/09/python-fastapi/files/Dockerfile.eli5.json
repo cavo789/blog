@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:15.014Z",
+  "generated": "2026-09-01T18:45:14.701Z",
   "source": "Dockerfile",
+  "sourceHash": "9da875fede33c4c7b067637af617b05de2d6d036",
   "lang": "docker",
+  "summary": "This Dockerfile creates a lightweight Python container that runs a FastAPI web application. It starts with a minimal Python image, installs FastAPI, copies your application code into the container, and configures it to run on port 82.",
   "explanations": {
-    "2": "The 'slim' variant is a smaller version of the Python image that saves disk space by removing unnecessary tools.",
-    "8": "The '--no-cache-dir' flag tells pip not to store downloaded packages on disk, which reduces the final image size.",
-    "14": "CMD sets the default command to run when the container starts; in this case, it launches your FastAPI app on port 82 instead of the default port 8000."
+    "2": "The `slim` variant is a stripped-down version of Python that's much smaller than the standard image, which saves disk space and download time while still having everything needed to run Python code.",
+    "5": "WORKDIR sets the working directory inside the container to /app, so any commands that follow will run from that location and files will be organized there.",
+    "8": "The `--no-cache-dir` flag tells pip not to store downloaded packages in a cache folder, which saves space in the final image since we won't need them again after installation.",
+    "11": "This copies your local `main.py` file from your computer into the container at the path `/app/main.py` so the container has your application code to run."
   }
 }

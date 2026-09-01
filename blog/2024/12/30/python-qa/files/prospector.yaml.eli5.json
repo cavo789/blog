@@ -1,13 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:46.115Z",
+  "generated": "2026-09-01T18:44:24.830Z",
   "source": "prospector.yaml",
+  "sourceHash": "afbc39fc6a0e64301285260b1a712d950e71f2bb",
   "lang": "yaml",
+  "summary": "This is a configuration file for a Python code quality checker tool (likely Prospector or a similar linter). It enables strict checking with test warnings, allows lines up to 120 characters long, disables certain documentation style rules that conflict with the project's conventions, and enables several security and complexity analysis tools.",
   "explanations": {
-    "1": "This sets how strict the code quality checker will be when looking for problems.",
-    "2": "This tells the tool to report warnings found in test files, not just in regular code.",
-    "3": "This tells the tool to ignore warnings about missing or bad documentation.",
-    "9": "This starts a list of specific rules to turn off for the pycodestyle checker; each rule below (like D100, D203) is a documentation or style rule we're choosing to ignore."
+    "1": "strictness: high means the linter will enforce rules as strictly as possible, catching more potential issues.",
+    "2": "test-warnings: true tells the linter to also check and report issues in test files, not just production code.",
+    "3": "doc-warnings: false disables warnings about documentation quality, so missing docstrings won't be flagged as errors.",
+    "6": "options here configure settings specific to the pycodestyle checker.",
+    "7": "max-line-length: 120 allows lines to be up to 120 characters before the linter complains; the default is usually 79.",
+    "9": "disable: starts a list of specific rules to turn off for this checker.",
+    "10": "D100, D203, D205, etc. are specific pycodestyle rule codes; the D-prefix means they're documentation-related rules that this project doesn't want enforced.",
+    "23": "run: true explicitly enables the bandit security checker.",
+    "26": "run: true explicitly enables the dodgy checker, which looks for suspicious code patterns.",
+    "29": "run: true explicitly enables pyflakes, which finds unused imports and undefined variables.",
+    "32": "run: true explicitly enables mccabe, which measures code complexity."
   }
 }

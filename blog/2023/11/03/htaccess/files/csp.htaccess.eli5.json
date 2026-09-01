@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:36.425Z",
+  "generated": "2026-09-01T18:19:00.490Z",
   "source": "csp.htaccess",
   "sourceHash": "598c50a0ceb2ccb0c9b6c51e0d549460cd97c10e",
   "lang": "htaccess",
+  "summary": "This configuration file sets HTTP security headers for a website to protect against common attacks like clickjacking, XSS, and man-in-the-middle attacks. It uses Apache's mod_headers module to add these protective headers to every response sent to visitors' browsers. Most lines are already active, but there's one powerful Content Security Policy line commented out that requires careful testing before enabling.",
   "explanations": {
-    "1": "This checks if Apache has the mod_headers module loaded before trying to use Header commands; if the module isn't available, Apache will ignore everything inside this block.",
-    "7": "The 'always' keyword means this header gets sent even if there's an error, and the condition at the end (the part in quotes after 'always set') means this header only applies when the connection is using HTTPS.",
-    "21": "The 'expr=%{HTTPS} == 'on'' at the end is a condition that tells Apache to only send this security header when the connection is secure (HTTPS); without it, the header wouldn't be sent over regular HTTP.",
-    "40": "This entire line is commented out (starts with #) because it's powerful but risky—if the rules are too strict, your site might break, which is why the comments above warn you to test carefully before uncommenting it."
+    "1": "This checks if Apache's mod_headers module is installed and available; everything inside only runs if it is.",
+    "4": "This sets a custom header that isn't standard—it's just a label you can change or remove entirely if you don't need it.",
+    "7": "This restricts what browser features can be used on your site (like camera, microphone, payment APIs); replace XXXXXXXXXXXXXX with your actual domain name.",
+    "12": "This tells the browser to reject files if they don't match their declared type—so if a file claims to be CSS but isn't, the browser ignores it instead of trying to execute it.",
+    "16": "This prevents attackers from embedding your site inside a hidden frame on their malicious page to trick users into clicking things.",
+    "21": "This tells the browser to always use HTTPS for your site and never allow unencrypted HTTP; the 'expr=%{HTTPS} == on' part means this header only sends when HTTPS is active.",
+    "25": "This enables the browser's built-in XSS detection and stops page rendering if an attack is found, rather than trying to fix the page.",
+    "29": "This hides information about where a user came from when they click a link, protecting user privacy.",
+    "40": "This is a commented-out Content Security Policy that strictly controls where your site can load scripts, fonts, images, and other resources from; it's powerful but can break your site if misconfigured, so it needs thorough testing first."
   }
 }

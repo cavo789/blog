@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:16:31.980Z",
+  "generated": "2026-09-01T18:37:15.771Z",
   "source": ".gitconfig.part3",
+  "sourceHash": "61b9267f5ec803265c9a20c9ef8295a7ad74561b",
   "lang": "part3",
-  "explanations": {}
+  "summary": "This is a Git configuration snippet that sets up automatic pruning during fetch operations. When you run git fetch, Git will remove references to remote branches that no longer exist on the remote repository, keeping your local repository clean.",
+  "explanations": {
+    "2": "The 'prune = true' setting tells Git to automatically delete local tracking branches whose corresponding remote branches have been deleted on the server."
+  }
 }

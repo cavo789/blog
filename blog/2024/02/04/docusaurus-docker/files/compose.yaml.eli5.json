@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:22.975Z",
+  "generated": "2026-09-01T18:26:49.484Z",
   "source": "compose.yaml",
+  "sourceHash": "a8f077987295d2fece9b0906c6f239a3607b509c",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a single service called 'blog' for a Docusaurus website. It builds from the current directory, exposes port 3000, runs as a non-root user, and mounts the local blog folder into the container so changes are reflected immediately.",
   "explanations": {
-    "8": "This sets the user ID and group ID (1000:1000) that the container will run as, instead of root, for security reasons.",
-    "10": "This mounts your local ./blog directory into the container at /app/blog so changes you make locally appear inside the running container."
+    "7": "The %%port=3000%% syntax is a template placeholder that allows the port number to be substituted dynamically at runtime, then maps it to port 3000 inside the container where the application listens.",
+    "8": "This runs the container as user ID 1000 and group ID 1000 instead of root, which is a security best practice to limit what the application can do if compromised.",
+    "10": "This mounts the './blog' folder from your computer into the '/app/blog' folder inside the container, so any changes you make locally are immediately visible to the running application without rebuilding."
   }
 }

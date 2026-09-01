@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:26.127Z",
+  "generated": "2026-09-01T18:33:55.673Z",
   "source": "makefile.part37",
+  "sourceHash": "1097b391b1db03d3525c0d274e4eebd1ba78c719",
   "lang": "part37",
+  "summary": "This Makefile snippet captures three pieces of information about the current Git repository: the branch name, the root directory path, and the repository URL. Each line runs a shell command and stores the result in a variable so it can be used later in build scripts or automation.",
   "explanations": {
-    "1": "This runs a git command and stores the result in a variable; the := means it only runs once when the Makefile starts.",
-    "3": "This gets the root directory of your git repository (the folder where .git lives) and saves it for later use.",
-    "5": "This extracts your repository's web URL from git config, converts SSH format to HTTPS if needed, then removes the .git extension at the end."
+    "1": "The $(shell ...) syntax tells Make to run a Git command and save its output. This particular command gets the current branch name you're on.",
+    "3": "This runs a Git command to find the absolute path to the root folder of your repository, no matter which subfolder you're currently in.",
+    "5": "This extracts the repository URL and transforms it from SSH format (git@github.com:user/repo.git) into HTTPS format (https://github.com/user/repo), then strips off the .git extension at the end using grep."
   }
 }

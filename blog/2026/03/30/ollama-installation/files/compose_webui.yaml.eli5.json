@@ -1,15 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:58.240Z",
+  "generated": "2026-09-01T19:04:05.802Z",
   "source": "compose_webui.yaml",
+  "sourceHash": "7aaf8355933178ba14066ab435d6e506d54e7357",
   "lang": "yaml",
+  "summary": "This Docker Compose file defines two services: Ollama (a local AI model runtime) and Open WebUI (a web interface for it). Ollama runs on port 11434 and stores data persistently, while Open WebUI runs on port 4000, connects to Ollama, and depends on it being available first. Both services automatically restart if they crash.",
   "explanations": {
-    "8": "This maps port 11434 from inside the container to port 11434 on your computer, so you can talk to the ollama service from the outside.",
-    "10": "This creates a named storage area called ollama_data that persists even if the container stops, and mounts it to /root/.ollama inside the container.",
-    "25": "This maps port 4000 on your computer to port 8080 inside the container, so the web interface is accessible at localhost:4000.",
-    "27": "This allows the open-webui container to reach your host machine using the special hostname host.docker.internal, which Docker automatically translates.",
-    "29": "This tells open-webui where to find the ollama service by using the container name 'ollama' as a hostname, since Docker networks let containers talk to each other this way.",
-    "34": "This ensures ollama starts before open-webui, since open-webui needs ollama to be running first to function properly."
+    "6": "%%name=ollama%% is a template variable that will be replaced with the actual container name when the file is processed—it's a way to avoid hardcoding the name in multiple places.",
+    "8": "The port mapping syntax means 'expose port 11434 inside the container to port 11434 on your machine'—the part before the colon is what you access from outside, the part after is what the container uses internally.",
+    "10": "This creates a named volume called ollama_data and mounts it at /root/.ollama inside the container, so Ollama's data persists even if the container is deleted and recreated.",
+    "27": "This tells the container how to reach the host machine from inside Docker—it's needed so Open WebUI can communicate with Ollama.",
+    "29": "This environment variable tells Open WebUI where to find the Ollama service; it uses the container name and port number to construct the URL.",
+    "34": "This ensures Ollama starts and is ready before Open WebUI starts, preventing connection failures during startup."
   }
 }

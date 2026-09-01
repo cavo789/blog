@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:32.092Z",
+  "generated": "2026-09-01T18:34:04.243Z",
   "source": "makefile.part40",
+  "sourceHash": "e635c4cd4b1c7a0e1c1b28a7259827928838d850",
   "lang": "part40",
+  "summary": "This is a Makefile snippet that defines two build targets: one to update PHP dependencies (composer.lock), and another to install them (vendor directory). The first target runs when composer.json changes, ensuring the lock file stays in sync; the second runs when the lock file changes, installing those specific versions into the vendor folder.",
   "explanations": {
-    "1": "This line means 'the file composer.lock depends on composer.json', so if composer.json changes, this rule will run.",
-    "2": "The ${CMD} is a variable that holds a command prefix (like 'docker exec' or similar); it runs composer update to refresh dependencies based on composer.json.",
-    "4": "This line means 'the vendor directory depends on composer.lock', so whenever composer.lock changes, this rule installs the exact versions listed in that lock file.",
-    "5": "The ${CMD} runs composer install, which reads composer.lock and installs the locked versions of all packages into the vendor folder."
+    "1": "This line declares that composer.lock depends on composer.json — if composer.json is newer, this target needs to run.",
+    "2": "${CMD} is a variable (likely defined elsewhere in the Makefile) that runs the actual command; composer update regenerates the lock file based on your requirements.",
+    "4": "This declares that the vendor directory depends on composer.lock — if the lock file changes, we need to reinstall packages.",
+    "5": "composer install reads from the lock file and installs the exact versions specified there into the vendor directory."
   }
 }

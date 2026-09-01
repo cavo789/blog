@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:40.147Z",
+  "generated": "2026-09-01T18:57:28.744Z",
   "source": "devcontainer.json",
+  "sourceHash": "a4077a0e4e2c8c86be88d1cb02abf96f9f789df2",
   "lang": "json",
+  "summary": "This is a development container configuration file that sets up a Docker-based development environment. It specifies which Docker services to run, how to configure VS Code inside the container, and what initialization steps to perform when the container starts. It also configures SSH access and various editor preferences for developers working in this containerized setup.",
   "explanations": {
-    "3": "This is an array of two compose files—the first one from a parent directory will be loaded first, then the local one, allowing you to override or extend settings.",
-    "12": "This SSH command tells Git to use a specific private key file and skip the usual host verification, which is useful in containerized development but less secure.",
-    "14": "This command runs once when the container is first created; it sets up a persistent bash history file so your command history survives container restarts.",
-    "19": "The ${dirty} and ${rootName} are template variables that VS Code will replace with actual values like whether you have unsaved changes and your project folder name."
+    "3": "This is an array of compose files because you can layer multiple Docker Compose configurations together — the first file provides base setup, and the second file (in the .devcontainer folder) can override or add to it.",
+    "7": "This tells the dev container which service from the Docker Compose files to actually run — in this case, the service named 'app' is the one that becomes your development environment.",
+    "8": "This sets the directory inside the container where your project files will live and where VS Code will open by default.",
+    "9": "This is the user account that VS Code itself will run as inside the container, separate from the system user.",
+    "12": "This SSH command configuration ensures that when you use Git inside the container, it uses a specific SSH key stored at that path, with security settings to avoid prompting about unknown hosts.",
+    "14": "This runs before the container even starts — it creates a persistent folder for bash history so your shell commands are saved across container restarts."
   }
 }

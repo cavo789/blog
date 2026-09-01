@@ -1,15 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:49.583Z",
+  "generated": "2026-09-01T19:11:30.995Z",
   "source": "ai-commit.zsh",
   "sourceHash": "6b82688883eaed3e5c0badd2fb8d54776c1054c4",
   "lang": "bash",
+  "summary": "This function generates a git commit message by sending the staged code changes to a local AI model, then displays the result and asks the user to confirm, edit, or reject it before actually committing. The design ensures nothing gets committed without explicit user action — just pressing Enter does nothing.",
   "explanations": {
-    "11": "The || return 1 means \"if the _git_staged_diff command fails, stop this function immediately and report failure to whoever called it\".",
-    "24": "The print -n command outputs text without a newline at the end, so the user's keypress appears on the same line as the question.",
-    "26": "read -k1 means \"wait for the user to type exactly one character (a single keypress), don't wait for Enter\", which is why the answer appears instantly.",
-    "30": "The | symbol here means \"or\", so y|Y matches either lowercase or uppercase y — whichever the user types.",
-    "31": "The -e flag tells git to open your text editor so you can modify the message before committing, while -m still provides a starting message."
+    "6": "This line registers the function in a lookup table so the help system knows about it and can display what it does.",
+    "7": "This declares that the ai-commit command doesn't take any parameters from the user.",
+    "11": "This calls a helper function to extract just the staged changes (the diff), and if that fails for any reason, the whole function exits early with an error.",
+    "13": "This is a multi-line string variable that contains the exact instructions we'll send to the AI model; the ${diff} at the end will be replaced with the actual staged changes.",
+    "19": "This sends the prompt to the local AI service and stores whatever message it generates, again exiting early if the AI service isn't available.",
+    "24": "The -n flag prevents a newline from being printed after the prompt text, so the user's response appears on the same line.",
+    "26": "The -k1 flags mean 'read exactly one character without waiting for Enter', so the user just presses a single key and we respond immediately.",
+    "30": "If the user pressed 'y' or 'Y', this commits using the AI-generated message as-is.",
+    "31": "If the user pressed 'e' or 'E', the -e flag opens their text editor to let them modify the message before committing."
   }
 }

@@ -1,8 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:45.468Z",
+  "generated": "2026-09-01T18:52:26.259Z",
   "source": "post.txt",
+  "sourceHash": "b5dadc80f8dc62a3555d4a99355c2721ad4d3b76",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a YAML front-matter block for a blog post or documentation article, containing metadata like publication date, URL slug, title, and author information. The highlighted lines (8-11) mark which fields should be emphasized or specially processed by the documentation system.",
+  "explanations": {
+    "3": "The slug is a URL-friendly identifier for this post; instead of using the full title, Docusaurus will make the page accessible at something like /blog/docusaurus-relatedposts.",
+    "7": "This indicates the post belongs to a series called 'Creating Docusaurus components', which might group related articles together on the site.",
+    "8": "The # highlight-start and # highlight-end comments tell Docusaurus to visually emphasize or differently render the lines between them, usually in code examples or documentation displays.",
+    "9": "mainTag designates 'docusaurus' as the primary category or theme for this post, probably used for filtering or organization purposes."
+  }
 }

@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:26.061Z",
+  "generated": "2026-09-01T18:55:24.874Z",
   "source": "who_are_you.py",
+  "sourceHash": "365b476430a2b03f728c1085b7cc957244571f7c",
   "lang": "python",
+  "summary": "This program asks the user for their name, then greets them by name if they provided one, or calls them 'stranger' if they didn't. Either way, it finishes with a friendly closing line.",
   "explanations": {
-    "3": "This checks whether the user actually typed something—an empty string is considered False in Python, so this branch only runs if name has at least one character.",
-    "4": "The f-string syntax (the 'f' before the quotes) lets you insert variable values directly into a string using curly braces instead of concatenating."
+    "3": "In Python, a non-empty string is 'truthy' (considered true in an if statement), while an empty string is 'falsy' (considered false). So this checks whether the user actually typed something.",
+    "4": "The f-string syntax (the 'f' before the quotes) lets you put variable names inside curly braces to insert their values directly into the string."
   }
 }

@@ -1,14 +1,28 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:16.411Z",
+  "generated": "2026-09-01T18:56:56.800Z",
   "source": "Dockerfile",
+  "sourceHash": "443599d3ade2570d535fafd2dffef31bd9251154",
   "lang": "docker",
+  "summary": "This Dockerfile builds a production Python application container using Python 3.13 slim as the base image. It installs system dependencies (locale support and tini process manager), sets up the timezone and language environment, installs Python dependencies from requirements.txt, copies the application code, and configures it to run a Gunicorn web server with Uvicorn workers on port 8000.",
   "explanations": {
-    "15": "The --mount=type=cache option tells Docker to reuse the apt package cache across builds, which speeds things up and saves space.",
-    "16": "The 'set -eux' command makes the shell script strict: it exits on errors, shows each command that runs, and fails if any variable is undefined.",
-    "37": "Similar to line 15, this caches pip's downloaded packages so rebuilding the image doesn't re-download everything.",
-    "47": "Tini is a small init process that properly handles signals and zombie processes when your app runs inside the container.",
-    "49": "This adds the 'src' folder to Python's search path, so your code can import modules from that directory without specifying the full path."
+    "5": "ARG declares a build-time variable that can be passed when building the image; this sets the default working directory path for the app.",
+    "6": "This declares the Python version as a build argument so you can easily build with different Python versions without editing the file.",
+    "7": "This sets a timezone build argument that will later be used to configure the container's time zone.",
+    "9": "FROM pulls the specified Python image as the starting point; the ${PYTHON_VERSION} syntax substitutes the build argument value we declared earlier.",
+    "11": "This re-declares the TIMEZONE argument so it's available in the RUN command below (build arguments don't persist across FROM statements without this).",
+    "13": "ENV sets an environment variable inside the container; TZ controls the timezone that running processes will see.",
+    "15": "The --mount=type=cache directive tells Docker to cache the apt package lists between builds so you don't re-download them every time.",
+    "16": "set -eux makes the shell script fail on errors, print commands as they run, and treat undefined variables as errors—good safety practices.",
+    "19": "DEBIAN_FRONTEND=noninteractive prevents apt from asking interactive questions; --no-install-recommends skips optional packages to keep the image smaller.",
+    "27": "These ENV variables configure the locale and language settings so the application uses UTF-8 encoding by default.",
+    "31": "This re-declares DOCKER_APP_HOME so it's available for the WORKDIR command.",
+    "33": "WORKDIR sets the current directory inside the container; subsequent COPY and RUN commands happen relative to this path.",
+    "37": "This caches pip's downloaded packages between builds, similar to the apt cache mount above.",
+    "43": "This adds the directory where pip installs user packages to the PATH so those installed commands are executable.",
+    "47": "ENTRYPOINT configures tini as the process manager—it's a tiny init system that properly handles signals and zombie processes.",
+    "49": "This tells the Python application where to find its source code modules.",
+    "51": "CMD defines the default command to run; when the container starts, it launches Gunicorn with 4 Uvicorn workers listening on all interfaces at port 8000."
   }
 }

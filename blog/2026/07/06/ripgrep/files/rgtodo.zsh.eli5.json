@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:15:31.245Z",
+  "generated": "2026-09-01T19:08:26.502Z",
   "source": "rgtodo.zsh",
+  "sourceHash": "76e543e7229754761cad92b68b6b81ac5971f1c0",
   "lang": "bash",
+  "summary": "This function searches through a directory for comments tagged with TODO, FIXME, HACK, or NOTE using ripgrep (rg), a fast search tool. It displays matching lines with their line numbers and sorts the results alphabetically so you can see all the work items that need attention in your project.",
   "explanations": {
-    "3": "The syntax ${1:-.} means use the first argument if provided, otherwise default to a dot (current directory).",
-    "9": "This is a regex pattern that matches TODO, FIXME, HACK, or NOTE followed by an optional colon and whitespace—the pipe | means OR, and \\s matches any whitespace character."
+    "3": "This sets a local variable 'dir' to either the first argument passed to the function, or the current directory (.) if no argument was provided.",
+    "9": "This is a regular expression that matches any of the four keywords (TODO, FIXME, HACK, NOTE) followed by an optional colon and at least one space, so it finds comments like 'TODO fix this' or 'FIXME: update the logic'.",
+    "11": "The pipe sends all the search results to 'sort', which arranges them in alphabetical order by filename and line number, making the output easier to scan through."
   }
 }

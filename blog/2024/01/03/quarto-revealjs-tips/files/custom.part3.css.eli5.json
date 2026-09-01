@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:42.063Z",
+  "generated": "2026-09-01T18:25:32.006Z",
   "source": "custom.part3.css",
+  "sourceHash": "887fd46479981b45ef329937e89103c187fc4924",
   "lang": "css",
-  "explanations": {}
+  "summary": "This CSS rule hides the callout title elements within reveal containers by setting their display property to none, which removes them from the page layout entirely as if they don't exist.",
+  "explanations": {
+    "2": "display: none completely removes the element from the page flow—it won't take up any space and won't be visible, unlike visibility: hidden which just makes it invisible but keeps its space reserved."
+  }
 }

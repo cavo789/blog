@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:55.685Z",
+  "generated": "2026-09-01T18:20:41.346Z",
   "source": "Dockerfile",
+  "sourceHash": "80e56143113f040d6c6a97977a9cf0e024247e72",
   "lang": "docker",
+  "summary": "This Dockerfile creates a minimal container based on Alpine Linux, copies a shell script into it, makes that script executable, and then runs a command that keeps the container alive indefinitely without doing anything. It's a common pattern for creating a container that you can exec into to run the script manually.",
   "explanations": {
-    "5": "This makes the script executable by adding the 'run' permission; without this, you couldn't run the script even if you tried.",
-    "7": "This keeps the container running by tailing an empty file that never changes, so the container doesn't immediately exit after startup."
+    "3": "COPY takes a file from your computer (counter.sh) and places it inside the container's filesystem at the root level, also named counter.sh.",
+    "5": "chmod +x makes the counter.sh file executable — it adds permission to run it as a program rather than just reading it as text.",
+    "7": "This runs 'tail -f /dev/null', which tails an empty file and follows it forever, keeping the container running without consuming resources; it's a no-op that prevents the container from exiting."
   }
 }

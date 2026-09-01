@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:17.656Z",
+  "generated": "2026-09-01T18:45:21.433Z",
   "source": "Dockerfile.part2",
+  "sourceHash": "7ab2d6de84c4c13b8a7464b9e490cccc8a26c60d",
   "lang": "part2",
+  "summary": "This Dockerfile creates a lightweight Docker image running a FastAPI web application. It starts with a minimal Python environment, installs the FastAPI framework, copies your application code into the container, and then runs a development server that automatically restarts whenever your code changes.",
   "explanations": {
-    "2": "This pulls a lightweight Python image from Docker Hub—'slim' means it's smaller than the default image by excluding unnecessary files.",
-    "8": "The --no-cache-dir flag tells pip not to store downloaded packages locally, which saves disk space in the Docker image.",
-    "16": "The --host 0.0.0.0 makes the server listen on all network interfaces (not just localhost), so it can receive requests from outside the container; --port 82 runs it on port 82 instead of the default 8000."
+    "2": "We're using the 'slim' variant of Python, which is a much smaller download than the standard Python image but still has everything needed to run Python code.",
+    "5": "This sets /app as the working directory, meaning all file operations inside the container will happen relative to this folder, like how 'cd /app' would work on your computer.",
+    "8": "We're installing FastAPI and its standard dependencies (the '[standard]' part) before copying our code, so if the code changes later, we don't have to reinstall everything.",
+    "11": "We copy main.py from your computer into the container at the same location (also called main.py), making your application code available inside the container.",
+    "16": "We start the Uvicorn server (which runs FastAPI apps) with --reload enabled, meaning if you change main.py, the server automatically restarts and reloads the changes without you having to manually restart it."
   }
 }

@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:37.896Z",
+  "generated": "2026-09-01T18:21:55.689Z",
   "source": "encrypt.cmd",
+  "sourceHash": "4c62ca61ca155a4890e4d15fa1376e1418074732",
   "lang": "batch",
+  "summary": "This batch script clears the screen, then uses Docker to run OpenSSL and encrypt a file called secrets.md with strong AES-256 encryption. After encryption completes, it optionally deletes the original unencrypted file if the encrypted version was created successfully.",
   "explanations": {
-    "1": "@echo off turns off the display of commands as they run, so you only see the output, not the command itself.",
-    "3": "cls clears the screen to give you a fresh, empty console window.",
-    "5": "This runs a Docker container with openssl to encrypt your secrets.md file using AES-256 encryption; the -v flag mounts your current folder into the container, and -w sets the working directory inside the container.",
-    "8": "IF EXIST checks whether the file secrets.encrypted was successfully created before attempting to delete the original."
+    "1": "@echo off stops the batch script from printing each command it's about to run, making the output cleaner.",
+    "3": "cls clears everything currently displayed in the command prompt window.",
+    "5": "docker run starts a temporary Alpine Linux container with OpenSSL, mounts your current directory as /data inside the container, and encrypts secrets.md using AES-256 encryption with a salt and password-based key derivation for extra security; the -a flag outputs the result in base64 so it's text-friendly.",
+    "8": "IF EXIST checks whether the secrets.encrypted file was actually created before attempting to delete the original."
   }
 }

@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:48.679Z",
+  "generated": "2026-09-01T18:22:03.708Z",
   "source": "Dockerfile",
+  "sourceHash": "828b9abdbebfe499968a8caf97d0ae7ba1c50a63",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a PHP 8.2 web server using Apache as the base image, configures PHP to use production settings, copies the application code into the web root directory, and then switches to run everything as the www-data user (the typical unprivileged user for web servers) for security.",
   "explanations": {
-    "2": "This moves the production-ready PHP configuration file into place so PHP uses the secure settings instead of the development settings.",
-    "4": "This switches the user from root to www-data, which is a non-root user that Apache typically runs as for security reasons."
+    "2": "The PHP Docker image includes both a development and production configuration file; this line renames the production one to the default name so PHP actually uses it instead of development settings.",
+    "3": "This copies all files from your local project directory (the dot means current directory) into /var/www/html, which is where Apache looks for files to serve.",
+    "4": "By switching to the www-data user, we ensure the application runs with minimal permissions—if something gets hacked, the attacker can't do as much damage as they could running as root."
   }
 }

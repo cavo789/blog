@@ -1,21 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:28.173Z",
+  "generated": "2026-09-01T19:00:20.836Z",
   "source": "devcontainer.json",
+  "sourceHash": "7615a523fb7361a6e425e0fa5094c2c1fe264938",
   "lang": "json",
+  "summary": "This is a Dev Container configuration file that sets up a reproducible development environment for a Quarto documentation project. It specifies the Docker container to use, installs helpful tools like Git and Docker, configures VS Code settings for consistent code formatting and linting across the team, and installs useful extensions to improve developer workflow.",
   "explanations": {
-    "8": "This variable gets replaced with the actual path of your local workspace folder on your computer when the dev container starts.",
-    "13": "Setting this to 'true' allows the non-root user (vscode) to run Docker commands inside the container without needing admin privileges.",
-    "14": "This uses Moby (an open-source project that Docker is built on) instead of the full Docker engine, which is lighter weight for running Docker inside Docker.",
-    "19": "This command runs once before the container is created—it sets up a directory for bash history and tells git to ignore the history file so it doesn't get committed.",
-    "20": "This command runs after you connect to the container and silently installs git pre-commit hooks if the pre-commit tool exists, without failing if it doesn't.",
-    "34": "This wraps long lines in the editor, but only at the column number specified on the next line (80 characters).",
-    "62": "These numbers are visual guides showing where lines should ideally be kept short—120 and 70 characters are common limits for code readability.",
-    "72": "This tells VS Code to treat JSON files in the 'resources' folder as JSONC (JSON with Comments), so you can add comments in those files.",
-    "76": "When you save a file, VS Code will use whatever language mode the currently active editor has, rather than guessing based on the filename.",
-    "88": "This configures how VS Code should find and fold code regions in Dockerfiles when you use special comments like '# region' and '# endregion'.",
-    "113": "This maps file paths to JSON schema URLs—VS Code uses these schemas to validate your YAML files and provide helpful autocompletion.",
-    "120": "The title bar will show the project name, a separator, and '[DevContainer]' to remind you that you're working inside a container, plus a dot if there are unsaved changes."
+    "3": "This tells Dev Containers which Docker Compose file to use to build the container—in this case, a file named compose.yaml in the same directory.",
+    "8": "This passes the path of your local project folder into the container as an environment variable, so scripts inside the container can reference where your code is.",
+    "11": "This feature gives the container the ability to run Docker commands from inside itself, and the settings allow non-root users to use Docker without needing elevated permissions.",
+    "19": "Before the container starts, this command creates a directory structure for bash history and a .gitignore file so your command history persists between container restarts but doesn't clutter your repo.",
+    "20": "After you connect to the container, this checks if a pre-commit tool is installed and sets it up; the 'true' at the end means it won't fail if pre-commit isn't available.",
+    "21": "These port numbers are forwarded from the container to your computer, so web apps running on ports 8000 or 5931 inside the container are accessible from your browser.",
+    "47": "This tells the spell checker to recognize words in English, French, and Dutch so it doesn't flag those language words as misspellings.",
+    "72": "This tells VS Code to treat all .json files inside the 'resources' folder as JSONC (JSON with Comments), which is a superset of JSON that allows comments.",
+    "78": "The 'exclude' section hides certain folders and files from the file explorer on the left, reducing clutter from build artifacts and cache directories.",
+    "113": "This maps URLs to schema definitions, so VS Code can provide autocomplete and validation for Quarto config files and GitHub workflow files based on their official schemas."
   }
 }

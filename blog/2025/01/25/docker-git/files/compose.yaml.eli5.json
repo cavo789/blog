@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:11.237Z",
+  "generated": "2026-09-01T18:45:04.665Z",
   "source": "compose.yaml",
+  "sourceHash": "9e03578852c4628ec12346d26f85cf06a891206c",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines a service called docker_git. It builds a Docker image from the current directory and sets up two volume mounts so the container can access the host's SSH key and Git configuration, allowing it to authenticate with Git repositories and use the same Git settings as the host.",
   "explanations": {
-    "7": "The ${HOME} is a variable that gets replaced with your actual home directory path at runtime, and ':ro' at the end means read-only so the container can't modify your real SSH key.",
-    "9": "Unlike the SSH key above, this git config file doesn't have ':ro' at the end, so the container is allowed to modify it if needed."
+    "3": "The 'build: .' tells Docker Compose to build the image using the Dockerfile in the current directory.",
+    "4": "The 'tty: true' allocates a pseudo-terminal, which lets you interact with the container as if you're running it interactively.",
+    "7": "This mounts the host's SSH private key into the container so Git commands inside the container can authenticate with remote repositories. The ':ro' at the end means read-only, so the container can't accidentally modify your real SSH key.",
+    "9": "This mounts your Git configuration file into the container so it inherits your Git settings like username and email without having to reconfigure them."
   }
 }

@@ -1,12 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:15.298Z",
+  "generated": "2026-09-01T18:26:34.987Z",
   "source": "compose.part2.yaml",
+  "sourceHash": "634a7e86e5bb411493bb6b9615e675b6648b3142",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up LimeSurvey, a survey application, with a MySQL database backend. It defines two services that communicate with each other: the LimeSurvey application container and a MySQL database container, along with persistent storage volumes for both.",
   "explanations": {
-    "21": "This line tells Docker to create a named volume called 'limesurvey' and mount it inside the container at /var/www/html/upload/surveys, so survey data persists even if the container restarts.",
-    "33": "This line does the same thing for the database: it creates a 'data' volume and mounts it at /var/lib/mysql, so the database files aren't lost when the container stops.",
-    "41": "This top-level 'volumes' section defines the named volumes that both containers will use; without this declaration, the volume mounts in the services above wouldn't work."
+    "6": "The %% notation is a templating syntax used by the deployment system to insert dynamic values at runtime, in this case the container's name.",
+    "10": "This references the database container by its templated name, allowing the LimeSurvey app to know where to find the database it depends on.",
+    "19": "Volumes mount storage from your computer into the container, making it persistent so data isn't lost when the container stops.",
+    "21": "The 'limesurvey' volume stores uploaded survey files in a specific directory inside the container so they persist across restarts.",
+    "26": "This tells Docker that the LimeSurvey app shouldn't start until the database container is ready, using the templated database name.",
+    "28": "The 'service_healthy' condition means the app waits not just for the database container to start, but for its health check to pass, ensuring it's actually ready to accept connections.",
+    "36": "The 'data' volume stores the MySQL database files themselves, so your survey data persists even if the database container is recreated.",
+    "43": "A health check is a test Docker runs periodically to confirm the service is working correctly, which other services can depend on.",
+    "45": "This health check command pings the MySQL server on localhost to verify it's running and responding to requests.",
+    "52": "This section declares the named volumes that were referenced in the services above, telling Docker to create them as managed storage."
   }
 }

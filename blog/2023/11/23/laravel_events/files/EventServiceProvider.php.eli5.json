@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:03.430Z",
+  "generated": "2026-09-01T18:21:09.191Z",
   "source": "EventServiceProvider.php",
+  "sourceHash": "fe01edb6865140ea4ce6282a6b31937b59bcff71",
   "lang": "php",
-  "explanations": {}
+  "summary": "This code sets up an event listener mapping that tells the application which listeners should respond when certain events are triggered. In this case, whenever a SampleEvent occurs, the SampleListener class will be notified and run its handler code.",
+  "explanations": {
+    "1": "The $listen property is a protected variable that will be used by the framework's event system to know which listeners to call for which events.",
+    "2": "SampleEvent::class gets the full class name as a string (like 'App\\Events\\SampleEvent'), which serves as the key that identifies what event we're listening for.",
+    "3": "SampleListener::class is stored in an array because one event can have multiple listeners — if several listeners needed to respond to SampleEvent, they'd all be listed here."
+  }
 }

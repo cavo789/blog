@@ -1,10 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:23.716Z",
+  "generated": "2026-09-01T18:43:35.939Z",
   "source": "black.toml",
+  "sourceHash": "5bfb03cec15964a75c82c7b2352558461f2cc918",
   "lang": "toml",
+  "summary": "This configuration section tells Black, a Python code formatter, to format code with a line length of 120 characters and target Python version 3.13. Black is a tool that automatically reformats Python code to follow consistent style rules.",
   "explanations": {
-    "8": "This tells Black (a code formatter) to format your code as if it's being run on Python 3.13, which affects how certain language features are formatted."
+    "1": "This starts a configuration section for the Black tool within a TOML configuration file (TOML is a simple config format similar to INI files).",
+    "4": "Black will break lines longer than 120 characters, rather than using its default of 88 characters.",
+    "8": "This tells Black to format code compatible with Python 3.13 specifically; multiple versions can be listed in the array if you need to support multiple Python versions."
   }
 }

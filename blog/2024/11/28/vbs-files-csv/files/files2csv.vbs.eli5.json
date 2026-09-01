@@ -1,18 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:38:45.266Z",
+  "generated": "2026-09-01T18:41:09.974Z",
   "source": "files2csv.vbs",
+  "sourceHash": "581010fee4772445aa6669e760d391c480a3ce99",
   "lang": "vbs",
+  "summary": "This VBScript scans a folder and all its subfolders to collect information about every file it finds, then writes that data to a CSV file that can be opened in Excel. For each file, it records details like path, size, file type, dates, and owner so you can easily analyze your files in a spreadsheet.",
   "explanations": {
-    "16": "Option Explicit forces you to declare every variable before using it, which helps catch typos early.",
-    "34": "chr(34) produces a double-quote character; it's used here to wrap CSV fields so commas inside them don't break the format.",
-    "42": "getextensionname extracts just the file extension (like 'txt' from 'document.txt') from the full file path.",
-    "45": "Shell.Application is a Windows COM object that gives access to shell features; it's created fresh inside the loop to fetch file metadata like owner.",
-    "50": "GetDetailsOf with parameter 10 retrieves the file owner; the 0 parameter in line 49 retrieves the filename for comparison.",
-    "59": "This line calls FilesTree recursively on each subfolder, meaning the function calls itself to process nested directories.",
-    "71": "ForWriting = 2 is a VBS constant meaning 'open file for writing'; using a named constant makes the code more readable than just writing 2.",
-    "79": "CreateTextFile with ForWriting and True creates a new CSV file, overwriting any existing one (the True enables Unicode encoding).",
-    "82": "The underscore (_) at the end of a line is VBS syntax for line continuation, allowing long statements to span multiple lines for readability."
+    "16": "Option Explicit forces you to declare variables before using them, catching typos that would otherwise create new variables accidentally.",
+    "18": "These are global variables shared across the whole script—objFSO handles file system operations, and objCSVFile is the file we're writing to.",
+    "29": "GetFolder retrieves a folder object representing the directory at the path you give it, so we can then access its files and subfolders.",
+    "34": "chr(34) is the ASCII code for a double-quote character; it wraps each field in quotes so commas inside the data don't break the CSV format.",
+    "42": "getextensionname extracts just the file extension (like 'txt' or 'xlsx') from the full file path.",
+    "45": "CreateObject instantiates a Shell.Application, which gives us access to Windows shell features like retrieving detailed file properties that the basic FileSystemObject doesn't provide.",
+    "49": "This checks if the current item's name matches the file we're processing, so we can retrieve its owner information in the next line.",
+    "50": "GetDetailsOf with parameter 10 retrieves the owner of the file; the number 10 is a code for the owner property in Windows shell.",
+    "59": "FilesTree calls itself recursively on each subfolder, meaning it will drill down through all nested directories.",
+    "71": "ForWriting = 2 is a constant that tells CreateTextFile to open the file in write mode (overwriting if it exists).",
+    "76": "replace swaps '.vbs' with '.csv' in the script's filename, so if the script is called 'scan.vbs', it creates 'scan.csv' in the same location.",
+    "79": "CreateTextFile makes a new file at the path you specify, using ForWriting mode and True for Unicode encoding.",
+    "82": "The underscore at the end of a line lets you continue a long statement on the next line for readability."
   }
 }

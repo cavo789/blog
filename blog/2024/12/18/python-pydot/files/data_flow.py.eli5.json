@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:33.055Z",
+  "generated": "2026-09-01T18:42:22.120Z",
   "source": "data_flow.py",
+  "sourceHash": "68718b957d504ced92fd06a51a22484c05c5112d",
   "lang": "python",
+  "summary": "This code creates a data flow diagram using pydot, which is a Python library for working with Graphviz. It defines five nodes representing data sources, processes, and a data store, connects them with directional edges to show how data moves between them, and then saves the resulting diagram as a PNG image file.",
   "explanations": {
-    "1": "We're creating a new directed graph object (think of it as a blank canvas) where arrows will point from one thing to another.",
-    "20": "We're creating a connection (edge) between source1 and process1, then immediately adding it to the graph — we could also create the edge first and add it later, but this does both at once.",
-    "27": "This takes the graph we built and exports it as a PNG image file that you can view and share."
+    "1": "pydot.Dot creates a new graph object; 'digraph' means directed graph, where arrows have direction.",
+    "4": "pydot.Node creates a visual element to display; 'shape=box' makes it draw as a rectangle.",
+    "10": "Similar to line 4, but 'shape=oval' makes this node draw as an oval instead.",
+    "16": "This creates a node with a cylinder shape, which is a common visual symbol for databases or data storage.",
+    "20": "pydot.Edge creates a directional arrow from source1 to process1, showing that data flows from the source to the process.",
+    "27": "write_png() generates the actual image file by sending the graph description to Graphviz and saving the output."
   }
 }

@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:39.449Z",
+  "generated": "2026-09-01T18:42:33.494Z",
   "source": "Dockerfile",
+  "sourceHash": "a6914eccdf70047537970c301fb61f15a0417d60",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Docker image based on Alpine Linux and installs the Docker client inside it. Alpine is a lightweight Linux distribution, and by adding Docker, this image can run Docker commands from within a container — a pattern called Docker-in-Docker.",
   "explanations": {
-    "1": "This tells Docker to use a specific syntax parser for understanding this Dockerfile, ensuring consistent behavior across different Docker versions.",
-    "5": "This is a directive that tells hadolint (a Dockerfile linter) to skip a specific warning rule, in this case DL3008 which warns about pinning package versions for reproducibility.",
-    "6": "This comment is reminding you that if you switch to a different base image like Ubuntu (which uses apt-get instead of apk), you'd need to adjust the package installation command accordingly.",
-    "9": "Similar to line 5, this tells hadolint to ignore warning DL3002, which typically warns against running containers as the root user for security reasons."
+    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax parser, ensuring consistent behavior across different Docker versions.",
+    "5": "Hadolint is a linter that checks Dockerfile best practices; this comment tells it to ignore a specific warning (DL3008) on the next line.",
+    "6": "This note explains that apk (Alpine's package manager) is being used here, but if you swap to a different base image like Ubuntu, you'd need to use apt-get instead and change the docker.io reference.",
+    "9": "Another hadolint ignore comment, this time suppressing warning DL3002 which would otherwise complain about running as root."
   }
 }

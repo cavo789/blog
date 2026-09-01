@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:42.302Z",
+  "generated": "2026-09-01T18:44:17.981Z",
   "source": "pyright.json",
+  "sourceHash": "37967a41f1c2bbafbefd49c376ea33f5ccee4a41",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is a Pyrightd configuration file that tells the Python type checker to analyze the current directory, use Python version 3.13, and assume it's running on a Linux platform. These settings ensure consistent type-checking behavior across different environments.",
+  "explanations": {
+    "2": "The \"include\" array tells Pyrightd which directories to analyze for type errors; the dot (\".\") means the current directory and everything in it.",
+    "3": "This explicitly sets the Python version to 3.13, so Pyrightd will check your code as if it's being run on Python 3.13 and warn about features that don't exist in that version.",
+    "4": "This specifies Linux as the target platform, which matters because some type stubs and platform-specific code behave differently on Windows, macOS, and Linux."
+  }
 }

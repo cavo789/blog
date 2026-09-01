@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:03.201Z",
+  "generated": "2026-09-01T18:44:55.387Z",
   "source": ".pre-commit-config.yaml.part2",
+  "sourceHash": "0c49677e2f83fafdc333c9456d02729ac33fed7a",
   "lang": "part2",
-  "explanations": {}
+  "summary": "This is a configuration for a pre-commit hook that runs 'prospector', a Python code analysis tool. When developers commit code, this hook will automatically execute prospector to check for code quality issues before the commit is allowed.",
+  "explanations": {
+    "1": "The 'repo: local' tells the pre-commit framework that this hook is defined locally in this project rather than pulled from a remote repository.",
+    "5": "The 'entry: prospector' specifies the actual command that will be run—in this case, the prospector tool executable.",
+    "6": "The 'language: system' means prospector should be run as a system command (assuming it's already installed on the developer's machine), rather than having pre-commit try to install it in a virtual environment."
+  }
 }

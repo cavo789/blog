@@ -1,15 +1,27 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:40.548Z",
+  "generated": "2026-09-01T18:54:08.095Z",
   "source": "styles.module.css",
+  "sourceHash": "361f884d9a777838fa8bbbf0db14e06accee21ee",
   "lang": "css",
+  "summary": "This CSS file styles card components with theme-aware styling for both light and dark modes. It defines reusable custom properties for consistency, then applies them to various card layouts—enhanced cards with images and tags, smaller card variants, and supporting elements like titles, dates, and badges. The styling includes hover effects that add visual feedback through transforms and shadow changes.",
   "explanations": {
-    "37": "min-width: 0 is a trick to let flexbox shrink content below its natural size, preventing text overflow in flex children.",
-    "41": "This line animates two properties at once — the card moves up and its shadow changes — both using the same timing speed.",
-    "50": "flex: 1 means this body section grows to fill all available space, pushing any footer content to the bottom.",
-    "63": "white-space: nowrap forces the title onto one line, and text-overflow: ellipsis adds '...' if it's too long.",
-    "106": "-webkit- prefixes are vendor-specific CSS for older browsers; these lines let text cut off after exactly 2 lines.",
-    "129": "This hardcodes the height to 180px instead of using the CSS variable defined at the top, which is inconsistent."
+    "2": "This creates a reusable variable that multiple card elements reference, so changing the radius in one place updates all cards at once.",
+    "3": "A custom property storing the animation speed and easing curve used throughout card interactions, making animations consistent.",
+    "4": "A custom property that defines how far the card moves upward on hover—stored as a variable so it's reusable.",
+    "8": "Makes the element sit inline with text but still respect width and padding, useful for small badge-like components.",
+    "16": "This selector targets the `.counter` element specifically when dark mode is active (indicated by the `data-theme` attribute), allowing dark-mode-specific colors.",
+    "40": "Prevents flex children from collapsing below their content size, ensuring consistent layout in flex containers.",
+    "44": "Applies smooth animation to both the transform (movement) and box-shadow properties using the transition variables defined above.",
+    "53": "The flex value of 1 makes this element expand to fill available vertical space, pushing footer content to the bottom.",
+    "66": "This and the following webkit lines implement text truncation to exactly 2 lines with an ellipsis—a non-standard but widely-supported technique.",
+    "73": "Positions the badge in the top-left corner of its flex container by aligning it to the start of the cross-axis.",
+    "101": "When you hover over a card, it moves up 4 pixels and adds a shadow for a lifted effect—the variables keep this consistent with other hover states.",
+    "106": "In dark mode, the shadow is darker and more opaque to maintain visibility and contrast against the dark background.",
+    "112": "Ensures images don't stretch or squeeze; instead, they fit within their 2:1 aspect ratio container while preserving their original proportions.",
+    "122": "This targets the image inside a hovered card, creating a subtle zoom effect that works together with the card's upward movement.",
+    "139": "Similar to the title truncation, this limits the description to exactly 2 lines of text.",
+    "150": "Display flex makes the wrapper a flex container, though `flex-direction` isn't set, so children flow horizontally by default."
   }
 }

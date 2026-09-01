@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:17.622Z",
+  "generated": "2026-09-01T18:21:20.126Z",
   "source": "settings.json",
+  "sourceHash": "40cb93ae801b52dbcf79157981d23c6a95615c86",
   "lang": "json",
+  "summary": "This is a configuration setting that enables sticky scroll in a code editor, which keeps the top lines of your current code block visible at the top of the editor window as you scroll down through the file.",
   "explanations": {}
 }

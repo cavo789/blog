@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:37.044Z",
+  "generated": "2026-09-01T18:46:00.641Z",
   "source": "module.part2.bas",
+  "sourceHash": "e5bb67321d39ae7262da326b49e4a01d99f5d24e",
   "lang": "bas",
+  "summary": "This code sets up database connection credentials (server, database, username, and password) in a data object, then executes a SQL query to fetch customer data and paste it into an Excel sheet starting at cell A1. The hardcoded username and password are highlighted because they're a security concern—normally you'd let Windows authentication handle this automatically.",
   "explanations": {
-    "4": "This hardcodes the SQL Server login username as 'SA' (the system administrator account) into the code, which is a security risk because anyone reading the code can see it.",
-    "6": "This hardcodes the database password directly in the source code, which is a major security vulnerability—passwords should never be stored in plain text in files.",
-    "12": "This calls a custom method that runs a SQL query and pastes all results starting at cell A1 in the currently active worksheet."
+    "4": "We're explicitly setting the username to 'SA' (SQL Server's system admin account), which is highlighted because hardcoding credentials like this is a security risk.",
+    "6": "We're hardcoding the password directly in the source code, which is highlighted as a security problem—anyone with access to the code can see the password.",
+    "12": "We're calling a method that runs a SQL query to select all rows from the Customers table, then pastes the results into the active Excel sheet starting at cell A1; the result is stored in the 'rng' variable so we can reference that range if needed later."
   }
 }

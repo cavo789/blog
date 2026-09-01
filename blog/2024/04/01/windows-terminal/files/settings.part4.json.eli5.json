@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:45.692Z",
+  "generated": "2026-09-01T18:29:38.645Z",
   "source": "settings.part4.json",
+  "sourceHash": "b06ed8fd8be30f000b6983e8a6d79c97fd87b609",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is a configuration entry that defines what action to perform when the application starts up. It specifies that a new tab should be opened using a profile called 'DOS Command Prompt'.",
+  "explanations": {
+    "1": "The semicolon at the start is a separator or delimiter used in configuration parsing to indicate the beginning of an action. The '--profile' flag tells the system which saved profile settings to use when creating the new tab."
+  }
 }

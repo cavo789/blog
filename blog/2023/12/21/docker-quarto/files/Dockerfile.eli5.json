@@ -1,13 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:29.038Z",
+  "generated": "2026-09-01T18:23:15.160Z",
   "source": "Dockerfile",
+  "sourceHash": "cc5a5d0dad6351fd0df28e15bad889eb71dca69d",
   "lang": "docker",
+  "summary": "This Dockerfile builds a container image based on Quarto that adds system packages for document conversion, creates a non-root user account for security, and installs LaTeX tools needed to convert documents to PDF format.",
   "explanations": {
-    "14": "This mounts a cache directory so package downloads persist between builds, making rebuilds faster.",
-    "15": "The 'set -e -x' makes the script exit on any error and print each command before running it, which helps catch problems.",
-    "37": "This re-declares the ARG from line 6 so it's available in this later build stage; ARGs don't automatically carry forward.",
-    "42": "The '-o' flag allows creating a group with a GID that might already exist, which prevents errors if the ID is taken."
+    "4": "ARG defines a build-time variable that can be overridden when building the image; this sets which version of Quarto to download.",
+    "6": "ARG sets a variable for the username that will be created as a non-root user inside the container.",
+    "7": "ARG sets the numeric user ID (UID) for the non-root user; 1000 is a common default for the first regular user.",
+    "8": "ARG sets the numeric group ID (GID) for the non-root user's primary group.",
+    "10": "FROM pulls a pre-built image from a container registry as the starting point; ${QUARTO_VERSION} substitutes the ARG value defined earlier.",
+    "14": "RUN --mount=type=cache allows this command to reuse cached apt package files across builds, saving time and space.",
+    "15": "set -e -x makes the shell exit on any error and print each command before running it, helping catch problems early.",
+    "37": "ARG redeclares the build arguments here so they're available in later stages of the build (needed after FROM in multi-stage builds).",
+    "42": "groupadd creates a new user group with the specified GID; -o allows overriding an existing GID if needed.",
+    "43": "useradd creates a new non-root user account with the specified UID, assigns it to the group, and sets its shell to bash.",
+    "45": "USER switches from running commands as root to running them as the specified user; this improves security for operations that don't need root.",
+    "47": "WORKDIR sets the current directory for subsequent commands; / means the root of the filesystem, though typically commands will run in user directories.",
+    "51": "quarto install tool tinytex downloads and installs TinyTeX (a lightweight LaTeX distribution) needed for PDF conversion.",
+    "56": "tlmgr install adds specific LaTeX packages that Quarto needs to properly convert documents to PDF with correct formatting."
   }
 }

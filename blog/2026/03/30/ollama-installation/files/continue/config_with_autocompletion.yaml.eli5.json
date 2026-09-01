@@ -1,9 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:26.396Z",
+  "generated": "2026-09-01T19:04:12.804Z",
   "source": "config_with_autocompletion.yaml",
   "sourceHash": "8fcacc934da24ec293f83e5f3dea5460159e67b3",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a configuration file that defines two local AI models running through Ollama, a local AI provider. The first model is a larger, faster assistant used for chat and editing tasks, while the second is a smaller, specialized coding model used for autocomplete suggestions. Both models connect to the same local Ollama server.",
+  "explanations": {
+    "3": "The schema version indicates which format version this config file follows, allowing the system to know how to parse it correctly.",
+    "6": "Provider is the service that runs the AI model — in this case, Ollama, which runs models locally on your machine rather than sending requests to the cloud.",
+    "8": "The apiBase is the network address where the Ollama server is listening; 127.0.0.1 means localhost (your own computer) and 11434 is the port number it uses.",
+    "9": "Roles define what tasks this model is available for — this model can handle both chat conversations and text editing operations."
+  }
 }

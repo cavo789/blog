@@ -1,16 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:46.071Z",
+  "generated": "2026-09-01T18:31:19.774Z",
   "source": "Dockerfile",
+  "sourceHash": "8a0adbb85cc2929e631a50e36e67d06908e9ab09",
   "lang": "docker",
+  "summary": "This Dockerfile creates a PHP 8.2 container with Chrome browser and ChromeDriver installed for testing purposes. It sets up a non-root user with matching host machine permissions, installs system dependencies and Chrome from Google's repositories, downloads a specific Chrome version and its driver, and prepares a working directory for Behat tests.",
   "explanations": {
-    "1": "This disables spell-checking for this entire Dockerfile, probably because it contains URLs or technical terms that would otherwise trigger warnings.",
-    "19": "We're re-declaring these ARG variables here because Docker needs to know about them again after the FROM statement, which resets the build context.",
-    "23": "The double quotes around ${USERNAME} are needed because the variable might contain spaces or special characters, and without them the shell could misinterpret the command.",
-    "29": "This ARG isn't actually used in the visible RUN commands below, so it might be a leftover or intended for future use.",
-    "45": "This uses jq (a JSON query tool) to parse Google's Chrome version list and extract the download URL for the specific Chrome version we want, filtering for Linux 64-bit.",
-    "47": "The backslash-e codes are ANSI escape sequences that make the output display in magenta; this is just for prettier console output during the build.",
-    "54": "This does the same jq parsing as line 45, but this time it extracts the chromedriver (the automation tool) instead of the browser itself."
+    "3": "ARG declares a build-time variable that can be passed when building the image; DOCKER_UID will default to 1000 if not specified.",
+    "19": "These ARG lines re-declare the variables so they're available in this build stage; Docker requires you to redeclare ARG variables after certain commands if you want to use them later.",
+    "23": "This creates a system group with the specified group ID, using the username as the group name.",
+    "24": "This creates a new user account with a home directory, matching the host machine's user ID and group ID so file permissions stay consistent between container and host.",
+    "29": "This ARG sets the URL to Google's JSON file that lists all available Chrome versions and their download locations.",
+    "32": "This downloads Google's public key and adds it to the system's trusted keys so the system can verify Chrome packages are legitimate.",
+    "45": "This runs curl to fetch the JSON file, then uses jq to parse it and find the download URL for the exact Chrome version specified, filtering for the linux64 platform.",
+    "49": "The -j flag tells unzip to extract files directly into the destination folder without creating a subfolder, keeping the directory structure flat.",
+    "54": "Similar to line 45, this fetches and extracts the ChromeDriver URL from the same JSON file, but this time for the driver instead of the browser.",
+    "65": "COPY --from pulls the composer executable from the official composer Docker image and adds it to this image, avoiding the need to download and install it ourselves."
   }
 }

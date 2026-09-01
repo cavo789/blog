@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:23.754Z",
+  "generated": "2026-09-01T18:53:36.141Z",
   "source": "index.txt",
+  "sourceHash": "0715eda5a58d754223d7d9d94748b5e89472ec05",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a front-matter block (the metadata at the top of a markdown file) that defines properties for a blog post about creating a Joomla website with Docker. The highlighted line indicates this post is part of a series, which helps readers find related articles on the same topic.",
+  "explanations": {
+    "4": "This comment tells the documentation system or markdown renderer to highlight or specially style the next line (the series declaration) so it stands out visually to readers."
+  }
 }

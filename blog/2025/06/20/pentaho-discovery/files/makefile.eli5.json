@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:13.862Z",
+  "generated": "2026-09-01T18:48:21.705Z",
   "source": "makefile",
+  "sourceHash": "41ebb8127833cf88730d191e79263d8864068e20",
   "lang": "makefile",
+  "summary": "This Makefile provides two convenient shortcuts for starting services. The 'start' target launches the Spoon application (a data integration tool) with specific environment variables configured, while the 'up' target starts Docker containers defined in a compose file.",
   "explanations": {
-    "1": ".PHONY tells Make that 'start' is not a real file to create, just a command label to run.",
-    "3": "SWT_GTK3=1 and the other assignments set environment variables before running spoon.sh, kind of like passing instructions to the program as it starts.",
-    "5": ".PHONY marks 'up' as a command label too, so Make knows you're not trying to create an actual file called 'up'."
+    "1": ".PHONY tells Make that 'start' is not a real file to build, just a command label to run.",
+    "3": "SWT_GTK3=1 and SKIP_WEBKITGTK_CHECK=1 are environment variables being set for the spoon.sh command; KETTLE_HOME=${PWD} sets the application's home directory to the current working directory.",
+    "5": ".PHONY marks 'up' as a command target rather than a file.",
+    "6": "The colon after 'up' defines this as a Make target that can be invoked with 'make up'."
   }
 }

@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:33.311Z",
+  "generated": "2026-09-01T18:21:48.083Z",
   "source": "encrypt.sh",
+  "sourceHash": "bf627f57a380646d6fc47718735d998c8ed83438",
   "lang": "bash",
+  "summary": "This script encrypts a file called secrets.md using AES-256 encryption with a password, and saves the encrypted output to secrets_encrypted.md. It does this inside a Docker container running OpenSSL, which keeps the encryption tool isolated from your system while working on files in your current directory.",
   "explanations": {
-    "3": "The parentheses create a subshell, which is like a separate environment that won't affect your current shell — useful here to keep the password variable isolated.",
-    "4": "The && means 'only run the next command if this one succeeds', so the docker command only starts if the password assignment works.",
-    "5": "$(pwd) runs the pwd command and inserts its output (your current directory) into the string, and $(id -u):$(id -g) does the same to get your user and group IDs so the container runs as you instead of root."
+    "2": "This line makes the script exit immediately if any command fails, treats undefined variables as errors, and prevents pipes from silently failing — basically defensive programming to catch mistakes early.",
+    "4": "The parentheses create a subshell, which is a separate environment where the password variable only exists temporarily and won't leak into your main shell session after the script ends.",
+    "6": "This runs OpenSSL inside a Docker container; the `-v` flag shares your current directory with the container, `-w` sets the working directory inside the container, and `-u` runs it with your same user permissions so files aren't owned by root; the `enc` command encrypts the file using AES-256 with a salt and password-based key derivation for extra security, and `-a` outputs it in base64 so it's text-readable."
   }
 }

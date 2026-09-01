@@ -1,10 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:02.831Z",
+  "generated": "2026-09-01T18:20:54.921Z",
   "source": "compose.mounted_volumes_permissions.yaml",
+  "sourceHash": "cd8fb8bf7d618d843059dcb5999a89b12669eea6",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that defines a service called 'counter'. It builds a Docker image from the current directory, sets up file storage by mounting a local folder into the container, and configures the container to run as a non-root user for security.",
   "explanations": {
-    "10": "This sets the user ID and group ID (1000:1000) that will run processes inside the container, instead of running as root for security reasons."
+    "5": "The %%name=counter%% syntax is a placeholder that gets replaced with the actual service name 'counter' — it's used here to name the service.",
+    "10": "This specifies that the container should run as user ID 1000 with group ID 1000, which is a non-root user; this is a security best practice to prevent the container from having root permissions.",
+    "12": "This mounts (connects) a folder from your computer called './data' to a folder inside the container called '/data', so files you create in either location are shared between both."
   }
 }

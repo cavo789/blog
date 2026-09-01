@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:17.839Z",
+  "generated": "2026-09-01T18:23:01.617Z",
   "source": "data.part3.xml",
+  "sourceHash": "2a2ebfc217376a8c204b115c2dcebc40283c4b63",
   "lang": "xml",
+  "summary": "This is an XML document representing a bookstore with books organized by category. Each book contains metadata like its title and language attribute. The HTML comments with 'highlight-next-line' are markers used by documentation tools or syntax highlighters to draw attention to specific elements.",
   "explanations": {
-    "1": "This XML comment tells a documentation tool to highlight the next line (line 2) in generated docs or IDE displays.",
-    "3": "Another highlight marker, this time pointing to the book element on line 4 to emphasize it in documentation.",
-    "5": "The third highlight comment marks line 6 (the title element) as something important to draw attention to."
+    "1": "This is a special comment that tells documentation generators or code highlighters to emphasize the very next line of code.",
+    "4": "The 'category' is an attribute of the book element that describes what type of book it is; in this case, it's a cooking book.",
+    "6": "The 'lang' attribute on the title element specifies that the title text is in English; attributes provide extra information about an element."
   }
 }

@@ -1,12 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:41.108Z",
-  "source": "share.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:50:28.864Z",
+  "source": "share.tsx",
+  "sourceHash": "6314855142d72f08cdc155118135b2a0fed5bfa6",
+  "lang": "typescript",
+  "summary": "This component renders a share button that links to Bluesky with pre-filled text containing the article title and URL. It first checks whether a Bluesky record key exists (which would mean sharing is disabled) and validates that required metadata is present before building and returning the link.",
   "explanations": {
-    "8": "The `?.` operator safely accesses nested properties — if `metadata` or `frontMatter` doesn't exist, it returns `undefined` instead of crashing.",
-    "10": "This line has backwards logic: it returns `null` (hides the button) when `blueskyRecordKey` EXISTS, which seems intentional but might be confusing at first glance.",
-    "17": "This builds a URL by concatenating strings with `encodeURIComponent()`, which converts special characters so they're safe to use in web links."
+    "18": "This hook gives us access to the Docusaurus site configuration, which includes things like the base URL of the site.",
+    "19": "This uses optional chaining (?.) to safely dig into nested properties — if any level is missing or null, the whole expression just becomes undefined instead of crashing.",
+    "21": "The logic here is inverted: if the record key exists, we return null (render nothing). This is likely a guard clause to skip rendering when sharing has been explicitly disabled.",
+    "28": "We're building a Bluesky share intent URL — it's like a template link that opens Bluesky's compose window with pre-filled text.",
+    "29": "encodeURIComponent() converts special characters (like spaces and slashes) into URL-safe codes so they don't break the link when embedded in a URL.",
+    "37": "target='_blank' makes the link open in a new tab or window instead of replacing the current page.",
+    "38": "rel='noopener noreferrer' is a security measure that prevents the new page from accessing the window object of the page that opened it."
   }
 }

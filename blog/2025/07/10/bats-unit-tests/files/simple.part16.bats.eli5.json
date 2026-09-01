@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:22.197Z",
+  "generated": "2026-09-01T18:49:42.008Z",
   "source": "simple.part16.bats",
+  "sourceHash": "6f045efc11fe5f8f047662e785f36d3240987888",
   "lang": "bats",
+  "summary": "This test verifies that a function called assert::dockerImageExists properly fails and shows an error message when a Docker image doesn't exist. It does this by mocking (replacing) the docker command to return nothing, simulating what happens when an image isn't found, then checking that the assertion fails with the expected error message.",
   "explanations": {
-    "6": "This creates a fake 'docker' function that overrides the real docker command just for this test, so we can control what it returns.",
-    "10": "This loads the assert.sh file which contains the functions we want to test.",
-    "11": "The 'run' keyword executes the function we're testing and captures its output and exit code so we can check them afterward."
+    "6": "This creates a fake docker function that overrides the real docker command. When the test runs, any call to docker will use this fake version instead of the actual Docker executable.",
+    "7": "echo \"\" outputs an empty string, which simulates what docker images -q returns when it can't find an image — nothing.",
+    "10": "This loads the assert.sh file into the current shell so we can call the assert::dockerImageExists function that we're testing.",
+    "11": "run executes the function we're testing and captures its output and exit code so we can check what happened.",
+    "12": "assert_output --partial checks that the actual error message contains the expected text we provided.",
+    "13": "assert_failure verifies that the function exited with a non-zero exit code, meaning it properly reported a failure."
   }
 }

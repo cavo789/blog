@@ -1,21 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:11.452Z",
+  "generated": "2026-09-01T19:02:46.164Z",
   "source": "dnuke",
+  "sourceHash": "d73ddacae2463c6f4d0f0e95bafa21dc4b43b34e",
   "lang": "plaintext",
+  "summary": "This is a Docker cleanup wizard script written in Zsh that removes unused Docker resources (containers, images, volumes, and build cache). It scans your Docker environment, displays what will be deleted in a formatted execution plan, and either prompts you for confirmation on each step or auto-confirms everything if the force flag is set. The script supports two cleanup modes: standard (dangling images only) and deep clean (all unused images), selected via command-line flags.",
   "explanations": {
-    "4": "This line calls a function _d_check_env to verify Docker is installed; if it fails (returns non-zero), the whole script stops and returns 1.",
-    "10": "In Zsh, you can define a function inside a local scope using 'local' keyword, which keeps it private to this script block.",
-    "26": "This loop processes command-line arguments one at a time; $# is the count of arguments, and shift removes the first one each iteration.",
-    "42": "The awk command extracts the fifth column ($5) from the 'Build Cache' line in docker system df output; this gives us the cache size.",
-    "46": "The ${(@f)variable} syntax splits the variable's contents by newlines into array elements; @f means 'split on field separator'.",
-    "70": "This converts Docker image names to their short IDs (first 12 characters of the SHA256 hash) so they can be accurately compared and subtracted from the all_imgs array.",
-    "74": "The ${all_imgs:|used_imgs} syntax is Zsh array subtraction—it removes any elements from all_imgs that appear in used_imgs, leaving only unused images.",
-    "96": "This defines a nested function _fmt inside _draw_plan; it's a helper to format and color each step's status line consistently.",
-    "139": "If force mode is on, this function immediately returns success (0) without prompting, so all cleanup steps auto-confirm.",
-    "140": "The read -q flag makes the prompt non-blocking and case-insensitive; it returns 0 if the user presses 'y' or 'Y'.",
-    "171": "The eval command executes the string stored in $img_cmd as if you'd typed it directly; this is needed because img_cmd contains the command to run.",
-    "208": "This checks if buildx (Docker's newer builder system) is installed; if so, the script uses the newer buildx prune command instead of the older builder prune."
+    "4": "This calls a helper function _d_check_env to verify that Docker is installed and available; if it's not found, the entire script exits early with return code 1.",
+    "10": "This defines a local function that will only exist within this script's scope, not globally—it's used to print formatted help text when the user runs the script with --help or invalid options.",
+    "26": "This begins a loop that processes each command-line argument passed to the script, shifting (removing) each one after handling it.",
+    "42": "This runs 'docker system df' and uses awk to extract the fifth column (column $5) from the line containing 'Build Cache', which is the size of the cache.",
+    "46": "The '@f' syntax splits the multi-line output from c_out into separate array elements, one line per element; the '(...)' syntax wraps it safely.",
+    "58": "If the --all flag was passed, prune_all will be 1, triggering deep-clean mode; otherwise, the script uses standard mode for dangling images only.",
+    "70": "This fetches the full image ID from Docker's inspect output, removes the 'sha256:' prefix, and truncates it to 12 characters to match Docker's short ID format.",
+    "74": "The ':|' operator in Zsh performs array subtraction, removing all elements of used_imgs from all_imgs, leaving only the unused image IDs in i_ids.",
+    "105": "This compares the step_name parameter with the current_step being displayed, so the script can highlight which step is about to execute next.",
+    "139": "If the force flag is 1 (user passed -y), this function immediately returns success without prompting, auto-confirming the action.",
+    "140": "The -q flag makes read silent (no echo), and the '?' after the string makes it a yes/no prompt that returns 0 for yes and 1 for no.",
+    "171": "This uses eval to execute the img_cmd string (which was built earlier), allowing the command to expand properly with variables and special characters.",
+    "208": "This checks if the buildx command exists by running its version subcommand; if it succeeds, the script uses the newer buildx-based pruning instead of the standard builder prune."
   }
 }

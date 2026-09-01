@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:24.017Z",
+  "generated": "2026-09-01T18:49:45.392Z",
   "source": "compose.yaml",
+  "sourceHash": "d397c66dcddd951b2f2033336615b761bae97c63",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up three interconnected services for the Karakeep application: a web service that serves the main app, a Chrome browser service for headless automation, and a Meilisearch service for full-text search. The services are configured to communicate with each other and persist data through volumes.",
   "explanations": {
-    "7": "The ${KARAKEEP_VERSION:-release} syntax means use the KARAKEEP_VERSION environment variable if it exists, otherwise default to the string 'release'.",
-    "15": "The ${UID:-1000}:${GID:-1000} syntax sets the container to run as a specific user and group; it defaults to user 1000 and group 1000 if those environment variables aren't set.",
-    "40": "This creates a named volume called 'meilisearch' that persists data even when the container stops, rather than storing it in a temporary location."
+    "1": "This comment tells the spell-checker to ignore this file so it doesn't flag technical terms like service names as misspellings.",
+    "7": "The ${KARAKEEP_VERSION:-release} syntax means 'use the KARAKEEP_VERSION environment variable, but if it's not set, default to the value \"release\" instead'.",
+    "12": "The %%port=2000%% is a template placeholder that gets replaced with an actual port number at deployment time; the :3000 is the internal port the web service listens on inside its container.",
+    "15": "This uses environment variables for the user ID and group ID, defaulting to 1000 if they're not provided, which controls file permissions for the container process.",
+    "40": "This creates a named volume called 'meilisearch' that persists the search database files beyond the container's lifetime, so data isn't lost when the service restarts."
   }
 }

@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:03.102Z",
+  "generated": "2026-09-01T18:48:05.510Z",
   "source": "config.part2.toml",
+  "sourceHash": "764ded1e3f31ce8da190d3eccc4c9c3670da28c1",
   "lang": "toml",
+  "summary": "This TOML configuration defines a single runner that uses Docker as its executor, and specifies that Docker jobs should run using the php8.4 image. It's setting up a GitLab CI runner (or similar CI system) to spin up PHP 8.4 containers when running jobs.",
   "explanations": {
-    "1": "This creates an array of runner configurations; the double brackets mean you can have multiple runners, and each one is a separate section.",
-    "5": "The double brackets with a dot create a nested array inside the current runner, so docker is a sub-section that belongs to this specific runner."
+    "1": "The double brackets [[runners]] create an array of runner configurations; this is the first entry in that array.",
+    "5": "The double brackets [[runners.docker]] create a nested array under the current runner, allowing you to define multiple Docker configurations for this runner.",
+    "7": "This specifies which Docker image to pull and use as the container for running CI jobs — in this case, php8.4."
   }
 }

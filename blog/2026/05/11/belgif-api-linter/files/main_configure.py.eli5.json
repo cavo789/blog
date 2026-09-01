@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:23.967Z",
+  "generated": "2026-09-01T19:06:48.884Z",
   "source": "main_configure.py",
+  "sourceHash": "19e6cc11cb4c96e9211f5a33d9f3e0cb46d06524",
   "lang": "python",
+  "summary": "This code imports a helper function that customizes OpenAPI documentation for a FastAPI application, then calls that function and passes the FastAPI app object to it so the documentation gets configured with whatever custom settings are defined in that helper.",
   "explanations": {
-    "1": "This imports a function from a helpers module that sets up custom OpenAPI documentation for FastAPI.",
-    "11": "This calls the helper function and passes the FastAPI app object to it, so the helper can modify how the API documentation looks and behaves."
+    "1": "This imports a specific function called configure_custom_openapi from a helpers module that presumably contains code to modify how FastAPI generates its API documentation.",
+    "11": "This actually runs the configure_custom_openapi function, passing in the app object so the function can modify the FastAPI application's OpenAPI behavior."
   }
 }

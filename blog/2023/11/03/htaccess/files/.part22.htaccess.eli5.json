@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:39.399Z",
+  "generated": "2026-09-01T18:20:15.233Z",
   "source": ".part22.htaccess",
+  "sourceHash": "51d0631ef5482ade9aaaa7e43fe3f7277024666c",
   "lang": "htaccess",
+  "summary": "This rule tells the web server to permanently redirect any request for /old.php to a new URL at http://www.yoursite.com/new.php. Browsers and search engines will remember this redirect and update their bookmarks or records accordingly.",
   "explanations": {
-    "1": "RedirectPermanent tells the server to send visitors from the old URL to the new one, and it tells their browser to remember this change permanently (with a 301 status code) so it doesn't have to ask the server again next time."
+    "1": "RedirectPermanent sends an HTTP 301 status code, which means 'this page has moved permanently' — the strongest signal to browsers and search engines to update their records and always go to the new location in the future."
   }
 }

@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:39.110Z",
+  "generated": "2026-09-01T18:59:02.392Z",
   "source": "compose.yaml",
+  "sourceHash": "ce1d3412e4c89b726372953340e13c69e1d095b1",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration defines two services: a Docusaurus documentation builder that mounts your local code and node_modules into a container, and a LanguageTool service for spell-checking. The Docusaurus service uses build arguments to customize paths and user IDs, while LanguageTool runs as a persistent service with Java memory settings and a shared ngrams volume for language data.",
   "explanations": {
-    "9": "The APP_HOME variable is set to /opt/docusaurus if it's not already defined in the environment; the ${VAR:-default} syntax means 'use VAR if it exists, otherwise use the default value after the colon'.",
-    "12": "This tells Docker which user account to run the container as, using the same OS_USERID and OS_GROUPID variables from the build args.",
-    "16": "The double dot (..) means 'the parent directory of the current directory', so this mounts everything one level up into the container at APP_HOME.",
-    "19": "The sleep infinity command keeps the container running indefinitely instead of starting the normal application, which is useful for development where you might run commands manually inside the container.",
-    "25": "This is setting a Java environment variable that tells the LanguageTool service where to find its language model files, which it will load from the ngrams volume.",
-    "32": "These named volumes are persistent storage areas managed by Docker itself rather than directories on your computer—they survive even if you delete the containers."
+    "9": "The ${APP_HOME:-/opt/docusaurus} syntax means 'use the APP_HOME environment variable if it's set, otherwise default to /opt/docusaurus' — the :- part provides a fallback value.",
+    "12": "This sets which user and group the container runs as using those same variables with defaults, written as user_id:group_id (like a Unix file permission).",
+    "16": "The .. mounts the parent directory of this docker-compose file into the container at the APP_HOME path, so your source code is accessible inside.",
+    "17": "This creates a named volume that persists node_modules between container runs, avoiding the need to reinstall dependencies every time.",
+    "19": "The 'sleep infinity' command keeps the container running indefinitely so you can execute other commands inside it; without this, the container would exit immediately.",
+    "22": "This references a pre-built Docker image from Docker Hub (erikvl87 is the username, languagetool is the image name).",
+    "25": "This tells the LanguageTool Java application where to find grammar rule files; the /ngrams path is inside the container and maps to the named volume defined below."
   }
 }

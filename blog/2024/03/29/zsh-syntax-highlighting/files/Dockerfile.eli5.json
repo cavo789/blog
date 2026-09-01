@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:06.223Z",
+  "generated": "2026-09-01T18:29:16.977Z",
   "source": "Dockerfile",
   "sourceHash": "dc898aaf5f8a685d6aab21e78e5bb07b93060fff",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Ubuntu container with zsh shell fully configured. It installs zsh along with essential tools like git and curl, then layers in Oh-My-Zsh (a zsh configuration framework), adds syntax highlighting as a plugin, customizes the shell prompt with a container emoji, and sets zsh as the default interactive login shell when the container starts.",
   "explanations": {
-    "3": "This tells apt-get to not ask interactive questions during installation; it just uses default answers so the build doesn't hang waiting for user input.",
-    "11": "After installing packages, we delete the cached package lists to make the image smaller, since we won't need them again.",
-    "14": "This pipes a shell script downloaded from the internet directly into sh, which runs it; the empty string and flags after it are arguments passed to that install script.",
-    "20": "This uses sed (a text editor) to find the line starting with plugins=(git) and replace it with plugins=(git zsh-syntax-highlighting), adding the new plugin to the list.",
-    "25": "The -i flag makes zsh interactive (so it shows prompts), and -l makes it a login shell (so it reads startup files); together they let you actually use the shell interactively."
+    "3": "This prevents apt-get from pausing to ask interactive questions during installation, which would hang the Docker build process.",
+    "5": "The && operator chains these commands together so if any step fails, the whole RUN instruction fails, preventing a broken image from being created.",
+    "11": "After installing packages, this deletes the package cache files to reduce the final image size, since we won't need to re-download packages.",
+    "14": "This downloads and runs the Oh-My-Zsh installation script from GitHub, the --unattended flag makes it skip interactive prompts, and --keep-zshrc prevents it from overwriting any existing zsh config.",
+    "18": "The --depth=1 flag tells git to only download the latest commit, not the entire history, which saves space in the image.",
+    "20": "The sed command finds the line starting with 'plugins=(git)' and replaces it with one that includes zsh-syntax-highlighting, which adds colored syntax highlighting to typed commands.",
+    "25": "The -i flag makes zsh interactive and -l makes it a login shell, so it loads your full shell configuration including aliases and environment variables when the container starts."
   }
 }

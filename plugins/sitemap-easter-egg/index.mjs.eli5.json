@@ -1,15 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:35.172Z",
+  "generated": "2026-09-01T19:09:02.391Z",
   "source": "index.mjs",
   "sourceHash": "ef12e4581b0e97e52f0d50f18be79e11090ac938",
   "lang": "javascript",
+  "summary": "This Docusaurus plugin adds a hidden Easter egg comment into the generated sitemap.xml file. It waits for the sitemap to be created, then injects a witty comment right after the opening <urlset> tag—a spot that XML parsers ignore, so it won't break search engine indexing.",
   "explanations": {
-    "31": "The code only re-throws the error if it's NOT a 'file not found' error OR if we've exhausted all retry attempts; otherwise it silently waits and tries again.",
-    "34": "This creates a promise that intentionally delays for a set number of milliseconds before resolving, which pauses the loop between file read attempts.",
-    "47": "This digs through nested config objects with optional chaining (?.) to find a custom sitemap filename, or falls back to the default 'sitemap.xml' if any level doesn't exist.",
-    "67": "This creates a regular expression that matches the opening <urlset> tag with optional attributes, using the 'i' flag to ignore uppercase/lowercase differences.",
-    "73": "The replace method here uses a function callback that receives the matched tag and returns it with the comment appended, so it inserts the comment right after the tag."
+    "23": "These constants define how many times we'll try to read the sitemap file and how long to wait between attempts, since the sitemap might not exist yet when this plugin runs.",
+    "27": "We loop up to POLL_ATTEMPTS times, trying to read the file each iteration.",
+    "31": "We only re-throw the error if it's something other than 'file not found' (ENOENT), or if we've exhausted all attempts; otherwise we pause and try again.",
+    "34": "We pause for POLL_INTERVAL_MS milliseconds before the next attempt by wrapping setTimeout in a Promise.",
+    "47": "This digs through the config object to find the sitemap filename (like 'sitemap.xml'), using optional chaining so it won't crash if the config structure is missing any intermediate properties.",
+    "63": "We check if the comment is already in the file to avoid injecting it multiple times if the plugin runs again.",
+    "67": "This regex pattern matches the <urlset> opening tag with any attributes, using the 'i' flag to ignore capitalization.",
+    "68": "We test if the regex finds a match; if not, the file doesn't look like a valid sitemap so we bail out.",
+    "73": "We use the regex match handler to insert the comment right after the closing '>' of the urlset tag."
   }
 }

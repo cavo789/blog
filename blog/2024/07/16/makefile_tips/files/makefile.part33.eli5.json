@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:18.150Z",
+  "generated": "2026-09-01T18:33:45.520Z",
   "source": "makefile.part33",
+  "sourceHash": "1b1572fd19cd13a6dd1f7d5b6fa76e09118811ab",
   "lang": "part33",
+  "summary": "This line outputs a directory path, using a variable called DOCKER_APP_HOME if it's set, otherwise falling back to the default path /var/www/html. It's a common pattern for allowing configuration while providing a sensible default.",
   "explanations": {
-    "1": "The ${DOCKER_APP_HOME} syntax checks if that variable exists; if it's empty or not set, it uses /var/www/html as a fallback instead. The $(…) wraps the whole thing so bash evaluates it and passes the result to echo."
+    "1": "The ${DOCKER_APP_HOME} syntax retrieves the value of the DOCKER_APP_HOME variable; the 'or' operator means 'if that's empty or unset, use /var/www/html instead'. The outer $(…) runs the command and echo prints the result."
   }
 }

@@ -1,16 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:01.250Z",
+  "generated": "2026-09-01T19:13:23.827Z",
   "source": "styles.module.css",
   "sourceHash": "3ea720463b95752e962dcd7e66668d59185ca815",
   "lang": "css",
+  "summary": "This CSS creates a full-screen modal overlay with a darkened background and a centered image element that animates in with a playful pop-and-shake effect. The overlay fades in smoothly when appearing and fades out when dismissed, while the centered content bounces and trembles to draw attention. It also respects user accessibility preferences by disabling animations for people who prefer reduced motion.",
   "explanations": {
-    "3": "The `inset: 0` shorthand sets top, right, bottom, and left all to 0, making the element stretch to fill its entire container—it's a quick way to say 'cover everything'.",
-    "13": "A radial-gradient creates a color that radiates outward from the center; here it transitions from more transparent black in the middle to darker black at the edges.",
-    "27": "The `min(88vw, 80vh)` means 'use whichever is smaller: 88% of the viewport width or 80% of the viewport height'—this keeps the image responsive without distorting.",
-    "31": "The cubic-bezier values (0.34, 1.56, 0.64, 1) create a custom easing curve that overshoots the end point slightly, making the animation feel bouncy.",
-    "32": "The `0.35s` after `cubic-bezier(...)` is the delay—the tremble animation waits 0.35 seconds before starting, and the `6` at the end means it repeats 6 times.",
-    "90": "This media query checks if the user has requested reduced motion in their OS settings; if they have, we disable all animations out of respect for their preference."
+    "3": "The inset property is a shorthand that sets all four sides (top, right, bottom, left) to 0 at once, making the overlay stretch to fill the entire viewport.",
+    "13": "This creates a radial gradient that starts with a semi-transparent black at the center and gradually becomes more opaque toward the edges, creating a vignette effect.",
+    "27": "The min() function picks whichever is smaller: 88% of the viewport width or 80% of the viewport height. This keeps the image responsive and prevents it from being too large on any screen.",
+    "31": "cubic-bezier(0.34, 1.56, 0.64, 1) is a custom easing curve that creates a bouncy overshoot effect—the element actually scales up slightly past its target before settling, giving it a springy feel.",
+    "32": "The tremble animation runs 6 times, but starts 0.35 seconds after the pop-in animation begins, so the shake happens after the initial pop completes.",
+    "90": "This media query checks if the user has enabled 'reduce motion' in their system settings, and if so, removes all animations to prevent motion sickness or distraction."
   }
 }

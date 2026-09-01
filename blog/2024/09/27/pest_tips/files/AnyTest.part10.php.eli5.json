@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:37:03.330Z",
+  "generated": "2026-09-01T18:38:08.446Z",
   "source": "AnyTest.part10.php",
+  "sourceHash": "1470260bbd7d5a79ede714456c0df5178dfcf66a",
   "lang": "php",
+  "summary": "This configures PHPUnit to use two traits for all feature tests in the Feature directory. The TestCase trait provides basic test utilities, and RefreshDatabase automatically resets the database before each test so tests don't interfere with each other.",
   "explanations": {
-    "1": "This line tells Pest (a testing framework) to use the TestCase class and RefreshDatabase trait for all tests in the Feature folder, which means each test gets a fresh database state."
+    "1": "The `uses()` function tells PHPUnit to apply these traits to all test files matching the `->in('Feature')` path filter, so you don't have to manually add them to each test class."
   }
 }

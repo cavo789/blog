@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:56.174Z",
+  "generated": "2026-09-01T18:29:51.119Z",
   "source": "settings.json",
+  "sourceHash": "ed1a75abe2f44a6e3c221cea0b60ad2a77ee81a1",
   "lang": "json",
+  "summary": "This is a configuration object that maps human-readable variable and function names from a hangman game to shortened placeholder names. It's likely used as a search-and-replace lookup table to obfuscate or minify the original code by substituting meaningful names with cryptic abbreviated ones.",
   "explanations": {
-    "2": "This 'replace' object is a mapping that tells a tool to swap out original variable and function names (on the left) with shorter, obfuscated names (on the right), likely for code minification or obfuscation.",
-    "3": "Each line here pairs a readable name like 'getRandomWord' with a cryptic replacement like 'ppmx'—this is how the tool will rename things throughout your code."
+    "2": "The 'replace' key indicates this object contains pairs of old values (keys) and new values (values) meant for substitution throughout code.",
+    "3": "Each line maps an original name like 'getRandomWord' to its replacement 'ppmx' — this will be used to find-and-replace that function name everywhere in the codebase."
   }
 }

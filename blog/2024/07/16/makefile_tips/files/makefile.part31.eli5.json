@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:15.129Z",
+  "generated": "2026-09-01T18:33:40.883Z",
   "source": "makefile.part31",
+  "sourceHash": "5cc2016cf46049eeedac94af000c0a1d5642bfc4",
   "lang": "part31",
+  "summary": "This is a Makefile target that runs the Composer dependency manager with an update command. When you invoke 'make composer-update', it will update all PHP project dependencies to their latest allowed versions without prompting for user input.",
   "explanations": {
-    "1": "This is a target name in a Makefile that can be run with 'make composer-update'.",
-    "2": "The ${CMD} is a variable (defined elsewhere) that gets replaced with an actual command, and '--no-interaction' tells composer to run without asking for confirmation."
+    "1": "This defines a target name in a Makefile — it's like a named recipe you can run with 'make composer-update'.",
+    "2": "${CMD} is a variable reference that likely contains the shell or environment prefix needed to run the command; 'composer update' fetches the latest versions of PHP dependencies, and '--no-interaction' tells it to proceed automatically without asking questions."
   }
 }

@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-09T20:31:03.442Z",
+  "generated": "2026-09-01T18:50:07.034Z",
   "source": "main.py",
   "sourceHash": "56f220afdf3371c723a3e68627d308c9bdec4f76",
   "lang": "python",
+  "summary": "This is a simple FastAPI web service that serves programming jokes. It has two endpoints: one that returns a random joke, and another that returns a specific joke by index number. The jokes are stored in a list and the service handles cases where someone asks for a joke that doesn't exist.",
   "explanations": {
-    "14": "The @ symbol here is a decorator that tells FastAPI to handle GET requests to the /jokes path.",
-    "15": "The 'async' keyword means this function can pause and let other requests run while it waits, making the server more efficient.",
-    "21": "The curly braces in the URL path let FastAPI extract a number from the URL and pass it to the function as the joke_id variable.",
-    "22": "This function isn't async like the one above, which means it will block other requests while running—usually fine for quick operations like list lookups.",
-    "29": "Returning a tuple with two values (the response and 404) tells FastAPI to send that response with a 404 status code indicating the resource wasn't found."
+    "14": "The @app.get(\"/jokes\") decorator tells FastAPI to create a web endpoint at the /jokes URL that responds to GET requests.",
+    "15": "The async keyword means this function can handle other requests while it's waiting, making it more efficient for web services.",
+    "19": "choice(jokes) picks a random item from the jokes list, like drawing a name from a hat.",
+    "21": "The curly braces in the URL path {joke_id} create a dynamic parameter so the endpoint can accept different numbers, like /jokes/0 or /jokes/3.",
+    "22": "The type hint `: int` tells FastAPI to only accept whole numbers for joke_id and automatically reject requests with invalid types.",
+    "27": "This tries to access a joke at the given index, like accessing jokes[0] or jokes[2].",
+    "28": "The except block catches the error that happens when someone requests an index that doesn't exist (like joke ID 99 when there are only 5 jokes)."
   }
 }

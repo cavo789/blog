@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:54.797Z",
+  "generated": "2026-09-01T19:11:39.217Z",
   "source": "compose.yaml",
   "sourceHash": "4d9adf7ec4f69c29cb7e11d2d39f9607b4048fb3",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a single service called 'anythingllm', which is an AI application that uses language models. It configures the container to run on port 3001, connects it to an Ollama language model server at a specific IP address, sets up persistent storage, and defines various AI model parameters like embedding settings.",
   "explanations": {
-    "10": "The %% notation is a placeholder syntax — the actual port number will be substituted here when the docker-compose file is processed by the tool that launches it.",
-    "16": "This IP address and port point to where the Ollama service (the AI model backend) is running; the container needs this address to communicate with that service.",
-    "20": "This is another reference to the same Ollama service, but specifically for generating embeddings, which are numerical representations of text used for similarity searching.",
-    "28": "This creates a persistent storage location that survives container restarts — without it, data inside the container would be lost when the container stops."
+    "7": "cap_add grants Linux kernel capabilities to the container; SYS_ADMIN allows the container elevated system-level permissions it needs to run properly.",
+    "10": "The %% syntax is a placeholder that gets replaced during deployment — it's saying 'map port 3001 inside the container to whatever port number is configured elsewhere'.",
+    "12": "env_file tells Docker to load environment variables from a .env file, which is where sensitive data like API keys are typically stored separately from this config.",
+    "16": "This sets the URL where the anythingllm service can reach the Ollama AI model server — it's pointing to a specific machine on the local network.",
+    "26": "VECTOR_DB specifies lancedb as the database for storing embeddings, which are numerical representations of text used for semantic search."
   }
 }

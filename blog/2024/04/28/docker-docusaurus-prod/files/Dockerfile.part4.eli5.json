@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:13.612Z",
+  "generated": "2026-09-01T18:30:22.195Z",
   "source": "Dockerfile.part4",
+  "sourceHash": "5d1c16eaf80f92fa657ce1ab720876498044ffa3",
   "lang": "part4",
+  "summary": "This Docker file stage sets up a production-ready web server using nginx. It starts with a lightweight nginx image based on Alpine Linux, then copies pre-built website files from a previous build stage into the directory where nginx will serve them.",
   "explanations": {
-    "1": "This starts with a base image (nginx:stable-alpine3.19-perl) and gives this build stage a name ('production') so other stages can reference it later.",
-    "4": "This copies files from a previous build stage called 'building_production' into the nginx container's web directory, so nginx will serve those files."
+    "1": "This pulls the nginx web server image from Alpine Linux 3.19 (a very small, minimal operating system), and gives this stage the name 'production' so other stages can reference it.",
+    "4": "This copies the website files that were built in an earlier stage called 'building_production' from the /opt/docusaurus/build folder into /usr/share/nginx/html, which is where nginx looks to serve files to visitors.",
+    "6": "This sets the working directory (the default location for any subsequent commands) to where the website files now live, so nginx knows that's where its content is."
   }
 }

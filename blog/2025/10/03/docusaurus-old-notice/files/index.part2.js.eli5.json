@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:11.316Z",
+  "generated": "2026-09-01T18:56:45.923Z",
   "source": "index.part2.js",
+  "sourceHash": "f710bf9b2e324111d6d6274efbc320858c7e63da",
   "lang": "javascript",
+  "summary": "This React component wraps blog post content for display. It adds a notice component at the top and then renders the actual post content inside a div with special styling and an ID that's used by the feed generation system. The ID is only added when viewing the full blog post page, not when viewing excerpts elsewhere.",
   "explanations": {
-    "13": "The <> and </> syntax is a React Fragment, which lets you return multiple elements without wrapping them in an extra div.",
-    "18": "This line conditionally sets the id attribute only when viewing the full blog post page (not on a list), using the ternary operator to choose between the ID value or undefined."
+    "7": "This imports a custom component called OldPostNotice from your project's components folder—it's probably a banner that warns readers when a blog post is outdated.",
+    "10": "This calls a custom hook to get information about the current blog post context; specifically, it checks whether we're on the full blog post page or somewhere showing just a preview.",
+    "13": "This is a React Fragment, essentially an invisible wrapper that lets us return multiple elements (the notice and the div) without adding an extra HTML container.",
+    "18": "This conditionally adds the blogPostContainerID only if we're on the actual blog post page—this ID helps the feed generator find where the real content is, but we don't need it for previews."
   }
 }

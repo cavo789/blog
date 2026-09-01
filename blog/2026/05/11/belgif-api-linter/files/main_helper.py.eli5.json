@@ -1,17 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:28.245Z",
+  "generated": "2026-09-01T19:06:54.219Z",
   "source": "main_helper.py",
+  "sourceHash": "9e93a2e93637d346831b2dfa114f859ba0c27133",
   "lang": "python",
+  "summary": "This module customizes FastAPI's automatically generated OpenAPI documentation to comply with Belgif linting rules. It removes unnecessary 'title' fields, renames schema components to proper CamelCase (like HTTPValidationError → HttpValidationError), and converts operation IDs from snake_case to camelCase. The main entry point replaces FastAPI's default OpenAPI generator with a custom one that applies these three fixes in sequence.",
   "explanations": {
-    "22": "This creates a type alias called JsonNode that can be either a dictionary, a list, or any other type—it's used to describe the flexible structure of JSON data.",
-    "31": "The cast() function tells the type checker to treat this variable as a dictionary, even though we already know it is one; it silences warnings from strict linters.",
-    "47": "This line keeps the first word lowercase and capitalizes the first letter of every following word (e.g., 'hello_world' becomes 'helloWorld').",
-    "60": "The get() method safely looks up the '$ref' key without crashing if it doesn't exist; if it doesn't, it returns None.",
-    "79": "Using .get() with a default empty dictionary means if 'components' doesn't exist in the schema, we'll just work with an empty dict instead of crashing.",
-    "85": "The pop() method removes the old key from the dictionary and returns its value, then we store that value under the new key name—this effectively renames it.",
-    "102": "The cast() function tells the type checker to treat this value as a string, even though we already checked it exists in the operationId field.",
-    "143": "We're assigning our custom function directly to app.openapi, which overrides FastAPI's default OpenAPI generator; the type: ignore comment tells the linter not to complain about this unusual assignment."
+    "22": "This creates a type alias called JsonNode that can be a dictionary, a list, or any other value—it's used to properly type-hint recursive structures like nested JSON.",
+    "31": "We explicitly cast the schema to a typed dictionary here to tell the linter 'trust me, this is definitely a dict' so it stops complaining about accessing arbitrary keys we might pop from it.",
+    "47": "We split the input string by underscores, keep the first part as-is, then capitalize the first letter of every other part and join them back together—that's how snake_case becomes camelCase.",
+    "62": "Once we find and update a $ref that matched the old name, we return early because we don't need to search deeper into that branch anymore.",
+    "85": "We use pop() to remove the old key and simultaneously get its value, then assign that value to the new key—this effectively renames the schema in one line.",
+    "143": "We're assigning our custom function to the app's openapi method, overriding FastAPI's default behavior; the type: ignore comment tells the type checker to not complain that we're replacing a method with a regular function."
   }
 }

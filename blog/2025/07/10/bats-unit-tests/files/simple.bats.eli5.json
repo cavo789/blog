@@ -1,14 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:16.274Z",
+  "generated": "2026-09-01T18:48:25.386Z",
   "source": "simple.bats",
+  "sourceHash": "0694af6dca8574cb6773c228fa914940c678b808",
   "lang": "bats",
+  "summary": "This is a test file written in Bats (Bash Automated Testing System) that runs before each test to load support libraries, then defines two simple tests: one that verifies the echo command outputs 'hello', and another that checks whether a file named simple.bats exists in the current directory.",
   "explanations": {
-    "1": "This line tells the system to use the bats test runner program to execute this file, similar to how #!/bin/bash works for shell scripts.",
-    "4": "This loads a helper library called bats-support that provides useful utilities for writing tests.",
-    "5": "This loads bats-assert, another helper library that gives you assertion functions like assert_output and assert_success.",
-    "9": "The 'run' keyword executes the echo command and captures its output and exit status so you can check them in the next lines.",
-    "16": "The --regexp flag tells assert_output to check if the output matches a regular expression pattern instead of an exact string match; [Ss] means it accepts either capital or lowercase S."
+    "4": "This loads the bats-support library, which provides helper functions used by other Bats libraries.",
+    "5": "This loads the bats-assert library, which provides assertion functions like assert_output and assert_success that let you verify test results.",
+    "8": "The @test decorator marks the following block as a test case with the description 'Asserting it's hello'.",
+    "9": "The 'run' keyword executes the command (echo \"hello\") and captures its output and exit status so assertions can check them.",
+    "10": "This asserts that the output from the previous 'run' command exactly matches the string 'hello'.",
+    "16": "The --regexp flag tells assert_output to treat the argument as a regular expression pattern instead of a literal string, so it matches either 'Simple.bats' or 'simple.bats'."
   }
 }

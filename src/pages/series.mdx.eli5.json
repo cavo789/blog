@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:28.184Z",
+  "generated": "2026-09-01T18:53:42.943Z",
   "source": "series.mdx",
+  "sourceHash": "70c2de044fc5482b2670728a821c4899a2821e75",
   "lang": "markdown",
+  "summary": "This is a documentation page that displays all article series available on the site. It imports custom components to show statistics about the series and cards representing each series, along with a button to scroll back to the top, all organized under a centered heading with an introductory description.",
   "explanations": {
-    "1": "This is YAML frontmatter—metadata at the top of the file that tells the site generator about the page's title, image, and author.",
-    "3": "This setting prevents the automatic table of contents from showing on this page.",
-    "8": "This imports a CSS file to style elements that appear later on the page.",
-    "12": "This comment tells the markdown linter to ignore a specific rule for this file so it doesn't complain about formatting."
+    "3": "This tells the documentation system not to render a table of contents on this page, since the page structure doesn't need one.",
+    "5": "This specifies that 'christophe' is the author of this page, which metadata the site uses for attribution.",
+    "8": "This imports a CSS file specifically for styling the series-related components on this page.",
+    "12": "This disables a linting rule that would normally complain about markdown formatting, because this file mixes markdown with JSX components.",
+    "17": "Instead of markdown heading syntax, this uses JSX to create an HTML heading with a CSS class for centering, which gives more control over the styling."
   }
 }

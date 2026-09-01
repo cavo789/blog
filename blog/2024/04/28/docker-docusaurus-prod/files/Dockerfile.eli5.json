@@ -1,16 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:08.931Z",
+  "generated": "2026-09-01T18:30:10.954Z",
   "source": "Dockerfile",
+  "sourceHash": "877cdf7d5ded63ec22441610a901f00be71d48d0",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Docker image that builds a Docusaurus website and serves it with nginx. It uses a multi-stage build process: first creating a base Node.js image, then using that to build the Docusaurus site, and finally copying only the built files into a lightweight nginx image for production.",
   "explanations": {
-    "1": "This special comment tells Docker to use a newer syntax version that enables advanced features; it should be the very first line of the Dockerfile.",
-    "7": "AS base creates a named intermediate stage that we can refer to later with --from, like saving a checkpoint we can build on top of.",
-    "13": "Corepack is a tool bundled with Node.js that manages package managers like yarn; this enables it so yarn will work properly.",
-    "19": "AS building_production names this stage so we can reference it later to copy files from this intermediate build without including everything in the final image.",
-    "22": "The backslash at the end of this line lets us continue the same RUN command on the next line, keeping related steps together.",
-    "31": "The asterisk in package.* is a wildcard that matches both package.json and package-lock.json (or yarn.lock), copying whichever lock file exists.",
-    "49": "COPY --from=building_production pulls files from that earlier named stage instead of from your local machine, so we only copy the final build output."
+    "1": "This special comment tells Docker to use an enhanced Dockerfile parser that supports newer syntax features.",
+    "7": "This starts with a Node.js image on Alpine Linux (a tiny Linux distribution) and names this stage 'base' so later stages can reference it.",
+    "10": "This environment variable tells yarn to not use colored output in logs, making them easier to read and parse.",
+    "13": "Corepack is Node's built-in package manager manager; enabling it lets you use yarn without installing it separately.",
+    "19": "This creates a new build stage called 'building_production' that starts from the 'base' stage we created earlier.",
+    "22": "This command creates a new Docusaurus project scaffolding directly into the Docker image rather than copying it from your computer.",
+    "25": "After creating the Docusaurus files, this changes ownership so the 'node' user (instead of root) owns them, which is a security best practice.",
+    "31": "This copies your package.json and yarn.lock files from your computer into the image before installing dependencies — Docker caches this layer, so if source code changes but dependencies don't, Docker can reuse the cached dependencies.",
+    "34": "The --immutable flag makes yarn fail if the lock file doesn't match package.json, ensuring everyone builds with identical versions.",
+    "37": "Now that dependencies are installed, this copies your actual source code files into the image.",
+    "40": "This runs the build script to generate the final static HTML files that will be served.",
+    "46": "This starts a completely new image stage based on nginx, which is a lightweight web server; we're not carrying over Node.js or build tools into production.",
+    "49": "This copies only the built website files (the static HTML/CSS/JS) from the previous build stage into nginx's default directory, leaving behind all the build tools and source code."
   }
 }

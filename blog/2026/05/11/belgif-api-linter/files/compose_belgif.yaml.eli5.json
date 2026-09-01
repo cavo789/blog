@@ -1,14 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:08.160Z",
+  "generated": "2026-09-01T19:06:44.455Z",
   "source": "compose_belgif.yaml",
+  "sourceHash": "b989ce5d1b6de51f7f008bda54c5dfc5c23fdd11",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up two services: an app built from the current directory that exposes port 8000, and a belgif-lint service that validates OpenAPI specifications using Maven. The belgif-lint service reuses a Maven cache volume across runs to speed up builds.",
   "explanations": {
-    "5": "This maps port 80 inside the container to port 8000 on your computer, so you can visit localhost:8000 to reach the app.",
-    "7": "This syncs your local main.py file into the container so changes you make appear immediately without rebuilding.",
-    "13": "The :ro at the end means 'read-only'—the container can read these files but can't modify them.",
-    "14": "This creates a named volume that persists Maven's downloaded dependencies between container runs, so it doesn't re-download everything each time.",
-    "16": "The > character lets you break a long command across multiple lines for readability."
+    "5": "The double-percent syntax (%%port=8000%%) is a template variable that gets replaced at runtime; it maps port 8000 on your machine to port 80 inside the container.",
+    "7": "This mounts the main.py file from your computer into the container at /code/main.py, so changes you make locally are immediately visible inside the running container.",
+    "11": "This pulls a pre-built Docker image that has Maven 3.9.9 and Java 17 already installed, rather than building from scratch.",
+    "13": "The 'ro' flag means read-only—the container can see these files but can't modify them, which prevents accidental changes to your source code.",
+    "14": "This creates a persistent volume that stores Maven dependencies between container runs, so Maven doesn't re-download everything each time.",
+    "16": "The '>' character allows the long command to be split across multiple lines for readability; Docker concatenates them back together."
   }
 }

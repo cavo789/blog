@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:37.406Z",
+  "generated": "2026-09-01T18:47:35.278Z",
   "source": "run.txt",
+  "sourceHash": "4c51ab8b38af4844abe96490c7394b29e919ad90",
   "lang": "plaintext",
+  "summary": "This is user-facing documentation explaining how to run an action and what command-line flags are available. It lists three optional flags the user can pass: one for debugging, one to disable colors, and one for verbose output.",
   "explanations": {
-    "5": "The backtick characters around --debug are markdown syntax to format it as code; this makes it display in a fixed-width font in documentation.",
-    "7": "The semicolon at the end of this line is punctuation for the sentence, not part of the flag name itself."
+    "1": "The {{ command }} is a placeholder that will be replaced with the actual command users should type when this documentation is rendered.",
+    "5": "The backticks around --debug mark it as a literal command-line flag that users type exactly as written.",
+    "6": "ANSI colors are special codes that terminals use to display text in different colors; this flag lets users turn that off if their terminal doesn't support it or they prefer plain text."
   }
 }

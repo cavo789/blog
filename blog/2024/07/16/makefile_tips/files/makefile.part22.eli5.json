@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:57.447Z",
+  "generated": "2026-09-01T18:33:13.152Z",
   "source": "makefile.part22",
+  "sourceHash": "2378378f6267bf5cea1cea22cfd3c56b90de8739",
   "lang": "part22",
+  "summary": "This Makefile target checks whether a SonarQube Docker container is already running before proceeding with a scan. If the container isn't found or isn't in a running state, it prints an error message and exits with failure status, preventing the scan from running against a non-existent service.",
   "explanations": {
-    "2": "This line checks if the SonarQube Docker container is currently running by looking for a container named 'sonarqube' with status 'running'; if the command returns nothing (empty string), the condition is true and an error will be shown.",
-    "4": "The $(_RED) is a variable that contains color codes to make the error message print in red, and the backslash at the end escapes the newline so the printf doesn't include an actual line break in the output."
+    "2": "The shell command `docker ps -a -q -f name=sonarqube -f status=running` lists container IDs matching the name 'sonarqube' with status 'running'; if the output is empty (the `ifeq` condition), the container isn't running.",
+    "4": "$(_RED) is a variable that likely contains ANSI color codes to make the error message print in red; @printf outputs the message without echoing the command itself to the console."
   }
 }

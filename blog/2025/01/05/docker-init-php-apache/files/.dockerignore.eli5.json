@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:51.185Z",
+  "generated": "2026-09-01T18:44:30.033Z",
   "source": ".dockerignore",
+  "sourceHash": "559fe2a870a0bebda81bae6c0be5d269ca06e72c",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a gitignore file pattern that tells Git to ignore the `.git` directory and everything inside it everywhere in the repository. The `**` means 'at any nesting level' and `/.git` means 'the .git folder', so this prevents Git from trying to track its own internal folder.",
+  "explanations": {
+    "1": "The `**/` prefix means 'match this pattern at any directory depth', and `/.git` matches the hidden `.git` folder that Git creates to store version history and configuration — we tell Git to ignore it so it doesn't try to recursively track itself."
+  }
 }

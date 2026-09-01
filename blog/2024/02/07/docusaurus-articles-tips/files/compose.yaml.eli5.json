@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:26.192Z",
+  "generated": "2026-09-01T18:26:56.281Z",
   "source": "compose.yaml",
+  "sourceHash": "240873f9f93fd3f331df5299997ccc53d08943d1",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that defines two services: a Joomla web application and a MySQL database. The Joomla service exposes port 8080 and connects to the database, while the database service stores its data persistently. Both services run with the same non-root user ID for security and file permission consistency.",
   "explanations": {
-    "13": "This sets the user ID and group ID (1000:1000) that the Joomla container will run as, rather than as root for security reasons.",
-    "17": "This mounts a folder from your computer (./site_joomla) into the container's web directory (/var/www/html) so changes you make locally appear in the running container.",
-    "25": "Like line 13, this runs the MySQL database container as user 1000 instead of root for better security.",
-    "29": "This stores the MySQL database files in ./db on your computer so the data persists even if the container is stopped or deleted."
+    "8": "The %% notation is a placeholder that gets replaced with an actual port number (in this case 8080) at runtime; the format means 'external port:internal port' so traffic on your machine's port 8080 reaches the container's port 80.",
+    "13": "This sets the user ID and group ID (1000:1000) that the Joomla container runs as, instead of root, which is a security best practice to limit damage if the container is compromised.",
+    "17": "This mounts a folder from your machine (./site_joomla) into the container's /var/www/html directory, so Joomla files persist on your computer even if the container stops.",
+    "25": "Like line 13, this runs the MySQL database as user 1000:1000 instead of root for the same security reasons.",
+    "29": "This mounts a folder from your machine (./db) into the container's data directory, so the database files are saved on your computer and survive container restarts."
   }
 }

@@ -1,11 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:12.665Z",
+  "generated": "2026-09-01T18:56:48.780Z",
   "source": "compose.yaml",
+  "sourceHash": "1bc4efb41a0b2ca18d936a14bef3b43fa1ca5f0c",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that defines a service called 'memos' using the neosmemo/memos image. It sets up a container that listens on port 5230, persists data to a local directory, and automatically restarts if it crashes.",
   "explanations": {
-    "1": "This is a special comment syntax for documentation tools like Docusaurus to highlight the next line visually in rendered docs.",
-    "8": "The init: true setting ensures the container properly handles signals and reaps zombie processes, which is important for clean shutdowns."
+    "1": "This is a special comment syntax that tells certain documentation tools (like Docusaurus) to highlight the next line visually.",
+    "8": "Setting init to true ensures that the container properly handles signals like SIGTERM, which helps it shut down cleanly.",
+    "10": "This maps port 5230 on your computer to port 5230 inside the container, so you can access the memos service via localhost:5230.",
+    "12": "This creates a named volume that stores the memos data from inside the container (/var/opt/memos) to a folder called 'data' on your computer, so the data persists even if the container is deleted.",
+    "13": "This tells Docker to automatically restart the container if it crashes, unless you manually stop it."
   }
 }

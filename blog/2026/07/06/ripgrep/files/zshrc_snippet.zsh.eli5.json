@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:15:29.678Z",
+  "generated": "2026-09-01T19:08:23.735Z",
   "source": "zshrc_snippet.zsh",
+  "sourceHash": "f4a5e9c9d256d75f228e3c2c51f1578cf3f0a62a",
   "lang": "bash",
+  "summary": "This script sets up a ripgrep configuration file path, loads custom ZSH functions from a directory, and creates convenient shortcut aliases for searching specific file types with ripgrep (a fast text search tool). It's basically building a personalized search environment with type-specific commands.",
   "explanations": {
-    "1": "This sets an environment variable that tells the ripgrep tool (rg) where to find its configuration file in your home directory.",
-    "4": "The ~ symbol expands to your home directory, and *.zsh means \"all files ending with .zsh\", so this loop runs through each custom function file.",
-    "5": "The source command reads and executes the contents of each function file, making those functions available in your shell.",
-    "15": "The --glob flags filter search results to only match files with names like \"Dockerfile\" or ending in \".dockerfile\"."
+    "1": "This sets an environment variable telling ripgrep where to find its configuration file, so it will automatically load your custom settings whenever you run ripgrep.",
+    "5": "This loop looks for all files ending in .zsh inside the ~/.zsh/fns/ directory and will process each one.",
+    "6": "The 'source' command loads and runs each function file, making all the custom functions inside them available to use in your shell session."
   }
 }

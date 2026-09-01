@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:35.605Z",
+  "generated": "2026-09-01T18:50:16.617Z",
   "source": "BlogPostItem.js",
+  "sourceHash": "0337e4733c5a90540e742c9e029870fdc4563c2d",
   "lang": "javascript",
+  "summary": "This component renders a blog post with a header, content, and footer, automatically adding bottom margin when displayed in a list (rather than on its own dedicated page). It composes several smaller specialized components together and uses a custom hook to determine the appropriate styling based on context.",
   "explanations": {
-    "2": "clsx is a utility function that combines CSS class names together, letting you conditionally include classes based on logic.",
-    "3": "useBlogPost is a custom hook (a reusable function) from Docusaurus that gives you information about the current blog post you're viewing.",
-    "10": "isBlogPostPage is a boolean value (true or false) that tells you whether the user is viewing a single full blog post or a list of multiple posts.",
-    "11": "This returns a margin class name only if we're NOT on a single post page; if we are on a single post page, it returns undefined (no extra spacing needed)."
+    "3": "This hook from Docusaurus gives us information about the current blog post context, like whether we're viewing a single post's page or seeing it in a list.",
+    "10": "We're destructuring 'isBlogPostPage' from the hook — it's a boolean that tells us if we're on a dedicated blog post page or just viewing it as an item in a list.",
+    "11": "If we're NOT on a dedicated blog post page (meaning we're in a list view), add extra bottom margin to space it out; otherwise return undefined so no margin class is applied.",
+    "16": "The 'clsx' utility merges the margin class we calculated with any additional className prop passed in, combining them into one string for the container's className."
   }
 }

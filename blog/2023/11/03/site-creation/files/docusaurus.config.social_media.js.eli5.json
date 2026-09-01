@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:48.772Z",
+  "generated": "2026-09-01T18:20:30.718Z",
   "source": "docusaurus.config.social_media.js",
+  "sourceHash": "24ab0b4699a99d34ffaa30ccc744c1114a354dc8",
   "lang": "javascript",
-  "explanations": {}
+  "summary": "This file exports a configuration object that sets up theme-related settings. Specifically, it defines a default image that will be used when someone shares a post from this site on social media platforms like Twitter or Facebook.",
+  "explanations": {
+    "1": "The 'export default' syntax means this object is the main thing this file sends out, so other files can import and use it.",
+    "4": "The 'image' property is a path to a picture file; social media sites will grab this image and display it as a preview when a link is shared."
+  }
 }

@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:49.220Z",
+  "generated": "2026-09-01T18:56:10.857Z",
   "source": "makefile",
+  "sourceHash": "ec13ea77399d7c1cd5ad3315c60034c1bba1017c",
   "lang": "makefile",
+  "summary": "This is a Makefile that defines a build target. When you run 'make build', it compiles a C source file called main.c using the gcc compiler and produces an executable program named app.",
   "explanations": {
-    "1": "The 'build:' label is a target name — when you run 'make build', it will execute the commands listed below it.",
-    "2": "The tab character at the start is required by make syntax; spaces won't work here, which trips up many people at first."
+    "1": "The 'build:' line defines a target — a named recipe that you can run with the 'make' command, so 'make build' will execute the commands below it.",
+    "2": "The leading tab character (shown as \\t) is required by Make syntax; it tells Make that this is a command to execute. The command itself runs gcc (the C compiler) on main.c and uses the '-o' flag to name the output executable 'app'."
   }
 }

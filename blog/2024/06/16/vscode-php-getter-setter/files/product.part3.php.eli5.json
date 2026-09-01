@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:41.680Z",
+  "generated": "2026-09-01T18:31:11.762Z",
   "source": "product.part3.php",
+  "sourceHash": "7d84cd661e9c0fbcb3e022b35012b92be494330b",
   "lang": "php",
+  "summary": "This is a set of getter and setter methods for a product object's name and price. The setName method converts names to lowercase, and setPrice validates that prices aren't negative before storing them. Both setters return the object itself, which allows you to chain multiple setter calls together.",
   "explanations": {
-    "8": "The ': self' at the end means this function returns the object itself, which lets you chain multiple setter calls together like setName()->setPrice().",
-    "23": "The ': self' return type here works the same way as line 8 — it allows method chaining so you can call setters one after another.",
-    "26": "The backslash before Exception tells PHP to use the built-in Exception class from the global namespace, not a custom one you might have defined locally."
+    "2": "This declares that the getName method returns a string type—PHP will enforce this and error if you try to return anything else.",
+    "8": "The setPrice method takes a float and returns 'self', meaning it returns the current object instance rather than void.",
+    "11": "strtolower converts the input string to all lowercase letters before storing it.",
+    "25": "This checks if the price is negative; if it is, the method stops execution and throws an exception instead of allowing bad data into the system.",
+    "31": "Returning $this allows method chaining—you can call setPrice(...)->setName(...) in a single statement instead of on separate lines."
   }
 }

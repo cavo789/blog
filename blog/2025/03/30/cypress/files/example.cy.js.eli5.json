@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:49.446Z",
+  "generated": "2026-09-01T18:46:13.570Z",
   "source": "example.cy.js",
+  "sourceHash": "3baf42046ac68370f319d9217dcd9cfa1cea222f",
   "lang": "javascript",
+  "summary": "This is a test suite using Cypress that verifies a website contains a specific name. The test visits a blog website and checks that the text 'Christophe Avonture' appears somewhere on the page.",
   "explanations": {
-    "1": "This `describe` function groups related tests together—think of it as a folder that contains all tests about your blog.",
-    "3": "The `cy.visit` command tells Cypress (a testing tool) to open that website URL in a browser.",
-    "4": "The `cy.contains` command searches the webpage to verify that the text 'Christophe Avonture' appears somewhere on the page."
+    "1": "describe() creates a test suite — a named container that groups related tests together.",
+    "2": "it() defines a single test case with a description of what should happen.",
+    "3": "cy.visit() tells Cypress to navigate to that URL in the browser, just like you'd type it in the address bar.",
+    "4": "cy.contains() searches the page for that exact text and fails the test if it's not found anywhere."
   }
 }

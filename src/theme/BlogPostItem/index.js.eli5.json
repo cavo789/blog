@@ -1,14 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-28T19:09:57.790Z",
+  "generated": "2026-09-01T19:10:03.437Z",
   "source": "index.js",
   "sourceHash": "77ef6d85c2c7aa287b89dc283bf1bd082ebc1350",
   "lang": "javascript",
+  "summary": "This component renders a blog post item that adapts its display based on whether the user is viewing a single post or browsing a list of posts. It conditionally shows certain UI elements like an AI icon, copy-to-markdown button, and engagement features only when viewing the full post, while always showing the core post content and header/footer.",
   "explanations": {
-    "23": "useBlogPost() is a special hook that gives you information about whether you're currently viewing a full blog post page or just seeing a preview card in a list.",
-    "24": "The function returns a CSS class name if we're in list view, or undefined (which means no extra styling) if we're viewing the full post page.",
-    "31": "This line checks two things: whether the post metadata says it was AI-assisted AND whether we're on the actual post page, then only shows the AI icon if both are true.",
-    "57": "The !== false check means 'show this component unless tried_it is explicitly set to false', so it shows by default if the property doesn't exist or is anything other than false."
+    "22": "This helper function checks if we're on the actual blog post page versus a list view, and returns a CSS class name to add bottom spacing only in list view.",
+    "23": "useBlogPost is a Docusaurus hook that gives us metadata about the current blog context, including whether we're viewing a single post or a list.",
+    "28": "We're extracting both the blog post metadata and the isBlogPostPage flag from the Docusaurus hook so we can use them throughout this component.",
+    "29": "frontMatter contains custom metadata fields defined in the blog post's YAML header, like whether it was AI-assisted.",
+    "31": "This shows the AI icon only if two conditions are true: the post is marked as AI-assisted AND we're on the actual post page (not a list card).",
+    "34": "The copy-as-markdown button only appears on the full post page, not on list view cards, because copying wouldn't make sense in a list context.",
+    "44": "Everything inside this block only renders when viewing the actual post page, not when the post appears as a card in the blog list.",
+    "57": "This checks that tried_it is not explicitly false before showing the TriedIt component, meaning it displays by default unless the post author disabled it."
   }
 }

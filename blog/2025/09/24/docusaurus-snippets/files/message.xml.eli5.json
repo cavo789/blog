@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:58.833Z",
+  "generated": "2026-09-01T18:56:24.627Z",
   "source": "message.xml",
+  "sourceHash": "fb16250a44026cd59a98947d5008ee716745206d",
   "lang": "xml",
+  "summary": "This is a simple XML document containing a message element with a text element inside it. It demonstrates the basic hierarchical structure of XML where elements can be nested inside other elements.",
   "explanations": {}
 }

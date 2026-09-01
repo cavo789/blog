@@ -1,19 +1,26 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:07.779Z",
+  "generated": "2026-09-01T19:13:36.057Z",
   "source": "shake-debug.html",
   "sourceHash": "1d12ebcce72bcae52fe38f54b9034f119cc29742",
   "lang": "html",
+  "summary": "This is a diagnostic webpage that checks whether your device's motion sensors (accelerometer) are working and accessible to the browser. It displays the availability of the DeviceMotionEvent API, security context, permissions, and then listens for real motion events to show live acceleration data and calculate 'jerk' (how quickly acceleration changes).",
   "explanations": {
-    "49": "This span with id='hasApi' will be filled in by JavaScript below to show whether the device motion API exists.",
-    "53": "The requestPermission method is an iOS-specific way to ask users for motion sensor access; Android handles permissions differently.",
-    "63": "Jerk is a physics term meaning how quickly acceleration changes — a sudden shake produces high jerk values.",
-    "88": "This checks if the browser supports the Permissions API before trying to use it, since older browsers don't have it.",
-    "108": "This sets a 3-second timer that will warn the user if no motion events arrive, meaning the sensor is blocked or unavailable.",
-    "119": "Once a motion event arrives, we cancel that warning timer since we now know the sensor is working.",
-    "124": "accelerationIncludingGravity gives you acceleration values that include Earth's gravity (9.8 m/s²), not just user movement.",
-    "136": "Destructuring extracts x, y, and z from the acceleration object so we can use them as standalone variables.",
-    "145": "Jerk is calculated as the sum of absolute changes in each axis, divided by the time elapsed, then multiplied by 1000 to convert to per-second units."
+    "5": "This tells mobile browsers to treat the viewport width as the device's actual width and start at normal zoom, so the page displays properly on phones and tablets.",
+    "49": "This creates a row showing whether DeviceMotionEvent exists; the span with id 'hasApi' will be updated by JavaScript later to show the result.",
+    "67": "This checks if the browser supports DeviceMotionEvent — if it does, show 'present', otherwise show 'MISSING'.",
+    "70": "Based on whether DeviceMotionEvent exists, assign either the 'ok' class (green text) or 'warn' class (red text) to style the result.",
+    "88": "This checks if the browser has the Permissions API available before trying to use it, so we don't get an error if it doesn't exist.",
+    "90": "We're asking the browser to check the current permission status for the accelerometer sensor, like checking if the user has already granted or denied access.",
+    "108": "Set a timer that will fire after 3 seconds; if no devicemotion event has arrived by then, we'll show an error message.",
+    "118": "Register a listener that runs every time the browser receives motion data from the accelerometer.",
+    "119": "Cancel the 3-second timeout since we know the sensor is working — we got an event.",
+    "125": "Check if the acceleration data is actually present and not null; on some devices or when permissions are denied, it might be missing even though events fire.",
+    "136": "Destructuring assignment — this extracts the x, y, z values from the acceleration object in one line instead of writing them out separately.",
+    "143": "Calculate how many milliseconds elapsed since the last sensor reading.",
+    "145": "Jerk is the rate of change of acceleration — sum up how much each axis changed, divide by the time elapsed, then multiply by 1000 to convert to per-second units.",
+    "152": "Keep track of the largest jerk value we've seen so we can display it separately.",
+    "158": "Store the current acceleration as the 'last' sample so we can compare against it on the next event."
   }
 }

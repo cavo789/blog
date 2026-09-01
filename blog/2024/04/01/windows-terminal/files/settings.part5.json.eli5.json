@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:46.892Z",
+  "generated": "2026-09-01T18:29:40.507Z",
   "source": "settings.part5.json",
+  "sourceHash": "da9ee89eae69e4d4590d1dfe6716f1aedf055a50",
   "lang": "json",
+  "summary": "This is a configuration file (likely for Windows Terminal) that defines a list of terminal profiles available to the user. Each profile specifies a unique identifier, visibility setting, and display name for a different command-line environment.",
   "explanations": {
-    "8": "There's a trailing comma after the last item in the array, which is actually allowed in JSON but some parsers might reject it—generally you'd remove it."
+    "5": "The guid is a globally unique identifier that serves as the permanent internal ID for this profile, used by the system to reference it even if the name changes.",
+    "6": "The hidden property is a boolean flag that determines whether this profile appears in the terminal's profile dropdown menu (false means it's visible to the user)."
   }
 }

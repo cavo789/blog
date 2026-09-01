@@ -1,14 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:34.623Z",
+  "generated": "2026-09-01T18:28:52.064Z",
   "source": "get_folder_size.vbs",
+  "sourceHash": "2707096baae65d751c862e8d515e89e0f4dbde20",
   "lang": "vbs",
+  "summary": "This script downloads a file from GitHub and automatically updates itself if a newer version exists. It connects to a GitHub repository, retrieves the raw content of a VBS script, compares it with the currently running script, and overwrites itself if the downloaded version is different.",
   "explanations": {
-    "19": "CreateObject makes a new instance of an XML HTTP requester object that can download files from the internet.",
-    "21": "setTimeouts sets four timeout values (in milliseconds) for different stages of the HTTP request: connection, send, receive, and total time.",
-    "27": "The open method prepares a GET request to download the file, and the False parameter means it will happen synchronously (the script waits for it to finish).",
-    "39": "The number 1 means open the file for reading only; if it were 2, it would mean open for writing.",
-    "44": "The <> operator means 'not equal to', so this checks whether the downloaded content differs from what's currently in the script."
+    "19": "Creates an XML HTTP object that can make web requests to download files from the internet.",
+    "21": "Sets timeout values (in milliseconds) for the HTTP connection to prevent it from hanging indefinitely.",
+    "27": "Opens an HTTP GET request to the GitHub URL; 'False' means the request will be synchronous (the script waits for the response).",
+    "28": "Actually sends the HTTP request and waits for the server to respond.",
+    "30": "Checks if any error occurred during the web request; Err.Number = 0 means no error happened.",
+    "31": "Status 200 means the HTTP request was successful and the file was found.",
+    "33": "Stores the downloaded file content as text.",
+    "37": "Gets the full file path of the currently running script.",
+    "38": "Creates a file system object to read and write files on the computer.",
+    "39": "Opens the current script file in read mode (1 means read-only).",
+    "40": "Reads the entire content of the current script into a variable.",
+    "44": "Compares the downloaded content with the original script; if they're different, an update is available.",
+    "47": "Opens the script file in write mode (2 means write, which overwrites existing content).",
+    "49": "Replaces the entire script file with the newer downloaded version."
   }
 }

@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:15:19.998Z",
+  "generated": "2026-09-01T19:07:45.598Z",
   "source": "icon.svg",
+  "sourceHash": "0919edf1d9207b3155cc0d45a33f0feea0e9b44d",
   "lang": "svg",
+  "summary": "This creates a small square icon showing a classic terminal prompt symbol. It's a dark gray rounded square with a bright green greater-than sign in the center, styled to look like a retro command-line interface.",
   "explanations": {
-    "1": "The viewBox attribute defines the coordinate system for drawing (0 0 64 64 means a 64x64 square), and role/aria-label make this SVG accessible to screen readers by describing what it represents.",
-    "2": "rx and ry create rounded corners on the rectangle—rx is horizontal rounding and ry is vertical rounding, both set to 8 pixels here.",
-    "3": "text-anchor='middle' centers the text horizontally at x=32, and dominant-baseline='middle' centers it vertically at y=40."
+    "1": "The viewBox sets up a 64×64 coordinate system, and the role and aria-label make this icon accessible to screen readers by describing what it represents.",
+    "2": "The rect element draws the background box; rx and ry round the corners to give it a modern, slightly softer appearance.",
+    "3": "text-anchor='middle' centers the text horizontally, and dominant-baseline='middle' centers it vertically within the 64×64 space."
   }
 }

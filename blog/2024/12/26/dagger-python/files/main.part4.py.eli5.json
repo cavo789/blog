@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:02.792Z",
+  "generated": "2026-09-01T18:43:05.226Z",
   "source": "main.part4.py",
+  "sourceHash": "ebb7fc092be6551f7c8e48e6505dd3458871ccd2",
   "lang": "python",
+  "summary": "This script randomly picks either 0 or 1, then prints a greeting in English if it gets 0, or French if it gets 1. It's a simple coin-flip program that demonstrates conditional logic.",
   "explanations": {
-    "5": "This line generates a random number that's either 0 or 1, then checks if it equals 0 to randomly pick between two print statements."
+    "5": "random.randint(0, 1) generates a random integer that's either 0 or 1, then we check if it equals 0 to decide which greeting to print."
   }
 }

@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:50.665Z",
+  "generated": "2026-09-01T18:50:39.981Z",
   "source": "BlogPostItem_3.js",
+  "sourceHash": "1576564e460bd152004619658c46787ebb79f256",
   "lang": "javascript",
+  "summary": "This component renders a blog post item with a header, content, and footer, and conditionally displays a Bluesky component only when viewing the full post page rather than the blog list view. It uses a custom hook to determine whether extra spacing is needed based on the current view context.",
   "explanations": {
-    "16": "useBlogPost() is a hook that gives you information about the current blog post context, including whether you're viewing a single post page or a list of posts.",
-    "17": "This returns a CSS class name for spacing only when viewing the blog list; it returns undefined (no class) when viewing an individual post page.",
-    "24": "We're calling that same hook again here to get the metadata (like title, date, author) and the isBlogPostPage flag so we can decide what to render.",
-    "34": "The && operator here means 'only render the Bluesky component if isBlogPostPage is true', so it only shows up on individual post pages, not on the blog list view."
+    "15": "This helper function decides what CSS class to apply based on whether we're viewing a single post or a list of posts—if it's a list view, add bottom margin spacing; if it's a single post page, don't add extra spacing.",
+    "16": "useBlogPost() is a Docusaurus hook that gives us information about the current blog context, including a flag telling us whether we're on a full post page or just viewing the blog list.",
+    "24": "We're extracting two things from the blog context: metadata (information about the post like title, date, author) and isBlogPostPage (a flag telling us if we're on the full post page).",
+    "34": "The && operator here means 'only render the Bluesky component if isBlogPostPage is true'—this shows Bluesky only when viewing a single post, not when browsing the blog list."
   }
 }

@@ -1,14 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:13.267Z",
+  "generated": "2026-09-01T18:19:57.527Z",
   "source": ".part17.htaccess",
   "sourceHash": "b46b8309b20ffed25317c0cc5e11bbea7af81b12",
   "lang": "htaccess",
+  "summary": "This configuration block adds security headers to responses for executable files like Perl scripts, PHP pages, and CGI programs. It tells browsers not to embed these pages in frames and to block cross-site scripting attempts, protecting against common web vulnerabilities.",
   "explanations": {
-    "1": "This line matches (selects) files that end with .pl, .php, .cgi, or .spl — the dollar sign means 'end of filename' and the pipe | means 'or'.",
-    "2": "This checks if Apache has the mod_headers module installed before trying to use Header commands, so the config won't break if that module isn't available.",
-    "4": "This prevents your site from being embedded inside an iframe on another website, which is a security measure against clickjacking attacks.",
-    "5": "This tells old browsers (Internet Explorer) to block suspected cross-site scripting attacks, though modern browsers ignore this header now."
+    "1": "FilesMatch uses a regular expression to match filenames ending in .pl, .php, .cgi, or .spl — these are typically executable server-side scripts.",
+    "2": "IfModule checks whether the mod_headers Apache module is installed before trying to use the Header directive, so the config won't break if that module isn't available.",
+    "4": "X-Frame-Options DENY prevents any website from loading this page inside an iframe or frame element, stopping clickjacking attacks.",
+    "5": "X-XSS-Protection tells older browsers to detect and block reflected cross-site scripting attacks (the '1' enables it, 'mode=block' means block the page rather than just sanitize it)."
   }
 }

@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:32.584Z",
+  "generated": "2026-09-01T18:55:37.844Z",
   "source": "docusaurus.config.js",
+  "sourceHash": "c21cd561d3bf30aa3d675ecca34c4ef6caf30947",
   "lang": "javascript",
+  "summary": "This file imports a custom remark plugin called remarkSnippetLoader and then exports a configuration object that registers this plugin with a documentation/blog preset. The plugin will run before any default remark processing happens, allowing it to transform markdown content first.",
   "explanations": {
-    "2": "This imports a custom plugin from a .cjs file (CommonJS format) even though we're in an ES module context; Docusaurus handles this conversion automatically.",
-    "12": "The 'beforeDefaultRemarkPlugins' array means these plugins run before Docusaurus's built-in markdown processors, so they can transform content first.",
-    "15": "This plugin is being added to the beforeDefaultRemarkPlugins array to process markdown files before the default plugins do their work."
+    "2": "This imports a custom plugin file from a local directory that extends remark (a markdown processor) with snippet-loading functionality.",
+    "12": "This array tells the build system to run our custom plugins before running the standard markdown processing plugins, ensuring our snippet loader transforms the content first.",
+    "15": "This adds our imported plugin to the list of custom processors that should run early in the markdown transformation pipeline."
   }
 }

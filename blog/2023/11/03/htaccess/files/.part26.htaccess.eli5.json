@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:46.071Z",
+  "generated": "2026-09-01T18:20:25.016Z",
   "source": ".part26.htaccess",
+  "sourceHash": "4c50ad8353149b0ba831e4c95f07b6a94782f16c",
   "lang": "htaccess",
+  "summary": "This rule redirects any URL starting with 'archive/2020/' to just '2020/', keeping whatever comes after the date intact. It's a permanent redirect (301) that helps maintain SEO value when you reorganize your site's folder structure.",
   "explanations": {
-    "1": "This rule catches URLs starting with 'archive/2020/' and redirects them to '/2020/' instead, keeping whatever came after 'archive/2020/' intact. The [R=301,NC,L] part means: send a permanent redirect (301), ignore uppercase/lowercase differences (NC), and stop processing other rules (L)."
+    "1": "The caret (^) means 'start of the URL' and the dollar sign ($) means 'end of the URL', so this only matches paths that begin with exactly 'archive/2020/'. The parentheses capture whatever comes after into a numbered group we can reuse. R=301 tells the browser this is a permanent move, NC ignores uppercase/lowercase differences, and L stops processing any further rules."
   }
 }

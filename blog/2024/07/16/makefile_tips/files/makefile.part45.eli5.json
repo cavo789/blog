@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:42.433Z",
+  "generated": "2026-09-01T18:34:21.239Z",
   "source": "makefile.part45",
+  "sourceHash": "fe0bfed2bcf80f08c653a3f8c2abccd202397eaa",
   "lang": "part45",
+  "summary": "This Makefile snippet defines a variable that extracts the GitHub repository URL from your local Git configuration and converts it to HTTPS format if needed, then provides a make target that opens that repository in your default web browser.",
   "explanations": {
-    "1": "This line extracts your Git repository's HTTPS URL by running a shell command that reads your Git config, converts SSH format (git@...) to HTTPS format (https://...), and removes the .git suffix at the end."
+    "1": "This line runs a shell command that grabs your Git remote URL, uses sed to convert SSH format (git@github.com:user/repo.git) to HTTPS format (https://github.com/user/repo), and then grep extracts just the base URL without the .git extension.",
+    "4": "The @ symbol suppresses echoing the command itself to the terminal, so you only see the browser opening, not the command that triggered it."
   }
 }

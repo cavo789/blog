@@ -1,12 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:17.331Z",
+  "generated": "2026-09-01T18:26:38.745Z",
   "source": "compose.part3.yaml",
+  "sourceHash": "b61407e94986b2d09a77854c6fd461a8e5f76472",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a LimeSurvey application with a MySQL database backend. It defines two services that work together: a web application container and a database container, with the app configured to wait for the database to be healthy before starting.",
   "explanations": {
-    "5": "This specifies which pre-built Docker image to use; the version number (3.22.6_200219) tells Docker exactly which release of LimeSurvey to run.",
-    "22": "This tells Docker not to start the LimeSurvey app until the database container reports it's healthy, preventing connection errors during startup.",
-    "33": "This is a health check command that Docker runs periodically; it connects to MySQL and pings it to verify the database is actually responding and ready."
+    "5": "This specifies which pre-built Docker image to use for the LimeSurvey service — think of it like selecting a specific version of software from a repository.",
+    "6": "The double-percent notation (%%app_name=limesurvey-app%%) is a template variable that gets replaced with an actual value when this file is processed, allowing the same config to be reused with different names.",
+    "7": "This tells Docker to automatically restart this container if it crashes or stops, keeping the service running continuously.",
+    "10": "This environment variable tells the LimeSurvey app how to find its database — it uses another template variable that will be substituted with the actual database service name.",
+    "19": "This maps port 8080 on your host machine to port 80 inside the container, so you can access the web app by visiting localhost:8080 in your browser.",
+    "21": "The app won't start until the database service is not only running but has passed its health check, ensuring the database is actually ready to accept connections.",
+    "33": "This health check command periodically runs 'mysqladmin ping' to verify the database is responsive; if it fails too many times, Docker marks the container as unhealthy."
   }
 }

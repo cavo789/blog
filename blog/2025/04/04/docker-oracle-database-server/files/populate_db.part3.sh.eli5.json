@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:06.566Z",
+  "generated": "2026-09-01T18:46:43.830Z",
   "source": "populate_db.part3.sh",
+  "sourceHash": "25bd3b61e48c9bf4909b5ae8763ed502236a5852",
   "lang": "bash",
+  "summary": "This script logs into an Oracle database as a system administrator and runs SQL initialization scripts. It connects to a specific pluggable database (a partition within Oracle) and executes two SQL files that create and populate a human resources schema, then commits the changes.",
   "explanations": {
-    "3": "This runs sqlplus (Oracle's command-line tool) with the -S flag to suppress headers, then uses a here-document (the <<EOF...EOF wrapper) to send multiple SQL commands to it as if you typed them interactively.",
-    "5": "After connecting as sys, this switches to the system user account within the specific database container (orclpdb1) so the following scripts run with the right permissions."
+    "3": "The sqlplus command connects to Oracle database using sys credentials. The -S flag runs it silently without the banner. The double-percent placeholders (%%port%%, %%cdb%%, etc.) are template variables that get replaced at runtime. AS SYSDBA gives administrative privileges. The <<EOF starts a 'here document' — everything until EOF is fed as input to sqlplus.",
+    "4": "This SQL command tells Oracle to use a specific pluggable database (a sub-database) for subsequent commands; it's like changing directories before running files.",
+    "6": "The @ symbol in sqlplus means 'execute this SQL file'. This runs the first script to create the database schema structure.",
+    "7": "This executes the second SQL file to fill that schema with test data."
   }
 }

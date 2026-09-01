@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:49.040Z",
+  "generated": "2026-09-01T18:52:32.693Z",
   "source": "styles.module.css",
+  "sourceHash": "7aff3682c8dfc003d271a655da995f06f25732f5",
   "lang": "css",
+  "summary": "This CSS rule truncates paragraph text to exactly three lines and adds an ellipsis (…) at the end. It uses a combination of modern and older browser-specific properties to ensure the truncation works across different browsers, and sets a max-height to enforce the three-line limit.",
   "explanations": {
-    "2": "The `-webkit-` prefix is for older browsers (Chrome, Safari) that don't yet understand the standard `line-clamp` property.",
-    "3": "This limits the paragraph to show only 3 lines of text before cutting it off.",
-    "5": "This tells the browser to lay out text vertically (top to bottom) instead of horizontally, which is required for line-clamping to work properly."
+    "2": "display: -webkit-box enables the flexbox layout model specifically for older WebKit browsers (Safari, Chrome) so we can use line-clamping on them.",
+    "3": "-webkit-line-clamp: 3 is the WebKit-specific property that actually limits the text to 3 lines; the standard line-clamp on line 4 does the same for modern browsers.",
+    "5": "-webkit-box-orient: vertical tells the webkit flexbox to arrange items vertically (top to bottom) rather than horizontally, which is required for line-clamping to work.",
+    "7": "text-overflow: ellipsis adds the three dots (…) at the end when text gets cut off, so users know there's more content.",
+    "10": "max-height calculates the physical height: 3 lines × 1.5em per line = 4.5em total, which gives the browser a hard pixel limit to respect.",
+    "11": "line-height: 1.5em sets the height of each line of text to 1.5em, which is used in the max-height calculation above."
   }
 }

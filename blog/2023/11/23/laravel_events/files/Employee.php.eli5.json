@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:06.155Z",
+  "generated": "2026-09-01T18:21:01.174Z",
   "source": "Employee.php",
+  "sourceHash": "5351a50225a3fca986f1565345c87d0bf4560202",
   "lang": "php",
+  "summary": "This class represents an Employee with three properties: firstname, lastname, and pseudo. Each property has a default value, can be read via a getter method, and can be changed via a setter method that returns the object itself to allow chaining multiple calls together.",
   "explanations": {
-    "7": "The parameters in this constructor are declared with visibility modifiers (private), which means they automatically become class properties — you don't need separate $this->firstname = $firstname lines.",
-    "22": "Returning $this allows you to chain method calls together, like $employee->setFirstName('Jane')->setLastName('Smith'), instead of calling each setter separately.",
-    "46": "The semicolon after the closing brace is not needed for a class definition — it's legal but unusual in PHP."
+    "3": "This puts the class into the App namespace, which is like organizing it into a folder so there's no naming conflict if another file has a class also called Employee.",
+    "7": "The constructor parameters use PHP 8's promoted properties feature — declaring them as 'private' here automatically creates and assigns the class properties, so you don't need to write '$this->firstname = $firstname' separately.",
+    "8": "The equals sign provides a default value; if someone creates an Employee without arguments, firstname will be 'John'.",
+    "22": "Returning '$this' (the Employee object itself) allows you to chain setter calls like $emp->setFirstName('Jane')->setLastName('Smith')."
   }
 }

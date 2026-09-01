@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:29.280Z",
+  "generated": "2026-09-01T18:58:48.640Z",
   "source": "nginx.conf",
+  "sourceHash": "1a48afecb3a2a90192d49fdd6c31607ec2c99708",
   "lang": "conf",
+  "summary": "This nginx configuration sets up a web server for a Docusaurus documentation site with HTTPS support. It redirects all unencrypted HTTP traffic to HTTPS, serves the site's files from a specific directory, handles client-side routing by falling back to index.html, and optimizes caching for static assets like images and fonts.",
   "explanations": {
-    "8": "This line takes any request coming to the HTTP port and permanently redirects it to HTTPS while keeping the rest of the URL the same — $host is the domain name and $request_uri is everything after it.",
-    "13": "This tells nginx to listen on port 443 (HTTPS), use SSL encryption, and support HTTP/2 which is a faster protocol for transferring web content.",
-    "28": "This restricts which encryption protocols nginx will accept from browsers — only newer, more secure versions of TLS so older insecure ones can't be used.",
-    "30": "This is a list of allowed encryption algorithms (ciphers), excluding weak ones like aNULL and MD5 which hackers could potentially break.",
-    "40": "This is a fallback rule for single-page apps like Docusaurus — if a file doesn't exist on disk, send back index.html so the app's JavaScript can handle the routing.",
-    "44": "The ~* means case-insensitive pattern matching, and this line targets static files like images and fonts so they can be cached by browsers for a year instead of re-downloading."
+    "8": "The $host and $request_uri are variables that nginx automatically fills in—$host is the domain name the user visited, and $request_uri is everything after the domain (the path and query string), so this preserves exactly what the user was trying to access when redirecting to HTTPS.",
+    "13": "This tells nginx to accept both regular HTTPS connections (443 ssl) and the faster HTTP/2 protocol on the same port, which modern browsers prefer.",
+    "28": "TLSv1.2 and TLSv1.3 are the secure encryption protocols that browsers use to talk to the server; older versions like TLS 1.0 are disabled because they're no longer considered safe.",
+    "30": "This picks strong encryption ciphers (HIGH) and explicitly excludes weak ones (aNULL and MD5), ensuring the connection uses secure mathematical algorithms.",
+    "40": "$uri is the file path the user requested; this line says 'try to serve that exact file, then try it as a folder, and if neither exists, serve index.html instead'—this is how single-page apps like Docusaurus handle routing in the browser.",
+    "44": "The ~* means 'match these file extensions case-insensitively'; this rule targets all common static files like stylesheets, scripts, images, and fonts.",
+    "45": "Setting expires to 1 year tells browsers to cache these files locally for a very long time, so they don't need to download them again when revisiting the site."
   }
 }

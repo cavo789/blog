@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:20.641Z",
+  "generated": "2026-09-01T18:35:13.014Z",
   "source": "string.txt",
+  "sourceHash": "f6ccfd635b7215eafaf5619a0ad002bce5c785f6",
   "lang": "plaintext",
+  "summary": "This is auto-generated documentation for a bash script file called string.sh. It describes a single public function called string::upper that converts text to uppercase, including what it does, how to use it with examples, and what it returns.",
   "explanations": {
-    "3": "This comment is saying that there's a script you can run to automatically regenerate this documentation file when the underlying code changes.",
-    "5": "This line marks when the documentation was last updated, though it shows 'xxx' as a placeholder because it hasn't been generated yet."
+    "3": "This line is telling you that if you want to update this documentation, you need to run a generation script (the word 'true' is a placeholder for the actual script name).",
+    "5": "This marks when the documentation was last automatically updated—it would show a date like '2024-01-15' in a real file."
   }
 }

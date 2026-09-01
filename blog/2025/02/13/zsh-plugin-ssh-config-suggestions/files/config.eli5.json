@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:23.049Z",
+  "generated": "2026-09-01T18:45:40.613Z",
   "source": "config",
+  "sourceHash": "14ae73d64d2d36bb08d1b430f19a2bdaf2b170e6",
   "lang": "plaintext",
+  "summary": "This is an SSH configuration file that defines shortcuts for connecting to four different remote servers. Each Host block gives a nickname (like MyAmazingApp_PROD) along with the actual server IP address and username needed to log in, so you can type 'ssh MyAmazingApp_PROD' instead of 'ssh usr_app_prod@1.2.3.4'.",
   "explanations": {
-    "1": "This is an SSH config file where 'Host' is a label you'll use when connecting (like 'ssh MyAmazingApp_PROD'), not the actual server name.",
-    "2": "The 'Hostname' is the real IP address or domain that SSH will actually connect to.",
-    "3": "The 'User' specifies which username to use for that particular host when you don't explicitly provide one."
+    "1": "This creates a named connection profile called 'MyAmazingApp_PROD' that you'll use as shorthand when running SSH commands.",
+    "2": "Hostname specifies the actual IP address or domain name of the remote server you're connecting to.",
+    "3": "User sets the login username that SSH will use when connecting to this server.",
+    "5": "This creates another named profile for a test environment on a different IP, following the same pattern as the production one above.",
+    "9": "Here's a third host entry showing that multiple applications can share the same physical server (same IP as production) but use different usernames.",
+    "13": "This final host entry represents a legacy system, probably older software that still needs SSH access."
   }
 }

@@ -1,12 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:11.797Z",
+  "generated": "2026-09-01T18:22:44.905Z",
   "source": "health.sh",
+  "sourceHash": "aa9bf755476ddc71249cd98091a175b997dfad93",
   "lang": "bash",
+  "summary": "This script displays the health status of all Docker containers in a color-coded format. It loops through each container, checks its health status, assigns a color based on that status (green for healthy, red for unhealthy, gray for unknown), and prints the container name alongside its status.",
   "explanations": {
-    "11": "This pipes the list of container names into a loop, reading one name at a time into the variable `name`.",
-    "12": "This gets detailed info about the container, converts it to JSON format, then uses `jq` (a JSON parser tool) to extract just the health status value.",
-    "20": "This checks if the status is NOT equal to 'null', meaning the container has a health check configured but it's not healthy (so we color it red)."
+    "4": "This line sets two safety options: 'nounset' makes the script error if you reference a variable that doesn't exist, and 'pipefail' makes the script error if any command in a pipeline fails.",
+    "6": "These lines define ANSI color codes as variables — 30 is gray, 32 is green, 31 is red — so we can easily reuse them later when printing colored text.",
+    "12": "This uses printf with escape codes to print a yellow bold header; '\\e[1;33m' starts yellow bold, and '\\e[0m' resets the formatting back to normal.",
+    "14": "This pipes the list of all container names from Docker into a while loop so we can process each one, line by line.",
+    "15": "This runs 'docker inspect' to get the container's health data as JSON, then pipes it to 'jq' to extract just the '.Status' field (like 'healthy' or 'null').",
+    "22": "This line appears to just reassign the variable to itself, which is redundant — it's likely left over from earlier code and can be removed.",
+    "23": "This checks if the health status is not 'null', meaning the container has a healthcheck configured but something went wrong, so we color it red.",
+    "27": "This prints the container name left-aligned in a 40-character field, then the health status in the chosen color; the escape codes apply the color and then reset it back to normal."
   }
 }

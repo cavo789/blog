@@ -1,16 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:22.766Z",
+  "generated": "2026-09-01T18:43:33.882Z",
   "source": ".pylintrc",
+  "sourceHash": "432cf1ef0b76e286d78545030abe2bc93bc9c895",
   "lang": "plaintext",
+  "summary": "This is a Pylint configuration file that customizes how Python code is analyzed. It disables certain style warnings that the team doesn't care about, enables extra checking plugins for more thorough analysis, and sets performance and Python version requirements for the linter.",
   "explanations": {
-    "2": "This section lists all the pylint rules we're intentionally turning off because we've decided they don't match how we want to code.",
-    "12": "Setting persistent to yes means pylint will save what it learned about the code between runs, so it can give smarter feedback next time.",
-    "16": "We're loading extra plugins that add more specialized checks beyond pylint's built-in rules.",
-    "31": "Setting jobs to 0 tells pylint to automatically figure out how many processor cores it can use to check code faster in parallel.",
-    "35": "When suggestion-mode is on, pylint tries to be helpful by guessing what you actually meant instead of just complaining about errors.",
-    "38": "This tells pylint that our code is written for Python version 3.13, so it should check for compatibility with that specific version.",
-    "41": "The code will fail the check and exit with an error if the quality score drops below 9.50 out of 10."
+    "2": "The 'disable=' section lists Pylint warnings that should be turned off, meaning Pylint won't complain about these issues even if it finds them.",
+    "12": "Setting 'persistent=yes' tells Pylint to save its analysis results so it can compare against future runs and only report new problems.",
+    "16": "The 'load-plugins=' section specifies additional Pylint extension modules that add more sophisticated checks beyond the default ones.",
+    "31": "Setting 'jobs=0' tells Pylint to automatically detect how many CPU cores are available and use all of them to analyze code faster in parallel.",
+    "35": "When 'suggestion-mode=yes', Pylint tries to be helpful by guessing what you meant instead of just reporting strict rule violations.",
+    "38": "The 'py-version' setting tells Pylint what Python version your code targets, so it can warn about features that won't work in that version.",
+    "41": "The 'fail-under=9.50' means the program will exit with an error if Pylint's code quality score drops below 9.50 out of 10."
   }
 }

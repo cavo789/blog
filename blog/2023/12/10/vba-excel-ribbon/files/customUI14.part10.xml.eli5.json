@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:07.841Z",
+  "generated": "2026-09-01T18:22:35.759Z",
   "source": "customUI14.part10.xml",
+  "sourceHash": "04e4fc7bc90545cb28f2a29a891b32d7a42cd354",
   "lang": "xml",
+  "summary": "This XML file defines a custom ribbon interface for Microsoft Office. It hides the standard Home tab, creates a new tab labeled 'Tab' after the View tab, adds a group within that tab, and puts a button in the group that calls a function named OnButtonClicked when clicked.",
   "explanations": {
-    "1": "This declares that the XML file uses Microsoft Office's custom UI schema, which tells Office how to customize the ribbon (toolbar) in applications like Word or Excel.",
-    "4": "The idMso attribute references a built-in Office tab by its internal name, and visible=\"false\" hides that standard Home tab from the user.",
-    "5": "insertAfterMso positions your custom tab right after another built-in tab (TabView) so users see it in a familiar location on the ribbon.",
-    "11": "imageMso=\"AddFolderToFavorites\" uses a pre-made icon from Office's icon library instead of you having to create or provide your own image file."
+    "4": "idMso refers to a built-in Office tab by its identifier; setting visible='false' hides it from the ribbon.",
+    "5": "insertAfterMso positions this new custom tab right after the existing View tab in the ribbon; id is the unique name for this tab.",
+    "11": "imageMso uses a built-in Office icon rather than a custom image; this particular icon looks like a folder being added to favorites.",
+    "13": "onAction specifies which function to call when the user clicks the button—in this case, a VBA or script function named OnButtonClicked."
   }
 }

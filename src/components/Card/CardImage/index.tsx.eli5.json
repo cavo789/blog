@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:56.801Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:52:47.629Z",
+  "source": "index.tsx",
+  "sourceHash": "57bcfb5a2bf931415f65a8574c2110e7e41937bc",
+  "lang": "typescript",
+  "summary": "This is a reusable React component that renders an image for cards. It takes a relative image path and uses Docusaurus's baseUrl hook to convert it to an absolute URL, then renders an img tag with optional lazy loading, custom styling, and accessibility features like alt text.",
   "explanations": {
-    "37": "The `= true` sets a default value, so if someone doesn't pass a `lazy` prop, it will behave as if they passed `lazy={true}`.",
-    "41": "This hook translates a relative image path into the correct full URL based on where your website is deployed, so images work whether the site is at the root or in a subfolder.",
-    "45": "The `clsx` function combines multiple CSS class names together—it always includes `\"card__image\"` and adds any extra classes from the `className` prop if provided.",
-    "50": "If `lazy` is true, this sets `loading=\"lazy\"` on the image tag; if false, it sets it to `undefined` (which means no loading attribute at all, so the browser loads it immediately)."
+    "15": "This imports TypeScript types for React—CSSProperties lets you type inline styles, and JSX.Element is the return type for a React component.",
+    "16": "clsx is a utility that combines CSS class names together, useful for conditionally applying classes.",
+    "17": "useBaseUrl is a Docusaurus helper that converts relative paths into full URLs based on your site's base path, so images work correctly whether your site is at the root or a subdirectory.",
+    "44": "This sets lazy loading on by default (lazy = true), so images won't download until the user scrolls near them, improving page performance.",
+    "48": "Here we call useBaseUrl to convert the relative cardImageUrl into a full URL that the browser can actually load.",
+    "52": "clsx merges the default 'card__image' class with any extra className the caller provided, so you get base styling plus custom overrides.",
+    "57": "This sets the img's loading attribute to 'lazy' if lazy is true, otherwise undefined (which means normal eager loading); undefined attributes are omitted from the HTML."
   }
 }

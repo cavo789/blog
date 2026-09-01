@@ -1,10 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:19.118Z",
+  "generated": "2026-09-01T18:47:00.122Z",
   "source": "Dockerfile.part2",
+  "sourceHash": "a21d9f2611ad9dcd4a1224d7ffb9e8236daa5afb",
   "lang": "part2",
+  "summary": "This Dockerfile builds a Docker image based on Node.js 20 running on Alpine Linux. It sets up a working directory, installs dependencies, adds some system tools we'll need at runtime, copies the application code in, and configures the container to start by running npm start.",
   "explanations": {
-    "12": "This line installs system-level tools (curl, unzip, and libaio) directly into the container using Alpine Linux's package manager, separate from the npm packages we installed earlier."
+    "3": "We're using node:20-alpine as our base image — this is a lightweight version of Node.js 20 built on Alpine Linux, which keeps the image size small.",
+    "5": "WORKDIR sets /app as the directory inside the container where all subsequent commands will run — think of it like cd /app.",
+    "9": "This upgrades npm to the latest version before we use it to install our app dependencies, ensuring we have all the latest bug fixes and features.",
+    "12": "apk is Alpine's package manager (like apt on Ubuntu). We're installing curl, unzip, and libaio system packages that our app needs, with --no-cache keeping the image lean by not storing package manager cache.",
+    "16": "CMD specifies the default command to run when the container starts — in this case, npm start will launch our application."
   }
 }

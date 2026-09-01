@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:15:27.563Z",
+  "generated": "2026-09-01T19:08:21.063Z",
   "source": ".ripgreprc",
+  "sourceHash": "01865d479eb5e17d31928e32097f4de3fbcf1299",
   "lang": "plaintext",
+  "summary": "This is a configuration file for a search tool (likely ripgrep) that customizes how search results are displayed and which files to search. It sets color formatting for matches and file paths, includes hidden files in searches, excludes common build and dependency directories, follows symbolic links, and limits results to files under 10 megabytes.",
   "explanations": {
-    "1": "This sets the color of matching search results to red in the output.",
-    "2": "This makes the matching text appear bold, layering the style on top of the red color from line 1.",
-    "4": "This tells the search tool to follow symbolic links (shortcuts) when scanning directories.",
-    "5": "The exclamation mark means 'ignore this pattern', so .cache folders won't be searched.",
-    "13": "This includes hidden files and folders (those starting with a dot) in the search, which are normally skipped.",
-    "14": "This skips files larger than 10 megabytes to keep the search fast and avoid huge files."
+    "1": "Sets the color of matched text in search results to red.",
+    "2": "Makes the matched text display in bold style on top of the red color.",
+    "3": "Sets the color of file paths shown in results to blue.",
+    "4": "Tells the search tool to follow symbolic links instead of treating them as endpoints.",
+    "5": "Excludes any files or directories matching the .cache/* pattern from being searched.",
+    "13": "Includes hidden files (those starting with a dot) in the search, rather than skipping them by default.",
+    "14": "Skips searching inside any single file larger than 10 megabytes to keep searches fast.",
+    "15": "Uses smart case matching: searches are case-insensitive unless you type uppercase letters in your search query."
   }
 }

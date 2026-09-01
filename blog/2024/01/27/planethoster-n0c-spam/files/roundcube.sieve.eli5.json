@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:09.760Z",
+  "generated": "2026-09-01T18:26:20.811Z",
   "source": "roundcube.sieve",
+  "sourceHash": "caf80671f392d338d381dcc995e9ed3cbf5aeca1",
   "lang": "sieve",
+  "summary": "This configuration file defines a list of email address patterns that should be filtered or blocked by a Sieve mail filter. The patterns match emails from certain country-code domains (India and Russia), as well as common newsletter sender addresses across any domain.",
   "explanations": {
-    "6": "This pattern matches any email address where something comes before @newsletter and then any domain after the dot — for example, spam@newsletter.com would match.",
-    "7": "This line is missing a comma at the end, which will cause a syntax error when the file is parsed.",
-    "8": "This pattern matches emails from any domain where the sender is literally named newsletters-noreply, like newsletters-noreply@example.com."
+    "3": "The asterisk is a wildcard meaning 'anything', so '*.india' matches any email address ending in .india, like spam@example.india",
+    "6": "This pattern matches any email sent TO a newsletter address at any domain, like incoming@newsletter.example.com",
+    "7": "This matches emails FROM an address called 'newsletter' at any domain, like newsletter@example.com, which is a common pattern for marketing emails"
   }
 }

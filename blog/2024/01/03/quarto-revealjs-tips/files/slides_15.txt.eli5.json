@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:41.337Z",
+  "generated": "2026-09-01T18:25:30.057Z",
   "source": "slides_15.txt",
+  "sourceHash": "3075a40a7b7d19217971bc53867e134b355887dd",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a markdown section introducing terminal customization as an optional topic. It uses a callout box to let readers know they can skip this section if they're not interested in customizing their terminal right now.",
+  "explanations": {
+    "3": "The :::{.callout-note} syntax creates a special highlighted box in the rendered document to draw attention to important information."
+  }
 }

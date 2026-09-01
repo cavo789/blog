@@ -1,14 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:59.805Z",
+  "generated": "2026-09-01T18:25:59.071Z",
   "source": "create_db.sql",
+  "sourceHash": "7237b66102b5566ab3d9d9be22c464cef51201e6",
   "lang": "sql",
+  "summary": "This script sets up a basic todo list database with an API schema, creates a todos table with sample data, and configures two database roles with specific permissions—a read-only anonymous user role and an authenticator role that can switch into it. This is a typical pattern for securing a PostgREST API where external requests come in as the limited web_anon user.",
   "explanations": {
-    "1": "This creates a namespace called 'api' to organize your tables, similar to a folder for database objects.",
-    "7": "timestamptz means a timestamp that includes timezone information, so the same moment in time is stored consistently across different regions.",
-    "13": "nologin means this role is just a group of permissions that real users will inherit from; it can't log in directly itself.",
-    "18": "noinherit means the authenticator role won't automatically get the permissions of other roles it belongs to unless explicitly requested.",
-    "19": "This gives the authenticator role all the permissions that web_anon has, essentially saying 'authenticator users can do what web_anon users can do'."
+    "4": "Serial means the database auto-increments this number each time you insert a new row, so you don't have to provide an id yourself.",
+    "5": "The 'default false' means if you don't specify whether a todo is done when creating it, it automatically becomes false.",
+    "7": "Timestamptz is a timestamp that includes timezone information, so it knows exactly what moment in time you mean regardless of where you are in the world.",
+    "13": "Nologin means this role can't directly log into the database—it's just a container for permissions that other roles can use.",
+    "18": "Login means this role can actually connect to the database, and noinherit means it won't automatically have permissions unless explicitly granted; password sets what you'd use to connect.",
+    "19": "This grants the authenticator role membership in web_anon, so authenticator can act as web_anon and use its limited permissions."
   }
 }

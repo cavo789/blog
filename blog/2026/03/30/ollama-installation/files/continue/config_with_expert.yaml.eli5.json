@@ -1,9 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:27.220Z",
+  "generated": "2026-09-01T19:04:21.259Z",
   "source": "config_with_expert.yaml",
   "sourceHash": "b1adf60b47aa1d4e550ec4d788f91cc1ddedeb2c",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a configuration file that defines three local AI models for different tasks, all provided by Ollama, a local language model server. Each model is given a name, specifies which provider to use, which actual model to load, and what roles or capabilities it should handle (like chat, editing, or autocompletion).",
+  "explanations": {
+    "3": "The schema version tells the system what format this configuration file follows—think of it like a version number for the structure itself so the program knows how to read it.",
+    "8": "The apiBase is the web address where the Ollama server is running on this machine; if not specified (like for line 14), it likely defaults to this same address.",
+    "9": "The roles list under each model tells the system which tasks or features that model should be used for—like whether it's good enough for quick chat responses versus detailed expert analysis."
+  }
 }

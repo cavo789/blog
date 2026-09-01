@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:00.643Z",
+  "generated": "2026-09-01T18:48:02.824Z",
   "source": "config.toml",
+  "sourceHash": "af2eadf8854da7ccd771b9b895fb08efa2397ccd",
   "lang": "toml",
-  "explanations": {}
+  "summary": "This TOML configuration defines a runner — a worker that executes jobs — and specifies that it should use Docker as its execution environment. Runners are typically used in CI/CD systems to perform tasks in isolated containers.",
+  "explanations": {
+    "1": "The double brackets [[runners]] create an array of runner configurations; each [[runners]] block adds a new runner to the list rather than replacing the previous one."
+  }
 }

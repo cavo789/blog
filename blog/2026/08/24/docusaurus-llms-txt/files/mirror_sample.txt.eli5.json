@@ -1,15 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:38:31.732Z",
+  "generated": "2026-09-01T19:12:30.921Z",
   "source": "mirror_sample.txt",
   "sourceHash": "b57fcb09fe83e884188541a6f5ead933fdc11dda",
   "lang": "plaintext",
+  "summary": "This is a Markdown document about adding a 'scroll to top' button to Docusaurus blog posts. It explains that you can create a custom React component with styling and override the theme to inject it into every post, and mentions there's a fun meerkat icon example on this site.",
   "explanations": {
-    "2": "This is a URL that points to the original, fully-rendered version of this article on the author's website.",
-    "3": "This date marks when the article was first published.",
-    "4": "This timestamp shows when this plain-text copy was automatically created from the original page.",
-    "5": "This file is a simple text version of a fancier webpage, made during the build process so it can be read without images or interactive features.",
-    "30": "The backslashes before the dots escape special characters so the URL displays literally as text instead of being interpreted as a link."
+    "1": "This starts an HTML comment block that will be ignored when the page renders.",
+    "2": "This line stores metadata pointing to the original live version of this article, so readers know where to find the fully interactive version.",
+    "4": "The 'generated-at' timestamp shows when this static mirror file was created at build time.",
+    "5": "This explains that this file is a plain-text backup version of a fancier web page, created automatically during the build process.",
+    "14": "This is a Markdown image tag that displays a banner image; the text in brackets is alt-text for accessibility, and the path in parentheses is where the image file lives.",
+    "30": "The backslashes before the colons and dots are escape characters used in Markdown to prevent special characters from being interpreted as formatting commands."
   }
 }

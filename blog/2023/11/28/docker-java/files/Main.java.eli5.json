@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:18.221Z",
+  "generated": "2026-09-01T18:21:23.142Z",
   "source": "Main.java",
+  "sourceHash": "9abc7bdda88a77bfe9e924a4a3ed3a0bea724e57",
   "lang": "java",
-  "explanations": {}
+  "summary": "This is a basic Java program that prints the text \"Hello, World\" to the console. It's the simplest possible Java application—just a main method that runs when you execute the program.",
+  "explanations": {
+    "1": "A class is a blueprint for creating objects in Java. Every Java program must have at least one class, and the code we want to run goes inside it.",
+    "2": "The main method is Java's entry point—it's the first method the computer looks for and runs when you execute a program. It must always be written exactly this way (public static void main(String[] args)) for the program to start.",
+    "3": "System.out.println() sends text to the console (your terminal or output window). The text in quotes is what gets printed, and println adds a line break at the end."
+  }
 }

@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:29.293Z",
+  "generated": "2026-09-01T19:03:16.041Z",
   "source": "compose.yaml",
+  "sourceHash": "73d4bfa74dbc80cbbccc12287a0e39f685e31146",
   "lang": "yaml",
+  "summary": "This YAML file defines a Docker service called 'docs' that builds an image from the current directory, mounts the local workspace inside the container, exposes port 4242, sets up a Python path to find scripts, and runs a startup command that makes a script executable then keeps the container running indefinitely.",
   "explanations": {
-    "5": "This mounts the current directory (.) from your computer into the container at /workspace, so changes you make locally show up inside the container.",
-    "9": "This tells Python where to find your custom modules—anything in /workspace/scripts will be importable as if it were installed.",
-    "11": "The sleep infinity keeps the container running forever instead of exiting, so you can connect to it and run commands manually."
+    "3": "The 'build: .' tells Docker to create an image using the Dockerfile in the current directory.",
+    "5": "This mounts the current directory (.) on your computer to /workspace inside the container, so changes you make locally show up immediately in the container.",
+    "7": "The '%%port=4242%%' syntax appears to be a placeholder that gets replaced with an actual port number at runtime; the ':4242' maps that port inside the container to the same port on your computer.",
+    "9": "This tells Python where to look for importable modules — in this case, the /workspace/scripts folder.",
+    "10": "The '>' character means the command continues on the next line(s) as a single multi-line string.",
+    "11": "The script makes preview.sh executable with chmod, then 'sleep infinity' keeps the container running indefinitely so you can interact with it."
   }
 }

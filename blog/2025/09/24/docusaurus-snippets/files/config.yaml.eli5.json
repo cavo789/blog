@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:59.497Z",
+  "generated": "2026-09-01T18:56:25.813Z",
   "source": "config.yaml",
+  "sourceHash": "25759f54944637817dbd08c0e8437023669b3e4a",
   "lang": "yaml",
+  "summary": "This is a YAML configuration file that defines basic metadata for a project or application, specifying its name as 'Example' and assigning it version number 1.0.0.",
   "explanations": {}
 }

@@ -1,16 +1,27 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:34.310Z",
+  "generated": "2026-09-01T19:14:25.368Z",
   "source": "SKILL.md",
   "sourceHash": "db2999d44f1d5931a29ccf984b23f0ae90150dd1",
   "lang": "markdown",
+  "summary": "This document defines a methodology for auditing Docusaurus blog articles to ensure readers see value quickly. It establishes three mechanical or qualitative passes that measure time-to-value (how far down the article before a reader sees a result), repetition (whether content is restated unnecessarily), and whether the opening 40 lines would make a stranger want to keep reading. The result is a single verdict — OK, MINOR, or RESTRUCTURE — that determines whether to file a TODO for fixes.",
   "explanations": {
-    "39": "T is the line number where the truncate comment appears, E is the total line count, and BODY is how many lines of actual content follow the truncate — think of it as the 'real article' length.",
-    "42": "If QuickJump appears right after the truncate anchor, pretend it isn't there for measurement purposes — move your starting point past it so navigation scaffolding doesn't artificially inflate how far down the proof appears.",
-    "64": "If an article has zero proof (no output shown, no images, no visible results), the time-to-value is 100% — meaning the reader never actually sees the payoff.",
-    "68": "These percentages (15%, 30%) measure how far down the page a reader has to scroll before they see actual proof the thing works — lower is better because they see results sooner.",
-    "69": "A 'red flag' here means it fails automatically — if you have to install something before the article shows you what it does, that's a problem worth noting.",
-    "87": "This awk command counts the word count per section by finding each heading and tallying words between them — it's a quick way to spot if one section is bloated compared to others."
+    "9": "This skill is a set of rules and definitions, not the actual tool that runs audits; the /reader_review command is the tool that coordinates the workflow.",
+    "13": "You should also load another reference document called 'blog-post-structure' that shows what the ideal article layout looks like, so you know what direction to point toward if restructuring is needed.",
+    "15": "While examining code blocks, watch for values like port numbers or container names that appear in multiple commands — they should be declared once in a <Vars> component instead of hardcoded repeatedly.",
+    "27": "The '<!-- truncate -->' marker is a Docusaurus convention that splits the preview readers see on the blog homepage from the full article they open; everything after it is the 'body' we're measuring.",
+    "39": "T and E are variables: T is the line number where truncate appears, E is the total line count, and BODY is how many lines of content the reader faces after truncate.",
+    "42": "If there is a <QuickJump> navigation component right after the truncate marker, move the truncate marker below it before measuring, because navigation scaffolding is not part of the actual content.",
+    "52": "We only look at line numbers and positions, not read the whole article, so an audit of many articles stays fast and cheap to run.",
+    "54": "Proof means the first moment the reader actually sees a working result, like command output or a screenshot.",
+    "62": "If a <Terminal> tag references an external file, it will be short enough to skim; actually read it to confirm it is output, not just an install command.",
+    "64": "If the article never shows any result anywhere, the TTV is 100% (the reader has to read the entire body before seeing any proof), and you should state this explicitly in your report.",
+    "87": "This awk command counts the number of words in each section (between the ## headings) so you can see which sections are bloated.",
+    "105": "When evaluating repetition, focus on whether facts are restated, not on making the article shorter; a long section that teaches new things is not a problem.",
+    "111": "For the 30-second test, ignore everything except the title, description, and the first 40 lines after truncate — pretend you are a reader who knows nothing about this tool.",
+    "119": "The pass 1 and pass 2 numbers (TTV percentage, redundancy count) are there to make audits consistent from article to article, but your gut reaction in the 30-second test is the real decision-maker.",
+    "132": "MINOR findings do not generate TODOs because a batch of 40+ articles would have dozens of small one-line TODOs that drown out the real structural problems.",
+    "136": "When you file a TODO to restructure, always frame it as moving existing blocks around, not cutting content, so the author knows nothing is being thrown away."
   }
 }

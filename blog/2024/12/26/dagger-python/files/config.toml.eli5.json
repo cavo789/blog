@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:33.172Z",
+  "generated": "2026-09-01T18:43:49.510Z",
   "source": "config.toml",
+  "sourceHash": "998c6def12dc7607e3e6b34b245a5435b3ad4c1e",
   "lang": "toml",
+  "summary": "This TOML configuration sets up Docker volumes for a CI runner, mounting two locations: a cache directory and the Docker socket file. The Docker socket binding allows CI scripts to execute Docker commands from within the container, essentially giving the container the ability to control Docker on the host machine.",
   "explanations": {
-    "5": "This line sets up two paths: /cache is a simple folder for storage, while /var/run/docker.sock:/var/run/docker.sock means 'expose the Docker control file from the host machine so the container can run Docker commands'."
+    "1": "This creates a configuration section specifically for Docker runners, which are execution environments that use Docker containers to run CI jobs.",
+    "5": "The volumes array mounts two paths: '/cache' is a temporary storage area for the job, and '/var/run/docker.sock:/var/run/docker.sock' maps the host's Docker socket into the container so it can communicate with Docker running on the host."
   }
 }

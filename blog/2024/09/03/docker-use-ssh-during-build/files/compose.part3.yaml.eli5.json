@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:13.240Z",
+  "generated": "2026-09-01T18:36:48.350Z",
   "source": "compose.part3.yaml",
+  "sourceHash": "b9878735782da3b6f782d1a754636a3eaca4d3d3",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration sets up a service called 'app' that builds a Docker image using a Dockerfile in the current directory. It passes an SSH key into the build process both as a secret and by mounting the host's SSH directory into the container, allowing the application to authenticate with external services that require SSH credentials.",
   "explanations": {
-    "13": "This line mounts your local SSH folder into the container's root user SSH folder, so the app inside can use your SSH keys for authentication.",
-    "17": "This tells Docker where to find the actual SSH key file on your computer that should be made available as the 'my_ssh_key' secret."
+    "6": "The 'secrets' section here makes the SSH key available during the Docker build process so the Dockerfile can use it without embedding it in the image permanently.",
+    "9": "This passes the SSH key filename as a build argument, which the Dockerfile can reference via ARG KEY_NAME to know which key to use.",
+    "13": "This mounts the host machine's SSH directory into the container's root user's home directory, making any SSH keys and configuration from your local machine available inside the running container.",
+    "16": "This defines where the secret file actually lives on your host machine—in this case, pointing to your Ed25519 SSH private key file."
   }
 }

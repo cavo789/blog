@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:37:16.648Z",
+  "generated": "2026-09-01T18:38:54.996Z",
   "source": "demo.sh",
+  "sourceHash": "728363dee7be9099faff64fb18649f67c98a114a",
   "lang": "bash",
+  "summary": "This script runs a main function that calls a demo function 50 times, with each call passing an incrementing number. The output from main is piped into a progress bar processor that displays how many of the 50 tasks have completed.",
   "explanations": {
-    "10": "The {1..50} syntax creates a list of numbers from 1 to 50, which the loop iterates through one at a time.",
-    "17": "The >() syntax is process substitution—it takes the output from main and pipes it into the progress_bar::process function as if it were a file, allowing real-time processing of the output."
+    "2": "This line makes the script exit immediately if any command fails, treats undefined variables as errors, and prevents pipe failures from being hidden—basically making the script fail fast and loudly.",
+    "11": "This creates a loop where the variable i takes each value from 1 to 50 in sequence, and the code inside the loop runs once for each value.",
+    "16": "This loads in code from another file called progress_bar.sh so we can use functions defined in that file.",
+    "18": "The >() syntax is a process substitution that runs the progress_bar::process function in a separate process and feeds main's output into it, allowing the progress bar to monitor completion in real-time."
   }
 }

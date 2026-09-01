@@ -1,16 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:13.313Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:53:15.904Z",
+  "source": "index.tsx",
+  "sourceHash": "9633d61baf364eaa127ea50d1c529f1fe57a4038",
+  "lang": "typescript",
+  "summary": "This PostCard component displays a preview of a blog post in two different layouts: 'small' (a compact card with image, title, description, and read button) or 'big' (a centered card using custom Card subcomponents). It pulls the post's permalink, image, title, description, and date from props, falling back to a default image if none is provided, and formats the date for display.",
   "explanations": {
-    "38": "When layout is 'small', we apply no CSS class (empty string), otherwise we use the date style from our CSS module.",
-    "46": "We're converting the date string into a JavaScript Date object, then formatting it as a readable string like 'January 15, 2024'.",
-    "68": "We're extracting specific fields from the post object using destructuring, so we can use them as simple variables instead of post.permalink, post.image, etc.",
-    "73": "The 'col col--4' class makes this card take up 4 columns in a 12-column grid layout (Infima CSS framework).",
-    "98": "Setting flex: 1 makes the card body grow to fill available space, pushing the footer button to the bottom.",
-    "136": "The Link component here uses 'href' instead of 'to' (line 100 uses 'to'), which is inconsistent but both work in Docusaurus—'to' is preferred for internal links.",
-    "137": "The '→' arrow character is a visual indicator that this is a link to read the full article."
+    "31": "This function takes a date string and layout type, and returns either formatted date text or nothing if no date was provided.",
+    "37": "The className is conditionally set: use the CSS module style for 'big' layout, or empty string for 'small' layout (which applies inline styles instead).",
+    "41": "JavaScript's Date object parses the date string, then toLocaleDateString converts it to a human-readable format like 'January 15, 2024'.",
+    "70": "We extract individual properties from the post object so we can reference them directly throughout the component instead of writing 'post.permalink', 'post.title', etc.",
+    "72": "This checks which layout variant to render; the 'small' layout branch runs first and returns early, so the code after line 122 is only reached for 'big' layout.",
+    "86": "If the post has no image property, we fall back to the defaultImage prop, which defaults to '/img/default.jpg'.",
+    "97": "Setting flex: 1 makes this container expand to fill available vertical space, which pushes the footer button to the bottom of the card.",
+    "104": "The description gets a purple color (#6c63ff) and bold weight to make it visually distinct from other text.",
+    "131": "The aria-label is added for screen readers so they announce 'Read article: [title]' instead of just the arrow, improving accessibility."
   }
 }

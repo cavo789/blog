@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:03.768Z",
+  "generated": "2026-09-01T19:06:36.606Z",
   "source": "compose.yaml",
+  "sourceHash": "530a9776d3b2f209129cd839b49b2c47bf7124ce",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines a service called 'app'. It builds a Docker image from the current directory, maps port 8000 on the host to port 80 in the container, and mounts a local Python file into the container so changes to main.py are reflected instantly without rebuilding.",
   "explanations": {
-    "5": "The part before the colon (8000) is the port on your computer; the part after (80) is the port inside the container where the app listens.",
-    "7": "This connects a file on your computer (./main.py) to a file path inside the container (/code/main.py), so changes you make locally show up inside the container instantly."
+    "5": "The syntax %%port=8000%% is a template variable that gets replaced with 8000; the colon separates the host port (8000) from the container port (80), meaning traffic to localhost:8000 reaches port 80 inside the container.",
+    "7": "This mounts the local file ./main.py as a volume at /code/main.py inside the container, so the running app uses the live version of your file instead of a static copy made during the build."
   }
 }

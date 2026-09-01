@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:10.145Z",
+  "generated": "2026-09-01T18:28:12.242Z",
   "source": "index.php",
+  "sourceHash": "5c72388daf52ed2e4e9ebf2065cf8d4fa530ff97",
   "lang": "php",
+  "summary": "This is a simple PHP script that outputs detailed information about the PHP installation and its configuration. It's commonly used to diagnose PHP setup issues or verify that PHP is installed and working correctly.",
   "explanations": {
-    "3": "This phpinfo() function displays a detailed report about your PHP installation, including version, enabled extensions, and configuration settings—useful for debugging or checking what PHP features are available."
+    "3": "phpinfo() is a built-in PHP function that generates and displays a large HTML table containing details about your PHP version, installed extensions, server information, and configuration settings."
   }
 }

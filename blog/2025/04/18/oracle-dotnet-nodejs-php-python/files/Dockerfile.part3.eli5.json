@@ -1,18 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:23.785Z",
+  "generated": "2026-09-01T18:47:09.051Z",
   "source": "Dockerfile.part3",
+  "sourceHash": "bf205ef940806e65b61f22b76de4fbe21da43e8c",
   "lang": "part3",
+  "summary": "This Dockerfile builds a PHP FPM container with Oracle database support. It starts with a PHP image, installs system dependencies and locale settings, downloads Oracle Instant Client libraries, configures the system to find those libraries, installs the PHP OCI8 extension to connect to Oracle, and sets up a working directory to run a PHP application.",
   "explanations": {
-    "1": "This line tells the spell-checker to ignore certain technical terms specific to Oracle database tools so it doesn't mark them as misspellings.",
-    "3": "This starts with a pre-built PHP image that includes PHP and a FastCGI process manager, so you don't have to install them from scratch.",
-    "5": "The && chains multiple commands together, and --no-install-recommends installs only what's needed without extra optional packages, keeping the image smaller.",
-    "11": "This deletes temporary package lists after installation to reduce the Docker image size, since those files aren't needed anymore.",
-    "18": "ARG defines a build-time variable that you can pass when building the Docker image; it's not available when the container runs.",
-    "27": "This creates a symbolic link (shortcut) pointing to the versioned instantclient folder with a generic name, so code can always reference the same path regardless of version.",
-    "28": "sh -c runs a shell command that writes the Oracle library path to a system configuration file, telling the system where to find Oracle libraries.",
-    "29": "ldconfig reads the configuration file from the previous line and updates the system's library cache so the operating system can find the Oracle libraries.",
-    "32": "This pipes (|) a configuration string directly into pecl install, telling it where the Oracle client library is located while installing the oci8 PHP extension."
+    "3": "This pulls the official PHP image with FPM (FastCGI Process Manager) already installed, which is the base we're building on top of.",
+    "5": "The && chains commands together so they all run in one Docker layer, saving space; --no-install-recommends skips optional packages we don't need.",
+    "11": "After installing packages, we delete the package cache files (/var/lib/apt/lists) to reduce the final image size since we won't need them again.",
+    "13": "This generates the UTF-8 locale so the system understands that character encoding.",
+    "14": "These ENV lines set environment variables that tell the system to use UTF-8 everywhere, affecting how text is handled.",
+    "18": "ARG defines a build-time variable that could be changed when building the image, though it's not actually used in the rest of this file.",
+    "21": "curl downloads files from Oracle's servers; -o saves to a file path, -L follows redirects.",
+    "24": "unzip -o extracts the files, overwriting if they exist; -d specifies where to extract them.",
+    "27": "ln -s creates a symbolic link (a shortcut) so /usr/lib/oracle/instantclient points to the versioned folder, in case the version changes.",
+    "28": "This writes a path to a configuration file so the system's linker knows where to find Oracle libraries; sh -c lets us use shell syntax like > for redirection.",
+    "29": "ldconfig reads the configuration file we just created and rebuilds the system's library cache so it can find Oracle's libraries.",
+    "32": "pecl is a package manager for PHP extensions; this installs oci8, which is the PHP extension that lets PHP talk to Oracle databases.",
+    "33": "docker-php-ext-enable activates the oci8 extension so PHP will load it when it starts."
   }
 }

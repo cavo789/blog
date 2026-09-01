@@ -1,15 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:33:26.850Z",
+  "generated": "2026-09-01T19:08:35.943Z",
   "source": "index.js",
   "sourceHash": "6d933009a4867bfce940067ed1f6624561bd60c1",
   "lang": "javascript",
+  "summary": "This is a 404 error page component that helps lost visitors get back on track. When someone lands on a missing page, it extracts a search term from the broken URL, automatically opens a search interface with that term pre-filled, and shows a playful meerkat-themed message along with buttons to go home or search the site.",
   "explanations": {
-    "12": "The split('/') breaks the path into parts, filter(Boolean) removes empty strings (like from double slashes), and pop() grabs the last part — so '/docs/react/' becomes 'react'.",
-    "13": "This replaces sequences of hyphens or underscores with spaces, converting 'docker-cs_fixer' into 'docker cs fixer' so it's more readable for a search query.",
-    "29": "The arrow function passed to useState ensures the random message is chosen only once when the component mounts, not on every render.",
-    "37": "This effect automatically opens the search palette with the guessed search term whenever the query changes, giving users a quick way to search without typing.",
-    "68": "That space after the closing tag is intentional — it adds a small gap between the two buttons in the rendered output."
+    "12": "This line extracts just the last part of the URL path (like 'docker-cs-fixer' from '/docs/tools/docker-cs-fixer'), filters out any empty parts, or returns an empty string if there's nothing to extract.",
+    "13": "This replaces all dashes and underscores with spaces, turning 'docker-cs-fixer' into 'docker cs fixer' so it makes a better search query.",
+    "29": "The useState with a function argument tells React to only calculate this random message once when the component first loads, not every time it re-renders.",
+    "37": "This effect automatically opens the search palette whenever the extracted query changes, giving visitors instant access to search without them having to press a keyboard shortcut.",
+    "72": "This lets users manually open the search palette with the same pre-filled query by clicking the button, in case the automatic opening didn't help them."
   }
 }

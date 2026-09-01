@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:21.234Z",
+  "generated": "2026-09-01T18:35:15.290Z",
   "source": "readme.txt",
+  "sourceHash": "94dbdc2854cc0711c3a8ded528752a1016bc728e",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is an HTML comment block at the top of a documentation file that explains the file was auto-generated and tells developers how to update it. It serves as a header for a documentation index that lists available helper modules.",
+  "explanations": {
+    "1": "The `<!--` opens an HTML comment block so the text inside won't display in browsers.",
+    "3": "This tells developers they need to run a shell script called generate_doc.sh if they make changes and want to regenerate this documentation.",
+    "5": "This is a placeholder for when the documentation was last updated, though it shows 'xxx' meaning it hasn't been filled in yet."
+  }
 }

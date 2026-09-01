@@ -1,12 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:00.236Z",
+  "generated": "2026-09-01T19:06:01.050Z",
   "source": "md-convert.sh",
+  "sourceHash": "a7393f49ae0a80cca452a88204c302495466611e",
   "lang": "bash",
+  "summary": "This script launches a Docker container running the markitdown tool to convert documents to Markdown. It mounts your current directory into the container as a workspace, sets up strict security restrictions (read-only filesystem, dropped capabilities, unprivileged user), and passes along any arguments you give the script to the markitdown command inside the container.",
   "explanations": {
-    "6": "The 'exec' command replaces the current shell process with the docker command, so when docker finishes, the script exits immediately instead of continuing.",
-    "7": "The ':cached' suffix tells Docker to use a performance optimization for this mount on Mac, which trades perfect file consistency for speed since we're only reading files.",
-    "13": "This substitutes the current user's numeric ID and group ID so the container runs as the same user instead of root, which is a security practice."
+    "5": "These are bash safety flags: -e exits on errors, -u errors on undefined variables, and -o pipefail catches failures in command pipelines.",
+    "7": "exec replaces the current shell process with docker, so when the container exits, the script exits too without spawning an extra process.",
+    "8": "This mounts your current working directory into the container at /workspace with caching enabled for performance.",
+    "9": "Makes the entire container filesystem read-only so the tool can't modify system files, only temp directories we explicitly allow.",
+    "10": "Creates a temporary writable in-memory filesystem at /tmp (64MB max) where the tool can write scratch data, but with noexec and nosuid flags to prevent executing code there.",
+    "11": "Similar temp filesystem at /run for the container's runtime needs.",
+    "12": "Removes all Linux capabilities from the container, starting from scratch and only allowing what Docker deems safe.",
+    "13": "Prevents the container from gaining new privileges (like escalating to root), even if a vulnerability is exploited.",
+    "14": "Runs the container as the current user (your UID and group ID) instead of root, so any files created have your ownership."
   }
 }

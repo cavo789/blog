@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:45.138Z",
+  "generated": "2026-09-01T18:34:24.884Z",
   "source": "script.sh",
+  "sourceHash": "6fcb68077716d0a7ee463610bc40afa02ecbe210",
   "lang": "bash",
+  "summary": "This script compares two versions of the same file located in different project folders. It first validates that both folders and files exist, then uses the diff command to show what lines differ between them, printing a success message if they're identical.",
   "explanations": {
-    "7": "The [[ ! -d ... ]] checks if a directory doesn't exist; if true, it prints an error message in red and exits the script early with return 0.",
-    "8": "Similarly, this checks if the file doesn't exist in the source folder; the -f means 'is it a file' rather than a directory.",
-    "12": "The \\033[1;34m and \\033[0m are ANSI escape codes that color text—blue for the message, then reset the color at the end.",
-    "13": "This printf uses multiple color codes: \\033[1;31m for red text and \\033[1;32m for green text, to highlight which file is which in the output.",
-    "15": "The pushd/popd commands change into the source folder, run diff to compare the files, then return to the original directory; diff shows only lines that differ between the two files."
+    "7": "[[ ! -d ... ]] checks if the folder does NOT exist (the ! means 'not'). If it doesn't exist, the script prints an error message in red and returns (exits) early.",
+    "8": "Same validation as line 7, but checking that the specific file exists inside the source folder.",
+    "12": "\\033[1;34m are escape codes that make text blue; \\033[0m resets the color back to normal. This prints the comparison header in blue.",
+    "13": "This prints an informational message using escape codes to color parts of it—red for the source file location and green for the comparison file location.",
+    "15": "pushd changes into the source folder (> /dev/null hides the directory change message), diff compares the two files showing only differing lines, then popd returns to the original folder. The && operators mean each command only runs if the previous one succeeded."
   }
 }

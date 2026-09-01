@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:16.329Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T19:01:31.147Z",
+  "source": "index.tsx",
+  "sourceHash": "559165f733152c78a8f0cbc391c91d68e963cd93",
+  "lang": "typescript",
+  "summary": "This component creates a 'TL;DR' (Too Long; Didn't Read) summary box for blog posts. It extracts the text content from React elements and embeds it as JSON-LD structured data so search engines understand it's an abstract, then displays the content in a styled alert box with a lightning bolt icon.",
   "explanations": {
-    "9": "This line flattens an array of text nodes into a single string by calling extractText on each item and joining them together with no spaces.",
-    "10": "This checks if the node is a React element (an object with props) and if it has children inside, then recursively extracts text from those children.",
-    "18": "useMemo tells React to only recalculate the structuredData object when the children prop actually changes, not on every render.",
-    "30": "This tells the browser that the JSON inside is structured data for search engines (like Google), not regular JavaScript to execute."
+    "7": "This function recursively walks through React's tree structure to pull out plain text strings, handling strings, numbers, arrays, and React components with children properties.",
+    "12": "We're using type assertion to tell TypeScript 'treat this unknown object as if it has a props object with children' so we can safely access the nested children property.",
+    "24": "useMemo caches the structured data object so it only gets recreated when the children prop actually changes, avoiding unnecessary recalculations on every render.",
+    "36": "JSON-LD (JSON for Linking Data) is a format that search engines like Google use to understand what type of content is on a page; we're telling them this is a blog post with an abstract.",
+    "40": "We're combining multiple CSS classes—both Bootstrap alert styles and custom styles from the imported stylesheet—to style the box.",
+    "41": "The role and aria-label make this section accessible to screen readers by identifying it as a distinct region labeled 'Article Summary'."
   }
 }

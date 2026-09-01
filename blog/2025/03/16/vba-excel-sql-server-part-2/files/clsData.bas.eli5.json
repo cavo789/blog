@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:32.155Z",
+  "generated": "2026-09-01T18:45:54.807Z",
   "source": "clsData.bas",
+  "sourceHash": "cae1e0e88a22dcdf201f9da01e087fd7a0a22ed9",
   "lang": "bas",
+  "summary": "This code snippet declares three private constants that store the configuration needed to connect to a SQL Server database and run a query. These constants hold the server address, database name, and SQL command that will be used together to fetch customer data.",
   "explanations": {
-    "1": "This sets the database server location; 'localhost,1433' means the server is on this computer and listening on port 1433 (the default SQL Server port).",
-    "2": "This specifies which database within the server you want to connect to—in this case, a database named 'SampleDB'.",
-    "3": "This is the SQL query that will be executed; it retrieves all columns and rows from the Customers table in the database."
+    "1": "This defines the location of the SQL Server: 'localhost' means the database is on your own computer, and '1433' is the port number where SQL Server listens for connections.",
+    "2": "This names the specific database within the SQL Server instance that you want to connect to—think of it as selecting which filing cabinet to open.",
+    "3": "This stores the actual SQL query that will be executed; in this case, it retrieves all columns and rows from the Customers table in the dbo schema."
   }
 }

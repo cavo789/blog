@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:47.832Z",
+  "generated": "2026-09-01T18:34:27.708Z",
   "source": "script.part2.sh",
+  "sourceHash": "d8ee1d020afc9bae4c73298536f55f14ad84c30a",
   "lang": "bash",
+  "summary": "This script compares two source code directories to find differences between them. It first validates that both folders exist, then uses the diff command to identify which files differ between the source folder and another project's source folder, while ignoring blank lines.",
   "explanations": {
-    "6": "This checks if the folder doesn't exist (the ! means 'not'), and if so, prints a red error message and exits the script early using 'return 0'.",
-    "7": "Same logic as line 6, but checking the second folder path instead.",
-    "9": "The \\033[1;34m part is ANSI color code that makes the text blue; \\033[0m turns off the color formatting.",
-    "11": "This changes into the source folder (pushd), runs a diff command to compare files, then changes back out (popd); the '> /dev/null' hides the folder navigation messages from the user, and LC_ALL=C makes diff use a standard sorting order."
+    "6": "The [[ ! -d ... ]] checks if the folder does NOT exist (the ! means 'not'). If it doesn't exist, it prints an error message in red and exits early with return 0.",
+    "7": "Same validation as line 6 but for the second folder we're comparing against.",
+    "9": "This prints a blue header message telling the user which two folders are being compared, using the variables we defined earlier.",
+    "11": "pushd changes into the source folder and hides its output with > /dev/null, then diff compares that folder to the compare folder, then popd returns to the original directory. The LC_ALL=C ensures consistent sorting regardless of locale settings."
   }
 }

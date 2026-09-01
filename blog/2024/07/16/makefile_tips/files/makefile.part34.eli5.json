@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:19.374Z",
+  "generated": "2026-09-01T19:17:38.214Z",
   "source": "makefile.part34",
+  "sourceHash": "cdfae8a18ada34606357dfcdad1576a3355501c9",
   "lang": "part34",
+  "summary": "This line defines a Makefile variable called DOCKER_PHPQA that constructs a Docker image name by combining a base image path with a PHP version number. When this variable is used later in the Makefile, it will expand to the full image identifier needed to run PHP code quality analysis tools.",
   "explanations": {
-    "1": "This creates a variable called DOCKER_PHPQA that builds a string by combining a base image name with the PHP_VERSION variable — it's like filling in a template with the specific PHP version you want."
+    "1": "The := operator in a Makefile assigns a value to a variable, and the ${PHP_VERSION} syntax retrieves the value of another variable to insert it into the string, so the final image name will be something like 'jakzal/phpqa:php7.4-alpine' if PHP_VERSION is 7.4."
   }
 }

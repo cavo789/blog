@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:35.795Z",
+  "generated": "2026-09-01T18:21:52.372Z",
   "source": "decrypt.sh",
+  "sourceHash": "756ea721ce0fcaaec1b1b995a281d586bf48f008",
   "lang": "bash",
+  "summary": "This script decrypts a file called secrets_encrypted.md using AES-256 encryption with a hardcoded password, running the decryption tool inside a disposable Docker container to keep the system clean. The decrypted output is written to secrets_decrypted.md in the current directory.",
   "explanations": {
-    "3": "The parenthesis here creates a subshell, which is a separate environment that won't affect your current shell's variables when it exits.",
-    "4": "The && operator means the next command only runs if this one succeeds; it's a way to chain commands safely.",
-    "5": "The $(pwd) and $(id -u):$(id -g) are command substitution—they run those commands and replace them with their output so docker knows your current directory and user permissions."
+    "2": "These flags make the script exit immediately if any command fails, prevent using undefined variables, and stop at the first error in a pipeline—basically making the script strict so mistakes don't go unnoticed.",
+    "4": "The parentheses create a subshell, which is a separate environment; this keeps any variables or changes isolated so they don't affect the main shell.",
+    "5": "The password is stored in a variable so it can be referenced later without typing it out again in the long command.",
+    "6": "This runs the openssl encryption tool inside a temporary Alpine Linux container; --rm deletes the container after it finishes, -v mounts your current directory into /data inside the container, -u runs it with your user ID so file permissions stay correct, and the rest tells openssl to decrypt the file using AES-256 with the password."
   }
 }

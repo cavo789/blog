@@ -1,11 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:55.339Z",
+  "generated": "2026-09-01T19:04:01.953Z",
   "source": "compose.yaml",
+  "sourceHash": "ebcb97b03f150fc8721a6e137e12b0572006d3f2",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a single service called Ollama, which is a containerized application for running large language models. It exposes port 11434, persists data to a volume, and automatically restarts if it crashes. The file uses template variables (marked with %%) that will be replaced with actual values when the compose file is processed.",
   "explanations": {
-    "10": "This creates a named volume called ollama_data and mounts it at /root/.ollama inside the container, so the AI model data persists even if the container stops.",
-    "11": "The container will automatically restart if it crashes or if Docker is restarted on your machine."
+    "6": "The container_name uses %%name=ollama%% which is a placeholder syntax that will be replaced with an actual container name when this file is deployed—it's how you can parameterize the configuration.",
+    "8": "The port mapping uses %%port=11434%% on the left side, which is another placeholder that will be substituted before deployment, allowing the external port to be customized while the internal port stays 11434.",
+    "10": "This mounts a named volume called ollama_data to the path /root/.ollama inside the container, which means any data Ollama writes there will persist even if the container is stopped or deleted.",
+    "11": "The restart: always policy tells Docker to automatically restart this container if it ever stops or crashes, ensuring the service stays running.",
+    "21": "The volumes section at the top level defines a named volume called ollama_data that Docker will manage for you—it's the storage that gets mounted into the container on line 10."
   }
 }

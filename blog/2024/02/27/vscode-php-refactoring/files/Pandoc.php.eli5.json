@@ -1,15 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:27.829Z",
+  "generated": "2026-09-01T18:28:41.141Z",
   "source": "Pandoc.php",
+  "sourceHash": "37db3459911104ae399cbffc16b34fcea6417c43",
   "lang": "php",
+  "summary": "This method handles downloading a file by validating the filename, checking that the file exists, setting appropriate HTTP headers to trigger a browser download, and then reading the file contents to the client. It's the server-side logic that makes a file available for download when a user clicks a download button.",
   "explanations": {
-    "20": "This line makes the filename absolute by combining it with the output folder path, and removes any leading slashes from the filename to avoid double slashes.",
-    "22": "This extracts just the file extension (like 'pdf' or 'docx') from the full filename path by using pathinfo, which breaks a path into its parts.",
-    "24": "This calls getContentType() and immediately pulls out just the 'type' value from the returned array, so $contentType ends up being something like 'application/pdf'.",
-    "30": "The utf8_decode here converts the filename from UTF-8 encoding before passing it to filesize, which is sometimes needed on certain systems that don't handle UTF-8 paths well.",
-    "35": "This flushes any output that PHP has been buffering (holding in memory), making sure nothing gets stuck before the file download begins.",
-    "37": "The @ symbol suppresses any error messages that readfile might produce, and utf8_decode is used again here for the same reason as line 30."
+    "9": "The filename is cleaned up by removing whitespace and running it through a sanitization function to prevent directory traversal attacks or other malicious input.",
+    "11": "After trimming and sanitizing, if the filename is empty, it means the user didn't actually specify a real file, so we throw an error.",
+    "15": "This checks if the file actually exists in the output folder before we try to send it; if it doesn't exist, we throw an error instead of crashing.",
+    "20": "We build the complete file path by combining the output folder with the filename, using ltrim to remove any leading slashes the user might have included.",
+    "22": "We extract just the file extension (like 'pdf' or 'docx') from the full path so we can tell the browser what type of file this is.",
+    "24": "We look up the correct MIME type (like 'application/pdf') based on the file extension so the browser knows how to handle it.",
+    "26": "HTTP headers tell the browser how to treat the data we're about to send; this one says 'this is a PDF' or 'this is a Word document', etc.",
+    "27": "This header tells the browser the file is being transferred as binary data, not text.",
+    "29": "This header is the key one for downloads — it tells the browser 'treat this as an attachment to save to disk' rather than displaying it, and provides the filename to suggest.",
+    "30": "We tell the browser how many bytes of data to expect so it can show an accurate progress bar.",
+    "35": "This clears PHP's output buffer to make sure nothing else gets sent before our file data.",
+    "37": "The @ suppresses any error warnings, and readfile sends the actual file contents to the browser so it gets downloaded."
   }
 }

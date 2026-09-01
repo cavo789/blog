@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:32.151Z",
+  "generated": "2026-09-01T18:30:57.138Z",
   "source": "compose.yaml",
+  "sourceHash": "ea3cd65d9e96c0754ebe1ebaf6526bd991b153f3",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up two services: a Joomla web application and a PostgreSQL database it depends on. The Joomla service exposes port 8080 on your machine, which connects to port 80 inside the container, while the database runs quietly in the background.",
   "explanations": {
-    "5": "The format '8080:80' means 'forward port 8080 on your computer to port 80 inside the container' — the left number is yours, the right is the container's.",
-    "10": "The 'alpine' variant is a stripped-down, lightweight version of postgres that uses much less disk space and memory than the full version."
+    "5": "The syntax '8080:80' means 'forward traffic from port 8080 on my computer to port 80 inside the container' — this is how you access the web app from your browser.",
+    "6": "The 'depends_on' section tells Docker that the Joomla service needs the database service to be running first before it starts.",
+    "10": "The 'postgres:16.0-alpine' image is a lightweight PostgreSQL database; Docker will automatically pull this specific version from the registry and run it."
   }
 }

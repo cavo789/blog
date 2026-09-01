@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:33.525Z",
+  "generated": "2026-09-01T18:47:27.413Z",
   "source": "config",
+  "sourceHash": "1faa883bea5a8a18aa50ecad820ee3220a77a0fe",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is an SSH configuration block that sets up connection details for a host named 'my_app'. When you SSH to 'my_app', it will automatically use the specified hostname, username, and private key file instead of requiring you to type them each time.",
+  "explanations": {
+    "1": "This creates a named host alias called 'my_app' that you can reference in SSH commands instead of typing the full hostname.",
+    "2": "This tells SSH the actual server address to connect to when you reference 'my_app'.",
+    "4": "This specifies which private key file to use for authentication — SSH will try this specific key instead of the default ones."
+  }
 }

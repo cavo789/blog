@@ -1,11 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:14.051Z",
+  "generated": "2026-09-01T18:22:51.122Z",
   "source": "data.xml",
+  "sourceHash": "882083e0b1937416383d4a686b0c69fc24ae5420",
   "lang": "xml",
+  "summary": "This is an XML document that stores information about a collection of books in a bookstore. Each book entry contains metadata like title, author, publication year, price, and category. The document follows standard XML conventions with a declaration at the start and organizes all books within a root bookstore element.",
   "explanations": {
-    "1": "This line declares the XML version and character encoding; it must be the very first line of any XML file.",
-    "18": "This book has multiple author elements instead of one; XML allows you to repeat the same tag several times to represent a list of related values."
+    "1": "The first part declares this is XML version 1.0 with UTF-8 character encoding. The rest defines a bookstore root element containing multiple book entries, where each book has attributes (like category) and child elements (like title, author, year, price) that describe that book."
   }
 }

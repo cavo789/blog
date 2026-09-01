@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:25.670Z",
+  "generated": "2026-09-01T19:05:07.555Z",
   "source": "mindmap.py",
+  "sourceHash": "1d7afa8ac3535ac56dd454782d460d04211fb22a",
   "lang": "python",
+  "summary": "This script reads a Docker Compose YAML file and converts it into a visual mind map diagram showing the infrastructure layout. It extracts services, their dependencies, networks, and volumes, formats them as Mermaid markup language, then uses the Mermaid CLI tool to render that markup into a PNG image file.",
   "explanations": {
-    "8": "The `any()` function returns true if at least one of those database-related keywords is found anywhere in the service name.",
-    "18": "yaml.safe_load() reads the YAML file and converts it into a Python dictionary we can work with.",
-    "23": "data.get('services', {}) safely retrieves the services section from the YAML, returning an empty dictionary if it doesn't exist.",
-    "28": "config['depends_on'] is a list of service names that this service depends on, so we loop through each one.",
-    "32": ".keys() gives us just the network names (not their full configuration objects).",
-    "64": "cmd.extend() adds more arguments to the command list only if the style file actually exists on disk."
+    "8": "The `any()` function checks if at least one of the keywords in the list appears anywhere in the service name (for example, 'postgres' in 'my_db_postgres_service' would return true).",
+    "18": "`yaml.safe_load()` parses the YAML file into Python dictionaries and lists — it's like converting the YAML text into data structures you can work with in code.",
+    "23": "`data.get('services', {})` retrieves the services section from the parsed YAML, and `.items()` gives you each service name paired with its configuration; if services don't exist, it returns an empty dictionary so you don't crash.",
+    "27": "`depends_on` is a Docker Compose feature that lists other services this service needs to start after; we're checking if this particular service declares any dependencies.",
+    "32": "`.keys()` gives you just the names of the networks (not their full configuration), which is all we need to display in the mind map.",
+    "49": "We write the mind map code to a temporary file because the Mermaid CLI tool needs to read from a file rather than taking the content directly as an argument.",
+    "63": "We check if the style config file actually exists before trying to use it, so we don't crash with a cryptic error if someone runs this without that file present.",
+    "66": "`subprocess.run()` executes the external `mmdc` (Mermaid CLI) command as if you typed it in the terminal; `check=True` makes it raise an error if the command fails."
   }
 }

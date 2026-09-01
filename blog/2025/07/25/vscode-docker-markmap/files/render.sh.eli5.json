@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:28.686Z",
+  "generated": "2026-09-01T18:49:56.371Z",
   "source": "render.sh",
+  "sourceHash": "5c7500c5b429069d2d46a32d27f5f1d93acd642c",
   "lang": "bash",
+  "summary": "This script sets up a Docker container to render a Quarto document (a markdown-based publishing format), making sure the current user's permissions are preserved inside the container and cache files are accessible. It runs the quarto render command on overview.qmd and then opens the resulting HTML file in Windows Explorer.",
   "explanations": {
-    "3": "This creates the directory structure needed for caching files that Deno (a JavaScript runtime) will use inside the Docker container later.",
-    "4": "This gives full read-write-execute permissions to everyone on that cache directory so the container process can write files to it.",
-    "8": "$(id -u):$(id -g) gets your user ID and group ID so the container runs as you instead of root, preventing permission issues with files you create.",
-    "11": "This shares your cache directory from your computer into the container at /container_cache, so cached files persist between runs.",
-    "18": "This changes into the .build folder and opens the rendered HTML file in Windows Explorer (this script is meant to run on Windows)."
+    "2": "These flags make the script exit immediately if any command fails (-e), treat undefined variables as errors (-u), and fail if any command in a pipeline fails (-o pipefail) — basically making the script safer by catching mistakes early.",
+    "4": "Creates the directory structure needed for Quarto's Deno cache, with -p meaning 'create parent directories if they don't exist'.",
+    "5": "Makes that cache directory world-readable and writable (777 permissions) so the Docker container can access it without permission issues.",
+    "9": "Runs the Docker container as the same user ID and group ID as the host system, preventing files created inside the container from being owned by root and inaccessible to you later.",
+    "10": "Mounts the current directory (.) into /public inside the container, so the container can see and work with your project files.",
+    "12": "Mounts the cache directory into the container at /container_cache, so Quarto and Deno can store their cache files persistently between runs.",
+    "13": "Tells Deno (a JavaScript runtime) to store its cache in /container_cache/deno instead of the default location.",
+    "15": "Sets the HOME environment variable inside the container to /public, which is where your project files are mounted — some tools look for config files relative to HOME.",
+    "19": "After rendering completes, changes into the .build directory and opens the resulting HTML file using Windows Explorer (the .exe suggests this runs on Windows)."
   }
 }

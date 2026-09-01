@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:37.558Z",
+  "generated": "2026-09-01T18:55:44.123Z",
   "source": "script.sh",
+  "sourceHash": "538516b7d950d3031b90eb958a9ace4dbd374fc2",
   "lang": "bash",
-  "explanations": {}
+  "summary": "This is a simple bash script that prints the text 'Hello, world!' to the console. It's the most basic example of a shell script, demonstrating the shebang line that tells the system to run this file with bash and a single echo command.",
+  "explanations": {
+    "1": "The shebang (#!) tells the operating system to execute this file using the bash shell interpreter located at /bin/bash."
+  }
 }

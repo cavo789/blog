@@ -1,14 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:25.837Z",
+  "generated": "2026-09-01T19:14:07.713Z",
   "source": "SKILL.md",
   "sourceHash": "62db19486be37d42735bb8a3be6b5706c8956924",
   "lang": "markdown",
+  "summary": "This is a markdown guide documenting Bash best practices for writing robust shell scripts. It covers foundational setup (using nounset and errexit), variable scoping and quoting, error handling patterns, shellcheck-compliant code patterns, and common pitfalls to avoid. The goal is to help developers write Bash code that fails loudly rather than silently, which is especially important since shell scripts are prone to subtle bugs.",
   "explanations": {
-    "4": "This field controls whether an AI model should be invoked to check code against this skill—usually false for static language rules.",
-    "25": "The `pipefail` option changes how pipes behave; without it, a failed command in the middle of a chain won't stop the script, which is often surprising.",
-    "79": "Braces like `${var}` don't actually prevent word-splitting unless you also add quotes around them—`\"${var}\"` is what protects the value.",
-    "146": "The single quotes around `EOF` prevent Bash from expanding variables like `${job_name}` when the heredoc is created, so they stay as literal text in the generated script."
+    "17": "nounset makes Bash error immediately if you try to use a variable that hasn't been set, rather than silently treating it as empty—this catches typos and missing initialization.",
+    "18": "errexit makes the script exit immediately if any command fails, so you don't accidentally keep running subsequent commands after something went wrong.",
+    "35": "local -r means this variable is scoped to just this function and can't be reassigned after initialization, which prevents accidental mutations and makes the code's intent clearer.",
+    "44": "The :- syntax provides a fallback value if the variable is unset or empty, so the script doesn't error out—this is how you safely use variables when nounset is on.",
+    "56": "The || operator means 'if the command fails, instead run this next part'—here we log to stderr (>&2) and return 1 to signal failure to the caller rather than silently continuing.",
+    "69": "When you use an unquoted variable in Bash, it splits on whitespace and also tries to match glob patterns, so 'a b c' becomes three separate arguments instead of one.",
+    "75": "Creating an actual array (with parentheses) instead of a space-separated string means each element stays intact even if it contains spaces or special characters.",
+    "86": "$() is the modern way to capture a command's output into a variable—it's cleaner and nests better than the older backtick syntax.",
+    "96": "[[ ]] is Bash's safer conditional operator compared to [ ]; it handles unquoted variables better and supports more features.",
+    "107": "Instead of running a command, then later checking its exit status with $?, just use the command directly in an if statement—it's clearer and less error-prone.",
+    "146": "The single quotes around 'EOF' tell Bash not to expand variables inside the heredoc, so ${job_name} stays literal in the output file rather than being replaced."
   }
 }

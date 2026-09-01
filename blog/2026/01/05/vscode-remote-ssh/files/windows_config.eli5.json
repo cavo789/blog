@@ -1,11 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:43.490Z",
+  "generated": "2026-09-01T19:00:45.886Z",
   "source": "windows_config",
+  "sourceHash": "29fd849ff3d14a0bf0e32dca425dc9f7db78ffb4",
   "lang": "plaintext",
+  "summary": "This is an SSH configuration block that tells your computer how to connect to a remote server called 'planethoster'. It specifies the actual server address, login username, port number, and which private key file to use for authentication.",
   "explanations": {
-    "1": "This is the start of a named SSH configuration block; everything indented below it applies when you connect to 'planethoster'.",
-    "5": "IdentityFile tells SSH which private key file to use for authentication; the tilde (~) is a shortcut for your home directory."
+    "1": "The 'Host' keyword defines a nickname for this server configuration that you can use later when connecting (instead of typing the full hostname).",
+    "2": "HostName is the actual internet address of the server you're connecting to.",
+    "3": "User specifies which username to log in with on that remote server.",
+    "4": "Port tells SSH to connect on port 5022 instead of the default port 22.",
+    "5": "IdentityFile points to the private cryptographic key file that proves your identity to the server; the tilde (~) is a shortcut for your home directory."
   }
 }

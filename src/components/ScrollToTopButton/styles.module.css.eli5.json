@@ -1,14 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:56.954Z",
+  "generated": "2026-09-01T18:54:34.289Z",
   "source": "styles.module.css",
+  "sourceHash": "bdad0870335dd125dec30e1a819cf9f13e1938f9",
   "lang": "css",
+  "summary": "This CSS defines a scroll-to-top button that's hidden by default, appears when the user scrolls down, and animates smoothly when clicked. The button scales up slightly on hover and flies upward with a shrinking effect when activated, with responsive sizing for mobile devices.",
   "explanations": {
-    "8": "opacity: 0 means the button starts invisible but still takes up space; visibility: hidden on line 9 makes it not take up any space at all.",
-    "10": "This transition rule makes both the opacity and visibility properties smoothly animate over 0.4 seconds when they change.",
-    "11": "z-index: 1000 ensures this button sits on top of almost everything else on the page so it's always clickable.",
-    "20": "border-radius: 50% turns the square image into a perfect circle.",
-    "37": "The 'forwards' keyword means the image stays in its final state after the animation ends, rather than snapping back to how it looked before."
+    "2": "position: fixed means the button stays in the same spot on screen even when you scroll, rather than moving with the page content.",
+    "8": "opacity: 0 makes the button completely transparent (invisible) from the start.",
+    "9": "visibility: hidden hides the button entirely so it doesn't take up space or respond to clicks, even though it's technically there.",
+    "10": "The transition lines tell the browser to smoothly animate changes to opacity and visibility over 0.4 seconds instead of switching instantly.",
+    "13": "z-index: 1000 stacks this button on top of almost everything else on the page so it's always clickable.",
+    "22": "object-fit: contain makes the image inside the button scale proportionally to fit without getting squished or cut off.",
+    "33": "When JavaScript adds the 'show' class to the button, these rules make it fade in and become clickable.",
+    "40": "This applies the flyUp animation to the image inside the button when the 'fly' class is added, making it play once over 0.8 seconds.",
+    "45": "translateY(0) means the image starts at its normal vertical position, and scale(1) means it's at full size.",
+    "49": "translateY(-300px) moves the image up 300 pixels, and scale(0.6) shrinks it to 60% of its original size during the animation."
   }
 }

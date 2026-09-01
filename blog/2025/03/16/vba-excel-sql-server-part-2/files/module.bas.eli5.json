@@ -1,14 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:34.775Z",
+  "generated": "2026-09-01T18:45:57.733Z",
   "source": "module.bas",
+  "sourceHash": "d378b79437a272abd9e76f1dc0d10752c67eb392",
   "lang": "bas",
+  "summary": "This subroutine sets up database connection credentials (server, database, username, and password) on a cData object, then executes a SQL query that copies results into the active Excel sheet starting at cell A1.",
   "explanations": {
-    "5": "This line assigns a server name from a variable cServerName to the ServerName property of the cData object, which likely represents a database connection configuration.",
-    "6": "Similarly, this sets up the database name that the connection will use.",
-    "8": "The hardcoded username 'SA' (System Administrator) is being set directly in the code, which is a security risk because anyone reading the source file can see it.",
-    "10": "The password is written directly in the source code as plain text, which is a serious security vulnerability—never hardcode passwords like this in production code.",
-    "12": "This calls a method on cData that runs a SQL query and pastes the results starting at cell A1 of the currently active spreadsheet, storing the result range in the rng variable."
+    "3": "This declares a variable named rng that will hold a Range object—think of it as a container ready to store a reference to cells in a spreadsheet.",
+    "5": "cData is an object (probably a database connection helper) and we're assigning the server name to its ServerName property, like filling in a form field.",
+    "12": "We call a method on cData that runs the SQL query and places the results starting at cell A1, then store the resulting range of cells in our rng variable so we can reference it later if needed."
   }
 }

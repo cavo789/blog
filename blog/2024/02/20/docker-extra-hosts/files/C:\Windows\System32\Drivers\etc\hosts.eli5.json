@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:14.208Z",
+  "generated": "2026-09-01T18:28:21.772Z",
   "source": "C:\\Windows\\System32\\Drivers\\etc\\hosts",
+  "sourceHash": "302e42f54d3afe22f7cf588009690ddd77d17d3b",
   "lang": "plaintext",
+  "summary": "This is a hosts file configuration that maps IP addresses to domain names on the local machine. Line 1 sets up the standard localhost entry, and line 3 adds a custom domain 'mysite.local' that will also resolve to your own computer instead of going out to the internet.",
   "explanations": {
-    "3": "This line maps the IP address 127.0.0.1 (your own computer) to a custom domain name 'mysite.local', so when you type mysite.local in your browser, it points to your local machine instead of the real internet."
+    "2": "This is a special comment syntax used by documentation tools to highlight the next line of code, making it stand out visually in rendered docs.",
+    "3": "This line tells your computer that when you type 'mysite.local' in your browser, it should point to 127.0.0.1 (your own machine) instead of trying to look it up on the internet."
   }
 }

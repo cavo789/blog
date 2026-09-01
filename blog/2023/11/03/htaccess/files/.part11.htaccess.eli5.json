@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:57.662Z",
+  "generated": "2026-09-01T18:19:34.607Z",
   "source": ".part11.htaccess",
   "sourceHash": "2d4b277ff3ff07de17a4a9a67cd3e99807fb0e57",
   "lang": "htaccess",
+  "summary": "This htaccess snippet redirects all incoming requests to a maintenance.php page, but only for visitors whose IP addresses aren't on a whitelist. It's a common way to put a website in maintenance mode while allowing specific people (like developers) to access the real site.",
   "explanations": {
-    "3": "This line checks if the visitor's IP address is NOT 127.0.0.1 (localhost on their own machine); the ! means 'not' and [NC] means ignore uppercase/lowercase differences.",
-    "5": "This is a placeholder where you'd replace ADD_YOUR_IP_HERE with your actual IP address so you can access the site normally while others see the maintenance page.",
-    "6": "This prevents the maintenance.php file itself from being redirected, so the actual maintenance page can load without causing an infinite loop.",
-    "7": "If all the conditions above are true, any request gets sent to maintenance.php instead; [L] stops processing other rules, and [QSA] preserves any URL parameters."
+    "1": "IfModule checks if Apache has the rewrite module installed; if not, it skips this entire block.",
+    "2": "RewriteEngine On activates Apache's URL rewriting feature, which lets us redirect requests.",
+    "3": "RewriteCond is a condition that must be true for the rewrite rule to apply; the ! means 'NOT', so this says 'only continue if the visitor is NOT from 127.0.0.1 (localhost)'.",
+    "4": "Same idea as line 3, but checking against the literal string 'localhost'.",
+    "5": "Another condition: only continue if the visitor's IP is not the placeholder value 'ADD_YOUR_IP_HERE' (you'd replace this with actual allowed IPs).",
+    "6": "This condition says 'only continue if the requested file is NOT maintenance.php', so people accessing maintenance.php directly aren't redirected again (avoiding an infinite loop).",
+    "7": "RewriteRule is the actual redirect: take any request (.*) and send it to /maintenance.php; [L,NC,QSA] means 'Last rule, No Case sensitivity, and keep query strings attached'."
   }
 }

@@ -1,16 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:00.724Z",
+  "generated": "2026-09-01T18:41:31.491Z",
   "source": "Dockerfile",
+  "sourceHash": "6327ac8226c1a43ddcd4284fe907646f352963bd",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a Python development container with two stages. First, it creates a base image with Python 3.10, installs Linux and Python dependencies, and configures Python to output logs immediately. Then it builds a development image on top of that, creating a non-root user account, setting up VS Code server directories, customizing the shell prompt, and configuring bash history to persist across container restarts.",
   "explanations": {
-    "1": "This special comment tells Docker to use a specific syntax version for parsing the Dockerfile, which enables newer Docker features.",
-    "30": "This RUN command uses a cache mount, which is a Docker feature that preserves downloaded packages between builds so you don't have to re-download them every time.",
-    "45": "This RUN command uses both a cache mount for pip packages and a bind mount to read requirements.txt without copying it into the image layer.",
-    "76": "The addgroup command is being run inside the container; it creates a user group with a specific ID so permissions work correctly between your host machine and container.",
-    "78": "The adduser command creates a new user account inside the container with special flags: --system means it's a system user, --disabled-password means it has no password, and --gecos \"\" skips the usual user info prompt.",
-    "92": "This long bash command customizes the shell prompt (the text that appears when you open a terminal) to show an emoji, container name, and who you are logged in as.",
-    "98": "This SNIPPET variable stores shell commands that get added to .bashrc to make bash history persist to a file, so your command history survives when the container restarts."
+    "7": "ARG declares a variable that can be passed when building the image (like a parameter), setting a default value of '/app' for the application directory.",
+    "17": "FROM pulls the official Python image with version 3.10-slim as the starting point, and 'AS base' names this stage so we can reference it later.",
+    "20": "Setting this environment variable tells Python not to generate .pyc compiled files, which saves space since they're not needed in a container.",
+    "27": "WORKDIR creates the specified directory inside the container and makes it the current working directory for all subsequent commands.",
+    "30": "The --mount flags are optimizations: the cache mount reuses downloaded packages across builds (faster rebuilds), and 'set -e -x' makes the script exit on errors and print each command.",
+    "45": "This runs pip install while mounting the requirements.txt from your host machine without copying it, and caches pip downloads so future builds are faster.",
+    "56": "This creates a new image stage called 'development' that starts from our 'base' stage, so it inherits everything we already installed.",
+    "76": "addgroup creates a user group with the specified GID (group ID number), which is used to organize file permissions.",
+    "78": "adduser creates the actual user account with various flags: --system makes it a system user, --disabled-password means no login password needed, --gecos '' skips extra user info.",
+    "92": "This appends a custom command to .bashrc (shell startup file) that sets up a fancy shell prompt displaying the container name, 'DEV' status, and current user.",
+    "98": "This creates a snippet of bash commands that saves command history to a file instead of just memory, so history persists even after the container stops."
   }
 }

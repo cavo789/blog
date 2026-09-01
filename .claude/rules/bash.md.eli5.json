@@ -1,20 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:40.035Z",
+  "generated": "2026-09-01T19:14:31.090Z",
   "source": "bash.md",
   "sourceHash": "59a4174a28e48bf65b3577cfb95d4e1ed328d0fb",
   "lang": "markdown",
+  "summary": "This is a markdown style guide for bash shell scripts that defines which files it applies to (shell scripts with .sh, .bash, or .bash_aliases extensions) and then lists best practices for writing safe, reliable bash code. It covers error handling, variable quoting, command substitution syntax, and conditional statements — all things that prevent common bash pitfalls like word-splitting bugs or silently ignored errors.",
   "explanations": {
-    "3": "The double asterisks (**) mean 'match any number of folders deep', so this pattern finds all .sh files anywhere in the project.",
-    "5": "This matches the hidden file .bash_aliases in any directory (the dot at the start makes it hidden on Unix systems).",
-    "12": "These are shell options that make scripts fail loudly: nounset stops you using undefined variables, errexit exits immediately if any command fails, and pipefail catches failures even in the middle of a pipe chain.",
-    "14": "Always wrap variable names in braces and quotes like \"${var}\" so that spaces or special characters inside the variable don't break your command.",
-    "15": "Without quotes, a variable like $file gets split on spaces and whitespace, turning one filename into many, and glob patterns (like *) get expanded.",
-    "16": "Use $(command) to run a command and capture its output because it's clearer; the old backtick style `` `command` `` is hard to read and nest.",
-    "17": "Use [[ ]] instead of [ ] in bash because [[ ]] handles quoting edge cases better, and it's the modern standard.",
-    "19": "If you write result=$(cmd) || echo \"Error\", the error message prints but the script keeps running—you have to explicitly return 1 or exit to actually fail.",
-    "21": "That comment tells shellcheck (a bash linter) to ignore a warning—use it only when you have a good reason to check $? instead of running the command directly in an if.",
-    "23": "If you use set -o pipefail and grep finds nothing, it exits with code 1 and kills your script; add || true to say 'it's okay if this command fails'."
+    "3": "The pattern **/*.sh matches any .sh file in any directory at any depth — the ** is a glob that means 'recursively in all subdirectories'.",
+    "5": ".bash_aliases is a hidden file (starts with dot) in the current directory that users often customize with their own command shortcuts.",
+    "12": "set -o nounset makes the script error if you use an undefined variable, and set -o errexit makes it error and stop if any command fails — these prevent silent failures.",
+    "14": "The ${var} syntax with quotes around it protects against word-splitting, where a variable containing spaces or special characters would be incorrectly split into multiple arguments.",
+    "16": "The $(...) syntax is modern and nestable for capturing command output; backticks are the old way and can be hard to read when nested.",
+    "17": "[[ ]] is bash's extended conditional that handles quoting better than the older [ ] syntax, which is from the POSIX shell standard.",
+    "18": "When a command fails, you should explicitly handle it by logging an error and returning/exiting, rather than silently continuing with a bad value.",
+    "22": "In a pipefail script, if grep finds nothing it returns exit code 1, which aborts the script — so you add || true to say 'it's okay if this returns 1'."
   }
 }

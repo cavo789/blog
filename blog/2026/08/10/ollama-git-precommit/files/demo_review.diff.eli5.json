@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:30.435Z",
+  "generated": "2026-09-01T19:11:03.182Z",
   "source": "demo_review.diff",
   "sourceHash": "0c80e7bfa7aa01831e32190dfeb2c23900084842",
   "lang": "diff",
+  "summary": "This diff adds a new process method to the InvoiceProcessor class that takes invoice data, validates it has required fields and a positive amount, calculates tax at 21%, saves the invoice to a database, sends a confirmation email to the customer, and returns true on success. The method handles the complete flow of processing a single invoice from validation through notification.",
   "explanations": {
-    "7": "This function takes a parameter $d which is expected to be an array containing invoice data like amount and email.",
-    "9": "The isset() function checks if a key exists in the array and has a value; this line returns false if either amount or email is missing.",
-    "20": "This creates a direct database connection with hardcoded credentials, which is unsafe for production code because passwords shouldn't be in source files.",
-    "21": "The prepare() method creates a template for a SQL statement with ? placeholders; the actual values get filled in safely during execute() on the next line."
+    "7": "This is a new public method named 'process' that accepts a parameter $d, which is expected to be an array containing invoice data like amount and email.",
+    "9": "We're checking that both 'amount' and 'email' keys exist in the input array—if either is missing, we bail out early by returning false.",
+    "13": "This validates that the amount is actually positive; an invoice for zero or negative money doesn't make sense, so we reject it.",
+    "17": "We're calculating a 21% tax by multiplying the amount by 0.21, then adding that tax to the original amount to get the final total.",
+    "20": "This creates a direct database connection using PDO with hardcoded credentials—this is a security risk in production code because passwords shouldn't be in source files.",
+    "21": "We're using a prepared statement with question marks as placeholders to safely insert the invoice values into the database.",
+    "26": "The mail function sends an email to the customer's address with the invoice total, notifying them of what they owe."
   }
 }

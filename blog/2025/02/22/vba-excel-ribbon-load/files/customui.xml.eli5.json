@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:24.649Z",
+  "generated": "2026-09-01T18:45:43.066Z",
   "source": "customui.xml",
+  "sourceHash": "0c440dbfd598f08ed987a3e3e03b55286a6ec8e1",
   "lang": "xml",
+  "summary": "This XML file defines a custom ribbon interface for Microsoft Office that adds a new 'demo Ribbon' tab to the ribbon toolbar. The tab contains a Parameters group with a dropdown menu for selecting a period, and it wires up several callbacks to a VBA module called modToolbar_cbxPeriod to populate the dropdown and handle user selections.",
   "explanations": {
-    "1": "This declares an XML file that defines custom UI elements (ribbons and buttons) for Microsoft Office applications.",
-    "4": "The insertBeforeMso attribute places this custom tab before the standard Home tab in the ribbon interface.",
-    "6": "Each callback attribute (onAction, getSelectedItemID, etc.) points to a VBA function that handles different dropdown interactions—for example, onAction runs when the user selects an item."
+    "1": "This declares the XML namespace, which tells Office this is a custom UI definition file following Microsoft's 2009 schema.",
+    "4": "The insertBeforeMso attribute positions this custom tab right before the standard Home tab in the ribbon instead of appending it to the end.",
+    "6": "The onAction callback fires when a user selects an item; the other callbacks handle populating the dropdown list (getItemCount, getItemID, getItemLabel) and retrieving which item is currently selected (getSelectedItemID)."
   }
 }

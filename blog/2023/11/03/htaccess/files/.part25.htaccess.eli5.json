@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:44.557Z",
+  "generated": "2026-09-01T18:20:22.433Z",
   "source": ".part25.htaccess",
+  "sourceHash": "68cfc86d33c273d5c5cc6d0e3beab16994c28cbe",
   "lang": "htaccess",
+  "summary": "This rule tells the web server to permanently redirect any request starting with '/fruit/' to '/fruits/' instead, keeping whatever comes after 'fruit/' in the URL. It's useful when you've renamed a folder or want to send traffic from an old URL path to a new one.",
   "explanations": {
-    "1": "This line redirects any URL starting with /fruit/ to /fruits/ (note the 's'), keeping everything after /fruit/ the same—for example, /fruit/apple becomes /fruits/apple. The 301 means it's a permanent redirect so search engines update their records."
+    "1": "RedirectMatch 301 means 'send a permanent redirect response (301 is the HTTP code for permanent)'. The ^/fruit/(.*)$ is a pattern that matches URLs starting with '/fruit/' and captures everything after it in parentheses. The /fruits/$1 is where to send them, with $1 being replaced by whatever was captured."
   }
 }

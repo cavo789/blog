@@ -1,11 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:13.519Z",
+  "generated": "2026-09-01T18:26:30.098Z",
   "source": "compose.yaml",
+  "sourceHash": "314d33ace6759089556e602f698f663fb6625c05",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up LimeSurvey (a survey application) with two services: a web application container and a MySQL database container. The app container connects to the database, exposes a web port, and waits for the database to be healthy before starting. Several configuration values are templated with %% markers, likely to be replaced by a deployment tool.",
   "explanations": {
-    "10": "DB_HOST is set to 'limesurvey-db' because that's the container name of the database service below, and Docker automatically makes containers reachable by their service names within the same network.",
-    "20": "depends_on tells Docker to start the database service before starting the app service, ensuring the database is ready when the app tries to connect."
+    "6": "This creates a unique container name using a template variable that will be replaced later—it prevents naming conflicts if you run multiple instances.",
+    "7": "This tells Docker to automatically restart the container if it crashes or stops, keeping the service available.",
+    "10": "This points the app to the database using another template variable for the database container's name, so they can communicate.",
+    "19": "This maps port 8080 on your host machine to port 8080 inside the container, so you can access the survey app from your browser.",
+    "21": "This makes the app wait until the database container is healthy (passes its health check) before trying to start, preventing connection errors.",
+    "33": "This health check command runs inside the database container every few seconds to verify MySQL is responding; if it fails repeatedly, Docker marks the service as unhealthy."
   }
 }

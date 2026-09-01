@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:01.805Z",
+  "generated": "2026-09-01T18:44:47.928Z",
   "source": ".pre-commit-config.yaml",
+  "sourceHash": "a4fe6ae044a8c90d0f043d637619265cc44c357e",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a pre-commit configuration file that sets up automated code checks to run before each git commit. It installs two tools: pre-commit-hooks (which does basic file validation) and Black (a code formatter), along with specific checks like validating YAML syntax and removing trailing whitespace.",
+  "explanations": {
+    "3": "The 'rev' specifies which version of the pre-commit-hooks repository to use, like pinning a dependency to a specific release.",
+    "9": "This is the version of the Black formatter tool being used; newer versions might have different formatting rules, so pinning it ensures consistent behavior across your team.",
+    "11": "The 'id: black' activates the Black formatter as one of the checks that will automatically run before you commit code."
+  }
 }

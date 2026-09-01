@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:16.836Z",
+  "generated": "2026-09-01T18:45:34.738Z",
   "source": "Dockerfile",
   "sourceHash": "54afe46a1bacd9ef4386e628875a66470321d564",
   "lang": "docker",
+  "summary": "This Dockerfile builds an Ubuntu container with an enhanced Zsh shell environment. It installs Zsh and essential tools, sets up Oh-My-Zsh with a plugin for SSH config auto-completion, creates a sample SSH config file with predefined hosts, customizes the shell prompt to show a container indicator, and starts the shell in interactive login mode.",
   "explanations": {
-    "3": "This disables interactive prompts during package installation so the build doesn't pause waiting for user input.",
-    "5": "The && connects commands so they all run together, and the backslash lets us continue this command on the next line.",
-    "11": "After installing packages, we delete the package cache files to make the final image smaller.",
-    "14": "We're running a script from the internet using curl; the empty quotes pass no custom arguments to the install script.",
-    "15": "The --unattended flag installs Oh-My-Zsh without prompting, and --keep-zshrc preserves any existing shell configuration.",
-    "20": "This sed command finds the plugins line in the config file and modifies it in-place (-i) to add our new plugin to the list.",
-    "25": "The printf command with %s\\n creates multiple lines of text; each argument becomes a line with a newline after it.",
-    "41": "The > redirects all those printed lines into the config file instead of printing them to the screen.",
-    "45": "We're appending (>>) this PROMPT line to the zshrc file, which tells the shell what the command prompt should look like.",
-    "47": "The flags mean: -i for interactive mode (keep stdin open), -l for login shell (loads full environment), and /bin/zsh is the program to run."
+    "3": "This tells Ubuntu's package manager to skip interactive prompts during installation—otherwise the build would hang waiting for user input.",
+    "5": "The && chains commands together so if any step fails, the whole RUN stops. After installing packages, we delete the cached package lists to reduce the image size.",
+    "11": "Removing /var/lib/apt/lists/* cleans up the package manager's download cache, which saves disk space in the final image since we won't need it again.",
+    "14": "This downloads and runs Oh-My-Zsh's installer script directly from GitHub using curl, with --unattended to run non-interactively.",
+    "18": "The --depth=1 flag clones only the latest commit of the plugin repo instead of the entire history, which is faster and uses less disk space.",
+    "20": "This uses sed to find the line starting with 'plugins=(git)' and replaces it with the same line but adding the new plugin name to the list.",
+    "25": "The printf command with '%s\\n' outputs each argument as a separate line, which is a clean way to build a multi-line file inside the RUN command.",
+    "42": "chmod 600 sets permissions so only the owner can read/write the SSH config file, which is a security requirement for SSH.",
+    "47": "The -i flag makes the shell interactive and -l makes it a login shell, so it reads startup configuration files and behaves like a normal user shell."
   }
 }

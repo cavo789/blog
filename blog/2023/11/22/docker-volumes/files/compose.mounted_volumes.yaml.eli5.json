@@ -1,10 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:01.559Z",
+  "generated": "2026-09-01T18:20:51.658Z",
   "source": "compose.mounted_volumes.yaml",
+  "sourceHash": "e3062cd9ebe7f34732ca8691015a04af4fea31e1",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that defines a single service called 'counter'. It specifies how to build and run a Docker container for this service, including which image to use and where to mount local files into the container.",
   "explanations": {
-    "12": "This line connects a folder on your computer (./data) to a folder inside the container (/data), so files created inside the container are saved on your actual machine and persist even after the container stops."
+    "5": "The %%name=counter%% is a template variable that gets replaced with the actual service name 'counter' when the file is processed.",
+    "6": "The 'build: .' tells Docker to build the image using the Dockerfile in the current directory rather than pulling a pre-built image.",
+    "12": "This line mounts a folder from your computer (./data) into the container at the /data path, so files persist and can be shared between your machine and the running container."
   }
 }

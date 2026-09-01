@@ -1,15 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:50.061Z",
+  "generated": "2026-09-01T18:36:09.937Z",
   "source": "Dockerfile.part2",
+  "sourceHash": "12330501d9c6ecf23bdf328cdb1385eebe3267cb",
   "lang": "part2",
+  "summary": "This Dockerfile creates a web server image based on Apache 2.4, installs necessary tools and PHP support, adds SSL certificates and configuration files, enables SSL and rewrite modules, and activates a custom site configuration while disabling the default sites.",
   "explanations": {
-    "6": "The backslash at the end of this line tells Docker to continue the command on the next line, so all three apt-get commands are chained together with && (meaning if one fails, the rest won't run).",
-    "10": "This line cleans up the temporary package lists that apt-get created, which reduces the final Docker image size by removing files we don't need anymore.",
-    "23": "The sed command (stream editor) is being used to uncomment certain lines in Apache's configuration file by finding lines that start with # and removing that # character.",
-    "25": "This uses a regular expression pattern to find lines starting with '#Include' and removes the '#' so that line becomes active in the Apache config.",
-    "27": "Similar to line 25, this uncomments the line that loads the SSL module so Apache can handle HTTPS traffic.",
-    "35": "The a2enmod command enables Apache modules (in this case SSL for HTTPS support), and the && chains multiple commands so they all run in sequence."
+    "2": "This pulls the official Apache 2.4 Docker image as the starting point, so we don't have to build Apache from scratch.",
+    "6": "The backslash at the end of this line lets us continue the same RUN command on the next line, keeping it logically grouped.",
+    "8": "We're installing apache2-utils (utilities for Apache), libapache2-mod-php (to run PHP), and openssl (for SSL/certificate handling).",
+    "10": "After installing packages, we clean up the package manager's cache to reduce the final image size.",
+    "14": "We're copying the SSL certificate file from our local machine into the container at the path where Apache expects it.",
+    "16": "Similarly, we copy the private key file that corresponds to the certificate.",
+    "23": "The `sed` command searches through and modifies text in a file; here we're uncommenting (removing the '#') certain lines in Apache's config.",
+    "25": "This uncomments the line that loads the SSL configuration file, which tells Apache how to handle HTTPS.",
+    "27": "This uncomments the line that loads mod_ssl, the Apache module that provides SSL/TLS support.",
+    "29": "This uncomments the line that loads mod_socache_shmcb, a module that caches SSL sessions for better performance.",
+    "35": "The `a2enmod` command enables Apache modules; this one enables SSL support.",
+    "37": "This enables the rewrite module, which lets Apache rewrite URLs (useful for routing and redirects).",
+    "39": "The `a2dissite` command disables certain site configurations; we're turning off the two default sites that came with Apache.",
+    "41": "Finally, we enable our custom site configuration (my-site) so Apache will serve it."
   }
 }

@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:54.899Z",
+  "generated": "2026-09-01T19:09:25.835Z",
   "source": "extend_remark.js",
   "sourceHash": "fab47cd787fd51cf144ba3d3810bd725094ee44f",
   "lang": "javascript",
+  "summary": "This code checks if a companion `.eli5.json` file exists next to a source file. If it does, the code reads and parses it, then attaches the explanations data as an attribute to an MDX node so the explanations can be displayed alongside the code snippet.",
   "explanations": {
-    "2": "This creates a file path by taking the original file path and adding '.eli5.json' to the end, so if the file was 'example.js', this would be 'example.js.eli5.json'.",
-    "6": "JSON.parse converts a string of JSON text into a JavaScript object so we can actually use the data inside it.",
-    "7": "This checks two things: that eli5Data has a property called 'explanations', AND that explanations is an object (not null or an array).",
-    "11": "JSON.stringify does the opposite of parse — it converts our JavaScript object back into a string of JSON so it can be stored as an attribute value."
+    "2": "We're building a file path by taking the current file's path and appending '.eli5.json' to it, so if the original file is 'example.js', we're looking for 'example.js.eli5.json'.",
+    "3": "fs.existsSync checks whether that companion file actually exists on disk before we try to read it.",
+    "5": "We're reading the entire file contents as a string so we can parse it in the next line.",
+    "6": "JSON.parse converts the text we just read into an actual JavaScript object we can work with.",
+    "7": "We're checking two things: that eli5Data actually has an 'explanations' property, and that property is an object (not a string, number, or something else).",
+    "8": "We're adding a new attribute to the MDX node, which is like adding a property that the renderer will see later.",
+    "11": "We convert the explanations object back to a JSON string before storing it, since MDX attributes need to be stringified."
   }
 }

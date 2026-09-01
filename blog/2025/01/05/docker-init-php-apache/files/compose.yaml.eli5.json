@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:52.183Z",
+  "generated": "2026-09-01T18:44:32.541Z",
   "source": "compose.yaml",
+  "sourceHash": "71c94d8411995c0b2a603b96b101d313ebd0138e",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines a single service called 'server'. It builds a Docker image from the current directory and exposes port 8080 on your machine to port 80 inside the container, allowing you to access the containerized application through localhost:8080.",
   "explanations": {
-    "6": "The first number (8080) is the port on your computer, and the second number (80) is the port inside the container—traffic coming to localhost:8080 gets forwarded to port 80 inside the running container."
+    "6": "The syntax 'host_port:container_port' maps port 8080 on your local machine to port 80 inside the Docker container. The double-percent notation suggests this is a template where 'port' can be substituted with an actual value at runtime."
   }
 }

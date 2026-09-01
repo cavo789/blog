@@ -1,8 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:41.288Z",
+  "generated": "2026-09-01T18:55:52.620Z",
   "source": "Dockerfile",
+  "sourceHash": "b3642ac29588c88132f9d938c9d7c9b33db0e1b2",
   "lang": "docker",
-  "explanations": {}
+  "summary": "This Dockerfile creates a Docker image for a Node.js application. It starts with Node.js version 18, copies your application files into the container, installs dependencies, and sets the default command to run your app's main entry point.",
+  "explanations": {
+    "1": "FROM pulls a pre-made image (Node.js 18) as the starting point — think of it like inheriting a base operating system that already has Node.js installed.",
+    "2": "WORKDIR sets the working directory inside the container to /app, so all future commands run from that location — like opening a folder and making it your current directory.",
+    "3": "COPY . . takes everything from your local directory (first dot) and copies it into the container's /app directory (second dot).",
+    "4": "RUN npm install executes the npm install command inside the container to download and install all the dependencies listed in your package.json file.",
+    "5": "CMD sets the default command that runs when the container starts — in this case, it will run 'node index.js' automatically."
+  }
 }

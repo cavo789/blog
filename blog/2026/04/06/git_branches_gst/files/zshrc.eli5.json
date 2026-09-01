@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:12.028Z",
+  "generated": "2026-09-01T19:04:37.423Z",
   "source": "zshrc",
+  "sourceHash": "0fd21716458f0d71c4b0fa06cab1b43e37c5cfea",
   "lang": "plaintext",
+  "summary": "This snippet adds a git utility to your shell that displays the three most recently modified branches whenever you change directories or run git status. It's a convenience feature that helps you keep track of what you've been working on, showing the current branch in green and others in yellow with their last commit time.",
   "explanations": {
-    "7": "This checks if we're inside a git repository by trying to run a git command; the '>/dev/null 2>&1' part silently throws away any output so we only care whether the command succeeded or failed.",
-    "12": "This checks if the repository has at least one commit yet, because some git commands fail on brand-new repos with no commits.",
-    "19": "The '$\\'e[1;36m' and '$\\'e[0m' are ANSI escape codes that add color and formatting to terminal text—this makes the header cyan and bold.",
-    "23": "The '%(if:equals=...)%(then)...%(else)...%(end)' is a conditional formatting syntax in git that checks if the branch name matches the current branch, then colors it differently.",
-    "30": "This removes any shell alias named 'gst' if it exists, so the function you're about to define won't be shadowed by an older command.",
-    "38": "This is a special Zsh hook function that automatically runs every time you change directories, making the git info display update whenever you 'cd' around."
+    "7": "This checks if we're inside a git repository by running a git command and throwing away any output or errors (the >/dev/null 2>&1 part). If the check fails, we exit early since there's no git repo to show branches from.",
+    "12": "This checks if the git repository has any commits yet—an empty repo would fail this test. We return early if so, since there are no branches to display.",
+    "17": "This gets the name of the currently checked-out branch, so we can highlight it differently from the others.",
+    "19": "This prints a cyan-colored header line using ANSI escape codes (the \\e[... codes control text color).",
+    "22": "This git command loops through all local branches sorted by their most recent commit date (the minus sign means newest first), then formats each one according to the pattern in the next line.",
+    "23": "This formatting line uses conditional logic: if the branch name matches the current branch, print it in green with an asterisk; otherwise print it in yellow. Both show the relative time since the last commit in blue.",
+    "30": "This removes any existing alias called 'gst' so our new function can use that name without conflicts.",
+    "38": "This is a special zsh function that automatically runs whenever you change directories—it's a shell hook that will display your recent branches after every cd command."
   }
 }

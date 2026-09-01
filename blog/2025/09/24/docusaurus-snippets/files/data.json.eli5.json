@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:46.610Z",
+  "generated": "2026-09-01T18:56:06.500Z",
   "source": "data.json",
+  "sourceHash": "c2723c3b5a64031d77fa22591918cf1225458752",
   "lang": "json",
+  "summary": "This is a simple JSON object that defines metadata for a package or project, specifying its name as 'example' and version as '1.0.0'. It's typically what you'd see in a package.json or similar configuration file.",
   "explanations": {}
 }

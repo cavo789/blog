@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:29.926Z",
+  "generated": "2026-09-01T18:42:18.510Z",
   "source": "class_diagram.py",
+  "sourceHash": "91410a47d439a53903f8ce95693f7a8cf4bb58be",
   "lang": "python",
+  "summary": "This code creates a visual diagram showing a class hierarchy using pydot, which is a Python wrapper around Graphviz. It defines three nodes (Person, Student, and Teacher), adds them to a directed graph, draws arrows showing that Student and Teacher both inherit from Person, and finally saves the diagram as a PNG image file.",
   "explanations": {
-    "1": "We're creating a directed graph object (digraph) using pydot, which is a library that helps us draw diagrams and save them as images.",
-    "14": "We're creating an Edge object that connects two nodes and immediately adding it to the graph; this shows that Student inherits from Person in our class hierarchy.",
-    "18": "This writes the graph we built to a PNG image file on disk, so we can actually see the diagram we created."
+    "1": "pydot.Dot() creates a new directed graph object (digraph means the arrows have direction, showing relationships that flow one way).",
+    "4": "pydot.Node() creates a visual box on the diagram labeled 'Person' — this represents a class in the inheritance hierarchy.",
+    "14": "pydot.Edge() draws an arrow from Person to Student, showing that Student is a child class that inherits from Person.",
+    "18": "write_png() renders the graph as an actual PNG image file on disk that you can open and view."
   }
 }

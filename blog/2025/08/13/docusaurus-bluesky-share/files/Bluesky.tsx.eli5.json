@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:39.578Z",
-  "source": "Bluesky.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:50:24.231Z",
+  "source": "Bluesky.tsx",
+  "sourceHash": "acd2001f9a8bad72962122726a3707c6122a6cb5",
+  "lang": "typescript",
+  "summary": "This is a React component that wraps a BlueskyShare component inside a styled container. It accepts metadata about a post (including an optional Bluesky record key from frontmatter) and passes that data down to the child component, which presumably handles sharing to Bluesky.",
   "explanations": {
-    "14": "PropTypes.shape() lets you specify what properties an object should have and their types, kind of like defining a schema for the object.",
-    "18": "isRequired means this metadata prop must always be passed to the Bluesky component, or React will warn you in development."
+    "4": "This defines the shape of the props object that the component accepts, ensuring TypeScript knows what data structure is being passed in.",
+    "6": "The frontMatter object is optional (the question mark means it may not exist), and inside it there's an optional blueskyRecordKey that identifies a Bluesky post.",
+    "12": "The curly braces around metadata is destructuring — we're extracting just the metadata property from the Props object instead of accessing it as props.metadata."
   }
 }

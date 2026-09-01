@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:04.590Z",
+  "generated": "2026-09-01T19:01:00.544Z",
   "source": "makefile",
+  "sourceHash": "9d286ecccf01982a66d4728e7c0f992340a18d14",
   "lang": "makefile",
+  "summary": "This makefile target provides a command-line interface for a tags manager tool. If you run it without arguments, it displays helpful usage examples and exits with an error. If you provide arguments via ARGS, it spins up a Docker container with Python and runs the tags-manager script with those arguments.",
   "explanations": {
-    "1": "This line declares that 'tags-manager' is a phony target, meaning it's not a real file—it's just a command you can run with 'make tags-manager'.",
-    "4": "This checks if the ARGS variable is empty (after stripping whitespace); if it is, the code between here and 'else' will run to show an error message.",
-    "24": "This line runs a Python script inside a Docker container, installing two Python libraries silently first, then passing your ARGS to the script so it can execute the tag management command you requested."
+    "1": ".PHONY tells Make that 'tags-manager' is not a file we're trying to create, just a command to run.",
+    "4": "ifeq checks if the ARGS variable is empty (after stripping whitespace); the code that follows runs only if it is empty.",
+    "21": "exit 1 exits with status code 1, which tells the system this command failed.",
+    "22": "else starts the section that runs only if ARGS was provided (not empty).",
+    "24": "This runs a Docker container that installs two Python packages silently, then executes the tags-manager Python script, passing along whatever arguments were given in ARGS."
   }
 }

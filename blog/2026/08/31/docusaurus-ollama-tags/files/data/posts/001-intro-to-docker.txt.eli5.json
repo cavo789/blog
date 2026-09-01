@@ -1,9 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:50.243Z",
+  "generated": "2026-09-01T19:14:48.511Z",
   "source": "001-intro-to-docker.txt",
   "sourceHash": "a8b1f8034315a3b79ea485a45f9cbda33928c773",
   "lang": "plaintext",
+  "summary": "This is an introductory section explaining what Docker is and its core benefits. It describes Docker as a platform that lets you package applications separately from the systems they run on, making software delivery faster and more consistent. The section also previews that the article will cover containers, images, and Docker Compose.",
   "explanations": {}
 }

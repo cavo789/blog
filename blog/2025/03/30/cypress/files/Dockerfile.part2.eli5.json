@@ -1,15 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:59.944Z",
+  "generated": "2026-09-01T18:46:30.328Z",
   "source": "Dockerfile.part2",
+  "sourceHash": "74707fdc2fb2504d62f6c4c99a05d8ca8d3adf2f",
   "lang": "part2",
+  "summary": "This Dockerfile creates a Docker image for running Cypress tests (an automated testing tool). It starts with a pre-built Cypress image, sets up a non-root user account for security, installs project dependencies, copies test files into the image, verifies the Cypress installation, and configures the container to run tests in Chrome by default.",
   "explanations": {
-    "3": "ARG creates a build-time variable that can be overridden when building the image; this one sets a default user ID of 1000.",
-    "13": "These ARG lines repeat the same variable names from earlier—they're needed again here so they're available in later build stages after the FROM statement.",
-    "18": "The ${GROUP_ID} syntax substitutes the variable value into the command; the -g flag tells groupadd to use that specific numeric group ID.",
-    "19": "This useradd command adds a user and assigns them to two groups at once (the one matching their username, plus the 'node' group) so they have permissions for both.",
-    "27": "The --chown flag during COPY ensures the copied files are owned by your custom user instead of root, so they can actually edit those files later.",
-    "40": "CMD sets the default command to run when the container starts; unlike RUN, this happens every time someone runs the container, not just during the build."
+    "3": "ARG creates a build-time variable that can be passed in when building the image; USER_ID=1000 sets a default value but allows it to be overridden.",
+    "13": "These ARG lines re-declare the variables so they're available in this stage of the build; Docker build stages don't automatically inherit ARG values without re-declaration.",
+    "18": "This creates a new user group and a new user account with specific numeric IDs and adds that user to the 'node' group so it has permissions to run Node.js tools.",
+    "24": "This switches the Docker container to run as the non-root user we just created, which is a security best practice.",
+    "27": "COPY with --chown changes ownership of the copied files to our user in one step; package*.json matches both package.json and package-lock.json (the asterisk is a wildcard).",
+    "40": "CMD specifies the default command to run when the container starts; this will execute Cypress tests in headless Chrome mode."
   }
 }

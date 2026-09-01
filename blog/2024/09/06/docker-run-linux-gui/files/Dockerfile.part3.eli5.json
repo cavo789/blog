@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:24.620Z",
+  "generated": "2026-09-01T18:37:05.467Z",
   "source": "Dockerfile.part3",
+  "sourceHash": "6130918e3a6b539f6086ca9ed5c6c44b5bc873f2",
   "lang": "part3",
+  "summary": "This Dockerfile creates a Docker image based on Ubuntu and installs Google Chrome in it. It sets up a non-interactive environment to avoid prompts during installation, downloads Chrome, installs it, cleans up temporary files, and configures Chrome to run with specific performance flags when the container starts.",
   "explanations": {
-    "3": "This tells the system to skip interactive prompts during installation, so the Docker build won't get stuck waiting for user input.",
-    "7": "The `-q` flag makes wget run quietly without printing download progress, keeping the Docker build output cleaner.",
-    "9": "After installing Chrome, we delete the apt package cache to reduce the final Docker image size, since we won't need those files again.",
-    "11": "The `--disable-dev-shm-usage` flag tells Chrome to use disk instead of shared memory (which might be limited in containers), and `--disable-gpu` turns off GPU acceleration since containers often can't access the host's graphics hardware."
+    "3": "This environment variable tells the system to skip interactive prompts during package installation, which is necessary in Docker since there's no terminal to respond to questions.",
+    "5": "The backslash at the end of this line and the next few lines chains multiple commands together into a single RUN instruction, which reduces the number of layers in the Docker image and keeps it smaller.",
+    "9": "After installing Chrome, we delete the apt package cache to free up disk space in the image, since we won't need to install anything else.",
+    "11": "CMD specifies what command runs automatically when the container starts—in this case, Chrome with two flags: one to avoid using shared memory (which can cause issues in Docker) and one to disable GPU acceleration (which isn't available in most containers)."
   }
 }

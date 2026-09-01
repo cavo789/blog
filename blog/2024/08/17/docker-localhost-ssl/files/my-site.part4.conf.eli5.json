@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:01.151Z",
+  "generated": "2026-09-01T18:36:31.818Z",
   "source": "my-site.part4.conf",
+  "sourceHash": "0419d5bdf71a4598c6dd34f092e09e118991bd15",
   "lang": "conf",
+  "summary": "This Apache configuration sets up two virtual hosts for the same website—one over regular HTTP (port 80) and one over secure HTTPS (port 443). Both are configured to serve files from /var/www/html and use URL rewriting to send all requests that don't match actual files to index.html, which is a common pattern for single-page applications.",
   "explanations": {
-    "8": "This checks if the requested file doesn't actually exist on disk — the !-f means 'not a file'. If it doesn't exist, the next rule will fire.",
-    "9": "This sends all requests that matched the previous condition to index.html, with QSA preserving the query string and L stopping further rule processing.",
-    "29": "Same as line 8 — checking that the requested file doesn't exist before redirecting to index.html.",
-    "30": "Same as line 9 — catch-all redirect for the HTTPS side that sends missing files to index.html with query strings intact."
+    "6": "AllowOverride All means Apache will respect .htaccess files in this directory if they exist, letting you override settings at a lower level.",
+    "7": "RewriteEngine On activates Apache's URL rewriting module so the RewriteCond and RewriteRule directives below will actually work.",
+    "8": "This condition checks if the requested filename is NOT (!-f) a real file that exists on disk—if it's a real file, skip the rewrite.",
+    "9": "If the condition above is true, rewrite any request to index.html instead; QSA preserves query strings and L means this is the last rule to process.",
+    "22": "SSLEngine on turns on encryption for this virtual host so it handles HTTPS traffic.",
+    "23": "This points to the SSL certificate file that proves the server's identity to clients.",
+    "24": "This is the private key that pairs with the certificate—it must be kept secret and is used to decrypt traffic."
   }
 }

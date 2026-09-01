@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:27.727Z",
+  "generated": "2026-09-01T18:21:36.886Z",
   "source": "Hello.asm",
+  "sourceHash": "937bde7bb1b941c838b2419e186cf879d788c88d",
   "lang": "asm",
+  "summary": "This is a minimal x86 assembly program that prints 'Hello, World! This message comes from Docker.' to the console, then exits cleanly. It uses Linux system calls to write to standard output and terminate the program.",
   "explanations": {
-    "11": "The edx register holds the byte count of the string we want to print—we're telling the operating system how many characters to write.",
-    "12": "We're loading the memory address (not the actual string content) of our 'hello' variable into ecx, which tells the system where to find the data to print.",
-    "14": "In this old Linux calling convention, putting 4 in eax tells the operating system we want to use the sys_write function.",
-    "15": "int 0x80 is like pressing a button that tells the CPU to stop normal execution and let the operating system handle our request using the values we just set up in those registers.",
-    "18": "eax = 1 means we're asking the OS to run the sys_exit function, which shuts down our program.",
-    "19": "This second interrupt 0x80 actually executes the exit call and terminates the program."
+    "4": "db means 'define bytes' — it's telling the assembler to store the string 'Hello, World! This message comes from Docker.' in memory, followed by a 0 byte (null terminator) to mark the end of the string.",
+    "11": "edx holds the length of the string we want to print — we're telling the system call 'here's how many bytes to write'.",
+    "12": "ecx needs to point to the memory address where our string starts; 'hello' is the label we gave it in the data section, so this loads that address into ecx.",
+    "13": "ebx = 1 means 'write to file descriptor 1', which is stdout (the console). File descriptors 0, 1, 2 are stdin, stdout, stderr by convention.",
+    "14": "eax = 4 is the system call number for 'write' on 32-bit Linux — we're telling the kernel which operation we want to perform.",
+    "15": "int 0x80 triggers interrupt 80, which tells the CPU 'stop what you're doing and let the kernel handle the system call I just set up'.",
+    "18": "eax = 1 is the system call number for 'exit' — after we write our message, we need to tell the kernel to terminate the program."
   }
 }

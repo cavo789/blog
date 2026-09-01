@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:13.016Z",
+  "generated": "2026-09-01T19:00:03.709Z",
   "source": "docusaurus.config.js",
+  "sourceHash": "d64e6e37bb5144c922729845bdf22fa225e3dbf4",
   "lang": "javascript",
+  "summary": "This code configures a Docusaurus site's presets and plugins. It sets up the 'classic' preset with blog feed options to generate Atom feeds, and then loads a custom blog feed plugin that limits the feed to 20 items.",
   "explanations": {
-    "5": "The curly braces here destructure the configuration object passed to the 'classic' preset, allowing you to pick out specific properties like 'blog'.",
-    "9": "This is setting the feed format to 'atom' (a standard for blog feeds); it's wrapped in an array because the system can support multiple feed types at once.",
-    "16": "Plugins are specified as arrays where the first element is the plugin file path and the second element is an object containing options for that plugin."
+    "3": "This is an array inside the presets array — it represents a single preset with its configuration object.",
+    "5": "The curly braces with parentheses create an arrow function that returns a configuration object for the 'classic' preset.",
+    "8": "The feedOptions object tells the blog plugin what kind of feed format to generate; in this case, Atom feeds (similar to RSS).",
+    "17": "This string path tells Docusaurus to load a custom JavaScript plugin file from your project's plugins folder.",
+    "18": "This object passes configuration options to the custom plugin — specifically, it limits the feed to a maximum of 20 items."
   }
 }

@@ -1,16 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:58.147Z",
+  "generated": "2026-09-01T19:06:13.064Z",
   "source": "compose.yaml",
+  "sourceHash": "2d8ffecfc15b586b3a28dacd620842a5503a71f3",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration defines a service called 'markitdown' that builds a container from a local Dockerfile, mounts the current directory as a workspace, and runs with restricted security settings like dropped capabilities and read-only filesystem to minimize attack surface.",
   "explanations": {
-    "8": "The UID variable is set to the host user's ID if provided, otherwise defaults to 1000; this ensures files created in the container are owned by your user, not root.",
-    "9": "Same idea as UID but for the group ID, so the container process runs as a regular user instead of root for security.",
-    "11": "The current directory is mounted into /workspace with 'cached' mode, which speeds up file access on Mac/Windows but means the container's view of files might lag slightly behind your actual edits.",
-    "13": "This creates a temporary /tmp folder inside the container with a 64MB size limit and restrictions (noexec means no executables can run from there, nosuid blocks special permissions) to prevent misuse.",
-    "15": "ALL capabilities are being dropped, meaning the container loses most Linux power-user abilities—this is a security hardening measure to prevent container breakout attacks.",
-    "18": "This prevents the container from gaining new privileges even if it somehow exploits a vulnerability, adding another layer of security.",
-    "19": "The container's filesystem is read-only, so the process can't modify files on disk except in the writable tmpfs areas defined above—this prevents accidental (or malicious) changes to your code."
+    "8": "This passes the UID (user ID) from your host machine into the Docker build, defaulting to 1000 if not set—this makes files created inside the container owned by your user instead of root.",
+    "9": "Same idea as UID but for GID (group ID), ensuring the container group matches your host machine's group.",
+    "11": "This mounts your current directory (the dot) into the container at /workspace; 'cached' is a performance hint for Docker Desktop on Mac.",
+    "12": "The tmpfs sections create temporary in-memory filesystems that disappear when the container stops, useful for temporary files.",
+    "13": "This limits the /tmp mount to 64 megabytes and prevents executing files or using setuid binaries from it—security hardening.",
+    "15": "Dropping ALL capabilities removes all special Linux permissions from the container, so it can't do dangerous things like change network settings.",
+    "18": "This prevents the container from gaining new privileges even if a process inside tries to escalate—another security lock.",
+    "19": "The filesystem is read-only by default, so the container can't modify files unless explicitly allowed (like /tmp and /run).",
+    "20": "This makes the container run as your user and group instead of root, reducing the damage if something inside gets compromised."
   }
 }

@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:23.616Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T19:03:08.478Z",
+  "source": "index.tsx",
+  "sourceHash": "f0dc1ca5e66a784b8d0c9651477364580d319ded",
+  "lang": "typescript",
+  "summary": "This component renders a small icon badge that indicates a post was written with AI assistance. It displays an SVG icon with the label 'AI Assisted' inside a styled container, and includes a tooltip that appears on hover.",
   "explanations": {
-    "2": "This imports a CSS module file (a special kind of stylesheet) that scopes styles to only this component, so class names won't accidentally conflict with styles elsewhere in the app.",
-    "7": "The className is pulling a style called 'aiIcon' from that imported CSS module, and currentColor makes the SVG use whatever text color is currently set on the parent element."
+    "4": "The function returns React.JSX.Element, which is TypeScript's way of saying this function creates and returns a piece of React UI that can be displayed on a page.",
+    "7": "className applies CSS styles from the imported stylesheet to this div, similar to how you'd use class attributes in HTML but with module-scoped styles to avoid naming conflicts.",
+    "16": "strokeCurrentColor means the SVG will use whatever text color is currently active, so it automatically adapts if you change the text color in CSS.",
+    "17": "strokeWidth='2' controls how thick the lines of the SVG drawing are, in this case 2 units thick."
   }
 }

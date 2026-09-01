@@ -1,8 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:07.925Z",
+  "generated": "2026-09-01T18:26:17.836Z",
   "source": "user_prefs",
+  "sourceHash": "c8abbb59533c1608ca618e65408c0297c42929c0",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This configuration file sets up email filtering rules by blocking entire country-code domains and a specific company domain, then explicitly allows emails from two trusted company domains. It's a allowlist/blocklist setup where the blocklist rules are applied first to reject spam, and whitelist rules create exceptions for trusted senders.",
+  "explanations": {
+    "1": "This blocks all emails from any sender with a .hr (Croatia) domain extension.",
+    "2": "This blocks all emails from any sender with a .rest domain extension.",
+    "3": "This blocks all emails from any sender with a .ru (Russia) domain extension.",
+    "4": "This blocks all emails from any sender with a .su (Soviet Union historical code) domain extension.",
+    "6": "This blocks all emails from anyone with an email address at the hair.com domain, regardless of the username part before the @.",
+    "8": "This overrides the blocklist and allows emails from anyone at the avonture.be company domain.",
+    "9": "This allows emails from anyone at the my-own-company.com domain, ensuring internal company emails get through even if they'd otherwise be blocked."
+  }
 }

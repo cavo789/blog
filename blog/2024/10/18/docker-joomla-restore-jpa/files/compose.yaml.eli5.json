@@ -1,15 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:37:55.088Z",
+  "generated": "2026-09-01T18:39:51.022Z",
   "source": "compose.yaml",
+  "sourceHash": "307090bf9e7d4d515980f60d97ea85434af8a70b",
   "lang": "yaml",
+  "summary": "This Docker Compose file defines a three-container setup for running Joomla with a MySQL database and phpMyAdmin management interface. It uses environment variables with sensible defaults to make the deployment configurable—you can override things like the PHP version, database credentials, and port numbers without editing the file itself. All three services run on the same internal network and the Joomla container waits for the database to be healthy before starting.",
   "explanations": {
-    "1": "The ${PROJECT_NAME:-your-project-name} syntax means 'use the PROJECT_NAME variable if it exists, otherwise use the default value your-project-name'.",
-    "10": "The 'args' section passes build-time variables to the Docker build process, which is different from environment variables that are set when the container runs.",
-    "12": "This is passing PHP_VERSION as a build argument so Docker knows which PHP version to install when creating the image.",
-    "23": "The 'condition: service_healthy' means this container won't start until joomladb reports back that it's healthy (passing its healthcheck).",
-    "36": "There's a typo here: it should be '${MYSQL_PORT:-3306}' not '${MYSQL_PORT-:3306}' — the colon is in the wrong place, which might cause this variable substitution to fail.",
-    "43": "The healthcheck runs a MySQL ping command inside the container to verify the database is actually responding and ready to accept connections."
+    "1": "The ${PROJECT_NAME:-your-project-name} syntax means 'use the PROJECT_NAME environment variable if it exists, otherwise default to your-project-name'.",
+    "6": "The build section tells Docker to build a custom image for Joomla instead of pulling a pre-made one from a registry.",
+    "8": "The context: . means Docker will look for a Dockerfile in the current directory to build the image.",
+    "10": "Args are build-time variables passed to the Dockerfile during the build process, distinct from runtime environment variables.",
+    "12": "This passes the PHP_VERSION (with a default of 8.3-apache) to the Dockerfile so it can build a container with that specific PHP version.",
+    "13": "The container_name uses a variable prefix so you can run multiple instances of this setup with different names without conflicts.",
+    "16": "The ${WEB_PORT:-8080}:80 means 'map port 8080 on your computer to port 80 inside the container', but use WEB_PORT if you set it as an environment variable.",
+    "23": "This tells Docker not to start the Joomla container until joomladb has passed its health check, ensuring the database is actually ready.",
+    "25": "The UID and GID specify which user account inside the container will own the running processes, for security and file permission reasons.",
+    "27": "This mounts the joomla_data folder on your computer to /var/www/html inside the container, so Joomla files persist even if the container is deleted.",
+    "36": "Note: this line has a typo (- instead of :) and should probably be ${MYSQL_PORT:-3306}:3306 to work correctly.",
+    "42": "A healthcheck tells Docker how to verify the service is actually working—it periodically runs the mysqladmin ping command to confirm MySQL is responding.",
+    "44": "Timeout of 20s means if mysqladmin ping takes longer than 20 seconds to respond, Docker considers the check failed.",
+    "45": "Retries: 10 means Docker will try the health check up to 10 times before giving up and marking the service unhealthy."
   }
 }

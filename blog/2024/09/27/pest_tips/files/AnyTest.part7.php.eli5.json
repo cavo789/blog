@@ -1,12 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:59.058Z",
+  "generated": "2026-09-01T18:38:01.951Z",
   "source": "AnyTest.part7.php",
+  "sourceHash": "8f61d4f07ed28571d3e2f8d11608e5dfdb267ce4",
   "lang": "php",
+  "summary": "This is a code quality test that checks whether all controller classes in the App\\Http\\Controllers namespace follow a strict set of architectural rules. It verifies they use strict types, end with 'Controller' in their name, are marked as readonly, are actual classes (not interfaces or traits), are final, and don't extend or implement anything unnecessarily.",
   "explanations": {
-    "1": "This starts a test that will check rules about all the controller files in your App\\Http\\Controllers folder.",
-    "7": "This checks that every controller class is marked 'final', which means other classes can't extend it and create a subclass.",
-    "8": "This verifies that your controller classes don't inherit from any parent class—they all stand alone without extending anything."
+    "1": "The test() function starts defining a new code quality assertion; 'controllers' is just a descriptive name for this test.",
+    "2": "This tells the test to only look at files in the App\\Http\\Controllers namespace—it's narrowing the scope to just your controller folder.",
+    "3": "This checks that all files declare 'declare(strict_types=1)' at the top, which makes PHP type checking stricter and safer.",
+    "4": "This verifies that every file name ends with 'Controller' (like UserController, PostController, etc.).",
+    "5": "This checks that all classes are marked 'readonly', meaning their properties can't be changed after initialization.",
+    "6": "This confirms we're actually checking classes and not interfaces or traits.",
+    "7": "The '🌶' emoji is slang indicating this is a spicy/strict rule; it checks that all classes use the 'final' keyword, preventing other classes from extending them.",
+    "8": "This verifies that controllers don't extend any parent class—they should be standalone, or optionally you could change this to require extending a specific Controller class.",
+    "9": "This ensures controllers don't implement any interfaces, or you could modify it to require specific interfaces like ShouldQueue."
   }
 }

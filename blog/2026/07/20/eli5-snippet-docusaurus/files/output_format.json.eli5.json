@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:45.680Z",
+  "generated": "2026-09-01T19:09:15.511Z",
   "source": "output_format.json",
   "sourceHash": "32e9985835678424493fe80c73a5ec4a2ae740b9",
   "lang": "json",
+  "summary": "This is a metadata document describing a Dockerfile analysis tool's output, showing version information and explanations for key Docker commands used to build a Node.js application image efficiently.",
   "explanations": {
-    "3": "This specifies which Claude model to use for generating explanations—think of it as picking which version of the AI assistant handles the task.",
-    "4": "The ISO 8601 timestamp format with Z means this was generated at that exact moment in UTC (Coordinated Universal Time).",
-    "9": "The asterisk in package*.json is a wildcard that matches both package.json and package-lock.json, copying whichever files exist."
+    "3": "This specifies which Claude model was used to generate the explanations — haiku-4-5-20251001 is a specific version of Claude.",
+    "4": "The ISO 8601 timestamp indicates when this analysis was generated.",
+    "8": "The explanations object maps line numbers (as strings) to plain-English descriptions of what confusing Docker commands do."
   }
 }

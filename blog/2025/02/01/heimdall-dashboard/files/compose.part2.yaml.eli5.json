@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:13.408Z",
+  "generated": "2026-09-01T18:45:11.341Z",
   "source": "compose.part2.yaml",
+  "sourceHash": "97598081dc5939e4135d722844cbd655cf14ecea",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This YAML snippet defines a volumes section that mounts a directory from the host machine into a container. Specifically, it maps the './config' folder on the host to '/config' inside the container, allowing the container to read and write configuration files from your local machine.",
+  "explanations": {
+    "2": "The dot-slash notation './config' means the config folder in the current directory on your computer, and the colon separates it from '/config', which is the path inside the container where that folder will appear."
+  }
 }

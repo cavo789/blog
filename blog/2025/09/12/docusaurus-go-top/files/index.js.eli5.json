@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:59.044Z",
+  "generated": "2026-09-01T18:54:37.012Z",
   "source": "index.js",
+  "sourceHash": "4ee9a7ad458ec4210b4a91fa007bec39b9bc84ba",
   "lang": "javascript",
+  "summary": "This component renders a blog post item by combining a header, content, and footer within a container. It uses a custom hook to determine whether we're viewing a single blog post page or a list of posts, and adds bottom margin spacing only when displaying posts in a list view.",
   "explanations": {
-    "10": "useBlogPost() is a hook (a special function) that gives us information about whether we're currently viewing a single blog post or a list of posts.",
-    "11": "This returns a CSS class name for spacing if we're in list view, or undefined (nothing) if we're viewing a single post—it's a ternary operator, a shorthand if/else statement.",
-    "16": "clsx() is a utility function that combines multiple CSS class names together, ignoring any that are undefined or false, so we don't end up with extra spaces in our class attribute."
+    "9": "This custom hook encapsulates the logic for deciding what CSS class the container should have, keeping the main component cleaner.",
+    "10": "The useBlogPost hook gives us context about where we are in the app—specifically whether we're on a dedicated blog post page or viewing a list of posts.",
+    "11": "If we're NOT on a single blog post page (meaning we're in a list), apply the margin class; otherwise return undefined so no extra spacing is added.",
+    "16": "The clsx utility merges multiple CSS class names together, combining the dynamic margin class with any additional classes passed in from the parent."
   }
 }

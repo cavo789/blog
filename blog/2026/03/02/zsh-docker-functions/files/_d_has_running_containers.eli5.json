@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:53.551Z",
+  "generated": "2026-09-01T19:02:22.290Z",
   "source": "_d_has_running_containers",
+  "sourceHash": "c8f73b2b10d13c365f494c641038d37aba86ccaa",
   "lang": "plaintext",
+  "summary": "This script checks whether at least one Docker container is currently running. If no containers are found, it prints a yellow informational message to standard error and returns a failure code; otherwise it returns success. The comment notes that using parameter expansion is more efficient than piping output through grep.",
   "explanations": {
-    "5": "The -q flag makes docker ps show only container IDs, and -n 1 limits it to just the first one; the -z test checks if that result is empty (meaning no containers running).",
-    "6": "The >&2 redirects the output to stderr instead of stdout, and \\033[0;33m is an ANSI color code that makes the word 'Info:' appear in yellow.",
-    "7": "We use 'return' instead of 'exit' because this script is meant to be sourced (run in the current shell) rather than executed as a standalone script."
+    "5": "docker ps -q -n 1 lists running containers (quiet mode, max 1 result), and -z checks if that output is empty—meaning no containers are running.",
+    "6": ">&2 redirects the echo output to standard error instead of standard output, and \\033[0;33m...\\033[0m are ANSI escape codes that make the word 'Info:' display in yellow on compatible terminals."
   }
 }

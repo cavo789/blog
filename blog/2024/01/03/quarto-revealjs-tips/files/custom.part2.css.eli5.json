@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:40.749Z",
+  "generated": "2026-09-01T18:25:28.547Z",
   "source": "custom.part2.css",
+  "sourceHash": "41309a798eb1ade9aba6af1dbd2c44b15350cb90",
   "lang": "css",
-  "explanations": {}
+  "summary": "This CSS rule hides any paragraph elements with the 'caption' class inside elements with the 'reveal' class. It's a way to keep caption text invisible by default, likely until some JavaScript or user interaction makes it visible later.",
+  "explanations": {
+    "2": "display: none completely removes the element from the page layout, making it invisible and taking up no space, as opposed to just hiding it visually with opacity or visibility."
+  }
 }

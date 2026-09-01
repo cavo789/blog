@@ -1,21 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:35.671Z",
+  "generated": "2026-09-01T19:07:02.012Z",
   "source": "repo.zsh",
+  "sourceHash": "9b9281f8814901fdeeecfbf732eb85c59da44fd0",
   "lang": "bash",
+  "summary": "This is a zsh script that helps you quickly navigate to git repositories on your computer and optionally open them in your editor. It uses two tools (fzf for fuzzy searching and fd for finding files) to locate all git repositories under a given path, lets you pick one interactively, changes into that directory, and then asks if you'd like to open it in your editor.",
   "explanations": {
-    "9": "This runs the 'uname -s' command and stores its output (like 'Darwin' for Mac or 'Linux') in the os_type variable.",
-    "12": "The 'command -v' checks if a program exists, and '>/dev/null 2>&1' throws away any output so we only care about success or failure.",
-    "18": "The '&&' means both conditions must fail for this to trigger — it's checking that neither 'fd' nor 'fdfind' exist on this system.",
-    "25": "This checks if the operating system is macOS by comparing the os_type variable to 'Darwin', which is macOS's internal name.",
-    "27": "The '-f' flag checks if a file exists; this file only exists on Debian-based Linux systems, so it's a way to detect that OS type.",
-    "48": "This checks which fd variant is available (sometimes it's called 'fdfind' on some Linux systems instead of 'fd').",
-    "55": "This sets visual_editor to the $EDITOR environment variable, but if that's not set, it defaults to 'code' (VS Code).",
-    "62": "The backslash at the end of a line lets you continue a long command on the next line — it's just breaking up the command for readability.",
-    "64": "The 'sed' command removes the '/.git' directory name from the path, leaving just the project folder name.",
-    "74": "The '%' operator removes the matching suffix from the end of the string — so this strips off any trailing '/.git' that might still be there.",
-    "85": "The '-k 1' tells 'read' to wait for exactly 1 keypress instead of waiting for Enter, so the user gets immediate feedback.",
-    "88": "This checks if REPLY is either a newline character (when the user just presses Enter) or the letters Y or y."
+    "9": "This runs the 'uname -s' command to detect what operating system you're running (Darwin for macOS, Linux for Linux, etc.) so we can give OS-specific installation instructions later.",
+    "12": "The 'command -v' utility checks if a program is installed and available to run. The '>/dev/null 2>&1' part silently discards any output so we only care about success or failure.",
+    "18": "This checks if either 'fd' or 'fdfind' exists — some Linux distributions package it as 'fdfind' instead of 'fd', so we need to accept either name.",
+    "23": "We only show installation help if we found at least one missing dependency (missing_dep was set to 1 earlier).",
+    "25": "We check if the OS is macOS (Darwin is the kernel name for macOS) to show the appropriate brew install command.",
+    "48": "We're checking which version of the fd command is available and storing its name in a variable so we can use it later.",
+    "55": "This sets the editor to whatever the user configured in their EDITOR environment variable, but falls back to 'code' (VS Code) if they haven't set one.",
+    "62": "We run fd to find all '.git' directories (which mark the root of git repositories) up to 3 folder levels deep, then pipe the results to fzf so the user can search and select one.",
+    "64": "This removes the '/.git' suffix from each result so we get the actual project directory paths instead of paths pointing inside the .git folder.",
+    "69": "If the user canceled the fzf selection or no results were found, selected_dir will be empty, so we just exit early.",
+    "74": "We're cleaning up any leftover '/.git' or '/.git/' suffixes from the selected directory name just to be safe.",
+    "77": "We change into the selected directory and return with an error code if the cd command fails (perhaps the directory was deleted).",
+    "85": "The '-k 1' flag means read exactly one character from the keyboard without waiting for Enter — this lets us detect single-key responses like 'y' or 'n'.",
+    "88": "We check if the user either pressed Enter (which in zsh is represented as a newline character) or typed 'Y' or 'y' — anything else means don't open the editor."
   }
 }

@@ -1,14 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:05.211Z",
+  "generated": "2026-09-01T18:22:32.744Z",
   "source": "customUI14.part9.xml",
+  "sourceHash": "a880ae57fb2760be3f7475da8c3306f23d07785f",
   "lang": "xml",
+  "summary": "This XML file defines a custom ribbon interface for Microsoft Office. It creates a new tab in the Office ribbon containing a group with a button and an editable text box, each wired up to trigger specific functions when the user interacts with them.",
   "explanations": {
-    "1": "This declares a customUI XML file that defines the ribbon interface for Microsoft Office applications like Word or Excel.",
-    "4": "The insertAfterMso attribute positions this custom tab right after the built-in View tab in the ribbon menu.",
-    "9": "imageMso references a built-in Microsoft Office icon (in this case a smiley face); you can use these pre-made icons instead of creating your own.",
-    "11": "onAction specifies the name of a function that will run when someone clicks this button—you'll need to write that function elsewhere in your code.",
-    "19": "onChange specifies the function name that runs whenever the user modifies the text in this edit box."
+    "1": "This declares the XML namespace for Office 2009+ custom UI, which tells the XML parser what tags and attributes are valid for Office customization.",
+    "4": "The insertAfterMso attribute positions this custom tab right after Office's built-in View tab in the ribbon rather than at the end.",
+    "11": "onAction specifies the name of a function (OnButtonClicked) that will be called when someone clicks this button; that function exists elsewhere in your code.",
+    "19": "onChange works like onAction but fires whenever the user changes the text in the edit box, calling the OnEditBoxTextChanged function."
   }
 }

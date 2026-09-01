@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:00.638Z",
+  "generated": "2026-09-01T18:22:24.390Z",
   "source": "customUI14.part6.xml",
+  "sourceHash": "92ca31167fdfdc9a228f41a49d14fd7c13c9c82c",
   "lang": "xml",
-  "explanations": {}
+  "summary": "This XML snippet defines a group element with a unique identifier and a display label. It's the opening tag for a container that will likely hold other XML elements inside it.",
+  "explanations": {
+    "1": "The 'id' attribute gives this group a unique name so other parts of the code can refer to it, while 'label' is the human-readable text that will probably show up in the UI when this group is displayed."
+  }
 }

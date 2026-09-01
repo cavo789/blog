@@ -1,16 +1,26 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:53.408Z",
+  "generated": "2026-09-01T19:00:57.599Z",
   "source": "check-images.py",
+  "sourceHash": "93c772182fb171bf08627ae21ec4cede6b690c6c",
   "lang": "python",
+  "summary": "This script automates checking how well images are optimized on React websites. It opens each URL in a headless browser, scrolls through the page to load lazy-loaded images, then inspects every image tag to report on lazy loading status, dimensions, file format, file size, and missing attributes. The goal is to identify optimization opportunities like converting to WebP or compressing oversized images.",
   "explanations": {
-    "1": "This comment tells Python to ignore type-checking errors in this file, which is useful when the code might not strictly match Python's type system but works fine at runtime.",
-    "54": "The code skips data URLs (images encoded as base64 text strings) because they don't need to be downloaded separately—they're already embedded in the HTML.",
-    "60": "This requests the image with verify=False, which means it won't check if the SSL certificate is valid; this is a shortcut for development but risky in production.",
-    "62": "BytesIO wraps the raw image bytes in a file-like object so that PIL's Image.open() can read it, even though it's coming from the internet instead of disk.",
-    "88": "networkidle means the script waits until the page stops making network requests, ensuring all initial content (including lazy-loaded images triggered on page load) is downloaded.",
-    "116": "This checks if the HTML tag has loading=\"lazy\" attribute; if it does, the browser will delay loading that image until it's about to appear on screen.",
-    "119": "The 'and' operator here requires *both* width and height attributes to exist; if either one is missing, has_dimensions becomes false."
+    "1": "This tells the Python type checker to skip validation on this file, usually because we're using dynamic APIs that are hard to type-check.",
+    "2": "This tells the spell-checker to ignore the word 'networkidle' so it doesn't flag it as a typo.",
+    "50": "This disables warning messages from the urllib3 library about unverified SSL certificates, which would otherwise clutter the output when connecting to HTTPS sites with self-signed certificates.",
+    "54": "Base64-encoded images (those starting with 'data:image/') are embedded directly in the HTML rather than linked, so we skip them because we can't fetch them like normal image URLs.",
+    "60": "We're making an HTTP request with 'verify=False' to ignore SSL certificate errors, which is necessary for local development servers with self-signed certificates.",
+    "62": "This opens the downloaded image data in memory as a PIL Image object so we can read its properties like width and height without saving it to disk.",
+    "63": "We convert the byte size to kilobytes by dividing by 1024.",
+    "80": "This launches an actual Chromium browser instance (hidden from view) that can execute JavaScript and render React components.",
+    "84": "We create a fresh browser tab and tell it to ignore SSL certificate validation errors.",
+    "88": "We wait until the browser reports that the network is idle, meaning all initial scripts and data requests have finished loading.",
+    "91": "We scroll the page multiple times with small delays between each scroll to trigger lazy-loading libraries to fetch images as they become 'visible'.",
+    "100": "We parse the raw HTML string into a structured object so we can easily search for and extract image tags.",
+    "116": "We check if the img tag has a 'loading' attribute set to 'lazy', which is the HTML standard way to indicate an image should lazy-load.",
+    "119": "We check if both width and height attributes exist on the tag; missing these is a performance issue because the browser can't reserve space for the image before it loads.",
+    "134": "We check if the image format is JPEG or PNG rather than the more modern WebP format, which offers better compression."
   }
 }

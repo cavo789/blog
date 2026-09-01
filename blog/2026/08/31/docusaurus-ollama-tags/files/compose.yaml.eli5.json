@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:40:02.391Z",
+  "generated": "2026-09-01T19:15:07.494Z",
   "source": "compose.yaml",
   "sourceHash": "c8ac0ba0124130798d8eb5c44abc2cd06a413865",
   "lang": "yaml",
+  "summary": "This Docker Compose file sets up two services: an ollama service that runs a large language model on port 11444 with persistent storage, and an app service that provides a development environment that depends on ollama and mounts the current directory for live code editing. The ollama service has commented-out GPU support that can be enabled if you have an NVIDIA GPU.",
   "explanations": {
-    "10": "The first number (11444) is the port on your computer; the second number (11434) is the port inside the container—Docker forwards traffic from your 11444 to the container's 11434.",
-    "12": "This creates a named storage volume called 'ollama_data' that persists data even if the container stops, and mounts it to the /root/.ollama folder inside the container.",
-    "28": "The dot (.) means 'current directory on my computer', and the colon separates it from /workspaces/blog_analyzer, which is the matching folder path inside the container.",
-    "32": "This command keeps the container alive indefinitely instead of exiting immediately after startup, so you can actually use it."
+    "10": "The port mapping forwards port 11444 on your computer to port 11434 inside the container where ollama listens — this lets you talk to ollama from outside Docker.",
+    "12": "This creates a named storage volume called ollama_data and mounts it to /root/.ollama inside the container, so the LLM models persist even if the container restarts.",
+    "28": "This mounts your current directory (.) on your computer into /workspaces/blog_analyzer inside the container, so any code changes you make locally instantly appear in the container.",
+    "29": "The app service won't start until the ollama service is running, since the app likely needs to communicate with the ollama LLM.",
+    "32": "The sleep infinity command keeps the container running indefinitely instead of exiting, allowing you to execute commands inside it."
   }
 }

@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:50.292Z",
+  "generated": "2026-09-01T18:22:07.111Z",
   "source": "compose.part2.yaml",
+  "sourceHash": "b001fd77cf1b9443dfe4af374f3c6685a94fa931",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a YAML configuration file that defines services, with a special comment on line 2 marking that the next line (the 'server' service definition) should be highlighted, likely for documentation or UI purposes.",
+  "explanations": {
+    "2": "The 'highlight-next-line' comment is a directive used by documentation tools to visually emphasize the following line in rendered output."
+  }
 }

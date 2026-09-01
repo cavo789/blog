@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:16.813Z",
+  "generated": "2026-09-01T19:08:45.684Z",
   "source": "styles.module.css",
   "sourceHash": "2e90567e57b7b11beee9dbb1ee2795232cb805ae",
   "lang": "css",
+  "summary": "This CSS defines an animated element called 'runner' that slides across the screen from left to right over 3 seconds. It's positioned off-screen initially, made non-interactive with pointer-events, and includes an accessibility consideration to disable the animation for users who prefer reduced motion.",
   "explanations": {
-    "8": "pointer-events: none means clicks and touches pass right through this element to whatever is behind it, as if it's invisible to user interaction.",
-    "17": "100vw means the full width of the viewport (the browser window), so the animation moves the element all the way across the screen.",
-    "21": "prefers-reduced-motion is a user's accessibility setting that tells websites to avoid animations for people who get dizzy or distracted by motion."
+    "2": "position: fixed means this element stays in place relative to the viewport (the window you're looking at), rather than moving when you scroll.",
+    "4": "left: -160px positions the element 160 pixels to the left of the screen edge, so it starts completely off-screen and out of view.",
+    "8": "pointer-events: none makes the element invisible to mouse clicks and touches — clicks pass right through it to whatever's underneath.",
+    "9": "animation: run-across 3s linear forwards tells the element to use the 'run-across' animation, taking 3 seconds, moving at a constant speed, and staying at its final position when done.",
+    "17": "left: 100vw means move the element to 100% of the viewport width (all the way across the screen to the right edge).",
+    "21": "This media query detects if a user has enabled 'reduce motion' accessibility settings in their OS, and if so, we respect that preference.",
+    "24": "Instead of animating, just place it in the middle (50vw) so users with motion sensitivity still see the element but without the movement."
   }
 }

@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:09.495Z",
+  "generated": "2026-09-01T19:13:38.888Z",
   "source": "pr-description.txt",
   "sourceHash": "6b23e0f0d26674c782029ad12f04044eb77a69ff",
   "lang": "plaintext",
+  "summary": "This is a configuration file that describes a tool for automatically generating pull-request descriptions. It tells the tool to look at what code changed between a base branch (defaulting to main) and the current branch, then create a summary explaining why those changes were made and what was modified.",
   "explanations": {
-    "3": "The square brackets mean this parameter is optional, and if the user doesn't provide a base branch name, the system will automatically use 'main' as the default.",
-    "9": "The three dots in git commands ('...') mean 'show me everything that's different between these two points' — in this case, between the base branch and your current HEAD (the latest commit you're on)."
+    "3": "This tells users they can optionally specify which branch to compare against when running this tool; if they don't provide one, it uses 'main' by default.",
+    "4": "This declares which commands the tool is allowed to run — it can execute git diff and git log commands, plus read files.",
+    "9": "This is the instruction for what the tool should actually do: examine the git changes and history, then write a one-paragraph explanation of why the changes exist followed by a bullet-point list of what changed — but skip the test plan section unless test files were modified."
   }
 }

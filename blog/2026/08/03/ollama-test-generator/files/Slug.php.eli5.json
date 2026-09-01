@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:23.380Z",
+  "generated": "2026-09-01T19:10:50.001Z",
   "source": "Slug.php",
   "sourceHash": "5df82381b48c230341fd039692764eedae589a2d",
   "lang": "php",
+  "summary": "This class provides a static method that converts human-readable titles into URL-friendly slugs by lowercasing the text, replacing non-alphanumeric characters with dashes, and cleaning up the result. It throws an error if the input would produce an empty slug, ensuring we never return meaningless output.",
   "explanations": {
-    "3": "This tells PHP to require strict type checking, so if you pass the wrong type to a function, it will error instead of trying to convert it.",
-    "18": "The preg_replace function uses a regex pattern to find anything that isn't a letter or number, and replaces each group of those characters with a single dash.",
-    "19": "After replacing special characters with dashes, we trim any leftover dashes from the start and end (the cast to string is just a safety measure for type checking)."
+    "3": "This declares that all function parameters and return types in this file must be strictly typed — PHP will reject type mismatches rather than silently converting them.",
+    "14": "We trim whitespace from the edges and convert everything to lowercase so 'The Best Thing' becomes 'the best thing'.",
+    "18": "This regex replaces any sequence of one or more characters that aren't letters or digits with a single dash, so 'the best-thing!' becomes 'the-best-thing'.",
+    "19": "We cast the result to a string (in case preg_replace returns null) and trim any dashes from the start and end, so 'the-best-thing' stays 'the-best-thing' but '-the-best-thing-' becomes 'the-best-thing'."
   }
 }

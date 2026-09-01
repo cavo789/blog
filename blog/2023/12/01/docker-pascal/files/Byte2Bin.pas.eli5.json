@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:31.901Z",
+  "generated": "2026-09-01T18:21:42.021Z",
   "source": "Byte2Bin.pas",
+  "sourceHash": "855358c2ffd6dec142cf755cb00aab716509bb9d",
   "lang": "pas",
+  "summary": "This program converts a single byte (a number from 0 to 255) into its binary representation as a string of 0s and 1s. It does this by checking each bit position from highest to lowest, and builds up the result string one character at a time.",
   "explanations": {
-    "1": "This function takes a number (Byte type, which is 0-255) and returns it as a text string of 1s and 0s showing its binary representation.",
-    "10": "The loop counts down from 7 to 0 because a byte has 8 bits numbered that way, with 7 being the leftmost (most important) bit.",
-    "11": "This line checks if a specific bit position in the number is 'on' by using bit shifting (1 shl I makes a 1 jump I positions left) and the 'and' operation (which checks if both sides have a 1 in that spot)."
+    "3": "I is the loop counter that will count down through bit positions, and Temp is a temporary variable that will hold the result of checking whether a specific bit is set.",
+    "10": "The loop counts down from 7 to 0 because a byte has 8 bits numbered from position 7 (the most significant, leftmost bit) down to position 0 (the least significant, rightmost bit).",
+    "11": "The expression (1 shl I) shifts the number 1 left by I positions, creating a mask with only one bit set at position I. Using 'and' with Chiffre isolates that single bit position.",
+    "12": "If the bit at position I was 0, Temp will be 0, so we append '0' to the string; otherwise the bit was 1 and we append '1'.",
+    "15": "The function returns the complete binary string that was built up in the loop."
   }
 }

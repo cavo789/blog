@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:49.826Z",
+  "generated": "2026-09-01T18:25:46.487Z",
   "source": "slides_21.txt",
+  "sourceHash": "2694dbfcc8350b83b8734aa1058af5eb05b7af90",
   "lang": "plaintext",
+  "summary": "This is a presentation slide layout using Pandoc markdown syntax. It creates a two-column layout on the first slide with images on the left (70% width) and two images stacked on the right (30% width), then adds speaker notes explaining what's shown. A second slide follows with a single image.",
   "explanations": {
-    "3": "This starts a two-column layout using a special markup syntax called Pandoc—the triple colons tell the renderer to split the content into side-by-side sections.",
-    "4": "The curly braces with `.column` and `width=\"70%\"` specify that this column takes up 70% of the horizontal space.",
-    "8": "This is the second column, which takes up the remaining 30% of the width.",
-    "15": "The `::: notes` block creates speaker notes that won't display on the slide itself—only the presenter sees these when giving the talk."
+    "3": "This begins a columns block, which tells the renderer to split the slide into multiple side-by-side sections.",
+    "4": "This creates the first column and sets it to take up 70% of the slide width.",
+    "8": "This creates the second column and sets it to take up the remaining 30% of the slide width.",
+    "15": "This starts a notes section containing speaker notes that won't display on the slide itself but will appear in presenter view or speaker notes output."
   }
 }

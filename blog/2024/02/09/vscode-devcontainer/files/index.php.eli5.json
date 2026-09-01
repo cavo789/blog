@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:27.801Z",
+  "generated": "2026-09-01T18:26:58.880Z",
   "source": "index.php",
+  "sourceHash": "ed226f71b4e896fc2ae15a070e010eb5edae96e3",
   "lang": "php",
+  "summary": "This script defines a simple function called sayHello that creates a string saying 'Hello World!' and returns it, then immediately calls that function and outputs the result to the screen.",
   "explanations": {
-    "3": "The function declaration has extra spaces in the parentheses and before the opening brace, which is unusual formatting but still valid PHP.",
-    "4": "The variable assignment uses an equals sign to store the string value into the $text variable, which we can then return on the next line.",
-    "8": "The echo statement calls our sayHello function and immediately prints whatever it returns to the screen."
+    "3": "The function declaration has some messy spacing, but it's just defining a function named sayHello that takes no parameters (the empty parentheses mean no inputs needed).",
+    "4": "We're creating a variable called $text and storing the string 'Hello World!' in it — the dollar sign is how PHP marks variables.",
+    "8": "The echo command sends output to the screen; sayHello() runs our function and returns the string, which then gets printed."
   }
 }

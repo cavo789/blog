@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:57.371Z",
+  "generated": "2026-09-01T18:56:23.498Z",
   "source": "HelloWorld.vb",
+  "sourceHash": "25b331b8a6fc711572a14da3b7341095448e8558",
   "lang": "vb",
+  "summary": "This is a minimal VB.NET program that prints \"Hello, world!\" to the console when run. It's the classic first program people write to verify their development environment is working correctly.",
   "explanations": {}
 }

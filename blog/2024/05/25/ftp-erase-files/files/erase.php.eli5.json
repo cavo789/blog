@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:30.526Z",
+  "generated": "2026-09-01T18:30:54.476Z",
   "source": "erase.php",
+  "sourceHash": "7b9fbcb7911cb2fe66141701877a26a829ed29f3",
   "lang": "php",
+  "summary": "This script recursively deletes all files and folders within its own directory, then deletes itself. It uses PHP's recursive directory iterator to walk through the directory tree from the bottom up, removes folders and files (except itself during the loop), displays progress messages, and finally removes the script file itself.",
   "explanations": {
-    "3": "basename(__FILE__) extracts just the filename from the full path — so if the file is at /home/user/script.php, this gives you 'script.php'.",
-    "4": "dirname(__FILE__) does the opposite of basename — it gives you the directory path without the filename.",
-    "8": "RecursiveDirectoryIterator creates an object that can walk through a folder and all its subfolders to access files.",
-    "10": "RecursiveIteratorIterator::CHILD_FIRST means process the deepest files and folders first before moving up — this is important because you can't delete a folder until it's empty.",
-    "11": "The check for '.' and '..' prevents trying to delete the current directory and parent directory shortcuts, which would cause errors."
+    "3": "basename(__FILE__) extracts just the filename (like 'cleanup.php') from the full file path stored in __FILE__.",
+    "4": "dirname(__FILE__) extracts the directory path (like '/var/www/html') from the full file path, without the filename.",
+    "8": "RecursiveDirectoryIterator creates an iterator object that can traverse through directories and subdirectories; it doesn't iterate yet, just sets up the ability to do so.",
+    "10": "RecursiveIteratorIterator actually performs the traversal; CHILD_FIRST means it processes files and subfolders before their parent folders, which is necessary for deletion (you must empty a folder before deleting it).",
+    "11": "in_array checks if the folder name is either '.' (current directory) or '..' (parent directory), which are special system folders that shouldn't be deleted.",
+    "15": "$file->getPathname()!=__FILE__ ensures the script doesn't try to delete itself while it's still running; it saves that for line 24.",
+    "24": "unlink(__FILE__) deletes the script file itself now that all other files and folders are gone, effectively destroying the script after it finishes executing."
   }
 }

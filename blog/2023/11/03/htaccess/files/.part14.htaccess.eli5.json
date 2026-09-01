@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:07.210Z",
+  "generated": "2026-09-01T18:19:48.274Z",
   "source": ".part14.htaccess",
   "sourceHash": "a8e42ed2302198fc3b37cd5cf919634b59a703ba",
   "lang": "htaccess",
+  "summary": "This file contains two different syntax examples for blocking all access to a directory using Apache's access control rules. The first uses Apache 2.2's older 'Deny' directive, while the second shows the newer 'Require' directive syntax for Apache 2.4 and later. Only one should be uncommented depending on your server version.",
   "explanations": {
-    "2": "This line blocks all HTTP requests from reaching files in this directory when using older Apache 2.2 servers.",
-    "5": "This is the newer Apache 2.4 way to do the same blocking as line 2, but it's commented out so only line 2 is currently active."
+    "2": "This line blocks all incoming requests to this directory and everything in it—think of it as putting up a 'no entry' sign for anyone trying to access these files.",
+    "5": "This is the modern Apache 2.4 way to say the same thing as line 2; it's currently commented out (the # at the start) because it would conflict with the active rule above it."
   }
 }

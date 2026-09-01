@@ -1,16 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:12.662Z",
+  "generated": "2026-09-01T18:34:36.451Z",
   "source": "Dockerfile",
   "sourceHash": "9d3615007979801f323b1649114dadc837c36922",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Ubuntu container with the eza file-listing tool installed and configured with a custom alias. It sets up a demo directory with various file types to showcase eza's output, customizes the bash prompt to show a container indicator, and starts an interactive bash shell.",
   "explanations": {
-    "3": "This tells apt (the package installer) to run in non-interactive mode so it won't pause waiting for user input during the build.",
-    "9": "After installing packages, we delete the cached package lists to shrink the final image size since we won't need them again.",
-    "14": "The -fsSL flags tell curl to fail silently on errors, show no progress bar, and follow redirects—useful for reliable automated downloads.",
-    "16": "We pipe the downloaded tar file directly to tar extraction instead of saving it to disk first, which is faster and cleaner.",
-    "28": "The dd command creates a dummy 200KB file to simulate a real binary; status=none suppresses the progress output so the build log stays clean.",
-    "35": "The -i flag runs bash in interactive mode so you get a shell prompt when you enter the container, not just execute and exit."
+    "3": "This tells apt-get to skip interactive prompts during installation, preventing the build from hanging if a package asks for user input.",
+    "5": "The && chains commands together so they run sequentially, and the backslash lets us continue the command on the next line for readability.",
+    "9": "After installing packages, we delete the apt cache files to reduce the final image size—we won't need them again after installation.",
+    "14": "The curl flags -fsSL mean: fail on errors, silent mode, show errors, and follow redirects—standard for reliable downloads in Docker.",
+    "16": "We pipe the downloaded tar.gz file directly to tar to extract it, and -C /usr/local/bin tells tar to extract into the system binary directory so eza is available everywhere.",
+    "19": "We're appending to /root/.bashrc so that every time bash starts, it redefines the 'ls' command to actually run 'eza' with those specific formatting options.",
+    "24": "We create the directory structure with -p, which means 'create parent directories too' so the whole path /root/demo/src and /root/demo/docs gets built in one command.",
+    "33": "The PS1 variable controls the bash prompt appearance; this one adds a whale emoji, colors the username in cyan, and makes it clear you're inside a container.",
+    "35": "The -i flag makes bash interactive (accepting user input) rather than just executing a script and exiting."
   }
 }

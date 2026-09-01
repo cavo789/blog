@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:39.658Z",
+  "generated": "2026-09-01T18:23:36.286Z",
   "source": "compose_with_synchronization.yaml",
+  "sourceHash": "0c11f7e975a88b599b1a43e86e2464e4ade31739",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up a Joomla website with a MySQL database. The two services communicate with each other, with Joomla waiting for the database to be healthy before starting. Both services are configured to run with specific user permissions and mount local folders so data persists between container restarts.",
   "explanations": {
-    "16": "This sets the user ID and group ID for the container; the ${UID:-1000} syntax means use the UID environment variable if it exists, otherwise default to 1000.",
-    "20": "This mounts your local './site_joomla' folder into the container at '/var/www/html' so changes you make locally appear inside the container.",
-    "28": "This is a health check that runs the mysqladmin ping command inside the container to verify the database is responding.",
-    "32": "Like line 16, this sets the user ID and group ID for the MySQL container to match your host user.",
-    "36": "This mounts your local './db' folder into the container at '/var/lib/mysql' so the database files persist even if the container stops."
+    "1": "The `%%name=kingsbridge%%` syntax indicates this is a template file where `kingsbridge` is a placeholder value that can be substituted when the file is processed.",
+    "8": "The `%%port=8080%%` is another template placeholder meaning port 8080 on your computer will forward to port 80 inside the container, where Joomla listens.",
+    "11": "The `%%dbPassword=example%%` is a template placeholder for the database password; `example` is the default value shown here but would typically be replaced with a real password.",
+    "16": "This sets which user account runs processes inside the container using `${UID:-1000}` syntax, which means 'use the UID environment variable, or default to 1000 if not set'—this prevents file permission conflicts between the host and container.",
+    "20": "This mounts your local `./site_joomla` folder into the container's `/var/www/html` directory so any website files you edit on your computer appear inside the container and persist after restart.",
+    "32": "Same user permission setup as line 16—ensures the MySQL process runs with matching host user permissions to avoid ownership issues with the database files.",
+    "36": "This mounts your local `./db` folder into the container's database storage directory so your MySQL data is saved on your computer and survives container restarts."
   }
 }

@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:47.499Z",
+  "generated": "2026-09-01T18:29:42.084Z",
   "source": "composer.json",
+  "sourceHash": "97439140064532fab4565fb58f35a08fca94d7d3",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is a metadata file that describes a Composer plugin package. It declares the package name, its purpose (normalizing composer.json files), licensing, and type so that Composer knows how to install and use it.",
+  "explanations": {
+    "5": "The \"type\" field tells Composer that this isn't a normal library—it's a special plugin that hooks into Composer's behavior during installation and operations."
+  }
 }

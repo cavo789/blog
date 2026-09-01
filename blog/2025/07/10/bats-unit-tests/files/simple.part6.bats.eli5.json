@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:43.758Z",
+  "generated": "2026-09-01T18:48:58.956Z",
   "source": "simple.part6.bats",
+  "sourceHash": "95affc95f57c22de219a1d19de7fdaab78c764d2",
   "lang": "bats",
+  "summary": "This test verifies that a helper function called `assert::binaryExists` correctly fails when checking for a binary that doesn't exist on the system. It mocks the `which` command to always fail, then checks that the assertion function exits with an error and prints the expected error message.",
   "explanations": {
-    "3": "Inside this test, we're replacing the real 'which' command with a fake one that always fails—this lets us test what happens when a binary isn't found.",
-    "16": "The syntax ${2:-...} means 'use the second argument if it was provided; otherwise use this default message'.",
-    "18": "This line checks if 'which' returns nothing (meaning the binary doesn't exist), and the '|| true' prevents the whole line from failing if 'which' errors out."
+    "3": "This creates a fake `which` command inside the test that always exits with status 1 (failure), overriding the real system `which` command so we can simulate a missing binary without actually needing one missing.",
+    "7": "The `run` keyword in Bats executes a command and captures its exit status and output so we can make assertions about them afterward.",
+    "16": "This sets a default error message if no message was provided as the second argument — it uses the function name and binary name to create a helpful default.",
+    "18": "This checks if `which` returns nothing (meaning the binary wasn't found), and if so, prints the error message and exits with status 1 to signal failure; the `|| true` prevents `which` failing from crashing the whole script.",
+    "20": "This returns success status (0) only if the binary was actually found by the previous check, so the function succeeds when it should."
   }
 }

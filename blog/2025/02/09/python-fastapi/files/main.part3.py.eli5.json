@@ -1,12 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:21.110Z",
+  "generated": "2026-09-01T18:45:28.965Z",
   "source": "main.part3.py",
+  "sourceHash": "c4c6e9157c757debdacbce6a9cd5656dd494e3c7",
   "lang": "python",
+  "summary": "This is a FastAPI web application that serves programmer jokes through two HTTP endpoints. One endpoint returns a random joke each time it's called, and the other returns a specific joke by its position in the list, with error handling for invalid positions.",
   "explanations": {
-    "17": "The 'async' keyword means this function can pause and wait for other work to happen, which is useful when handling multiple web requests at once.",
-    "24": "Notice this function doesn't have 'async' like the one above — that's fine for simpler operations, but 'async' would be better practice here too for consistency.",
-    "31": "This tuple with a status code (404) won't actually work as written — FastAPI needs a special Response object to set HTTP status codes properly."
+    "2": "The `choice` function randomly picks one item from a list, which we'll use to select a random joke.",
+    "3": "FastAPI is a web framework that makes it easy to create HTTP endpoints that clients can call over the internet.",
+    "5": "We're creating a FastAPI application instance that will serve our endpoints.",
+    "8": "This is a Python list — think of it as a container holding five joke strings in order.",
+    "16": "The `@app.get(\"/jokes\")` decorator tells FastAPI to handle HTTP GET requests to the `/jokes` path.",
+    "17": "The `async` keyword means this function can pause and resume, letting the server handle multiple requests without blocking.",
+    "23": "This decorator creates an endpoint where clients can request a specific joke by including a number in the URL path, like `/jokes/2`.",
+    "24": "The `joke_id: int` parameter tells FastAPI to extract a number from the URL and pass it to this function.",
+    "29": "We're using bracket notation to retrieve the joke at the position matching the `joke_id`.",
+    "30": "We're catching the `IndexError` exception that happens when someone requests a joke number that doesn't exist (like joke 10 when we only have 5)."
   }
 }

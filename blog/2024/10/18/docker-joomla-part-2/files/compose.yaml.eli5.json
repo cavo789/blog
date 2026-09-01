@@ -1,17 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:37:26.533Z",
+  "generated": "2026-09-01T18:39:08.540Z",
   "source": "compose.yaml",
+  "sourceHash": "587499886289fe87432b93562faeb59bcfc58088",
   "lang": "yaml",
+  "summary": "This Docker Compose file sets up a two-container application: a Joomla web server and a MySQL database. It uses environment variables with fallback defaults so you can customize things like port numbers and credentials without editing this file directly. The containers are connected to each other through a shared network and include health checks to ensure they're running properly.",
   "explanations": {
-    "1": "The ${PROJECT_NAME:-your-project-name} syntax means 'use the PROJECT_NAME variable if it exists, otherwise default to the text your-project-name'.",
-    "9": "This maps port 8080 on your computer to port 80 inside the container; the WEB_PORT variable lets you change which port your computer uses.",
-    "16": "The 'joomladb:' here refers to the service defined below, not a network or volume.",
-    "17": "This tells Docker to wait until the joomladb service is actually healthy (passing its health check) before starting joomla.",
-    "18": "The UID and GID are user identifiers; this runs the container as a specific user instead of root, which is safer.",
-    "29": "This line has a typo: it should be '${MYSQL_PORT:-3306}' (one dash before the colon), not 'MYSQL_PORT-:3306' with a dash after.",
-    "33": "Setting MYSQL_RANDOM_ROOT_PASSWORD to '1' tells MySQL to generate a random root password instead of using a predictable one.",
-    "36": "The healthcheck runs the mysqladmin command to verify the database is responding; Docker uses this to know when the service is ready."
+    "1": "The ${PROJECT_NAME:-your-project-name} syntax means 'use the PROJECT_NAME environment variable, but if it's not set, default to your-project-name'.",
+    "5": "Similarly, this uses the JOOMLA_VERSION variable if provided, otherwise pulls the 'latest' tag of the joomla image.",
+    "7": "The restart policy 'always' tells Docker to automatically restart this container if it crashes or the system reboots.",
+    "9": "The port mapping ${WEB_PORT:-8080}:80 means 'listen on the host's port (default 8080) and forward traffic to the container's port 80 (HTTP)'.",
+    "15": "The depends_on section tells Docker that this Joomla container needs the database to be running first.",
+    "17": "The service_healthy condition means Joomla won't start until the database reports it's healthy (via the healthcheck below).",
+    "18": "This runs the container as a specific user ID and group ID instead of root, which is a security best practice.",
+    "29": "Note the typo here: it should be ${MYSQL_PORT:-3306} (the colon before dash is wrong), but Docker will treat it as a literal string and fall back to default.",
+    "33": "Setting MYSQL_RANDOM_ROOT_PASSWORD to '1' tells MySQL to generate a random password for the root user instead of leaving it empty.",
+    "36": "The healthcheck runs a mysqladmin ping command to verify the database is responding; if it fails, Docker retries up to 10 times."
   }
 }

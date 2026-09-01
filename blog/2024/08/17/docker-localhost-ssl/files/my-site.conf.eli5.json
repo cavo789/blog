@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:35.623Z",
+  "generated": "2026-09-01T18:35:58.659Z",
   "source": "my-site.conf",
+  "sourceHash": "05c306348d9d26a5ffff3428a294af7c584732c3",
   "lang": "conf",
+  "summary": "This Apache web server configuration sets up a virtual host on port 80 that serves files from a specific directory. It enables URL rewriting to route all requests that don't match actual files to index.html, which is a common pattern for single-page applications. It also configures where to write error and access logs.",
   "explanations": {
-    "1": "This block sets up a virtual host that listens on port 80 (HTTP) for all network interfaces; the asterisk means 'accept connections on any IP address'.",
-    "6": "AllowOverride All lets Apache read .htaccess files in this directory, which are little config files that can override the main Apache settings.",
-    "8": "This checks if the requested file doesn't actually exist on the server (the !-f means 'not a file'); it's used to detect requests for routes that don't correspond to real files.",
-    "9": "If a request is for something that isn't a real file, this rule rewrites it to send index.html instead while preserving the original query string parameters (QSA means 'query string append')."
+    "2": "DocumentRoot tells Apache where the actual website files are stored on the server.",
+    "5": "The Directory block applies specific rules only to requests for files in that particular folder.",
+    "6": "AllowOverride All means Apache will respect .htaccess files if they exist in that directory.",
+    "7": "RewriteEngine On activates Apache's URL rewriting feature, which lets you modify request paths before processing them.",
+    "8": "RewriteCond %{REQUEST_FILENAME} !-f is a condition that says 'only apply the next rule if the requested file doesn't actually exist on disk'.",
+    "9": "RewriteRule ^(.*)$ index.html [QSA,L] redirects any request that matched the condition above to index.html instead, letting a front-end app handle routing. QSA preserves query parameters, and L means stop processing rules."
   }
 }

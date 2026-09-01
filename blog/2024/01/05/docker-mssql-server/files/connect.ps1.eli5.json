@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:57.595Z",
+  "generated": "2026-09-01T18:25:54.913Z",
   "source": "connect.ps1",
+  "sourceHash": "b6e349cfa374aaea93048fd23675235df8a3be6a",
   "lang": "powershell",
+  "summary": "This script connects to a SQL Server database, runs a query to fetch names from a Person table, and prints them out in a formatted list before closing the connection. It demonstrates the basic pattern of opening a database connection, executing a query, reading results row-by-row, and properly cleaning up resources.",
   "explanations": {
-    "4": "The -f operator is PowerShell's string formatting tool; it replaces {0} and {1} with the values that follow it, similar to printf in other languages.",
-    "7": "New-Object creates an instance of a .NET class; we're making a SQL connection object and passing the connection string as an argument to its constructor.",
-    "9": "CreateCommand() is a method that builds a command object attached to this specific connection, so the command knows which database to talk to.",
-    "13": "ExecuteReader() runs the query and returns a special object that lets us read results one row at a time instead of all at once.",
-    "19": "The while loop calls SqlDataReader.Read() which grabs the next row each time; when there are no more rows, Read() returns false and the loop stops.",
-    "20": "SqlDataReader works like a dictionary where you can access columns by their name in quotes, like ['LastName'], to get the value from the current row."
+    "4": "The -f operator is PowerShell's string formatting operator — it substitutes the values after it into the {0} and {1} placeholders in the connection string, similar to sprintf in other languages.",
+    "7": "This creates a new SQL Server connection object and immediately hands it the connection string so it knows how to reach the database; the connection isn't actually opened yet though.",
+    "9": "CreateCommand() prepares a command object tied to this connection, which you'll use to specify what SQL to run.",
+    "13": "ExecuteReader() runs the query and returns a special object that lets you read results one row at a time, rather than loading everything into memory at once.",
+    "19": "The while loop calls Read() on each iteration, which grabs the next row from the results — when there are no more rows, Read() returns false and the loop exits.",
+    "20": "SqlDataReader works like an array where you can access columns by name using brackets, just like a hash table.",
+    "24": "Dispose() releases any unmanaged resources the connection was holding (like the actual network socket), which is important cleanup even after Close()."
   }
 }

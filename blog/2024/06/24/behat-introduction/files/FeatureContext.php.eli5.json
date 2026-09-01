@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:55.996Z",
+  "generated": "2026-09-01T18:31:30.989Z",
   "source": "FeatureContext.php",
+  "sourceHash": "37407ca21aca73f5dfeaf7b2180e60627b19ede1",
   "lang": "php",
+  "summary": "This is a Behat test context class that sets up browser automation for testing web applications. It initializes a Mink instance with a Chrome WebDriver connection and includes a placeholder step definition for clicking menu items that hasn't been implemented yet.",
   "explanations": {
-    "14": "This declares a private property that holds the Mink object, which is the browser automation tool that lets you interact with web pages during tests.",
-    "25": "This creates a new Mink instance and stores it; Mink acts as a wrapper around the browser driver so you can control it programmatically.",
-    "27": "A Session represents one active browser connection; you're creating it with a ChromeDriver, which is the tool that actually controls Chrome.",
-    "28": "ChromeDriver is the bridge that talks to a running Chrome browser instance; the URL points to where that Chrome instance is listening for commands.",
-    "44": "This throws a PendingException to tell Behat this test step isn't implemented yet—it's a placeholder so the test won't fail, just mark the step as incomplete."
+    "11": "FeatureContext extends MinkContext, which is a base class from Behat that provides web testing utilities and helpers.",
+    "14": "This declares a property to hold the Mink object, which is the main interface for controlling the browser during tests.",
+    "25": "The Mink object is being instantiated with a configuration array that sets up how to control the browser.",
+    "27": "A Session object wraps the ChromeDriver to provide a consistent interface for browser interactions.",
+    "28": "ChromeDriver is the actual bridge that talks to Chrome; it's what makes the browser do things like clicking and typing.",
+    "29": "This URL points to where ChromeDriver is running (localhost on port 9222, which is Chrome's debugging protocol port).",
+    "44": "PendingException is a Behat convention that means this step definition is recognized but not yet implemented—tests will skip rather than fail."
   }
 }

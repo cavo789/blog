@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:11.744Z",
+  "generated": "2026-09-01T18:48:19.067Z",
   "source": "compose.yaml",
+  "sourceHash": "09ae70c247c81e671bede9401da476bf94f1a29c",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up a PostgreSQL database and pgAdmin (a web-based management tool) for a Pentaho system. The two services run in the same isolated network, with PostgreSQL storing data and pgAdmin providing a web interface to manage that database.",
   "explanations": {
-    "10": "This setting allows PostgreSQL to accept connections without requiring a password, which is convenient for development but insecure for production.",
-    "15": "The 'expose' keyword makes the port available to other services in the same Docker network, but not to your host machine—that's what 'ports' does.",
-    "24": "This maps port 8080 on your computer to port 80 inside the pgadmin container, so you'll visit http://localhost:8080 to access pgadmin.",
-    "35": "Setting 'external: false' means Docker will create this network as part of this compose file rather than expecting it to already exist."
+    "1": "This names the overall Docker Compose project 'pentaho'.",
+    "14": "The %% syntax with port_pg is a templating placeholder — when you run this, you'd replace it with an actual port number (like 5432:5432) so you can access PostgreSQL from your machine.",
+    "24": "Similar placeholder for pgAdmin's web interface port — you'd specify which port on your machine routes to port 80 inside the container.",
+    "25": "This tells Docker Compose that pgAdmin shouldn't start until postgres is ready, ensuring the database exists before the admin tool tries to connect.",
+    "35": "Setting external to false means Docker Compose will create this network itself; if it were true, the network would need to exist already."
   }
 }

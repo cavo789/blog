@@ -1,11 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:50.715Z",
+  "generated": "2026-09-01T18:37:48.924Z",
   "source": "AnyTest.part4.php",
+  "sourceHash": "b3751208365ad293f149e51d024b2fafa13815ec",
   "lang": "php",
+  "summary": "This is a parameterized test that checks whether email values are not empty. The test runs twice—once with each row of data provided in the `with()` method—verifying that the email parameter in each case passes the assertion.",
   "explanations": {
-    "1": "This is a test function that takes two parameters ($name and $email) and will run multiple times with different data pairs from the 'with' array below.",
-    "3": "The 'with' method tells the test to run the function multiple times, once for each pair of values in the array (so it runs twice here, with different names and emails each time)."
+    "1": "The `it()` function defines a test case with a description and a callback function that receives two string parameters: a name and an email.",
+    "2": "This asserts that the $email variable is not empty; if it is empty, the test fails.",
+    "3": "The `with()` method provides an array of data sets; the test callback will execute once for each array.",
+    "4": "This is the first data set being passed in—a name and corresponding email address.",
+    "5": "This is the second data set—the test will run again with these values instead."
   }
 }

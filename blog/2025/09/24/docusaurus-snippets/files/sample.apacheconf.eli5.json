@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:34.453Z",
+  "generated": "2026-09-01T18:55:39.626Z",
   "source": "sample.apacheconf",
+  "sourceHash": "bcedfb20f9d01ba3233c1db47dcab52cdaff767e",
   "lang": "apacheconf",
+  "summary": "This is an Apache web server configuration block that sets up a virtual host listening on port 80 (standard HTTP). It tells Apache that when someone visits www.example.com, serve files from the /www/domain directory on the server.",
   "explanations": {
-    "1": "This creates a virtual host configuration that listens on port 80 (standard HTTP) for any IP address on the server.",
-    "3": "DocumentRoot tells Apache where on the filesystem to find the actual website files to serve when someone visits this domain."
+    "1": "The asterisk means this virtual host listens on all network interfaces; the :80 specifies the HTTP port.",
+    "3": "DocumentRoot is the directory path where Apache looks for the website files to serve to visitors."
   }
 }

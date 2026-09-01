@@ -1,16 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:09.213Z",
+  "generated": "2026-09-01T18:51:25.182Z",
   "source": "styles.module.css",
+  "sourceHash": "d8d1ce72a029a902ff9d75e72ec39b33f399d303",
   "lang": "css",
+  "summary": "This CSS defines a glassmorphic container with a frosted-glass effect and rounded corners, plus styling for images inside it that enlarge and glow when you hover over them. The container uses a semi-transparent background with a blur effect to create a modern, layered look, while the images animate smoothly when interacted with.",
   "explanations": {
-    "5": "This applies a blur effect and makes colors more vivid to the background; it's being overridden by line 9, so you can delete it.",
-    "6": "This sets a semi-transparent white background, but line 8 overwrites it with a different transparency level, so this line does nothing.",
-    "9": "This repeats the blur effect from line 5 with slightly different settings, replacing the earlier one since CSS uses the last rule it encounters.",
-    "10": "This overwrites the gray border from line 3 with a more subtle semi-transparent white border that works better with the glassmorphism effect.",
-    "16": "The transition property smooths out changes to three different CSS properties (transform, box-shadow, and filter) over 0.4 seconds when you hover.",
-    "20": "This makes the image 5% larger and shifts it up 4 pixels when you hover, creating a lifting effect combined with the shadow change.",
-    "22": "On hover, this slightly brightens the image and intensifies its colors to make it feel more vibrant and interactive."
+    "4": "The rgba color notation with four values lets you control transparency—the last 0.15 means 15% opacity, so you get a very subtle white tint.",
+    "7": "backdrop-filter applies effects to what's *behind* the element, so the blur makes the background blurry and saturate makes colors more vivid, creating that frosted-glass effect.",
+    "13": "This is a shorthand way to animate multiple properties at once—transform, box-shadow, and filter will all smoothly transition over 0.4 seconds when their values change.",
+    "20": "scale(1.05) makes the image 5% bigger, and translateY(-4px) moves it up 4 pixels, so hovering lifts and enlarges the image slightly."
   }
 }

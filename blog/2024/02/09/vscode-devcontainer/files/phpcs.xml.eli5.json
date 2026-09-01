@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:51.112Z",
+  "generated": "2026-09-01T18:27:40.436Z",
   "source": "phpcs.xml",
+  "sourceHash": "aa8e6e60e48b2f8932e3302b6ff618446371f13e",
   "lang": "xml",
+  "summary": "This is a PHP CodeSniffer configuration file that sets up code style rules for a project. It enables colored output, restricts checking to PHP files, configures verbosity and progress reporting, and applies the PSR12 coding standard which is a widely-used set of PHP formatting guidelines.",
   "explanations": {
-    "1": "This declares that the file is XML format version 1.0, which tells the computer how to read the rest of the file.",
-    "3": "This enables colored output in the terminal when the linter runs, making errors easier to spot.",
-    "5": "This 's' flag tells the linter to show a summary of how many errors it found at the end.",
-    "6": "This 'p' flag tells the linter to display the full file path for each error, not just the filename."
+    "3": "This enables colored output in the terminal so violations are easier to spot visually.",
+    "4": "This tells CodeSniffer to only analyze files with a .php extension, ignoring other file types.",
+    "5": "The 's' flag enables showing sniff codes (the names of specific rules being checked) in the output.",
+    "6": "The 'p' flag shows progress during scanning, displaying which files are being checked."
   }
 }

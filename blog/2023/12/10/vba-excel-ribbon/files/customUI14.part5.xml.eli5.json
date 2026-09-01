@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:59.983Z",
+  "generated": "2026-09-01T18:22:22.709Z",
   "source": "customUI14.part5.xml",
+  "sourceHash": "6bf2a0964816af82c2d308ed9c9246fd9117bb5c",
   "lang": "xml",
-  "explanations": {}
+  "summary": "This XML snippet defines a custom tab element that will be inserted into a UI framework (likely Microsoft Office). The tab is given a unique identifier, positioned after an existing component called 'TabView', and labeled with the text 'Tab' for users to see.",
+  "explanations": {
+    "1": "The 'insertAfterMso' attribute tells the system to place this custom tab immediately after a built-in component named 'TabView' rather than at the beginning or end of the tab list."
+  }
 }

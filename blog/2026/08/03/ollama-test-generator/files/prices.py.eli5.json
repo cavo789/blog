@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:25.715Z",
+  "generated": "2026-09-01T19:10:53.760Z",
   "source": "prices.py",
   "sourceHash": "af6a83cfdb0f5f51295385f62a781064f605a09d",
   "lang": "python",
+  "summary": "This module provides two small utility functions for pricing logic. The first applies a percentage discount to a price and rounds the result to two decimal places, with validation to ensure the inputs are sensible. The second finds the cheapest item from a dictionary of named prices, with a tiebreaker that always picks alphabetically first when prices are equal.",
   "explanations": {
-    "12": "This checks that percent is between 0 and 100 inclusive using a chained comparison — it's a handy Python shortcut that reads like math notation.",
-    "15": "We subtract the discount fraction from 1 to find what percentage remains, multiply that by the original price, then round to 2 decimal places for money.",
-    "26": "We sort the keys alphabetically first, then use min() to find the cheapest — sorting ensures ties always pick the same name regardless of how Python stored the dictionary."
+    "12": "This checks that percent is between 0 and 100 inclusive — the syntax `0 <= percent <= 100` chains comparisons together, so it's true only if percent is not too small AND not too large.",
+    "15": "We subtract the discount ratio (percent / 100) from 1 to get the multiplier — so a 20% discount means multiply by 0.8. Then round() with 2 as the second argument rounds to exactly 2 decimal places (cents).",
+    "26": "sorted(offers) gives us the dict keys in alphabetical order, then min() picks the one with the smallest corresponding price value by using offers.__getitem__ as the comparison key — this ensures alphabetical names break ties consistently."
   }
 }

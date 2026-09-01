@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:21.630Z",
+  "generated": "2026-09-01T19:10:46.762Z",
   "source": "backup.sh",
   "sourceHash": "06df9224c68d00567cca9efd60c98fed75a10de7",
   "lang": "bash",
+  "summary": "This script defines a function that takes a source directory and optional destination, then creates a compressed tar archive of that directory with a timestamp in the filename. It validates that the source exists and is actually a directory, creates the destination folder if needed, and returns the full path to the archive on success or an error code on failure.",
   "explanations": {
-    "6": "The ${2:-.} syntax means: use the second argument if provided, otherwise default to a dot (current directory).",
-    "19": "The date +%Y%m%d-%H%M%S command creates a timestamp like '20240115-143022' to make each backup file unique.",
-    "25": "The -C flag tells tar to change into the source's parent directory first, so the archive contains just the folder name instead of the full path."
+    "5": "The $1 syntax grabs the first argument passed to this function; local means the variable only exists inside this function.",
+    "6": "This sets dest_dir to the second argument if provided, otherwise defaults to a dot (current directory). The :- syntax means 'use this default if the variable is empty or unset'.",
+    "8": "The -z flag tests if a string is empty; here we're checking that the user actually provided a source directory argument.",
+    "13": "The -d flag checks whether the path exists AND is a directory; the ! inverts it, so we're saying 'if this is NOT a directory, error out'.",
+    "19": "This runs the date command with a format string to generate a timestamp like 20231215-143022, then stores the result in the timestamp variable.",
+    "21": "basename extracts just the folder name (no parent path), so /home/user/myfiles becomes myfiles; we append the timestamp to create a unique archive name.",
+    "25": "The tar -czf command compresses and archives files; the -C flag changes directory first so the archive doesn't include the full path hierarchy. The 2>/dev/null redirects error messages to nowhere so the function decides success/failure silently."
   }
 }

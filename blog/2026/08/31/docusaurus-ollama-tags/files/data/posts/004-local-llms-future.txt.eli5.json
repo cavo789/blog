@@ -1,9 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:52.199Z",
+  "generated": "2026-09-01T19:14:52.109Z",
   "source": "004-local-llms-future.txt",
   "sourceHash": "62115d4d550dd7a697a12cae21a331032e4affab",
   "lang": "plaintext",
+  "summary": "This is an article introduction that explains the advantages of running large language models on your own computer rather than using cloud services, and it outlines what the article will cover—privacy benefits, practical tools, hardware needs, and when to use local models versus remote ones.",
   "explanations": {}
 }

@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:16.540Z",
+  "generated": "2026-09-01T18:20:03.672Z",
   "source": ".part18.htaccess",
   "sourceHash": "a036800d32f8eb77b9561ca0798e948395d2c314",
   "lang": "htaccess",
+  "summary": "This snippet disables directory listing in Apache. When someone tries to visit a folder URL without specifying a file, instead of seeing a list of files in that directory, they'll get a forbidden error. It's a common security practice to hide what files are on your server.",
   "explanations": {
-    "1": "This checks if Apache has the autoindex module installed before applying rules inside it.",
-    "2": "The minus sign disables directory listing, so visitors can't see a folder's contents if they navigate to it without a specific file."
+    "1": "IfModule checks if a particular Apache module (mod_autoindex) is loaded before running the code inside. This prevents errors if the module isn't available.",
+    "2": "The minus sign before 'Indexes' means we're turning OFF that feature. Without this line, Apache would show a directory listing by default."
   }
 }

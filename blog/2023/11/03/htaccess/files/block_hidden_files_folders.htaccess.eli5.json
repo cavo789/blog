@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:44.719Z",
+  "generated": "2026-09-01T18:19:13.797Z",
   "source": "block_hidden_files_folders.htaccess",
   "sourceHash": "ec70a43e9379e608653ba8227b5cac6c0e984563",
   "lang": "htaccess",
+  "summary": "This Apache configuration block prevents direct access to hidden files and directories (those starting with a dot, like .htaccess or .git) by checking if they exist on the server and returning a 403 Forbidden error if someone tries to access them. It's a security measure to keep sensitive configuration and version control files hidden from the public.",
   "explanations": {
-    "2": "This checks if the requested file path is a directory (-d); the [OR] means the next condition will also be checked even if this one is true.",
-    "3": "This checks if the requested file path is a regular file (-f), and if either this or the previous condition is true, the rule below will apply.",
-    "4": "This blocks (denies with F flag) any request that contains a dot at the start of a path segment, like '.htaccess' or '/.hidden', preventing access to hidden files."
+    "1": "This checks if Apache's mod_rewrite module is installed before running the rules inside; if it's not available, these rules are ignored.",
+    "2": "The -d flag checks if the requested path is a directory that actually exists on the server; the [OR] means 'or check the next condition too'.",
+    "3": "The -f flag checks if the requested path is a file that actually exists; together with the previous line, these conditions catch both hidden files and hidden directories.",
+    "4": "This rule matches any path containing a dot at the beginning (like .htaccess), and the [F] flag tells Apache to return a 403 Forbidden response instead of serving the file."
   }
 }

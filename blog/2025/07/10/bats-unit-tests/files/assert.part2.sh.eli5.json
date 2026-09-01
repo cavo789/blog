@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:35.730Z",
+  "generated": "2026-09-01T18:48:45.877Z",
   "source": "assert.part2.sh",
+  "sourceHash": "c422364bac4bd94785c2afdf0b56fe0061406d13",
   "lang": "bash",
+  "summary": "This bash script defines three assertion functions for validation: one checks if a variable is empty and optionally prints an error, another verifies a command-line binary exists on the system, and the third checks whether a Docker image is available locally. These are utility functions that help scripts fail fast with clear error messages when prerequisites aren't met.",
   "explanations": {
-    "4": "The `local -r` makes a read-only variable, and `${1:-}` means use the first argument if it exists, otherwise use an empty string.",
-    "7": "This line checks if the variable is empty (the `-z` test), and if it is, prints the error message to stderr (the `>&2` part) and continues anyway.",
-    "18": "The `command -v` finds programs in your PATH, the `|| true` prevents an error if the command isn't found, and the whole thing is in a subshell (the `$()`) so we can check if it returned anything.",
-    "29": "The double quotes inside the string need escaping with backslashes so bash doesn't think the string ends early.",
-    "34": "The `2> /dev/null` silences any error messages from docker, and we're comparing the output to an empty string to check if the image doesn't exist."
+    "4": "The ${1:-} syntax grabs the first argument passed to the function, or defaults to an empty string if no argument was provided. The -r flag makes it read-only so it can't be accidentally modified.",
+    "7": "[[ -z ${variable} ]] checks if the variable is empty (zero length). The && operator means 'if true, then do the next thing', so this line only prints the error message if the variable is actually empty.",
+    "18": "command -v checks if a binary exists in your PATH. The || true at the end prevents the function from crashing if the command isn't found—we want to capture the result regardless.",
+    "29": "This uses parameter expansion to embed the imageName variable directly into the string. When you double-quote a string with $ inside, bash substitutes the variable's value.",
+    "34": "docker images -q returns just the image ID if the image exists, or nothing if it doesn't. The 2> /dev/null silently discards any error messages from docker. If the result equals an empty string, the image doesn't exist."
   }
 }

@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:09.902Z",
+  "generated": "2026-09-01T18:22:39.460Z",
   "source": "customUI14.part12.xml",
+  "sourceHash": "00d6a7f0abe0ce46d5d45b06fd793a25d82a8b4b",
   "lang": "xml",
-  "explanations": {}
+  "summary": "This XML snippet defines a user interface element called an edit box—a text input field that users can type into. It gives the element an ID for reference, a label that describes it to users, and wires up a callback function that runs whenever the text inside changes.",
+  "explanations": {
+    "4": "onChange specifies the name of a function (OnEditBoxTextChanged) that will be called automatically each time the user types or modifies the text in this edit box."
+  }
 }

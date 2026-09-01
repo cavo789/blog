@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:30.620Z",
+  "generated": "2026-09-01T18:23:18.530Z",
   "source": "compose_joomla_latest.yaml",
+  "sourceHash": "f55755295783fc6a7d9449d0fb9599503ceed677",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up two connected services: a Joomla web application and a MySQL database. The Joomla service exposes itself on port 8080 and connects to the database service using environment variables, while the database service initializes with a root password. Both services are set to restart automatically if they crash.",
   "explanations": {
-    "6": "The first number (8080) is the port on your computer where you'll access Joomla; the second number (80) is the port inside the container that Joomla listens on.",
-    "8": "This tells the Joomla container where to find its database—it uses the service name 'joomladb' as a hostname, which Docker automatically resolves."
+    "6": "The %%port=8080%% syntax is a template placeholder that will be replaced with an actual port number at deployment time; the :80 part means container port 80 (where Joomla listens) will be accessible at that external port.",
+    "8": "JOOMLA_DB_HOST tells the Joomla container where to find its database — 'joomladb' is the service name, which Docker's networking automatically resolves to the correct IP address.",
+    "9": "The %%dbPassword=example%% placeholder will be replaced with an actual password before deployment; it's the same password variable used for the database so Joomla can authenticate when connecting.",
+    "15": "MYSQL_ROOT_PASSWORD sets the administrative password for the MySQL database when it first starts up — this must match the password Joomla uses to connect."
   }
 }

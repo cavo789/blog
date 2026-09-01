@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:42.807Z",
+  "generated": "2026-09-01T18:46:09.137Z",
   "source": "package.json",
+  "sourceHash": "120b642292744b1d9631b1b71ea8578b46a11845",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is a package.json file that defines a Node.js project called 'cypress_sandbox' used for testing with Cypress. It specifies two npm scripts for opening and running Cypress tests, and lists Cypress as a development dependency.",
+  "explanations": {
+    "6": "This creates an npm script named 'cypress:open' that runs the command 'cypress open', which launches the Cypress interactive test runner in your browser.",
+    "7": "This creates an npm script named 'cypress:run' that executes 'cypress run', which runs all your Cypress tests headlessly (without opening a browser window).",
+    "10": "The caret (^) before the version number means npm will install Cypress version 15.19.0 or any newer minor/patch version, but not version 16 or higher."
+  }
 }

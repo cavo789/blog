@@ -1,21 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:01.756Z",
+  "generated": "2026-09-01T18:19:40.293Z",
   "source": ".part12.htaccess",
   "sourceHash": "ea0b77d715eff5bce6350d8f8d9ff3c8ac201bd9",
   "lang": "htaccess",
+  "summary": "This configuration file enables compression of web content to reduce file sizes and improve load times. It tries two different Apache compression methods: first mod_deflate (the modern standard), and if that's not available, it falls back to mod_gzip (an older alternative). Each method is configured to compress specific file types like HTML, CSS, JavaScript, fonts, and images, while avoiding compressing content that's already compressed.",
   "explanations": {
-    "1": "This checks if the mod_deflate module is available on the server before trying to use it.",
-    "3": "This is a nested check to see if mod_filter is available, which allows more precise control over which file types get compressed.",
-    "4": "This tells the server to compress these specific file types (fonts, scripts, images, etc.) to make them smaller when sent to users' browsers.",
-    "10": "This turns on the gzip compression feature for servers using mod_gzip instead of mod_deflate.",
-    "11": "This allows the server to handle compressed data that might be split into chunks, ensuring everything decompresses correctly.",
-    "12": "This tells mod_gzip to compress files matching these extensions like HTML, CSS, and JavaScript files.",
-    "13": "This compresses output from CGI scripts, which are programs that generate dynamic content on the server.",
-    "14": "This compresses anything labeled as 'text' type (like plain text, HTML, CSS, JavaScript) by matching the beginning of the MIME type.",
-    "20": "This prevents image files from being compressed since they're usually already compressed and compressing them again wastes resources.",
-    "21": "This re-includes SVG images (which are text-based, not binary) for compression, overriding the previous exclusion for images.",
-    "22": "This prevents double-compression by skipping files that are already marked with gzip encoding to avoid corrupting them."
+    "2": "This tells Apache to compress the output of the web server before sending it to browsers.",
+    "4": "This specifies exactly which file types should be compressed — it's a long list of MIME types (the labels Apache uses to identify file types) that benefit from compression, like stylesheets, scripts, and font files.",
+    "10": "This turns on the mod_gzip compression module with a 'Yes' flag.",
+    "11": "This tells mod_gzip to unchunk (reassemble) chunked transfer encoding before compressing, which ensures the compression works correctly.",
+    "12": "This tells mod_gzip to compress files matching certain filename patterns — specifically those ending in .html, .htm, .txt, .css, .js, .php, or .pl.",
+    "13": "This includes CGI script output in the compression, which are executable scripts that generate dynamic content.",
+    "14": "This compresses any file labeled as 'text' in its MIME type — a catch-all for text-based content.",
+    "20": "This explicitly excludes image files from compression because most image formats are already compressed and re-compressing them wastes CPU time.",
+    "21": "This adds back SVG images (vector graphics) to the compression list, since SVG is actually text-based and compresses well despite being an image format.",
+    "22": "This prevents compressing content that's already been compressed, which would waste processing power and might actually make files larger."
   }
 }

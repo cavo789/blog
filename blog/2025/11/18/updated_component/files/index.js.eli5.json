@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:55.239Z",
+  "generated": "2026-09-01T18:59:31.983Z",
   "source": "index.js",
+  "sourceHash": "a90dd0d8f29070bd97275b132fda34b7b3f35cfe",
   "lang": "javascript",
+  "summary": "This React component renders blog post content and conditionally displays an 'Updated' component when viewing a full blog post page. It retrieves metadata about the blog post using a custom hook and passes update information down to a child component that shows when the post was last modified.",
   "explanations": {
-    "6": "useBlogPost() is a custom hook that gives us blog metadata and a flag telling us whether we're on a blog post page or somewhere else.",
-    "12": "The && operator here means 'only show this content if isBlogPostPage is true'; if it's false, React renders nothing instead."
+    "4": "This is a React functional component that receives child elements as a prop, which it can render inside its returned JSX.",
+    "6": "This custom hook gives us two pieces of information: the blog post's metadata (like title, date, front matter) and a boolean flag telling us if we're currently viewing the full blog post page versus a preview or list.",
+    "12": "The && operator here means 'only render the following JSX if isBlogPostPage is true', which prevents showing the Updated component on list views or previews.",
+    "15": "This passes the updates array from the blog post's front matter (metadata stored at the top of the markdown file) to the Updated component so it can display the update history."
   }
 }

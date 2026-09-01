@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:38:40.854Z",
-  "source": "monitory.sh",
+  "generated": "2026-09-01T18:41:03.465Z",
+  "source": "monitor.sh",
+  "sourceHash": "7731775e38ee3bd6488249c7d9873548ddac37eb",
   "lang": "bash",
+  "summary": "This script monitors a folder for changes and displays the updated file count whenever the number of files in that folder changes. It uses inotifywait to watch for filesystem events, then compares the current file count to the previous count—if they differ, it clears the screen and prints the new count.",
   "explanations": {
-    "14": "This tells the shell checker to ignore a warning about the 'count' variable appearing unused in this scope, because it's actually used in the subshell below.",
-    "15": "The pipe sends inotifywait's output into a while loop, but because pipes create a subshell in bash, the 'count' variable changes inside the loop won't persist after the loop ends.",
-    "16": "This disables a warning about using 'ls' with pipes, which some purists avoid, but here it's acceptable for getting a simple file count.",
-    "17": "This compares the old count with a fresh count of files; if they differ, something changed in the directory."
+    "8": "The script takes the folder path as the first command-line argument when you run it (e.g., ./script.sh /path/to/folder).",
+    "14": "inotifywait watches the folder for any filesystem changes and streams those events line-by-line; the pipe sends each line to the while loop so we can react to changes.",
+    "16": "This checks if the current count variable doesn't match the actual number of files; we only update and display if the count has actually changed.",
+    "18": "We count how many files are in the folder using ls (list files) piped to wc -l (word/line count), and store that number in the count variable."
   }
 }

@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:32.241Z",
+  "generated": "2026-09-01T19:08:57.757Z",
   "source": "print-easter-egg.css",
   "sourceHash": "14e2f1a535abbc21117cac26483da8ba861eaa58",
   "lang": "css",
+  "summary": "This CSS rule adds a hidden easter egg message that only appears when someone prints a webpage. It inserts a small, centered footer message at the bottom of the printed page referencing the site's meerkat mascot, using unicode emoji and styling it subtly in gray.",
   "explanations": {
-    "6": "@media print means these styles only apply when someone prints the page, not when viewing it normally in a browser.",
-    "8": "The content property with those backslash codes (\\1F9AB and \\2014) are Unicode characters — the meerkat emoji and an em dash — that will appear at the bottom of printed pages.",
-    "9": "position: fixed here doesn't work the same way it does on screen; in print, it anchors the text to that spot on every printed page."
+    "6": "@media print means these styles only apply when the page is being printed, not when viewed on screen.",
+    "7": "body::after is a pseudo-element that creates a new piece of content that appears after the body element without being in the actual HTML.",
+    "8": "The content property inserts text with unicode characters (\\1F9AB is a meerkat emoji, \\2014 is an em dash); this text only shows up in print.",
+    "9": "position: fixed keeps the message anchored to the same spot on every printed page, rather than moving with the content."
   }
 }

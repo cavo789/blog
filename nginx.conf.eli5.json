@@ -1,17 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:33:01.275Z",
+  "generated": "2026-09-01T19:08:54.498Z",
   "source": "nginx.conf",
   "sourceHash": "9c4b206eba1cf7cfc6e4e050c0e518176e271c85",
   "lang": "conf",
+  "summary": "This nginx configuration sets up a web server for a Docusaurus blog with automatic HTTPS redirection and proper caching. It listens on port 80 to redirect plain HTTP requests to HTTPS, then serves the site securely on port 443 using SSL certificates. The configuration also handles client-side routing by falling back to index.html for unmatched paths, and caches static assets for a year.",
   "explanations": {
-    "8": "The $host and $request_uri are built-in nginx variables that automatically capture the domain name and the full path/query string, so the redirect preserves exactly where the user was trying to go.",
-    "13": "http2 is a faster protocol version; ssl means HTTPS encryption is enabled on port 443 (the standard secure port).",
-    "30": "This tells nginx to use the server's preferred list of encryption methods instead of letting the client choose, which is more secure.",
-    "31": "HIGH picks strong encryption methods, and the !aNULL:!MD5 parts exclude weak or broken ones that hackers could exploit.",
-    "34": "The 'always' keyword ensures this custom header is added to every response, even error pages.",
-    "44": "This rule tries to serve the requested file; if it doesn't exist, it falls back to index.html so client-side routing works for single-page apps like Docusaurus.",
-    "48": "The ~* means case-insensitive pattern matching; this rule catches all static file types (images, fonts, stylesheets, etc.) by their file extension."
+    "8": "$host and $request_uri are variables that nginx automatically fills in with the visitor's original domain and path, so this line seamlessly forwards them to the same URL but over HTTPS instead.",
+    "13": "Port 443 is the standard HTTPS port; http2 enables the faster HTTP/2 protocol for better performance.",
+    "25": "This file path is where you'd mount your SSL certificate when running nginx in Docker—it's the public certificate that proves your site's identity to visitors.",
+    "26": "This is the private key that matches the certificate; it must be kept secret and is used to decrypt encrypted traffic.",
+    "29": "These protocols are cryptographic standards; TLSv1.2 and TLSv1.3 are modern and secure, while older versions are blocked for safety.",
+    "38": "The `= /` means this rule only matches exactly the root path, not any subpaths like /blog or /about.",
+    "44": "This line tries to serve the exact file requested, then tries it as a directory, and if both fail it falls back to index.html so your JavaScript app can handle routing instead of nginx.",
+    "48": "The `~*` means this pattern matches any filename ending with those extensions (CSS, images, fonts, etc.), case-insensitive."
   }
 }

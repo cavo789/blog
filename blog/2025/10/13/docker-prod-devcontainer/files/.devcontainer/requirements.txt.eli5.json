@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:29.514Z",
+  "generated": "2026-09-01T18:57:18.601Z",
   "source": "requirements.txt",
+  "sourceHash": "ecf672e034e4cea29f699910d16586af9b99ecd6",
   "lang": "plaintext",
+  "summary": "This is just the name 'debugpy', which is a Python debugging package. On its own, it's not actually executable code — it would typically appear in a requirements file, import statement, or configuration.",
   "explanations": {}
 }

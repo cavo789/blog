@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:48.816Z",
+  "generated": "2026-09-01T18:31:24.139Z",
   "source": "compose.yaml",
+  "sourceHash": "b126d5a56d8fb8fa5694758f578681d8cbb9528e",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines a service called 'app' which builds a Docker image from the current directory and runs it as a container. It sets up user IDs for the container, mounts the local project folder into the container at /opt/behat, and names the container using a template variable.",
   "explanations": {
-    "1": "This comment tells the spell-checker to ignore typos in this file, which is useful for config files with non-standard words.",
-    "7": "UID and GID are numeric IDs that define which user account Docker should run as; the comment suggests running 'id -u' and 'id -g' commands to find your system's values.",
-    "8": "DOCKER_UID=1000 is a build argument passed to the Dockerfile; 1000 is a common default UID for the first non-root user on Linux.",
-    "10": "The USERNAME variable doesn't affect Docker's behavior much, but it's still passed to the Dockerfile for convenience."
+    "1": "This disables spell-checking for this YAML file so that technical terms won't trigger spell-check warnings.",
+    "6": "The 'args' section passes build arguments to the Dockerfile, which are like variables the Dockerfile can use during the image build process.",
+    "8": "DOCKER_UID=1000 sets the user ID for processes running in the container to 1000, matching a typical Linux user ID to avoid file permission issues.",
+    "9": "DOCKER_GID=1000 sets the group ID for the container user, ensuring the container user belongs to a group with ID 1000.",
+    "12": "The container_name uses '%%name=php-app%%' which is a template placeholder that will be replaced with an actual name when this compose file is processed.",
+    "16": "This mounts your current project folder (the ./) as a volume inside the container at /opt/behat, so changes you make locally are immediately visible inside the container."
   }
 }

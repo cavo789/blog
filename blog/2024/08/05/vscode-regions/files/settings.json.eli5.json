@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:30.510Z",
+  "generated": "2026-09-01T18:35:51.083Z",
   "source": "settings.json",
+  "sourceHash": "e73e4dce181655a2837f44b77bef9a322ef0a00e",
   "lang": "json",
+  "summary": "This is a configuration object for a VS Code extension called 'maptz.regionfolder' that teaches the editor how to recognize and fold code regions in Dockerfile files. It defines the text markers (comments) that indicate where a foldable region starts and ends, along with regex patterns to find those markers.",
   "explanations": {
-    "4": "The backslash before # is escaping the hash symbol so it's treated as a literal character in the search pattern, not a special regex character.",
-    "5": "The square brackets [\\s] match any whitespace character (spaces, tabs, newlines), and the * means 'zero or more of them'; the parentheses capture whatever comes after for later use.",
-    "6": "This is the plain text pattern to search for when folding code, while foldStartRegex on line 7 is the more flexible pattern-matching version that finds the same thing.",
-    "7": "The .* at the end captures any characters after 'region' into a group, letting the editor extract the region name even if it has extra spaces or special formatting."
+    "3": "[dockerfile] means this configuration applies specifically to Dockerfile syntax highlighting mode",
+    "4": "foldEnd is the literal text string that marks the end of a foldable region—VS Code will look for this exact comment",
+    "5": "foldEndRegex is a regular expression (a pattern) that matches the end marker more flexibly, allowing optional whitespace and other text after '#endregion'",
+    "6": "foldStart is the literal text that marks where a foldable region begins—the '[NAME]' is a placeholder showing you can put a custom name there",
+    "7": "foldStartRegex is the flexible pattern version that matches '# region' followed by optional whitespace and captures whatever text comes after it"
   }
 }

@@ -1,14 +1,26 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:12.043Z",
+  "generated": "2026-09-01T19:06:22.349Z",
   "source": "result.txt",
+  "sourceHash": "7d80e57f18e5f64bab1deb1adae10721847b8f0d",
   "lang": "plaintext",
+  "summary": "This is a Maven build log showing the output of running an OpenAPI validation tool called belgif-rest-guide-validator. The tool scanned an OpenAPI specification file (openapi.json) and found 30 violations of Belgian API design guidelines. The violations range from formatting issues (like naming conventions not being followed) to structural problems (like missing required response types and default error handlers), and the build ultimately failed because these violations need to be fixed.",
   "explanations": {
-    "9": "This line shows that the validator found a JAR file (a compiled Java library) in the local Maven cache, and it extracted a configuration file called kmodule.xml from inside it.",
-    "10": "The system is now preparing to use the validation rules from that JAR file by creating a KieModule, which is a container that holds business rules.",
-    "11": "The validator noticed this JAR file has an 'executable model', meaning the rules were pre-compiled for faster execution instead of being interpreted on-the-fly.",
-    "12": "The system is building 'defaultKieBase', which is essentially the knowledge base that will be used to check your API against all the validation rules.",
-    "27": "This is a conflict: OpenAPI 3.1 is newer but not widely adopted yet, so the validator recommends sticking with OpenAPI 3.0 for better compatibility with other tools."
+    "7": "This line shows which Maven plugin was executed — it's the belgif-rest-guide-validator plugin at version 3.1.0, running its 'validate-openapi' goal on the project.",
+    "9": "The validator loaded a JAR file containing rule definitions (the kmodule) from the local Maven cache — this is like loading a rulebook that defines what makes a valid API.",
+    "10": "The validator is setting up an internal 'KieModule' which is a Drools rules engine component that will use those rules to check your OpenAPI file.",
+    "15": "This is the summary line: the validation found 30 total violations split across several categories, organized by severity level.",
+    "16": "Each error response should declare it returns 'application/problem+json' format so clients know how to parse error messages — this file is missing that declaration in 2 places.",
+    "19": "API responses should wrap data in a JSON object (like {data: [...]}) rather than returning a raw array, to allow adding fields later without breaking clients.",
+    "25": "Component names in the schema should use UpperCamelCase (like 'HttpValidationError') but this file used 'HTTPValidationError' which violates the naming convention.",
+    "27": "The file uses OpenAPI 3.1 which is newer but not widely supported yet, so it should use OpenAPI 3.0 for better compatibility.",
+    "29": "Schemas shouldn't have a 'title' property — that's redundant with the schema name itself and violates the guideline.",
+    "40": "Each API operation needs a unique operationId in lowerCamelCase (like 'readItems'), but yours uses snake_case (like 'read_items') instead.",
+    "44": "Path parameters like {item_id} should be named in lowerCamelCase (like {itemId}) for consistency.",
+    "46": "Every operation should define a default error response that returns problem details in a standard format.",
+    "50": "The server URL doesn't follow the required format structure for Belgian APIs — it should be something like /apiName/v1 with specific naming rules.",
+    "52": "Trailing slashes on path definitions (like /paths/) should be removed — paths should be /paths not /paths/.",
+    "55": "The API should expose a standard GET /health endpoint so clients can check if the service is running."
   }
 }

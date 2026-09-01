@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:03.100Z",
+  "generated": "2026-09-01T18:22:29.727Z",
   "source": "customUI14.part8.xml",
+  "sourceHash": "b0183cf53c314d303780474f1b974d742518f245",
   "lang": "xml",
-  "explanations": {}
+  "summary": "This XML defines a button control for what appears to be an Office application (like Word or Excel). It sets up a large button labeled 'Button' with a happy face icon that will trigger a function called OnButtonClicked when someone clicks it.",
+  "explanations": {
+    "2": "The id attribute gives this button a unique name so other parts of the code can reference it if needed.",
+    "4": "imageMso means 'image from Microsoft Office' — it's telling the system to use a built-in happy face icon rather than loading a custom image file.",
+    "6": "onAction specifies which function to run when the user clicks the button; in this case it will call a function named OnButtonClicked."
+  }
 }

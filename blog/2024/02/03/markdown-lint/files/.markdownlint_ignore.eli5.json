@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:17.947Z",
+  "generated": "2026-09-01T18:26:40.031Z",
   "source": ".markdownlint_ignore",
+  "sourceHash": "efcf13ae69daa0f7f71028e4878d00c3086bcf57",
   "lang": "plaintext",
+  "summary": "This is a gitignore file that tells Git to ignore markdown documentation files located inside node_modules and vendor directories. These are dependency folders that shouldn't be tracked in version control, and their markdown files are just documentation we don't need to commit.",
   "explanations": {}
 }

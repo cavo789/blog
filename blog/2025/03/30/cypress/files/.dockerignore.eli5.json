@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:51.169Z",
+  "generated": "2026-09-01T18:46:16.708Z",
   "source": ".dockerignore",
+  "sourceHash": "b47b1cf438b86107eb9f54df4e2f5fccb2731be9",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a list of files and directories to exclude from version control or Docker operations. These entries tell Git and Docker to ignore these items, keeping repositories clean and container images smaller by not including unnecessary build artifacts or dependencies.",
+  "explanations": {
+    "1": "node_modules is the directory where npm installs all JavaScript dependencies; it's huge and can be recreated by running npm install, so we don't want to commit it to Git.",
+    "2": "Dockerfile is the blueprint for building a Docker container image; we exclude it from the Docker build context so the build tool doesn't copy it into the image itself.",
+    "3": ".dockerignore is a configuration file that tells Docker which files to skip when building an image, similar to how .gitignore works for Git; we exclude it from Docker so it doesn't end up in the final container."
+  }
 }

@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:15.171Z",
+  "generated": "2026-09-01T18:20:00.912Z",
   "source": "no_execution.htaccess",
   "sourceHash": "d294a8c7dc570982599320cdd0bd4e31cdfb4e0c",
   "lang": "htaccess",
+  "summary": "This .htaccess file locks down a directory by preventing any scripts from running. It does this in two ways: first by telling the web server to stop treating certain file types as executable scripts, and second by explicitly denying all web access to those dangerous file types.",
   "explanations": {
-    "2": "This line registers several file types as CGI scripts, which tells Apache to treat .php, .pl, .py and other files as programs to execute rather than serve as plain text.",
-    "6": "The regex pattern here matches filenames ending in .asp, .aspx, .cgi, .php, .pl, or .py; the question mark after 'p' makes the 'x' optional so it catches both .asp and .aspx files."
+    "2": "This line tells Apache to treat PHP, Perl, Python, and other script files as CGI scripts, which is a setup step needed before you can disable them in the next line.",
+    "6": "The FilesMatch directive uses a regular expression pattern (the stuff in quotes) to match filenames ending in .asp, .aspx, .cgi, .php, .pl, or .py — basically all the common script file types you want to block.",
+    "7": "This denies access to anyone (from all) trying to request those matched files, so even if someone uploads a malicious PHP file, the web server won't serve it to them."
   }
 }

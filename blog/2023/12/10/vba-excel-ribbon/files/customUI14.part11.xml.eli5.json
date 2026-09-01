@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:09.281Z",
+  "generated": "2026-09-01T18:22:37.827Z",
   "source": "customUI14.part11.xml",
+  "sourceHash": "ccb33f733803f1bbdd8a26756ce6d6ce85893711",
   "lang": "xml",
+  "summary": "This XML snippet defines a custom button control for an Office ribbon interface. It specifies the button's appearance (a large button with a folder icon), gives it an identifier and label, and wires it up to call a function named OnButtonClicked whenever someone clicks it.",
   "explanations": {
-    "4": "imageMso refers to a built-in Microsoft Office icon set; 'AddFolderToFavorites' is the name of a specific icon from that set.",
-    "6": "onAction points to a function called 'OnButtonClicked' that will run when someone clicks this button."
+    "4": "imageMso refers to a built-in Microsoft Office icon set; 'AddFolderToFavorites' pulls a specific pre-made icon from that library rather than providing a custom image file.",
+    "6": "onAction tells the UI system which function to execute when the button is clicked—in this case, a function called OnButtonClicked that should be defined elsewhere in the code."
   }
 }

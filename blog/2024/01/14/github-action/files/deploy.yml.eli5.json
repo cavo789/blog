@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:35:56.542Z",
+  "generated": "2026-09-01T18:26:08.085Z",
   "source": "deploy.yml",
   "sourceHash": "6d446e4229c3a871b3b9e6461aafcdb7f5714868",
   "lang": "yaml",
+  "summary": "This GitHub Actions workflow automatically deploys a blog to avonture.be whenever code is pushed to the main branch, or manually when triggered by a developer. It checks out the code with full git history, sets up Node.js with caching, builds the website, and uploads the built files to an FTP server—with an optional 'clean slate' mode to recover from sync errors.",
   "explanations": {
-    "29": "This line prevents the workflow from running on commits that start with 'wip' (work-in-progress), unless you manually trigger it — that way incomplete changes don't auto-deploy.",
-    "37": "By setting fetch-depth to 0, you're telling Git to download the entire project history instead of just the latest commit, so the blog can figure out when each post was actually last changed.",
-    "52": "This creates a cache key that changes whenever yarn.lock changes, so the cache automatically busts and refreshes dependencies when you update them.",
-    "57": "This step only runs if the previous cache step didn't find a match, saving time by skipping yarn install when dependencies are already cached.",
-    "74": "This passes the clean_slate input from the manual trigger (either 'true' or 'false' as text) to the FTP action, which deletes everything remotely if you set it to true."
+    "3": "The 'on' keyword defines what events trigger this workflow to run.",
+    "11": "workflow_dispatch allows someone to manually trigger this workflow from GitHub's UI, not just automatically on push.",
+    "29": "This condition prevents the workflow from running on commits with messages starting with 'wip' (work-in-progress), unless manually triggered.",
+    "37": "fetch-depth: 0 downloads the entire git history instead of just the latest commit, so the blog can display each post's true last-updated date and author.",
+    "43": "The cache parameter tells Node.js setup to automatically cache yarn dependencies between runs, speeding up future builds.",
+    "52": "This creates a cache key based on the operating system and contents of yarn.lock, so different lock files get different caches.",
+    "57": "This step only runs if the previous cache lookup found a hit, skipping dependency installation when nothing changed.",
+    "74": "The clean_slate input from the manual trigger is converted to a boolean here; when true, it deletes all remote files before uploading to recover from FTP sync corruption."
   }
 }

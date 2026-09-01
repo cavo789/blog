@@ -1,15 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:55.616Z",
+  "generated": "2026-09-01T19:14:58.300Z",
   "source": "01_generate_tags.py",
   "sourceHash": "795cfd5b4ac6cd5c6482e104e367d081af357770",
   "lang": "python",
+  "summary": "This script reads markdown blog posts from a directory, sends each one to an AI model (Ollama running locally) to automatically generate tags, and saves all the results to a JSON file. It's basically automating the task of tagging articles by asking an AI to analyze the content.",
   "explanations": {
-    "11": "This gets the parent directory of the current file's directory using two 'up' operations, so if your script is in project/src/script.py, BASE_DIR becomes project.",
-    "23": "The f-string creates a prompt message that includes the actual blog post content, which will be sent to the AI model to analyze.",
-    "33": "This tells the AI model to respond in JSON format rather than plain text, making the response easier to parse.",
-    "43": "After getting the AI's response as a text string, we convert it from JSON text into a Python dictionary so we can access its fields.",
-    "46": "The code checks two possible locations for tags because the AI might return the tags at the top level or nested inside another 'response' key."
+    "11": "This gets the parent directory of the current script's location, which serves as the root directory for the project so relative paths work consistently.",
+    "23": "The prompt is formatted to tell the AI model exactly what JSON structure it should return, making it easier to parse the response reliably.",
+    "32": "Setting 'stream' to False means we want the complete response all at once rather than getting it piece by piece.",
+    "37": "This raises an exception if the HTTP request failed (like a 404 or 500 error), so we can catch network problems early.",
+    "40": "The model returns a JSON object where the actual text response is nested under a 'response' key, so we extract just that text part.",
+    "43": "We're converting the raw text string returned by the model into a Python dictionary so we can access the tags as data.",
+    "46": "The model might structure its JSON response differently sometimes, so we check two possible locations where tags could be—either at the top level or nested under a 'response' key.",
+    "62": "This uses a list comprehension to filter the directory listing, keeping only files that end with '.md' to find all markdown articles.",
+    "68": "We only add articles to our results if tags were successfully generated; if the function returned None (an error occurred), we skip that file."
   }
 }

@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:05.365Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:51:22.021Z",
+  "source": "index.tsx",
+  "sourceHash": "a5fdd37459f2abafc78ddef3e8de56d73b197239",
+  "lang": "typescript",
+  "summary": "This is a React component that wraps image rendering for Docusaurus sites. It intelligently resolves image paths relative to the site's base URL when needed, applies CSS styling, and includes accessibility features like alt text and lazy loading for performance.",
   "explanations": {
-    "26": "This checks if src is a string AND starts with a forward slash; if both are true, we pass it through useBaseUrl to fix the path for Docusaurus, otherwise we use src as-is.",
-    "32": "If no alt text is provided, we fall back to using the title as alt text so the image still has accessibility text for screen readers.",
-    "38": "The src prop can be either a string or an object, and it's required—this is a broader type than just a string, so check your usage if you're passing objects."
+    "21": "The `src` prop accepts either a plain string path or an object with a `default` property—the latter comes from using `require()` to import an image as a module.",
+    "29": "This checks if `src` is a string that starts with a slash, which tells us it's an absolute path that needs the site's base URL prepended to it.",
+    "30": "We only pass `src` to `useBaseUrl()` if it's an absolute path; otherwise we pass `undefined` because relative paths or required assets don't need URL resolution.",
+    "31": "We cast the final image source to a string because TypeScript can't automatically narrow down the type after all our conditional logic—we know it's safe, so we tell TypeScript to trust us.",
+    "35": "If no `alt` text is provided, we fall back to using the `title` attribute for accessibility, so the image still has a meaningful description for screen readers."
   }
 }

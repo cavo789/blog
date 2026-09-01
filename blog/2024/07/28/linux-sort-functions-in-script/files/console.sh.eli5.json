@@ -1,8 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:04.244Z",
+  "generated": "2026-09-01T18:35:03.912Z",
   "source": "console.sh",
+  "sourceHash": "051bc4746cfb3bf19b7af91aefd0d67f5028d63a",
   "lang": "bash",
-  "explanations": {}
+  "summary": "This is a bash script that defines a library of console utility functions for formatted text output and user interaction. The functions are stubbed out (empty) and appear to be intended for printing colored text (cyan, red, green, blue), displaying errors, showing banners, and prompting yes/no questions to users.",
+  "explanations": {
+    "1": "This shebang line tells the system to use the bash shell from the user's PATH environment, making the script executable directly rather than requiring 'bash script.sh'.",
+    "3": "The 'function' keyword declares a reusable block of code named 'console::printCyan' — the double colon is just a naming convention to organize related functions together, like organizing code into a 'console' namespace.",
+    "6": "This function appears designed to prompt the user with a yes/no question and wait for their response, based on its descriptive name.",
+    "12": "This function is likely meant to print error messages, probably in a way that's visually distinct (like red text or with an 'ERROR:' prefix).",
+    "15": "A banner is typically a large decorative text display, so this function probably formats and prints eye-catching headers or section dividers."
+  }
 }

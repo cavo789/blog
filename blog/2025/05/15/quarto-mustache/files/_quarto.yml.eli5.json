@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:34.738Z",
+  "generated": "2026-09-01T18:47:30.222Z",
   "source": "_quarto.yml",
+  "sourceHash": "f62b42e6652facc2a4ebdadd09b03adf6a5fc8d9",
   "lang": "yaml",
+  "summary": "This is a Quarto configuration file that sets up a website project written in English. It configures the output location, enables navigation features like breadcrumbs and a table of contents, and applies a 'partials' filter to process the content.",
   "explanations": {
-    "17": "Filters are plugins that process your content during the build; this one adds support for reusable partial files.",
-    "19": "The 'partials' filter lets you include snippet files (like headers or footers) in multiple places without repeating code."
+    "3": "The dot means 'output the generated website files to the current directory' rather than a subfolder.",
+    "12": "The sidebar will be permanently docked (always visible on the side) rather than collapsible or hidden.",
+    "14": "The table of contents will automatically include headings up to 4 levels deep in your pages.",
+    "19": "The 'partials' filter is a Quarto extension that lets you reuse snippets of content across multiple pages."
   }
 }

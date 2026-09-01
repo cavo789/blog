@@ -1,13 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:56.019Z",
+  "generated": "2026-09-01T18:42:57.601Z",
   "source": "Dockerfile",
+  "sourceHash": "98be2d60b6af77693f07f373218c1f70de1d0f09",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Python 3.11 base image that installs Docker and the Dagger CLI tool. It downloads a specific version of Dagger from GitHub, extracts it, and places it in the system path so that running the container automatically starts Dagger.",
   "explanations": {
-    "8": "The 'set -e -x' command makes the script exit immediately if any command fails and print each command before running it, which helps catch errors early.",
-    "15": "ARG creates a build-time variable that can be passed when building the image with '--build-arg VERSION=...' to change which Dagger version gets installed.",
-    "16": "This uses variable substitution to build the filename from the VERSION variable, so if VERSION changes, the filename updates automatically.",
-    "22": "The ${ARCHIVE} and ${URL} variables are being substituted here with the values defined on lines 16 and 17."
+    "3": "This pulls the official Python 3.11 image based on Debian Buster (a minimal variant) and names this stage 'base' so it can be referenced later if needed for multi-stage builds.",
+    "8": "The 'set -e -x' command makes the script exit immediately if any command fails and print each command before running it, which helps catch errors and debug the build.",
+    "15": "ARG creates a build-time variable that can be passed in or overridden; VERSION is set to a specific Dagger release number.",
+    "16": "This constructs the filename for the Dagger archive by interpolating the VERSION variable, creating something like 'dagger_v0.15.1_linux_amd64.tar.gz'.",
+    "17": "This builds the full download URL by combining the base GitHub releases URL with the archive filename, so wget knows exactly where to fetch Dagger from.",
+    "22": "wget downloads the Dagger release file from the URL and saves it with the name stored in ${ARCHIVE}, using --quiet to suppress verbose output.",
+    "23": "tar extracts the downloaded archive file; the 'xvfz' flags mean extract, verbose output, and automatically detect gzip compression.",
+    "27": "WORKDIR sets the default working directory inside the container to /app/src, so any subsequent commands run from there.",
+    "29": "ENTRYPOINT makes the container execute Dagger by default when started, rather than dropping into a shell."
   }
 }

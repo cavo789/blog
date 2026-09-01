@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:07.329Z",
+  "generated": "2026-09-01T18:26:14.735Z",
   "source": "settings.json",
+  "sourceHash": "02390352ecb5c0ac5c83636d732a71102ac55daf",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is a VS Code settings configuration that tells the editor to automatically save files whenever the editor window loses focus—that is, when you switch to a different application or window.",
+  "explanations": {
+    "2": "The 'onFocusChange' value means the file will be saved automatically when you click away from VS Code or switch to another window, rather than requiring a manual save."
+  }
 }

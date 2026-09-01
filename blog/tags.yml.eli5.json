@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:06.530Z",
+  "generated": "2026-09-01T19:01:17.500Z",
   "source": "tags.yml",
+  "sourceHash": "cd836da99adc1f672fa1e067a160c60815b93358",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a tag registry in YAML format that defines a comprehensive taxonomy of technical topics. Each tag has a human-readable label, a URL-friendly permalink, and a description explaining what content falls under that tag. It's likely used by a documentation site or blog to categorize and organize articles across languages, frameworks, tools, and concepts.",
+  "explanations": {
+    "2": "The 'label' field stores the friendly name that users see displayed on the website, as opposed to the technical identifier used in the URL.",
+    "3": "The 'permalink' is the URL path where articles tagged with this topic can be accessed — it follows a consistent pattern of '/tags/' plus the tag identifier.",
+    "4": "The 'description' is a short explanation of what this tag covers, helping both users and search engines understand the scope of content tagged here."
+  }
 }

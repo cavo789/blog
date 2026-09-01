@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:28.029Z",
+  "generated": "2026-09-01T18:37:12.111Z",
   "source": ".gitconfig",
+  "sourceHash": "f700e2e214fd956451b1d30f1d50f7cb6fc9361c",
   "lang": "plaintext",
+  "summary": "This Git configuration defines a custom command called 'undo' that lets you revert your current branch to a previous state by moving backward through your reflog (Git's history of where your branch has been). When you run 'git undo' or 'git undo 2', it rolls back your branch to an earlier point, discarding any changes made since then.",
   "explanations": {
-    "2": "This creates a git shortcut called 'undo' that uses a bash function to revert your current branch to a previous state; the ${1-1} part means 'use the argument you passed in, or default to 1 if you didn't pass anything'."
+    "2": "The '!f() { ... }; f' wraps a shell function so it can use bash features like variable substitution. '$(git rev-parse --abbrev-ref HEAD)' gets your current branch name, '@{...}' accesses the reflog (a record of where HEAD has pointed), and '${1-1}' means 'use the first argument if provided, otherwise default to 1' — so 'git undo' goes back 1 step, 'git undo 3' goes back 3 steps. 'git reset --hard' then moves your branch there, discarding all intermediate changes."
   }
 }

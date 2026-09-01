@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:00.533Z",
+  "generated": "2026-09-01T18:44:44.008Z",
   "source": "compose.yaml",
+  "sourceHash": "128e19ea3ea900f6466e8110eacc4c3bf4b464a4",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a Docker Compose configuration that defines a single service called app_python. It builds a Docker image from the current directory and mounts the current directory into the container so that code changes on your machine are immediately reflected inside the running container.",
+  "explanations": {
+    "3": "The 'build: .' tells Docker Compose to build an image using the Dockerfile in the current directory (the dot means 'here').",
+    "5": "This line mounts your local current directory onto a path inside the container called /app/src, so any files you edit locally will be accessible in the same way inside the running container."
+  }
 }

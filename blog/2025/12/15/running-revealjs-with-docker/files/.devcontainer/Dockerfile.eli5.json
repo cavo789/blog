@@ -1,17 +1,29 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:32.235Z",
+  "generated": "2026-09-01T19:00:29.399Z",
   "source": "Dockerfile",
+  "sourceHash": "8a3116850c216a09949809dbe72c4ccee95e2ffc",
   "lang": "docker",
+  "summary": "This Dockerfile builds a development container for Quarto documentation with optional tools. It starts from a pre-built Quarto image, installs system dependencies and PDF rendering libraries, then optionally adds spell-checking and code-quality tools. Finally, it creates a non-root user with custom shell aliases and a welcome message.",
   "explanations": {
-    "1": "This line tells Docker to use a newer syntax version that enables advanced caching features used later in the file.",
-    "24": "The --mount flags create temporary storage caches during this build step so apt package downloads don't have to be repeated if you rebuild the image.",
-    "56": "Similar to line 24, this caches downloaded files for the yq tool installation to speed up rebuilds.",
-    "71": "This caches pip's package downloads so Python dependencies don't have to be re-downloaded on future rebuilds.",
-    "85": "This caches npm package downloads in the user's home directory to speed up Node.js package installation on rebuilds.",
-    "108": "The ${USER_UID:-1000} syntax means 'use the value of USER_UID if it's set, otherwise default to 1000' — it's a fallback pattern.",
-    "124": "This caches Quarto's downloaded tools directory so the Chromium installation doesn't need to be repeated on rebuilds.",
-    "136": "The ${LOCAL_WORKSPACE} variable here isn't defined in this Dockerfile — it's expected to be passed in from the host environment when the container runs."
+    "1": "This tells Docker to use a newer syntax version that enables better caching features (the --mount flags used later).",
+    "4": "We're starting from an existing Quarto image rather than a bare OS, so we skip building Quarto ourselves.",
+    "6": "These ARG lines define build-time arguments that can be passed in when building, with sensible defaults like username 'vscode'.",
+    "10": "These boolean arguments let you optionally skip installing Chromium, spell-checker, and pre-commit hooks to keep the image smaller.",
+    "17": "Setting LANG and LC_ALL ensures the container uses UTF-8 encoding for all text, avoiding encoding issues.",
+    "24": "The --mount flags cache apt packages between builds so we don't re-download them; 'set -eux' makes the script fail fast on errors.",
+    "28": "We install many small packages with one apt-get call rather than many separate calls, which is more efficient in Docker.",
+    "56": "Similar to line 24, we cache the yq download so future builds don't re-fetch it.",
+    "64": "We're creating a second stage called 'extras' that builds on 'base'; this lets us keep a lean base without optional tools.",
+    "71": "The cache mount here persists pip's cache between builds; the conditional checks if pre-commit should be installed at all.",
+    "85": "We cache npm's package cache in the user's home directory; '${USERNAME}' gets substituted with the actual username.",
+    "99": "The 'final' stage starts from 'extras', so it includes everything from all previous stages.",
+    "107": "We create a user account instead of running as root for security; this is standard practice in dev containers.",
+    "121": "We switch to running as the non-root user for all subsequent commands.",
+    "124": "The cache mount here stores Quarto's downloaded tools so they're not re-downloaded if the image is rebuilt.",
+    "135": "We're creating shell aliases that get printed every time the user opens a bash session, making commands easier to remember.",
+    "141": "These lines configure bash history to persist across sessions and store more entries (10,000 instead of the default).",
+    "167": "This checks if optional tools were installed, and if so, adds a section to the welcome message telling users how to use them."
   }
 }

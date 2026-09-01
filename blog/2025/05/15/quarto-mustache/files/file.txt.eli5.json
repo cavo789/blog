@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:53.276Z",
+  "generated": "2026-09-01T18:47:52.888Z",
   "source": "file.txt",
+  "sourceHash": "bbe1102957ab4049b4499c4dc41df72e70e00b66",
   "lang": "plaintext",
+  "summary": "This is a Mustache template that shows different text depending on whether a configuration file exists. If the config_file variable has a value, it displays information about where to find the settings file; otherwise, it states that no configuration file exists.",
   "explanations": {
-    "2": "The {{#config_file}} syntax checks if the config_file variable exists and has a value; if it does, the text below will be shown.",
-    "9": "The {{^config_file}} syntax is the opposite — it shows the text below only if config_file is empty or missing."
+    "2": "The {{#config_file}} syntax means 'if config_file has a value, show everything until the closing tag'. It's a conditional check.",
+    "4": "The {{ name }} and {{ config_file }} are placeholders that will be replaced with actual values when the template is rendered.",
+    "9": "The {{^config_file}} syntax means 'if config_file is empty or doesn't exist, show this section instead'. The caret (^) inverts the condition."
   }
 }

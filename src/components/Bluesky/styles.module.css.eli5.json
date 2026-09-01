@@ -1,21 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:48.598Z",
+  "generated": "2026-09-01T18:50:36.647Z",
   "source": "styles.module.css",
+  "sourceHash": "df730842e2d11adf8be4827c9aea0985a7c87fbc",
   "lang": "css",
+  "summary": "This stylesheet styles a Bluesky social media embed component with various sections for displaying posts, comments, user avatars, and engagement metrics. It uses CSS variables for theming to support both light and dark modes, and includes hover effects for interactive elements like buttons and links.",
   "explanations": {
-    "9": "This uses a CSS variable (--ifm-color-emphasis-200) that's defined elsewhere in your project, so the actual color depends on your theme setup.",
-    "29": "This uses flexbox (display: flex) to arrange child elements horizontally; align-items: center vertically aligns them to the middle.",
-    "35": "This creates a vertical stack of elements (flex-direction: column means items go down instead of across).",
-    "42": "The border-radius: 50% trick makes a square element into a perfect circle by rounding it completely.",
-    "56": "The display: block makes this element take up full width and start on a new line, even though it's probably a span or inline element.",
-    "60": "margin-left: auto pushes this element to the right side by eating up all available space to its left.",
-    "73": "The \\a0 is a non-breaking space character that creates spacing after the heart emoji.",
-    "99": "display: inline-flex lets this link use flexbox layout while staying in the text flow instead of taking up a full line.",
-    "106": "This selector targets img elements that have the blueskyCommentEmbedThumb class (the type matters here).",
-    "112": "flex-wrap: wrap means if images run out of space horizontally, they'll move to the next line instead of squishing.",
-    "159": "This transition makes the background color and text color fade smoothly over 0.2 seconds when the button state changes.",
-    "169": "This @media query applies different styles when the user's system is set to dark mode."
+    "7": "margin: 2rem 0 0.5rem means 2rem space above, no space on sides, and 0.5rem below — it separates this container from other content vertically.",
+    "45": "display: flex turns this into a flexbox layout, which makes it easy to arrange child items in a row.",
+    "58": "border-radius: 50% makes a square element into a circle by rounding all corners equally.",
+    "76": "margin-left: auto pushes this element to the right side by consuming all available space on the left.",
+    "86": "content: '❤️\\a0' adds a heart emoji followed by a non-breaking space before the text using the ::before pseudo-element.",
+    "102": "content: '→\\a0' adds a right arrow followed by a non-breaking space before the link text.",
+    "124": "flex-wrap: wrap allows items to break into multiple rows if they don't fit on one line.",
+    "155": "[data-theme=\"dark\"] .blueskyNoCommentYetCTA targets the button only when the page is in dark mode and changes its color accordingly.",
+    "172": "margin-left: -1rem creates a negative margin that overlaps this element 1rem to the left, useful for stacking avatars on top of each other.",
+    "184": "border: 2px solid var(--ifm-color-background-color) adds a colored border around the avatar to help it stand out against background images.",
+    "215": "transition: ... enables smooth 0.2-second animations when background-color and color properties change, like on hover."
   }
 }

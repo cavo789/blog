@@ -1,17 +1,28 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:30.530Z",
+  "generated": "2026-09-01T18:55:35.339Z",
   "source": "index.cjs",
+  "sourceHash": "0df1c716aa48758c2ba81b505ff87c473c768963",
   "lang": "javascript",
+  "summary": "This is a Docusaurus plugin that processes markdown documents and automatically loads external code snippets into custom components. When it finds a `<Snippet>` or `<Terminal>` component with a `source` attribute pointing to a file, it reads that file, detects its programming language, and injects the code content plus language metadata as attributes so the component can render it properly. It also optionally loads explanation data from companion JSON files if they exist.",
   "explanations": {
-    "3": "unist-util-visit is a library function that walks through a syntax tree (like a document structure) and lets you find and process specific node types.",
-    "28": "This returns a function that acts as a plugin—Docusaurus will call it with the parsed document tree and file information.",
-    "36": "visit() searches the tree for all nodes named 'mdxJsxFlowElement' (a special component-like element in MDX) and runs your function on each one.",
-    "52": "If the source path starts with ./ or ../, treat it as relative to the current MDX file's folder; otherwise treat it as relative to the project root.",
-    "63": "If the MDX component has a 'filename' attribute, use that for language detection; otherwise fall back to the actual source file path.",
-    "70": "Extract the file extension (like 'js' from 'file.js'), convert to lowercase, or if there's no extension, use the whole filename as fallback.",
-    "102": "The code looks for a companion .eli5.json file right next to the source file to inject human-friendly explanations.",
-    "107": "Check that eli5Data.explanations exists and is actually an object before trying to use it."
+    "3": "The `visit` function from the unist-util-visit library walks through the abstract syntax tree (the parsed markdown structure) and lets you find and modify specific node types.",
+    "37": "This function converts a relative file path (like `./file.js` or `../other/file.py`) to an absolute path, treating paths starting with `./` or `../` as relative to the current file's directory, and everything else as relative to the project root.",
+    "44": "This returns the actual plugin function that Docusaurus will call; it receives the parsed markdown tree and file information, then processes it.",
+    "45": "The inner function receives `tree` (the markdown structure) and `vfile` (metadata about the file being processed, including its path).",
+    "53": "This tells the visitor to find all nodes of type `mdxJsxFlowElement` — these represent custom JSX components written in markdown like `<Snippet />` or `<Terminal />`.",
+    "54": "This skips processing unless the component is specifically named `Snippet` or `Terminal`; other custom components pass through unchanged.",
+    "56": "This searches the component's attributes (like props) for one named `source` that contains a string value.",
+    "60": "This converts the user-provided `source` path into an absolute filesystem path using the helper function, respecting the relative-vs-root rules.",
+    "72": "This reads the entire file as UTF-8 text; the try-catch ensures that if the file is missing or unreadable, the build fails loudly rather than publishing broken code.",
+    "85": "Instead of just storing the file content as a simple string child, we wrap it in a special MDX expression node so that whitespace and indentation are preserved exactly as-is.",
+    "131": "This extracts just the file extension (like `js` from `file.js`), removes the leading dot, and lowercases it; if there's no extension, it uses the whole filename in lowercase instead.",
+    "135": "This looks up the detected extension in the mapping table to convert it to a standardized language name that syntax highlighters understand (like `javascript` or `python`).",
+    "138": "If the extension isn't in the mapping, this fallback checks the full filename (without path) in case it's a special file like `Dockerfile` or `compose.yaml` that doesn't have a typical extension.",
+    "163": "This constructs a path to a companion JSON file with the same name but `.eli5.json` appended, which would contain plain-language explanations of the code.",
+    "164": "This checks if that ELI5 file exists before trying to read it, since the explanations are optional and shouldn't break the build if missing.",
+    "167": "This parses the JSON content; the whole block is wrapped in try-catch because a broken JSON file is considered a content nicety, not a fatal error.",
+    "196": "This attaches the `resolveSourcePath` function as a property of the plugin so other code (like the markdown export plugin mentioned in the comment) can reuse the same path-resolution logic."
   }
 }

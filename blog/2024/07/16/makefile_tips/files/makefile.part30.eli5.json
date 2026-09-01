@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:13.892Z",
+  "generated": "2026-09-01T18:33:38.415Z",
   "source": "makefile.part30",
+  "sourceHash": "e75a511a4d071658e98dce6385daed14fcd5fe43",
   "lang": "part30",
+  "summary": "This Makefile snippet conditionally sets a CMD variable based on the APP_ENV environment variable. If we're in production, CMD stays empty (commands run directly), but in other environments like development, CMD becomes a docker compose prefix so commands run inside a container.",
   "explanations": {
-    "1": "This checks if a variable called APP_ENV equals the string 'production' — it's a conditional statement specific to Makefiles.",
-    "2": "When in production, CMD is set to empty, meaning commands will run directly on the host instead of inside a Docker container.",
-    "4": "When not in production, CMD is set to this prefix so that any command that uses $(CMD) will execute inside the Docker container instead."
+    "1": "ifeq checks if two values are equal — here it's testing whether APP_ENV variable equals the string 'production'",
+    "2": "CMD:= assigns an empty value to the CMD variable, meaning no prefix will be added to commands",
+    "4": "CMD:= assigns a docker compose command as a prefix, so any command using $(CMD) will execute inside the specified container"
   }
 }

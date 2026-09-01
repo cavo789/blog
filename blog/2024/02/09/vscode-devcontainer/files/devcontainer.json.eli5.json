@@ -1,13 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:30.237Z",
+  "generated": "2026-09-01T18:27:04.747Z",
   "source": "devcontainer.json",
+  "sourceHash": "bd52c81c23ba9d5c5e925e9daedce9309498f566",
   "lang": "json",
+  "summary": "This is a development container configuration for PHP 8.2 that sets up a Docker-based development environment with code formatting and linting tools. It configures VS Code to automatically format PHP code using PHP-CS-Fixer and PHP CodeSniffer, installs necessary PHP development extensions, and runs Composer to add the Rector tool after the container starts.",
   "explanations": {
-    "14": "This line connects your local folder on your computer to a folder inside the Docker container, so files you edit locally are instantly available inside the container.",
-    "22": "This tells VS Code to use the PHP CS Fixer extension as the tool that automatically formats your PHP code when you save.",
-    "38": "PSR12 is a widely-adopted PHP style standard; this line tells PHP CS Fixer to follow those rules when reformatting your code.",
-    "63": "This command runs automatically after Docker finishes setting up the container, installing Rector (a tool for refactoring PHP code) as a development dependency."
+    "3": "The 'build' section tells Docker how to construct the container image, specifying which Dockerfile to use and what build arguments to pass to it.",
+    "5": "These 'args' are variables passed to the Dockerfile during the build process, setting specific versions for PHP, Composer, and code quality tools that the container will install.",
+    "14": "This mounts your local project folder on your computer to the /var/www/html directory inside the container, so changes you make locally are immediately reflected inside the container.",
+    "16": "This specifies which user account inside the container will run commands—'docker' is a non-root user we use for security rather than running everything as root.",
+    "20": "The '[php]' key means these settings apply only when you're editing PHP files, not other file types.",
+    "24": "This tells VS Code to automatically run code fixes (like formatting) whenever you save a file.",
+    "35": "This points VS Code's PHP-CS-Fixer extension to the configuration file that defines what code style rules to enforce.",
+    "38": "PSR12 is a well-known PHP coding standard; this tells PHP-CS-Fixer to format code according to those rules.",
+    "46": "This configures the integrated terminal inside VS Code to use bash as the shell, and specifies what icon to show for it.",
+    "54": "These are VS Code extensions (plugins) that will be automatically installed in the container to help with PHP development, Docker, and code quality checking.",
+    "63": "This command runs automatically after the container finishes starting, using Composer (PHP's package manager) to download and install Rector, a tool that helps modernize and refactor PHP code."
   }
 }

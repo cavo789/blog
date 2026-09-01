@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:57.835Z",
+  "generated": "2026-09-01T19:11:44.059Z",
   "source": "embedder-sanity-check.py",
   "sourceHash": "51dd0a6503476decd3c5cc0516ec01a2c507d6c4",
   "lang": "python",
+  "summary": "This script tests whether an embedding model can distinguish between similar and dissimilar text by converting sentences into numerical vectors and measuring how close the vectors are to each other. It sends text to a local Ollama service, converts the resulting embeddings into cosine similarity scores (a measure of how similar two vectors are), and prints out whether related sentences have higher similarity scores than unrelated ones.",
   "explanations": {
-    "23": "json.dumps() converts the Python dictionary into a JSON string, then .encode() converts that string into bytes so it can be sent over the network.",
-    "32": "This calculates the dot product—multiply each pair of corresponding numbers from vectors a and b, then add them all up.",
-    "33": "The denominator computes the magnitude (length) of each vector by squaring all elements, summing them, and taking the square root; dividing by both magnitudes gives us the cosine similarity, a score from -1 to 1 showing how similar two vectors are.",
-    "36": "sys.argv[1:] grabs command-line arguments after the script name; the 'or' part provides a default model name if no arguments were passed.",
-    "41": "The angle brackets and numbers like '<20' and '<5' are format specifiers that pad the text to a certain width, making the output columns line up nicely."
+    "23": "json.dumps converts the Python dictionary into a JSON string, then .encode() turns it into bytes so it can be sent over the network.",
+    "24": "urllib.request.Request creates an HTTP request object pointed at the Ollama API endpoint, with our payload as data and headers specifying we're sending JSON.",
+    "27": "urlopen sends the request and returns a file-like object; the 'with' statement ensures it closes automatically when done, and timeout=300 means we'll wait up to 5 minutes for a response.",
+    "28": "response.read() gets the response body as bytes, json.loads parses it into a Python dictionary, and [\"embeddings\"] extracts just the vectors we need.",
+    "32": "zip(a, b) pairs up corresponding elements from vectors a and b; we multiply each pair and sum them up, which is the dot product.",
+    "33": "This is the cosine similarity formula: dot product divided by the product of the magnitudes (lengths) of both vectors, giving a score between -1 and 1 where 1 means identical direction.",
+    "36": "sys.argv[1:] gets command-line arguments after the script name; 'or [\"mxbai-embed-large\"]' means if no models are specified, default to this one.",
+    "41": "The f-string formats the output with fixed widths and precision: model name left-aligned in 20 chars, dimensions in 5 chars, and similarity scores rounded to 4 decimal places."
   }
 }

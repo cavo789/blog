@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:32.669Z",
+  "generated": "2026-09-01T18:37:17.346Z",
   "source": ".gitconfig.part4",
+  "sourceHash": "8ccc9a7c7d8ca7ad2b8523b38fc692b2e1684043",
   "lang": "part4",
-  "explanations": {}
+  "summary": "This is a Git configuration file section that sets up sorting behavior for branches. It tells Git to sort branches in reverse chronological order by when they were committed to, so the most recently updated branches appear first.",
+  "explanations": {
+    "2": "The minus sign means 'sort in descending order' (newest first), and 'committerdate' is the field to sort by — the date when the last commit on each branch was made."
+  }
 }

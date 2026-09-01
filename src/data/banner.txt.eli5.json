@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:55.967Z",
+  "generated": "2026-09-01T18:59:33.917Z",
   "source": "banner.txt",
+  "sourceHash": "57eb9d34f04f23a754350564452abe4d17ef2873",
   "lang": "plaintext",
+  "summary": "This is ASCII art depicting what appears to be a stylized owl or bird face. The image is constructed entirely from text characters like `@`, `%`, `#`, `*`, `+`, and `-` arranged to create shading and depth that resembles a creature with large eyes and a pointed beak or face. It's purely decorative and serves no programmatic function.",
   "explanations": {}
 }

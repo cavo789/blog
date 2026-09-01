@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:18.109Z",
+  "generated": "2026-09-01T18:28:24.301Z",
   "source": "C:\\temp\\checkVat.xml",
+  "sourceHash": "50694a5774dcadbfcf8b7972150a1e3d64c3d46b",
   "lang": "xml",
+  "summary": "This is a SOAP request template for validating a VAT (Value Added Tax) number against the European Commission's VIES database. It wraps a checkVat service call with placeholder values that will be substituted with an actual country code and VAT number at runtime.",
   "explanations": {
-    "2": "This creates a SOAP envelope, which is a standard XML wrapper used to send messages to web services; think of it like an envelope that holds your message.",
-    "4": "The 'urn:' prefix and the xmlns attribute define a namespace, which is a way to avoid naming conflicts when XML elements from different sources are combined together.",
-    "5": "The %COUNTRY% and %VATNUMBER% are placeholders that will be replaced with actual values before this message is sent to the VAT checking service."
+    "2": "This creates a SOAP envelope, which is the standard wrapper format for SOAP web service requests — think of it as the postal envelope that contains the actual message being sent.",
+    "4": "This specifies which web service method we're calling (checkVat) and which namespace it belongs to, so the remote server knows exactly what we're asking for.",
+    "5": "The %COUNTRY% is a placeholder that will be replaced with an actual two-letter country code (like 'DE' for Germany) before the request is sent.",
+    "6": "The %VATNUMBER% is a placeholder that will be replaced with the actual VAT identification number we want to validate."
   }
 }

@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:13.273Z",
+  "generated": "2026-09-01T18:41:51.639Z",
   "source": "merge.py",
+  "sourceHash": "66c58fad015755d70b6d8cb3182134512c6ac623",
   "lang": "python",
+  "summary": "This function reads employee data from separate CSV files for each year (2020-2024), renames the salary column in each file to include the year, and merges them all together on employee identity columns. The final combined dataset is saved to a new CSV file with salary data for all years side-by-side.",
   "explanations": {
-    "1": "The function has a default parameter 'employees' that will be used as a filename prefix if no argument is provided when calling the function.",
-    "3": "The f-string (formatted string) automatically inserts the filename variable into the string, so if filename is 'employees', this loads 'employees_2020.csv'.",
-    "4": "The 'inplace=True' parameter modifies the DataFrame directly instead of returning a new one, so the changes stick without needing to reassign.",
-    "15": "The 'merge' operation combines two DataFrames side-by-side based on matching values in the 'id', 'first_name', and 'last_name' columns, and 'how='outer'' keeps all rows even if some columns are missing in either file."
+    "1": "The function accepts an optional filename parameter that defaults to 'employees', allowing you to reuse this code with different data files.",
+    "3": "We read the 2020 file first and use it as our starting point; sep=';' means the CSV uses semicolons instead of commas as column separators.",
+    "4": "We rename the generic 'salary' column to 'salary_2020' so it won't clash with salary columns from other years.",
+    "7": "We loop through years 2021, 2022, 2023, and 2024 (range(2021, 2025) stops before 2025).",
+    "15": "We join the current year's data to our merged dataset using an outer join on id, first_name, and last_name — this keeps all employees even if they appear in only some years.",
+    "18": "We write the final merged dataset to a CSV file with semicolon separators, using UTF-8 encoding and excluding pandas' row index column."
   }
 }

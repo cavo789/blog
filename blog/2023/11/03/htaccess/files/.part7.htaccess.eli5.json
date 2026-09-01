@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:48.365Z",
+  "generated": "2026-09-01T18:19:19.420Z",
   "source": ".part7.htaccess",
   "sourceHash": "e75f20d9fa9d7eb6fab1024da1f337624e8a3f68",
   "lang": "htaccess",
+  "summary": "This configuration forces PDF files to download as attachments instead of opening in the browser. When a user requests a PDF, the server tells their browser to treat it as a generic binary file and present a download dialog rather than attempting to display it.",
   "explanations": {
-    "1": "This pattern matches any file ending with .pdf using a regular expression (the backslash escapes the dot so it matches a literal period, not any character).",
-    "2": "This tells the server to treat PDF files as generic binary downloads rather than trying to display them in the browser.",
-    "3": "This header tells the browser to download the file as an attachment (save it) instead of trying to open it inline."
+    "1": "FilesMatch is a directive that matches files by their filename pattern; the regex here says 'any file ending in .pdf'",
+    "2": "ForceType tells the server to send this file with a specific MIME type (application/octet-stream is a generic 'binary blob' type that browsers don't know how to display)",
+    "3": "Header set Content-Disposition attachment instructs the browser to treat this as a file to download and save, rather than a resource to display inline"
   }
 }

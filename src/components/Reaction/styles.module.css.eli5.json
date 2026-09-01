@@ -1,13 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:33:07.132Z",
+  "generated": "2026-09-01T19:09:58.348Z",
   "source": "styles.module.css",
   "sourceHash": "e040d2d2c0e12ab075aab4ea253674628a33b97e",
   "lang": "css",
+  "summary": "This stylesheet defines styles for a feedback or rating component with a container, question text, action buttons, and a thank-you message section. It uses flexbox for layout, CSS variables for theming, and includes hover effects on buttons that smoothly transition between states.",
   "explanations": {
-    "16": "white-space: nowrap prevents text from wrapping to multiple lines, so the question stays on one line even in tight spaces.",
-    "26": "inline-flex makes the button shrink to fit its content (like text and icons) instead of taking full width.",
-    "36": "transition is a shorthand that smoothly animates changes to background-color, border-color, and text color over 0.15 seconds when you hover."
+    "4": "flex-wrap: wrap allows items to break onto multiple lines if they don't fit in one row, instead of shrinking to fit.",
+    "5": "gap: 0.75rem adds consistent spacing between flex items — in this case, roughly 12 pixels of space between elements.",
+    "16": "white-space: nowrap prevents the question text from breaking into multiple lines, keeping it as a single line.",
+    "26": "inline-flex makes the button behave like an inline element but with flexbox layout powers, so it only takes up as much width as its content needs.",
+    "36": "transition defines which properties will smoothly animate over 0.15 seconds when they change, making color changes feel less jarring.",
+    "42": "This is a pseudo-class selector that applies styles when someone hovers their mouse over a .btn element.",
+    "48": ".btnNeutral:hover is a more specific version of the button hover rule that applies only to buttons with the btnNeutral class, overriding the primary button colors.",
+    "70": "color: var(--ifm-color-content-secondary) uses a CSS variable for a muted text color, making secondary information visually distinct from primary content."
   }
 }

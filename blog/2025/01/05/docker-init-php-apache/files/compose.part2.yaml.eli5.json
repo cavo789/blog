@@ -1,17 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:57.571Z",
+  "generated": "2026-09-01T18:44:38.832Z",
   "source": "compose.part2.yaml",
+  "sourceHash": "a6e7eeac60725354c7a6807ca9cc2058db864e8d",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration defines two services: a web server that builds from the current directory and a PostgreSQL database. The server depends on the database being healthy before starting, and they communicate through defined ports and volumes. Sensitive database credentials are managed through Docker secrets rather than plain environment variables.",
   "explanations": {
-    "6": "The first number (8080) is the port on your computer; the second number (80) is the port inside the container that the server listens on.",
-    "8": "The 'depends_on' section tells Docker to start the db service first, but it won't wait for it to be ready unless you add the 'condition' check below it.",
-    "9": "This makes Docker Compose wait until the database actually responds to health checks before starting the server, preventing connection errors on startup.",
-    "12": "Setting 'restart: always' means Docker will automatically restart this database container if it crashes or stops for any reason.",
-    "15": "Instead of putting passwords directly in the file, 'secrets' lets you reference sensitive data stored separately and pass it to the container securely.",
-    "17": "This creates a named volume (a persistent storage area) and mounts it into the container so database files survive even if the container is deleted.",
-    "20": "Rather than storing the password as plain text in environment variables, this tells PostgreSQL to read the password from a file that Docker injected securely.",
-    "23": "The healthcheck runs a command periodically to verify the database is actually ready to accept connections, not just that the container started."
+    "6": "The double percent signs with 'port=' syntax appears to be a templating placeholder that gets replaced with an actual port number (defaulting to 8080) at runtime; the format maps that external port to the container's port 80.",
+    "8": "This tells Docker Compose that the 'server' service should not start until the 'db' service is running and reports itself as healthy.",
+    "15": "This mounts a Docker secret (sensitive data stored separately from the image) into the container so the database password can be read securely without being hardcoded.",
+    "17": "This creates a named volume called 'db-data' and mounts it to the PostgreSQL data directory, so database files persist even if the container stops or restarts.",
+    "20": "Instead of passing the password directly, the database reads it from a file that Docker injected from the secret, which is more secure.",
+    "24": "This runs the 'pg_isready' command to check if PostgreSQL is actually accepting connections, not just that the container started."
   }
 }

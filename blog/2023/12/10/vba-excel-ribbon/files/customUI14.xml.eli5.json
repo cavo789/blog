@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:55.386Z",
+  "generated": "2026-09-01T18:22:13.546Z",
   "source": "customUI14.xml",
+  "sourceHash": "a1edd05ef83e3970b46510ad95d6fdaa962ea308",
   "lang": "xml",
+  "summary": "This XML file defines a custom ribbon interface for Microsoft Office, adding a new tab to the ribbon bar with a group containing a button and text input field. When the user clicks the button or changes the text, it triggers callback functions to handle those actions.",
   "explanations": {
-    "1": "This XML file is for customizing the Office ribbon interface—the toolbar at the top of Word, Excel, etc.",
-    "4": "The insertAfterMso='TabView' attribute means this custom tab will appear right after the built-in View tab in the ribbon.",
-    "9": "imageMso='HappyFace' references a built-in Office icon by name rather than providing your own image file.",
-    "11": "onAction='OnButtonClicked' is the name of a VBA or macro function that will run when someone clicks this button.",
-    "15": "onChange='OnEditBoxTextChanged' is the function name that gets called whenever a user types something in this text box."
+    "1": "This declares an XML document using Microsoft's custom UI schema, which is the standard format for extending Office application interfaces.",
+    "4": "The insertAfterMso attribute positions this new tab right after the existing 'View' tab in the ribbon, so users will see it in a familiar location.",
+    "9": "imageMso references a built-in Microsoft Office icon library; 'HappyFace' is a predefined icon you can use without providing your own image file.",
+    "11": "onAction names a function that will be called when someone clicks this button—you'd define that function elsewhere in your Office add-in code.",
+    "15": "onChange names a function that fires whenever the user types or modifies text in this input box."
   }
 }

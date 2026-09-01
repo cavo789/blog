@@ -1,13 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:50.435Z",
+  "generated": "2026-09-01T18:23:57.687Z",
   "source": "final_compose.yaml",
+  "sourceHash": "54b3fe9c5296711516b623b69e500e942a661e9e",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a Joomla website with a MySQL database. It defines two services that will run in containers: a Joomla web application server and a MySQL database server. The services are linked together so Joomla can communicate with its database, and both services persist their data to folders on your computer.",
   "explanations": {
-    "15": "This tells Docker to wait until the database container reports it's healthy before starting the Joomla container, preventing connection errors on startup.",
-    "16": "This uses your computer's user ID and group ID (or defaults to 1000 if not set) so files created inside the container belong to your user account instead of root.",
-    "27": "This runs a health check command inside the container every few seconds; if it succeeds, Docker knows the database is ready to accept connections.",
-    "30": "Like line 16, this ensures the database container runs with your user's permissions so you can edit database files without permission problems."
+    "6": "The %%name=kingsbridge%% is a template variable that will be replaced with an actual name (defaulting to 'kingsbridge') when this file is processed — it's used to give the container a unique identifier.",
+    "9": "The %%port=8080%% is another template variable that lets you specify which port on your computer maps to port 80 inside the container; if not set, it defaults to 8080.",
+    "12": "The %%dbPassword=example%% is a template variable for the database password — it has a default value of 'example' but should be customized for security.",
+    "15": "The 'condition: service_healthy' means Joomla won't start until the database reports back that it's healthy and ready to accept connections.",
+    "16": "The ${UID:-1000}:${GID:-1000} syntax means use your system's user ID and group ID if available, otherwise default to 1000 — this ensures the container runs with proper file permissions.",
+    "27": "This healthcheck command repeatedly tests whether MySQL is running and responding by pinging it; if it succeeds, Docker knows the database is ready.",
+    "28": "The timeout of 20 seconds means each healthcheck attempt will wait up to 20 seconds for a response before deciding it failed.",
+    "29": "Retries of 10 means Docker will try the healthcheck up to 10 times before giving up and marking the database as unhealthy."
   }
 }

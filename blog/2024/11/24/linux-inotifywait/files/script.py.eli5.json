@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:38:37.442Z",
+  "generated": "2026-09-01T18:41:00.378Z",
   "source": "script.py",
+  "sourceHash": "55b79dfa67a75257a8d83d8e11c5224daca3a6b9",
   "lang": "python",
+  "summary": "This program sets up a signal handler to gracefully exit when interrupted, then enters an infinite loop that creates empty temporary files in an output folder every second while printing a running count. The signal handler lets you stop the program cleanly by pressing Ctrl+C instead of forcefully terminating it.",
   "explanations": {
-    "5": "This line tells Python to run signal_handler whenever Ctrl+C is pressed (SIGINT is the interrupt signal).",
-    "10": "The parents=True creates any missing parent folders, and exist_ok=True prevents errors if the folder already exists.",
-    "15": "This creates a unique temporary filename and then extracts just the filename part (not the full path) to use in our output folder."
+    "1": "This function will be called whenever the program receives a SIGINT signal, which is what Ctrl+C sends to a running program.",
+    "5": "This line registers our signal_handler function to be invoked whenever a SIGINT (interrupt) signal arrives, essentially saying 'when Ctrl+C is pressed, run signal_handler instead of just killing the program'.",
+    "10": "mkdir creates the directory if it doesn't exist; parents=True creates any missing parent directories, and exist_ok=True means it won't error if the directory already exists.",
+    "15": "This creates a unique temporary filename (using tempfile.mktemp()), extracts just the filename part (os.path.basename), and joins it to the folder path to create a full file path.",
+    "18": "The 'with' statement opens the file for writing and automatically closes it when done, even if an error occurs; the 'pass' means we're not actually writing anything, just creating an empty file."
   }
 }

@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:40.633Z",
+  "generated": "2026-09-01T18:37:31.667Z",
   "source": "settings.json",
+  "sourceHash": "6acd5279d341f556007414f33cb2183d8a29324b",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is a VS Code settings file that configures how text appears in the editor. It sets the font to JetBrains Mono at size 14 and enables font ligatures, which are special character combinations that render as single stylized glyphs (like an arrow from => or a not-equal from !=).",
+  "explanations": {
+    "4": "Font ligatures are decorative rendering features where certain character pairs automatically combine into a single prettier symbol — for example, \"=>\" might display as a single arrow. Setting this to true enables that feature."
+  }
 }

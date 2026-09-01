@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:35:59.471Z",
+  "generated": "2026-09-01T18:29:05.723Z",
   "source": "Dockerfile",
   "sourceHash": "3b624dd33ffaa994463545381549a0f9cb26a8f9",
   "lang": "docker",
+  "summary": "This Dockerfile creates an Ubuntu container with Zsh shell and Oh-My-Zsh framework pre-installed, then sets up a demo Git repository with nested directories to showcase Zsh's productivity features. When you run the container, you get an interactive login shell that starts deep inside a Git repo, with a custom prompt showing a whale emoji to remind you you're in a container.",
   "explanations": {
-    "3": "This environment variable tells the package installer to skip interactive prompts, so the Docker build won't get stuck waiting for user input.",
-    "11": "After installing packages, we delete the package manager's cache files to reduce the Docker image size.",
-    "15": "The empty string `\"\"` is a placeholder for the script's first argument; the real arguments (`--unattended --keep-zshrc`) start after it.",
-    "25": "The `-q` flag means \"quiet\" (less output), and `-b main` sets the default branch name to `main` instead of the older `master`.",
-    "31": "This sets the default starting directory when someone enters the container, so they land deep in a folder tree that demonstrates zsh's navigation features.",
-    "37": "The `-i` flag makes the shell interactive (accepting commands), and `-l` makes it a login shell (loading configuration files like .zshrc)."
+    "3": "This tells Docker to skip interactive prompts during package installation—otherwise the build would hang waiting for user input that never comes.",
+    "5": "The `&&` chains commands together and stops if any fail, which is important here because we want to ensure apt-get succeeds before trying to install packages.",
+    "11": "After installing packages, we delete the cached package lists to shrink the final image size since we won't need them again.",
+    "15": "This downloads and runs the Oh-My-Zsh installer script from the internet, piping it directly to a shell interpreter (a common pattern for one-liners).",
+    "16": "The empty string `\"\"` replaces the normal first argument to the installer script, and the flags tell it to run without asking questions and keep the default config file.",
+    "21": "These lines configure Git with a dummy user so the demo repository can make commits—Git requires this metadata before it'll let you commit anything.",
+    "31": "This sets the container's default working directory, so when you connect to the shell, you land deep in the folder tree where Oh-My-Zsh's shortcuts are most useful.",
+    "37": "The `-i` flag makes the shell interactive (reads your commands), and `-l` makes it a login shell (loads your `.zshrc` config file with the custom prompt)."
   }
 }

@@ -1,15 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:49.387Z",
+  "generated": "2026-09-01T18:27:38.006Z",
   "source": "devcontainer.part3.json",
+  "sourceHash": "b4405f1d28b53e4e84fdacd3c5110426f56be1c7",
   "lang": "json",
+  "summary": "This is a VS Code configuration snippet that sets up PHP code quality tools. It configures the phpsab extension (which provides PHP CodeSniffer and PHP Code Beautifier integration) with paths to the executable scripts, enables automatic fixing, and points to a custom coding standard ruleset.",
   "explanations": {
-    "8": "This tells VS Code where to find the phpcbf tool (a PHP code formatter) on your computer — it's an absolute file path to the executable.",
-    "10": "This tells VS Code where to find the phpcs tool (a PHP code sniffer that detects style violations) — similar to line 8 but for a different tool.",
-    "12": "This enables the fixer, meaning VS Code will automatically try to correct PHP code style issues when you save or request a fix.",
-    "14": "When phpcs finds style problems, this setting makes it show you the name/source of which rule was violated, not just the error.",
-    "16": "This points to a configuration file that defines which PHP coding standard (like PSR-12) your project should follow.",
-    "22": "This installs the phpsab extension into VS Code, which is the plugin that uses those phpcs and phpcbf tools you configured above."
+    "8": "This tells VS Code where to find the phpcbf.phar script, which is the tool that automatically fixes PHP code style violations.",
+    "10": "This tells VS Code where to find the phpcs.phar script, which is the tool that analyzes PHP code and reports style violations.",
+    "12": "This enables the automatic fixer feature, so phpcbf will run to fix issues when you save or request formatting.",
+    "14": "This makes the sniffer display where each error comes from (which rule in the standard triggered the violation).",
+    "16": "This points to a custom phpcs.xml configuration file that defines your team's specific PHP coding style rules instead of using a generic preset.",
+    "22": "This installs the phpsab extension in VS Code, which is the plugin that integrates all these PHP quality tools into the editor."
   }
 }

@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:46.923Z",
+  "generated": "2026-09-01T19:02:16.850Z",
   "source": "_d_check_env",
+  "sourceHash": "c420f9feee153fe6334ac27f0e39dd53a698ad12",
   "lang": "plaintext",
+  "summary": "This script validates that required command-line tools are installed and that Docker is running before proceeding. It loops through a list of dependency names passed as arguments, checks if each one exists, and also verifies the Docker daemon is responsive — stopping with an error message if anything is missing.",
   "explanations": {
-    "6": "The command -v checks if a program exists in your PATH, and >/dev/null 2>&1 silently discards both normal output and error messages so the user doesn't see noise.",
-    "7": "This uses ANSI color codes (the \\033[0;31m part) to print 'Error:' in red on standard error stream (>&2) so error messages stand out.",
-    "13": "docker info is a lightweight command that talks to the Docker daemon and fails if Docker isn't running; it's faster than starting a container just to test if Docker works."
+    "5": "This loop iterates through each argument passed to the script (stored in $@), assigning each one to the variable 'dep' so we can check them one at a time.",
+    "6": "The 'command -v' builtin checks whether a command exists in the shell's search path; >/dev/null 2>&1 silently discards all output so we only care about the success/failure result.",
+    "7": "The echo command sends an error message to stderr (>&2) with ANSI color codes that make 'Error:' appear in red terminal color.",
+    "13": "'docker info' is a quick test that proves Docker is not just installed but also actually running and responding to commands."
   }
 }

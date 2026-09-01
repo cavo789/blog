@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:31.939Z",
+  "generated": "2026-09-01T18:47:22.705Z",
   "source": "main.py",
+  "sourceHash": "7a2de970c8d6a748a16096ec62189d5697cc41ef",
   "lang": "python",
+  "summary": "This script connects to an Oracle database using administrator credentials, executes a SQL query to fetch the first 25 employees from a table, and displays them in a formatted table. It uses proper error handling to catch database errors and ensures the connection and cursor are cleanly closed whether the query succeeds or fails.",
   "explanations": {
-    "11": "Optional[oracledb.Connection] means this variable starts as None but will hold a database connection object once we connect.",
-    "21": "AuthMode.SYSDBA is a special permission level that gives us admin access to the Oracle database.",
-    "29": "ROWNUM <= :max_rows is Oracle's way of limiting results; the colon means we'll pass the actual number separately as a parameter.",
-    "35": "We're telling Python that fetchall() will return a list of tuples, where each tuple has four values: an int and three strings.",
-    "46": "Unpacking takes one tuple from the list and splits it into four separate variables in a single assignment.",
-    "47": "The <12, <20, <26 format specifiers left-align text in fields of that width, creating neat columns."
+    "13": "We're declaring these as Optional because they start as None and only get assigned values if the connection succeeds, so we need to tell Python they might not exist.",
+    "17": "This builds the database address string by combining the hostname, port, and service name into the format Oracle expects.",
+    "23": "SYSDBA is a special Oracle administrator mode that gives us elevated privileges to run administrative commands.",
+    "31": "ROWNUM is an Oracle-specific way to limit results to the first N rows; the :max_rows part is a placeholder that gets filled in on line 35.",
+    "35": "We're passing the actual number (25) to replace the :max_rows placeholder, and execute() runs the SQL query against the database.",
+    "37": "fetchall() grabs all the results from the query at once and returns them as a list of tuples, where each tuple is one employee record.",
+    "48": "This unpacks each tuple (which has 4 values) into the four variables, so we can access employee_id, first_name, etc. individually.",
+    "55": "We check 'if cursor' because cursor might still be None if the connection failed, and we don't want to try closing something that was never created."
   }
 }

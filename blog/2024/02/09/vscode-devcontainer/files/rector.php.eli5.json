@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:59.696Z",
+  "generated": "2026-09-01T18:27:52.895Z",
   "source": "rector.php",
+  "sourceHash": "618c762fe7442d2b11ddbb5739034e901fc7d3ae",
   "lang": "php",
+  "summary": "This is a Rector configuration file that sets up automated code modernization rules for a PHP project. It tells Rector which directories to skip during analysis, targets PHP 8.2 as the language version, and enables three preset rule sets to improve code quality, remove dead code, and add proper type declarations.",
   "explanations": {
-    "3": "declare(strict_types=1) tells PHP to be strict about data types in function arguments and return values, so passing a string when a number is expected will cause an error instead of silent conversion.",
-    "13": "php82: true means this configuration applies Rector rules for PHP version 8.2, which will update your code to use modern PHP 8.2 syntax and features.",
-    "14": "The withPreparedSets call enables three pre-made bundles of code improvement rules: codeQuality checks for better patterns, deadCode removes unused code, and typeDeclarations adds type hints to functions."
+    "3": "This declares that all function arguments and return types in this file must be strictly typed—no loose type juggling allowed.",
+    "7": "This calls the Rector configuration setup and returns an object that we'll chain method calls onto to customize its behavior.",
+    "13": "This enables Rector's PHP 8.2-specific rules so it can modernize code to take advantage of PHP 8.2 features.",
+    "14": "These three preset rulesets enable automatic fixes: codeQuality improves code style and patterns, deadCode removes unused variables and functions, and typeDeclarations adds missing type hints throughout the code."
   }
 }

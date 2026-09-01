@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:44.888Z",
+  "generated": "2026-09-01T18:52:22.736Z",
   "source": "index.js",
+  "sourceHash": "a4986869b284c747b66c209cb4bfd703afc765b3",
   "lang": "javascript",
+  "summary": "This component renders a blog post item with a header, content, footer, and optionally shows related posts. It uses a hook to determine whether we're viewing a single blog post page or a list of posts, and applies different styling accordingly—adding bottom margin only when showing posts in a list view.",
   "explanations": {
-    "12": "The useBlogPost() hook gives us an object with an isBlogPostPage property that tells us if we're viewing a single blog post page versus a list of posts.",
-    "13": "This returns a CSS class name only when we're in list view (not on a single post page), otherwise it returns undefined which means no extra styling is applied.",
-    "25": "The && operator here means 'only render the RelatedPosts component if isBlogPostPage is true', so related posts only show on individual post pages, not in lists."
+    "12": "useBlogPost() is a hook that gives us context about where we are in the app; isBlogPostPage tells us if we're viewing a single full blog post or just a preview in a list.",
+    "13": "This returns a CSS class name only if we're NOT on the full blog post page (meaning we're in a list), otherwise it returns undefined so no extra margin is applied.",
+    "18": "We're calling that helper function to get the appropriate class name, which will either be a margin class or undefined depending on context.",
+    "25": "The double ampersand (&&) is a shortcut: only render the RelatedPosts component if isBlogPostPage is true, otherwise render nothing."
   }
 }

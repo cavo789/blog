@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:20.146Z",
+  "generated": "2026-09-01T18:24:42.649Z",
   "source": "_variables.yml",
+  "sourceHash": "8a962d4ec376a461b591bd666ac9b28c4b45b4f0",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a configuration file that defines version information, sets up email addresses for different purposes, and maps rendering engine names to their display names with documentation links. It's the kind of file you'd use to centralize settings that your application references throughout its codebase.",
+  "explanations": {
+    "8": "The square brackets and parentheses create a Markdown link that will render as clickable text 'Jupyter' pointing to the URL in parentheses.",
+    "9": "Similar to line 8, this creates a Markdown link for Knitr, but uses angle brackets around the URL because the URL contains parentheses that would otherwise confuse the Markdown parser."
+  }
 }

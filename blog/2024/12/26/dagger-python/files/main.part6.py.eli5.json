@@ -1,15 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:14.975Z",
+  "generated": "2026-09-01T18:43:24.686Z",
   "source": "main.part6.py",
+  "sourceHash": "dae305129984afea9de685b867bbe97f5658b20f",
   "lang": "python",
+  "summary": "This module defines a Dagger object that runs Python code quality tools (linting, formatting, type-checking) in isolated containers. Each method spins up a fresh Python container, installs a tool, mounts your source and config directories, and runs the tool—returning its output. The run_all method executes all four tools concurrently using async task groups instead of waiting for each one to finish sequentially.",
   "explanations": {
-    "2": "anyio is a library that lets you run multiple async tasks at the same time in a way that works with different async backends.",
-    "13": "Annotated is a type hint wrapper that lets you attach extra metadata (like Doc and DefaultPath) to a type without changing what the type actually is.",
-    "31": "The await keyword waits for this chain of container operations to finish; the chain ends with stdout() which returns the text output from running the commands.",
-    "63": "This creates a persistent storage volume that survives between container runs, so mypy can reuse cached type information and run faster the next time.",
-    "74": "The f-string (f\"/app/config/mypy.ini\") lets you embed the variable value directly into the string.",
-    "98": "This creates an async task group so all four methods can run in parallel instead of waiting for each one to finish before starting the next."
+    "4": "Annotated is a typing feature that lets you attach extra metadata (like documentation and default paths) to a type definition without changing what the type actually is.",
+    "13": "Annotated wraps the Directory type with three pieces of metadata: Doc explains what this field does, DefaultPath tells the system to look in 'src' by default if not explicitly provided, and Directory is the actual type.",
+    "27": "The async keyword means this function can be paused and resumed, which is necessary because we're waiting for container operations to complete without blocking other code.",
+    "31": "The await keyword pauses this function until the container chain finishes executing and returns a result; the whole .from_(...).with_exec(...) chain is building up a container operation that gets executed when awaited.",
+    "38": "The --rcfile argument tells pylint where to find its configuration file; we're pointing it to the config directory we mounted into the container.",
+    "63": "This creates a persistent cache volume named 'python_mypy' that survives between container runs, so mypy doesn't have to recompute type information from scratch every time.",
+    "74": "The f-string (the f prefix) means we're interpolating the variable mypy_cache path directly into the command string.",
+    "98": "anyio.create_task_group() sets up a context where multiple async functions can run at the same time; it waits for all of them to finish before moving on.",
+    "99": "tg.start_soon schedules a task to run concurrently without waiting for it to finish immediately—all four start_soon calls queue up, then the task group runs them all in parallel."
   }
 }

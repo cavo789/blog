@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:57.419Z",
+  "generated": "2026-09-01T18:24:10.593Z",
   "source": "makefile",
+  "sourceHash": "f73e1ec2e86e328e9e72757853697951709b8675",
   "lang": "makefile",
+  "summary": "This Makefile defines several helper commands for managing a Docusaurus blog project, each with a yellow-colored description message. The commands cover tasks like building the project, deploying it, starting a development server, and opening it in an editor. The `deploy` target also depends on `build`, ensuring the project is rebuilt before deployment.",
   "explanations": {
-    "1": "This tells Make to use bash as the shell instead of the default sh, which gives you access to more advanced shell features.",
-    "3": "This stores the number 33 in a variable called COLOR_YELLOW, which will be used later to make terminal text appear in yellow.",
-    "7": "The \\e[ and \\e[0m are escape codes that tell your terminal to make text bold and yellow; the %s gets replaced with the message text.",
-    "18": "The 'build' after 'deploy:' means that when you run 'make deploy', it will automatically run 'make build' first before doing the deploy step."
+    "1": "This sets the shell that Makefile will use to execute commands to bash instead of the default sh.",
+    "3": "This stores the ANSI color code for yellow (33) in a variable so it can be reused in the printf statements below.",
+    "5": ".PHONY tells Make that 'bash' is not a real file to create, just a command label — this prevents Make from getting confused if a file named 'bash' exists.",
+    "7": "The @ symbol suppresses echoing the command itself to the output. The printf uses ANSI escape codes (\\e[1;...m) to print the help text in bold yellow, then resets the color with \\e[0m.",
+    "18": "The colon after 'deploy' means this target depends on 'build' — Make will run the build target first before running deploy's commands."
   }
 }

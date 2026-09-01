@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:33.074Z",
+  "generated": "2026-09-01T18:35:55.193Z",
   "source": "compose.yaml",
+  "sourceHash": "786d492bf61668fe4a6f763b8abaf6fc05680ba9",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines an Apache web server service. It builds the service from the current directory, exposes port 80, and mounts the local src folder into Apache's document root so that changes to your source code are immediately visible in the container.",
   "explanations": {
-    "6": "The first number (80) is the port on your computer, and the second number (80) is the port inside the container—traffic coming to your machine on port 80 gets forwarded to the container's port 80.",
-    "8": "This makes a folder on your computer (./src) appear inside the container at that path, so changes you make locally show up immediately without rebuilding."
+    "6": "The syntax '%%port=80%%:80' appears to be a template variable that will be replaced with an actual port number at runtime; the second 80 is the port inside the container that Apache listens on.",
+    "8": "This line maps your local ./src directory into the container at /usr/local/apache2/htdocs, which is where Apache looks for website files to serve."
   }
 }

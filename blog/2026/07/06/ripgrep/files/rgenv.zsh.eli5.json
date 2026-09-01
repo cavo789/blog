@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:15:33.224Z",
+  "generated": "2026-09-01T19:08:29.291Z",
   "source": "rgenv.zsh",
+  "sourceHash": "2887ae467a7bf840adab834237e86f1d99339826",
   "lang": "bash",
+  "summary": "This function searches for references to an environment variable name across multiple file types (config files, YAML, shell scripts, PHP, and Python) using the ripgrep tool. It's a convenience wrapper that enforces you provide a variable name and pre-configures the search to look in the right places without you having to remember all the file types each time.",
   "explanations": {
-    "3": "The 'local' keyword makes this variable only exist inside this function, so it won't affect the shell environment outside.",
-    "5": "The '-z' flag checks if the string is empty (has zero length); this validates that the user actually provided a variable name.",
-    "11": "This tells ripgrep (rg) to treat files matching the pattern as 'config' type, even though ripgrep doesn't normally know about .env or .cfg files."
+    "3": "This stores the first argument (the variable name you're searching for) in a local variable so we can use it later.",
+    "5": "This checks if the variable is empty—meaning the user didn't provide a name to search for.",
+    "11": "This tells ripgrep to treat files ending in .env, .cfg, .ini, or .conf as a new file type called 'config' so it knows to search inside them."
   }
 }

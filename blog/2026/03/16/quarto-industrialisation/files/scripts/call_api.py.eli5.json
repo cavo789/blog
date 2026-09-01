@@ -1,12 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:38.177Z",
+  "generated": "2026-09-01T19:03:29.531Z",
   "source": "call_api.py",
+  "sourceHash": "68e7c25cab340256845bc4a89d0b7f31533ad32e",
   "lang": "python",
+  "summary": "This script fetches 10 random users from an online API, extracts relevant information like their name and email, and formats everything into a Markdown table that gets printed to the screen. It's a simple data-fetching and formatting pipeline.",
   "explanations": {
-    "22": "raise_for_status() throws an error if the HTTP request failed (like a 404 or 500), so we don't accidentally use bad data.",
-    "34": "The ['---'] * len(headers) creates a list of dashes repeated as many times as there are column headers, which Markdown needs to separate the table header from the body rows.",
-    "37": "We're diving into nested dictionaries here—user['name'] is itself a dictionary containing 'first' and 'last' keys, so we have to go two levels deep to get the actual name values."
+    "7": "This imports type hints so we can declare what kinds of data our functions expect and return—like saying 'this function returns a list of dictionaries' rather than just 'a list'.",
+    "15": "We're creating a dictionary with the query parameters to send to the API—in this case, asking for 10 results instead of the default.",
+    "17": "We're making an HTTP GET request to the API URL with those parameters, and storing the response object so we can check if it succeeded and extract the data.",
+    "22": "This checks if the HTTP request failed (like a 404 or 500 error) and raises an exception if it did, so we don't accidentally try to process bad data.",
+    "24": "We're converting the response from the API (which is formatted as JSON text) into a Python dictionary so we can access the data using keys.",
+    "34": "This creates the separator row in Markdown tables—the dashes under the headers that tell Markdown to treat the first row as column titles.",
+    "37": "We're combining the user's first and last name into a single string using an f-string, which lets us embed variables directly into text."
   }
 }

@@ -1,17 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:32.477Z",
+  "generated": "2026-09-01T18:48:41.794Z",
   "source": "assert.bats",
+  "sourceHash": "274d8f31e4efb235570592cfe8400552833c33e7",
   "lang": "bats",
+  "summary": "This is a BATS (Bash Automated Testing System) test file that validates a function called `assert::binaryExists`, which checks whether command-line programs exist on the system. The setup phase prepares test dependencies and creates a temporary file, while two test cases verify that the function succeeds when checking for real commands like 'clear' and 'ls', and fails appropriately with an error message when checking for a nonexistent program.",
   "explanations": {
-    "4": "This loads the bats-assert library, which gives us helper functions like assert_success and assert_failure that check if commands passed or failed.",
-    "5": "This loads bats-support, a companion library that provides extra utilities that bats-assert depends on.",
-    "7": "This runs the actual script we're testing (assert.sh) so we can call its functions in our tests.",
-    "11": "This checks if the /tmp/bats directory doesn't exist yet, and if so, creates it—the [[ ]] syntax is bash's way of doing conditional logic.",
-    "18": "The [[ -f ]] syntax checks if a file exists, and if it does, the && operator runs the rm command only if that check succeeded.",
-    "24": "The run command executes our function and captures its exit code and output so we can check them with assert statements.",
-    "27": "This asserts that the function exited with code 0, which means success in Unix/Linux conventions.",
-    "43": "The assert_failure 1 checks that the function exited with code 1 specifically, which signals an error."
+    "4": "This loads a BATS library that provides helper assertions like `assert_success` and `assert_output` — think of it as importing a toolkit for checking test results.",
+    "7": "This sources (includes) a custom shell script containing the `assert::binaryExists` function that we're actually testing.",
+    "11": "Before creating the temp file, this checks if the directory `/tmp/bats` exists; if it doesn't (the `!` means 'not'), it creates the directory so we have a place to put our temporary file.",
+    "24": "The `run` keyword executes the command and captures its exit code and output so the assertions afterward can inspect what happened.",
+    "27": "This asserts that the command we just ran exited with a success code (zero), meaning 'clear' was found on the system.",
+    "43": "This asserts the command failed with exit code 1 specifically, which is how the function signals that a binary wasn't found."
   }
 }

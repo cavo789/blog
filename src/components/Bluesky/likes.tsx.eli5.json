@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:58.246Z",
-  "source": "likes.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:51:07.649Z",
+  "source": "likes.tsx",
+  "sourceHash": "d687547ad81e925a666a3e1385c43f96ae54866e",
+  "lang": "typescript",
+  "summary": "This component displays Bluesky engagement stats for a post, showing like and repost counts plus a stack of avatars from people who engaged with it. It limits the display to 10 avatars and shows a '+N' indicator if more people engaged than can fit, with each avatar linking to that person's profile and labeled with what actions they took (liked, reposted, commented).",
   "explanations": {
-    "8": "The optional chaining operator (?.) safely checks if siteConfig exists before accessing customFields, returning undefined if it doesn't rather than throwing an error.",
-    "18": "This condition checks if either piece of required data is missing; if so, it stops the fetch and marks loading as false to prevent trying to call the API.",
-    "25": "The `at://` protocol is Bluesky's internal URI format for identifying posts; it's being constructed from the account handle and post key to create a unique post identifier.",
-    "26": "encodeURIComponent() escapes special characters in the URI so it's safe to pass as a URL parameter without breaking the query string.",
-    "34": "After the API returns the full post thread data, this line extracts just the like and repost counts from the nested post object for easier access.",
-    "48": "These dependencies tell React to re-run the effect whenever either the record key or handle changes, ensuring the stats stay up-to-date if the post ID changes."
+    "11": "This function takes a Set of engagement actions and converts them into a human-readable sentence fragment — like 'liked and reposted' or 'liked, reposted, and commented on'.",
+    "18": "This builds a grammatically correct list: if there are multiple verbs, it joins all but the last with commas, then adds 'and' before the final verb.",
+    "26": "We return nothing (null) if data is still loading or if we don't have engagement data yet, so the component renders invisibly.",
+    "30": "We grab only the first MAX_AVATARS (10) people from the full list so we don't render too many avatars on screen.",
+    "31": "This calculates how many people engaged beyond the 10 we're showing, so we can display a '+5' or '+12' badge later.",
+    "47": "Only render the avatars section if at least one person is in our 'shown' list; if nobody engaged, skip the whole avatar stack.",
+    "56": "The zIndex makes avatars stack visually in order — earlier avatars appear on top — by giving higher z-index values to people earlier in the list.",
+    "57": "The title attribute creates a tooltip that reads like 'Jane Doe (@janedoe) liked and reposted this post' when you hover over the avatar."
   }
 }

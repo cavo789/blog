@@ -1,19 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:37.268Z",
+  "generated": "2026-09-01T18:57:23.937Z",
   "source": "compose.yaml",
+  "sourceHash": "6ce2d68ad276d32f0c6d7ed3b552d4c2e0a36196",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration defines a development container service called 'app' that builds from a Dockerfile in the .devcontainer directory, passing in customizable build arguments for home directory, user ID, group ID, and username. It exposes a debug port, loads environment variables from files, mounts the project directory and VS Code extensions for persistence, and runs indefinitely to stay available for development work.",
   "explanations": {
-    "7": "The syntax ${APP_HOME:-/app} means 'use the APP_HOME variable if it exists, otherwise use /app as a fallback default'.",
-    "8": "This sets the numeric user ID inside the container; LOCAL_UID is read from your host machine's environment, falling back to 1000 if not set.",
-    "9": "Similar to the user ID, this sets the group ID inside the container, using LOCAL_GID from your environment or 1000 as the default.",
-    "10": "This defines the username that will own files in the container, reading LOCAL_USER from your environment or defaulting to 'vscode'.",
-    "13": "The 5679 port is used by Debugpy (a Python debugger) to communicate between your IDE and the running code inside the container.",
-    "18": "The dot (.) represents your current local directory, and it's being mounted (made accessible) inside the container at the APP_HOME path.",
-    "19": "This creates a special named volume that persists VS Code extensions between container restarts instead of re-downloading them each time.",
-    "20": "Your bash command history file is being mounted with read-write (rw) permissions so your shell history is saved between container sessions.",
-    "22": "The 'sleep infinity' command keeps the container running indefinitely instead of exiting, which allows you to connect and work inside it.",
-    "24": "This top-level 'volumes' section defines named volumes that can be reused; 'vscode-extensions' is referenced above on line 19."
+    "7": "This passes the APP_HOME variable to the Docker build process, using the value of ${APP_HOME} from your environment, or defaulting to /app if it's not set.",
+    "8": "Similarly, this passes the local user's numeric ID (UID) to Docker so the container user has matching permissions with your host machine; it defaults to 1000 if not provided.",
+    "9": "This does the same thing for group ID (GID) so file ownership matches between your host and container.",
+    "10": "This passes the username for the container user, defaulting to 'vscode' if not specified in your LOCAL_USER environment variable.",
+    "18": "This mounts your current project directory (the dot) into the container at the APP_HOME path, so changes you make locally are immediately visible inside the container.",
+    "19": "This creates a persistent named volume that stores VS Code extensions between container runs, so you don't have to reinstall them each time.",
+    "20": "This mounts a bash history file from your .devcontainer folder into the container's home directory with read-write permissions, preserving your command history across container restarts.",
+    "22": "The 'sleep infinity' command keeps the container running indefinitely instead of exiting, allowing you to attach and work inside it."
   }
 }

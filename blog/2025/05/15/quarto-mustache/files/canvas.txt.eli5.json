@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:35.906Z",
+  "generated": "2026-09-01T18:47:32.510Z",
   "source": "canvas.txt",
+  "sourceHash": "f8deae6cccaf6a760656c5eb77b45abee9672415",
   "lang": "plaintext",
+  "summary": "This is a documentation file that introduces 'Contextual Canvas,' a feature designed to help users manage multiple related documents and information in one organized visual workspace. Rather than switching between scattered files and browser tabs, the Canvas intelligently gathers relevant information based on what you're currently doing, keeping everything in sight within your main application.",
   "explanations": {
-    "13": "This line uses a special template syntax that pulls in content from another file located at '../_partials/run.md' and inserts it here at build time."
+    "13": "This line includes a partial template file from another location in the project—it's a way to reuse common documentation (like setup instructions) across multiple pages without duplicating the content."
   }
 }

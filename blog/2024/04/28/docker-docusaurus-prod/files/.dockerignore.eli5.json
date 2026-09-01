@@ -1,8 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:14.195Z",
+  "generated": "2026-09-01T18:30:25.441Z",
   "source": ".dockerignore",
+  "sourceHash": "f51b5fce9dbee0c390f38a1bc89840aeab7319e6",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a `.dockerignore` file that tells Docker which files and directories to exclude when building a Docker image. By listing these items, we prevent unnecessary files from being copied into the image, which makes the image smaller and builds faster.",
+  "explanations": {
+    "1": "The `build/` directory contains compiled or generated files that don't need to be in the Docker image since they'll be regenerated inside the container anyway.",
+    "2": "`node_modules/` is the directory where npm packages are installed; we exclude it so Docker will install fresh packages inside the image rather than copying potentially incompatible versions from your local machine.",
+    "3": "The `.git/` directory contains your repository's version control history, which is not needed in a production Docker image and would just add unnecessary size.",
+    "9": "The `*.log` pattern matches any file ending in `.log`, excluding all log files from being copied into the image since they're typically temporary and not part of the actual application."
+  }
 }

@@ -1,14 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:18.451Z",
+  "generated": "2026-09-01T19:04:51.587Z",
   "source": "build.sh",
+  "sourceHash": "32cfbc622ee8bc9fcdeb6fcc6777d5b35da8b571",
   "lang": "bash",
+  "summary": "This script automates a build process that bundles and minifies web assets (CSS, JavaScript, etc.) defined in a YAML configuration file. It reads bundle definitions from manifest.yaml, concatenates input files for each bundle, minifies them using a Docker container, and writes the results to output files while tracking whether any errors occurred.",
   "explanations": {
-    "4": "The `command -v yq &> /dev/null` checks if yq exists and runs silently by redirecting all output to nowhere; if it doesn't exist, the command fails and we enter the if block.",
-    "18": "The `-r` flag tells yq to output raw strings without quote marks, so you get actual file paths instead of strings wrapped in quotes.",
-    "20": "This is a C-style for loop in bash that counts from 0 up to (but not including) the bundle count, letting us process each bundle by index.",
-    "47": "The `dirname` command extracts just the folder path from a full file path, so if OUTPUT is `dist/css/style.min.css`, dirname gives you `dist/css` to create.",
-    "49": "The backslash at the end of the line lets us continue a long command on the next line without bash thinking it's a new statement."
+    "4": "The `command -v yq` checks if the yq program exists and is accessible; the `&> /dev/null` redirects both standard output and errors to nowhere (silencing any output), so we only care about the exit code.",
+    "9": "This sets a variable to the filename where bundle definitions are stored—similar to how you'd store config data.",
+    "14": "This flag variable starts at 0 and will be set to 1 if any bundle fails, so we can report the final status at the end.",
+    "20": "The `-r` flag tells yq to return raw output (plain text) instead of JSON-formatted output with quotes; `| length` counts how many bundles exist in the config file.",
+    "22": "This is a C-style for loop; it runs from i=0 up to (but not including) bundle_count, incrementing i by 1 each iteration.",
+    "24": "We're extracting the name of the bundle at index i from the YAML file; the `-r` flag ensures we get plain text without surrounding quotes.",
+    "30": "We create a temporary filename that includes the file type (like css or js) so we know what kind of file we're building.",
+    "38": "The `-f` test checks if the file exists and is a regular file (not a directory); if true, we append its contents to our temporary bundle file.",
+    "49": "This ensures the directory path for the output file exists before we try to write to it; `dirname` extracts just the folder part of a file path.",
+    "51": "We run a Docker container with the current directory mounted as `/src` inside the container, passing our temp file to the minifier tool inside that container.",
+    "58": "When minification fails, we set the flag to 1 but continue processing other bundles instead of stopping immediately.",
+    "66": "We check if the flag is still 1, meaning at least one bundle failed; if so, we print an error message to standard error (that's what `>&2` does) and exit with code 1."
   }
 }

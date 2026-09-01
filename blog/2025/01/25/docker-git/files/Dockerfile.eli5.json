@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:09.498Z",
+  "generated": "2026-09-01T18:45:01.841Z",
   "source": "Dockerfile",
+  "sourceHash": "b84987780153313f456b9e5a2f0b022c32a772d2",
   "lang": "docker",
+  "summary": "This Dockerfile creates a minimal Docker image based on Alpine Linux with Git and SSH client tools pre-installed. It sets up an SSH directory with proper permissions and keeps the container running indefinitely so you can execute commands in it later.",
   "explanations": {
-    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax, which enables newer features.",
-    "10": "The 'set -e -x' command makes the shell exit immediately if any command fails and print each command before running it, which helps catch errors early.",
-    "11": "The '-m 0700' flag sets permissions so only the owner (root) can read, write, and enter the .ssh directory for security.",
-    "14": "This keeps the container alive indefinitely by running a command that never finishes, otherwise the container would exit immediately after starting."
+    "3": "Alpine is a very small, lightweight Linux distribution, so 'latest' here means the most recent version of that minimal OS.",
+    "6": "apk is Alpine's package manager (like apt or yum on other Linux systems). This line updates the package list and then installs git and openssh-client.",
+    "10": "The backslash allows the RUN command to continue on the next line. The 'set -e -x' makes the script exit on any error and print each command as it runs, which helps with debugging.",
+    "11": "This creates the .ssh directory in the home folder with mode 0700, which means only the owner can read, write, or enter it—a security requirement for SSH.",
+    "14": "Instead of exiting when the container starts, this command runs 'tail -f /dev/null' which basically does nothing forever, keeping the container alive so you can attach to it later and run commands."
   }
 }

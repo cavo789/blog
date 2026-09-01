@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:37.499Z",
+  "generated": "2026-09-01T19:05:35.973Z",
   "source": "legacy.conf",
+  "sourceHash": "73313d6c7a87ce431f5d8c6d95f44ca2464ccda3",
   "lang": "conf",
-  "explanations": {}
+  "summary": "This is an SSH configuration block that defines connection settings for a host named 'LegacyApp'. When you try to connect to 'LegacyApp', SSH will use the IP address 1.2.3.4 and automatically log in as the user 'legacy' instead of prompting you each time.",
+  "explanations": {
+    "1": "This declares a named host configuration block — 'LegacyApp' is an alias you can use in SSH commands like 'ssh LegacyApp' instead of typing the full address.",
+    "2": "This specifies the actual IP address or domain name that SSH should connect to when you use the 'LegacyApp' alias.",
+    "3": "This sets the default username for connections to this host, so SSH automatically logs in as 'legacy' without asking you to provide a username."
+  }
 }

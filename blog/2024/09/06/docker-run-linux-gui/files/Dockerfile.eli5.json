@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:17.199Z",
+  "generated": "2026-09-01T18:36:55.982Z",
   "source": "Dockerfile",
+  "sourceHash": "b6c33ab4f33cb2750b4e8967d15d86127b95b7a5",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Docker image based on Ubuntu that installs X11 graphical applications and runs the 'xeyes' program by default. It's setting up a minimal environment to run a GUI application inside a container.",
   "explanations": {
-    "3": "The && operator chains commands together so the second command only runs if the first succeeds; here we update the package list first, then install x11-apps in one layer to keep the image smaller.",
-    "5": "CMD sets the default program that runs when the container starts, but unlike ENTRYPOINT, it can be overridden by passing a different command when you run the container."
+    "3": "The '&&' chains two commands together so they run in sequence — first we update the package manager's list of available software, then we install x11-apps (which includes graphical display tools). The '-y' flag automatically answers 'yes' to any prompts.",
+    "5": "CMD sets the default command that runs when the container starts up — in this case, it will launch 'xeyes', a simple program that displays eyes that follow your mouse cursor."
   }
 }

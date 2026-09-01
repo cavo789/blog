@@ -1,12 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:40.563Z",
+  "generated": "2026-09-01T18:36:04.685Z",
   "source": "compose.part2.yaml",
+  "sourceHash": "d09c989db0022aea1d93362399af360a9afc7cfb",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that sets up an Apache web server service. It builds an image from the current directory, exposes ports 80 and 443 for HTTP and HTTPS traffic, and mounts a local source directory into the container so Apache serves files from there.",
   "explanations": {
-    "6": "This maps port 80 on your computer to port 80 inside the container, so web traffic coming to your machine gets forwarded to Apache.",
-    "8": "This does the same thing as line 6, but for HTTPS traffic on port 443, so secure connections also work.",
-    "10": "This shares your local ./src folder with the container's /usr/local/apache2/htdocs folder, so any files you edit locally appear immediately inside Apache without rebuilding."
+    "6": "The double percent signs around 'port=80' suggest this is a template variable that gets replaced with an actual port number at runtime—in this case, defaulting to 80 if not overridden."
   }
 }

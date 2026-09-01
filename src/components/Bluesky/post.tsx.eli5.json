@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:55.290Z",
-  "source": "post.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:51:01.889Z",
+  "source": "post.tsx",
+  "sourceHash": "02e4a5c53c5fb26f584497f5e8e95f9c220c4c53",
+  "lang": "typescript",
+  "summary": "This React component displays a clickable link to a Bluesky post. It pulls the user's Bluesky handle from the site configuration and the specific post ID from the page's metadata, then builds a URL and renders it as a styled button with an icon and text.",
   "explanations": {
-    "8": "The question mark and then another question mark in `siteConfig?.customFields?.bluesky` means 'safely access this property even if the thing before it doesn't exist' — it prevents crashes if siteConfig or customFields is missing.",
-    "11": "This checks if both the handle and record key exist; if either one is missing, the function returns nothing (null) so the button won't appear.",
-    "21": "The `rel` attribute tells browsers that this link opens in a new tab but shouldn't let that new page access information about where the user came from — it's a security best practice."
+    "11": "useDocusaurusContext is a hook from the Docusaurus framework that gives us access to the overall site configuration object.",
+    "12": "We're reading the 'bluesky' object out of the site's custom configuration fields, and telling TypeScript to treat it as either BlueskySiteConfig or undefined.",
+    "14": "We're digging into the metadata object to find the blueskyRecordKey, which is a unique identifier for the specific post, possibly stored in the document's front matter (metadata at the top of a markdown file).",
+    "16": "We check if we have both the handle (username) and the record key; if either is missing, we can't build a valid link, so we return null to render nothing.",
+    "20": "We construct the full URL to the Bluesky post by combining Bluesky's domain with the user's handle and post ID."
   }
 }

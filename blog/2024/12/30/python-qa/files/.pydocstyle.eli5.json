@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:40.546Z",
+  "generated": "2026-09-01T18:44:11.211Z",
   "source": ".pydocstyle",
+  "sourceHash": "676a545b3fec2ecc3b5661fc75f72a9d6b2178cd",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a configuration file for pydocstyle, a tool that checks whether Python docstrings follow a consistent style. It tells the tool to ignore certain style rules and only check files that end with .py.",
+  "explanations": {
+    "2": "The ignore line lists specific rule codes that pydocstyle should skip — think of it like telling a spell-checker to stop complaining about certain words.",
+    "3": "The match pattern uses a wildcard to say 'apply these rules only to files whose names end in .py', so it won't try to check non-Python files."
+  }
 }

@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:51.340Z",
+  "generated": "2026-09-01T19:02:19.608Z",
   "source": "_d_print_cmd",
+  "sourceHash": "4d5674cb74a75be7369911ba663108f564de2291",
   "lang": "plaintext",
+  "summary": "This is a zsh shell function that prints out a command string with optional color formatting. It takes a command as the first argument and an optional color code as the second argument (defaulting to green), truncates the command to 197 characters if it's too long, and then echoes it back with color applied.",
   "explanations": {
-    "5": "The ${2:-\\033[1;32m} syntax means 'use the second argument if it was passed in, otherwise use this default ANSI color code for bold green'.",
-    "9": "The ${#cmd_str} syntax gets the length (number of characters) of the cmd_str variable, and -gt means 'greater than'.",
-    "10": "The ${cmd_str:0:197} syntax takes a substring starting at position 0 and grabs the first 197 characters, then we append '...' to show it was cut off.",
-    "13": "The -e flag tells echo to interpret ANSI escape sequences (like the color codes) so they actually render as colors instead of printing the code itself."
+    "5": "The syntax ${2:-\\033[1;32m} means 'use the second argument if it was provided, otherwise use this default ANSI color code for bright green'.",
+    "9": "${#cmd_str} gives you the length of the string, so this checks if the command is longer than 200 characters.",
+    "10": "The ${cmd_str:0:197} syntax means 'take the substring starting at position 0 for 197 characters', then append '...' to show it was truncated.",
+    "13": "The -e flag in echo enables interpretation of backslash escape sequences like \\033[1;32m so the ANSI color codes actually work."
   }
 }

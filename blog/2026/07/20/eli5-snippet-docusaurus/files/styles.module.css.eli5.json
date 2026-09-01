@@ -1,20 +1,27 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-19T07:28:59.539Z",
+  "generated": "2026-09-01T19:09:33.981Z",
   "source": "styles.module.css",
   "sourceHash": "6a12a96cd179a715465523f829d3fcaf16c3de5d",
   "lang": "css",
+  "summary": "This CSS styles a code snippet viewer with interactive line-by-line annotations. It defines a container for preformatted code, individual line styling with hover effects, and small badge buttons that appear next to each line to trigger tooltip explanations. The tooltips themselves are positioned absolutely with a small arrow pointer and adapt their colors based on light or dark theme.",
   "explanations": {
-    "4": "overflow-x: auto means if the code is wider than its container, a horizontal scrollbar appears instead of wrapping or being cut off.",
-    "14": "align-items: flex-start aligns items to the top of the flex container, useful when items inside have different heights.",
-    "25": "white-space: pre preserves all spaces and line breaks exactly as written, so the code formatting doesn't get collapsed.",
-    "32": "flex-shrink: 0 prevents this element from shrinking smaller than its natural size when the flex container runs out of space.",
-    "50": "border-radius: 50% makes any element into a perfect circle (assuming equal width and height).",
-    "59": "transition smoothly animates changes to background color, text color, and border color over 0.15 seconds when the element state changes.",
-    "75": "calc(100% + 5px) means position the tooltip 5 pixels below the bottom edge of its parent element.",
-    "89": "pointer-events: none makes the tooltip ignore mouse clicks and hovers, so clicks pass through to elements underneath.",
-    "102": "transform: rotate(45deg) tilts the small square 45 degrees to create a diamond-shaped arrow pointing up.",
-    "105": "This selector applies different tooltip styles when the page is in dark mode (data-theme=\"dark\" attribute is set)."
+    "4": "overflow-x: auto allows horizontal scrolling if a code line is too long to fit, while keeping everything else visible",
+    "5": "var(--prism-background-color, #282c34) uses a CSS variable if it exists, but falls back to a dark gray color if not defined",
+    "13": "display: flex makes this line container use flexbox layout, which lets us line up code and badges side-by-side",
+    "14": "align-items: flex-start aligns the code and badge to the top of the line, rather than centering them vertically",
+    "24": "flex: 1 makes the code section expand to fill all available horizontal space, pushing the badge to the right",
+    "25": "white-space: pre preserves spaces and line breaks exactly as written, so indentation in code is maintained",
+    "32": "flex-shrink: 0 prevents this placeholder from shrinking smaller than its natural width, keeping it as a consistent spacer",
+    "38": "display: inline-flex is like flex but treats the element as inline, letting it sit alongside text naturally",
+    "50": "border-radius: 50% with equal width and height creates a perfect circle for the badge",
+    "59": "transition smooths color and background changes over 0.15 seconds when hovering, for a polished feel",
+    "65": ".eli5_badge_active is a class you'd add with JavaScript to make the badge appear active without needing hover",
+    "75": "top: calc(100% + 5px) positions the tooltip 5 pixels below the badge, using the badge's height as a reference",
+    "78": "max-width: 90vw ensures the tooltip never takes up more than 90% of the viewport width, so it stays visible even near screen edges",
+    "89": "pointer-events: none makes the tooltip ignore mouse clicks and hovers, so it doesn't interfere with clicking things behind it",
+    "92": ".eli5_tooltip::before creates a small decorative arrow pointer using the ::before pseudo-element",
+    "102": "transform: rotate(45deg) rotates a small square 45 degrees to make it look like a diamond pointing upward"
   }
 }

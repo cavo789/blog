@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:50.735Z",
+  "generated": "2026-09-01T18:34:31.222Z",
   "source": "script.part3.sh",
+  "sourceHash": "ad93ebfc47b7b6dc206755266d6aec64374b908b",
   "lang": "bash",
+  "summary": "This script compares the contents of two source code folders to find differences between them. It first validates that both folders exist, then uses the diff command to show which files differ between the local 'src' folder and a corresponding 'src' folder in another project, filtering out files that only exist locally.",
   "explanations": {
-    "6": "The [[ ]] syntax tests if a folder doesn't exist (the ! means 'not'), and if true, it prints a colored error message then exits the script early with 'return 0'.",
-    "7": "Same folder existence check as line 6, but for the comparison folder.",
-    "9": "The \\033[1;34m and \\033[0m are escape codes that make the text print in bold blue; the %s placeholders get filled in with the four strings that follow.",
-    "11": "This line does several things chained together: pushd saves your current location and goes into the source folder, LC_ALL=C makes the diff command ignore language settings for consistent output, diff compares the two folders, grep filters out lines about files that only exist in the source folder, and popd returns you to where you started."
+    "6": "The [[ ! -d ]] syntax checks if a folder doesn't exist; if it doesn't, the script prints an error message in red and exits early with return 0.",
+    "7": "Same validation check as line 6, but for the comparison folder path.",
+    "9": "This prints a blue header message telling the user which two folders are about to be compared.",
+    "11": "pushd changes into the source folder silently, then diff --brief compares it with the other project's folder; LC_ALL=C ensures consistent sorting, and the grep filters out lines showing files that exist only in the local folder. popd returns to the original directory."
   }
 }

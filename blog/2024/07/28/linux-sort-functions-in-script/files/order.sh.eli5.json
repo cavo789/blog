@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:09.131Z",
+  "generated": "2026-09-01T18:35:10.976Z",
   "source": "order.sh",
+  "sourceHash": "7bccfd395a2f07a7fb499469776d354ddc21a709",
   "lang": "bash",
+  "summary": "This script checks whether functions in Bash files within a given folder are declared in alphabetical order. It compares each file's actual function declaration order against a sorted version and displays any mismatches side-by-side so developers can see which files need their functions reordered.",
   "explanations": {
-    "5": "The `$#` variable counts how many arguments were passed to the script; this line checks that exactly one argument was provided, otherwise it shows usage and exits.",
-    "12": "This checks if the folder doesn't exist (the `!` means 'not'), and if true, it prints an error and exits—the `&&` chains these three commands to run only if the previous one succeeds.",
-    "18": "The `pushd` command changes into that folder and saves the current location on a stack so you can return to it later with `popd`; the `>/dev/null` hides the usual output.",
-    "20": "Setting `set +e` tells bash to keep running even if a command fails, which is useful here because `diff` exits with a non-zero status when files differ.",
-    "23": "The `diff --side-by-side` compares two lists and displays them in columns; the `<(...)` syntax runs a command and treats its output as a temporary file that `diff` can read.",
-    "27": "After the diff command runs, `$?` holds its exit code (0 means identical, non-zero means different), so this checks if they weren't equal.",
-    "33": "Setting `set -e` restores normal bash behavior so the script will exit immediately if any command fails after this point."
+    "5": "The $# variable holds the number of arguments passed to the script; this checks that exactly one argument was provided, otherwise shows usage and exits.",
+    "12": "This uses the && and && chain to: check if the folder doesn't exist, print an error message if so, and exit with code 1 (all in one line).",
+    "18": "pushd changes into that directory and >/dev/null suppresses the usual output that shows the directory stack.",
+    "20": "set +e turns off the 'exit on error' mode so the script keeps running even if a diff command reports differences (non-zero exit code).",
+    "23": "The ! before result= means 'if the diff command fails (returns non-zero)', which happens when there are differences between the two sides.",
+    "24": "<(...) is process substitution—it runs the command inside and feeds its output as if it were a file, so diff can compare two streams.",
+    "25": "The right side does the same grep but pipes to sort, so it shows what the function order should be alphabetically.",
+    "31": "set -e turns 'exit on error' back on so any failures after this point will stop the script."
   }
 }

@@ -1,13 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:12.168Z",
+  "generated": "2026-09-01T18:26:26.108Z",
   "source": "script.sh",
+  "sourceHash": "d8d00eba46d2df48bfb4b291c2e6275abb6f1b87",
   "lang": "bash",
+  "summary": "This script generates a Sieve mail filter file by reading spam patterns from a JSON config, validating that the config exists, and then using each pattern to populate a template file. It's a code generator that transforms configuration data into a mail server filter configuration.",
   "explanations": {
-    "5": "The `[ ! -f patterns.json ]` syntax checks if a file does NOT exist; the `!` means 'not' and `-f` means 'is a file'.",
-    "11": "This line deletes any old roundcube.sieve file with `rm -f`, then creates a fresh empty one with `touch` so we can append to it later.",
-    "13": "The backslash at the end of line 13 tells bash this command continues on the next line; it's how we break long pipes across multiple lines for readability.",
-    "18": "The `tr -d '\"'` command removes all quote characters from the pattern string, essentially stripping away the outer quotes that jq included."
+    "2": "These flags make the script exit immediately if any command fails, treat undefined variables as errors, and stop if a pipe fails — basically making the script safer by catching mistakes early.",
+    "6": "This checks if the patterns.json file doesn't exist (the ! means 'not'). If it's missing, the script shows an error message and quits.",
+    "12": "This deletes any old roundcube.sieve file if it exists, then creates a fresh empty one to write into.",
+    "14": "The backslash at the end of this line tells bash the command continues on the next line — it's just breaking up a long pipeline for readability.",
+    "15": "jq is a tool for parsing JSON; '.patterns[]' extracts every item from the patterns array inside the JSON file.",
+    "16": "This sorts all the patterns alphabetically before processing them.",
+    "17": "This loop reads each sorted pattern one line at a time into the variable called 'pattern'.",
+    "19": "The tr command removes all quote marks from the pattern string, so if the JSON had \"example\", it becomes just example.",
+    "21": "This sed command finds the placeholder {{ pattern }} in the spam.template file and replaces it with the actual pattern value, then appends the result to roundcube.sieve. The >> means append, not overwrite."
   }
 }

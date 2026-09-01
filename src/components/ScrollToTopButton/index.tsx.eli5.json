@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:54.833Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:54:30.077Z",
+  "source": "index.tsx",
+  "sourceHash": "4f1aa3d7b0fd6df1582efab44d2691f99fc6293a",
+  "lang": "typescript",
+  "summary": "This component renders a decorative button that scrolls the page back to the top when clicked. It only shows the button once you've scrolled down more than 300 pixels, and plays a brief animation when you click it. The button uses an image of a meerkat and includes proper accessibility labels for screen readers.",
   "explanations": {
-    "12": "This checks if the user has scrolled down more than 300 pixels from the top, and updates the isVisible state accordingly.",
-    "13": "The passive option tells the browser this scroll listener won't call preventDefault, so it can optimize performance.",
-    "21": "After the smooth scroll animation finishes (800 milliseconds), the fly animation state is turned off so the button returns to normal.",
-    "27": "clsx is a utility that conditionally combines CSS class names together based on whether conditions are true or false."
+    "12": "This checks how far down the page you've scrolled (window.scrollY) and only enables the button if you're past 300 pixels.",
+    "13": "We attach a listener to the scroll event so that toggleVisibility runs whenever the user scrolls; the passive flag tells the browser it's safe to optimize.",
+    "14": "When the component unmounts or dependencies change, we clean up by removing the scroll listener to prevent memory leaks.",
+    "18": "We set fly to true to trigger a CSS animation class, making the button visually animate as it scrolls.",
+    "21": "After 800 milliseconds (the duration of the animation), we turn off the fly animation so it doesn't loop.",
+    "27": "clsx combines multiple class names conditionally—the button gets the 'show' class when visible and the 'fly' class when animating.",
+    "29": "The aria-label makes the button accessible to screen readers; translate() provides the text in the user's language."
   }
 }

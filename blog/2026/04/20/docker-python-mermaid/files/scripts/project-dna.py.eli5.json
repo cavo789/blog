@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:32.053Z",
+  "generated": "2026-09-01T19:05:17.706Z",
   "source": "project-dna.py",
+  "sourceHash": "1ba1ab6dfd667a3ed550aa3c9b8ada8996c00f4f",
   "lang": "python",
+  "summary": "This script analyzes a folder structure and generates a visual 'DNA' diagram showing what types of files the project contains. It walks through the directory, categorizes files by type (code, config, docs, etc.), organizes them into a mindmap format, and then uses a tool called mmdc to convert that into a PNG image.",
   "explanations": {
-    "6": "os.path.splitext() splits a filename into two parts: the name and the extension; [1] grabs just the extension part like '.py'.",
-    "22": "dirs[:] = [...] modifies the list in-place so os.walk() won't descend into those folders; this filters out hidden folders and Python cache folders.",
-    "26": "setdefault() is a shortcut that returns the category's set if it exists, or creates an empty set and returns it; then add() puts the filename in that set.",
-    "36": "sorted(list(files)) converts the set to a sorted list because sets have no guaranteed order, and we want consistent file ordering.",
-    "41": "This removes parentheses and square brackets from filenames because Mermaid (the diagram tool) uses those characters for its own syntax and gets confused otherwise.",
-    "61": "subprocess.run() executes the 'mmdc' command-line tool (a Mermaid diagram compiler) with various options; check=True makes it raise an error if the command fails."
+    "6": "os.path.splitext() breaks a filename into two parts: the name and the extension (like '.py'). We take [1] to get just the extension part, then .lower() makes it lowercase so '.PY' and '.py' match the same way.",
+    "22": "dirs[:] = modifies the list in-place so that os.walk() won't descend into hidden folders (starting with '.') or Python cache folders. This prevents the loop from wasting time on directories we don't care about.",
+    "26": "setdefault(cat, set()).add(file) is a shortcut: if the category doesn't exist yet, create an empty set for it, then add the filename. We use a set so we don't store duplicate filenames.",
+    "36": "enumerate() gives us both the index (i) and the filename (f) as we loop, so we can count how many files we've added and stop at 6 to keep the diagram readable.",
+    "41": "Mermaid (the diagram tool) has trouble with parentheses and brackets in text, so we strip them out to prevent syntax errors in the generated diagram.",
+    "53": "os.path.abspath() converts a relative path (like '.') into a full absolute path, so the script works the same way no matter where it's run from.",
+    "61": "subprocess.run() launches the mmdc command-line tool as a separate process, passing all the arguments needed to convert our mindmap file into a PNG image.",
+    "68": "After mmdc finishes, we delete the temporary .mmd file since we no longer need it and don't want to clutter the user's folder."
   }
 }

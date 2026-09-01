@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:59.629Z",
+  "generated": "2026-09-01T18:33:15.631Z",
   "source": "makefile.part23",
+  "sourceHash": "eb0999f703867538d88e9ba7ff1db32f84188cad",
   "lang": "part23",
+  "summary": "This Makefile snippet checks whether a Docker container named 'sonarqube' already exists. If it doesn't, it creates a new one from the latest sonarqube image. If it does exist, it ensures the container is started, silencing any output or errors.",
   "explanations": {
-    "1": "This line checks if the docker ps command returns nothing (empty string), which means no container named sonarqube is running; the ifeq is a Makefile conditional, like an if statement.",
-    "6": "The dash before the @ symbol tells Make to ignore errors from this command, and the @symbol hides the command output; the > /dev/null 2>&1 redirects all output to nowhere so nothing prints to the console."
+    "1": "The shell command `docker ps -a -q -f name=sonarqube` lists container IDs matching the name 'sonarqube'; if the result is empty, the `ifeq` condition is true and we proceed to create the container.",
+    "6": "The `-@` prefix means 'ignore errors (the dash) and don't print the command itself (the at sign)', so failed start attempts won't break the build; the `> /dev/null 2>&1` redirects all output and errors to nowhere, keeping things quiet."
   }
 }

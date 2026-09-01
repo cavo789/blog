@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:38.163Z",
+  "generated": "2026-09-01T18:50:21.137Z",
   "source": "BlogPostItem_2.js",
+  "sourceHash": "42a1bcbe4f8090f0c20c1193b04d7387a2b3421c",
   "lang": "javascript",
+  "summary": "This component renders a blog post item by assembling several sub-components (header, content, footer) inside a container. It uses a custom hook to determine whether extra bottom spacing should be added, which depends on whether we're viewing a single post page or a list of posts.",
   "explanations": {
-    "2": "clsx is a utility that combines multiple CSS class names together, useful when you need to conditionally apply classes.",
-    "3": "This hook from Docusaurus gives you information about the current blog post, like whether you're viewing a single post or a list of posts.",
-    "10": "The useBlogPost hook returns an object with properties; here we're extracting just the isBlogPostPage property using destructuring.",
-    "11": "This returns a class name only when we're NOT on the full blog post page (i.e., when we're in a list view), otherwise it returns undefined.",
-    "16": "clsx merges the container's margin class with any additional className prop passed in, so both can apply at once."
+    "3": "This hook fetches blog post context from Docusaurus, which tells us whether the current view is a full blog post page or just a preview in a list.",
+    "10": "The useBlogPost hook gives us an object with an isBlogPostPage flag that tells us what kind of view we're in.",
+    "11": "If we're NOT on the full blog post page (meaning we're in a list view), we add bottom margin spacing; otherwise we return undefined so no extra margin is applied.",
+    "13": "This component accepts children (the main content) and className (any extra CSS classes the parent might want to apply).",
+    "16": "clsx is a utility that combines multiple CSS class names together, filtering out any undefined or false values, so we get a clean final className string."
   }
 }

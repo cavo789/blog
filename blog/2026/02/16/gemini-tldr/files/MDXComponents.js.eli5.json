@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:31.770Z",
+  "generated": "2026-09-01T19:01:57.197Z",
   "source": "MDXComponents.js",
+  "sourceHash": "338cc71dcb0858dce7d9faccaa6b6e6cb643b221",
   "lang": "javascript",
+  "summary": "This code is setting up a custom component library for MDX (a tool that lets you use React components in markdown files). It takes all the default markdown components, keeps those, and then adds a custom TLDR component to the collection so it can be used in markdown documents.",
   "explanations": {
-    "8": "The three dots (...) spread the MDXComponents object, which means we copy all of its properties into our new object so we can add or override specific ones.",
-    "11": "We're adding the TLDR component to the export so it can be used directly in MDX files without needing to import it separately."
+    "8": "The three dots (...) mean 'spread' — it's copying all the properties from MDXComponents into this new object, so we keep all the default markdown behavior.",
+    "11": "We're explicitly adding the TLDR component to our object so that when someone writes markdown, they can use <TLDR /> tags and it will render our custom React component."
   }
 }

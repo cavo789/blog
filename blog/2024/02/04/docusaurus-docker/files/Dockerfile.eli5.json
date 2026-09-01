@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:20.557Z",
+  "generated": "2026-09-01T18:26:43.102Z",
   "source": "Dockerfile",
+  "sourceHash": "35e48cb7df7e641eeb6ddfa3c6d4df70b4086bcc",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a Node.js environment running Docusaurus, a documentation site generator. It installs Docusaurus in the /app directory, switches to a non-root user for security, installs dependencies, copies the project files, and starts the development server listening on all network interfaces.",
   "explanations": {
-    "3": "This creates a new Docusaurus project (a documentation site builder) at /app using npx, then changes ownership of all files to the node user so they can be modified later.",
-    "4": "The chown command changes who owns the /app folder and everything inside it from root to the node user, which is required because the next line switches to that user.",
-    "6": "This switches from running commands as root (the default) to running them as the 'node' user, which is more secure and is needed to match the file ownership we set earlier.",
-    "14": "The --host 0.0.0.0 tells the development server to listen on all network interfaces, not just localhost, so you can access it from outside the container."
+    "3": "create-docusaurus generates a new Docusaurus project in /app using the 'classic' template with JavaScript. The backslash continues the command on the next line.",
+    "4": "chown changes ownership of all files in /app to the 'node' user and group so the non-root user can access them.",
+    "6": "USER node switches from the default root user to 'node', a less-privileged user, for better security when running containers.",
+    "10": "yarn install downloads and installs all the project dependencies defined in package.json into node_modules.",
+    "12": "COPY . . copies all files from your local project directory into the /app directory inside the container.",
+    "14": "CMD sets the default command to run when the container starts. The --host 0.0.0.0 makes the server accessible from outside the container, not just localhost."
   }
 }

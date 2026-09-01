@@ -1,18 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:37:15.225Z",
+  "generated": "2026-09-01T18:38:52.055Z",
   "source": "demo.part2.sh",
+  "sourceHash": "333a92c002bca572b29fef8d4bb2a5b08f770a28",
   "lang": "bash",
+  "summary": "This script demonstrates parallel job execution with concurrency limits. It starts multiple background tasks (the `demo` function) but keeps only a certain number running at once — specifically twice the number of CPU cores. Once that limit is reached, it waits for all those jobs to finish before starting more, then ensures all remaining jobs complete at the end. The script also measures and reports the total execution time.",
   "explanations": {
-    "13": "The 'declare -a' command creates an array variable named pids; the '-a' flag tells bash this will hold multiple values instead of just one.",
-    "15": "This resets pids to an empty array, which might seem redundant after line 13 but ensures it's definitely empty in case the function runs multiple times.",
-    "22": "The 'nproc' command returns how many CPU cores your machine has; this line multiplies that by 2 and stores the result in NUMBER_OF_THREADS.",
-    "33": "The '&' at the end runs the demo function in the background, meaning the script continues immediately without waiting for demo to finish.",
-    "38": "The '$!' variable holds the process ID (a unique number) of the last background job we started; '+=' adds it to the pids array.",
-    "43": "The 'jobs' command lists all running background processes; this line checks if we have as many or more running jobs than our thread limit.",
-    "47": "The 'wait' command pauses the script until the background process with that specific PID finishes.",
-    "70": "The '$(date +%s)' command gets the current time in seconds since 1970; this is used to measure how long the script takes to run.",
-    "73": "This subtracts the start time from the end time to calculate total elapsed seconds."
+    "2": "These flags make bash exit immediately on any error, treat undefined variables as errors, and fail if any command in a pipe fails — this catches mistakes early.",
+    "14": "This declares `pids` as an array variable, which will hold the process IDs of background jobs we start.",
+    "23": "This calculates how many concurrent jobs we want running at once: it gets the CPU core count with `nproc` and multiplies by 2, storing the result in a variable.",
+    "34": "The `&` at the end runs `demo` in the background instead of waiting for it to finish, so we can start more jobs immediately.",
+    "39": "After starting a background job, `$!` gives us its process ID, and `+=` adds that ID to our `pids` array so we can track it.",
+    "44": "This checks if the number of currently running jobs (from the `jobs` command) has reached or exceeded our thread limit, and only then proceeds to wait.",
+    "46": "This loop goes through each stored process ID and waits for it to complete before moving on.",
+    "56": "After all the tracked jobs finish, we clear the array so we can start collecting new job IDs for the next batch.",
+    "64": "This final loop catches any remaining jobs that were started but never waited for because we exited the main loop before hitting the thread limit again."
   }
 }

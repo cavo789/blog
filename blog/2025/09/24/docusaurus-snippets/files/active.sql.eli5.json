@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:54.467Z",
+  "generated": "2026-09-01T18:56:18.195Z",
   "source": "active.sql",
+  "sourceHash": "fa5d3ce34ab00134798242eb1ba93d76386e716a",
   "lang": "sql",
-  "explanations": {}
+  "summary": "This query retrieves all columns from the users table, but only for rows where the active column has a value of 1, which typically means those user accounts are currently active or enabled.",
+  "explanations": {
+    "1": "The WHERE clause filters results to only include rows where active equals 1; without it, you'd get all users regardless of status."
+  }
 }

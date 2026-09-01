@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:21.594Z",
+  "generated": "2026-09-01T19:03:05.122Z",
   "source": "your-post.txt",
+  "sourceHash": "2e837d380147c290fc960d3cd20a6f8f62709bf9",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a front matter section (metadata) for a blog post or similar document, written in YAML format. It defines properties like the post's URL slug, title, author, and whether it was created with AI assistance, followed by the actual content below.",
+  "explanations": {
+    "1": "The three dashes mark the beginning of YAML front matter, a structured metadata block that many static site generators and markdown processors use.",
+    "4": "The square brackets create a list in YAML, so this post has one author named 'christophe' (even though it's just one item, the bracket syntax is how you define a list here).",
+    "5": "This is a boolean flag set to true, meaning this post was assisted by or created using AI tools."
+  }
 }

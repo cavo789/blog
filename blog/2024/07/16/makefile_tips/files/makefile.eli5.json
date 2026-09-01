@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:27.960Z",
+  "generated": "2026-09-01T18:32:22.413Z",
   "source": "makefile",
+  "sourceHash": "ff42aec3a0fa351de5ad6aa0869d84ce73ffbb21",
   "lang": "makefile",
+  "summary": "This makefile snippet checks whether a file called phpunit.xml exists in the .config directory and prints a message accordingly. The first line reports if the file is missing, and the third line confirms if it's present. The @ symbol suppresses the command itself from being printed during execution.",
   "explanations": {
-    "1": "The -s flag checks if a file exists and has content (non-zero size); the || means 'if that fails, then echo this message'.",
-    "3": "The -s flag checks if the file exists and has content; the && means 'if that succeeds, then echo this message'."
+    "1": "The 'test -s' command checks if the file exists and has size greater than zero (not empty). The || means 'if that fails, then do this instead', so it prints the error message only if the file is missing.",
+    "3": "The && means 'if the previous command succeeds, then do this', so it prints the success message only if the file actually exists and has content."
   }
 }

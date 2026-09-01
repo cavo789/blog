@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:54.210Z",
+  "generated": "2026-09-01T18:36:15.945Z",
   "source": "compose.part3.yaml",
+  "sourceHash": "072a0f353c411654944b1f3464ced9cf7f8637aa",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines an nginx web server service. It builds the nginx image from the current directory, exposes HTTP and HTTPS ports to the host machine, and mounts a local source directory into the container so nginx serves files from your project.",
   "explanations": {
-    "3": "The 'build' section tells Docker to create an image by reading instructions from a Dockerfile in the specified context (current directory).",
-    "6": "Port mapping syntax: the first number (80) is what you access on your computer, the second number (80) is the port inside the container that nginx actually listens on.",
-    "9": "A volume mount shares a folder from your computer (./src) with the container (/usr/share/nginx/html) so changes you make locally appear inside the container without rebuilding."
+    "3": "The 'build' section tells Docker Compose to build a custom image for this service instead of pulling a pre-made one from Docker Hub.",
+    "4": "The 'context: .' means Docker will look for a Dockerfile in the current directory to build the image.",
+    "5": "The 'ports' section maps ports from the container to your host machine — the number before the colon is on your computer, the number after is inside the container.",
+    "8": "The 'volumes' section creates a live link between a folder on your computer and a folder inside the container, so changes to your local files are immediately visible to nginx."
   }
 }

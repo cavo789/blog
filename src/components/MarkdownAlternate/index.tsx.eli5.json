@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:38:54.433Z",
+  "generated": "2026-09-01T19:13:11.222Z",
   "source": "index.tsx",
   "sourceHash": "90bfdcc86e1b2431e97f4ab4b996dae621201bbd",
   "lang": "typescript",
+  "summary": "This React component adds a special link tag to a blog post's HTML head that points to a plain-Markdown version of the article. It helps tools and crawlers discover that a Markdown mirror exists at a predictable URL (the article's permalink with .md appended), similar to how RSS feeds are discovered.",
   "explanations": {
-    "10": "useBlogPost is a special hook from Docusaurus that gives us information about the current blog post we're viewing.",
-    "13": "metadata is an object containing details about the blog post, like its URL path (permalink) and other info.",
-    "20": "This constructs the URL to the Markdown file by taking the article's main URL and adding .md to the end."
+    "8": "This imports JSX.Element, which is TypeScript's way of saying 'this function returns something that looks like React/JSX code'.",
+    "9": "This imports Docusaurus's Head component, which lets you inject tags directly into the HTML <head> section of the page.",
+    "10": "This hook gives us access to the current blog post's metadata (like its URL path) that Docusaurus provides.",
+    "13": "We're destructuring to pull out just the metadata object from the hook — this contains things like the permalink (the URL) of the current article.",
+    "20": "We're constructing the URL to the Markdown mirror by taking the article's permalink and appending .md to the end."
   }
 }

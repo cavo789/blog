@@ -1,11 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:22.744Z",
+  "generated": "2026-09-01T18:35:32.906Z",
   "source": "my_class.php",
+  "sourceHash": "c0952ada293838bd08d31d5cad9efca3dc500892",
   "lang": "php",
+  "summary": "This class method queries a database table to retrieve notes associated with a specific piece of content. It builds a SQL query to fetch the 'note' column from the ratings table where the content ID is 8, executes the query, and returns all the results as an array.",
   "explanations": {
-    "7": "getQuery(true) creates a new database query object; the 'true' parameter means we want to use the database driver's native query builder instead of raw SQL.",
-    "13": "loadColumn() runs the query and returns only a single column of results as an array, rather than full rows."
+    "7": "getQuery(true) creates a new database query object; the 'true' parameter tells it to use the database driver's query syntax instead of generic SQL.",
+    "8": "select() specifies which columns you want the database to return — in this case just the 'note' column.",
+    "9": "from() tells the database which table to look in; the '#__' is a placeholder that gets replaced with the actual table prefix when the query runs.",
+    "10": "where() adds a condition that filters results to only rows where the content_id equals 8.",
+    "13": "loadColumn() executes the query and returns just the values from that one selected column as a simple array, rather than returning full row objects."
   }
 }

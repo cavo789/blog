@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:28.382Z",
+  "generated": "2026-09-01T19:05:12.251Z",
   "source": "compose.yaml",
+  "sourceHash": "d40782bbbebc879dde6259c736085dec5c673e07",
   "lang": "yaml",
+  "summary": "This Docker Compose file defines a microservices architecture with five services: an nginx reverse proxy handling external traffic, an API gateway that routes requests to backend services, authentication and user services built with Node and Python, and a PostgreSQL database with Redis caching. The services communicate across three custom networks that isolate frontend traffic from internal backend services, which themselves separate from the database tier.",
   "explanations": {
-    "5": "This service is on the 'frontend' network, which means it can only communicate with other services also on that network.",
-    "10": "The api-gateway won't start until auth-service and user-service are both running; this ensures dependencies are ready before this service tries to use them.",
-    "11": "This service sits on both 'frontend' and 'backend' networks, acting as a bridge so it can receive requests from the frontend and talk to backend services.",
-    "18": "This creates a persistent storage location called 'auth_data' that survives even if the container is deleted; it's mounted at /data inside the container.",
-    "41": "The 'bridge' driver is explicitly specified for this network, which is Docker's default networking mode that isolates containers while allowing them to communicate."
+    "4": "The port mappings \"80:80\" and \"443:443\" mean external traffic on ports 80 and 443 gets forwarded to the same ports inside the nginx container.",
+    "5": "Networks is a list of which networks this service connects to; nginx-proxy only needs frontend because it's the entry point.",
+    "10": "The depends_on ensures auth-service and user-service are started before api-gateway, since the gateway needs to communicate with them.",
+    "11": "The api-gateway connects to both frontend and backend networks because it receives requests from nginx-proxy and forwards them to backend services.",
+    "13": "Environment variables are configuration passed into the container; this tells api-gateway where to find the PostgreSQL database using a connection string.",
+    "18": "The auth_data volume is persistent storage that survives container restarts; it's named (rather than path-based) so Docker manages it.",
+    "22": "user-service connects to both backend (to receive requests from api-gateway) and database (to reach Redis and PostgreSQL directly).",
+    "29": "The pg_data volume stores PostgreSQL's actual database files at the container's /var/lib/postgresql/data directory.",
+    "41": "Explicitly setting driver: bridge means the database network uses Docker's bridge driver, though that's the default anyway."
   }
 }

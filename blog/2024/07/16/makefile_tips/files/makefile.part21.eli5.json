@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:55.917Z",
+  "generated": "2026-09-01T18:33:10.211Z",
   "source": "makefile.part21",
+  "sourceHash": "273b8ea2503af62252010569c187b5beead6a7bb",
   "lang": "part21",
+  "summary": "This Makefile snippet defines a task called 'runsql' that checks whether a SQL variable has been set, then either prints a yellow message saying what SQL will run, or prints a red error message and exits if SQL wasn't provided. It's a safety check to prevent accidentally running undefined SQL commands.",
   "explanations": {
-    "1": "This sets COLOR_RED to 31, which is the ANSI terminal code that makes text red when you print it.",
-    "2": "This sets COLOR_YELLOW to 33, which is the ANSI terminal code for yellow text in the terminal.",
-    "5": "This is a shell conditional: if the SQL variable is set, print the SQL in yellow; otherwise print an error message in red and exit with failure code 1."
+    "1": "This creates a variable named COLOR_RED with the value 31, which is an ANSI color code that terminals use to display text in red.",
+    "2": "This creates a variable named COLOR_YELLOW with the value 33, which is an ANSI color code for yellow text.",
+    "5": "The ${SQL} checks if the SQL variable is set; if it is, the first part runs (showing yellow text), otherwise the second part runs after the || (showing red text and exiting with error code 1). The \\e[1;...m sequences are escape codes that tell the terminal to start coloring, and \\e[0m turns coloring off."
   }
 }

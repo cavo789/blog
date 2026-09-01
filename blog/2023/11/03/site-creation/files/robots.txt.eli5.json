@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:50.146Z",
+  "generated": "2026-09-01T18:20:32.787Z",
   "source": "robots.txt",
+  "sourceHash": "6432d2e57bc514879ae83cf84d08768afb8f0ee1",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a robots.txt file that tells search engine crawlers (like Google's bot) what they're allowed to access on the avonture.be website. It allows all crawlers to visit the site, points them to the sitemap for better indexing, but blocks them from accessing a few specific XML and JSON files that are probably internal or administrative resources.",
+  "explanations": {
+    "1": "The asterisk (*) is a wildcard meaning 'all robots' — this rule applies to every search engine crawler that visits the site.",
+    "3": "The dollar sign ($) at the end means 'ends with' — so this blocks any URL path that ends with 'index.xml', preventing crawlers from accessing that file type."
+  }
 }

@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:36.455Z",
+  "generated": "2026-09-01T18:25:16.942Z",
   "source": "custom.part2.js",
+  "sourceHash": "1fdc072bae51e8e4c3eed774db69f12e053b8301",
   "lang": "javascript",
+  "summary": "When the page loads, we set up a listener that watches for slide changes in a presentation. Whenever a slide changes, we search through that slide's HTML content for text wrapped in double equal signs (like ==highlighted text==) and replace it with the same text wrapped in HTML mark tags so CSS can style it visually.",
   "explanations": {
-    "1": "This waits for the page to fully load before running the code inside, so all elements are ready to use.",
-    "7": "This creates a pattern (regex) that finds text wrapped in double equals signs like ==example==, where [^=]* means 'any characters except equals signs'.",
-    "8": "The replace method finds all matches of that pattern and swaps them for <mark> tags, where $1 refers back to the text that was between the equals signs."
+    "7": "This creates a regular expression pattern that matches text between two pairs of equal signs. The [^=]* part means 'any characters except equals signs', and the parentheses capture just the text inside so we can reuse it later.",
+    "8": "We're replacing all instances of the pattern in the slide's HTML using a global RegExp. The $1 in the replacement string refers back to the captured text from the parentheses in our pattern, so we keep the text but wrap it in mark tags instead of equal signs."
   }
 }

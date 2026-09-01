@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:15:22.518Z",
+  "generated": "2026-09-01T19:19:32.376Z",
   "source": "readme.md",
+  "sourceHash": "ea1c9389e681a08aaf5cd4611e932352ad47a18f",
   "lang": "markdown",
+  "summary": "This is documentation for a Terminal component—a reusable React UI element that displays styled terminal/console output on Docusaurus pages. It supports customizable titles, optional typewriter animation where commands appear character-by-character, and can load content from external files or inline JSX. The component is designed to make CLI examples visually appealing and interactive.",
   "explanations": {
-    "48": "The asterisk means children is only required if you don't use the source prop—if source is provided, children becomes optional.",
-    "53": "This prop controls how fast each character appears when typewriter mode is on; if you leave it blank, the component automatically picks a speed based on how many lines are in the terminal.",
-    "54": "This is the delay (in milliseconds) before output lines show up during typewriter animation; if omitted, it scales automatically depending on line count.",
-    "120": "Inside JSX template literals (the backticks), dollar signs need a backslash in front of them to be treated as regular text instead of JavaScript variable placeholders."
+    "11": "The typewriter animation feature makes command lines (starting with $ or #) appear one character at a time, while output lines show up all at once—mimicking how a real terminal would display them.",
+    "46": "The `source` prop lets you point to an external text file instead of writing terminal content directly in your code; a build-time plugin automatically reads and injects that file's contents.",
+    "50": "If you don't specify `typewriterSpeed`, the component automatically picks a speed based on how many lines you have—fewer lines get slower typing (more dramatic), many lines get faster typing (less tedious).",
+    "97": "Lines beginning with `$` or `>` are recognized as shell commands and get a visual prompt marker to make them stand out from regular output.",
+    "121": "When you use template literals (backticks) in JSX, you need to escape the `$` with a backslash so JavaScript doesn't try to interpret `${something}` as a variable placeholder instead of literal text."
   }
 }

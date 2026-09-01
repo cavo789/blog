@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:50.420Z",
+  "generated": "2026-09-01T18:56:14.710Z",
   "source": "HelloWorld.php",
+  "sourceHash": "08ad255555ceaeeb189c682da2d844c222a4d059",
   "lang": "php",
+  "summary": "This is a simple PHP script that outputs the text 'Hello, world!' to the browser or console. It demonstrates the most basic use of PHP's echo statement to display content.",
   "explanations": {}
 }

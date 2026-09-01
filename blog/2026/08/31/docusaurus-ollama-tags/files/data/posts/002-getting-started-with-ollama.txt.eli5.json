@@ -1,9 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:50.902Z",
+  "generated": "2026-09-01T19:14:49.671Z",
   "source": "002-getting-started-with-ollama.txt",
   "sourceHash": "82178485d054fc38425b32f969c4b114b03264b0",
   "lang": "plaintext",
+  "summary": "This is the introduction to a guide about Ollama, a tool for running large language models on your personal computer. It promises to teach you how to install Ollama, download a model, and use it through both command-line and web-based interfaces, highlighting the benefits of privacy and cost savings.",
   "explanations": {}
 }

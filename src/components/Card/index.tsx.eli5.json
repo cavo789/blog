@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:47.811Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:52:28.933Z",
+  "source": "index.tsx",
+  "sourceHash": "02fdbd9a33cd13bbededa6b7f20000783ca12bb6",
+  "lang": "typescript",
+  "summary": "This is a reusable Card component that wraps content in a styled container. It accepts optional custom classes, inline styles, shadow effects, and child content, then combines them all together using the clsx utility to build the final className.",
   "explanations": {
-    "9": "This line builds a CSS class name string that only includes the shadow class if a shadow prop was actually provided; if shadow is undefined or false, cardShadow becomes an empty string.",
-    "11": "The clsx function merges multiple class names together intelligently, so if cardShadow is empty it won't add extra spaces, and it handles the conditional className prop smoothly."
+    "12": "The shadow prop can only be one of three specific string values: 'lw' (low), 'md' (medium), or 'tl' (tall) — TypeScript will complain if you pass anything else.",
+    "16": "This line checks if a shadow prop was provided; if it was, it builds a class name like 'item shadow--lw' by concatenating strings, otherwise it's an empty string.",
+    "18": "clsx() is a utility that combines multiple class name arguments (including conditional ones) into a single string, automatically filtering out falsy values like empty strings."
   }
 }

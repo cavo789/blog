@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:34.608Z",
+  "generated": "2026-09-01T18:42:26.369Z",
   "source": "decision_flow.py",
+  "sourceHash": "dc6724066b749ac4d33f795c07fd76cf572cf9bf",
   "lang": "python",
+  "summary": "This code creates a flowchart diagram using pydot, a Python library for working with Graphviz. It defines five nodes (Start, Process 1, Decision, Process 2, and End) with different shapes, connects them with edges to form a flow, and renders the final diagram as a PNG image file.",
   "explanations": {
-    "1": "This creates a new directed graph (digraph means arrows point in one direction, like a flowchart).",
-    "11": "We're creating a connection (edge) between two nodes and immediately adding it to the graph in one step.",
-    "18": "This exports the graph as a PNG image file so you can actually see the flowchart as a picture."
+    "1": "pydot.Dot creates a new graph object; 'digraph' means a directed graph where edges flow in one direction (like arrows pointing from one step to the next).",
+    "4": "pydot.Node creates a visual box for the flowchart; the 'shape' parameter determines how it looks—'oval' is typically used for start/end points.",
+    "6": "The 'diamond' shape is a standard flowchart symbol for decision points where the flow branches into different paths based on yes/no answers.",
+    "11": "pydot.Edge creates a connection line between two nodes; here it's connecting the start node to process 1, showing the flow direction.",
+    "13": "The 'label' parameter adds text to the edge line itself, so 'Yes' appears on the arrow going from Decision to Process 2.",
+    "18": "write_png() renders the graph using Graphviz and saves it as a PNG image file that you can view or embed in documents."
   }
 }

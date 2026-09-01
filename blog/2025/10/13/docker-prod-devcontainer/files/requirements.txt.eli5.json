@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:18.858Z",
+  "generated": "2026-09-01T18:57:02.684Z",
   "source": "requirements.txt",
+  "sourceHash": "881ebcc20ce4ffecfb092e08f4f119afc30e10b8",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a requirements file listing the Python packages needed to run a FastAPI web application with a production-grade server setup. FastAPI is the web framework, while Gunicorn and Uvicorn are different application servers that run the code—Gunicorn is a traditional option and Uvicorn is the modern async-compatible choice.",
+  "explanations": {
+    "3": "The [standard] part means 'install Uvicorn with all its optional dependencies included' rather than just the bare minimum, giving you extra features out of the box."
+  }
 }

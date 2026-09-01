@@ -1,16 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:08.833Z",
-  "source": "posts.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:53:09.946Z",
+  "source": "posts.ts",
+  "sourceHash": "20fc973a84a6078154e8695731526d2628746103",
+  "lang": "typescript",
+  "summary": "This function scans the blog directory for MDX files and extracts metadata from the frontmatter of each post. It normalizes the data by resolving permalinks (using either a custom slug or the folder structure), fixing relative image paths, and converting fields to the correct types, then returns a filtered array of structured blog post metadata objects.",
   "explanations": {
-    "37": "require.context is a Webpack feature that dynamically loads all files matching a pattern from a folder — here it's grabbing all .md and .mdx files from the blog directory.",
-    "41": "The .keys() method returns an array of file paths (like './my-post/index.mdx') that Webpack found; we're mapping over each one to extract its metadata.",
-    "43": "posts(key) actually loads and executes the file at that path, which gives us the frontMatter object (the YAML metadata at the top of each MDX file).",
-    "45": "This line strips away the './index.mdx' or '.mdx' extension and the leading './' from the file path, leaving just the folder name to use as part of the URL.",
-    "49": "If the post's frontMatter has a custom slug field, we use it as the permalink; otherwise we fall back to building the URL from the folder structure.",
-    "57": "Image paths that start with './' are relative paths within the blog folder, so we're converting them to absolute URLs by prefixing with the blog directory structure.",
-    "75": "filter(Boolean) removes any falsy values (like undefined or null) from the array, in case something went wrong parsing a post."
+    "51": "require.context tells Webpack to load all MDX files from the blog directory at build time, creating a special object where you can retrieve files by their path.",
+    "57": "We're casting the loaded post to an object with a frontMatter property so TypeScript knows what shape the data has.",
+    "59": "We extract the folder name from the file path by removing the /index.mdx part and the leading ./ that Webpack adds.",
+    "62": "If the post has a custom slug in its frontmatter, we use that as the permalink; otherwise we fall back to deriving it from the folder structure.",
+    "63": "The slug might already start with a slash, so we preserve that; if not, we add /blog/ prefix to create the full URL path.",
+    "71": "Image paths that start with ./ are relative to the blog post's folder, so we convert them to absolute paths that start from the root.",
+    "79": "Boolean() converts truthy/falsy values to explicit true or false, since draft might be undefined or a string.",
+    "82": "We use || [] to provide an empty array as a default if tags aren't defined in the frontmatter, preventing undefined from appearing in the metadata.",
+    "89": "filter(Boolean) removes any falsy entries (though with the current structure, this is mainly a safety check)."
   }
 }

@@ -1,21 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:58.369Z",
+  "generated": "2026-09-01T19:02:28.759Z",
   "source": "dex",
+  "sourceHash": "e67a4966542551b97bb2d2c537f9458caabbdb60",
   "lang": "plaintext",
+  "summary": "This script provides an interactive way to pick a running Docker container using fzf (a fuzzy finder), then execute a shell inside it. Depending on which key you press, it either runs the command immediately, lets you edit it first, or runs it as the root user instead of the default user.",
   "explanations": {
-    "4": "This checks that both the fzf and docker commands are available on your system, and stops the script if either one is missing.",
-    "5": "This checks if there are any running Docker containers, and stops the script early if there aren't any.",
-    "7": "This declares several variables that will be used later to store user input and selections from the fzf menu.",
-    "12": "This creates a multi-line string that tells Docker how to format and display detailed information about a container when you hover over it in the menu.",
-    "18": "The backslash before the dollar signs tells Docker to treat $p and $conf as template variables rather than shell variables.",
-    "19": "The {1} at the end means \"pass the first column of data (the container ID) from the fzf selection to this preview command\".",
-    "31": "This extracts just the first line of fzf's output, which tells you which key combination the user pressed (like Ctrl-E or Ctrl-R).",
-    "32": "This extracts everything after the first line, which is the actual container information the user selected.",
-    "33": "This pulls out just the container ID (the first column) from the selected row using awk, a text-processing tool.",
-    "44": "This creates a command that tries to start zsh, falls back to bash if zsh doesn't exist, and finally falls back to sh as a last resort.",
-    "45": "This uses tr to remove any extra spaces that might have been added, ensuring the docker command is clean before running it.",
-    "49": "Instead of executing the command immediately, this puts it into the zsh input buffer so you can edit it first before pressing Enter."
+    "4": "This calls a helper function to verify that both fzf and docker are installed and available; if either is missing, the script exits early with an error.",
+    "5": "This checks that there is at least one running container; if not, the script exits cleanly without doing anything.",
+    "7": "This declares several variable names that will be used later to store pieces of information extracted from fzf's output.",
+    "12": "This builds a multi-line string that tells Docker how to format detailed information about a container—it's a template that Docker will fill in with actual container details like its name, status, and network configuration.",
+    "22": "This runs the docker ps command to list all running containers, then pipes that list into fzf so the user can search and select one interactively.",
+    "31": "The fzf output contains both a key (which special key was pressed) on the first line and the selection info on remaining lines; this extracts just the key.",
+    "32": "This extracts everything after the first line of fzf output, which contains the user's selection details.",
+    "33": "The selection contains three tab-separated values (container ID, name, and image); this uses awk to pull out just the first value, the container ID.",
+    "44": "This creates a command that tries to start zsh inside the container, but falls back to bash if zsh isn't available, and ultimately falls back to sh if bash isn't available either.",
+    "45": "This assembles the complete docker exec command with all the pieces (user flag, container ID, shell strategy), and tr removes any extra spaces to clean it up.",
+    "48": "If the user pressed Ctrl-E, print -z puts the command into the shell's input buffer so they can edit it before running it.",
+    "51": "This prints the command in a cyan color so the user can see what's about to run.",
+    "52": "This executes the assembled Docker command, actually running the shell inside the container."
   }
 }

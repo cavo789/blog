@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:17.890Z",
+  "generated": "2026-09-01T18:46:56.461Z",
   "source": "main.cs",
+  "sourceHash": "b5d8780034b0792a89be5efc7b8a65daf45feb3a",
   "lang": "cs",
+  "summary": "This program connects to an Oracle database using credentials loaded from environment variables (with sensible defaults), then retrieves and displays the first 25 employee records in a formatted table. It uses the Oracle managed data access library and includes error handling for connection and query failures.",
   "explanations": {
-    "12": "The ?? operator means 'use the value on the left if it exists, otherwise use the value on the right as a fallback'.",
-    "18": "This long string uses string interpolation (the $ prefix) to insert variables into an Oracle connection string, which tells the database where to find the server and how to log in.",
-    "26": "ROWNUM <= 25 is an Oracle-specific way to limit results to the first 25 rows (similar to LIMIT in other databases).",
-    "28": "The nested using statements ensure that both the command and reader objects are properly cleaned up when done, even if an error occurs."
+    "12": "The ?? operator means 'use the value from Environment.GetEnvironmentVariable, but if that returns null, use the default value in quotes instead'.",
+    "18": "This builds an Oracle connection string using string interpolation (the $ prefix and curly braces) to insert the host, port, service name, user, and password into the required format.",
+    "22": "The 'using' statement ensures the database connection is automatically closed and cleaned up when we're done with it, even if an error occurs.",
+    "28": "We're chaining two 'using' statements: one for the command object and one for the data reader, so both get properly cleaned up.",
+    "34": "The while loop reads one row at a time from the query results; reader.Read() returns false when there are no more rows.",
+    "36": "reader.GetInt32(0) gets the integer value from the first column (index 0) of the current row; subsequent GetString calls get columns 1, 2, and 3.",
+    "41": "The {employeeId,-12} syntax means 'left-align the employee ID in a field 12 characters wide'; the negative number indicates left alignment."
   }
 }

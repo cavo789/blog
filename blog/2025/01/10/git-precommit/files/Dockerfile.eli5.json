@@ -1,14 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:59.983Z",
+  "generated": "2026-09-01T18:44:41.919Z",
   "source": "Dockerfile",
+  "sourceHash": "55ce46bc4611dc19ef5d2b006507927fb331f699",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Python 3.13 container with git installed, sets the working directory to /app/src, and keeps the container running indefinitely so you can shell into it for debugging or development. The 'slim' variant is used to keep the image small.",
   "explanations": {
-    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax parser, which gives you access to newer Docker features.",
-    "3": "The 'AS base' part names this stage 'base' so you can refer to it later if you want to build multiple images from different stages.",
-    "5": "The backslash at the end of the line lets you continue a long command across multiple lines for readability.",
-    "7": "This deletes the temporary package cache files that apt-get left behind, which shrinks the final image size.",
-    "12": "Instead of running a normal application, this keeps the container alive indefinitely by running a command that does nothing—useful for debugging or testing."
+    "3": "The 'AS base' label gives this stage a name, which is useful if you later add more build stages that reference this one or copy files from it.",
+    "5": "The backslashes at the end of lines let you continue a command across multiple lines for readability; Docker treats it as one long RUN command.",
+    "7": "Deleting the apt package cache files (in /var/lib/apt/lists) shrinks the final image size since we won't need to reinstall packages.",
+    "12": "ENTRYPOINT runs 'tail -f /dev/null', which outputs nothing and runs forever, keeping the container alive instead of immediately exiting."
   }
 }

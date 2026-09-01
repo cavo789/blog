@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:48.133Z",
+  "generated": "2026-09-01T18:23:53.426Z",
   "source": "compose_mariadb.yaml",
+  "sourceHash": "aaec6cedb53189c9c5f9beacba7167d91819921d",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a Joomla website with a MariaDB database. It defines two services that will run in containers: a Joomla application server and a MariaDB database server. The configuration uses template variables (marked with %%) that can be customized when the file is used, such as the project name, port number, and database password.",
   "explanations": {
-    "9": "The first number (8080) is the port on your computer, and the second number (80) is the port inside the container; traffic coming to localhost:8080 gets forwarded to port 80 inside the Joomla container.",
-    "11": "JOOMLA_DB_HOST is set to 'joomladb' (the service name above), which Docker's networking automatically resolves so the Joomla container can find the database container.",
-    "13": "depends_on tells Docker to start the joomladb service before starting the joomla service, ensuring the database is ready when the app tries to connect."
+    "1": "The %% syntax with name= creates a placeholder variable that will be replaced with an actual value (like 'kingsbridge') when this template is processed.",
+    "9": "This maps port 8080 on your computer to port 80 inside the Joomla container, so you can access the website by visiting localhost:8080 in your browser.",
+    "11": "This tells the Joomla application where to find its database by setting an environment variable to the hostname 'joomladb', which is the name of the other service defined below.",
+    "13": "The depends_on clause ensures the database service starts before the Joomla service, since Joomla needs the database to be ready.",
+    "18": "This specifies the exact version (11.1.2) of the MariaDB database image to use, rather than just 'latest', ensuring consistent behavior across different setups."
   }
 }

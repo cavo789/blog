@@ -1,15 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:24.713Z",
+  "generated": "2026-09-01T18:21:33.050Z",
   "source": "Hangman.py",
+  "sourceHash": "fe1e1b58ef29288128f53ad531de91200c573a6d",
   "lang": "python",
+  "summary": "This is a complete Hangman game implementation. A player guesses letters to figure out a hidden word, getting 5 wrong guesses before losing. The game loops until the player chooses to quit, and it includes visual feedback showing the hangman drawing getting progressively worse with each wrong guess.",
   "explanations": {
-    "4": "The `lower()` method converts the input to lowercase so it matches against lowercase 'y' and 'n', and `not in` checks if the answer isn't in that approved list.",
-    "14": "This creates a string of underscores with the same length as the word to hide — for example, if the word is 'cat', display starts as '___'.",
-    "17": "Converting the word to a list makes it easier to check if a guessed letter exists and to remove it later.",
-    "31": "The `find()` method returns the position (index) of the first occurrence of the guessed letter in the word.",
-    "32": "This replaces one underscore with the correct letter by taking everything before the position, adding the letter, then adding everything after the position.",
-    "101": "The double backslash `\\` is needed because a single backslash is special in Python strings, so `\\` represents one actual backslash character in the output."
+    "9": "This keeps asking for input in a loop until the user enters either 'y' or 'n' (case-insensitive), rejecting any other input.",
+    "19": "This creates a string of underscores as long as the secret word, representing the unrevealed letters the player will gradually fill in.",
+    "22": "Converting the word to a list of letters makes it easier to remove letters as the player guesses them correctly.",
+    "25": ".strip() removes any accidental whitespace the user might have typed before or after their letter.",
+    "26": "This validates that the user entered exactly one character—rejecting empty input or multiple letters.",
+    "30": "This checks if the player already guessed this letter before, to avoid penalizing them twice for the same wrong guess.",
+    "35": ".remove() deletes only the first occurrence of the guessed letter from the letters list, which is used later to detect when the word is complete.",
+    "36": ".find() locates the position of the guessed letter in the word so we know where to reveal it in the display.",
+    "37": "This reconstructs the display string by inserting the correctly guessed letter at the position it was found.",
+    "40": "Only wrong guesses get added to the guessed list; correct guesses are tracked differently via the letters list.",
+    "113": "Comparing the display string to the original word tells us if all letters have been revealed—meaning the player won.",
+    "125": "This clears the terminal screen; it uses 'cls' on Windows or 'clear' on Unix-based systems.",
+    "144": "random.choice() picks one word at random from the list for each new game.",
+    "152": "This Python idiom ensures play_hangman() only runs if this file is executed directly, not if it's imported elsewhere."
   }
 }

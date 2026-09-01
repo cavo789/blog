@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:42.448Z",
+  "generated": "2026-09-01T18:55:56.905Z",
   "source": "hello.html",
+  "sourceHash": "5c1498c19cb2bdbf2e9f90bb651f9324af94d719",
   "lang": "html",
-  "explanations": {}
+  "summary": "This is a minimal HTML document that displays the text 'Hello, world!' in a paragraph on a web page. It uses the standard HTML5 structure with a DOCTYPE declaration, html tag, and body containing content.",
+  "explanations": {
+    "1": "DOCTYPE html tells the browser this is an HTML5 document, which is the modern standard for web pages."
+  }
 }

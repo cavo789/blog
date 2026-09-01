@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:29.845Z",
+  "generated": "2026-09-01T18:45:52.311Z",
   "source": "create_db.sql",
+  "sourceHash": "27755d13f07fe955718062ce98a9b8768bd55c1a",
   "lang": "sql",
+  "summary": "This script sets up a new SQL Server database called SampleDB, creates a Customers table with columns for customer information, populates it with ten sample customer records, and then displays all the data to verify it was inserted correctly.",
   "explanations": {
-    "3": "GO is a batch separator in SQL Server that tells the database to execute all the commands written so far as one group.",
-    "11": "IDENTITY(1,1) means the database will automatically assign each customer a unique ID starting at 1 and incrementing by 1 for each new row.",
-    "31": "GO here executes the INSERT statement; without it, SQL Server wouldn't know you're done entering the data."
+    "3": "GO is a batch separator in SQL Server that tells the database to execute all the statements above it before continuing; think of it like hitting 'run' on a chunk of code.",
+    "7": "Another GO statement, this time ensuring the USE command (which switches to the SampleDB database) completes before the next batch of statements runs.",
+    "11": "IDENTITY(1,1) means SQL Server will automatically assign a unique number to each new customer, starting at 1 and incrementing by 1 each time, so you don't have to manually provide these values.",
+    "17": "GO executes the CREATE TABLE statement so the table actually exists in the database before we try to insert data into it.",
+    "31": "GO executes all the INSERT statements above it, adding all ten customer rows to the table in one batch.",
+    "35": "GO ensures the SELECT query runs after all previous statements are complete, so you see the final populated table."
   }
 }

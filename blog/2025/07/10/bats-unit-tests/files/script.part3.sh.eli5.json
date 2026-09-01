@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:18.999Z",
+  "generated": "2026-09-01T18:49:35.628Z",
   "source": "script.part3.sh",
+  "sourceHash": "f24ce3cb6fc4001cb10b431599bc99e6e91030c4",
   "lang": "bash",
+  "summary": "This function checks whether a Docker image exists on the system. It queries Docker for the image by name, and if Docker returns nothing (meaning the image wasn't found), it prints an error message and exits the script with a failure code. Otherwise it returns success.",
   "explanations": {
-    "2": "The 'local' keyword means this variable only exists inside this function, not outside it.",
-    "3": "The ':-' syntax means: use the second parameter if provided, otherwise use the default text in the braces.",
-    "6": "The '&&' chains commands: if the first part is true (image doesn't exist), run the echo and exit; the '2>/dev/null' silences error messages."
+    "3": "This sets a default error message if the caller didn't provide one as the second argument — the ${2:-...} syntax means 'use argument 2, but if it's empty, use this default string instead'.",
+    "6": "[[ ... ]] is bash's extended test operator. The && means 'if the left side is true, run the right side', so this reads as: 'if the docker images command returns empty, then print the message and exit with code 1 (failure)'."
   }
 }

@@ -1,16 +1,27 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:47.860Z",
+  "generated": "2026-09-01T18:59:18.827Z",
   "source": "Dockerfile",
+  "sourceHash": "69ce2e26ffa78ef2039c821223f42af970d47218",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a development container for a Docusaurus blog project with Node.js. It starts from a custom base image, installs essential tools and Git, configures passwordless sudo for the node user, sets up VSCode server integration for remote development, customizes the bash shell with history and a styled prompt, and installs project dependencies using Yarn with caching for faster rebuilds.",
   "explanations": {
-    "1": "This special first line tells Docker to use an advanced Dockerfile syntax version that unlocks extra features like cache mounts, which help speed up image rebuilds.",
-    "16": "This pulls from a custom base image called 'blog-docusaurus' that you've already built elsewhere; it comes pre-loaded with Node.js and Docusaurus so we don't have to install them here.",
-    "19": "We're re-declaring the APP_HOME variable here because Docker arguments don't automatically carry through after a FROM statement, so we need to repeat it.",
-    "25": "The --mount options here are caching layers: they tell Docker to reuse downloaded packages across builds instead of re-downloading them every time, making rebuilds much faster.",
-    "38": "This git command prevents errors when Docker tries to access the app folder; it tells git 'it's okay, this folder is safe even though you didn't clone it yourself'.",
-    "48": "This creates a special file that lets the 'node' user run any command with 'sudo' without needing to type a password, which is convenient in a development container.",
-    "79": "The --mount here is similar to line 25, but with uid and gid parameters that ensure the yarn cache folder has the correct ownership so the non-root user can access it."
+    "1": "This special comment tells Docker to use version 1.6 of the Dockerfile syntax, which includes modern features like cache mounts that make rebuilds faster.",
+    "8": "ARG creates a build-time variable that can be passed in when building the image; this one sets the user ID to 1002, which will be used later to create a non-root user.",
+    "16": "This pulls a pre-built image called 'blog-docusaurus' that already has Node.js and Docusaurus dependencies installed, saving time instead of installing everything from scratch.",
+    "19": "We re-declare APP_HOME here because build arguments don't automatically carry over between stages, so we need to remind Docker what APP_HOME should be for the rest of this Dockerfile.",
+    "25": "The --mount flags tell Docker to cache the apt package lists and cache directories, so if you rebuild the image, it won't re-download packages you already have.",
+    "27": "The 'set -eux' command makes bash exit on errors, print each command before running it, and treat undefined variables as errors—all safety measures to catch problems early.",
+    "38": "This tells Git to trust the application directory, preventing warnings when running Git commands inside the container later.",
+    "48": "We're writing a sudoers configuration file that lets the node user run any command with sudo without needing to enter a password.",
+    "49": "The chmod 0440 sets very restrictive permissions on the sudoers file—this is a security requirement, as sudoers files must have specific permissions or sudo will refuse to read them.",
+    "53": "We're creating directories where VSCode's remote server extension will store its files, extensions, and metadata for remote development.",
+    "60": "We're appending configuration to .bashrc so that bash history gets saved to a file, making command history persistent across container restarts.",
+    "67": "This customizes the bash prompt to show a Docker whale emoji, the current username, and working directory in a colored format for better readability during development.",
+    "71": "We're setting an environment variable that tells Yarn where to cache downloaded packages, so future yarn installs can reuse those files instead of re-downloading.",
+    "79": "The --mount flag with uid and gid parameters mounts the Yarn cache folder with the correct ownership, so the node user can read and write to it without permission issues.",
+    "81": "The --immutable and --frozen-lockfile flags ensure we install exact versions from the lock file; --prefer-offline uses cached packages when possible to speed things up.",
+    "82": "We're installing Sharp, a native image processing library that Docusaurus needs to optimize images; the platform and arch flags ensure we get the Linux 64-bit version."
   }
 }

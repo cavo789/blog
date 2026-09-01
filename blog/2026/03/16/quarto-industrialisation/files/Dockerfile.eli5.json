@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:33.775Z",
+  "generated": "2026-09-01T19:03:21.360Z",
   "source": "Dockerfile",
+  "sourceHash": "6c3873d2ec88219b0673a9c3e5ae9fb7b469d0d5",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a Ubuntu container with Python, pip, and Quarto (a document generation tool). It downloads a specific version of Quarto, extracts it to a standard location, and makes it available system-wide. It then configures Python to run efficiently in containers by disabling bytecode caching and enabling unbuffered output, and finally installs Jupyter and PyYAML as dependencies.",
   "explanations": {
-    "6": "This downloads Quarto from GitHub in one long command; the backslash at the end means the command continues on the next line.",
-    "7": "The tar command extracts the downloaded file into /opt/quarto, and --strip-components=1 removes the top folder level so files go directly where we want them.",
-    "8": "This creates a shortcut (symlink) so you can type 'quarto' from anywhere instead of typing the full path /opt/quarto/bin/quarto.",
-    "13": "This tells Python not to create compiled .pyc files, which saves space in the container since we don't need them.",
-    "19": "The --no-cache-dir flag tells pip not to keep a copy of downloaded packages after installing, which shrinks the final image size."
+    "2": "FROM tells Docker which base image to start with — think of it as the operating system you're building on top of. Ubuntu 22.04 is a lightweight Linux distribution.",
+    "5": "RUN executes shell commands during the build. The && chains commands so they all run together in one layer. apt-get update refreshes the package list, then apt-get install downloads curl, Python, and pip.",
+    "6": "curl downloads a file from the internet (the Quarto executable). The -L flag follows redirects and -o specifies the output filename.",
+    "7": "tar -xzf extracts the compressed file; -C specifies where to extract it; --strip-components=1 removes the top-level folder from the archive so files go directly into /opt/quarto.",
+    "8": "ln -s creates a symbolic link, which is like a shortcut. This makes the quarto command available anywhere by pointing /usr/local/bin/quarto to the actual binary.",
+    "10": "WORKDIR sets the default directory where commands run and where files are placed. It's like cd-ing into a folder for the rest of the container's life.",
+    "13": "This environment variable tells Python not to write .pyc bytecode files, which saves disk space since containers don't need those performance optimizations.",
+    "16": "This unbuffered mode makes Python print output immediately instead of waiting for a full buffer, so you see logs in real-time when running the container.",
+    "19": "pip3 install downloads Python packages; --no-cache-dir discards pip's cache after installation to reduce the final image size."
   }
 }

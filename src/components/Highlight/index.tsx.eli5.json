@@ -1,10 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:24.164Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:26:52.515Z",
+  "source": "index.tsx",
+  "sourceHash": "909bb2157947d64dd981293ad8ab678edd3b3fe9",
+  "lang": "typescript",
+  "summary": "This is a simple React component that wraps content in a styled span element to highlight it with a background color. It takes two props: the content to highlight (children) and the background color to use, then renders that content with consistent styling like white text and rounded corners.",
   "explanations": {
-    "31": "propTypes is a separate validation system that checks the types of props passed to a component at runtime, helping catch bugs during development."
+    "11": "This imports type definitions from React for JSX (the syntax that looks like HTML in JavaScript) and ReactNode (which means 'anything that React can render').",
+    "13": "Props is a TypeScript interface that defines the shape of the object this component receives — it must have children (the content inside the tags) and color (a string for the background color).",
+    "18": "The function destructures the Props object to extract children and color as separate variables, and specifies that the component returns a JSX.Element (a React element).",
+    "21": "The style object here uses camelCase for CSS properties (like backgroundColor instead of background-color) because this is JavaScript, not plain CSS."
   }
 }

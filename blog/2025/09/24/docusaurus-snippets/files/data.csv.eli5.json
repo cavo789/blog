@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:40.012Z",
+  "generated": "2026-09-01T18:55:48.368Z",
   "source": "data.csv",
+  "sourceHash": "1594a66a3f71d07f7fcd5238e01f146befbd00e7",
   "lang": "csv",
+  "summary": "This is a simple CSV (comma-separated values) file that stores information about people, with a header row defining the columns as 'name' and 'age', followed by two data rows for Alice and Bob.",
   "explanations": {}
 }

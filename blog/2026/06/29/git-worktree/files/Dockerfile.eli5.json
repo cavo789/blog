@@ -1,19 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:53.716Z",
+  "generated": "2026-09-01T19:08:04.761Z",
   "source": "Dockerfile",
   "sourceHash": "4a663c1f4ef079f4cb543523fe0b47e19f8f5a91",
   "lang": "docker",
+  "summary": "This Dockerfile creates an Ubuntu container with git, zsh, and fzf installed, then sets up a demo git repository scenario with a feature branch in progress and uncommitted changes. It also installs a custom zsh function called `gwt` that uses fzf to interactively navigate between git worktrees, and configures the shell prompt to indicate we're in a container.",
   "explanations": {
-    "3": "This environment variable tells Ubuntu's package manager to skip interactive prompts during installation, so the Docker build doesn't hang waiting for user input.",
-    "7": "This sed command modifies Ubuntu's package repository configuration file to enable additional software repositories (universe and multiverse) beyond the default ones, so we can install packages like fzf.",
-    "15": "After installing packages, we delete the cached package lists to reduce the final image size — this is a standard Docker optimization.",
-    "24": "We're creating a bare Git repository (one with no working files) that acts like a remote server so the demo can practice pushing code somewhere.",
-    "71": "This extracts the first field from the git worktree list output using awk, which is a text-processing tool that splits lines into columns.",
-    "75": "This zsh syntax `${...}` expands a variable, and the `////-` part replaces all forward slashes in the branch name with hyphens to create a valid directory name.",
-    "86": "The autoload command tells zsh to load the gwt function from the fpath (function path) when it's first called, rather than loading it upfront.",
-    "87": "The `>>` appends text to the end of the file, whereas `>` would overwrite the whole file.",
-    "92": "This adds a fancy colored prompt with a whale emoji to make it visually clear you're running commands inside a container."
+    "3": "This tells the installer to skip interactive prompts during package installation, letting commands run without waiting for user input.",
+    "7": "The ubuntu docker image doesn't enable all software repositories by default; this command adds the 'universe' and 'multiverse' repositories so packages like fzf become available to install.",
+    "15": "After installing packages, we delete apt's cache files to reduce the final image size, since we won't need to install anything else.",
+    "29": "This creates nested directories in one go (with -p flag) so we can organize our demo project structure before initializing git.",
+    "71": "This uses awk to extract the first field (the directory path) from the selected worktree line; the funky quoting escapes the single quotes so they survive being written to a file.",
+    "75": "This constructs the worktree directory path by taking the repository root and appending the branch name with slashes converted to dashes (so feature/user-notifications becomes feature-user-notifications).",
+    "87": "The >> operator appends these lines to the existing .zshrc file instead of overwriting it, so previous configuration isn't lost.",
+    "94": "This makes the container start an interactive login shell by default when it runs, so you get a prompt to type commands into."
   }
 }

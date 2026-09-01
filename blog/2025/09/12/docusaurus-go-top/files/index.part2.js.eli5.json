@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:00.839Z",
+  "generated": "2026-09-01T18:54:40.138Z",
   "source": "index.part2.js",
+  "sourceHash": "1fc0229264fbc515b796a87bc5148ebf0f338637",
   "lang": "javascript",
+  "summary": "This component renders a blog post item by assembling several sub-components (header, content, footer) inside a container. It also adds a scroll-to-top button at the bottom and applies extra spacing when the post is displayed in a list view rather than on its own page.",
   "explanations": {
-    "3": "This hook from Docusaurus gives us information about the current blog post, like whether we're viewing a single post or a list of posts.",
-    "12": "This is a custom hook (a reusable function) that figures out what CSS class name the container should have based on where we are in the app.",
-    "14": "If we're NOT on a single blog post page, add extra spacing at the bottom; otherwise don't add any spacing class."
+    "3": "This hook from Docusaurus gives us information about whether we're currently viewing a single blog post page or a list of posts.",
+    "12": "This custom hook determines what CSS class to apply to the container — it checks if we're in list view and returns a bottom margin class if we are, otherwise returns nothing.",
+    "14": "The exclamation mark means 'not' — so this returns the margin class only when we're NOT on the individual blog post page (i.e., when we're in the list view).",
+    "19": "The clsx function merges multiple class names together, combining the spacing class from our hook with any additional classes passed in from the parent component."
   }
 }

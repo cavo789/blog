@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:43.476Z",
+  "generated": "2026-09-01T19:02:13.679Z",
   "source": "project_setup.mdx",
+  "sourceHash": "64eabec218ceb454a1b52aaa9201070012dfccff",
   "lang": "markdown",
+  "summary": "This is documentation explaining how to use a Project Setup component—a tool that helps developers quickly scaffold new projects. It describes three methods to get started: downloading files as a ZIP archive, generating and running an automated installation script, or manually creating files yourself. The document includes practical examples and platform-specific instructions for each approach.",
   "explanations": {
-    "6": "This imports the main ProjectSetup component and two helper components (EmptyFolder and Guideline) from a file within the site's source code.",
-    "20": "There's a typo here—it should say 'Below is a fully functional example' instead of 'Below a fully functional example'.",
-    "77": "There's a typo—it should say 'unzip it,' with a comma instead of a space before the comma."
+    "6": "This imports the ProjectSetup component and two smaller components (EmptyFolder and Guideline) that are used inside it, all from a local components folder in the documentation site.",
+    "8": "This imports Snippet, a component designed to display code examples with a filename label.",
+    "9": "Tabs and TabItem are theme components that create tabbed interfaces—think of them as clickable buttons that show different content for each tab.",
+    "11": "CodeBlock is a component that displays code in a formatted, syntax-highlighted box with a language specified.",
+    "19": "The folderName prop tells the ProjectSetup component what the destination folder should be called when files are packaged or installed.",
+    "72": "AlertBox is a highlighted information box (like a callout or note) with a 'tip' styling variant to draw attention to helpful guidance."
   }
 }

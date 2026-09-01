@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:51.211Z",
+  "generated": "2026-09-01T18:31:14.281Z",
   "source": "Blog.feature",
+  "sourceHash": "4c902fa51f9036a6162b3996c1cbc95cac47fa14",
   "lang": "feature",
+  "summary": "This is a Gherkin feature file that describes a test scenario for a website's blog functionality. It verifies that clicking the Blog menu item from the homepage navigates the user to the blog page.",
   "explanations": {
-    "1": "This is the overall title describing what the feature does — it's the high-level goal you're testing.",
-    "3": "A 'Scenario' is one specific test case or example of how the feature should work.",
-    "4": "The 'Given' keyword sets up the starting conditions — it's like saying 'assume I'm already here' before we test anything.",
-    "5": "The 'Then' keyword here actually describes an action we're taking, even though 'Then' usually means checking results — it's a quirk of this test framework's language."
+    "1": "The Feature line describes the overall user-facing behavior being tested — in this case, that the Blog menu works as expected.",
+    "3": "Scenario is a keyword that introduces a specific test case or example of the feature in action.",
+    "4": "Given sets up the initial state before the test runs — the user starts on the homepage.",
+    "5": "Then is an action step that simulates what the user does — clicking the Blog menu.",
+    "6": "Then is used again to assert what should happen as a result — the page URL should change to /blog."
   }
 }

@@ -1,9 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:51.648Z",
+  "generated": "2026-09-01T19:14:50.797Z",
   "source": "003-advanced-python.txt",
   "sourceHash": "d411a4b9230d6f34f31f18b893ca827f7e905857",
   "lang": "plaintext",
+  "summary": "This is introductory documentation for an advanced Python tutorial that will cover decorators, generators, context managers, and REST API interaction using the requests library. It's positioning these as important tools for writing cleaner and more efficient code.",
   "explanations": {}
 }

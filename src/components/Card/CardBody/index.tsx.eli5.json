@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:50.750Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:52:36.822Z",
+  "source": "index.tsx",
+  "sourceHash": "eaa86b7fbedb8b3740be38bd9ada9dad6a2668ee",
+  "lang": "typescript",
+  "summary": "This component creates a card body container that displays content with customizable text styling. It accepts styling options like text alignment, weight, and decoration, then builds the appropriate CSS class names and applies them to a div that renders its children.",
   "explanations": {
-    "2": "clsx is a utility that combines multiple CSS class names into a single string, ignoring any that are empty or false.",
-    "16": "This creates a class name string like 'text--center' if textAlign exists, otherwise an empty string.",
-    "21": "Unlike the other text classes, this one directly references a CSS module class instead of building a string, because truncate styles are defined in the imported styles object."
+    "6": "This interface combines CardTextOptions (which defines text styling properties) with additional styling props, so the component accepts both text styling and container styling in one Props object.",
+    "21": "The equals sign here sets a default value — if italic isn't passed in, it defaults to false automatically.",
+    "35": "buildTextClasses is a utility function that takes all the text styling options and converts them into actual CSS class names that can be applied to the element.",
+    "37": "styles.truncate is being passed as a second argument to buildTextClasses, probably telling it where to find the CSS class for text truncation if that feature is enabled.",
+    "41": "clsx is a utility that combines multiple class names together, filtering out any that are undefined or false, so you can conditionally include classes without messy string concatenation."
   }
 }

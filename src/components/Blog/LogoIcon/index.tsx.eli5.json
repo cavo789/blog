@@ -1,10 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:24.017Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:55:22.538Z",
+  "source": "index.tsx",
+  "sourceHash": "97733346149ec7746f049577eb475ab6eb94af80",
+  "lang": "typescript",
+  "summary": "This module sets up icon data for the Iconify library at startup, then exports a React component that renders icons. By pre-loading the icon collections before any component renders, we avoid a common problem where the server and browser would show different content during page load.",
   "explanations": {
-    "4": "The function accepts props including a destructured 'aria-label' which is renamed to ariaLabel because hyphens aren't valid in JavaScript variable names—we need to extract it this way, then pass it back as aria-label on line 5."
+    "10": "Object.values() extracts all the icon collections from the object, then forEach() registers each one with Iconify's addCollection function so the icons are ready to use immediately.",
+    "23": "This destructures the aria-label prop but renames it to ariaLabel (without the dash) because JavaScript variable names can't have hyphens.",
+    "28": "The 'ssr' prop tells the Iconify component to render the SVG directly on the server instead of waiting to fetch it, preventing the mismatch between server and browser output."
   }
 }

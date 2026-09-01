@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:38.333Z",
+  "generated": "2026-09-01T18:19:03.433Z",
   "source": "block_filenames.htaccess",
   "sourceHash": "d2711058dc2838cb9602d522456871c28f508384",
   "lang": "htaccess",
+  "summary": "This configuration block uses Apache's FilesMatch directive to target two specific image files by their names and then blocks all access to them by denying requests from every client. It's a way to hide or protect those particular files from being served to anyone who requests them.",
   "explanations": {
-    "1": "FilesMatch uses a regex pattern (the part in parentheses with backslashes) to match specific filenames; the pipe symbol | means 'or', so this targets file_1.gif OR file_2.png.",
-    "2": "Order Allow,Deny sets up Apache's access control logic: it processes Allow rules first, then Deny rules, and denies by default if no Allow rule matches.",
-    "3": "Deny from all blocks access to these files from every IP address, effectively making them inaccessible to anyone visiting your website."
+    "1": "FilesMatch uses a regular expression (the pattern in parentheses) to match file names; the backslashes before the dots are escaping special regex characters so it matches literal dots, and the pipe | means 'or', so this targets either file_1.gif OR file_2.png.",
+    "2": "Order Allow,Deny sets the sequence for processing access rules — it means 'first check Allow rules, then check Deny rules', making the final Deny directive take precedence.",
+    "3": "Deny from all rejects requests from all clients, essentially blocking everyone from accessing the matched files."
   }
 }

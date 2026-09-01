@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:51.556Z",
+  "generated": "2026-09-01T18:20:35.168Z",
   "source": "docusaurus.config.withcabin.js",
+  "sourceHash": "95fa075d9d6b7dab60bd929d4ef49ff1073fcd30",
   "lang": "javascript",
+  "summary": "This configuration defines a single external script to be loaded on a webpage. The script comes from an external URL and is configured to load asynchronously and deferred, meaning it won't block the page from rendering while it's being fetched.",
   "explanations": {
-    "4": "The 'async' attribute means this script can download while the page loads, instead of blocking everything until it finishes.",
-    "5": "The 'defer' attribute means the script waits to run until after the page's HTML is fully loaded, so it doesn't slow down initial rendering."
+    "4": "The 'async' attribute tells the browser to fetch this script in the background without stopping the page from rendering, and execute it as soon as it's ready.",
+    "5": "The 'defer' attribute means the script will wait to execute until after the entire HTML document has been parsed, ensuring the DOM is ready before the script runs."
   }
 }

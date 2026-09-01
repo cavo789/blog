@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:38:31.260Z",
+  "generated": "2026-09-01T18:40:50.583Z",
   "source": "schema_test.py",
+  "sourceHash": "f99bbf7c243a4266aa17d98dee541861780d0691",
   "lang": "python",
+  "summary": "This code calls the Mockaroo API to generate mock data. It constructs a URL with an API key, schema name, and record count, makes an HTTP request to fetch the data, and then prints either the resulting JSON data if successful or an error message if the request failed.",
   "explanations": {
-    "11": "This creates the full web address (URL) by plugging the api_key, num_records, and schema values into the template string using f-string syntax (the 'f' prefix lets us use curly braces to insert variables).",
-    "17": "The status_code 200 means the server successfully processed our request; any other number indicates something went wrong."
+    "11": "The f-string creates a complete URL by inserting the api_key, num_records, and schema values into the Mockaroo API endpoint — think of it as a template where {variable} gets replaced with the actual value.",
+    "14": "requests.get() sends an HTTP GET request to that URL and stores the server's response, including both the data and metadata like whether it succeeded.",
+    "17": "status_code 200 means the request succeeded; any other number indicates an error, so we check for exactly 200 before trying to use the data.",
+    "19": "response.json() converts the text response from the server into a Python dictionary so we can work with it as structured data."
   }
 }

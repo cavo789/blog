@@ -1,8 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:46.689Z",
+  "generated": "2026-09-01T18:25:41.899Z",
   "source": "slides_19.txt",
+  "sourceHash": "3e22ac49c2861552f9da51622b45567df3ae75ac",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a Markdown document with two section headers that have custom attributes. Each header has an anchor ID (like #intro and #chapter1) and a data attribute that sets a custom menu title different from the displayed heading text.",
+  "explanations": {
+    "1": "The highlight-next-line comment tells a documentation tool (like Docusaurus) to visually highlight the immediately following line.",
+    "2": "The {#intro data-menu-title=\"Introduction\"} syntax adds an anchor ID so this section can be linked to, and specifies what text should appear in the navigation menu instead of the full heading.",
+    "4": "Same highlighting instruction as line 1, preparing the next section header for visual emphasis.",
+    "5": "Similar to line 2, this creates an anchor point and tells the menu system to display 'Chapter 1' in navigation instead of the longer heading text."
+  }
 }

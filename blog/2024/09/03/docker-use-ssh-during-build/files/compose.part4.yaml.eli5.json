@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:14.388Z",
+  "generated": "2026-09-01T18:36:51.090Z",
   "source": "compose.part4.yaml",
+  "sourceHash": "7c384d958eb77ca23b0614dcf46e8881abcd0918",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration snippet that mounts the SSH keys from your home directory into a container's root user directory. This allows the containerized application to use your SSH credentials for things like accessing git repositories or remote servers without needing to copy keys into the image.",
   "explanations": {
-    "7": "The ${HOME} syntax substitutes your actual home directory path at runtime, and the colon separates the path on your computer from where it appears inside the container."
+    "5": "The 'volumes' section defines file/folder mappings between your computer and the running container.",
+    "7": "The syntax 'source:destination' mounts your local SSH folder (${HOME}/.ssh expands to your home directory's .ssh folder) into the container at /root/.ssh so the root user inside can access your SSH keys."
   }
 }

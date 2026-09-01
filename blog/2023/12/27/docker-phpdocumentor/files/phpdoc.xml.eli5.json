@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:16.713Z",
-  "source": "phpunit.xml",
+  "generated": "2026-09-01T18:24:33.856Z",
+  "source": "phpdoc.xml",
+  "sourceHash": "45ee16fb3a71bf48facb1f0f1766d5f708ddbc0b",
   "lang": "xml",
+  "summary": "This is a configuration file for phpDocumentor, a tool that automatically generates API documentation from PHP source code. It specifies where to find the source code to document (the src/ directory), where to output the generated documentation (./.phpdoc), and where to cache temporary files (/tmp/phpdoc).",
   "explanations": {
-    "1": "This line declares that the file is XML and uses UTF-8 character encoding, which tells the parser how to read the text.",
-    "4": "This is a reference to the XML Schema validation standard, which allows the file to be checked against a schema definition for correctness.",
-    "6": "This points to the official schema file that defines what elements and attributes are allowed in this phpDocumentor configuration file.",
-    "10": "This sets where temporary files will be stored during documentation generation, keeping them separate from your source code."
+    "3": "configVersion=\"3\" means this file is written in the format for phpDocumentor version 3, ensuring the tool knows how to parse it correctly.",
+    "4": "xmlns:xsi declares the XML Schema Instance namespace, which allows us to reference XML schema validation rules.",
+    "6": "xsi:noNamespaceSchemaLocation points to the official schema file that defines what elements and attributes are valid in this configuration file.",
+    "14": "dsn=\".\" means the data source is the current directory, so paths like src/ are resolved relative to wherever this config file is located."
   }
 }

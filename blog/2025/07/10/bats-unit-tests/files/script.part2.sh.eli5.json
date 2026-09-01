@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:44:02.194Z",
+  "generated": "2026-09-01T18:49:15.516Z",
   "source": "script.part2.sh",
+  "sourceHash": "98d3d79edec3dcad0229300e6a0ed841dfe5ea34",
   "lang": "bash",
+  "summary": "This function prints a decorative banner box around text passed as arguments. It uses printf to draw equals signs on the top and bottom, and centers the text in the middle with padding to make it exactly 42 characters wide.",
   "explanations": {
-    "3": "The %-40s format means 'print the argument left-aligned in a 40-character wide space', so the text gets padded with spaces on the right to fit nicely between the equals signs."
+    "3": "The '%-40s' format specifier means print the first argument as a string left-aligned in a 40-character field; the '= ' and ' =' on either side add the left and right borders, making the total line 42 characters.",
+    "4": "This prints the bottom border, which is the same row of equals signs as line 2 to close off the box."
   }
 }

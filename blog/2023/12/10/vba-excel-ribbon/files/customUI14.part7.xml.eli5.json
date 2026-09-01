@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:02.477Z",
+  "generated": "2026-09-01T18:22:27.279Z",
   "source": "customUI14.part7.xml",
+  "sourceHash": "e5b2d4dddc0e23c01688199b716a9bb40efda00b",
   "lang": "xml",
+  "summary": "This XML defines a custom ribbon interface for Microsoft Office. It creates a new tab labeled 'Tab' that appears after the View tab, containing a group with a large button that triggers a function when clicked and an editable text box that calls a function whenever its text changes.",
   "explanations": {
-    "4": "insertAfterMso means this custom tab will appear right after Microsoft's built-in View tab in the ribbon.",
-    "13": "imageMso=\"HappyFace\" uses a pre-made icon from Office's library instead of loading a custom image file.",
-    "17": "onAction=\"OnButtonClicked\" is the name of a function (probably in VBA or another language) that runs when someone clicks this button.",
-    "25": "onChange=\"OnEditBoxTextChanged\" triggers a function whenever the user types or modifies the text in this edit box."
+    "4": "insertAfterMso=\"TabView\" positions this custom tab right after the built-in View tab in the ribbon interface.",
+    "13": "imageMso=\"HappyFace\" uses a pre-built icon from Microsoft Office's standard icon library instead of a custom image.",
+    "17": "onAction=\"OnButtonClicked\" specifies the name of the function that will run when a user clicks this button.",
+    "25": "onChange=\"OnEditBoxTextChanged\" specifies the function that will run whenever the user modifies the text in this edit box."
   }
 }

@@ -1,17 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:15.618Z",
+  "generated": "2026-09-01T19:13:49.788Z",
   "source": "links.md",
   "sourceHash": "08ca3fc383ba2dd6e074b8b8dbf939a144d3f3d4",
   "lang": "markdown",
+  "summary": "This document describes a workflow for adding internal cross-links to blog articles. The process involves selecting articles to work on, running a checking tool to find linking candidates, manually choosing relevant links based on content (not just rankings), inserting them inline in the prose using a Link component, adding reciprocal links in older articles, verifying the links work, and reporting what was changed.",
   "explanations": {
-    "3": "This is a hint shown to the user about what argument to pass; the square brackets and dash mean it's optional, and if omitted the tool uses articles that were recently changed.",
-    "9": "This is pointing you to another file called AGENTS.md where the actual rule is documented, so you know where to look if you need the full context.",
-    "16": "The slug is a short identifier for an article, and this grep command searches through all markdown files to find which folder contains an article with that slug.",
-    "26": "This git command shows which article files have been modified or added but not yet committed; the `awk '{print $NF}'` extracts just the file paths from git's output.",
-    "30": "This is a fallback: if there are no uncommitted changes, look at the most recent commit (HEAD~1 means one commit back) to find which articles were changed there.",
-    "50": "This is a file path to a memory document that Claude (an AI assistant) uses to track context; it contains a map of blog articles and their categories.",
-    "61": "The `to` prop here should be a path starting with a forward slash like `/blog/my-article`, not a full URL; it's relative to the website root."
+    "16": "The slug is a short URL identifier for an article (like 'reactions' instead of the full path). This command searches all blog and draft folders to find which article has that slug.",
+    "26": "This command shows all files currently changed or newly added in git (the working tree), filtering to just index.md files in blog folders, and extracts just the file paths (the $NF part means 'last field').",
+    "30": "This is a fallback that looks at the previous commit (HEAD~1) compared to the current one (HEAD), finding articles that were Added, Created, or Modified, in case the working tree has no changes.",
+    "36": "This command runs a checking tool that reports which internal links already exist in an article, flags bad links with '!!' if they point to non-existent slugs, and suggests other articles that might be good targets.",
+    "44": "The ranking system suggests links based on keyword overlap and shared tags, but this can be misleading — it might suggest unrelated articles just because they mention the same tool, while missing the obvious connection the writing is actually making.",
+    "50": "The project memory map is a reference file that lists articles by their main category tag and series, helping you spot related posts that the automated ranking might have missed.",
+    "58": "This means the link should go where the term is first mentioned in the actual body text, not collected in a separate 'See also' section at the end, because a different component already handles related links at the page bottom.",
+    "61": "The Link component is already available globally in this project, so you don't need to write an import statement — just use it directly with the target slug and anchor text.",
+    "71": "After adding links, you run the same check command on all affected articles (including the older ones you added reciprocal links to) to ensure every link points to a real, published article."
   }
 }

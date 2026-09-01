@@ -1,19 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:24.704Z",
+  "generated": "2026-09-01T18:42:08.375Z",
   "source": "index.php",
+  "sourceHash": "09d6d136aeec62eb785a65f55848870fd0d56aa2",
   "lang": "php",
+  "summary": "This is a web application that converts Excel table data into Markdown format. When users copy a table from Excel and paste it into the textarea, the app automatically formats it as a Markdown table and renders an HTML preview using Bootstrap styling. It's a single-page application built with Vue.js that handles the conversion and display in real-time.",
   "explanations": {
-    "5": "This tells PHP to enforce strict type checking, meaning variables must match their declared types exactly.",
-    "32": "The code checks if a file exists and stores its path in $cat, then uses that path to read the file — it's a compact way to do two things at once.",
-    "89": "This Vue.js directive (v-if) checks if the Markdown variable is not empty before showing that section of the page.",
-    "106": "Math.max.apply() finds the largest number in an array by treating null as 'this' and the array elements as individual arguments.",
-    "115": "The regex here matches various types of line break characters (newlines, carriage returns, and Unicode line separators) to split the pasted data into rows.",
-    "119": "This maps over the first row to figure out how wide each column needs to be by checking the longest cell in that column.",
-    "134": "This pads each cell with spaces so all cells in a column have the same width, which is needed for markdown table formatting.",
-    "140": "This line does nothing — it just references the map function without calling it, so it's dead code that can be safely removed.",
-    "149": "This creates a separator line with dashes for the markdown table header; the number of dashes matches the column width.",
-    "202": "The marked() function converts markdown syntax into HTML, and sanitize=true removes any potentially dangerous HTML tags."
+    "5": "This tells PHP to enforce strict type checking, meaning variables must match their declared types exactly—it catches type errors early.",
+    "28": "This creates a constant called 'REPO' that stores the GitHub repository URL, so it can be reused throughout the code without hardcoding the URL multiple times.",
+    "32": "This checks if a template file called 'octocat.tmpl' exists in the current directory; if it does, the code reads and processes it.",
+    "33": "This reads the template file's contents and replaces the placeholder '%REPO%' with the actual GitHub repository URL stored in the REPO constant.",
+    "86": "The v-model directive two-way binds the textarea to the Vue component's 'editor' data—any typing updates the data, and vice versa. The @change and @paste handlers trigger functions when the user modifies the content.",
+    "89": "The v-if directive only renders this section if the 'Markdown' variable contains text, so it stays hidden until the user actually pastes data.",
+    "106": "Math.max.apply is being used to find the longest string in a column of data—'apply' lets you pass an array as arguments to the Math.max function.",
+    "115": "This splits the pasted data by line breaks (handling multiple line break formats) and then splits each line by tabs, creating a 2D array where each sub-array is one row of the table.",
+    "134": "This pads each cell with spaces so all cells in a column have the same width, making the Markdown table visually aligned.",
+    "143": "The splice method inserts a new separator row (made of dashes) at position 1 in the array, which is right after the header row in Markdown table format.",
+    "179": "This creates a new Vue instance that manages the entire app—it connects to the HTML element with id 'app' and controls all the data and interactivity.",
+    "191": "event.clipboardData gives access to what's currently in the user's clipboard when they paste.",
+    "202": "The marked() function converts a Markdown string into HTML—in this case, the Markdown table becomes an HTML table element."
   }
 }

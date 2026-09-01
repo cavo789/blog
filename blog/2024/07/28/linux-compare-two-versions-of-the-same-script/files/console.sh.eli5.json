@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:51.316Z",
+  "generated": "2026-09-01T18:34:39.045Z",
   "source": "console.sh",
+  "sourceHash": "c68f1c971da2bc75001782c2f3508fdbe08119d0",
   "lang": "bash",
-  "explanations": {}
+  "summary": "This script defines a collection of shell functions for console output utilities—printing colored text in cyan and red, displaying errors, asking yes-or-no questions, and showing banners. The functions are declared but not implemented (their bodies are empty), so this appears to be a template or interface file that other scripts would source to get these utility functions.",
+  "explanations": {
+    "1": "This line tells the system to use the bash interpreter from wherever it's installed in the environment, rather than assuming a fixed location—makes the script more portable across different systems.",
+    "3": "The 'function' keyword declares a reusable block of code named console::printCyan that can be called later; the double colon is a naming convention to group related functions under a 'console' namespace."
+  }
 }

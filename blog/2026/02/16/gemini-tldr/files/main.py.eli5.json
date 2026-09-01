@@ -1,14 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:22.444Z",
+  "generated": "2026-09-01T19:17:54.684Z",
   "source": "main.py",
+  "sourceHash": "7518ee435114d9bb21e056cc6390030b5a5aee66",
   "lang": "python",
+  "summary": "This script processes markdown blog files by generating AI-powered summaries (TL;DRs) using the Gemini API and injecting them into the files. It accepts a file or directory path as input, recursively finds all markdown files, processes each one while tracking success/skip/error statistics, and displays a final report.",
   "explanations": {
-    "34": "This checks if the current directory isn't already in Python's search path, and adds it if needed so Python can find the 'src' module no matter where you run the script from.",
-    "71": "This loads environment variables from a .env file in the script's directory first, so it finds your API key.",
-    "80": "If you gave a relative path (like 'blog/'), this converts it to an absolute path starting from wherever you are in the terminal.",
-    "88": "The `str | None` syntax means this variable can either be a string or None (nothing), depending on whether the environment variable exists.",
-    "109": "The `rglob` method recursively searches through all folders and subfolders for files matching '*.md', collecting them into a list."
+    "33": "This gets the directory where the current script is located, converted to an absolute path so we can reference other modules relative to it.",
+    "34": "We're checking if this directory path is already in Python's module search list to avoid adding it twice, which would be redundant.",
+    "35": "We're inserting the script's directory at the beginning of Python's module search path so imports like 'from src.ai_service' will work from anywhere.",
+    "41": "This catches any import errors (like missing files or modules) and tells the user what went wrong before exiting, rather than crashing with a confusing traceback.",
+    "71": "This loads environment variables from a .env file in the script's directory, which is where we expect to find the API key file.",
+    "73": "If we didn't find the API key in the local .env file, we try loading from the system-wide environment as a backup—maybe it's already set elsewhere.",
+    "80": "We're checking if the user gave us a relative path (like 'blog/2026') rather than an absolute path (like '/home/user/blog/2026').",
+    "81": "If it was relative, we make it absolute by joining it with the current working directory, so the rest of the code knows exactly where to look.",
+    "88": "The type hint 'str | None' means this variable can be either a string or None—we get None if the environment variable doesn't exist.",
+    "109": "The 'rglob' method recursively searches the directory and all subdirectories for any files matching '*.md', returning them as a list.",
+    "118": "We're creating a dictionary to track how many files succeeded, were skipped, or failed—we'll print these numbers at the end.",
+    "121": "The 'end=\"\"' prevents a newline so the status emoji can overwrite this line; 'flush=True' forces it to display immediately rather than buffering.",
+    "125": "We're checking if the word 'SKIPPED' appears anywhere in the status string returned by process_single_file."
   }
 }

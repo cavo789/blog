@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:14.657Z",
+  "generated": "2026-09-01T18:24:31.370Z",
   "source": "index.php",
+  "sourceHash": "5c72388daf52ed2e4e9ebf2065cf8d4fa530ff97",
   "lang": "php",
+  "summary": "This is a simple PHP script that outputs detailed information about the PHP installation and configuration. It's commonly used for debugging to see what version of PHP is running, which extensions are loaded, and other server settings.",
   "explanations": {
-    "3": "This outputs a page showing your PHP configuration details and installed extensions; it's useful for debugging but should never be left on a public website for security reasons."
+    "3": "phpinfo() is a built-in PHP function that generates and displays a large HTML page containing information about the PHP environment, including version, loaded modules, and configuration settings."
   }
 }

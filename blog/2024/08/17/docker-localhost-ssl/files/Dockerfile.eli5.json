@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:31.431Z",
+  "generated": "2026-09-01T18:35:52.674Z",
   "source": "Dockerfile",
+  "sourceHash": "ecb7ed32d54c632b14b6e7f9505b4689ce5df232",
   "lang": "docker",
-  "explanations": {}
+  "summary": "This Dockerfile creates a web server image based on Apache HTTP Server version 2.4, then copies a custom site configuration file into the container so Apache knows how to serve your website.",
+  "explanations": {
+    "3": "COPY takes a file from your local machine (httpd/my-site.conf) and puts it into the container at a specific location (/etc/apache2/sites-available/my-site.conf) where Apache will look for site configurations."
+  }
 }

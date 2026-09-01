@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:43.326Z",
+  "generated": "2026-09-01T18:32:45.315Z",
   "source": "makefile.part11",
+  "sourceHash": "c3dbc5840fe5a0b963185f8000895e6d9376194c",
   "lang": "part11",
+  "summary": "This is a Makefile snippet that checks the PHP version being used and prints an appropriate message to the console. If PHP 8 or higher is set, it tells the user to upgrade dependencies; otherwise, it says to downgrade to PHP 7. The message is printed in bold yellow text.",
   "explanations": {
-    "2": "This line checks if the PHP version is 8 or higher by using a shell math expression; the \\>= means 'greater than or equal to' and the result (1 for true, 0 for false) determines which branch executes.",
-    "3": "This printf command uses ANSI escape codes (the \\e[1;...m parts) to print colored text to the terminal; specifically it makes the text bold and yellow.",
-    "5": "Similar to line 3, this prints colored terminal text, but it's in the else branch so it only runs when PHP is version 7."
+    "2": "This uses shell arithmetic to compare SET_PHP_VERSION against 8. The 'expr' command evaluates the comparison (\\>= means 'greater than or equal to'), and ifeq checks if the result equals 1 (true).",
+    "3": "The @printf command prints colored text to the console. The \\e[1;${COLOR_YELLOW}m codes are ANSI escape sequences that make the text bold and yellow, and \\e[0m resets the formatting back to normal.",
+    "5": "This is the fallback message printed if the PHP version is less than 8, using the same colored formatting as line 3."
   }
 }

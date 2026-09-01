@@ -1,13 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:37:44.259Z",
+  "generated": "2026-09-01T19:11:20.924Z",
   "source": "ai-review.zsh",
   "sourceHash": "3b230a2a16ca82a6cd9fb525427d05c5c18d1f9c",
   "lang": "bash",
+  "summary": "This is a bash function that pulls staged git changes and sends them to an AI model for code review. It asks the AI to check for SOLID violations, magic constants, long functions, naming issues, and overall quality problems, then prints the AI's feedback directly to the terminal without modifying anything.",
   "explanations": {
-    "5": "This line is storing a description string in an associative array called AI_COMMANDS, using 'review' as the key — it's registering this function as a command that the script can look up later.",
-    "10": "The function calls _git_staged_diff (which you'll need to find elsewhere in the codebase) and stores the result in diff, then immediately exits the whole function with 'return 1' if that command fails.",
-    "25": "_ollama_query is a helper function (defined elsewhere) that sends your prompt to an AI model via Ollama and prints the response — think of it like making an API call to get a code review."
+    "5": "This line registers the ai-review command in a lookup table so the user can invoke it by name; the description explains what it does.",
+    "6": "This stores that the review command takes no additional parameters, so the calling code knows not to expect arguments.",
+    "10": "This runs a helper function to extract just the staged changes (the parts git will commit) and stores them in the diff variable, or exits early if that fails.",
+    "12": "This creates a long string that will be sent to the AI, telling it exactly how to structure its response with specific headings and instructions to avoid making up problems.",
+    "25": "This sends the full prompt (instructions plus the actual code diff) to the AI model and prints whatever it replies."
   }
 }

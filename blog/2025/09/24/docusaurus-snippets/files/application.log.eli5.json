@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:47.513Z",
+  "generated": "2026-09-01T18:56:07.948Z",
   "source": "application.log",
+  "sourceHash": "943cace34601f5ffe6cf353247f5865001f239f0",
   "lang": "log",
+  "summary": "This is a log file showing two events from a server session: the server successfully started at 10:00 AM, followed by a connection failure error. These are typical operational log entries that track what happened and when.",
   "explanations": {}
 }

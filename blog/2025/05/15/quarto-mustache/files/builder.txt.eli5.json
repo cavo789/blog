@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:44.963Z",
+  "generated": "2026-09-01T18:47:41.007Z",
   "source": "builder.txt",
+  "sourceHash": "ac2782d11b64de2861087f1bdafc2df37348811d",
   "lang": "plaintext",
+  "summary": "This is a documentation file that describes an Intent-Driven Interface Builder — a tool that lets you describe what you want a user interface to do, and it automatically generates the actual UI for you instead of making you manually build it piece by piece. It uses AI and a library of pre-made components to figure out which widgets to use, how to arrange them, and what they should look like.",
   "explanations": {
-    "3": "This is YAML metadata that tells the build system to run 'make builder' as a prerequisite before processing this page.",
-    "15": "This is a template directive that includes content from another file (_partials/run.md) into this page at build time."
+    "3": "This is metadata telling the build system (when you run 'make builder') that this file has some partial data associated with it.",
+    "15": "This is a template tag that pulls in shared instructions from another file about how to run this builder — it's a way to reuse the same instructions across multiple documentation pages without copying them."
   }
 }

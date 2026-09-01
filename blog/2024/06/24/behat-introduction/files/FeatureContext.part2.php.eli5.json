@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:59.736Z",
+  "generated": "2026-09-01T18:31:38.466Z",
   "source": "FeatureContext.part2.php",
+  "sourceHash": "1facb9afdc13787cf315d0d75342ef6984f2fe06",
   "lang": "php",
+  "summary": "This is a test step definition that's meant to click a menu item, but it's currently incomplete. Before failing with a pending exception, it creates an output directory if needed and takes a screenshot of the current page to help with debugging.",
   "explanations": {
-    "6": "is_dir checks whether a directory exists, similar to checking if a folder is actually there on the disk.",
-    "7": "mkdir creates a new directory with permissions 0777, which means anyone can read, write, and execute files in that folder.",
-    "11": "This line takes a screenshot of the current webpage state and saves it to a file so you can visually inspect what the test saw at that moment."
+    "6": "is_dir checks if the directory '.output' already exists; if it doesn't, we need to create it first.",
+    "7": "mkdir creates the '.output' directory with permissions 0777 (readable and writable by everyone). We only do this if the directory doesn't already exist.",
+    "11": "This calls into the testing driver to capture a screenshot of the current page and saves it as a PNG file in the output folder — useful for verifying the test was at the right place before it failed.",
+    "13": "PendingException is thrown to mark this test step as 'not yet implemented', so the test framework knows this step needs to be finished later."
   }
 }

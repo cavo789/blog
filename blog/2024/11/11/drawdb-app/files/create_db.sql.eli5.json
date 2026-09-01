@@ -1,16 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:38:27.217Z",
+  "generated": "2026-09-01T18:40:44.266Z",
   "source": "create_db.sql",
+  "sourceHash": "cfbe0402b238d65d666c5a08c71020cabfd7f2ee",
   "lang": "sql",
+  "summary": "This script creates a relational database schema for managing organizational data, including geographic regions and countries, physical locations, departments, job definitions, employees, and their dependents. Each table links to others through foreign keys with cascade rules, meaning if a parent record is updated or deleted, all related child records are automatically updated or deleted too.",
   "explanations": {
-    "2": "SERIAL means the database automatically generates a unique number for each new region, starting from 1.",
-    "7": "CHARACTER (2) means exactly 2 characters, unlike CHARACTER VARYING which allows up to that length—useful here because country codes are always 2 letters.",
-    "10": "ON UPDATE CASCADE ON DELETE CASCADE means if a region changes or is deleted, all countries linked to it will automatically update or delete too.",
-    "26": "location_id doesn't have NOT NULL, so a department can exist without being assigned to a location yet.",
-    "33": "NUMERIC (8, 2) means the number can have up to 8 total digits with 2 after the decimal point, like 123456.78.",
-    "46": "manager_id references employees back to itself, allowing each employee to have a manager who is also an employee.",
-    "50": "This line creates a self-referential relationship—an employee can be managed by another employee in the same table."
+    "2": "SERIAL is a special type that automatically generates a unique number for each new row, so you don't have to provide one manually.",
+    "7": "CHARACTER (2) means exactly 2 characters, fixed-width—this makes sense for country codes like 'US' or 'UK' which are always 2 letters.",
+    "10": "ON UPDATE CASCADE ON DELETE CASCADE means if a region changes its ID or gets deleted, all countries in that region automatically get updated or deleted too, keeping the data consistent.",
+    "33": "NUMERIC (8, 2) means a number with up to 8 total digits where exactly 2 are after the decimal point—perfect for dollar amounts like 50000.00.",
+    "46": "manager_id points back to the employees table itself, letting you represent a hierarchy where each employee can have a manager who is also an employee.",
+    "50": "This self-referential foreign key with CASCADE rules means if you delete an employee who is someone's manager, that relationship is automatically cleaned up."
   }
 }

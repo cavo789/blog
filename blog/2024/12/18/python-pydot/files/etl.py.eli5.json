@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:28.095Z",
+  "generated": "2026-09-01T18:42:15.976Z",
   "source": "etl.py",
+  "sourceHash": "f4c8c69ef2fd6d3654a8fe9cc08f82253d72c1e5",
   "lang": "python",
+  "summary": "This code builds a visual diagram of an ETL (Extract-Transform-Load) data pipeline using the pydot library. It creates nodes representing different stages of data processing—starting with CSV and JSON sources, flowing through extraction, cleaning, and transformation steps, with an optional enrichment branch, and ending at a load stage. Finally, it saves this diagram as a PNG image file.",
   "explanations": {
-    "1": "This creates a directed graph (digraph means arrows go one way) with rankdir='TB' meaning the flow goes Top to Bottom on the page.",
-    "13": "We're creating an Edge object between two nodes and immediately adding it to the graph — you could also pass node names as strings instead of node objects.",
-    "23": "This renders the graph definition into an actual PNG image file on disk."
+    "1": "pydot.Dot creates a new graph object; 'digraph' means directed graph (arrows point one way), and 'rankdir=TB' means arrange nodes top-to-bottom on the page.",
+    "3": "This creates a box-shaped node labeled 'CSV' with a light blue background fill; the 'style' and 'fillcolor' parameters control the visual appearance.",
+    "13": "pydot.Edge creates a connection (arrow) from one node to another, and graph.add_edge() places that arrow onto the graph we're building.",
+    "19": "This node is created without the 'style' and 'fillcolor' parameters, so it will use the default appearance (no colored background).",
+    "23": "This writes out the completed graph as a PNG image file to disk, which you can then open and view."
   }
 }

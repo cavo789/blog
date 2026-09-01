@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:09.463Z",
+  "generated": "2026-09-01T18:48:15.393Z",
   "source": ".bashrc",
+  "sourceHash": "b05be42a41d5ef958d4aec937de181198a106469",
   "lang": "plaintext",
+  "summary": "This line prepends a Pentaho Data Integration directory to the system's PATH environment variable, so that executable programs in that tools folder can be run from anywhere in the terminal without typing the full path.",
   "explanations": {
-    "1": "This line adds a directory to your PATH, which tells your system where to find executable programs; when you type a command, the system searches through these directories in order."
+    "1": "The $HOME variable expands to your user's home directory, and we're adding the pentaho/data-integration folder to PATH (which is a colon-separated list of directories where the system looks for executable commands). The :$PATH at the end preserves all the existing paths that were already there."
   }
 }

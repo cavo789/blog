@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:38.655Z",
+  "generated": "2026-09-01T18:34:14.123Z",
   "source": "makefile.part42",
+  "sourceHash": "f294bd71684e742d0a88398526f1d514c0941bae",
   "lang": "part42",
+  "summary": "This is a Makefile snippet that defines a 'clean' target to remove build artifacts and temporary files from a project. When you run 'make clean', it deletes node_modules and vendor directories, then empties cache and log directories, with yellow colored status messages printed along the way.",
   "explanations": {
-    "1": "This assigns the number 33 to COLOR_YELLOW, which is an ANSI color code that terminals use to display yellow text.",
-    "4": "The \\e[ starts an escape sequence (a special command to the terminal), ${COLOR_YELLOW} inserts the number 33, and \\e[0m resets the color back to normal after printing.",
-    "7": "The /* at the end of each path means 'delete everything inside this folder, but keep the folder itself' — without the /*, it would try to delete the folder and fail if files were added after the Makefile was written."
+    "1": "This defines a variable COLOR_YELLOW and sets it to the ANSI escape code 33, which tells the terminal to print text in yellow.",
+    "4": "The @printf command prints a message to the terminal without echoing the command itself (that's what @ does); the \\e[1;${COLOR_YELLOW}m part makes the text bold and yellow, and \\e[0m resets the formatting back to normal.",
+    "5": "This removes the node_modules and vendor directories completely using rm with --recursive (delete folders and contents) and --force (don't ask for confirmation).",
+    "7": "This deletes all files inside the .cache, .output, and storage/logs directories using the /* wildcard, which matches everything inside those folders but preserves the folders themselves."
   }
 }

@@ -1,13 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:14:49.896Z",
+  "generated": "2026-09-01T18:21:19.052Z",
   "source": "stateful.py",
+  "sourceHash": "cfb6915cb2298083cd6554ff7f20138352b8bb99",
   "lang": "python",
+  "summary": "This script generates a diagram of a Kubernetes stateful application architecture. It creates a visual representation showing a service routing to three pods, each with its own persistent volume claim, all backed by a shared persistent volume and storage class. The diagram is built using the diagrams library and saved to a file rather than displayed immediately.",
   "explanations": {
-    "6": "The `show=False` parameter tells the diagram library not to automatically open the generated image file when done.",
-    "15": "The minus operator (`-`) here creates a visual connection line between these three components in the diagram.",
-    "16": "The `>>` operator creates a directional arrow from left to right, showing data or traffic flow between components.",
-    "18": "The `<<` operator creates a directional arrow pointing backward (right to left), showing that the storage class and persistent volume connect back to support all the apps we created in the loop."
+    "6": "The Diagram context manager creates a new diagram document titled 'Stateful Architecture'; show=False means it will save to a file instead of opening in a window.",
+    "7": "Cluster groups related components together visually in the diagram, like putting them in a box labeled 'Apps'.",
+    "12": "The loop runs three times (range(3)), creating three separate pod-and-storage combinations to represent replicas in the stateful set.",
+    "15": "The minus operator (-) and right-shift operator (>>) are used to draw connections between components; this line connects pod to statefulset to pvc.",
+    "16": "This appends a chain of connections to the apps list—showing that the service routes to the pod, which routes to the pvc; the >> operator draws directional arrows.",
+    "18": "This line connects everything in the apps list to a shared PV, which is connected to the StorageClass; the << operator draws arrows pointing backward (from right to left)."
   }
 }

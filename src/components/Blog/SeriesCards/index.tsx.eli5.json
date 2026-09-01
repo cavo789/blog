@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:31.458Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:53:47.682Z",
+  "source": "index.tsx",
+  "sourceHash": "b3c007da0b91a7b215605049a39ab13305ae60de",
+  "lang": "typescript",
+  "summary": "This component displays a grid of blog series cards. It takes raw series data, enhances it by merging in additional metadata from a data file (like custom titles, descriptions, and images), and renders each series as a PostCard. If no series exist, it shows a friendly empty state message instead.",
   "explanations": {
-    "34": "This uses `require()` to load a JavaScript file at runtime (while the app is already running) instead of importing it at the top like normal—it's useful here because the data file might not exist, and we want to handle that gracefully.",
-    "35": "This line tries to get the `default` export from the data file, but falls back to the entire `data` object if that doesn't exist—it's a safety check for different ways the file might have been exported.",
-    "46": "`useMemo` remembers the result of this map operation so it doesn't recalculate every time the component re-renders, which saves performance when dealing with many series.",
-    "47": "This finds the matching metadata object for each series by comparing the series name, so we can pull in extra details like custom descriptions or images.",
-    "49": "The `??` operator (called nullish coalescing) means \"use the left side if it exists and isn't null/undefined, otherwise use the right side\"—here it falls back to a default image if no custom image was provided."
+    "26": "This sets a fallback image path that will be used if a series doesn't have its own custom image defined.",
+    "28": "The function returns JSX.Element, which tells TypeScript this component produces React UI elements.",
+    "31": "useMemo caches the enriched series list so we don't recreate it every render unless seriesList actually changes.",
+    "34": "We're looking up extra metadata for each series by matching its name against the SERIES_DATA array.",
+    "36": "The ?? (nullish coalescing) operator means: use data?.image if it exists, otherwise fall back to DEFAULT_IMAGE.",
+    "40": "We prefer the counter value from SERIES_DATA, but if it doesn't exist, we keep the one from the original serie object.",
+    "43": "The description field only comes from SERIES_DATA (the generateSeriesList function doesn't create descriptions), so we explicitly set it here.",
+    "51": "We check if the enriched array is empty to decide whether to show the grid or a 'no series found' message.",
+    "65": "We use serie.permalink as the key because it's a unique identifier for each series, which React needs to efficiently update the list."
   }
 }

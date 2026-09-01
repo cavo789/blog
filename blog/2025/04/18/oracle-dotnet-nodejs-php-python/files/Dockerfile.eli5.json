@@ -1,15 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:12.949Z",
+  "generated": "2026-09-01T18:46:50.023Z",
   "source": "Dockerfile",
+  "sourceHash": "843080a55f94a3704270bdedb249a1314fa50611",
   "lang": "docker",
+  "summary": "This Dockerfile builds a .NET application in a temporary stage, then creates a final lightweight runtime image that includes the compiled application and Oracle database client libraries needed to connect to Oracle databases. It uses a multi-stage build to keep the final image small by discarding the build tools.",
   "explanations": {
-    "3": "This starts with a pre-built image that has the .NET SDK (the compiler and build tools), and tags this stage as 'build' so we can reference it later.",
-    "13": "This starts a new, smaller image with just the .NET runtime (no compiler), and tags it 'final' because this will be our actual application container.",
-    "17": "This copies only the compiled output from the 'build' stage into the 'final' stage, so the final image doesn't include the compiler or source code—making it much smaller.",
-    "20": "This declares a build argument (a variable you can pass in) that specifies which version of Oracle's client library to download.",
-    "29": "This long chain of commands downloads the Oracle client, extracts it, sets up symbolic links (shortcuts to specific library versions), and registers those libraries so the system can find them.",
-    "33": "The `ln -s` command creates a symbolic link: a shortcut from `libclntsh.so` to the specific version number, so the application can find the library without knowing the exact version."
+    "3": "This starts with Microsoft's .NET SDK image version 8.0 and labels this stage as 'build' — we'll use it to compile code, then throw it away later.",
+    "7": "Copy only the project file (.csproj) first, before copying source code, so Docker can cache the dependency download step separately from code changes.",
+    "8": "Download and cache all the NuGet packages this project needs — doing this before copying the full source lets Docker reuse this layer if only code (not dependencies) changed.",
+    "13": "Switch to a much smaller runtime-only image for the final container — we don't need the compiler anymore, just the .NET runtime to execute the already-built application.",
+    "17": "Copy the compiled application output from the 'build' stage into the final image — this is the actual .dll file that will run.",
+    "20": "Define a variable for the Oracle client version number so you can change it in one place without editing the whole file.",
+    "23": "Install system packages needed to download and unzip the Oracle client; the 'no-install-recommends' and cleanup afterward keep the image small.",
+    "29": "Download Oracle's client library as a zip file, extract it to a standard system location, create symbolic links so the application can find the libraries, and update the system's library cache so the OS knows where to find them."
   }
 }

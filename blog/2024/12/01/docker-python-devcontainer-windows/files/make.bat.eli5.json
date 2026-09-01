@@ -1,17 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:05.151Z",
+  "generated": "2026-09-01T18:41:39.259Z",
   "source": "make.bat",
+  "sourceHash": "00867b2b9442a02850d718b786050898ecdb87c2",
   "lang": "batch",
+  "summary": "This is a batch script (Windows command file) that acts as a command dispatcher for managing a Docker Python container. It checks what action the user wants to perform—like entering bash, building an image, or running a script—and then executes the appropriate Docker commands. If the user doesn't provide a valid action, it shows a help menu explaining all available commands.",
   "explanations": {
-    "1": "@echo off turns off the display of each command before it runs, so you only see the output, not the commands themselves.",
-    "5": "This checks if the user provided any command-line argument; if not, it jumps to the help section.",
-    "12": "This is the app name converted to hexadecimal characters so it can be used in a special VSCode remote URL format.",
-    "18": "The quotes around start are special syntax in batch—they're not part of the command name, they just help batch parse the arguments correctly.",
-    "47": "This constructs a special VSCode URL using the hex-encoded app name so VSCode knows which Docker container to attach to.",
-    "65": "The %* symbol captures all remaining arguments passed to this function as one string.",
-    "66": "This removes the first and last character (the surrounding quotes) from the error message so it displays cleanly.",
-    "68": "The [31m and [0m are ANSI color codes—they make the error message display in red in the terminal."
+    "1": "@echo off turns off the echoing of commands themselves, so only the output of those commands shows up in the terminal, not the commands that produced it.",
+    "3": "cls clears the screen, giving a fresh blank terminal each time you run this script.",
+    "5": "This checks if the user provided any argument at all (the %1 variable holds the first argument); if not, jump to the help section to show usage instructions.",
+    "12": "This is the hexadecimal encoding of the app name 'app_python', used by Docker's VSCode remote connection feature which expects this format in the URL.",
+    "14": "These lines check what the user's first argument was and jump to the matching label (like :bash or :build) to run the correct Docker commands.",
+    "18": "When the user wants to start a script, this passes not just the action but also a second argument (%2) which would be the filename like 'main.py'.",
+    "24": "This prints the script name itself (%0) as part of the usage message, showing users exactly how to invoke it.",
+    "37": "docker compose --env-file loads environment variables from a config file, exec runs a command inside a running container, -it means interactive with a pseudo-terminal, and /bin/bash starts a shell.",
+    "47": "This uses a special VSCode URI format to connect to an attached Docker container; the DEV_CODE is the hex-encoded app name that VSCode requires to identify the container.",
+    "56": "This checks whether a second argument was provided; if not, show an error message because we need a filename to execute.",
+    "65": "The %* variable captures all arguments passed to this label; we store them in a variable so we can manipulate them next.",
+    "66": "This removes the first and last character (the double quotes) from the error message using batch string slicing (~1,-1 means 'from position 1 to position -1').",
+    "68": "[31m and [0m are ANSI color codes; [31m turns text red and [0m resets to default color, making the error message stand out."
   }
 }

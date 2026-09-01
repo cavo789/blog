@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:49.744Z",
+  "generated": "2026-09-01T18:47:46.584Z",
   "source": "project_type.txt",
+  "sourceHash": "2a5816a17c4db1bf709e81ecea5fd3800f0faca7",
   "lang": "plaintext",
+  "summary": "This is a template snippet that conditionally displays different messages depending on whether a 'type' variable is set. If type has a value (like 'PHP' or 'PYTHON'), it shows a message saying the job is for that specific type; otherwise, it shows a message saying the stage applies to all project types.",
   "explanations": {
-    "2": "The double curly braces with a # symbol check if the variable 'type' has been set to something; if it has, the code block below will be shown.",
-    "9": "The double curly braces with a ^ symbol do the opposite—they check if 'type' is empty or missing, and only then show the code block below."
+    "2": "The {{#type}} syntax is a conditional block that executes only if the 'type' variable exists and has a value.",
+    "9": "The {{^type}} syntax is the opposite—it executes only if 'type' is empty, undefined, or falsy."
   }
 }

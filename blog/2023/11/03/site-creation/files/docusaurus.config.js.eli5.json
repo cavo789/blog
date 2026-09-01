@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:48.219Z",
+  "generated": "2026-09-01T18:20:28.913Z",
   "source": "docusaurus.config.js",
+  "sourceHash": "f05b203d122bf0c85232d95a387a6b1f7d3fb757",
   "lang": "javascript",
-  "explanations": {}
+  "summary": "This exports a configuration object that sets up the theme for a documentation or website framework, specifically enabling the navbar to automatically hide when users scroll down and reappear when they scroll back up.",
+  "explanations": {
+    "1": "The 'export default' means this object is the main thing other files will import from this file.",
+    "5": "Setting hideOnScroll to true tells the navbar component to listen for scroll events and toggle its visibility accordingly."
+  }
 }

@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:38:06.713Z",
+  "generated": "2026-09-01T19:12:01.583Z",
   "source": "workspace-prompt.txt",
   "sourceHash": "75e6763d68e670414c8fdbee8e7719df203b9541",
   "lang": "plaintext",
+  "summary": "This document outlines instructions for an AI assistant that answers questions about a personal technical blog using search results. The assistant must carefully parse metadata from retrieved excerpts, ignore the search index date, and present information accurately in the questioner's language.",
   "explanations": {
-    "7": "The 'published:' field you see in the metadata will always show today's date, even though that's not when the article was actually written—ignore it completely and use only the date inside the article title instead.",
-    "11": "When you write any date as part of your answer, use the day/month/year format (like 25/12/2023) rather than other formats."
+    "5": "The article's actual publication date is embedded at the end of the title in parentheses (like a timestamp) — that's the real date to use, not the 'published:' field.",
+    "7": "The 'published:' field always shows today's date because it records when the search system indexed the article, not when it was actually written.",
+    "8": "You should never reference, mention, or use the search index date for anything — it's guaranteed to be misleading.",
+    "11": "When you write any date in your response, format it as day/month/year (for example, 25/12/2023).",
+    "14": "If the search results don't contain enough information to answer the question accurately, admit that directly instead of making something up."
   }
 }

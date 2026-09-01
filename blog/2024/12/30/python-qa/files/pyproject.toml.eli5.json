@@ -1,13 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:47.807Z",
+  "generated": "2026-09-01T18:44:27.572Z",
   "source": "pyproject.toml",
+  "sourceHash": "4dd5e4aa623039144aa827b4744e4059245f55ad",
   "lang": "toml",
+  "summary": "This is a configuration file for Ruff, a Python linter and code formatter. It sets up Ruff's rules by specifying which files to skip, how long lines can be before triggering warnings, and how many spaces should be used for indentation. These settings ensure consistency across the project's other formatting tools.",
   "explanations": {
-    "1": "This starts a configuration section for Ruff, a Python linter and code formatter tool.",
-    "3": "The exclude list is empty, meaning Ruff will check all files (not skipping anything).",
-    "5": "This comment explains that the line-length value matches settings in other config files to keep the whole project consistent.",
-    "6": "Lines of code are allowed to be up to 120 characters long before Ruff complains about line length."
+    "3": "exclude=[] means no files or directories are being excluded from Ruff's checking — the empty brackets indicate an empty list.",
+    "6": "line-length = 120 sets the maximum number of characters allowed per line to 120 before Ruff complains; this matches settings in other config files mentioned in the comment above."
   }
 }

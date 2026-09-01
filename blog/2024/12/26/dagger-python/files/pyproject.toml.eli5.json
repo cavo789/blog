@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:29.286Z",
+  "generated": "2026-09-01T18:43:42.761Z",
   "source": "pyproject.toml",
+  "sourceHash": "4dd5e4aa623039144aa827b4744e4059245f55ad",
   "lang": "toml",
+  "summary": "This is a configuration file for Ruff, a Python linter and code formatter. It sets up basic formatting rules like line length and indentation, while starting with an empty exclusion list for files that shouldn't be checked.",
   "explanations": {
-    "1": "This starts a configuration section for a tool called ruff, which is a Python linter (a tool that checks code quality).",
-    "3": "The exclude list is empty, meaning ruff will check all Python files it finds (nothing is being skipped)."
+    "3": "exclude=[] creates an empty list of file patterns; Ruff will check all files since nothing is being excluded from its analysis.",
+    "5": "This comment explains that these settings are intentionally kept consistent across multiple other Python tool configuration files used in the same project.",
+    "6": "line-length = 120 tells Ruff to allow Python lines up to 120 characters before flagging them as too long, which is longer than the common default of 88 characters.",
+    "7": "indent-width = 4 specifies that the code should use 4 spaces for each level of indentation, which is Python's standard convention."
   }
 }

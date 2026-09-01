@@ -1,22 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:05.361Z",
+  "generated": "2026-09-01T18:19:45.489Z",
   "source": ".part13.htaccess",
   "sourceHash": "d7e3a69c5d735ee6a5993cefc7b6bad3733f85c0",
   "lang": "htaccess",
+  "summary": "This Apache configuration file sets up browser caching rules to improve website performance. It tells browsers how long to keep different types of files (like CSS, images, fonts, and videos) before requesting fresh copies from the server. Static files like fonts and images are cached for a year, while dynamic content like HTML and JSON aren't cached at all since they change frequently.",
   "explanations": {
-    "14": "This line is missing the word 'plus' — it should say 'access plus 1 month' to match the pattern used elsewhere in the file.",
-    "15": "Same issue as line 14: this should say 'access plus 1 month' to be consistent with how other expiration rules are written.",
-    "16": "Same issue as line 14: this should say 'access plus 1 month' for consistency.",
-    "17": "Same issue as line 14: this should say 'access plus 1 month' for consistency.",
-    "39": "This should say 'access plus 1 month' to match the pattern used in most other rules; the 'plus' keyword is missing.",
-    "42": "This should say 'access plus 1 month' for consistency with the rest of the file; the 'plus' keyword is missing.",
-    "43": "This should say 'access plus 1 month' for consistency with the rest of the file; the 'plus' keyword is missing.",
-    "44": "This should say 'access plus 1 month' for consistency with the rest of the file; the 'plus' keyword is missing.",
-    "45": "This should say 'access plus 1 month' for consistency with the rest of the file; the 'plus' keyword is missing.",
-    "47": "This should say 'access plus 1 month' for consistency with the rest of the file; the 'plus' keyword is missing.",
-    "56": "This rule uses seconds (2592000) instead of a human-readable time format like '1 month' — both work, but it's inconsistent with line 55.",
-    "79": "This line repeats the same expiration rule as line 55 using a different method (seconds instead of months), which might cause confusion about which one actually takes effect."
+    "3": "This tells the browser to keep the connection to the server open for multiple requests instead of closing it after each one, which speeds up downloads.",
+    "8": "This turns on the expiration system so the following rules will actually take effect.",
+    "11": "This sets a default cache time of one month for any file type that isn't specifically listed below.",
+    "14": "The word 'access' should be 'access plus' to be correct, but this line tells browsers to cache CSS files for one month.",
+    "35": "This line registers the .cur file extension (cursor files) as a specific MIME type so the server knows what it is.",
+    "56": "Instead of saying '2 months' like line 55, this uses seconds directly (2592000 seconds = 30 days), both approaches work.",
+    "67": "HTML files get zero seconds of caching, meaning browsers always fetch the latest version from the server instead of using a cached copy.",
+    "78": "This uses a pattern matcher to find all .swf files (Flash files) by their filename extension and apply a special rule just to them.",
+    "79": "This overrides any earlier expiration rules specifically for .swf files, telling browsers to cache them for about 30 days."
   }
 }

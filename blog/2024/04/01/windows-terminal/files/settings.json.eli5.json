@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:42.035Z",
+  "generated": "2026-09-01T18:29:27.921Z",
   "source": "settings.json",
+  "sourceHash": "5406da9a01b339d59424be8c5ef448349ffa1af9",
   "lang": "json",
+  "summary": "This is a configuration object for a terminal profile in Windows Terminal, specifically for an Ubuntu WSL (Windows Subsystem for Linux) environment. It defines how the terminal should look and behave when this profile is used, including the background image, display name, and starting directory.",
   "explanations": {
-    "3": "This number between 0 and 1 controls how transparent the background image appears—0.3 means it's 70% see-through so you can read text over it.",
-    "4": "This is a unique identifier (guid) that Windows Terminal uses internally to distinguish this profile from others, even if they have the same name.",
-    "8": "The four backslashes at the start are an escape sequence—each pair (\\\\) represents a single backslash in the actual file path to the WSL (Windows Subsystem for Linux) Ubuntu filesystem."
+    "3": "This sets the background image to be semi-transparent (0.3 means 30% opaque, so 70% transparent), allowing you to see through it slightly.",
+    "4": "The guid is a unique identifier for this profile that Windows Terminal uses internally to distinguish it from other profiles.",
+    "7": "This specifies that this profile should launch a WSL (Windows Subsystem for Linux) instance rather than a regular Windows command prompt or PowerShell.",
+    "8": "This is the directory path where the terminal will open by default; the unusual double-backslashes and wsl$ syntax is how Windows accesses files inside the WSL Ubuntu environment."
   }
 }

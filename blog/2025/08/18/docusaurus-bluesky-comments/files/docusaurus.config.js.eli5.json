@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:03.431Z",
+  "generated": "2026-09-01T18:51:18.163Z",
   "source": "docusaurus.config.js",
+  "sourceHash": "73a98c00f94708ea7fa6d77ee8a6a3f417521d19",
   "lang": "javascript",
-  "explanations": {}
+  "summary": "This code snippet shows a configuration object that stores custom field settings, specifically for a Bluesky social media account. The user needs to replace the placeholder handle with their actual Bluesky username so the application knows which account to reference.",
+  "explanations": {
+    "5": "We're creating a JavaScript object called 'config' that will hold configuration settings for the application.",
+    "9": "The 'customFields' property is a container for user-specific customizations, allowing the config to store extra information beyond the defaults.",
+    "10": "We're nesting a 'bluesky' object inside customFields to group all Bluesky-related settings together in one place."
+  }
 }

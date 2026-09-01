@@ -1,14 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:42.646Z",
+  "generated": "2026-09-01T18:19:10.363Z",
   "source": "block_fileextensions_option2.htaccess",
   "sourceHash": "f0f275eb9cbcd2f3dbcca041f5cc5ae414a56263",
   "lang": "htaccess",
+  "summary": "These rules tell the web server to block direct access to certain file types and folders. The first three lines list out which files are allowed to pass through (images, stylesheets, JavaScript, fonts), and then line 5 forbids everything else, effectively preventing people from browsing to directories or accessing files that aren't explicitly whitelisted.",
   "explanations": {
-    "1": "This checks if the requested file is NOT one of these image or style file types; [NC] means the check ignores uppercase vs lowercase letters.",
-    "2": "This checks if the requested file is NOT a JavaScript file, and the question mark stuff means it also ignores JavaScript files that have query parameters like ?v=123.",
-    "3": "This checks if the requested file is NOT a font file (like .woff or .svg fonts), and similar to line 2, it ignores any query parameters after the filename.",
-    "5": "If we've gotten this far, it means the request doesn't match any of the safe file types above, so the [F] flag rejects the request with a 403 Forbidden error."
+    "1": "This checks if the requested file is NOT one of these image or stylesheet types (the ! means 'not'). The [NC] flag means case-insensitive matching, so .PNG is treated the same as .png.",
+    "2": "This checks if the requested file is NOT a JavaScript file, including JavaScript files with query parameters after them (the \\? part). Query parameters are those extra bits in URLs like ?v=1.0.",
+    "3": "This checks if the requested file is NOT a web font file (eot, svg, ttf, woff formats), again allowing for optional query parameters that might be attached.",
+    "5": "The RewriteRule line says if nothing above blocked the request, forbid it with a 403 error (the [F] flag). The period means 'match anything', and the dash means 'don't rewrite it', so combined with [F] it just blocks the request entirely."
   }
 }

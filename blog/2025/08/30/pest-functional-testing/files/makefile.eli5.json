@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:28.462Z",
+  "generated": "2026-09-01T18:51:57.350Z",
   "source": "makefile",
+  "sourceHash": "3587923e63f36cba16d9a340ad65684f2f7d7f8b",
   "lang": "makefile",
+  "summary": "This Makefile orchestrates Docker operations for running Pest (a PHP testing framework). It defines tasks to build a Docker image with specific user permissions, start/stop containers, and run tests against a configurable website URL. The WEBSITE variable can be overridden when invoking make, defaulting to a Belgian URL.",
   "explanations": {
-    "2": "The ?= operator means 'set this variable to this value only if it hasn't been set already'; so you can override WEBSITE when running make by doing WEBSITE=something make start.",
-    "4": "The $(shell ...) syntax runs a command in your terminal and uses its output as the variable's value; here it's getting your user ID number.",
-    "7": ".PHONY tells make that 'build' is not a real file to create, just a command label you can run.",
-    "10": "The ${UID} and ${GID} syntax substitutes the values of those variables into the docker command.",
-    "26": "The $(WEBSITE) here substitutes the WEBSITE variable value into the command that runs inside the docker container."
+    "2": "The ?= operator means 'set this variable to this value only if it hasn't been set already', so users can override WEBSITE by passing it on the command line (like WEBSITE=example.com make start).",
+    "4": "This captures the current user's numeric ID from the system and stores it in the UID variable, which will later be passed into the Docker container so files have the right ownership.",
+    "5": "Same idea as line 4, but for the group ID — this ensures files created inside Docker belong to your actual user group, not root.",
+    "7": ".PHONY tells Make that 'build' is not a real filename to create, just a label for a task to run.",
+    "10": "The --build-arg flags pass the UID and GID values into the Docker build process so the container can create a user matching your permissions, and --tag gives the resulting image the name 'pestphp'.",
+    "14": "This removes a running Docker container by name, with the %% notation being a Makefile pattern for interpolating a variable (the demo_pest container name).",
+    "18": "This starts a new container from the pestphp image, runs it in the background (--detach), mounts the ./tests folder into the container's test directory, and names it demo_pest.",
+    "22": "This opens an interactive bash shell inside the running container so you can explore or debug inside it.",
+    "26": "This runs the Pest command inside the container, injecting the WEBSITE variable so the tests know which site to test against."
   }
 }

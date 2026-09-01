@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:17.248Z",
+  "generated": "2026-09-01T19:06:26.103Z",
   "source": "warnings.txt",
+  "sourceHash": "687b6260e24349e3e594930ae66480264cb2efe7",
   "lang": "plaintext",
+  "summary": "This is a compiler warning report showing that a pattern-matching rule system is using inefficient 'eval' expressions to filter results after matching. Instead of checking conditions like 'is this media type JSON?' or 'does this schema have an items array?' as part of the pattern match itself, the system is matching first and then checking these conditions afterwards, which is slower. The warnings repeat because similar inefficient patterns appear multiple times in the codebase.",
   "explanations": {
-    "1": "This warning means the code is checking a condition using eval (dynamic evaluation) after already extracting some data from patterns, which is slower than checking the condition directly in the pattern matching itself.",
-    "2": "The system is warning that checking if a content type is JSON using eval is inefficient; it would be faster to filter for JSON types during the initial pattern matching.",
-    "10": "A simple null-check like this one should ideally be part of the pattern matching rules from the start, rather than evaluated as an afterthought, because it would skip unnecessary processing."
+    "1": "The warning is telling us that $path and parserResult came from earlier pattern matches, and instead of embedding the check 'existsPathWithPathAfter' directly into the pattern definition, it's being evaluated after the fact, which wastes CPU cycles.",
+    "2": "This check verifies if a content type is JSON, but it's doing so in an eval block rather than as part of the pattern filter—imagine checking if someone is tall after you've already gathered everyone in a room, rather than only inviting tall people in the first place.",
+    "10": "$schema != null is a simple null check that should ideally be part of the pattern definition itself, rather than evaluated separately on already-matched results.",
+    "11": "The system is suppressing further warnings about this same problem to avoid overwhelming the output with repetitive messages."
   }
 }

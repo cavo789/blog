@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:43.488Z",
+  "generated": "2026-09-01T18:47:38.424Z",
   "source": "canvas_2.txt",
+  "sourceHash": "80784809a0008d9ff8243ca2cc5b17006b157857",
   "lang": "plaintext",
+  "summary": "This is a documentation file (written in Markdown with YAML frontmatter) that describes a feature called 'Contextual Canvas'. It explains that this feature creates a dynamic visual workspace within an application that automatically gathers relevant information based on what the user is currently working on, reducing the need to juggle multiple documents and windows.",
   "explanations": {
-    "3": "The HTML comment with 'highlight-next-line' tells the documentation renderer to visually emphasize line 6 when displaying this file.",
-    "5": "This is another highlight directive—it marks line 6 for special visual treatment in the rendered documentation.",
-    "17": "This syntax is a Hugo template tag that includes another file's content (like inserting a reusable snippet) at this location in the final output."
+    "1": "The three dashes mark the beginning of YAML frontmatter, which is metadata about this document that comes before the actual content.",
+    "3": "This HTML comment tells a documentation processor (likely a static site generator) to highlight the next line visually in the rendered output.",
+    "4": "This YAML key stores partial data — configuration or setup information — that will be used when this document is processed.",
+    "5": "Another highlight directive, marking the next line as important for the rendered documentation.",
+    "17": "This is a template directive that pulls in (includes) the contents of another file located at `_partials/run.md`, allowing the same instructions to be reused across multiple documentation pages."
   }
 }

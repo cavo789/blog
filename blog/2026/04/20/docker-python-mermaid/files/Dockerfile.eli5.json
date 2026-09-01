@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:21.423Z",
+  "generated": "2026-09-01T19:04:55.043Z",
   "source": "Dockerfile",
+  "sourceHash": "22f374cccc61b3b4aa7514f530b6db4df8d3ce85",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a Node.js container with Chromium, fonts, and Python support for running Mermaid diagram generation. It installs system dependencies needed for headless browser automation, configures Puppeteer to use the pre-installed Chromium, and prepares the environment for the application.",
   "explanations": {
-    "3": "The backslash at the end of line 3 tells Docker to continue reading the next line as part of the same command, so all those packages get installed together instead of running separate install commands.",
-    "15": "This command rebuilds the font cache so the operating system can find and use all the fonts we just installed.",
-    "19": "We're creating a directory where Puppeteer (a tool that automates browser tasks) will store cached data, and making sure the node user has full read/write permissions to it.",
-    "22": "This tells Puppeteer not to download its own copy of Chromium since we already installed it system-wide on line 4.",
-    "23": "This environment variable points Puppeteer to the Chromium browser we installed, so it knows exactly where to find it when it needs to run."
+    "3": "The --no-cache flag tells Alpine's package manager to skip caching packages, which saves space in the Docker image since we don't need to reinstall them later.",
+    "15": "This command rebuilds the font cache so the system recognizes all the fonts we just installed, making them available to Chromium and other tools.",
+    "19": "We're creating a directory where Puppeteer (the headless browser library) will cache data, and making it world-writable so the node user can access it.",
+    "22": "This tells Puppeteer not to download its own copy of Chromium, since we're providing one via the system package manager instead.",
+    "23": "This explicitly points Puppeteer to the Chromium binary we installed in line 4, so it knows exactly where to find the browser executable."
   }
 }

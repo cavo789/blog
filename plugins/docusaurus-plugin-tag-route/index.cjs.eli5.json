@@ -1,12 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:00.474Z",
+  "generated": "2026-09-01T18:52:54.290Z",
   "source": "index.cjs",
+  "sourceHash": "b9ff68c90297a28eee85a73ee7e31f575ca62ee7",
   "lang": "javascript",
+  "summary": "This is a Docusaurus plugin that creates individual page routes for each blog tag instead of using a single dynamic route. By enumerating all actual tags at build time, it allows Docusaurus's link checker to verify that tag links like `/blog/tags/docker` are real routes, preventing false positives when checking for broken links across the site.",
   "explanations": {
-    "1": "This exports a function that returns an object; the function itself is what Node.js will load when you require this file.",
-    "4": "The `async` keyword means this function will do something that takes time, and we'll wait for it to finish before moving on.",
-    "5": "The `actions.addRoute` call tells Docusaurus to create a new page route; anything after `/blog/tags/` will be captured as the `tag` variable."
+    "19": "The `path` module is Node.js's built-in utility for working with file and directory paths in a cross-platform way.",
+    "20": "This imports a helper function from another file that reads the blog's file structure and returns all the unique tag slugs (URL-friendly tag names).",
+    "22": "In Docusaurus, a plugin is exported as a function that receives the site's configuration context and returns an object describing what the plugin does.",
+    "28": "This method tells Docusaurus which files to watch for changes; if any blog posts are added or modified, the plugin will re-run and pick up new tags without restarting the dev server.",
+    "29": "This glob pattern matches all index.md and index.mdx files nested anywhere inside the blog folder — these are the blog post files that contain tag metadata.",
+    "31": "The `contentLoaded` method runs after Docusaurus processes all the content; the `actions` object provides methods to programmatically add routes to the site.",
+    "32": "This loop runs once for each unique tag slug found in the blog posts.",
+    "33": "For each tag, we tell Docusaurus to create a new route at a specific path.",
+    "34": "This is the URL path where the page will be accessible, built dynamically from the tag's slug.",
+    "35": "This points to the React component file that Docusaurus will render when someone visits a tag page."
   }
 }

@@ -1,16 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:02.868Z",
+  "generated": "2026-09-01T18:29:10.753Z",
   "source": "Dockerfile",
   "sourceHash": "85865284beb47596cc64645ec526cd81ce56cff1",
   "lang": "docker",
+  "summary": "This Dockerfile creates a Docker image based on Ubuntu 24.04 with zsh shell, git, and curl installed. It then installs Oh-My-Zsh (a zsh configuration framework), adds the zsh-autosuggestions plugin to provide command hints, pre-populates shell history with common docker commands, and customizes the shell prompt with a whale emoji to indicate you're in a container.",
   "explanations": {
-    "3": "This tells the system to not ask interactive questions during package installation—just proceed silently, which is necessary in containers where nobody can answer prompts.",
-    "11": "After installing packages, we delete the package cache files to shrink the image size, since we won't need them again.",
-    "14": "This runs the Oh-My-Zsh installer script by downloading it from the internet and piping it directly to the shell, a common but slightly unusual pattern.",
-    "20": "The `sed` command finds the line starting with `plugins=(git)` and replaces it with a version that also includes the zsh-autosuggestions plugin.",
-    "24": "The `printf` command writes multiple lines into the shell history file so that when you start the container and press up-arrow, you'll see previous commands ready to autocomplete.",
-    "33": "The `-i` flag makes the shell interactive (so it shows a prompt), and `-l` makes it a login shell (so it reads your startup files like .zshrc)."
+    "3": "This tells the installer to skip interactive prompts by setting the frontend to 'noninteractive', so the installation won't hang waiting for user input.",
+    "5": "The && chains commands together so if any step fails, the whole thing stops — and we update the package list before installing anything to ensure we get current versions.",
+    "11": "After installing packages, we delete the apt cache files to shrink the image size, since we won't need them again inside this container.",
+    "14": "This runs the Oh-My-Zsh installer script from the internet, with the --unattended flag so it doesn't ask questions, and --keep-zshrc so it doesn't overwrite any existing shell config.",
+    "20": "The sed command finds the line that says plugins=(git) and replaces it with plugins=(git zsh-autosuggestions), effectively adding the autosuggestions plugin to the active plugins list.",
+    "24": "We're writing hardcoded shell history entries in a special format (with fake timestamps) so that when you start typing 'docker' in the shell, zsh can suggest previous commands from this pre-filled history.",
+    "33": "This sets the default command to run when the container starts — it launches zsh in interactive mode (-i) with a login shell (-l), so you get a normal shell prompt."
   }
 }

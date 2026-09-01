@@ -1,15 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:25.195Z",
+  "generated": "2026-09-01T18:57:17.111Z",
   "source": "Dockerfile",
+  "sourceHash": "34e66c1cc078f9acffa922f9a7c78122909fe0dc",
   "lang": "docker",
+  "summary": "This Dockerfile builds a development container based on a production image. It installs essential Linux tools, creates a non-root user for development, configures the bash shell with history and a custom prompt, sets up VS Code server folders, changes ownership of the app directory to the new user, and installs Python dependencies.",
   "explanations": {
-    "1": "This tells Docker to use a specific syntax version for parsing the Dockerfile, which enables newer features like the cache mount on line 19.",
-    "12": "These environment variables tell Python not to create .pyc files and to output logs immediately instead of buffering them, which is useful for seeing real-time output in containers.",
-    "19": "This creates a temporary cache folder that persists between builds so apt-get doesn't re-download the same packages every time you rebuild the image.",
-    "39": "This checks if a user with that name already exists before trying to create it, preventing errors if the image was already set up.",
-    "69": "This checks if the welcome message marker already exists in the file, so it only adds the message once even if you rebuild the container multiple times.",
-    "89": "Like line 19, this caches pip's downloaded packages between builds to speed up dependency installation on subsequent rebuilds."
+    "5": "ARG defines a build-time variable that can be passed when building the image; here it sets the numeric user ID for the new user account.",
+    "12": "ENV sets environment variables that persist in the running container; these two tell Python not to cache bytecode and to output logs immediately without buffering.",
+    "19": "RUN --mount=type=cache caches the apt package lists between builds so Docker doesn't re-download everything each time you rebuild.",
+    "20": "set -eux makes the shell script strict: exit on errors, print commands before running, and treat undefined variables as errors.",
+    "39": "This checks if a user with the given name already exists; if not, it creates the user and group in the lines that follow.",
+    "46": "This comment explains why we need these VS Code server folders owned by the non-root user instead of root.",
+    "56": "This appends configuration to the user's .bashrc file (which runs every time they open a new shell) to set where bash history is saved.",
+    "68": "MARKER is a comment string we use as a sentinel; we check if it's already in the file so we don't add the welcome message twice.",
+    "69": "The grep -qxF checks quietly if that exact marker line exists; if not (||), we append the welcome message using a here-document (the cat <<EOF syntax).",
+    "83": "chown changes file ownership; here we make sure the app directory is owned by the non-root user instead of root, so they can edit code.",
+    "85": "USER switches from running commands as root to running them as the non-root user for the rest of the build and when the container starts.",
+    "89": "Like line 19, this caches pip's downloaded packages between rebuilds to speed things up."
   }
 }

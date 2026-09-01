@@ -1,10 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:42.271Z",
+  "generated": "2026-09-01T18:42:36.181Z",
   "source": "compose.yaml",
+  "sourceHash": "47fedbb278304cc51d209e8635ce001f65367584",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a service called 'dood' (Docker-out-of-Docker). It builds a Docker image from the current directory, mounts the host's Docker socket into the container, and sets up an interactive terminal with a working directory of /src. This allows the container to run Docker commands by communicating with the host's Docker daemon.",
   "explanations": {
-    "10": "This line mounts the Docker socket file from your host machine into the container, allowing the container to run Docker commands that control the host's Docker daemon."
+    "1": "This is a spell-check directive telling the linter to ignore the word 'dood' since it's not a standard dictionary word.",
+    "5": "The 'build: .' instruction tells Docker Compose to build the image using the Dockerfile in the current directory rather than pulling a pre-built image.",
+    "6": "Setting 'tty: true' allocates a pseudo-terminal for the container, making it behave like an interactive shell session.",
+    "10": "By mounting the Docker socket (/var/run/docker.sock) from the host into the container, the container can send commands to the host's Docker daemon, effectively letting it run Docker commands from inside itself."
   }
 }

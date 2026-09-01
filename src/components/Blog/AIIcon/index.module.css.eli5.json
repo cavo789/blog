@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:26.015Z",
+  "generated": "2026-09-01T19:03:10.983Z",
   "source": "index.module.css",
+  "sourceHash": "57244ed38b53791b5e630a0ec413b1b0ebb20e89",
   "lang": "css",
+  "summary": "This CSS defines styling for an AI icon badge and its inner icon element. The badge uses flexbox to arrange a small icon next to text with consistent spacing and a dark border, while the icon itself is constrained to a small 16x16 pixel square.",
   "explanations": {
-    "2": "inline-flex makes this element sit inline with text but behave like a flex container, so you can arrange its children in a row.",
-    "4": "vertical-align: middle doesn't actually work on flex containers, so this line does nothing here — it's likely leftover from before display: inline-flex was added.",
-    "6": "var(--ifm-color-primary-dark) is a CSS variable (a reusable color value defined elsewhere) that pulls the dark version of the primary brand color."
+    "2": "inline-flex makes this element sit inline with text (like a word) but uses flexbox rules internally to arrange its children",
+    "3": "align-items: center vertically centers the icon and text within the badge",
+    "5": "gap: 8px adds 8 pixels of space between the icon and any text next to it",
+    "6": "This references a CSS variable (--ifm-color-primary-dark) which is a dark color defined elsewhere, likely by the theme"
   }
 }

@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:38.262Z",
+  "generated": "2026-09-01T18:36:02.599Z",
   "source": "my-site.part2.conf",
+  "sourceHash": "1e80d95e28e6ced255f7b13881810ce0a9528c2d",
   "lang": "conf",
+  "summary": "This Apache configuration sets up two virtual hosts for the same website: one for unencrypted HTTP traffic on port 80, and another for encrypted HTTPS traffic on port 443. Both are configured to serve files from the same directory and use URL rewriting to route all non-file requests to index.html, which is a common pattern for single-page applications.",
   "explanations": {
-    "8": "This checks if the requested file doesn't actually exist on disk (the !-f means 'not a file'), so we can send non-existent requests to index.html.",
-    "9": "This rewrites all requests to index.html while preserving query parameters (QSA) and stopping any further rewrites (L means 'last rule').",
-    "26": "This tells Apache to enable SSL/TLS encryption for this virtual host running on port 443.",
-    "28": "This points Apache to the certificate file that proves your server's identity to browsers.",
-    "30": "This is the private key that matches your certificate—keep this secure, as it's needed to decrypt HTTPS traffic."
+    "8": "This checks if the requested URL doesn't correspond to an actual file on disk (the !-f means 'not a file'). If it's not a real file, the next rule will apply.",
+    "9": "If the condition above is true, any URL gets rewritten to index.html while preserving query parameters (QSA) and stopping further rewriting (L means 'last rule').",
+    "26": "This enables SSL/TLS encryption for this virtual host, making it handle HTTPS connections securely.",
+    "28": "This tells Apache where to find the SSL certificate file, which contains the public key that proves this server's identity to connecting clients.",
+    "30": "This tells Apache where to find the private key file, which is kept secret and used to decrypt incoming HTTPS traffic."
   }
 }

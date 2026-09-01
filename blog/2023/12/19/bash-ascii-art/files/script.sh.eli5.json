@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:22.185Z",
+  "generated": "2026-09-01T18:23:04.761Z",
   "source": "script.sh",
+  "sourceHash": "69e54980e38d3b5ff80db197b499b9d7bb1f45f7",
   "lang": "bash",
+  "summary": "This is a bash script template that sets up error handling, displays an ASCII art banner when run, and provides a structured entry point for adding your actual script logic. The script exits on any error or undefined variable to prevent bugs from going unnoticed.",
   "explanations": {
-    "8": "The <<\\EOF syntax means \"print everything until you see EOF\" (it's like a multi-line string), and the backslash before EOF tells bash to treat the content literally without expanding variables.",
-    "27": "The $* passes all command-line arguments that were given to this script into the __main function so it can use them if needed."
+    "2": "These flags make the script safer: -e stops execution if any command fails, -u treats undefined variables as errors, and -o pipefail makes pipes fail if any stage fails instead of just the last one.",
+    "4": "This defines a function called __main that will serve as the main entry point of the script — it's where all the actual work happens.",
+    "9": "This is a here-document (heredoc) that lets you include a multi-line block of text literally; the backslash after << prevents variable expansion, so the ASCII art prints exactly as written.",
+    "28": "This calls the __main function and passes along any command-line arguments that were given to the script, so the function can use them if needed."
   }
 }

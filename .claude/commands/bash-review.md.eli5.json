@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:10.921Z",
+  "generated": "2026-09-01T19:13:42.319Z",
   "source": "bash-review.md",
   "sourceHash": "e6623cbd1c2b490b0c16e2f65bc56248de2a6351",
   "lang": "markdown",
+  "summary": "This is a documentation file that describes a code review tool for Bash scripts. It explains that the tool will check Bash files against best-practice standards and any custom rules the project defines, and will only report problems without making any changes.",
   "explanations": {
-    "3": "The square brackets here mean this argument is optional, and if you don't provide a path, it will check the entire project instead of just one folder.",
-    "9": "The `$ARGUMENTS` is a placeholder that gets replaced with whatever the user typed as the path argument when they run this command."
+    "2": "This line describes what the tool does in a brief, user-facing way — it audits Bash scripts to see if they follow best practices.",
+    "3": "This explains what input the user can provide: an optional file path, and if they don't provide one, the tool checks the entire project.",
+    "4": "This specifies that an 'Agent' tool (likely an AI assistant) is allowed to run this command.",
+    "9": "The $ARGUMENTS part is a placeholder that will be replaced with whatever path the user provides, or will default to checking everything if nothing is given.",
+    "13": "This clarifies that the tool is safe to run — it will tell you about problems but won't automatically modify your files."
   }
 }

@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:58.001Z",
+  "generated": "2026-09-01T18:29:55.440Z",
   "source": "hangman_minify.php",
+  "sourceHash": "b896b3b2a10cbb336977563180ede73ec7ce5a0a",
   "lang": "php",
+  "summary": "This is a hangman game implementation. It picks a random word from a list, then lets the player guess letters one at a time until they either guess the word correctly or run out of guesses. As the player makes wrong guesses, it displays a stick figure drawing progressively, and it shows the word with blanks for unguessed letters.",
   "explanations": {
-    "10": "This function picks a random element from an array by generating a random index and returning that element.",
-    "11": "This array stores the stages of a hangman drawing, where each index represents how many wrong guesses have been made, plus a string for displaying wrong guesses.",
-    "19": "PHP_EOL is a constant that means 'end of line' — it's just a newline character that works on any operating system.",
-    "21": "This loop checks each letter in the word: if it was guessed, it shows the letter, otherwise it shows an underscore.",
-    "25": "The function ppnz() both prints the word AND returns it, so here we're capturing the return value to check if the player won."
+    "10": "This function picks a random element from an array by using array_rand to get a random key, then returns the value at that key.",
+    "11": "This function displays different parts of a hangman stick figure based on the number passed in—higher numbers show more of the figure as wrong guesses accumulate.",
+    "20": "This initializes an empty string that will be built up character by character to show the current state of the word with guessed letters filled in and unguessed letters as underscores.",
+    "21": "This loops through each letter in the word; if that letter has been guessed, it adds the letter to the display string, otherwise it adds an underscore, then prints the result.",
+    "22": "This is the main game loop that sets up the word, initializes an empty list of guessed letters, and starts with 6 wrong guesses remaining.",
+    "24": "This reads the player's input, validates it's a single letter, checks if it's been guessed before, adds it to the guessed list if new, and decrements the wrong guess counter if the letter isn't in the word.",
+    "25": "This checks if the player has won by removing spaces from the display and comparing it to the actual word—if they match, the player guessed all the letters correctly."
   }
 }

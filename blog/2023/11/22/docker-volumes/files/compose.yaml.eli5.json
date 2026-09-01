@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:58.049Z",
+  "generated": "2026-09-01T18:20:46.665Z",
   "source": "compose.yaml",
+  "sourceHash": "8a8110b1753e7df42b76552dfa2d49b61c164ba7",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a Docker Compose configuration file that defines a single service called 'counter'. It specifies how to build a Docker image from the current directory and names the resulting container 'counter' with the image tagged as 'demo/counter'.",
+  "explanations": {
+    "5": "The '%%name=counter%%' syntax is a template variable that gets replaced with the value 'counter' — it's a way to reuse the same name in multiple places without repeating it.",
+    "6": "The 'build: .' instruction tells Docker Compose to build the image by running the Dockerfile in the current directory (the dot means 'here').",
+    "8": "The 'image' line sets the name and tag for the resulting Docker image — 'demo' is like the repository name and 'counter' is the version tag."
+  }
 }

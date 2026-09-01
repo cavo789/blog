@@ -1,12 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:05.160Z",
+  "generated": "2026-09-01T18:43:10.157Z",
   "source": "makefile",
+  "sourceHash": "204d43e4516dc708527da0d585643fe5fba1e1ba",
   "lang": "makefile",
+  "summary": "This Makefile defines a set of convenient commands for working with a Docker container called 'dagger_daemon'. It sets up variables for the daemon name and Docker socket access, then creates shortcuts to build the image and run it with different entry points — whether you want an interactive bash shell, help documentation, or to run linting checks.",
   "explanations": {
-    "2": "This stores a Docker flag that mounts the host's Docker socket (a special file that lets containers talk to Docker) into the container, so we can use Docker from inside the container.",
-    "4": ".PHONY tells Make that 'build' is not a real file we're creating, just a command label to run.",
-    "10": "The ${DOCKER_SOCK} and other ${...} parts are variable substitutions—Make replaces them with the values defined at the top of the file."
+    "2": "This stores a Docker volume mount flag as a variable so we can reuse it in multiple commands; it gives the container access to the host machine's Docker daemon through a Unix socket file.",
+    "4": ".PHONY tells Make that 'build' is not a real file we're trying to create, just a command label, so Make won't get confused if a file named 'build' exists.",
+    "6": "This builds a Docker image from the Dockerfile located at .docker/Dockerfile and tags it with the name stored in DAEMON_NAME, using the current directory as the build context.",
+    "10": "This runs the Docker container interactively with a bash shell as the entry point; the flags mount the Docker socket (so the container can access Docker), mount the current directory into /app/src, and clean up the container when done.",
+    "14": "Similar to bash, this runs the container but executes 'call --help' instead, showing documentation for what commands the daemon supports.",
+    "18": "This runs the container with the 'call lint' command to execute a linting check inside the containerized environment."
   }
 }

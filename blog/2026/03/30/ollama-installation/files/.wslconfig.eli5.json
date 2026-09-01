@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:08.102Z",
+  "generated": "2026-09-01T19:04:25.455Z",
   "source": ".wslconfig",
+  "sourceHash": "14b2222257ac28175c444c63b1fda2b7519b9585",
   "lang": "plaintext",
+  "summary": "This is a configuration file for WSL2 (Windows Subsystem for Linux 2) that tunes performance and resource management. It allocates 20GB of RAM to the Linux environment while reserving the rest for Windows, enables network mirroring so localhost works seamlessly between Windows and Linux, adds swap space for extra memory flexibility, and enables automatic cleanup features to prevent the Linux virtual disk from unnecessarily consuming disk space.",
   "explanations": {
-    "4": "This sets WSL's memory to 20GB total, leaving 12GB free for Windows itself (the comment assumes your computer has 32GB total).",
-    "10": "This makes WSL use the same network as Windows instead of being isolated, so localhost:8000 in WSL and Windows both refer to the same service.",
-    "18": "This tells WSL to gradually release unused memory back to Windows instead of holding onto it forever, but it's experimental so it might not be completely stable."
+    "4": "This limits how much of your computer's RAM the Linux environment can use; setting it to 20GB means Windows keeps the rest of your RAM for itself.",
+    "7": "Swap is like overflow memory on disk that the system uses when physical RAM gets full; 8GB here gives Linux extra breathing room when memory pressure builds up.",
+    "10": "Normally WSL runs in a separate virtual network, but 'mirrored' mode makes it use the same network interfaces as Windows, so you can access services on localhost from both sides without extra networking steps.",
+    "13": "When you delete files in the Linux filesystem, the virtual disk file normally stays the same size; this setting makes it shrink back down, freeing up actual disk space on your Windows drive.",
+    "18": "This tells WSL to gradually give unused RAM back to Windows instead of hoarding it, so your Windows system doesn't feel sluggish when WSL isn't actively using all its allocated memory."
   }
 }

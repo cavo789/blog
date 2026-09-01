@@ -1,16 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:04.572Z",
+  "generated": "2026-09-01T19:04:18.370Z",
   "source": "calculate_autocompleted.sh",
+  "sourceHash": "946a465f392bc9d4bf21f40d84410f8ee5c7815a",
   "lang": "bash",
+  "summary": "This is a simple calculator script that takes two numbers and an operator as arguments, then performs the requested arithmetic operation and displays the result. It includes input validation to ensure exactly three arguments are provided, error handling for division by zero, and a help function that users can access by running the script with 'help' as the first argument.",
   "explanations": {
-    "1": "This is a shebang line that tells the system to run this file with the bash interpreter.",
-    "4": "The 'local' keyword makes these variables only exist within this function, so they won't accidentally affect variables with the same names elsewhere.",
-    "10": "The $((...)) syntax evaluates the math expression inside the parentheses and returns the result.",
-    "19": "The '-ne' operator means 'not equal'; this checks if num2 is not zero before dividing.",
-    "32": "$# is a special variable that counts how many arguments were passed to the script; this line checks if exactly 3 arguments were provided.",
-    "48": "The double brackets [[ ]] allow pattern matching and are safer than single brackets in bash; here it's checking if the first argument is the word 'help'.",
-    "51": "The '$@' expands to all arguments passed to the script, so you're forwarding them to the main function."
+    "4": "The 'local' keyword creates variables that only exist within this function, so they don't interfere with variables elsewhere in the script.",
+    "8": "A 'case' statement is like a series of if-else checks that compares the operator against different patterns.",
+    "10": "The double parentheses $((...)) tell bash to do math—it adds the numbers and substitutes the result directly into the echo output.",
+    "19": "The '-ne' means 'not equal', so this checks whether num2 is not zero before attempting division.",
+    "32": "The '$#' variable holds the count of arguments passed to the script; this line ensures the user provided exactly 3 arguments.",
+    "48": "The double brackets [[ ]] are bash-specific and allow pattern matching; this checks if the first argument is literally the word 'help'.",
+    "51": "The '$@' passes all arguments to the main function, preserving each one as a separate item even if they contain spaces."
   }
 }

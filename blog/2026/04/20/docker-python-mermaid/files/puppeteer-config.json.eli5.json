@@ -1,8 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:53:21.993Z",
+  "generated": "2026-09-01T19:04:58.364Z",
   "source": "puppeteer-config.json",
+  "sourceHash": "ed4ad7387767df0658546e16d045e73c009fc882",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is a configuration object that contains a list of command-line arguments for launching a browser—likely Chromium or Chrome—in a restricted or headless environment. These flags disable various security, rendering, and initialization features to make the browser run more reliably in containerized or sandboxed settings like Docker or CI/CD pipelines.",
+  "explanations": {
+    "3": "Disables the sandbox security feature, which isolates browser processes; useful in containers where sandboxing may conflict with the container's own isolation.",
+    "5": "Disables use of /dev/shm (shared memory), forcing the browser to use disk instead; prevents 'out of memory' errors in restricted container environments.",
+    "6": "Disables GPU-accelerated 2D canvas rendering, falling back to software rendering; prevents graphics driver issues in headless or containerized setups.",
+    "8": "Disables the zygote process, which is Chrome's fork server; helps avoid forking issues in restricted environments."
+  }
 }

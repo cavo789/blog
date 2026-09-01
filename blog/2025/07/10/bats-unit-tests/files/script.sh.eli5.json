@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:57.135Z",
+  "generated": "2026-09-01T18:49:09.859Z",
   "source": "script.sh",
+  "sourceHash": "927004886f85d9a3884f475f31c21d14b9b343c4",
   "lang": "bash",
+  "summary": "This snippet defines a bash function that prints text in red color to the console. It takes any number of text arguments, loops through each one, and outputs it with ANSI color codes that make the terminal display it in bold red before resetting the color back to normal.",
   "explanations": {
-    "1": "This sets a variable to 31, which is the ANSI color code for red text in terminal output.",
-    "4": "The loop iterates through all arguments passed to this function, with each one temporarily called 'line'.",
-    "5": "This uses printf with escape sequences: \\e[ starts a formatting command, 1; makes text bold, the number is the color, m ends the command, and \\e[0m resets formatting back to normal."
+    "1": "__RED=31 is a variable storing the ANSI color code for red; in terminal color codes, 31 means red.",
+    "4": "for line in \"$@\" loops through all arguments passed to this function, treating each one as a separate line to print.",
+    "5": "printf with \\e[1;${__RED}m starts an ANSI escape sequence (\\e is the escape character) that tells the terminal to use bold (the 1) and red color (the 31), then prints the line, then \\e[0m resets all formatting back to normal."
   }
 }

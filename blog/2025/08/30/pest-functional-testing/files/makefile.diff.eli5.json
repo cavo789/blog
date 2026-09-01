@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:34.326Z",
+  "generated": "2026-09-01T18:52:08.418Z",
   "source": "makefile.diff",
+  "sourceHash": "d432284f4cbe498956b6df6c9c4512642a9966de",
   "lang": "diff",
+  "summary": "This change adds the --parallel flag to a Pest testing command running inside a Docker container. This tells Pest to run tests in parallel across multiple processes instead of sequentially, which speeds up test execution.",
   "explanations": {
-    "2": "The --parallel flag tells Pest to run multiple tests at the same time instead of one after another, which makes the test suite finish faster."
+    "2": "The --parallel flag tells Pest to distribute tests across multiple CPU cores, running them concurrently rather than one after another, making the test suite finish faster."
   }
 }

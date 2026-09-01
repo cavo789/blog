@@ -1,19 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:41.514Z",
+  "generated": "2026-09-01T18:27:25.524Z",
   "source": "Dockerfile.part2",
+  "sourceHash": "4cf85fbe3e21e84a1c17113fa0297d2bcc1c94b1",
   "lang": "part2",
+  "summary": "This Dockerfile snippet sets up a PHP-FPM container and optionally installs PHP-CS-Fixer (a code formatting tool). It defines configuration arguments at the top, pulls a PHP base image, then conditionally downloads and installs the php-cs-fixer.phar executable if the install flag is enabled.",
   "explanations": {
-    "2": "This sets a default PHP version that can be overridden when building the Docker image, like docker build --build-arg PHP_VERSION=8.3.",
-    "7": "This is a build argument that defaults to 'true', controlling whether php-cs-fixer (a code formatting tool) gets installed in the Docker image.",
-    "9": "This specifies which version of php-cs-fixer to download; the version number can be overridden at build time.",
-    "14": "The ${PHP_VERSION} syntax pulls in the value from line 2, so the Docker image will be built on the PHP version you specified earlier.",
-    "19": "This re-declares the PHPCSFIXER_INSTALL argument inside the Docker build stage so it can be used in the RUN command that follows.",
-    "24": "The 'set -e -x' makes the script stop on errors and print each command, helping you see what's happening during the Docker build.",
-    "26": "This checks if PHPCSFIXER_INSTALL equals the string 'true', and only runs the installation commands if that condition is met.",
-    "28": "This prints a colorful message to the Docker build output; the \\e codes are escape sequences that make the text appear in a bright magenta background.",
-    "30": "This downloads the php-cs-fixer tool from GitHub using curl and saves it to /usr/local/bin where executable programs are typically stored.",
-    "32": "The chmod +x command makes the downloaded file executable, like giving it permission to run as a program."
+    "2": "ARG creates a build-time variable that can be overridden when building the image; this sets the PHP version to 8.2 by default.",
+    "7": "This ARG defaults to 'true', meaning PHP-CS-Fixer will be installed by default unless you explicitly pass --build-arg PHPCSFIXER_INSTALL=false when building.",
+    "9": "This ARG sets which version of PHP-CS-Fixer to download; it's separated from the install flag so you can independently control whether to install it and which version to use.",
+    "14": "The FROM directive uses the PHP_VERSION variable from line 2 to select which base image to build on—in this case, PHP 8.2 with FPM (FastCGI Process Manager).",
+    "19": "These ARG lines re-declare the variables inside the new build stage; they need to be re-declared because each stage starts fresh, and we need access to these values for the RUN command that follows.",
+    "24": "The 'set -e -x' makes the shell exit immediately if any command fails and print each command before running it, helping catch and debug errors during the build.",
+    "26": "This if-statement checks whether PHPCSFIXER_INSTALL equals 'true'; only if it does will the following commands inside the conditional block execute.",
+    "28": "Printf with ANSI escape codes prints a colored message to the build log (magenta background) to make the installation step visible during the build process.",
+    "30": "Curl downloads the php-cs-fixer.phar file from GitHub's releases page, using the version variable to construct the exact download URL, and saves it to /usr/local/bin/.",
+    "32": "Chmod +x makes the downloaded .phar file executable so it can be run as a command from the shell."
   }
 }

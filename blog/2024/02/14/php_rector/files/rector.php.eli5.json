@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:07.606Z",
+  "generated": "2026-09-01T18:28:05.050Z",
   "source": "rector.php",
+  "sourceHash": "ea4a0ad42556390fa52a487514f680ddf463d0fc",
   "lang": "php",
+  "summary": "This is a configuration file for Rector, a PHP code modernization tool. It sets up Rector to automatically upgrade and improve PHP code by skipping certain directories, targeting PHP 8.2 compatibility, and enabling code quality, dead code removal, and type declaration improvements.",
   "explanations": {
-    "3": "This tells PHP to enforce strict type checking, so if you pass the wrong type of value to a function, it will error instead of trying to convert it.",
-    "13": "This syntax uses a named argument to tell Rector to apply modernizations for PHP 8.2, the latest version of the language.",
-    "14": "These are predefined rule sets that Rector will apply: codeQuality improves how the code is written, deadCode removes unused stuff, and typeDeclarations adds type hints where they're missing."
+    "3": "This line enforces that all function arguments and return types in this file must match their declared types strictly, preventing PHP from silently converting incompatible types.",
+    "7": "This starts building a Rector configuration object by calling the static configure() method, which returns an object that we can chain additional settings onto.",
+    "13": "This tells Rector to apply upgrade rules for PHP 8.2, meaning it will modernize the code to use PHP 8.2 features and syntax."
   }
 }

@@ -1,14 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:41.260Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:52:19.339Z",
+  "source": "index.tsx",
+  "sourceHash": "2b751f3e383327178a5ac5c185137afa73adbd00",
+  "lang": "typescript",
+  "summary": "This React component displays a grid of blog posts related to the current post being viewed. It uses Docusaurus hooks to get the current post's metadata, then calls a utility function to find related posts based on either a designated main tag or shared tags. If no related posts exist, it shows a fallback message; otherwise, it renders them as cards in a responsive grid.",
   "explanations": {
-    "45": "This function checks if a post has a specific tag, handling both simple string tags and object tags with a label property.",
-    "46": "Tags might be stored as either plain strings or objects with properties, so we normalize them to compare against the target.",
-    "48": "This function checks if a post shares any tags from a list of target tags we're looking for.",
-    "67": "We sort by date instead of randomizing to avoid hydration mismatches—this ensures the server and client render the same posts in the same order.",
-    "91": "If descriptions are enabled, pass the post as-is; otherwise, pass a copy of the post with the description set to null to hide it."
+    "38": "useBlogPost() is a Docusaurus hook that gives us information about the blog post currently being displayed, including its front matter and metadata.",
+    "41": "The mainTag property comes from custom front matter (extra fields you can add to posts), but TypeScript doesn't know about it by default, so we use 'as string | undefined' to tell TypeScript what type it actually is.",
+    "42": "We're safely getting the tags array from front matter, defaulting to an empty array if it doesn't exist (the || [] pattern).",
+    "44": "If there's no mainTag and no tags to work with, there's nothing to find related posts by, so we return null to show nothing.",
+    "48": "We're calling a utility function that does the heavy lifting of finding which posts match our criteria, excluding the current post and returning the newest ones first.",
+    "73": "This conditional removes the description field from post data before passing it to PostCard if the description prop is false, letting the caller control whether descriptions appear in the cards."
   }
 }

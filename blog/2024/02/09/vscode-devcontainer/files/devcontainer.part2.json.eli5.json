@@ -1,15 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:36.998Z",
+  "generated": "2026-09-01T18:27:18.568Z",
   "source": "devcontainer.part2.json",
+  "sourceHash": "d70dde48853b6cd613757a5f752b1a0d86f030b3",
   "lang": "json",
+  "summary": "This configuration file sets up a development environment with Docker and Visual Studio Code customizations. It enables automatic code formatting for PHP files using the php-cs-fixer tool, which will run whenever you save a file and follows the PSR12 coding standard. The configuration also specifies where the formatter tool is located and which VSCode extension to use.",
   "explanations": {
-    "11": "The [php] key tells VS Code these settings apply only to PHP files, not all file types.",
-    "19": "This setting automatically saves your file whenever you click away from the editor to another window or tab.",
-    "22": "This tells the PHP formatter where to find the configuration file that defines your code style rules.",
-    "24": "This is the path to the actual PHP formatter program that will run to clean up your code.",
-    "28": "PSR12 is a standard set of PHP formatting rules; this line uses those built-in rules instead of custom ones.",
-    "34": "This installs the junstyle.php-cs-fixer extension so VS Code can use that formatter."
+    "11": "The \"[php]\" key targets settings that apply only to PHP language files in VSCode, so these formatting rules won't affect other file types.",
+    "13": "This tells VSCode to automatically run the code formatter whenever you save a PHP file, so you don't have to manually format it.",
+    "15": "This names the VSCode extension that VSCode should use to format PHP code—in this case, the junstyle.php-cs-fixer extension.",
+    "19": "This setting makes VSCode automatically save files whenever you switch focus away from the editor tab or window.",
+    "22": "This points the php-cs-fixer tool to a configuration file that defines custom formatting rules for your project.",
+    "24": "This tells the tool where the php-cs-fixer executable (the actual program that does the formatting) is installed on your system.",
+    "26": "This enables the php-cs-fixer extension to automatically format your code when you save.",
+    "28": "This sets which coding standard the formatter should follow—PSR12 is a widely-used PHP coding standard that defines things like spacing and naming conventions.",
+    "34": "This installs the junstyle.php-cs-fixer extension into VSCode so it's available to use for formatting."
   }
 }

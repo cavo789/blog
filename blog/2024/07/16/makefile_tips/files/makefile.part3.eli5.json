@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:30.657Z",
+  "generated": "2026-09-01T18:32:26.691Z",
   "source": "makefile.part3",
+  "sourceHash": "4d96c92ae5ece9bb7d551cfed1e97a81019562ca",
   "lang": "part3",
+  "summary": "This Makefile snippet checks whether a .env file exists in the current directory, and if it does, it includes (loads) that file so its variables are available to the rest of the Makefile. This is a common pattern for loading configuration from environment files.",
   "explanations": {
-    "1": "This checks if a .env file exists in the current directory using wildcard expansion; ifneq means 'if not equal', so it's saying 'if the file exists (non-empty result), then proceed'.",
-    "2": "This tells Make to read and process all the variable definitions from the .env file, making them available as variables in this Makefile."
+    "1": "wildcard is a Makefile function that expands to the list of files matching a pattern—here it looks for .env. The ifneq checks if the result is not equal to an empty string, meaning the file exists.",
+    "2": "include tells Make to read and process another file as if its contents were written here, making any variables defined in .env available in this Makefile."
   }
 }

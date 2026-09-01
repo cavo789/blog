@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:39.144Z",
+  "generated": "2026-09-01T18:29:12.865Z",
   "source": ".zshrc",
+  "sourceHash": "cdee1fe4801a83abfac4d90924c2f6972511b225",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a configuration snippet that defines a list of plugins to load in Zsh (a Unix shell). It includes the built-in git plugin, any other plugins you already had configured, and the zsh-autosuggestions plugin which provides command suggestions as you type.",
+  "explanations": {
+    "1": "This creates an array variable called 'plugins' that will hold multiple plugin names.",
+    "4": "zsh-autosuggestions is a Zsh plugin that suggests commands based on your history as you type, helping you complete commands faster."
+  }
 }

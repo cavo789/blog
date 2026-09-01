@@ -1,17 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:47.954Z",
+  "generated": "2026-09-01T18:42:44.574Z",
   "source": "Dockerfile.part2",
+  "sourceHash": "792365bbd1b0938c75842c02be0914af46c0e8d5",
   "lang": "part2",
+  "summary": "This Dockerfile creates a Docker image based on Alpine Linux, installs Docker inside it, and then sets up a non-root user account with a home directory and proper permissions. The user's ID, group ID, and username are configurable at build time through ARG variables, with defaults provided.",
   "explanations": {
-    "5": "DOCKER_OS_GROUPID is set to 1000, which is a default numeric identifier for user groups in Linux—this will be used later to create the actual group.",
-    "6": "DOCKER_OS_USERID is set to 1000, which is a default numeric identifier for users in Linux—this will be used later to create the actual user account.",
-    "19": "The 'set -e -x' command makes the shell exit immediately if any command fails, and print each command before running it—this helps catch errors early in Docker builds.",
-    "21": "The addgroup command creates a new group with the ID stored in DOCKER_OS_GROUPID and names it after the username variable.",
-    "23": "The flags -S and -D make this a system user (not a regular login user), -G assigns it to the group created on the previous line, and -h sets its home directory.",
-    "25": "The chown command changes ownership of the home folder so that the newly created user (not root) owns all their own files.",
-    "29": "These ARG lines redefine the same build arguments again—this resets them for a new build stage, since each FROM statement starts fresh in Docker.",
-    "39": "These ARG lines reference the build arguments again for the second stage; they're needed because each FROM creates a new layer that doesn't inherit ARG values automatically."
+    "1": "This special syntax declaration tells Docker to use the BuildKit parser, which supports more advanced Dockerfile features.",
+    "5": "ARG defines a variable that can be passed when building the image with --build-arg; this one sets the default group ID to 1000.",
+    "9": "FROM specifies the base image we're starting from — Alpine is a very small Linux distribution, useful for keeping container size down.",
+    "11": "hadolint is a linter for Dockerfiles; this comment tells it to ignore a specific warning about the next line.",
+    "12": "This comment explains that docker.io should be used instead of docker for non-Alpine images that use apt-get instead of apk.",
+    "15": "These ARG lines re-declare the variables so they're available in later build stages; they're needed again because ARG scope resets after FROM.",
+    "19": "set -e -x makes the shell exit immediately if any command fails (-e) and print each command before running it (-x), useful for debugging.",
+    "21": "addgroup creates a user group with the specified group ID and name.",
+    "23": "adduser creates a non-root user account with the flags -S (system user) -D (no password) -u (user ID) -G (group) -h (home directory).",
+    "25": "chown recursively changes ownership of the home directory so the new user owns their own files.",
+    "27": "USER switches the container to run as this non-root user for all subsequent commands and when the container runs."
   }
 }

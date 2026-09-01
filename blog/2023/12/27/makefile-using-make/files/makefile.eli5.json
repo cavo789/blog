@@ -1,14 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:19.502Z",
+  "generated": "2026-09-01T18:24:40.310Z",
   "source": "makefile",
+  "sourceHash": "547734b1c9b8cb048d1b5dbb009eb034eabc2bbc",
   "lang": "makefile",
+  "summary": "This Makefile defines a collection of convenient shortcut commands for managing a Dockerized Joomla development environment. Each target (like 'adminer', 'bash', 'up', 'down') bundles together related Docker operations—starting services, opening browsers, viewing logs, and stopping containers—so developers can run complex multi-step processes with a single command.",
   "explanations": {
-    "2": "The @ symbol silences the output of this command, and \\e[1;033m are special codes that make the text yellow and bold in the terminal.",
-    "4": "The --link flag connects this container to another service, and --network puts it on a specific Docker network so containers can talk to each other.",
-    "5": "The leading dash means \"ignore if this command fails\"; sensible-browser tries to open a URL in your default browser, and the & at the end runs it in the background.",
-    "28": "The leading dash means \"don't error out if the browser-opening command fails\"; the & at the end runs it in the background so the Makefile continues.",
-    "36": "The --link flag connects this container to the joomladb service, and --network ensures it can communicate with other containers in the same Docker network."
+    "2": "The @printf command prints a formatted message in yellow bold text (\\e[1;033m sets the color) that tells users the default credentials and URL for Adminer database tool; the %% syntax appears to be template variables that get replaced elsewhere.",
+    "4": "This docker run command starts an Adminer container in detached mode, connects it to the joomladb database via a network link, exposes port 8088, and automatically removes the container when it stops.",
+    "5": "The leading dash (-) tells Make to ignore if this command fails; sensible-browser is a utility that opens the URL in whatever browser is available, and the & runs it in the background so the script continues.",
+    "8": "@printf prints an instruction message in yellow bold text explaining what the bash target does.",
+    "9": "This executes an interactive shell session (/bin/sh) inside the running 'joomla' container, letting the developer run commands directly in that container.",
+    "12": "The 'code .' command opens VS Code in the current directory so you can edit project files.",
+    "18": "explorer.exe is Windows's file explorer; this opens the current directory in a graphical folder browser on Windows systems.",
+    "28": "The leading dash allows this command to fail gracefully; it tries to open the website in a browser but won't crash if the browser command isn't available.",
+    "31": "docker compose up --detach starts all services defined in docker-compose.yml in the background (detached mode) without blocking the terminal.",
+    "36": "Similar to line 4, this starts a phpMyAdmin container linked to the database, exposes it on port 8089, and sets up networking."
   }
 }

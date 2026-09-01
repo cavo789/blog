@@ -1,12 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:44.309Z",
+  "generated": "2026-09-01T18:54:15.459Z",
   "source": "index.cjs",
+  "sourceHash": "2231d5dcba1b225010da2423812b0d270bbe21a1",
   "lang": "javascript",
+  "summary": "This Docusaurus plugin automatically creates individual routes for each article series at build time, so that URLs like `/series/my-series-name` work properly. Instead of using a single dynamic route with a parameter, it generates one real route per series, which allows Docusaurus's link checker to verify that series links are valid without having to ignore broken links site-wide.",
   "explanations": {
-    "23": "This exports a function that Docusaurus will call to set up the plugin; the function returns an object describing what the plugin does.",
-    "26": "The contentLoaded method is a lifecycle hook that Docusaurus calls after all content is loaded, and it gives you the actions object to register new routes.",
-    "27": "actions.addRoute() tells Docusaurus to create a new URL pattern; the :slug part is a placeholder that captures whatever series name the user visits."
+    "32": "This loads Node's built-in path utility for working with file paths across different operating systems.",
+    "33": "This imports a helper function that scans the blog articles and extracts all the unique series names (slugs) from their metadata.",
+    "35": "A Docusaurus plugin is a function that receives configuration context and returns an object describing what the plugin does.",
+    "41": "This method tells Docusaurus to watch for changes in blog article files, so new series are detected and routes are created even while the dev server is running.",
+    "44": "This method runs after content is loaded during the build process, triggering the main logic to create routes.",
+    "45": "This loops through every unique series slug that was found by scanning the article metadata.",
+    "46": "For each series, this tells Docusaurus to create a new route that maps a URL path to a React component.",
+    "47": "This is the actual URL pattern—for a series slug 'writing-tips', this would create the route `/series/writing-tips`.",
+    "48": "This specifies which React component should be rendered when someone visits that series route; the component receives the slug and uses it to fetch and display relevant articles.",
+    "49": "Setting `exact: true` means this route only matches the exact path—it won't match `/series/writing-tips/foo` or similar variations."
   }
 }

@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:38.859Z",
+  "generated": "2026-09-01T18:55:45.845Z",
   "source": "script.bat",
+  "sourceHash": "c024de92a2575b265474b7f8bbd19f599937979a",
   "lang": "batch",
+  "summary": "This is a simple batch script that prints a greeting message to the console. The first line turns off command echoing so only the output is shown, not the commands themselves, and the second line displays the text 'Hello, world!'.",
   "explanations": {
-    "1": "The @ symbol prevents the command itself from being displayed in the console, and echo off turns off the printing of all subsequent commands, so only their output shows up."
+    "1": "@echo off suppresses the display of each command before it executes, so the user only sees the final output, not the underlying batch commands."
   }
 }

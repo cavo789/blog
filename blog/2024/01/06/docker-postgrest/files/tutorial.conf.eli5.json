@@ -1,11 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:01.397Z",
+  "generated": "2026-09-01T18:26:01.407Z",
   "source": "tutorial.conf",
+  "sourceHash": "79dad3b119e17e6737a92923eff2f00a3dfc642b",
   "lang": "conf",
+  "summary": "This configuration file sets up a connection to a PostgreSQL database for what appears to be a PostgREST API server. It specifies the database location and credentials, which schema to expose, and which database role to use for unauthenticated requests.",
   "explanations": {
-    "1": "This sets the database connection string; it tells the app where to find the PostgreSQL database and how to log in to it.",
-    "3": "This defines the default user role (like a permission level) that unauthenticated visitors will use when accessing the database."
+    "1": "This is the connection string that tells the application how to reach the PostgreSQL database—it includes the username, password, server address, port, and database name.",
+    "2": "This limits the API to only expose tables and functions from the 'api' schema, rather than exposing everything in the database.",
+    "3": "This sets the database user role that will be used for any requests that don't provide authentication credentials, restricting what unauthenticated visitors can do."
   }
 }

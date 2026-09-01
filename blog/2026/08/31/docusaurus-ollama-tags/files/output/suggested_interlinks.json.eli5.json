@@ -1,9 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:44.251Z",
+  "generated": "2026-09-01T19:14:38.179Z",
   "source": "suggested_interlinks.json",
   "sourceHash": "a51ed8aa583a67d5c0840377a49d6ab761004688",
   "lang": "json",
-  "explanations": {}
+  "summary": "This is an array of objects that maps articles to related articles. Each object specifies a source article and lists other articles that are relevant to it, creating a cross-reference system for documentation or knowledge base navigation.",
+  "explanations": {
+    "4": "An empty array means no related articles have been suggested for this Docker introduction piece yet.",
+    "8": "This array contains one suggested link, meaning the local LLMs article should reference the Ollama getting-started guide.",
+    "16": "This creates a bidirectional reference: the Ollama article links back to the local LLMs article, so readers can navigate between these related topics in both directions."
+  }
 }

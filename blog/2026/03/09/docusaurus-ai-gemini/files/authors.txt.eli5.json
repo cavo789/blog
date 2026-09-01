@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:27.532Z",
+  "generated": "2026-09-01T19:03:12.138Z",
   "source": "authors.txt",
+  "sourceHash": "40e738f8db694d7ac9d5eb0d20a9791c1d612ef6",
   "lang": "plaintext",
+  "summary": "This is a YAML configuration block defining metadata for Google's Gemini AI service. It specifies the service name, a user-facing title, where to access it, and where to find its logo image.",
   "explanations": {}
 }

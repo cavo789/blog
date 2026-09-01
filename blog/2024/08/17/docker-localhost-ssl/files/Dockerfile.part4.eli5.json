@@ -1,12 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:35:56.706Z",
+  "generated": "2026-09-01T18:36:22.323Z",
   "source": "Dockerfile.part4",
+  "sourceHash": "bcc0e29463ef05eae92799104c7e01dc2af7b1fb",
   "lang": "part4",
+  "summary": "This Dockerfile sets up a PHP 8.3 web server with Apache, installing SSL certificates and a custom site configuration, then enabling the necessary Apache modules and disabling default sites in favor of a custom HTTPS-enabled site.",
   "explanations": {
-    "1": "This tells the spell-checker to ignore this file so it doesn't complain about technical words or domain names.",
-    "10": "These commands enable SSL (secure connections) and rewrite modules in Apache, then disable the default sites and enable your custom SSL site.",
-    "12": "The a2dissite command disables Apache's pre-built default websites so your custom configuration takes over instead."
+    "3": "This pulls the official PHP 8.3 image that comes with Apache pre-installed as the base for our container.",
+    "5": "This copies an SSL certificate file from the host machine into the container so Apache can use it for HTTPS connections.",
+    "6": "This copies the private key for SSL into the container — Apache needs this along with the certificate to encrypt HTTPS traffic.",
+    "8": "This copies a custom Apache configuration file into the sites-available directory, which is where Apache looks for site configurations.",
+    "10": "The `a2enmod` commands enable Apache modules — `ssl` is needed for HTTPS support, and `rewrite` allows URL rewriting rules.",
+    "12": "This disables Apache's default HTTP and HTTPS sites so they won't interfere with our custom configuration.",
+    "13": "This enables our custom site configuration file that we copied in earlier."
   }
 }

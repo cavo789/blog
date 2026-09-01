@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:47.719Z",
+  "generated": "2026-09-01T18:32:53.803Z",
   "source": "makefile.part15",
+  "sourceHash": "d5fb0ba3a14a764cc1688d88536abbce64a5330d",
   "lang": "part15",
-  "explanations": {}
+  "summary": "This line sets a Makefile variable called SHELL to the value 'bash', which tells Make to use the bash shell (instead of the default sh shell) when executing commands in recipe lines throughout the rest of the Makefile.",
+  "explanations": {
+    "1": "The ':=' operator in a Makefile assigns a value to a variable. SHELL is a special Makefile variable that controls which shell interpreter executes the commands in your recipes (the indented lines after targets)."
+  }
 }

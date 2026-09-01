@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:32.931Z",
+  "generated": "2026-09-01T18:47:25.079Z",
   "source": "_quarto.yaml",
+  "sourceHash": "3961969e628c86724ec49adfe553ca81218d6c9a",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a YAML configuration for a search-replace operation that adds a new entry. It defines that wherever the word 'quarto' appears, it should be replaced with a markdown-formatted link '[Quarto](https://quarto.org)' that points to the Quarto website.",
+  "explanations": {
+    "2": "The '+quarto:' syntax means we're adding a new search-replace rule where 'quarto' (the key) is what we're searching for, and the markdown link on the right side is what we're replacing it with."
+  }
 }

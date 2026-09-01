@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:05.275Z",
+  "generated": "2026-09-01T18:30:04.808Z",
   "source": "main.qmd",
+  "sourceHash": "c84daab7dfca468c481fc089d0562e3dae4cd94d",
   "lang": "qmd",
+  "summary": "This is a Quarto markdown document that serves as a thesis written in Latin. It uses Quarto's include syntax to pull in the content from two separate chapter files, assembling them into a single document.",
   "explanations": {
-    "3": "This line tells Quarto to pull in the content from a separate file called chapter1.md and insert it here, as if you'd typed it directly.",
-    "5": "Same idea as line 3, but this time it's including chapter2.md instead."
+    "3": "This line tells Quarto to insert the contents of chapter1.md file directly at this location in the document.",
+    "5": "This line tells Quarto to insert the contents of chapter2.md file directly at this location in the document."
   }
 }

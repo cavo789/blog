@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:33.275Z",
+  "generated": "2026-09-01T18:32:31.391Z",
   "source": "makefile.part5",
+  "sourceHash": "8a2c6318b3088ac228a3c52a23a466092e756749",
   "lang": "part5",
+  "summary": "This Makefile snippet checks whether a specific folder (vendor/a/b/c) exists using two different approaches. The first block echoes a message if the folder does NOT exist, while the second block echoes a message if the folder DOES exist. Both use shell commands to test for the folder's presence and compare the result.",
   "explanations": {
-    "1": "This checks if a folder doesn't exist by running a shell test command; if the test fails (folder missing), it echoes 'no' which matches the string 'no' on the right, making the condition true.",
-    "5": "This checks if a folder exists by running a shell test command; if the test succeeds, it echoes 'yes' which matches the string 'yes' on the right, making the condition true."
+    "1": "$(shell ...) runs a command in the shell and captures its output. This line tests if the folder exists; if it doesn't exist, the test command fails and we echo 'no', then compare that output to the string 'no'.",
+    "2": "The @ symbol suppresses echoing the command itself to the console, so only the echo output appears.",
+    "5": "Similar to line 1, but inverted logic: this tests if the folder exists; if it does, the test succeeds and we echo 'yes', then compare that output to the string 'yes'.",
+    "6": "Same as line 2: @ prevents Makefile from printing the echo command, only its output."
   }
 }

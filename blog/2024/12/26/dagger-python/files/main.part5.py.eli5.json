@@ -1,16 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:08.492Z",
+  "generated": "2026-09-01T18:43:13.853Z",
   "source": "main.part5.py",
+  "sourceHash": "c80092c8c2bfd2342d1a25982a3ac3154a28b415",
   "lang": "python",
+  "summary": "This code defines a Dagger pipeline module with two methods that run Python code quality tools inside Docker containers. The `lint` method runs Pylint to check for code issues, and the `format` method runs Black to automatically format code. Both methods take a source directory, spin up a Python container, install the necessary tool, mount the source code, and execute the tool, returning the output as a string.",
   "explanations": {
-    "1": "This imports tools from the Dagger library, which is a system for running containerized tasks; DefaultPath and Directory are special types that handle file system inputs.",
-    "2": "Annotated is a Python feature that lets you attach extra metadata to a type hint, like saying 'this is a Directory, but also use this default path'.",
-    "4": "The @object_type decorator tells Dagger that this class should be exposed as a reusable component in a pipeline.",
-    "6": "The @function decorator marks this method as something Dagger can call directly from the command line or from other pipelines.",
-    "7": "Annotated[Directory, DefaultPath('src')] means this parameter accepts a Directory, but if the user doesn't provide one, it defaults to the 'src' folder.",
-    "13": "The await keyword pauses execution until the async container operations finish; the parentheses let you chain multiple method calls across multiple lines.",
-    "20": "The .stdout() method means 'run all these container steps and return the text output printed to the terminal'."
+    "4": "@object_type is a Dagger decorator that marks this class as a reusable pipeline component that can be called from other pipelines.",
+    "7": "The Annotated[Directory, DefaultPath(\"src\")] syntax tells Dagger that this parameter expects a directory, and if no directory is provided when called, it should default to looking in the \"src\" folder.",
+    "13": "The 'await' keyword here means we're pausing execution until this asynchronous container operation finishes running, because building and running Docker containers takes time.",
+    "14": "dag.container() starts building a new Docker container specification—think of it like writing a Dockerfile, but in Python code.",
+    "20": ".stdout() extracts the text output that the command printed to the terminal and returns it as the function's result."
   }
 }

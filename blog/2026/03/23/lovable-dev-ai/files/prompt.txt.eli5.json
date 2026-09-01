@@ -1,14 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:53.994Z",
+  "generated": "2026-09-01T19:03:58.110Z",
   "source": "prompt.txt",
+  "sourceHash": "209ce925c61af22774570d58be8ba5e06dcdb731",
   "lang": "plaintext",
+  "summary": "This is a project specification for DocuVerse, a containerized Markdown documentation server. It describes a four-service architecture with a Python FastAPI backend that serves Markdown files with caching and search, a Next.js React frontend that displays them beautifully, and Redis and Meilisearch services for performance and searching. The entire system runs in Docker containers orchestrated together.",
   "explanations": {
-    "23": "SHA256 hash is a way to create a unique fingerprint of the file content; if the file hasn't changed, the hash stays the same, so we can recognize it in the cache.",
-    "28": "On startup means when the backend service first starts up; the backend needs to scan all Markdown files once and send them to Meilisearch so they become searchable.",
-    "53": "The `prefers-color-scheme` is a browser setting that tells us whether the user's operating system is set to dark mode or light mode, and we should respect that choice automatically.",
-    "64": "A multi-stage build means we use one Docker image to compile/prepare the code, then copy only the final result into a smaller image, so the deployed container isn't bloated with build tools.",
-    "70": "The `:ro` at the end means read-only; the backend can read the documentation files but cannot modify or delete them."
+    "18": "The backend will use markdown-it-py to convert Markdown text into HTML, with extra plugins added to make code blocks pretty (syntax highlighting) and create clickable anchor links for headings.",
+    "23": "A SHA256 hash is a unique fingerprint of the file's content—if the same Markdown file is requested twice, its hash will be identical, letting us recognize we've already processed it.",
+    "24": "Redis is being used as a key-value store where we save the HTML output using the hash as the lookup key, so we don't have to convert the same Markdown to HTML repeatedly.",
+    "28": "On startup, the backend scans the entire `/docs` folder recursively to find every `.md` file, converts it to plain text, and uploads it to Meilisearch so users can search across all documentation.",
+    "31": "This endpoint returns a nested JSON structure that mirrors the folder and file organization on disk, like how a file explorer shows folders containing files and subfolders.",
+    "34": "Beyond just the rendered HTML, this endpoint also returns a table of contents—a structured list of all the headings in the document with their hierarchy levels so the UI can display them in a sidebar.",
+    "39": "The backend needs an endpoint to serve images and other non-Markdown files that the documentation might reference, similar to how a web server serves static assets.",
+    "48": "As the user scrolls through the main content, the Table of Contents sidebar on the right should visually highlight which section they're currently reading.",
+    "53": "The dark/light mode toggle should automatically match what the user's operating system is set to (light or dark mode), but users can override it manually.",
+    "58": "The print stylesheet ensures that when someone prints the documentation, only the main content appears in a nicely formatted way without the distracting sidebars and navigation.",
+    "64": "A multi-stage build means the Docker image is constructed in multiple steps—first compiling/installing everything, then copying only the final artifacts into a smaller production image to save space.",
+    "70": "The documentation folder is mounted as read-only (`:ro`) so the running application cannot accidentally modify the user's original Markdown files."
   }
 }

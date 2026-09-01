@@ -1,9 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:25.781Z",
+  "generated": "2026-09-01T19:04:09.307Z",
   "source": "config.yaml",
   "sourceHash": "f1793b20cf48f999e69e6ac6bbe9916ed36906dd",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a configuration file that defines a local AI model setup. It specifies a single Ollama-based language model (Llama 3.1 with 8 billion parameters) running on the local machine, configured to handle both chat and editing tasks through a local API endpoint.",
+  "explanations": {
+    "3": "schema: v1 indicates this config file follows version 1 of the expected format structure, so the system knows how to parse it correctly.",
+    "6": "provider: ollama means we're using Ollama as the service that will run and manage the AI model, rather than a cloud service.",
+    "8": "apiBase specifies the network address and port where the Ollama service is listening for requests — 127.0.0.1 means 'this local machine' and 11434 is the standard port Ollama uses.",
+    "9": "roles defines which types of tasks this model is capable of handling; chat is conversation, and edit means it can modify or rewrite text."
+  }
 }

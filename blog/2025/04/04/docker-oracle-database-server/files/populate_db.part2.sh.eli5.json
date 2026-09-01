@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:04.442Z",
+  "generated": "2026-09-01T18:46:40.468Z",
   "source": "populate_db.part2.sh",
+  "sourceHash": "6dfa75f9dfcd86b9690e89d39478dcaf50a74ada",
   "lang": "bash",
+  "summary": "This script connects to an Oracle database as the system administrator and runs initialization SQL files to create and populate an HR (Human Resources) schema. It uses variable substitution (the %% syntax) to inject configuration values like port and database names, then feeds a series of SQL commands to sqlplus through a here-document.",
   "explanations": {
-    "2": "This runs the sqlplus database tool with -S (silent mode) to connect to an Oracle database using sys credentials, and the <<EOF syntax lets us pass multiple SQL commands to it without creating a separate file.",
-    "4": "This SQL command switches the database session to work with a specific pluggable database container named ORCLPDB1 instead of the default one.",
-    "6": "This reconnects to the database with different credentials (system user) targeting the specific pluggable database, so subsequent commands run as that user in that database."
+    "2": "sqlplus is the Oracle command-line tool; the -S flag runs it silently without banners; the connection string specifies user/password@host:port/database and AS SYSDBA grants administrator privileges. The <<EOF starts a here-document, which lets you paste multiple lines of input without manually typing them one by one.",
+    "4": "This SQL command switches the session to work within a specific pluggable database (PDB) — think of it as selecting which database partition to use within the larger Oracle instance.",
+    "6": "This reconnects using a different user account (system instead of sys) to the pluggable database, similar to logging in with a different username.",
+    "7": "The @ symbol tells sqlplus to execute the SQL file at that path; this file presumably contains CREATE TABLE and other schema setup commands for the HR module.",
+    "8": "This runs another SQL file that inserts the actual data (employee records, departments, etc.) into the tables that were created by the previous file."
   }
 }

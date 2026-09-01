@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:50.490Z",
+  "generated": "2026-09-01T19:03:49.343Z",
   "source": "preview.sh",
+  "sourceHash": "31637e62d87701a67b155c691a54068181ed7298",
   "lang": "bash",
+  "summary": "This script starts a local documentation server using Quarto. It prints some colorful welcome messages telling the user where to find their live docs, then launches Quarto in preview mode on port 4242 so they can see their documentation update in real-time as they edit it.",
   "explanations": {
-    "2": "The -e flag tells echo to interpret backslash escape sequences like \\e[1;34m (which sets the text color to blue) and \\n (which creates a newline).",
-    "3": "Similarly, this line uses -e with echo to print colored text; \\e[1;32m makes the text green, and \\e[0m resets the color back to normal.",
-    "6": "The --host 0.0.0.0 makes the server listen on all network interfaces (not just localhost), and --no-browser prevents Quarto from automatically opening a web browser."
+    "2": "These flags make the script exit immediately if any command fails, treat undefined variables as errors, and prevent piping errors from being silently ignored — basically making the script more robust and less likely to do something unintended.",
+    "3": "The echo command with -e flag interprets escape sequences like \\e[1;34m (which makes text bold and blue) and \\n (which creates newlines), so this prints a fancy blue rocket emoji and message.",
+    "4": "Similar to line 3, this uses escape sequences to print a green arrow and URL — the \\e[0m at the end resets the text color back to normal so subsequent output isn't colored.",
+    "7": "This runs Quarto's preview server on port 4242, binds it to all network interfaces (0.0.0.0), and skips opening a browser automatically — the --no-browser flag prevents it from trying to launch a browser window when you run this script."
   }
 }

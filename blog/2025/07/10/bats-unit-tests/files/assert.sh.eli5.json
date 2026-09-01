@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:43:28.375Z",
+  "generated": "2026-09-01T18:48:37.607Z",
   "source": "assert.sh",
+  "sourceHash": "98597c293c3af018a7f9f875b4f5f8ccff56dd5a",
   "lang": "bash",
+  "summary": "This script defines two utility functions for validation: one checks that a variable isn't empty and prints an error message if it is, and the other verifies that a command-line tool (binary) exists on the system, exiting with an error if it doesn't. These are helper functions you'd call at the start of a script to ensure prerequisites are met.",
   "explanations": {
-    "1": "This special line tells the system to use bash to run this script, no matter which shell the user is currently using.",
-    "4": "The 'local -r' keywords make this variable local to the function and read-only (can't be changed), and the '${1:-}' syntax means 'use the first argument, or an empty string if no argument was given'.",
-    "7": "The '[[ -z ... ]]' test checks if the variable is empty, and '&&' means 'if that's true, then run the echo command'; the '>&2' redirects the message to the error stream instead of normal output.",
-    "18": "The 'command -v' is a safe way to check if a program exists, the '|| true' means 'if command -v fails, pretend it succeeded anyway', and the '$(...)' wraps all that to capture what it prints."
+    "4": "The ${1:-} syntax means 'use the first argument, but if it's not provided, use an empty string instead'. The -r flag makes the variable read-only so it can't be accidentally modified.",
+    "5": "This captures an optional second argument as the error message, but if none is provided, it defaults to a generic message about empty variables.",
+    "7": "[[ -z ${variable} ]] tests whether the variable is empty (zero length). The && operator means 'if the test is true, then execute the echo command'. The >&2 redirects the output to stderr (error stream) instead of stdout.",
+    "13": "Same pattern as line 4—capture the first argument and make it read-only, defaulting to empty string if not provided.",
+    "15": "This calls the assert::notEmpty function we defined earlier, passing the binary name and a custom error message, using backslash to continue the command onto the next line.",
+    "18": "command -v returns the path to a binary if it exists, or nothing if it doesn't. The || true ensures the command doesn't fail if the binary isn't found (which would normally cause the script to exit). The [[ -z ... ]] checks if the result is empty.",
+    "20": "exit 1 stops the entire script and signals that an error occurred (non-zero exit code)."
   }
 }

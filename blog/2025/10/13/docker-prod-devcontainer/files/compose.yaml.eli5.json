@@ -1,12 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:17.879Z",
+  "generated": "2026-09-01T18:57:00.677Z",
   "source": "compose.yaml",
+  "sourceHash": "c8b823cbad0b066d8852efa34efbd595a7dbd5e7",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration that defines a single service called 'app'. It builds a Docker image from the Dockerfile in the current directory, passing in customizable build arguments for the app directory, Python version, and timezone with sensible defaults. The service then runs as a container with specific security settings, port mapping, and environment configuration.",
   "explanations": {
-    "9": "The ${APP_HOME:-/app} syntax means 'use the APP_HOME variable if it exists, otherwise use /app as the default value'.",
-    "17": "The '1001:1001' format specifies the user ID and group ID that the container will run as, which is a security practice to avoid running as root.",
-    "18": "security_opt sets Docker security options; no-new-privileges prevents the container process from gaining additional privileges even if a program inside tries to escalate."
+    "9": "This passes the APP_HOME variable to the Docker build process; if APP_HOME isn't set in your environment, it defaults to /app using the ${VAR:-default} syntax.",
+    "10": "Same pattern as line 9—it lets you override the Python version when building, but uses Python 3.13 if you don't specify one.",
+    "11": "Sets the timezone for the container; defaults to Europe/Brussels if TIMEZONE isn't provided.",
+    "14": "The container will load environment variables from a .env file in your project root instead of defining them inline here.",
+    "16": "Maps port 8000 from inside the container to port 8000 on your machine; the %% syntax suggests this might be replaced by a templating tool later.",
+    "17": "Runs the container as user ID 1001 with group ID 1001 instead of root, which is a security best practice.",
+    "19": "Prevents the container from gaining new privileges, even if a process inside tries to escalate permissions—another security hardening measure."
   }
 }

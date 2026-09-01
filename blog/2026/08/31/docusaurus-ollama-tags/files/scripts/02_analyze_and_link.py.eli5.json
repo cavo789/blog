@@ -1,17 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:59.907Z",
+  "generated": "2026-09-01T19:15:04.067Z",
   "source": "02_analyze_and_link.py",
   "sourceHash": "cd6899255f5170777da97093cccd96585aaeff0a",
   "lang": "python",
+  "summary": "This script analyzes tags from a collection of articles to find the most frequently used tags and suggest which articles should link to each other based on shared tags. It reads article data from a JSON file, counts tag frequencies, saves the results, and then creates a map of which articles could cross-link based on having common tags.",
   "explanations": {
-    "9": "This finds the parent directory of the parent directory of the current file, which is the project root; os.path.abspath(__file__) gives the full path to this script, dirname removes the filename, and the second dirname goes up one more level.",
-    "19": "This is a list comprehension that flattens all tags from all articles into a single list; it loops through each article, then through each tag in that article, collecting them all.",
-    "25": "Counter is a tool that automatically counts how many times each tag appears; it's like tallying votes for each tag.",
-    "35": "This creates a list where each item is a dictionary with the tag name and how many articles have it; the square brackets and 'for' make it a list comprehension that transforms the most_common data.",
-    "54": "We're building a reverse lookup table where instead of 'article has tags', we store 'tag has articles'; this makes it fast to find all articles with a specific tag later.",
-    "64": "A set is being used here to automatically prevent duplicate suggestions if multiple tags point to the same article.",
-    "75": "We convert the set to a sorted list so the suggestions come out in alphabetical order and are more readable."
+    "9": "This gets the parent directory of the parent directory of the current file, so if this script is in project/scripts/, BASE_DIR points to project/.",
+    "19": "This flattens a nested structure—it loops through each article and extracts all tags, creating one long list of every tag from every article.",
+    "25": "Counter is like a specialized dictionary that counts how many times each tag appears. It's from the collections module and makes the next step easier.",
+    "26": "most_common() returns the tags ranked by frequency; we only take the top 20 (defined by TOP_TAGS_COUNT).",
+    "35": "This builds a list of dictionaries by looping through the most common tags and formatting each one with its tag name and count.",
+    "54": "tag_to_articles is being built as an inverted index—instead of articles pointing to tags, tags point to articles, which makes lookups faster later.",
+    "64": "suggested_links is a set so that if two articles share multiple tags, we don't accidentally list the same article twice.",
+    "68": "The .get(tag, []) safely retrieves articles for this tag, returning an empty list if the tag somehow isn't in the dictionary.",
+    "75": "We convert the set to a sorted list so the output is deterministic and easier to read—sets don't have a guaranteed order."
   }
 }

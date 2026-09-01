@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:07.354Z",
+  "generated": "2026-09-01T18:56:39.749Z",
   "source": "styles.module.css",
+  "sourceHash": "0d84e236e2a508837d3638ebf6e0988d05034e60",
   "lang": "css",
+  "summary": "This CSS defines styling for two types of notice boxes that appear in posts: one for old posts (with a warning color scheme) and one for reviewed posts (with a success color scheme). Both notices have similar layouts with padding, rounded corners, and borders, but use different color variables to match their semantic meaning. Child elements like paragraphs and bold text get minor spacing adjustments.",
   "explanations": {
-    "11": "This removes the default spacing that browsers add to paragraphs, so the notice text sits flush without extra gaps.",
-    "15": "This adds a small gap to the right of bold text inside the notice, creating breathing room between the bold word and whatever comes after it."
+    "2": "This uses a CSS variable (starting with --ifm-) that's defined elsewhere in the design system; it pulls the background color for warning-themed elements from that central variable.",
+    "6": "The border uses a darker shade of the same warning color family, creating visual hierarchy between the background and the border.",
+    "11": "Paragraphs inside the notice normally have default margins, so this removes them so the notice's padding controls all the spacing.",
+    "15": "This adds a small gap to the right of bold text inside the notice, likely to create breathing room before whatever text follows the bold word."
   }
 }

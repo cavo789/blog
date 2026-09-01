@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:03.580Z",
+  "generated": "2026-09-01T18:30:03.279Z",
   "source": "markdown.json",
+  "sourceHash": "573f5b00af6785833acf7ae95d44c357ec62618c",
   "lang": "json",
+  "summary": "This is a code snippet configuration for a text editor's auto-completion feature. It defines a template called 'callout' that helps users quickly insert a formatted callout block (like a note or warning box) into a Markdown document by typing a short prefix and then filling in customizable parts.",
   "explanations": {
-    "5": "The ${1|note,tip,warning,caution,important|} syntax lets the user choose one option from that pipe-separated list when they insert this snippet.",
-    "6": "The ${2:title} is a placeholder that gets replaced with whatever the user types second; the number just controls the order of prompts.",
-    "7": "The ${3:body} is another placeholder for the user to fill in—think of these numbered slots as a sequence of questions the editor will ask."
+    "3": "The 'prefix' is the short text you type in your editor to trigger this template — in this case, typing 'quarto-callout' will offer this snippet as an auto-complete option.",
+    "5": "This line shows a dropdown menu with choices — when the user inserts the template, they'll be prompted to pick one type from the list (note, tip, warning, etc.), and that choice gets filled into the template automatically.",
+    "6": "The ${2:title} means the editor will jump to this spot second (after ${1}) and let the user type a title for the callout box.",
+    "7": "The ${3:body} is where the user will type the actual content of the callout, and it's set to be filled in third after the type and title are chosen."
   }
 }

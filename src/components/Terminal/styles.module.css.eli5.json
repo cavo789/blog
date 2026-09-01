@@ -1,19 +1,27 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:33:12.817Z",
+  "generated": "2026-09-01T19:07:54.761Z",
   "source": "styles.module.css",
   "sourceHash": "39cddd59f9440a278801217c89c3a305cccd78de",
   "lang": "css",
+  "summary": "This CSS file styles a fake terminal window that looks like macOS with a dark background, monospace font, traffic-light control buttons, and a copy button. It also includes animations for a blinking cursor and special handling to convert markdown headings (like # and ##) into bash comment syntax so they display as terminal commands rather than page headings.",
   "explanations": {
-    "18": "position: relative here means the copy button (which will be positioned absolutely) will be positioned relative to this terminal container instead of floating somewhere else on the page.",
-    "44": "flex-shrink: 0 prevents the icon from getting squeezed smaller when there's not enough space — it stays at exactly 16×16 pixels no matter what.",
-    "82": "white-space: pre-wrap means the terminal respects your line breaks and spaces (like in actual code), but also wraps long lines instead of making them scroll off screen.",
-    "83": "word-break: break-all is an aggressive backup that will break words mid-word if a single word is too long to fit — it ensures nothing escapes the container.",
-    "111": "min-width: 0 is a trick that lets flex items shrink below their content size; without it, flex won't actually compress the text inside.",
-    "154": "fill: currentcolor means the SVG icon will inherit whatever text color is set, so it automatically becomes the right color without needing a separate color rule.",
-    "174": "padding: inherit copies the padding from the parent (the terminal body) so the overlay sits perfectly on top with text aligned exactly in the same spot.",
-    "175": "white-space: inherit and word-break: inherit ensure the overlay respects the same text-wrapping behavior as the content below it during animation.",
-    "201": ":is() lets you write one rule for all heading levels (h1 through h6) instead of repeating the same styles six times."
+    "8": "This tells the CSS linter to ignore the rule against hardcoded hex color values, because this terminal component intentionally uses specific colors to look authentic rather than pulling from a design token system.",
+    "16": "This allows the terminal to scroll horizontally if someone pastes an extremely long line of code that doesn't fit the width.",
+    "18": "The terminal container uses `position: relative` so that child elements with `position: absolute` (like the copy button) position themselves inside it rather than somewhere higher up the page.",
+    "37": "This prevents the icon and title from wrapping onto multiple lines — they stay together as a unit.",
+    "44": "Even though the icon sits inside a flex container that might want to shrink it, `flex-shrink: 0` forces it to keep its full 16px width.",
+    "82": "Without `pre-wrap`, long lines would just keep scrolling off to the right; this breaks them into multiple visual lines while keeping the whitespace intact (important for code formatting).",
+    "83": "This ensures that even a single word or file path with no spaces can break mid-word if needed, so nothing overflows the container.",
+    "102": "These two properties make the prompt symbol non-interactive: users can't select it when copying, and clicking on it does nothing.",
+    "130": "This references a CSS variable defined by Docusaurus (the documentation framework) rather than a hardcoded value, keeping the button's border-radius consistent with the rest of the site.",
+    "138": "This also uses a Docusaurus variable for the button color instead of hardcoding it, so the button automatically adapts to light/dark themes.",
+    "147": "The copy button starts invisible (`opacity: 0`), but as soon as the user hovers over the terminal container, it becomes visible (`opacity: 1`).",
+    "164": "This hidden clone element sits behind the animations to hold the terminal's final height steady during the typewriter animation, preventing the container from jumping around.",
+    "174": "The overlay inherits the padding from its parent (the terminal body) so that animated text lines up pixel-perfectly with the static content underneath.",
+    "195": "The cursor blinks by switching between fully visible and invisible every half-second, giving it that classic typewriter effect.",
+    "201": "Because the content is written in markdown format, headings like `# comment` get converted to `<h1>` tags by the markdown parser. This selector resets all heading styles so they look like normal terminal text instead of large chapter headings.",
+    "212": "Before rendering each `<h1>` tag, this adds the `#` symbol so `<h1>comment</h1>` displays as `# comment` in the terminal."
   }
 }

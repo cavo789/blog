@@ -1,16 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:02.291Z",
-  "source": "comments.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:51:15.773Z",
+  "source": "comments.tsx",
+  "sourceHash": "f840cecf059be1b0e1fd00fece264dfba0ec80bd",
+  "lang": "typescript",
+  "summary": "This component fetches and displays comments from Bluesky (a social media platform) on a blog post. It converts the raw Bluesky API response into a threaded comment display, handling text formatting with links, embedded images, and proper nesting based on reply depth. The component gracefully handles loading states and errors without disrupting the page.",
   "explanations": {
-    "13": "TextEncoder converts a string into raw bytes, which is necessary because Bluesky uses byte positions (not character positions) to mark where links and special text formatting start and end.",
-    "14": "TextDecoder does the opposite—it converts bytes back into readable text, which we need when we've sliced the byte array into pieces.",
-    "27": "The find() method searches through the facet's features array and returns the first feature that matches the condition (in this case, one marked as a link).",
-    "97": "The split('/').pop() extracts the last segment from a URL-like URI string, which is the unique record ID needed to build links to this specific Bluesky post.",
-    "111": "This uses a template literal to dynamically calculate left padding based on reply.depth, making nested replies indent deeper on the page.",
-    "208": "This defines a helper function inside the useEffect that recursively flattens a tree of nested replies into a single array, tracking how deep each reply is nested.",
-    "212": "When a reply has its own replies, this line calls the function recursively with those nested replies and increments the depth counter."
+    "12": "Bluesky uses byte offsets instead of character positions to mark where links and special text begin and end—this matters for emoji and accented characters which take multiple bytes each.",
+    "19": "TextEncoder converts JavaScript strings into byte sequences so we can slice text at the exact byte positions Bluesky gives us, and TextDecoder converts those bytes back to readable strings.",
+    "26": "This loops through each 'facet' (a marked section of text like a link) and builds an array of rendered parts—mixing plain text with interactive elements like links.",
+    "33": "We search through all the features (styling/link info) associated with this text section to find if it contains a link, since a single section might have multiple types of formatting.",
+    "68": "Instead of checking the type string directly (which wouldn't work because Bluesky's catch-all type for unknown embeds is just a plain string), we check if the 'external' property exists to confirm it's a link embed.",
+    "104": "We extend the BlueskyReplyNode type by adding a 'depth' field to track how nested each comment is, so we can indent them visually in the UI.",
+    "109": "We extract the unique post ID from the full URI by splitting on slashes and taking the last piece—it's the record key that identifies this specific post.",
+    "123": "We use the depth value to indent nested replies progressively—each level deeper gets an additional 1.5rem of left padding.",
+    "206": "This recursive function flattens the tree-like reply structure (replies can have replies) into a single flat array while remembering each comment's nesting level.",
+    "209": "We spread the reply object (keeping all its data) and add a new 'depth' property to track how many levels deep this reply is nested.",
+    "229": "We return null (render nothing) if there's no post ID to fetch or if fetching failed—silently skipping the comments section rather than showing an error.",
+    "230": "While comments are still loading, show a simple loading message instead of nothing, so the user knows the component is working."
   }
 }

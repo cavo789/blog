@@ -1,10 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:09.247Z",
+  "generated": "2026-09-01T18:21:06.556Z",
   "source": "SampleListener.php",
+  "sourceHash": "32515640e4939de318590cd5a646d18a48f17a86",
   "lang": "php",
+  "summary": "This is a listener class that responds to SampleEvent events. When the event fires, it automatically sets the first and last name properties on that event object using method chaining.",
   "explanations": {
-    "11": "This chains two method calls together—setFirstName returns the object itself, so you can immediately call setLastName on that same object."
+    "3": "The namespace organizes this class into the App\\Listeners folder structure, keeping listener classes grouped together in the codebase.",
+    "9": "The handle method receives the SampleEvent object as a parameter and is the code that runs automatically when this event is triggered.",
+    "11": "Method chaining allows multiple setters to be called in one line — setFirstName returns the event object so setLastName can be called on it immediately after."
   }
 }

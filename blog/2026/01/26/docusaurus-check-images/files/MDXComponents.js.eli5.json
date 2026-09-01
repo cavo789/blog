@@ -1,11 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:45.488Z",
+  "generated": "2026-09-01T19:00:48.952Z",
   "source": "MDXComponents.js",
+  "sourceHash": "794a8dab9ffad9fbd151cc80b7652143a4d7a877",
   "lang": "javascript",
+  "summary": "This code customizes how MDX (a markdown-like format) renders image tags in a documentation theme. It starts with all the default image rendering behavior, then overrides just the img tag to add lazy loading and asynchronous decoding by default, which makes pages load faster and more smoothly.",
   "explanations": {
-    "9": "This line pulls out specific properties (loading, decoding, className, style) from the props object, and the '...rest' collects all the remaining properties that weren't explicitly named into a new variable.",
-    "13": "The '...rest' spreads all those remaining properties back onto the img element, so any props we didn't explicitly handle still get passed through to the HTML tag."
+    "5": "The three dots (...) spread operator copies all properties from MDXComponents into this new object, so we inherit all the default behavior.",
+    "9": "This line extracts loading, decoding, className, and style into separate variables, while ...rest collects all the remaining properties into a new object we can pass along.",
+    "15": "If the loading prop wasn't already specified, we set it to 'lazy' so images don't load until the user scrolls near them.",
+    "17": "If decoding wasn't specified, we set it to 'async' so the browser decodes images in the background without freezing the page."
   }
 }

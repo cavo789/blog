@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:26.360Z",
+  "generated": "2026-09-01T18:23:09.713Z",
   "source": "test.sh",
+  "sourceHash": "1e9ec8a0d900dc53682dacb0f7d9387a2e00a271",
   "lang": "bash",
+  "summary": "This script loads environment variables from a .env file and then prints out two of those variables (a full name and email address). It's a simple way to read configuration from a file without polluting the shell's environment with temporary variables.",
   "explanations": {
-    "3": "The 'allexport' option tells bash to automatically export every variable you define, so they become available to child processes like Docker.",
-    "4": "This line loads variables from a .env file into your current shell session so you can use them in your script.",
-    "5": "This turns off the allexport behavior so that any variables defined after this point won't automatically be exported to child processes."
+    "3": "set -o allexport tells bash to automatically export every variable that gets defined, so when we source the .env file, all its variables become available to any commands we run next.",
+    "4": "source .env reads and executes the .env file in the current shell, loading all the variables defined in it.",
+    "5": "set +o allexport turns off automatic exporting, so any new variables created after this point won't be exported — we're cleaning up after ourselves."
   }
 }

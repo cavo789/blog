@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:37:31.021Z",
+  "generated": "2026-09-01T18:39:16.282Z",
   "source": "makefile",
+  "sourceHash": "15c4b44dc0f63d2b84d87934114cfab62f8d528e",
   "lang": "makefile",
+  "summary": "This Makefile orchestrates a Docker-based Joomla development environment. It provides commands to start, stop, and configure the application, managing both the web server and database containers while injecting the current user's ID and group ID into Docker to handle file permissions correctly. The main entry point is the 'start' target, which displays formatted installation details pulled from environment variables.",
   "explanations": {
-    "1": "This loads environment variables from a .env file so they can be used throughout the makefile.",
-    "4": "The $$ syntax escapes the dollar sign so make passes a literal $ to the shell, allowing $(id -u) to run as a shell command that gets the current user's ID.",
-    "6": "This target named 'config' depends on 'stop' running first, so when you run 'make down', it automatically stops containers before bringing them down.",
-    "13": "The leading dash (-) tells make to ignore errors if these directories don't exist, so the command won't fail if there's nothing to delete.",
-    "16": "The @ symbol suppresses printing the command itself to the terminal, so users only see the output, not the 'clear' command.",
-    "17": "The \\033 sequences are ANSI color codes that make the text yellow and bold when printed to the terminal.",
-    "39": "This creates the db_data and joomla_data directories if they don't exist, using -p to silently succeed even if they're already there."
+    "1": "This loads variables from a .env file so they can be used throughout the Makefile—things like WEB_PORT, DB_USER, etc.",
+    "4": "The $$(id -u) and $$(id -g) capture the current user's ID and group ID; these are passed to Docker so containers run with matching permissions and can access files without ownership conflicts.",
+    "7": "The leading dash (-) tells Make to ignore errors if this command fails; the @ symbol suppresses printing the command itself before running it.",
+    "16": "The 'clear' command wipes the terminal screen to give a clean slate for the startup message.",
+    "17": "This uses printf with ANSI escape codes to print colored text—the codes like \\033[1;33m control colors (yellow here) and formatting.",
+    "23": "This printf formats and aligns output: %-30s reserves 30 characters left-aligned for the label, then prints the variable value in a different color.",
+    "39": "This creates the db_data and joomla_data directories if they don't exist, using -p to create parent directories without errors if they're already there.",
+    "40": "The --detach flag runs containers in the background, and --build forces a rebuild of images before starting."
   }
 }

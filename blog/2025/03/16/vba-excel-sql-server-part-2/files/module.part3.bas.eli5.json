@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:39.012Z",
+  "generated": "2026-09-01T18:46:03.727Z",
   "source": "module.part3.bas",
+  "sourceHash": "dedb540579ccd51e0e4e7a530ef0c927bc74f8ee",
   "lang": "bas",
+  "summary": "This code sets up a database connection object with a server name, database name, and hardcoded SQL Server credentials (SA account with a password), then executes a SELECT query to populate a table named 'qryTest' starting at the active cell in the spreadsheet.",
   "explanations": {
-    "4": "We're hardcoding the username as 'SA' (the SQL Server admin account) instead of letting the system use the current user's Windows login.",
-    "6": "We're hardcoding a password directly in the code, which is a security risk because anyone reading the source code can see it.",
-    "14": "This calls a custom function that runs the SQL query and pastes the results as a table starting at wherever the cursor is currently positioned, with True meaning it will add headers."
+    "4": "SA is the default system administrator account in SQL Server — this line hardcodes that username rather than using the current Windows user's credentials.",
+    "6": "The password is being stored directly in the code as plain text, which is a security risk since anyone who reads this file can see the database password.",
+    "8": "This comment is explaining that if you left UserName and Password blank, SQL Server would instead use 'trusted connection' mode, which means it would authenticate using whoever is currently logged into Windows.",
+    "14": "The Call keyword invokes a subroutine on the cData object; it's passing the SQL query, a table name, the current cell location, and 'True' (probably meaning to overwrite if the table already exists)."
   }
 }

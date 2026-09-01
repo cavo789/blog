@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:31.669Z",
+  "generated": "2026-09-01T19:17:32.885Z",
   "source": "makefile.part4",
+  "sourceHash": "5e8cd391f651363aa9a3433a210682e4e9396f98",
   "lang": "part4",
-  "explanations": {}
+  "summary": "This is a Makefile snippet that includes a .env file if it exists. The minus sign tells Make to ignore errors if the file isn't found, so the build won't fail just because there's no .env file.",
+  "explanations": {
+    "1": "The minus sign before 'include' means 'try to include this file, but don't error out if it doesn't exist'. Without it, a missing .env file would stop the entire build."
+  }
 }

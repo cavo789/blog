@@ -1,13 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:28.439Z",
+  "generated": "2026-09-01T18:30:49.677Z",
   "source": "c:\\temp\\synchronize.txt",
+  "sourceHash": "b5659a27a6f8b0d9d51b04c69b5e71866850fdd5",
   "lang": "plaintext",
+  "summary": "This is an FTP script that connects to a remote server, changes to specific directories on both the local machine and remote server, then synchronizes files between them while excluding the .git folder. Finally, it closes the connection and exits.",
   "explanations": {
-    "1": "This connects to an FTP server using credentials embedded in the URL; the format is ftp://username:password@server:port/.",
-    "3": "This sets the transfer mode to ASCII, which means files will be converted to text format during transfer instead of being copied byte-for-byte.",
-    "5": "This sets the local working directory on your computer to C:\\Christophe; 'lcd' means 'local change directory'.",
-    "8": "This synchronizes files between your local machine and the remote server, preserving timestamps, automatically choosing between ASCII and binary transfer, and skipping any .git folders."
+    "3": "This sets the file transfer mode to ASCII, which is used for text files (as opposed to binary mode for images or executables).",
+    "5": "lcd stands for 'local change directory' — it changes the working directory on your own computer to C:\\Christophe.",
+    "6": "cd changes the working directory on the remote FTP server to /Christophe.",
+    "8": "synchronize remote copies files from your local machine to the remote server, -preservetime keeps the original file timestamps, -transfer=automatic picks the best mode for each file type, and -filemask=|.git/ tells it to skip anything in a .git folder."
   }
 }

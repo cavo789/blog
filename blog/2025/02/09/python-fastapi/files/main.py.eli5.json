@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:15.703Z",
+  "generated": "2026-09-01T18:45:17.411Z",
   "source": "main.py",
+  "sourceHash": "ffbbc7602f03b7adbf3638d9aa133656c1dcf018",
   "lang": "python",
-  "explanations": {}
+  "summary": "This code creates a basic web API using FastAPI that listens for requests to the root URL path and responds with a JSON message. When someone visits the home page, the server returns a dictionary containing a greeting.",
+  "explanations": {
+    "3": "FastAPI() creates a new web application instance that will handle incoming HTTP requests and manage your API routes.",
+    "5": "The @app.get(\"/\") decorator tells FastAPI that the function below should run whenever someone makes a GET request to the root path of your website (the home page).",
+    "6": "This function is automatically called by FastAPI when the route is accessed, and whatever it returns becomes the response sent back to the user."
+  }
 }

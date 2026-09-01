@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:38:14.063Z",
+  "generated": "2026-09-01T18:40:20.131Z",
   "source": "compose.yaml",
+  "sourceHash": "cb041e52dfcebbabc0216253d08255be0a7c41e3",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration sets up a Python development container named app_python. It builds from a Dockerfile in the current directory using the 'development' stage, passes in several customizable environment variables for Python version and container user settings, and mounts the local codebase plus two named volumes to persist VSCode extensions and bash history across container restarts.",
   "explanations": {
-    "7": "This tells Docker to use the 'development' stage from your Dockerfile instead of the default final stage, which lets you include extra tools for coding.",
-    "21": "This sets which user account the container runs as (the numbers are user ID and group ID); it's using the variables you defined above with fallback values if they're not set.",
-    "27": "The dot (.) means your current folder on your computer gets mapped into the container at the path stored in DOCKER_APP_HOME, so changes you make locally appear instantly in the container.",
-    "29": "This creates a persistent storage space just for VSCode extensions so they survive container restarts and you don't have to reinstall them each time.",
-    "31": "This stores your bash command history in a Docker volume so you keep your terminal history even after the container stops and restarts."
+    "7": "The 'target: development' tells Docker to build only up to the 'development' stage in the Dockerfile, stopping before any production-only layers—this keeps the development image leaner.",
+    "10": "This passes the DOCKER_PYTHON_VERSION environment variable to the Dockerfile's build process so it knows which Python version to install; if not set, the build will fail unless the Dockerfile has a default.",
+    "12": "The syntax ${DOCKER_APP_HOME:-/app} means 'use the DOCKER_APP_HOME variable if it exists, otherwise default to /app'—the colon-dash is a fallback operator.",
+    "21": "The user field sets which user account runs processes inside the container; it's formatted as userid:groupid (like 1000:1000), and defaults to 1000 if those variables aren't defined.",
+    "27": "This mounts the current directory (.) from your computer into the container at the path stored in DOCKER_APP_HOME, so code changes on your machine are immediately visible inside the container.",
+    "29": "This creates a persistent volume that survives container restarts, storing VSCode's extensions so you don't have to reinstall them every time you restart the container.",
+    "31": "Similarly, this volume stores bash command history, so your terminal history persists between container sessions."
   }
 }

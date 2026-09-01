@@ -1,13 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:12.306Z",
+  "generated": "2026-09-01T18:30:19.101Z",
   "source": "Dockerfile.part3",
+  "sourceHash": "1186518687a366ae24fffd5399790270ca8dae0a",
   "lang": "part3",
+  "summary": "This Docker stage sets up a production build of Docusaurus, a documentation site generator. It installs Docusaurus from scratch, copies in the project's dependencies and source code, then builds the final static website files.",
   "explanations": {
-    "1": "This line names this Docker build stage 'building_production' so we can refer to it later, like when copying files from it into a final image.",
-    "4": "The backslash at the end lets us continue this command on the next line; it's just telling Docker 'this command isn't finished yet'.",
-    "13": "The `package.*` pattern matches both `package.json` and `package-lock.json` (or `yarn.lock`) — it's a wildcard that grabs both at once.",
-    "16": "The `--immutable` flag means yarn will fail if the lockfile doesn't match what's in package.json, guaranteeing the same versions build every time."
+    "1": "This starts a new Docker build stage called 'building_production' that builds on top of a 'base' image defined elsewhere.",
+    "4": "This runs the Docusaurus setup wizard non-interactively to create a new Docusaurus project in the /opt/docusaurus folder with the classic template and JavaScript (not TypeScript).",
+    "7": "After installing Docusaurus, this changes the owner of all files in the directory to the 'node' user so that the non-root node user can work with those files later.",
+    "13": "This copies the package.json and yarn.lock files from your local machine into the Docker container before installing dependencies, so Docker can cache the dependency installation if these files haven't changed.",
+    "16": "The --immutable flag tells yarn to fail if it would change the lock file, ensuring everyone gets exactly the same dependency versions.",
+    "19": "This copies all your actual documentation source code (markdown files, custom components, config, etc.) into the container.",
+    "22": "This runs the build command, which compiles all the markdown and React components into static HTML/CSS/JavaScript files ready to be served."
   }
 }

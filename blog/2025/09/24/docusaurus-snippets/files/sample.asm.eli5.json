@@ -1,14 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:36.922Z",
+  "generated": "2026-09-01T18:55:42.381Z",
   "source": "sample.asm",
+  "sourceHash": "9d8b813d44e2f3940a5acdc71d59f22d30f4d2da",
   "lang": "asm",
+  "summary": "This is a minimal x86-64 assembly program that sets up the data section with a hello world message and starts execution at the _start label. It moves the value 13 into the edx register, which is typically the size of the message for a system call.",
   "explanations": {
-    "1": "This declares a section called .data where we store fixed data like strings and numbers that don't change while the program runs.",
-    "2": "We're creating a label 'msg' that points to the text 'Hello, world!' followed by a newline character (0Ah); the 0 at the end marks where the string ends.",
-    "3": "This declares a section called .text where we write the actual instructions our CPU will execute.",
-    "4": "We're telling the assembler that _start is a global symbol, meaning the operating system can find and run our program starting from this label.",
-    "6": "We're putting the number 13 into the edx register, which tells the system call how many characters to print (the length of 'Hello, world!')."
+    "2": "This declares a string 'Hello, world!' followed by a newline character (0Ah). The 'db' means 'define byte' — it's telling the assembler to store these characters as raw bytes in memory.",
+    "4": "The 'global' keyword exports the _start label so the operating system can find and jump to it as the program entry point.",
+    "6": "This moves the number 13 into the edx register — it's counting the bytes in 'Hello, world!' plus the newline, preparing it for a write system call that will need to know how many bytes to output."
   }
 }

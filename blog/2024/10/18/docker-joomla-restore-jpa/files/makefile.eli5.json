@@ -1,14 +1,24 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:37:59.906Z",
+  "generated": "2026-09-01T18:39:59.769Z",
   "source": "makefile",
+  "sourceHash": "45c8b59d97b45d509c7b78367f8a4bffb88c8933",
   "lang": "makefile",
+  "summary": "This Makefile defines commands to manage a Docker-based Joomla installation with a MySQL database. It provides shortcuts for common operations like starting/stopping containers, viewing logs, resetting data, and importing backups—while automatically passing the current user and group IDs to Docker to avoid permission issues. The file also loads environment variables from a .env file and displays formatted configuration information to the user.",
   "explanations": {
-    "1": "This line tries to load a .env file if it exists (the minus sign means 'don't fail if it's missing'), which probably contains your environment variables like database passwords.",
-    "4": "The $$ is how you escape a dollar sign in makefiles—it becomes a single $ that the shell sees; here it's getting your user ID and group ID to pass to Docker so file ownership stays correct.",
-    "13": "The minus sign at the start tells make 'keep going even if this command fails', useful here because the directories might not exist yet.",
-    "17": "The \\033 sequences are ANSI color codes that make the text yellow in your terminal; ${WEB_PORT} is a variable placeholder that gets replaced with your actual port number.",
-    "43": "This target depends on 'reset', meaning 'reset' will run first before this target's commands execute."
+    "1": "This includes the .env file if it exists, loading environment variables (like WEB_PORT, DB_USER, etc.) that are referenced throughout the Makefile.",
+    "4": "The $$(id -u) and $$(id -g) capture the current user and group IDs before running docker compose, ensuring containers run with matching permissions to avoid file ownership problems.",
+    "6": "This makes 'down' depend on 'stop' first, so running 'make down' will stop containers before removing them.",
+    "13": "The '-' prefix suppresses errors if these directories don't exist, preventing the reset task from failing.",
+    "16": "The '@' suppresses echoing the command itself, so only the output appears; 'clear' wipes the terminal.",
+    "17": "The \\033 codes are ANSI escape sequences that add colored formatting to terminal output; ${WEB_PORT} substitutes the variable value.",
+    "39": "Creates the data directories if they don't exist; '-@' suppresses both command output and errors.",
+    "40": "The --detach flag runs containers in the background, and --build rebuilds images from the Dockerfile.",
+    "43": "The 'import' task depends on 'reset', so it first clears old data before restoring from backup.",
+    "53": "Copies the Akeeba Kickstart initialization file into the joomla_data volume so Docker can access it.",
+    "55": "Copies the Kickstart restoration script into the joomla_data directory.",
+    "61": "Copies the backup archive (jpa file) into the joomla_data volume for the Kickstart script to restore.",
+    "65": "Starts containers without rebuilding images, allowing the Kickstart script to run and restore the backup."
   }
 }

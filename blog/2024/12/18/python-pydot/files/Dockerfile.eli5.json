@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:26.383Z",
+  "generated": "2026-09-01T18:42:11.797Z",
   "source": "Dockerfile",
+  "sourceHash": "d93e477296a71c385452545328e3c2ba9eb7a61f",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a lightweight Python 3.13 environment optimized for container use. It disables Python's bytecode generation to reduce disk space, installs the graphviz system package needed for graph visualization, and adds the pydot Python library to interact with those graphs.",
   "explanations": {
-    "6": "This tells hadolint (a Dockerfile linter) to ignore rule DL3008, which warns about not pinning package versions in apt-get commands.",
-    "7": "The 'set -e -x' makes the shell exit immediately if any command fails and print each command before running it, so errors don't silently continue.",
-    "13": "This tells hadolint to ignore rule DL3013, which warns about not pinning pip package versions for reproducibility."
+    "4": "PYTHONDONTWRITEBYTECODE=1 tells Python not to create .pyc compiled files, which saves disk space in containers since those files are temporary anyway.",
+    "7": "set -e -x makes the script exit immediately if any command fails (the -e flag) and print each command before running it (the -x flag), which helps catch errors early.",
+    "9": "The --no-install-recommends flag skips optional dependencies that apt would normally pull in, keeping the image smaller.",
+    "11": "After installing packages, we delete temporary files and apt's package lists to clean up disk space, since we won't need to install anything else in this image.",
+    "14": "The --no-cache-dir flag tells pip not to keep a local copy of downloaded packages after installation, which again saves disk space in the final image."
   }
 }

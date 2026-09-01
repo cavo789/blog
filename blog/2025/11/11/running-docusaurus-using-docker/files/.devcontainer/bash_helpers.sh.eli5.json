@@ -1,14 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:35.875Z",
+  "generated": "2026-09-01T18:58:57.983Z",
   "source": "bash_helpers.sh",
+  "sourceHash": "0817bfcc0542d4f2e5c64ecc6d54c4e7828b1a33",
   "lang": "bash",
+  "summary": "This script checks if a dev container welcome message has already been added to a user's bash configuration file, and if not, it appends a block of aliases and welcome text. This prevents the welcome message from appearing multiple times if the script runs again.",
   "explanations": {
-    "3": "This sets a file path, but uses a default value 'node' if the OS_USERNAME variable isn't already set — the ${VAR:-default} syntax means 'use VAR, or if it's empty, use default instead'.",
-    "6": "The -qxF flags mean: be quiet (no output), match the exact whole line (-x), and treat the search term as a fixed string not a pattern (-F), so it won't break if the marker contains special characters.",
-    "7": "The <<EOF syntax is a 'here document' — it lets you write multiple lines of text that will all be appended to the file at once, ending when you type EOF on its own line.",
-    "10": "Even though this is inside the here-document, the single quotes prevent bash from expanding ${BLOG_HOST_DIR} right now — it will stay as literal text and only get expanded later when someone sources the bashrc file.",
-    "20": "The \\e[33m and \\e[0m are ANSI color codes — 33m makes text yellow, and 0m resets it back to normal, so 'version' appears in yellow in the terminal."
+    "2": "This line makes the script stop immediately if any command fails, if any undefined variable is used, or if a piped command fails — it's a safety net to catch mistakes early.",
+    "4": "This constructs the path to the user's bashrc file, using the OS_USERNAME variable if it's set, otherwise defaulting to 'node' as the username.",
+    "7": "The grep command searches for the exact marker line in the bashrc file; the -q flag means 'quiet' (no output), and -xF means match the whole line exactly as literal text. The ! negates it, so this checks 'if the marker is NOT already there'.",
+    "8": "The cat command with <<EOF reads all the text between this line and the closing EOF, then appends it (>>) to the bashrc file.",
+    "11": "This sets a variable called BLOG_HOST_DIR in bashrc, using its current value if it exists, or an empty string if it doesn't — the curly braces let you provide a fallback default."
   }
 }

@@ -1,8 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:21.643Z",
+  "generated": "2026-09-01T18:26:45.998Z",
   "source": ".dockerignore",
+  "sourceHash": "9096368489db7ec3c1ce26723e073795062b0452",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a `.dockerignore` file that tells Docker which files and folders to exclude when building a Docker image. By listing these items, we prevent unnecessary files from being copied into the container, making the image smaller and faster to build.",
+  "explanations": {
+    "1": "The `build/` directory is excluded so compiled or generated output files don't get packaged into the Docker image.",
+    "2": "The `node_modules/` directory is excluded because it's typically very large and should be regenerated fresh inside the container rather than copied from your local machine.",
+    "8": "Log files matching `*.log` are excluded to keep the image clean and prevent stale logs from previous builds from being included.",
+    "15": "The `blog/`, `pages/`, and `static/` directories are excluded, likely because they're source files or content that don't need to be in the runtime image."
+  }
 }

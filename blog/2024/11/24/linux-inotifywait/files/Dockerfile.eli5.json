@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:38:35.739Z",
+  "generated": "2026-09-01T18:40:56.405Z",
   "source": "Dockerfile",
+  "sourceHash": "07b501c261cbacaf9ce8560096f41840cd8bd32b",
   "lang": "docker",
+  "summary": "This Dockerfile sets up a lightweight Python 3.10 container with two directories: one for source code and one for output files. It then keeps the container running indefinitely so you can interact with it or let it stay alive for debugging purposes.",
   "explanations": {
-    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax parser, which gives us access to newer Docker features.",
-    "3": "The 'AS base' part gives this stage a name so we can refer back to it later if we're building multiple stages in one Dockerfile.",
-    "12": "This keeps the container alive by running a command that never exits, so the container doesn't immediately shut down after starting."
+    "3": "This pulls the official Python 3.10 image but uses the 'slim' variant, which is much smaller than the default because it excludes unnecessary packages. The 'AS base' part names this stage, which is useful if you want to build on top of it later.",
+    "6": "This creates the /app/out directory (the -p flag means 'create parent directories if needed') where your script will write output files.",
+    "9": "WORKDIR sets the default folder where commands will run — it's like cd'ing into /app/src, so when your script runs, that becomes its home directory.",
+    "12": "Instead of exiting immediately, this keeps the container alive by running 'tail -f /dev/null', which just watches an empty file forever. This is useful for development or when you want to docker exec into the container later."
   }
 }

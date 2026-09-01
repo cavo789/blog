@@ -1,14 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:05.177Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:56:36.264Z",
+  "source": "index.tsx",
+  "sourceHash": "c271c5cd23bacb758781be3038c74bca539fbcea",
+  "lang": "typescript",
+  "summary": "This component checks if a blog post is older than one year and displays an appropriate warning to readers. If the post has a recent review date, it shows a green success notice saying the content is still accurate; otherwise, it shows a yellow warning that the information may be outdated. If the post is less than a year old, it renders nothing.",
   "explanations": {
-    "27": "useBlogPost() is a hook that gives us access to the current blog post's data—think of it as reaching into Docusaurus to grab the post's metadata.",
-    "32": "This checks if there's an updates array in the frontMatter (the YAML metadata at the top of a markdown file) and if it has at least one item.",
-    "34": "We're spreading the updates array to make a copy, then sorting it so newest dates come first, then grabbing the first one—this finds the most recent update date.",
-    "50": "clsx() is a utility that lets us combine multiple CSS class names together—in this case, Docusaurus's alert styles plus our custom styles.",
-    "54": "aria-hidden='true' tells screen readers to ignore the emoji so they don't hear 'warning sign' twice (since the text already says the message)."
+    "28": "useBlogPost() is a Docusaurus hook that gives us access to the current blog post's data, including its metadata (which contains the publish date and other fields).",
+    "33": "We're casting these fields to TypeScript types because they're custom fields this blog added to the standard metadata — Docusaurus doesn't know about them by default, so we have to tell TypeScript what shape they have.",
+    "39": "We sort the updates array in reverse chronological order (newest first) by converting the date strings to timestamps and comparing them.",
+    "46": "We create a new Date object representing right now, so we can compare it against the post date.",
+    "47": "We subtract one year from today's date, so now oneYearAgo represents the cutoff point — anything before this date is considered old.",
+    "57": "We check if the review date is recent enough (at or after the one-year-ago threshold) to override the old post warning.",
+    "60": "toLocaleDateString formats the date into a readable string like 'January 15, 2024' using US English formatting.",
+    "68": "clsx() is a utility that combines multiple CSS class names together, letting us apply both Docusaurus's built-in alert styles and our custom styles at the same time.",
+    "72": "aria-hidden='true' tells screen readers to ignore the emoji, so they don't read out random characters — the text message itself conveys the meaning to everyone."
   }
 }

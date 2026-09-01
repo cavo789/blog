@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:37.249Z",
+  "generated": "2026-09-01T19:00:35.824Z",
   "source": "curl.txt",
+  "sourceHash": "09ee58daea5f4d53a7dc4a32b9e4dd7f72271f80",
   "lang": "plaintext",
+  "summary": "This is a curl HTTP request trace showing a successful connection to a local server on port 8001. The client sends a GET request to the root path, and the server responds with HTTP 200 (success) and returns JSON content.",
   "explanations": {
-    "1": "This shows curl is attempting to connect to a local server running on port 8001 (127.0.0.1 is your own computer).",
-    "8": "This is curl noting that the server doesn't support HTTP connection reuse, meaning each request needs a fresh connection.",
-    "15": "The connection is being closed after the response; this happens when the server or client doesn't want to keep the connection open for future requests."
+    "1": "curl is attempting to establish a TCP connection to the localhost address 127.0.0.1 on port 8001.",
+    "3": "The '>' prefix indicates this is an outgoing request line; the client is asking for the root path (/) using HTTP version 1.1.",
+    "8": "This is a diagnostic note from curl indicating the server doesn't support connection reuse (HTTP/2 multiplexing), so curl will close this connection after use.",
+    "9": "The '<' prefix indicates an incoming response; the server successfully processed the request and returned status code 200 (OK).",
+    "15": "After receiving the full response, curl closes the connection to the server since it's no longer needed."
   }
 }

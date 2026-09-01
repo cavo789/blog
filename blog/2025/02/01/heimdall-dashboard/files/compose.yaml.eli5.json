@@ -1,8 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:12.633Z",
+  "generated": "2026-09-01T18:45:08.723Z",
   "source": "compose.yaml",
+  "sourceHash": "655b14571416d61d88b903c0143417d73e6312fd",
   "lang": "yaml",
-  "explanations": {}
+  "summary": "This is a Docker Compose configuration file that defines a single service called 'heimdall', which is a web-based application dashboard. It specifies the container image to use, sets up environment variables for user permissions and timezone, mounts a local config directory into the container, exposes ports for HTTP and HTTPS traffic, and configures the container to automatically restart if it stops unexpectedly.",
+  "explanations": {
+    "1": "This comment tells spell-checkers to ignore spelling errors in this file, since YAML configuration files often contain technical terms that aren't in standard dictionaries.",
+    "9": "PUID sets the user ID that the container process runs as; the ${USER_ID:-1000} syntax means 'use the USER_ID variable if it's defined, otherwise default to 1000'.",
+    "10": "PGID does the same thing for the group ID, allowing the container to have the same file permissions as the host system.",
+    "13": "This mounts the ./config folder from your computer into the /config folder inside the container, so configuration changes persist even if the container is recreated.",
+    "15": "%%port=80%% is a template variable that will be replaced with an actual port number when this file is processed; it maps that external port to port 80 inside the container."
+  }
 }

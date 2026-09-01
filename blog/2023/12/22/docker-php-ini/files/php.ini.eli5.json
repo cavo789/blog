@@ -1,8 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:54.939Z",
+  "generated": "2026-09-01T18:24:06.846Z",
   "source": "php.ini",
+  "sourceHash": "5b8c5b86c94b025683d87e502aecfbadf9589c64",
   "lang": "ini",
-  "explanations": {}
+  "summary": "This is a PHP configuration file that sets limits for file uploads and script execution. It allows large files (500 megabytes) to be uploaded, gives scripts more memory to work with, and lets them run longer before timing out.",
+  "explanations": {
+    "1": "Enables the ability to receive file uploads through HTTP requests; without this, the server would reject any file uploads.",
+    "3": "Sets the maximum size of a single file that can be uploaded; both this and post_max_size need to be at least 500M for 500M files to work.",
+    "4": "Sets the maximum size of all data sent in a single HTTP POST request; it must be at least as large as upload_max_filesize or uploads will fail.",
+    "5": "Allows PHP scripts to run for up to 600 seconds (10 minutes) before the server forcefully stops them; useful for long-running operations like large file processing."
+  }
 }

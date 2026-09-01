@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:54:22.705Z",
+  "generated": "2026-09-01T19:06:46.680Z",
   "source": "tags.py",
+  "sourceHash": "6b8e743f2c47e9f99199f7baed5355eb42385a9f",
   "lang": "python",
+  "summary": "This code creates a list of metadata describing API endpoint categories and passes it to FastAPI to organize endpoints in the API documentation. Each category has a name and description that will appear in the auto-generated API docs.",
   "explanations": {
-    "3": "This creates a list that holds dictionaries; each dictionary describes a tag used to organize API endpoints in the documentation.",
-    "16": "We're passing the tags_metadata list to FastAPI so it knows how to label and describe groups of endpoints in the auto-generated API documentation."
+    "3": "This declares a variable that holds a list of dictionaries; each dictionary must have string keys and string values, which is what list[dict[str, str]] means.",
+    "16": "The openapi_tags parameter tells FastAPI to use our metadata list to group and label endpoints in the auto-generated OpenAPI documentation (the interactive API docs)."
   }
 }

@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:45.372Z",
+  "generated": "2026-09-01T18:37:41.182Z",
   "source": "pest.php",
+  "sourceHash": "2414a6d80d63e44068d1b89101fb0eb1a33a7a4b",
   "lang": "php",
+  "summary": "This tells a testing framework (Pest PHP) to use the TestCase class from the Tests namespace for all test files in the Feature directory. It's a configuration line that sets up the foundation that every feature test will inherit from.",
   "explanations": {
-    "1": "This line tells a testing framework (Pest) to use the TestCase class from the Tests directory for all test files in the Feature folder, which sets up common test utilities and helper methods that your tests can use."
+    "1": "The uses() function registers a base class that will be automatically inherited by all tests in the specified directory, so you don't have to manually extend it in each test file."
   }
 }

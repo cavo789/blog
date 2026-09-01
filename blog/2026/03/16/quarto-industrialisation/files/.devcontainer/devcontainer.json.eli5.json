@@ -1,14 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:35.952Z",
+  "generated": "2026-09-01T19:03:25.028Z",
   "source": "devcontainer.json",
+  "sourceHash": "c7695606b473bb3904a8a7378d2aaeff0c23eaa3",
   "lang": "json",
+  "summary": "This is a configuration file for a development container environment called 'WritingDoc Lab'. It specifies which Docker Compose service to use, sets up VS Code with specific extensions and editor behaviors useful for writing and rendering documents, and hides certain generated files from the editor view.",
   "explanations": {
-    "3": "This points to a Docker Compose file in the parent directory that defines how the development environment should be set up.",
-    "4": "The 'docs' service refers to a specific service defined in that Docker Compose file — it's the container this dev environment will run inside.",
-    "5": "This is the folder path inside the Docker container where your project files will be mounted and available to edit.",
-    "16": "The 'index_files/' folder is auto-generated output that you don't want cluttering your file explorer, so it's hidden.",
-    "19": "When you save a Quarto file, VS Code will automatically run it to generate the output document."
+    "3": "This points to a Docker Compose file in the parent directory that defines how the development environment should be set up and run.",
+    "4": "This specifies which service from the Docker Compose file should be used as the actual development environment.",
+    "5": "This sets the root folder inside the container where your code and files will be located and where VS Code will open by default.",
+    "15": "This section tells VS Code to hide certain files and folders from the file explorer on the left—in this case, automatically generated Quarto output files.",
+    "19": "This automatically renders Quarto documents (a documentation format) whenever you save a file, so you see updates without manually running a command.",
+    "20": "This automatically formats your code according to standard rules whenever you save, keeping formatting consistent without extra work."
   }
 }

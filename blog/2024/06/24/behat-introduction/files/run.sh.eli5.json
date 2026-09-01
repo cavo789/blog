@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:32:58.156Z",
+  "generated": "2026-09-01T18:31:35.376Z",
   "source": "run.sh",
+  "sourceHash": "e05abe98fe0479e77fa3fe5fb030949dcf3a888a",
   "lang": "bash",
+  "summary": "This script starts a headless Chrome browser in the background configured for remote debugging, captures its process ID, runs a PHP test suite using Behat, and then kills the Chrome process when tests finish. It's a test automation setup that needs Chrome running in the background while the tests execute.",
   "explanations": {
-    "8": "nohup runs the Chrome command in the background so the script doesn't wait for it to finish, and the backslash at the end continues the command on the next line.",
-    "10": "The > /dev/null 2>&1 & redirects all Chrome output to nowhere and the & at the end puts it in the background so the script can continue.",
-    "13": "$! is a special variable that holds the process ID (PID) of the last command that ran in the background.",
-    "15": "This tells the shell checker to ignore certain warnings about variable expansion in the next line.",
-    "16": "The -d memory_limit=-1 flag tells PHP to use unlimited memory instead of the default limit."
+    "3": "Clears the terminal screen to start with a clean display.",
+    "8": "nohup runs the following command immune to hangups (so it keeps running even if the script exits), and the backslash continues the command on the next line.",
+    "10": "> /dev/null 2>&1 & redirects all output to nowhere and & puts Chrome in the background so the script doesn't wait for it to finish.",
+    "13": "$! is a special variable that holds the process ID of the last command run in the background — we save it so we can stop Chrome later.",
+    "15": "This tells the shell linter to ignore warnings about unquoted variables in the next line, because Behat's argument expansion is intentionally flexible.",
+    "16": "The -d memory_limit=-1 flag tells PHP to use unlimited memory for this command, which Behat might need for large test suites.",
+    "18": "This checks if chromePID is greater than 0 (meaning Chrome actually started successfully) before trying to kill it."
   }
 }

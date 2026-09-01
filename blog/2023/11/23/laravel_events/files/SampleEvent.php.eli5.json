@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:08.118Z",
+  "generated": "2026-09-01T18:21:04.438Z",
   "source": "SampleEvent.php",
+  "sourceHash": "ceac65c51d12f72cd07dec6a0b83aac7e0471603",
   "lang": "php",
+  "summary": "This is an event class that wraps an Employee object and provides a fluent interface to modify the employee's properties. It uses Laravel's Dispatchable trait, which allows the event to be triggered and broadcast throughout the application. The methods each update a single employee property and return the event object itself, enabling you to chain multiple method calls together.",
   "explanations": {
-    "10": "The 'use Dispatchable' statement adds special methods to this class that let it be sent through Laravel's event system.",
-    "12": "The 'private Employee $employee' syntax means this Employee object is stored as a private property and automatically assigned from the constructor parameter.",
-    "16": "This method modifies the employee and returns '$this' (the event object itself), which lets you chain multiple setters together like setFirstName(...)->setLastName(...)."
+    "3": "The namespace declaration tells PHP where this class lives in the file structure — think of it as the 'address' of the class so other parts of the app can import it.",
+    "10": "The 'use Dispatchable' trait gives this event class special powers from Laravel, including the ability to be sent out as an event that listeners can respond to.",
+    "12": "The constructor accepts an Employee object and stores it as a private property using PHP 8's constructor property promotion — this is shorthand for declaring and assigning in one line.",
+    "16": "These methods (setFirstName, setLastName, setPseudo) return `$this`, which means the method returns the entire event object itself — this enables method chaining so you can call multiple setters in a row like `$event->setFirstName('John')->setLastName('Doe')->setPseudo('JD')`."
   }
 }

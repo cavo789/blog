@@ -1,17 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:42:27.813Z",
+  "generated": "2026-09-01T18:47:15.449Z",
   "source": "main.php",
+  "sourceHash": "0ef680c7e4c6bb1f3e3ae25434bfa046a42dcc86",
   "lang": "php",
+  "summary": "This PHP script connects to an Oracle database using hardcoded credentials, runs a query to fetch the first 25 employees from a table, and displays them formatted as a columnar report. It includes error handling at each step and always cleans up the database connection and statement resources when done, whether the script succeeds or fails.",
   "explanations": {
-    "3": "This tells PHP to enforce strict types, meaning you must pass exactly the right data type to functions or PHP will error instead of trying to convert.",
-    "17": "This creates a connection string (DSN) for Oracle database using string interpolation — the curly braces inject the variable values into the string.",
-    "19": "This is a type hint comment telling developers and tools that oci_connect() returns either a resource (a database connection handle) or false if it fails.",
-    "20": "The empty string at the end is the character set parameter; leaving it empty tells Oracle to use the database's default character set.",
-    "38": "oci_bind_by_name() links the :max_rows placeholder in the SQL to the $numRows variable, and SQLT_INT tells Oracle to treat it as an integer.",
-    "50": "OCI_ASSOC + OCI_RETURN_NULLS means: return results as an associative array (keys are column names) and keep NULL values instead of converting them to empty strings.",
-    "51": "The (int) cast forces $row['EMPLOYEE_ID'] to be an integer; this is defensive programming in case Oracle returns it as a string.",
-    "61": "is_resource() checks if $statement is still a valid resource before trying to free it, preventing errors if it was never created."
+    "3": "This tells PHP to enforce strict type checking, meaning functions must receive arguments of exactly the right type or PHP will throw an error instead of trying to convert types automatically.",
+    "17": "This builds the Oracle connection string by inserting the host, port, and service name variables into a special Oracle format that tells the database driver how to find the database server.",
+    "20": "The oci_connect function attempts to log into Oracle using the username, password, and connection string; it returns either a connection resource or false if it fails.",
+    "23": "If the connection failed, oci_error() retrieves details about what went wrong from Oracle, which we then include in our exception message.",
+    "30": "oci_parse prepares the SQL statement for execution by having Oracle parse and validate it; this is similar to preparing a statement in other database libraries.",
+    "38": "oci_bind_by_name replaces the :max_rows placeholder in our SQL with the actual value 25, and SQLT_INT tells Oracle that this parameter is an integer.",
+    "40": "oci_execute actually runs the prepared statement against the database and returns true/false to indicate success.",
+    "50": "oci_fetch_array retrieves one row at a time from the result set as an associative array (keys are column names); the loop continues until there are no more rows, at which point it returns false.",
+    "51": "We cast the employee ID to an integer since Oracle returns it as a string, and we want it as a number for the formatted output.",
+    "61": "is_resource checks whether the statement variable actually holds a valid database resource before trying to free it, protecting against errors if something went wrong earlier."
   }
 }

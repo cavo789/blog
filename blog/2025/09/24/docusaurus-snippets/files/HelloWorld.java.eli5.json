@@ -1,8 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:45.301Z",
+  "generated": "2026-09-01T18:56:04.337Z",
   "source": "HelloWorld.java",
+  "sourceHash": "14de65491e85d53e0d9f1abd684bf6addc364e65",
   "lang": "java",
-  "explanations": {}
+  "summary": "This is a basic Java program that prints the text \"Hello, world!\" to the console. The main method is the entry point that runs when you execute the program.",
+  "explanations": {
+    "2": "The main method is special in Java — it's the method that the Java runtime looks for and automatically runs when you start the program. The 'static' keyword means it belongs to the class itself rather than to individual objects, and String[] args is where command-line arguments would go if you passed any.",
+    "3": "System.out.println sends text to the console (the standard output). The 'ln' at the end means it adds a newline after the text, so the next output starts on a fresh line."
+  }
 }

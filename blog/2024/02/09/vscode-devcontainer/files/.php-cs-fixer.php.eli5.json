@@ -1,12 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:43.564Z",
+  "generated": "2026-09-01T18:27:31.172Z",
   "source": ".php-cs-fixer.php",
+  "sourceHash": "985dc8aa5a418c33563bb18547be37470a93e64c",
   "lang": "php",
+  "summary": "This file configures PHP CS Fixer, a tool that automatically formats PHP code to follow style standards. It sets up which files to scan (everything except common directories like vendor and node_modules), loads a license header text file, then applies PSR12 coding standards along with a custom license header comment at the top of each PHP file.",
   "explanations": {
-    "3": "This creates a 'finder' object that will search for PHP files to check, starting from the current directory but skipping the folders listed below.",
-    "13": "This reads the contents of a license header file from disk and stores it as a string so it can be added to the top of PHP files.",
-    "21": "The rtrim function removes trailing carriage returns and newlines from the header text so it's clean before being inserted into files."
+    "3": "PhpCsFixer\\Finder::create() starts building an object that will search for PHP files to format.",
+    "4": "->in('.') tells the finder to look in the current directory and everything inside it.",
+    "5": "->exclude() removes certain directories from the search so we don't format third-party code or config files that shouldn't be touched.",
+    "13": "file_get_contents() reads the entire license header text file into a string variable so we can add it to the top of PHP files.",
+    "15": "new PhpCsFixer\\Config() creates a fresh configuration object that we'll customize with our rules.",
+    "17": "setRules() tells the fixer what coding style rules to apply when it formats the code.",
+    "19": "'@PSR12' => true means use the PSR12 standard, which is an industry-standard set of PHP formatting rules.",
+    "21": "rtrim($header, '\\r\\n') removes trailing line breaks from the license text so it doesn't add extra blank lines.",
+    "27": "->setCacheFile() tells the fixer where to store a cache file so it runs faster on subsequent checks by remembering which files haven't changed.",
+    "28": "->setIndent() configures how many spaces should be used for indentation (four spaces in this case).",
+    "29": "->setLineEnding() ensures all line breaks use Unix-style (\\n) instead of Windows (\\r\\n) or old Mac (\\r) style.",
+    "30": "->setFinder() connects the file finder we built earlier so the fixer knows which files to process."
   }
 }

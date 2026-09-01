@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:35:53.175Z",
+  "generated": "2026-09-01T18:22:58.758Z",
   "source": "Dockerfile",
   "sourceHash": "22332d6752fe0a49fb5a963212528de312865585",
   "lang": "docker",
+  "summary": "This Dockerfile builds a Ubuntu container with the xmlstarlet tool installed for XML processing. It creates a demo directory with a sample XML file of book data, customizes the shell prompt to show a whale emoji and username, then starts an interactive bash shell when the container runs.",
   "explanations": {
-    "3": "This tells apt (the package installer) to run in non-interactive mode so it won't pause asking for user input during the build.",
-    "8": "After installing packages, we delete the cached package lists to make the final image smaller, since we won't need to reinstall them.",
-    "12": "The printf command writes the XML data directly as a string into the file instead of using echo, which preserves the exact formatting without adding extra newlines.",
-    "18": "This customizes the command prompt to show a whale emoji and color-coded text so you can visually confirm you're working inside a container, not your host machine.",
-    "20": "This runs bash in interactive mode so when you start the container, you get a shell prompt ready for commands instead of the container immediately exiting."
+    "3": "This tells Ubuntu's package manager to skip interactive prompts during installation, so the build doesn't hang waiting for user input.",
+    "5": "The && chains commands together so they all run as one step—this keeps the Docker layer count down and makes the build more efficient.",
+    "8": "After installing packages, we delete the package manager cache to shrink the final image size, since we won't need to install anything else.",
+    "11": "mkdir -p creates the /root/demo directory; the -p flag means 'create parent directories if needed and don't error if it already exists'.",
+    "12": "printf '%s' outputs the XML string exactly as-is without adding a newline at the end, then > redirects it into the data.xml file.",
+    "18": "This appends a fancy bash prompt configuration to the user's .bashrc file so every new shell session shows a whale emoji and the current username.",
+    "20": "The -i flag runs bash in interactive mode, which means you can type commands when you enter the container instead of it just exiting."
   }
 }

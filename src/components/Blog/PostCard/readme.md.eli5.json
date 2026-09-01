@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:48:00.327Z",
+  "generated": "2026-09-01T18:56:27.479Z",
   "source": "readme.md",
+  "sourceHash": "6f15c89d19b12489a4d3e5114f64485d69be1881",
   "lang": "markdown",
+  "summary": "This is documentation for a reusable React component called PostCard that displays blog post previews in a Docusaurus site. It explains where to place the files, what features it has (like images, tags, and titles), how to use it, what props it accepts, and accessibility considerations to ensure it works well for all users.",
   "explanations": {}
 }

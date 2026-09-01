@@ -1,14 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:17.260Z",
+  "generated": "2026-09-01T19:02:56.650Z",
   "source": "drun",
+  "sourceHash": "5099c484cfbc56fb11af27fecc64e3438bfc85b1",
   "lang": "plaintext",
+  "summary": "This script lets you interactively pick a Docker image using a fuzzy finder, then run it as a temporary container. You can optionally run it as root by pressing Ctrl-R instead of Enter, and it automatically picks the best shell available in the container.",
   "explanations": {
-    "4": "This calls a function _d_check_env to verify that both 'fzf' and 'docker' commands are available on your system; if either is missing, the script stops and returns an error.",
-    "31": "head -n 1 extracts just the first line from fzf_out, which contains the special key you pressed (like ctrl-r); if you didn't press a special key, this will be empty.",
-    "32": "tail -n +2 means 'show me everything starting from line 2 onward', so this grabs the actual selected Docker image info minus the key that was pressed.",
-    "42": "This builds a shell command that tries to find zsh first, falls back to bash if zsh doesn't exist, and finally uses sh as a last resort—ensuring the container starts with whatever shell is available.",
-    "43": "tr -s ' ' squeezes multiple spaces into single spaces, cleaning up the command string so it looks neat before being executed."
+    "4": "This checks that both 'fzf' (a fuzzy search tool) and 'docker' are installed and available; if either is missing, the script exits early.",
+    "10": "This is the start of a multi-line string that defines what information fzf will show in a preview pane — it uses docker inspect to fetch detailed metadata about each image.",
+    "22": "This runs docker images to list all your images with four columns (repository:tag, ID, size, and creation date), then pipes that output to fzf so you can search and select.",
+    "23": "The fzf command sets up a full-screen search interface with a reverse layout (search at bottom) and enables Ctrl-R as a special key to trigger a different behavior later.",
+    "31": "The fzf output includes which key was pressed on the first line; this extracts just that first line to check if the user pressed Ctrl-R or just Enter.",
+    "32": "This grabs everything after the first line of fzf output — that's the actual image row the user selected (with the repository, ID, size, and creation date).",
+    "33": "From the selected image row, this extracts the second column, which is the short image ID needed to run the container.",
+    "39": "If the user pressed Ctrl-R, this sets a flag to add --user root to the docker run command, making the container run as the root user instead of the default.",
+    "42": "This builds a command that will start a shell inside the container, trying zsh first, then bash, then falling back to sh if neither exists.",
+    "43": "This assembles the full docker run command with all the pieces (the image ID, user flag, and smart shell), then collapses any extra spaces so the command looks clean."
   }
 }

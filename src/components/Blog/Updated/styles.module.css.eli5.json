@@ -1,13 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:53.420Z",
+  "generated": "2026-09-01T18:59:29.025Z",
   "source": "styles.module.css",
+  "sourceHash": "3f4e109a31cc3ac4a3ad152005ce50045346a629",
   "lang": "css",
+  "summary": "This CSS stylesheet styles a revision history component that displays a vertical timeline of events. It defines the container, title, timeline line, individual timeline items with icons, dates, and descriptions, with special styling for the most recent entry and support for dark mode.",
   "explanations": {
-    "3": "The !important flag forces this background color to apply even if other CSS rules try to override it, which we need here to ensure consistency.",
-    "30": "The left position of 17px centers the vertical line with a 34px icon (half of 34 is 17), since the icon starts at position 0.",
-    "52": "We're matching the icon's background color to the container's background so the vertical line appears to pass behind the icon instead of showing through it.",
-    "65": "The 45px padding gives enough room for the 34px icon plus an 11px gap, pushing the text content to the right of the icon."
+    "2": "var(--ifm-color-emphasis-100) is a CSS variable that holds a color value defined elsewhere in your design system — think of it like a reusable color constant.",
+    "4": "The card-radius variable provides a default border-radius of 14px if --card-radius isn't defined, giving you a fallback value.",
+    "9": "This selector applies different styles specifically when dark mode is active (detected by the data-theme attribute), so the container adjusts its appearance for dark backgrounds.",
+    "31": "The ::before pseudo-element creates a fake element that doesn't exist in HTML — here it's used to draw the vertical line connecting timeline entries.",
+    "32": "content: \"\" creates an empty pseudo-element that can still be styled and positioned; it's necessary to make the ::before element appear.",
+    "36": "calc(100% - 8px) calculates the height dynamically by taking the full height and subtracting 8 pixels, so the line doesn't extend past the first and last icons.",
+    "70": "color-mix blends two colors together — here mixing the primary color at 15% intensity with transparent to create a subtle glow effect around the latest icon.",
+    "74": "padding-left: 44px pushes the text content to the right to make room for the 30px icon plus spacing.",
+    "97": "border-radius: 999px creates a pill-shaped badge by using an extremely large radius that exceeds the element's dimensions."
   }
 }

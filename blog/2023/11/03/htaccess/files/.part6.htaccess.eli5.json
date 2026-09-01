@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:28:46.167Z",
+  "generated": "2026-09-01T18:19:16.614Z",
   "source": ".part6.htaccess",
   "sourceHash": "aecbb60bc3583641e817a31e83ca99863536dec9",
   "lang": "htaccess",
+  "summary": "This Apache configuration snippet intercepts requests for files ending in .tex, .log, or .aux and forces the web server to tell browsers these are plain text files, regardless of what the files actually contain. This prevents browsers from trying to interpret or download these development/LaTeX files in unexpected ways.",
   "explanations": {
-    "1": "This matches files ending in .tex, .log, or .aux using a regular expression pattern; the backslash escapes the dot so it matches a literal period instead of any character.",
-    "2": "This tells the web server to send a 'Content-Type' header telling browsers to treat these files as plain text rather than trying to render them as HTML or other formats."
+    "1": "FilesMatch uses a regular expression (the pattern in quotes) to identify which files this rule applies to—in this case, anything ending with .tex, .log, or .aux extensions.",
+    "2": "Header set Content-Type text/plain tells the server to send an HTTP header declaring these files are plain text, overriding whatever type the server would normally guess from the file extension."
   }
 }

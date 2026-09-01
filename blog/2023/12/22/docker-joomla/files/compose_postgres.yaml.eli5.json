@@ -1,14 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:46.307Z",
+  "generated": "2026-09-01T18:23:49.802Z",
   "source": "compose_postgres.yaml",
+  "sourceHash": "085c6bca1678522851c03fff8136830d2118e612",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a Joomla website with a PostgreSQL database. It defines two services: a Joomla web application container that runs on port 8080, and a PostgreSQL database container that Joomla depends on. Both containers use template variables (marked with %%) that get replaced with actual values when the file is deployed.",
   "explanations": {
-    "9": "The left number (8080) is the port on your computer; the right number (80) is the port inside the container—traffic from your browser on 8080 gets forwarded to the app running on 80 inside.",
-    "13": "Even though this is a Joomla container, it's being set to use PostgreSQL (postgres) as the database instead of the default MySQL, so the username and password must match what the database container expects.",
-    "18": "This tells Joomla to connect using the PostgreSQL database driver (pgsql) rather than MySQL, which matches the postgres:16.0-alpine image being used for the database.",
-    "24": "Alpine is a super lightweight Linux distribution that keeps the Docker image small; postgres:16.0-alpine is PostgreSQL version 16.0 running on Alpine Linux.",
-    "29": "This creates a PostgreSQL database named 'joomla_db', which must match the JOOMLA_DB_NAME value on line 16 so Joomla can find its database."
+    "1": "The %% syntax with name=kingsbridge%% is a template variable that will be replaced with an actual project name when this configuration is used.",
+    "7": "restart: always means Docker will automatically restart this container if it crashes or the server reboots, ensuring your site stays up.",
+    "9": "This maps port 8080 on your computer to port 80 inside the container, so you can access Joomla by visiting localhost:8080 in your browser.",
+    "11": "JOOMLA_DB_HOST=joomladb tells Joomla where to find its database — 'joomladb' is the name of the database service defined later in this file.",
+    "13": "JOOMLA_DB_USER=postgres sets the username that Joomla will use to log into the PostgreSQL database.",
+    "14": "This template variable will be replaced with an actual password; using %% syntax instead of hardcoding keeps secrets out of version control.",
+    "18": "pgsql tells Joomla it's connecting to a PostgreSQL database, not MySQL or another database type.",
+    "24": "postgres:16.0-alpine uses a lightweight version of PostgreSQL (alpine) to save disk space and memory.",
+    "29": "POSTGRES_DB=joomla_db creates an initial database named 'joomla_db' that Joomla will use to store its data.",
+    "31": "POSTGRES_USER=postgres sets the username for the database administrator account.",
+    "33": "This is the database password that matches the one Joomla uses (line 14) so the two services can authenticate with each other."
   }
 }

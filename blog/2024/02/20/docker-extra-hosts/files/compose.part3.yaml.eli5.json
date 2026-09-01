@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:16.230Z",
+  "generated": "2026-09-01T18:28:10.724Z",
   "source": "compose.part3.yaml",
+  "sourceHash": "c1b5e2a072de54e7ff82038217b3e9fab2a99a34",
   "lang": "yaml",
+  "summary": "This Docker Compose configuration defines a service called my_second_container that builds from the current directory, connects to an existing external network called my_network, and adds a custom hostname-to-IP mapping so the container can reach my_site.local at address 172.20.0.1.",
   "explanations": {
-    "8": "extra_hosts lets this container access custom hostnames (like my_site.local) by mapping them to IP addresses, similar to adding entries to your /etc/hosts file.",
-    "10": "This line maps the hostname 'my_site.local' to the IP address 172.20.0.1, so when code inside the container tries to reach my_site.local, it will connect to that IP instead.",
-    "14": "external: true means this network already exists outside this Docker Compose file, so Docker won't try to create it—it will just connect to an existing one."
+    "8": "extra_hosts lets you add custom entries to the container's hosts file, mapping hostnames to IP addresses like you'd do manually on your computer.",
+    "10": "This line adds a hosts file entry so anything running in the container can access my_site.local and have it resolve to the IP 172.20.0.1, which is likely another container on the network.",
+    "14": "external: true means this network already exists outside this Compose file—Docker won't try to create it, so you must have set it up beforehand."
   }
 }

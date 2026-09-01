@@ -1,10 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:05.257Z",
+  "generated": "2026-09-01T18:54:48.102Z",
   "source": "docusaurus.config.js",
+  "sourceHash": "c72186ff4d8acddaeba8e68a450b871d58a6d7f1",
   "lang": "javascript",
+  "summary": "This code sets up a Docusaurus configuration that imports a custom plugin called remarkReplaceWords and registers it to run before the default remark plugins when processing blog content. The plugin will transform the markdown text according to whatever word-replacement rules it defines.",
   "explanations": {
-    "15": "This is a function being passed to the blog system that will run before other markdown processors—it's the plugin we imported earlier being put to work."
+    "2": "This imports a custom remark plugin from a local file; remark is a markdown processor, and plugins let you transform markdown before it's converted to HTML.",
+    "12": "beforeDefaultRemarkPlugins is an array where you list plugins that should run before Docusaurus's built-in markdown processors, so your custom transformations happen first.",
+    "15": "remarkReplaceWords is being added to that array, meaning it will be invoked to process the blog markdown files."
   }
 }

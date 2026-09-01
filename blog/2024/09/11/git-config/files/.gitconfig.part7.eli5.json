@@ -1,11 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:36:36.067Z",
+  "generated": "2026-09-01T18:37:24.662Z",
   "source": ".gitconfig.part7",
+  "sourceHash": "6dee756291ca8b3c5f1a6a3169e7f5138f24bbf8",
   "lang": "part7",
+  "summary": "This is a Git configuration file that sets up different email addresses for different directories. It establishes a default user identity, then uses a conditional rule to override the email specifically for repositories stored in a private folder.",
   "explanations": {
-    "5": "This is a conditional block that applies only to git repositories inside the ~/private_repositories/ folder, allowing you to use different git settings for different project locations.",
-    "6": "When you're working in a private repository matching the condition above, your commits will use this email address instead of the default one from the [user] section."
+    "5": "The includeIf directive tells Git to apply the following settings only if a certain condition is met — in this case, only when the repository is located within the ~/private_repositories/ directory.",
+    "6": "This email address will be used instead of the default one (me@work.be) whenever you commit in a repository that matches the directory condition above."
   }
 }

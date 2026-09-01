@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:53.059Z",
+  "generated": "2026-09-01T18:54:26.408Z",
   "source": "series.js",
+  "sourceHash": "dad6ea2a5b2a34524cc1f31e71eee018043af9f0",
   "lang": "javascript",
+  "summary": "This file defines a constant array called SERIES_DATA that contains information about different tutorial or article series, each with a name, description, and associated image. The array is then exported so other files in the project can import and use this data.",
   "explanations": {
-    "26": "The three dots (called an ellipsis) here mean there are more objects in this array, but they're not shown in the code — it's just telling you the list continues."
+    "1": "const creates a variable that can't be reassigned to a different value later, making it safe for data that shouldn't change",
+    "29": "export default makes this SERIES_DATA available for other files to import and use, designating it as the main export from this file"
   }
 }

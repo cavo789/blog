@@ -1,8 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:40:39.863Z",
+  "generated": "2026-09-01T18:44:08.770Z",
   "source": "settings.json",
+  "sourceHash": "bdcb12768e115918082dac23510d247069ec6845",
   "lang": "json",
-  "explanations": {}
+  "summary": "This configuration object tells a Python code analyzer to report unused code (like classes, functions, imports, and variables) as low-priority 'information' messages rather than warnings or errors. This is useful when you want to be notified about unused code but don't want it to block your work or fail any checks.",
+  "explanations": {
+    "1": "This is the opening of a settings object that overrides how the Python analyzer reports certain diagnostic issues.",
+    "2": "reportUnusedClass controls the severity level for when the analyzer finds classes that aren't being used anywhere in your code.",
+    "3": "reportUnusedFunction does the same for functions — it sets how serious the analyzer treats unused functions.",
+    "4": "reportUnusedImport is about import statements you've written but never actually use in your code.",
+    "5": "reportUnusedVariable tracks variables you create but then never reference, which often indicates dead code or a typo.",
+    "6": "The closing brace ends this configuration object."
+  }
 }

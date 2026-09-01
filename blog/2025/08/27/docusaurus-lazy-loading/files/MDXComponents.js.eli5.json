@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:20.729Z",
+  "generated": "2026-09-01T18:51:40.386Z",
   "source": "MDXComponents.js",
+  "sourceHash": "9666ef5e59a9835c059f5bad1b9de9622c07c396",
   "lang": "javascript",
+  "summary": "This code exports a custom configuration object for MDX components that overrides how images are rendered in Docusaurus documentation. It takes the default image component and wraps it with a custom version that adds lazy loading, async decoding, and some styling like borders and rounded corners by default, while still allowing those properties to be overridden.",
   "explanations": {
-    "8": "The three dots (...) here means 'copy all the properties from MDXComponents into this object', so we inherit the default behavior for other components.",
-    "11": "The first part before the equals sign pulls out specific props we want to handle separately, and the ...rest collects all the remaining props we don't explicitly name.",
-    "15": "The {...rest} spreads those leftover props back onto the img element so we don't lose any attributes we didn't explicitly extract.",
-    "20": "This uses the 'or' operator (||) to provide a default value—if loading wasn't passed in, we use 'lazy' instead.",
-    "22": "The backticks allow us to embed the className variable into a template string; the || '' part ensures we at least have an empty string if className is undefined."
+    "8": "The spread operator (...) copies all the default MDX component mappings into this new object, so we inherit everything except what we're overriding.",
+    "10": "We're creating a custom React component that receives props and will be used whenever Docusaurus encounters an <img> tag in MDX content.",
+    "11": "We're extracting specific props we want to handle specially (loading, decoding, etc.) and collecting everything else into 'rest' so we can pass the remaining props through to the actual img element unchanged.",
+    "20": "If someone explicitly passes a 'loading' prop, use it; otherwise default to 'lazy' so images below the fold don't load until needed.",
+    "21": "Similar to loading: if decoding is specified use it, otherwise default to 'async' for non-blocking image decoding.",
+    "22": "We're combining any className passed in with an empty string as fallback; this ensures we always have a valid string even if no class was provided.",
+    "28": "We're merging a default style object (with the border and border-radius) with any additional styles passed in as props, so custom styles can override or add to our defaults."
   }
 }

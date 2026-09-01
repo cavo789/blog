@@ -1,16 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:36:48.496Z",
+  "generated": "2026-09-01T19:07:28.442Z",
   "source": "Dockerfile",
   "sourceHash": "af66d47fc0113cbeedc130bf27c09fac57f14a10",
   "lang": "docker",
+  "summary": "This Dockerfile creates an Ubuntu container with git and git-delta (a fancy diff viewer) pre-installed and configured. It sets up a demo git repository with a JavaScript file that has an uncommitted change, so users can immediately see git-delta in action when they run `git diff`. The container also customizes the shell prompt to show a whale emoji, making it clear you're inside a container.",
   "explanations": {
-    "3": "This tells Ubuntu's package installer to run without asking for user input (noninteractive mode), which is necessary in Docker since there's no terminal to respond to prompts.",
-    "7": "The sed command is modifying Ubuntu's package source list to unlock additional software repositories (universe and multiverse contain community-maintained packages that aren't enabled by default).",
-    "13": "Deleting the cached package lists saves space in the Docker image since we won't need them again after installation.",
-    "31": "The printf command is writing a multi-line JavaScript function into a file; the backslash-n creates actual line breaks in the file.",
-    "34": "This sed command modifies the file to create a difference that git will track, so when you run git diff later, there's an actual change to display.",
-    "39": "This adds a custom shell prompt (PS1) that will show a whale emoji and color codes when you open a bash shell, making it visually clear you're inside a container."
+    "3": "This tells Ubuntu's package installer to run non-interactively, so it won't prompt you for input during the build — it just assumes 'yes' to everything.",
+    "7": "Ubuntu's Docker image doesn't include all available software repositories by default. This line adds 'universe' and 'multiverse' to the list of repositories so we can install git-delta, which isn't in the default 'main' repository.",
+    "13": "After installing packages, we delete the cached package lists to make the image smaller — they're no longer needed once installation is done.",
+    "29": "This creates a demo directory, navigates into it, and then chains multiple commands together using `&&`, so if any command fails, the rest won't run.",
+    "31": "This writes a multi-line JavaScript function into a file using `printf` with escape sequences like `\n` for newlines.",
+    "34": "This modifies the file we just committed, but doesn't commit the change — so when you run the container and type `git diff`, you'll see the difference between the committed version and this modified version.",
+    "39": "This appends a custom prompt string to the bash configuration file. The prompt will display a whale emoji, then the username and current directory, making it visually obvious you're in a container.",
+    "41": "This runs bash in interactive mode (`-i`), so when you start the container, you get a shell prompt you can type into instead of the container exiting immediately."
   }
 }

@@ -1,13 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:12.204Z",
+  "generated": "2026-09-01T19:01:23.416Z",
   "source": "blog-post-workflow.yml",
+  "sourceHash": "6fa6a967b3e65f7adc0da4fbb78b4e8e226ad7bd",
   "lang": "yaml",
+  "summary": "This GitHub Actions workflow automatically updates a README file with the latest blog posts every Monday at noon, or whenever someone manually triggers it. It fetches posts from an RSS feed and inserts them into the README between special comment markers, using pinned action versions for security.",
   "explanations": {
-    "3": "The 'schedule' keyword tells GitHub to run this workflow automatically on a timer, like a scheduled task on your computer.",
-    "4": "This cron expression means 'every Monday at noon UTC'—the five numbers represent minute, hour, day-of-month, month, and day-of-week.",
-    "5": "workflow_dispatch lets someone manually trigger this workflow by clicking a button in the GitHub UI, not just waiting for the schedule.",
-    "22": "The comment_tag_name is a marker that the action will search for in your README file to know exactly where to insert the blog posts."
+    "4": "The cron syntax '0 12 * * 1' means run at minute 0, hour 12, on any day of month, any month, but only on Mondays (1 = Monday).",
+    "5": "workflow_dispatch lets someone manually trigger this workflow from the GitHub Actions tab, even outside the scheduled times.",
+    "8": "The 'contents: write' permission allows this workflow to commit changes back to the repository—without it, the workflow couldn't modify files.",
+    "24": "Rather than using a floating tag like 'v7.0.1' (which could point to different code), we pin to a specific commit SHA so the action code can never change unexpectedly.",
+    "28": "Similarly, this action is pinned to a specific commit SHA that the tag 'v1' currently points to, guaranteeing we use exactly that version of code.",
+    "30": "feed_list points to the RSS feed URL the workflow will parse to find blog posts.",
+    "31": "max_post_count limits the output to only the 10 most recent posts so the README doesn't get too cluttered.",
+    "32": "comment_tag_name specifies the HTML comment markers (BLOG-POST-LIST) that delimit where in your README the posts should be inserted.",
+    "34": "template defines the HTML structure for each blog post entry, with $title and $url replaced by actual values from the RSS feed."
   }
 }

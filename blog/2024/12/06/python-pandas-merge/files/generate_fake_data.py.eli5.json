@@ -1,14 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:09.815Z",
+  "generated": "2026-09-01T18:41:47.440Z",
   "source": "generate_fake_data.py",
+  "sourceHash": "2234939cc56a23bf3ad44f19131aed5dc0a4a4fb",
   "lang": "python",
+  "summary": "This function generates fake employee data and creates separate CSV files for each year from 2020 to 2024. For each year, it builds a list of 10 randomly-generated employees plus one hard-coded employee, assigns them random salaries, and exports the results to a CSV file named after the year.",
   "explanations": {
-    "8": "This should be a list (use [] or list()), not a dict — it's being used with .append() on line 17.",
-    "19": "This variable is named 'dict' but it's actually a dictionary mapping years to tuples of names; the type hint is misleading.",
-    "27": "This creates a set (with curly braces) instead of a list, which works here but is unusual for iteration — sets have no guaranteed order.",
-    "28": "Like line 8, this should be a list [], not a dict, since it's used with .append() on line 46.",
-    "33": "The code reassigns the loop variable 'id' to 'year' here, which shadows (hides) the loop variable and can be confusing; it's a way to sneak in the extra employee data for that year."
+    "8": "This should be a list, not a dict — it's initialized with square brackets to hold multiple employee records.",
+    "19": "This is actually a dict (not a list), mapping year numbers to tuples of first and last names for special employees to include in each year's data.",
+    "27": "This creates a set (unordered collection) of years; using a set here is slightly unusual since the order doesn't matter but the intent is just to loop through each year once.",
+    "28": "Like line 8, this should be a list initialized with square brackets, not a dict, since it will hold multiple salary records.",
+    "32": "When the loop counter reaches the maximum, we swap it out to use the year number instead, so we can fetch the hard-coded employee for that year.",
+    "43": "The fake.random.randint() method generates a random integer, then int() converts it (redundantly, since randint already returns an int) to ensure the salary is a number.",
+    "50": "The f-string creates a filename like 'employees_2020.csv', and sep=';' means columns will be separated by semicolons instead of commas."
   }
 }

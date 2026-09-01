@@ -1,11 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:54.124Z",
-  "source": "index.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:52:43.749Z",
+  "source": "index.tsx",
+  "sourceHash": "7b2ef0352c4d2d9b548b679597b3927faeebc435",
+  "lang": "typescript",
+  "summary": "This file defines a CardHeader component that renders a styled header div. It takes configuration options for text styling (alignment, weight, decoration, etc.) and merges them into CSS class names using a helper function, then combines those with any custom classes provided by the caller.",
   "explanations": {
-    "22": "This line uses the `styles` object (imported CSS module) to apply a truncate class, while other text properties use plain strings—they come from different sources.",
-    "26": "The clsx function takes multiple arguments (some strings, some variables) and combines them into a single className, ignoring any empty or false values so only active styles are applied."
+    "6": "Props extends CardTextOptions means this interface includes all the properties from CardTextOptions (like textAlign, variant, italic, etc.) plus adds a few more like className and children.",
+    "21": "The equals sign here sets a default value — if the caller doesn't pass italic, it defaults to false automatically.",
+    "27": "buildTextClasses is a helper function that takes all the text styling options and converts them into actual CSS class names that can be applied to elements.",
+    "35": "We're passing the style configuration options to buildTextClasses along with styles.truncate, which is a reference to a CSS class from the imported stylesheet.",
+    "41": "clsx is a utility that combines multiple class names conditionally, filtering out any undefined or false values so we only end up with valid class names."
   }
 }

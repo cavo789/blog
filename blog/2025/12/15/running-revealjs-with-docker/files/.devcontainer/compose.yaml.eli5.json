@@ -1,18 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:50:21.955Z",
+  "generated": "2026-09-01T19:00:14.655Z",
   "source": "compose.yaml",
+  "sourceHash": "479d57f703185166bd265fe038b57abdf55ce6cb",
   "lang": "yaml",
+  "summary": "This is a Docker Compose configuration file that sets up a development container for Quarto documentation work. It defines a service called 'quarto-doc-base' that builds a Docker image from a local Dockerfile, configures it with various build arguments and volumes for development, and keeps it running indefinitely so developers can work inside it.",
   "explanations": {
-    "2": "This is a special comment telling the spell-checker to ignore the word 'tinytex' so it doesn't complain about it being misspelled.",
-    "15": "This sets a default user ID (UID) to 1000, but it will be overridden later when the container actually starts.",
-    "16": "This sets a default group ID (GID) to 1000, but it will also be overridden later when the container actually starts.",
-    "18": "This is a flag you can change to 'true' if you want Chromium (a web browser) installed in the container.",
-    "19": "This is a flag you can change to 'true' if you want the cspell spell-checker tool installed in the container.",
-    "20": "This is a flag you can change to 'true' if you want Git pre-commit hooks (automated checks before commits) installed in the container.",
-    "22": "This runs the entire container as the root user, which gives it extra permissions but is sometimes necessary for development tools.",
-    "31": "This uses ${HOME} which means 'the home directory of the person running this command' — it expands to their actual path at runtime.",
-    "34": "This is mounting your SSH private key file into the container so it can authenticate with Git or other services, similar to line 31."
+    "2": "This tells the spell-checker to ignore the word 'tinytex' since it's a legitimate tool name that wouldn't be in a standard dictionary.",
+    "6": "This specifies which Docker image to use or create; 'latest' means we want the most recent version of this image.",
+    "15": "USER_UID and USER_GID are numeric identifiers for the user account inside the container; 1000 is a common default for the first non-root user, though this gets overridden by VS Code's settings.",
+    "18": "These are feature flags (true/false settings) passed to the Dockerfile during build to control what optional software gets installed in the container.",
+    "22": "Starting the container as root gives it elevated privileges, which is sometimes needed for development tools but is generally less secure than using a regular user.",
+    "27": "This mounts the parent directory of the compose file into /workspace inside the container with read-write access, so code changes on your computer are immediately visible in the container.",
+    "28": "This persists your bash command history across container restarts by storing it in a local file instead of losing it when the container stops.",
+    "29": "This gives the container access to Docker's control socket, allowing you to run Docker commands from inside the container (Docker-in-Docker).",
+    "31": "The ${HOME} syntax substitutes your actual home directory path at runtime, so it points to wherever your user's home folder actually is on your machine.",
+    "39": "This command runs an infinite loop that never exits, which keeps the container alive and ready for you to connect to it and work interactively."
   }
 }

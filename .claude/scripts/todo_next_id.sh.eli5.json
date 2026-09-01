@@ -1,17 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T15:39:43.669Z",
+  "generated": "2026-09-01T19:14:35.940Z",
   "source": "todo_next_id.sh",
   "sourceHash": "e7432c6564846a9ffb723f2027d6fbf10875a086",
   "lang": "bash",
+  "summary": "This script finds the highest numbered todo file in a directory (ignoring any status prefixes like DONE_ or PARTIAL-), then prints the next ID number padded with zeros. It scans all .md files recursively, extracts just the numeric ID from each filename, and outputs one higher than the maximum found.",
   "explanations": {
-    "2": "This line makes the script exit immediately if any command fails, treat undefined variables as errors, and handle pipes correctly—it's a safety net for scripts.",
-    "23": "The syntax ${1:-.todos} means 'use the first argument if provided, otherwise default to .todos'—it's a concise way to set a fallback value.",
-    "24": "Same pattern as line 23: use the second argument if given, otherwise default to 4.",
-    "28": "The -printf '%f\\n' option prints just the filename (not the full path) of each file found.",
-    "29": "This sed command strips everything at the start of the filename up to the first digit, then captures the first run of digits that is at least 3 digits long—it extracts the ID number regardless of status prefixes like DONE_ or PARTIAL-.",
-    "34": "The 10# prefix forces bash to treat the number as base-10 instead of octal, so a number like 020 is read as twenty, not sixteen.",
-    "35": "The ${width} syntax inserts the width variable into the printf format string, so if width is 4, it becomes %04d (pad with zeros to 4 digits total)."
+    "2": "This line makes the script exit immediately if any command fails, treats undefined variables as errors, and fails the whole pipeline if any command in a pipe chain fails — it's a safety guard against silent errors.",
+    "23": "This assigns the first command-line argument to todos_dir, but if no argument was provided, it defaults to '.todos' instead.",
+    "24": "Same pattern as the previous line: use the second argument as the zero-padding width, or default to 4 if not provided.",
+    "28": "The find command locates all .md files and prints just their filenames (the %f format specifier), one per line.",
+    "29": "The sed command strips everything from the start of the filename up to the first digit, then captures a run of 3 or more digits and discards everything after it — this isolates just the numeric ID from filenames like DONE_0042_fix_bug.md.",
+    "30": "sort -n sorts these numeric IDs in ascending order, and tail -1 picks just the largest one.",
+    "31": "This checks if highest is not empty (meaning at least one .md file was found), and if so, assigns that highest ID to the max variable.",
+    "35": "The 10# prefix tells bash to always interpret max as base-10, preventing numbers with leading zeros like 020 from being incorrectly parsed as octal (which would equal 16 in decimal)."
   }
 }

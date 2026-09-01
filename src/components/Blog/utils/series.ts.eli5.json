@@ -1,12 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:46:33.423Z",
-  "source": "series.js",
-  "lang": "javascript",
+  "generated": "2026-09-01T18:53:53.036Z",
+  "source": "series.ts",
+  "sourceHash": "e5aacc2ca718ddffac4d7b26d54e1f1ab2e81896",
+  "lang": "typescript",
+  "summary": "This file exports a function that organizes blog posts into series, grouping posts that share the same series name, sorting them by date, and generating metadata objects for each series—including a link, title, image, and a count of published versus draft articles. It's used by Docusaurus to display article collections on a series landing page.",
   "explanations": {
-    "34": "seriesMap is an empty object that will store blog posts grouped by their series name, like a filing cabinet where each series gets its own drawer.",
-    "56": "We create a copy of the posts array using the spread operator (...) so we can sort it without changing the original order of posts in seriesMap.",
-    "70": "The optional chaining operator (?.) safely checks if the first sorted post exists and has an image; if not, it falls back to the defaultImage instead of crashing."
+    "38": "We're creating an empty Map to store series names as keys and arrays of blog posts as values—essentially a lookup table we'll populate as we loop through posts.",
+    "41": "We fetch all blog posts including draft ones because we need to count both published and in-progress articles when generating the series summary.",
+    "44": "We iterate through each post to check if it belongs to a series; if it does, we add it to the Map under its series name.",
+    "47": "We check if this series name already exists in our Map so we don't accidentally overwrite it; if not, we create an empty array for it.",
+    "50": "The exclamation mark tells TypeScript we're certain this Map entry exists (we just created it on line 48), so don't worry about null values.",
+    "56": "We convert the Map keys (all series names) into an array, sort them alphabetically, then transform each series name into a complete metadata object.",
+    "58": "We make a copy of the posts array and sort it by date to find the chronologically first article, which we'll use as the series image.",
+    "62": "We count how many posts in this series are published by filtering out drafts; draft posts have a `draft` property set to true.",
+    "72": "We use the optional chaining operator to safely grab the image from the earliest post, or fall back to a default image if no posts exist."
   }
 }

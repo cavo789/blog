@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:28:41.966Z",
+  "generated": "2026-09-01T18:23:41.569Z",
   "source": "windows_hosts.txt",
+  "sourceHash": "d8daf53fe8dbc8ab97963dbf5bfe997250fe69aa",
   "lang": "plaintext",
+  "summary": "This is a hosts file configuration that maps IP addresses to human-readable domain names. Line 1 sets up the standard localhost mapping, and line 3 creates a custom local domain alias so you can access something running on your own machine by typing 'kingsbridge' instead of an IP address.",
   "explanations": {
-    "3": "This line maps the IP address 127.0.0.1 (your local machine) to the hostname 'kingsbridge', so you can type 'kingsbridge' in your browser instead of the IP address."
+    "2": "This comment tells a documentation tool (like Docusaurus) to highlight the next line visually, usually to draw attention to that specific mapping.",
+    "3": "This line tells your computer that whenever you try to connect to 'kingsbridge', route that request to 127.0.0.1 (your own machine), so you can test a local service using a domain name instead of localhost."
   }
 }

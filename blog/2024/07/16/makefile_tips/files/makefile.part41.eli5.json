@@ -1,17 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-07-05T17:14:54.581Z",
+  "generated": "2026-09-01T18:34:10.765Z",
   "source": "makefile.part41",
+  "sourceHash": "00d064e1a601318bf4f212785a1f1c3a5216d24e",
   "lang": "part41",
+  "summary": "This Makefile snippet sets up a quality assurance workflow using Docker containers to run PHP linting and code formatting tools. It defines color codes, configures a phpqa Docker image with the current PHP version, and then creates four Make targets (phan, php-cs-fixer-dry-run, php-cs-fixer-fix, phplint, yamllint) that run various code analysis and formatting commands inside isolated Docker containers while preserving file ownership.",
   "explanations": {
-    "1": "These lines define ANSI color codes that will be used later to colorize terminal output—34 is blue, 36 is cyan, and 33 is yellow.",
-    "8": "This sets PHP_VERSION to 8.1 if it hasn't already been defined elsewhere (like in a .env file), using the $(or ...) function to provide a fallback.",
-    "10": "This constructs the full Docker image name by inserting the PHP version number into the template string.",
-    "13": "These are the standard Docker flags: -it keeps it interactive, --rm cleans up after, -v mounts folders so the container can access your code and write temporary files.",
-    "16": "This captures your current user and group IDs so files created inside Docker won't be owned by root, preventing permission headaches later.",
-    "25": "The $(eval ...) syntax creates a local variable called COMMAND that holds the phan command string; it's a Makefile-specific way to define variables inside a target.",
-    "26": "The \\e[1;${COLOR_YELLOW}m...\\e[0m is ANSI escape code syntax that colors the output yellow; \\e[0m at the end resets the color back to normal.",
-    "37": "Similar to line 25, this creates a local COMMAND variable with the php-cs-fixer command, but it will be appended with --dry-run later to preview changes without applying them."
+    "1": "This assigns the ANSI escape code for blue color to a variable, used later for terminal output formatting.",
+    "8": "This uses the `or` function to set PHP_VERSION to 8.1 as a default if it wasn't already defined (presumably from a .env file).",
+    "10": "This constructs the full Docker image name by inserting the PHP_VERSION variable into the base image name jakzal/phpqa.",
+    "13": "These are standard Docker options: -it keeps it interactive, --rm cleans up after, -v mounts local directories so the container can access your project files.",
+    "16": "This shell command gets your current user and group IDs and formats them for Docker's -u flag, so files created in the container have the same ownership as your user.",
+    "19": "This combines all the Docker setup variables into one reusable command string that will be used by each Make target.",
+    "25": "The eval keyword in Make evaluates the result of the shell command and stores it in a local variable called COMMAND, which is then referenced later in the target.",
+    "26": "The printf with \\e[1;${COLOR_YELLOW}m colors the output yellow; the @ symbol prevents Make from echoing the command itself.",
+    "31": "This runs the previously constructed Docker command with the phan tool, using the command string that was stored in the COMMAND variable."
   }
 }

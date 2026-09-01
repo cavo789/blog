@@ -1,10 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:33:06.801Z",
+  "generated": "2026-09-01T18:31:48.737Z",
   "source": "Blog.part2.feature",
+  "sourceHash": "a05365646b8b2c889b2ae522c33fe25d26003c44",
   "lang": "feature",
+  "summary": "This is a Gherkin test scenario that verifies a basic navigation feature. It checks that when a user visits the Avonture website and clicks the Blog menu, they are taken to the blog page at the /blog URL.",
   "explanations": {
-    "1": "This is the main feature description that explains what the user should be able to do overall; it's like a title for all the test scenarios below it."
+    "1": "The Feature line describes the overall user-facing capability being tested — in this case, that clicking Blog in the menu should show articles.",
+    "3": "Scenario labels an individual test case that exercises one specific path through the feature.",
+    "4": "Given sets up the starting condition — the test begins with the user already on the homepage.",
+    "5": "Then is an action step — the user performs a click on the Blog menu item.",
+    "6": "Then is an assertion step — it verifies the expected outcome, that the URL changed to /blog."
   }
 }

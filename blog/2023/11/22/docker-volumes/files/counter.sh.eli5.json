@@ -1,12 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:26:57.484Z",
+  "generated": "2026-09-01T18:20:44.187Z",
   "source": "counter.sh",
+  "sourceHash": "fa5366319fd790b13b9c895d76faaa7992390917",
   "lang": "bash",
+  "summary": "This script tracks how many times it has been executed by maintaining a counter in a file. Each time it runs, it reads the current count, increments it by one, displays the new count to the user, and saves it back to the file.",
   "explanations": {
-    "1": "This line tells the system to use the sh shell to run this script, finding it automatically from your system's PATH.",
-    "3": "The [[ ! -f /data/counter.txt ]] checks if the file does NOT exist; the ! means 'not' and -f means 'is this a file'.",
-    "9": "This reads the current counter value from the file, adds 1 to it using backticks (which run the cat command), and stores the result in the counter variable."
+    "2": "This line makes the script exit immediately if any command fails, treats undefined variables as errors, and prevents errors in piped commands from being hidden—basically making the script fail fast and loudly.",
+    "4": "This checks whether the counter file already exists; if it doesn't, we need to set it up for the first time.",
+    "5": "The -p flag creates the /data directory and any parent directories that don't exist yet, without complaining if they're already there.",
+    "10": "This reads the number from the counter file, adds 1 to it using arithmetic expansion (the $(( )) syntax), and stores the new value in the counter variable."
   }
 }

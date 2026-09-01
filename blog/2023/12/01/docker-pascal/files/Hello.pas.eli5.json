@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:29.449Z",
+  "generated": "2026-09-01T18:21:38.740Z",
   "source": "Hello.pas",
+  "sourceHash": "cd621fe7df0365d4dd2b26011811a2e2d888e924",
   "lang": "pas",
+  "summary": "This is a complete Turbo Pascal program that prints a single line of text to the console. The `begin` and `end.` keywords mark the start and finish of the main program block.",
   "explanations": {
-    "1": "The two single quotes next to each other ('') is how you write a literal single quote character inside a string in Pascal — it's an escape sequence."
+    "2": "The `writeln` procedure outputs text and moves the cursor to a new line. The two single quotes `''` represent an escaped single quote, so the output will literally include an apostrophe in the word \"I'm\"."
   }
 }

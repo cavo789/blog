@@ -1,10 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:22.724Z",
+  "generated": "2026-09-01T18:55:19.432Z",
   "source": "MDXComponents.js",
+  "sourceHash": "da614985c1664023c6ac61dd7a76498ecd968f83",
   "lang": "javascript",
+  "summary": "This file exports a custom configuration object for MDX (a format that lets you mix Markdown with React components). It takes all the default MDX components, adds a custom Snippets component to the mix, and exports the combined set so other parts of the app can use both the standard and custom components.",
   "explanations": {
-    "6": "The three dots (called spread operator) copy all the properties from MDXComponents into this object, so we inherit all the default components and then add or override them with our own."
+    "6": "The three dots (...) is the spread operator — it copies all properties from MDXComponents into this new object, so we inherit all the default functionality.",
+    "7": "This adds the Snippets component as a new property to the exported object, making it available as a usable component in MDX files alongside all the defaults."
   }
 }

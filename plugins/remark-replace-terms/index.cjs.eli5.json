@@ -1,15 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:04.105Z",
+  "generated": "2026-09-01T18:54:45.294Z",
   "source": "index.cjs",
+  "sourceHash": "83edacad48dd882687f32e6290fdffd4e3384bf9",
   "lang": "javascript",
+  "summary": "This is a Docusaurus plugin that automatically fixes the capitalization of common tech terms in Markdown files. It walks through the document's text nodes and replaces lowercase words like 'github' with 'GitHub', but it's smart enough to skip replacements inside links, code blocks, and compound words like 'vscode-docker'.",
   "explanations": {
-    "19": "This imports the `visit` function from a helper library that walks through the Markdown document structure (AST) to find and process specific parts.",
-    "30": "This function returns another function that receives the Markdown document tree and file metadata; this is the standard pattern for Docusaurus plugins.",
-    "31": "The `visit` call walks through every text node in the document and runs the callback function on each one.",
-    "43": "The `replace` method here uses a callback function instead of a simple string, which lets us run custom logic to decide whether to replace each match or keep it as-is.",
-    "44": "This grabs the character right before the matched word (like the dash in 'vscode-docker') or an empty string if we're at the start.",
-    "45": "This grabs the character right after the matched word to check if it's a connector character like a dash or dot."
+    "19": "This imports the `visit` function from a library that helps us walk through every node in a Markdown syntax tree, so we can inspect and modify the content.",
+    "22": "We define a list of search-and-replace pairs using regular expressions; each regex has `\\b` word boundaries to match whole words only, and the `g` flag to replace all occurrences.",
+    "30": "The plugin returns a function that takes the Markdown syntax tree as input; this is the standard pattern for remark plugins.",
+    "31": "The `visit` function calls this callback for every 'text' node in the tree, passing us the node itself, its position, and its parent node.",
+    "32": "We check if the node's value is actually a string before trying to manipulate it, just to be safe.",
+    "35": "We list the types of parent nodes where we should skip replacements, like links or code blocks, since changing text inside those could break functionality or look wrong.",
+    "41": "The `replace` function's callback gives us the matched text, its position in the string, and the full string, so we can check what characters surround the match.",
+    "42": "We grab the character immediately before the match, or an empty string if there's nothing before it (like at the start of the line).",
+    "43": "Similarly, we grab the character right after the match to check if this word is part of a compound word.",
+    "46": "If the match is surrounded by a hyphen, period, or slash—characters that join words together—we return the original match unchanged, preserving compound words like 'vscode-docker'."
   }
 }

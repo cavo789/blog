@@ -1,16 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:41:28.230Z",
+  "generated": "2026-09-01T18:45:48.410Z",
   "source": "module.bas",
+  "sourceHash": "d5d8660960eddfb328396fc71500ce0d4c8c05b0",
   "lang": "bas",
+  "summary": "This VBA module manages a period selector in an Excel ribbon. It stores a selected period value, initializes it to the last item in a named range, and provides callback functions that the ribbon UI calls to populate a dropdown list and track which period the user selects.",
   "explanations": {
-    "1": "Option Base 0 means array indices will start at 0 instead of 1, which is unusual in VBA where arrays normally start at 1.",
-    "2": "Option Compare Text makes string comparisons case-insensitive, so \"ABC\" and \"abc\" are treated as equal.",
-    "25": "Byte is a data type that holds whole numbers from 0 to 255; it's used here because the row count won't be very large.",
-    "28": "shParams appears to be a worksheet object defined elsewhere; this line gets how many rows are in the named range.",
-    "56": "IRibbonControl is a special object passed by Excel's ribbon system when a user interacts with a custom ribbon button or dropdown.",
-    "71": "The ByRef keyword means the returnedVal variable will be modified inside this function and those changes will be visible to the caller.",
-    "82": "index + 1 is used because ribbon callbacks use zero-based indexing, but Excel ranges use one-based indexing, so we add 1 to get the correct row."
+    "1": "This tells VBA to start array indexing at 0 instead of 1, which is helpful for consistency with many programming languages.",
+    "2": "This makes text comparisons case-insensitive, so 'ABC' and 'abc' would be treated as equal.",
+    "14": "This declares a module-level variable that persists across function calls, storing whichever period the user most recently selected.",
+    "25": "A byte is a small integer type (0-255) used here because the number of periods won't be huge.",
+    "28": "This counts how many rows are in the named range — essentially asking 'how many periods do we have?'",
+    "29": "This retrieves the actual text value from the last row of the range and stores it as the default selection.",
+    "32": "This creates or updates an Excel named range called '_Period' so that formulas anywhere in the workbook can reference the selected value.",
+    "56": "This is a callback function the ribbon automatically calls when the user picks something from the dropdown; 'id' contains whatever the user selected.",
+    "59": "After the user makes a selection, we update the named range so any formulas using it immediately see the new value.",
+    "62": "This displays a quick message at the bottom of Excel's window to confirm what was just selected.",
+    "72": "The ribbon calls this to ask 'how many items should I put in this dropdown?'",
+    "82": "The ribbon calls this repeatedly (once per item) to get the internal ID for each dropdown entry; 'index + 1' shifts from 0-based indexing to 1-based because Excel ranges start at row 1."
   }
 }

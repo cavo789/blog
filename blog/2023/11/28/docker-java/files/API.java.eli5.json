@@ -1,12 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:20.379Z",
+  "generated": "2026-09-01T18:21:26.098Z",
   "source": "API.java",
+  "sourceHash": "4394f0697a1c9a26c4b0d682af74f12101a427d8",
   "lang": "java",
+  "summary": "This program makes an HTTP GET request to a public API endpoint and prints the JSON response line by line. It opens a connection to the URL, checks that the request succeeded (HTTP 200 status), then reads and outputs the response before closing the connection.",
   "explanations": {
-    "11": "We're casting the result of openConnection() to HttpURLConnection because openConnection() returns a generic URLConnection, but we need the HTTP-specific version to access methods like setRequestMethod().",
-    "15": "We check if the HTTP status code is exactly 200 (success); if it's anything else, we throw an exception to stop execution rather than trying to read invalid response data.",
-    "24": "The assignment inside the while condition reads one line at a time, and the loop continues until readLine() returns null, which signals there are no more lines to read."
+    "10": "openConnection() returns a generic URLConnection, but we know it's actually an HttpURLConnection, so we cast it to access HTTP-specific methods.",
+    "14": "getResponseCode() returns the HTTP status code (like 200 for success, 404 for not found); we're checking that we got 200, otherwise something went wrong.",
+    "19": "InputStreamReader converts the raw byte stream from the connection into characters we can read as text.",
+    "20": "BufferedReader wraps the InputStreamReader to let us read the response line by line instead of character by character, which is more efficient.",
+    "23": "This reads one line at a time; the assignment inside the while condition means we read a line, store it in output, and the loop continues as long as output isn't null (null means we've reached the end of the response)."
   }
 }

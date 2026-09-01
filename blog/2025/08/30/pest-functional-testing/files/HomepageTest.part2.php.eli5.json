@@ -1,15 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:33.313Z",
+  "generated": "2026-09-01T18:52:06.553Z",
   "source": "HomepageTest.part2.php",
+  "sourceHash": "527f31f2e3e3d4a605572fb37b82d3e485019579",
   "lang": "php",
+  "summary": "This is a test suite that verifies a website works correctly by simulating user interactions. Each test visits a specific page or performs actions like clicking and searching, then checks that expected content appears on the page.",
   "explanations": {
-    "4": "getenv('WEBSITE') retrieves an environment variable (a setting stored outside the code) that contains the website's URL to test against.",
-    "14": "The dot (.) concatenates strings together, so this builds the full URL by combining the website base with '/blog'.",
-    "20": "The ->click() method simulates a user clicking on an element; here it's clicking a link labeled 'Blog'.",
-    "37": "The '.DocSearch-Button' is a CSS selector that targets a specific HTML element by its class name so the test can interact with it.",
-    "38": "The ->type() method simulates typing text into a form field; here it types 'Bluesky' into the search input.",
-    "45": "This clicks on a link with that exact text; the test is checking that such a link exists and can be clicked."
+    "3": "The `it()` function defines a single test case; the string describes what should happen, and the function body contains the steps to verify it.",
+    "4": "`getenv('WEBSITE')` retrieves an environment variable containing the website's URL, then `visit()` loads that page in the browser simulator.",
+    "5": "`assertSee()` checks that the given text appears somewhere on the current page; if it doesn't, the test fails.",
+    "14": "The dot (`.`) concatenates strings in PHP, so this constructs a full URL by combining the base website URL with '/blog'.",
+    "20": "`click()` simulates a user clicking on a link with the text 'Blog'.",
+    "21": "`assertPathIs()` verifies that after clicking, the browser's URL path changed to exactly '/blog'.",
+    "37": "`click()` here uses a CSS selector (starting with `.`) instead of text, clicking whatever element has the class 'DocSearch-Button'.",
+    "38": "`type()` simulates typing text into a form input; it finds the input by its CSS selector and types 'Bluesky' into it.",
+    "45": "`click()` can also match clickable elements by their visible text content, even if it's a long string.",
+    "46": "`assertPathIs()` checks the URL path changed after the click action.",
+    "51": "This test verifies the website correctly shows an error page when someone tries to visit a URL that doesn't exist."
   }
 }

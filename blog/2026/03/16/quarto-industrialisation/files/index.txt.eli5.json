@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:48.554Z",
+  "generated": "2026-09-01T19:03:45.300Z",
   "source": "index.txt",
+  "sourceHash": "ace63329b3bdcb4fc7f4218917d5172730077cbb",
   "lang": "plaintext",
+  "summary": "This is a documentation file (likely a Quarto or Jupyter markdown file) that generates several automated visualizations about a software project. It imports and runs Python functions that create diagrams of the project architecture, analyze file types in the workspace, visualize business logic flow, and fetch sample data from an external API — all without showing the underlying code to the reader.",
   "explanations": {
-    "8": "The '#| echo: false' directive tells the document renderer to hide the Python code itself from the final output—only the results will show.",
-    "9": "The '#| output: asis' directive means 'render whatever this code produces directly as formatted content, don't wrap it in extra formatting'.",
-    "23": "The dot '.' is a shorthand meaning 'start analyzing files from the current directory and look in all subdirectories'."
+    "8": "The `echo: false` directive tells the document renderer not to display the Python code itself, only its output.",
+    "9": "The `output: asis` directive means the Python function's output should be inserted directly into the document as-is, rather than being wrapped in code output formatting.",
+    "23": "The dot `\".\"` means 'analyze the current directory and all its contents recursively' — it's the Unix way of saying 'this folder'."
   }
 }

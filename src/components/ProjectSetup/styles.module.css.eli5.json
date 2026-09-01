@@ -1,12 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:51:41.506Z",
+  "generated": "2026-09-01T19:02:09.376Z",
   "source": "styles.module.css",
+  "sourceHash": "9a9956e2a34416960d97b7c277acdbb2d70023c7",
   "lang": "css",
+  "summary": "This stylesheet defines styling for a project setup container UI component. It creates a bordered box with a styled header, scrollable content area, and various helper classes for displaying tips, errors, and button groups.",
   "explanations": {
-    "2": "This uses a CSS custom property (a variable defined elsewhere) to set the border color, so the color stays consistent across the whole site if it's changed in one place.",
-    "5": "Overflow hidden means if content inside this container is too big, it gets cut off at the edges instead of spilling out.",
-    "22": "Overflow auto means if the content inside gets too tall (over 400px), scrollbars will appear so users can still see everything."
+    "2": "Uses a CSS variable for the border color, which gets its value from the design system's emphasis color palette.",
+    "5": "Hides any content that extends beyond the container's edges, preventing it from spilling out.",
+    "10": "Applies a light background color using a design system variable to visually distinguish the header from the content below.",
+    "11": "Enables flexbox layout, which allows the header to arrange its children in a row.",
+    "12": "Spreads child elements to opposite ends of the header (typically a title on the left and action buttons on the right).",
+    "21": "Limits the script container to 400 pixels tall and creates a scrollbar if the content is longer.",
+    "22": "When content exceeds the max-height, this enables scrolling within just that container instead of the whole page.",
+    "30": "Colors the error text using the design system's danger color (typically red) to signal a problem."
   }
 }

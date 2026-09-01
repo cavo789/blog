@@ -1,14 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:52:13.798Z",
+  "generated": "2026-09-01T19:02:50.140Z",
   "source": "dops",
+  "sourceHash": "bf529bd7f2d24c8bea3004f81519a737ef370b5b",
   "lang": "plaintext",
+  "summary": "This script creates an interactive menu using fzf (a fuzzy finder tool) that lets you pick a Docker operation, then runs the corresponding function. It first checks that fzf is available, displays a list of Docker helper commands, lets you select one, extracts the command name, and verifies the function exists before running it.",
   "explanations": {
-    "4": "This checks if the fzf command is available on the system; if not, the script stops here.",
-    "15": "The backslash at the end tells the shell to continue this command on the next line—it's just splitting a long line for readability.",
-    "17": "The awk command splits each line at the colon and grabs just the first part, so 'dex: Exec...' becomes 'dex'.",
-    "19": "This checks if the user cancelled the menu (selected_op is empty) and exits early if they did.",
-    "22": "The 'type' command verifies that the function actually exists and is loaded before we try to run it, preventing errors."
+    "4": "This calls a function that checks if 'fzf' is installed and available; if not, the script exits early with an error code.",
+    "6": "This creates an array (a list) of strings, each describing a Docker operation—the descriptions help users understand what each command does.",
+    "15": "This pipes the array of options into fzf (which shows them in an interactive menu), then pipes that result to awk to extract just the command name (the part before the colon).",
+    "16": "These are fzf options: --height sets how much screen space it uses, --layout=reverse flips the preview direction, --header adds a title, and --border draws a box around it.",
+    "19": "This checks if the user canceled or didn't select anything (if selected_op is empty); if so, the script exits cleanly without error.",
+    "22": "The 'type' command checks whether a function or command with that name actually exists in the current shell session, avoiding a crash if the function isn't loaded."
   }
 }

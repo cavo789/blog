@@ -1,10 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:39:53.959Z",
+  "generated": "2026-09-01T18:42:52.730Z",
   "source": "main.py",
+  "sourceHash": "0b42a2b2dcf8936c48a5ad74a0beb0a9b71b022b",
   "lang": "python",
+  "summary": "This code flips a coin by generating a random number that's either 0 or 1, then prints a greeting in English if it's 0, or in French if it's 1. It's a simple way to randomly choose between two different messages.",
   "explanations": {
-    "1": "This generates a random number that's either 0 or 1, then checks if it equals 0 to randomly choose between two print statements."
+    "1": "random.randint(0, 1) generates a random whole number that's either 0 or 1, so the condition has a 50/50 chance of being true or false."
   }
 }

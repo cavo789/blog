@@ -1,12 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:45:58.643Z",
+  "generated": "2026-09-01T18:52:49.647Z",
   "source": "card.txt",
+  "sourceHash": "3f47be36a34e547d0d66131605719c1e4b218b1d",
   "lang": "plaintext",
+  "summary": "This code renders a card component with an image and a footer containing three action buttons (Like, Comment, Share). The card is placed inside a responsive grid layout that takes up half the width of its container, with some padding below it.",
   "explanations": {
-    "12": "The style prop is using inline CSS with hex color codes — #07ac2aff is green and #eeff00ff is yellow, with 'ff' at the end meaning fully opaque (not transparent).",
-    "15": "button-group--block makes the buttons stretch to fill their container width instead of staying narrow.",
-    "16": "button--primary, button--secondary, and button--info are CSS class names that apply different visual styles to each button (colors, borders, etc.)."
+    "7": "col--6 means this column takes up 6 out of 12 grid columns, which is exactly half the width of its parent container.",
+    "12": "This inline style object sets the background color to a greenish shade and text color to yellow for the card footer.",
+    "15": "button-group--block makes the buttons stretch to fill their container width and stack responsively."
   }
 }

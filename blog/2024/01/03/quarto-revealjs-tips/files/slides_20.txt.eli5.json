@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:29:47.376Z",
+  "generated": "2026-09-01T18:25:43.925Z",
   "source": "slides_20.txt",
+  "sourceHash": "1cb2ee007c1bf3cb70b79d61cf110fde0c6fdf97",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a YAML configuration file that sets up reveal.js, which is a presentation framework. It's telling the presentation to display slide numbers in the format 'current/total' (like '3/10') at the bottom of each slide.",
+  "explanations": {
+    "3": "The 'c/t' notation means 'current slide number slash total slides' — so if you're on slide 3 of 10, it will show '3/10'. This is the format for displaying progress through your presentation."
+  }
 }

@@ -1,15 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-08-18T10:29:09.510Z",
+  "generated": "2026-09-01T18:19:51.722Z",
   "source": ".part15.htaccess",
   "sourceHash": "d0eaf546f1a795125dc145b38f3033035a6a6d12",
   "lang": "htaccess",
+  "summary": "This file configures Apache web server access control in two different ways, showing both the old Apache 2.2 syntax and the newer Apache 2.4 syntax. It sets up a whitelist where all traffic is blocked by default, except for requests coming from a specific IP address.",
   "explanations": {
-    "2": "This line sets up a rule system where Apache will first check deny rules, then check allow rules, in that order.",
-    "3": "This blocks access from everyone by default.",
-    "4": "This then opens access back up specifically for that IP address, overriding the deny-all rule above it.",
-    "7": "This is the newer Apache 2.4 way to deny everyone access to this directory or file.",
-    "8": "This is the newer Apache 2.4 way to allow only that specific IP address through, replacing the older Order/Allow syntax."
+    "2": "This line tells Apache to process rules in order: first check deny rules, then check allow rules. It's only used in Apache 2.2.",
+    "3": "This blocks all incoming requests by default—it's the 'deny everything' part of the whitelist approach.",
+    "4": "This exception allows traffic from one specific IP address to get through, despite the blanket denial on line 3. You'd replace the x's with an actual IP like 192.168.1.1.",
+    "7": "This is the Apache 2.4 way of saying 'deny everyone'—it replaces the Order and Deny lines from the older syntax.",
+    "8": "This is the Apache 2.4 way of whitelisting a specific IP address, replacing the Allow line from the older syntax."
   }
 }

@@ -1,8 +1,10 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:30:44.392Z",
+  "generated": "2026-09-01T18:27:32.470Z",
   "source": "licenseHeader.txt",
+  "sourceHash": "ce6ff9440f834d8c7aec140e37d21b36c61760e8",
   "lang": "plaintext",
+  "summary": "This is a standard GPL (GNU General Public License) header that appears at the top of open-source software files. It explains that the code is free to use, modify, and redistribute under specific legal terms, but comes with no warranties or guarantees.",
   "explanations": {}
 }

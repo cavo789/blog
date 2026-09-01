@@ -1,10 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:31:21.334Z",
+  "generated": "2026-09-01T18:28:30.033Z",
   "source": "Product.php",
+  "sourceHash": "2ce0dce85267e2dd5128e59006023ad6a9fd41fd",
   "lang": "php",
+  "summary": "This is a basic Product class that represents an item with a name and price. It uses PHP's typed properties and a constructor to initialize these values, then provides getter and setter methods so other code can read and modify the product's details.",
   "explanations": {
-    "10": "The `=''` and `=0` set default values for these parameters, so if someone creates a Product without providing a name or price, they'll get an empty string and zero instead of an error."
+    "3": "The namespace keyword groups this class into a 'Cavo' namespace, which is like putting it in a folder to avoid naming conflicts with other classes named Product elsewhere.",
+    "7": "The 'private' keyword means this property can only be accessed from inside this class itself; outside code can't directly change $productName without using the setter method.",
+    "10": "The constructor is a special method that runs automatically when you create a new Product. It accepts optional parameters with default values, so you can create a Product with or without initial data.",
+    "16": "The colon after the parentheses and 'string' before the braces is a return type declaration — it tells PHP that this method must return a string, catching bugs if someone accidentally returns something else.",
+    "28": "The 'void' return type means this method doesn't return anything; it just performs an action (setting the price) and that's all."
   }
 }

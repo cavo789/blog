@@ -1,8 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:47:43.458Z",
+  "generated": "2026-09-01T18:55:59.417Z",
   "source": ".gitignore",
+  "sourceHash": "73f45260281c890c41041101739f776e8a19bf9b",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is a .gitignore file that tells Git which files and folders to ignore when tracking changes to the project. It prevents dependency files, build output, and sensitive configuration from being committed to version control.",
+  "explanations": {
+    "1": "node_modules/ is the folder where npm installs all third-party JavaScript packages your project depends on — it's huge and can be regenerated anytime, so we don't store it in Git.",
+    "2": "dist/ is the compiled/bundled output folder created during the build process — we only keep the source code in Git and regenerate it when needed.",
+    "3": ".env is a file that typically contains sensitive secrets like API keys and database passwords — you never want to commit this to a shared repository where others could see it."
+  }
 }

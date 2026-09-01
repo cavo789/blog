@@ -1,8 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:34:00.227Z",
+  "generated": "2026-09-01T18:33:18.722Z",
   "source": ".editorconfig",
+  "sourceHash": "76898ec195f97b4027e7bb6c82ca1f37f9e42bbb",
   "lang": "plaintext",
-  "explanations": {}
+  "summary": "This is an EditorConfig file that sets code formatting rules for a project. It establishes baseline settings for all files (line endings and final newlines), then overrides those settings specifically for Makefiles to use tabs for indentation.",
+  "explanations": {
+    "1": "The [*] section header means the rules below apply to every file in the project.",
+    "2": "This sets all files to use LF (line feed, the Unix-style line ending) instead of CRLF (Windows-style) or CR (old Mac-style).",
+    "3": "This ensures every file ends with a newline character, which is a common best practice in Unix/Linux development.",
+    "5": "The [Makefile] section header means the rules below override the [*] rules, but only for files named Makefile.",
+    "6": "This tells the editor to use actual tab characters for indentation in Makefiles (rather than spaces), which is required by Makefile syntax."
+  }
 }

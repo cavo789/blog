@@ -1,16 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:49:59.839Z",
+  "generated": "2026-09-01T18:59:40.722Z",
   "source": "index.mjs",
+  "sourceHash": "44fd34ce8821cd169edaa2e56e944c0b8557a558",
   "lang": "javascript",
+  "summary": "This is a Docusaurus plugin that reads an ASCII art banner from a text file and injects it as an HTML comment into every generated HTML file in the build output. It does this by recursively finding all HTML files, reading the banner file, and then updating each HTML file — inserting the banner after the doctype declaration if one exists, or prepending it otherwise.",
   "explanations": {
-    "24": "Promise.all waits for all the async operations (the map calls) to finish before returning their results as an array.",
-    "32": "The .flat() method flattens nested arrays into a single list, so if some entries returned [path1] and some returned [], they all merge into one array.",
-    "42": "This function returns an object (not called immediately); Docusaurus will call the returned object's postBuild method after building the site.",
-    "70": "Promise.allSettled runs all file updates in parallel and captures both successes and failures instead of stopping at the first error.",
-    "82": "The replace method here uses a function callback that receives the matched text (m) so we can insert the banner right after the doctype tag.",
-    "90": "Writing to a temporary file first, then renaming it, is safer because the rename is atomic (all-or-nothing), preventing other processes from reading incomplete data.",
-    "101": "This filters for results where the outer Promise settled successfully (fulfilled) and the inner operation also succeeded (status ok)."
+    "23": "The fs.readdir call with { withFileTypes: true } returns not just filenames, but also information about whether each item is a directory or file, which we need to decide how to handle it.",
+    "24": "Promise.all waits for all the async mapping operations to complete before moving on — we need all results before we can flatten them into a single list.",
+    "32": "The flat() method collapses the nested arrays returned by the recursive calls into one flat list — for example, [[file1], [file2], [file3]] becomes [file1, file2, file3].",
+    "43": "This checks that options exist and that bannerPath is actually a string; if not, we throw an error immediately so the plugin won't silently fail.",
+    "61": "We wrap the raw ASCII text in HTML comment syntax (<!-- and -->) so it won't be rendered as content when the browser loads the page.",
+    "68": "Promise.allSettled is used instead of Promise.all because we want to process all files even if some fail — with allSettled, a single failure won't stop the others.",
+    "78": "This creates a regex pattern that matches the doctype declaration at the beginning of an HTML file, case-insensitive; it finds the tag and everything up to the closing >.",
+    "80": "The replace with a function lets us insert the banner right after the matched doctype — the function receives the matched text (m) and returns it plus the banner.",
+    "88": "We write to a temporary file first, then rename it to the real filename — this prevents other processes from reading a partially-written file if they check at the wrong moment.",
+    "98": "We're filtering the results to count how many succeeded; the nested check (r.status === 'fulfilled' && r.value && r.value.status === 'ok') confirms both that the promise settled without crashing and that our code inside returned an ok status."
   }
 }

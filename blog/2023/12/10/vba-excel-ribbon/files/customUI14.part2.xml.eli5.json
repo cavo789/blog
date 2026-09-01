@@ -1,8 +1,12 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-06-13T12:27:56.167Z",
+  "generated": "2026-09-01T18:22:15.821Z",
   "source": "customUI14.part2.xml",
+  "sourceHash": "b1dd9cd29d541b62ab61961d62a3a4d6f25aabad",
   "lang": "xml",
-  "explanations": {}
+  "summary": "This is the opening tag of a custom user interface (UI) definition file for Microsoft Office. It declares the XML namespace that tells Office which version of the custom UI schema this file follows, allowing Office to properly interpret all the UI elements that will be defined inside.",
+  "explanations": {
+    "1": "The xmlns attribute is a namespace declaration that points to Microsoft's official schema for Office 2009 custom UI definitions — it's like telling XML 'here's the rulebook I'm following so you know how to validate everything inside me'."
+  }
 }
