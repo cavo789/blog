@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:38:52.629Z",
+  "source": "index.cjs",
+  "sourceHash": "6d61cf164026cc1df9b0d4d746315b45c6c55145",
+  "lang": "javascript",
+  "explanations": {
+    "32": "fs.readdirSync with { withFileTypes: true } returns special objects that tell us whether each item is a directory or file, so we can check entry.isDirectory() instead of making extra filesystem calls.",
+    "49": "This regex finds camelCase word boundaries (like 'fooBar') and inserts a hyphen between them, so 'fooBar' becomes 'foo-Bar' before we lowercase it.",
+    "51": "normalize('NFD') decomposes accented characters into base letters plus separate accent marks, so the next regex can strip out just the accent marks and leave us with plain ASCII letters.",
+    "62": "The slug attribute might already be set in the frontmatter, and if so we use it directly (adding /blog/ prefix if it doesn't have one), otherwise we build a slug from the directory name.",
+    "76": "frontMatter(raw) parses the YAML block at the top of a Markdown file and returns an object where 'attributes' contains all those parsed key-value pairs like title, date, etc.",
+    "82": "path.relative gives us a relative path from the blog directory to this file's directory, then we split by path separator and rejoin with forward slashes so the permalink always uses forward slashes even on Windows.",
+    "106": "YAML parsers automatically convert date strings like '2024-02-23' into JavaScript Date objects, so we need to check whether we got a Date object or a string before formatting it.",
+    "179": "[...byTag.keys()].sort() spreads the Map keys into an array and sorts them alphabetically, because Map iteration order isn't guaranteed to be sorted.",
+    "181": "[...byTag.get(tag)].sort() spreads the posts for this tag into a new array and sorts them by title, so the output is consistent even though Maps and Sets don't preserve insertion order reliably.",
+    "207": "bySeries is a Map where each key is a series name and the value is an array of posts in that series — we destructure both the name and the array in the loop.",
+    "208": "Creating new Date objects here lets us compare dates numerically (subtracting gives milliseconds difference), whereas comparing the original date strings would sort them alphabetically and break the reading order.",
+    "236": "routesPaths is a list of all the URLs that actually got published, and we strip trailing slashes so we can do an exact match with permalinks that might or might not have them.",
+    "245": "unknownAll is a Set that collects component names we encountered but don't have conversion rules for, so at the end we can warn the developer which ones need explicit handling.",
+    "257": "result.unknownComponents is an array of component names the degrader couldn't convert, and we add each one to the Set so we can report them all at once (Set automatically deduplicates).",
+    "273": "We only add posts to indexable if they're not drafts and not unlisted, because those shouldn't appear in the public llms.txt index or series bundles."
+  }
+}

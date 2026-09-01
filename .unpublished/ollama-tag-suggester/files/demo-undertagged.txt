@@ -1,0 +1,16 @@
+$ node scripts/suggest-tags.mjs blog/2026/03/16/quarto-industrialisation/index.md
+
+🏷️  Tag suggestions for blog/2026/03/16/quarto-industrialisation/index.md
+
+Existing tags: doc-as-code, quarto
+
+✅ Confirmed:
+   - doc-as-code — Managing documentation like software: diagrams (Mermaid, Markmap), Quarto slideshows, Pandoc, and visualization tools.
+   - quarto — Scientific and technical publishing with Quarto — documents, slideshows, and reports.
+
+➕ Suggested additions:
+   - docker — Containerization, Docker Compose, and image management.
+   - python — Python language development, data processing, and its ecosystem (FastAPI, Pandas).
+   - markdown — Syntax, tools, and conversion of Markdown documents.
+   - devcontainer — Containerized development environments using VS Code Dev Containers and Docker.
+   - api — Development, consumption, and documentation of APIs (REST, OpenAPI, FastAPI, PostgREST).

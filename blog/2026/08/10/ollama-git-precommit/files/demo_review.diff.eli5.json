@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:30.435Z",
+  "source": "demo_review.diff",
+  "sourceHash": "0c80e7bfa7aa01831e32190dfeb2c23900084842",
+  "lang": "diff",
+  "explanations": {
+    "7": "This function takes a parameter $d which is expected to be an array containing invoice data like amount and email.",
+    "9": "The isset() function checks if a key exists in the array and has a value; this line returns false if either amount or email is missing.",
+    "20": "This creates a direct database connection with hardcoded credentials, which is unsafe for production code because passwords shouldn't be in source files.",
+    "21": "The prepare() method creates a template for a SQL statement with ? placeholders; the actual values get filled in safely during execute() on the next line."
+  }
+}

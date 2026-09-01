@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:09.495Z",
+  "source": "pr-description.txt",
+  "sourceHash": "6b23e0f0d26674c782029ad12f04044eb77a69ff",
+  "lang": "plaintext",
+  "explanations": {
+    "3": "The square brackets mean this parameter is optional, and if the user doesn't provide a base branch name, the system will automatically use 'main' as the default.",
+    "9": "The three dots in git commands ('...') mean 'show me everything that's different between these two points' — in this case, between the base branch and your current HEAD (the latest commit you're on)."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:38:54.433Z",
+  "source": "index.tsx",
+  "sourceHash": "90bfdcc86e1b2431e97f4ab4b996dae621201bbd",
+  "lang": "typescript",
+  "explanations": {
+    "10": "useBlogPost is a special hook from Docusaurus that gives us information about the current blog post we're viewing.",
+    "13": "metadata is an object containing details about the blog post, like its URL path (permalink) and other info.",
+    "20": "This constructs the URL to the Markdown file by taking the article's main URL and adding .md to the end."
+  }
+}

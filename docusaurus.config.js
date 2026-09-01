@@ -492,7 +492,36 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         defaultLanguage: "php",
-        additionalLanguages: ["bash", "css", "javascript", "php", "python"],
+        // Every language `remark-snippet-loader`'s `extensionToLang` map (or
+        // Snippet's own `mapLangToVariant` fallback) can hand to a `<Snippet>`
+        // or a native fenced code block — not just the languages some article
+        // happened to need when this list was first written. An unregistered
+        // language isn't just "no colors": prism-react-renderer's Highlight
+        // renders differently for a known-vs-unknown grammar between the SSR
+        // pass and the first client render, which is a genuine React
+        // hydration mismatch (error #418), not a cosmetic gap — confirmed via
+        // TODO 0112 (isolated repro: an unregistered `lang` on a real
+        // `<CodeBlock>` reproduces the mismatch every time; a registered one
+        // never does).
+        // "html"/"xml" are deliberately absent: prismjs has no standalone
+        // prism-html.js/prism-xml.js component file (they're aliases of the
+        // always-bundled "markup" grammar) — requesting them here breaks the
+        // build with "Cannot find module './prism-html'".
+        additionalLanguages: [
+          "bash",
+          "css",
+          "docker",
+          "ini",
+          "javascript",
+          "json",
+          "jsx",
+          "markdown",
+          "php",
+          "python",
+          "sql",
+          "typescript",
+          "yaml",
+        ],
       },
       tableOfContents: {
         minHeadingLevel: 2,

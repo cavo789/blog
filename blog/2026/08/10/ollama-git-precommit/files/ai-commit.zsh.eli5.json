@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:49.583Z",
+  "source": "ai-commit.zsh",
+  "sourceHash": "6b82688883eaed3e5c0badd2fb8d54776c1054c4",
+  "lang": "bash",
+  "explanations": {
+    "11": "The || return 1 means \"if the _git_staged_diff command fails, stop this function immediately and report failure to whoever called it\".",
+    "24": "The print -n command outputs text without a newline at the end, so the user's keypress appears on the same line as the question.",
+    "26": "read -k1 means \"wait for the user to type exactly one character (a single keypress), don't wait for Enter\", which is why the answer appears instantly.",
+    "30": "The | symbol here means \"or\", so y|Y matches either lowercase or uppercase y — whichever the user types.",
+    "31": "The -e flag tells git to open your text editor so you can modify the message before committing, while -m still provides a starting message."
+  }
+}

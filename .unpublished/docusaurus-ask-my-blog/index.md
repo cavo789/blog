@@ -1,18 +1,17 @@
 ---
 slug: docusaurus-ask-my-blog
-title: "Ask My Blog: Turning 247 Articles Into 2,050 Searchable Questions"
+title: 'Ask My Blog: Turning 247 Articles Into 2,050 Searchable Questions'
 authors: [christophe, claude]
 image: /img/v2/ask-my-blog.webp
 series: Creating Docusaurus components
 mainTag: ai
-tags: [docusaurus, ai, ollama]
+tags: [docusaurus, ai, ollama, react, component, nodejs]
 date: 2026-10-20
 description: A local LLM reads every article on your blog and writes the questions a developer would actually type into a search bar, each one mapped to the exact heading that answers it. The result is a build-time question index searched with plain BM25 in the browser — no embeddings, no API key, no vector database. Full pipeline, plugin and component included.
 language: en
 ai_assisted: true
 draft: true
 ---
-
 <!-- cspell:ignore BM25 Okapi tokenize tokenizes docfreq sidecar sidecars maintag -->
 
 ![Ask My Blog: Turning 247 Articles Into 2,050 Searchable Questions](/img/v2/ask-my-blog.webp)

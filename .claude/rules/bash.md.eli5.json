@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:40.035Z",
+  "source": "bash.md",
+  "sourceHash": "59a4174a28e48bf65b3577cfb95d4e1ed328d0fb",
+  "lang": "markdown",
+  "explanations": {
+    "3": "The double asterisks (**) mean 'match any number of folders deep', so this pattern finds all .sh files anywhere in the project.",
+    "5": "This matches the hidden file .bash_aliases in any directory (the dot at the start makes it hidden on Unix systems).",
+    "12": "These are shell options that make scripts fail loudly: nounset stops you using undefined variables, errexit exits immediately if any command fails, and pipefail catches failures even in the middle of a pipe chain.",
+    "14": "Always wrap variable names in braces and quotes like \"${var}\" so that spaces or special characters inside the variable don't break your command.",
+    "15": "Without quotes, a variable like $file gets split on spaces and whitespace, turning one filename into many, and glob patterns (like *) get expanded.",
+    "16": "Use $(command) to run a command and capture its output because it's clearer; the old backtick style `` `command` `` is hard to read and nest.",
+    "17": "Use [[ ]] instead of [ ] in bash because [[ ]] handles quoting edge cases better, and it's the modern standard.",
+    "19": "If you write result=$(cmd) || echo \"Error\", the error message prints but the script keeps running—you have to explicitly return 1 or exit to actually fail.",
+    "21": "That comment tells shellcheck (a bash linter) to ignore a warning—use it only when you have a good reason to check $? instead of running the command directly in an if.",
+    "23": "If you use set -o pipefail and grep finds nothing, it exits with code 1 and kills your script; add || true to say 'it's okay if this command fails'."
+  }
+}

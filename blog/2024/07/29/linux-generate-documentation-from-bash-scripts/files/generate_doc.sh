@@ -323,8 +323,7 @@ function generate_doc::__main() {
 
     [[ ! -d "${SCRIPT_DIR}"/documentation ]] && mkdir -p "${SCRIPT_DIR}"/documentation
 
-    # shellcheck disable=SC2068
-    for filename in ${arrFiles[@]}; do
+    for filename in "${arrFiles[@]}"; do
         echo "Process $filename"
 
         # Replace the .sh extension by .md
@@ -613,8 +612,7 @@ function string::slugify() {
 # endregion
 function string::trim() {
     local -r char=${1:-[:space:]}
-    # shellcheck disable=SC2068
-    string::ltrim $@ | string::rtrim $@
+    string::ltrim "$@" | string::rtrim "$@"
 }
 
-generate_doc::__main $*
+generate_doc::__main "$@"

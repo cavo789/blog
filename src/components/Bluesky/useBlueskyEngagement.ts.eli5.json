@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:25.170Z",
+  "source": "useBlueskyEngagement.ts",
+  "sourceHash": "df677585d962050ba8991ebca8d9d9e148acace1",
+  "lang": "typescript",
+  "explanations": {
+    "31": "This stores multiple engagement types (likes, reposts, comments) for one person using a Set, so we can easily check if they engaged in multiple ways.",
+    "79": "This type says an embed is either an external link card, an image gallery, or something else we don't recognize — the last option catches unknown Bluesky embed types.",
+    "86": "The author object must have a displayName here (not optional), even though the BlueskyActor type normally allows it to be missing.",
+    "98": "This nested function walks through a tree structure of replies to collect all the people who commented, including replies to replies.",
+    "119": "This inner function is a helper that records an engagement action for one person, but skips the blog owner's own account since that's not real reader engagement.",
+    "138": "This sorts people by how many different ways they engaged (liked AND reposted ranks higher than just liked), putting the most engaged readers first.",
+    "143": "This removes query parameters from a URL and trailing slashes, so different links to the same article are recognized as the same.",
+    "156": "If the cached data is older than the TTL (time-to-live), we treat it as expired and fetch fresh data instead.",
+    "209": "If there's a cursor from the previous API response, we add it to request the next page of results — this is how pagination works with the Bluesky API.",
+    "222": "The exclamation mark tells TypeScript we're certain this will have a value, because we just checked that the post URI exists and it always has at least one slash.",
+    "263": "This flag prevents updating state after the component unmounts — if the user navigates away before the fetch finishes, we ignore the result.",
+    "269": "We only update state if the fetch wasn't cancelled, because if the user navigated to a different article, this stale result is no longer relevant.",
+    "309": "This uses type casting to narrow the union type — we tell TypeScript which response shape we got based on which list key we're looking for.",
+    "354": "This constructs the Bluesky URI format, which uses the account handle and post ID to uniquely identify the post.",
+    "375": "We only call the expensive APIs if there are actually likes or reposts to fetch — if the counts are zero, we skip the network request and use empty arrays.",
+    "380": "This merges the previously fetched commenters with the newly fetched likers and reposters, recalculating the ranking since we now have more data."
+  }
+}

@@ -16,5 +16,5 @@ chromePID=$!
 php -d memory_limit=-1 "vendor/bin/behat" --config=behat.yaml
 
 if ((chromePID > 0)); then
-    kill ${chromePID} > /dev/null 2>&1
+    kill "${chromePID}" > /dev/null 2>&1
 fi

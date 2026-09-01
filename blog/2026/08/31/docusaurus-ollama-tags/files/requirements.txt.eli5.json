@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:40:03.307Z",
+  "source": "requirements.txt",
+  "sourceHash": "3766d580d3f8f6a394d2d805414172cbdfca2147",
+  "lang": "plaintext",
+  "explanations": {}
+}

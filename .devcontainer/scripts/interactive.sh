@@ -6,7 +6,7 @@
 
 # --- COMMAND DEFINITIONS ---
 
-# @cat 1 Server
+# @cat Server
 # @cmd start
 # @desc Clear cache and (re)start the Docusaurus dev server on port 3000 (HTTPS)
 function start() {
@@ -18,6 +18,8 @@ function start() {
     local pids
     pids=$(lsof -ti "tcp:${port}" 2>/dev/null) || true
     if [[ -n "${pids}" ]]; then
+        # shellcheck disable=SC2086 # intentionally unquoted: lsof -t can return several
+        # newline-separated PIDs, and word-splitting is what lets `kill` take them all at once.
         kill -9 ${pids} 2>/dev/null || true
     fi
 
@@ -49,7 +51,7 @@ function start() {
         yarn docusaurus start --host 0.0.0.0 --port "${port}"
 }
 
-# @cat 1 Server
+# @cat Server
 # @cmd static
 # @desc Build the blog and serve the static site on port 3001 (HTTPS via VS Code) — leaves the dev server on 3000 alone
 function static() {
@@ -61,6 +63,8 @@ function static() {
     local pids
     pids=$(lsof -ti "tcp:${port}" 2>/dev/null) || true
     if [[ -n "${pids}" ]]; then
+        # shellcheck disable=SC2086 # intentionally unquoted: lsof -t can return several
+        # newline-separated PIDs, and word-splitting is what lets `kill` take them all at once.
         kill -9 ${pids} 2>/dev/null || true
     fi
 
@@ -77,7 +81,7 @@ function static() {
 
     printf "🏗️  Building Docusaurus...\n"
     # No `docusaurus clear` here — this is just "preview the built site locally", not the
-    # correctness gate (that's `verify`, which clears deliberately). Keeping the webpack
+    # correctness gate (that's `run_ci build`, which clears deliberately). Keeping the webpack
     # persistent cache lets unchanged rebuilds skip most of the work.
     if ! yarn docusaurus build; then
         printf "❌ 'docusaurus build' failed, see errors above.\n" >&2
@@ -88,7 +92,7 @@ function static() {
     yarn docusaurus serve --host 0.0.0.0 --port "${port}"
 }
 
-# @cat 2 Maintenance
+# @cat Maintenance
 # @cmd build
 # @desc Clear cache and build the blog as a static site
 function build() {
@@ -96,7 +100,7 @@ function build() {
     yarn docusaurus clear && yarn docusaurus build
 }
 
-# @cat 2 Maintenance
+# @cat Maintenance
 # @cmd upgrade
 # @desc Upgrade Docusaurus core and all plugins to their latest version
 function upgrade() {
@@ -111,7 +115,7 @@ function upgrade() {
         @docusaurus/types@latest
 }
 
-# @cat 2 Maintenance
+# @cat Maintenance
 # @cmd check
 # @desc Run all pre-commit hooks on every file
 function check() {
@@ -119,59 +123,28 @@ function check() {
     pre-commit run --all-files --config .config/.pre-commit-config.yaml
 }
 
-# @cat 2 Maintenance
-# @cmd verify
-# @desc Full gate before push/deploy: pre-commit + lint + prod build. Green here = green in CI.
-function verify() {
-    printf '\n\033[1;34m▶ 1/3  pre-commit\033[0m (whitespace, markdownlint, typos, eslint, prettier, freshness)\n'
-    if ! pre-commit run --all-files --config .config/.pre-commit-config.yaml; then
-        printf '\033[1;31m❌ verify: pre-commit failed\033[0m\n' >&2
-        return 1
-    fi
-
-    printf '\n\033[1;34m▶ 2/3  yarn lint\033[0m (eslint, stylelint, tsc --noEmit, snippet sources)\n'
-    if ! yarn lint; then
-        printf '\033[1;31m❌ verify: yarn lint failed\033[0m\n' >&2
-        return 1
-    fi
-    if ! yarn format:check; then
-        printf '\033[1;31m❌ verify: prettier check failed — run  format  to auto-fix\033[0m\n' >&2
-        return 1
-    fi
-
-    # `yarn clear` (not `yarn docusaurus clear`): the package.json script also
-    # wipes .docusaurus-dev/, so a stale MDX cache can't mask a regression here.
-    printf '\n\033[1;34m▶ 3/3  production build\033[0m (MDX compile + broken links/anchors)\n'
-    if ! { yarn clear && yarn build; }; then
-        printf '\033[1;31m❌ verify: build failed\033[0m\n' >&2
-        return 1
-    fi
-
-    printf '\n\033[1;32m✅ verify passed — matches quality.yml + the deploy gate. Safe to commit, push, deploy.\033[0m\n'
-}
-
-# @cat 2 Maintenance
+# @cat Maintenance
 # @cmd format
 # @desc Auto-fix formatting with Prettier (fixes what the pre-commit hook flags)
 function format() {
     yarn format
 }
 
-# @cat 3 Metadata
+# @cat Metadata
 # @cmd tags
 # @desc Run the tags manager utility
 function tags() {
     python3 .scripts/tags-manager.py "$@"
 }
 
-# @cat 3 Metadata
+# @cat Metadata
 # @cmd yaml
 # @desc Run the YAML front matter manager utility
 function yaml() {
     python3 .scripts/yaml-manager.py "$@"
 }
 
-# @cat 3 Metadata
+# @cat Metadata
 # @cmd links
 # @desc Internal-link opportunities — 'links' for corpus stats, 'links <path>' for one article
 function links() {
@@ -182,7 +155,7 @@ function links() {
     fi
 }
 
-# @cat 4 Ollama
+# @cat Ollama
 # @cmd eli5
 # @desc Generate ELI5 tips (whole blog, or: eli5 blog/2026/07)
 function eli5() {
@@ -197,14 +170,14 @@ function eli5() {
     node scripts/bulk-eli5.mjs --dir "${dir}" "${extra[@]+"${extra[@]}"}"
 }
 
-# @cat 4 Ollama
+# @cat Ollama
 # @cmd faq
 # @desc Prune bad "Ask my blog" questions by keyword (e.g. faq dinosaur)
 function faq() {
     node scripts/faq-edit.mjs "$@"
 }
 
-# @cat 4 Ollama
+# @cat Ollama
 # @cmd questions
 # @desc "Ask my blog" questions — type 'questions' alone to see the actions (review, list, status)
 function questions() {
@@ -266,18 +239,156 @@ function questions() {
     esac
 }
 
-# @cat 5 AnythingLLM
+# @cat AnythingLLM
 # @cmd ai-index
 # @desc Push new/modified posts to the AnythingLLM 'blog' workspace
 function ai-index() {
     .scripts/anythingllm-index.sh "$@"
 }
 
-# @cat 5 AnythingLLM
+# @cat AnythingLLM
 # @cmd ai-search
 # @desc Ask the blog a question (ai-search which articles cover docker?)
 function ai-search() {
     .scripts/anythingllm-search.sh "$@"
+}
+
+# @cat CI Parity
+# @cmd run_ci
+# @desc Reproduce GitHub Actions locally — no args opens an fzf picker, or: run_ci hooks/lint/format/links/build/e2e/all (run_ci --help for details)
+function run_ci() {
+    local choice="${1:-}"
+
+    # Single source of truth for both the fzf picker and `run_ci --help` — a
+    # parallel array, not "name  desc" strings, so neither has to re-parse the
+    # other's formatting (the picker needs fzf's own column, --help needs its
+    # own printf width).
+    local -a opt_names=(all build e2e format hooks links lint)
+    local -a opt_descs=(
+        "run every check below, in order (stops at first failure)"
+        "deploy.yml — production build (yarn clear && yarn build)"
+        "quality.yml — Playwright smoke/hydration test against build/ (needs 'build' first)"
+        "local-only — yarn format:check (Prettier)"
+        "pre-commit — trailing-whitespace, typos, markdownlint, eslint, prettier, freshness"
+        "quality.yml — internal links on changed/new articles"
+        "quality.yml — yarn lint (ESLint + stylelint + tsc + snippets)"
+    )
+
+    if [[ "${choice}" == "help" || "${choice}" == "--help" || "${choice}" == "-h" ]]; then
+        printf "\n\033[1;34mrun_ci\033[0m — reproduce GitHub Actions (quality.yml/deploy.yml) locally.\n"
+        printf "\033[2mSame scripts the CI jobs call — a green run_ci means a green CI job.\033[0m\n\n"
+        printf "\033[1;33mUsage:\033[0m run_ci [option]\n\n"
+        local i
+        for i in "${!opt_names[@]}"; do
+            printf "  \033[1;32m%-7s\033[0m %s\n" "${opt_names[${i}]}" "${opt_descs[${i}]}"
+        done
+        printf "\n  \033[2mNo option: opens an fzf picker (Tab-select one of the above).\033[0m\n\n"
+        return 0
+    fi
+
+    if [[ -z "${choice}" ]]; then
+        if ! command -v fzf >/dev/null 2>&1; then
+            printf "❌ fzf is not installed. Run 'run_ci --help' to see the options directly.\n" >&2
+            return 1
+        fi
+
+        local -a lines=()
+        local i
+        for i in "${!opt_names[@]}"; do
+            lines+=("$(printf '%-7s %s' "${opt_names[${i}]}" "${opt_descs[${i}]}")")
+        done
+
+        local picked
+        picked=$(
+            printf '%s\n' "${lines[@]}" \
+                | fzf --height=40% --reverse --header="run_ci — pick a check to reproduce locally" \
+                | awk '{print $1}'
+        )
+
+        if [[ -z "${picked}" ]]; then
+            return 0
+        fi
+
+        printf "\n💡 \033[1;36mTip:\033[0m skip the picker next run — \033[1mrun_ci %s\033[0m\n\n" "${picked}"
+        choice="${picked}"
+    fi
+
+    case "${choice}" in
+        hooks)
+            check
+            ;;
+        lint)
+            printf '\033[1;34m▶ quality.yml — yarn lint\033[0m\n'
+            yarn lint
+            ;;
+        format)
+            printf '\033[1;34m▶ format:check — Prettier\033[0m\n'
+            yarn format:check
+            ;;
+        links)
+            printf '\033[1;34m▶ quality.yml — internal links on changed/new articles\033[0m\n'
+            _run_ci_links
+            ;;
+        build)
+            printf '\033[1;34m▶ deploy.yml — production build\033[0m\n'
+            # `yarn clear` (not `yarn docusaurus clear`): the package.json script also
+            # wipes .docusaurus-dev/, so a stale MDX cache can't mask a regression here.
+            yarn clear && yarn build
+            ;;
+        e2e)
+            # No auto-build here: `run_ci build` is a distinct, explicit step (and
+            # `all` already runs it right before this one) — silently rebuilding
+            # would either duplicate that work or mask which `build/` got tested.
+            if [[ ! -d build ]]; then
+                printf "❌ No build/ found — run 'run_ci build' first.\n" >&2
+                return 1
+            fi
+            printf '\033[1;34m▶ quality.yml — Playwright smoke/hydration (build/)\033[0m\n'
+            yarn test:e2e
+            ;;
+        all | --all)
+            run_ci hooks && run_ci lint && run_ci format && run_ci links && run_ci build && run_ci e2e
+            ;;
+        *)
+            printf "Unknown option: %s\n" "${choice}" >&2
+            printf "Usage: run_ci [hooks|lint|format|links|build|e2e|all] — run 'run_ci --help' for details\n" >&2
+            return 1
+            ;;
+    esac
+}
+
+# Internal helper for `run_ci links`. Mirrors the internal-links job in
+# quality.yml, but diffs against local `main` instead of a PR base sha — there
+# is no PR context to read outside of CI.
+function _run_ci_links() {
+    local base
+    base=$(git merge-base HEAD main 2>/dev/null) || true
+    if [[ -z "${base}" ]]; then
+        base=$(git rev-parse HEAD~1 2>/dev/null) || true
+        [[ -z "${base}" ]] && base=$(git rev-parse HEAD)
+    fi
+
+    local articles
+    articles=$(git diff --name-only --diff-filter=ACM "${base}" HEAD -- \
+        'blog/**/index.md' 'blog/**/index.mdx' \
+        '.unpublished/**/index.md' '.unpublished/**/index.mdx') || true
+
+    if [[ -z "${articles}" ]]; then
+        printf "No article added or modified since %s.\n" "${base}"
+        return 0
+    fi
+
+    local status=0
+    local article
+    while IFS= read -r article; do
+        [[ -z "${article}" ]] && continue
+        printf "\n— %s —\n" "${article}"
+        if ! node scripts/internal-link-opportunities.mjs --post "${article}"; then
+            status=1
+        fi
+    done <<< "${articles}"
+
+    return "${status}"
 }
 
 # welcome — redraw this cheatsheet. Deliberately un-annotated (no @cat/@cmd), so it
@@ -312,19 +423,17 @@ function welcome() {
             sub(/^[ \t]*# @desc[ \t]+/, ""); desc = $0;
             if (cat != "" && cmd != "") { printf "%s|%s|%s\n", cat, cmd, desc; }
         }
-    ' "${script_path}" | sort -t'|' -k1,1n -k2,2 | awk -F'|' '
+    ' "${script_path}" | sort -t'|' -k1,1 -k2,2 | awk -F'|' '
         {
-            # @cat carries a leading sort digit ("2 Maintenance") — strip it for display.
-            header = $1; sub(/^[0-9]+[ \t]+/, "", header);
-            if (header != current_cat) {
-                printf "\r\n\033[1;33m── %s ────────────────────────────────\033[0m\r\n", header;
-                current_cat = header;
+            if ($1 != current_cat) {
+                printf "\r\n\033[1;33m── %s ────────────────────────────────\033[0m\r\n", $1;
+                current_cat = $1;
             }
             printf "  \033[1;32m%-16s\033[0m %s\r\n", $2, $3;
         }
     '
 
-    echo -e "\n💡 \033[1;36mTip:\033[0m \033[4mcheck\033[0m before every commit, \033[4mverify\033[0m before every push (adds lint + a full prod build).  \033[4mwelcome\033[0m redraws this list.\n"
+    echo -e "\n💡 \033[1;36mTip:\033[0m \033[4mcheck\033[0m before every commit, \033[4mrun_ci all\033[0m before every push (adds lint + a full prod build).  \033[4mwelcome\033[0m redraws this list.\n"
 }
 
 alias ls='ls -alh --color=auto'
@@ -335,7 +444,6 @@ export -f static
 export -f build
 export -f upgrade
 export -f check
-export -f verify
 export -f format
 export -f tags
 export -f yaml
@@ -345,6 +453,8 @@ export -f faq
 export -f questions
 export -f ai-index
 export -f ai-search
+export -f run_ci
+export -f _run_ci_links
 export -f welcome
 
 # Display on startup

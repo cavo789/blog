@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:48.496Z",
+  "source": "Dockerfile",
+  "sourceHash": "af66d47fc0113cbeedc130bf27c09fac57f14a10",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells Ubuntu's package installer to run without asking for user input (noninteractive mode), which is necessary in Docker since there's no terminal to respond to prompts.",
+    "7": "The sed command is modifying Ubuntu's package source list to unlock additional software repositories (universe and multiverse contain community-maintained packages that aren't enabled by default).",
+    "13": "Deleting the cached package lists saves space in the Docker image since we won't need them again after installation.",
+    "31": "The printf command is writing a multi-line JavaScript function into a file; the backslash-n creates actual line breaks in the file.",
+    "34": "This sed command modifies the file to create a difference that git will track, so when you run git diff later, there's an actual change to display.",
+    "39": "This adds a custom shell prompt (PS1) that will show a whale emoji and color codes when you open a bash shell, making it visually clear you're inside a container."
+  }
+}

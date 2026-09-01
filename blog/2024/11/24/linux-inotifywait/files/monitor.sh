@@ -11,8 +11,7 @@ folder="$1"
 # -r - Recursively monitors subdirectories
 # -m - Monitor file modifications
 
-# shellcheck disable=SC2034
-inotifywait -m ${folder} | while read -r line; do
+inotifywait -m "${folder}" | while read -r line; do
     #shellcheck disable=SC2012
     if (( count != $(ls "${folder}" | wc -l) )); then
 

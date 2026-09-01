@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:35:50.433Z",
+  "source": "Dockerfile",
+  "sourceHash": "090c30382b3cb557df8a95af81fdaea3ad274506",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells the installer to run in non-interactive mode so it won't pause asking questions during setup.",
+    "10": "After installing packages, we delete the leftover package lists to make the image smaller—Docker images include everything you install, so cleanup saves space.",
+    "16": "The printf command writes a long JSON string (a fake API response) directly into a file, which lets us test the demo without needing internet access.",
+    "22": "This customizes the command prompt inside the container to show a whale emoji and the username, making it obvious you're working inside a container.",
+    "24": "This runs an interactive bash shell by default when the container starts, letting you type commands directly."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:15.618Z",
+  "source": "links.md",
+  "sourceHash": "08ca3fc383ba2dd6e074b8b8dbf939a144d3f3d4",
+  "lang": "markdown",
+  "explanations": {
+    "3": "This is a hint shown to the user about what argument to pass; the square brackets and dash mean it's optional, and if omitted the tool uses articles that were recently changed.",
+    "9": "This is pointing you to another file called AGENTS.md where the actual rule is documented, so you know where to look if you need the full context.",
+    "16": "The slug is a short identifier for an article, and this grep command searches through all markdown files to find which folder contains an article with that slug.",
+    "26": "This git command shows which article files have been modified or added but not yet committed; the `awk '{print $NF}'` extracts just the file paths from git's output.",
+    "30": "This is a fallback: if there are no uncommitted changes, look at the most recent commit (HEAD~1 means one commit back) to find which articles were changed there.",
+    "50": "This is a file path to a memory document that Claude (an AI assistant) uses to track context; it contains a map of blog articles and their categories.",
+    "61": "The `to` prop here should be a path starting with a forward slash like `/blog/my-article`, not a full URL; it's relative to the website root."
+  }
+}

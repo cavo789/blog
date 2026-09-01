@@ -1,17 +1,16 @@
 ---
 slug: ollama-ai-explain
-title: "ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal"
-description: "The last function in the Ollama daily-use series: pipe any script, error message, or stack trace to ai-explain and get a plain-English explanation of what it does or what went wrong — entirely local, no cloud required."
+title: ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal
+description: 'The last function in the Ollama daily-use series: pipe any script, error message, or stack trace to ai-explain and get a plain-English explanation of what it does or what went wrong — entirely local, no cloud required.'
 authors: [christophe, claude]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
 draft: true
-series: "Ollama daily use"
-tags: [ai, linux, ollama, zsh]
+series: Ollama daily use
+tags: [ai, linux, ollama, zsh, bash, docker, git]
 date: 2026-10-06
 ai_assisted: true
 ---
-
 ![ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal](/img/v2/playing_with_ollama.webp)
 
 <TLDR>

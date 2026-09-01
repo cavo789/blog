@@ -1,14 +1,4 @@
 $ yarn build
 
 [markdown-export] Mirroring 247/248 blog posts to Markdown…
-[markdown-export] 10 component(s) had no explicit degrade rule and fell back to the generic
-"keep children, drop wrapper" behavior — add a rule in
-plugins/markdown-export-plugin/degrade.cjs's COMPONENT_RULES if this is a real gap:
-  - :Juniors017 (inline directive — verify this wasn't a false positive on "word:word" prose)
-  - :USERPROFILE (inline directive — verify this wasn't a false positive on "word:word" prose)
-  - :db (inline directive — verify this wasn't a false positive on "word:word" prose)
-  - :host-gateway (inline directive — verify this wasn't a false positive on "word:word" prose)
-  - :latest (inline directive — verify this wasn't a false positive on "word:word" prose)
-  - :php8 (inline directive — verify this wasn't a false positive on "word:word" prose)
-  … 4 more …
 [markdown-export] Done — 247 article(s) in /llms.txt, 247/247 mirrored, 0 failed.

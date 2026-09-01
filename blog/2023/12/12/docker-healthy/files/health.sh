@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Intentionally no "errexit": one container's failed inspect shouldn't stop the
+# whole list from being checked.
+set -o nounset -o pipefail
 
 GRAY=30
 GREEN=32
@@ -9,7 +12,7 @@ clear
 printf "\e[1;33m%s\e[0m\n\n" "Docker containers - Health check"
 
 docker container list --all --format "{{.Names}}" | while read -r name; do
-    healthcheckStatus=$(docker inspect --format='{{json .State.Health}}' $name | jq -r '.Status')
+    healthcheckStatus=$(docker inspect --format='{{json .State.Health}}' "$name" | jq -r '.Status')
 
     # Default color
     COLOR=${GRAY}

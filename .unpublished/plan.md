@@ -10,7 +10,7 @@ Jamais publié, écrit en français. Pour la logique détaillée derrière chaqu
 
 ## Ordre de publication recommandé
 
-49 brouillons ont un `index.md` (50e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
+50 brouillons ont un `index.md` (51e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
 
 Fondations de la série Ollama déjà publiées entretemps : `ollama-test-generator` (2026-08-03) et
 `ollama-git-precommit` (2026-08-10). `ollama-ai-standup` peut donc sortir dès maintenant, sans
@@ -23,49 +23,50 @@ attendre aucun autre brouillon.
 | 3 | `ollama-ai-fix` | Après #2 |
 | 4 | `xdebug-docker-vscode` | Respiration, aucune contrainte |
 | 5 | `ollama-ai-ci` | Après #2 et #3 |
-| 6 | `typo-report-docusaurus` ou `tried_it` | Respiration, aucune contrainte |
-| 7 | `ollama-ai-ask` | Aucune contrainte |
-| 8 | `removing-algolia-for-pagefind` | Aucune contrainte |
-| 9 | `ollama-ai-diagram` | Aucune contrainte |
-| 10 | `ollama-ai-data` | Doit précéder `duckdb-json-csv` (#12) |
-| 11 | `docling` | Doit précéder #12, #13, #14 |
-| 12 | `python-security-bandit-audit` | Après `docling` (#11) |
-| 13 | `ollama-ai-translate` | Libre, mais avant #14 de préférence |
-| 14 | `ollama-ai-docs` | Après `docling` (#11) ; avant #15 |
-| 15 | `ollama-ai-diff` | Ferme la série — après #14 |
-| 16 | `duckdb-json-csv` | Après `docling` (#11) et `ollama-ai-data` (#10) |
-| 17 | `python-ai-helper` | Se lit mieux une fois ai-test/ai-review publiés (déjà le cas) |
-| 18 | `ai-explain` | Dernier de la série Ollama — après tous les articles ci-dessus |
-| 19 | `lazydocker` | Ouvre la mini-série Docker — avant #29 et #30 |
-| 20 | `linux-yq` | Aucune contrainte |
-| 21 | `direnv` | Aucune contrainte |
-| 22 | `navi` | Aucune contrainte |
-| 23 | `hyperfine` | Aucune contrainte |
-| 24 | `git-interactive-rebase` | Aucune contrainte |
-| 25 | `vscode-gitlens` | Aucune contrainte |
-| 26 | `vscode-profiles` | Aucune contrainte |
-| 27 | `vscode-multi-root-git-worktree` | Aucune contrainte |
-| 28 | `vscode-snippets-for-docusaurus` | Aucune contrainte |
-| 29 | `portainer` | Après `lazydocker` (#19) |
-| 30 | `traefik` | Après `lazydocker` (#19) et `portainer` (#29) |
-| 31 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
-| 32 | `docker-dive` | Après `lazydocker` (#19), sinon retirer le lien en conclusion |
-| 33 | `ai-agent-in-devcontainer` | Aucune contrainte |
-| 34 | `atuin-bash-history` | Aucune contrainte |
-| 35 | `oha-http-load-testing` | Aucune contrainte |
-| 36 | `ssh-proxyjump` | Aucune contrainte |
-| 37 | `caddy` | Aucune contrainte |
-| 38 | `open-webui-advanced` | Aucune contrainte |
-| 39 | `mcp-python-server` | Aucune contrainte |
-| 40 | `copy-as-markdown` | Aucune contrainte |
-| 41 | `blog-time-to-value-audit` | Aucune contrainte |
-| 42 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #43-44 |
-| 43 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #44 |
-| 44 | `docusaurus-command-palette` | Après #42 et #43 |
-| 45 | `docusaurus-ask-my-blog-bubble` | Après #42, #43, #44 |
-| 46 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
-| 47 | `docusaurus-pwa` | Aucune contrainte |
-| 48 | `docusaurus-mobile-preview` | Aucune contrainte |
+| 6 | `ollama-tag-suggester` | Aucune contrainte — seul brouillon Ollama déjà vérifié en conditions réelles |
+| 7 | `typo-report-docusaurus` ou `tried_it` | Respiration, aucune contrainte |
+| 8 | `ollama-ai-ask` | Aucune contrainte |
+| 9 | `removing-algolia-for-pagefind` | Aucune contrainte |
+| 10 | `ollama-ai-diagram` | Aucune contrainte |
+| 11 | `ollama-ai-data` | Doit précéder `duckdb-json-csv` (#13) |
+| 12 | `docling` | Doit précéder #13, #14, #15 |
+| 13 | `python-security-bandit-audit` | Après `docling` (#12) |
+| 14 | `ollama-ai-translate` | Libre, mais avant #15 de préférence |
+| 15 | `ollama-ai-docs` | Après `docling` (#12) ; avant #16 |
+| 16 | `ollama-ai-diff` | Ferme la série — après #15 |
+| 17 | `duckdb-json-csv` | Après `docling` (#12) et `ollama-ai-data` (#11) |
+| 18 | `python-ai-helper` | Se lit mieux une fois ai-test/ai-review publiés (déjà le cas) |
+| 19 | `ai-explain` | Dernier de la série Ollama — après tous les articles ci-dessus |
+| 20 | `lazydocker` | Ouvre la mini-série Docker — avant #30 et #31 |
+| 21 | `linux-yq` | Aucune contrainte |
+| 22 | `direnv` | Aucune contrainte |
+| 23 | `navi` | Aucune contrainte |
+| 24 | `hyperfine` | Aucune contrainte |
+| 25 | `git-interactive-rebase` | Aucune contrainte |
+| 26 | `vscode-gitlens` | Aucune contrainte |
+| 27 | `vscode-profiles` | Aucune contrainte |
+| 28 | `vscode-multi-root-git-worktree` | Aucune contrainte |
+| 29 | `vscode-snippets-for-docusaurus` | Aucune contrainte |
+| 30 | `portainer` | Après `lazydocker` (#20) |
+| 31 | `traefik` | Après `lazydocker` (#20) et `portainer` (#30) |
+| 32 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
+| 33 | `docker-dive` | Après `lazydocker` (#20), sinon retirer le lien en conclusion |
+| 34 | `ai-agent-in-devcontainer` | Aucune contrainte |
+| 35 | `atuin-bash-history` | Aucune contrainte |
+| 36 | `oha-http-load-testing` | Aucune contrainte |
+| 37 | `ssh-proxyjump` | Aucune contrainte |
+| 38 | `caddy` | Aucune contrainte |
+| 39 | `open-webui-advanced` | Aucune contrainte |
+| 40 | `mcp-python-server` | Aucune contrainte |
+| 41 | `copy-as-markdown` | Aucune contrainte |
+| 42 | `blog-time-to-value-audit` | Aucune contrainte |
+| 43 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #44-45 |
+| 44 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #45 |
+| 45 | `docusaurus-command-palette` | Après #43 et #44 |
+| 46 | `docusaurus-ask-my-blog-bubble` | Après #43, #44, #45 |
+| 47 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
+| 48 | `docusaurus-pwa` | Aucune contrainte |
+| 49 | `docusaurus-mobile-preview` | Aucune contrainte |
 
 `ollama-refactor-code` n'apparaît pas : ce ne sont que des fichiers `files/`, aucun `index.md`.
 
@@ -117,6 +118,10 @@ d'ordre sur eux, ils sont déjà en ligne pour tout brouillon qui les cite.
 - `python-security-bandit-audit` (hors série) fait un lien dur vers `/blog/docling`.
 - `ai-explain` (ELI5 terminal) est le dernier article prévu de la série — à publier après tous les
   autres brouillons `ollama-ai-*` restants.
+- `ollama-tag-suggester` (créé 2026-08-30) ne cite aucun autre brouillon de la série par nom —
+  libre. Fait un lien dur vers `/blog/docusaurus-ollama-tags` (déjà publié, daté 2026-08-31) et
+  vers `/blog/docusaurus-tags` et `/blog/ollama-installation` (tous deux publiés) — aucune
+  dépendance sur un autre brouillon.
 
 ### Intercaler avec le reste de `.unpublished/`
 
@@ -179,12 +184,21 @@ Indépendants entre eux, sauf :
 
 ### Réserves techniques à lever avant publication (par brouillon)
 
-- **Série Ollama (tous) :** `/img/series/ollama.webp` n'existe pas encore sur disque (page
-  `/series` cassée tant que non créée). Aucun script zsh de la série n'a été exécuté contre une
-  vraie instance Ollama. Le FZF interactif multi-param (`AI_PARAMS`, helpers
-  `_ai_prompt_file/language/number/text`) n'a pas été testé en conditions réelles. `ollama-ai-diff`
-  et `ollama-ai-docs` partagent `_ai-docs.zsh`, dupliqué dans chaque dossier — vérifier que les
-  deux copies restent identiques après modification.
+- **Série Ollama (tous, sauf `ollama-tag-suggester`) :** `/img/series/ollama.webp` n'existe pas
+  encore sur disque (page `/series` cassée tant que non créée). Aucun script zsh de la série n'a
+  été exécuté contre une vraie instance Ollama. Le FZF interactif multi-param (`AI_PARAMS`,
+  helpers `_ai_prompt_file/language/number/text`) n'a pas été testé en conditions réelles.
+  `ollama-ai-diff` et `ollama-ai-docs` partagent `_ai-docs.zsh`, dupliqué dans chaque dossier —
+  vérifier que les deux copies restent identiques après modification.
+- **`ollama-tag-suggester` :** seul brouillon de la série réellement exécuté contre une vraie
+  instance Ollama — les trois sorties `<Terminal>` sont des captures réelles (`task-tiny` puis
+  `qwen3-coder:30b`, testées en session le 2026-08-30, dont un exemple fourni par Christophe
+  lui-même sur `quarto-industrialisation`), pas des exemples illustratifs. Bannière
+  `/img/v2/workflows.webp` approximative (aucune image dédiée "tags/IA" disponible dans
+  `static/img/v2/`) — à remplacer si une bannière dédiée est créée, en gardant un titre court ou
+  absent dans l'illustration. `/img/series/ollama.webp` manque
+  toujours (réserve partagée avec le reste de la série, ci-dessus). Réciproques à poser à la
+  publication : `/blog/docusaurus-tags` et `/blog/ollama-installation`.
 - **`docling` :** Dockerfile (image CUDA, passthrough GPU) construit à partir de la doc, jamais
   buildé — à tester contre la carte 24GB avant de considérer l'article final.
 - **`duckdb-json-csv` :** URL/version du binaire CLI (`v1.5.5`) vérifiées via l'API GitHub à la

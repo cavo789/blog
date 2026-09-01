@@ -105,16 +105,6 @@ That single rule is what allows a 900-line degradation table to sit in a build p
 
 But a silent fallback is a slow leak, so the plugin records every component it did not recognize and warns once per build. **That warning, not the table, is what keeps coverage at 100% over time** — the table is frozen the day you write it; the warning notices the day you break it.
 
-And it caught something I never would have looked for. Look again at the build output at the top of this article: ten "unknown components", all beginning with a colon.
-
-```text
-- :latest (inline directive — verify this wasn't a false positive on "word:word" prose)
-- :host-gateway (inline directive — verify this wasn't a false positive on "word:word" prose)
-- :USERPROFILE (inline directive — verify this wasn't a false positive on "word:word" prose)
-```
-
-Those are not components. `remark-directive` — needed to handle Docusaurus admonitions — parses `:name` as an inline directive, so `nginx:latest` in prose, `host:host-gateway` in a compose snippet and `%USERPROFILE%` in a Windows path all get tokenized as directives. They degrade harmlessly through the generic fallback, but I only know they exist because the warning prints them. Ten small facts about my own corpus that no test would have told me.
-
 ## Making It Discoverable
 
 Generating a file is not publishing it: without a link pointing at it, nothing — crawler or human — ever finds `/llms.txt` or a per-series bundle on its own. Four hooks close that gap, each targeting a different consumer:

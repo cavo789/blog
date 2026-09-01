@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:01.250Z",
+  "source": "styles.module.css",
+  "sourceHash": "3ea720463b95752e962dcd7e66668d59185ca815",
+  "lang": "css",
+  "explanations": {
+    "3": "The `inset: 0` shorthand sets top, right, bottom, and left all to 0, making the element stretch to fill its entire container—it's a quick way to say 'cover everything'.",
+    "13": "A radial-gradient creates a color that radiates outward from the center; here it transitions from more transparent black in the middle to darker black at the edges.",
+    "27": "The `min(88vw, 80vh)` means 'use whichever is smaller: 88% of the viewport width or 80% of the viewport height'—this keeps the image responsive without distorting.",
+    "31": "The cubic-bezier values (0.34, 1.56, 0.64, 1) create a custom easing curve that overshoots the end point slightly, making the animation feel bouncy.",
+    "32": "The `0.35s` after `cubic-bezier(...)` is the delay—the tremble animation waits 0.35 seconds before starting, and the `6` at the end means it repeats 6 times.",
+    "90": "This media query checks if the user has requested reduced motion in their OS settings; if they have, we disable all animations out of respect for their preference."
+  }
+}

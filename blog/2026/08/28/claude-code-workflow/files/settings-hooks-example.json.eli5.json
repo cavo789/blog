@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:22.865Z",
+  "source": "settings-hooks-example.json",
+  "sourceHash": "36d834bff8eb3fae24135c1686895c4d001db706",
+  "lang": "json",
+  "explanations": {
+    "3": "This denies access to sensitive files: the .env file and any .key files anywhere in the project, plus everything in the secrets folder.",
+    "8": "The matcher 'Bash' means this hook runs when a Bash tool is about to be used.",
+    "12": "This hook extracts the command being run, checks if it starts with 'pytest', and if so allows it to proceed by returning a permission decision.",
+    "19": "The matcher 'Write|Edit' means this hook triggers when either a Write or Edit tool is used (the pipe | means 'or').",
+    "23": "This hook extracts the file path being modified, and if it's a Python file, runs 'ruff check' to lint it after the edit.",
+    "30": "The Stop hook runs at the very end of execution, so this always runs pytest in quiet mode as a final check."
+  }
+}

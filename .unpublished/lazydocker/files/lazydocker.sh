@@ -4,6 +4,7 @@
 # and show a "project" view instead of just a flat container list.
 #
 # Build the image once from ~/tools/lazydocker with: docker compose build
+set -euo pipefail
 
 exec docker run --rm -it \
     -v /var/run/docker.sock:/var/run/docker.sock \

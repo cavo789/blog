@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:59.761Z",
+  "source": "Dockerfile",
+  "sourceHash": "c534db870da71b15eaf141fad374e08bc999b08a",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells Ubuntu to not ask interactive questions during package installation, which is necessary in Docker since there's no user to answer prompts.",
+    "5": "The backslash at the end of the line lets you continue a command across multiple lines; it's purely for readability.",
+    "11": "This removes the package manager's cache files to keep the Docker image smaller, since we won't need them again after installation.",
+    "14": "The printf command with '%s\\n' writes each quoted string on its own line; the output is redirected to create the ripgrep config file.",
+    "38": "The syntax `\"${1:-.}\"` means 'use the first argument passed to this function, or default to the current directory if nothing was passed'.",
+    "47": "This checks if the variable is empty (the -z test); if it is, the code prints usage instructions and exits the function early.",
+    "48": "The `--type-add` flag teaches ripgrep about custom file types; here we're saying 'treat .env, .cfg, .ini, .conf files as the config type'.",
+    "55": "This line sources (loads and runs) all the custom function files we created, making them available in the shell.",
+    "60": "The double >> appends to the file instead of overwriting it, so we add these aliases to the existing .zshrc file.",
+    "79": "The `-C /root/demo` tells git to run commands inside that folder without changing directories; `-q` means quiet mode.",
+    "80": "The `-c` flags set git config values just for this one command; here we're providing a fake email and name for the git commit.",
+    "90": "The `-i` flag runs an interactive shell and `-l` loads it as a login shell, which triggers loading all the config files we set up."
+  }
+}

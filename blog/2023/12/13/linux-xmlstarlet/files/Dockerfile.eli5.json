@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:35:53.175Z",
+  "source": "Dockerfile",
+  "sourceHash": "22332d6752fe0a49fb5a963212528de312865585",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells apt (the package installer) to run in non-interactive mode so it won't pause asking for user input during the build.",
+    "8": "After installing packages, we delete the cached package lists to make the final image smaller, since we won't need to reinstall them.",
+    "12": "The printf command writes the XML data directly as a string into the file instead of using echo, which preserves the exact formatting without adding extra newlines.",
+    "18": "This customizes the command prompt to show a whale emoji and color-coded text so you can visually confirm you're working inside a container, not your host machine.",
+    "20": "This runs bash in interactive mode so when you start the container, you get a shell prompt ready for commands instead of the container immediately exiting."
+  }
+}

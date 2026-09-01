@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:31.218Z",
+  "source": "Dockerfile",
+  "sourceHash": "66a9c7016671d0cdbdd1ca30224ce40d2f71ac72",
+  "lang": "docker",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive tells the package installer not to ask interactive questions, which would hang the build process.",
+    "9": "Deleting the apt cache files after install saves space in the final image since we won't need to reinstall those packages.",
+    "12": "The printf command with multiple quoted strings concatenates them together—each '%s\\n' becomes one line when written to the file.",
+    "31": "The $'...' syntax lets you use escape sequences like \\e for color codes; the \\'\\' is how you embed a literal single quote inside this special string.",
+    "42": "unalias removes any existing alias named 'gst' before defining our function, so older definitions won't interfere.",
+    "53": "The >> operator appends all those printf lines to the end of the .zshrc file rather than overwriting it.",
+    "63": "GIT_AUTHOR_DATE and GIT_COMMITTER_DATE environment variables let you fake when commits were made, so this demo has commits from different dates.",
+    "88": "The -i flag makes the shell interactive and -l makes it a login shell, both needed for .zshrc to actually run when the container starts."
+  }
+}

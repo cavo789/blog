@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:38:05.270Z",
+  "source": "anythingllm-index.sh",
+  "sourceHash": "c76ff40048a6d46b3f9e7f70f124b4c7ab79e7ae",
+  "lang": "bash",
+  "explanations": {
+    "10": "This makes the script exit immediately if any command fails, instead of continuing with broken data.",
+    "11": "This makes the script treat undefined variables as errors, preventing typos in variable names from silently breaking things.",
+    "12": "This makes the script exit if any command in a pipeline fails, not just the last one.",
+    "23": "This extracts the API key from a .env file by finding the line that starts with 'ANYTHINGLLM_API_KEY=', taking the first match, splitting on the equals sign, and removing quotes.",
+    "25": "This checks that the ANYTHINGLLM_API_KEY variable is set; if it's empty, the script stops and shows an error message telling you how to fix it.",
+    "31": "This tries to reach an AnythingLLM server at each candidate URL with a 2-second timeout, silently checking if it responds to a ping.",
+    "37": "This requires the ANYTHINGLLM_URL to be set; if the script couldn't find a running server, it stops and tells you.",
+    "48": "This uses awk to parse a Markdown file and extract a specific key-value pair from the YAML frontmatter (the section between the dashes at the top).",
+    "51": "This checks if the current line starts with the key name followed by a colon, which marks where the value begins.",
+    "52": "This removes the key name and colon from the line, leaving just the value part.",
+    "53": "This removes any double quotes from the beginning and end of the value.",
+    "71": "This reads the state file line-by-line, splitting each line into three parts (hash, path, location) using a tab character as the separator.",
+    "85": "This extracts just the hash part from the stored entry by splitting on a tab and keeping everything before it.",
+    "100": "If the slug (a URL-friendly name) isn't defined in the frontmatter, it falls back to using the folder name instead.",
+    "116": "This extracts the document location from the stored entry by removing everything before and including the first tab character.",
+    "119": "The '|| true' at the end makes this command always succeed even if the deletion fails, so the script doesn't stop.",
+    "134": "This extracts the 'location' field from the JSON response, or returns empty if that field doesn't exist.",
+    "149": "This finds all index.md and index.mdx files, prints them with null terminators for safety, sorts them, and passes them to the while loop.",
+    "154": "This reconstructs the storage format by splitting the combined hash-and-location back into separate parts: hash, file path, and location."
+  }
+}

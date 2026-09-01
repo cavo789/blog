@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:16.836Z",
+  "source": "Dockerfile",
+  "sourceHash": "54afe46a1bacd9ef4386e628875a66470321d564",
+  "lang": "docker",
+  "explanations": {
+    "3": "This disables interactive prompts during package installation so the build doesn't pause waiting for user input.",
+    "5": "The && connects commands so they all run together, and the backslash lets us continue this command on the next line.",
+    "11": "After installing packages, we delete the package cache files to make the final image smaller.",
+    "14": "We're running a script from the internet using curl; the empty quotes pass no custom arguments to the install script.",
+    "15": "The --unattended flag installs Oh-My-Zsh without prompting, and --keep-zshrc preserves any existing shell configuration.",
+    "20": "This sed command finds the plugins line in the config file and modifies it in-place (-i) to add our new plugin to the list.",
+    "25": "The printf command with %s\\n creates multiple lines of text; each argument becomes a line with a newline after it.",
+    "41": "The > redirects all those printed lines into the config file instead of printing them to the screen.",
+    "45": "We're appending (>>) this PROMPT line to the zshrc file, which tells the shell what the command prompt should look like.",
+    "47": "The flags mean: -i for interactive mode (keep stdin open), -l for login shell (loads full environment), and /bin/zsh is the program to run."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:55.616Z",
+  "source": "01_generate_tags.py",
+  "sourceHash": "795cfd5b4ac6cd5c6482e104e367d081af357770",
+  "lang": "python",
+  "explanations": {
+    "11": "This gets the parent directory of the current file's directory using two 'up' operations, so if your script is in project/src/script.py, BASE_DIR becomes project.",
+    "23": "The f-string creates a prompt message that includes the actual blog post content, which will be sent to the AI model to analyze.",
+    "33": "This tells the AI model to respond in JSON format rather than plain text, making the response easier to parse.",
+    "43": "After getting the AI's response as a text string, we convert it from JSON text into a Python dictionary so we can access its fields.",
+    "46": "The code checks two possible locations for tags because the AI might return the tags at the top level or nested inside another 'response' key."
+  }
+}

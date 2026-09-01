@@ -6,6 +6,7 @@
 #
 # The docling-models named volume persists downloaded Hugging Face models
 # across runs, so the (multi-hundred-MB) download only happens once.
+set -euo pipefail
 
 exec docker run --rm -i \
     --gpus all \

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:12.662Z",
+  "source": "Dockerfile",
+  "sourceHash": "9d3615007979801f323b1649114dadc837c36922",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells apt (the package installer) to run in non-interactive mode so it won't pause waiting for user input during the build.",
+    "9": "After installing packages, we delete the cached package lists to shrink the final image size since we won't need them again.",
+    "14": "The -fsSL flags tell curl to fail silently on errors, show no progress bar, and follow redirects—useful for reliable automated downloads.",
+    "16": "We pipe the downloaded tar file directly to tar extraction instead of saving it to disk first, which is faster and cleaner.",
+    "28": "The dd command creates a dummy 200KB file to simulate a real binary; status=none suppresses the progress output so the build log stays clean.",
+    "35": "The -i flag runs bash in interactive mode so you get a shell prompt when you enter the container, not just execute and exit."
+  }
+}

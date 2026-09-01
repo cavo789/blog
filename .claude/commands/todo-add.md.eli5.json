@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:20.275Z",
+  "source": "todo-add.md",
+  "sourceHash": "bdd856bfec742dd31dd08bfc6fec7e9a2058dc92",
+  "lang": "markdown",
+  "explanations": {
+    "4": "This line lists which tools you're allowed to use — the asterisks mean you can run any bash command that starts with those names (like `ls` or `find`), plus one specific script for getting the next ID.",
+    "11": "The 'todo-authoring' skill is a separate set of rules that defines what things like 'Depends' mean in a todo file; you might need to load it if you're unsure about the format.",
+    "19": "A 'slug' is a URL-friendly version of the title: all lowercase, only letters and numbers and dashes, no extra words like 'the' at the start.",
+    "31": "This script looks at every todo file in `.todos/` (even ones in subfolders) and finds the highest ID number already used, then adds 1 to create the next one.",
+    "33": "NNNN means a 4-digit number with leading zeros if needed, like 0042 instead of 42.",
+    "38": "The filename format NNNN-slug is fixed and permanent — don't put status or priority in the filename because those change over time but the ID should never change.",
+    "59": "These header bullets (Priority, Batch, etc.) are the specific lines that the `/todo-plan` command reads and parses to understand the task's metadata."
+  }
+}

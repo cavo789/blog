@@ -11,8 +11,35 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import Prism from "prismjs";
+import { useTokenize } from "prism-react-renderer";
+// Eli5CodeBlock (below) needs its own Prism grammars registered on this exact
+// `prismjs` singleton — everything beyond markup/html/xml/css/clike/javascript
+// (Prism's default bundle) only exists here as a side effect of requiring its
+// component file. `prism-react-renderer` (peer-depends on "prismjs": "*", so
+// it shares this same module instance) registers `additionalLanguages` the
+// same way whenever a native `<CodeBlock>` renders — meaning `Prism.languages
+// .bash` etc. was previously only defined here if some *other* CodeBlock had
+// already rendered first in this process/session. Registering every grammar
+// `Eli5CodeBlock` can receive (see remark-snippet-loader's `extensionToLang`
+// map) unconditionally, here, makes that no longer order-dependent.
+// markup/html/xml/css/javascript need no entry — already in Prism's default
+// bundle (verified empirically).
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-typescript";
+import "prismjs/components/prism-python";
+import "prismjs/components/prism-markup-templating"; // prism-php's own dependency
+import "prismjs/components/prism-php";
+import "prismjs/components/prism-bash";
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-yaml";
+import "prismjs/components/prism-markdown";
+import "prismjs/components/prism-docker";
+import "prismjs/components/prism-ini";
+import "prismjs/components/prism-sql";
 
 import CodeBlock from "@theme/CodeBlock";
+import IconCopy from "@theme/Icon/Copy";
+import IconSuccess from "@theme/Icon/Success";
 import LogoIcon from "@site/src/components/Blog/LogoIcon";
 import clsx from "clsx";
 import { useVarResolver } from "@site/src/components/Vars/store";
@@ -299,9 +326,32 @@ interface Eli5CodeBlockProps {
   eli5: Record<string, string>;
 }
 
+// Eli5CodeBlock renders its own <pre>, bypassing Docusaurus's native
+// <CodeBlock> (see below) and losing its built-in copy button in the
+// process — reimplemented locally rather than pulling in
+// `@docusaurus/theme-common/internal`'s CodeBlockContext, which TODO 0112
+// already names as a suspect in an open React hydration bug.
+function useCopyToClipboard() {
+  const [copied, setCopied] = useState(false);
+  const timeoutRef = useRef<number | undefined>(undefined);
+
+  const copy = useCallback((text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      window.clearTimeout(timeoutRef.current);
+      setCopied(true);
+      timeoutRef.current = window.setTimeout(() => setCopied(false), 1000);
+    });
+  }, []);
+
+  useEffect(() => () => window.clearTimeout(timeoutRef.current), []);
+
+  return { copied, copy };
+}
+
 function Eli5CodeBlock({ code, lang, eli5 }: Eli5CodeBlockProps): JSX.Element {
   const [activeLine, setActiveLine] = useState<string | null>(null);
   const [tooltipStyle, setTooltipStyle] = useState<CSSProperties | null>(null);
+  const { copied, copy } = useCopyToClipboard();
   // false until mounted client-side — gates the tooltip's document.body Portal,
   // which doesn't exist during SSR.
   const [mounted, setMounted] = useState(false);
@@ -312,20 +362,33 @@ function Eli5CodeBlock({ code, lang, eli5 }: Eli5CodeBlockProps): JSX.Element {
     setMounted(true);
   }, []);
 
-  const { lines, highlightedLines } = useMemo(() => {
-    const rawLines = code.split("\n");
-    // Remove trailing empty line that comes from a trailing newline
-    if (rawLines.length > 0 && rawLines[rawLines.length - 1] === "") {
-      rawLines.pop();
+  // `Prism.highlight()` + `.split("\n")` (the previous approach) corrupts any
+  // token that spans multiple lines — a `/** … */` JSDoc comment most
+  // commonly — because the highlighted HTML gets cut across an unclosed
+  // `<span>`. Browsers silently repair that malformed HTML while parsing the
+  // page, but repair it *differently* than what React's virtual tree expects
+  // once it hydrates, which is a genuine structural mismatch (React error
+  // #418) on any snippet whose language has multi-line comments/strings —
+  // confirmed via a server-vs-hydrated-DOM diff on `docusaurus-cards.mdx`
+  // (see TODO 0112). `useTokenize` avoids the string-splitting step entirely:
+  // it walks Prism's real token tree and only ever hands back whole tokens,
+  // already split at line boundaries.
+  const grammar = useMemo(
+    () => Prism.languages[lang] || Prism.languages.plaintext || Prism.languages.clike,
+    [lang],
+  );
+  const tokenizedLines = useTokenize({ prism: Prism, code, grammar, language: lang });
+  // A trailing `\n` in `code` makes normalizeTokens() append one synthetic
+  // last "line" holding a single `{ content: "\n", empty: true }` token —
+  // drop it so line numbers keep matching `eli5`'s 1-based keys, exactly like
+  // the previous `rawLines.pop()` did for a trailing blank line.
+  const lines = useMemo(() => {
+    const last = tokenizedLines[tokenizedLines.length - 1];
+    if (last?.length === 1 && last[0].empty) {
+      return tokenizedLines.slice(0, -1);
     }
-    const grammar =
-      Prism.languages[lang] || Prism.languages.plaintext || Prism.languages.clike;
-    const fullHighlighted = grammar ? Prism.highlight(code, grammar, lang) : code;
-    const hl = fullHighlighted.split("\n");
-    // Align with trimmed rawLines
-    while (hl.length > rawLines.length) hl.pop();
-    return { lines: rawLines, highlightedLines: hl };
-  }, [code, lang]);
+    return tokenizedLines;
+  }, [tokenizedLines]);
 
   // Compute position: tooltip appears above the badge, right-aligned.
   const positionTooltip = useCallback((lineNum: string) => {
@@ -363,21 +426,34 @@ function Eli5CodeBlock({ code, lang, eli5 }: Eli5CodeBlockProps): JSX.Element {
   return (
     <>
       <pre className={clsx(`language-${lang}`, styles.eli5_pre)}>
+        <button
+          type="button"
+          className={styles.eli5_copy_button}
+          onClick={() => copy(code)}
+          aria-label={copied ? "Copied" : "Copy code to clipboard"}
+          title="Copy"
+        >
+          {copied ? (
+            <IconSuccess className={styles.eli5_copy_icon} />
+          ) : (
+            <IconCopy className={styles.eli5_copy_icon} />
+          )}
+        </button>
         <code className={`language-${lang}`}>
-          {lines.map((_, i) => {
+          {lines.map((lineTokens, i) => {
             const lineNum = String(i + 1);
             const explanation = eli5[lineNum];
             const isActive = activeLine === lineNum;
 
             return (
               <div key={i} className={styles.eli5_line}>
-                <span
-                  className={styles.eli5_code}
-                  // Prism returns safe HTML (only wraps tokens in <span>)
-                  dangerouslySetInnerHTML={{
-                    __html: highlightedLines[i] ?? "",
-                  }}
-                />
+                <span className={styles.eli5_code}>
+                  {lineTokens.map((token, tokenIdx) => (
+                    <span key={tokenIdx} className={clsx("token", ...token.types)}>
+                      {token.content}
+                    </span>
+                  ))}
+                </span>
                 {explanation ? (
                   <span className={styles.eli5_badge_wrapper}>
                     <button
@@ -427,6 +503,61 @@ function Eli5CodeBlock({ code, lang, eli5 }: Eli5CodeBlockProps): JSX.Element {
   );
 }
 
+// ELI5 verbose summary — a Show/Hide disclosure rendered below the code block,
+// giving a narrative explanation of the whole snippet (as opposed to
+// Eli5CodeBlock's per-line tooltips). Kept as its own component, deliberately
+// outside Eli5CodeBlock's render tree — see TODO 0112 (open React hydration
+// bug on Eli5CodeBlock/<CodeBlock>): this feature must not add surface area
+// there. Also kept as a sibling of the collapsible `snippet_content` div
+// (not nested inside it): nesting would let this block's own open/close
+// change the *inner* scrollHeight without the outer collapsible's height
+// (computed once per its own toggle) ever re-measuring, clipping the summary
+// whenever a reader opens it after the snippet was already expanded.
+interface Eli5SummaryBlockProps {
+  summary: string;
+}
+
+function Eli5SummaryBlock({ summary }: Eli5SummaryBlockProps): JSX.Element {
+  const [open, setOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const [height, setHeight] = useState("0px");
+  const contentId = `eli5-summary-${useId()}`;
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(open ? `${contentRef.current.scrollHeight}px` : "0px");
+    }
+  }, [open, summary]);
+
+  return (
+    <div className={styles.eli5_summary_block}>
+      <button
+        type="button"
+        className={styles.eli5_summary_toggle}
+        onClick={() => setOpen((prev) => !prev)}
+        aria-expanded={open}
+        aria-controls={contentId}
+      >
+        <span>{open ? "Hide explanation" : "Explain this snippet"}</span>
+        <span className={styles.eli5_summary_toggle_right}>
+          <span className={styles.eli5_summary_badge}>Powered by AI</span>
+          <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>
+            &#9662;
+          </span>
+        </span>
+      </button>
+      <div
+        ref={contentRef}
+        id={contentId}
+        className={styles.eli5_summary_content}
+        style={{ maxHeight: height }}
+      >
+        <p className={styles.eli5_summary_text}>{summary}</p>
+      </div>
+    </div>
+  );
+}
+
 interface Props {
   filename?: string;
   title?: string;
@@ -436,6 +567,7 @@ interface Props {
   variant?: string;
   lang?: string;
   eli5json?: string;
+  eli5summary?: string;
 }
 
 export default function Snippet({
@@ -447,6 +579,7 @@ export default function Snippet({
   variant,
   lang: pluginLang,
   eli5json,
+  eli5summary,
 }: Props): JSX.Element {
   const [open, setOpen] = useState(defaultOpen);
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -461,6 +594,12 @@ export default function Snippet({
       return null;
     }
   }, [eli5json]);
+
+  // Verbose narrative explanation (injected by remark-snippet-loader from the
+  // same .eli5.json sidecar). Absent on sidecar files generated before this
+  // field existed — degrades to simply not rendering the Show/Hide block.
+  const eli5Summary =
+    typeof eli5summary === "string" && eli5summary.trim() ? eli5summary.trim() : null;
 
   useEffect(() => {
     if (contentRef.current) {
@@ -589,6 +728,11 @@ export default function Snippet({
       >
         <div className={styles.snippet_inner}>{codeBlock}</div>
       </div>
+
+      {/* Gated on `open`, not just on having a summary: showing this toggle
+          while the code itself is collapsed reads as a second, empty
+          accordion header stacked directly under the real one. */}
+      {open && eli5Summary && <Eli5SummaryBlock summary={eli5Summary} />}
     </div>
   );
 }

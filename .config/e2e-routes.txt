@@ -1,0 +1,36 @@
+# Routes exercised by tests/e2e/smoke.spec.ts (TODO 0107 — Playwright smoke/
+# hydration harness, wired into `run_ci e2e`).
+# One path per line, relative to the site root. Blank lines and lines
+# starting with `#` are ignored. Keep this list small and representative —
+# the goal is to catch a gross hydration/console regression, not to cover
+# every page.
+
+/
+
+# Every top-nav menu entry (docusaurus.config.js navbar) — cheapest, broadest
+# safety net: catches a regression on the site's main navigation surface.
+/blog
+/series
+/blog/tags
+/map
+/faq
+/repositories
+/blog/archive
+/about
+
+# One specific tag page and series page (different template than the list
+# pages above: TagArticlesPage / SeriesArticlesPage, not the grid).
+/blog/tags/docker
+/series/discovering-docusaurus
+
+/admin
+
+# Component-dense articles — picked for component *diversity*, not one route
+# per component (unbounded, against this file's own goal above). Between
+# these three, most custom components in src/components/ get exercised at
+# least once: Terminal (+typewriter), Snippet, Vars — docker-volumes;
+# Snippet-heavy + Card family — docusaurus-cards; AlertBox, BrowserWindow,
+# Details, ProjectSetup, StepsCard, TLDR — docker-joomla.
+/blog/docker-volumes
+/blog/docusaurus-cards
+/blog/docker-joomla

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:38:43.529Z",
+  "source": "degrade.cjs",
+  "sourceHash": "1273ebbd9ddaa5fa4b13c38dee58df55a442bbe0",
+  "lang": "javascript",
+  "explanations": {
+    "31": "When parsing MDX files, using format:\"mdx\" instead of format:\"md\" is critical—it tells the parser to recognize JSX components as actual component nodes rather than treating them as plain HTML text.",
+    "45": "This imports the remark-parse plugin's `.default` export, which is how ESM modules expose their main function when required in CommonJS code.",
+    "128": "The regex removes text in parentheses at the end of the filename (like \"(staged diff)\"), since path.extname() finds the last dot and would incorrectly treat that trailing annotation as part of the file extension.",
+    "170": "Template literals with ${...} interpolation can't be safely evaluated without running JavaScript code, so only static templates (with no interpolations) are converted to strings.",
+    "184": "For object properties in the AST, the key could be either an Identifier node (where the name is in node.key.name) or a Literal node (where the value is in node.key.value), so we check the node type to extract it correctly.",
+    "202": "The optional chaining operator (?.) safely checks if node.callee exists and is an Identifier before accessing its .name property, preventing errors if the structure is unexpected.",
+    "296": "When given an array of nodes, join them with newlines because arrays represent sibling blocks (like paragraphs), whereas a single node's children are concatenated directly.",
+    "320": "The regex matches the pattern `%%name=value%%` globally, capturing the variable name and its default value for later replacement.",
+    "338": "This creates a lightweight parser just for inline Markdown (emphasis, code spans, links) that's separate from the main full-document parser.",
+    "341": "If the parser returns zero paragraph nodes, it means the text contained no block-level structure, so wrap it as a plain text node instead.",
+    "405": "The array index [1] accesses the second element to get the value column; the first element is the label—this mirrors a two-column table structure.",
+    "442": "If filename is explicitly provided, use that for language detection; otherwise fall back to the source or lang attributes.",
+    "553": "The variant property determines whether the list is ordered (false for \"remember\") or unordered, using a negation because most variants should be ordered.",
+    "612": "inlineOnly() unwraps any paragraph nodes into their inline children, because headings cannot contain block-level content like paragraphs.",
+    "623": "The expression returns an array if src is valid (wrapped in a paragraph with an image node) or an empty array if src is unusable, so the caller gets consistent array types.",
+    "695": "URLs starting with / (absolute paths) or http(s):// work the same in both the live site and the exported .md file, but relative paths from require() are fingerprinted at build time and can't be predicted.",
+    "706": "Each step string is treated as Markdown, not plain text, so it goes through parseInlineMarkdown() to interpret formatting like `**bold**` or `` `code` ``.",
+    "830": "If the expression is just whitespace, treat it as empty and return no nodes; otherwise return a text node containing the expression string itself.",
+    "857": "node.position holds the byte offsets of this directive in the original source, so slicing ctx.rawSource reconstructs the exact original text (e.g., \"user_id:group_id\") character-for-character.",
+    "897": "A lowercase first character means it's an HTML tag (like `<div>`) not a React component (which start with uppercase), so route it to HTML degradation instead of the component rules table."
+  }
+}

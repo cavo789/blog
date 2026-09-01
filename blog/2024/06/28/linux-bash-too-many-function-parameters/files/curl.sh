@@ -28,9 +28,7 @@ function runCurl() {
     [[ -n ${token} ]]   && cmd="${cmd} ${token}"
     [[ -n ${proxy} ]]   && cmd="${cmd} --proxy ${proxy}"
 
-    json="$(eval "${cmd}")"
-
-    if [[ $? -ne 0 ]]; then
+    if ! json="$(eval "${cmd}")"; then
         echo "CURL has failed"
         exit 1
     fi

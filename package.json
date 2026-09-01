@@ -22,6 +22,7 @@
     "questions:review": "node scripts/questions-review.mjs",
     "questions:list": "node scripts/questions-review.mjs --list",
     "questions:status": "node scripts/questions-review.mjs --status",
+    "tags:suggest": "node scripts/suggest-tags.mjs",
     "icons:bundle": "node scripts/generate-icon-bundle.mjs",
     "pwa:icons": "node scripts/generate-pwa-icons.mjs",
     "colors:bundle": "node scripts/generate-post-colors.mjs",
@@ -33,7 +34,8 @@
     "lint:snippets": "node scripts/check-snippet-sources.mjs",
     "lint": "yarn lint:js && yarn lint:css && yarn lint:types && yarn lint:snippets",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@docusaurus/core": "^3.10.2",

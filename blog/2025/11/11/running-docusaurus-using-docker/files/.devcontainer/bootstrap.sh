@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 # Load helper functions
 source "/opt/docusaurus/.devcontainer/bash_helpers.sh"

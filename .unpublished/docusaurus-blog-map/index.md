@@ -5,14 +5,13 @@ authors: [christophe, claude]
 image: /img/v2/post_mindmaps.webp
 series: Creating Docusaurus components
 mainTag: component
-tags: [docusaurus, react, component]
+tags: [docusaurus, react, component, nodejs, doc-as-code]
 date: 2026-10-13
 description: Build an interactive map of your whole Docusaurus corpus — every article as a dot, sized by how many other posts link to it, positioned by a force-directed layout that runs at build time in Node so the browser never ships d3-force. Includes the plugin, the canvas component, and the plain-list fallback that keeps the page usable with JavaScript disabled.
 language: en
 ai_assisted: true
 draft: true
 ---
-
 <!-- cspell:ignore maintag Bezier viewports -->
 
 ![Drawing a Map of My Own Blog](/img/v2/post_mindmaps.webp)

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:34.310Z",
+  "source": "SKILL.md",
+  "sourceHash": "db2999d44f1d5931a29ccf984b23f0ae90150dd1",
+  "lang": "markdown",
+  "explanations": {
+    "39": "T is the line number where the truncate comment appears, E is the total line count, and BODY is how many lines of actual content follow the truncate — think of it as the 'real article' length.",
+    "42": "If QuickJump appears right after the truncate anchor, pretend it isn't there for measurement purposes — move your starting point past it so navigation scaffolding doesn't artificially inflate how far down the proof appears.",
+    "64": "If an article has zero proof (no output shown, no images, no visible results), the time-to-value is 100% — meaning the reader never actually sees the payoff.",
+    "68": "These percentages (15%, 30%) measure how far down the page a reader has to scroll before they see actual proof the thing works — lower is better because they see results sooner.",
+    "69": "A 'red flag' here means it fails automatically — if you have to install something before the article shows you what it does, that's a problem worth noting.",
+    "87": "This awk command counts the word count per section by finding each heading and tallying words between them — it's a quick way to spot if one section is bloated compared to others."
+  }
+}

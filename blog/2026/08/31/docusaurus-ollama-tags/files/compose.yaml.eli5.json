@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:40:02.391Z",
+  "source": "compose.yaml",
+  "sourceHash": "c8ac0ba0124130798d8eb5c44abc2cd06a413865",
+  "lang": "yaml",
+  "explanations": {
+    "10": "The first number (11444) is the port on your computer; the second number (11434) is the port inside the container—Docker forwards traffic from your 11444 to the container's 11434.",
+    "12": "This creates a named storage volume called 'ollama_data' that persists data even if the container stops, and mounts it to the /root/.ollama folder inside the container.",
+    "28": "The dot (.) means 'current directory on my computer', and the colon separates it from /workspaces/blog_analyzer, which is the matching folder path inside the container.",
+    "32": "This command keeps the container alive indefinitely instead of exiting immediately after startup, so you can actually use it."
+  }
+}

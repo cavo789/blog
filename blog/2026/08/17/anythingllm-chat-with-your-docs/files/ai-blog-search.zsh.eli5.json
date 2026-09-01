@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:38:29.282Z",
+  "source": "ai-blog-search.zsh",
+  "sourceHash": "358c167a42cdcabab54877f8db95d8f990e5db5a",
+  "lang": "bash",
+  "explanations": {
+    "14": "This syntax sets AI_BLOG_DIR to the value of the environment variable if it exists, or defaults to ~/repositories/blog if it doesn't — the colon-equals is bash's way of saying \"use this value or fall back to that one\".",
+    "35": "The [[ -t 1 ]] test checks if file descriptor 1 (standard output) is connected to a terminal; if it is, the output can be formatted with colors and hyperlinks, otherwise it's plain text.",
+    "36": "This printf uses ANSI escape codes (the \\e sequences) to create a clickable hyperlink that works in modern terminals, along with green color and underline formatting for the link text.",
+    "37": "The ${1:t} is a zsh-specific parameter expansion that extracts just the tail (filename part) of the URL in $1, so a full path like /home/user/file.md becomes just file.md.",
+    "62": "The ${RANDOM}${RANDOM}-$$ creates a unique session ID by combining two random numbers and the process ID, ensuring each query goes to a fresh conversation thread instead of reusing old answers.",
+    "71": "This uses jq's // operator to extract the error field from the JSON response if it exists, or return empty if there's no error — it's a safe way to check for problems.",
+    "81": "This jq filter selects sources that have a chunkSource field starting with \"link://\", then removes that prefix and keeps only unique URLs, finally formatting each as url and title separated by a tab character.",
+    "90": "The ${(f)sources} is zsh syntax that splits the sources string by newlines into separate words; the for loop then iterates over each line.",
+    "91": "This extracts the first tab-separated field (${line%%$'\\t'*}) and the second field (${line#*$'\\t'}) from each source line to pass them as URL and title to the link function.",
+    "102": "The noglob alias tells zsh to disable glob pattern matching for this command, so question marks and asterisks are passed literally to the function instead of being expanded as wildcards.",
+    "128": "This complex parameter expansion converts the question to lowercase (L), removes non-alphanumeric characters, splits it into words, and removes duplicates — creating a list of candidate search terms.",
+    "134": "The ceiling variable is set to one-tenth of the total blog posts, with a minimum of 3; it's used later to filter out keywords that match too many posts to be meaningful.",
+    "140": "This skips any candidate word shorter than 4 characters, since very short words are unlikely to be meaningful topic keywords.",
+    "161": "Using sed instead of awk with -F because article titles often contain colons, and awk's field separator would split on those and break the parsing."
+  }
+}

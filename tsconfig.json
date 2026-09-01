@@ -9,5 +9,11 @@
     // callback params (post, a, b in the Blog/* sorts) from silently becoming any.
     "strict": true
   },
-  "include": ["src/**/*", "scripts/**/*", "docusaurus.config.js"]
+  "include": [
+    "src/**/*",
+    "scripts/**/*",
+    "docusaurus.config.js",
+    "playwright.config.ts",
+    "tests/**/*"
+  ]
 }

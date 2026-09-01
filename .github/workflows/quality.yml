@@ -162,3 +162,51 @@ jobs:
           done
 
           exit $status
+
+  e2e:
+    name: Playwright smoke/hydration (build)
+    runs-on: ubuntu-latest
+    # Same escape hatch as deploy.yml. GitHub natively suppresses a run only
+    # for the exact string
+    # `[skip ci]` (and `[ci skip]`, `[no ci]`, `[skip actions]`, `[actions skip]`)
+    # — that list cannot be extended. The other spellings below are honoured here
+    # instead: the run still appears in the Actions tab, but every job is skipped
+    # in ~1s and no minutes are billed. String comparisons in GitHub expressions
+    # are case-insensitive, so `WIP:` and `[SKIP-CI]` match too.
+    if: >-
+      github.event_name != 'push' ||
+      (
+        !startsWith(github.event.head_commit.message, 'wip') &&
+        !contains(github.event.head_commit.message, '[skip ci]') &&
+        !contains(github.event.head_commit.message, '[skip-ci]') &&
+        !contains(github.event.head_commit.message, '[skip_ci]')
+      )
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+
+      # Not pre-installed on the bare runner (unlike the devcontainer image,
+      # which bakes this into the Dockerfile for local `run_ci e2e` runs).
+      - name: Install Playwright's Chromium browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Build website
+        run: yarn build
+
+      # continue-on-error lives here, not at the job level — see the
+      # internal-links job above for why. Informational on purpose while this
+      # test's stability is observed (TODO 0107): a flaky hydration false
+      # positive must not turn the whole run red yet.
+      - name: Run Playwright smoke/hydration tests (same script as `run_ci e2e`)
+        continue-on-error: true
+        run: yarn test:e2e

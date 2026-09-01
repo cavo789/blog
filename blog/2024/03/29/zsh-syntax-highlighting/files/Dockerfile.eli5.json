@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:06.223Z",
+  "source": "Dockerfile",
+  "sourceHash": "dc898aaf5f8a685d6aab21e78e5bb07b93060fff",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells apt-get to not ask interactive questions during installation; it just uses default answers so the build doesn't hang waiting for user input.",
+    "11": "After installing packages, we delete the cached package lists to make the image smaller, since we won't need them again.",
+    "14": "This pipes a shell script downloaded from the internet directly into sh, which runs it; the empty string and flags after it are arguments passed to that install script.",
+    "20": "This uses sed (a text editor) to find the line starting with plugins=(git) and replace it with plugins=(git zsh-syntax-highlighting), adding the new plugin to the list.",
+    "25": "The -i flag makes zsh interactive (so it shows prompts), and -l makes it a login shell (so it reads startup files); together they let you actually use the shell interactively."
+  }
+}

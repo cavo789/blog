@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:03.671Z",
+  "source": "test-shake-in-console.js",
+  "sourceHash": "979684d86062c05dcd0dee1e2c9f0a03703c3f33",
+  "lang": "javascript",
+  "explanations": {
+    "5": "This arrow function creates a fake device motion event and sends it to the browser, pretending the phone is being shaken in different directions (x, y, z are the acceleration values).",
+    "6": "dispatchEvent sends this fake motion event to the window object, which makes the browser think a real device motion just happened.",
+    "7": "DeviceMotionEvent is a browser API object that represents motion data from a physical device; we're creating a fake one here for testing.",
+    "16": "This waits 150 milliseconds, then fires another shake event with different acceleration values to simulate a second shake movement."
+  }
+}

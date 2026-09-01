@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:23.380Z",
+  "source": "Slug.php",
+  "sourceHash": "5df82381b48c230341fd039692764eedae589a2d",
+  "lang": "php",
+  "explanations": {
+    "3": "This tells PHP to require strict type checking, so if you pass the wrong type to a function, it will error instead of trying to convert it.",
+    "18": "The preg_replace function uses a regex pattern to find anything that isn't a letter or number, and replaces each group of those characters with a single dash.",
+    "19": "After replacing special characters with dashes, we trim any leftover dashes from the start and end (the cast to string is just a safety measure for type checking)."
+  }
+}

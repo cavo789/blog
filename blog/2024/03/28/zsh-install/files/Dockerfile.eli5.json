@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:35:59.471Z",
+  "source": "Dockerfile",
+  "sourceHash": "3b624dd33ffaa994463545381549a0f9cb26a8f9",
+  "lang": "docker",
+  "explanations": {
+    "3": "This environment variable tells the package installer to skip interactive prompts, so the Docker build won't get stuck waiting for user input.",
+    "11": "After installing packages, we delete the package manager's cache files to reduce the Docker image size.",
+    "15": "The empty string `\"\"` is a placeholder for the script's first argument; the real arguments (`--unattended --keep-zshrc`) start after it.",
+    "25": "The `-q` flag means \"quiet\" (less output), and `-b main` sets the default branch name to `main` instead of the older `master`.",
+    "31": "This sets the default starting directory when someone enters the container, so they land deep in a folder tree that demonstrates zsh's navigation features.",
+    "37": "The `-i` flag makes the shell interactive (accepting commands), and `-l` makes it a login shell (loading configuration files like .zshrc)."
+  }
+}

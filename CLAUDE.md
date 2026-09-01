@@ -122,7 +122,7 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 - **Commands** (`./claude/commands/`) are the only self-discoverable layer (`/` autocompletes them).
   Review commands wrap the matching agent; workflow commands (`/todo`, `/todo-add`, `/todo-plan`,
   `/suggestions-add`, `/suggestions-write`, `/freshness`, `/links`, `/refresh`, `/reader_review`,
-  `/review_blog`, `/deep_review`) drive direct implementation or batch processing.
+  `/review_blog`, `/deep_review`, `/tags-review`) drive direct implementation or batch processing.
 - **Skills** (`./claude/skills/`) are methodologies Claude loads by contextual trigger or because a
   command/agent explicitly binds one. Never typed directly.
 - **Rules** (`./claude/rules/`) load deterministically off a `paths:` glob — every time a matching
@@ -148,6 +148,7 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 | `/todo-plan`                | _(none)_                             | _(inline, via `todo_parse_backlog.sh`)_                               |
 | `/suggestions-add`          | _(none)_                             | _(inline, see command)_                                               |
 | `/suggestions-write`        | _(none)_                             | `blog-post-structure`                                                 |
+| `/tags-review`              | _(none)_                             | _(inline, see command)_                                               |
 
 ### Rule → skill map
 

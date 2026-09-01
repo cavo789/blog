@@ -35,7 +35,7 @@ This document outlines the governance guidelines to be followed for maintaining 
 ## Tooling & Quality Control
 
 - **Linters:** Code and Markdown must be compatible with strict linting (ESLint, Prettier, Dockerlint, Markdownlint).
-  - JS/JSX: `eslint.config.mjs` (functional-components + Hooks rules, PropTypes). Run via `yarn lint:js`, or `yarn lint` from the devcontainer terminal (also runs stylelint, TS type-checking and the snippet-source check); `verify` bundles that with the pre-commit hooks and a full production build.
+  - JS/JSX: `eslint.config.mjs` (functional-components + Hooks rules, PropTypes). Run via `yarn lint:js`, or `yarn lint` from the devcontainer terminal (also runs stylelint, TS type-checking and the snippet-source check); `run_ci all` bundles that with the pre-commit hooks, the internal-links check, and a full production build.
   - TS/TSX: same `eslint.config.mjs` (typescript-eslint recommended rules) plus `tsconfig.json` for real type-checking. Run via `yarn lint:types` (`tsc --noEmit`), included in `yarn lint`.
   - CSS: `.stylelintrc.json` (`stylelint-config-standard` + a `color-no-hex` warning pointing at `.todos/039-hardcoded-hex-colors-no-token-system.md`). Run via `yarn lint:css`.
   - Formatting: `.prettierrc.json` is configured but the existing codebase hasn't been reformatted yet (`yarn format:check` currently fails on ~166 pre-existing files) — not yet wired into CI, run manually.

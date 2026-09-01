@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:29.558Z",
+  "source": "bash-best-practices-reviewer.md",
+  "sourceHash": "92e59e0ed3018672699702ba23b8d58002105ec2",
+  "lang": "markdown",
+  "explanations": {
+    "3": "This line describes what the tool does: it reads Bash scripts and checks them against best practices without ever modifying files (read-only).",
+    "10": "The backticks around `bash-best-practices` indicate it's referring to a specific document or rule set that should be read first to understand what violations look like.",
+    "23": "Default means 'if no other instruction is given, do this'; in this case, look at all shell scripts under the standard directories unless the project specifies different folders.",
+    "33": "This command finds all shell files and checks if they contain the safety line; the `||` means 'or' — if grep doesn't find the line, echo a warning.",
+    "36": "When grep searches but finds nothing, it returns exit code 1 (failure), which under `set -euo pipefail` stops the entire script; adding `|| true` says 'that's okay, keep going'.",
+    "43": "This command lists line counts for shell files and shows only those with more than 300 lines; it's a quick way to find scripts that might be too large."
+  }
+}

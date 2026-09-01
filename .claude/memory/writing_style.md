@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 771ca3a9-f666-4860-bab3-6091afb7179a
+  modified: 2026-08-31T13:26:13.568Z
 ---
 
 ## Opening Patterns
@@ -73,6 +74,14 @@ Causal language ("Because", "Since", "So"), direct imperatives ("Now, we need to
 ## Prerequisites
 
 Lightweight. Links to prior posts rather than re-explaining. Uses `<AlertBox variant="tip" title="Installation Requirement">` for optional tools. Inline text for required tools. Assumes reader competence — no "install Node.js" type hand-holding.
+
+## No Trial-and-Error Narrative
+
+An article explains **why** the feature/tool matters, shows the **result** immediately, then explains **how** to install/build it. It never narrates the debugging journey the author (and Claude) went through while building or testing the thing — no "I hit this bug", "the warning caught something I didn't expect", "I only know this because X printed it". The reader gets the finished explanation, not the war story of getting there.
+
+**Why:** Corrected 2026-08-31 — found in `blog/2026/08/24/docusaurus-llms-txt/index.md`, a paragraph recounting a false-positive build warning discovered while testing the plugin, removed on request. Christophe: "mes articles n'ont pas à raconter les erreurs (try-error) que nous avons rencontrés ; ils doivent donner une explication du pourquoi, un exemple du résultat, puis comment on installe."
+
+**How to apply:** When drafting or reviewing any article — including during `/reader_review` or `/review_blog` passes — cut any passage narrating a bug found, a warning chased down, or "turns out X happens" discovered mid-build/test, unless the debugging journey itself *is* the article's stated subject (a dedicated postmortem/troubleshooting piece — rare on this blog, see [[feedback_article_weight]]). Applies regardless of where in the article the passage sits.
 
 **Why:** Deep internalization of this style is what makes a written post sound like Christophe's voice, not a generic tutorial.
 

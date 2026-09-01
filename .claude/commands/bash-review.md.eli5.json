@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:10.921Z",
+  "source": "bash-review.md",
+  "sourceHash": "e6623cbd1c2b490b0c16e2f65bc56248de2a6351",
+  "lang": "markdown",
+  "explanations": {
+    "3": "The square brackets here mean this argument is optional, and if you don't provide a path, it will check the entire project instead of just one folder.",
+    "9": "The `$ARGUMENTS` is a placeholder that gets replaced with whatever the user typed as the path argument when they run this command."
+  }
+}

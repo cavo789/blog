@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:07.779Z",
+  "source": "shake-debug.html",
+  "sourceHash": "1d12ebcce72bcae52fe38f54b9034f119cc29742",
+  "lang": "html",
+  "explanations": {
+    "49": "This span with id='hasApi' will be filled in by JavaScript below to show whether the device motion API exists.",
+    "53": "The requestPermission method is an iOS-specific way to ask users for motion sensor access; Android handles permissions differently.",
+    "63": "Jerk is a physics term meaning how quickly acceleration changes — a sudden shake produces high jerk values.",
+    "88": "This checks if the browser supports the Permissions API before trying to use it, since older browsers don't have it.",
+    "108": "This sets a 3-second timer that will warn the user if no motion events arrive, meaning the sensor is blocked or unavailable.",
+    "119": "Once a motion event arrives, we cancel that warning timer since we now know the sensor is working.",
+    "124": "accelerationIncludingGravity gives you acceleration values that include Earth's gravity (9.8 m/s²), not just user movement.",
+    "136": "Destructuring extracts x, y, and z from the acceleration object so we can use them as standalone variables.",
+    "145": "Jerk is calculated as the sum of absolute changes in each axis, divided by the time elapsed, then multiplied by 1000 to convert to per-second units."
+  }
+}

@@ -76,8 +76,8 @@ also converts Docusaurus's `:::tip Free text title` shorthand into
   `degrade.cjs` reconstructs the exact original characters from the source
   for any `textDirective` it meets (there is no genuine inline-directive
   usage in this corpus to lose) rather than deleting the word after the
-  colon — but a build warning still fires for each one, worth a quick glance
-  after adding new prose containing a literal colon.
+  colon — silently, with no build warning: every occurrence found so far has
+  been this false-positive shape, never a real directive.
 - **Docusaurus's own admonitions AST transform** is imported from an
   internal path (`@docusaurus/mdx-loader/lib/remark/admonitions` — not
   published API). Wrapped in a `try`/`catch`: if a future `@docusaurus/core`

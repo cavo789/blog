@@ -11,6 +11,8 @@ DOCKER_IMAGE="tdewolff/minify:latest"
 
 echo "--- Starting Build Process ---"
 
+build_failed=0
+
 # Create dist directory
 mkdir -p dist/assets
 
@@ -33,7 +35,7 @@ for ((i=0; i<$bundle_count; i++)); do
         INPUT_PATH=$(yq -r ".bundles[$i].inputs[$j]" "$CONFIG_FILE")
 
         # Now INPUT_PATH is "public/assets/css/reset.css" (no literal quotes)
-        if [ -f "$INPUT_PATH" ]; then
+        if [[ -f "$INPUT_PATH" ]]; then
             cat "$INPUT_PATH" >> "$TEMP_FILE"
             echo "  + Added $INPUT_PATH"
         else
@@ -41,20 +43,29 @@ for ((i=0; i<$bundle_count; i++)); do
         fi
     done
 
-    if [ -f "$TEMP_FILE" ]; then
+    if [[ -f "$TEMP_FILE" ]]; then
         echo "  > Minifying..."
         # We ensure the output directory exists for this specific file
         mkdir -p "$(dirname "$OUTPUT")"
 
-        docker run --rm -v "$(pwd):/src" "$DOCKER_IMAGE" \
+        if docker run --rm -v "$(pwd):/src" "$DOCKER_IMAGE" \
             --type="$TYPE" \
-            "/src/$TEMP_FILE" > "$OUTPUT"
-
-        rm "$TEMP_FILE"
-        echo "  ✓ Generated: $OUTPUT"
+            "/src/$TEMP_FILE" > "$OUTPUT"; then
+            rm "$TEMP_FILE"
+            echo "  ✓ Generated: $OUTPUT"
+        else
+            echo "  × Error: minification failed for bundle $NAME." >&2
+            build_failed=1
+        fi
     else
-        echo "  × Error: No input files found for bundle $NAME."
+        echo "  × Error: No input files found for bundle $NAME." >&2
+        build_failed=1
     fi
 done
+
+if [[ "$build_failed" -eq 1 ]]; then
+    echo "--- Build Failed ---" >&2
+    exit 1
+fi
 
 echo "--- Build Complete ---"

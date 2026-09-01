@@ -20,11 +20,9 @@ pushd "${sourceFolder}" >/dev/null
 set +e
 
 for bashScript in *.sh; do
-    result="$(diff --side-by-side --width 83 \
+    if ! result="$(diff --side-by-side --width 83 \
         <(grep -P "^(function\s+.*)\(\)" "${bashScript}" | awk '{print $2}') \
-        <(grep -P "^(function\s+.*)\(\)" "${bashScript}" | awk '{print $2}' | sort))"
-
-    if ! [[ $? -eq 0 ]]; then
+        <(grep -P "^(function\s+.*)\(\)" "${bashScript}" | awk '{print $2}' | sort))"; then
         printf "\e[33;1m%s\e[0;1m\n" "The file ${bashScript} isn't correctly ordered"
         printf "\e[37;1m%s\e[0;1m\n" "${result}"
     fi

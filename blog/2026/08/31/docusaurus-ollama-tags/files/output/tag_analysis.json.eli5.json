@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:45.955Z",
+  "source": "tag_analysis.json",
+  "sourceHash": "573193014f6369817e28daaf91cd653f7f300f8d",
+  "lang": "json",
+  "explanations": {}
+}

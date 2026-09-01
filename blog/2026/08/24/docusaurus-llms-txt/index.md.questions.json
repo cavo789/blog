@@ -1,37 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-28T16:47:11.569Z",
+  "generated": "2026-09-01T16:45:42.321Z",
   "source": "index.md",
-  "sourceHash": "b4d098aa1a1a7aa9de400a53e4ed0b62287f493c",
+  "sourceHash": "3167d13ef717dfdf4f8f5c7a44b27900162c248a",
   "questions": [
     {
-      "question": "What does this article propose for AI assistance?",
-      "anchor": ""
-    },
-    {
-      "question": "Why is a plain-Markdown mirror important?",
+      "question": "What does this article generate?",
       "anchor": "what-gets-generated"
     },
     {
-      "question": "How does the degradation table help in building the plugin?",
+      "question": "Why degrade the MDX source instead of converting HTML to Markdown?",
       "anchor": "why-the-source-and-never-the-html"
     },
     {
-      "question": "What are the main reasons for not converting rendered HTML to Markdown?",
+      "question": "How is this blog's content mirrored in plain Markdown?",
       "anchor": "building-it"
     },
     {
-      "question": "Why is it better to degrade the source instead of the rendered HTML?",
+      "question": "What are the benefits of generating a plain-Markdown mirror?",
       "anchor": "the-degradation-table"
     },
     {
-      "question": "What are some examples of custom React components used on this blog?",
+      "question": "Why does this article mention ChatGPT, Claude, and Perplexity?",
+      "anchor": "the-orchestrator"
+    },
+    {
+      "question": "How is this blog already set up to maintain a plain-Markdown mirror?",
       "anchor": "the-one-rule-that-makes-this-safe"
     },
     {
-      "question": "Why is it important to handle a few dozen component names instead of reverse-engineering an entire rendering pipeline when converting HTML to Markdown?",
+      "question": "What is the purpose of the /llms.txt index?",
       "anchor": "making-it-discoverable"
+    },
+    {
+      "question": "How does this article propose making the export safe?",
+      "anchor": "conclusion"
     }
   ]
 }

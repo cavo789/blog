@@ -37,3 +37,8 @@
 # /tmp via RUMDL_CACHE_DIR (see .devcontainer/devcontainer.json); this entry
 # is just a safety net should it ever be created here anyway.
 .rumdl_cache/
+
+# Playwright (TODO 0107 / `run_ci e2e`) — traces, screenshots, HTML report.
+/test-results/
+/playwright-report/
+/blob-report/

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 function __main() {
 
@@ -24,4 +25,4 @@ EOF
     return 0
 }
 
-__main $*
+__main "$@"

@@ -844,16 +844,16 @@ function transformNode(node, ctx) {
     return degradeDirective(node);
   }
   if (node.type === "textDirective") {
-    // remark-directive's inline `:name` syntax is a known false-positive trap:
-    // ordinary prose like "user_id:group_id" or "github.com:company/x.git"
-    // tokenizes as a textDirective too, and — unlike containerDirective — a
-    // directive with no `[label]` has *no children at all* to fall back to,
-    // so keeping `node.children` here would silently delete the word after
-    // the colon. Reconstruct the exact original characters from the source
-    // instead; this corpus has no genuine textDirective usage to lose.
-    ctx.unknownComponents.add(
-      `:${node.name} (inline directive — verify this wasn't a false positive on "word:word" prose)`,
-    );
+    // remark-directive's inline `:name` syntax has no word-boundary check, so
+    // ordinary prose like "user_id:group_id", "github.com:company/x.git" or
+    // "nginx:latest" tokenizes as a textDirective too — and every occurrence
+    // ever found in this corpus has been exactly that, never a real directive
+    // (this blog's own `:::tip`-style directives go through containerDirective/
+    // leafDirective above, not here). Not worth a per-build warning: reconstruct
+    // the exact original characters from the source, silently. Unlike
+    // containerDirective, a directive with no `[label]` has *no children at
+    // all* to fall back to, so keeping `node.children` here would silently
+    // delete the word after the colon instead.
     if (node.position && typeof ctx.rawSource === "string") {
       return [
         textNode(

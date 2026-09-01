@@ -75,16 +75,22 @@ function detectLang(filePath) {
 }
 
 const SYSTEM_PROMPT = `You are a patient senior developer explaining code to a junior colleague.
-Given a source file with numbered lines, identify only the lines that a junior
-developer might find confusing. For each such line, write exactly one or two
-plain-English sentences — friendly, concrete, no jargon unless you immediately
-define it. Think "explain like I'm five but I'm also a developer".
+Given a source file with numbered lines, produce two things:
 
-Skip: blank lines, closing braces/brackets, import lines that are self-evident,
-comments that already explain themselves, trivially obvious assignments.
+1. "summary": two to four plain-English sentences narrating what this snippet does
+   as a whole and why, the way you'd explain it out loud to someone reading over
+   your shoulder — not a recap of individual lines. No jargon unless immediately
+   defined.
+2. "explanations": for each line a junior developer might find confusing, one or
+   two plain-English sentences. Think "explain like I'm five but I'm also a
+   developer". Skip blank lines, closing braces/brackets, import lines that are
+   self-evident, comments that already explain themselves, trivially obvious
+   assignments.
 
-Return ONLY a valid JSON object. Keys are line numbers as strings. Values are
-explanation strings. Omit lines that need no explanation. No markdown, no code fences.`;
+Return ONLY a valid JSON object shaped exactly like:
+{"summary": "...", "explanations": {"3": "...", "7": "..."}}
+Keys in "explanations" are line numbers as strings. Omit lines that need no
+explanation. No markdown, no code fences.`;
 
 async function generateEli5(sourceFile, { force = false, outputPath = null } = {}) {
   const absSource = path.resolve(sourceFile);
@@ -151,14 +157,14 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
   }
 
   // Parse JSON — strip markdown fences if Claude wrapped it anyway
-  let explanations;
+  let parsed;
   try {
-    explanations = JSON.parse(raw);
+    parsed = JSON.parse(raw);
   } catch {
     const match = raw.match(/\{[\s\S]*\}/);
     if (match) {
       try {
-        explanations = JSON.parse(match[0]);
+        parsed = JSON.parse(match[0]);
       } catch {
         throw new Error(`Could not parse Claude's response as JSON:\n${raw}`);
       }
@@ -167,7 +173,16 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
     }
   }
 
+  const summary =
+    typeof parsed.summary === "string" && parsed.summary.trim()
+      ? parsed.summary.trim()
+      : null;
+
   // Validate: only keep string values with string-number keys
+  const explanations =
+    parsed.explanations && typeof parsed.explanations === "object"
+      ? parsed.explanations
+      : {};
   const cleaned = {};
   for (const [k, v] of Object.entries(explanations)) {
     if (/^\d+$/.test(k) && typeof v === "string" && v.trim()) {
@@ -185,12 +200,13 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
     source: path.basename(absSource),
     sourceHash: hashSource(code),
     lang,
+    summary,
     explanations: cleaned,
   };
 
   fs.writeFileSync(destPath, JSON.stringify(result, null, 2) + "\n");
   console.log(
-    `✅ Written: ${destPath}\n   ${Object.keys(cleaned).length} annotations on ${lines.length} lines.`,
+    `✅ Written: ${destPath}\n   ${Object.keys(cleaned).length} annotations on ${lines.length} lines, summary: ${summary ? "yes" : "no"}.`,
   );
 
   return { skipped: false, destPath, count: Object.keys(cleaned).length };

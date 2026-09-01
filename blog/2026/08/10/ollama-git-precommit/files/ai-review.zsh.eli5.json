@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:44.259Z",
+  "source": "ai-review.zsh",
+  "sourceHash": "3b230a2a16ca82a6cd9fb525427d05c5c18d1f9c",
+  "lang": "bash",
+  "explanations": {
+    "5": "This line is storing a description string in an associative array called AI_COMMANDS, using 'review' as the key — it's registering this function as a command that the script can look up later.",
+    "10": "The function calls _git_staged_diff (which you'll need to find elsewhere in the codebase) and stores the result in diff, then immediately exits the whole function with 'return 1' if that command fails.",
+    "25": "_ollama_query is a helper function (defined elsewhere) that sends your prompt to an AI model via Ollama and prints the response — think of it like making an API call to get a code review."
+  }
+}

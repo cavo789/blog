@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:25.837Z",
+  "source": "SKILL.md",
+  "sourceHash": "62db19486be37d42735bb8a3be6b5706c8956924",
+  "lang": "markdown",
+  "explanations": {
+    "4": "This field controls whether an AI model should be invoked to check code against this skill—usually false for static language rules.",
+    "25": "The `pipefail` option changes how pipes behave; without it, a failed command in the middle of a chain won't stop the script, which is often surprising.",
+    "79": "Braces like `${var}` don't actually prevent word-splitting unless you also add quotes around them—`\"${var}\"` is what protects the value.",
+    "146": "The single quotes around `EOF` prevent Bash from expanding variables like `${job_name}` when the heredoc is created, so they stay as literal text in the generated script."
+  }
+}

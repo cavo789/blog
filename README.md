@@ -45,6 +45,21 @@ Depending on if you're working with the production image or with devcontainer, p
 
 You'll then start an interactive console in the Docker container.
 
+## Suggest tags for an article using local Ollama
+
+`yarn tags:suggest <article-file>` reads an article's frontmatter plus `blog/tags.yml` and asks a
+local Ollama model (see `scripts/suggest-tags.mjs`) which existing tags apply — confirming tags
+already set and suggesting up to 5 relevant ones that are missing. Suggestion only: it never
+writes to the article.
+
+A VS Code task wraps it (`.vscode/tasks.json`, `Suggest tags (Ollama)`) so it can run against the
+file currently open in the editor: open the article, press <kbd>F1</kbd>, run **Tasks: Run Task**,
+then pick **Suggest tags (Ollama)**. No keybinding is set up for it — `Ctrl+T` was tried and
+dropped: VS Code keybindings only live in a personal, per-machine `keybindings.json` (no
+workspace-level file to version here), that file can end up read-only depending on the setup, and
+a silent shortcut nobody else can discover defeats the point anyway. The Command Palette route
+above works the same way for everyone, every time.
+
 ## Deployment
 
 For this repository, the deployment is made using GitHub actions. By pushing changes to GitHub, there is a `CI/CD` pipeline who'll be started by GitHub, download Node, run `yarn build` and, once HTML files have been generated in the `build` folder, an FTP copy job will copy every file from GitHub to the host where the blog is running.

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 if [[ ! -f /data/counter.txt ]]; then
     mkdir -p /data
@@ -6,7 +7,7 @@ if [[ ! -f /data/counter.txt ]]; then
     echo "0" > /data/counter.txt
 fi
 
-counter=$((`cat /data/counter.txt`+1))
+counter=$(( $(cat /data/counter.txt) + 1 ))
 
 echo "You have executed this script ${counter} times."
 

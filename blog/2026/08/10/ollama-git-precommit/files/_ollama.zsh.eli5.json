@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:41.933Z",
+  "source": "_ollama.zsh",
+  "sourceHash": "5d2f5c8b6041d2943fb52817f7b2fff829ff8768",
+  "lang": "bash",
+  "explanations": {
+    "18": "This creates an associative array (like a dictionary/map) named AI_COMMANDS that can be accessed globally throughout the script — the 'g' flag makes it global, and 'A' makes it an associative array rather than a regular indexed array.",
+    "19": "Same as line 18, but this array will store parameter type information for each command.",
+    "28": "If the OLLAMA_HOST environment variable isn't set, it defaults to 'http://localhost:11434' — this lets users override where to find Ollama without changing the script.",
+    "39": "Similar to line 28: if OLLAMA_MODEL isn't set, it defaults to 'qwen3-coder:30b', so the function can work out of the box without requiring environment setup.",
+    "49": "The 'print -r --' is a safe way to output the prompt string without bash interpreting any special characters or escape sequences in it.",
+    "69": "This checks if the text contains backticks (the triple-backtick code fence markers); the asterisks are wildcards that match any characters before or after.",
+    "75": "The 'inside' variable acts as a toggle: each time we hit a line starting with backticks, we flip whether we're inside a fenced code block or not, then skip printing that fence line itself.",
+    "98": "The ':A' after the variable name expands it to an absolute path — so if you pass a relative path like '../file.txt', it gets converted to the full path starting from the root.",
+    "99": "This removes the current directory path from the beginning of the absolute path, leaving just the relative portion — if PWD is '/home/user/project' and path is '/home/user/project/src/file.txt', the result is 'src/file.txt'.",
+    "107": "This line both tests and returns: it checks if the answer starts with 'y' or 'Y', and returns 0 (success) if true, 1 (failure) if false — this is how yes/no prompts return a success code.",
+    "126": "It reads the AI_DIFF_MAX_CHARS environment variable if set, otherwise defaults to 12000 characters as the maximum diff size to send to the model.",
+    "143": "The '(( ... ))' syntax evaluates a math expression; here it checks if the length of the diff is less than or equal to the max, and if so, returns the full diff.",
+    "154": "This grep filters the diff to show only the structural lines (file headers and hunk markers starting with @@) while stripping out the actual line-by-line changes.",
+    "158": "String slicing syntax: `${summary[1,$max]}` keeps only characters 1 through $max (inclusive), truncating everything after the character limit.",
+    "172": "This line tries to find the 'bat' binary and stores its name in bat_bin, then constructs a preview command — if bat isn't found, preview stays as plain 'cat'.",
+    "173": "The '&&' means 'if the previous command succeeded', so the preview command only gets updated if _ai_bat actually found bat; otherwise it falls back to cat.",
+    "238": "The `${+AI_COMMANDS[$cmd]}` syntax checks whether the key $cmd exists in the AI_COMMANDS array — it returns true if the key is present, false otherwise.",
+    "250": "The `${(ok)AI_COMMANDS}` syntax means 'give me the keys of AI_COMMANDS sorted alphabetically' — the 'o' flag sorts, and 'k' means keys rather than values.",
+    "269": "This splits the parameter types string on spaces: if AI_PARAMS contains 'file language', this loop will iterate twice with param_type set to 'file', then 'language'."
+  }
+}

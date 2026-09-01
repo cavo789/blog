@@ -55,9 +55,17 @@ As far back as I can remember, even as a kid, I have kept this quote in mind:
   "Go back to your work twenty times: polish it constantly and polish it again; add
   something now and then, and often erase."
   <br />
+  {/* JS string expressions, not raw MDX text: multi-line text as literal
+      <small> children makes the MDX compiler wrap it in an unclosed <p> —
+      see TODO 0112. An expression is opaque to that heuristic and survives
+      Prettier re-wrapping the line, unlike a one-line-only text workaround. */}
   <small>
-    — Nicolas Boileau / L'Art poétique · *"Vingt fois sur le métier remettez votre ouvrage
-    : Polissez-le sans cesse et le repolissez ; Ajoutez quelquefois, et souvent effacez"*
+    {"— Nicolas Boileau / L'Art poétique · "}
+    <em>
+      {
+        '"Vingt fois sur le métier remettez votre ouvrage : Polissez-le sans cesse et le repolissez ; Ajoutez quelquefois, et souvent effacez"'
+      }
+    </em>
   </small>
 </div>
 

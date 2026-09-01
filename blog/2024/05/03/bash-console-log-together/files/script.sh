@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 declare -r command="ls -alhR /tmp"
 

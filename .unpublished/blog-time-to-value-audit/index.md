@@ -4,14 +4,13 @@ title: I Measured How Long My Own Articles Take to Prove Anything. The Answer Wa
 authors: [christophe, claude]
 image: /img/v2/reader_first.webp
 mainTag: doc-as-code
-tags: [doc-as-code, markdown, docusaurus]
+tags: [doc-as-code, markdown, docusaurus, code-quality]
 date: 2026-11-17
 description: A repeatable, mechanical way to audit a technical blog — measure time-to-value from line positions, flag install-before-proof and abstraction-before-proof, and judge with a 30-second read. Run over 318 of my own articles it returned 180 restructure verdicts, and every fix was a reorder, never a cut.
 language: en
 ai_assisted: true
 draft: true
 ---
-
 <!-- cspell:ignore TTV maintag reorder reorders -->
 
 ![I Measured How Long My Own Articles Take to Prove Anything. The Answer Was 50%.](/img/v2/reader_first.webp)

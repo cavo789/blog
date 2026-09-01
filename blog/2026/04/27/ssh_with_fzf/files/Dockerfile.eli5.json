@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:39.394Z",
+  "source": "Dockerfile",
+  "sourceHash": "0872fb4cfde69d800009eb72321f83ab9e066c8e",
+  "lang": "docker",
+  "explanations": {
+    "3": "This disables interactive prompts during package installation, so the Docker build won't pause waiting for user input.",
+    "7": "This command uses sed (a text editor) to modify Ubuntu's package sources file, adding 'universe' and 'multiverse' repositories where additional packages like fzf are stored.",
+    "14": "After installing packages, this deletes the apt cache to reduce the final Docker image size, since we won't need to reinstall anything.",
+    "17": "This creates the directory structure /root/.ssh/conf.d and sets its permissions to 700 (only the owner can read, write, execute) for security.",
+    "103": "The perl -ne flag means: read each line from the input, automatically strip the newline, and execute the script—this processes the SSH config files line by line.",
+    "104": "$sep is a variable being set to a separator string that will later join multiple comment lines together.",
+    "111": "This concatenates comment lines into $buf, using the separator; if $buf is empty it adds nothing, otherwise it adds the separator first.",
+    "116": "This regex matches a line starting with 'Host' followed by a name (but not wildcards with *), capturing just the alias name.",
+    "132": "The padding of 150 spaces ensures that when displaying results in fzf, the description text won't overlap with or wrap into the main search list.",
+    "136": "The escaped quotes \\' allow single quotes to appear inside a single-quoted Perl string; basically escaping the quote character.",
+    "139": "The delimiter tells fzf where to split each result line; ##### is the divider between the alias/hostname and the description.",
+    "146": "The {2} is fzf's placeholder for the second field (hostname), which gets piped to Perl to convert color tags like <red> into actual terminal escape codes.",
+    "160": "ssh -G outputs the computed SSH configuration for this alias (like the real hostname and username), which we then parse to show the user what will actually run.",
+    "166": "This prints a preview of the exact command before executing it, using ANSI codes to make it bold and cyan-colored in the terminal.",
+    "176": "This adds a custom shell prompt showing a whale emoji and the username in color, making it visually clear you're inside a Docker container."
+  }
+}

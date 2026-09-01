@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:38:57.285Z",
+  "source": "index.tsx",
+  "sourceHash": "4c63a305202d6abb2d46e041974261dac41a64d4",
+  "lang": "typescript",
+  "explanations": {
+    "30": "This stores the device's acceleration from the last motion event; we need to remember it so we can compare it to the next sample to detect sudden changes (shakes).",
+    "55": "The `?.` operator means 'call vibrate only if it exists', since some browsers don't support haptic feedback; the `[40, 30, 40]` are millisecond durations for vibration pulses.",
+    "111": "This effect runs `clearTimers` once when the component unmounts to prevent timer leaks; the empty dependency array means it only runs on mount/unmount, not on every render."
+  }
+}

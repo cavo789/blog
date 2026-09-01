@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 clear
 
-if [ ! -f patterns.json ]; then
+if [[ ! -f patterns.json ]]; then
     echo "Please create a patterns.json file."
     echo "Run 'cp patterns.json.dist patterns.js' to use an example."
     exit 1

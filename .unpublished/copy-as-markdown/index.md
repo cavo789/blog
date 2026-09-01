@@ -5,14 +5,13 @@ authors: [christophe]
 image: /img/v2/copy-as-markdown.webp
 series: Creating Docusaurus components
 mainTag: component
-tags: [docusaurus, markdown, react]
+tags: [docusaurus, markdown, react, component]
 date: 2026-08-18
 description: Build a "Copy as Markdown" button and a "View raw" link for your Docusaurus blog posts — a build-time plugin that writes a plain-Markdown mirror next to every article, plus the tiny React component that fetches it and copies it to the clipboard. Full source included.
 language: en
 ai_assisted: true
 draft: true
 ---
-
 ![Add a "Copy as Markdown" Button to Your Docusaurus Blog](/img/v2/copy-as-markdown.webp)
 
 <TLDR>

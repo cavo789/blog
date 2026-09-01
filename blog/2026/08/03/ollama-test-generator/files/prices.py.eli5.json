@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:25.715Z",
+  "source": "prices.py",
+  "sourceHash": "af6a83cfdb0f5f51295385f62a781064f605a09d",
+  "lang": "python",
+  "explanations": {
+    "12": "This checks that percent is between 0 and 100 inclusive using a chained comparison — it's a handy Python shortcut that reads like math notation.",
+    "15": "We subtract the discount fraction from 1 to find what percentage remains, multiply that by the original price, then round to 2 decimal places for money.",
+    "26": "We sort the keys alphabetically first, then use min() to find the cheapest — sorting ensures ties always pick the same name regardless of how Python stored the dictionary."
+  }
+}

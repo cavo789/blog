@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:21.630Z",
+  "source": "backup.sh",
+  "sourceHash": "06df9224c68d00567cca9efd60c98fed75a10de7",
+  "lang": "bash",
+  "explanations": {
+    "6": "The ${2:-.} syntax means: use the second argument if provided, otherwise default to a dot (current directory).",
+    "19": "The date +%Y%m%d-%H%M%S command creates a timestamp like '20240115-143022' to make each backup file unique.",
+    "25": "The -C flag tells tar to change into the source's parent directory first, so the archive contains just the folder name instead of the full path."
+  }
+}

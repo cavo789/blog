@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:52.582Z",
+  "source": "demo_commit.diff",
+  "sourceHash": "f447e3b470b8b09784178f25cce5a5b8e36c1a74",
+  "lang": "diff",
+  "explanations": {
+    "10": "http_response_code(400) tells the browser this is a bad request (400 is the standard HTTP code for 'client sent something wrong').",
+    "11": "exit() stops the script immediately and sends the JSON error message to the client, so the rest of the code never runs."
+  }
+}

@@ -174,6 +174,7 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
     --mount=type=cache,target=/var/cache/apt \
     apt-get update && \
     apt-get install -y --no-install-recommends \
+        fzf \
         jq \
         openssh-client \
         python3 \

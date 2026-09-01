@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:59.907Z",
+  "source": "02_analyze_and_link.py",
+  "sourceHash": "cd6899255f5170777da97093cccd96585aaeff0a",
+  "lang": "python",
+  "explanations": {
+    "9": "This finds the parent directory of the parent directory of the current file, which is the project root; os.path.abspath(__file__) gives the full path to this script, dirname removes the filename, and the second dirname goes up one more level.",
+    "19": "This is a list comprehension that flattens all tags from all articles into a single list; it loops through each article, then through each tag in that article, collecting them all.",
+    "25": "Counter is a tool that automatically counts how many times each tag appears; it's like tallying votes for each tag.",
+    "35": "This creates a list where each item is a dictionary with the tag name and how many articles have it; the square brackets and 'for' make it a list comprehension that transforms the most_common data.",
+    "54": "We're building a reverse lookup table where instead of 'article has tags', we store 'tag has articles'; this makes it fast to find all articles with a specific tag later.",
+    "64": "A set is being used here to automatically prevent duplicate suggestions if multiple tags point to the same article.",
+    "75": "We convert the set to a sorted list so the suggestions come out in alphabetical order and are more readable."
+  }
+}

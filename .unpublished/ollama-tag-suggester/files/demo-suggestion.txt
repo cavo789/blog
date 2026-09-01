@@ -1,0 +1,17 @@
+$ yarn tags:suggest blog/2026/08/31/docusaurus-ollama-tags/index.md
+
+🏷️  Tag suggestions for blog/2026/08/31/docusaurus-ollama-tags/index.md
+
+Existing tags: ai, docusaurus, ollama
+
+✅ Confirmed:
+   - ollama — Local environment to run and manage large language models on your own machine.
+   - ai — Tools, models, and concepts related to AI, including Ollama, Claude, and Gemini.
+
+➕ Suggested additions:
+   - devcontainer — Containerized development environments using VS Code Dev Containers and Docker.
+   - python — Python language development, data processing, and its ecosystem (FastAPI, Pandas).
+   - markdown — Syntax, tools, and conversion of Markdown documents.
+
+⚠️  Set but not supported by the content (review manually):
+   - docusaurus

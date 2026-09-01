@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:44.251Z",
+  "source": "suggested_interlinks.json",
+  "sourceHash": "a51ed8aa583a67d5c0840377a49d6ab761004688",
+  "lang": "json",
+  "explanations": {}
+}

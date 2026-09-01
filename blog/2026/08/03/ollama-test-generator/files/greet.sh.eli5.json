@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:28.423Z",
+  "source": "greet.sh",
+  "sourceHash": "16b95319f49526b14265edaee9522e4aad9e4151",
+  "lang": "bash",
+  "explanations": {
+    "11": "This uses parameter expansion to remove everything from the start of the string up to the first non-whitespace character, effectively trimming the left side without calling an external program.",
+    "12": "Similarly, this trims the right side by removing everything from the last non-whitespace character to the end of the string.",
+    "19": "The ${name^} syntax capitalizes just the first letter of the string (it's a bash 4+ feature for case transformation).",
+    "26": "The ${2:-en} syntax means 'use the second argument if it was provided, otherwise use the default value en'.",
+    "31": "The ${lang,,} converts the language to lowercase before checking it, so 'EN', 'En', and 'en' all match the same case branch.",
+    "52": "This checks if the script was run directly versus being imported by another script; it only runs main() when someone executes the file, not when they source it for reuse."
+  }
+}

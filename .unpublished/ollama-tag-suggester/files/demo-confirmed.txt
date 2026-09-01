@@ -1,0 +1,15 @@
+$ yarn tags:suggest blog/2025/11/11/running-docusaurus-using-docker/index.md
+
+🏷️  Tag suggestions for blog/2025/11/11/running-docusaurus-using-docker/index.md
+
+Existing tags: devcontainer, docker, docusaurus, nodejs, vscode, yarn
+
+✅ Confirmed:
+   - docker — Containerization, Docker Compose, and image management.
+   - devcontainer — Containerized development environments using VS Code Dev Containers and Docker.
+   - docusaurus — Building, customizing, and deploying Docusaurus static sites.
+   - nodejs — Server-side JavaScript runtime environment and its ecosystem.
+   - vscode — Configuration, extensions, tips, and productivity features for Visual Studio Code.
+   - yarn — Fast, reliable, and secure dependency management for JavaScript.
+
+➕ Suggested additions: none.

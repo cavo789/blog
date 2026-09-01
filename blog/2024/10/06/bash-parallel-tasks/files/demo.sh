@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 function demo {
     echo "Sleeping for 3 seconds..."

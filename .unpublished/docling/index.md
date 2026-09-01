@@ -1,17 +1,16 @@
 ---
 slug: docling
-title: "Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated"
+title: Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated
 authors: [christophe, claude]
 image: /img/v2/docling.webp
 mainTag: markdown
-tags: [docker, markdown, python]
+tags: [docker, markdown, python, ai, doc-as-code]
 date: 2026-12-31
-description: "A Docker batteries-included setup for Docling, IBM's document-conversion library: PDF, Word, PowerPoint, Excel and HTML files converted into clean Markdown, with GPU acceleration for machines with spare VRAM. A companion to my Markitdown article — same idea, a heavier engine underneath."
+description: 'A Docker batteries-included setup for Docling, IBM''s document-conversion library: PDF, Word, PowerPoint, Excel and HTML files converted into clean Markdown, with GPU acceleration for machines with spare VRAM. A companion to my Markitdown article — same idea, a heavier engine underneath.'
 language: en
 ai_assisted: true
 draft: true
 ---
-
 ![Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated](/img/v2/docling.webp)
 
 <!-- cspell:ignoreCase docling markitdown nvidia cudnn -->

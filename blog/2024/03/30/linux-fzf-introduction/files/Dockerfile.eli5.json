@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:09.681Z",
+  "source": "Dockerfile",
+  "sourceHash": "485e6f8c674d268573291d24f1a8086605dfae0e",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells Docker to skip interactive prompts during package installation, which would otherwise hang the build waiting for user input.",
+    "11": "This deletes the package manager's cache after installation to shrink the final image size, since we won't need to reinstall those packages.",
+    "15": "The install script wires up fzf shortcuts into bash, and the --no-update-rc flag prevents it from modifying .bashrc (we do that manually on the next line instead).",
+    "22": "The printf command uses %s to substitute the loop variable $i, creating filenames like run1.sh.log, run2.sh.log, etc.",
+    "41": "This adds a fancy colored prompt with emoji to the bashrc file; the \\e codes are ANSI color escapes that paint the text in different colors when you see it on screen.",
+    "43": "The -i flag starts bash in interactive mode so you get a real shell prompt instead of just executing one command and exiting."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:37:57.835Z",
+  "source": "embedder-sanity-check.py",
+  "sourceHash": "51dd0a6503476decd3c5cc0516ec01a2c507d6c4",
+  "lang": "python",
+  "explanations": {
+    "23": "json.dumps() converts the Python dictionary into a JSON string, then .encode() converts that string into bytes so it can be sent over the network.",
+    "32": "This calculates the dot product—multiply each pair of corresponding numbers from vectors a and b, then add them all up.",
+    "33": "The denominator computes the magnitude (length) of each vector by squaring all elements, summing them, and taking the square root; dividing by both magnitudes gives us the cosine similarity, a score from -1 to 1 showing how similar two vectors are.",
+    "36": "sys.argv[1:] grabs command-line arguments after the script name; the 'or' part provides a default model name if no arguments were passed.",
+    "41": "The angle brackets and numbers like '<20' and '<5' are format specifiers that pad the text to a certain width, making the output columns line up nicely."
+  }
+}

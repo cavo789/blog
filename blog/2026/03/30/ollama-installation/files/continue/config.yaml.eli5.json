@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:25.781Z",
+  "source": "config.yaml",
+  "sourceHash": "f1793b20cf48f999e69e6ac6bbe9916ed36906dd",
+  "lang": "yaml",
+  "explanations": {}
+}

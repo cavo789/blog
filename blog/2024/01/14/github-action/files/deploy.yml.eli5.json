@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:35:56.542Z",
+  "source": "deploy.yml",
+  "sourceHash": "6d446e4229c3a871b3b9e6461aafcdb7f5714868",
+  "lang": "yaml",
+  "explanations": {
+    "29": "This line prevents the workflow from running on commits that start with 'wip' (work-in-progress), unless you manually trigger it — that way incomplete changes don't auto-deploy.",
+    "37": "By setting fetch-depth to 0, you're telling Git to download the entire project history instead of just the latest commit, so the blog can figure out when each post was actually last changed.",
+    "52": "This creates a cache key that changes whenever yarn.lock changes, so the cache automatically busts and refreshes dependencies when you update them.",
+    "57": "This step only runs if the previous cache step didn't find a match, saving time by skipping yarn install when dependencies are already cached.",
+    "74": "This passes the clean_slate input from the manual trigger (either 'true' or 'false' as text) to the FTP action, which deletes everything remotely if you set it to true."
+  }
+}

@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -o nounset -o errexit
 
 function test5() {
     log::write "I'm doing something in the test5 function..."
@@ -50,4 +51,4 @@ function __main() {
     return 0
 }
 
-__main $*
+__main "$@"

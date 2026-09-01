@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:48.222Z",
+  "source": "devcontainer.json",
+  "sourceHash": "bdf64531de6a81ef4b4f61364e9cbf7b1f0d26bc",
+  "lang": "json",
+  "explanations": {
+    "3": "This points to a Docker Compose file one level up from the current directory, which defines the containers that will run your development environment.",
+    "8": "This automatically adjusts the user ID inside the container to match your host machine, preventing file permission issues when you edit code.",
+    "12": "The ${dirty} and ${rootName} are placeholders that VS Code replaces with actual values—like showing a dot when files have unsaved changes.",
+    "14": "This tells VS Code to automatically open the terminal panel when you first start the dev container, so you can run commands right away.",
+    "19": "This command runs automatically after the container is created, installing all your Python dependencies from the requirements file into the container."
+  }
+}

@@ -21,8 +21,8 @@
 #   - Graceful handling of API parse errors.
 ###############################################################################
 
-# Exit on error, prevent globbing issues
-set -e
+# Exit on error, unset variables, or a failed stage of a pipe; prevent globbing issues
+set -o nounset -o errexit -o pipefail
 shopt -s globstar nullglob
 
 # Check if jq is installed
@@ -35,7 +35,7 @@ echo "--- Starting Spelling Check ---"
 
 for file in blog/**/*.md; do
   # Avoid processing directories
-  [ -d "$file" ] && continue
+  [[ -d "$file" ]] && continue
 
   echo "Processing: $file"
 
@@ -48,7 +48,7 @@ for file in blog/**/*.md; do
   if echo "$res" | jq -e . >/dev/null 2>&1; then
     count=$(echo "$res" | jq '.matches | length')
 
-    if [ "$count" -gt 0 ]; then
+    if [[ "$count" -gt 0 ]]; then
       echo "❌ $count errors found in: $file"
       # Extracts line context and error message for the first 5 errors
       echo "$res" | jq -r '.matches[] | "   - Line \(.context.offset): \(.message)"' | head -n 5

@@ -2,6 +2,7 @@
 # Converts documents to Markdown using the isolated markitdown Docker image.
 # Dynamically mounts the current working directory ($PWD) to process files anywhere.
 # Strictly enforces read-only mounts, tmpfs, and unprivileged execution.
+set -euo pipefail
 
 exec docker run --rm -i \
     -v "${PWD}:/workspace:cached" \

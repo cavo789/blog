@@ -172,6 +172,13 @@ function snippetLoader() {
               value: JSON.stringify(eli5Data.explanations),
             });
           }
+          if (typeof eli5Data.summary === "string" && eli5Data.summary.trim()) {
+            node.attributes.push({
+              type: "mdxJsxAttribute",
+              name: "eli5summary",
+              value: eli5Data.summary.trim(),
+            });
+          }
         } catch (e) {
           console.warn(
             `Snippet plugin: could not parse ELI5 file ${eli5Path}:`,

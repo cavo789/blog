@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:51.648Z",
+  "source": "003-advanced-python.txt",
+  "sourceHash": "d411a4b9230d6f34f31f18b893ca827f7e905857",
+  "lang": "plaintext",
+  "explanations": {}
+}

@@ -200,6 +200,7 @@ code:hover {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .eli5_pre {
+  position: relative;
   margin: 0;
   padding: 0.75rem 0;
   overflow-x: auto;
@@ -288,6 +289,57 @@ code:hover {
 }
 /* stylelint-enable color-no-hex */
 
+/* ── Copy button — always on the dark Prism background, so colours are
+      dark-optimised regardless of site theme, matching the ? badge above.
+      Legitimate color-no-hex exception, see AGENTS.md and
+      .todos/039-hardcoded-hex-colors-no-token-system.md. ── */
+.eli5_copy_button {
+  position: absolute;
+  top: 0.6rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 0.35rem;
+  background: rgb(255, 255, 255, 0.06);
+  color: rgb(220, 220, 235, 0.75);
+  border: 1px solid rgb(255, 255, 255, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 0.15s ease-in-out,
+    background 0.15s ease-in-out,
+    color 0.15s ease-in-out;
+}
+
+.eli5_copy_button:hover,
+.eli5_copy_button:focus-visible {
+  opacity: 1;
+  background: rgb(255, 255, 255, 0.12);
+  color: rgb(232, 234, 246);
+  outline: none;
+}
+
+/* `:where()` zeroes this selector's specificity so it never outranks the
+   button's own :hover/:focus-visible above — otherwise hovering the button
+   directly (which is also inside a hovered .eli5_pre) would get stuck at
+   the dimmer fade-in opacity instead of reaching full opacity. Stylelint's
+   descending-specificity check doesn't account for :where() zeroing, hence
+   the disable below — the true (post-:where) specificity is already lower,
+   which is the whole point of this rule existing after the ones above. */
+/* stylelint-disable-next-line no-descending-specificity */
+:where(.eli5_pre:hover) .eli5_copy_button {
+  opacity: 0.55;
+}
+
+.eli5_copy_icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
 /* ── Tooltip — rendered via React Portal into document.body, position:fixed
       so it floats above every overflow:hidden / stacking-context ancestor.
       JS sets `top` and `right` via inline style; transform shifts it above. ── */
@@ -335,4 +387,71 @@ code:hover {
 [data-theme="dark"] .eli5_tooltip::before {
   border-right-color: rgb(255, 255, 255, 0.12);
   border-bottom-color: rgb(255, 255, 255, 0.12);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ELI5 — verbose Show/Hide summary block (below the code, outside the
+   collapsible snippet_content — see the comment on Eli5SummaryBlock in
+   index.tsx for why it isn't nested inside it)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.eli5_summary_block {
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* Deliberately lighter than .snippet_summary (the real file-header row
+   above): same bold weight here read as a second, competing header rather
+   than a secondary action tucked under the code. */
+.eli5_summary_toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.eli5_summary_toggle_right {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Discloses that the summary text is LLM-generated — this project's existing
+   transparency convention (ai_assisted frontmatter, "Claude Code" co-author
+   credit). Deliberately not applied to the per-line tooltips — author's call,
+   see TODO 0113 (eli5-verbose-show-hide-block). */
+.eli5_summary_badge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.eli5_summary_toggle:hover {
+  background: var(--ifm-hover-overlay);
+}
+
+.eli5_summary_toggle:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: -2px;
+}
+
+.eli5_summary_content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.eli5_summary_text {
+  margin: 0;
+  padding: 0 1rem 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ifm-font-color-base);
 }

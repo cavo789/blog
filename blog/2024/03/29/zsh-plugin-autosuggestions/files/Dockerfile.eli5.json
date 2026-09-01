@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:36:02.868Z",
+  "source": "Dockerfile",
+  "sourceHash": "85865284beb47596cc64645ec526cd81ce56cff1",
+  "lang": "docker",
+  "explanations": {
+    "3": "This tells the system to not ask interactive questions during package installation—just proceed silently, which is necessary in containers where nobody can answer prompts.",
+    "11": "After installing packages, we delete the package cache files to shrink the image size, since we won't need them again.",
+    "14": "This runs the Oh-My-Zsh installer script by downloading it from the internet and piping it directly to the shell, a common but slightly unusual pattern.",
+    "20": "The `sed` command finds the line starting with `plugins=(git)` and replaces it with a version that also includes the zsh-autosuggestions plugin.",
+    "24": "The `printf` command writes multiple lines into the shell history file so that when you start the container and press up-arrow, you'll see previous commands ready to autocomplete.",
+    "33": "The `-i` flag makes the shell interactive (so it shows a prompt), and `-l` makes it a login shell (so it reads your startup files like .zshrc)."
+  }
+}

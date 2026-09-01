@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-01T15:39:50.243Z",
+  "source": "001-intro-to-docker.txt",
+  "sourceHash": "a8b1f8034315a3b79ea485a45f9cbda33928c773",
+  "lang": "plaintext",
+  "explanations": {}
+}

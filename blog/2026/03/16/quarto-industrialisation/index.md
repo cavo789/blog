@@ -5,16 +5,13 @@ description: A deep dive into how I engineered a fully automated documentation e
 image: /img/v2/quarto-industrialisation.webp
 series: Discovering Quarto
 mainTag: doc-as-code
-tags:
-  - doc-as-code
-  - quarto
+tags: [doc-as-code, quarto, docker, python, markdown, devcontainer, api]
 authors: [christophe]
 language: en
 ai_assisted: true
 date: 2026-03-16
 blueskyRecordKey: 3mh5um7gpgs2x
 ---
-
 ![Quarto - How I Built a Self-Documenting Ecosystem for 50+ Projects](/img/v2/quarto-industrialisation.webp)
 
 <TLDR>

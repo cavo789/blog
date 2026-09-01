@@ -1,10 +1,10 @@
 # tag_manager.py
 
 import argparse
-import requests
 from typing import List, Dict, Any, Tuple, Set
 import os
 import glob
+import subprocess
 from collections import Counter
 
 # YAML processing libraries
@@ -267,36 +267,40 @@ def list_tags(sort_by: str = 'count') -> None:
     print("-" * 50)
 
 
-def suggest_tags_for_file(filepath: str) -> List[str]:
+def run_node_script(script_name: str, extra_args: List[str]) -> int:
     """
-    Sends the file content to Ollama to get suggested tags.
+    Proxies to a Node script under scripts/ — kept here so the single 'tags' cheatsheet entry
+    stays the one wiring point, while the AI/corpus logic itself (Ollama, blog-corpus helpers)
+    lives in JS and isn't duplicated in Python. Used by 'suggest' (scripts/suggest-tags.mjs)
+    and 'review' (scripts/tags-review.mjs).
     """
-    with open(filepath, 'r', encoding='utf-8') as f:
-        post = frontmatter.load(f)
-        content = post.content
+    script_root = os.path.dirname(os.path.abspath(__file__))
+    node_script = os.path.join(script_root, '..', 'scripts', script_name)
 
-    prompt = f"""
-    Analyze the following blog post content and suggest 3 to 5 relevant technical tags.
-    Return ONLY a comma-separated list of tags, nothing else.
+    result = subprocess.run(['node', node_script, *extra_args])
+    return result.returncode
 
-    Content:
-    {content[:3000]}
+
+def set_tags_for_file(filepath: str, new_tags: List[str]) -> bool:
     """
-
+    Overwrites one article's frontmatter 'tags' key with new_tags, via the same
+    custom_dumper_factory used by delete/rename — forced flow style ([a, b, c]), including
+    for a file whose tags were still block-style, which this normalizes on the way.
+    """
     try:
-        response = requests.post(
-            'http://host.docker.internal:11434/api/generate',
-            json={'model': 'llama3.1:8b', 'prompt': prompt, 'stream': False},
-            timeout=30
-        )
-
-        print(f"\n{Colors.WARNING}{Colors.BOLD}--- CALLING  http://host.docker.internal:11434/api/generate ---{Colors.ENDC}")
-        if response.status_code == 200:
-            raw_tags = response.json()['response'].strip()
-            return [t.strip() for t in raw_tags.split(',')]
+        post = frontmatter.load(filepath)
     except Exception as e:
-        print(f"  {Colors.FAIL}Error calling Ollama: {e}{Colors.ENDC}")
-    return []
+        print(f"{Colors.FAIL}  ❌ Could not read {filepath}: {e}{Colors.ENDC}")
+        return False
+
+    post.metadata['tags'] = new_tags
+    full_content: str = custom_dumper_factory(post.metadata, post.content)
+
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(full_content)
+
+    print(f"{Colors.OKGREEN}  ✓ Tags set to [{', '.join(new_tags)}] in: {filepath}{Colors.ENDC}")
+    return True
 
 
 # ----------------------------------------------------------------------
@@ -433,17 +437,44 @@ if __name__ == "__main__":
         help="The tags to rename, in 'old_tag,new_tag' format (e.g., 'prog,programming')."
     )
 
-    # SUGGEST action
+    # SUGGEST action (proxies to scripts/suggest-tags.mjs — see run_node_script)
     parser_suggest = subparsers.add_parser(
         'suggest',
-        help="Use AI to suggest tags for a specific file."
+        help="Use AI (via scripts/suggest-tags.mjs) to suggest tags for a specific file."
     )
     parser_suggest.add_argument("file", type=str, help="Path to the .md file.")
+
+    # REVIEW action — listed here for --help only; its own flags are handled before
+    # parser.parse_args() runs (see the argv[1] == 'review' check below).
+    subparsers.add_parser(
+        'review',
+        help="[--force] [--status] [<article>] — refresh .todos/0000-tags-review-journal.md via Ollama."
+    )
+
+    # SET-TAGS action
+    parser_set_tags = subparsers.add_parser(
+        'set-tags',
+        help="Overwrite one article's 'tags' frontmatter key. (Parameters: FILE, TAG1,TAG2,...)"
+    )
+    parser_set_tags.add_argument("file", type=str, help="Path to the .md/.mdx file.")
+    parser_set_tags.add_argument(
+        "tags",
+        type=str,
+        metavar="<TAG1,TAG2,...>",
+        help="Comma-separated final tag list, e.g. 'docusaurus,react,component'."
+    )
 
     # Display full help page if no arguments are provided
     if len(os.sys.argv) == 1:
         parser.print_help()
         os.sys.exit(0)
+
+    # 'review' takes its own free-form flags (--force, --status, an article path), which
+    # argparse's REMAINDER handles unreliably once the first one starts with '-' (a known
+    # argparse quirk). Bypassing argparse for this branch avoids it entirely; the subparser
+    # above still exists so 'review' shows up in --help.
+    if os.sys.argv[1] == 'review':
+        os.sys.exit(run_node_script('tags-review.mjs', os.sys.argv[2:]))
 
     # Parse arguments
     args = parser.parse_args()
@@ -453,9 +484,19 @@ if __name__ == "__main__":
         list_tags(args.sort)
 
     elif args.action == 'suggest':
-        print(f"{Colors.BOLD}Suggesting tags for: {Colors.OKBLUE}{args.file}{Colors.ENDC}")
-        suggestions = suggest_tags_for_file(args.file)
-        print(f"{Colors.OKGREEN}Suggested tags: {', '.join(suggestions)}{Colors.ENDC}")
+        os.sys.exit(run_node_script('suggest-tags.mjs', [args.file]))
+
+    elif args.action == 'set-tags':
+        new_tags: List[str] = [t.strip() for t in args.tags.split(',') if t.strip()]
+
+        if not new_tags:
+            print(f"{Colors.FAIL}Error: at least one tag is required.{Colors.ENDC}")
+            os.sys.exit(1)
+        if not os.path.isfile(args.file):
+            print(f"{Colors.FAIL}Error: file not found: {args.file}{Colors.ENDC}")
+            os.sys.exit(1)
+
+        os.sys.exit(0 if set_tags_for_file(args.file, new_tags) else 1)
 
     elif args.action == 'delete' or args.action == 'rename':
 
