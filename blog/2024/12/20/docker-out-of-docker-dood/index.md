@@ -178,7 +178,7 @@ Don't try `group_add` with `docker` (the group name) instead of the ID; it won't
 
 </AlertBox>
 
-The most common place this technique earns its keep is a CI runner: see <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link> for the GitLab-specific setup.
+The most common place this technique earns its keep is a CI runner: see <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link> for the GitLab-specific setup. For an everyday-desktop use of the same socket mount, <Link to="/blog/lazydocker">lazydocker in a container</Link> puts a live dashboard of every host container one command away.
 
 ## Special thanks 🙏
 

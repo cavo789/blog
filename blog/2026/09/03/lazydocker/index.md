@@ -5,11 +5,10 @@ authors: [christophe, claude]
 image: /img/v2/lazy-docker.webp
 mainTag: docker
 tags: [docker, linux]
-date: 2026-12-31
+date: 2026-09-03
 description: "lazydocker is a single-binary terminal UI that shows every container, image, volume and network at a glance, with live stats and logs. This article containerizes it — no host install — and adds a global wrapper so it picks up whatever project's compose.yaml you're currently standing in."
 language: en
 ai_assisted: true
-draft: true
 ---
 
 ![lazydocker: A Terminal Dashboard for Docker, Containerized](/img/v2/lazy-docker.webp)
@@ -66,25 +65,39 @@ Mounting `/var/run/docker.sock` here is exactly the Docker-out-of-Docker techniq
 
 Build it: `docker compose build`.
 
+<Terminal source="./files/build.txt" wrap={true} typewriter />
+
 ## The Global Wrapper
 
-If I only ever ran lazydocker from inside `~/tools/lazydocker`, it would show me... `~/tools/lazydocker`'s own container, which is not the point. The trick is mounting whatever directory you're *currently* in, so lazydocker's project-detection logic finds the right `compose.yaml`. That means the plain `docker compose run` I've used elsewhere doesn't work here — the compose file's own working directory would always win. A tiny wrapper fixes it:
+If I only ever ran lazydocker from inside `~/tools/lazydocker`, it would show me... `~/tools/lazydocker`'s own container, which is not the point. The trick is mounting whatever directory you're *currently* in, so lazydocker's project-detection logic finds the right `compose.yaml`. That means the plain `docker compose run` I've used elsewhere doesn't work here — the compose file's own working directory would always win.
+
+A tiny wrapper script fixes it. It goes in `/usr/local/bin/` so it's on your `PATH` from every folder, and since that directory is root-owned, creating the file there needs `sudo`. Open it with `sudo vi /usr/local/bin/lazydocker` and paste in the content below (in `vi`: press <kbd>i</kbd>, paste, then <kbd>Esc</kbd> and `:wq` to save and quit):
 
 <Snippet filename="/usr/local/bin/lazydocker" source="./files/lazydocker.sh" />
 
-Make it executable: `sudo chmod +x /usr/local/bin/lazydocker`.
+Then make it executable: `sudo chmod +x /usr/local/bin/lazydocker`.
 
-Now, from any project folder — this Docusaurus repo, a client's API, wherever — running `lazydocker` opens the dashboard scoped to *that* folder's containers.
+From any project folder now — this Docusaurus repo, a client's API, wherever — running `lazydocker` opens the dashboard scoped to *that* folder's containers.
 
 <AlertBox variant="note" title="Config survives, projects don't need to">
-`lazydocker-config`, the named volume, persists your pane layout and sort order across every project. It's the same reasoning as the `docling-models` volume in <Link to="/blog/docling">my Docling article</Link> — don't let a `--rm` container throw away state that has no reason to be re-created every single run.
+`lazydocker-config`, the named volume, persists your pane layout and sort order across every project. It's the textbook reason to reach for a <Link to="/blog/docker-volumes">Docker-managed volume</Link> — don't let a `--rm` container throw away state that has no reason to be re-created every single run.
 </AlertBox>
 
-## dex vs lazydocker
+## My `dex` function vs lazydocker
 
 <AlertBox variant="info" title="Two tools, two starting points">
-`dex` is what I reach for when I already know which container I want and what I want to do to it — it's optimized for speed on a decision I've already made. lazydocker is what I open a beat *before* that decision exists — when I need to look across everything at once to figure out which container is actually the problem. Neither replaces the other; `dops`' fzf menu and lazydocker's dashboard solve two different moments of the same workflow.
+My <Link to="/blog/zsh-docker-functions#start-a-new-terminal-session-in-a-running-docker-container">`dex`</Link> function is what I reach for when I already know which container I want and what I want to do to it — it's optimized for speed on a decision I've already made. lazydocker is what I open a beat *before* that decision exists — when I need to look across everything at once to figure out which container is actually the problem. Neither replaces the other; `dops`' fzf menu and lazydocker's dashboard solve two different moments of the same workflow.
 </AlertBox>
+
+## Does Docker Desktop still earn its place?
+
+On Windows I keep Docker Desktop running because that's what provides the engine in the first place — but its GUI is also where I used to go to watch logs, restart a container, or check what was eating memory. lazydocker does that part identically, faster, and the same way on every machine instead of only the Windows one.
+
+<AlertBox variant="info" title="What lazydocker replaces — and what it doesn't">
+lazydocker takes over the half of Docker Desktop you touch daily: the container, image, volume and network browser, the log pane, the quick restart/stop/shell actions. It does **not** provide the Docker engine, the WSL2 VM's CPU/memory/disk limits, the one-click Kubernetes node, or Docker Scout image scanning — for those you still open the Docker Desktop window.
+</AlertBox>
+
+In practice, since installing lazydocker I open that window maybe once a month, to bump a resource limit. *Uninstalling* Docker Desktop is a separate question — usually driven by [Docker's licensing terms for larger organizations](https://www.docker.com/pricing/) rather than by lazydocker — and the answer there is Docker Engine running straight inside a WSL2 distro, with lazydocker on top exactly as set up above.
 
 ## Key Takeaways
 
@@ -96,7 +109,8 @@ Now, from any project folder — this Docusaurus repo, a client's API, wherever 
     { content: "**Mount `$PWD`, not the Dockerfile's own folder** — that's what makes project-view detection work from anywhere" },
     { content: "**Root inside the container is fine here** — the socket mount already grants full host Docker control regardless of UID" },
     { content: "**Persist the config volume** — pane layout and sort order survive across every project you point it at" },
-    { content: "**Press `?` for keybindings** — faster and more accurate than memorizing a list that shifts between releases" }
+    { content: "**Press `?` for keybindings** — faster and more accurate than memorizing a list that shifts between releases" },
+    { content: "**It replaces Docker Desktop's dashboard, not Docker Desktop** — the engine, WSL2 VM limits and Kubernetes still live there" }
   ]}
 />
 

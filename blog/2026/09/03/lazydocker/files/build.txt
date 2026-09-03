@@ -1,0 +1,23 @@
+❯ docker compose build
+
+[+] Building 6.7s (12/12) FINISHED
+ => [internal] load local bake definitions                                                                                     0.0s
+ => => reading from stdin 529B                                                                                                 0.0s
+ => [internal] load build definition from Dockerfile                                                                           0.0s
+ => => transferring dockerfile: 884B                                                                                           0.0s
+ => resolve image config for docker-image://docker.io/docker/dockerfile:1.7-labs                                               1.0s
+ => [auth] docker/dockerfile:pull token for registry-1.docker.io                                                               0.0s
+ => CACHED docker-image://docker.io/docker/dockerfile:1.7-labs@sha256:b99fecfe00268a8b556fad7d9c37ee25d716ae08a5d7320e6d51c4d  0.0s
+ => [internal] load metadata for docker.io/library/alpine:3.20                                                                 0.0s
+ => [internal] load .dockerignore                                                                                              0.3s
+ => => transferring context: 2B                                                                                                0.0s
+ => CACHED [1/3] FROM docker.io/library/alpine:3.20                                                                            0.0s
+ => [2/3] RUN apk add --no-cache docker-cli docker-cli-compose curl tar                                                        3.3s
+ => [3/3] RUN curl -Lo /tmp/lazydocker.tar.gz         "https://github.com/jesseduffield/lazydocker/releases/download/v0.25.2/  1.5s
+ => exporting to image                                                                                                         0.2s
+ => => exporting layers                                                                                                        0.2s
+ => => writing image sha256:298337a2dc6d444be7286d2fdde86f6cc3c7fab6599cd654c51c00bd599b7b46                                   0.0s
+ => => naming to docker.io/library/lazydocker                                                                                  0.0s
+ => resolving provenance for metadata file                                                                                     0.0s
+[+] build 1/1
+ ✔ Image lazydocker Built

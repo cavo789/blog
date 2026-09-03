@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-03T06:52:19.097Z",
+  "source": "lazydocker.sh",
+  "sourceHash": "bf33c40c8385cda20924cc52cb3ad66c2b8c48aa",
+  "lang": "bash",
+  "summary": "This script launches lazydocker (a Docker management UI) in a container, mounting your current working directory so it can see and manage any docker-compose files you have locally. It uses exec to replace the shell process with the Docker command, so when you exit lazydocker, you exit the script cleanly.",
+  "explanations": {
+    "7": "set -euo pipefail makes the script strict: it exits immediately if any command fails (-e), treats undefined variables as errors (-u), and fails if any command in a pipeline fails (-o pipefail).",
+    "9": "exec replaces the current shell process with the docker run command, so there's no lingering shell after lazydocker exits.",
+    "10": "This mounts the Docker daemon socket into the container so lazydocker inside the container can communicate with Docker on your host machine.",
+    "11": "This creates a named volume to persist lazydocker's configuration between runs, so your settings don't get lost when the container stops.",
+    "12": "This mounts your current directory (PWD = present working directory) into the container at /workdir so lazydocker can find your compose.yaml file.",
+    "13": "This tells the container to start with /workdir as its working directory, so lazydocker looks there first for docker-compose files."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-03T06:52:11.315Z",
+  "source": "Dockerfile",
+  "sourceHash": "d4752e84368934bfea0c345caa5a80ed20b9c1d6",
+  "lang": "docker",
+  "summary": "This Dockerfile creates a minimal container image based on Alpine Linux that runs lazydocker, a terminal UI for managing Docker. It installs the Docker CLI tools that lazydocker needs to work, downloads and extracts the lazydocker binary from GitHub, and sets it as the container's entry point.",
+  "explanations": {
+    "1": "This special comment tells Docker to use an advanced version of the Dockerfile syntax (version 1.7) that includes experimental features.",
+    "7": "ARG defines a build-time variable that you can override when building the image (e.g., `docker build --build-arg LAZYDOCKER_VERSION=0.26.0`), making it easy to bump the version without editing the file.",
+    "11": "This installs the Docker command-line tool and its dependencies that lazydocker needs to actually control Docker from inside the container; the `--no-cache` flag keeps the image smaller by not storing the package manager cache.",
+    "13": "The backslash at the end of the line is a line continuation character, letting you split a long command across multiple lines for readability.",
+    "14": "The `${LAZYDOCKER_VERSION}` syntax substitutes the value of the ARG variable into the URL, so the version number you set on line 7 gets used to download the correct release.",
+    "16": "The `install` command copies the lazydocker binary to a system directory and sets its permissions to 0755 (readable and executable by everyone), making it available as a command anywhere in the container.",
+    "19": "ENTRYPOINT sets lazydocker as the default command that runs when the container starts, so users don't have to explicitly type it."
+  }
+}

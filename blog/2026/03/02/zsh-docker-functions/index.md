@@ -118,6 +118,10 @@ Now, edit your `~/.zshrc` file and add the following line to source the `docker.
 
 ![Using dops to access the interactive menu for Docker management functions](./images/dops.webp)
 
+<AlertBox variant="tip" title="When you don't know which container yet">
+`dex`, `dstop` and `dlogs` all assume you already know which container you want. For the moments you don't — five containers just started and you need to see CPU, memory and logs side by side to figure out which one is the problem — a dashboard beats a menu. That's the job of <Link to="/blog/lazydocker">lazydocker, run as a container</Link>.
+</AlertBox>
+
 ## How to install
 
 Edit your `~/.zshrc` file and add the following lines at the end of the file:

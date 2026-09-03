@@ -133,6 +133,8 @@ As you can see, by running `down` followed by `up`, we have kept the value of ou
 
 </AlertBox>
 
+This is exactly the pattern you want for any tool's own settings — a config directory that should outlive a `--rm` container. <Link to="/blog/lazydocker">Containerizing lazydocker</Link> uses a Docker-managed volume that way to keep its pane layout across every project.
+
 You can remove the volume by running `docker volume rm demo_counter_data` but:
 
 <Terminal typewriter>

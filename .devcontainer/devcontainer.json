@@ -23,11 +23,17 @@
       "protocol": "https",
       "onAutoForwardAction": "openBrowser"
     },
+    "3001": {
+      "label": "Docusaurus Blog (static build)",
+      "requireLocalPort": true,
+      "protocol": "http",
+      "onAutoForwardAction": "silent"
+    },
     "8010": {
       "label": "LanguageTool"
     }
   },
-  "forwardPorts": [3000, 8010],
+  "forwardPorts": [3000, 3001, 8010],
   "containerEnv": {
     "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519",
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6",

@@ -13,3 +13,7 @@ services:
 
 volumes:
   lazydocker-config:
+    # Pin the real volume name so the standalone `docker run` in the wrapper
+    # script below reuses this exact volume instead of creating its own
+    # project-prefixed one.
+    name: lazydocker-config

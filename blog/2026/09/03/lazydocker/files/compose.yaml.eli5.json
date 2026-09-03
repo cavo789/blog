@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-03T06:52:14.755Z",
+  "source": "compose.yaml",
+  "sourceHash": "80b5afa3ffef6b8675bd5f377278c16eac650cf6",
+  "lang": "yaml",
+  "summary": "This Docker Compose file defines a service called lazydocker that builds from the current directory, runs interactively with a terminal, and mounts several volumes including the Docker socket (to control Docker from inside the container), a named volume for configuration persistence, and the current directory for development work.",
+  "explanations": {
+    "6": "stdin_open allows you to send input to the container, which is needed for interactive programs.",
+    "7": "tty allocates a pseudo-terminal, which makes the container behave like a normal terminal you can type into.",
+    "9": "This mounts Docker's control socket from your host machine into the container, allowing the containerized app to manage Docker containers on your host.",
+    "10": "This creates a persistent named volume that survives container restarts, storing lazydocker's configuration files.",
+    "19": "By explicitly naming the volume instead of letting Docker auto-name it, the wrapper script can reliably find and reuse the same volume across different container runs."
+  }
+}

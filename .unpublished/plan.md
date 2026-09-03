@@ -10,7 +10,7 @@ Jamais publié, écrit en français. Pour la logique détaillée derrière chaqu
 
 ## Ordre de publication recommandé
 
-50 brouillons ont un `index.md` (51e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
+49 brouillons ont un `index.md` (50e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
 
 Fondations de la série Ollama déjà publiées entretemps : `ollama-test-generator` (2026-08-03) et
 `ollama-git-precommit` (2026-08-10). `ollama-ai-standup` peut donc sortir dès maintenant, sans
@@ -37,36 +37,35 @@ attendre aucun autre brouillon.
 | 17 | `duckdb-json-csv` | Après `docling` (#12) et `ollama-ai-data` (#11) |
 | 18 | `python-ai-helper` | Se lit mieux une fois ai-test/ai-review publiés (déjà le cas) |
 | 19 | `ai-explain` | Dernier de la série Ollama — après tous les articles ci-dessus |
-| 20 | `lazydocker` | Ouvre la mini-série Docker — avant #30 et #31 |
-| 21 | `linux-yq` | Aucune contrainte |
-| 22 | `direnv` | Aucune contrainte |
-| 23 | `navi` | Aucune contrainte |
-| 24 | `hyperfine` | Aucune contrainte |
-| 25 | `git-interactive-rebase` | Aucune contrainte |
-| 26 | `vscode-gitlens` | Aucune contrainte |
-| 27 | `vscode-profiles` | Aucune contrainte |
-| 28 | `vscode-multi-root-git-worktree` | Aucune contrainte |
-| 29 | `vscode-snippets-for-docusaurus` | Aucune contrainte |
-| 30 | `portainer` | Après `lazydocker` (#20) |
-| 31 | `traefik` | Après `lazydocker` (#20) et `portainer` (#30) |
-| 32 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
-| 33 | `docker-dive` | Après `lazydocker` (#20), sinon retirer le lien en conclusion |
-| 34 | `ai-agent-in-devcontainer` | Aucune contrainte |
-| 35 | `atuin-bash-history` | Aucune contrainte |
-| 36 | `oha-http-load-testing` | Aucune contrainte |
-| 37 | `ssh-proxyjump` | Aucune contrainte |
-| 38 | `caddy` | Aucune contrainte |
-| 39 | `open-webui-advanced` | Aucune contrainte |
-| 40 | `mcp-python-server` | Aucune contrainte |
-| 41 | `copy-as-markdown` | Aucune contrainte |
-| 42 | `blog-time-to-value-audit` | Aucune contrainte |
-| 43 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #44-45 |
-| 44 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #45 |
-| 45 | `docusaurus-command-palette` | Après #43 et #44 |
-| 46 | `docusaurus-ask-my-blog-bubble` | Après #43, #44, #45 |
-| 47 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
-| 48 | `docusaurus-pwa` | Aucune contrainte |
-| 49 | `docusaurus-mobile-preview` | Aucune contrainte |
+| 20 | `linux-yq` | Aucune contrainte |
+| 21 | `direnv` | Aucune contrainte |
+| 22 | `navi` | Aucune contrainte |
+| 23 | `hyperfine` | Aucune contrainte |
+| 24 | `git-interactive-rebase` | Aucune contrainte |
+| 25 | `vscode-gitlens` | Aucune contrainte |
+| 26 | `vscode-profiles` | Aucune contrainte |
+| 27 | `vscode-multi-root-git-worktree` | Aucune contrainte |
+| 28 | `vscode-snippets-for-docusaurus` | Aucune contrainte |
+| 29 | `portainer` | Après `lazydocker` (publié le 2026-09-03) |
+| 30 | `traefik` | Après `lazydocker` (publié le 2026-09-03) et `portainer` (#29) |
+| 31 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
+| 32 | `docker-dive` | `lazydocker` publié (2026-09-03) — garder le lien en conclusion |
+| 33 | `ai-agent-in-devcontainer` | Aucune contrainte |
+| 34 | `atuin-bash-history` | Aucune contrainte |
+| 35 | `oha-http-load-testing` | Aucune contrainte |
+| 36 | `ssh-proxyjump` | Aucune contrainte |
+| 37 | `caddy` | Aucune contrainte |
+| 38 | `open-webui-advanced` | Aucune contrainte |
+| 39 | `mcp-python-server` | Aucune contrainte |
+| 40 | `copy-as-markdown` | Aucune contrainte |
+| 41 | `blog-time-to-value-audit` | Aucune contrainte |
+| 42 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #43-44 |
+| 43 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #44 |
+| 44 | `docusaurus-command-palette` | Après #42 et #43 |
+| 45 | `docusaurus-ask-my-blog-bubble` | Après #42, #43, #44 |
+| 46 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
+| 47 | `docusaurus-pwa` | Aucune contrainte |
+| 48 | `docusaurus-mobile-preview` | Aucune contrainte |
 
 `ollama-refactor-code` n'apparaît pas : ce ne sont que des fichiers `files/`, aucun `index.md`.
 
@@ -91,6 +90,13 @@ déplacés vers `blog/` — corrigé après relecture par Christophe :
 Conséquence : les contraintes qui en dépendaient tombent — `portainer` n'a plus besoin d'attendre
 `anythingllm-chat-with-your-docs`, `ollama-ai-standup` n'a plus besoin d'attendre `ollama-test-generator`
 ni `ollama-git-precommit` (déjà publiés).
+
+### Déjà publiés entretemps (retirés du plan le 2026-09-03)
+
+- `lazydocker` → `blog/2026/09/03/lazydocker` — ouvre la mini-série Docker. `portainer` et
+  `traefik` peuvent désormais sortir (leur `<Link>` vers `/blog/lazydocker` résout). Liens
+  réciproques posés à la publication dans `/blog/zsh-docker-functions`,
+  `/blog/docker-out-of-docker-dood` et `/blog/docker-volumes`.
 
 ### Série "Ollama daily use" — pourquoi cet ordre
 
@@ -134,18 +140,20 @@ elles peuvent être permutées sans casser de contrainte.
 
 Chaîne de dépendances **dures** (vrais `<Link>`), ordre strict :
 
-- `lazydocker` : premier obligatoire — cité par `portainer` et `traefik`.
+- `lazydocker` : **publié le 2026-09-03** (`blog/2026/09/03/lazydocker`) — cité par `portainer` et
+  `traefik`. Publié en avance sur `docling` : le `<Link>` vers `/blog/docling` a été remplacé par
+  `/blog/docker-volumes` (article publié) au moment de la publication.
 - `portainer` : cite `lazydocker` (dépendance sur `anythingllm-chat-with-your-docs` levée, déjà
-  publié depuis le 2026-08-17).
-- `traefik` : cite `lazydocker` ET `portainer` — doit venir après les deux.
+  publié depuis le 2026-08-17). Prêt à sortir.
+- `traefik` : cite `lazydocker` ET `portainer` — doit venir après `portainer`.
 
-Les trois peuvent être espacés dans le calendrier tant que l'ordre relatif 1→2→3 est respecté.
+Les deux restants peuvent être espacés dans le calendrier tant que l'ordre `portainer` → `traefik`
+est respecté.
 
-**Avant de publier `lazydocker` :** vérifier que le tag `ARG LAZYDOCKER_VERSION=0.23.3` existe
-toujours sur [github.com/jesseduffield/lazydocker/releases](https://github.com/jesseduffield/lazydocker/releases).
-Aucun des trois `Dockerfile`/`compose.yaml` n'a été buildé ni testé contre un vrai hôte Docker.
-Captures d'écran manquantes pour les trois (TUI lazydocker, dashboard Portainer, dashboard
-Traefik) — à faire une fois testé.
+**Avant de publier `portainer` / `traefik` :** `ARG LAZYDOCKER_VERSION` était à jour (`0.25.2`,
+dernière release au 2026-09-03) pour `lazydocker`. Les `Dockerfile`/`compose.yaml` de `portainer`
+et `traefik` n'ont pas été buildés ni testés contre un vrai hôte Docker. Captures d'écran
+manquantes pour les deux (dashboard Portainer, dashboard Traefik) — à faire une fois testé.
 
 ### Mini-série "navigation du blog" (créée 2026-08-12) — série *Creating Docusaurus components*
 
@@ -220,7 +228,7 @@ Indépendants entre eux, sauf :
   (`tried_it: false`).
 - **`docker-dive` :** images de démo (`myapp:bad`, `myapp:v2`, etc.) non construites — chiffres
   illustratifs mais réalistes, à vérifier après build réel. Lien vers `/blog/lazydocker` en
-  conclusion à retirer/remplacer si `docker-dive` sort avant `lazydocker`.
+  conclusion : OK, `lazydocker` publié le 2026-09-03.
 - **`copy-as-markdown` :** validé par un `yarn build` complet (247 miroirs générés sans erreur,
   aucun lien cassé). Le plugin montré dans l'article est pédagogique/simplifié, jamais ajouté au
   vrai `docusaurus.config.js` (ce blog utilise `plugins/markdown-export-plugin`, plus complet).
