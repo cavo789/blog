@@ -196,3 +196,22 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions-write`.
     en direct, deuxième cas d'usage classique de Redis au-delà du cache pur.
 - Bridge naturel avec le cluster Docker (21 articles) et avec `/blog/docker-compose-viz` (qui montre
   déjà un service `redis` sans jamais expliquer ce qu'il fait réellement).
+
+### [ ] Dozzle — visualiser les logs de ses conteneurs Docker en temps réel
+
+- Vérifié par grep : aucune mention de `dozzle` dans `blog/` ni `.unpublished/`. Les articles Docker
+  existants mentionnent `docker logs` en passant (ex. `/blog/docker-python`) mais aucun n'est dédié
+  à un outil de visualisation de logs — pas de doublon.
+- Chevauchement partiel assumé avec les drafts lazydocker et Portainer (tous deux peuvent afficher
+  des logs) : l'angle différenciant de Dozzle est son **mono-focus** — rien que les logs, en temps
+  réel, via une interface web ultra-légère lancée en un `docker run`. Zéro persistance de données,
+  zéro configuration requise pour démarrer. À mentionner explicitement pour éviter l'impression de
+  couvrir le même terrain que les deux autres drafts.
+- Contenus à couvrir : lancer Dozzle via `docker run` puis via `docker compose` (service annexe) ;
+  filtrage par conteneur et recherche full-text dans le flux live ; support multi-host (agent mode) ;
+  démonstration concrète du cas "je veux juste voir ce que crache mon conteneur, sans ouvrir
+  Portainer ni taper `docker logs -f` en boucle" — l'outil idéal pour le développeur qui veut un
+  second écran dédié aux logs pendant qu'il code.
+- Bridge naturel avec le cluster Docker du blog (21 articles publiés) et avec les drafts Portainer
+  et lazydocker : les trois forment un trio "observer sa stack Docker" — Dozzle (logs seuls, web),
+  lazydocker (TUI tout-en-un), Portainer (dashboard complet). À positionner clairement dans l'intro.

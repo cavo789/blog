@@ -192,6 +192,18 @@
   font-size: 0.82rem;
   box-shadow: 0 4px 14px rgb(0, 0, 0, 0.16);
   cursor: pointer;
+  /* Cap the pill width so long summaries (many vars) don't overflow the viewport */
+  max-width: min(360px, calc(100vw - 2.5rem));
+}
+
+/* Truncate the summary text with an ellipsis when the pill is too wide.
+ * min-width: 0 is required: flex children won't shrink below their content
+ * width without it, so the ellipsis never fires. */
+.fabToggle .mono {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .fabToggle:hover {
@@ -227,6 +239,11 @@
 .fabPanel {
   width: 280px;
   max-width: calc(100vw - 2.5rem);
+  /* At large zoom levels or when there are many fields the panel can exceed the
+   * viewport height and the top fields scroll off-screen. Cap the height and
+   * let the fields area scroll rather than overflow invisibly. */
+  max-height: calc(100vh - 14rem);
+  overflow-y: auto;
   background: var(--ifm-background-surface-color);
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: var(--ifm-card-border-radius, 10px);
@@ -257,6 +274,14 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+/* In a column flex container flex-basis becomes a min-height, not a min-width.
+ * The shared .field rule sets flex: 1 1 180px for the inline bar (row layout);
+ * reset it here so each panel field is only as tall as its content. */
+.fabFields > .field {
+  flex: 0 0 auto;
+  min-width: 0;
 }
 
 /* One-time teaching callout — shown the first time the trigger appears on a

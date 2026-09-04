@@ -1,0 +1,16 @@
+PS C:\Users\%%vmUser=vm-user%%\.ssh> ssh %%linuxAlias=linux-test%%
+No updates available to install
+
+Last update check: 2026-09-04 00:00:01
+Last login: Thu Sep  3 17:41:10 2026 from 10.x.x.x
+
+[%%devUser=dev-user%%@linux-server-01 ~]$ whoami
+%%devUser=dev-user%%
+
+[%%devUser=dev-user%%@linux-server-01 ~]$ pwd
+/home/%%devUser=dev-user%%
+
+[%%devUser=dev-user%%@linux-server-01 ~]$ exit
+logout
+Connection to %%linuxHost=test.example.internal%% closed.
+PS C:\Users\%%vmUser=vm-user%%\.ssh>

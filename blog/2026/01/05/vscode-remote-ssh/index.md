@@ -26,7 +26,7 @@ In this article, we'll explore how to develop directly on a remote server using 
 
 My use case was simple: I needed to run a Python script on a Linux server that could access <Link to="/blog/docker-oracle-database-server">an Oracle database</Link>. However, my local development environment (my computer or a Windows VM) could not reach the database due to network restrictions.
 
-*Two related articles: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> to set up the key-based, passwordless connection this extension relies on, and <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers</Link> for the opposite approach — bringing the server's environment to your machine instead of the other way round.*
+*Three related articles: <Link to="/blog/connect-using-ssh-to-your-hosting-server">How to connect to your hosting server using SSH</Link> to set up the key-based, passwordless connection this extension relies on; <Link to="/blog/docker-prod-devcontainer">One Docker Image for Production and Devcontainers</Link> for the opposite approach — bringing the server's environment to your machine instead of the other way round; and <Link to="/blog/vscode-remote-ssh-proxyjump-devcontainer">Open a DevContainer on a Remote Server with VSCode Remote SSH</Link> for the next step — opening a devcontainer on the remote host to reach services blocked from your local machine.*
 
 <!-- truncate -->
 

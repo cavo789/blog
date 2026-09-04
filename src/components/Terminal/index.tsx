@@ -13,7 +13,7 @@ import {
 import { useMDXComponents } from "@mdx-js/react";
 import clsx from "clsx";
 import { useVarResolver } from "@site/src/components/Vars/store";
-import { substituteChildren } from "@site/src/components/Vars/substitute";
+import { substituteChildren, substitutePlainText } from "@site/src/components/Vars/substitute";
 import VarToken from "@site/src/components/Vars/VarToken";
 import Icon from "./icon.svg";
 import styles from "./styles.module.css";
@@ -93,6 +93,8 @@ interface Props {
   typewriterSpeed?: number;
   /** ms before each output line appears. Omit to auto-scale based on line count. */
   typewriterLineDelay?: number;
+  /** When true, the copy button copies only command lines ($ / #), with the prompt prefix stripped, so the result is directly pasteable. */
+  copyCommandOnly?: boolean;
 }
 
 export default function Terminal({
@@ -102,8 +104,10 @@ export default function Terminal({
   typewriter = false,
   typewriterSpeed,
   typewriterLineDelay,
+  copyCommandOnly = false,
 }: Props): JSX.Element {
-  const displayTitle = title || "user@machine: ~/yourproject";
+  const resolve = useVarResolver();
+  const displayTitle = substitutePlainText(title || "user@machine: ~/yourproject", resolve);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [copied, setCopied] = useState(false);
 
@@ -125,7 +129,6 @@ export default function Terminal({
   // current values before anything else touches `children` — copy, the
   // typewriter animation, and the plain render all read the resolved tree
   // from here on, so a substitution can never accidentally skip one of them.
-  const resolve = useVarResolver();
   const resolvedChildren = useMemo(
     () =>
       substituteChildren(children, resolve, (name, value, key) => (
@@ -228,14 +231,21 @@ export default function Terminal({
   }, [typewriter, animDone, animLines]);
 
   const handleCopy = useCallback(async () => {
-    const textToCopy = getCopyText(resolvedChildren, headingPrefixMap);
+    let textToCopy = getCopyText(resolvedChildren, headingPrefixMap);
+    if (copyCommandOnly) {
+      textToCopy = textToCopy
+        .split("\n")
+        .filter((line) => /^\s*[$#]/.test(line))
+        .map((line) => line.replace(/^\s*[$#] ?/, ""))
+        .join("\n");
+    }
     try {
       await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
     } catch (err) {
       console.error("Failed to copy text: ", err);
     }
-  }, [resolvedChildren, headingPrefixMap]);
+  }, [resolvedChildren, headingPrefixMap, copyCommandOnly]);
 
   useEffect(() => {
     if (copied) {

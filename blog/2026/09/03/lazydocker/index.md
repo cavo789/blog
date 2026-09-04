@@ -83,6 +83,47 @@ From any project folder now — this Docusaurus repo, a client's API, wherever �
 `lazydocker-config`, the named volume, persists your pane layout and sort order across every project. It's the textbook reason to reach for a <Link to="/blog/docker-volumes">Docker-managed volume</Link> — don't let a `--rm` container throw away state that has no reason to be re-created every single run.
 </AlertBox>
 
+## Customize
+
+lazydocker's action menu is extensible: any shell command can appear there by name, in any pane — containers, images, volumes, networks. The config lives in a single YAML file that lazydocker reads from its config directory, the same one the `lazydocker-config` named volume already persists.
+
+The two most useful additions depend on which pane you're in:
+
+- **Containers pane** — the container is already running; `docker exec` jumps straight into it.
+- **Images pane** — nothing is running yet; `docker run --rm` spins up a throw-away container from the selected image, drops you into a shell, and removes the container the moment you exit.
+
+Both cases, both shells, in one file. Create `~/tools/lazydocker/config.yml`:
+
+<Snippet filename="config.yml" source="./files/config.yml" />
+
+All four entries use `attach: true` so lazydocker hands the terminal over to the shell rather than running the command in the background. `bash` and `sh` cover images that ship one or the other — Alpine-based images only have `sh`.
+
+Now tell both the compose file and the global wrapper to bind-mount that file on top of the named volume — Docker layers file mounts on top of volume mounts for overlapping paths, so `config.yml` wins while the volume still persists your pane layout and sort order:
+
+```yaml title="compose.yaml — updated volumes section"
+volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+  - lazydocker-config:/root/.config/jesseduffield/lazydocker
+  - ./config.yml:/root/.config/jesseduffield/lazydocker/config.yml
+  - .:/workdir
+```
+
+```bash title="/usr/local/bin/lazydocker — updated exec line"
+exec docker run --rm -it \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v lazydocker-config:/root/.config/jesseduffield/lazydocker \
+    -v "${HOME}/tools/lazydocker/config.yml:/root/.config/jesseduffield/lazydocker/config.yml" \
+    -v "${PWD}:/workdir" \
+    --workdir /workdir \
+    lazydocker
+```
+
+<AlertBox variant="note" title="Template variables">
+Each pane exposes its own object: `{{ .Container.ID }}` in the containers pane, `{{ .Image.Name }}` and `{{ .Image.Tag }}` in the images pane, `{{ .Service.Name }}` for services. The full list is in [lazydocker's Config.md](https://github.com/jesseduffield/lazydocker/blob/master/docs/Config.md).
+</AlertBox>
+
+Restart lazydocker once to pick up the new mount. In the **Containers** pane, select a running container, press <kbd>Enter</kbd>, and **bash**/**sh** appear in the menu — one keypress to exec in. In the **Images** pane, select any image, press <kbd>Enter</kbd>, and **bash**/**sh** let you spin up a throw-away container from it on the spot.
+
 ## My `dex` function vs lazydocker
 
 <AlertBox variant="info" title="Two tools, two starting points">
@@ -110,6 +151,7 @@ In practice, since installing lazydocker I open that window maybe once a month, 
     { content: "**Root inside the container is fine here** — the socket mount already grants full host Docker control regardless of UID" },
     { content: "**Persist the config volume** — pane layout and sort order survive across every project you point it at" },
     { content: "**Press `?` for keybindings** — faster and more accurate than memorizing a list that shifts between releases" },
+    { content: "**Extend the action menu via config.yml** — containers pane uses `docker exec` (running container), images pane uses `docker run --rm` (throw-away container from the image)" },
     { content: "**It replaces Docker Desktop's dashboard, not Docker Desktop** — the engine, WSL2 VM limits and Kubernetes still live there" }
   ]}
 />

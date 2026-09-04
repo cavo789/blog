@@ -1,0 +1,3 @@
+$ ssh -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%% "whoami && hostname"
+%%devUser=dev-user%%
+%%linuxHost=test.example.internal%%

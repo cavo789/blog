@@ -1,0 +1,5 @@
+Host %%linuxAlias=linux-test%%
+    Hostname %%linuxHost=test.example.internal%%
+    User %%devUser=dev-user%%
+    ProxyJump %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%%
+    IdentityFile ~/.ssh/%%sshKey=id_ed25519%%

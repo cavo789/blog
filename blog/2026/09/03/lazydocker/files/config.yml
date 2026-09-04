@@ -1,0 +1,19 @@
+customCommands:
+  containers:
+    - name: bash
+      attach: true
+      command: 'docker exec -it {{ .Container.ID }} bash'
+      serviceNames: []
+    - name: sh
+      attach: true
+      command: 'docker exec -it {{ .Container.ID }} sh'
+      serviceNames: []
+  images:
+    - name: bash
+      attach: true
+      command: 'docker run -it --rm {{ .Image.Name }}:{{ .Image.Tag }} bash'
+      serviceNames: []
+    - name: sh
+      attach: true
+      command: 'docker run -it --rm {{ .Image.Name }}:{{ .Image.Tag }} sh'
+      serviceNames: []

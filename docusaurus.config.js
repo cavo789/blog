@@ -32,6 +32,10 @@ const config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
+  // Enforce trailing slashes on all URLs so that the static build, the sitemap,
+  // and canonical links are all consistent — avoids 301 redirects that some crawlers
+  // flag as soft errors (e.g. /blog → /blog/).
+  trailingSlash: true,
 
   // `static/` (the Docusaurus default) plus questions-index-plugin's generated static asset
   // dir — see that plugin's header comment for why the full "Ask my blog" question corpus is

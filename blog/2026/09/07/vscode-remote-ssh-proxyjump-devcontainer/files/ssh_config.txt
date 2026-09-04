@@ -1,0 +1,4 @@
+Host %%linuxAlias=linux-test%%
+    Hostname %%linuxHost=test.example.internal%%
+    User %%devUser=dev-user%%
+    IdentityFile ~/.ssh/%%sshKey=id_ed25519%%

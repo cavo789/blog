@@ -1,0 +1,15 @@
+$ ssh -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%% "whoami && hostname"
+The authenticity of host '%%vmIp=windows-vm-ip%% (1.2.3.4)' can't be established.
+ED25519 key fingerprint is SHA256:AbCdEfGhIjKlMnOpQrStUvWxYz0123456789ABCD.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '%%vmIp=windows-vm-ip%%' (ED25519) to the known hosts.
+%%vmUser=vm-user%%@%%vmIp=windows-vm-ip%%'s password:
+The authenticity of host '%%linuxHost=test.example.internal%% (<no hostip for proxy command>)' can't be established.
+ED25519 key fingerprint is SHA256:AbCdEfGhIjKlMnOpQrStUvWxYz0123456789BCDE.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '%%linuxHost=test.example.internal%%' (ED25519) to the known hosts.
+%%devUser=dev-user%%@%%linuxHost=test.example.internal%%'s password:
+%%devUser=dev-user%%
+%%linuxHost=test.example.internal%%

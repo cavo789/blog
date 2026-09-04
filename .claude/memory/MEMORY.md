@@ -26,3 +26,4 @@
 - [Dev Server Restart Authorization](feedback_dev_server_restart.md) — restart allowed for content verification IF ListAgents+broadcast to peer sessions first; curl can't verify dev-mode content, use Playwright
 - [i18n Translation Rejected](feedback_i18n_translation_rejected.md) — French i18n/Ollama-translation idea evaluated 2026-08-31 and dropped: browsers already translate free; not worth the double-maintenance
 - [run_ci e2e Known Issue](project_run_ci_e2e_known_issue.md) — React error #418 hydration warning is a known, permanently allowlisted Docusaurus upstream bug (wontfix); check exact message before re-investigating a failure
+- [Flex Column Basis Trap](feedback_flex_column_basis.md) — flex-basis devient min-height dans un conteneur colonne ; toujours override avec flex: 0 0 auto dans les panels/popups

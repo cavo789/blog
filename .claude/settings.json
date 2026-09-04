@@ -17,8 +17,13 @@
       "Bash(sha256sum *)",
       "Bash(tar *)",
       "Bash(/tmp/dive-scratch/dive *)",
-      "Bash(timeout 60 bash -c 'until curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\" 2>/dev/null | grep -q \"200\"; do sleep 2; done && echo \"Server ready\"')"
+      "Bash(timeout 60 bash -c 'until curl -s http://localhost:3000 -o /dev/null -w \"%{http_code}\" 2>/dev/null | grep -q \"200\"; do sleep 2; done && echo \"Server ready\"')",
+      "Bash(grep -v \"^.*<Terminal\\\\|^.*<Snippet\\\\|^.*\\\\$\\\\|^.*filename=\")"
     ],
-    "additionalDirectories": ["/tmp"]
+    "additionalDirectories": [
+      "/tmp",
+      "/home/node/.claude/projects/-opt-docusaurus/memory",
+      "/opt/docusaurus/.claude/memory"
+    ]
   }
 }

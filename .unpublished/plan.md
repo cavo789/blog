@@ -91,6 +91,11 @@ Conséquence : les contraintes qui en dépendaient tombent — `portainer` n'a p
 `anythingllm-chat-with-your-docs`, `ollama-ai-standup` n'a plus besoin d'attendre `ollama-test-generator`
 ni `ollama-git-precommit` (déjà publiés).
 
+### Déjà publiés entretemps (retirés du plan le 2026-09-07)
+
+- `vscode-remote-ssh-proxyjump-devcontainer` → `blog/2026/09/07/vscode-remote-ssh-proxyjump-devcontainer` — lien
+  réciproque posé dans `/blog/2026/01/05/vscode-remote-ssh/index.md` (paragraphe "related articles").
+
 ### Déjà publiés entretemps (retirés du plan le 2026-09-03)
 
 - `lazydocker` → `blog/2026/09/03/lazydocker` — ouvre la mini-série Docker. `portainer` et
