@@ -80,6 +80,7 @@ AddType text/xsl .xsl
 # plugins/markdown-export-plugin, TODO 0082) must display inline instead of
 # triggering a download — Apache has no built-in mapping for .md.
 AddType text/markdown .md
+AddCharset utf-8 .md
 
 # Without this, Apache serves manifest.webmanifest as the generic
 # application/octet-stream, and Chrome silently ignores a manifest whose
