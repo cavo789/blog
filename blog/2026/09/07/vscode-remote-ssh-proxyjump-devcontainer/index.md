@@ -366,6 +366,46 @@ With the SSH config now in place, `ssh `<Var name="linuxAlias">linux-test</Var> 
 
 </AlertBox>
 
+## Bonus - ssh -J One-Liners
+
+All commands below work from any machine without touching `~/.ssh/config` — the full chain is encoded in the `-J` flag.
+
+**Quick check — runs a command and exits:**
+
+<Terminal wrap={true} title="laptop: ~">
+ssh -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%% "whoami && hostname"
+</Terminal>
+
+**Interactive shell on the Linux server:**
+
+<Terminal wrap={true} title="laptop: ~">
+ssh -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%%
+</Terminal>
+
+For interactive sessions that run a specific program, add `-t` to allocate a pseudo-terminal. Without it, the remote program starts but shows no prompt — the session looks frozen, but is actually waiting for input silently.
+
+**SFTP session on a server only reachable from the Linux host:**
+
+<Terminal wrap={true} title="laptop: ~">
+ssh -t -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%% sftp -i ~/.ssh/%%sshKey=id_ed25519%% user@sftp.example.internal
+</Terminal>
+
+**PostgreSQL session on a database only reachable from the Linux host:**
+
+<Terminal wrap={true} title="laptop: ~">
+ssh -t -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%% psql -h db.example.internal -U postgres
+</Terminal>
+
+**Port forwarding — use any GUI tool from your laptop:**
+
+For Windows GUI clients (HeidiSQL, DBeaver, TablePlus…) that can't run over SSH directly, port forwarding is the answer. It exposes the remote port as `localhost` on your machine — the GUI tool never knows it is crossing two SSH hops:
+
+<Terminal wrap={true} title="laptop: ~">
+ssh -fNL 5432:db.example.internal:5432 -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%%
+</Terminal>
+
+Then connect HeidiSQL (or any client) to `Host: localhost`, `Port: 5432`. The tunnel runs silently in the background (`-f`) with no remote command (`-N`). Kill the `ssh` process when you are done.
+
 ## Conclusion
 
 The combination of VSCode Remote SSH and Dev Containers solves a problem that otherwise requires a clunky multi-step manual workflow: developing code that must run — or reach services that only exist — on a server your laptop cannot directly access.

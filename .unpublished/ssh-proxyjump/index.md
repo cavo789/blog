@@ -110,7 +110,7 @@ You can chain multiple bastion hosts: `ProxyJump bastion1,bastion2`. SSH connect
 
 `ProxyJump` gives you a shell on the remote server. `LocalForward` goes further: it maps a port on the remote network to a port on your local machine, so any local tool can connect to the remote service directly.
 
-The classic use case is a database behind a bastion. Your local `psql`, DBeaver, or TablePlus sees the remote PostgreSQL as if it were running locally.
+The classic use case is a database behind a bastion. Your local `psql`, DBeaver, TablePlus, or HeidiSQL sees the remote PostgreSQL as if it were running locally.
 
 <Terminal>
 ssh -N -L 5433:db-staging.internal:5432 christophe@bastion.example.com
@@ -127,6 +127,14 @@ psql -h localhost -p 5433 -U myuser mydb
 </Terminal>
 
 Your database client connects to `localhost:5433`, which SSH forwards through the bastion to the real database. No VPN. No port opened on the database server itself.
+
+For Windows GUI clients such as HeidiSQL, the connection settings are identical — point the client at `Host: localhost`, `Port: 5433`. The client has no idea it is crossing an SSH tunnel.
+
+If the database is only reachable from a server that is itself behind a bastion (a two-hop chain), add `-J` to encode both hops in a single command. Add `-f` to send the tunnel to the background after authentication — no terminal stays open:
+
+<Terminal>
+ssh -fNL 5433:db.example.internal:5432 -J bastion-user@bastion.example.com server-user@linux-server
+</Terminal>
 
 ## Tunnel shortcuts in ~/.ssh/config
 
