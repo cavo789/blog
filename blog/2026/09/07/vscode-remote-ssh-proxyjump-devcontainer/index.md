@@ -18,9 +18,11 @@ series: SSH - From your first key to remote development
 VSCode's Remote - SSH and Dev Containers extensions chain together: connect to a remote Linux server over SSH, then reopen the project inside a devcontainer running *on that server*. The container inherits the server's network privileges, so any service only reachable from that server — a private SFTP endpoint, a secured API — becomes reachable from your terminal. Two paths to get there: ProxyJump from your laptop (one click, transparent), or VSCode on an intermediate Windows VM (fallback if direct SSH isn't available).
 </TLDR>
 
-I needed to test a script that fetches files from an SFTP server and sends POST requests to a secured API. Simple enough — except both sit on a private network segment only reachable from a specific Linux server. That Linux server itself is only reachable from a Windows VM at the office. My laptop, at the end of the chain, cannot see either service directly.
+I needed to write a Bash script that fetches files from an SFTP server and sends POST requests to a secured API. Simple enough — except both sit on a private network segment only reachable from a specific Linux server. That Linux server itself is only reachable from a Windows VM at the office. My laptop, at the end of the chain, cannot see either service directly.
 
-Without the technique below, the workflow is: open a terminal on the VM, SSH to the Linux server, edit the script with `nano`, run it, copy-paste errors back to my editor. Not great.
+Without the technique below, the complex workflow is: open a terminal on the VM, SSH to the Linux server, edit the script with `nano`, run it, copy-paste errors back to my editor. Not great.
+
+**Or I can skip the VM entirely and work straight from my laptop. This article shows both paths — and the direct-from-laptop route is simpler than it sounds.**
 
 With VSCode Remote SSH chained to Dev Containers, the workflow becomes: open VSCode, connect once, and work exactly as I would locally — full editor, full devcontainer, and the SFTP server and API are reachable from the integrated terminal. There are two ways to set this up, and the article covers both.
 
@@ -75,14 +77,6 @@ graph TD
 
 VSCode runs on your laptop and connects to the Linux server in one click — the Windows VM is just a relay in the SSH config, invisible during normal use. The devcontainer runs on the Linux server, so it inherits the server's network: the SFTP server and the secured API are reachable from inside the container, even though they are invisible from your laptop.
 
-The quick test below — run from your laptop, not from the VM — confirms that the entire chain is reachable:
-
-<Terminal source="./files/terminal_proxyjump_test.txt" title="laptop: ~" copyCommandOnly />
-
-If it prints your username and a hostname, the recommended approach is available and you can skip the fallback entirely.
-
-*The second line is the output of `hostname` on the remote machine — it reflects the name set in `/etc/hostname`, which may differ from the address you used to connect. That is normal; what matters is that the command returned output rather than timing out or being refused.*
-
 ## Which Approach Works for You?
 
 Two situations, two paths:
@@ -104,7 +98,7 @@ flowchart LR
 ```
 
 <AlertBox variant="note" title="SSH server on the Windows VM">
-The recommended approach requires a SSH server on the Windows VM.
+The recommended approach requires a SSH server on the Windows VM. If you're admin on the VM; it's just a command to run to install the SSH server.
 </AlertBox>
 
 **To check if the recommended approach is available**, run this from your laptop terminal:
@@ -116,6 +110,8 @@ ssh -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHos
 - It prints <Var name="devUser">dev-user</Var> and the Linux server hostname → **use the recommended approach**.
 - It times out → your laptop cannot reach the VM at all → **use the fallback approach**.
 - `Connection refused` on port 22 → the VM is reachable but OpenSSH Server is not installed → **see the fix below**.
+
+*The second line is the output of `hostname` on the remote machine — it reflects the name set in `/etc/hostname`, which may differ from the address you used to connect. That is normal; what matters is that the command returned output rather than timing out or being refused.*
 
 <Details label="Fix: install OpenSSH Server on the Windows VM (requires admin rights)">
 
@@ -130,6 +126,8 @@ $ Set-Service -Name sshd -StartupType Automatic
 Once done, re-run the test from your laptop — it should now print <Var name="devUser">dev-user</Var> and the server hostname. If this is the case, follow the **recommended approach**.
 
 **The key authorization step is optional.** The connection works with password authentication too — you will simply be prompted for your VM password each time VSCode connects. For occasional use that is fine; for daily use, setting up the key makes the connection fully silent.
+
+*Prefer a graphical install? Open **Settings → System → Optional features**, search for **OpenSSH Server**, and install it from there — then run the `Start-Service` and `Set-Service` commands above to start and enable it.*
 
 </Details>
 
@@ -146,22 +144,15 @@ Once done, re-run the test from your laptop — it should now print <Var name="d
 
 #### Prerequisites
 
-The Windows VM must have OpenSSH Server installed. On Windows 10/11, open **Settings → System → Optional features** and add **OpenSSH Server**, then start it (*already done if you've followed the fix*):
-
-<Terminal title="%%vmUser=vm-user%%@%%vmIp=windows-vm-ip%%: PowerShell (Administrator)">
-$ Start-Service sshd
-$ Set-Service -Name sshd -StartupType Automatic
-</Terminal>
-
-Your SSH private key (`~/.ssh/`<Var name="sshKey">id_ed25519</Var>) should be on your laptop. ProxyJump tunnels the authentication — your laptop's key authenticates to both hosts, so the key never needs to leave your laptop. Password authentication also works if key-based auth is not set up on the VM.
+Your SSH private key (`~/.ssh/`<Var name="sshKey">id_ed25519</Var>) should be on your laptop — if you don't have one yet, <Link to="/blog/github-connect-using-ssh">this article walks through generating an ed25519 key pair</Link>. ProxyJump tunnels the authentication — your laptop's key authenticates to both hosts, so the key never needs to leave your laptop. Password authentication also works if key-based auth is not set up on the <Var name="vmIp">windows-vm-ip</Var> VM.
 
 #### Configure SSH on your laptop
 
-Add the following to your laptop's `~/.ssh/config` (Linux/macOS) or `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\config` (Windows):
+Create the `C:\Users\your_laptop_user\.ssh\config` (Windows; included WSL) or `~/.ssh/config` (if you're under Linux/macOS) file to your laptop's:
 
-<Snippet filename="~/.ssh/config (your laptop)" source="./files/ssh_config_laptop.txt" />
+<Snippet title={<>C:\Users\your_laptop_user\.ssh\config · ~/.ssh/config</>} source="./files/ssh_config_laptop.txt" />
 
-The `ProxyJump` line tells SSH to reach <Var name="linuxAlias">linux-test</Var> by tunneling through the VM. From this point on, `ssh `<Var name="linuxAlias">linux-test</Var> from your laptop connects directly to the Linux server — no manual VM step.
+The `ProxyJump` line tells SSH to reach <Var name="linuxAlias">linux-test</Var> by tunneling through the <Var name="vmIp">windows-vm-ip</Var> VM. From this point on, `ssh `<Var name="linuxAlias">linux-test</Var> from your laptop connects directly to the Linux server — no manual VM step.
 
 #### Test the full chain
 
@@ -220,15 +211,15 @@ It asks for the Linux server password one last time, then adds your public key t
 
 ### Fallback Approach — VSCode on the Windows VM
 
-Use this path if the recommended approach is not available (SSH server not installed on the VM, or the VM is not reachable from your laptop via SSH).
+Use this path if the recommended approach is not available (SSH server not installed on the <Var name="vmIp">windows-vm-ip</Var> VM, or the VM is not reachable from your laptop via SSH).
 
 #### Create the SSH config file on the VM
 
-Open a Powershell session on the VM. If the `.ssh` subfolder does not exist yet, create it: `New-Item -ItemType Directory -Path "$HOME\.ssh"`.
+Open a Powershell session on the <Var name="vmIp">windows-vm-ip</Var> VM. If the `$HOME\.ssh` subfolder does not exist yet, create it: `New-Item -ItemType Directory -Path "$HOME\.ssh"`.
 
 Open (or create) `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\config` in Notepad. The file must be called `config` with **no extension** — `config.txt` is silently ignored by every SSH client.
 
-<Snippet filename="C:\Users\%%vmUser=vm-user%%\.ssh\config" source="./files/ssh_config.txt" />
+<Snippet title={<>C:\Users\<Var name="vmUser">vm-user</Var>\.ssh\config</>} source="./files/ssh_config.txt" />
 
 #### Copy your SSH private key to the VM
 
@@ -258,7 +249,7 @@ Open VSCode the Windows way instead: from the **Start menu**, the **taskbar**, o
 
 </AlertBox>
 
-So, **from your Windows-side; start a Powershell console** and install the **Remote - SSH** extension — it provides the Remote Explorer sidebar used to connect to the remote host:
+So, **from your Windows-side; start a Powershell console** and install the **[Remote - SSH](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh)** extension — it provides the Remote Explorer sidebar used to connect to the remote host:
 
 <Prerequisite
   name="Remote - SSH"
@@ -303,6 +294,27 @@ VSCode is connected to the Linux server. You can already open files, run termina
 
 </AlertBox>
 
+### Verify the Connection
+
+Open a terminal in VSCode (**Terminal → New Terminal**) and run:
+
+<Terminal title="%%linuxAlias=linux-test%%: ~" typewriter>
+$ hostname
+%%linuxHost=test.example.internal%%
+</Terminal>
+
+The hostname matches the Linux server — the terminal runs on the remote machine, not your laptop.
+
+That network context is what makes the rest possible. Services invisible from your laptop but reachable from the server are now accessible from this terminal. If your project connects to an SFTP server, try it right now:
+
+<Terminal title="%%linuxAlias=linux-test%%: ~">
+$ sftp -i ~/.ssh/%%sshKey=id_ed25519%% -P 22 user@sftp.example.internal
+Connected to sftp.example.internal.
+sftp>
+</Terminal>
+
+You are at an `sftp>` prompt from a terminal inside VSCode on your laptop — the Linux server's network does the routing, invisibly.
+
 ## Open the DevContainer
 
 Once connected to the remote host, install the **Dev Containers** extension to open the project inside a container running on that host:
@@ -335,6 +347,24 @@ After the container starts, your terminal prompt changes to reflect the containe
 With the recommended approach, there is a third layer: the SSH tunnel itself goes through the VM via ProxyJump. The VS Code Server sees none of this — it only knows it is running on the Linux host. The ProxyJump is entirely at the SSH layer.
 
 The container's bind mounts reference paths *on the Linux server*, not paths on your laptop or the VM — which is exactly what you want.
+
+<AlertBox variant="tip" title="That test command is also a complete SSH session">
+
+Remember the command from earlier, used to check whether the recommended approach was available?
+
+<Terminal wrap={true} title="laptop: ~">
+ssh -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%% "whoami && hostname"
+</Terminal>
+
+Drop the quoted command at the end and it becomes a standalone one-liner that opens an interactive SSH session on the Linux server — straight from your laptop, with no SSH config file required:
+
+<Terminal wrap={true} title="laptop: ~">
+ssh -J %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% %%devUser=dev-user%%@%%linuxHost=test.example.internal%%
+</Terminal>
+
+With the SSH config now in place, `ssh `<Var name="linuxAlias">linux-test</Var> does the same in one word. But the `-J` form works on any machine without touching `~/.ssh/config` first — handy whenever you need a quick session from an unfamiliar workstation.
+
+</AlertBox>
 
 ## Conclusion
 

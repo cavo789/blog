@@ -560,7 +560,7 @@ function Eli5SummaryBlock({ summary }: Eli5SummaryBlockProps): JSX.Element {
 
 interface Props {
   filename?: string;
-  title?: string;
+  title?: ReactNode;
   code?: string;
   children?: ReactNode;
   defaultOpen?: boolean;
