@@ -129,6 +129,8 @@ Once done, re-run the test from your laptop — it should now print <Var name="d
 
 *Prefer a graphical install? Open **Settings → System → Optional features**, search for **OpenSSH Server**, and install it from there — then run the `Start-Service` and `Set-Service` commands above to start and enable it.*
 
+**Remark** If you've trouble when installing the OpenSSH Server (using the CLI or the GUI), as an alternative, you can download the `.msi` file by hand from [https://github.com/PowerShell/Win32-OpenSSH/releases](https://github.com/PowerShell/Win32-OpenSSH/releases). Once downloaded; double-click on the `.msi` file to start the installation.
+
 </Details>
 
 ## Why It Works
