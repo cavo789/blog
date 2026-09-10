@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-09-10T07:07:58.536Z",
+  "source": "index.md",
+  "sourceHash": "60f3ca9681e78e6a9f08811450a1357700cda3ff",
+  "questions": [
+    {
+      "question": "What is lazydocker?",
+      "anchor": ""
+    },
+    {
+      "question": "How does lazydocker show Docker containers, images, volumes and networks?",
+      "anchor": "the-dashboard-running"
+    },
+    {
+      "question": "What are the live stats and logs shown in lazydocker?",
+      "anchor": "what-lazydocker-actually-shows"
+    },
+    {
+      "question": "How do I containerize lazydocker?",
+      "anchor": "containerizing-it"
+    },
+    {
+      "question": "What is the global wrapper script for lazydocker?",
+      "anchor": "the-global-wrapper"
+    },
+    {
+      "question": "How can I customize lazydocker's behavior?",
+      "anchor": "customize"
+    },
+    {
+      "question": "Is lazydocker compatible with Docker Desktop?",
+      "anchor": "my-dex-function-vs-lazydocker"
+    },
+    {
+      "question": "What are the key takeaways from this article about lazydocker?",
+      "anchor": "does-docker-desktop-still-earn-its-place"
+    }
+  ]
+}

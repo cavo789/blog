@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:51:45.413Z",
+  "generated": "2026-09-10T07:08:16.968Z",
   "source": "index.md",
-  "sourceHash": "d59ead5e094debb17f9dc317a5f7d71191f2770e",
+  "sourceHash": "c4390601f590f78f940399e365fee1cd531586e8",
   "questions": [
     {
-      "question": "What are volumes in Docker?",
+      "question": "How do volumes work in Docker?",
       "anchor": "what-a-volume-changes"
     },
     {
-      "question": "Why do we need volumes in Docker?",
+      "question": "What are the three strategies for managing data persistence in Docker?",
       "anchor": "why-it-works"
     },
     {
-      "question": "How do I set up a demo to illustrate different volume strategies?",
+      "question": "What is a volume managed by Docker and how does it differ from other types of volumes?",
       "anchor": "setting-up-the-demo"
     },
     {
-      "question": "What is the difference between no volume, Docker-managed volume, and mounted volume in Docker?",
-      "anchor": "volumes-managed-by-docker"
-    },
-    {
-      "question": "How do I persist data using a Docker-managed volume?",
+      "question": "How do I create and use a mounted volume in Docker?",
       "anchor": "mounted-volumes"
     },
     {
-      "question": "How do I access files in a mounted volume from within the container?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "Where are Docker-managed volumes stored by default?",
-      "anchor": "getting-your-own-files-back-from-a-mounted-volume"
-    },
-    {
-      "question": "How can I access files in a mounted volume using Docker Desktop or VSCode?",
+      "question": "Where are the volumes managed by Docker stored on my system?",
       "anchor": "location-of-the-volumes-managed-by-docker"
+    },
+    {
+      "question": "How can I access files in a Docker volume using Docker Desktop or VSCode?",
+      "anchor": "accessing-files-in-the-volume-using-docker-desktop"
+    },
+    {
+      "question": "What is the difference between no volume at all and a mounted volume in Docker?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "How can I use volumes to persist data across container restarts?",
+      "anchor": "setting-up-the-demo"
     }
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-10T07:07:04.856Z",
+  "source": "config.yml",
+  "sourceHash": "cf31c66439d508af19f1b57adea3d00adfc46a93",
+  "lang": "yaml",
+  "summary": "This YAML configuration defines custom commands that can be executed in Docker environments. It sets up four shell commands—two for running bash or sh inside existing containers, and two for running them in new temporary containers from images. Each command is marked as 'attach: true' so the output displays interactively, and they all have empty service name filters meaning they apply globally.",
+  "explanations": {
+    "4": "attach: true means the command's output will be displayed to the user interactively rather than running silently in the background.",
+    "5": "The {{ .Container.ID }} and {{ .Image.Name }} syntax are template placeholders that get replaced with actual container IDs or image names when the command runs.",
+    "6": "serviceNames: [] is an empty list that acts as a filter—when empty, it means this command applies to all services rather than being restricted to specific ones."
+  }
+}

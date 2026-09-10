@@ -13,7 +13,10 @@ import {
 import { useMDXComponents } from "@mdx-js/react";
 import clsx from "clsx";
 import { useVarResolver } from "@site/src/components/Vars/store";
-import { substituteChildren, substitutePlainText } from "@site/src/components/Vars/substitute";
+import {
+  substituteChildren,
+  substitutePlainText,
+} from "@site/src/components/Vars/substitute";
 import VarToken from "@site/src/components/Vars/VarToken";
 import Icon from "./icon.svg";
 import styles from "./styles.module.css";
@@ -107,7 +110,10 @@ export default function Terminal({
   copyCommandOnly = false,
 }: Props): JSX.Element {
   const resolve = useVarResolver();
-  const displayTitle = substitutePlainText(title || "user@machine: ~/yourproject", resolve);
+  const displayTitle = substitutePlainText(
+    title || "user@machine: ~/yourproject",
+    resolve,
+  );
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [copied, setCopied] = useState(false);
 

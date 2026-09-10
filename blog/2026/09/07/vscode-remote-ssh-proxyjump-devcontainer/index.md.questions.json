@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-09-10T07:08:04.575Z",
+  "source": "index.md",
+  "sourceHash": "c29654eec0b8f28e02631ac941108d86793c70f8",
+  "questions": [
+    {
+      "question": "How do I configure SSH on my laptop to access the Linux server using ProxyJump?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the recommended approach for connecting VSCode to a remote devcontainer using ProxyJump from my laptop?",
+      "anchor": "recommended-approach--proxyjump-from-your-laptop"
+    },
+    {
+      "question": "How do I install OpenSSH Server on the Windows VM if it's not already installed?",
+      "anchor": "fallback-approach--vscode-on-the-windows-vm"
+    },
+    {
+      "question": "What is the fallback approach for connecting VSCode to a remote devcontainer using SSH on an intermediate Windows VM?",
+      "anchor": "connect-with-vscode"
+    },
+    {
+      "question": "How do I verify that the connection to the Linux server was successful when using ProxyJump from my laptop?",
+      "anchor": "verify-the-connection"
+    },
+    {
+      "question": "What is the recommended approach for connecting VSCode to a remote devcontainer using Dev Containers on the Linux server directly?",
+      "anchor": "open-the-devcontainer"
+    },
+    {
+      "question": "How do I configure SSH on my laptop to access the Linux server using ProxyJump with specific username and IP address?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "What is the fallback approach for connecting VSCode to a remote devcontainer using SSH on an intermediate Windows VM with specific username and IP address?",
+      "anchor": "connect-with-vscode"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-10T07:07:19.034Z",
+  "source": "styles.module.css",
+  "sourceHash": "3a25bc4a209206dcf14ee34c97ab8acbb8a86252",
+  "lang": "css",
+  "summary": "This stylesheet defines styles for a container with a copy button and a raw link. The wrapper arranges its children horizontally with spacing, while the copy button has a bordered outline style that changes appearance when hovered or disabled. The raw link is a smaller text element that changes color on hover.",
+  "explanations": {
+    "2": "inline-flex makes the wrapper sit inline with surrounding content while using flexbox layout rules internally.",
+    "11": "var(--ifm-color-emphasis-700) pulls a color value from a CSS custom property (variable), which lets you reuse colors defined elsewhere.",
+    "18": "The :disabled selector targets the button when it has the disabled attribute, letting you style disabled states differently.",
+    "23": ":not(:disabled) means 'apply this hover style only if the button is NOT disabled', so disabled buttons won't change color on hover."
+  }
+}

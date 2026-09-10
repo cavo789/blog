@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-10T07:07:10.306Z",
+  "source": "markdown-mirror-plugin.cjs",
+  "sourceHash": "313576e49bee731709890f0811307f50dacba46c",
+  "lang": "javascript",
+  "summary": "This plugin runs after a Docusaurus build completes and creates plain-text Markdown copies of every published blog post. It finds all blog post source files, extracts their content, strips out Docusaurus-specific markers, adds a hidden comment with metadata (like the canonical URL), and writes the result as a .md file alongside the HTML output so readers can access the raw Markdown version.",
+  "explanations": {
+    "15": "withFileTypes: true tells the function to return objects describing each file/folder rather than just names, so we can check whether each entry is a directory or file.",
+    "18": "The three dots (...) spread operator unpacks the array returned from the recursive call, adding all nested results to the found array instead of nesting arrays inside arrays.",
+    "46": "A Set is created from routesPaths to make the lookup on line 61 fast—checking if a route exists in a Set is much quicker than searching through an array.",
+    "53": "frontMatter parses a string that has YAML metadata at the top (like `slug: my-post`) followed by the actual content, splitting it into attributes (the parsed YAML as an object) and body (the content below).",
+    "64": "This removes the Docusaurus 'truncate' marker that tells the homepage to show only a preview, then trims whitespace and adds back a single newline at the end.",
+    "67": "recursive: true ensures parent directories are created if they don't exist yet, so we don't crash when writing to a path with missing folders."
+  }
+}

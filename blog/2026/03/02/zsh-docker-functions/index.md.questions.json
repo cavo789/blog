@@ -1,16 +1,16 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:52:37.679Z",
+  "generated": "2026-09-10T07:08:34.817Z",
   "source": "index.md",
-  "sourceHash": "7678970f813c09bd1dfb44c9f6f770eb3442b0f6",
+  "sourceHash": "ea14ec923b1f6d2c7447d6b94d2094801d6bc7d8",
   "questions": [
     {
       "question": "How do I start a new terminal session in a running Docker container?",
       "anchor": "start-a-new-terminal-session-in-a-running-docker-container"
     },
     {
-      "question": "What are some useful ZSH functions for Docker management that enhance your terminal experience?",
+      "question": "What is the fzf tool and how does it work with ZSH functions for Docker management?",
       "anchor": ""
     },
     {
@@ -18,24 +18,24 @@
       "anchor": "stop-one-or-more-running-docker-containers"
     },
     {
-      "question": "What is the purpose of the fzf command in this article and how does it help with Docker management?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I access logs of a running Docker container using a ZSH function?",
+      "question": "What is the purpose of the access logs function in the article?",
       "anchor": "access-logs-of-a-running-docker-container"
     },
     {
-      "question": "What is the dnuke function and how does it assist in cleaning up unused Docker resources?",
+      "question": "How can I clean up unused Docker containers, images, volumes, and networks using a ZSH function?",
       "anchor": "clean-up-unused-docker-containers-images-volumes-and-networks"
     },
     {
-      "question": "How can I clean up unused Docker containers, images, volumes, and networks using a ZSH function?",
-      "anchor": "creating-a-new-container"
+      "question": "What are some custom ZSH functions for enhancing Docker management in the article?",
+      "anchor": ""
     },
     {
-      "question": "What are some useful tips for managing Docker containers with custom ZSH functions?",
-      "anchor": ""
+      "question": "How can I modify a command before running it using the fzf tool with ZSH functions for Docker management?",
+      "anchor": "start-a-new-terminal-session-in-a-running-docker-container"
+    },
+    {
+      "question": "What is the purpose of the dnuke function in the article?",
+      "anchor": "clean-up-unused-docker-containers-images-volumes-and-networks"
     }
   ]
 }
