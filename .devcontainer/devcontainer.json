@@ -35,7 +35,7 @@
   },
   "forwardPorts": [3000, 3001, 8010],
   "containerEnv": {
-    "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519",
+    "GIT_SSH_COMMAND": "ssh -i /home/node/.ssh/id_ed25519_yahoo",
     "YARN_CACHE_FOLDER": "/home/node/.cache/yarn/v6",
     "RUMDL_CACHE_DIR": "/tmp/rumdl_cache",
     "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
