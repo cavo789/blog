@@ -183,7 +183,7 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
     echo "${OS_USERNAME} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/"${OS_USERNAME}" && \
     chmod 0440 /etc/sudoers.d/"${OS_USERNAME}" && \
     ARCH=$(dpkg --print-architecture) && \
-    curl -sSL "https://dl.filippo.io/mkcert/latest?for=linux/${ARCH}" -o /usr/local/bin/mkcert && \
+    curl -sSL "github.com/FiloSottile/mkcert/releases/download/v1.4.4/mkcert-v1.4.4-linux-${ARCH}" -o /usr/local/bin/mkcert && \
     case "${ARCH}" in \
       amd64) echo "${MKCERT_SHA256_AMD64}  /usr/local/bin/mkcert" | sha256sum -c ;; \
       arm64) echo "${MKCERT_SHA256_ARM64}  /usr/local/bin/mkcert" | sha256sum -c ;; \

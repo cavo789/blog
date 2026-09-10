@@ -3,6 +3,7 @@ import { useMemo, type JSX } from "react";
 import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
+import { buildBreadcrumbTrail } from "@site/src/components/Blog/utils/breadcrumb";
 
 interface Props {
   metadata: {
@@ -81,11 +82,49 @@ function StructuredData({ metadata, assets }: Props): JSX.Element | null {
     };
   }, [metadata, assets, siteConfig, withBaseUrl]);
 
+  // Emitted as a second, top-level graph rather than nested in the BlogPosting:
+  // that is the shape Google documents for BreadcrumbList, and it keeps the
+  // existing BlogPosting payload byte-for-byte unchanged.
+  //
+  // Built from buildBreadcrumbTrail(), the same function that renders the visible
+  // trail in src/components/Blog/Breadcrumb — a breadcrumb whose JSON-LD claims a
+  // different path than the one on screen is a crawler-visible contradiction.
+  const breadcrumbJsonLd = useMemo(() => {
+    if (!metadata) return null;
+
+    const { title, frontMatter } = metadata;
+    const trail = buildBreadcrumbTrail({
+      title,
+      mainTag: frontMatter?.mainTag as string | undefined,
+      series: frontMatter?.series as string | undefined,
+    });
+
+    // "Home > title" carries no hierarchy; the Breadcrumb component hides itself
+    // in that case, so nothing must be declared here either.
+    if (trail.length < 3) return null;
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: trail.map((entry, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: entry.label,
+        // The trailing item is the current page and carries no href: Schema.org
+        // allows omitting `item` there, and Google recommends it.
+        item: entry.href ? `${siteConfig.url}${entry.href}` : undefined,
+      })),
+    };
+  }, [metadata, siteConfig]);
+
   if (!jsonLd) return null;
 
   return (
     <Head>
       <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      {breadcrumbJsonLd && (
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      )}
     </Head>
   );
 }

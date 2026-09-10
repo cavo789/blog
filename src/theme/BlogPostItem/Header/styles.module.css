@@ -1,0 +1,25 @@
+/*
+ * Standfirst: the front matter `description` rendered as one grey sentence between
+ * the <h1> and the date/reading-time line (TODO 0115). Sized slightly above body
+ * text so it reads as a lead paragraph, but kept upright — italics at this length
+ * hurt legibility and would make it look like a pull quote rather than a summary.
+ *
+ * Not --ifm-color-content-secondary, the obvious-looking token: Infima resolves it to
+ * pure white in dark mode (#525860 in light), which would make the standfirst *brighter*
+ * than the body text it introduces. --ifm-color-emphasis-700 is #606770 in light (5.7:1
+ * on white, AA) and #dadde1 in dark — a shade below the body's #e3e3e3, so it reads as
+ * secondary in both themes.
+ */
+.standfirst {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 576px) {
+  .standfirst {
+    font-size: 1rem;
+  }
+}

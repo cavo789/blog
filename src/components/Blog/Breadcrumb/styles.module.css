@@ -1,0 +1,68 @@
+/*
+ * Deliberately discreet: the breadcrumb sits directly above the <h1> and must
+ * never compete with it, especially now that the standfirst (TODO 0115) adds a
+ * second block to the article head. Small type, secondary content color, no
+ * background, no border.
+ */
+.breadcrumb {
+  margin-bottom: 0.5rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Separator drawn in CSS rather than in the markup, so screen readers announce
+   the list items and not a stream of chevrons. */
+.item:not(:first-child)::before {
+  content: "›";
+  margin-right: 0.4rem;
+  color: var(--ifm-color-emphasis-500);
+}
+
+/* --ifm-color-emphasis-700, not --ifm-color-content-secondary: the latter is pure
+   white in dark mode, which would make this discreet trail louder than the <h1> it
+   sits above. emphasis-700 stays a real grey in both themes (#606770 / #dadde1) and
+   clears AA at this size. */
+.link {
+  color: var(--ifm-color-emphasis-700);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+}
+
+/* Same colour as the links rather than a dimmer one: emphasis-600 is #8d949e in
+   light mode, only 3.0:1 on white, which fails AA at 0.8rem. The current item is
+   told apart by being non-interactive, not by being faded. */
+.current {
+  color: var(--ifm-color-emphasis-700);
+  min-width: 0;
+}
+
+/* On a phone the article title is often longer than the viewport; letting it
+   wrap over three lines would push the <h1> below the fold, which is exactly
+   the cost this feature must not pay. */
+@media (max-width: 576px) {
+  .current {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

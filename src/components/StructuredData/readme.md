@@ -12,6 +12,7 @@ Please save the script here: `src/components/StructuredData/index.tsx`
 - Dynamically builds metadata from blog post `frontMatter` and site config
 - Uses `siteConfig.url` and `themeConfig.image` for absolute URLs
 - Supports author, publisher, image, and canonical page ID
+- Emits a second [`BreadcrumbList`](https://schema.org/BreadcrumbList) graph (`Home > mainTag > series > title`) so search engines print the readable path instead of the raw URL
 - Optional debug block for visual inspection
 
 ## 🛠 Usage
@@ -66,9 +67,22 @@ Use [Google Rich Results Test](https://search.google.com/test/rich-results) or [
 - `metadata` and `assets` must be passed from `useBlogPost()`
 - `siteConfig.url` and `themeConfig.image` should be defined in `docusaurus.config.js`
 
+## 🧭 BreadcrumbList
+
+The breadcrumb graph is built by `buildBreadcrumbTrail()`
+(`src/components/Blog/utils/breadcrumb.ts`) — the **same** function that renders the
+visible trail in `src/components/Blog/Breadcrumb`. Never rebuild the levels here: a
+JSON-LD path that disagrees with the one displayed on the page is worse, for a crawler,
+than no structured data at all.
+
+Levels are skipped when the post has no `mainTag` or no `series`, and the whole graph is
+omitted when only `Home > title` would remain. The final item carries a `name` but no
+`item` URL, as recommended for the current page.
+
 ## 📚 Schema Reference
 
 - [BlogPosting](https://schema.org/BlogPosting)
+- [BreadcrumbList](https://schema.org/BreadcrumbList)
 - [JSON-LD](https://json-ld.org/)
 
 ## 📄 License
