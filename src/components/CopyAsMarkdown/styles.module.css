@@ -2,11 +2,16 @@
  * No outer margin: this sits inside Blog/ArticleActions, which owns the row's
  * spacing. A margin here would stack with the row's and push the actions off
  * the date line they belong to.
+ *
+ * The gap is tighter than the row's (16px) on purpose: "View raw" has no border
+ * of its own, so proximity is the only thing tying it to the button it belongs
+ * to. At the row's spacing it floated between the two bordered actions and read
+ * as a third one.
  */
 .wrapper {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
 
 .copyBtn {

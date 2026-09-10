@@ -1,8 +1,19 @@
 /* Hero Section Container */
 .heroHeader {
-  padding: 4rem 0;
-  width: 100%;
-  margin-bottom: 2rem;
+  /*
+   * Full-bleed, like the LatestPosts and FollowFeed bands further down the
+   * homepage. `width: 100%` was not enough: this sits inside the MDX page
+   * container, so the coloured block stopped 29px short of each viewport edge —
+   * a sliver too small to read as a frame and too wide to go unnoticed, while
+   * every other coloured band on the page ran edge to edge.
+   *
+   * The horizontal padding puts the content back where it was: .heroGrid's own
+   * `max-width: var(--ifm-container-width)` constrains nothing here, because
+   * this site sets that variable to `100%` — the grid takes its width from the
+   * parent, so without the padding the escape drags the text to the edge too.
+   */
+  padding: 4rem var(--page-gutter);
+  margin: 0 calc(-1 * var(--page-gutter)) 2rem;
 
   background: var(--hero-background-light);
 

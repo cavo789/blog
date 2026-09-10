@@ -9,8 +9,14 @@
     var(--ifm-color-primary) 55%,
     var(--ifm-color-primary-lightest) 100%
   );
-  padding: 3.5rem 2rem 3rem;
-  margin: -2rem -2rem 2.5rem;
+  /*
+   * Full bleed, like the homepage bands: escape by exactly the page gutter that
+   * inset this content in the first place. The previous fixed `-2rem` overshot
+   * at every width, and a `50vw`-based escape overshoots by the scrollbar's
+   * width in browsers with classic scrollbars.
+   */
+  padding: 3.5rem var(--page-gutter) 3rem;
+  margin: -2rem calc(-1 * var(--page-gutter)) 2.5rem;
   border-radius: 0 0 28px 28px;
 }
 
@@ -36,7 +42,9 @@
     text-align: center;
   }
   .profileHero {
-    margin: -1rem -1rem 2rem;
+    /* Vertical offsets only — the horizontal half must keep the full-bleed
+       escape from the base rule, or the banner stops short of the edges. */
+    margin: -1rem calc(-1 * var(--page-gutter)) 2rem;
   }
 }
 

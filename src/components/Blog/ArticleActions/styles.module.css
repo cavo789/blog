@@ -2,11 +2,17 @@
  * The row owns the spacing between actions and around itself. Each action ships
  * its own button styling but no outer margin — see CopyAsMarkdown's .wrapper,
  * deliberately margin-free so it can sit here.
+ *
+ * The gap here is deliberately wider than the one inside CopyAsMarkdown (6px):
+ * it separates the two families — "take this article with you" (copy / view raw)
+ * from "keep up with this topic" (follow). With a single 10px everywhere, the
+ * borderless "View raw" link sat equidistant from both buttons and read as a
+ * third, unstyled action rather than as the copy button's companion.
  */
 .actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   margin: 8px 0;
 }

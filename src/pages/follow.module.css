@@ -11,6 +11,12 @@
  * Multi-column so ~50 tags stay one screenful instead of a scroll marathon.
  * `columns` degrades to a single column on narrow viewports on its own.
  */
+.formatNote {
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
 .feedList {
   padding-left: 1.2rem;
   columns: 18rem 3;

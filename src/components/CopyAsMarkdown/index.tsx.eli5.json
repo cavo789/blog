@@ -1,20 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T07:07:15.890Z",
+  "generated": "2026-09-10T19:32:46.074Z",
   "source": "index.tsx",
-  "sourceHash": "7708570f6d2cdbd60b5c6a990199d03980471316",
+  "sourceHash": "ecbaee4f9cdf7a21d3425ad0b35acd7ffa4615b2",
   "lang": "typescript",
-  "summary": "This component renders a button that copies a blog post's plain Markdown version to the clipboard and a link to view the raw file. When you click the button, it fetches the `.md` file that mirrors the current HTML post, copies its text to your clipboard, and shows feedback messages like 'Copied' or 'Could not copy'. After two seconds, it resets back to the default button text.",
+  "summary": "This component provides a button that fetches a Markdown version of a blog post and copies it to the clipboard, plus a link to view the raw file. It manages loading, success, and error states, automatically resetting back to idle after two seconds so the user sees visual feedback before the button returns to normal.",
   "explanations": {
-    "10": "This type restricts the status variable to only one of these four specific string values, preventing invalid states like 'loading' or 'pending'.",
-    "27": "This constructs the URL to the Markdown file by taking the current page's permalink and appending `.md` instead of trailing slashes—so `/blog/my-post/` becomes `/blog/my-post.md`.",
-    "29": "useCallback wraps the copy function so it stays the same reference between renders, which prevents unnecessary re-runs of the useEffect below.",
-    "32": "fetch() downloads the Markdown file from the server.",
-    "33": "res.ok is false if the HTTP status is in the 400+ range; throwing an error here triggers the catch block so the component shows 'Could not copy'.",
-    "35": "navigator.clipboard.writeText() puts the text into your browser's clipboard so you can paste it elsewhere.",
-    "44": "This early return skips setting the timer if the status is still 'idle' or 'copying', so the button only auto-resets after showing success or error feedback.",
-    "45": "setTimeout with a 2000ms delay schedules the status to reset back to 'idle', making the feedback message disappear after two seconds.",
-    "46": "Returning a cleanup function from useEffect cancels the timeout if the component unmounts or status changes again before the timer fires."
+    "10": "This defines the four possible states the copy operation can be in: idle (ready), copying (in progress), copied (success), or error (failed).",
+    "27": "We construct the URL to the Markdown file by taking the post's permalink, removing any trailing slash, and appending `.md` — so `/blog/my-post/` becomes `/blog/my-post.md`.",
+    "29": "useCallback memoizes this function so it only gets recreated when mdUrl changes, preventing unnecessary re-renders of child components that might receive it as a prop.",
+    "32": "We fetch the Markdown file from the server using the constructed URL.",
+    "33": "If the HTTP response isn't successful (like a 404), we throw an error so it gets caught by the catch block below.",
+    "35": "navigator.clipboard.writeText is the browser API that actually copies text to the user's clipboard.",
+    "44": "We only want to auto-reset the status if it's showing success or error feedback; if it's idle or copying, we skip the cleanup timer entirely.",
+    "45": "This timer resets the status back to idle after 2 seconds, so the button message returns to the default after showing 'Copied' or 'Could not copy'.",
+    "46": "We return a cleanup function that cancels the timer if the component unmounts or status changes before the 2 seconds elapse, preventing memory leaks.",
+    "55": "The button is disabled while copying is in progress so the user can't accidentally trigger multiple simultaneous copy attempts."
   }
 }

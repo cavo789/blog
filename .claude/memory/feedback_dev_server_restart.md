@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: b1417793-d60e-4e11-ba8d-0b50aeea9692
-  modified: 2026-08-30T16:55:21.411Z
+  modified: 2026-09-10T18:30:00.000Z
 ---
 
 CLAUDE.md's default rule ("never run `yarn start`, `yarn docusaurus start`, or kill whatever is on
@@ -38,10 +38,33 @@ active session sharing the same devcontainer.
 route) always returns the same generic SPA shell — Docusaurus dev mode does not do per-request
 SSR the way a production build does. Content only exists after client-side JS hydration, so
 `curl`-based verification of dev-server content is useless; a real headless browser (Playwright,
-already a project dependency — `node_modules/.bin/playwright`, browsers pre-installed under
-`~/.cache/ms-playwright/`) is required to check what a route actually renders in dev mode. Note
-also `<Terminal typewriter>`'s animation must be skipped (click the terminal, or wait it out) or
-`innerText` checks on its content will falsely report substrings missing.
+a project dependency — `node_modules/.bin/playwright`) is required to check what a route actually
+renders in dev mode. Note also `<Terminal typewriter>`'s animation must be skipped (click the
+terminal, or wait it out) or `innerText` checks on its content will falsely report substrings
+missing.
+
+**Two corrections learned on 2026-09-10:**
+
+- **Browsers are NOT necessarily pre-installed.** `~/.cache/ms-playwright/` was empty; `npx
+  playwright install chromium` (~114 MB) was needed. Check before assuming, and note the download
+  is a real cost to mention rather than incur silently.
+- **HTTP status codes are meaningless against the dev server.** It serves the SPA shell
+  (`200`, `content-type: text/html`) for *every* URL, including ones that do not exist — so
+  `curl -o /dev/null -w '%{http_code}'` reports `200` for a 404. Check `%{content_type}` or the
+  first bytes of the body instead. Production (Apache + `static/.htaccess`) does return real
+  `404`s, verified — the divergence is dev-only.
+
+**Anything written by `postBuild` does not exist under `yarn start`**: the RSS feeds
+(`/blog/rss.xml`, `/blog/atom.xml`, `/blog/feed.json`, and the per-tag/per-series ones), the
+`.md` mirrors behind "View raw"/"Copy as Markdown", `llms.txt`. Testing those locally means
+`yarn build` then serving `build/`, never the dev server.
+
+**`.unpublished/` drafts are not routed in dev either** — verified 2026-09-10 by loading an
+existing known-good draft, which also rendered "Page Not Found". So the temp-copy-into-`blog/`
+dance is not merely convenient, it is the *only* way to compile a draft's MDX at all. Worth doing
+before considering a draft finished: it is what caught a `tags:` value missing from
+`blog/tags.yml`, which `onInlineTags: "throw"` would have turned into a build failure on the day
+of publication.
 
 **How to apply:** When a task calls for visually verifying an article or component in the running
 dev server (not just structural/lint checks), don't default to refusing per CLAUDE.md's blanket

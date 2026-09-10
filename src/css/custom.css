@@ -12,6 +12,22 @@
  */
 /* stylelint-disable color-no-hex */
 :root {
+  /*
+   * The horizontal breathing room between the page content and the window
+   * edge. `2vw` is the roomy desktop gutter this site wants (28.8px at 1440),
+   * floored at what Infima's grid assumes: `.row` escapes its container with a
+   * fixed `-1rem`, so a smaller gutter lets every row overflow to the right —
+   * which is what put a horizontal scrollbar on every page under ~800px wide.
+   *
+   * Full-bleed bands (the hero, the "Latest posts" and "Follow" sections, the
+   * /about banner) escape by exactly this value rather than by `50vw - 50%`.
+   * That matters: `100vw` counts the vertical scrollbar's width while the
+   * usable page area does not, so a vw-based escape overshoots by ~15px in any
+   * browser with classic (non-overlay) scrollbars. Escaping the very padding
+   * that inset the content cancels exactly, whatever the scrollbar does.
+   */
+  --page-gutter: max(2vw, var(--ifm-spacing-horizontal));
+
   --ifm-font-family-base: "Inter", sans-serif;
   --ifm-font-family-monospace: "Fira Code", "JetBrains Mono", monospace;
 
@@ -57,11 +73,25 @@
 
 /* --- GENERAL STRUCTURE --- */
 
+/*
+ * `2vw` gives the roomy gutters this site wants on a desktop (28.8px at 1440),
+ * but Infima's `.row` escapes its container with a FIXED
+ * `margin-inline: calc(-1 * var(--ifm-spacing-horizontal))` — 16px — on the
+ * assumption that the container's padding cancels it exactly.
+ *
+ * Below roughly 800px wide, 2vw drops under 16px and every `.row` in a
+ * container escapes further than there is room for: 8px too far at 390px. The
+ * left escape is invisible, the right one put a horizontal scrollbar on every
+ * blog page, tag page and article on a phone.
+ *
+ * `max()` keeps the wide-screen look untouched and never lets the gutter fall
+ * below what the grid assumes.
+ */
 .container {
   max-width: var(--ifm-container-width);
+  padding-right: var(--page-gutter);
+  padding-left: var(--page-gutter);
   margin: 0 auto;
-  padding-left: 2vw;
-  padding-right: 2vw;
 }
 
 .navbar__inner {

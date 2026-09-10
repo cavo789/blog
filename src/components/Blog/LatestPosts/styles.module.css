@@ -1,6 +1,6 @@
 .cardsSection {
-  margin: 0 calc(-50vw + 50%) 40px;
-  padding: 3rem calc(50vw - 50%);
+  margin: 0 calc(-1 * var(--page-gutter)) 40px;
+  padding: 3rem var(--page-gutter);
   background: var(--ifm-color-emphasis-100);
 }
 

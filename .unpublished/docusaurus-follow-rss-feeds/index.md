@@ -170,7 +170,7 @@ Three placements, three variants:
 {/* A tag or series page: the full block, aligned with the page container. */}
 <FollowFeed feedUrl="/series/my-series/rss.xml" label="the “My series” series" />
 
-{/* The homepage: a centered heading over a centered card, in its own band. */}
+{/* The homepage: a centered heading over a grid of cards, in its own band. */}
 <FollowFeed feedUrl="/blog/rss.xml" label="every new post" variant="section" />
 ```
 

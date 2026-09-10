@@ -1,15 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T18:01:24.455Z",
+  "generated": "2026-09-10T19:32:49.978Z",
   "source": "styles.module.css",
-  "sourceHash": "5c529318568a08ca69c7388f9aa0533460822bed",
+  "sourceHash": "7af8e67de8ad15e47a62d713561260932b65f210",
   "lang": "css",
-  "summary": "This CSS file styles a small action bar containing a copy button and a raw link, typically used in blog articles. The wrapper uses inline-flex to keep everything in a row with consistent spacing, and both the button and link have hover states that change their appearance when users interact with them.",
+  "summary": "This CSS styles a small action group containing a copy button and a raw link. The wrapper uses flexbox with tight spacing (6px gap) to keep the unborderd 'raw' link visually grouped with its associated button, rather than floating between two bordered actions. Both elements share a small font size and get darker on hover.",
   "explanations": {
-    "7": "inline-flex makes the children line up horizontally like flexbox, but the container itself only takes up as much width as its contents need, rather than stretching full width.",
-    "15": "var(--ifm-color-emphasis-700) is a CSS custom property (variable) that pulls a color value from the design system; this lets you update the color in one place and it changes everywhere.",
-    "27": ":not(:disabled) is a selector that means 'apply this style only when the element is NOT in the disabled state', so the hover effect doesn't trigger on disabled buttons.",
-    "37": "This hover state changes the link color to the primary theme color, giving visual feedback that the link is interactive."
+    "12": "inline-flex makes the wrapper sit inline with surrounding content while still using flexbox layout rules for its children.",
+    "14": "The 6px gap is deliberately smaller than the parent row's 16px spacing — this visual tightness helps the borderless 'raw' link feel attached to the copy button.",
+    "32": "The :not(:disabled) pseudo-class means the hover styles only apply when the button is clickable, preventing visual changes when it's disabled.",
+    "42": "This hover state changes the 'raw' link to the primary color to indicate interactivity, since the link has no border of its own to signal it's clickable."
   }
 }

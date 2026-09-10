@@ -58,7 +58,7 @@ export default function CopyAsMarkdown({ metadata }: Props): JSX.Element {
           ? "✓ Copied"
           : status === "error"
             ? "Could not copy"
-            : "📋 Copy as Markdown"}
+            : "Copy as Markdown"}
       </button>
       <a
         href={mdUrl}

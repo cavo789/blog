@@ -12,9 +12,11 @@ interface Props {
   /**
    * `card` — the full block, for tag/series pages and `/follow`, where it sits
    * inside a page container and aligns with the content grid.
-   * `section` — the homepage idiom: a centered <h2> over a centered white card,
-   * matching the LatestPosts / MainTags sections it sits between. A `card` there
-   * reads as an article callout dropped into a landing page.
+   * `section` — the homepage idiom: a centered <h2> over a three-column grid of
+   * illustrated cards, one per reader profile, matching the HomeCards /
+   * LatestPosts / MainTags grids around it. A `card` there reads as an article
+   * callout dropped into a landing page, and a single full-width card reads as a
+   * gap in the grid rhythm.
    * `inline` — a compact trigger for the article action bar, opening the same
    * content in a popover.
    */
@@ -180,7 +182,7 @@ export default function FollowFeed({
           aria-expanded={open}
           aria-haspopup="dialog"
         >
-          🔔 Follow {label}
+          Follow {label}
         </button>
         {open && (
           <div
@@ -205,10 +207,100 @@ export default function FollowFeed({
   }
 
   if (variant === "section") {
+    /*
+     * Not `body` in a single stretched card: the homepage speaks in three-column
+     * grids of illustrated cards, and one 1100px-wide card holding 544px of
+     * centered small print read as a hole punched in that rhythm — the whole
+     * reason this variant was rebuilt.
+     *
+     * The three cards are not one per service, which would have made two of them
+     * near-duplicates. They are one per reader profile: "I already have a
+     * reader", "I am on a hosted one", "I have never used RSS" — so the block
+     * also absorbs the /follow pointer that used to trail underneath in grey
+     * 0.78rem type.
+     */
     return (
       <section className={styles.section}>
         <h2>Follow {label}</h2>
-        <div className={styles.sectionCard}>{body}</div>
+        <p className={styles.sectionIntro}>
+          No account, no email address, nothing to unsubscribe from — new posts land in
+          your feed reader on their own.
+        </p>
+
+        <div className={styles.sectionGrid}>
+          <div className={styles.sectionCard}>
+            <span className={styles.cardIcon} aria-hidden="true">
+              📋
+            </span>
+            <h3 className={styles.cardTitle}>Any feed reader</h3>
+            <p className={styles.cardDescription}>
+              Paste this URL into the reader you already use.
+            </p>
+            <div className={styles.urlRow}>
+              <code className={styles.url}>{absoluteUrl}</code>
+              <button type="button" className={styles.copyBtn} onClick={handleCopy}>
+                {status === "copied"
+                  ? "✓ Copied"
+                  : status === "error"
+                    ? "Could not copy"
+                    : "Copy"}
+              </button>
+            </div>
+            {/*
+              Last, and deliberately the quietest of the three cards' actions:
+              `feed://` fails *silently* when no desktop reader has registered
+              the scheme, so it must never look like the primary path.
+            */}
+            <a
+              className={styles.cardAside}
+              href={absoluteUrl.replace(/^https?:/, "feed:")}
+            >
+              …or open it in a desktop reader
+            </a>
+          </div>
+
+          <div className={styles.sectionCard}>
+            <span className={styles.cardIcon} aria-hidden="true">
+              ⚡
+            </span>
+            <h3 className={styles.cardTitle}>Feedly or Inoreader</h3>
+            <p className={styles.cardDescription}>
+              On a hosted reader? One click and you are subscribed.
+            </p>
+            <div className={styles.readers}>
+              <a
+                className={styles.readerBtn}
+                href={`https://feedly.com/i/subscription/feed/${encodeURIComponent(absoluteUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Add to Feedly
+              </a>
+              <a
+                className={styles.readerBtn}
+                href={`https://www.inoreader.com/?add_feed=${encodeURIComponent(absoluteUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Add to Inoreader
+              </a>
+            </div>
+          </div>
+
+          <Link to="/follow" className={styles.cardLink}>
+            <div className={styles.sectionCard}>
+              <span className={styles.cardIcon} aria-hidden="true">
+                🧭
+              </span>
+              <h3 className={styles.cardTitle}>New to RSS?</h3>
+              <p className={styles.cardDescription}>
+                Pick a reader, subscribe to this blog, and never check the site again. It
+                takes two minutes.
+              </p>
+              <span className={styles.cardCta}>Start here →</span>
+            </div>
+          </Link>
+        </div>
       </section>
     );
   }

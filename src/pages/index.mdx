@@ -18,14 +18,15 @@ import styles from "./index.module.css";
   <div className={`margin-top--xl ${styles.homepageSections}`}>
     <HomeCards />
     <LatestPosts count={9} />
+    <MainTags />
     {/*
-      Deliberately here and not in the hero's button row: asking someone to
+      Last, and deliberately not in the hero's button row: asking someone to
       subscribe before they have seen a single article is the "install before
-      proof" mistake. Below the nine latest posts, the offer is earned — and it
-      sits next to "See all articles", the same intent one commitment level down.
+      proof" mistake. Here the offer is earned — and it no longer interrupts the
+      three card grids, which now run uninterrupted before the page closes on the
+      one thing a convinced reader should do next.
     */}
     <FollowFeed feedUrl="/blog/rss.xml" label="every new post" variant="section" />
-    <MainTags />
     <ScrollToTopButton />
   </div>
 </main>

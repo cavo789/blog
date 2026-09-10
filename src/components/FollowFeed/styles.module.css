@@ -148,63 +148,247 @@
 /* --- variant="section" ---------------------------------------------------- */
 
 /*
- * Deliberately mirrors MainTags/LatestPosts (centered 2rem heading, 1100px
- * centered card, same chrome as .cardItem) so the homepage keeps one visual
- * grammar. The `card` variant's left accent bar is an article-body idiom and is
- * dropped here on purpose.
+ * Deliberately mirrors HomeCards/MainTags (centered 2rem heading, 1100px
+ * three-column grid, same card chrome and hover lift) so the homepage keeps one
+ * visual grammar. The `card` variant's left accent bar is an article-body idiom
+ * and is dropped here on purpose.
+ *
+ * Earlier this variant was a single card stretched to the grid's 1100px around
+ * 544px of centered small print. It aligned with the grid without adopting its
+ * structure, and on a page made of four illustrated card grids it read as a hole
+ * rather than as a section — hence the rebuild.
  */
 .section {
   /*
-   * Same full-bleed band construction as LatestPosts' .cardsSection, so the
-   * homepage keeps one section rhythm — but deliberately NOT its
-   * --ifm-color-emphasis-100 grey: this block sits directly under LatestPosts,
-   * and an identical tint would weld the two bands into one long grey area.
-   *
-   * The hero's own background rather than a new tint: the page then opens and
-   * closes on the same pale yellow, and no colour is invented for a single
-   * block. Dark mode mirrors HeroSection exactly, for the same reason.
+   * Declared on the band rather than on .sectionCard so that dark mode can
+   * retune it without outranking .sectionCard:hover — a `[data-theme] .card`
+   * override sits above a plain `.card:hover` in the cascade, and the hover
+   * border silently stops working.
    */
-  margin: 0 calc(-50vw + 50%) 40px;
-  padding: 3rem calc(50vw - 50%);
+  --follow-card-border: var(--ifm-color-emphasis-300);
+
+  /*
+   * Same full-bleed band construction as LatestPosts' .cardsSection, so the
+   * homepage keeps one section rhythm.
+   *
+   * The hero's own background rather than a new tint: this block closes the page
+   * (it sits last, after MainTags), so the page now literally opens and closes on
+   * the same pale yellow, and no colour is invented for a single block. That rime
+   * is also why the tint is not deepened even though it is close to white — the
+   * cards, not the band, are what has to be legible, so they carry a stronger
+   * border here than elsewhere (see .sectionCard).
+   */
+  margin: 0 calc(-1 * var(--page-gutter));
+  padding: 3rem var(--page-gutter);
   background: var(--hero-background-light);
 }
 
 :global(html[data-theme="dark"]) .section {
   /*
    * NOT the hero's dark value (--ifm-background-surface-color): that token is
-   * also --ifm-card-background-color, so the inner card vanished into the band.
-   * LatestPosts already solved this — its band is emphasis-100 and its cards are
-   * the card colour, one step lighter. Matching it keeps the card readable, and
-   * the light-mode distinction from LatestPosts matters less here: dark mode has
-   * almost no headroom between these two greys anyway.
+   * also --ifm-card-background-color, so the inner cards vanish into the band.
+   * Infima's dark ramp leaves almost no headroom between #1b1b1d and #242526, so
+   * in dark mode the separation is carried by the card borders (emphasis-200,
+   * #444950) rather than by the band's fill — matching what LatestPosts does.
    */
+  --follow-card-border: var(--ifm-color-emphasis-200);
+
   background: var(--ifm-color-emphasis-100);
 }
 
 .section h2 {
-  margin-bottom: 30px;
+  margin-bottom: 0.75rem;
   font-size: 2rem;
   font-weight: 800;
   text-align: center;
 }
 
-.sectionCard {
-  max-width: 1100px;
-  padding: 24px;
-  margin: 0 auto;
+/*
+ * Capped well under the grid's 1100px: at full width this sentence rendered as
+ * one 1050px line, which reads as a caption rather than as a section intro.
+ */
+.sectionIntro {
+  max-width: 46rem;
+  margin: 0 auto 30px;
+  font-size: 1rem;
+  color: var(--ifm-color-emphasis-700);
   text-align: center;
+}
+
+.sectionGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 996px) {
+  /*
+   * Three cards in two columns leave a card-sized hole in the band, which is the
+   * exact defect this variant was rebuilt to remove. The last card — the least
+   * dense of the three — spans the row instead, and rows go back to `auto` so
+   * that second row is only as tall as its content rather than matching the
+   * first. HomeCards/MainTags need neither because they hold six and ten cards.
+   */
+  .sectionGrid {
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sectionGrid > :last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .sectionGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  /*
+   * Bottom-aligning the actions only buys anything while the cards sit side by
+   * side; stacked, it just opens a gap under each description.
+   */
+  .sectionCard .urlRow,
+  .sectionCard .readers,
+  .cardCta {
+    margin-top: 0;
+  }
+}
+
+.cardLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sectionCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
   background-color: var(--ifm-card-background-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
+
+  /*
+   * emphasis-300 rather than the emphasis-200 used by HomeCards/MainTags: those
+   * grids sit on white, this one sits on the hero's pale yellow, where a #ebedf0
+   * border leaves the cards floating with no visible edge. Dark mode steps back
+   * to emphasis-200 (#444950) — #606770 reads as a light grey on #242526.
+   */
+  border: 1px solid var(--follow-card-border);
   border-radius: var(--ifm-border-radius);
   box-shadow: 0 2px 8px rgb(0, 0, 0, 0.05);
+  transition:
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
+.sectionCard:hover {
+  box-shadow: 0 8px 25px rgb(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-5px);
+}
+
+.cardIcon {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.cardTitle {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ifm-heading-color);
+}
+
+.cardDescription {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/*
+ * Pushes each card's action to the bottom edge, so the three action rows line up
+ * across the row however long the descriptions are.
+ */
+.sectionCard .urlRow,
+.sectionCard .readers,
+.cardCta {
+  margin-top: auto;
+  margin-bottom: 0;
+}
+
+/*
+ * Stacked, unlike the other variants' single row: a card is a third of the grid
+ * (353px at 1440), the URL alone is ~290px of it, so the row wrapped and left
+ * the Copy button orphaned on a line of its own. Column instead of shrinking the
+ * field, because a horizontally-scrolling URL is a worse copy target than a
+ * full-width button.
+ */
 .sectionCard .urlRow {
-  max-width: 34rem;
-  margin-right: auto;
-  margin-left: auto;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: none;
 }
 
-.sectionCard .readers {
-  justify-content: center;
+.sectionCard .url {
+  /* 0.75rem keeps the whole URL inside the narrowest card without scrolling. */
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+/* The primary action of the whole block — it must not be the quietest control. */
+.sectionCard .copyBtn {
+  color: var(--ifm-button-color);
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+}
+
+.sectionCard .copyBtn:hover {
+  color: var(--ifm-button-color);
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+/*
+ * Buttons, not the bare inline links the old layout used: every other action on
+ * this page ("See all articles →", "See all tags →") is a bordered control, and
+ * three naked links in a row read as a footer.
+ */
+.readerBtn {
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  background-color: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 5px;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.readerBtn:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+  background-color: var(--ifm-hover-overlay);
+  border-color: var(--ifm-color-primary);
+}
+
+.cardAside {
+  margin-top: 0.6rem;
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.cardCta {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
 }
