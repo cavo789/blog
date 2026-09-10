@@ -10,6 +10,7 @@ import Columns from "@site/src/components/Columns";
 import ConnectionInfo from "@site/src/components/ConnectionInfo";
 import Details from "@site/src/components/Details";
 import DownloadButton from "@site/src/components/DownloadButton";
+import FollowFeed from "@site/src/components/FollowFeed";
 import Hero from "@site/src/components/Hero";
 import Highlight from "@site/src/components/Highlight";
 import Image from "@site/src/components/Image";
@@ -60,6 +61,7 @@ export default {
   Image,
   Link,
   LogoIcon,
+  FollowFeed,
   Prerequisite,
   ProjectSetup,
   QuickJump,

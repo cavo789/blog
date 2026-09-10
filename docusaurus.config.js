@@ -335,6 +335,20 @@ const config = {
       },
     },
     {
+      // The classic preset advertises atom.xml and feed.json on blog routes, but
+      // never /blog/rss.xml — that one is written by plugins/blog-feed-plugin and
+      // is the richest of the three (cleaned content, <enclosure> image,
+      // dc:creator, XSLT stylesheet). Declared globally so a reader's browser
+      // extension finds it from any page, not only from /blog.
+      tagName: "link",
+      attributes: {
+        rel: "alternate",
+        type: "application/rss+xml",
+        href: "https://www.avonture.be/blog/rss.xml",
+        title: "Christophe Avonture — RSS feed",
+      },
+    },
+    {
       // Site-wide discovery hook for the llms.txt convention (llmstxt.org) —
       // mirrors how <link rel="alternate" type="application/rss+xml"> lets a
       // reader/tool find the RSS feed without knowing the URL in advance.
@@ -490,7 +504,10 @@ const config = {
       },
       footer: {
         style: "light",
-        copyright: `<span class="footer-cmdk-hint">Press ⌘K to search · ? for shortcuts</span><br />Copyright © ${new Date().getFullYear()} Christophe Avonture. Powered by Docusaurus.`,
+        // The /follow link is the site's only permanent pointer to the RSS
+        // feeds; every other entry point (article action bar, tag and series
+        // pages) is contextual and only shows up on those pages.
+        copyright: `<span class="footer-cmdk-hint">Press ⌘K to search · ? for shortcuts · <a href="/follow">follow by RSS</a></span><br />Copyright © ${new Date().getFullYear()} Christophe Avonture. Powered by Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

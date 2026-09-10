@@ -1,0 +1,37 @@
+.lede {
+  max-width: 42rem;
+  font-size: 1.05rem;
+}
+
+.formatList code {
+  font-size: 0.85rem;
+}
+
+/*
+ * Multi-column so ~50 tags stay one screenful instead of a scroll marathon.
+ * `columns` degrades to a single column on narrow viewports on its own.
+ */
+.feedList {
+  padding-left: 1.2rem;
+  columns: 18rem 3;
+  column-gap: 2rem;
+}
+
+.feedList li {
+  break-inside: avoid;
+  margin-bottom: 0.35rem;
+}
+
+.count {
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.feedLink {
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.feedLink:hover {
+  color: var(--ifm-color-primary);
+}

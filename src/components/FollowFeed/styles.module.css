@@ -1,0 +1,135 @@
+/* --- Shared bits ---------------------------------------------------------- */
+
+.intro {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+.urlRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.url {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 5px;
+}
+
+.copyBtn {
+  flex: 0 0 auto;
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 5px;
+}
+
+.copyBtn:hover {
+  color: var(--ifm-color-emphasis-900);
+  border-color: var(--ifm-color-emphasis-600);
+}
+
+.readers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 0.6rem;
+}
+
+.readerLink {
+  font-size: 0.82rem;
+  color: var(--ifm-color-primary);
+}
+
+.help {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ifm-color-content-secondary);
+}
+
+/* --- variant="card" ------------------------------------------------------- */
+
+.card {
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  background: var(--ifm-color-emphasis-0);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: var(--ifm-global-radius);
+}
+
+.title {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* --- variant="inline" ----------------------------------------------------- */
+
+.inlineWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Matches CopyAsMarkdown's button so the action bar reads as one row. */
+.trigger {
+  padding: 5px 12px;
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--ifm-color-emphasis-400);
+  border-radius: 5px;
+}
+
+.trigger:hover {
+  color: var(--ifm-color-emphasis-900);
+  border-color: var(--ifm-color-emphasis-600);
+}
+
+.popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: min(28rem, calc(100vw - 2rem));
+  padding: 1rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+/*
+ * In a column flex container, a child's flex-basis behaves as a min-height:
+ * without this, the paragraphs and rows below stretch the popover well past
+ * their content. Bitten by this before — keep it.
+ */
+.popover > * {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  /*
+   * Anchored left, the popover would overflow the viewport on a narrow screen
+   * once the trigger sits mid-row. Pin it to the row instead.
+   */
+  .popover {
+    right: 0;
+    left: auto;
+  }
+}

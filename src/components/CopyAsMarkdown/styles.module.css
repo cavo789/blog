@@ -1,8 +1,12 @@
+/*
+ * No outer margin: this sits inside Blog/ArticleActions, which owns the row's
+ * spacing. A margin here would stack with the row's and push the actions off
+ * the date line they belong to.
+ */
 .wrapper {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin: 8px 0;
 }
 
 .copyBtn {

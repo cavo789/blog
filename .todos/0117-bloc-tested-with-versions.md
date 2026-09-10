@@ -7,7 +7,7 @@
 
 ## Problème
 
-L'article d'ActuIA analysé le 2026-09-10 contient une section « Promesses et faits, **à la date du
+L'article d'ActuIA analysé le 2026-09-10 ([https://www.actuia.com/actualite/gpt-6-astra-ce-qui-a-change-chez-openai-en-quinze-jours#sec-5](https://www.actuia.com/actualite/gpt-6-astra-ce-qui-a-change-chez-openai-en-quinze-jours#sec-5)) contient une section « Promesses et faits, **à la date du
 10 septembre** » : une liste de faits assortis de leur statut de vérification, daté. C'est le procédé
 éditorial qui donne sa crédibilité à la page.
 

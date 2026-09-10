@@ -1,0 +1,12 @@
+/*
+ * The row owns the spacing between actions and around itself. Each action ships
+ * its own button styling but no outer margin — see CopyAsMarkdown's .wrapper,
+ * deliberately margin-free so it can sit here.
+ */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}

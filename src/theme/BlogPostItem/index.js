@@ -1,5 +1,5 @@
 import AIIcon from "@site/src/components/Blog/AIIcon";
-import CopyAsMarkdown from "@site/src/components/CopyAsMarkdown";
+import ArticleActions from "@site/src/components/Blog/ArticleActions";
 import PropTypes from "prop-types";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import BlogPostItemContainer from "@theme/BlogPostItem/Container";
@@ -29,14 +29,14 @@ export default function BlogPostItem({ children, className }) {
   const { frontMatter } = metadata;
   const containerClassName = useContainerClassName();
   const aiIcon = frontMatter.ai_assisted && isBlogPostPage ? <AIIcon /> : null;
-  // Same reasoning as aiIcon: the mirror only exists for the article the
+  // Same reasoning as aiIcon: these actions only make sense for the article the
   // reader is actually on, never for a card in a list view.
-  const copyAsMarkdown = isBlogPostPage ? <CopyAsMarkdown metadata={metadata} /> : null;
+  const actions = isBlogPostPage ? <ArticleActions metadata={metadata} /> : null;
 
   return (
     <>
       <BlogPostItemContainer className={clsx(containerClassName, className)}>
-        <BlogPostItemHeader aiIcon={aiIcon} copyAsMarkdown={copyAsMarkdown} />
+        <BlogPostItemHeader aiIcon={aiIcon} actions={actions} />
         <BlogPostItemContent>{children}</BlogPostItemContent>
         <BlogPostItemFooter />
 

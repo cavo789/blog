@@ -8,6 +8,8 @@ import Link from "@docusaurus/Link";
 import Translate, { translate } from "@docusaurus/Translate";
 import PostCard from "@site/src/components/Blog/PostCard";
 import SERIES_DATA from "@site/src/data/series.js";
+import Head from "@docusaurus/Head";
+import FollowFeed from "@site/src/components/FollowFeed";
 import styles from "./styles.module.css";
 
 const DEFAULT_IMAGE = "/img/default.webp";
@@ -109,6 +111,27 @@ export default function SeriesArticlesPage(): JSX.Element {
             </a>
           )}
         </div>
+        {sortedPosts.length > 0 && (
+          <>
+            {/*
+              /series/<slug> is a custom route (docusaurus-plugin-series-route),
+              so nothing injects feed autodiscovery here on its own — see
+              src/components/MarkdownAlternate for the same pattern.
+            */}
+            <Head>
+              <link
+                rel="alternate"
+                type="application/rss+xml"
+                href={`/series/${slug}/rss.xml`}
+                title={`${originalSeriesName} — RSS feed`}
+              />
+            </Head>
+            <FollowFeed
+              feedUrl={`/series/${slug}/rss.xml`}
+              label={`the “${originalSeriesName}” series`}
+            />
+          </>
+        )}
         {sortedPosts.length > 0 ? (
           <div className={styles.seriesGrid}>
             {sortedPosts.map((post) => (

@@ -7,6 +7,9 @@ import Link from "@docusaurus/Link";
 import Translate, { translate } from "@docusaurus/Translate";
 import styles from "./styles.module.css";
 import PostCard from "@site/src/components/Blog/PostCard";
+import Head from "@docusaurus/Head";
+import FollowFeed from "@site/src/components/FollowFeed";
+import { getTagLabel as getTagDisplayLabel } from "@site/src/data/tags";
 
 type Tag = string | { label: string };
 
@@ -82,6 +85,8 @@ export default function TagArticlesPage(): JSX.Element {
     );
   }
 
+  const feedUrl = `/blog/tags/${rawTag}/rss.xml`;
+
   return (
     <Layout
       title={translate(
@@ -95,6 +100,26 @@ export default function TagArticlesPage(): JSX.Element {
             {"Articles tagged: {label}"}
           </Translate>
         </h1>
+        {/*
+          This route is registered by docusaurus-plugin-tag-route, not by the
+          blog plugin, so Docusaurus injects no feed autodiscovery of its own
+          here — same reasoning as src/components/MarkdownAlternate.
+        */}
+        <Head>
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            href={feedUrl}
+            title={`${displayTag} — RSS feed`}
+          />
+        </Head>
+        {/*
+          getTagDisplayLabel() resolves the front-matter key to its
+          blog/tags.yml label (`ai` → `Artificial Intelligence (AI)`), which is
+          also what the feed's own <title> carries. The <h1> above still shows
+          the raw key — a separate, pre-existing inconsistency.
+        */}
+        <FollowFeed feedUrl={feedUrl} label={getTagDisplayLabel(displayTag)} />
         <div className={styles.postRow}>
           {taggedPosts.map((post) => (
             <PostCard key={post.permalink} post={post} />
