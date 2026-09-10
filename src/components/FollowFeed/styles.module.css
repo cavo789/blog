@@ -11,6 +11,12 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+
+  /*
+   * Capped: the URL is ~45 characters, and letting the field stretch to the
+   * full width of a page container turns a copy target into a banner.
+   */
+  max-width: 46rem;
   margin-bottom: 0.75rem;
 }
 
@@ -99,6 +105,12 @@
   border-color: var(--ifm-color-emphasis-600);
 }
 
+.popoverTitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
 .popover {
   position: absolute;
   top: calc(100% + 6px);
@@ -123,13 +135,76 @@
   flex: 0 0 auto;
 }
 
-@media (max-width: 480px) {
+/*
+ * Applied by the component when it measures that a left-anchored panel would
+ * run past the right edge of the viewport — which is what happens on /blog,
+ * where the trigger is pushed to the far right of the page header.
+ */
+.popoverRight {
+  right: 0;
+  left: auto;
+}
+
+/* --- variant="section" ---------------------------------------------------- */
+
+/*
+ * Deliberately mirrors MainTags/LatestPosts (centered 2rem heading, 1100px
+ * centered card, same chrome as .cardItem) so the homepage keeps one visual
+ * grammar. The `card` variant's left accent bar is an article-body idiom and is
+ * dropped here on purpose.
+ */
+.section {
   /*
-   * Anchored left, the popover would overflow the viewport on a narrow screen
-   * once the trigger sits mid-row. Pin it to the row instead.
+   * Same full-bleed band construction as LatestPosts' .cardsSection, so the
+   * homepage keeps one section rhythm — but deliberately NOT its
+   * --ifm-color-emphasis-100 grey: this block sits directly under LatestPosts,
+   * and an identical tint would weld the two bands into one long grey area.
+   *
+   * The hero's own background rather than a new tint: the page then opens and
+   * closes on the same pale yellow, and no colour is invented for a single
+   * block. Dark mode mirrors HeroSection exactly, for the same reason.
    */
-  .popover {
-    right: 0;
-    left: auto;
-  }
+  margin: 0 calc(-50vw + 50%) 40px;
+  padding: 3rem calc(50vw - 50%);
+  background: var(--hero-background-light);
+}
+
+:global(html[data-theme="dark"]) .section {
+  /*
+   * NOT the hero's dark value (--ifm-background-surface-color): that token is
+   * also --ifm-card-background-color, so the inner card vanished into the band.
+   * LatestPosts already solved this — its band is emphasis-100 and its cards are
+   * the card colour, one step lighter. Matching it keeps the card readable, and
+   * the light-mode distinction from LatestPosts matters less here: dark mode has
+   * almost no headroom between these two greys anyway.
+   */
+  background: var(--ifm-color-emphasis-100);
+}
+
+.section h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+}
+
+.sectionCard {
+  max-width: 1100px;
+  padding: 24px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-border-radius);
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.05);
+}
+
+.sectionCard .urlRow {
+  max-width: 34rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.sectionCard .readers {
+  justify-content: center;
 }

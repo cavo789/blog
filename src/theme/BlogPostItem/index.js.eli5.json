@@ -1,19 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:10:03.437Z",
+  "generated": "2026-09-10T18:01:35.238Z",
   "source": "index.js",
-  "sourceHash": "77ef6d85c2c7aa287b89dc283bf1bd082ebc1350",
+  "sourceHash": "73d67b1b6dfd0dbbb4cb3d9b3088e1b5d1d8c425",
   "lang": "javascript",
-  "summary": "This component renders a blog post item that adapts its display based on whether the user is viewing a single post or browsing a list of posts. It conditionally shows certain UI elements like an AI icon, copy-to-markdown button, and engagement features only when viewing the full post, while always showing the core post content and header/footer.",
+  "summary": "This component renders a blog post item that adapts its appearance depending on whether you're viewing a single post or browsing a list of posts. It conditionally shows certain interactive elements like AI badges, article actions, and engagement features only when viewing the full post page, while adding spacing when the post appears as a card in a list.",
   "explanations": {
-    "22": "This helper function checks if we're on the actual blog post page versus a list view, and returns a CSS class name to add bottom spacing only in list view.",
-    "23": "useBlogPost is a Docusaurus hook that gives us metadata about the current blog context, including whether we're viewing a single post or a list.",
-    "28": "We're extracting both the blog post metadata and the isBlogPostPage flag from the Docusaurus hook so we can use them throughout this component.",
-    "29": "frontMatter contains custom metadata fields defined in the blog post's YAML header, like whether it was AI-assisted.",
-    "31": "This shows the AI icon only if two conditions are true: the post is marked as AI-assisted AND we're on the actual post page (not a list card).",
-    "34": "The copy-as-markdown button only appears on the full post page, not on list view cards, because copying wouldn't make sense in a list context.",
-    "44": "Everything inside this block only renders when viewing the actual post page, not when the post appears as a card in the blog list.",
-    "57": "This checks that tried_it is not explicitly false before showing the TriedIt component, meaning it displays by default unless the post author disabled it."
+    "22": "This helper function checks whether we're on the individual post page or viewing a list of posts, and returns a CSS class name only for list view to add bottom spacing between post cards.",
+    "24": "The ternary operator returns the margin class if NOT on the post page (meaning we're in list view), otherwise returns undefined so no extra spacing is added on the full post page.",
+    "28": "We're calling a Docusaurus hook that gives us info about whether this component is rendering as a full post page or as a preview card in a list.",
+    "29": "We're extracting the frontMatter object from metadata—this contains custom fields from the blog post's YAML header like whether it's AI-assisted.",
+    "31": "This conditionally renders the AI icon badge only if two things are true: the post is marked as AI-assisted AND we're viewing the full post page (not a list card).",
+    "34": "Article actions (like share buttons) only make sense to show on the full post page, not on preview cards, so we conditionally create this element.",
+    "38": "clsx is a utility that combines multiple CSS class names together, ignoring undefined values—here we're merging the container spacing class with any additional classes passed to this component.",
+    "44": "The && operator is a common React pattern: if isBlogPostPage is true, render everything inside the fragment; if false, render nothing.",
+    "57": "This checks if tried_it is explicitly set to false in frontMatter—if it's not false (meaning it's true or undefined), render the TriedIt component."
   }
 }

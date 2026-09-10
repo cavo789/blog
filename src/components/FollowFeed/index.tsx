@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect, useRef, type JSX } from "react";
+import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
@@ -9,14 +10,22 @@ interface Props {
   /** What the reader would be following: `Docker`, `every new post`, … */
   label: string;
   /**
-   * `card` — the full block, for tag/series pages and `/follow`.
+   * `card` — the full block, for tag/series pages and `/follow`, where it sits
+   * inside a page container and aligns with the content grid.
+   * `section` — the homepage idiom: a centered <h2> over a centered white card,
+   * matching the LatestPosts / MainTags sections it sits between. A `card` there
+   * reads as an article callout dropped into a landing page.
    * `inline` — a compact trigger for the article action bar, opening the same
    * content in a popover.
    */
-  variant?: "card" | "inline";
+  variant?: "card" | "section" | "inline";
 }
 
 type Status = "idle" | "copied" | "error";
+
+/** Keep in sync with .popover's `width` in styles.module.css: min(28rem, 100vw - 2rem). */
+const POPOVER_MAX_WIDTH_PX = 448;
+const POPOVER_VIEWPORT_MARGIN_PX = 32;
 
 /**
  * "Follow this topic" — hands the reader the URL of an RSS feed and the two or
@@ -43,6 +52,7 @@ export default function FollowFeed({
   const { siteConfig } = useDocusaurusContext();
   const [status, setStatus] = useState<Status>("idle");
   const [open, setOpen] = useState(false);
+  const [alignRight, setAlignRight] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Hosted readers need an absolute URL: they fetch the feed server-side, so a
@@ -64,6 +74,29 @@ export default function FollowFeed({
     const timer = setTimeout(() => setStatus("idle"), 2000);
     return () => clearTimeout(timer);
   }, [status]);
+
+  /*
+   * Which edge the popover hangs from is decided per opening, not by a media
+   * query: the trigger sits at the left of the content column in an article
+   * header but is pushed hard right on /blog, and either fixed anchor overflows
+   * the viewport in one of those two places. Measured here rather than in an
+   * effect so the panel is never painted at the wrong edge first.
+   */
+  const toggleOpen = useCallback(() => {
+    if (!open && wrapperRef.current) {
+      const { left } = wrapperRef.current.getBoundingClientRect();
+      // The panel's *effective* width, not its maximum: on a narrow screen the
+      // CSS clamps it to the viewport, and measuring against 448px there made
+      // every opening flip to the right edge — which pushed the panel off the
+      // left of the screen instead, since the trigger is nowhere near the right.
+      const width = Math.min(
+        POPOVER_MAX_WIDTH_PX,
+        window.innerWidth - POPOVER_VIEWPORT_MARGIN_PX,
+      );
+      setAlignRight(left + width > window.innerWidth - 16);
+    }
+    setOpen((value) => !value);
+  }, [open]);
 
   // Escape and outside clicks close the popover — a reader who opened it by
   // mistake must not have to hunt for the toggle.
@@ -87,10 +120,15 @@ export default function FollowFeed({
 
   const body = (
     <>
+      {/*
+        The label is carried by the heading above, never interpolated into this
+        sentence: it has to read correctly for a tag ("Docker"), a series ("the
+        “X” series") and the whole blog ("every new post") alike, and no single
+        template survives all three ("New posts about every new post…").
+      */}
       <p className={styles.intro}>
-        New posts about <strong>{label}</strong>, delivered to your feed reader — no
-        account, no email address, nothing to unsubscribe from. Paste this URL into your
-        reader:
+        They land in your feed reader on their own — no account, no email address, nothing
+        to unsubscribe from. Paste this URL into your reader:
       </p>
 
       <div className={styles.urlRow}>
@@ -138,18 +176,40 @@ export default function FollowFeed({
         <button
           type="button"
           className={styles.trigger}
-          onClick={() => setOpen((value) => !value)}
+          onClick={toggleOpen}
           aria-expanded={open}
           aria-haspopup="dialog"
         >
           🔔 Follow {label}
         </button>
         {open && (
-          <div className={styles.popover} role="dialog" aria-label={`Follow ${label}`}>
+          <div
+            className={clsx(styles.popover, alignRight && styles.popoverRight)}
+            role="dialog"
+            aria-label={`Follow ${label}`}
+          >
+            {/*
+              The popover has no <h3> of its own to inherit from, so it repeats
+              the topic here — otherwise "They land in your feed reader" opens on
+              a pronoun with no antecedent. A <p>, not a heading: this sits in
+              the article header and has no business in the document outline.
+            */}
+            <p className={styles.popoverTitle}>
+              Follow <strong>{label}</strong>
+            </p>
             {body}
           </div>
         )}
       </div>
+    );
+  }
+
+  if (variant === "section") {
+    return (
+      <section className={styles.section}>
+        <h2>Follow {label}</h2>
+        <div className={styles.sectionCard}>{body}</div>
+      </section>
     );
   }
 

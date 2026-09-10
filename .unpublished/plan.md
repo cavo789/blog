@@ -252,6 +252,15 @@ Indépendants entre eux, sauf :
 - **`docusaurus-mobile-preview` :** aucune dépendance sur un brouillon non publié — deux liens vers
   `/blog/docker-localhost-ssl` et `/blog/vscode-devcontainer`, tous deux déjà publiés. Date
   placeholder `2026-09-15`.
+- **`docusaurus-follow-rss-feeds` :** écrit le 2026-09-10, date placeholder `2026-11-03`. Suite
+  directe de `/blog/blog-post-feed` (le plugin de flux) — **lien réciproque à poser dans cet
+  article-là à la publication**, impossible avant : un lien depuis un post publié vers un slug en
+  `draft: true` casserait le build de production. Tous les `<Snippet source=…>` pointent vers les
+  **vrais** fichiers du dépôt (`plugins/blog-feed-plugin/topic-feeds.cjs`,
+  `src/components/FollowFeed/*`, `src/components/Blog/ArticleActions/index.tsx`) — aucune copie
+  dans un `files/`, donc rien à resynchroniser, mais toute refonte de ces fichiers change l'article
+  sans prévenir. Bannière `/img/v2/docusaurus_rss_enhanced.webp` partagée avec `/blog/blog-post-feed`.
+  Captures d'écran prises sur le serveur de dev le 2026-09-10 : à refaire si l'UI bouge.
 
 ### Correction apportée à un article déjà publié (2026-07-27)
 

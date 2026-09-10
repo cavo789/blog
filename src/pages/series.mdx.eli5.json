@@ -1,16 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:53:42.943Z",
+  "generated": "2026-09-10T18:01:28.191Z",
   "source": "series.mdx",
-  "sourceHash": "70c2de044fc5482b2670728a821c4899a2821e75",
+  "sourceHash": "d8bb768fe41299797581ab9312984bdabe870870",
   "lang": "markdown",
-  "summary": "This is a documentation page that displays all article series available on the site. It imports custom components to show statistics about the series and cards representing each series, along with a button to scroll back to the top, all organized under a centered heading with an introductory description.",
+  "summary": "This is a documentation page that displays all article series available on the site. It imports styling and components, then renders a title, statistics about the series, an introductory description, cards showing all series, and a button to scroll back to the top.",
   "explanations": {
-    "3": "This tells the documentation system not to render a table of contents on this page, since the page structure doesn't need one.",
-    "5": "This specifies that 'christophe' is the author of this page, which metadata the site uses for attribution.",
-    "8": "This imports a CSS file specifically for styling the series-related components on this page.",
-    "12": "This disables a linting rule that would normally complain about markdown formatting, because this file mixes markdown with JSX components.",
-    "17": "Instead of markdown heading syntax, this uses JSX to create an HTML heading with a CSS class for centering, which gives more control over the styling."
+    "1": "This YAML frontmatter section provides metadata about the page — its title, whether to hide the table of contents, the hero image, and the author.",
+    "3": "This tells the documentation generator not to automatically create a table of contents for this page.",
+    "5": "This specifies that 'christophe' is the author of this content.",
+    "8": "This imports a CSS file specific to styling series-related components.",
+    "12": "This comment tells the markdown linter to ignore certain style rules for this file since we're mixing markdown with React components.",
+    "22": "The {\" \"} is a JSX syntax trick that adds a space in the rendered output — without it, the space would be stripped by the JSX parser."
   }
 }

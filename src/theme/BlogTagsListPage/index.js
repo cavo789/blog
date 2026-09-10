@@ -53,6 +53,16 @@ export default function BlogTagsListPage({ tags, sidebar }) {
         <div className={styles.pageHeader}>
           <h1 className={styles.pageTitle}>{title}</h1>
           <p className={styles.pageSubtitle}>{tagsArray.length} topics to explore</p>
+          {/*
+            Pedagogy, not a call to action: this page lists subjects, it does not
+            offer one. The subscribing happens on the tag's own page, where a
+            single feed is actually on the table. A feed icon on each of the 49
+            cards would just noise up the grid for the same information.
+          */}
+          <p className={styles.feedHint}>
+            Every topic here has its own RSS feed —{" "}
+            <Link to="/follow">follow just the ones you care about</Link>.
+          </p>
         </div>
 
         {featuredCards.length > 0 && (

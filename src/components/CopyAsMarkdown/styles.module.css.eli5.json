@@ -1,15 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T07:07:19.034Z",
+  "generated": "2026-09-10T18:01:24.455Z",
   "source": "styles.module.css",
-  "sourceHash": "3a25bc4a209206dcf14ee34c97ab8acbb8a86252",
+  "sourceHash": "5c529318568a08ca69c7388f9aa0533460822bed",
   "lang": "css",
-  "summary": "This stylesheet defines styles for a container with a copy button and a raw link. The wrapper arranges its children horizontally with spacing, while the copy button has a bordered outline style that changes appearance when hovered or disabled. The raw link is a smaller text element that changes color on hover.",
+  "summary": "This CSS file styles a small action bar containing a copy button and a raw link, typically used in blog articles. The wrapper uses inline-flex to keep everything in a row with consistent spacing, and both the button and link have hover states that change their appearance when users interact with them.",
   "explanations": {
-    "2": "inline-flex makes the wrapper sit inline with surrounding content while using flexbox layout rules internally.",
-    "11": "var(--ifm-color-emphasis-700) pulls a color value from a CSS custom property (variable), which lets you reuse colors defined elsewhere.",
-    "18": "The :disabled selector targets the button when it has the disabled attribute, letting you style disabled states differently.",
-    "23": ":not(:disabled) means 'apply this hover style only if the button is NOT disabled', so disabled buttons won't change color on hover."
+    "7": "inline-flex makes the children line up horizontally like flexbox, but the container itself only takes up as much width as its contents need, rather than stretching full width.",
+    "15": "var(--ifm-color-emphasis-700) is a CSS custom property (variable) that pulls a color value from the design system; this lets you update the color in one place and it changes everywhere.",
+    "27": ":not(:disabled) is a selector that means 'apply this style only when the element is NOT in the disabled state', so the hover effect doesn't trigger on disabled buttons.",
+    "37": "This hover state changes the link color to the primary theme color, giving visual feedback that the link is interactive."
   }
 }

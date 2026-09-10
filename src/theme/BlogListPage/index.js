@@ -7,6 +7,7 @@ import {
   PageMetadata,
 } from "@docusaurus/theme-common";
 import BlogListPaginator from "@theme/BlogListPaginator";
+import FollowFeed from "@site/src/components/FollowFeed";
 import SearchMetadata from "@theme/SearchMetadata";
 import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
@@ -53,10 +54,19 @@ function BlogListPageContent({ metadata, items }) {
   return (
     <Layout>
       <main className={clsx("container", styles.blogListPage)}>
-        <h1 className={styles.pageTitle}>
-          All posts
-          <span className={styles.postCount}>{metadata.totalCount}</span>
-        </h1>
+        <div className={styles.pageHeader}>
+          <h1 className={styles.pageTitle}>
+            All posts
+            <span className={styles.postCount}>{metadata.totalCount}</span>
+          </h1>
+          {/*
+            The compact trigger, not the full card: a reader who lands on "all
+            posts" came to browse. The site-wide feed is the machine-readable
+            twin of this exact page, so the offer belongs here — just not loud
+            enough to delay the list.
+          */}
+          <FollowFeed feedUrl="/blog/rss.xml" label="every new post" variant="inline" />
+        </div>
         <div className={styles.cardsGrid}>
           {posts.map((post) => (
             <PostCard key={post.id} post={post} layout="big" />
