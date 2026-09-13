@@ -78,6 +78,9 @@ let missing = 0;
 
 for (const relFile of relFiles) {
   const absFile = path.resolve(projectRoot, relFile);
+  // `--cached` still lists a tracked file whose deletion has not been staged yet (a draft
+  // moved from .unpublished/ to blog/ before `git add`). Nothing to check in that case.
+  if (!fs.existsSync(absFile)) continue;
   const rawContent = fs.readFileSync(absFile, "utf-8");
   const content = blankOutCodeSpans(rawContent);
   const currentFileDir = path.dirname(absFile);

@@ -13,6 +13,8 @@ language: en
 updates:
   - date: 2026-02-04
     note: add recursive CLI
+  - date: 2026-09-13
+    note: pin the Homebrew install revision instead of piping HEAD into bash
 blueskyRecordKey: 3m3m74j2e6c2e
 ---
 <!-- cspell:ignore Korben,Squoosh,brew,caesiumclt,behat -->
@@ -49,7 +51,14 @@ Add the `--recursive` flag like in `caesiumclt -q 85 --recursive --format webp -
 
 The installation guide is available here: [https://saerasoft.com/caesiumclt/](https://saerasoft.com/caesiumclt/).
 
-If, like me, you don't have `brew` yet, just run this command to install it globally: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`.
+If, like me, you don't have `brew` yet, install it first. Rather than piping `HEAD` straight into `bash` and running whatever sits on the branch at that second, pin a revision you can read on GitHub beforehand:
+
+```bash
+SHA=8949852f785a3bacaba2a979d0790337950b0a4a
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/${SHA}/install.sh)"
+```
+
+On Apple Silicon you can skip the script altogether: Homebrew ships a signed [`Homebrew.pkg`](https://github.com/Homebrew/brew/releases/latest). <Link to="/blog/atuin-bash-history">A more recent article</Link> has the longer version of why a `curl | bash` deserves that much care.
 
 This done, just run `brew install caesiumclt`.
 

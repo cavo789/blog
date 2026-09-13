@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:32.144Z",
+  "generated": "2026-09-13T18:03:26.196Z",
   "source": "index.md",
-  "sourceHash": "49bf922adff00d4d2ce84c8f4d225a26fa2024d7",
+  "sourceHash": "dec7b3c2d3a5443b304afc245c6e3474e2d0707d",
   "questions": [
     {
-      "question": "How do I compress images using CaesiumCLT?",
-      "anchor": "run-the-optimization-tool"
-    },
-    {
-      "question": "What is the command to install CaesiumCLT globally?",
-      "anchor": "installation"
-    },
-    {
-      "question": "How can I determine which folders on my disk contain the biggest image files?",
-      "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
-    },
-    {
-      "question": "What are some best practices for optimizing images using Docker and Bash?",
+      "question": "What is CaesiumCLT?",
       "anchor": ""
     },
     {
-      "question": "How do I convert PNG images to WEBP format using CaesiumCLT?",
+      "question": "How do I install CaesiumCLT on my device?",
       "anchor": "run-the-optimization-tool"
     },
     {
-      "question": "What is the command to process all files from my current folder with CaesiumCLT?",
-      "anchor": "run-the-optimization-tool"
+      "question": "What command does CaesiumCLT use to convert PNG files to WEBP format?",
+      "anchor": "installation"
     },
     {
-      "question": "How can I optimize images in multiple directories on my disk using CaesiumCLT?",
+      "question": "How can I identify directories with the largest image files on my disk?",
       "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
     },
     {
-      "question": "What are some additional tips for optimizing images using Docker and Bash?",
+      "question": "What is the command to run CaesiumCLT on all files from your current folder?",
+      "anchor": "installation"
+    },
+    {
+      "question": "How do I install Homebrew and what are some alternative methods for installing it?",
+      "anchor": "run-the-optimization-tool"
+    },
+    {
+      "question": "What is the command to list directories by size on my disk?",
+      "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
+    },
+    {
+      "question": "What is the purpose of the audit script mentioned in the article?",
       "anchor": ""
     }
   ]

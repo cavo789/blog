@@ -67,8 +67,8 @@ Either way, the usage is identical: `dive <image-name>`.
 Let's build something genuinely bad so we have something to analyze. Our app is a tiny Flask API — nothing fancy, just enough to pull in real dependencies:
 
 <Snippet
-  filename=".unpublished/docker-dive/files/app.py"
-  source=".unpublished/docker-dive/files/app.py"
+  filename="app.py"
+  source="./files/app.py"
   defaultOpen={false}
 />
 
@@ -76,7 +76,7 @@ And the Dockerfile — written with zero regard for image size:
 
 <Snippet
   filename="Dockerfile.bad"
-  source=".unpublished/docker-dive/files/Dockerfile.bad"
+  source="./files/Dockerfile.bad"
   defaultOpen={true}
 />
 
@@ -119,7 +119,7 @@ The left panel shows the file tree for the selected layer. When you select the `
 
 For a non-interactive, scriptable result, use the CI mode:
 
-<Terminal title="user@machine: ~/myapp" wrap={true} source=".unpublished/docker-dive/files/terminal_dive_bad.txt" />
+<Terminal title="user@machine: ~/myapp" wrap={true} source="./files/terminal_dive_bad.txt" />
 
 **61.89% efficiency. 438 MB wasted.** That's brutal, and it's entirely self-inflicted.
 
@@ -133,7 +133,7 @@ The first and most common mistake: separating `apt-get update` from the cleanup.
 
 <Snippet
   filename="Dockerfile.v2"
-  source=".unpublished/docker-dive/files/Dockerfile.v2"
+  source="./files/Dockerfile.v2"
   defaultOpen={true}
 />
 
@@ -150,7 +150,7 @@ myapp        v2     7a4e0f1c9d83   712MB
 
 712 MB instead of 1.19 GB. Nearly 500 MB gone. Let's confirm the improvement with dive:
 
-<Terminal title="user@machine: ~/myapp" wrap={true} source=".unpublished/docker-dive/files/terminal_dive_v2.txt" />
+<Terminal title="user@machine: ~/myapp" wrap={true} source="./files/terminal_dive_v2.txt" />
 
 98.23% efficiency — a massive jump. But we're still at 712 MB for a tiny Flask app. There's more to fix.
 
@@ -162,7 +162,7 @@ The solution: collapse related operations into a single `RUN` chain using `&&`:
 
 <Snippet
   filename="Dockerfile.v3"
-  source=".unpublished/docker-dive/files/Dockerfile.v3"
+  source="./files/Dockerfile.v3"
   defaultOpen={true}
 />
 
@@ -191,7 +191,7 @@ The core idea of a multi-stage build is simple: use one `FROM` to build, use ano
 
 <Snippet
   filename="Dockerfile.multistage"
-  source=".unpublished/docker-dive/files/Dockerfile.multistage"
+  source="./files/Dockerfile.multistage"
   defaultOpen={true}
 />
 
@@ -216,7 +216,7 @@ myapp        multistage   9c3a1f8e4b22    247MB
 
 247 MB — an 80% reduction from our starting point. And the dive score:
 
-<Terminal title="user@machine: ~/myapp" wrap={true} source=".unpublished/docker-dive/files/terminal_dive_multistage.txt" />
+<Terminal title="user@machine: ~/myapp" wrap={true} source="./files/terminal_dive_multistage.txt" />
 
 99.71% efficiency. The remaining 4 KB of "wasted" bytes are background noise — Docker layer metadata that can't be avoided.
 
@@ -234,13 +234,13 @@ This only works if your application is a self-contained binary with zero externa
 
 <Snippet
   filename="Dockerfile.scratch"
-  source=".unpublished/docker-dive/files/Dockerfile.scratch"
+  source="./files/Dockerfile.scratch"
   defaultOpen={true}
 />
 
 <Snippet
   filename="main.go"
-  source=".unpublished/docker-dive/files/main.go"
+  source="./files/main.go"
   defaultOpen={false}
 />
 
@@ -257,7 +257,7 @@ myserver     scratch   1a2b3c4d5e6f    6.88MB
 
 6.88 MB. Less than 7 MB for a production HTTP server. And dive?
 
-<Terminal title="user@machine: ~/myserver" wrap={true} source=".unpublished/docker-dive/files/terminal_dive_scratch.txt" />
+<Terminal title="user@machine: ~/myserver" wrap={true} source="./files/terminal_dive_scratch.txt" />
 
 100.00% efficiency. 0 bytes wasted. There is literally nowhere left to improve.
 
@@ -273,7 +273,7 @@ Create a `.dive-ci.yaml` at the root of your project:
 
 <Snippet
   filename=".dive-ci.yaml"
-  source=".unpublished/docker-dive/files/dive-ci-config.yaml"
+  source="./files/dive-ci-config.yaml"
   defaultOpen={true}
 />
 

@@ -22,7 +22,7 @@ This article covers working with shell history in Bash/ZSH: locating the history
 
 For me, one of the undeniable strengths of the command line under Linux is the management of the history of previously executed commands.
 
-*The single biggest upgrade you can make to that history is <Link to="/blog/linux-fzf-introduction">fzf</Link>: it turns <kbd>CTRL</kbd>+<kbd>R</kbd> into a fuzzy, interactive search instead of a linear one. If you want something more structured — with timestamps, exit codes, working directory, and optional multi-machine sync — Atuin replaces the flat history file with a SQLite database entirely.*
+*The single biggest upgrade you can make to that history is <Link to="/blog/linux-fzf-introduction">fzf</Link>: it turns <kbd>CTRL</kbd>+<kbd>R</kbd> into a fuzzy, interactive search instead of a linear one. If you want something more structured — with timestamps, exit codes, working directory, and optional multi-machine sync — <Link to="/blog/atuin-bash-history">Atuin</Link> replaces the flat history file with a SQLite database entirely.*
 
 To be able to press the <kbd>Up</kbd> or <kbd>Down</kbd> keys on the keyboard to return to previously run commands, wow.
 
@@ -94,6 +94,8 @@ Below is the look and feel for ZSH; much better and easier than under Bash.
 ![CTRL-R in ZSH](./images/ctrl_r.webp)
 
 So press <kbd>CTRL</kbd>+<kbd>R</kbd> then start to type some letters like *gacom* and every entry having these letters (like **g**it add . ; git **com**mit ... will be retrieved).
+
+This popup is still a linear walk through a flat text file, though: no timestamp, no exit code, no idea which folder you were in. If that limitation starts to bite, <Link to="/blog/atuin-bash-history">Atuin rebuilds the same <kbd>CTRL</kbd>+<kbd>R</kbd> shortcut on top of a SQLite database</Link> and keeps all that context for you.
 
 ## Autosuggestions in the console using ZSH
 

@@ -95,6 +95,11 @@ Anything that needs a code block belongs in movement 6.
 
 Only now. Prerequisites go **here**, not at the top of the article.
 
+- **Any command that installs, downloads or runs something on the reader's machine → the
+  `safe-install-commands` skill.** It owns the ordering (package manager first, `curl | sh`
+  last and behind an `<AlertBox variant="danger">`) and the availability checks. Do not
+  restate its rules here.
+
 - Required tools: `<Prerequisite name= install= check= />`, compact.
 - Optional tools: inside `<Details label="…">` or an `<AlertBox variant="tip">`, so the
   reader can see at a glance what they may skip.
@@ -173,7 +178,7 @@ Concrete traps, all observed in real posts here:
   becomes a table of contents for the three subsections under it. Keep the list only for the
   steps that get no subsection.
 - **Two `AlertBox` carrying the same warning** in different sections — a frequent side effect of
-  moving sections around. After any restructuring, grep for the warning's key phrase.
+  moving sections around. See *After any restructuring, sweep the whole article* below.
 - **A takeaways card mirroring the body** one-for-one.
 
 The cheapest way to check: pick the 4 or 5 core claims of the article, grep each one, and count
@@ -188,6 +193,54 @@ clean machine.
 Be honest about the limits, or skip it. If the tool needs a reachable service (a local LLM, a
 database, a Docker socket), a sandbox that silently fails is worse than no sandbox. Say what
 the container cannot do, or do not offer one.
+
+**Give it an escape hatch.** A reader who already knows the tool reaches that heading, thinks
+*"I know this"*, and starts scrolling with no idea how far the chapter runs. One italic line
+directly under the heading, before the first paragraph:
+
+```markdown
+## Seeing It in Action with Docker
+
+*Already know <tool>, or just want it on your machine? [Skip straight to the install](#installing-<tool>)
+— this chapter is only a throwaway container to try it risk-free first.*
+```
+
+Two halves, and the second is the one that does the work: the link alone leaves the reader
+wondering what they are giving up, so name what the chapter is *for* in the same breath. See
+`blog/2026/09/14/atuin-bash-history/index.md`.
+
+This is not a duplicate of the `<QuickJump>` in movement 1, and having both is correct: the
+QuickJump orients a reader who has not decided anything yet, at the top of the page; the escape
+hatch fires later, at the moment the decision actually happens. Do not put one under every
+heading — it earns its place only on a chapter a knowledgeable reader can skip *whole*, which in
+practice means the sandbox and little else.
+
+## After any restructuring, sweep the whole article
+
+Moving, promoting or deleting a block leaves behind sentences that were written **as a reply to
+it**. They read fine while the block was next to them and become wrong, or simply
+incomprehensible, once it is elsewhere. This is the single most common defect introduced by a
+good restructuring, and it is invisible to a build: nothing fails, the prose just stops making
+sense.
+
+It cuts **both ways**, and the second direction is the one that gets missed:
+
+| Direction | What breaks | Real example |
+| --- | --- | --- |
+| **Upstream** — text before the moved block | A paragraph written as a rebuttal now argues against something the reader has not met | *"What did that buy you? The trust question moves from a script served by a domain I have never looked at…"* — left in place when the script moved three screens down |
+| **Downstream** — text after it, including the Conclusion | An instruction still describes the old behaviour | *"Spin it up, run a few commands, press CTRL+R"* in a Conclusion, after the demo container was changed to ship a pre-filled history |
+| **Deleted block** | A forward link points at a heading that no longer exists | *"The how and why is at the end of this article"* after that chapter was cut |
+
+The sweep is cheap, so do it every time and over the **whole file**, never just the section you
+touched — the Conclusion is several screens away from the edit and is the likeliest casualty:
+
+```bash
+grep -n 'above\|below\|further down\|further up\|earlier\|at the end\|just saw\|that script\|the one-liner' <path>
+grep -n '](#' <path>          # in-page anchors whose target may be gone
+```
+
+Read every hit as someone who has not seen the moved block. Fix by making the sentence
+self-contained — not by moving the block back.
 
 ## Anti-patterns
 
@@ -216,5 +269,7 @@ Each of these was measured on a real article of this blog:
    marker? (See movement 4.)
 8. Does any screenshot show a web page (browser, web UI, dashboard) **without** being wrapped
    in `<BrowserWindow url="…">`? (Must be no — see movement 2, rung 3.)
+9. If anything was moved, promoted or deleted: did you sweep the **whole file** — Conclusion
+   included — for sentences that referred to it? (See *After any restructuring* above.)
 
 `/reader_review <path>` runs the same checks and puts a number on question 1.

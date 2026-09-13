@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-09-13T18:03:40.458Z",
+  "source": "index.md",
+  "sourceHash": "4710f2e1b9ae346801626d83065ab53d5a57df39",
+  "questions": [
+    {
+      "question": "What is Atuin?",
+      "anchor": "what-is-atuin"
+    },
+    {
+      "question": "How does Atuin work with timestamps and context?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "Can I sync my Atuin history across multiple machines?",
+      "anchor": "installing-atuin"
+    },
+    {
+      "question": "What are the main features of Atuin's TUI?",
+      "anchor": "just-use-homebrew"
+    },
+    {
+      "question": "How can I install Atuin on Bash and ZSH?",
+      "anchor": "on-windows-winget"
+    },
+    {
+      "question": "Is Atuin compatible with Fish and Nushell?",
+      "anchor": "without-a-package-manager"
+    },
+    {
+      "question": "What is the difference between Atuin and FZF history search?",
+      "anchor": "last-resort-the-official-one-liner"
+    },
+    {
+      "question": "How can I import my existing shell history into Atuin?",
+      "anchor": "wiring-atuin-into-your-shell"
+    },
+    {
+      "question": "Can I configure Atuin to sync my history with a cloud service?",
+      "anchor": "bash"
+    },
+    {
+      "question": "What are some common use cases for Atuin?",
+      "anchor": "zsh"
+    },
+    {
+      "question": "How can I search for specific commands in Atuin's history?",
+      "anchor": "import-your-existing-history"
+    }
+  ]
+}

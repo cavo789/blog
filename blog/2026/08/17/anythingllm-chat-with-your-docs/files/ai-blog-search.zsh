@@ -40,6 +40,11 @@ _ai_blog_link() {
   fi
 }
 
+# The alias at the bottom of this file survives in the running shell, so on a
+# re-source ("source ~/.zshrc") it would shadow the name below and the function
+# definition would die with "parse error near '()'". Drop it first.
+(( $+aliases[ai-blog-search] )) && unalias ai-blog-search
+
 ai-blog-search() {
   local question="$*"
   if [[ -z "$question" ]]; then

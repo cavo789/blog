@@ -131,32 +131,34 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 
 ### Command → agent → skill map
 
-| Command                     | Agent                                | Skill(s)                                                              |
-| --------------------------- | ------------------------------------ | --------------------------------------------------------------------- |
-| `/bash-review`              | `bash-best-practices-reviewer`       | `bash-best-practices`                                                 |
-| `/python-review`            | `python-best-practices-reviewer`     | `python-best-practices`                                               |
-| `/docker-review`            | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices`, `devcontainer-dockerfile-best-practices` |
-| `/docker-dive-optimization` | _(none)_                             | `docker-image-slimming`                                               |
-| `/deep_review`              | _(none)_                             | _(inline, see command)_                                               |
-| `/review_blog`              | _(none)_                             | _(inline, see command)_                                               |
-| `/reader_review`            | _(none)_                             | `reader-first-docs`, `blog-post-structure`                            |
-| `/freshness`                | _(none)_                             | _(inline, see command)_                                               |
-| `/links`                    | _(none)_                             | _(inline, see command)_                                               |
-| `/refresh`                  | _(none)_                             | _(inline, see command)_                                               |
-| `/todo`                     | _(none)_                             | `todo-authoring` (via lock scripts)                                   |
-| `/todo-add`                 | _(none)_                             | `todo-authoring`                                                      |
-| `/todo-plan`                | _(none)_                             | _(inline, via `todo_parse_backlog.sh`)_                               |
-| `/suggestions-add`          | _(none)_                             | _(inline, see command)_                                               |
-| `/suggestions-write`        | _(none)_                             | `blog-post-structure`                                                 |
-| `/tags-review`              | _(none)_                             | _(inline, see command)_                                               |
+| Command                         | Agent                                | Skill(s)                                                              |
+| ------------------------------- | ------------------------------------ | --------------------------------------------------------------------- |
+| `/bash-review`                  | `bash-best-practices-reviewer`       | `bash-best-practices`                                                 |
+| `/python-review`                | `python-best-practices-reviewer`     | `python-best-practices`                                               |
+| `/docker-review`                | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices`, `devcontainer-dockerfile-best-practices` |
+| `/docker-dive-optimization`     | _(none)_                             | `docker-image-slimming`                                               |
+| `/deep_review`                  | _(none)_                             | _(inline, see command)_                                               |
+| `/review_blog`                  | _(none)_                             | _(inline, see command)_                                               |
+| `/reader_review`                | _(none)_                             | `reader-first-docs`, `blog-post-structure`                            |
+| `/freshness`                    | _(none)_                             | _(inline, see command)_                                               |
+| `/links`                        | _(none)_                             | _(inline, see command)_                                               |
+| `/refresh`                      | _(none)_                             | _(inline, see command)_                                               |
+| `/todo`                         | _(none)_                             | `todo-authoring` (via lock scripts)                                   |
+| `/todo-add`                     | _(none)_                             | `todo-authoring`                                                      |
+| `/todo-plan`                    | _(none)_                             | _(inline, via `todo_parse_backlog.sh`)_                               |
+| `/suggestions-add`              | _(none)_                             | _(inline, see command)_                                               |
+| `/suggestions-write`            | _(none)_                             | `blog-post-structure`                                                 |
+| _(no command — loaded by rule)_ | _(none)_                             | `safe-install-commands`                                               |
+| `/tags-review`                  | _(none)_                             | _(inline, see command)_                                               |
 
 ### Rule → skill map
 
-| Rule                        | Paths                                      | Skill                   |
-| --------------------------- | ------------------------------------------ | ----------------------- |
-| `.claude/rules/markdown.md` | `**/*.md`, `**/*.mdx`                      | `markdown-style`        |
-| `.claude/rules/bash.md`     | `**/*.sh`, `**/*.bash`, `**/.bash_aliases` | `bash-best-practices`   |
-| `.claude/rules/python.md`   | `**/*.py`                                  | `python-best-practices` |
+| Rule                                | Paths                                      | Skill                   |
+| ----------------------------------- | ------------------------------------------ | ----------------------- |
+| `.claude/rules/markdown.md`         | `**/*.md`, `**/*.mdx`                      | `markdown-style`        |
+| `.claude/rules/bash.md`             | `**/*.sh`, `**/*.bash`, `**/.bash_aliases` | `bash-best-practices`   |
+| `.claude/rules/python.md`           | `**/*.py`                                  | `python-best-practices` |
+| `.claude/rules/install-commands.md` | `**/*.md`, `**/*.mdx`                      | `safe-install-commands` |
 
 ### Known gap
 

@@ -51,21 +51,20 @@ attendre aucun autre brouillon.
 | 31 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
 | 32 | `docker-dive` | `lazydocker` publié (2026-09-03) — garder le lien en conclusion |
 | 33 | `ai-agent-in-devcontainer` | Aucune contrainte |
-| 34 | `atuin-bash-history` | Aucune contrainte |
-| 35 | `oha-http-load-testing` | Aucune contrainte |
-| 36 | `ssh-proxyjump` | Aucune contrainte |
-| 37 | `caddy` | Aucune contrainte |
-| 38 | `open-webui-advanced` | Aucune contrainte |
-| 39 | `mcp-python-server` | Aucune contrainte |
-| 40 | `copy-as-markdown` | Aucune contrainte |
-| 41 | `blog-time-to-value-audit` | Aucune contrainte |
-| 42 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #43-44 |
-| 43 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #44 |
-| 44 | `docusaurus-command-palette` | Après #42 et #43 |
-| 45 | `docusaurus-ask-my-blog-bubble` | Après #42, #43, #44 |
-| 46 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
-| 47 | `docusaurus-pwa` | Aucune contrainte |
-| 48 | `docusaurus-mobile-preview` | Aucune contrainte |
+| 34 | `oha-http-load-testing` | Aucune contrainte |
+| 35 | `ssh-proxyjump` | Aucune contrainte |
+| 36 | `caddy` | Aucune contrainte |
+| 37 | `open-webui-advanced` | Aucune contrainte |
+| 38 | `mcp-python-server` | Aucune contrainte |
+| 39 | `copy-as-markdown` | Aucune contrainte |
+| 40 | `blog-time-to-value-audit` | Aucune contrainte |
+| 41 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #42-43 |
+| 42 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #43 |
+| 43 | `docusaurus-command-palette` | Après #41 et #42 |
+| 44 | `docusaurus-ask-my-blog-bubble` | Après #41, #42, #43 |
+| 45 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
+| 46 | `docusaurus-pwa` | Aucune contrainte |
+| 47 | `docusaurus-mobile-preview` | Aucune contrainte |
 
 `ollama-refactor-code` n'apparaît pas : ce ne sont que des fichiers `files/`, aucun `index.md`.
 
@@ -220,10 +219,6 @@ Indépendants entre eux, sauf :
   réelles, en particulier `pathMappings` dans `launch.json`.
 - **`python-security-bandit-audit` :** identifiants d'avisory (`GHSA-...`) dans la démo `pip-audit`
   illustratifs, indiqué dans l'article lui-même.
-- **`atuin-bash-history` :** version épinglée `v18.16.1` — revérifier sur
-  [github.com/atuinsh/atuin/releases](https://github.com/atuinsh/atuin/releases) avant
-  publication. Dockerfile jamais buildé/testé. Liens réciproques à poser dans `/blog/linux-history`
-  et `/blog/linux-fzf-introduction`.
 - **`oha-http-load-testing` :** sorties `<Terminal>` illustratives, non exécutées contre
   localhost:3000. Vérifier `ghcr.io/hatoo/oha:latest` et la version dans `<Prerequisite>`
   (`oha 0.6.4`). Liens réciproques à poser dans `/blog/running-docusaurus-with-docker` et

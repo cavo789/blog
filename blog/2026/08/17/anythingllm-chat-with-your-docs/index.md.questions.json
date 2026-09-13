@@ -1,40 +1,40 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:56:11.799Z",
+  "generated": "2026-09-13T18:03:28.714Z",
   "source": "index.md",
-  "sourceHash": "5dc4fb88740884f772879b6b7d49c1b9dfc03fd8",
+  "sourceHash": "b4efcee7292728c10bfc5f5ec5890f88a9b22301",
   "questions": [
     {
-      "question": "How do I set up AnythingLLM on a single machine?",
-      "anchor": "ingest"
+      "question": "What is AnythingLLM and how does it work?",
+      "anchor": ""
+    },
+    {
+      "question": "Why is it important to have a searchable, chattable knowledge base for your documents?",
+      "anchor": "seeing-it-work"
+    },
+    {
+      "question": "How do I set up AnythingLLM on one machine?",
+      "anchor": "install"
     },
     {
       "question": "What is the purpose of the workspace system prompt in AnythingLLM?",
       "anchor": "one-manual-step-the-workspace-system-prompt"
     },
     {
-      "question": "How can I keep my documents indexed up to date with AnythingLLM?",
-      "anchor": "keeping-the-index-up-to-date"
+      "question": "How can I keep my documents indexed up to date?",
+      "anchor": "ingest"
     },
     {
-      "question": "What is the difference between installing AnythingLLM on one machine and splitting it across two machines?",
-      "anchor": "two-machines"
+      "question": "How does AnythingLLM search from the terminal?",
+      "anchor": "search"
     },
     {
-      "question": "How does AnythingLLM handle PDFs, Excel sheets, and PowerPoint decks?",
-      "anchor": "first-run-setup"
+      "question": "What is the ai-blog-search script in AnythingLLM?",
+      "anchor": "ai-blog-search-the-portable-script"
     },
     {
-      "question": "What are the key takeaways from using AnythingLLM to search your documents?",
-      "anchor": "key-takeaways"
-    },
-    {
-      "question": "How does AnythingLLM compare to Open WebUI in terms of functionality?",
-      "anchor": "you-dont-give-it-a-path--and-that-surprises-everyone"
-    },
-    {
-      "question": "What is the difference between installing AnythingLLM on one machine and using it with an Ollama server running elsewhere?",
+      "question": "How can I use AnythingLLM with Open WebUI?",
       "anchor": "the-same-thing-as-a-zsh-function"
     }
   ]
