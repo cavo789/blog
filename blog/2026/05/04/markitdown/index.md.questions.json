@@ -1,41 +1,41 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:02:52.758Z",
+  "generated": "2026-09-16T17:08:54.034Z",
   "source": "index.md",
-  "sourceHash": "92ef2728139942ffdaaed536ebc9afce163aa9fc",
+  "sourceHash": "94a5c455cc733b12e9781ec4bb8d8e8513fb671a",
   "questions": [
     {
-      "question": "How do I install Markitdown using Docker?",
-      "anchor": "why-this-approach"
+      "question": "How does Markitdown convert files to Markdown?",
+      "anchor": ""
     },
     {
-      "question": "What are the supported file formats for converting with Markitdown?",
-      "anchor": "build-the-image"
-    },
-    {
-      "question": "Can you provide a step-by-step guide on how to convert PDFs and MS Office documents to Markdown using Docker?",
-      "anchor": "create-an-orchestration-file"
-    },
-    {
-      "question": "How can I create an executable wrapper script for Markitdown in a Docker container?",
-      "anchor": "create-our-docker-image"
-    },
-    {
-      "question": "What are the advantages of using Docker for running Markitdown conversions?",
+      "question": "What are the benefits of using a Docker container for converting documents with Markitdown?",
       "anchor": "using-a-binary"
     },
     {
-      "question": "How can I convert Excel files to Markdown using Markitdown?",
-      "anchor": "first-conversion"
+      "question": "Can you explain why Docker is used in this process?",
+      "anchor": "why-this-approach"
     },
     {
-      "question": "Can you explain why using a binary is not practical for daily use when converting documents to Markdown?",
+      "question": "How do I install Markitdown and its dependencies using Docker?",
       "anchor": "installation"
     },
     {
-      "question": "What are the limitations of Markitdown compared to other conversion tools?",
+      "question": "What are the steps to create a Docker image for converting documents with Markitdown?",
+      "anchor": "create-our-docker-image"
+    },
+    {
+      "question": "How can I convert PDFs, Word documents, and Excel spreadsheets using Markitdown?",
+      "anchor": "first-conversion"
+    },
+    {
+      "question": "What are the supported file formats for converting with Markitdown?",
       "anchor": "conclusion"
+    },
+    {
+      "question": "How can I create a custom Docker image for converting documents with Markitdown?",
+      "anchor": "create-our-docker-image"
     }
   ]
 }

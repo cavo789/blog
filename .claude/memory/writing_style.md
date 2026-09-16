@@ -81,7 +81,20 @@ An article explains **why** the feature/tool matters, shows the **result** immed
 
 **Why:** Corrected 2026-08-31 — found in `blog/2026/08/24/docusaurus-llms-txt/index.md`, a paragraph recounting a false-positive build warning discovered while testing the plugin, removed on request. Christophe: "mes articles n'ont pas à raconter les erreurs (try-error) que nous avons rencontrés ; ils doivent donner une explication du pourquoi, un exemple du résultat, puis comment on installe."
 
+**Reaffirmed 2026-09-16 after a recurrence** on the `docling` draft, where Claude added an `<AlertBox>` titled *"The traceback that is not a crash"* explaining an upstream bug **the wrapper already filters out** — a post-mortem about something the reader can never encounter. Christophe: *"Lui il veut un récit qui fonctionne; un guide qu'il va suivre et étape après étape il va réussir à faire quelque chose. Trop souvent tu racontes nos essais-erreurs et des choses qui seront du bruit et même qui vont donner un sentiment d'échec ('Oh c'est trop complexe, j'abandonne')."*
+
+**Why it recurred:** this memory is read once at session start and drifts during long editing sessions — exactly when articles get written. The fix is deterministic, not mnemonic: `.claude/rules/blog-prose.md` now loads on every touch of `blog/**` or `.unpublished/**`, and `reader-first-docs` gained *Pass 2b — Author's-journey noise* (wired into the verdict table and `/reader_review`).
+
 **How to apply:** When drafting or reviewing any article — including during `/reader_review` or `/review_blog` passes — cut any passage narrating a bug found, a warning chased down, or "turns out X happens" discovered mid-build/test, unless the debugging journey itself *is* the article's stated subject (a dedicated postmortem/troubleshooting piece — rare on this blog, see [[feedback_article_weight]]). Applies regardless of where in the article the passage sits.
+
+The four shapes this takes, all seen on the `docling` draft:
+
+1. **Discovery chronology** — "I found out the hard way while building it". Keep the fact, drop the story.
+2. **A bug the article already works around** — if the fix lives in the script, the explanation belongs in the script's **comment**, never in prose and never in its own `<AlertBox>`.
+3. **Engineering choices justified to the reader** — why a Dockerfile layer sits where it sits, what was rejected, what a number "is not". That is a code-review conversation, not an article.
+4. **Hedging a demonstrated result** — "that is a stronger claim than it looks", "one document, on one version". It reads as *this may not work for you*.
+
+**The line to hold:** first-person **judgment** is this blog's voice and stays ("I reach for the light one by reflex"). First-person **chronology** goes. A verdict is fine; the journey that produced it is not.
 
 **Why:** Deep internalization of this style is what makes a written post sound like Christophe's voice, not a generic tutorial.
 

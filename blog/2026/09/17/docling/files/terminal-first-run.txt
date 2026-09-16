@@ -1,0 +1,26 @@
+$ cd /tmp/docling
+
+$ curl -L --silent -o samples.zip https://www.avonture.be/files/docling/samples.zip
+
+$ unzip -d samples samples.zip && rm samples.zip && cd samples
+
+Archive:  samples.zip
+  inflating: samples/report.pdf
+  inflating: samples/contract.docx
+  inflating: samples/slides.pptx
+  inflating: samples/budget.xlsx
+  inflating: samples/page.html
+
+$ ls
+
+budget.xlsx  contract.docx  page.html  report.pdf  slides.pptx
+
+$ docling-convert report.pdf
+
+docling-convert: report.md written in 14s
+💡 Not happy with the result? Run it again with --pipeline standard (faster, rougher on titles), --image-export-mode placeholder|embedded (drop the images, or inline them), -v (the full log).
+💡 Hide this hint with DOCLING_CONVERT_NO_TIP=1.
+
+$ ls
+
+budget.xlsx  contract.docx  page.html  report.md  report.pdf  slides.pptx

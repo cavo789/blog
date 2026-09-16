@@ -1,0 +1,7 @@
+$ docker compose up
+Attaching to web-1
+web-1  | /docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh
+web-1  | 10-listen-on-ipv6-by-default.sh: info: can not modify /etc/nginx/conf.d/default.conf (read-only file system?)
+web-1  | 2026/09/16 16:50:13 [emerg] 1#1: mkdir() "/var/cache/nginx/client_temp" failed (30: Read-only file system)
+web-1  | nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (30: Read-only file system)
+web-1 exited with code 1

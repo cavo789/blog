@@ -1,6 +1,6 @@
 ---
 name: reader-first-docs
-description: Time-to-value audit methodology for Docusaurus blog articles — front-load proof, keep install/code before the first result visible, measure TTV mechanically from line positions. Defines the three passes (mechanical, repetition, qualitative), the metric thresholds, and the OK/MINOR/RESTRUCTURE verdict. Docusaurus-specific (MDX components, <!-- truncate --> anchor, AlertBox, Terminal, Snippet). For the audit workflow (journal, batch selection, TODO filing), invoke via /reader_review, not directly.
+description: Time-to-value audit methodology for Docusaurus blog articles — front-load proof, keep install/code before the first result visible, measure TTV mechanically from line positions. Defines the four passes (mechanical, repetition, author's-journey noise, qualitative), the metric thresholds, and the OK/MINOR/RESTRUCTURE verdict. Docusaurus-specific (MDX components, <!-- truncate --> anchor, AlertBox, Terminal, Snippet). For the audit workflow (journal, batch selection, TODO filing), invoke via /reader_review, not directly.
 disable-model-invocation: false
 ---
 
@@ -106,6 +106,37 @@ Frequent shapes worth naming in the report:
 something. Say what a further cut would *cost* rather than chasing a percentage — if the remaining
 length is all information, say so plainly. A section being long is not by itself a finding.
 
+## Pass 2b — Author's-journey noise
+
+Repetition pads an article; the author's journey *discourages* the reader. A guide that keeps
+saying "this surprised us" reads as "this is fragile, you will suffer too" — and the reader leaves
+before the payoff. Hunt it separately, because pass 2 will not catch it: each sentence is unique,
+so redundancy scores 🟢 while the article still bleeds readers.
+
+Mechanical sweep:
+
+```bash
+grep -niE "found out|turns out|I tried|hard way|bit me|at first|I expected|I only know|to my surprise|my first attempt|worth knowing you" <path>
+```
+
+Then classify each hit — the grep finds candidates, it does not judge them:
+
+| Shape | Verdict | Fix |
+| --- | --- | --- |
+| First-person **judgment** — "I reach for the light one by reflex" | keep | this is the blog's voice |
+| First-person **chronology** — "I found out the hard way while building it" | cut | keep the fact, drop the story |
+| A bug the article already works around in its own script | cut from prose | the explanation belongs in the script's comment |
+| Engineering choices justified to the reader — why a layer sits where it sits, what was rejected | cut | that is a code-review conversation |
+| A demonstrated result then hedged — "that is a stronger claim than it looks" | cut the hedge | state the limitation once, flatly, as a property of the tool |
+
+| Metric | Computation | Threshold |
+| --- | --- | --- |
+| **Journey noise** | passages classified *cut* above | 🟢 0 · 🟠 1-2 · 🔴 ≥ 3 |
+| **Failure stories** | `<AlertBox>` whose subject is something that went wrong | 🟢 ≤ 1 · 🔴 ≥ 2 |
+
+Full rationale: `writing_style` memory (*No Trial-and-Error Narrative*), [[feedback_article_weight]],
+and `.claude/rules/blog-prose.md`.
+
 ## Pass 3 — The 30-second test (qualitative)
 
 Read **only** the title, the frontmatter `description`, and lines `T` to `T + 40`. Nothing else.
@@ -126,8 +157,8 @@ Exactly one per article:
 | Verdict | Condition | Action |
 | --- | --- | --- |
 | `OK` | proof within the first screen, no red flag, redundancy 🟢, the 30-second test says "keep reading" | journal only |
-| `MINOR` | sound structure, one weakness (unmarked deep-dive, flat landing, proof slightly late but 🟠, redundancy 🟠, one dead-weight block) | journal + one-line note, **no TODO** |
-| `RESTRUCTURE` | TTV 🔴, **or** install-before-proof, **or** abstraction-before-proof, **or** redundancy 🔴, **or** the 30-second test says "I leave" | one TODO |
+| `MINOR` | sound structure, one weakness (unmarked deep-dive, flat landing, proof slightly late but 🟠, redundancy 🟠, one dead-weight block, journey noise 🟠) | journal + one-line note, **no TODO** |
+| `RESTRUCTURE` | TTV 🔴, **or** install-before-proof, **or** abstraction-before-proof, **or** redundancy 🔴, **or** journey noise 🔴, **or** failure stories 🔴, **or** the 30-second test says "I leave" | one TODO |
 
 `MINOR` never produces a TODO: a batch sweep over 40+ articles would bury real findings under
 one-line files for every article with a single flat ending.
@@ -135,6 +166,10 @@ one-line files for every article with a single flat ending.
 For `RESTRUCTURE`, file one TODO (format and language: see `/reader_review`). The proposed fix is
 always a **reorder**, never a cut — name which existing section/line range each reordered block
 comes from, so nothing reads as discarded.
+
+**One exception: journey noise.** There the fix *is* a cut, because the passage carries no reader
+value to relocate. Quote each offending sentence in the TODO with its line number and the fact it
+was carrying, so the cut is reviewable rather than a blanket "trim the prose".
 
 ## What this does NOT mean
 

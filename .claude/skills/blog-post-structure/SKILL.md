@@ -254,6 +254,9 @@ Each of these was measured on a real article of this blog:
 | Internals ("here is why the loader sorts alphabetically") in the first half | Interesting to the author, noise to the newcomer. Movement 6. |
 | A demo hidden at 70% of the article | The payoff exists but nobody reaches it — the worst failure, because the material is already written and merely misplaced. |
 | Ending on the last technical detail | No recap, no next step. Movement 7 is not optional. |
+| Narrating the trial-and-error that produced the article | "I found out the hard way", "every other X I tried", "turns out" — the reader wants a guide that works, not our lab notebook. It reads as *this is fragile*, and they leave. See `.claude/rules/blog-prose.md`. |
+| Documenting a bug the article already works around | The reader will never see it. If the fix is in the script, the explanation belongs in the script's comment — not in prose, never in its own `<AlertBox>`. |
+| Hedging a result you just demonstrated | "that is a stronger claim than it looks", "one document, on one version". You spent the article earning trust; do not spend the next paragraph taking it back. |
 | The same fact told in the TLDR, a bullet, a section and a takeaways card | Four occurrences, one piece of information. See *Say it once*. |
 
 ## Self-check before saving
@@ -271,5 +274,8 @@ Each of these was measured on a real article of this blog:
    in `<BrowserWindow url="…">`? (Must be no — see movement 2, rung 3.)
 9. If anything was moved, promoted or deleted: did you sweep the **whole file** — Conclusion
    included — for sentences that referred to it? (See *After any restructuring* above.)
+10. Does any sentence narrate **how we found out** rather than stating the fact?
+    `grep -niE "found out|turns out|I tried|hard way|bit me|at first|I expected|I only know" <path>`
+    First-person *judgment* stays (this blog's voice); first-person *chronology* goes.
 
 `/reader_review <path>` runs the same checks and puts a number on question 1.

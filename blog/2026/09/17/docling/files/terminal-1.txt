@@ -1,0 +1,22 @@
+$ cd ~/documents/
+
+$ docling-convert report.pdf
+docling-convert: report.md written in 14s
+💡 Not happy with the result? Run it again with --pipeline standard (faster, rougher on titles), --image-export-mode placeholder|embedded (drop the images, or inline them), -v (the full log).
+💡 Hide this hint with DOCLING_CONVERT_NO_TIP=1.
+
+$ docling-convert contract.docx
+docling-convert: contract.md written in 4s
+
+$ docling-convert slides.pptx
+docling-convert: slides.md written in 5s
+
+$ docling-convert budget.xlsx
+docling-convert: budget.md written in 4s
+
+$ docling-convert page.html
+docling-convert: page.md written in 4s
+
+$ ls *.md
+
+budget.md  contract.md  page.md  report.md  slides.md

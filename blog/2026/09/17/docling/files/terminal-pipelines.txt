@@ -1,0 +1,28 @@
+$ export DOCLING_CONVERT_NO_TIP=1
+
+$ docling-convert report.pdf --pipeline standard
+docling-convert: report.md written in 8s
+
+$ cat report.md
+
+## Quarterly Delivery Note d titiitl iltil
+
+y y
+Scope, milestones and termination — internal circulation only
+Following the quarterly review held on 3 September, this note records the agreed
+scope, [...] the payment schedule set out in section three,
+which is intended to replace it entirely.
+The supplier shall deliver the first increment within six weeks of signature, [...]
+
+$ docling-convert report.pdf
+docling-convert: report.md written in 14s
+
+$ cat report.md
+
+## Quarterly Delivery Note
+
+Scope, milestones and termination - internal circulation only
+Following the quarterly review held on 3 September, this note records the agreed
+scope, [...] the payment schedule set out in section three, which is intended to
+replace it entirely.
+The supplier shall deliver the first increment within six weeks of signature, [...]

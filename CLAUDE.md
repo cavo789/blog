@@ -159,6 +159,7 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 | `.claude/rules/bash.md`             | `**/*.sh`, `**/*.bash`, `**/.bash_aliases` | `bash-best-practices`   |
 | `.claude/rules/python.md`           | `**/*.py`                                  | `python-best-practices` |
 | `.claude/rules/install-commands.md` | `**/*.md`, `**/*.mdx`                      | `safe-install-commands` |
+| `.claude/rules/blog-prose.md`       | `blog/**`, `.unpublished/**`               | `blog-post-structure`   |
 
 ### Known gap
 

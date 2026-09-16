@@ -1,0 +1,3 @@
+$ docker compose up
+plot-1  | chart written
+plot-1 exited with code 0

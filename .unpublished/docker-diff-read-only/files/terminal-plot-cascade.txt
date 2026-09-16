@@ -1,0 +1,13 @@
+$ docker compose up
+plot-1  | OSError: Matplotlib requires access to a writable cache directory, but there was
+plot-1  | an issue with the default path (/home/plotter/.config/matplotlib), and a temporary
+plot-1  | directory could not be created; set the MPLCONFIGDIR environment variable to a
+plot-1  | writable directory
+plot-1 exited with code 1
+
+$ # fair enough — add "tmpfs: [/tmp]" to the service, then run it again
+$ docker compose up
+plot-1  |   File "/usr/local/lib/python3.12/site-packages/PIL/Image.py", line 2706, in save
+plot-1  |     fp = builtins.open(filename, "w+b")
+plot-1  | OSError: [Errno 30] Read-only file system: '/out/chart.png'
+plot-1 exited with code 1

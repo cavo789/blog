@@ -1,0 +1,5 @@
+$ sudo nvidia-ctk runtime configure --runtime=docker
+$ sudo systemctl restart docker
+
+$ docker info --format '{{json .Runtimes}}'
+{"io.containerd.runc.v2":{"path":"runc"},"nvidia":{"path":"nvidia-container-runtime"},"runc":{"path":"runc"}}

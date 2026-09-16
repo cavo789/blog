@@ -1,0 +1,9 @@
+services:
+  web:
+    image: nginx:alpine
+    read_only: true
+    ports:
+      - "8080:80"
+    tmpfs:
+      - /var/cache/nginx:size=16m
+      - /run:size=1m

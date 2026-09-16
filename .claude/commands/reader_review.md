@@ -103,11 +103,17 @@ published or draft, date — so the user can interrupt if the selection looks wr
 
 ## 3. Audit each article
 
-Apply the three passes defined in `reader-first-docs` in order — mechanical (TTV, flags,
-unmarked deep-dives, landing), repetition (redundancy, dead-weight blocks, duplicated
-warnings), then the 30-second test. Then assign exactly one verdict per the skill's table.
+Apply the passes defined in `reader-first-docs` in order — mechanical (TTV, flags, unmarked
+deep-dives, landing), repetition (redundancy, dead-weight blocks, duplicated warnings),
+**author's-journey noise** (pass 2b), then the 30-second test. Then assign exactly one verdict
+per the skill's table.
 
 The skill defines every metric, threshold, and proof signal. Do not restate them here.
+
+Pass 2b is the one to run even when the article scores well everywhere else: its passages are
+each unique, so redundancy stays 🟢 while the article still tells the reader "this was painful
+for us". Quote every sentence you propose to cut, with its line number — the fix is a cut, not
+a reorder, so it has to be reviewable.
 
 ## 4. TODO — only for `RESTRUCTURE`
 

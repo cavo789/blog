@@ -4,7 +4,7 @@
 - [Reply Language](feedback_reply_language.md) — reply in French by default (chat/summaries), not just tolerate French input; code/content stays English
 - [Project Overview](project_overview.md) — Docusaurus 3.x blog, stack, URLs, commands, Docker-first infra
 - [Blog Conventions](project_blog_conventions.md) — Post structure, all frontmatter fields, co-location, authors, series, .unpublished (draft:true)
-- [Writing Style](writing_style.md) — Openings, recurring phrases, TLDR, section titles, AlertBox, Conclusion, transitions
+- [Writing Style](writing_style.md) — Openings, recurring phrases, TLDR, section titles, AlertBox, Conclusion, transitions ; **jamais de récit d'essais-erreurs** (enforcé par `.claude/rules/blog-prose.md`)
 - [Components & Plugins](project_components.md) — All MDX components with props, AlertBox variants, Terminal/Snippet/StepsCard usage, plugins
 - [Images & Tags](project_images_tags.md) — All banner images (/img/v2/, 131 as of 2026-07-27) and all valid tag slugs (tags.yml)
 - [Coding Style](feedback_coding_style.md) — React/CSS/Docker rules from AGENTS.md, American English everywhere
@@ -12,6 +12,8 @@
 - [Blog Coverage Map](project_blog_coverage.md) — Gaps et opportunités par tech (WSL2/ZSH/Git/Docker/FZF/SSH/Bash/Ollama)
 - [Article Proposals](project_article_proposals.md) — Pending article ideas across all series, incl. "Ollama daily use"
 - [Post Creation Feedback](feedback_post_creation.md) — draft:true for .unpublished, image selection, frontmatter ordering
+- [Challenge Me](feedback_challenge_me.md) — challenger ses affirmations, contredire à voix haute plutôt qu'exécuter ; se corriger soi-même aussi
+- [Quality Over Speed](feedback_quality_over_speed.md) — arbitre pour la fidélité de sortie, pas la vitesse ; proposer le réglage le plus fidèle par défaut
 - [Article Weight](feedback_article_weight.md) — pas d'empilement de post-mortems ni de setup non-standard ; un article doit donner envie de tester
 - [YAML Date Parsing](feedback_yaml_date_parsing.md) — frontmatter dates arrive as ISO strings after SSR; always use new Date(value), never concatenate
 - [TODO Folder Convention](project_todos_convention.md) — .todos/ est privé : écrire en français, format NNN-slug.md, sections Problème/Risque/Solution
@@ -19,12 +21,13 @@
 - [Unpublished Plan Maintenance](feedback_unpublished_plan.md) — always keep .unpublished/plan.md in sync with drafts, written in French, never published
 - [Internal Linking Rule (new posts)](feedback_internal_linking.md) — tout nouveau post embarque 2-4 `<Link>` inline + lien réciproque ; jamais d'orphelin
 - [Internal Links Audit](project_internal_links.md) — run `internal-link-opportunities.mjs --stats`; verified baseline + the 4 traps that break naive greps
+- [DooD Bind-Mount Trap](project_dood_bind_mount_trap.md) — `docker run -v` résout les chemins sur l'HÔTE ; tester une image via un volume nommé alimenté par stdin
 - [Devcontainer Structure](project_devcontainer_structure.md) — scripts/, COPY paths, bind-mounts, wiring points — tout ce qui doit rester synchronisé
 - [File Rename Completeness](feedback_file_rename_completeness.md) — grep exhaustif avant tout rename ; "terminé" = docker build passe, pas juste le fichier déplacé
 - [AnythingLLM Instance](project_anythingllm_instance.md) — 172.17.0.1:3001 depuis le devcontainer, compose sur l'hôte, workspace `blog` (248 posts)
 - [llms.txt Discoverability](project_llms_txt_discoverability.md) — head links + series-bundle link built 2026-08-11 ; directory submissions: llmstxt.site ✅, directory.llmstxt.cloud ✅, llmstxthub.com ❌ retry
 - [Dev Server Restart Authorization](feedback_dev_server_restart.md) — restart allowed for content verification IF ListAgents+broadcast to peer sessions first; curl can't verify dev-mode content, use Playwright
-- [i18n Translation Rejected](feedback_i18n_translation_rejected.md) — French i18n/Ollama-translation idea evaluated 2026-08-31 and dropped: browsers already translate free; not worth the double-maintenance
+- [i18n Translation (reopened)](feedback_i18n_translation_rejected.md) — rejetée 2026-08-31, **rouverte 2026-09-16** sur données de trafic + coût mesuré ; plan dans `.todos/0119` ; les 2 pièges : fallback Docusaurus (contenu dupliqué) et `posts.ts` non locale-aware
 - [run_ci e2e Known Issue](project_run_ci_e2e_known_issue.md) — React error #418 hydration warning is a known, permanently allowlisted Docusaurus upstream bug (wontfix); check exact message before re-investigating a failure
 - [Flex Column Basis Trap](feedback_flex_column_basis.md) — flex-basis devient min-height dans un conteneur colonne ; toujours override avec flex: 0 0 auto dans les panels/popups
 - [Infima Secondary Color Trap](feedback_infima_secondary_dark.md) — --ifm-color-content-secondary = blanc pur en dark ; utiliser --ifm-color-emphasis-700

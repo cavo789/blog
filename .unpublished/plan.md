@@ -10,7 +10,7 @@ Jamais publié, écrit en français. Pour la logique détaillée derrière chaqu
 
 ## Ordre de publication recommandé
 
-49 brouillons ont un `index.md` (50e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
+49 brouillons ont un `index.md` (49e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
 
 Fondations de la série Ollama déjà publiées entretemps : `ollama-test-generator` (2026-08-03) et
 `ollama-git-precommit` (2026-08-10). `ollama-ai-standup` peut donc sortir dès maintenant, sans
@@ -28,43 +28,43 @@ attendre aucun autre brouillon.
 | 8 | `ollama-ai-ask` | Aucune contrainte |
 | 9 | `removing-algolia-for-pagefind` | Aucune contrainte |
 | 10 | `ollama-ai-diagram` | Aucune contrainte |
-| 11 | `ollama-ai-data` | Doit précéder `duckdb-json-csv` (#13) |
-| 12 | `docling` | Doit précéder #13, #14, #15 |
-| 13 | `python-security-bandit-audit` | Après `docling` (#12) |
-| 14 | `ollama-ai-translate` | Libre, mais avant #15 de préférence |
-| 15 | `ollama-ai-docs` | Après `docling` (#12) ; avant #16 |
-| 16 | `ollama-ai-diff` | Ferme la série — après #15 |
-| 17 | `duckdb-json-csv` | Après `docling` (#12) et `ollama-ai-data` (#11) |
-| 18 | `python-ai-helper` | Se lit mieux une fois ai-test/ai-review publiés (déjà le cas) |
-| 19 | `ai-explain` | Dernier de la série Ollama — après tous les articles ci-dessus |
-| 20 | `linux-yq` | Aucune contrainte |
-| 21 | `direnv` | Aucune contrainte |
-| 22 | `navi` | Aucune contrainte |
-| 23 | `hyperfine` | Aucune contrainte |
-| 24 | `git-interactive-rebase` | Aucune contrainte |
-| 25 | `vscode-gitlens` | Aucune contrainte |
-| 26 | `vscode-profiles` | Aucune contrainte |
-| 27 | `vscode-multi-root-git-worktree` | Aucune contrainte |
-| 28 | `vscode-snippets-for-docusaurus` | Aucune contrainte |
-| 29 | `portainer` | Après `lazydocker` (publié le 2026-09-03) |
-| 30 | `traefik` | Après `lazydocker` (publié le 2026-09-03) et `portainer` (#29) |
-| 31 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
-| 32 | `docker-dive` | `lazydocker` publié (2026-09-03) — garder le lien en conclusion |
-| 33 | `ai-agent-in-devcontainer` | Aucune contrainte |
-| 34 | `oha-http-load-testing` | Aucune contrainte |
-| 35 | `ssh-proxyjump` | Aucune contrainte |
-| 36 | `caddy` | Aucune contrainte |
-| 37 | `open-webui-advanced` | Aucune contrainte |
-| 38 | `mcp-python-server` | Aucune contrainte |
-| 39 | `copy-as-markdown` | Aucune contrainte |
-| 40 | `blog-time-to-value-audit` | Aucune contrainte |
-| 41 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #42-43 |
-| 42 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #43 |
-| 43 | `docusaurus-command-palette` | Après #41 et #42 |
-| 44 | `docusaurus-ask-my-blog-bubble` | Après #41, #42, #43 |
-| 45 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
-| 46 | `docusaurus-pwa` | Aucune contrainte |
-| 47 | `docusaurus-mobile-preview` | Aucune contrainte |
+| 11 | `ollama-ai-data` | Doit précéder `duckdb-json-csv` (#16) |
+| 12 | `python-security-bandit-audit` | `docling` publié (2026-09-17) — plus aucune contrainte |
+| 13 | `ollama-ai-translate` | Libre, mais avant #14 de préférence |
+| 14 | `ollama-ai-docs` | `docling` publié (2026-09-17) ; avant #15 |
+| 15 | `ollama-ai-diff` | Ferme la série — après #14 |
+| 16 | `duckdb-json-csv` | `docling` publié (2026-09-17) ; après `ollama-ai-data` (#11) |
+| 17 | `python-ai-helper` | Se lit mieux une fois ai-test/ai-review publiés (déjà le cas) |
+| 18 | `ai-explain` | Dernier de la série Ollama — après tous les articles ci-dessus |
+| 19 | `linux-yq` | Aucune contrainte |
+| 20 | `direnv` | Aucune contrainte |
+| 21 | `navi` | Aucune contrainte |
+| 22 | `hyperfine` | Aucune contrainte |
+| 23 | `git-interactive-rebase` | Aucune contrainte |
+| 24 | `vscode-gitlens` | Aucune contrainte |
+| 25 | `vscode-profiles` | Aucune contrainte |
+| 26 | `vscode-multi-root-git-worktree` | Aucune contrainte |
+| 27 | `vscode-snippets-for-docusaurus` | Aucune contrainte |
+| 28 | `portainer` | Après `lazydocker` (publié le 2026-09-03) |
+| 29 | `traefik` | Après `lazydocker` (publié le 2026-09-03) et `portainer` (#28) |
+| 30 | `vscode-extension-bisect` | Après `git-bisect` (#1) |
+| 31 | `docker-dive` | `lazydocker` publié (2026-09-03) — garder le lien en conclusion |
+| 32 | `ai-agent-in-devcontainer` | Aucune contrainte |
+| 33 | `oha-http-load-testing` | Aucune contrainte |
+| 34 | `ssh-proxyjump` | Aucune contrainte |
+| 35 | `caddy` | Aucune contrainte |
+| 36 | `open-webui-advanced` | Aucune contrainte |
+| 37 | `mcp-python-server` | Aucune contrainte |
+| 38 | `blog-time-to-value-audit` | Aucune contrainte |
+| 39 | `docusaurus-blog-map` | Ouvre la mini-série navigation — avant #40-41 |
+| 40 | `docusaurus-ask-my-blog` | Aucune contrainte propre, mais avant #41 |
+| 41 | `docusaurus-command-palette` | Après #39 et #40 |
+| 42 | `docusaurus-ask-my-blog-bubble` | Après #39, #40 et #41 |
+| 43 | `docusaurus-github-actions-ssh-deploy` | Aucune contrainte |
+| 44 | `docusaurus-pwa` | Aucune contrainte |
+| 45 | `docusaurus-mobile-preview` | Aucune contrainte |
+| 46 | `docusaurus-follow-rss-feeds` | Aucune contrainte sur un brouillon — mais lien réciproque à poser dans `/blog/blog-post-feed` à la publication |
+| 47 | `docker-diff-read-only` | Aucune contrainte — `docker-volumes`, `docling` et `markitdown` sont publiés, les trois liens internes résolvent déjà |
 
 `ollama-refactor-code` n'apparaît pas : ce ne sont que des fichiers `files/`, aucun `index.md`.
 
@@ -74,6 +74,14 @@ attendre aucun autre brouillon.
 
 *(Notes de travail pour Claude — historique des décisions, réserves techniques à lever avant
 publication, chiffres vérifiés. Non nécessaire à la lecture rapide de l'ordre ci-dessus.)*
+
+### Déjà publiés entretemps (retirés du plan le 2026-09-15)
+
+- `docling` → `blog/2026/09/17/docling` — débloque `python-security-bandit-audit`, `ollama-ai-docs`,
+  `ollama-ai-diff` et `duckdb-json-csv`, qui pointaient tous vers `/blog/docling`. Lien réciproque
+  posé dans `/blog/markitdown` à la publication.
+- `copy-as-markdown` → `blog/2026/09/10/docusaurus-copy-as-markdown` (slug publié :
+  `docusaurus-copy-as-markdown`, pas `copy-as-markdown`).
 
 ### Déjà publiés entretemps (retirés du plan le 2026-08-30)
 
@@ -108,12 +116,13 @@ Fondation (`ollama-test-generator`, `ai-test`) et premier bloc pre-commit (`olla
 `ai-review` + `ai-secrets` + `ai-commit` fusionnés le 2026-07-30) déjà publiés — plus de contrainte
 d'ordre sur eux, ils sont déjà en ligne pour tout brouillon qui les cite.
 
-- `docling` doit être publié avant `ollama-ai-docs` (**ai-summarize** + `_ai_extract_text`) — ce
-  dernier fait un lien direct vers `/blog/docling` et son helper `_ai-docs.zsh` appelle
-  `docling-convert`.
+- `docling` est **publié** (2026-09-17) : `ollama-ai-docs` (**ai-summarize** + `_ai_extract_text`)
+  peut sortir quand on veut, son lien vers `/blog/docling` résout et son helper `_ai-docs.zsh`
+  appelle `docling-convert`, désormais documenté (les deux copies de `_ai-docs.zsh` appellent bien
+  le wrapper `docling-convert`, pas la CLI `docling` directement — rien à resynchroniser).
 - `ollama-ai-docs` doit être publié avant `ollama-ai-diff` (**ai-diff**) — le mode "deux fichiers"
-  d'ai-diff réutilise `_ai_extract_text`, défini dans `_ai-docs.zsh`. Transitivement, `docling`
-  doit donc aussi précéder `ai-diff`.
+  d'ai-diff réutilise `_ai_extract_text`, défini dans `_ai-docs.zsh`. Seule contrainte d'ordre
+  restante sur ce couple (`docling` est publié).
 - `ollama-ai-translate` (**ai-translate**) est indépendant — fonctionne sans Docling (texte/pipe),
   dépendance sur `_ai_extract_text` optionnelle (graceful fallback). Si publié après
   `ollama-ai-docs`, mettre à jour l'AlertBox "supersedes".
@@ -123,9 +132,10 @@ d'ordre sur eux, ils sont déjà en ligne pour tout brouillon qui les cite.
 - `ollama-ai-ci` cite `ai-fix` et `ai-standup` comme déjà existants (contrainte souple).
 - `ollama-ai-ask`, `ollama-ai-data`, `ollama-ai-diagram` ne citent aucun autre brouillon de la
   série par nom — libres.
-- `duckdb-json-csv` (hors série) fait un lien dur vers `/blog/docling` ET `/blog/ollama-ai-data` —
-  doit venir après les deux.
-- `python-security-bandit-audit` (hors série) fait un lien dur vers `/blog/docling`.
+- `duckdb-json-csv` (hors série) fait un lien dur vers `/blog/docling` (publié) ET
+  `/blog/ollama-ai-data` — seul ce dernier reste à publier avant lui.
+- `python-security-bandit-audit` (hors série) fait un lien dur vers `/blog/docling` — résolu depuis
+  le 2026-09-17.
 - `ai-explain` (ELI5 terminal) est le dernier article prévu de la série — à publier après tous les
   autres brouillons `ollama-ai-*` restants.
 - `ollama-tag-suggester` (créé 2026-08-30) ne cite aucun autre brouillon de la série par nom —
@@ -211,8 +221,6 @@ Indépendants entre eux, sauf :
   absent dans l'illustration. `/img/series/ollama.webp` manque
   toujours (réserve partagée avec le reste de la série, ci-dessus). Réciproques à poser à la
   publication : `/blog/docusaurus-tags` et `/blog/ollama-installation`.
-- **`docling` :** Dockerfile (image CUDA, passthrough GPU) construit à partir de la doc, jamais
-  buildé — à tester contre la carte 24GB avant de considérer l'article final.
 - **`duckdb-json-csv` :** URL/version du binaire CLI (`v1.5.5`) vérifiées via l'API GitHub à la
   rédaction, jamais buildée — revérifier que le tag existe encore.
 - **`xdebug-docker-vscode` :** config Xdebug 3.x/VSCode raisonnée mais jamais testée en conditions
@@ -229,9 +237,6 @@ Indépendants entre eux, sauf :
 - **`docker-dive` :** images de démo (`myapp:bad`, `myapp:v2`, etc.) non construites — chiffres
   illustratifs mais réalistes, à vérifier après build réel. Lien vers `/blog/lazydocker` en
   conclusion : OK, `lazydocker` publié le 2026-09-03.
-- **`copy-as-markdown` :** validé par un `yarn build` complet (247 miroirs générés sans erreur,
-  aucun lien cassé). Le plugin montré dans l'article est pédagogique/simplifié, jamais ajouté au
-  vrai `docusaurus.config.js` (ce blog utilise `plugins/markdown-export-plugin`, plus complet).
 - **`blog-time-to-value-audit` :** chiffres réels du 2026-08-12 (318 articles audités, 180
   RESTRUCTURE / 109 MINOR / 29 OK, médiane TTV 42 %). Pas de `series:` (délibéré). Expose
   publiquement que 180 articles étaient mal structurés — décision éditoriale assumée. Bannière
@@ -263,3 +268,35 @@ Indépendants entre eux, sauf :
 (`config.yaml` au lieu de `config.json`, rachat de Continue.dev par Cursor/Anysphere en juin 2026,
 `qwen3-coder:30b` comme modèle recommandé). Entrée `updates:` ajoutée. Non re-vérifié :
 l'affirmation sur l'emplacement de la config Continue (dossier home Windows vs. WSL).
+
+### `docker-diff-read-only` (créé le 2026-09-16)
+
+Né d'une discussion sur l'article `docling` : le fait « Docker monte tout `--tmpfs` en `noexec` »
+était trop mince pour un article, mais `docker diff` comme **méthode** de découverte des chemins
+inscriptibles, lui, porte un sujet entier. La première version du sujet (« la liste des dossiers
+standards à monter ») a été écartée par Christophe, à raison : la liste n'est pas portable, chaque
+outil a ses propres chemins (`/var/log`, `/var/run`, `/var/cache/nginx`, `~/.cache`, …). L'angle
+retenu est donc l'inverse : la liste ne se connaît pas, elle se **mesure**.
+
+Tout ce qui est publié dans l'article a été exécuté et capturé le 2026-09-16, pas rédigé de
+mémoire :
+
+- nginx `--read-only` plante bien sur `/var/cache/nginx/client_temp` ; `docker diff` remonte en
+  plus `/run/nginx.pid` **et `/etc/nginx/conf.d/default.conf`** (l'entrypoint officiel réécrit sa
+  propre config au boot — c'est le vrai « waouh » de l'article, aucune checklist ne le donne) ;
+- le `compose.yaml` corrigé (tmpfs sur `/var/cache/nginx` et `/run`) démarre et sert, mais le
+  message `info: can not modify /etc/...` persiste : conteneur sain, comportement perdu en
+  silence ;
+- l'image matplotlib échoue **en cascade** (d'abord `MPLCONFIGDIR`, puis `/out/chart.png`), et
+  `docker diff` donne les trois écritures d'un coup ;
+- version épinglée vérifiée dans l'image : `matplotlib==3.11.2`.
+
+**Angle mesuré puis abandonné** : le cache de polices matplotlib reconstruit à chaque exécution ne
+coûte rien de mesurable (0,73 s contre 0,68 s cache chaud). L'article ne prétend donc nulle part
+que le tmpfs dégrade les performances — la dégradation silencieuse qu'il documente est celle de
+nginx sur `/etc`, celle-là est réelle.
+
+**Seul point non vérifié** : le bind mount `./out:/out` du second `compose.yaml`. Impossible à
+tester depuis le devcontainer (Docker-outside-of-Docker résout les chemins sur l'hôte) ; testé avec
+un volume nommé à la place. Mécanique standard, risque nul, mais à refaire tourner sur la machine
+hôte avant publication.

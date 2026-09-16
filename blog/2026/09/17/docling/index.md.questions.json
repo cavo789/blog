@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-09-16T17:09:00.097Z",
+  "source": "index.md",
+  "sourceHash": "1ae004e981731e67f2e94b23a2474146f09cd73e",
+  "questions": [
+    {
+      "question": "What does Docling do differently from other converters?",
+      "anchor": "what-docling-does-differently"
+    },
+    {
+      "question": "How is PDF handled in Docling?",
+      "anchor": "converting-five-formats"
+    },
+    {
+      "question": "What are the five formats that can be converted by Docling?",
+      "anchor": "converting-five-formats"
+    },
+    {
+      "question": "Why does Docling use GPU acceleration for PDF conversions?",
+      "anchor": "what-docling-does-differently"
+    },
+    {
+      "question": "How is the image created in Docling?",
+      "anchor": "installation"
+    },
+    {
+      "question": "What are the steps to build the Docker image for Docling?",
+      "anchor": "create-our-docker-image"
+    },
+    {
+      "question": "What is the purpose of the global wrapper script in Docling?",
+      "anchor": "build-the-image"
+    },
+    {
+      "question": "How does the global wrapper script work?",
+      "anchor": "build-the-image"
+    },
+    {
+      "question": "What are the key takeaways from this article about Docling?",
+      "anchor": "key-takeaways"
+    },
+    {
+      "question": "Why is it worth testing the Docker image before using it?",
+      "anchor": "installation"
+    },
+    {
+      "question": "How does the global wrapper script handle different directories?",
+      "anchor": "build-the-image"
+    },
+    {
+      "question": "What are the benefits of using Docling for converting office documents to Markdown?",
+      "anchor": ""
+    }
+  ]
+}

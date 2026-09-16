@@ -1,0 +1,13 @@
+$ docker run --name probe ro-demo-plot
+chart written
+
+$ docker diff probe
+C /home
+C /home/plotter
+A /home/plotter/.cache
+A /home/plotter/.cache/matplotlib
+A /home/plotter/.cache/matplotlib/fontlist-v3.11.0.json
+A /home/plotter/.config
+A /home/plotter/.config/matplotlib
+C /out
+A /out/chart.png

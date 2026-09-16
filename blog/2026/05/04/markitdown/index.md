@@ -114,3 +114,7 @@ Check the [official repository](https://github.com/microsoft/markitdown/) for th
 In this guide, we deliberately focused on compiling only the extensions for Word, Excel, and PDF (`[docx,xlsx,pdf]`) to keep our Docker image lightweight and strictly scoped. However, you can easily expand the tool's capabilities to suit your needs. Simply adjust the `pip install` extras in the `Dockerfile` and rebuild your image.
 
 Refer to the [Optional Dependencies](https://github.com/microsoft/markitdown/#optional-dependencies) section in the official documentation to explore the full potential of this utility.
+
+<AlertBox variant="tip" title="Complex PDFs, dense tables, scanned pages?">
+Markitdown parses each format with a dedicated library, which is fast and light but sometimes flattens a complex layout. When the document really matters, I now reach for a second, heavier image built the exact same way: see <Link to="/blog/docling">Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated</Link>, which runs real layout and table-structure models (on the GPU, if you have one).
+</AlertBox>

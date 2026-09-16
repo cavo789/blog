@@ -1,0 +1,10 @@
+services:
+  plot:
+    build: .
+    read_only: true
+    volumes:
+      - ./out:/out
+    tmpfs:
+      - /tmp:size=64m
+    environment:
+      MPLCONFIGDIR: /tmp/matplotlib

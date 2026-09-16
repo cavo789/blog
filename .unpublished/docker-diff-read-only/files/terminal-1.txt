@@ -1,0 +1,21 @@
+$ docker run --read-only nginx:alpine
+nginx: [emerg] mkdir() "/var/cache/nginx/client_temp" failed (30: Read-only file system)
+
+$ docker run --detach --name probe nginx:alpine
+$ docker exec probe wget --quiet --output-document=/dev/null http://127.0.0.1/
+
+$ docker diff probe
+C /var
+C /var/cache
+C /var/cache/nginx
+A /var/cache/nginx/client_temp
+A /var/cache/nginx/fastcgi_temp
+A /var/cache/nginx/proxy_temp
+A /var/cache/nginx/scgi_temp
+A /var/cache/nginx/uwsgi_temp
+C /run
+A /run/nginx.pid
+C /etc
+C /etc/nginx
+C /etc/nginx/conf.d
+C /etc/nginx/conf.d/default.conf

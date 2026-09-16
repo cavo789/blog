@@ -1,0 +1,9 @@
+$ docker compose up --detach
+[+] Running 1/1
+ ✔ Container ro-nginx-web-1  Started
+
+$ docker compose exec web wget --quiet --output-document=/dev/null http://127.0.0.1/ && echo served
+served
+
+$ docker compose logs | grep "can not modify"
+web-1  | 10-listen-on-ipv6-by-default.sh: info: can not modify /etc/nginx/conf.d/default.conf (read-only file system?)
