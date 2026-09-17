@@ -117,7 +117,14 @@ const config = {
   // dir — see that plugin's header comment for why the full "Ask my blog" question corpus is
   // served as a plain fetchable JSON file (regenerated on every build/reload) instead of
   // being bundled as plugin data.
-  staticDirectories: ["static", ".docusaurus/questions-index-plugin/static"],
+  // The generated-files dir is NOT always `.docusaurus`: the dev server runs under
+  // `.docusaurus-dev` and the isolated verification build under `.docusaurus-verify`
+  // (DOCUSAURUS_GENERATED_FILES_DIR_NAME, read by @docusaurus/utils the same way). A hardcoded
+  // `.docusaurus` served nothing there, and "Ask my blog" stayed empty in `yarn start`.
+  staticDirectories: [
+    "static",
+    `${process.env.DOCUSAURUS_GENERATED_FILES_DIR_NAME ?? ".docusaurus"}/questions-index-plugin/static`,
+  ],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.

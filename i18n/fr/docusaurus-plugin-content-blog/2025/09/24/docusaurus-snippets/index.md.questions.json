@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T10:55:59.605Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f88a4e8825c187004e8063091446436060d9cef4",
+  "questions": [
+    {
+      "question": "docusaurus afficher des snippets de code dynamiques dans le blog",
+      "anchor": ""
+    },
+    {
+      "question": "Comment utiliser l'élément summary pour masquer du code dans un article ?",
+      "anchor": "the-summary-element"
+    },
+    {
+      "question": "fichier jsx et css pour créer le composant Snippets",
+      "anchor": "creation-of-our-snippets-component"
+    },
+    {
+      "question": "Quelle syntaxe pour appeler le composant LogoIcon de Docux ?",
+      "anchor": "logoicon-of-docux"
+    },
+    {
+      "question": "insérer un bloc Snippets dans un fichier markdown",
+      "anchor": "using-the-snippets-component"
+    },
+    {
+      "question": "Comment charger le code directement depuis le disque sans copier coller ?",
+      "anchor": "dont-copypaste-content-anymore"
+    },
+    {
+      "question": "plugin remark pour lire les fichiers sources dans docusaurus",
+      "anchor": "to-make-this-work-we-need-a-plugin"
+    },
+    {
+      "question": "exemple de snippet avec du contenu codé en dur dans le jsx",
+      "anchor": "demo-hardcoded-content"
+    },
+    {
+      "question": "configurer les chemins relatifs et absolus pour charger du code externe",
+      "anchor": "demo-get-content-from-the-disk"
+    },
+    {
+      "question": "Assembler plusieurs snippets en arborescence avec ProjectSetup",
+      "anchor": "go-further-with-projectsetup"
+    }
+  ]
+}

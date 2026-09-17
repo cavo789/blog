@@ -3,7 +3,7 @@
 - **Priority**: Low — la locale est en ligne ; ce qui reste est de la mesure et de la traduction au fil de l'eau
 - **Batch**: i18n-fr
 - **Depends**: 0119
-- **Files**: `scripts/translate-post.mjs`, `.devcontainer/scripts/interactive.sh`
+- **Files**: `scripts/translate-post.mjs`, `.devcontainer/scripts/interactive.sh`, `static/.htaccess`, `.github/workflows/deploy.yml`, `src/theme/NavbarItem/LocaleDropdownNavbarItem/` (à swizzler)
 
 ## Pourquoi ce TODO existe
 
@@ -25,15 +25,92 @@ rangeant 0119 dans `DONE/` aurait été pire. Il est donc repris ici, tel que 01
       garantit la structure, pas la justesse du français.
 - [ ] **Traduire le top 20 par trafic Matomo réel** — `translate` accepte une liste de chemins et
       affiche le coût estimé avant d'appeler l'API (≈ 0,26 $/article en traduction complète).
-- [ ] **Mesurer 60 jours** : les pages `/fr/` reçoivent-elles du trafic organique ? Critère à fixer
-      avant de regarder les chiffres, pour ne pas le choisir après coup.
+- [x] ~~**Mesurer 60 jours** : les pages `/fr/` reçoivent-elles du trafic organique ?~~ — abandonné
+      le 2026-09-17 : la mesure ne devait arbitrer que la traduction du reste du corpus, or l'auteur
+      la fait quoi qu'il arrive. Plus rien ne dépend de ce chiffre.
 - [ ] **Traduire chaque nouvel article à sa publication** — c'est une habitude, pas une tâche :
       `translate blog/AAAA/MM/JJ/<slug>`, puis relancer le serveur de dev (un nouveau fichier de
       traduction n'est pas pris en compte à chaud).
-- [ ] **Le reste du corpus, seulement si la mesure est positive** — 252 articles, ≈ 66 $ en
-      traduction complète au tarif Opus 5 mesuré.
+- [ ] **Traduire le reste du corpus** — 252 articles, ≈ 66 $ en traduction complète au tarif
+      Opus 5 mesuré. Décidé sans condition le 2026-09-17 (plus adossé à la mesure des 60 jours).
+      C'est le prérequis de la redirection `/fr/` ci-dessous.
 - [ ] **API Batches pour le volume** — 50 % de réduction, en asynchrone. Ne vaut la peine que pour
       l'étape précédente ; inutile pour un article à la fois.
+- [ ] **Rediriger les navigateurs francophones vers `/fr/`** — décidé le 2026-09-17, à poser
+      **une fois le corpus entièrement traduit**, jamais avant. Conditions, garde-fous et pièges
+      dans la section dédiée ci-dessous.
+
+## Redirection automatique des navigateurs francophones vers `/fr/`
+
+Décision du 2026-09-17 : **oui, on la pose — mais après la traduction complète du corpus.**
+
+La question était : un visiteur dont le navigateur annonce `fr` (ou `fr-FR`, `fr-BE`…) devrait-il
+recevoir directement `/fr/` ? Trois objections ont été soulevées puis écartées par l'auteur, qui
+traduira l'intégralité du corpus quoi qu'il arrive : la couverture partielle (161/257 non traduits),
+les listings `/fr/` qui masquent les articles non traduits, et la corruption de la mesure Matomo des
+60 jours. Les deux premières disparaissent avec la couverture complète ; la troisième ne protégeait
+qu'un arbitrage déjà tranché.
+
+Une quatrième objection — « Google déconseille la redirection sur langue perçue » — a été retirée
+comme trop faible : la crainte réelle est qu'un crawler ne voie plus toutes les versions, or
+Googlebot crawle sans `Accept-Language` ou en `en`, et une règle qui ne se déclenche que sur `fr`
+et ne touche jamais `/fr/` le laisse intact.
+
+### Pourquoi l'ordre compte
+
+La règle fait cinq lignes et se pose en une minute ; la fenêtre de nuisance, c'est exactement
+l'écart entre sa mise en ligne et la fin des traductions. Pendant cet écart, chaque lecteur
+francophone arrivant sur un article non traduit est poussé hors de l'URL canonique vers une page
+que `plugins/i18n-seo-guard` a délibérément marquée `noindex` — pour lui servir la même prose
+anglaise. D'où : traduire, **puis** poser la règle. C'est le seul point non négociable de cette
+section.
+
+### Les cinq garde-fous
+
+1. **La règle sera recopiée dans `build/fr/.htaccess` — boucle infinie.** Le piège maison.
+   `plugins/i18n-htaccess/index.cjs` le documente lui-même : Docusaurus copie `static/` dans chaque
+   locale, donc `build/fr/.htaccess` est une copie octet pour octet, et Apache applique le
+   `.htaccess` le plus proche. Sans garde, `/fr/blog/x` est redirigé vers `/fr/fr/blog/x`.
+   Il faut un `RewriteCond %{REQUEST_URI} !^/fr/` — qui rend du même coup la copie française inerte
+   — et une assertion dans le « Sanity-check the build » de `.github/workflows/deploy.yml`, à côté
+   de celle qui vérifie déjà `ErrorDocument 404 /fr/404.html`.
+2. **Ne rediriger que du HTML.** Une règle large attrape `llms.txt`, `llms/`, `robots.txt`,
+   `sitemap.xml`, `questions-index.json`, `manifest.webmanifest`, `sw.js`, `/api/`, `/assets/`,
+   `/pagefind/`, `/img/`, `/files/`, `/admin-data/`, les flux `/blog/rss.xml`, `/blog/atom.xml`,
+   `/blog/feed.json`, et les miroirs `.md` de chaque article (`plugins/markdown-export-plugin`).
+   Rediriger un flux casse les lecteurs abonnés ; rediriger `llms.txt` casse la découvrabilité
+   agent construite en 0082. C'est la partie de la règle qui demande le plus de soin.
+3. **302, jamais 301.** Un 301 est mis en cache par le navigateur quasi définitivement et ne se
+   rétracte pas : impossible d'ajuster ou d'annuler six mois plus tard.
+4. **Un cookie d'override, sinon le sélecteur de langue est cassé.** Sans lui, un lecteur qui passe
+   en anglais via le `localeDropdown` est renvoyé sur `/fr/` à la navigation suivante, et le bouton
+   retour le renvoie en avant. Le dropdown pose le cookie (swizzle de
+   `NavbarItem/LocaleDropdownNavbarItem`, pas encore présent dans `src/theme/`), la `RewriteCond`
+   s'efface en sa présence. **Piège** : ne pas poser ce cookie depuis `src/theme/Root.js` en
+   enregistrant la locale rendue — la première visite sur `/` écrirait `en` et la redirection ne se
+   déclencherait plus jamais. Le cookie doit enregistrer un **choix explicite**, pas un état.
+5. **`Vary: Accept-Language`** sur la réponse de redirection, pour qu'aucun cache intermédiaire ne
+   serve le 302 à tout le monde. Le HTML est déjà en `no-store`, mais la redirection est une
+   réponse distincte.
+
+### L'objection résiduelle, assumée
+
+La langue du navigateur n'est pas une préférence de lecture pour du contenu technique : une partie
+des développeurs francophones lisent Docker, WSL et Bash en anglais par choix (terminologie,
+messages d'erreur, parité avec Stack Overflow). Et `/fr/` est une traduction automatique — ce que
+`TranslationNotice` dit lui-même au lecteur. La redirection fait donc passer par défaut d'un
+original écrit à la main à une traduction machine, sans demander.
+
+Assumé, pour deux raisons : `TranslationNotice` affiche déjà l'avertissement et le lien vers
+l'original en haut de chaque article `/fr/`, et le cookie du garde-fou 4 fait que le retour à
+l'anglais ne coûte qu'un clic, **une seule fois**.
+
+### Écarté
+
+Une bannière discrète côté client (`navigator.languages`, dismissible, proposant `/fr/` sans y
+forcer) avait été proposée comme alternative sans risque. Elle tombe avec la couverture complète :
+son intérêt principal était de mesurer la demande francophone par le taux de clic, mesure dont
+l'auteur n'a pas besoin puisque la traduction se fera de toute façon.
 
 ## Clôture de 0119 — ce qui a été vérifié le 2026-09-17
 

@@ -732,6 +732,9 @@
   "blog.typoReport.type.suggestion": {
     "message": "Suggestion"
   },
+  "blog.typoReport.type.translation": {
+    "message": "Traduction douteuse"
+  },
   "blog.typoReport.prompt": {
     "message": "De quel type de problème s'agit-il ?"
   },

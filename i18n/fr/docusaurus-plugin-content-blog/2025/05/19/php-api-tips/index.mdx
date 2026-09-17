@@ -1,0 +1,658 @@
+---
+slug: php-api-tips
+title: API REST - Comment écrire de bonnes API
+date: 2025-05-19
+description: Maîtrisez les bonnes pratiques des API REST pour une conception propre et évolutive. Conseils sur la notation correcte des URI, l'usage de noms au pluriel et l'utilisation des verbes HTTP pour des endpoints sémantiquement corrects.
+authors: [christophe]
+image: /img/v2/api.webp
+series: Building and testing REST APIs
+mainTag: api
+tags:
+  - api
+  - docker
+  - php
+language: fr
+review_date: 2026-07-30
+blueskyRecordKey: 3lun2t72qus2r
+updates:
+  - date: 2025-05-19
+    note: Add belgif.be specifications
+---
+
+![API REST - Comment écrire de bonnes API](/img/v2/api.webp)
+
+<TLDR>
+Ce guide complet couvre les bonnes pratiques essentielles pour concevoir des API REST propres, évolutives et sémantiquement correctes. Découvrez ce qu'il faut faire et ne pas faire dans la construction des URI, y compris l'usage de noms au pluriel et l'absence de verbes. L'article détaille comment utiliser correctement les verbes HTTP comme `GET`, `POST`, `PUT`, `PATCH` et `DELETE`, et quels codes de statut HTTP retourner selon les situations. Il aborde aussi la structuration des réponses JSON pour les données, les erreurs et la pagination, en suivant les standards établis pour une conception d'API robuste.
+</TLDR>
+<!-- cspell:ignore Belgif -->
+
+Quand on <Link to="/blog/python-fastapi">développe des API</Link> _from scratch_, on peut le faire en mode _je me mets devant le PC et je commence à programmer_, ou _je commence par apprendre les standards et je programme ensuite en respectant <Link to="/blog/belgif-api-linter">ces standards</Link>_.
+
+Et si on perd ces normes de vue, on revient vite à écrire des endpoints comme `/articles/insert`, sémantiquement incorrects (et même stupides). En fait, ici, on ne fera jamais un `GET`.
+
+L'objectif de l'article ci-dessous est de lister les bonnes pratiques à l'aide d'exemples.
+
+<!-- truncate -->
+
+## Concepts principaux {#main-concepts}
+
+### Uniform Resource Identifier {#uniform-resource-identifier}
+
+#### Notation des URI {#uri-notation}
+
+_Les segments de path et les paramètres de query devraient utiliser la notation lowerCamelCase pour améliorer la lisibilité et séparer les noms composés._ ([référence](https://www.belgif.be/specification/rest/api-guide/#resource-uri))
+
+| BON                                                                             | MAUVAIS                                                                        |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem/331`</span>        | <span style={{color: 'red'}}>`https://xxx/api/v1/Ipso_Lorem/331`</span>        |
+|                                                                                 | <span style={{color: 'red'}}>`https://xxx/api/v1/ipso-lorem/331`</span>        |
+| <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem/331`</span>        | <span style={{color: 'red'}}>`https://xxx/api/v1/ipsoLorem/331/`</span>        |
+| <span style={{color: 'green'}}>`https://xxx/api/v1/ipsoLorem?country=BE`</span> | <span style={{color: 'red'}}>`https://xxx/api/v1/Ipso_Lorem?Country=BE`</span> |
+
+Une URI ne doit pas se terminer par un `/` ni par une extension de fichier : donc pas de <span style={{color: 'red'}}>`https://xxx/api/v1/ipso-lorem/331.json`</span> mais utilisez simplement des en-têtes HTTP comme `Content-Type: application/json;charset=UTF-8` pour signaler qu'il s'agit d'une réponse JSON.
+
+#### Préférez le nom au pluriel {#prefer-plural-noun}
+
+Utilisez toujours le pluriel, comme `GET /api/v1/employees/1` pour retourner le premier employé, et pas `GET /api/v1/employee/1` ([référence](https://www.belgif.be/specification/rest/api-guide/#collection)).
+
+Le pluriel fait comprendre plus facilement que `employees` est une collection, et on peut utiliser des verbes comme `GET` pour tout récupérer, un seul élément ou une plage, `POST` pour ajouter un nouvel employé, `PUT` pour mettre à jour les informations d'un employé, ...
+
+De plus, avec la forme plurielle, l'utilisateur comprend immédiatement qu'il pourra ajouter des filtres comme `/1` pour obtenir, par exemple, l'employé #1.
+
+##### Relations entre collections {#relations-between-collections}
+
+Quand vous construisez une URI, pensez à la hiérarchie et à la relation entre les collections. Si vous devez retourner la liste des tâches de John, vous pouvez utiliser plusieurs notations, comme illustré ci-dessous :
+
+| BON                                                                  | MAUVAIS                                                            |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <span style={{color: 'green'}}>`/api/v1/employees/john/tasks`</span> | <span style={{color: 'red'}}>`/api/v1/tasks/employees/john`</span> |
+
+À propos de la hiérarchie : est-ce que _les tâches ont des employés_ ou est-ce que _les employés ont des tâches_ ? Cette hiérarchie étant clairement définie (un employé peut avoir plusieurs tâches), placez les collections dans cet ordre dans l'URI : `/api/v1/employees/john` retournera l'employé et en ajoutant `/tasks` on obtiendra sa liste de tâches (ensuite on peut filtrer vers une tâche précise avec `/api/v1/employees/john/tasks/1` par exemple).
+
+Cela rend les URI plus lisibles, plus intuitives et plus évolutives, comme dans `/api/v1/employees/john/projects`.
+
+#### N'utilisez pas de verbes dans les URL {#dont-use-verbs-in-urls}
+
+HTTP dispose de verbes comme `GET`, `POST`, `DELETE`, ... donc n'utilisez pas des appels comme :
+
+- `/api/v1/articles/gettitle`
+- `/api/v1/articles/insert`
+- `/api/v1/articles/1/delete`
+
+Utilisez plutôt le verbe HTTP adéquat :
+
+- `GET /api/v1/articles/title`
+- `PUT /api/v1/articles`
+- `DELETE /api/v1/articles/1`
+
+#### Envoyez l'en-tête HTTP Accept {#send-the-http-accept-header}
+
+Il est **vraiment recommandé** d'informer le serveur de ce que vous attendez : `json`, `csv`, `plain-text`, `xml`, ... Pour cela, utilisez l'en-tête `Accept` comme dans l'exemple ci-dessus. C'est plus sûr, car le serveur peut changer son format par défaut de JSON vers CSV par exemple, et si vous attendez du JSON, votre code sera cassé.
+
+Ne faites pas ceci :
+
+```js
+const employee = axios.create({
+  baseURL: "https://xxx/api/v1/employees/123",
+});
+```
+
+Mais plutôt :
+
+```js
+const employee = axios.create({
+  baseURL: "https://xxx/api/v1/employees/123",
+  headers: {
+    Accept: "application/json",
+  },
+});
+```
+
+Dans ce second exemple, vous indiquez au serveur web que vous voulez une représentation JSON et rien d'autre.
+
+#### Filtrage {#filtering}
+
+Utilisez `?` suivi d'une paire clé=valeur comme `?country=BE`. Si vous avez plusieurs paramètres, utilisez `&` comme dans `?country=BE&lang=FR`.
+
+Si vous devez fournir plusieurs valeurs pour le même paramètre, le standard est de répéter le paramètre, comme dans `/cars?color=black&color=blue` ([référence](https://www.belgif.be/specification/rest/api-guide/#rule-qry-multi)).
+
+#### Tri {#sorting}
+
+Une pratique courante consiste à utiliser une clé appelée `sort`, qui peut être utilisée autant de fois qu'il y a de colonnes à filtrer. L'ordre de tri décroissant peut être indiqué en préfixant le nom de la propriété par un tiret `-` ([référence](https://www.belgif.be/specification/rest/api-guide/#rule-col-sort)).
+
+Par exemple, `?sort=name&sort=-age` fera un tri croissant sur la colonne du nom et un tri décroissant sur l'âge.
+
+#### Paramètres de query pour la pagination {#pagination-query-parameters}
+
+Avec la pagination, `page` sert à déterminer la page courante tandis que `pageSize` indique le nombre d'enregistrements à afficher.
+
+Ainsi, `/api/v1/employees?page=1&pageSize=5` affichera les cinq premiers employés et `/api/v1/employees?page=2&pageSize=5` les cinq suivants.
+
+#### Noms de paramètres de query réservés {#reserved-query-parameters-name}
+
+([référence](https://www.belgif.be/specification/rest/api-guide/#query-parameters-2))
+
+| Terme      | Description                                                                                                                                                                                                   | Exemple                  | Réf                         |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | --------------------------- |
+| `page`     | Quand une collection de ressources est paginée, utilisez ce paramètre pour demander une page précise. La numérotation des pages commence à 1.                                                                  | `?page=3&pageSize=20`    | Pagination                  |
+| `pageSize` | Quand une collection de ressources est paginée, utilisez ce paramètre pour spécifier la taille de la page.                                                                                                     | `?page=3&pageSize=20`    | Pagination                  |
+| `q`        | Le paramètre de recherche standard pour faire une recherche full-text.                                                                                                                                        | `?q=RESTFull`            | Filtrage                    |
+| `select`   | Limite les propriétés de la ressource à celles spécifiées.                                                                                                                                                    | `?select=(name,address)` | Consultation (Document)     |
+| `sort`     | Paramètre de query multi-valeurs avec la liste des propriétés sur lesquelles trier. Le sens de tri par défaut est croissant. Pour indiquer un tri décroissant, la propriété peut être préfixée par -.          | `?sort=name&&sort=-age`  | Collection                  |
+| `embed`    | Demande d'intégrer une sous-ressource. Par exemple, `api/v1/countries` retourne les pays et `api/v1/countries?embed=political` les pays avec leurs infos politiques. Cela évite des appels API supplémentaires. | `?embed=mainAddress`     | Intégration de ressources   |
+| `lang`     | langue pour filtrer les descriptions multilingues                                                                                                                                                             | `?lang=fr`               | Descriptions multilingues   |
+
+### Verbes {#verbs}
+
+#### HEAD {#head}
+
+`HEAD` doit être utilisé pour récupérer des informations sur la ressource, comme par exemple le nombre d'enregistrements dans la ressource (nombre de livres, d'articles, ...) ou pour vérifier si une ressource donnée existe. `HEAD` devrait servir uniquement à récupérer les en-têtes de la réponse HTTP d'une ressource ([référence](https://www.belgif.be/specification/rest/api-guide/#head)).
+
+Par exemple, imaginez une ressource appelée `countries` : on peut vérifier si `language=FR` va retourner quelque chose :
+
+<Terminal typewriter>
+  $ curl --head https://xxx/api/v1/countries?language=FR HTTP/2 200 OK
+  Content-Range: 0-5/* Content-Location: /api/v1/countries?language=FR
+  Content-Type: application/json; charset=utf-8
+</Terminal>
+
+##### HEAD - Code retourné {#head---returned-code}
+
+Si on obtient le code de retour HTTP `200`, on peut lancer une action `GET` pour obtenir les enregistrements :
+
+<Terminal typewriter>$ curl https://xxx/api/v1/countries?language=FR | jq</Terminal>
+
+`HEAD` peut donc servir à obtenir des métadonnées sur une ressource.
+
+<AlertBox variant="info" title="Combien de pays ont le français comme langue officielle ?">
+Dans les en-têtes retournés par `HEAD`, nous obtiendrons très probablement une entrée `Content-Range`. Dans notre exemple fictif, on peut déterminer qu'il y a six pays où le français est une langue officielle.
+
+</AlertBox>
+
+| Code  | Statut          | Raison                                                                                             |
+| ----- | --------------- | -------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | Le serveur a traité la requête avec succès. Cela signifie que la ressource demandée existe.        |
+| `401` | `Unauthorized`  | L'endpoint est sécurisé et la requête n'a pas fourni de token d'accès valide.                      |
+| `403` | `Access denied` | Vous n'êtes pas autorisé à accéder à la ressource demandée.                                        |
+| `404` | `Not found`     | La ressource demandée n'existe pas                                                                 |
+
+Le code `204 - No Content` n'est pas attendu car, même si `HEAD` ne retourne pas de corps de réponse, le serveur retourne bien des en-têtes HTTP, ce qui est équivalent à une réponse. Le code standard est donc `200`, pas `204`.
+
+##### Compter le nombre d'éléments dans une ressource {#count-number-of-items-in-a-resource}
+
+> [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Range)
+
+`HEAD` peut être utilisé sur une ressource pour obtenir le nombre total d'enregistrements ; par exemple pour pouvoir afficher une barre de navigation.
+
+Donc, ne créez pas un endpoint comme `https://xxx/api/v1/countries/count` alors que la manière standard est d'utiliser `HEAD`.
+
+Imaginez une table de base de données appelée `countries` contenant `984` enregistrements (c.-à-d. le résultat de `SELECT Count(*) FROM countries;`).
+
+Cette info peut être récupérée depuis notre API comme ceci :
+
+<Terminal typewriter>
+  $ curl --head https://xxx/api/v1/countries HTTP/2 200 OK Content-Range:
+  0-983/* Content-Location: /api/v1/countries Content-Type: application/json;
+  charset=utf-8
+</Terminal>
+
+`curl --head` (similaire à `curl -i`) utilise le verbe HTTP `HEAD`.
+
+Pour extraire cette information en JavaScript, le script [parse-content-range-header](https://github.com/academia-de-codigo/parse-content-range-header/blob/master/index.js) peut éventuellement être utilisé.
+
+#### GET {#get}
+
+<AlertBox variant="info" title="Vous pouvez traduire `GET` par `READ` dans `CRUD`" />
+
+Retourne une ressource (ce peut être une collection ou juste un élément).
+
+Retourner tous les employés :
+
+<Terminal typewriter>
+  $ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees
+</Terminal>
+
+Retourner l'employé #1 :
+
+<Terminal typewriter>
+  $ curl -X GET -H "Accept: application/json" https://xxx/api/v1/employees/1
+</Terminal>
+
+`GET` est une méthode strictement en lecture seule, qui ne devrait jamais modifier l'état de la ressource ([référence](https://www.belgif.be/specification/rest/api-guide/#get)).
+
+##### GET - Code retourné {#get---returned-code}
+
+| Code  | Statut          | Raison                                                                                            |
+| ----- | --------------- | ------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | Le serveur a traité la requête avec succès. La ressource demandée existe et vous est retournée.   |
+| `401` | `Unauthorized`  | L'endpoint est sécurisé et la requête n'a pas fourni de token d'accès valide.                     |
+| `403` | `Access denied` | Vous n'êtes pas autorisé à accéder à la ressource demandée.                                       |
+| `404` | `Not found`     | La ressource demandée n'existe pas.                                                               |
+
+Le code `204 - No content` ne devrait pas être utilisé avec `GET`.
+
+#### POST {#post}
+
+<AlertBox
+  variant="info"
+  title="Vous pouvez traduire `POST` par `CREATE` dans `CRUD`"
+/>
+
+Avec `POST`, **vous allez créer une nouvelle ressource**. Appeler `POST` cinq fois pour le même « nouvel » employé créera donc cinq nouveaux employés. <span style={{color: 'red'}}>`POST` n'est pas idempotent : l'appeler plus d'une fois retournera chaque fois une nouvelle ressource (comme le nouvel ID d'employé).</span>
+
+<Terminal typewriter>
+  ${" "}
+  {`curl -X POST -d '\{"firstname":"Christophe",...}' https://xxx/api/v1/employees`}
+</Terminal>
+
+<AlertBox variant="note">
+Lors d'un appel `POST`, vous devez fournir tous les champs requis pour créer la ressource. Donc, pour un nouvel employé : son prénom, son nom, sa date de naissance, son numéro de registre national, sa date d'embauche, le département où il travaillera, et ainsi de suite.
+
+</AlertBox>
+
+##### POST - Code retourné {#post---returned-code}
+
+L'exemple ci-dessus créera un nouvel employé, le serveur retournera le code de statut HTTP `201` (CREATED) et, probablement, aussi un en-tête location avec un lien, comme `https://xxx/api/v1/employees/999`, c.-à-d. le lien vers l'employé nouvellement créé.
+
+| Code  | Statut          | Raison                                                                                                            |
+| ----- | --------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `201` | `Created`       | La ressource a été créée avec succès.                                                                             |
+| `303` | `See Other`     | La ressource existe déjà et un lien vers celle-ci est fourni. `303` indique qu'il s'agit d'un contrôle normal.     |
+| `401` | `Unauthorized`  | L'endpoint est sécurisé et la requête n'a pas fourni de token d'accès valide.                                      |
+| `403` | `Access denied` | Vous n'êtes pas autorisé à appeler cette méthode.                                                                 |
+| `409` | `Conflict`      | La ressource ne peut pas être créée (p. ex. elle existe déjà). `409` s'utilise quand ce cas n'était pas attendu.   |
+
+Le code `200 - OK` ne devrait pas être utilisé avec `POST`.
+
+##### POST - Cas particulier {#post---special-case}
+
+`POST` peut aussi être utilisé pour appeler un contrôleur, comme dans `curl -X POST -d '{"action":"sendBirthdayMail",...}' https://xxx/api/v1/employees/123/actions` ou `curl -X POST https://xxx/api/v1/employees/123/sendBirthdayMail`.
+
+<AlertBox variant="caution" title="Les standards des API RESTful recommandent d'utiliser `POST` pour les actions.">
+Donc, on ne devrait pas faire `GET https://xxx/api/v1/employees/actions` parce que `actions` n'est pas une ressource mais une action.
+
+</AlertBox>
+
+#### PUT {#put}
+
+<AlertBox
+  variant="info"
+  title="Vous pouvez traduire `PUT` par `UPDATE` dans `CRUD`, quand vous mettez à jour tous les champs"
+>
+  Utiliser `PUT` implique que vous avez l'intention de mettre à jour chaque
+  champ de l'enregistrement. Si vous ne prévoyez d'en modifier que
+  quelques-uns, jetez un œil au verbe `PATCH`.
+</AlertBox>
+
+Avec `PUT`, vous mettez à jour une ressource existante. Imaginons que notre table employees n'ait que trois champs :
+
+<Terminal typewriter>
+  ${" "}
+  {`curl -X PUT -d '\{"firstname":"Christophe", "lastname":"AVONTURE", "national_number": 123456789}' https://xxx/api/v1/employees/999`}
+</Terminal>
+
+N'utilisez `PUT` que lorsque **vous mettez à jour chaque information** de la ressource (sauf les champs calculés comme par exemple `employee_id`). Si vous ne souhaitez en modifier que quelques-unes (contenu partiel), utilisez plutôt `PATCH`.
+
+<span style={{ color: "green" }}>
+  `PUT` est idempotent puisque relancer la même mise à jour n'aura pas d'autres
+  effets sur le serveur. Vous pouvez modifier une fois, cinq fois ou mille fois
+  le prénom de l'employé #999, le résultat sera toujours le même.
+</span>
+
+##### PUT - Code retourné {#put---returned-code}
+
+| Code  | Statut          | Raison                                                                                                                       |
+| ----- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | L'enregistrement a été mis à jour avec succès et la version mise à jour de la ressource est retournée.                       |
+| `204` | `No Content`    | L'enregistrement a été mis à jour avec succès et rien n'est retourné comme réponse HTTP.                                     |
+| `400` | `Bad request`   | La requête est incorrecte (p. ex. vous essayez de mettre à jour un champ `first_name` alors que son nom correct est `firstname`). |
+| `401` | `Unauthorized`  | L'endpoint est sécurisé et la requête n'a pas fourni de token d'accès valide.                                                |
+| `403` | `Access denied` | Vous n'êtes pas autorisé à appeler cette méthode                                                                             |
+| `404` | `Not found`     | La ressource demandée n'existe pas (p. ex. vous avez tenté d'accéder à `/api/v1/employees/1` et celle-ci n'existait pas).    |
+
+<AlertBox variant="caution">
+En recevant `PUT -d '{"firstname":"Christophe"}' https://xxx/api/v1/employees/123456`, le développeur de l'API peut décider de lui-même de **CRÉER** la ressource 123456 si elle n'existait pas et si tous les champs requis ont été fournis dans le payload.
+
+Donc, quand la ressource n'existe pas, le développeur peut retourner une erreur `404 - Not found` ou, s'il décide de créer la nouvelle ressource, l'API peut retourner `201 - Created` (comme pour un `POST`) ([référence](https://www.belgif.be/specification/rest/api-guide/#put)).
+
+</AlertBox>
+
+#### PATCH {#patch}
+
+<AlertBox
+  variant="info"
+  title="Vous pouvez traduire `PATCH` par `UPDATE` dans `CRUD`, quand vous NE mettez PAS à jour tous les champs"
+>
+  Si vous prévoyez de mettre à jour tous les champs, vous devez utiliser `PUT`,
+  pas `PATCH`.
+</AlertBox>
+
+`PATCH` s'utilise quand la mise à jour est partielle, comme modifier un seul champ : `curl -X PATCH -d '{"firstname": "John"} https://xxx/api/v1/employees/999'` mettra à jour uniquement le prénom.
+
+Un `PATCH` sur une ressource inexistante retournera une erreur alors que, peut-être, `PUT` créera la ressource. Il est donc plus sûr d'utiliser `PATCH` et pas `PUT` pour mettre à jour un contenu partiel.
+
+Il est en effet impossible de créer un nouvel enregistrement avec `PATCH` puisque la requête ne mentionne que peu d'informations, pas toutes.
+
+##### PATCH - Code retourné {#patch---returned-code}
+
+| Code  | Statut          | Raison                                                                                                                       |
+| ----- | --------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | L'enregistrement a été mis à jour avec succès et la version mise à jour de la ressource est retournée.                       |
+| `204` | `No Content`    | L'enregistrement a été mis à jour avec succès et rien n'est retourné comme réponse HTTP.                                     |
+| `400` | `Bad request`   | La requête est incorrecte (p. ex. vous essayez de mettre à jour un champ `first_name` alors que son nom correct est `firstname`). |
+| `401` | `Unauthorized`  | L'endpoint est sécurisé et la requête n'a pas fourni de token d'accès valide.                                                |
+| `403` | `Access denied` | Vous n'êtes pas autorisé à appeler cette méthode                                                                             |
+| `404` | `Not found`     | La ressource demandée n'existe pas (p. ex. vous avez tenté d'accéder à `/api/v1/employees/1` et celle-ci n'existait pas).    |
+
+Remarque : comme avec `PUT` (voir ci-dessus), le développeur peut décider de créer la ressource. Dans ce cas, `201 - Created` peut être retourné.
+
+#### DELETE {#delete}
+
+<AlertBox
+  variant="info"
+  title="Vous pouvez traduire `DELETE` par ... `DELETE` dans `CRUD`"
+/>
+
+Pour supprimer l'employé #59 :
+
+<Terminal typewriter>$ curl -X DELETE https://xxx/api/v1/employees/59</Terminal>
+
+##### DELETE - Code retourné {#delete---returned-code}
+
+| Code  | Statut          | Raison                                                                                                                        |
+| ----- | --------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `200` | `OK`            | L'enregistrement a été supprimé avec succès et un message comme _La ressource a été supprimée avec succès_ est retourné.      |
+| `204` | `No Content`    | L'enregistrement a été supprimé avec succès et rien n'est retourné comme réponse HTTP.                                        |
+| `400` | `Bad request`   | La syntaxe de la requête est invalide.                                                                                        |
+| `401` | `Unauthorized`  | L'endpoint est sécurisé et la requête n'a pas fourni de token d'accès valide.                                                 |
+| `403` | `Access denied` | Vous n'êtes pas autorisé à appeler cette méthode.                                                                             |
+| `404` | `Not found`     | La ressource demandée n'existe pas (p. ex. vous avez tenté d'accéder à `/api/v1/employees/1` et celle-ci n'existait pas).     |
+| `409` | `Conflict`      | La ressource ne peut pas être supprimée (p. ex. on ne peut pas licencier un employé tant qu'il reste des paiements à faire).   |
+
+#### OPTIONS {#options}
+
+`OPTIONS` peut être utilisé pour récupérer la liste des actions possibles sur une ressource, comme par exemple `curl -X OPTIONS https://xxx/api/v1/employees/1` : on peut s'attendre à obtenir `GET` (on peut récupérer les métadonnées de l'employé 1), `PATCH/PUT` (on peut le mettre à jour), ... mais on ne récupérera pas `POST` puisque cet employé existe déjà ([référence](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/OPTIONS)).
+
+### Réponses {#responses}
+
+#### Codes de statut {#status-codes}
+
+##### 200 OK {#200-ok}
+
+Un serveur DOIT répondre à une requête réussie de récupération d'une ressource individuelle ou d'une collection de ressources avec une réponse `200 OK`.
+
+Quand `DELETE` a été utilisé, on peut aussi retourner `204 No Content` pour informer l'application appelante que la suppression a réussi.
+
+##### 201 Created {#201-created}
+
+Si la ressource demandée a été créée avec succès et que le serveur modifie la ressource d'une quelconque manière (par exemple en attribuant un ID), le serveur DOIT retourner une réponse `201 Created` avec la nouvelle ressource ajoutée dans le corps.
+
+##### 202 Accepted {#202-accepted}
+
+Si une requête de création/mise à jour ou de suppression d'une ressource a été acceptée pour traitement, mais que le traitement n'est pas terminé au moment où le serveur répond, le serveur DOIT retourner un code de statut `202 Accepted`.
+
+##### 204 No Content {#204-no-content}
+
+Si la ressource demandée a été créée avec succès et que le serveur ne modifie la ressource d'aucune manière (par exemple en attribuant un ID ou un attribut `createdAt`), le serveur DOIT retourner soit un code de statut `201 Created` avec la ressource dans la réponse, soit un code `204 No Content` sans document de réponse.
+
+Si la suppression a été effectuée avec succès, `204 No Content` peut aussi être utilisé.
+
+Pour une mise à jour, c'est pareil : on peut envoyer le code `200 OK` avec la ressource mise à jour dans le corps ou le code `204 No Content` sans corps, juste des en-têtes.
+
+##### 400 Bad Request {#400-bad-request}
+
+Vous devriez retourner une réponse `400 Bad Request` quand l'appel était incorrect, par exemple quand une valeur inconnue est utilisée pour un paramètre (comme `&lang=it` alors que l'italien n'est pas supporté).
+
+##### 401 Unauthorized {#401-unauthorized}
+
+L'API demandée est sécurisée et un appel a été fait sans token d'accès valide.
+
+##### 403 Forbidden {#403-forbidden}
+
+Un serveur DOIT retourner `403 Forbidden` en réponse à une requête non supportée visant, par exemple, à créer une ressource (avec le verbe `POST` et un `ID` généré par le client alors que l'`ID` doit être généré par le serveur, pas par le client).
+
+L'erreur `403 Forbidden` doit aussi être utilisée quand un token valide est utilisé mais que les ressources appelées exigent un scope spécifique (comme `canManageCustomers`) et que le token utilisé ne le possède pas.
+
+##### 404 Not Found {#404-not-found}
+
+Un serveur DOIT répondre `404 Not Found` lors du traitement d'une requête visant à récupérer une ressource unique qui n'existe pas, sauf quand la requête justifie une réponse 200 OK avec null comme donnée principale (comme décrit plus haut).
+
+##### 406 Not Acceptable {#406-not-acceptable}
+
+La requête demande par exemple `application/xml` mais l'API ne le supporte pas. Dans ce cas, le code `406 - Not Acceptable` doit être retourné ([référence](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/406)).
+
+La requête est en effet valide (la structure est correcte) mais le type de retour demandé n'est pas supporté. Par exemple, en remplaçant `application/xml` par `application/json`, la requête peut être traitée.
+
+L'erreur concerne le format de la réponse, pas la requête.
+
+##### 409 Conflict {#409-conflict}
+
+Un serveur DOIT retourner `409 Conflict` lors du traitement d'une requête `POST` visant à créer une ressource avec un `ID` généré par le client qui existe déjà.
+
+Un serveur DOIT retourner `409 Conflict` lors du traitement d'une requête `POST` dans laquelle le type de l'objet ressource ne fait pas partie des types qui constituent la collection représentée par l'endpoint.
+
+##### 415 Unsupported Media Type {#415-unsupported-media-type}
+
+Comme pour `406 Not Acceptable`, le serveur ne peut pas traiter la requête, mais ici c'est parce qu'il ne sait pas comment traiter l'information reçue ([référence](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/415)).
+
+Par exemple, si la requête est un POST avec un payload JSON comme `curl -X POST -d '{"firstname":"Christophe",...}' https://xxx/api/v1/employees`, le serveur peut retourner le code `415 - Unsupported Media Type` s'il attendait un payload XML et pas du JSON.
+
+La réponse contiendrait le type supporté, donc par exemple :
+
+<Terminal typewriter>
+  $ curl -X POST -H "Content-Type: application/x-www-form-urlencoded"
+  https://xxx/api/v1/employees [...] HTTP/2 415 Unsupported Media Type
+  Accept-Post: application/json; charset=UTF-8 Content-Length: 0
+</Terminal>
+
+Dans cet exemple, le serveur ne supporte pas `application/x-www-form-urlencoded` pour cette route mais acceptera `application/json`.
+
+#### Types de médias {#media-types}
+
+L'application appelante devrait spécifier le ou les types de médias acceptables via l'en-tête HTTP `Accept`.
+
+Une réponse ou une requête REST avec un payload doit inclure l'en-tête HTTP `Content-Type` pour indiquer le type de média du payload HTTP.
+
+Par exemple, la requête doit définir `-H "Accept: application/json"` dans son en-tête pour indiquer au serveur quel type de média est attendu, et le serveur (la réponse) devrait fournir le `Content-Type` également.
+
+<Terminal typewriter>
+  $ curl -X -H "Accept: application/json" GET https://xxx/api/v1/employees
+  HTTP/2 200 OK Content-Type: application/json; charset=utf-8
+</Terminal>
+
+Si le retour en JSON n'est pas géré par l'API, le serveur doit retourner le code HTTP `406 - Not Acceptable`.
+
+#### La réponse retournée {#the-returned-answer}
+
+Toutes les API RESTful doivent supporter JSON, et c'est la représentation par défaut à utiliser (c.-à-d. quand aucun en-tête `Content-Type` n'est envoyé avec la requête).
+
+Les règles suivantes DEVRAIENT être respectées pour déterminer le nom d'une propriété JSON ([référence](https://www.belgif.be/specification/rest/api-guide/#json-2)) :
+
+- utiliser la notation lowerCamelCase,
+- également pour les abréviations : toutes les lettres après la première doivent être en minuscules,
+- utiliser l'anglais américain,
+- ne pas utiliser d'underscores (\_), de tirets (-) ou de points (.) dans un nom de propriété, ni de chiffre comme première lettre,
+- le nom devrait refléter la signification métier de sa valeur par rapport à l'objet dans lequel elle est définie, plutôt que la façon dont elle est définie, et
+- omettre les parties du nom qui sont déjà évidentes d'après le contexte.
+
+Les propriétés issues d'autres standards, comme OpenID Connect et OAuth2, sont autorisées à dévier de cette règle.
+
+##### Gestion des valeurs null {#handling-null-values}
+
+Quand une propriété vaut null, cette propriété ne devrait pas être envoyée. Par exemple :
+
+```json
+{
+  "name": "CompanyName",
+  "country": "Belgium",
+  "employerId": null
+}
+```
+
+Dans ce cas, la clé `employerId` peut être omise.
+
+##### Ne retournez pas un tableau comme réponse {#dont-return-an-array-for-the-answer}
+
+Voir aussi le chapitre suivant.
+
+Pour rendre l'API flexible, assurez-vous que la réponse est un objet JSON `{ ... }` et pas un tableau `[ ... ]`, car ce dernier ne permettra pas d'ajouter des propriétés supplémentaires dans le futur ([référence](https://www.belgif.be/specification/rest/api-guide/#rule-evo-object)).
+
+##### Niveau supérieur {#top-level}
+
+> [https://jsonapi.org/format/#document-top-level](https://jsonapi.org/format/#document-top-level)
+
+Un document DOIT contenir au moins un des membres de niveau supérieur suivants :
+
+- `data` : les _données principales_ du document. Ce nœud doit être renommé pour mieux décrire l'objet, par exemple `employees` ou `countries`, ...
+- `errors` : un tableau d'objets d'erreur
+- `meta` : un méta-objet qui contient des méta-informations non standard.
+
+<AlertBox variant="caution" title="Ne retournez jamais à la fois `data` et `errors`">
+Si la query a généré une erreur, on ne s'attend pas à recevoir des données. Et inversement.
+
+</AlertBox>
+
+Les _données principales_ du document sont une représentation de la ressource ou de la collection de ressources ciblée par la requête.
+
+`data` peut être un tableau ou non :
+
+```json
+{
+  "data": [
+    {
+      "key1": "value1",
+      "key2": "value2"
+    },
+    {
+      "key1": "value1",
+      "key2": "value2"
+    }
+  ]
+}
+```
+
+ou, s'il n'y a qu'un seul enregistrement, directement :
+
+```json
+{
+  "data": {
+    "key1": "value1",
+    "key2": "value2"
+    // ...
+  }
+}
+```
+
+<AlertBox
+  variant="info"
+  title="La plupart du temps, c'est le développeur qui choisit d'utiliser un tableau"
+>
+  En fait, la plupart du temps, un tableau est retourné, car cela permet de
+  modifier l'API plus tard pour retourner d'autres résultats sans générer de BC
+  (break changes) dans l'API.
+</AlertBox>
+
+##### Data {#data}
+
+> [https://jsonapi.org/format/#document-top-level](https://jsonapi.org/format/#document-top-level)
+
+Comme décrit dans [les éléments de niveau supérieur](https://jsonapi.org/format/#document-top-level), l'information retournée devrait être placée dans un nœud de niveau supérieur appelé `data` :
+
+Le mieux est de toujours utiliser la notation tableau afin de pouvoir retourner une ou plusieurs rows.
+
+```json
+'data': [
+    [...]
+]
+```
+
+##### Retourner une erreur {#returning-an-error}
+
+> [https://jsonapi.org/format/#document-top-level](https://jsonapi.org/format/#document-top-level)
+>
+> [https://jsonapi.org/format/#error-objects](https://jsonapi.org/format/#error-objects)
+
+Comme décrit dans [les éléments de niveau supérieur](https://jsonapi.org/format/#document-top-level), les erreurs devraient être placées dans un nœud de niveau supérieur, au pluriel :
+
+```json
+"errors": [
+    [...]
+]
+```
+
+Préférez le code de statut HTTP `400 Bad Request` quand l'appel était incorrect, par exemple quand une valeur inconnue est utilisée pour un paramètre (comme `&lang=it` alors que l'italien n'est pas supporté). Utilisez le code `500 Internal Server Error` quand le serveur a retourné une erreur.
+
+`errors` doit être un tableau afin de pouvoir retourner plus d'une erreur et devrait contenir au moins une de ces clés (_liste non exhaustive_) :
+
+- `status` : le code de statut HTTP applicable à ce problème, exprimé sous forme de chaîne. Cette clé DEVRAIT être fournie.
+- `code` : un code d'erreur spécifique à l'application, exprimé sous forme de chaîne.
+- `title` : un résumé court et lisible par un humain du problème, qui NE DEVRAIT PAS changer d'une occurrence à l'autre du problème, sauf pour des raisons de localisation.
+- `parameter` : une chaîne indiquant quel paramètre de query de l'URI a provoqué l'erreur.
+
+```json
+"errors": [
+    {
+        "status": "400",
+        "code": "ERR_INVALID_VIEW",
+        "title": "Language code 'it' is not supported",
+        "parameter": "lang"
+    },
+    [...]
+]
+```
+
+#### La réponse d'une page paginée {#the-response-of-a-paginated-page}
+
+Avec la pagination, la réponse JSON de `GET https://xxx/api/v1/employees?page=2&pageSize=2` peut ressembler à ceci ([référence](https://www.belgif.be/specification/rest/api-guide/#rule-col-paging)) :
+
+```json
+{
+  "self": "/api/v1/employees?page=2&pageSize=2",
+  "data": [
+    {
+      "href": "/api/v1/employees/3",
+      "id": 3,
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    {
+      "href": "/api/v1/employees/4",
+      "id": 4,
+      "firstname": "Jane",
+      "lastname": "Doe"
+    }
+  ],
+  "pageSize": 2,
+  "page": 2,
+  "total": 7,
+  "first": "/api/v1/employees?pageSize=2",
+  "last": "/api/v1/employees?page=4&pageSize=2",
+  "prev": "/api/v1/employees?page=1&pageSize=2",
+  "next": "/api/v1/employees?page=3&pageSize=2"
+}
+```
+
+| Clé        | Description                                                                                                                                                                                                       |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `next`     | OBLIGATOIRE (sauf pour la dernière page) hyperlien vers la page suivante                                                                                                                                           |
+| `prev`     | OPTIONNEL hyperlien vers la page précédente                                                                                                                                                                       |
+| `pageSize` | RECOMMANDÉ Nombre maximum d'éléments par page. Pour la dernière page, sa valeur devrait être indépendante du nombre d'éléments réellement retournés.                                                               |
+| `page`     | OBLIGATOIRE (basé sur l'offset) ; N/A (basé sur un curseur) Index de la page courante, devrait commencer à 1 (la page par défaut et première page est 1)                                                           |
+| `first`    | OPTIONNEL Hyperlien vers la première page                                                                                                                                                                         |
+| `last`     | OPTIONNEL Hyperlien vers la dernière page                                                                                                                                                                         |
+| `total`    | OPTIONNEL Nombre total d'éléments sur toutes les pages. Si des paramètres de query sont utilisés pour filtrer le jeu de résultats, il s'agit du total du jeu de résultats, pas de la collection entière.           |
+
+### Endpoints attendus {#expected-endpoints}
+
+Chaque API REST devrait exposer un endpoint `GET /api/v1/health` qui retourne la disponibilité des fonctionnalités de l'API.
+
+| Statut     | Code de statut | Description                                                                                       |
+| ---------- | -------------- | ------------------------------------------------------------------------------------------------- |
+| `UP`       | `200`          | L'API fonctionne comme prévu.                                                                     |
+| `DEGRADED` | `200`          | L'API est partiellement indisponible, mais le service peut continuer avec des fonctions réduites. |
+| `DOWN`     | `503`          | L'API subit des pannes inattendues.                                                               |
+
+## Quelques lectures {#some-lectures}
+
+- [7 Laravel RESTful APIs best practices for 2023](https://benjamincrozat.com/laravel-restful-api-best-practices)
+- [Belgif - REST Guidelines](https://www.belgif.be/specification/rest/api-guide)

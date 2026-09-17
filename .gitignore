@@ -34,8 +34,9 @@ build-verify
 # Claude Code TODO session locks (ephemeral, never commit)
 .todos/.locks/
 
-# AnythingLLM indexing state (local to each machine, holds no secret)
-.anythingllm-indexed
+# AnythingLLM indexing state (local to each machine, holds no secret).
+# One file per workspace: .anythingllm-indexed (en), .anythingllm-indexed-fr (fr).
+.anythingllm-indexed*
 
 # rumdl (ad hoc `npx rumdl` markdown lint checks) — cache is redirected to
 # /tmp via RUMDL_CACHE_DIR (see .devcontainer/devcontainer.json); this entry

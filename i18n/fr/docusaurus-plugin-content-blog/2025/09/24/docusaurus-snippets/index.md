@@ -18,7 +18,7 @@ updates:
   - date: 2025-10-10
     note: Allow relative paths
   - date: 2026-02-23
-    note: Add a cross reference to the <Link to="/blog/docusaurus-project-setup">Introducing the ProjectSetup Component - A Standardized Way to Share Project Structures</Link> article
+    note: Add a cross reference to the [Introducing the ProjectSetup Component - A Standardized Way to Share Project Structures](/blog/docusaurus-project-setup) article
 ---
 
 <!-- markdownlint-disable MD046 -->

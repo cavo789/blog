@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T10:48:19.528Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3f861a82141f4f73c9920263b2016d0fa29f3bcd",
+  "questions": [
+    {
+      "question": "image Docker batteries-included docling conversion documents Markdown local",
+      "anchor": ""
+    },
+    {
+      "question": "docling convertir pdf docx pptx xlsx html en Markdown propre",
+      "anchor": "converting-five-formats"
+    },
+    {
+      "question": "docling utilise-t-il des modèles IA ou des parsers spécifiques pour chaque format ?",
+      "anchor": "what-docling-does-differently"
+    },
+    {
+      "question": "Dockerfile docling fixer la version exacte et installer les backends",
+      "anchor": "create-our-docker-image"
+    },
+    {
+      "question": "docker build docling . pourquoi ne pas utiliser docker compose",
+      "anchor": "build-the-image"
+    },
+    {
+      "question": "script wrapper global docling monter le répertoire courant",
+      "anchor": "create-the-global-wrapper"
+    },
+    {
+      "question": "pourquoi le pipeline par défaut de docling est lent",
+      "anchor": "why-the-slow-pipeline-is-the-default"
+    },
+    {
+      "question": "activer le gpu pour accélérer la conversion pdf avec docling",
+      "anchor": "optional--putting-a-gpu-behind-the-pdf-pipeline"
+    },
+    {
+      "question": "occupation disque des backends docling pour les cinq formats",
+      "anchor": "what-the-five-files-cost"
+    },
+    {
+      "question": "docling vs Markitdown différence architecture et gpu",
+      "anchor": "key-takeaways"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T10:50:03.887Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b62ac668acbe6d586454d0ad1929e97bf1b6905d",
+  "questions": [
+    {
+      "question": "folding markdown vscode ne marche pas",
+      "anchor": ""
+    },
+    {
+      "question": "comment activer le repli des titres dans VS Code",
+      "anchor": ""
+    },
+    {
+      "question": "extension markdown intégrée désactivée vscode",
+      "anchor": ""
+    },
+    {
+      "question": "sticky scroll ne s'affiche plus dans les fichiers markdown",
+      "anchor": ""
+    },
+    {
+      "question": "vscode repli code markdown activé",
+      "anchor": ""
+    },
+    {
+      "question": "comment faire fonctionner le folding en mode markdown",
+      "anchor": ""
+    },
+    {
+      "question": "activer l'extension native markdown vscode",
+      "anchor": ""
+    },
+    {
+      "question": "créer des zones repliables personnalisées vscode markdown",
+      "anchor": ""
+    },
+    {
+      "question": "vscode markdown folding désactivé solution",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi le repli ne fonctionne pas dans l'éditeur markdown vscode",
+      "anchor": ""
+    }
+  ]
+}

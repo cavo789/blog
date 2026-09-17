@@ -12,6 +12,7 @@ const TYPE_LABELS = {
   incorrect: { icon: "❌", label: "Incorrect" },
   outdated: { icon: "⏰", label: "Outdated" },
   suggestion: { icon: "💡", label: "Suggestion" },
+  translation: { icon: "🌐", label: "Translation" },
 };
 
 // ── Sub-components ───────────────────────────────────────────────────────────

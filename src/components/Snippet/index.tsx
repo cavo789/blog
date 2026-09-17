@@ -321,6 +321,34 @@ const variantIcons: Record<string, VariantIcon> = {
 // then overlays interactive ? badges for annotated lines.
 // The tooltip is rendered via a React Portal into document.body so it
 // escapes every overflow:hidden / stacking-context ancestor.
+// C0 control characters other than tab/newline/carriage return, plus DEL. A few example files
+// carry them for real — `make.bat` colours its output with ESC sequences — and a raw control
+// character in the page is invalid HTML (the SSG minifier flags it on every build, in every
+// locale). They are shown as their Unicode "control picture" (ESC -> ␛) instead: visible, honest
+// about what the file contains, and valid markup.
+const isControlChar = (code: number): boolean =>
+  (code <= 0x1f && code !== 0x09 && code !== 0x0a && code !== 0x0d) || code === 0x7f;
+
+function hasControlChars(text: string): boolean {
+  for (let i = 0; i < text.length; i += 1) {
+    if (isControlChar(text.charCodeAt(i))) return true;
+  }
+  return false;
+}
+
+function showControlChars(text: string): string {
+  if (!hasControlChars(text)) return text;
+  let out = "";
+  for (let i = 0; i < text.length; i += 1) {
+    const code = text.charCodeAt(i);
+    // U+2400..U+241F picture each C0 control; U+2421 pictures DEL.
+    out += isControlChar(code)
+      ? String.fromCharCode(code === 0x7f ? 0x2421 : 0x2400 + code)
+      : text[i];
+  }
+  return out;
+}
+
 interface Eli5CodeBlockProps {
   code: string;
   lang: string;
@@ -455,7 +483,8 @@ function Eli5CodeBlock({ code, lang, eli5 }: Eli5CodeBlockProps): JSX.Element {
                 <span className={styles.eli5_code}>
                   {lineTokens.map((token, tokenIdx) => (
                     <span key={tokenIdx} className={clsx("token", ...token.types)}>
-                      {token.content}
+                      {/* Display only: the copy button still copies `code`, real bytes and all. */}
+                      {showControlChars(token.content)}
                     </span>
                   ))}
                 </span>
@@ -661,9 +690,14 @@ export default function Snippet({
 
   // Use line-by-line ELI5 renderer when annotations are available and code is a string.
   // Otherwise fall back to Docusaurus CodeBlock (or raw children).
+  //
+  // Code holding control characters also takes the ELI5 renderer, with no annotations: it is the
+  // only one that can show them escaped while its copy button keeps the original bytes. The
+  // native <CodeBlock> would either print them raw or copy the escaped version.
   const codeBlock = useMemo(() => {
-    if (resolvedCode && eli5 && Object.keys(eli5).length > 0) {
-      return <Eli5CodeBlock code={resolvedCode} lang={lang} eli5={eli5} />;
+    const hasEli5 = Boolean(eli5 && Object.keys(eli5).length > 0);
+    if (resolvedCode && (hasEli5 || hasControlChars(resolvedCode))) {
+      return <Eli5CodeBlock code={resolvedCode} lang={lang} eli5={eli5 ?? {}} />;
     }
     if (resolvedCode) {
       return <CodeBlock className={`language-${lang}`}>{resolvedCode}</CodeBlock>;

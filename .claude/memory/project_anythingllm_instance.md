@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 90614b9a-a9c5-4fab-8215-58074b589b67
-  modified: 2026-08-28T16:52:17.100Z
+  modified: 2026-09-17T13:40:00.000Z
 ---
 
 Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the host.
@@ -25,9 +25,21 @@ Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the ho
   installed but produces degenerate vectors on this machine (related/unrelated cosine separation
   +0.05 vs +0.49) — do not switch back to it. Verify any embedder with
   `blog/2026/08/17/anythingllm-chat-with-your-docs/files/embedder-sanity-check.py`.
-- A workspace named `blog` holds all 248 published posts, indexed by
-  `blog/2026/08/17/anythingllm-chat-with-your-docs/files/anythingllm-index.sh`.
-  Re-run that script after publishing; state lives in the gitignored `.anythingllm-indexed`.
+- **Two workspaces since 2026-09-17**, deliberately separate (mixing languages in one vector
+  space degrades retrieval in both): `blog` (257 English posts, `ai-index`, state
+  `.anythingllm-indexed`) and `blog-fr` (103 translated posts, `ai-index-fr`, state
+  `.anythingllm-indexed-fr`). Both carry the same settings — `topN` 20, threshold 0.2, and the
+  prompt from `.scripts/anythingllm-workspace-prompt.txt`. Re-run after publishing or translating.
+  The `-fr` functions exist because four env vars must agree (`ANYTHINGLLM_WORKSPACE`, `BLOG_DIR`,
+  `SITE_URL`, `STATE_FILE`); forgetting `SITE_URL` silently emits `/blog/` instead of `/fr/blog/`.
+- **Embedding ceiling, hit by French first:** the Ollama embedder runs at `num_ctx: 400` and the
+  `chunkHeader` (title + date + URL) is added *after* chunking, so header + chunk can overflow.
+  French costs more tokens per character than English, so the French copy of a long article fails
+  where the English one passes — `docling` was the first (2026-09-17, still unindexed in `blog-fr`).
+  Symptom in `docker logs anythingllm`: `the input length exceeds the context length`, then
+  `Failed to vectorize <title>`. The document uploads and is then silently left unattached, so the
+  script reports success — **compare the state file's line count against the workspace's document
+  count** to catch it. Fixing it means a global chunk-length change, which also affects `blog`.
 
 The API key is not stored here — ask for it when needed.
 

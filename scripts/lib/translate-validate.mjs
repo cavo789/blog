@@ -10,6 +10,8 @@
  * would already refuse. See TODO 0119 for the mdast fallback if this proves too blunt.
  */
 
+import yaml from "js-yaml";
+
 import { BANNED_FRENCH, CONSISTENCY_PAIRS } from "./translate-contract.mjs";
 
 const FRONT_MATTER_RE = /^---\r?\n([\s\S]*?)\r?\n---/;
@@ -99,7 +101,14 @@ function countHeadings(text) {
 export function validateTranslation(source, translation, { sourceTitles } = {}) {
   const problems = [];
 
-  // 1. Fenced code blocks — count, language tag and content must be byte-identical.
+  // 1. Fenced code blocks — count, language tag and content must be byte-identical, with one
+  // exception: the non-breaking space. Several English articles carry U+00A0 inside their `tree`
+  // fences (a paste from a terminal), and the model normalises them to ordinary spaces every
+  // time — a difference nothing renders. Comparing on the normalised form keeps the byte-identity
+  // guarantee where it matters while removing a rejection no retry could ever clear. Fixing the
+  // English sources instead would change their translatable hash and bill a retranslation of
+  // articles that are already up to date.
+  const unNbsp = (text) => text.replace(/\u00a0/g, " ");
   const srcFences = extractFences(source);
   const trFences = extractFences(translation);
   if (srcFences.length !== trFences.length) {
@@ -113,7 +122,7 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
           `code block #${i + 1}: language tag "${fence.info}" became "${trFences[i].info}"`,
         );
       }
-      if (fence.body !== trFences[i].body) {
+      if (unNbsp(fence.body) !== unNbsp(trFences[i].body)) {
         problems.push(
           `code block #${i + 1} (${fence.info || "no lang"}): content was modified`,
         );
@@ -127,6 +136,15 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
   if (!trFm.raw) {
     problems.push("front matter: missing in translation");
   } else {
+    // French typography puts a space before ":" — an unquoted "ultime : il" is invalid YAML and
+    // kills the whole dev server, not just this page. Parse it for real.
+    try {
+      yaml.load(trFm.raw);
+    } catch (error) {
+      problems.push(
+        `front matter: invalid YAML (${error.reason ?? error.message}) — quote title/description`,
+      );
+    }
     const trByKey = new Map();
     let currentKey = null;
     for (const line of trFm.lines) {
@@ -205,9 +223,32 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
   }
 
   // 7. Banned over-translations, in prose only.
+  //
+  // The default matcher is a PREFIX test (`\bword`, no trailing boundary) on purpose: it is what
+  // makes "conteneur" catch "conteneurs" without listing every plural. Two entries cannot live
+  // with that, because their prefix is also a conjugated form of an unrelated verb — hence the
+  // override map below, which replaces the matcher for those terms only.
   const prose = stripCode(translation).toLowerCase();
-  const hasWord = (haystack, word) =>
-    new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i").test(haystack);
+
+  // "jetons" is both the plural of "token" (banned) and *jeter* in the first person plural
+  // ("jetons un œil au fichier", "nous jetons"), which is ordinary French prose. The noun is
+  // what we are after, and the noun always carries a determiner or a count in front of it;
+  // the verb never does. "jeton" gets a trailing boundary so it stops matching "jetons" itself.
+  const BANNED_OVERRIDES = new Map([
+    ["jeton", /\bjeton\b/i],
+    [
+      "jetons",
+      /(?:\b(?:les|des|ces|ses|vos|nos|leurs|mes|tes|quelques|plusieurs|certains|aux|en|de)\s+|\bd'|\d\s*)jetons\b/i,
+    ],
+  ]);
+
+  const hasWord = (haystack, word) => {
+    const override = BANNED_OVERRIDES.get(word);
+    if (override) return override.test(haystack);
+    return new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i").test(
+      haystack,
+    );
+  };
 
   for (const word of BANNED_FRENCH) {
     if (hasWord(prose, word)) problems.push(`banned over-translation: "${word}"`);
@@ -275,8 +316,15 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
   // ("FZF", "sticky scroll", "Markitdown") carry none and are correctly left alone. A lone
   // leading "a " counts too: French writes "à", and no French link label starts with a bare "a".
   if (sourceTitles) {
+    // "an" is NOT in the alternation below: it is also the French noun for "year", and
+    // "la notice signalant un article de plus d'un an" is correct French that the plain
+    // \ban\b form rejected. It is matched separately, by the property that defines the English
+    // article and that the French noun never has — a vowel-initial word right after it, with no
+    // French count word right before ("un an après", "par an et demi").
     const ENGLISH_WORDS =
-      /\b(the|with|your|you|about|how|here's|already|earlier|using|an|this|that|what|why|from|into)\b|^a\s/i;
+      /\b(the|with|your|you|about|how|here's|already|earlier|using|this|that|what|why|from|into)\b|^a\s/i;
+    const ENGLISH_AN =
+      /(?<!\b(?:un|par|chaque|deux|trois|quatre|cinq|quelques|plusieurs)\s)\ban\s+[aeiouyh]/i;
     const linkRe =
       /<Link\s+to="\/blog\/([^"/#?]+)\/?"\s*>([^<]+)<\/Link>|\[([^\]]+)\]\(\/blog\/([^)/#?]+)\/?\)/g;
     const english = [];
@@ -285,7 +333,9 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
       const slug = match[1] ?? match[4];
       const label = (match[2] ?? match[3]).trim();
       if (sourceTitles[slug] && label === sourceTitles[slug].trim()) continue;
-      if (ENGLISH_WORDS.test(label)) english.push(`"${label}" (-> /blog/${slug})`);
+      if (ENGLISH_WORDS.test(label) || ENGLISH_AN.test(label)) {
+        english.push(`"${label}" (-> /blog/${slug})`);
+      }
     }
 
     if (english.length > 0) {
@@ -293,6 +343,37 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
         `link labels left in English (translate them; only a target's EXACT English title stays): ${english.join(", ")}`,
       );
     }
+  }
+
+  // 12. In-page anchor TARGETS must survive byte for byte. They are identifiers, and
+  // translate-anchors.mjs pins the ENGLISH heading ids onto the translated headings — so a
+  // translated target can only ever point at a heading that does not exist.
+  //
+  // Found by a build, not by this file: rule 6 of the contract names `to=` among the props never
+  // to translate, and the model read that as the JSX attribute only. Inside
+  // `<QuickJump links={[{ label: "…", to: "#the-big-picture" }]} />` the target is an object
+  // KEY, `to:`, and it came back as `to: "#vue-densemble"` — two broken anchors that failed the
+  // fr locale. Comparing the two multisets catches every spelling of the mistake at once,
+  // without needing to know how Docusaurus slugifies a heading.
+  const anchorTargets = (text) => {
+    const re =
+      /\]\(#([^)\s]+)\)|\bto\s*[:=]\s*["'`]#([^"'`]+)["'`]|\bhref\s*=\s*["'`]#([^"'`]+)["'`]/g;
+    return [...text.matchAll(re)].map((m) => m[1] ?? m[2] ?? m[3]).sort();
+  };
+  const srcAnchors = anchorTargets(source);
+  const trAnchors = anchorTargets(translation);
+  if (JSON.stringify(srcAnchors) !== JSON.stringify(trAnchors)) {
+    const invented = trAnchors.filter((a) => !srcAnchors.includes(a));
+    const lost = srcAnchors.filter((a) => !trAnchors.includes(a));
+    const detail = [
+      invented.length
+        ? `translated into ${invented.map((a) => `"#${a}"`).join(", ")}`
+        : "",
+      lost.length ? `lost ${lost.map((a) => `"#${a}"`).join(", ")}` : "",
+    ]
+      .filter(Boolean)
+      .join("; ");
+    problems.push(`in-page anchor targets must be copied byte for byte: ${detail}`);
   }
 
   return problems;

@@ -33,11 +33,17 @@ export interface SearchIndex {
  * lowercasing, so a query for just "caesium" still matches the "caesium" part of the token —
  * without this, "caesiumclt" is one indivisible token that a partial name never matches.
  * The *unsplit* form is kept too (union, not replace): "WordPress" would otherwise only
- * yield "word" + "press", and a reader typing "wordpress" as one word would match neither. */
+ * yield "word" + "press", and a reader typing "wordpress" as one word would match neither.
+ *
+ * Letters are matched as Unicode (`\p{L}`), then folded to their unaccented form: an ASCII-only
+ * class split the French corpus mid-word ("déployer" became "d" + "ployer"), and folding lets a
+ * reader typing "deployer" find "déployer". Applied to both the index and the query, since both
+ * go through this function. A no-op on the English corpus. See TODO 0120. */
 export function tokenize(text: string): string[] {
-  const withBoundaries = text.replace(/([a-z0-9])([A-Z])/g, "$1 $2");
-  const split = withBoundaries.toLowerCase().match(/[a-z0-9]+/g) || [];
-  const whole = text.toLowerCase().match(/[a-z0-9]+/g) || [];
+  const folded = text.normalize("NFD").replace(/\p{M}/gu, "");
+  const withBoundaries = folded.replace(/([\p{Ll}\p{N}])(\p{Lu})/gu, "$1 $2");
+  const split = withBoundaries.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
+  const whole = folded.toLowerCase().match(/[\p{L}\p{N}]+/gu) || [];
   return [...new Set([...split, ...whole])];
 }
 

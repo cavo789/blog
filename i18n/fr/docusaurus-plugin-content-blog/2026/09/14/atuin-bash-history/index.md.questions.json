@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T10:58:52.425Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "acecc34747410c9448ba283f97b6498931f78a9d",
+  "questions": [
+    {
+      "question": "historique shell horodaté et consultable sqlite",
+      "anchor": ""
+    },
+    {
+      "question": "comment atuin remplace le ctrl+r classique",
+      "anchor": "what-is-atuin"
+    },
+    {
+      "question": "lancer un container docker pour tester atuin",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "installation atuin via homebrew",
+      "anchor": "just-use-homebrew"
+    },
+    {
+      "question": "installer atuin sous windows avec winget",
+      "anchor": "on-windows-winget"
+    },
+    {
+      "question": "brancher atuin dans le shell",
+      "anchor": "wiring-atuin-into-your-shell"
+    },
+    {
+      "question": "ajout de la source atuin dans .bashrc",
+      "anchor": "bash"
+    },
+    {
+      "question": "ajout de la source atuin dans .zshrc",
+      "anchor": "zsh"
+    },
+    {
+      "question": "comment migrer son historique bash existant vers atuin",
+      "anchor": "import-your-existing-history"
+    },
+    {
+      "question": "atuin ou fzf pour la recherche d'historique",
+      "anchor": "atuin-vs-fzf-history"
+    }
+  ]
+}

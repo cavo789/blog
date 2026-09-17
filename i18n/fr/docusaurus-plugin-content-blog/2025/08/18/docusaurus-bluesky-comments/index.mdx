@@ -1,0 +1,223 @@
+---
+slug: docusaurus-bluesky-comments
+title: Afficher les commentaires Bluesky sur Docusaurus, ainsi que le nombre de likes/reposts
+date: 2025-08-18
+description: Intégrez les commentaires, les likes et le nombre de reposts Bluesky directement dans vos articles de blog Docusaurus.
+authors: [christophe]
+image: /img/v2/docusaurus_bluesky.webp
+series: Bluesky Docusaurus component
+mainTag: bluesky
+tags:
+  - bluesky
+  - component
+  - docusaurus
+  - markdown
+  - react
+language: fr
+blueskyRecordKey: 3lwnnydhdk22x
+updates:
+  - date: 2026-08-27
+    note: Add real screenshots of the engagement block and describe the unified "engagement facepile" — likes, reposts and commenters are now merged into a single, deduplicated avatar stack instead of a separate likers-only row.
+---
+
+<!-- cspell:ignore reposts,packagist,3lun2qjuxc22r,repost,noopener,noreferrer,3lwnnydhdk22x,facepile,facepiles,deduplicated,reposters,commenters -->
+
+![Afficher les commentaires Bluesky sur Docusaurus, ainsi que le nombre de likes/reposts](/img/v2/docusaurus_bluesky.webp)
+
+<TLDR>
+  Cet article est la deuxième partie de la série « Bluesky Docusaurus component ».
+  Il enrichit le composant créé dans la première partie en ajoutant de quoi
+  afficher les commentaires, les likes et le nombre de reposts Bluesky directement
+  sur votre blog Docusaurus. Pour cela, vous allez apprendre à relier vos articles
+  à des posts Bluesky via une clé de front matter, à mettre à jour le composant
+  React pour récupérer et afficher ces informations, et à configurer votre site
+  Docusaurus avec votre handle Bluesky.
+</TLDR>
+
+Dans un [article précédent](/blog/docusaurus-bluesky-share), nous avons vu comment proposer, pour faire simple, un « Partager l'article sur Bluesky ».
+
+Pas très interactif, non ? Voyons dans cet article comment faire le lien entre un article de blog Docusaurus et Bluesky.
+
+<!-- truncate -->
+
+<QuickJump
+  links={[
+    { label: "Ce que vous allez obtenir", to: "#what-youll-get" },
+    { label: "Tous les fichiers d'un coup d'œil", to: "#all-files-at-a-glance" },
+  ]}
+/>
+
+## Ce que vous allez obtenir {#what-youll-get}
+
+Une fois tout branché, chaque article reçoit un bouton « Like, share or comment on Bluesky », une unique **engagement facepile** qui fusionne likes, reposts et personnes ayant commenté dans une seule pile d'avatars dédoublonnée, et la liste des commentaires directement issus de votre post Bluesky — juste sous l'article, sans système de commentaires séparé à héberger.
+
+Voici ce bloc, en direct sur trois articles différents de ce blog, avec trois niveaux d'engagement différents :
+
+<BrowserWindow url="http://localhost/">
+  ![Engagement facepile avec cinq personnes impliquées : likes, reposts et avatars empilés](./images/engagement_facepile_many.webp)
+</BrowserWindow>
+
+<BrowserWindow url="http://localhost/">
+  ![Engagement facepile accompagnée du fil de commentaires vers lequel elle renvoie](./images/engagement_facepile_comments.webp)
+</BrowserWindow>
+
+<BrowserWindow url="http://localhost/">
+  ![Une engagement facepile plus modeste : deux likes, un repost](./images/engagement_facepile_repost.webp)
+</BrowserWindow>
+
+<AlertBox variant="info">
+Remarquez qu'il n'y a pas de ligne « likers » séparée d'une ligne « commentateurs » : une personne qui a à la fois liké **et** commenté le post apparaît sous la forme d'un seul avatar, trié en premier — c'est tout l'intérêt de la fusion de la facepile décrite plus bas.
+
+</AlertBox>
+
+<StepsCard
+  title="Le workflow sera le suivant :"
+  variant="steps"
+  steps={[
+    "Vous publiez votre article sur votre blog,",
+    "Vous partagez l'article sur Bluesky (en utilisant la fonctionnalité « Partager l'article », bien sûr),",
+    "Vous récupérez la **Bluesky Record key**, c'est-à-dire la toute dernière partie de l'URL du post Bluesky (quelque chose comme `3lun2qjuxc22r`),",
+    "Vous retournez éditer votre article Docusaurus et vous ajoutez une clé dans votre front matter YAML (le bloc YAML en haut de votre article). La clé à ajouter est `blueskyRecordKey: xxxx` où `xxxx` est votre **Bluesky Record key**.",
+    "Vous publiez à nouveau votre article mis à jour sur votre blog.",
+  ]}
+/>
+
+Voilà, à partir de maintenant, vous avez clairement établi le lien entre votre article et votre post Bluesky.
+
+<StepsCard
+  title="Grâce à ce lien, nous pouvons :"
+  variant="steps"
+  steps={[
+    "Afficher un bouton « Like, share or comment on Bluesky » : le visiteur peut alors sauter vers votre post Bluesky et liker, partager ou commenter votre article,",
+    "Afficher le nombre de likes et de reposts sous votre article et,",
+    "Afficher la liste des commentaires reçus sur votre post Bluesky et, s'il n'y en a aucun, afficher une zone d'*appel à l'action* pour encourager votre lecteur à partager son avis",
+  ]}
+/>
+
+Dans l'article précédent (voir [Create our own Docusaurus React component and provide a "Share on Bluesky" button](/blog/docusaurus-bluesky-share)), nous avons créé le fichier `src/components/Bluesky/index.tsx`. Éditez ce fichier et utilisez ce nouveau contenu :
+
+## 1/6 La structure de notre composant Bluesky générique {#16-the-layout-of-our-bluesky-generic-component}
+
+Voici la nouvelle structure Bluesky de notre composant :
+
+<Snippet
+  filename="src/components/Bluesky/index.tsx"
+  source="src/components/Bluesky/index.tsx"
+/>
+
+<AlertBox variant="info">
+Les lignes mises en évidence sont les nouvelles par rapport à la version précédente du fichier, si vous avez déjà suivi le premier tutoriel.
+
+</AlertBox>
+
+<StepsCard
+  title="Comme vous pouvez le voir, cette fois, nous prévoyons quatre composants :"
+  variant="steps"
+  steps={[
+    "Un bouton de partage,",
+    "Un bouton Post (pour sauter vers votre post sur Bluesky),",
+    "Une zone likes (pour afficher le nombre de likes et de reposts de votre post sur Bluesky) et",
+    "Une zone pour afficher les commentaires reçus sur Bluesky",
+  ]}
+/>
+
+## 2/6 Le hook partagé de récupération des données {#26-the-shared-data-fetching-hook}
+
+`index.tsx` (pour le texte d'accroche) et `likes.tsx` (pour les compteurs et la facepile) ont tous deux besoin des mêmes données Bluesky. Plutôt que de les récupérer deux fois, on centralise tout dans un hook personnalisé : `useBlueskyEngagement.ts`. Il résout la `blueskyRecordKey` (depuis votre front matter ou, si vous n'en avez pas défini, en comparant l'URL de l'article à votre propre historique de posts Bluesky) et récupère likes, reposts et commentaires en une seule passe.
+
+<Snippet
+  filename="src/components/Bluesky/useBlueskyEngagement.ts"
+  source="src/components/Bluesky/useBlueskyEngagement.ts"
+/>
+
+## 3/6 Notre bouton « Like, share or comment » {#36-our-like-share-or-comment-button}
+
+<Snippet
+  filename="src/components/Bluesky/post.tsx"
+  source="src/components/Bluesky/post.tsx"
+/>
+
+## 4/6 Notre composant pour obtenir le nombre de likes et de reposts {#46-our-component-for-getting-the-number-of-likes-and-reposts}
+
+<Snippet
+  filename="src/components/Bluesky/likes.tsx"
+  source="src/components/Bluesky/likes.tsx"
+/>
+
+<AlertBox variant="note">
+Une version antérieure de ce composant n'affichait que les avatars des personnes ayant **liké** le post. C'était trompeur : un lecteur pouvait voir « 5 likes » à côté de seulement 3 avatars, parce que les reposts et les commentaires n'étaient pas comptés. La version actuelle récupère en parallèle les personnes ayant liké, reposté et commenté, les fusionne dans une seule `Map` indexée par le `did` Bluesky de la personne (donc la même personne qui like **et** commente n'apparaît qu'une fois), puis trie cette liste par nombre d'actions — quelqu'un qui a liké *et* commenté passe devant quelqu'un qui a seulement liké. Jusqu'à dix avatars sont affichés, le reste est replié dans un badge `+N`, et le tooltip de chaque avatar précise ce que la personne a réellement fait (`"liked and commented on this post"`).
+
+</AlertBox>
+
+## 5/6 Récupérer tous les commentaires {#56-retrieving-all-comments}
+
+<Snippet
+  filename="src/components/Bluesky/comments.tsx"
+  source="src/components/Bluesky/comments.tsx"
+/>
+
+## 6/6 Notre nouveau CSS {#66-our-new-css}
+
+<Snippet
+  filename="src/components/Bluesky/styles.module.css"
+  source="src/components/Bluesky/styles.module.css"
+/>
+
+## Mettre à jour le fichier de configuration Docusaurus {#update-the-docusaurus-configuration-file}
+
+On y est presque. Pour pouvoir récupérer les likes, partages et commentaires de votre compte Bluesky, vous devez indiquer votre handle Bluesky au composant.
+
+Vous devez éditer le fichier `docusaurus.config.js` et ajouter une nouvelle section appelée `customFields`, comme illustré ci-dessous :
+
+<Snippet
+  filename="docusaurus.config.js"
+  source="./files/docusaurus.config.js"
+/>
+
+<AlertBox variant="danger">
+Évidemment, utilisez le vôtre ; pas le mien ;-)
+
+</AlertBox>
+
+## Tous les fichiers d'un coup d'œil {#all-files-at-a-glance}
+
+Voici l'ensemble des fichiers touchés par cet article — la mise à jour de `index.tsx`, et les quatre nouveaux fichiers (`useBlueskyEngagement.ts`, `post.tsx`, `likes.tsx`, `comments.tsx`) plus le CSS rafraîchi. Utilisez le bouton ci-dessous pour les copier tous d'un coup, ou téléchargez-les sous forme de ZIP prêt à extraire :
+
+<ProjectSetup folderName="Bluesky engagement" createFolder={false}>
+  <Guideline>
+    Ces fichiers remplacent ceux créés dans le [premier article](/blog/docusaurus-bluesky-share).
+    N'oubliez pas d'ajouter aussi le bloc `customFields.bluesky` à votre `docusaurus.config.js` (voir
+    ci-dessus), puis de redémarrer votre serveur de développement Docusaurus.
+  </Guideline>
+
+  <Snippet
+    filename="src/components/Bluesky/index.tsx"
+    source="src/components/Bluesky/index.tsx"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/useBlueskyEngagement.ts"
+    source="src/components/Bluesky/useBlueskyEngagement.ts"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/post.tsx"
+    source="src/components/Bluesky/post.tsx"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/likes.tsx"
+    source="src/components/Bluesky/likes.tsx"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/comments.tsx"
+    source="src/components/Bluesky/comments.tsx"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/styles.module.css"
+    source="src/components/Bluesky/styles.module.css"
+    defaultOpen={false}
+  />
+</ProjectSetup>

@@ -125,7 +125,7 @@ function validateAndSanitize(array $body): array
         jsonError(400, 'Invalid text');
     }
 
-    $allowedTypes = ['typo', 'incorrect', 'outdated', 'suggestion'];
+    $allowedTypes = ['typo', 'incorrect', 'outdated', 'suggestion', 'translation'];
     $type = trim($body['type'] ?? '');
     if (!in_array($type, $allowedTypes, true)) {
         jsonError(400, 'Invalid type');
@@ -286,6 +286,7 @@ function maybeNotifyTypo(string $slug, string $text, string $type): void
         'incorrect'  => '❌ Incorrect info',
         'outdated'   => '⏰ Outdated content',
         'suggestion' => '💡 Suggestion',
+        'translation' => '🌐 Doubtful translation',
     ];
     $typeLabel  = $typeLabels[$type] ?? $type;
     $articleUrl = SITE_URL . '/' . $slug;

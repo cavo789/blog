@@ -1,0 +1,311 @@
+---
+slug: docusaurus-bluesky-share
+title: Créer notre propre composant React Docusaurus et proposer un bouton « Partager sur Bluesky »
+date: 2025-08-13
+description: Créez un composant React Docusaurus personnalisé qui ajoute un bouton « Partager sur Bluesky » à vos articles de blog.
+authors: [christophe]
+image: /img/v2/docusaurus_bluesky.webp
+series: Bluesky Docusaurus component
+mainTag: bluesky
+tags:
+  - bluesky
+  - component
+  - docusaurus
+  - markdown
+  - react
+language: fr
+blueskyRecordKey: 3lwbehu3h2k2i
+updates:
+  - date: 2026-08-27
+    note: Add a live screenshot of the Share button and link to the unified engagement facepile (likes + reposts + commenters) added to the companion article.
+---
+
+![Créer notre propre composant React Docusaurus et proposer un bouton « Partager sur Bluesky »](/img/v2/docusaurus_bluesky.webp)
+
+<!-- cspell:ignore reposts,clsx,blogpostitem,3lwbehu3h2k2i,facepile,commenters -->
+
+<TLDR>
+  Cet article vous guide dans la création d'un bouton « Partager sur Bluesky »
+  pour votre blog Docusaurus. Vous apprendrez à utiliser la fonctionnalité
+  swizzle de Docusaurus pour surcharger le thème par défaut des articles, à
+  créer un composant React personnalisé pour le bouton, puis à l'intégrer dans
+  vos articles. Nous construirons le composant étape par étape, avec le CSS et
+  l'icône SVG nécessaires.
+</TLDR>
+
+Il y a neuf mois, j'avais activé la possibilité d'écrire des commentaires sous mes articles grâce à **Giscus** (voir [Adding a comment area](/blog/site-creation)) mais seules les personnes ayant un compte GitHub pouvaient utiliser cette fonctionnalité et donc, presque personne ne l'a fait.
+
+J'ai donc passé près de neuf mois sans donner aux lecteurs de ce blog l'occasion d'interagir avec moi, ce qui est un peu frustrant et nous empêche d'échanger des idées et de nous enrichir mutuellement.
+
+Depuis quelques semaines, je suis présent sur [Bluesky](https://bsky.app/profile/avonture.be) et... pourquoi ne pas ajouter un bouton _Partager sur Bluesky_ sous chaque article ?
+
+L'idée n'est ni révolutionnaire ni compliquée alors, jouons...
+
+Dans ce premier article d'une série de deux, nous allons voir comment créer notre composant React Docusaurus. Avant d'écrire cet article, je ne savais pas comment faire et maintenant, si : c'est très simple.
+
+<!-- truncate -->
+
+<QuickJump
+  links={[
+    { label: "Le résultat en action", to: "#result" },
+    { label: "Tous les fichiers d'un coup d'œil", to: "#all-files-at-a-glance" },
+  ]}
+/>
+
+## Résultat {#result}
+
+Et, tadaaa 🎉🎉🎉, voici un bouton « Partager sur Bluesky » en action, sous un article de blog :
+
+<BrowserWindow url="http://localhost/">
+  ![Le bouton de partage Bluesky](./images/share_button.webp)
+</BrowserWindow>
+
+C'est tout l'objet de cet article : un petit composant React personnalisé, swizzlé dans le `BlogPostItem` de Docusaurus, avec rien de plus exotique qu'un `<button>` et une icône SVG. Construisons-le.
+
+<AlertBox variant="info">
+Dans un second article (voir [Show Bluesky comments on Docusaurus and, too, number of likes/reposts](/blog/docusaurus-bluesky-comments)), nous sommes allés plus loin : récupérer le nombre de likes, de reposts et de commentaires publiés sur Bluesky et les afficher sous nos articles sous forme d'une seule « engagement facepile » unifiée.
+
+</AlertBox>
+
+Voici à quoi ressemble ce bouton aujourd'hui, en direct sur ce blog, pour un article récent qui n'a encore récolté aucune interaction Bluesky :
+
+<BrowserWindow url="http://localhost/">
+  ![Le bouton de partage, en direct sur le blog aujourd'hui](./images/share_button_live.webp)
+</BrowserWindow>
+
+Comme je n'avais absolument aucune idée de par où commencer, demandons à une IA de générer un squelette. J'ai demandé quelque chose comme « _Bonjour mon ami, j'aimerais afficher un bouton de partage Bluesky sous mes articles sur mon blog Docusaurus. Donne-moi un squelette, s'il te plaît._ »
+
+Une fois le code généré par l'IA, il est temps de lire, comprendre et faire quelques tests.
+
+## Nous devons surcharger la façon dont l'article est rendu par Docusaurus {#we-need-to-override-how-the-article-is-rendered-by-docusaurus}
+
+J'ai donc appris que je devais créer un fichier appelé `src/theme/BlogPostItem/index.js` et simplement y mettre du contenu.
+
+L'IA me donne le contenu mais... hé mon ami, d'où vient ce contenu ? Après quelques recherches, j'apprends qu'il s'agit d'une surcharge du template standard `@docusaurus/theme-classic`.
+
+J'apprends aussi qu'on peut **extraire** le fichier original grâce à l'action appelée **Swizzle**.
+
+<AlertBox variant="info">
+Dans la terminologie Docusaurus, Swizzle peut se comprendre comme « surcharger » : nous allons extraire, ici, un template pour ensuite pouvoir le surcharger.
+
+</AlertBox>
+
+Le fichier `src/theme/BlogPostItem/index.js` va **personnaliser la mise en page et le contenu de chaque article de blog** donc, en modifiant ce fichier, je peux changer l'apparence de tous les articles de mon blog.
+
+Puisque je veux ajouter un **bouton de partage**, c'est le candidat parfait. L'IA a raison.
+
+## Extraire le fichier original {#extract-the-original-file}
+
+Ouvrez une console et assurez-vous d'être dans le dossier racine de votre blog.
+
+Dans votre console, lancez `yarn docusaurus swizzle @docusaurus/theme-classic BlogPostItem`.
+
+Lorsque la question est posée, sélectionnez `Javascript`, puis **`Eject`** et enfin `YES`.
+
+![Swizzle du layout BlogPostItem](./images/swizzle_blogpostitem.webp)
+
+Comme vous pouvez le voir, beaucoup de fichiers vont être créés dans la structure de répertoires de notre Docusaurus.
+
+### Garder les choses sous contrôle {#keep-things-under-control}
+
+Comme vous le voyez à l'écran, vous allez extraire beaucoup de fichiers. **Gardons les choses sous contrôle : nous voulons juste ajouter un bouton de partage sous notre article, rien de plus.**
+
+Regardez votre site Docusaurus maintenant ; allez dans le dossier `src/theme/BlogPostItem` et constatez que, oui, vous avez maintenant beaucoup de fichiers et de sous-dossiers. Supprimez simplement tous les sous-dossiers ; nous ne voulons pas les modifier, c'est-à-dire que nous voulons conserver les originaux. Ainsi, la prochaine fois que vous installerez une version plus récente de Docusaurus, vous resterez à jour.
+
+Conservez uniquement le fichier `index.js` créé par la commande `swizzle`. Voici celui que j'ai obtenu avec ma version actuelle de Docusaurus :
+
+<Snippet
+  filename="src/theme/BlogPostItem/index.js"
+  source="./files/BlogPostItem.js"
+/>
+
+## Jouons et ajoutons un message stupide à chaque article {#playing-and-adding-a-stupid-message-to-every-blog-post}
+
+Avant d'aller plus loin, faisons un test : est-ce bien le fichier à modifier pour notre besoin ?
+
+Jouons et ajoutons une ligne juste après le titre de notre article. Regardez l'exemple ci-dessous ; je viens d'ajouter une nouvelle ligne :
+
+<Snippet
+  filename="src/theme/BlogPostItem/index.js"
+  source="./files/BlogPostItem_2.js"
+/>
+
+Sauvegardez le fichier, rafraîchissez la page dans votre navigateur et tadaaa 🎉🎉🎉... Oui, on voit ce texte sur chaque article.
+
+Sur l'image ci-dessus, on peut voir notre message stupide :
+
+<BrowserWindow url="http://localhost/">
+  ![Are you ready?](./images/are_you_ready.webp)
+</BrowserWindow>
+
+<AlertBox variant="note">
+Si ça n'a pas fonctionné, arrêtez et relancez votre serveur Docusaurus. Dans mon cas (j'utilise Docker), il me suffit d'arrêter et de relancer mon container.
+
+</AlertBox>
+
+Donc, comme vous le voyez, c'est maintenant assez simple. Nous pouvons changer la mise en page de notre page Docusaurus juste en manipulant le fichier `index.js`.
+
+## Il est temps de créer notre composant Docusaurus Bluesky {#time-to-create-our-bluesky-docusaurus-component}
+
+Nous allons procéder étape par étape en gardant quelques points en tête :
+
+<StepsCard
+  title="Points à retenir"
+  variant="remember"
+  steps={[
+    "Nous devons minimiser nos changements dans le fichier original `src/theme/BlogPostItem/index.js` ; le moins de modifications, le mieux ;",
+    "Nous allons créer un composant Docusaurus dans `src/components/` pour permettre les interactions avec Bluesky (pensez à l'évolution du composant) donc, pour cette raison, nous mettrons tout ensemble (code, image, css) et",
+    "Nous essaierons de garder les choses propres et maintenables pour le développeur, et configurables pour l'utilisateur.",
+  ]}
+/>
+
+### 1/5 La structure de notre composant Bluesky générique {#15-the-layout-of-our-bluesky-generic-component}
+
+Le premier fichier que nous allons créer sera notre fichier `index.tsx`, c'est-à-dire notre composant Bluesky global.
+
+Dans cet article, nous allons juste prévoir un bouton « Partager sur Bluesky » mais dans le second article, nous ajouterons d'autres fonctionnalités.
+
+Ce `index.tsx` sera le **point d'entrée** du composant.
+
+Créez le fichier `src/components/Bluesky/index.tsx` avec ce contenu :
+
+<Snippet
+  filename="src/components/Bluesky/index.tsx"
+  source="./files/Bluesky.tsx"
+/>
+
+**Voilà notre composant React `<Bluesky />` ! Simple, non ? Pour l'instant, c'est juste un div contenant un autre composant appelé `<BlueskyShare />`**.
+
+Si vous regardez le code ci-dessus, nous devons créer deux nouveaux fichiers : `share.tsx` et `styles.module.css`.
+
+### 2/5 Notre bouton « Partager sur Bluesky » {#25-our-share-on-bluesky-button}
+
+Ok, maintenant, nous devons créer un deuxième fichier appelé `src/components/Bluesky/share.tsx` et y copier/coller ce contenu :
+
+<Snippet
+  filename="src/components/Bluesky/share.tsx"
+  source="src/components/Bluesky/share.tsx"
+/>
+
+Comme vous le voyez, nous avons défini une fonction appelée `BlueskyShare` et cette fonction attend un paramètre appelé `metadata`.
+
+<AlertBox variant="info">
+Revenez au fichier `src/components/Bluesky/index.tsx` que nous venons de créer. Nous avions cette ligne : `<BlueskyShare metadata={metadata} />` donc, oui, nous passons bien ce paramètre.
+
+Le paramètre `metadata` est un objet initialisé par Docusaurus et qui contiendra toutes les données du front matter du fichier Markdown de l'article courant. Il inclut des propriétés comme title, description, date, tags, et tous les autres champs personnalisés que vous avez définis dans le front matter.
+
+</AlertBox>
+
+Que fait la fonction `BlueskyShare` ? En fait, nous allons juste proposer un bouton avec une url du type `https://bsky.app/intent/compose?text=<title>%20<url>` (où nous injecterons le titre et l'url de l'article).
+
+Si vous regardez le code ci-dessus, nous devons créer un autre fichier : `bluesky.svg`.
+
+### 3/5 Le logo Bluesky {#35-the-bluesky-logo}
+
+Évidemment, il nous faut le logo Bluesky quelque part.
+
+Créez un troisième fichier appelé `src/components/Bluesky/bluesky.svg` et copiez/collez ce contenu dedans :
+
+<Snippet
+  filename="src/components/Bluesky/bluesky.svg"
+  source="src/components/Bluesky/bluesky.svg"
+/>
+
+### 4/5 Et enfin notre CSS {#45-and-finally-our-css}
+
+Et, très important, il nous faut du CSS. Créez un quatrième fichier appelé `src/components/Bluesky/styles.module.css` et copiez/collez ce contenu dedans :
+
+<Snippet
+  filename="src/components/Bluesky/styles.module.css"
+  source="src/components/Bluesky/styles.module.css"
+/>
+
+### 5/5 Dernière chose, nous devons implémenter notre composant dans Docusaurus {#55-last-thing-we-need-to-implement-our-component-in-docusaurus}
+
+Notre composant Bluesky est prêt. Nous avons créé nos quatre fichiers.
+
+Vous devriez avoir ceci :
+
+```tree expanded=true showJSX=false debug=false title="src"
+.
+├── components/Bluesky
+│   ├── bluesky.svg
+│   ├── index.tsx
+│   ├── share.tsx
+│   └── styles.module.css
+...
+└── theme/BlogPostItem
+    ├── index.js
+```
+
+Revenons à ce qui a été dit plus tôt : pour adapter la mise en page, Docusaurus utilise le fichier `src/theme/BlogPostItem/index.js`. Il est donc temps d'injecter notre composant fraîchement créé dans ce script.
+
+<Snippet
+  filename="src/theme/BlogPostItem/index.js"
+  source="./files/BlogPostItem_3.js"
+/>
+
+Félicitations ! Si vous allez sur une page de votre blog et que vous la rafraîchissez, vous verrez le bouton Bluesky en bas de page.
+
+<AlertBox variant="note">
+Si ça n'a pas fonctionné, arrêtez et relancez votre serveur Docusaurus. Dans mon cas (j'utilise Docker), il me suffit d'arrêter et de relancer mon container.
+
+</AlertBox>
+
+Rafraîchissez la page d'un article et vous verrez le même bouton que celui présenté en début d'article, maintenant en place sur votre propre site.
+
+## Tous les fichiers d'un coup d'œil {#all-files-at-a-glance}
+
+Voici l'ensemble complet des fichiers créés dans cet article. Utilisez le bouton ci-dessous pour les copier tous d'un coup, ou téléchargez-les sous forme de ZIP prêt à extraire :
+
+<ProjectSetup folderName="Bluesky share button" createFolder={false}>
+  <Guideline>
+    Ajoutez ces fichiers à votre site Docusaurus existant, puis relancez votre serveur de
+    développement pour que le `BlogPostItem` swizzlé prenne en compte le nouveau composant.
+  </Guideline>
+
+  <Snippet
+    filename="src/theme/BlogPostItem/index.js"
+    source="./files/BlogPostItem_3.js"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/index.tsx"
+    source="./files/Bluesky.tsx"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/share.tsx"
+    source="src/components/Bluesky/share.tsx"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/bluesky.svg"
+    source="src/components/Bluesky/bluesky.svg"
+    defaultOpen={false}
+  />
+  <Snippet
+    filename="src/components/Bluesky/styles.module.css"
+    source="src/components/Bluesky/styles.module.css"
+    defaultOpen={false}
+  />
+</ProjectSetup>
+
+Dans un prochain article, nous apprendrons à interagir avec Bluesky :
+
+- Proposer un bouton sous l'article pour sauter vers les posts Bluesky afin que vos visiteurs puissent :
+  - Liker votre article (ce qui est toujours agréable, non ?),
+  - Partager votre article (encore mieux) et
+  - Lancer ou participer à une discussion
+- Nous afficherons aussi le nombre de likes et de reposts sur le post Bluesky et
+- Récupérer tous les commentaires publiés sur Bluesky et les afficher sur votre blog ; cela augmentera sans aucun doute l'engagement de vos visiteurs.
+
+## Remarques finales - Attention à la commande swizzle {#final-remarks---take-care-about-the-swizzle-command}
+
+Vous devez comprendre qu'en swizzlant (surchargeant) le layout BlogPostItem, vous n'êtes plus _aligné_ avec le layout standard de Docusaurus.
+
+**Si, dans une prochaine release, de nouvelles fonctionnalités sont ajoutées par Docusaurus, vous ne les aurez pas !** puisque vous n'utilisez plus le layout par défaut pour vos articles.
+
+Gardez-le simplement en tête et, peut-être, de temps en temps (après une release majeure par exemple), pensez à relancer la commande swizzle et à refaire votre personnalisation.
+
+C'est pour cette raison que nos modifications du fichier index.js ont été réduites au minimum.

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T10:52:58.973Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c754f1460f30f001f4ebe19b1de0bcc65fe9d43d",
+  "questions": [
+    {
+      "question": "migrer de Laravel vers PostgreSQL et PostgREST pour supprimer les requêtes",
+      "anchor": ""
+    },
+    {
+      "question": "PostgREST transforme le schéma de la base en endpoints API",
+      "anchor": "what-postgrest-does-for-you"
+    },
+    {
+      "question": "docker run PostgreSQL et psql pour peupler une table avec un utilisateur dédié",
+      "anchor": "step-1---create-and-populate-our-postgresql-database"
+    },
+    {
+      "question": "télécharger PostgREST v14.16 et le démarrer avec tutorial.conf",
+      "anchor": "step-2---install-and-execute-postgrest"
+    },
+    {
+      "question": "comment filtrer les données retournées par PostgREST",
+      "anchor": "using-a-filter"
+    },
+    {
+      "question": "gestion des permissions PostgREST via le rôle anonyme PostgreSQL",
+      "anchor": "permissions-required"
+    },
+    {
+      "question": "générer automatiquement la spec OpenAPI depuis PostgREST",
+      "anchor": "openapi"
+    },
+    {
+      "question": "requêter une inner join avec PostgREST",
+      "anchor": "using-inner-join"
+    },
+    {
+      "question": "forcer le format de sortie en CSV ou texte",
+      "anchor": "output-format"
+    },
+    {
+      "question": "comment utiliser le casting dans les requêtes PostgREST",
+      "anchor": "casting"
+    }
+  ]
+}

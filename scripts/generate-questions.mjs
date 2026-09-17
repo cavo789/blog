@@ -15,6 +15,15 @@
  * Usage:
  *   node scripts/generate-questions.mjs <article-file> [--force] [--output <path>]
  *   node scripts/generate-questions.mjs --all [--force] [--dir blog/] [--limit N] [--dry-run]
+ *   node scripts/generate-questions.mjs --locale fr <article-file>
+ *   node scripts/generate-questions.mjs --locale fr --all [--force] [--limit N] [--dry-run]
+ *
+ * With --locale (TODO 0120), the questions are generated FROM THE TRANSLATED ARTICLE, in that
+ * language, and written next to it under `i18n/<locale>/docusaurus-plugin-content-blog/`.
+ * Generating from the English text and translating the questions would describe wording — and
+ * heading anchors — the reader never sees. Which articles qualify is decided by
+ * `scripts/lib/i18n-eligibility.mjs`, never re-derived here. A localized sidecar whose
+ * translated article changed is regenerated without --force; a fresh one is left alone.
  *
  * Requires a local Ollama instance — see OLLAMA_URL below. No API key: this never leaves the
  * author's machine (or, in the devcontainer, the host it runs on).
@@ -25,6 +34,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import GithubSlugger from "github-slugger";
 import { hashSource } from "./lib/eli5-hash.mjs";
+import { localizedBlogPath, questionCandidates } from "./lib/i18n-eligibility.mjs";
 import {
   findPosts,
   parseFrontMatter,
@@ -50,6 +60,32 @@ const MAX_QUESTIONS = 12;
 // considered malformed. Below this, something is wrong with the prompt/model for this
 // article and the whole article must fail rather than ship a thin, low-value entry.
 const MIN_VALID_QUESTIONS = 5;
+
+// Output language per locale. The instruction is spelled out in the prompt because a 3B model
+// otherwise drifts back to English whenever the article quotes English commands or titles.
+//
+// `model` is the per-locale default when OLLAMA_MODEL is not set. French uses the larger local
+// model: on the Docling pilot (2026-09-17), task-tiny wrote acceptable French but shifted the
+// heading index by one on 5 of 12 questions (a question about the GPU toolkit pointing at the
+// section before it), while code-quality mapped all 10 correctly — at ~2 min per article
+// instead of ~11 s, which is nothing for a corpus of a few translated articles.
+const LANGUAGES = {
+  en: { name: "English", extra: "", model: OLLAMA_MODEL },
+  fr: {
+    name: "French",
+    model: process.env.OLLAMA_MODEL || "code-quality:latest",
+    extra: `
+- Write every question in natural French, the way a French-speaking developer would type it
+  (tutoiement or impersonal phrasing, never a word-for-word translation of English).
+- Keep product names, commands, file names and flags exactly as written (Docker, \`docker
+  compose\`, \`.bashrc\`) — never translate them.`,
+  },
+};
+
+const systemPromptFor = (locale) => {
+  const { name, extra } = LANGUAGES[locale];
+  return SYSTEM_PROMPT.replace("in English.", `in ${name}.`) + extra;
+};
 
 const SYSTEM_PROMPT = `You are helping build a search index for a technical blog. Given an
 article's title, description, tags, and section headings, write search questions a developer
@@ -158,19 +194,19 @@ ${boundedProse}
 Write the search questions now.`;
 }
 
-async function callOllama(userPrompt) {
+async function callOllama(userPrompt, locale, model) {
   let res;
   try {
     res = await fetch(`${OLLAMA_URL}/api/chat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: OLLAMA_MODEL,
+        model,
         stream: false,
         format: RESPONSE_SCHEMA,
         options: { temperature: 0.4 },
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: systemPromptFor(locale) },
           { role: "user", content: userPrompt },
         ],
       }),
@@ -212,9 +248,13 @@ function toValidatedQuestions(raw, headings) {
     if (!Number.isInteger(item.headingIndex)) continue;
 
     const question = item.question.trim();
+    // Same normalization as questions-index-plugin's normalizeForDedupe(): accents folded
+    // first, or "créer" and "cr er" would be the same key.
     const dedupeKey = question
+      .normalize("NFD")
+      .replace(/\p{M}/gu, "")
       .toLowerCase()
-      .replace(/[^a-z0-9]+/g, " ")
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
       .trim();
     if (seen.has(dedupeKey)) continue;
     seen.add(dedupeKey);
@@ -243,9 +283,16 @@ function toValidatedQuestions(raw, headings) {
  */
 export async function generateQuestions(
   articleFile,
-  { force = false, outputPath = null } = {},
+  { force = false, outputPath = null, locale = "en" } = {},
 ) {
-  const absSource = path.resolve(articleFile);
+  if (!LANGUAGES[locale]) {
+    throw new Error(
+      `Unsupported locale "${locale}" (known: ${Object.keys(LANGUAGES).join(", ")}).`,
+    );
+  }
+
+  const absSource =
+    locale === "en" ? path.resolve(articleFile) : resolveTranslated(articleFile, locale);
 
   if (!fs.existsSync(absSource)) {
     throw new Error(`Article not found: ${absSource}`);
@@ -266,7 +313,13 @@ export async function generateQuestions(
     if (existing?.excluded === true) {
       return { status: "excluded", path: destPath };
     }
-    if (!force) {
+    // A localized sidecar follows its translation: stale means regenerate, even without
+    // --force — that is the whole point of the hash. The English corpus keeps its historical
+    // "exists = skip" behavior (its staleness is reported by questions:check instead).
+    const fresh =
+      locale === "en" ||
+      existing?.sourceHash === hashSource(fs.readFileSync(absSource, "utf-8"));
+    if (!force && fresh) {
       return { status: "skipped", path: destPath };
     }
   }
@@ -290,14 +343,16 @@ export async function generateQuestions(
     prose,
   });
 
-  const modelRaw = await callOllama(userPrompt);
+  const model = LANGUAGES[locale].model;
+  const modelRaw = await callOllama(userPrompt, locale, model);
   const questions = toValidatedQuestions(modelRaw, headings);
 
   const result = {
     version: 1,
-    model: OLLAMA_MODEL,
+    model,
     generated: new Date().toISOString(),
     source: path.basename(absSource),
+    ...(locale === "en" ? {} : { locale }),
     sourceHash: hashSource(raw),
     questions,
   };
@@ -306,7 +361,81 @@ export async function generateQuestions(
   return { status: "generated", path: destPath, count: questions.length };
 }
 
+/**
+ * The translated article for a `--locale` run. Accepts either the English source
+ * (`blog/…/index.md`) or the translated file itself, so the path the author has at hand works.
+ */
+function resolveTranslated(articleFile, locale) {
+  const abs = path.resolve(articleFile);
+  const blogRoot = path.join(projectRoot, "blog") + path.sep;
+  if (!abs.startsWith(blogRoot)) return abs;
+
+  const translated = localizedBlogPath(projectRoot, abs, locale);
+  if (!fs.existsSync(translated)) {
+    throw new Error(
+      `${path.relative(projectRoot, abs)} is not translated into ${locale} — translate it first ` +
+        `(\`translate ${path.relative(projectRoot, path.dirname(abs))}\`).`,
+    );
+  }
+
+  // Same condition 2 as the eligibility module: no English questions, no localized ones.
+  try {
+    const english = JSON.parse(fs.readFileSync(`${abs}.questions.json`, "utf-8"));
+    if (english.excluded === true) {
+      throw new Error(
+        `${path.relative(projectRoot, abs)} is excluded from "Ask my blog".`,
+      );
+    }
+  } catch (err) {
+    if (err.code !== "ENOENT" && !(err instanceof SyntaxError)) throw err;
+  }
+  return translated;
+}
+
 // ── Bulk mode ────────────────────────────────────────────────────────────────
+
+/** `--locale` bulk run: the eligibility module decides, this only reports and generates. */
+async function runLocalizedBulk({ locale, force, limit, dryRun }) {
+  const { eligible, skipped } = questionCandidates(projectRoot, locale);
+  // --force re-runs the fresh ones too, never the excluded or the untranslated.
+  const fresh = skipped
+    .filter((s) => s.reason === "localized sidecar already fresh")
+    .map((s) => s.file);
+  const all = force ? [...eligible, ...fresh].sort() : eligible;
+  const targets = typeof limit === "number" ? all.slice(0, limit) : all;
+
+  console.log(
+    `🔍 ${targets.length} translated article(s) to process for "${locale}" ` +
+      `(${fresh.length} already fresh, ${skipped.length - fresh.length} not eligible).`,
+  );
+
+  let generated = 0,
+    errors = 0;
+  for (const file of targets) {
+    const rel = path.relative(projectRoot, file);
+    if (dryRun) {
+      console.log(`  [GENERATE] ${rel}`);
+      continue;
+    }
+    process.stdout.write(`  📄 ${rel} ... `);
+    try {
+      const result = await generateQuestions(file, { force, locale });
+      console.log(
+        result.status === "generated"
+          ? `✅ ${result.count} questions`
+          : `⏭  ${result.status}`,
+      );
+      if (result.status === "generated") generated++;
+    } catch (err) {
+      console.log(`❌ ${err.message}`);
+      errors++;
+    }
+  }
+
+  if (dryRun) console.log("\nDry run — nothing written.");
+  else console.log(`\nGenerated: ${generated}  Errors: ${errors}`);
+  if (errors > 0) process.exitCode = 1;
+}
 
 async function runBulk({ force, dir, limit, dryRun }) {
   // Drafts (blog/ with draft: true, or anything under .unpublished/) aren't public yet — the
@@ -404,17 +533,25 @@ Options:
   --limit <n>      (--all mode) only process the first n articles — useful for a
                     hand-reviewed pilot batch before a full corpus run
   --dry-run        (--all mode) show what would be generated without calling Ollama
+  --locale <code>  Generate from the translated article, in that language (e.g. fr).
+                    With --all, only the eligible translated articles are processed.
   --help, -h       Show this help
 
 Environment:
   OLLAMA_URL    Ollama endpoint (default: http://172.17.0.1:11434 — the devcontainer's
                 bridge to the host)
-  OLLAMA_MODEL  Model name (default: task-tiny:latest)
+  OLLAMA_MODEL  Model name (default: task-tiny:latest; code-quality:latest for --locale fr)
 `);
     process.exit(0);
   }
 
   const force = args.includes("--force");
+  const localeIdx = args.indexOf("--locale");
+  const locale = localeIdx !== -1 ? args[localeIdx + 1] : "en";
+  if (localeIdx !== -1 && !LANGUAGES[locale]) {
+    console.error(`Error: unsupported --locale "${locale}".`);
+    process.exit(1);
+  }
 
   if (args.includes("--all")) {
     const dirIdx = args.indexOf("--dir");
@@ -426,17 +563,22 @@ Environment:
     const limit = limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : undefined;
     const dryRun = args.includes("--dry-run");
 
-    if (!fs.existsSync(dir)) {
+    if (locale !== "en") {
+      await runLocalizedBulk({ locale, force, limit, dryRun });
+    } else if (!fs.existsSync(dir)) {
       console.error(`Error: directory not found: ${dir}`);
       process.exit(1);
+    } else {
+      await runBulk({ force, dir, limit, dryRun });
     }
-
-    await runBulk({ force, dir, limit, dryRun });
   } else {
     const outputIdx = args.indexOf("--output");
     const outputPath = outputIdx !== -1 ? args[outputIdx + 1] : null;
     const articleFile = args.find(
-      (a, i) => !a.startsWith("--") && !(outputIdx !== -1 && i === outputIdx + 1),
+      (a, i) =>
+        !a.startsWith("--") &&
+        !(outputIdx !== -1 && i === outputIdx + 1) &&
+        !(localeIdx !== -1 && i === localeIdx + 1),
     );
 
     if (!articleFile) {
@@ -445,7 +587,7 @@ Environment:
     }
 
     try {
-      const result = await generateQuestions(articleFile, { force, outputPath });
+      const result = await generateQuestions(articleFile, { force, outputPath, locale });
       if (result.status === "excluded") {
         console.log(`🚫 Excluded from "Ask my blog": ${path.basename(result.path)}`);
         console.log(

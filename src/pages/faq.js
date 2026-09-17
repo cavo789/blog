@@ -71,12 +71,10 @@ export default function FaqPage() {
             </p>
           </header>
 
-          {/* Renders nothing on `en`. `questions-index-plugin` is not locale-aware: the counts
-              above, and the questions themselves, are the English corpus served under a French
-              URL. So the figure misleads in BOTH directions — today it promises 2157 questions a
-              French reader cannot read, and once TODO 0120 generates them per locale it will drop
-              to the ~40 drawn from four translated articles. Either way the reader needs the
-              ratio. */}
+          {/* Renders nothing on `en`. Since TODO 0120, `questions-index-plugin` reads the
+              translated corpus under a non-default locale, so the counts above cover only the
+              translated articles (a few dozen questions against 2000+ in English). The reader
+              needs that ratio to understand why the French index is so much smaller. */}
           <TranslationCoverage />
 
           <AskMyBlog />

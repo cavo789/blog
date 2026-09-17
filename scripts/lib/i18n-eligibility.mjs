@@ -21,6 +21,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
+import { hashSource } from "./eli5-hash.mjs";
 
 const require = createRequire(import.meta.url);
 const {
@@ -28,6 +29,7 @@ const {
 } = require("../../plugins/translations-manifest-plugin/index.cjs");
 
 const BLOG_DIR = "blog";
+const I18N_BLOG_DIR = "docusaurus-plugin-content-blog";
 
 /** Recursively collects every file under a directory matching a predicate. */
 function walk(directory, keep) {
@@ -113,34 +115,80 @@ function readHash(sidecarPath) {
   }
 }
 
+/** Where the translation of a `blog/` file lives, e.g. `i18n/fr/docusaurus-plugin-content-blog/…`. */
+export function localizedBlogPath(projectRoot, blogFile, locale) {
+  const relative = path.relative(path.join(projectRoot, BLOG_DIR), blogFile);
+  return path.join(projectRoot, "i18n", locale, I18N_BLOG_DIR, relative);
+}
+
 /**
- * Articles eligible for a localized question index: translated, and carrying an English
- * questions sidecar.
+ * Translated articles eligible for a localized question index.
+ *
+ * The localized sidecar lives next to the TRANSLATED article
+ * (`i18n/<locale>/docusaurus-plugin-content-blog/<rel>/index.md.questions.json`), because it is
+ * generated from that file: the questions must match the text and the heading anchors the
+ * reader actually sees. Its `sourceHash` is therefore the hash of the translated file, and a
+ * retranslation makes it stale.
+ *
+ * "Translated" is decided by the translated file existing at the mirrored path — the same test
+ * `translations-manifest-plugin` applies — rather than by slug, which would need the front
+ * matter slug and the folder name to agree.
+ *
+ * @returns {{eligible: string[], skipped: {file: string, reason: string}[]}} `eligible` holds
+ *   the translated article paths to generate from.
  */
 export function questionCandidates(projectRoot, locale) {
-  const translated = translatedSlugs(projectRoot, locale);
   const eligible = [];
   const skipped = [];
 
-  const englishSidecars = walk(
-    path.join(projectRoot, BLOG_DIR),
-    (name) =>
-      name.endsWith(".questions.json") && !/\.questions\.[a-z]{2}\.json$/.test(name),
+  const englishSidecars = walk(path.join(projectRoot, BLOG_DIR), (name) =>
+    /^index\.mdx?\.questions\.json$/.test(name),
   );
 
   for (const sidecar of englishSidecars) {
-    const articleDir = articleDirOf(sidecar, projectRoot);
-    const slug = articleDir ? articleDir.split("/").pop() : null;
+    const article = sidecar.replace(/\.questions\.json$/, "");
+    const translated = localizedBlogPath(projectRoot, article, locale);
 
-    if (!slug || !translated.has(slug)) {
+    if (!fs.existsSync(translated)) {
+      skipped.push({ file: article, reason: `not translated into ${locale}` });
+      continue;
+    }
+
+    // Condition 2, refined: an article excluded during review (questions-review.mjs) or left
+    // with an empty list carries no English questions on purpose — nothing to mirror.
+    const english = readJson(sidecar);
+    if (english?.excluded === true || !english?.questions?.length) {
+      skipped.push({ file: article, reason: "English sidecar excluded or empty" });
+      continue;
+    }
+
+    // Condition 3.
+    const localized = readJson(`${translated}.questions.json`);
+    if (localized?.excluded === true) {
       skipped.push({
-        file: sidecar,
-        reason: `article "${slug ?? "?"}" is not translated`,
+        file: translated,
+        reason: "localized sidecar excluded during review",
       });
       continue;
     }
-    eligible.push(sidecar);
+    if (
+      localized &&
+      localized.sourceHash === hashSource(fs.readFileSync(translated, "utf-8"))
+    ) {
+      skipped.push({ file: translated, reason: "localized sidecar already fresh" });
+      continue;
+    }
+
+    eligible.push(translated);
   }
 
   return { eligible, skipped };
+}
+
+function readJson(filePath) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf-8"));
+  } catch {
+    return null;
+  }
 }

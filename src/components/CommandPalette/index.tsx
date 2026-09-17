@@ -470,7 +470,7 @@ export default function CommandPalette() {
           );
           break;
         case "show-map":
-          history.push("/map");
+          history.push(withBaseUrl("/map"));
           break;
         case "copy-permalink":
           navigator.clipboard
@@ -492,7 +492,7 @@ export default function CommandPalette() {
       }
       close();
     },
-    [currentArticle, colorMode, setColorMode, history, close],
+    [currentArticle, colorMode, setColorMode, history, close, withBaseUrl],
   );
 
   const actions = useMemo<ActionItem[]>(() => {
@@ -767,7 +767,11 @@ export default function CommandPalette() {
       if (!item) return;
       if (item.kind === "navigate") {
         close();
-        history.push(item.permalink!);
+        // `withBaseUrl` because `history.push` does not add the locale prefix the way `<Link>`
+        // does: the palette's static pages and the question index carry bare paths (`/faq`,
+        // `/blog/x`), so under `fr` they opened the English page. Idempotent, so a permalink
+        // Docusaurus already prefixed is left alone. See .claude/rules/i18n-locale-safety.md.
+        history.push(withBaseUrl(item.permalink!));
       } else if (item.kind === "heading") {
         close();
         window.location.hash = item.id;
@@ -775,7 +779,7 @@ export default function CommandPalette() {
         runAction(item.id);
       }
     },
-    [close, history, runAction],
+    [close, history, runAction, withBaseUrl],
   );
 
   const onInputKeyDown = useCallback(
@@ -918,7 +922,7 @@ export default function CommandPalette() {
                     hasQuestions={hasQuestions}
                     onSelect={(permalink) => {
                       close();
-                      history.push(permalink);
+                      history.push(withBaseUrl(permalink));
                     }}
                   />
                 ) : (

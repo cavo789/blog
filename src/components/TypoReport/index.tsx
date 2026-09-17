@@ -9,6 +9,10 @@ import {
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
 import Translate, { translate } from "@docusaurus/Translate";
+import {
+  slugFromPermalink,
+  useTranslationState,
+} from "@site/src/components/Blog/utils/translations";
 
 // ── LocalStorage helpers ───────────────────────────────────────────────────────
 
@@ -20,6 +24,8 @@ const FEEDBACK_TYPES = [
   { id: "incorrect", icon: "❌", label: "Incorrect" },
   { id: "outdated", icon: "⏰", label: "Outdated" },
   { id: "suggestion", icon: "💡", label: "Suggestion" },
+  // Only offered on a real translation — see `canFlagTranslation` below.
+  { id: "translation", icon: "🌐", label: "Doubtful translation" },
 ];
 
 interface StoredReport {
@@ -91,6 +97,11 @@ function labelFor(id: string, fallback: string): string {
       return translate({ id: "blog.typoReport.type.outdated", message: "Outdated" });
     case "suggestion":
       return translate({ id: "blog.typoReport.type.suggestion", message: "Suggestion" });
+    case "translation":
+      return translate({
+        id: "blog.typoReport.type.translation",
+        message: "Doubtful translation",
+      });
     default:
       return fallback;
   }
@@ -100,6 +111,16 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
   const { siteConfig } = useDocusaurusContext();
   const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/typo.php`;
+
+  // A French URL existing proves nothing: Docusaurus falls back to the English source when no
+  // translation exists. `isTranslated` alone is not enough either — it is always true on the
+  // default locale, where the article is the original.
+  const { isDefaultLocale, isTranslated } = useTranslationState();
+  const canFlagTranslation =
+    !isDefaultLocale && isTranslated(slugFromPermalink(metadata?.permalink ?? ""));
+  const feedbackTypes = FEEDBACK_TYPES.filter(
+    (t) => t.id !== "translation" || canFlagTranslation,
+  );
 
   // State machine: idle → selecting → confirming → submitting → done | error
   const [phase, setPhase] = useState<Phase>("idle");
@@ -258,10 +279,15 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
             <Translate id="blog.typoReport.prompt">What kind of issue?</Translate>
           </p>
           <div className={styles.typeGrid}>
-            {FEEDBACK_TYPES.map(({ id, icon, label }) => (
+            {feedbackTypes.map(({ id, icon, label }) => (
               <button
                 key={id}
-                className={styles.typeBtn}
+                className={
+                  // Fifth button: spans the two-column grid instead of sitting alone.
+                  id === "translation"
+                    ? `${styles.typeBtn} ${styles.typeBtnWide}`
+                    : styles.typeBtn
+                }
                 onClick={() => handleTypeSelect(id)}
               >
                 <span className={styles.typeIcon}>{icon}</span>

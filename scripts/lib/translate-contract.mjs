@@ -79,7 +79,11 @@ export const GLOSSARY = [
 export const CONSISTENCY_PAIRS = [
   ["folding", "pliage"],
   ["snippet", "extrait de code"],
-  ["commit", "validation"],
+  // ["commit", "validation"] was here and had to go: "validation" is an ordinary French word
+  // whose commonest sense in these articles has nothing to do with git ("les deux passent par
+  // une validation" — of a request body). The pair could only ever fire on that sense, never on
+  // the mistranslation it was meant to catch. BANNED_FRENCH keeps "validation de code", which
+  // names the git sense unambiguously.
   ["container", "conteneur"],
   ["build", "compilation"],
   ["cache", "antémémoire"],
@@ -133,11 +137,18 @@ idiomatic, and structurally intact.
    \`date\`, \`authors\`, \`tags\`, \`mainTag\`, \`image\`, \`series\`, \`seriesOrder\`,
    \`ai_assisted\`, \`updates\`, \`review_date\`, \`draft\` — is copied byte for byte.
    Translating \`slug\` breaks the URL. Translating \`series\` orphans the article from its series.
+   If a translated \`title\` or \`description\` contains \`: \` (French puts a space before the
+   colon), wrap the value in double quotes — unquoted, it is invalid YAML and breaks the build.
 5. NEVER translate MDX component names or prop NAMES. \`<AlertBox variant="warning">\` stays
    \`<AlertBox variant="warning">\`.
 6. NEVER translate prop values that are targets or identifiers: \`source=\`, \`href=\`, \`to=\`,
    \`icon=\`, \`image=\`, \`id=\`, \`variant=\`, \`language=\`. DO translate human-readable prop
    values: \`title=\`, \`text=\`, \`caption=\`, \`label=\`.
+   This holds for the SAME names written as object keys inside a JSX expression, not just as
+   JSX attributes: in \`<QuickJump links={[{ label: "The Big Picture", to: "#the-big-picture" }]} />\`
+   you translate \`label:\` and copy \`to:\` byte for byte. An in-page anchor (\`#...\`) is an
+   identifier everywhere it appears \u2014 in \`to:\`, in \`href=\`, in \`[text](#anchor)\`. The French
+   headings keep their English ids, so a translated anchor points at nothing and fails the build.
 7. NEVER translate URLs, file paths, file names, command names, CLI flags, environment variable
    names, or anything a reader would type into a terminal.
 8. Keep the \`<!-- truncate -->\` marker, at the same position in the document.

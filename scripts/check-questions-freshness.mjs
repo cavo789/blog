@@ -29,6 +29,7 @@ import { fileURLToPath } from "url";
 import { execFileSync } from "child_process";
 import { hashSource } from "./lib/eli5-hash.mjs";
 import { loadPosts } from "./lib/blog-corpus.mjs";
+import { questionCandidates } from "./lib/i18n-eligibility.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -49,6 +50,9 @@ const gitListArgs = [
   // folder (.unpublished/docusaurus-ask-my-blog/files/demo.questions.json), which is
   // documentation, not a corpus sidecar — repo-wide, it was reported as ORPHANED forever.
   "blog/*.questions.json",
+  // Localized sidecars (TODO 0120) sit next to the translated article, so the same
+  // "strip the suffix, hash the source" check applies: a retranslation makes them stale.
+  "i18n/*/docusaurus-plugin-content-blog/*.questions.json",
 ];
 const relFiles = execFileSync("git", gitListArgs, { cwd: projectRoot, encoding: "utf-8" })
   .split("\0")
@@ -63,6 +67,9 @@ let fresh = 0,
 // Collected so the summary can offer one copy-pasteable command covering every stale sidecar
 // — a batch of edited articles routinely produces eight or nine of these at once.
 const staleSources = [];
+// Localized stale sidecars are regenerated per locale by the eligibility-driven bulk run,
+// never with the English one-file command.
+const staleLocales = new Set();
 
 for (const jsonPath of files) {
   const relJson = path.relative(projectRoot, jsonPath);
@@ -98,7 +105,9 @@ for (const jsonPath of files) {
   if (currentHash !== record.sourceHash) {
     // No per-file warning here — staleSources feeds the single batched command printed
     // below, so nothing tempts a one-by-one `yarn questions --force` per file.
-    staleSources.push(relSource);
+    const localeMatch = relSource.match(/^i18n\/([^/]+)\//);
+    if (localeMatch) staleLocales.add(localeMatch[1]);
+    else staleSources.push(relSource);
     stale++;
   } else {
     fresh++;
@@ -112,9 +121,25 @@ const missing = loadPosts().filter(
   (post) => !fs.existsSync(`${post.file}.questions.json`),
 );
 
+// Localized coverage — translated articles whose English questions exist but whose localized
+// ones do not yet. Stale ones are already counted above.
+const i18nRoot = path.join(projectRoot, "i18n");
+const locales = fs.existsSync(i18nRoot)
+  ? fs
+      .readdirSync(i18nRoot, { withFileTypes: true })
+      .filter((e) => e.isDirectory())
+      .map((e) => e.name)
+  : [];
+const missingLocalized = locales.flatMap((locale) =>
+  questionCandidates(projectRoot, locale)
+    .eligible.filter((file) => !fs.existsSync(`${file}.questions.json`))
+    .map((file) => ({ locale, file })),
+);
+
 // In quiet mode the warnings above (if any) are the whole message — the counts below are
 // context that only makes sense when someone asked for a report.
-const actionable = stale > 0 || orphaned > 0 || missing.length > 0;
+const actionable =
+  stale > 0 || orphaned > 0 || missing.length > 0 || missingLocalized.length > 0;
 if (!quiet || actionable) {
   console.log(
     `\nquestions freshness: ${fresh} fresh, ${stale} stale, ${excluded} excluded, ${orphaned} orphaned (of ${files.length} sidecar file(s)).`,
@@ -126,6 +151,21 @@ if (staleSources.length > 0) {
     `⚠  STALE — ${staleSources.length} file(s) changed since their sidecar was generated:`,
   );
   console.log(`   for f in ${list}; do yarn questions --force "$f"; done`);
+}
+
+for (const locale of staleLocales) {
+  console.log(`⚠  STALE — "${locale}" question sidecar(s) behind their translation:`);
+  console.log(`   yarn questions --locale ${locale} --all`);
+}
+if (missingLocalized.length > 0) {
+  const byLocale = new Map();
+  for (const { locale } of missingLocalized)
+    byLocale.set(locale, (byLocale.get(locale) || 0) + 1);
+  for (const [locale, count] of byLocale) {
+    console.log(
+      `questions coverage (${locale}): ${count} translated article(s) with no sidecar yet — yarn questions --locale ${locale} --all`,
+    );
+  }
 }
 
 if (!quiet || missing.length > 0) {

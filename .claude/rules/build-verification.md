@@ -59,3 +59,12 @@ English content under French URLs, and pages rendering a stale locale.
   `img.complete && img.naturalWidth > 0` is the only check that catches a `200 text/html` SPA
   fallback, but a `loading="lazy"` image below the fold reports exactly the same thing while being
   perfectly fine. Scroll to the bottom, wait for network idle, then measure.
+- ⚠️ NOTE: always name the isolated build's generated dir **`.docusaurus-verify`**, never a new
+  name per run. `node_modules/.cache` is shared, and it keeps compiled MDX that points at the
+  generated dir of the build that produced it: a build under `.docusaurus-ssg` after one under
+  `.docusaurus-verify` failed with hundreds of `Can't resolve '@site/.docusaurus-verify/…'`
+  while CI, on the very same commit, passed.
+- ⚠️ NOTE: the devcontainer image sets `DOCUSAURUS_IGNORE_SSG_WARNINGS=true` (`Dockerfile`), CI
+  does not. HTML-minifier diagnostics that CI prints are invisible locally unless the build runs
+  under `env -u DOCUSAURUS_IGNORE_SSG_WARNINGS`. Compare against a worktree of the previous commit
+  before calling a warning new.

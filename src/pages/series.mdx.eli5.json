@@ -1,17 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-17T09:34:06.928Z",
+  "generated": "2026-09-17T13:16:51.143Z",
   "source": "series.mdx",
-  "sourceHash": "93cb125d592c535cbbd6f54a6f2bb459b91bf530",
+  "sourceHash": "db091fd45af51dfcfae08608b2fba27719d3e44b",
   "lang": "markdown",
-  "summary": "This is a documentation page that displays all article series on a blog. It imports styling and React components, then uses those components to show statistics about the series, translation coverage information, and a grid of cards representing each series collection.",
+  "summary": "This is a Markdown document that serves as a landing page for article series on a blog. It imports and displays various components like statistics, translation coverage information, and a set of cards that showcase the available series, along with some introductory text explaining what readers will find.",
   "explanations": {
-    "3": "This tells the documentation generator not to display the automatic table of contents that would normally appear on this page.",
-    "5": "This metadata field specifies who wrote or maintains this page — in this case, someone with the username 'christophe'.",
-    "8": "This loads custom CSS styling rules specifically for formatting the series display on this page.",
-    "10": "This comment tells the markdown linter to ignore a specific formatting rule (MD041) for this file, usually because the page structure doesn't follow typical markdown conventions.",
-    "28": "The {\" \"} is a way to insert a literal space in JSX; without it, whitespace between JSX elements gets collapsed.",
-    "31": "This creates a styled container div with the class name 'seriesIntro' that holds the introductory text below it."
+    "3": "This tells the documentation or blogging system not to generate a table of contents automatically for this page, probably because the page structure doesn't need one.",
+    "5": "This specifies that 'christophe' is the author of this page, so the system knows who wrote it.",
+    "8": "This imports custom CSS styling rules from a file so the components on this page display with the intended look and feel.",
+    "10": "This is an instruction to the Markdown linter to ignore a specific formatting rule for the rest of the file—in this case, the rule about heading hierarchy.",
+    "20": "This comment explains a quirk: the statistics component counts only translated articles when viewing the French version, which might mislead readers about the blog's actual size."
   }
 }

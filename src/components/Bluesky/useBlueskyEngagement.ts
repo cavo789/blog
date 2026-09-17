@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useSourceLocaleUrls } from "@site/src/components/Blog/utils/localeUrls";
 
 const MAX_ACTORS_PER_ENDPOINT = 20;
 const FEED_CACHE_PREFIX = "bluesky-feed-cache:";
@@ -233,7 +234,11 @@ async function buildFeedIndex(handle: string): Promise<FeedIndex> {
 // Resolves the Bluesky record key for the current article. The frontmatter value
 // always wins — it's the manual override needed after a slug rename, or to
 // disambiguate an article re-promoted with a second post. Otherwise the key is
-// looked up from the account's own post history. Never throws: any failure here
+// looked up from the account's own post history. In a translated locale the
+// article's own URL (`/fr/blog/x/`) is tried first, then the source-language one
+// (`/blog/x/`): the author usually promotes only the English article, and French
+// readers should join that conversation rather than see a "Share" button. A
+// dedicated French post, if one exists, still wins. Never throws: any failure here
 // (offline, blocked, no match found) just means no engagement UI is shown, the
 // same as an article that was never promoted at all.
 export function useBlueskyRecordKey(
@@ -243,6 +248,19 @@ export function useBlueskyRecordKey(
   const blueSkyConfig = siteConfig?.customFields?.bluesky as
     BlueskySiteConfig | undefined;
   const frontMatterKey = metadata?.frontMatter?.blueskyRecordKey;
+  const { isDefaultLocale, sourceAbsoluteUrl } = useSourceLocaleUrls();
+
+  // `permalink` comes from Docusaurus and already carries the locale's baseUrl
+  // (`/fr/blog/x/`) — so `siteConfig.url + permalink` is correct as is and must
+  // NOT be prefixed again. The source URL is the reverse: strip that baseUrl,
+  // then resolve the rest against the source locale. Slugs are never translated,
+  // so the remainder is the same in both locales.
+  const permalink = metadata?.permalink;
+  const currentUrl = permalink ? normalizeUrl(`${siteConfig.url}${permalink}`) : null;
+  const sourceUrl =
+    permalink && !isDefaultLocale && permalink.startsWith(siteConfig.baseUrl)
+      ? normalizeUrl(sourceAbsoluteUrl(permalink.slice(siteConfig.baseUrl.length)))
+      : null;
 
   const [state, setState] = useState<RecordKeyState>({
     recordKey: frontMatterKey || null,
@@ -255,7 +273,7 @@ export function useBlueskyRecordKey(
       setState({ recordKey: frontMatterKey, resolving: false });
       return;
     }
-    if (!blueSkyConfig?.handle || !metadata?.permalink) {
+    if (!blueSkyConfig?.handle || !currentUrl) {
       setState({ recordKey: null, resolving: false });
       return;
     }
@@ -264,11 +282,10 @@ export function useBlueskyRecordKey(
 
     (async () => {
       try {
-        const articleUrl = normalizeUrl(`${siteConfig.url}${metadata.permalink}`);
         const index = await buildFeedIndex(blueSkyConfig.handle!);
         if (!cancelled)
           setState({
-            recordKey: (articleUrl && index[articleUrl]) || null,
+            recordKey: index[currentUrl] || (sourceUrl && index[sourceUrl]) || null,
             resolving: false,
           });
       } catch (e) {
@@ -280,7 +297,7 @@ export function useBlueskyRecordKey(
     return () => {
       cancelled = true;
     };
-  }, [frontMatterKey, blueSkyConfig?.handle, metadata?.permalink, siteConfig?.url]);
+  }, [frontMatterKey, blueSkyConfig?.handle, currentUrl, sourceUrl]);
 
   return state;
 }

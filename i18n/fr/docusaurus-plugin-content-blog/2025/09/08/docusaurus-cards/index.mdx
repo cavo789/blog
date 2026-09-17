@@ -1,0 +1,221 @@
+---
+slug: docusaurus-cards
+title: Afficher les articles de blog Docusaurus sous forme de cartes - Guide pas à pas
+date: 2025-09-08
+description: Apprenez à mettre en valeur vos articles de blog Docusaurus grâce à des mises en page en cartes personnalisables.
+authors: [christophe, docux]
+image: /img/v2/docusaurus_react.webp
+series: Display Docusaurus Blog Posts as Cards - A Step-by-Step Guide
+mainTag: component
+tags:
+  - component
+  - docusaurus
+  - markdown
+  - react
+language: fr
+review_date: 2026-07-30
+blueskyRecordKey: 3lycuo7n5gk2w
+---
+
+<!-- cspell:ignore  -->
+
+![Afficher les articles de blog Docusaurus sous forme de cartes - Guide pas à pas](/img/v2/docusaurus_react.webp)
+
+<TLDR>
+Ce guide complet montre comment transformer les listes d'articles par défaut de Docusaurus en une mise en page en cartes plus agréable à l'œil. Vous allez implémenter un composant `<Card>` réutilisable en plusieurs parties, puis créer un composant `<PostCard>` pour afficher les informations propres à chaque article. Le tutoriel vous guide dans la création d'un plugin Docusaurus local pour surcharger la route `/blog/tags/:tag` par défaut, et d'un nouveau composant de page pour afficher les cartes. Il couvre aussi des scripts utilitaires pour récupérer les métadonnées des articles et générer les slugs.
+</TLDR>
+
+Dans cet article, nous allons apprendre à créer une carte à partir d'un article de blog.
+
+Si vous <Link to="/blog/docusaurus-docker-own-blog">utilisez Docusaurus pour votre blog</Link>, vous cherchez peut-être des moyens d'améliorer la mise en page. Plutôt que d'afficher les articles sous forme de liste, voyons comment les afficher sous forme de **cartes**.
+
+Dans ce guide, nous allons voir comment faire. Il vous suffira de copier/coller des fichiers dans votre site et de faire une petite modification dans votre fichier de configuration.
+
+<!-- truncate -->
+
+![Exemple de carte](./images/cards.webp)
+
+Cela va impliquer un grand nombre de fichiers, mais l'idée est ensuite de réutiliser les composants / fichiers créés plus tard.
+
+## Utiliser le composant Card réutilisable de Docux {#using-the-reusable-card-component-of-docux}
+
+D'abord, nous allons récupérer le [composant Card réutilisable](https://docuxlab.com/blog/card-component-docusaurus-infima/) de notre ami <img alt="Docux" src="/img/docux.webp" style={{border: "none", borderRadius: 0, height: "1.2em", verticalAlign: "middle", margin: "0 0.2em"}} />[Docux](https://github.com/Juniors017). C'est un ensemble de fichiers que vous devez créer ; c'est parti.
+
+<AlertBox variant="info">
+On peut aussi le récupérer sur le site de la [Docusaurus Community](https://docusaurus.community/knowledge/component-library/new/Card/), mais peut-être pas dans sa dernière version.
+
+</AlertBox>
+
+Dans votre site Docusaurus, créez ces fichiers :
+
+<Snippet
+  filename="src/components/Card/index.tsx"
+  source="src/components/Card/index.tsx"
+/>
+
+<Snippet
+  filename="src/components/Card/styles.module.css"
+  source="src/components/Card/styles.module.css"
+/>
+
+<Snippet
+  filename="src/components/Card/CardBody/index.tsx"
+  source="src/components/Card/CardBody/index.tsx"
+/>
+
+<Snippet
+  filename="src/components/Card/CardFooter/index.tsx"
+  source="src/components/Card/CardFooter/index.tsx"
+/>
+
+<Snippet
+  filename="src/components/Card/CardHeader/index.tsx"
+  source="src/components/Card/CardHeader/index.tsx"
+/>
+
+<Snippet
+  filename="src/components/Card/CardImage/index.tsx"
+  source="src/components/Card/CardImage/index.tsx"
+/>
+
+Vous avez donc maintenant créé six fichiers sur votre disque.
+
+Avant d'aller plus loin dans ce tutoriel, jouons un peu avec le composant Card et vérifions que tout a été enregistré correctement.
+
+Créez un nouvel article dans votre dossier `blog`, mais attention à l'extension : ce doit être un fichier `.mdx` (parce que nous allons ajouter du code qui doit être interprété).
+
+<Snippet filename="blog/card.mdx" source="./files/card.txt" />
+
+Si vous lancez votre blog maintenant, vous devriez obtenir ceci :
+
+![Carte Docux](./images/docux_sample.webp)
+
+<AlertBox variant="note">
+Si vous voulez récupérer la mignonne image de dinosaure, prenez-la ici [https://github.com/Juniors017/docux-blog/blob/main/static/img/docux.webp](https://github.com/Juniors017/docux-blog/blob/main/static/img/docux.webp) et enregistrez-la dans votre dossier `/static/img` sous le nom `docux.webp`.
+
+Vous pouvez bien sûr réutiliser n'importe quelle autre image.
+
+</AlertBox>
+
+## Parfait, ça fonctionne. Continuons avec un exemple concret {#nice-it-works-lets-continue-with-a-practical-sample}
+
+Dans cet article, nous allons surcharger la page standard qui affiche la liste des tags. Comme vous le savez, Docusaurus sait nativement afficher une page avec <Link to="/blog/docusaurus-tags">la liste des tags</Link> utilisés dans vos articles si vous accédez à la page **/blog/tags**. Pour mon propre blog, la page est [https://www.avonture.be/blog/tags](https://www.avonture.be/blog/tags) et vous obtenez quelque chose comme ceci :
+
+![La page des tags](./images/tags.webp)
+
+En cliquant sur un tag précis, Docusaurus affiche une liste d'articles pour ce tag, et c'est ce que nous allons changer.
+
+Par exemple, ceci :
+
+![Avant notre surcharge du tag](./images/tag_before.webp)
+
+<AlertBox variant="info">
+C'est sympa mais... OK, je dois beaucoup scroller avant de voir tous les articles et de trouver celui qui pourrait m'intéresser.
+
+</AlertBox>
+
+Nous allons remplacer ça par une liste de cartes d'articles. Par exemple, sur mon blog, j'écris aussi à propos de [python](https://www.avonture.be/blog/tags/python) et voici comment j'affiche la page :
+
+![La page du tag Python](./images/tag_python.webp)
+
+Cet exemple concret va nous permettre de mettre en œuvre deux concepts de Docusaurus : **le concept de plugins et celui de composants**.
+
+## Surcharger la page /blog/tags/tag en créant un plugin {#overriding-the-blogtagstag-page-by-creating-a-plugin}
+
+Créez le fichier ci-dessous.
+
+<Snippet
+  filename="plugins/docusaurus-plugin-tag-route/index.cjs"
+  source="plugins/docusaurus-plugin-tag-route/index.cjs"
+/>
+
+Prenez quelques secondes pour lire ce court script : comme vous le voyez, il dit à Docusaurus de ne plus utiliser sa propre page standard `/blog/tags/:tag` mais la nôtre (c'est-à-dire `src/components/Blog/Tags/TagArticlesPage`). Créons-la.
+
+## Créer le TagArticlesPage {#creating-the-tagarticlespage}
+
+Créez le fichier ci-dessous. C'est la fonction `TagArticlesPage` qui sera appelée par Docusaurus lorsqu'il affiche un tag précis.
+
+<Snippet
+  filename="src/components/Blog/Tags/TagArticlesPage.tsx"
+  source="src/components/Blog/Tags/TagArticlesPage.tsx"
+/>
+
+Comme vous le voyez tout en haut du fichier `TagArticlesPage.tsx`, nous importons quelques fichiers. Certains existent déjà dans votre site Docusaurus ; d'autres doivent être créés.
+
+Il y a trois fichiers à créer.
+
+## Le générateur de slug {#the-slug-generator}
+
+<Snippet
+  filename="src/components/Blog/utils/slug.ts"
+  source="src/components/Blog/utils/slug.ts"
+/>
+
+## La fonction getBlogMetaData {#the-getblogmetadata-function}
+
+Il nous faut une fonction pour parcourir tous nos articles de blog existants (tous les fichiers `.md` ou `.mdx` dans le dossier `blog`) et récupérer des informations comme le titre de l'article, l'image, le slug, etc.
+
+<Snippet
+  filename="src/components/Blog/utils/posts.ts"
+  source="./files/posts.ts"
+/>
+
+## Notre composant PostCard {#our-postcard-component}
+
+Et, enfin, il nous faut notre composant PostCard ; celui qui affichera un article de blog sous forme de carte.
+
+Vous voyez, en haut du code, que nous importons quelques parties du [composant Card](https://docusaurus.community/knowledge/component-library/new/Card/) de Docux.
+
+<Snippet
+  filename="src/components/Blog/PostCard/index.tsx"
+  source="./files/index.tsx"
+/>
+
+Pour terminer, nous allons créer un fichier CSS pour pouvoir personnaliser un peu l'ensemble :
+
+<Snippet
+  filename="src/components/Blog/PostCard/styles.module.css"
+  source="./files/styles.modules.css"
+/>
+
+## Il faut charger notre plugin {#we-need-to-load-our-plugin}
+
+Nous y sommes presque.
+
+Rappelez-vous : le tout premier fichier que nous avons créé était `plugins/docusaurus-plugin-tag-route/index.cjs` ; un plugin.
+
+Modifiez votre fichier `docusaurus.config.js` existant comme illustré ci-dessous :
+
+<Snippet
+  filename="docusaurus.config.js"
+  source="./files/docusaurus.config.js"
+/>
+
+C'est-à-dire :
+
+1. Vous devez importer le plugin en haut de votre fichier
+2. Puis, dans la section `plugins`, vous devez ajouter une nouvelle ligne pour charger le plugin importé.
+
+Nous avons presque fini !
+
+<AlertBox variant="caution">
+Arrêtez et relancez votre serveur Docusaurus. Dans mon cas (<Link to="/blog/running-docusaurus-with-docker">j'utilise Docker</Link>), il me suffit d'arrêter et de relancer mon container.
+
+</AlertBox>
+
+Si tout se passe bien après le redémarrage (aucun message d'erreur), rendez-vous sur la page des tags de votre site et ouvrez un tag. Vous devriez maintenant voir vos articles sous forme de cartes.
+
+Félicitations !
+
+Dans <Link to="/blog/docusaurus-relatedposts">les prochains articles</Link>, nous réutiliserons ce concept de cartes d'articles. Restez à l'écoute !
+
+## Bonus {#extra}
+
+Si vous voulez que vos articles de blog soient listés du plus récent au plus ancien, utilisez ce script.
+
+Mais assurez-vous que chacun de vos articles possède bien un champ `date` dans son front matter YAML.
+
+<Snippet
+  filename="src/components/Blog/Tags/TagArticlesPage.tsx"
+  source="./files/TagArticlesPage.tsx"
+/>
