@@ -160,6 +160,22 @@ jobs:
             fi
           done
 
+          # The language redirect of static/.htaccess is copied verbatim into build/<locale>/,
+          # and Apache applies the nearest .htaccess: without its own `!^/<locale>/` guard the
+          # French copy would send /fr/blog/x to /fr/fr/blog/x, forever. The guard is asserted in
+          # both copies — in the root one because losing it there breaks every French URL, and in
+          # the locale's own because that is where the loop would actually happen. A locale added
+          # to i18n/ without its rule in static/.htaccess fails here too, which is the point.
+          for dir in i18n/*/; do
+            locale="$(basename "$dir")"
+            for htaccess in build/.htaccess "build/$locale/.htaccess"; do
+              if ! grep -qF "RewriteCond %{REQUEST_URI} !^/$locale(/|\$)" "$htaccess"; then
+                echo "::error::$htaccess carries no /$locale/ loop guard for the language redirect — refusing to deploy"
+                exit 1
+              fi
+            done
+          done
+
       # Shows up on the run's summary page. The size and file count are the
       # numbers to watch: a sudden jump means the build stopped being
       # reproducible again and rsync is about to re-upload the whole site.

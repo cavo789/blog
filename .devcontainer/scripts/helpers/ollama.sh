@@ -123,6 +123,7 @@ function questions() {
             printf "${fmt}" "--dry-run" "list what would be generated, call nothing"
             printf "${fmt}" "--limit <n>" "stop after n articles — judge the output first"
             printf "${fmt}" "--force" "redo articles that are already up to date"
+            printf "${fmt}" "--pause <sec>" "idle between articles (default: 30) — cooler GPU, --pause 0 to disable"
             printf "  \033[2mAn article edited since its last generation is redone without --force.\033[0m\n"
             printf "  \033[2mFrench uses a different model (code-quality); English uses task-tiny.\033[0m\n"
 

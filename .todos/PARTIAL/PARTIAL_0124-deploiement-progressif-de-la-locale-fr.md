@@ -156,3 +156,59 @@ listes FR, année du pied de page résolue au build, `.htaccess` propre à la lo
 - `0120` — questions françaises pour « Interrogez mon blog »
 - `0121` — ELI5 en français pour les snippets
 - `0122` — props identifiantes (`source=`, `href=`…) jamais propagées aux traductions
+
+## Status — PARTIAL (2026-09-17)
+
+### Done
+
+- **Corpus entièrement traduit** — `yarn translate:plan blog` : `257 up_to_date (of 257)`. Les deux
+  cases « traduire le top 20 par trafic » et « traduire le reste du corpus » sont donc closes, et
+  « API Batches pour le volume » devient sans objet (elle n'existait que pour ce lot).
+- **Redirection des navigateurs francophones vers `/fr/`** — la condition non négociable de ce TODO
+  (traduire d'abord) étant remplie, la règle est posée dans `static/.htaccess`, avec ses cinq
+  garde-fous :
+  1. `RewriteCond %{REQUEST_URI} !^/fr(/|$)` — rend la copie `build/fr/.htaccess` inerte ;
+     **assertion ajoutée dans `deploy.yml`** (« Sanity-check the build »), sur les deux copies et
+     pour chaque locale de `i18n/`.
+  2. exclusion des chemins portant une extension (flux RSS/Atom/JSON, miroirs `.md`, `llms.txt`,
+     `robots.txt`, `sitemap.xml`, `questions-index.json`, `manifest.webmanifest`, `sw.js`) et des
+     arbres `api|assets|pagefind|img|files|admin-data|llms`.
+  3. `R=302`, jamais 301.
+  4. cookie `locale` d'override, écrit par le nouveau `src/theme/NavbarItem/LocaleDropdownNavbarItem/`
+     (wrap, pas eject). Il enregistre un **choix explicite** : écouteur `click` en phase de capture,
+     limité au `.navbar` et au cas où le lien quitte la locale courante. Rien n'est écrit lors d'une
+     simple visite — le piège que ce TODO signalait.
+  5. `Header always set Vary "Accept-Language" env=LOCALE_REDIRECT`, posé sur la seule réponse 302.
+- **Vérification réelle, pas par lecture** — banc Apache jetable (`httpd:alpine`, volume nommé
+  alimenté par `tar` sur stdin, jamais de bind-mount : cf. le piège DooD) servant une arborescence
+  qui reprend les formes du site + la vraie `static/.htaccess`. 24 cas passés : FR → 302 vers
+  `/fr/…` avec `Vary`, `/fr/…` → 200 (aucune boucle), flux / `.md` / `llms.txt` / `robots.txt` /
+  `sitemap.xml` / images / `pagefind` → 200, cookie `locale=en` (seul ou en 2ᵉ position) → 200,
+  cookie sans rapport → 302, navigateur EN → 200, `en,fr;q=0.8` → 200, sans `Accept-Language`
+  (crawler) → 200, `Accept-Language: french` → 200, query string préservée, `ErrorDocument 404`
+  servi sans redirection. Le banc a d'ailleurs attrapé une vraie erreur de syntaxe avant la prod :
+  un espace littéral dans `!(^|;[ ]*)locale=` coupait la directive (`bad flag delimiters`, HTTP 500
+  sur **tout** le site) — corrigé en `\s*`.
+- **Cookie vérifié au navigateur** (Playwright sur le build statique servi) : visite simple →
+  aucun cookie ; `/` + clic « Français » → `locale=fr` et `/fr/` ; `/fr/` + clic « English » →
+  `locale=en` et `/` ; `/blog/matomo-install/` + « Français » → `locale=fr` et l'article français.
+- `CLAUDE.md` — la liste des pièces qui portent la locale passe de cinq à six.
+
+### Not done
+
+- **Anomalie Singapour dans Matomo** (1 090 visiteurs uniques, 2ᵉ pays).
+  **Reason:** demande l'accès au tableau de bord Matomo et un arbitrage humain sur ce qui est du
+  datacenter ; rien dans le repo ne permet de trancher.
+- **Relire les 5 traductions ligne à ligne** (`vscode-markdown-code-folding`, `docker-postgrest`,
+  `docusaurus-snippets`, `atuin-bash-history`, `docling`).
+  **Reason:** relecture de la justesse du français par l'auteur ; le validateur ne garantit que la
+  structure.
+- **Traduire chaque nouvel article à sa publication.**
+  **Reason:** habitude permanente, pas une tâche qui se ferme. Reste vraie tant que le blog publie.
+- **Retirer l'échafaudage des pages de listing en surplus** (`src/theme/BlogListPage/index.js`,
+  `plugins/i18n-seo-guard`, `createSitemapItems`, la constante `POSTS_PER_PAGE`).
+  **Reason:** débloqué par la parité 257/257, mais délibérément laissé hors de ce lot. Les trois
+  morceaux sont aujourd'hui **inertes**, pas faux : ils se réactivent tout seuls dès que l'écart
+  EN/FR se creuse (publication d'une série avant traduction). Les retirer échange donc une
+  résilience gratuite contre de la propreté, et mérite son propre commit relu, pas d'être noyé dans
+  le diff de la redirection.

@@ -135,7 +135,7 @@ i18n/fr/
   docusaurus-plugin-content-pages/       # mirrors src/pages/
 ```
 
-The five pieces that carry it, and the invariant each protects:
+The six pieces that carry it, and the invariant each protects:
 
 - **`plugins/translations-manifest-plugin/`** — the single source of truth for "is this article
   translated?". Docusaurus's i18n **falls back to the English source** when a translation is
@@ -150,6 +150,13 @@ The five pieces that carry it, and the invariant each protects:
   Conflating them put a French flag on all 257 English articles.
 - **`src/components/Blog/utils/posts.ts`** — `useBlogMetadata()`, not `getBlogMetadata()`, in any
   rendering component. It filters the corpus **and** overlays the translated title/description.
+- **`static/.htaccess` + `src/theme/NavbarItem/LocaleDropdownNavbarItem/`** — a browser announcing
+  French **first** is 302'd from `/page` to `/fr/page`; the dropdown writes a `locale` cookie on an
+  explicit choice, and that cookie switches the rule off. The rule excludes `/fr/`, every path with
+  a file extension (feeds, `.md` mirrors, `llms.txt`, sitemap) and the asset trees. Posed once the
+  corpus was 257/257 translated — never before, see TODO 0124. `deploy.yml` asserts the `!^/fr/`
+  loop guard survives in **both** `.htaccess` copies; without it the French copy self-redirects
+  forever. Verified against a real Apache, not by reading: `docker run httpd:alpine` + a fixture.
 
 Assets stay with the English source; only `title`, `description` and `language` differ in a
 translation's front matter — `slug`, `series`, `tags` and `date` are copied byte for byte, because

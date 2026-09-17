@@ -15,6 +15,43 @@
   RedirectPermanent /blog/docker-apache-ssl https://www.avonture.be/blog/docker-localhost-ssl
   RedirectPermanent /resources https://www.avonture.be/repositories
 
+  # Francophone browsers land on the French site.
+  #
+  # A visitor whose browser announces French FIRST is sent to /fr/<the same page>. Posed on
+  # 2026-09-17, the day the corpus reached 257/257 translated — never before: until then this
+  # rule pushed French readers off a canonical URL onto a page `plugins/i18n-seo-guard`
+  # deliberately marks `noindex`, only to serve them the very same English prose. See TODO 0124.
+  #
+  # Every condition below is a guardrail, not decoration:
+  #
+  #  1. `!^/fr(/|$)` — build/fr/.htaccess is a byte-for-byte copy of this file (Docusaurus copies
+  #     static/ into every locale) and Apache applies the nearest one, so without this the French
+  #     copy would redirect /fr/blog/x to /fr/fr/blog/x, forever. This same condition is what makes
+  #     that copy inert. `.github/workflows/deploy.yml` asserts the line survives, for each locale.
+  #  2. `REDIRECT_STATUS` empty — a reader's own request only, never the internal subrequest that
+  #     serves `ErrorDocument 404` further down.
+  #  3. No `locale` cookie — the language dropdown writes one on an explicit choice, see
+  #     `src/theme/NavbarItem/LocaleDropdownNavbarItem/`. Without it, a French-speaking reader who
+  #     switches to English is dragged back to /fr/ on their very next click, and the back button
+  #     pushes them forward again.
+  #  4. French FIRST in Accept-Language (`fr`, `fr-FR`, `fr-BE`…) — not a browser that merely
+  #     accepts French after English. Googlebot crawls with no Accept-Language at all, so no
+  #     crawler ever meets this rule.
+  #  5. HTML only. A last path segment carrying an extension is an asset, a feed, an `.md` mirror,
+  #     llms.txt, robots.txt, sitemap.xml, questions-index.json, manifest.webmanifest or sw.js —
+  #     redirecting those breaks subscribed feed readers and the agent discoverability built in
+  #     TODO 0082. The directory exclusion covers the extensionless files those trees may hold.
+  #
+  # 302, never 301: a permanent redirect is cached by the browser almost for good and cannot be
+  # taken back six months later.
+  RewriteCond %{REQUEST_URI} !^/fr(/|$)
+  RewriteCond %{ENV:REDIRECT_STATUS} ^$
+  RewriteCond %{HTTP_COOKIE} !(^|;\s*)locale=
+  RewriteCond %{HTTP:Accept-Language} ^fr\b [NC]
+  RewriteCond %{REQUEST_URI} !^/(api|assets|pagefind|img|files|admin-data|llms)/
+  RewriteCond %{REQUEST_URI} !\.[A-Za-z0-9]+$
+  RewriteRule ^ /fr%{REQUEST_URI} [R=302,L,E=LOCALE_REDIRECT:1]
+
   # Sync state written by the FTP deploy action: a full inventory of the server
   # tree. No secret in it, but no reason to publish the map either.
   RewriteRule ^\.ftp-deploy-sync-state\.json$ - [F,L]
@@ -63,6 +100,11 @@ ErrorDocument 404 /404.html
   <FilesMatch "^drafts\.json$">
     Header always set X-Robots-Tag "noindex, nofollow"
   </FilesMatch>
+
+  # The redirect above is negotiated on Accept-Language, so no intermediate cache may hand one
+  # visitor's 302 to the next. The HTML itself is already `no-store`, but the redirect is a
+  # separate response — and it is the one that would be reused.
+  Header always set Vary "Accept-Language" env=LOCALE_REDIRECT
 
   Header always set X-Frame-Options "DENY"
   Header always set X-Content-Type-Options "nosniff"

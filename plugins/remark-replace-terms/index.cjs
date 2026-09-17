@@ -26,6 +26,28 @@ const replacements = [
   [/\bvscode\b/g, "VSCode"],
 ];
 
+// A heading's explicit anchor id — `## Docusaurus {#docusaurus}` — is still ordinary text when
+// this plugin runs: it sits in `beforeDefaultRemarkPlugins`, so Docusaurus parses that `{#id}`
+// suffix only afterwards. Capitalizing a term inside it rewrites the id itself (`{#Docusaurus}`),
+// and every link built from the English slug then points at an anchor the page no longer has —
+// which is exactly how the `fr` build died on "broken anchors". Ids are never prose: skip them.
+// Translated articles carry one on every heading (see scripts/lib/translate-anchors.mjs).
+const EXPLICIT_HEADING_ID = /\{#[^}\s]*\}/g;
+
+/** Applies `transform` to `value`, leaving every explicit `{#heading-id}` untouched. */
+function outsideHeadingIds(value, transform) {
+  const parts = [];
+  let cursor = 0;
+
+  for (const match of value.matchAll(EXPLICIT_HEADING_ID)) {
+    parts.push(transform(value.slice(cursor, match.index)), match[0]);
+    cursor = match.index + match[0].length;
+  }
+  parts.push(transform(value.slice(cursor)));
+
+  return parts.join("");
+}
+
 function remarkReplaceWords() {
   return (tree) => {
     visit(tree, "text", (node, index, parent) => {
@@ -37,19 +59,25 @@ function remarkReplaceWords() {
         return;
       }
 
-      for (const [regex, replacement] of replacements) {
-        node.value = node.value.replace(regex, (match, offset, fullString) => {
-          const before = fullString[offset - 1] || "";
-          const after = fullString[offset + match.length] || "";
+      node.value = outsideHeadingIds(node.value, (text) => {
+        let result = text;
 
-          // Skip compound words like "vscode-docker", "foo.markdown"
-          if (["-", ".", "/"].includes(before) || ["-", ".", "/"].includes(after)) {
-            return match;
-          }
+        for (const [regex, replacement] of replacements) {
+          result = result.replace(regex, (match, offset, fullString) => {
+            const before = fullString[offset - 1] || "";
+            const after = fullString[offset + match.length] || "";
 
-          return replacement;
-        });
-      }
+            // Skip compound words like "vscode-docker", "foo.markdown"
+            if (["-", ".", "/"].includes(before) || ["-", ".", "/"].includes(after)) {
+              return match;
+            }
+
+            return replacement;
+          });
+        }
+
+        return result;
+      });
     });
   };
 }

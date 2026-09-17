@@ -54,6 +54,11 @@ const OLLAMA_URL = process.env.OLLAMA_URL || "http://172.17.0.1:11434";
 // Larger local models produced no better questions in manual comparison but ran ~10x slower.
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "task-tiny:latest";
 
+// Seconds of idle between two articles in a bulk run. A full French corpus is hours of
+// uninterrupted GPU load, typically left running overnight — the pause costs ~16% of wall time
+// and buys a lower sustained temperature and quieter fans. `--pause 0` turns it off.
+const DEFAULT_PAUSE_SECONDS = 30;
+
 const MIN_QUESTIONS = 8;
 const MAX_QUESTIONS = 12;
 // A response can drop a few items to validation (bad index, empty text) without being
@@ -155,7 +160,12 @@ export function extractHeadings(body) {
   const headings = [];
 
   for (const line of stripCodeFences(body)) {
-    const match = line.match(/^(#{2,3})\s+(.*?)\s*(?:\{#([a-zA-Z0-9-_]+)\})?$/);
+    // The custom id accepts anything but a brace or a space: the ids pinned onto translated
+    // articles are the slugs github-slugger derives from the English headings, and an emoji
+    // heading yields one that starts with a variation selector (`{#\uFE0F-a-final-word-…}`).
+    // An `[a-zA-Z0-9-_]+` class missed those, the `{#…}` suffix stayed part of the heading text,
+    // and the anchor became the slug of "French heading + English id" — a link to nowhere.
+    const match = line.match(/^(#{2,3})\s+(.*?)\s*(?:\{#([^}\s]+)\})?$/);
     if (!match) continue;
 
     const [, hashes, rawText, customId] = match;
@@ -615,8 +625,9 @@ Options:
   --limit <n>      (--all mode) only process the first n articles — useful for a
                     hand-reviewed pilot batch before a full corpus run
   --dry-run        (--all mode) show what would be generated without calling Ollama
-  --pause <sec>    (--all mode) wait <sec> between two articles. Same total work, but a
-                    lower sustained GPU temperature on an unattended multi-hour batch
+  --pause <sec>    (--all mode) wait <sec> between two articles (default: ${DEFAULT_PAUSE_SECONDS}).
+                    Same total work, but a lower sustained GPU temperature on an
+                    unattended multi-hour batch. --pause 0 disables it
   --locale <code>  Generate from the translated article, in that language (e.g. fr).
                     With --all, only the eligible translated articles are processed.
   --help, -h       Show this help
@@ -647,7 +658,7 @@ Environment:
     const limit = limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : undefined;
     const dryRun = args.includes("--dry-run");
     const pauseIdx = args.indexOf("--pause");
-    const pause = pauseIdx !== -1 ? Number(args[pauseIdx + 1]) : 0;
+    const pause = pauseIdx !== -1 ? Number(args[pauseIdx + 1]) : DEFAULT_PAUSE_SECONDS;
     if (pauseIdx !== -1 && (!Number.isFinite(pause) || pause < 0)) {
       console.error(`--pause needs a number of seconds, got "${args[pauseIdx + 1]}".`);
       process.exit(1);
