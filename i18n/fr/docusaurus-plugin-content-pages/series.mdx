@@ -1,0 +1,37 @@
+---
+title: "Toutes les séries d'articles"
+hide_table_of_contents: true
+image: "/img/series.webp"
+authors: [christophe]
+---
+
+import "@site/src/css/series.css";
+
+<!-- markdownlint-disable MD041 -->
+
+import SeriesCards from "@site/src/components/Blog/SeriesCards";
+import SeriesStats from "@site/src/components/Blog/SeriesStats";
+import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";
+
+<h1 className="text--center">Toutes les séries</h1>
+
+<SeriesStats />
+
+<!-- Renders nothing on `en`. Under `fr`, `SeriesStats` above counts the FILTERED corpus and
+     announces 3 series / 3 articles against 26 and 176 — a reader arriving here from the menu,
+     without passing through /fr/blog/, would conclude the blog is thin. -->
+<TranslationCoverage />
+
+<p className="text--center">
+  Chaque série a son propre flux RSS —{" "}
+  <Link to="/follow">recevez l'épisode suivant automatiquement</Link>, sans avoir à revenir.
+</p>
+
+<div className="seriesIntro">
+    Découvrez nos collections d'articles organisées par thème.
+
+    Chaque série vous propose une progression pour maîtriser un domaine précis du développement web.
+
+</div>
+
+<SeriesCards />

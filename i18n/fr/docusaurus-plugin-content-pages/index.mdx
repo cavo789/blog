@@ -1,0 +1,32 @@
+---
+title: Blog personnel sur Docker, Linux, Python, PHP, Quarto, Docusaurus et bien plus
+description: Blog personnel sur Docker, WSL, Python, Quarto, PHP, Joomla, Docusaurus et bien d'autres sujets.
+hide_table_of_contents: true
+---
+
+import LatestPosts from "@site/src/components/Blog/LatestPosts";
+import HomeCards from "@site/src/components/HomeCards";
+import MainTags from "@site/src/components/MainTags";
+import HeroSection from "@site/src/components/Blog/HeroSection";
+import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";
+import FollowFeed from "@site/src/components/FollowFeed";
+import styles from "@site/src/pages/index.module.css";
+
+<HeroSection videoFileName="welcome.mp4" />
+
+<main>
+  <div className={`margin-top--xl ${styles.homepageSections}`}>
+    {/*
+      First thing under the hero, and nothing at all on the default locale (the component
+      returns null there). A French reader otherwise sees "4 latest posts (out of 4 total)"
+      further down and concludes the blog is thin — the 253 English articles they cannot see
+      are invisible from this page. Same component as the French blog listing on purpose: one
+      wording, one place to change it.
+    */}
+    <TranslationCoverage />
+    <HomeCards />
+    <LatestPosts count={9} />
+    <MainTags />
+    <FollowFeed feedUrl="/blog/rss.xml" label="chaque nouvel article" variant="section" />
+  </div>
+</main>

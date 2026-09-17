@@ -1,0 +1,26 @@
+/* The "this article also exists in <other language>" offer, shown at the top of an article
+   whose translation exists. Deliberately lighter than <AlertBox>: it is an offer, not a
+   warning, and it must not compete with the article's own opening. */
+.offer {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin-bottom: var(--ifm-spacing-vertical, 1rem);
+  padding: 0.55em 0.9em;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 3px solid var(--ifm-color-primary);
+  border-radius: var(--ifm-global-radius, 0.4rem);
+  background: var(--ifm-background-surface-color);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.flag {
+  flex: 0 0 auto;
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.offer a {
+  font-weight: 600;
+}

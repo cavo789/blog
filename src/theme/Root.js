@@ -6,6 +6,7 @@ import KonamiEasterEgg from "@site/src/components/KonamiEasterEgg";
 import ShakeEasterEgg from "@site/src/components/ShakeEasterEgg";
 import MatomoRouteTracker from "@site/src/components/Analytics/MatomoRouteTracker";
 import OfflineNotice from "@site/src/components/OfflineNotice";
+import { translate } from "@docusaurus/Translate";
 
 /**
  * This Root component allows injecting code globally into the application.
@@ -40,7 +41,10 @@ export default function Root({ children }) {
 
     const handleVisibilityChange = () => {
       if (document.hidden) {
-        document.title = "Come back, the meerkat is on watch! \u{1F440}";
+        document.title = translate({
+          id: "root.hiddenTabTitle",
+          message: "Come back, the meerkat is on watch! \u{1F440}",
+        });
         if (faviconLink) faviconLink.href = sleepingFaviconUrl;
       } else {
         document.title = originalTitle;

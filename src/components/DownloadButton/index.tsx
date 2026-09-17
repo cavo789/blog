@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 interface Props {
   // Either a plain URL string, or a webpack `require('./file.zip')` result
@@ -12,7 +13,7 @@ interface Props {
 
 export default function DownloadButton({
   file,
-  label = "Download",
+  label = translate({ id: "downloadButton.label", message: "Download" }),
   title,
 }: Props): JSX.Element | null {
   if (!file) {

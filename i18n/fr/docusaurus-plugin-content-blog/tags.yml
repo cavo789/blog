@@ -1,0 +1,208 @@
+# French version of blog/tags.yml.
+# `permalink` is copied verbatim on purpose: translating it would break the resolution of
+# the `tags: [docker]` values in every article's front matter.
+# Labels: only the generic ones change — a product name (Docker, PHP, WinSCP) is identical
+# in both languages. Descriptions: all translated, they are prose shown on each tag page.
+# See TODO 0119.
+adminer:
+  label: Adminer
+  permalink: /tags/adminer
+  description: Outil léger d'administration de bases de données dans le navigateur, compatible MySQL, PostgreSQL,
+    SQLite et d'autres.
+ai:
+  label: Intelligence artificielle (IA)
+  permalink: /tags/ai
+  description: Outils, modèles et concepts liés à l'IA, dont Ollama, Claude et Gemini.
+apache:
+  label: Apache HTTP Server
+  permalink: /tags/apache
+  description: Configuration et dépannage du serveur web Apache.
+api:
+  label: API
+  permalink: /tags/api
+  description: Développement, consommation et documentation d'API (REST, OpenAPI, FastAPI, PostgREST).
+bash:
+  label: Bash
+  permalink: /tags/bash
+  description: Scripts, commandes et astuces pour le shell Bash.
+bluesky:
+  label: Bluesky
+  permalink: /tags/bluesky
+  description: Le réseau social Bluesky — intégration, partage et embarquement dans des projets web.
+code-quality:
+  label: Qualité du code
+  permalink: /tags/code-quality
+  description: 'Outils et pratiques pour améliorer la qualité du code : analyse statique, linters, formateurs et
+    hooks Git (PHPStan, Ruff, pre-commit, etc.).'
+component:
+  label: Composant / UI
+  permalink: /tags/component
+  description: Création et gestion de composants d'interface React ou Docusaurus.
+customization:
+  label: Personnalisation
+  permalink: /tags/customization
+  description: Personnaliser son shell, son terminal, son éditeur ou ses applications.
+database:
+  label: Base de données
+  permalink: /tags/database
+  description: Concepts, administration et requêtes pour les bases relationnelles et NoSQL (MySQL, PostgreSQL, Oracle,
+    SQL Server, Access).
+devcontainer:
+  label: DevContainer
+  permalink: /tags/devcontainer
+  description: Environnements de développement conteneurisés avec les Dev Containers de VS Code et Docker.
+doc-as-code:
+  label: Documentation as Code
+  permalink: /tags/doc-as-code
+  description: 'Gérer la documentation comme du code : diagrammes (Mermaid, Markmap), présentations Quarto, Pandoc
+    et outils de visualisation.'
+docker:
+  label: Docker
+  permalink: /tags/docker
+  description: Conteneurisation, Docker Compose et gestion d'images.
+docusaurus:
+  label: Docusaurus
+  permalink: /tags/docusaurus
+  description: Construire, personnaliser et déployer des sites statiques Docusaurus.
+excel:
+  label: Microsoft Excel
+  permalink: /tags/excel
+  description: Formules, macros VBA et usage avancé de Microsoft Excel.
+fzf:
+  label: fzf
+  permalink: /tags/fzf
+  description: Chercheur flou pour la ligne de commande — recherche et sélection interactives.
+git:
+  label: Git
+  permalink: /tags/git
+  description: Commandes, workflow et gestion de versions avec Git.
+github:
+  label: GitHub
+  permalink: /tags/github
+  description: La plateforme GitHub, les Actions, ses fonctionnalités et ses intégrations.
+gitlab:
+  label: GitLab
+  permalink: /tags/gitlab
+  description: La plateforme GitLab, les pipelines CI/CD et la gestion de projet.
+joomla:
+  label: Joomla
+  permalink: /tags/joomla
+  description: Installation et configuration du système de gestion de contenu Joomla.
+laravel:
+  label: Laravel
+  permalink: /tags/laravel
+  description: Le framework PHP Laravel — événements, Filament, Telescope et tests.
+linux:
+  label: Linux
+  permalink: /tags/linux
+  description: Administration, commandes et astuces pour les systèmes Linux (Ubuntu, outils, utilitaires shell).
+makefile:
+  label: Makefile
+  permalink: /tags/makefile
+  description: Automatiser tâches et workflows avec GNU Make.
+markdown:
+  label: Markdown
+  permalink: /tags/markdown
+  description: Syntaxe, outils et conversion de documents Markdown.
+msaccess:
+  label: Microsoft Access
+  permalink: /tags/msaccess
+  description: Développement de bases de données et automatisation VBA avec Microsoft Access.
+mysql:
+  label: MySQL
+  permalink: /tags/mysql
+  description: La base relationnelle MySQL — configuration, requêtes et mises en place avec Docker.
+nodejs:
+  label: Node.js
+  permalink: /tags/nodejs
+  description: L'environnement d'exécution JavaScript côté serveur et son écosystème.
+npm:
+  label: npm
+  permalink: /tags/npm
+  description: Le gestionnaire de paquets de Node — installer et gérer des dépendances JavaScript.
+ollama:
+  label: Ollama
+  permalink: /tags/ollama
+  description: Un environnement local pour faire tourner et gérer des grands modèles de langage sur sa propre machine.
+oracle:
+  label: Oracle Database
+  permalink: /tags/oracle
+  description: Faire tourner et interroger Oracle Database, y compris avec Docker.
+php:
+  label: PHP
+  permalink: /tags/php
+  description: Développement PHP, mise en place de l'environnement et astuces.
+phpmyadmin:
+  label: phpMyAdmin
+  permalink: /tags/phpmyadmin
+  description: Interface web d'administration pour MySQL et MariaDB.
+postgresql:
+  label: PostgreSQL
+  permalink: /tags/postgresql
+  description: La base relationnelle PostgreSQL — configuration, requêtes et mises en place avec Docker.
+python:
+  label: Python
+  permalink: /tags/python
+  description: Développement en Python, traitement de données et son écosystème (FastAPI, Pandas).
+quarto:
+  label: Quarto
+  permalink: /tags/quarto
+  description: Publication scientifique et technique avec Quarto — documents, présentations et rapports.
+react:
+  label: React
+  permalink: /tags/react
+  description: React et JavaScript — développement d'interfaces, composants et outillage.
+security:
+  label: Sécurité
+  permalink: /tags/security
+  description: Sécurité web, outils de protection et configuration sécurisée.
+self-hosted:
+  label: Auto-hébergé
+  permalink: /tags/self-hosted
+  description: Solutions logicielles hébergées sur son propre serveur (Uptime Kuma, Roundcube, LimeSurvey, Matomo,
+    etc.).
+ssh:
+  label: SSH (Secure Shell)
+  permalink: /tags/ssh
+  description: Connexion distante sécurisée, transfert de fichiers (SFTP, SCP) et configuration de SSH.
+ssl:
+  label: SSL / TLS
+  permalink: /tags/ssl
+  description: Certificats de sécurité, configuration HTTPS et protocole SSL/TLS.
+tests:
+  label: Tests
+  permalink: /tags/tests
+  description: 'Stratégies et outils de test : unitaires (PHPUnit, Pest), fonctionnels (Cypress, Behat) et BDD.'
+vba:
+  label: VBA / VBScript
+  permalink: /tags/vba
+  description: Programmer des macros dans les applications Microsoft Office (Excel, Access) et scripter Windows
+    avec VBScript.
+vscode:
+  label: VS Code
+  permalink: /tags/vscode
+  description: Configuration, extensions, astuces et productivité dans Visual Studio Code.
+windows:
+  label: Microsoft Windows
+  permalink: /tags/windows
+  description: Administration Windows, DOS/cmd, PowerShell, WinGet et outillage propre à Windows.
+windows-terminal:
+  label: Windows Terminal
+  permalink: /tags/windows-terminal
+  description: Utiliser et configurer l'application Windows Terminal.
+winscp:
+  label: WinSCP
+  permalink: /tags/winscp
+  description: Client graphique SFTP/FTP/SCP pour Windows, avec intégration PuTTY.
+wsl:
+  label: WSL (Windows Subsystem for Linux)
+  permalink: /tags/wsl
+  description: Faire tourner un environnement Linux sous Windows grâce à WSL2.
+yarn:
+  label: Yarn
+  permalink: /tags/yarn
+  description: Gestion de dépendances JavaScript rapide, fiable et sûre.
+zsh:
+  label: Zsh
+  permalink: /tags/zsh
+  description: Le shell Z — configuration, plugins, fonctions et productivité.

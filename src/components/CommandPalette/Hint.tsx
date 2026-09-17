@@ -14,6 +14,8 @@ import { useEffect, useState } from "react";
 import { useLocation } from "@docusaurus/router";
 import { openPalette } from "./paletteBus";
 import styles from "./styles.module.css";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Translate, { translate } from "@docusaurus/Translate";
 
 const STORAGE_KEY = "cmdk_hint_shown";
 const ARTICLE_DELAY_MS = 10_000;
@@ -21,10 +23,22 @@ const HOME_DELAY_MS = 4_000;
 const ARTICLE_PATH = /^\/blog\/(?!tags|archive|authors|page)/;
 const HOME_PATH = /^\/$/;
 
-/** Delay before showing the pill on this path, or `null` on a path that never shows it. */
-function delayFor(pathname: string): number | null {
-  if (HOME_PATH.test(pathname)) return HOME_DELAY_MS;
-  if (ARTICLE_PATH.test(pathname)) return ARTICLE_DELAY_MS;
+/**
+ * Delay before showing the pill on this path, or `null` on a path that never shows it.
+ *
+ * `pathname` carries the locale's baseUrl (`/fr/`, `/fr/blog/x/`), while the patterns above are
+ * written against the default locale. Stripping the prefix first is what keeps them working:
+ * `/^\/$/` alone never matched `/fr/`, so the pill simply never appeared on the French home
+ * page. See .claude/rules/i18n-locale-safety.md.
+ */
+function delayFor(pathname: string, baseUrl: string): number | null {
+  const normalized =
+    baseUrl !== "/" && pathname.startsWith(baseUrl)
+      ? pathname.slice(baseUrl.length - 1)
+      : pathname;
+
+  if (HOME_PATH.test(normalized)) return HOME_DELAY_MS;
+  if (ARTICLE_PATH.test(normalized)) return ARTICLE_DELAY_MS;
   return null;
 }
 
@@ -36,12 +50,13 @@ function isMac(): boolean {
 
 export default function CommandPaletteHint() {
   const location = useLocation();
+  const { siteConfig } = useDocusaurusContext();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem(STORAGE_KEY)) return undefined;
 
-    const delay = delayFor(location.pathname);
+    const delay = delayFor(location.pathname, siteConfig.baseUrl);
     if (delay === null) return undefined;
 
     const timer = setTimeout(() => {
@@ -50,7 +65,7 @@ export default function CommandPaletteHint() {
     }, delay);
 
     return () => clearTimeout(timer);
-  }, [location.pathname]);
+  }, [location.pathname, siteConfig.baseUrl]);
 
   if (!visible) return null;
 
@@ -64,12 +79,23 @@ export default function CommandPaletteHint() {
           openPalette();
         }}
       >
-        Press <kbd>{isMac() ? "⌘" : "Ctrl"}</kbd>+<kbd>K</kbd> to search
+        <Translate
+          id="palette.hintPill"
+          values={{
+            shortcut: (
+              <>
+                <kbd>{isMac() ? "⌘" : "Ctrl"}</kbd>+<kbd>K</kbd>
+              </>
+            ),
+          }}
+        >
+          {"Press {shortcut} to search"}
+        </Translate>
       </button>
       <button
         type="button"
         className={styles.hintDismiss}
-        aria-label="Dismiss"
+        aria-label={translate({ id: "common.dismiss", message: "Dismiss" })}
         onClick={() => setVisible(false)}
       >
         ✕

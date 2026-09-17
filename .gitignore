@@ -15,6 +15,10 @@
 # `yarn start`'s own copy of the above, kept separate so a concurrent `yarn build` can never
 # race it while regenerating shared codegen — see package.json's `start` script.
 .docusaurus-dev
+# Throwaway pair used to verify a change without disturbing a running dev server, since
+# safe_build.sh's `yarn clear` would delete .docusaurus-dev — see .claude/rules/build-verification.md.
+.docusaurus-verify
+build-verify
 .cache-loader
 
 # Misc
@@ -42,3 +46,6 @@
 /test-results/
 /playwright-report/
 /blob-report/
+
+# Rejected translations kept for inspection by scripts/translate-post.mjs (TODO 0119)
+.translation-rejected/

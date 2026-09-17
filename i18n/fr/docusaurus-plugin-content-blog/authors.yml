@@ -1,0 +1,25 @@
+# French version of blog/authors.yml.
+#
+# Only `title` is translated — it is the one-line bio shown under the author's name on every
+# article. `name`, `url` and `image_url` are copied verbatim: `name` is a person's name, and the
+# two others are targets. See TODO 0119.
+christophe:
+  name: Christophe
+  title: Amoureux de Markdown, WSL et Docker ~ Curieux insatiable.
+  url: https://bsky.app/profile/avonture.be
+  image_url: /img/avatar.webp
+docux:
+  name: Docux
+  title: Explorateur curieux, un brin expérimentateur fou, et contributeur à ses heures.
+  url: https://docuxlab.com/blog/
+  image_url: /img/docux.webp
+gemini:
+  name: Google Gemini
+  title: Assistant IA
+  url: https://gemini.google.com/
+  image_url: /img/gemini-logo.webp
+claude:
+  name: Claude Code
+  title: Assistant IA
+  url: https://claude.ai/code
+  image_url: /img/claude-logo.webp

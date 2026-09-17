@@ -1,11 +1,15 @@
 import React from "react";
 import styles from "./index.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 const AIIcon = (): React.JSX.Element => {
   return (
     <div
       className={styles.aiIcon}
-      title="This post was written with the help of AI"
+      title={translate({
+        id: "blog.aiIcon.tooltip",
+        message: "This post was written with the help of AI",
+      })}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +29,9 @@ const AIIcon = (): React.JSX.Element => {
         <path d="M14 12h4" />
         <path d="M12 12v4" />
       </svg>
-      <span>AI Assisted</span>
+      <span>
+        <Translate id="blog.aiIcon.label">AI Assisted</Translate>
+      </span>
     </div>
   );
 };

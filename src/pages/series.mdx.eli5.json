@@ -1,17 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T18:01:28.191Z",
+  "generated": "2026-09-17T09:34:06.928Z",
   "source": "series.mdx",
-  "sourceHash": "d8bb768fe41299797581ab9312984bdabe870870",
+  "sourceHash": "93cb125d592c535cbbd6f54a6f2bb459b91bf530",
   "lang": "markdown",
-  "summary": "This is a documentation page that displays all article series available on the site. It imports styling and components, then renders a title, statistics about the series, an introductory description, cards showing all series, and a button to scroll back to the top.",
+  "summary": "This is a documentation page that displays all article series on a blog. It imports styling and React components, then uses those components to show statistics about the series, translation coverage information, and a grid of cards representing each series collection.",
   "explanations": {
-    "1": "This YAML frontmatter section provides metadata about the page — its title, whether to hide the table of contents, the hero image, and the author.",
-    "3": "This tells the documentation generator not to automatically create a table of contents for this page.",
-    "5": "This specifies that 'christophe' is the author of this content.",
-    "8": "This imports a CSS file specific to styling series-related components.",
-    "12": "This comment tells the markdown linter to ignore certain style rules for this file since we're mixing markdown with React components.",
-    "22": "The {\" \"} is a JSX syntax trick that adds a space in the rendered output — without it, the space would be stripped by the JSX parser."
+    "3": "This tells the documentation generator not to display the automatic table of contents that would normally appear on this page.",
+    "5": "This metadata field specifies who wrote or maintains this page — in this case, someone with the username 'christophe'.",
+    "8": "This loads custom CSS styling rules specifically for formatting the series display on this page.",
+    "10": "This comment tells the markdown linter to ignore a specific formatting rule (MD041) for this file, usually because the page structure doesn't follow typical markdown conventions.",
+    "28": "The {\" \"} is a way to insert a literal space in JSX; without it, whitespace between JSX elements gets collapsed.",
+    "31": "This creates a styled container div with the class name 'seriesIntro' that holds the introductory text below it."
   }
 }

@@ -66,6 +66,30 @@ before considering a draft finished: it is what caught a `tags:` value missing f
 `blog/tags.yml`, which `onInlineTags: "throw"` would have turned into a build failure on the day
 of publication.
 
+**Two traps learned on 2026-09-17, both about the dev server and `yarn build` sharing state:**
+
+- **`start` vs `start_fr`.** `.devcontainer/scripts/interactive.sh` defines BOTH. `start` launches
+  the default locale; `start_fr` sets `DOCUSAURUS_LOCALE=fr` and is what serves `/fr/`. Docusaurus's
+  dev server serves ONE locale at a time, so relaunching with `start` when the session was French
+  silently hands the author an English site. Check which locale the server was serving (visit a
+  `/fr/` route with Playwright) BEFORE restarting, and restore the same one. Also: `start` runs
+  `yarn docusaurus start` in the FOREGROUND — it must be launched detached, never wrapped in
+  `timeout`, which kills the server it just started.
+- **A build and the running dev server are still coupled, despite the isolation.** `start` sets
+  `DOCUSAURUS_GENERATED_FILES_DIR_NAME=.docusaurus-dev` so codegen does not collide with a build's
+  `.docusaurus/` — but `yarn clear` also removes `node_modules/.cache`, which both share, so a
+  cleaned build kills a running dev server anyway (symptom: every page throws
+  `Cannot find module '@generated/docusaurus.config'`). Skipping `yarn clear` to spare the dev
+  server is WORSE, not safer: a build launched while the French dev server is up inherits its
+  locale state and fails the `en` locale with thousands of broken `/fr/…` links from English pages
+  (measured: 3073 links across 365 source pages). There is no way to have both — plan on the dev
+  server going down for the duration of a build, and relaunch it afterwards with the right locale.
+
+**Verify the build the same way as anything else — on the artifact.** `yarn build > log 2>&1;
+echo "EXIT=$?"` reports the exit code of the `echo`, not the build, and happily prints `EXIT=0`
+over a failed build. Let the tool report the command's own status, or read the log. See
+[[feedback-verification-discipline]].
+
 **How to apply:** When a task calls for visually verifying an article or component in the running
 dev server (not just structural/lint checks), don't default to refusing per CLAUDE.md's blanket
 wording — follow the four steps above. For a `.unpublished/` draft specifically, still use the

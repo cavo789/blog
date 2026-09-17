@@ -20,6 +20,7 @@
 
 import type { JSX } from "react";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
+import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
 import Translate from "@docusaurus/Translate";
 import clsx from "clsx";
 import styles from "./styles.module.css";
@@ -27,6 +28,15 @@ import styles from "./styles.module.css";
 export default function OldPostNotice(): JSX.Element | null {
   const { metadata } = useBlogPost();
   const { date, frontMatter } = metadata;
+
+  // Declared here, above every early return: it is a hook. `timeZone: "UTC"` because
+  // `review_date` is a date-only front-matter string parsed as UTC midnight.
+  const dateTimeFormat = useDateTimeFormat({
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
 
   // `updates` and `review_date` are this blog's own frontmatter fields (see CLAUDE.md),
   // not part of Docusaurus's own BlogPostFrontMatter type — hence the casts.
@@ -57,11 +67,9 @@ export default function OldPostNotice(): JSX.Element | null {
     const isReviewRecent = reviewDateObj >= oneYearAgo;
 
     if (isReviewRecent) {
-      const formattedDate = reviewDateObj.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      });
+      // `useDateTimeFormat` follows the locale being rendered; the hardcoded "en-US" it
+      // replaces printed "September 14, 2026" inside an otherwise French notice.
+      const formattedDate = dateTimeFormat.format(reviewDateObj);
 
       return (
         <div
@@ -70,8 +78,12 @@ export default function OldPostNotice(): JSX.Element | null {
         >
           <p>
             <span aria-hidden="true">✅</span>{" "}
-            This article is over a year old but was reviewed on{" "}
-            <strong>{formattedDate}</strong> — the content is still accurate.
+            <Translate
+              id="blog.oldPostNotice.reviewed"
+              values={{ date: <strong>{formattedDate}</strong> }}
+            >
+              {"This article is over a year old but was reviewed on {date} — the content is still accurate."}
+            </Translate>
           </p>
         </div>
       );

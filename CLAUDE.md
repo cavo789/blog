@@ -6,7 +6,12 @@ This file provides guidance to Claude Code when working with code in this reposi
 
 A personal technical blog powered by **Docusaurus 3.x**, written by Christophe Avonture (cavo789).
 Topics: Docker, WSL, Bash, PHP, development tools, AI/Ollama, VS Code, and more.
-All blog content is in American English; conversation with Claude can be in French.
+Blog content is authored in American English; conversation with Claude can be in French.
+
+**The site is bi-locale since 2026-09-16**: `en` is the default, `fr` is served under `/fr/`.
+French articles are AI translations living in `i18n/fr/`, never hand-authored there. Anything
+that touches a URL, a route or a path is affected — read `.claude/rules/i18n-locale-safety.md`
+before editing a plugin, a theme component or `docusaurus.config.js`.
 
 The repo contains three kinds of Dockerfiles:
 
@@ -23,8 +28,43 @@ yarn format             # Prettier auto-fix
 yarn format:check       # Prettier dry-run
 yarn links:audit        # corpus-wide internal-link opportunities (stats mode)
 yarn links:check <path> # internal-link check for one article
+yarn translate <path>   # translate ONE article (low-level; prefer the `translate` function below)
+yarn translate:check    # translation freshness: fresh / minor / stale, per article
 yarn eli5               # generate ELI5 summaries (requires Ollama)
 ```
+
+### Translating articles — use `translate`, not `yarn translate`
+
+`translate` is a shell function in `.devcontainer/scripts/interactive.sh` (category `Translation`
+in the startup cheatsheet). It is what the author uses; `yarn translate` is the single-article
+script underneath it.
+
+```bash
+translate blog/2026/09/17/docling      # one article — folder or index.md, both work
+translate blog/2026/09                 # every article in a month
+translate blog/2026                    # every article in a year
+translate <path> --force               # redo a translation that is already up to date
+translate <path> --repair              # fix a BAD translation (see below)
+```
+
+It resolves a path to every `index.md`/`index.mdx` underneath it, and **prompts with the count and
+the estimated cost before spending anything** whenever more than one article is involved — a
+single article, the everyday case, runs straight through.
+
+Three cost behaviours worth knowing, because they decide what a command actually bills:
+
+- **Unchanged article → no API call at all.** The sidecar's hash is compared first; the Anthropic
+  client is never even constructed.
+- **Changed article → incremental patch, not a retranslation.** Under 15% drift, the script sends
+  a locally computed diff plus the current French and asks for a list of edits. Measured: 0.055 $
+  against 0.263 $ for a full retranslation. Every edit is anchor-verified and revalidated, and any
+  failure falls back to a full translation — a patch can only ever save money.
+- **`--repair` covers what the hash cannot see**: the English never changed but the translation is
+  wrong (headings left in English, say). It runs the validator on the stored file and turns its
+  findings into a work order. Costs about half a `--force`, and exits free when nothing is wrong.
+
+Only `title` and `description` count as translatable front matter. Changing `tags`, `date`,
+`image`, `mainTag` or `review_date` does **not** trigger anything.
 
 **Quality gate before every commit:** `yarn lint && yarn format:check && yarn build`.
 There is no automated test suite for components — testing components means building and reviewing them visually.
@@ -71,6 +111,44 @@ The two plumbing pieces that make this work are `plugins/frontmatter-loader/` an
 touching either.
 
 Tags must exist in `blog/tags.yml`; authors must exist in `blog/authors.yml`.
+
+### Internationalization (`i18n/`)
+
+```text
+i18n/fr/
+  code.json                              # 194 UI strings, extracted by `yarn write-translations`
+  docusaurus-theme-classic/              # footer.json + navbar.json — these OVERRIDE the config
+  docusaurus-plugin-content-blog/        # mirrors blog/ — the translated articles
+    YYYY/MM/DD/<slug>/index.md
+    YYYY/MM/DD/<slug>/index.md.translation.json   # source hash + the English text at that time
+  docusaurus-plugin-content-pages/       # mirrors src/pages/
+```
+
+The five pieces that carry it, and the invariant each protects:
+
+- **`plugins/translations-manifest-plugin/`** — the single source of truth for "is this article
+  translated?". Docusaurus's i18n **falls back to the English source** when a translation is
+  missing, so a `/fr/` route existing proves nothing. Never infer the answer another way.
+- **`plugins/i18n-seo-guard/`** — `noindex` + `canonical` + `data-pagefind-ignore` on untranslated
+  `/fr/` pages, and strips the `hreflang=fr` alternate from their English counterparts. Without it
+  the locale publishes 256 English pages under French URLs.
+- **`plugins/remark-i18n-assets/`** — **must stay first** in `beforeDefaultRemarkPlugins`, for both
+  `blog` and `pages`. `files/` and `images/` (84 MB) are never duplicated under `i18n/`.
+- **`src/components/Blog/utils/translations.ts`** — `isTranslated()` ("readable here", always true
+  on `en`) and `hasTranslationIn()` ("a translation exists") are **different questions**.
+  Conflating them put a French flag on all 257 English articles.
+- **`src/components/Blog/utils/posts.ts`** — `useBlogMetadata()`, not `getBlogMetadata()`, in any
+  rendering component. It filters the corpus **and** overlays the translated title/description.
+
+Assets stay with the English source; only `title`, `description` and `language` differ in a
+translation's front matter — `slug`, `series`, `tags` and `date` are copied byte for byte, because
+translating a `slug` breaks the URL and translating a `series` orphans the article.
+
+Translation tooling: `scripts/translate-post.mjs` + `lib/translate-{contract,validate,hash,anchors}.mjs`.
+The validator (10 checks) is what makes it trustworthy — prompt discipline alone lands around 90%.
+
+**Build one locale at a time**: use `.claude/scripts/safe_build.sh <logfile>`. Two concurrent
+builds wipe each other's output and the failure looks exactly like a code bug.
 
 ### Components
 
@@ -153,13 +231,15 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 
 ### Rule → skill map
 
-| Rule                                | Paths                                      | Skill                   |
-| ----------------------------------- | ------------------------------------------ | ----------------------- |
-| `.claude/rules/markdown.md`         | `**/*.md`, `**/*.mdx`                      | `markdown-style`        |
-| `.claude/rules/bash.md`             | `**/*.sh`, `**/*.bash`, `**/.bash_aliases` | `bash-best-practices`   |
-| `.claude/rules/python.md`           | `**/*.py`                                  | `python-best-practices` |
-| `.claude/rules/install-commands.md` | `**/*.md`, `**/*.mdx`                      | `safe-install-commands` |
-| `.claude/rules/blog-prose.md`       | `blog/**`, `.unpublished/**`               | `blog-post-structure`   |
+| Rule                                  | Paths                                                                          | Skill                     |
+| ------------------------------------- | ------------------------------------------------------------------------------ | ------------------------- |
+| `.claude/rules/markdown.md`           | `**/*.md`, `**/*.mdx`                                                          | `markdown-style`          |
+| `.claude/rules/bash.md`               | `**/*.sh`, `**/*.bash`, `**/.bash_aliases`                                     | `bash-best-practices`     |
+| `.claude/rules/python.md`             | `**/*.py`                                                                      | `python-best-practices`   |
+| `.claude/rules/install-commands.md`   | `**/*.md`, `**/*.mdx`                                                          | `safe-install-commands`   |
+| `.claude/rules/blog-prose.md`         | `blog/**`, `.unpublished/**`                                                   | `blog-post-structure`     |
+| `.claude/rules/i18n-locale-safety.md` | `plugins/**`, `src/theme/**`, `src/components/Blog/**`, `docusaurus.config.js` | _(none — self-contained)_ |
+| `.claude/rules/build-verification.md` | `plugins/**`, `scripts/**`, `docusaurus.config.js`                             | _(none — self-contained)_ |
 
 ### Known gap
 

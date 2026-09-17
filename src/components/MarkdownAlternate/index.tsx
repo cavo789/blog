@@ -8,6 +8,7 @@
 import type { JSX } from "react";
 import Head from "@docusaurus/Head";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
+import { translate } from "@docusaurus/Translate";
 
 export default function MarkdownAlternate(): JSX.Element {
   const { metadata } = useBlogPost();
@@ -18,7 +19,10 @@ export default function MarkdownAlternate(): JSX.Element {
         rel="alternate"
         type="text/markdown"
         href={`${metadata.permalink}.md`}
-        title="Plain-Markdown mirror of this article"
+        title={translate({
+          id: "markdownAlternate.title",
+          message: "Plain-Markdown mirror of this article",
+        })}
       />
     </Head>
   );

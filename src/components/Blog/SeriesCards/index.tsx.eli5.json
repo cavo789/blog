@@ -1,20 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:53:47.682Z",
+  "generated": "2026-09-17T09:31:52.169Z",
   "source": "index.tsx",
-  "sourceHash": "b3c007da0b91a7b215605049a39ab13305ae60de",
+  "sourceHash": "9d271cc1289a2f06dab99b64ce387bd9fb288cfc",
   "lang": "typescript",
-  "summary": "This component displays a grid of blog series cards. It takes raw series data, enhances it by merging in additional metadata from a data file (like custom titles, descriptions, and images), and renders each series as a PostCard. If no series exist, it shows a friendly empty state message instead.",
+  "summary": "This component displays a grid of blog article series as cards. It takes raw series data from a hook, enriches it with metadata like images and descriptions from a data file, and either shows the cards or a friendly 'no series found' message if the list is empty.",
   "explanations": {
-    "26": "This sets a fallback image path that will be used if a series doesn't have its own custom image defined.",
-    "28": "The function returns JSX.Element, which tells TypeScript this component produces React UI elements.",
-    "31": "useMemo caches the enriched series list so we don't recreate it every render unless seriesList actually changes.",
-    "34": "We're looking up extra metadata for each series by matching its name against the SERIES_DATA array.",
-    "36": "The ?? (nullish coalescing) operator means: use data?.image if it exists, otherwise fall back to DEFAULT_IMAGE.",
-    "40": "We prefer the counter value from SERIES_DATA, but if it doesn't exist, we keep the one from the original serie object.",
-    "43": "The description field only comes from SERIES_DATA (the generateSeriesList function doesn't create descriptions), so we explicitly set it here.",
-    "51": "We check if the enriched array is empty to decide whether to show the grid or a 'no series found' message.",
-    "65": "We use serie.permalink as the key because it's a unique identifier for each series, which React needs to efficiently update the list."
+    "26": "This sets a fallback image path that will be used if a series doesn't have its own image defined in the data file.",
+    "31": "useMemo caches the enriched series list so it only recalculates when seriesList changes, avoiding unnecessary work on every render.",
+    "34": "This finds the matching series data by looking for an entry in SERIES_DATA where the name matches the current series.",
+    "36": "The nullish coalescing operator (??) means 'use the image from SERIES_DATA if it exists, otherwise fall back to the default image'.",
+    "45": "This prioritizes the translated description from useSeriesList, but if that's missing (undefined), it falls back to the English description from SERIES_DATA.",
+    "53": "If there are no series to display, render a centered 'no series found' message instead of an empty grid."
   }
 }

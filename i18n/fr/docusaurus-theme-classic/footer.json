@@ -1,0 +1,6 @@
+{
+  "copyright": {
+    "message": "<span class=\"footer-cmdk-hint\">Appuyez sur ⌘K pour rechercher · ? pour les raccourcis · <a href=\"/fr/follow\">suivre par RSS</a></span><br />Copyright © {year} Christophe Avonture. Propulsé par Docusaurus.",
+    "description": "The footer copyright"
+  }
+}

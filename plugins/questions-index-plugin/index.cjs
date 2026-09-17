@@ -32,6 +32,7 @@
 
 const fs = require("fs");
 const path = require("path");
+const { normalizeUrl } = require("@docusaurus/utils");
 const frontMatter = require("front-matter");
 const yaml = require("js-yaml");
 
@@ -226,7 +227,9 @@ module.exports = function questionsIndexPlugin(context) {
           JSON.stringify(theme),
         );
         await actions.addRoute({
-          path: `/faq/${theme.key}`,
+          // Through `baseUrl` — see docusaurus-plugin-tag-route. Hardcoding the path leaves
+          // the route unreachable under a non-default locale.
+          path: normalizeUrl([context.baseUrl, "faq", theme.key]),
           component: "@site/src/components/FaqThemePage",
           modules: { theme: dataPath },
           exact: true,

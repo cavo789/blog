@@ -41,3 +41,19 @@
 .feedLink:hover {
   color: var(--ifm-color-primary);
 }
+
+/* The source-language formats, offered under the current locale's own. Separated by a border,
+   not by a background: in dark mode Infima's surface colors leave no headroom between panels. */
+.otherLocale {
+  margin: 1rem 0 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.otherLocaleIntro {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+
+  /* Not --ifm-color-content-secondary: it resolves to pure white in dark mode. */
+  color: var(--ifm-color-emphasis-700);
+}

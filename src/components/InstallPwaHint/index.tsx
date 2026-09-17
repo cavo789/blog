@@ -17,6 +17,7 @@
 
 import { useEffect, useState, type JSX } from "react";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 const STORAGE_KEY = "pwa_install_hint_shown";
 
@@ -84,12 +85,12 @@ export default function InstallPwaHint(): JSX.Element | null {
           setDeferredPrompt(null);
         }}
       >
-        Install this site as an app
+        <Translate id="installPwaHint.label">Install this site as an app</Translate>
       </button>
       <button
         type="button"
         className={styles.hintDismiss}
-        aria-label="Dismiss"
+        aria-label={translate({ id: "common.dismiss", message: "Dismiss" })}
         onClick={() => setVisible(false)}
       >
         ✕

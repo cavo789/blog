@@ -15,7 +15,9 @@ import Link from "@docusaurus/Link";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import { usePluginData } from "@docusaurus/useGlobalData";
 import AskMyBlog from "@site/src/components/AskMyBlog";
+import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";
 import styles from "./faq.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 export default function FaqPage() {
   const { themes, meta } = usePluginData("questions-index-plugin");
@@ -28,7 +30,11 @@ export default function FaqPage() {
 
   return (
     <Layout
-      title="Ask My Blog"
+      title={translate({
+        id: "faq.page.metaTitle",
+        message: "Ask My Blog",
+        description: "The /faq page <title> and og:title",
+      })}
       description="Every question this blog can answer, generated from its own articles and grouped by topic — search it, or browse by theme."
     >
       <Head>
@@ -39,30 +45,61 @@ export default function FaqPage() {
         <img
           className={styles.marginImage}
           src={withBaseUrl("/img/faqs.webp")}
-          alt="A meerkat surveying the blog's topics."
+          alt={translate({
+            id: "faq.page.imageAlt",
+            message: "A meerkat surveying the blog's topics.",
+          })}
           loading="lazy"
         />
         <main className={styles.page}>
           <header className={styles.header}>
-            <h1>Ask My Blog</h1>
+            <h1>
+              <Translate id="faq.page.title">Ask My Blog</Translate>
+            </h1>
             <p className={styles.subtitle}>
-              {meta.questionCount} question{meta.questionCount === 1 ? "" : "s"},
-              generated from {meta.articleCount} article
-              {meta.articleCount === 1 ? "" : "s"} — phrased the way a developer would
-              actually search, not just the article&apos;s own title.
+              <Translate
+                id="faq.page.subtitle"
+                values={{
+                  questions: meta.questionCount,
+                  articles: meta.articleCount,
+                }}
+              >
+                {
+                  "{questions} questions, generated from {articles} articles — phrased the way a developer would actually search, not just the article's own title."
+                }
+              </Translate>
             </p>
           </header>
+
+          {/* Renders nothing on `en`. `questions-index-plugin` is not locale-aware: the counts
+              above, and the questions themselves, are the English corpus served under a French
+              URL. So the figure misleads in BOTH directions — today it promises 2157 questions a
+              French reader cannot read, and once TODO 0120 generates them per locale it will drop
+              to the ~40 drawn from four translated articles. Either way the reader needs the
+              ratio. */}
+          <TranslationCoverage />
 
           <AskMyBlog />
 
           {themes.length === 0 ? (
             <p className={styles.empty}>
-              No questions indexed yet — generate some with{" "}
-              <code>yarn questions:bulk</code>.
+              <Translate
+                id="faq.page.empty"
+                values={{ command: <code>yarn questions:bulk</code> }}
+              >
+                {"No questions indexed yet — generate some with {command}."}
+              </Translate>
             </p>
           ) : (
-            <nav aria-label="Browse by topic">
-              <h2 className={styles.tocTitle}>Browse by topic</h2>
+            <nav
+              aria-label={translate({
+                id: "faq.page.browseByTopic.ariaLabel",
+                message: "Browse by topic",
+              })}
+            >
+              <h2 className={styles.tocTitle}>
+                <Translate id="faq.page.browseByTopic">Browse by topic</Translate>
+              </h2>
               <ul className={styles.toc}>
                 {themes.map((theme) => (
                   <li key={theme.key}>

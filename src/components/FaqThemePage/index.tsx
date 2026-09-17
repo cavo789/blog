@@ -17,6 +17,8 @@ import type { JSX } from "react";
 import Layout from "@theme/Layout";
 import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
+import Translate, { translate } from "@docusaurus/Translate";
+import { usePluralForm } from "@docusaurus/theme-common";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 
@@ -61,15 +63,47 @@ function buildJsonLd(
   };
 }
 
+/**
+ * The page's single sentence of prose — it is both the visible subtitle and the
+ * `<meta name="description">`.
+ *
+ * `usePluralForm()` rather than a `count === 1` ternary: the plural rule belongs to the locale
+ * being rendered, not to English. Same pattern as src/theme/BlogPostItem/Header/Info.
+ */
+function useThemeDescription(): (count: number, label: string) => string {
+  const { selectMessage } = usePluralForm();
+
+  return (count, label) =>
+    selectMessage(
+      count,
+      translate(
+        {
+          id: "faq.theme.description.plurals",
+          description:
+            'Pluralized subtitle of a /faq/<theme> page. Use as many plural forms (separated by "|") as your language supports.',
+          message:
+            "One question about {label}, generated from this blog's own articles — phrased the way a developer would actually search.|{count} questions about {label}, generated from this blog's own articles — phrased the way a developer would actually search.",
+        },
+        { count, label },
+      ),
+    );
+}
+
 export default function FaqThemePage({ theme }: Props): JSX.Element {
   const { withBaseUrl } = useBaseUrlUtils();
   const ogImage = withBaseUrl("/img/faqs.webp", { absolute: true });
   const count = theme.items.length;
-  const description = `${count} question${count === 1 ? "" : "s"} about ${theme.label}, generated from this blog's own articles — phrased the way a developer would actually search.`;
+  const description = useThemeDescription()(count, theme.label);
   const jsonLd = buildJsonLd(theme, withBaseUrl);
 
   return (
-    <Layout title={`${theme.label} — Ask My Blog`} description={description}>
+    <Layout
+      title={translate(
+        { id: "faqThemePage.title", message: "{theme} — Ask My Blog" },
+        { theme: theme.label },
+      )}
+      description={description}
+    >
       <Head>
         <meta property="og:image" content={ogImage} />
         <meta name="twitter:image" content={ogImage} />
@@ -77,7 +111,9 @@ export default function FaqThemePage({ theme }: Props): JSX.Element {
       </Head>
       <main className={styles.page}>
         <p className={styles.breadcrumb}>
-          <Link to="/faq">← All topics</Link>
+          <Link to="/faq">
+            ← <Translate id="faq.theme.allTopics">All topics</Translate>
+          </Link>
         </p>
         <header className={styles.header}>
           <h1>{theme.label}</h1>

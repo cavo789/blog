@@ -55,3 +55,12 @@ declare module "/pagefind/pagefind.js" {
   const pagefind: unknown;
   export default pagefind;
 }
+
+// `*.yml` is not a path here: `plugins/yaml-webpack-plugin` registers a webpack rule with
+// `type: "json"` and `js-yaml` as the parser, so an import yields the parsed document.
+// @docusaurus/module-type-aliases doesn't declare it. Call sites: src/data/tags.js and
+// src/components/Blog/utils/tagsI18n.ts, both reading a `tags.yml`.
+declare module "*.yml" {
+  const data: Record<string, unknown>;
+  export default data;
+}

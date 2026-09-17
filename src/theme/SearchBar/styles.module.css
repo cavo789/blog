@@ -45,7 +45,23 @@
   border-radius: 4px;
 }
 
-@media (max-width: 768px) {
+/* Two bands collapse the search box to a round icon, for two different reasons.
+ *
+ * Below 768px: no room for a 17rem box next to the hamburger.
+ *
+ * Between 997px and 1260px: the navbar is back in desktop mode (Docusaurus's own
+ * breakpoint is 996px) but the eight menu entries, the title, the locale dropdown and the
+ * GitHub link no longer fit alongside a 272px search box. Because `.navbar__item` is
+ * `white-space: nowrap` (see custom.css), the labels do not wrap — they spill out of their
+ * box and print on top of the right-hand group. Measured on /fr/: 215px of overflow at
+ * 1000px, 69px at 1152px, gone at 1280px. French breaks first, its labels being longer.
+ * Dropping the box to an icon frees 230px and clears the whole band; the ⌘K shortcut and
+ * the icon itself keep the feature reachable.
+ *
+ * The 769-996px gap is deliberate: the hamburger has already taken over there, so the
+ * full box fits and stays.
+ */
+@media (max-width: 768px), (min-width: 997px) and (max-width: 1260px) {
   .button {
     width: 2.6rem;
     padding: 0.45rem;

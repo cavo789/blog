@@ -6,7 +6,6 @@ import BlogPostItemContainer from "@theme/BlogPostItem/Container";
 import BlogPostItemContent from "@theme/BlogPostItem/Content";
 import BlogPostItemFooter from "@theme/BlogPostItem/Footer";
 import BlogPostItemHeader from "@theme/BlogPostItem/Header";
-import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import Reaction from "@site/src/components/Reaction";
 import TriedIt from "@site/src/components/TriedIt";
 import TypoReport from "@site/src/components/TypoReport";
@@ -14,6 +13,9 @@ import clsx from "clsx";
 
 // Our posts components
 import RelatedPosts from "@site/src/components/Blog/RelatedPosts";
+
+// Locale awareness — both render nothing on the English site unless a translation exists.
+import TranslationNotice from "@site/src/components/Blog/TranslationNotice";
 
 // Our Bluesky component
 import Bluesky from "@site/src/components/Bluesky";
@@ -37,6 +39,13 @@ export default function BlogPostItem({ children, className }) {
     <>
       <BlogPostItemContainer className={clsx(containerClassName, className)}>
         <BlogPostItemHeader aiIcon={aiIcon} actions={actions} />
+        {/* Above the content, never inside the translated Markdown file: the banner must not be
+            something the translator can mangle, and the flag must be reachable before the
+            reader has scrolled through prose they may not want to read. */}
+        {/* The flag badge used to sit here too. Removed on 2026-09-16: the sentence below says
+            the same thing in words, and a badge that duplicates it is noise at the very place a
+            reader is trying to start the article. */}
+        {isBlogPostPage && <TranslationNotice permalink={metadata.permalink} />}
         <BlogPostItemContent>{children}</BlogPostItemContent>
         <BlogPostItemFooter />
 
@@ -57,7 +66,6 @@ export default function BlogPostItem({ children, className }) {
             {frontMatter.tried_it !== false && <TriedIt metadata={metadata} />}
           </>
         )}
-        <ScrollToTopButton />
       </BlogPostItemContainer>
     </>
   );

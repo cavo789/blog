@@ -17,6 +17,7 @@
  */
 
 const path = require("path");
+const { normalizeUrl } = require("@docusaurus/utils");
 const { listTagSlugs } = require("../lib/blog-taxonomy.cjs");
 
 module.exports = function (context) {
@@ -31,7 +32,12 @@ module.exports = function (context) {
     async contentLoaded({ actions }) {
       for (const slug of listTagSlugs(context.siteDir)) {
         actions.addRoute({
-          path: `/blog/tags/${slug}`,
+          // MUST go through `baseUrl`: under a non-default locale it becomes `/fr/`, and a
+          // hardcoded `/blog/tags/<slug>` registers a route the locale-prefixed links never
+          // reach. That mismatch reported 2520 broken links on the `fr` build — the routes
+          // existed as `/blog/tags/<slug>` while every link pointed at
+          // `/fr/blog/tags/<slug>`. See TODO 0119.
+          path: normalizeUrl([context.baseUrl, "blog/tags", slug]),
           component: "@site/src/components/Blog/Tags/TagArticlesPage",
           exact: true,
         });

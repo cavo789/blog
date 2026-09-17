@@ -1,20 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:52:15.225Z",
+  "generated": "2026-09-17T09:32:12.409Z",
   "source": "posts.ts",
-  "sourceHash": "00a6f4466f0d1f6969a5dc9823e20f85af4ef953",
+  "sourceHash": "3f6fbcf013d87588ed6f0ab1f4d1285095afe894",
   "lang": "typescript",
-  "summary": "This code extracts metadata from all MDX blog posts in a `/blog` directory using Webpack's dynamic loading. It parses frontmatter (the YAML header) from each post, normalizes file paths and image references, and returns a filtered array of post metadata objects. By default it excludes draft and unlisted posts, but callers can opt back in via flags.",
+  "summary": "This file extracts metadata from MDX blog posts using Webpack's dynamic loading, parsing frontmatter (the metadata at the top of each file) to build a structured list of post information. It handles both English posts and French translations, allowing callers to include or exclude draft and unlisted posts as needed. The main `getBlogMetadata()` function reads raw post data, while `useBlogMetadata()` adds locale awareness by overlaying translated titles and descriptions for non-English pages.",
   "explanations": {
-    "99": "The `require.context` call tells Webpack to dynamically load all MDX/Markdown files from the blog directory. The `!!` prefix at the start of the path is crucial—it forces Webpack to use a custom loader (frontmatter-loader) instead of the default blog plugin, so draft posts don't crash the production build.",
-    "110": "`.keys()` returns an array of all file paths that Webpack found matching our pattern; we then `.map()` over them to extract metadata from each one.",
-    "112": "We call `posts(key)` to load the actual file content for this path. TypeScript treats it as an object with a `frontMatter` property containing the parsed YAML.",
-    "116": "If a Markdown file under `blog/` has no title, we skip it—it's probably a fragment or helper file, not a published article, so we return `null` to filter it out later.",
-    "120": "We extract the directory path from the file path: if the file is `./my-post/index.mdx`, `dir` becomes `my-post`. This directory name becomes part of the post's URL.",
-    "123": "If the author explicitly set a `slug` in frontmatter, we use that as the post's URL path; otherwise we build the path from the folder structure (line 128).",
-    "132": "If the image path starts with `./`, it's a relative reference to a local file in the post's folder, so we convert it to an absolute web path like `/blog/my-post/image.png`.",
-    "151": "The `filter` with the type guard `post is BlogPostMetadata` removes all the `null` entries we returned for non-article files, and TypeScript now knows remaining items are valid `BlogPostMetadata` objects.",
-    "153": "This second filter respects the caller's preferences: if `includeDrafts` is false, we exclude posts where `draft` is true; same logic applies to `includeUnlisted`."
+    "47": "This type says a blog tag can be either a simple string (like 'javascript') or an object with a label property—we accept both because different parts of the codebase use different formats.",
+    "65": "Even though the frontmatter parser sometimes returns a real Date object, we declare this as string to match what existing code expects; JavaScript's Date constructor accepts both anyway.",
+    "101": "The `!!` prefix is a Webpack loader instruction that forces the frontmatter-loader plugin to run instead of the default blog plugin, allowing us to capture draft posts that would otherwise be filtered out.",
+    "113": "We create a separate context for French translations because the main context always reads from the English blog folder regardless of which language is being rendered.",
+    "127": "We extract the folder name by removing the index file and leading dot, then use the slug from frontmatter if available, otherwise fall back to the last part of the directory path.",
+    "164": "If a slug doesn't start with a slash, we prepend `/blog/` to create the full URL path; if it already starts with a slash, we use it as-is.",
+    "172": "Relative image paths like `./image.png` are converted to absolute paths by inserting the blog post's directory, making them work from any page that links to the post.",
+    "191": "This filters out null entries (files without titles, which aren't real articles) by using TypeScript's type guard—it tells TypeScript that whatever survives this check is definitely a BlogPostMetadata.",
+    "215": "We call `useTranslationState()` to find out which locale we're rendering and whether posts have been translated into that locale.",
+    "217": "The `filterTranslated()` helper keeps only posts that exist in the current locale's translated corpus, so French pages don't show untranslated articles.",
+    "227": "We look up the translated title and description using the post's slug, and if they exist, we use them instead of the English versions."
   }
 }

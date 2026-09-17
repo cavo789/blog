@@ -3,6 +3,7 @@ import BlueskyLikes from "./likes";
 import BlueskyPost from "./post";
 import BlueskyShare from "./share";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 import useBlueskyEngagement, { useBlueskyRecordKey } from "./useBlueskyEngagement";
 import type { BlueskyMetadata, EngagedPerson } from "./useBlueskyEngagement";
 
@@ -18,18 +19,41 @@ function engagementHeadline({
   engaged: EngagedPerson[];
 }): string {
   if (!blueskyRecordKey) {
-    return "🦋 Enjoyed this article? Share it on Bluesky";
+    return translate({
+      id: "bluesky.heading.share",
+      message: "🦋 Enjoyed this article? Share it on Bluesky",
+    });
   }
   if (loading || unavailable) {
     // Same neutral copy for "still fetching" and "couldn't fetch" — never claim
     // "no one reacted yet" when the truth is just "couldn't check".
-    return "🦋 Join the conversation on Bluesky";
+    return translate({
+      id: "bluesky.heading.join",
+      message: "🦋 Join the conversation on Bluesky",
+    });
   }
   if (engaged.length === 0) {
-    return "🦋 Be the first to react on Bluesky";
+    return translate({
+      id: "bluesky.heading.first",
+      message: "🦋 Be the first to react on Bluesky",
+    });
   }
   const count = engaged.length;
-  return `🦋 ${count} ${count === 1 ? "person is" : "people are"} already talking about this on Bluesky — join them`;
+  // Two whole sentences rather than a spliced "person is" / "people are": French agreement
+  // reaches further than the verb ("personne en parle" / "personnes en parlent").
+  return count === 1
+    ? translate({
+        id: "bluesky.heading.talkingOne",
+        message: "🦋 1 person is already talking about this on Bluesky — join them",
+      })
+    : translate(
+        {
+          id: "bluesky.heading.talkingOther",
+          message:
+            "🦋 {count} people are already talking about this on Bluesky — join them",
+        },
+        { count },
+      );
 }
 
 interface Props {
@@ -78,10 +102,11 @@ export default function Bluesky({ metadata }: Props) {
       )}
 
       <span className={styles.blueskyAccountNote}>
-        Requires a free Bluesky account to like, repost or comment. This block talks to
-        Bluesky&apos;s public API directly from your browser (no cookies, no sign-in) —
-        that means your IP address reaches Bluesky&apos;s servers just by this section
-        loading.
+        <Translate id="bluesky.accountNote">
+          {
+            "Requires a free Bluesky account to like, repost or comment. This block talks to Bluesky's public API directly from your browser (no cookies, no sign-in) — that means your IP address reaches Bluesky's servers just by this section loading."
+          }
+        </Translate>
       </span>
 
       <BlueskyComments metadata={effectiveMetadata} />

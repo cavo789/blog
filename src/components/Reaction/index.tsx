@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, type JSX } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 interface Props {
   metadata?: {
@@ -76,40 +77,68 @@ export default function Reaction({ metadata }: Props): JSX.Element | null {
     <div className={styles.container}>
       {!voted ? (
         <>
-          <span className={styles.question}>Was this article helpful?</span>
+          <span className={styles.question}>
+            <Translate id="blog.reaction.question">Was this article helpful?</Translate>
+          </span>
           <div className={styles.buttons}>
             <button
               className={styles.btn}
               onClick={() => handleVote("helpful")}
-              aria-label="Yes, this was helpful"
+              aria-label={translate({
+                id: "blog.reaction.yes.ariaLabel",
+                message: "Yes, this was helpful",
+              })}
             >
-              👍 Helpful
+              👍 <Translate id="blog.reaction.yes">Helpful</Translate>
             </button>
             <button
               className={`${styles.btn} ${styles.btnNeutral}`}
               onClick={() => handleVote("not_helpful")}
-              aria-label="No, this was not helpful"
+              aria-label={translate({
+                id: "blog.reaction.no.ariaLabel",
+                message: "No, this was not helpful",
+              })}
             >
-              👎 Not really
+              👎 <Translate id="blog.reaction.no">Not really</Translate>
             </button>
           </div>
           {submitError && (
             <span className={styles.submitError}>
-              Could not save your vote — please try again.
+              <Translate id="reaction.saveError">
+                Could not save your vote — please try again.
+              </Translate>
             </span>
           )}
         </>
       ) : (
         <div className={styles.thanks}>
           <span className={styles.thanksMsg}>
-            {voted === "helpful" ? "Glad it helped! 🙌" : "Thanks for the feedback!"}
+            {voted === "helpful"
+              ? translate({ id: "reaction.thanksHelpful", message: "Glad it helped! 🙌" })
+              : translate({
+                  id: "reaction.thanksNotHelpful",
+                  message: "Thanks for the feedback!",
+                })}
           </span>
           {counts && (
             <span className={styles.counts}>
-              <span title={`${counts.helpful} found this helpful`}>
+              <span
+                title={translate(
+                  { id: "reaction.countHelpful", message: "{count} found this helpful" },
+                  { count: counts.helpful },
+                )}
+              >
                 👍 {counts.helpful}
               </span>
-              <span title={`${counts.not_helpful} did not find this helpful`}>
+              <span
+                title={translate(
+                  {
+                    id: "reaction.countNotHelpful",
+                    message: "{count} did not find this helpful",
+                  },
+                  { count: counts.not_helpful },
+                )}
+              >
                 👎 {counts.not_helpful}
               </span>
             </span>

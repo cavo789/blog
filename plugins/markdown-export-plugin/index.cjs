@@ -67,12 +67,29 @@ function permalinkFor(attributes, dir) {
   return `/blog/${dir}/`;
 }
 
-function loadPosts(siteDir) {
+/**
+ * @param {string} siteDir
+ * @param {string} [translationDir] when building a non-default locale, the matching
+ *   `i18n/<locale>/docusaurus-plugin-content-blog` tree. Any article that has a file there is
+ *   read FROM there, so the mirror and the llms.txt index carry the translated title,
+ *   description and body. Without it, `/fr/blog/<slug>.md` served the English Markdown under a
+ *   French URL and `/fr/llms.txt` advertised English titles — the content equivalent of the
+ *   duplicate-content problem plugins/i18n-seo-guard solves for HTML. See TODO 0119.
+ */
+function loadPosts(siteDir, translationDir = null) {
   const blogDir = path.join(siteDir, BLOG_DIR);
   const posts = [];
 
   for (const file of findPosts(blogDir)) {
-    const raw = fs.readFileSync(file, "utf-8");
+    let sourceFile = file;
+
+    if (translationDir) {
+      const relative = path.relative(blogDir, file);
+      const translated = path.join(translationDir, relative);
+      if (fs.existsSync(translated)) sourceFile = translated;
+    }
+
+    const raw = fs.readFileSync(sourceFile, "utf-8");
     const { attributes } = frontMatter(raw);
 
     // A Markdown file under blog/ without a title isn't an article (a
@@ -84,6 +101,8 @@ function loadPosts(siteDir) {
     posts.push({
       file,
       raw,
+      // Deliberately the ENGLISH article's folder, even when `raw` came from the translation:
+      // `files/` and `images/` are co-located with the source, never duplicated under i18n/.
       currentFileDir: path.dirname(file),
       permalink: permalinkFor(attributes, dir),
       title: attributes.title,
@@ -97,6 +116,21 @@ function loadPosts(siteDir) {
   }
 
   return posts;
+}
+
+/**
+ * Absolute URL for a site-relative path, honouring the locale's baseUrl.
+ *
+ * `siteConfig.url` is the bare origin and `siteConfig.baseUrl` carries the locale segment
+ * (`/` for the default locale, `/fr/` for French). Concatenating `url + permalink` skips the
+ * locale entirely, so the French llms.txt advertised English URLs for translated articles.
+ * See TODO 0119.
+ */
+function absoluteUrl(siteConfig, sitePath) {
+  const base = siteConfig.baseUrl.endsWith("/")
+    ? siteConfig.baseUrl
+    : `${siteConfig.baseUrl}/`;
+  return `${siteConfig.url}${base}${String(sitePath).replace(/^\//, "")}`;
 }
 
 // YAML frontmatter dates (`date: 2024-02-23`) are auto-typed as JS Date
@@ -121,7 +155,7 @@ function formatDate(date) {
 // says the file is generated at build time, and `published` carries the date a
 // reader actually needs.
 function buildMetadataComment(post, siteConfig) {
-  const url = `${siteConfig.url}${post.permalink}`;
+  const url = absoluteUrl(siteConfig, post.permalink);
   return [
     "<!--",
     `  canonical-url: ${url}`,
@@ -154,7 +188,7 @@ function writeLlmsTxt(outDir, siteConfig, posts, seriesFiles) {
   if (siteConfig.tagline) lines.push(`> ${siteConfig.tagline}`, "");
   lines.push(
     `${posts.length} articles. Each has a plain-Markdown mirror at its own permalink ` +
-      `plus \`.md\` (e.g. \`${siteConfig.url}/blog/<slug>.md\`).`,
+      `plus \`.md\` (e.g. \`${absoluteUrl(siteConfig, "/blog/<slug>.md")}\`).`,
     "",
   );
 
@@ -170,7 +204,7 @@ function writeLlmsTxt(outDir, siteConfig, posts, seriesFiles) {
     );
     for (const s of seriesFiles) {
       lines.push(
-        `- [${s.name}](${siteConfig.url}/llms/${s.slug}.txt) — ${s.count} article(s)`,
+        `- [${s.name}](${absoluteUrl(siteConfig, `/llms/${s.slug}.txt`)}) — ${s.count} article(s)`,
       );
     }
     lines.push("");
@@ -181,7 +215,7 @@ function writeLlmsTxt(outDir, siteConfig, posts, seriesFiles) {
     const sorted = [...byTag.get(tag)].sort((a, b) => a.title.localeCompare(b.title));
     for (const post of sorted) {
       const desc = post.description ? ` — ${post.description}` : "";
-      lines.push(`- [${post.title}](${siteConfig.url}${post.permalink})${desc}`);
+      lines.push(`- [${post.title}](${absoluteUrl(siteConfig, post.permalink)})${desc}`);
     }
     lines.push("");
   }
@@ -226,16 +260,61 @@ module.exports = function markdownExportPlugin() {
   return {
     name: "markdown-export-plugin",
 
-    async postBuild({ outDir, siteDir, siteConfig, routesPaths }) {
-      const posts = loadPosts(siteDir);
+    async postBuild({ outDir, siteDir, siteConfig, routesPaths, i18n }) {
+      const currentLocale = i18n?.currentLocale;
+      const defaultLocale = i18n?.defaultLocale ?? siteConfig.i18n?.defaultLocale;
+      const isTranslatedLocale = Boolean(
+        currentLocale && currentLocale !== defaultLocale,
+      );
+
+      const posts = loadPosts(
+        siteDir,
+        isTranslatedLocale
+          ? path.join(siteDir, "i18n", currentLocale, "docusaurus-plugin-content-blog")
+          : null,
+      );
+
+      // In a non-default locale, mirror and index ONLY the articles really translated into it.
+      // `loadPosts()` reads `blog/`, i.e. the English corpus, and Docusaurus's i18n fallback
+      // gives every one of them a live `/fr/` route — so without this, `/fr/llms.txt` would
+      // advertise 257 English articles as the French corpus, and `/fr/blog/<slug>.md` would
+      // mirror English prose under a French URL. See TODO 0119.
+      let localeFiltered = posts;
+
+      if (isTranslatedLocale) {
+        const {
+          collectTranslations,
+        } = require("../translations-manifest-plugin/index.cjs");
+        const translated = new Set(collectTranslations(siteDir)[currentLocale] ?? []);
+        // These post objects carry a `permalink`, not a `slug` — assuming the latter silently
+        // filtered everything out (`translated.has(undefined)` is always false).
+        localeFiltered = posts.filter((post) => {
+          const match = String(post.permalink ?? "").match(/blog\/([^/]+)\/?$/);
+          return match ? translated.has(match[1]) : false;
+        });
+        console.log(
+          `[markdown-export] locale ${currentLocale}: ${localeFiltered.length} translated article(s).`,
+        );
+      }
 
       // Only mirror posts that actually got a live route — this is what makes
       // "draft" (excluded in prod by Docusaurus's own blog plugin) and
       // ".unpublished/" (outside blog/, never globbed here anyway) fall out
       // for free, without re-deriving Docusaurus's own draft rules.
+      // `routesPaths` carries the locale's baseUrl (`/fr/blog/<slug>/`) while `permalinkFor()`
+      // builds a bare `/blog/<slug>` — comparing them directly matched nothing under a
+      // non-default locale, so every mirror silently disappeared while the build stayed green.
+      // This is the mirror image of the bug in blog-feed-plugin's getArticleHtml(), where the
+      // prefix was present twice instead of missing once. See TODO 0119.
+      const baseUrl = siteConfig.baseUrl.endsWith("/")
+        ? siteConfig.baseUrl
+        : `${siteConfig.baseUrl}/`;
+      const withBaseUrl = (permalink) =>
+        `${baseUrl}${permalink.replace(/^\//, "")}`.replace(/\/$/, "");
+
       const liveRoutes = new Set(routesPaths.map((route) => route.replace(/\/$/, "")));
-      const live = posts.filter((post) =>
-        liveRoutes.has(post.permalink.replace(/\/$/, "")),
+      const live = localeFiltered.filter((post) =>
+        liveRoutes.has(withBaseUrl(post.permalink)),
       );
 
       console.log(

@@ -1,0 +1,111 @@
+/* Coverage notice on the French homepage and blog listing. Informative, not a warning: it tells
+   the reader how much of the blog they are seeing, and where the rest of it is.
+
+   It is built to read as one of the page's cards, not as a banner interrupting them — same
+   surface, border, radius and shadow as HomeCards' .cardItem. */
+
+.coverage {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  /* Matches HomeCards' .cardsGrid so the card lines up with the grid directly below it on the
+     homepage. `.listing` releases it where the surrounding grid is full-width instead. */
+  max-width: 1100px;
+  margin: 0 auto var(--ifm-spacing-vertical, 1rem);
+  padding: 1.15rem 1.4rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: var(--ifm-border-radius, 0.4rem);
+  background-color: var(--ifm-card-background-color);
+  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.05);
+}
+
+.listing {
+  max-width: none;
+}
+
+.icon {
+  /* In a flex row this is moot, but these cards stack on narrow screens and a bare width/height
+     on a flex child becomes a *minimum* in a column container — the icon would stretch. */
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--ifm-color-primary);
+}
+
+.body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 0.45rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.track {
+  height: 5px;
+  margin-bottom: 0.55rem;
+  border-radius: 999px;
+  background-color: var(--ifm-color-emphasis-200);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  /* `--coverage-percent` is set inline from translated/total. The floor matters: the real ratio
+     is under 2%, which rounds to a couple of pixels on a narrow viewport and would read as an
+     empty, broken bar rather than as "barely started". */
+  width: var(--coverage-percent, 0%);
+  min-width: 6px;
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--ifm-color-primary);
+}
+
+.text {
+  margin: 0;
+  /* NOT --ifm-color-content-secondary: Infima defines it as pure white in dark mode, which kills
+     the contrast against the card surface. */
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.count {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.cta {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+/* Stacked layout: the icon keeps the title company on one line, everything else runs full width
+   so the sentence never wraps against a 2rem gutter. */
+@media (max-width: 768px) {
+  .coverage {
+    /* Not `center`: stacked, the body grows to three or four lines and a centred icon floats
+       beside the middle of the sentence instead of introducing the heading. */
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.75rem 0.85rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .body {
+    flex: 1 1 60%;
+  }
+
+  .cta {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}

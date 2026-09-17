@@ -6,7 +6,7 @@
  *
  * Behavior:
  * - Uses `useBlogPost()` to get current post metadata
- * - Delegates the selection to `getRelatedPosts()` (mainTag, then fallback on shared tags,
+ * - Delegates the selection to `useRelatedPosts()` (mainTag, then fallback on shared tags,
  *   current post excluded, newest first) so this block and `MobileQuickLinks` stay in sync
  *
  * Styling:
@@ -20,7 +20,7 @@
 import type { JSX } from "react";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import Translate from "@docusaurus/Translate";
-import { getRelatedPosts } from "@site/src/components/Blog/utils/related";
+import { useRelatedPosts } from "@site/src/components/Blog/utils/related";
 import PostCard from "@site/src/components/Blog/PostCard";
 import styles from "./styles.module.css";
 
@@ -37,20 +37,22 @@ export default function RelatedPosts({
 }: Props): JSX.Element | null {
   const { metadata } = useBlogPost();
   // `mainTag` is a project-specific front matter field, so Docusaurus types it
-  // as `unknown` — narrow it to what getRelatedPosts() expects.
+  // as `unknown` — narrow it to what useRelatedPosts() expects.
   const mainTag = metadata.frontMatter.mainTag as string | undefined;
   const tags = metadata.frontMatter.tags || [];
 
-  if (!mainTag && tags.length === 0) {
-    return null;
-  }
-
-  const related = getRelatedPosts({
+  // Hook before early return: useRelatedPosts reads the locale-aware corpus, and it already
+  // returns [] when there is no tag to match on.
+  const related = useRelatedPosts({
     mainTag,
     tags,
     excludePermalink: metadata.permalink,
     count,
   });
+
+  if (!mainTag && tags.length === 0) {
+    return null;
+  }
 
   if (!related.length) {
     return (

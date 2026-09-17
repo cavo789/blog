@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:53:53.036Z",
+  "generated": "2026-09-17T09:32:18.059Z",
   "source": "series.ts",
-  "sourceHash": "e5aacc2ca718ddffac4d7b26d54e1f1ab2e81896",
+  "sourceHash": "26c4cd24a3ccd9daf85bfe8729b8922b52c39f03",
   "lang": "typescript",
-  "summary": "This file exports a function that organizes blog posts into series, grouping posts that share the same series name, sorting them by date, and generating metadata objects for each series—including a link, title, image, and a count of published versus draft articles. It's used by Docusaurus to display article collections on a series landing page.",
+  "summary": "This code creates a list of blog series by grouping posts that share a series name, then sorts each series chronologically and generates metadata for display. It handles both published and draft articles, translates series names and descriptions into the current language, and returns an array of series objects with permalinks, images, titles, and post counts.",
   "explanations": {
-    "38": "We're creating an empty Map to store series names as keys and arrays of blog posts as values—essentially a lookup table we'll populate as we loop through posts.",
-    "41": "We fetch all blog posts including draft ones because we need to count both published and in-progress articles when generating the series summary.",
-    "44": "We iterate through each post to check if it belongs to a series; if it does, we add it to the Map under its series name.",
-    "47": "We check if this series name already exists in our Map so we don't accidentally overwrite it; if not, we create an empty array for it.",
-    "50": "The exclamation mark tells TypeScript we're certain this Map entry exists (we just created it on line 48), so don't worry about null values.",
-    "56": "We convert the Map keys (all series names) into an array, sort them alphabetically, then transform each series name into a complete metadata object.",
-    "58": "We make a copy of the posts array and sort it by date to find the chronologically first article, which we'll use as the series image.",
-    "62": "We count how many posts in this series are published by filtering out drafts; draft posts have a `draft` property set to true.",
-    "72": "We use the optional chaining operator to safely grab the image from the earliest post, or fall back to a default image if no posts exist."
+    "46": "A Map is a data structure that stores key-value pairs; here we'll use series names as keys and arrays of posts as values to group posts by their series.",
+    "49": "This fetches all blog posts from metadata, including draft posts, so we can later count how many drafts are in each series.",
+    "56": "We check if this series name already exists in our map; if not, we create a new empty array for it before adding the first post.",
+    "59": "The exclamation mark tells TypeScript we're sure the series key exists in the map (we just checked it), so it won't complain about a possible undefined value.",
+    "65": "We convert the map keys to an array, sort them alphabetically, then transform each series name into a full series object with all its metadata.",
+    "68": "We're converting date strings to actual Date objects and comparing their numeric timestamps to sort posts from oldest to newest.",
+    "74": "We're building a human-readable string that combines the published article count with a draft count suffix, both using the translate function to support multiple languages.",
+    "79": "If there are no draft posts, we skip adding the 'in progress' section entirely; otherwise we append it with a bullet separator.",
+    "93": "We use the first post's image if available, otherwise fall back to the default image provided when calling this function."
   }
 }

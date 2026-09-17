@@ -11,7 +11,7 @@ import React, {
 } from "react";
 import CodeBlock from "@theme/CodeBlock";
 import Snippet from "@site/src/components/Snippet";
-import Translate from "@docusaurus/Translate";
+import Translate, { translate } from "@docusaurus/Translate";
 import JSZip from "jszip";
 import styles from "./styles.module.css";
 
@@ -188,7 +188,12 @@ export default function ProjectSetup({
 
   const downloadZip = useCallback(async () => {
     if (fileList.length === 0 && folders.length === 0) {
-      setZipError("No files or folders found to zip.");
+      setZipError(
+        translate({
+          id: "projectSetup.zipEmpty",
+          message: "No files or folders found to zip.",
+        }),
+      );
       return;
     }
     setZipError(null);
@@ -272,7 +277,10 @@ export default function ProjectSetup({
             className="button button--outline button--primary button--sm"
             onClick={downloadZip}
             disabled={isDownloading}
-            aria-label="Download project as ZIP"
+            aria-label={translate({
+              id: "projectSetup.zipAriaLabel",
+              message: "Download project as ZIP",
+            })}
           >
             {isDownloading ? "⏳" : "ZIP"}
           </button>
@@ -303,7 +311,12 @@ export default function ProjectSetup({
                 {!createFolder && (
                   <mark>
                     {" "}
-                    Make sure you are located in the <strong>{folderName}</strong> folder.
+                    <Translate
+                      id="projectSetup.locatedIn"
+                      values={{ folder: <strong>{folderName}</strong> }}
+                    >
+                      {"Make sure you are located in the {folder} folder."}
+                    </Translate>
                   </mark>
                 )}
               </small>

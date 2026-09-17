@@ -29,7 +29,7 @@ import type { JSX } from "react";
 import Link from "@docusaurus/Link";
 import Translate, { translate } from "@docusaurus/Translate";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
-import { getRelatedPosts } from "@site/src/components/Blog/utils/related";
+import { useRelatedPosts } from "@site/src/components/Blog/utils/related";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -41,18 +41,19 @@ export default function MobileQuickLinks({ count = 3 }: Props): JSX.Element | nu
   const { metadata, isBlogPostPage } = useBlogPost();
   const { frontMatter, permalink } = metadata;
 
-  if (!isBlogPostPage || frontMatter.series) {
-    return null;
-  }
-
-  const related = getRelatedPosts({
+  // Hooks run before any early return — `useRelatedPosts` reads the locale-aware corpus.
+  const related = useRelatedPosts({
     // `mainTag` is a project-specific front matter field → Docusaurus types it
-    // as `unknown`; narrow it to what getRelatedPosts() expects.
+    // as `unknown`; narrow it to what useRelatedPosts() expects.
     mainTag: frontMatter.mainTag as string | undefined,
     tags: frontMatter.tags || [],
     excludePermalink: permalink,
     count,
   });
+
+  if (!isBlogPostPage || frontMatter.series) {
+    return null;
+  }
 
   if (!related.length) {
     return null;

@@ -1,5 +1,5 @@
 import type { JSX } from "react";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
  */
 export default function BlogPostCount({ className }: Props): JSX.Element {
   const { i18n } = useDocusaurusContext();
-  const count = getBlogMetadata().length;
+  const count = useBlogMetadata().length;
 
   return (
     <span className={className}>

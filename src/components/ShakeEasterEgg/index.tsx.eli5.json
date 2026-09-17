@@ -1,22 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:13:18.954Z",
+  "generated": "2026-09-17T09:33:28.788Z",
   "source": "index.tsx",
-  "sourceHash": "4c63a305202d6abb2d46e041974261dac41a64d4",
+  "sourceHash": "1900f269764748899c8fff0f8dbde6c383a30af4",
   "lang": "typescript",
-  "summary": "This component detects phone shake gestures by monitoring accelerometer data and displays a fun Easter egg—a scared meerkat image—when a shake is detected. It uses a 'jerk' calculation (how quickly acceleration changes) to filter out normal jitter, includes a cooldown period to prevent repeated triggers, and manages the overlay's visibility with fade-in and fade-out animations.",
+  "summary": "This component detects when a user shakes their device by monitoring accelerometer data, and displays a playful Easter egg (a scared meerkat image) that appears for a few seconds before fading out. It uses jerk—the rate of change of acceleration—to distinguish real shakes from minor tilts, and prevents the overlay from retriggering too quickly after being dismissed.",
   "explanations": {
-    "10": "This is the sensitivity threshold for detecting a shake; it's measured in units of acceleration change per second. The comments show it was tuned over time because initial values fired too easily from just tilting the phone.",
-    "14": "The device motion sensor fires very frequently on some phones (60+ times per second), so we ignore samples that come in faster than every 100ms to avoid treating tiny natural jitter as a shake.",
-    "30": "We store the previous acceleration reading so we can calculate how much the acceleration changed since the last sample—that rate of change is what we check against the shake threshold.",
-    "36": "This helper function cancels any pending timeouts so we can clean up old timers before starting new animation phases.",
-    "55": "The optional chaining operator (`?.`) safely calls the vibrate function only if the browser supports it; many browsers require a user gesture first, so this just silently does nothing if not allowed.",
-    "66": "We check if we're in a server-side rendering environment (where `window` doesn't exist) and if the browser supports the motion sensor API before setting up the listener.",
-    "74": "The accelerometer data might have null values for any axis, so we need to explicitly check all three are actual numbers before we try math on them.",
-    "84": "We skip this sample if it came in too soon after the last one; this filters out the high-frequency noise that would make every tiny wobble look like a spike.",
-    "90": "Jerk is the rate at which acceleration is changing, calculated as the sum of changes across all three axes divided by time. We multiply by 1000 to convert from per-millisecond to per-second.",
-    "97": "We only trigger the Easter egg if the jerk exceeds our threshold AND enough time has passed since the last trigger, so one shake gesture doesn't fire the overlay multiple times.",
-    "111": "This cleanup effect runs on unmount to clear any remaining timers, preventing memory leaks or timeouts firing after the component is gone."
+    "11": "This is the sensitivity threshold for detecting a shake. The comment above explains it was tuned over time because lower values (28, 60) triggered too easily from normal phone movement.",
+    "15": "The accelerometer sends data very frequently on some phones (60+ times per second), so we ignore samples that arrive faster than this interval to avoid false positives from tiny jitters.",
+    "31": "We store the previous acceleration reading as a ref so we can calculate jerk (the change in acceleration) by comparing the current reading to the last one.",
+    "37": "This helper function clears both timeouts that manage the overlay's visibility and fade-out, used in multiple places to prevent memory leaks.",
+    "42": "Dismiss immediately transitions to a fading-out state, then schedules a final transition to fully hidden after the fade animation completes.",
+    "56": "The optional chaining operator (?) means we only call vibrate if the browser supports it; some browsers require a user gesture so this is best-effort and won't error if unavailable.",
+    "67": "We check if we're in a browser environment (not server-side rendering) and if the device supports motion events before subscribing to them.",
+    "84": "We measure how much time passed since the last acceleration sample so we can calculate jerk in a time-normalized way (change per unit time).",
+    "91": "Jerk is the sum of absolute changes across all three axes, divided by elapsed time, then multiplied by 1000 to convert from per-millisecond to per-second.",
+    "98": "We only trigger the Easter egg if both conditions are met: the jerk exceeds our shake threshold AND enough time has passed since the last trigger (cooldown prevents rapid retriggering).",
+    "112": "This cleanup effect ensures timers are cleared on component unmount, preventing memory leaks and callbacks firing after the component is gone."
   }
 }

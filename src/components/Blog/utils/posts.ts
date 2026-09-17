@@ -96,11 +96,51 @@ interface RawFrontMatter {
 // production build with "Blog post not found for filePath=…" — because the blog
 // plugin drops drafts from its post list while this context still pulls them in.
 // See plugins/frontmatter-loader/index.cjs for the full story.
+import { useTranslationState, slugFromPermalink } from "./translations";
+
 const posts = require.context(
   "!!../../../../plugins/frontmatter-loader/index.cjs!../../../../blog",
   true,
   /\.mdx?$/,
 );
+
+// Second corpus: the French translations. Needed because the context above reads `blog/` — the
+// English source — whatever locale is being rendered, so every card, list and related-post
+// block showed an English title on a French page even for articles that ARE translated.
+//
+// The locale is spelled out rather than computed: `require.context` is a webpack construct and
+// its path must be statically analysable. Adding a locale means adding a context here.
+const translatedPosts = require.context(
+  "!!../../../../plugins/frontmatter-loader/index.cjs!../../../../i18n/fr/docusaurus-plugin-content-blog",
+  true,
+  /\.mdx?$/,
+);
+
+/** slug -> the translated `title`/`description`, for the one non-default locale we ship. */
+function buildTranslatedFrontMatter(): Map<string, { title: string; description: string }> {
+  const bySlug = new Map<string, { title: string; description: string }>();
+
+  for (const key of translatedPosts.keys()) {
+    const post = translatedPosts(key) as { frontMatter: RawFrontMatter };
+    if (!post.frontMatter?.title) continue;
+
+    const dir = key.replace(/\/index\.mdx?$/, "").replace(/^\.\//, "");
+    const slug = post.frontMatter.slug
+      ? post.frontMatter.slug.replace(/^\/+|\/+$/g, "").replace(/^blog\//, "")
+      : dir.split("/").pop() ?? "";
+
+    if (slug) {
+      bySlug.set(slug, {
+        title: post.frontMatter.title,
+        description: post.frontMatter.description ?? "",
+      });
+    }
+  }
+
+  return bySlug;
+}
+
+const TRANSLATED_FRONT_MATTER = buildTranslatedFrontMatter();
 
 export function getBlogMetadata({
   includeDrafts = false,
@@ -152,4 +192,45 @@ export function getBlogMetadata({
     .filter(
       (post) => (includeDrafts || !post.draft) && (includeUnlisted || !post.unlisted),
     );
+}
+
+/**
+ * Locale-aware counterpart of `getBlogMetadata()` — the one every rendering surface should use.
+ *
+ * `getBlogMetadata()` reads `blog/` through `require.context`, so it always returns the **English**
+ * corpus, whatever locale the page is being rendered in. Left unfiltered, a French listing shows
+ * entries whose titles are English and whose pages open on English prose — which reads as a broken
+ * site rather than as a partially translated one.
+ *
+ * On the default locale this is `getBlogMetadata()` unchanged, so switching a call site over is
+ * always safe.
+ *
+ * Note this filters, it does not translate: the titles and descriptions of the surviving entries
+ * still come from the English source. Showing the translated ones is a separate (larger) job —
+ * see TODO 0119, lot C, "rendre le corpus de posts.ts conscient de la locale".
+ */
+export function useBlogMetadata(
+  options: { includeDrafts?: boolean; includeUnlisted?: boolean } = {},
+): BlogPostMetadata[] {
+  const { filterTranslated, isDefaultLocale } = useTranslationState();
+
+  const visible = filterTranslated(getBlogMetadata(options), (post) =>
+    slugFromPermalink(post.permalink),
+  );
+
+  if (isDefaultLocale) return visible;
+
+  // Overlay the translated title and description. Only these two are localized: `permalink`,
+  // `image`, `tags`, `series` and `date` are shared with the English source by design — the
+  // translation copies them byte for byte (see the translation contract in TODO 0119).
+  return visible.map((post) => {
+    const translated = TRANSLATED_FRONT_MATTER.get(slugFromPermalink(post.permalink));
+    if (!translated) return post;
+
+    return {
+      ...post,
+      title: translated.title,
+      description: translated.description || post.description,
+    };
+  });
 }

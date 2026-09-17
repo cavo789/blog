@@ -1,8 +1,9 @@
 import { useState, useCallback, useEffect, useRef, type JSX } from "react";
 import clsx from "clsx";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useSourceLocaleUrls } from "@site/src/components/Blog/utils/localeUrls";
 import Link from "@docusaurus/Link";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 interface Props {
   /** Site-relative path of the feed, e.g. `/blog/tags/docker/rss.xml`. */
@@ -24,6 +25,45 @@ interface Props {
 }
 
 type Status = "idle" | "copied" | "error";
+
+/**
+ * One feed URL and its copy button.
+ *
+ * Its own component, and its own `status`, because the block can now show two URLs: with a
+ * single shared state, copying the English feed would flash "Copied" under the French one too.
+ */
+function FeedUrlRow({ url }: { url: string }): JSX.Element {
+  const [status, setStatus] = useState<Status>("idle");
+
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setStatus("copied");
+    } catch (err) {
+      console.error("FollowFeed: failed to copy", err);
+      setStatus("error");
+    }
+  }, [url]);
+
+  useEffect(() => {
+    if (status === "idle") return;
+    const timer = setTimeout(() => setStatus("idle"), 2000);
+    return () => clearTimeout(timer);
+  }, [status]);
+
+  return (
+    <div className={styles.urlRow}>
+      <code className={styles.url}>{url}</code>
+      <button type="button" className={styles.copyBtn} onClick={handleCopy}>
+        {status === "copied"
+          ? translate({ id: "blog.followFeed.copied", message: "✓ Copied" })
+          : status === "error"
+            ? translate({ id: "blog.followFeed.copyError", message: "Could not copy" })
+            : translate({ id: "blog.followFeed.copy", message: "Copy" })}
+      </button>
+    </div>
+  );
+}
 
 /** Keep in sync with .popover's `width` in styles.module.css: min(28rem, 100vw - 2rem). */
 const POPOVER_MAX_WIDTH_PX = 448;
@@ -51,31 +91,24 @@ export default function FollowFeed({
   label,
   variant = "card",
 }: Props): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
-  const [status, setStatus] = useState<Status>("idle");
   const [open, setOpen] = useState(false);
   const [alignRight, setAlignRight] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   // Hosted readers need an absolute URL: they fetch the feed server-side, so a
   // site-relative path would resolve against feedly.com.
-  const absoluteUrl = `${siteConfig.url.replace(/\/$/, "")}${feedUrl}`;
+  //
+  // `feedUrl` is a site path this code assembled, so it carries no locale — see
+  // `localeUrls.ts` for why both resolutions are needed and how the source one is derived.
+  const {
+    isDefaultLocale,
+    sourceLabel: defaultLocaleLabel,
+    sourceAbsoluteUrl,
+    currentAbsoluteUrl,
+  } = useSourceLocaleUrls();
 
-  const handleCopy = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(absoluteUrl);
-      setStatus("copied");
-    } catch (err) {
-      console.error("FollowFeed: failed to copy", err);
-      setStatus("error");
-    }
-  }, [absoluteUrl]);
-
-  useEffect(() => {
-    if (status === "idle") return;
-    const timer = setTimeout(() => setStatus("idle"), 2000);
-    return () => clearTimeout(timer);
-  }, [status]);
+  const absoluteUrl = currentAbsoluteUrl(feedUrl);
+  const defaultLocaleUrl = sourceAbsoluteUrl(feedUrl);
 
   /*
    * Which edge the popover hangs from is decided per opening, not by a media
@@ -129,20 +162,13 @@ export default function FollowFeed({
         template survives all three ("New posts about every new post…").
       */}
       <p className={styles.intro}>
-        They land in your feed reader on their own — no account, no email address, nothing
-        to unsubscribe from. Paste this URL into your reader:
+        <Translate id="blog.followFeed.intro">
+          They land in your feed reader on their own — no account, no email address,
+          nothing to unsubscribe from. Paste this URL into your reader:
+        </Translate>
       </p>
 
-      <div className={styles.urlRow}>
-        <code className={styles.url}>{absoluteUrl}</code>
-        <button type="button" className={styles.copyBtn} onClick={handleCopy}>
-          {status === "copied"
-            ? "✓ Copied"
-            : status === "error"
-              ? "Could not copy"
-              : "Copy"}
-        </button>
-      </div>
+      <FeedUrlRow url={absoluteUrl} />
 
       <div className={styles.readers}>
         <a
@@ -151,7 +177,7 @@ export default function FollowFeed({
           target="_blank"
           rel="noopener noreferrer"
         >
-          Add to Feedly
+          <Translate id="blog.followFeed.addFeedly">Add to Feedly</Translate>
         </a>
         <a
           className={styles.readerLink}
@@ -159,15 +185,46 @@ export default function FollowFeed({
           target="_blank"
           rel="noopener noreferrer"
         >
-          Add to Inoreader
+          <Translate id="blog.followFeed.addInoreader">Add to Inoreader</Translate>
         </a>
         <a className={styles.readerLink} href={absoluteUrl.replace(/^https?:/, "feed:")}>
-          Open in my reader
+          <Translate id="blog.followFeed.openInReader">Open in my reader</Translate>
         </a>
       </div>
 
+      {/*
+        Only on a non-default locale, and deliberately secondary rather than side by side: the
+        feed of the page's own language stays the obvious choice, but a bilingual reader can
+        take both instead of having one picked for them. Nothing here on the English pages —
+        a four-article translated feed would be noise to a reader who already has all 257.
+      */}
+      {!isDefaultLocale && (
+        <div className={styles.otherLocale}>
+          <p className={styles.otherLocaleIntro}>
+            <Translate
+              id="blog.followFeed.otherLocale"
+              values={{ language: defaultLocaleLabel }}
+            >
+              {"Read {language} too? The source-language feed follows the whole blog:"}
+            </Translate>
+          </p>
+          <FeedUrlRow url={defaultLocaleUrl} />
+        </div>
+      )}
+
       <p className={styles.help}>
-        No feed reader yet? <Link to="/follow">Start here</Link> — it takes two minutes.
+        <Translate
+          id="blog.followFeed.noReader"
+          values={{
+            link: (
+              <Link to="/follow">
+                <Translate id="blog.followFeed.noReader.link">Start here</Translate>
+              </Link>
+            ),
+          }}
+        >
+          {"No feed reader yet? {link} — it takes two minutes."}
+        </Translate>
       </p>
     </>
   );
@@ -182,13 +239,18 @@ export default function FollowFeed({
           aria-expanded={open}
           aria-haspopup="dialog"
         >
-          Follow {label}
+          <Translate id="blog.followFeed.follow" values={{ label }}>
+            {"Follow {label}"}
+          </Translate>
         </button>
         {open && (
           <div
             className={clsx(styles.popover, alignRight && styles.popoverRight)}
             role="dialog"
-            aria-label={`Follow ${label}`}
+            aria-label={translate(
+              { id: "blog.followFeed.follow.ariaLabel", message: "Follow {label}" },
+              { label },
+            )}
           >
             {/*
               The popover has no <h3> of its own to inherit from, so it repeats
@@ -197,7 +259,12 @@ export default function FollowFeed({
               the article header and has no business in the document outline.
             */}
             <p className={styles.popoverTitle}>
-              Follow <strong>{label}</strong>
+              <Translate
+                id="blog.followFeed.followStrong"
+                values={{ label: <strong>{label}</strong> }}
+              >
+                {"Follow {label}"}
+              </Translate>
             </p>
             {body}
           </div>
@@ -221,10 +288,16 @@ export default function FollowFeed({
      */
     return (
       <section className={styles.section}>
-        <h2>Follow {label}</h2>
+        <h2>
+          <Translate id="blog.followFeed.follow" values={{ label }}>
+            {"Follow {label}"}
+          </Translate>
+        </h2>
         <p className={styles.sectionIntro}>
-          No account, no email address, nothing to unsubscribe from — new posts land in
-          your feed reader on their own.
+          <Translate id="blog.followFeed.section.lede">
+            No account, no email address, nothing to unsubscribe from — new posts land in
+            your feed reader on their own.
+          </Translate>
         </p>
 
         <div className={styles.sectionGrid}>
@@ -232,20 +305,31 @@ export default function FollowFeed({
             <span className={styles.cardIcon} aria-hidden="true">
               📋
             </span>
-            <h3 className={styles.cardTitle}>Any feed reader</h3>
+            <h3 className={styles.cardTitle}>
+              <Translate id="blog.followFeed.anyReader">Any feed reader</Translate>
+            </h3>
             <p className={styles.cardDescription}>
-              Paste this URL into the reader you already use.
+              <Translate id="blog.followFeed.section.paste">
+                Paste this URL into the reader you already use.
+              </Translate>
             </p>
-            <div className={styles.urlRow}>
-              <code className={styles.url}>{absoluteUrl}</code>
-              <button type="button" className={styles.copyBtn} onClick={handleCopy}>
-                {status === "copied"
-                  ? "✓ Copied"
-                  : status === "error"
-                    ? "Could not copy"
-                    : "Copy"}
-              </button>
-            </div>
+            <FeedUrlRow url={absoluteUrl} />
+            {/* Same offer as the `card` variant's — see the comment there. */}
+            {!isDefaultLocale && (
+              <div className={styles.otherLocale}>
+                <p className={styles.otherLocaleIntro}>
+                  <Translate
+                    id="blog.followFeed.otherLocale"
+                    values={{ language: defaultLocaleLabel }}
+                  >
+                    {
+                      "Read {language} too? The source-language feed follows the whole blog:"
+                    }
+                  </Translate>
+                </p>
+                <FeedUrlRow url={defaultLocaleUrl} />
+              </div>
+            )}
             {/*
               Last, and deliberately the quietest of the three cards' actions:
               `feed://` fails *silently* when no desktop reader has registered
@@ -255,7 +339,9 @@ export default function FollowFeed({
               className={styles.cardAside}
               href={absoluteUrl.replace(/^https?:/, "feed:")}
             >
-              …or open it in a desktop reader
+              <Translate id="blog.followFeed.section.desktop">
+                …or open it in a desktop reader
+              </Translate>
             </a>
           </div>
 
@@ -263,9 +349,13 @@ export default function FollowFeed({
             <span className={styles.cardIcon} aria-hidden="true">
               ⚡
             </span>
-            <h3 className={styles.cardTitle}>Feedly or Inoreader</h3>
+            <h3 className={styles.cardTitle}>
+              <Translate id="blog.followFeed.hosted">Feedly or Inoreader</Translate>
+            </h3>
             <p className={styles.cardDescription}>
-              On a hosted reader? One click and you are subscribed.
+              <Translate id="blog.followFeed.section.hosted">
+                On a hosted reader? One click and you are subscribed.
+              </Translate>
             </p>
             <div className={styles.readers}>
               <a
@@ -274,7 +364,7 @@ export default function FollowFeed({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Add to Feedly
+                <Translate id="blog.followFeed.addFeedly">Add to Feedly</Translate>
               </a>
               <a
                 className={styles.readerBtn}
@@ -282,7 +372,7 @@ export default function FollowFeed({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Add to Inoreader
+                <Translate id="blog.followFeed.addInoreader">Add to Inoreader</Translate>
               </a>
             </div>
           </div>
@@ -292,12 +382,18 @@ export default function FollowFeed({
               <span className={styles.cardIcon} aria-hidden="true">
                 🧭
               </span>
-              <h3 className={styles.cardTitle}>New to RSS?</h3>
+              <h3 className={styles.cardTitle}>
+                <Translate id="blog.followFeed.newToRss">New to RSS?</Translate>
+              </h3>
               <p className={styles.cardDescription}>
-                Pick a reader, subscribe to this blog, and never check the site again. It
-                takes two minutes.
+                <Translate id="blog.followFeed.section.newToRss">
+                  Pick a reader, subscribe to this blog, and never check the site again.
+                  It takes two minutes.
+                </Translate>
               </p>
-              <span className={styles.cardCta}>Start here →</span>
+              <span className={styles.cardCta}>
+                <Translate id="blog.followFeed.startHere">Start here →</Translate>
+              </span>
             </div>
           </Link>
         </div>
@@ -306,8 +402,18 @@ export default function FollowFeed({
   }
 
   return (
-    <section className={styles.card} aria-label={`Follow ${label}`}>
-      <h3 className={styles.title}>Follow {label}</h3>
+    <section
+      className={styles.card}
+      aria-label={translate(
+        { id: "blog.followFeed.follow.ariaLabel", message: "Follow {label}" },
+        { label },
+      )}
+    >
+      <h3 className={styles.title}>
+        <Translate id="blog.followFeed.follow" values={{ label }}>
+          {"Follow {label}"}
+        </Translate>
+      </h3>
       {body}
     </section>
   );

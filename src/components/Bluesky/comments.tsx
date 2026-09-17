@@ -1,5 +1,6 @@
 import { useState, useEffect, type ReactNode } from "react";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import type {
   BlueskyEmbed,
@@ -90,7 +91,10 @@ function renderEmbed(embed: BlueskyEmbed | null | undefined): ReactNode {
           <img
             key={index}
             src={image.fullsize}
-            alt={image.alt || "Embedded image"}
+            alt={
+              image.alt ||
+              translate({ id: "bluesky.embeddedImage", message: "Embedded image" })
+            }
             className={styles.blueskyCommentImage}
           />
         ))}
@@ -126,7 +130,10 @@ function BlueskyComment({ reply }: { reply: FlattenedReply }) {
         <a href={profileUrl} target="_blank" rel="noopener noreferrer">
           <img
             src={reply.post.author.avatar}
-            alt={`${reply.post.author.displayName}'s avatar`}
+            alt={translate(
+              { id: "bluesky.avatarAlt", message: "{name}'s avatar" },
+              { name: reply.post.author.displayName },
+            )}
             className={styles.blueskyCommentAvatar}
           />
         </a>
@@ -162,7 +169,7 @@ function BlueskyComment({ reply }: { reply: FlattenedReply }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          View comment
+          <Translate id="bluesky.comments.view">View comment</Translate>
         </a>
       </div>
     </div>
@@ -227,28 +234,41 @@ export default function BlueskyComments({ metadata }: Props) {
   }, [blueskyRecordKey, blueSkyConfig?.handle]);
 
   if (!blueskyRecordKey || error) return null;
-  if (comments === null) return <p>Loading comments…</p>;
+  if (comments === null) {
+    return (
+      <p>
+        <Translate id="bluesky.comments.loading">Loading comments…</Translate>
+      </p>
+    );
+  }
 
   const postUrl = `https://bsky.app/profile/${blueSkyConfig?.handle}/post/${blueskyRecordKey}`;
 
   if (comments.length === 0)
     return (
       <p className={styles.blueskyNoCommentYet}>
-        This post is waiting for its first comment.&nbsp;
+        <Translate id="bluesky.comments.none">
+          This post is waiting for its first comment.
+        </Translate>
+        &nbsp;
         <a
           className={styles.blueskyNoCommentYetCTA}
           href={postUrl}
           target="_blank"
           rel="noopener noreferrer"
         >
-          Share your thoughts!
+          <Translate id="bluesky.comments.cta">Share your thoughts!</Translate>
         </a>
       </p>
     );
 
   return (
     <div className={styles.blueskyCommentsContainer}>
-      <h3>💬 Comments from Bluesky ({comments.length})</h3>
+      <h3>
+        <Translate id="bluesky.comments.heading" values={{ count: comments.length }}>
+          {"💬 Comments from Bluesky ({count})"}
+        </Translate>
+      </h3>
       {comments.map((reply) => (
         <BlueskyComment key={reply.post.uri} reply={reply} />
       ))}

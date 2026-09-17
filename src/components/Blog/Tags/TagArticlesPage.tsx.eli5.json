@@ -1,22 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T18:01:20.251Z",
+  "generated": "2026-09-17T09:32:03.337Z",
   "source": "TagArticlesPage.tsx",
-  "sourceHash": "3fd3ecd9a036d28d240a22b57fd0fcb633648d8b",
+  "sourceHash": "538b7ab0f5ebee90353bf7232eec6faba8d43e72",
   "lang": "typescript",
-  "summary": "This component displays blog articles filtered by a specific tag. It extracts the tag from the URL, looks up the human-readable tag name from the blog posts, filters posts matching that tag, and renders them in a card layout — or shows an appropriate message if no tag was specified or no posts were found.",
+  "summary": "This component renders a blog tag page that displays all articles with a specific tag. It first extracts the tag slug from the URL, looks up the original tag name from blog post metadata, filters posts that match that tag, and displays them in a grid along with RSS feed links. If no tag is specified or no posts exist for that tag, it shows an appropriate error message.",
   "explanations": {
-    "14": "This type says a Tag can be either a plain string or an object with a label property, since tags in the blog metadata might be stored in different formats.",
-    "18": "matchPath checks if the current URL matches the pattern /blog/tags/:slug and extracts the slug parameter from it — it's how we know which tag the user wants to see.",
-    "22": "We safely access the slug from the URL match; if the URL doesn't match our expected pattern, match will be undefined and rawTag will be undefined too.",
-    "42": "This helper function normalizes any Tag into a string label — if it's already a string, use it as-is; if it's an object, pull out its label property.",
-    "45": "We start by assuming the display tag is just the URL slug, but then search through posts to find the original, human-readable tag name that corresponds to this slug.",
-    "47": "We're looking through the tags in each post to find one that, when converted to a slug, matches the slug from the URL — this lets us recover the original tag name.",
-    "59": "For each post, we check if any of its tags match our target tag by comparing their slugs; this is how we know which posts to include in our filtered list.",
-    "61": "We sort the filtered posts by date in descending order (newest first) by converting dates to milliseconds and subtracting in reverse — higher numbers come before lower numbers.",
-    "66": "The translate function dynamically creates the page title by replacing {label} with the actual tag name, allowing different languages to format the title differently.",
-    "88": "We construct the RSS feed URL by combining the base tag route with the slug and the rss.xml filename.",
-    "122": "We pass getTagDisplayLabel (which maps the tag to its display name from the tags configuration) to the FollowFeed component so the feed label matches what users see in the feed itself."
+    "17": "This type definition says a Tag can be either a simple string like 'javascript' or an object with a label property, allowing for more complex tag structures in the front matter.",
+    "24": "The useSourceLocaleUrls hook returns information about whether we're on the default language version of the site and URLs/labels for the original language, used later for showing a source language feed link.",
+    "28": "The comment is explaining that the URL pattern needs to include baseUrl because on non-default locales like French, the actual pathname includes the locale prefix (e.g., /fr/blog/tags/slug instead of /blog/tags/slug).",
+    "32": "This removes any trailing slash from the base URL so the pattern matching works correctly—baseUrl might be '/' or '/my-site/' but we need a consistent format.",
+    "33": "matchPath tries to parse the current URL against the pattern we defined, extracting the tag slug if it matches; if it doesn't match, match will be null.",
+    "37": "We safely extract the slug parameter from the match result—this could be undefined if the URL didn't match our pattern.",
+    "58": "This helper function extracts the actual tag key/name from a Tag, handling both the simple string case and the object case where the key is nested under the label property.",
+    "64": "We convert the tag through getTagKey to get its string value, then create a slug from it (lowercase, remove special chars, etc.) to compare it with the URL slug.",
+    "75": "tagLabel is a function that takes the tag key and returns its display name with any translations applied—so 'ai' might become 'Artificial Intelligence (AI)'.",
+    "82": "We sort posts by date in descending order—the `.getTime()` on dates and subtracting b from a puts most recent posts first.",
+    "142": "If we're not on the default locale (meaning we're viewing a translated version), we add a second RSS link pointing back to the source language's full blog feed."
   }
 }

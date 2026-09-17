@@ -20,6 +20,7 @@ import {
 import VarToken from "@site/src/components/Vars/VarToken";
 import Icon from "./icon.svg";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 // headingPrefixMap is built inside the component (via useMDXComponents) and
 // passed here so both copy and animation recover the "# " prefix that MDX strips.
@@ -274,7 +275,14 @@ export default function Terminal({
       className={styles.terminal}
       onClick={skipAnimation}
       style={isAnimating ? { cursor: "pointer" } : undefined}
-      title={isAnimating ? "Click to skip animation" : undefined}
+      title={
+        isAnimating
+          ? translate({
+              id: "terminal.skipAnimation",
+              message: "Click to skip animation",
+            })
+          : undefined
+      }
     >
       <div className={styles.terminal_header}>
         <div className={styles.terminal_left}>
@@ -317,7 +325,10 @@ export default function Terminal({
 
       <button
         type="button"
-        aria-label="Copy code to clipboard"
+        aria-label={translate({
+          id: "common.copyCode",
+          message: "Copy code to clipboard",
+        })}
         className={clsx(
           "clean-btn",
           "button--sm",

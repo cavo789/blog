@@ -1,20 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:09:52.395Z",
+  "generated": "2026-09-17T09:33:21.747Z",
   "source": "index.tsx",
-  "sourceHash": "1a0c40399db1c24c517598e5684bb99c159394dd",
+  "sourceHash": "c3b5dc3706e1cd36763f7bd34a359ee0a14bcb9c",
   "lang": "typescript",
-  "summary": "This React component displays a helpful/not-helpful voting widget for documentation pages. It fetches vote counts from an API, lets users submit votes, stores their choice in local storage to prevent re-voting, and shows a thank-you message with updated counts after voting. The component carefully handles server-side rendering by deferring state initialization to the client side to avoid hydration mismatches.",
+  "summary": "This component displays a helpful/not helpful reaction system for blog articles. It fetches vote counts from an API, lets users vote, saves their choice to localStorage to prevent duplicate voting, and shows a thank-you message with updated totals after they vote.",
   "explanations": {
-    "18": "This extracts the page path from the URL (removing leading and trailing slashes) to use as a unique identifier for tracking votes on this specific page.",
-    "20": "A unique key is created for storing this page's vote in the browser's local storage, combining a prefix with the page path so different pages track votes separately.",
-    "22": "Counts starts as null because the data hasn't been fetched yet; it will be populated once the API call completes.",
-    "26": "The voted state deliberately starts as null instead of checking localStorage immediately—this prevents a mismatch between the server (which can't access localStorage) and client (which can), which would cause React to crash.",
-    "29": "This effect runs after the component mounts on the client to safely read the user's previous vote from browser storage, updating the voted state if one exists.",
-    "38": "If there's no page slug (meaning we couldn't extract a valid page identifier), we bail out early since we can't fetch votes for an unknown page.",
-    "40": "The arrow function checks if the response succeeded; if not, it returns null instead of trying to parse failed responses as JSON.",
-    "47": "useCallback memoizes this function so it only gets recreated when its dependencies change, preventing unnecessary re-renders of child components that receive it as a prop.",
-    "64": "The vote is stored in local storage so that when the user returns to this page, the component knows they've already voted and can skip showing the voting buttons."
+    "19": "This removes leading and trailing slashes from the URL path to create a clean identifier for the article — for example, '/blog/my-post/' becomes 'blog/my-post'.",
+    "23": "The vote counts start as null instead of an empty object because the component only loads localStorage data after React hydrates on the client, preventing a mismatch between server-rendered HTML and the client version.",
+    "27": "Voted tracks whether the current user has already voted on this article by checking localStorage; it starts null to avoid SSR hydration mismatches, then gets populated during the effect on line 30.",
+    "30": "This effect runs once per unique storageKey and reads from the browser's localStorage to see if the user previously voted on this article, then updates the voted state.",
+    "35": "The empty catch block silently swallows any errors from localStorage access — this is intentional because localStorage might not be available in certain environments like private browsing mode.",
+    "38": "This effect fetches the current vote counts from the API whenever the slug changes, but only if a slug exists.",
+    "41": "If the response status is okay, parse it as JSON; otherwise return null so the next .then() knows the request failed.",
+    "48": "useCallback memoizes the handleVote function so it doesn't get recreated on every render, which matters because it's used in onClick handlers and might be passed to child components.",
+    "64": "Inside the try/catch, localStorage.setItem might fail in some browser modes, so this silently catches and ignores those failures without disrupting the vote submission.",
+    "74": "If there's no valid slug (page identifier), the component renders nothing because there's nowhere to send the vote data."
   }
 }

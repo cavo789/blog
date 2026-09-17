@@ -22,8 +22,9 @@ import Link from "@docusaurus/Link";
 import Translate from "@docusaurus/Translate";
 import clsx from "clsx";
 import Details from "@site/src/components/Details";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
+import { useSeriesLocalizer } from "@site/src/components/Blog/utils/seriesI18n";
 
 import styles from "./styles.module.css";
 
@@ -41,9 +42,13 @@ export default function SeriesPosts({
   excludePermalink = null,
   highlightCurrent = true,
 }: Props): JSX.Element | null {
-  const posts = getBlogMetadata()
+  const posts = useBlogMetadata()
     .filter((post) => post.series === series)
     .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  // `series` is the English key — it matches the front matter and builds the slug. Only the link
+  // text is localized, so a French article stops announcing an English series name.
+  const seriesLabel = useSeriesLocalizer()(series)?.label ?? series;
 
   if (!posts.length) return null;
 
@@ -55,7 +60,7 @@ export default function SeriesPosts({
             id="blog.seriesPosts.intro"
             values={{
               seriesLink: (
-                <Link href={`/series/${createSlug(series)}`}>{series}</Link>
+                <Link href={`/series/${createSlug(series)}`}>{seriesLabel}</Link>
               ),
             }}
           >

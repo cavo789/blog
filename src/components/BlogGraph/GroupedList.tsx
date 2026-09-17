@@ -10,7 +10,9 @@
  */
 
 import Link from "@docusaurus/Link";
-import { groupByMainTag, humanizeTag, type BlogGraphNode } from "./utils";
+import Translate from "@docusaurus/Translate";
+import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
+import { groupByMainTag, type BlogGraphNode } from "./utils";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -19,13 +21,20 @@ interface Props {
 
 export default function GroupedList({ nodes }: Props) {
   const groups = groupByMainTag(nodes);
+  const tagLabel = useTagLabel();
 
   return (
     <div className={styles.groupedList}>
       {groups.map(([mainTag, posts]) => (
         <section key={mainTag} className={styles.group}>
           <h3 className={styles.groupTitle}>
-            {humanizeTag(mainTag)}{" "}
+            {/* "other" is `groupByMainTag`'s bucket for articles with no mainTag — it is not a
+                tags.yml key, so it has no label to look up and needs its own UI string. */}
+            {mainTag === "other" ? (
+              <Translate id="blog.graph.group.other">Other</Translate>
+            ) : (
+              tagLabel(mainTag)
+            )}{" "}
             <span className={styles.groupCount}>({posts.length})</span>
           </h3>
           <ul className={styles.groupItems}>

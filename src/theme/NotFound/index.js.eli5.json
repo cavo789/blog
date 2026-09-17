@@ -1,16 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:08:35.943Z",
+  "generated": "2026-09-17T09:34:19.391Z",
   "source": "index.js",
-  "sourceHash": "6d933009a4867bfce940067ed1f6624561bd60c1",
+  "sourceHash": "f2df2861f07a870aef621e54386ee418a9ae30de",
   "lang": "javascript",
-  "summary": "This is a 404 error page component that helps lost visitors get back on track. When someone lands on a missing page, it extracts a search term from the broken URL, automatically opens a search interface with that term pre-filled, and shows a playful meerkat-themed message along with buttons to go home or search the site.",
+  "summary": "This component renders a custom 404 page when users land on a missing page. It extracts a search term from the failed URL, randomly picks one of five humorous meerkat-themed messages to display, and automatically opens a search tool pre-filled with that term to help users find what they were looking for.",
   "explanations": {
-    "12": "This line extracts just the last part of the URL path (like 'docker-cs-fixer' from '/docs/tools/docker-cs-fixer'), filters out any empty parts, or returns an empty string if there's nothing to extract.",
-    "13": "This replaces all dashes and underscores with spaces, turning 'docker-cs-fixer' into 'docker cs fixer' so it makes a better search query.",
-    "29": "The useState with a function argument tells React to only calculate this random message once when the component first loads, not every time it re-renders.",
-    "37": "This effect automatically opens the search palette whenever the extracted query changes, giving visitors instant access to search without them having to press a keyboard shortcut.",
-    "72": "This lets users manually open the search palette with the same pre-filled query by clicking the button, in case the automatic opening didn't help them."
+    "13": "The `split(\"/\").filter(Boolean).pop()` extracts the last part of the URL path (filtering out empty strings from double slashes), so \"/docs/docker-cs-fixer\" becomes \"docker-cs-fixer\".",
+    "14": "This replaces any sequence of hyphens or underscores with a space, turning \"docker-cs-fixer\" into \"docker cs fixer\" so it reads better as a search query.",
+    "20": "The translation extraction tool reads the actual code structure, so each `translate()` call must be written out individually; if we looped over an array, the tool wouldn't find the translation keys.",
+    "57": "The `useState` with an initializer function means this random message is picked once when the component first loads and never changes, even if the component re-renders.",
+    "59": "This picks a random index between 0 and the number of messages, then uses `Math.floor()` to round down to a whole number so we get a valid array index.",
+    "63": "This builds the correct image URL based on the site's base path, so the image works whether you're visiting the site at the root or in a subdirectory.",
+    "70": "The `useEffect` runs after the component renders and automatically opens the command palette (search tool) with the guessed search term from the failed URL."
   }
 }

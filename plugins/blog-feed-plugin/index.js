@@ -146,8 +146,23 @@ function getStripSelectors(userSelectors = []) {
 
 // --- Article extraction ------------------------------------------------------
 
-async function getArticleHtml(permalink, outDir, stripSelectors = []) {
-  const htmlFilePath = path.join(outDir, permalink, "index.html");
+/**
+ * Locates a built page from its permalink.
+ *
+ * `outDir` is ALREADY the locale's output directory (`build/` for the default locale,
+ * `build/fr/` for `fr`), while `permalink` already carries the locale's baseUrl
+ * (`/fr/blog/<slug>`). Joining them naively produces `build/fr/fr/blog/<slug>` — a path that
+ * never exists, so every article silently lost its body and the French feed came out empty
+ * with a green build. Strip the baseUrl prefix before joining. See TODO 0119.
+ */
+async function getArticleHtml(permalink, outDir, stripSelectors = [], baseUrl = "/") {
+  const normalizedBase = baseUrl.endsWith("/") ? baseUrl : `${baseUrl}/`;
+  const relativePermalink =
+    normalizedBase !== "/" && permalink.startsWith(normalizedBase)
+      ? permalink.slice(normalizedBase.length - 1)
+      : permalink;
+
+  const htmlFilePath = path.join(outDir, relativePermalink, "index.html");
   if (!fs.existsSync(htmlFilePath)) {
     console.warn(
       `[BlogFeedPlugin] HTML file not found for ${permalink} at: ${htmlFilePath}`,
@@ -403,7 +418,7 @@ module.exports = function blogFeedPlugin(context, options = {}) {
   return {
     name: "blog-feed-plugin",
 
-    async postBuild({ siteConfig, outDir, siteDir }) {
+    async postBuild({ siteConfig, outDir, siteDir, i18n }) {
       try {
         // AJOUTEZ CETTE LIGNE ICI 👇
         const { Feed } = await import("feed");
@@ -495,17 +510,40 @@ module.exports = function blogFeedPlugin(context, options = {}) {
               item.permalink,
               outDir,
               stripSelectors,
+              baseUrl,
             );
             return { ...item, fullContentBody };
           }),
         );
 
         // Filter out drafts (published: false) and articles with no content body
-        const publishedFeedItems = feedItemsWithContent
+        let publishedFeedItems = feedItemsWithContent
           .filter((item) => item.frontMatter.published !== false && item.fullContentBody)
           .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        const language = siteConfig.i18n?.defaultLocale || "en-US";
+        // In a non-default locale, only articles that really are translated belong in the feed.
+        // Docusaurus's i18n fallback means every English article also has a `/fr/` URL, so
+        // without this the French feed would advertise 257 English posts as French content —
+        // the same duplicate-content problem plugins/i18n-seo-guard solves for the HTML pages.
+        // See TODO 0119.
+        const currentLocale = i18n?.currentLocale ?? siteConfig.i18n?.defaultLocale;
+        if (currentLocale && currentLocale !== siteConfig.i18n?.defaultLocale) {
+          const {
+            collectTranslations,
+          } = require("../translations-manifest-plugin/index.cjs");
+          const translated = new Set(collectTranslations(siteDir)[currentLocale] ?? []);
+          // `finalSlug` is the item's own slug, already computed upstream — use it rather than
+          // re-deriving one from the permalink, which silently matched nothing and emptied the
+          // whole feed on the first attempt.
+          publishedFeedItems = publishedFeedItems.filter((item) =>
+            translated.has(item.finalSlug),
+          );
+          console.log(
+            `[BlogFeedPlugin] locale ${currentLocale}: ${publishedFeedItems.length} translated article(s) in the feed.`,
+          );
+        }
+
+        const language = currentLocale || siteConfig.i18n?.defaultLocale || "en-US";
 
         // --- Site-wide feed --------------------------------------------------
 

@@ -1,0 +1,120 @@
+---
+title: "Comment utiliser le composant Project Setup"
+description: "Un guide détaillé pour utiliser le composant Project Setup, créer une archive ZIP ou générer un script d'installation."
+---
+
+import ProjectSetup, { EmptyFolder, Guideline } from "@site/src/components/ProjectSetup";
+
+import Snippet from "@site/src/components/Snippet";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+
+# Comment utiliser le composant Project Setup
+
+Le composant **Project Setup** est un outil puissant, conçu pour vous aider à mettre rapidement en place un nouveau projet. Il affiche une liste de fichiers et propose deux façons de démarrer : télécharger une archive ZIP, ou utiliser un script d'installation généré.
+
+Voici à quoi ressemble le composant, pleinement fonctionnel.
+
+<ProjectSetup folderName="/tmp/phpinfo">
+  <Snippet
+    filename="compose.yaml"
+    code={`services:
+    app:
+      build: .
+      ports:
+        - "8080:80"`}
+  />
+  <Snippet
+    filename="Dockerfile"
+    code={`FROM php:8.4-apache
+COPY index.php /var/www/html/
+`}
+  />
+  <Snippet
+    filename="index.php"
+    code={`<?php
+echo "Hello from PHP 8.4 in Docker!";
+phpinfo();
+`}
+  />
+  <Guideline>
+    Lancez maintenant 'docker compose up -d' pour démarrer le projet, puis ouvrez votre
+    navigateur sur http://localhost:8080
+  </Guideline>
+</ProjectSetup>
+
+## Option 1 : télécharger une archive ZIP
+
+C'est la façon la plus simple de récupérer tous les fichiers du projet sur votre machine.
+
+1.  **Cliquez sur le bouton « ZIP »** : tous les fichiers et dossiers sont regroupés dans une seule archive `.zip`, dont le téléchargement démarre dans votre navigateur.
+2.  **Enregistrez le fichier** : choisissez un emplacement sur votre ordinateur.
+3.  **Décompressez l'archive** :
+    <Tabs>
+      <TabItem value="windows" label="Windows" default>
+        <p>
+          Faites un clic droit sur le fichier téléchargé et choisissez{" "}
+          <b>« Extraire tout… »</b>. Sélectionnez un dossier de destination : les fichiers
+          y seront décompressés.
+        </p>
+      </TabItem>
+      <TabItem value="linux" label="Linux/macOS">
+        <p>
+          Ouvrez votre terminal, placez-vous dans le dossier où vous avez enregistré le
+          fichier, puis lancez :
+        </p>
+        <CodeBlock language="bash">
+          unzip your-project-name.zip -d your-project-name
+        </CodeBlock>
+      </TabItem>
+    </Tabs>
+4.  **Lisez le `README.md`** : le dossier décompressé contient un fichier `README.md` qui décrit les étapes suivantes — les commandes d'installation (par exemple `npm install`) et la façon de lancer le projet.
+
+<AlertBox variant="tip" title="Exemple en MS-DOS">
+Voici comment utiliser le ZIP depuis une console MS-DOS. Téléchargez l'archive, décompressez-la, utilisez `cd` pour entrer dans le dossier où se trouvent les fichiers, puis affichez les instructions (`type README.md`) et suivez-les pour lancer le projet.
+
+Dans l'exemple ci-dessous, les instructions consistent à lancer `docker compose up -d` puis à ouvrir une page web.
+
+![Décompresser sous DOS](./images/unzip_using_dos.webp)
+
+</AlertBox>
+
+## Option 2 : générer un script d'installation
+
+Cette option est idéale si vous êtes à l'aise avec la ligne de commande (Linux, macOS ou WSL sous Windows). Elle génère un script « one-liner » qui crée tous les fichiers et dossiers directement depuis votre terminal.
+
+1.  **Cliquez sur le bouton « Generate install script »** : la vue bascule de la liste de fichiers vers un bloc de code contenant un script Bash.
+2.  **Copiez le script** : cliquez sur le bouton **« Copy »** pour le placer dans votre presse-papiers.
+3.  **Collez et exécutez dans votre terminal** :
+    - Ouvrez votre terminal.
+    - Placez-vous dans le dossier où vous voulez créer le projet.
+    - Collez le script et appuyez sur `Entrée`.
+4.  **Suivez les instructions affichées** : le script crée le dossier du projet, tous les sous-dossiers et fichiers nécessaires, puis affiche les étapes suivantes.
+
+<AlertBox variant="tip" title="Cliquez sur le bouton Copy">
+Après avoir cliqué sur `Generate install script`, cliquez sur `Copy` pour placer le script dans votre presse-papiers.
+
+Ouvrez une console (MS-DOS, PowerShell ou, plus probablement, une console Linux/WSL) et collez le contenu du presse-papiers.
+
+Cela fait, appuyez sur <kbd>Entrée</kbd>.
+
+![Générer le script d'installation](./images/generate_install_script.webp)
+
+Ouvrez ensuite une console (Ubuntu dans l'exemple ci-dessous) et collez :
+
+![Coller le presse-papiers dans WSL](./images/pasting_on_wsl.webp)
+
+Comme le montre l'image, les instructions s'affichent alors en bas de l'écran.
+
+</AlertBox>
+
+## Option 3 : créer les fichiers à la main
+
+Si vous préférez créer les fichiers vous-même, procédez ainsi :
+
+1.  **Créez le dossier du projet** : créez manuellement le dossier principal de votre projet (par exemple `my-project`), ou placez-vous dans un dossier existant.
+2.  **Consultez la liste des fichiers** : le composant **Project Setup** affiche tous les fichiers et leur contenu.
+3.  **Créez chaque fichier** : pour chaque entrée de la liste, créez un fichier du même nom et copiez-y le contenu.
+4.  **Créez les dossiers vides** : si des dossiers vides sont indiqués, pensez à les créer aussi.
+5.  **Suivez les consignes** : une fois tous les fichiers créés, suivez les instructions de la section « guidelines » du composant pour installer les dépendances et lancer le projet.

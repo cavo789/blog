@@ -21,6 +21,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import yaml from "js-yaml";
 import { loadPosts } from "../../scripts/lib/blog-corpus.mjs";
+import translationsManifest from "../translations-manifest-plugin/index.cjs";
+
+const { collectTranslations, collectTranslatedFrontMatter } = translationsManifest;
+
+/** The slug part of a post permalink — `/blog/my-post` -> `my-post`. */
+function slugOf(post) {
+  const match = String(post.permalink ?? "").match(/blog\/([^/]+)\/?$/);
+  return match ? match[1] : "";
+}
 import SERIES_DATA from "../../src/data/series.js";
 
 // Mirrors src/components/Blog/utils/slug.ts's createSlug() exactly. Duplicated rather than
@@ -60,10 +69,18 @@ const STATIC_PAGES = [
   { title: "FAQ — ask my blog", permalink: "/faq", keywords: "faq questions ask search" },
 ];
 
-function buildArticles(posts) {
+/**
+ * @param posts the corpus, already narrowed to this locale
+ * @param localized slug -> localized front matter; empty on the default locale
+ */
+function buildArticles(posts, localized = {}) {
   return posts.map((post) => ({
-    title: post.title,
-    description: post.description,
+    // What the reader types against and reads in the palette. `loadPosts()` reads `blog/`, the
+    // English corpus, so filtering to the translated slugs is only half the job — without this
+    // overlay the French palette listed four entries with English titles. Same defect, same
+    // shape, as the one fixed in plugins/blog-graph-plugin.
+    title: localized[slugOf(post)]?.title || post.title,
+    description: localized[slugOf(post)]?.description || post.description,
     slug: post.slug,
     permalink: post.permalink,
     mainTag: post.mainTag,
@@ -93,9 +110,35 @@ function buildSeries(posts) {
     }));
 }
 
-function buildTags(posts) {
-  const tagsYamlPath = path.join(__dirname, "../../blog/tags.yml");
-  const tagLabels = yaml.load(readFileSync(tagsYamlPath, "utf8")) ?? {};
+/** Parse a tags.yml, or `{}` when the file does not exist (a locale may ship none). */
+function readTagsYaml(filePath) {
+  try {
+    return yaml.load(readFileSync(filePath, "utf8")) ?? {};
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * @param currentLocale the locale being built; its tags.yml overrides the English labels
+ */
+function buildTags(posts, currentLocale, defaultLocale) {
+  const english = readTagsYaml(path.join(__dirname, "../../blog/tags.yml"));
+
+  // The React side answers this same question through
+  // `src/components/Blog/utils/tagsI18n.ts`, which cannot be imported here (TypeScript, and
+  // this plugin runs under plain Node ESM — same reason `createSlug` is duplicated above).
+  // The resolution order must stay identical: localized label, then English, then the raw key.
+  const localized =
+    currentLocale && currentLocale !== defaultLocale
+      ? readTagsYaml(
+          path.join(
+            __dirname,
+            `../../i18n/${currentLocale}/docusaurus-plugin-content-blog/tags.yml`,
+          ),
+        )
+      : {};
+
   const countByKey = new Map();
 
   for (const post of posts) {
@@ -108,22 +151,34 @@ function buildTags(posts) {
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([key, count]) => ({
       key,
-      label: tagLabels[key]?.label ?? key,
+      label: localized[key]?.label || english[key]?.label || key,
       permalink: `/blog/tags/${key}`,
       count,
     }));
 }
 
-function buildNavIndex() {
-  const posts = loadPosts();
+function buildNavIndex({ siteDir, currentLocale, defaultLocale }) {
+  let posts = loadPosts();
+
+  /** slug -> localized front matter. Empty on the default locale, where the source IS the text. */
+  let localized = {};
+
+  // `loadPosts()` reads `blog/`, i.e. the English corpus. Docusaurus's i18n fallback gives every
+  // English article a live `/fr/` route, so without this the French palette would offer 257
+  // entries whose titles are English and whose pages open on English prose. See TODO 0119.
+  if (currentLocale && currentLocale !== defaultLocale) {
+    const translated = new Set(collectTranslations(siteDir)[currentLocale] ?? []);
+    posts = posts.filter((post) => translated.has(slugOf(post)));
+    localized = collectTranslatedFrontMatter(siteDir)[currentLocale] ?? {};
+  }
 
   return {
     // No build timestamp: this index ships in the client bundle, and a
     // wall-clock value would change main.js's hash on every build (see the
     // same note in plugins/blog-graph-plugin).
-    articles: buildArticles(posts),
+    articles: buildArticles(posts, localized),
     series: buildSeries(posts),
-    tags: buildTags(posts),
+    tags: buildTags(posts, currentLocale, defaultLocale),
     pages: STATIC_PAGES,
     meta: {
       articleCount: posts.length,
@@ -131,12 +186,16 @@ function buildNavIndex() {
   };
 }
 
-export default function commandPalettePlugin() {
+export default function commandPalettePlugin(context) {
   return {
     name: "command-palette-plugin",
 
     async loadContent() {
-      return buildNavIndex();
+      return buildNavIndex({
+        siteDir: context.siteDir,
+        currentLocale: context.i18n?.currentLocale,
+        defaultLocale: context.i18n?.defaultLocale,
+      });
     },
 
     async contentLoaded({ content, actions }) {
@@ -149,6 +208,12 @@ export default function commandPalettePlugin() {
         path.join(__dirname, "../../blog/tags.yml"),
         path.join(__dirname, "../../scripts/lib/blog-corpus.mjs"),
         path.join(__dirname, "../../src/data/series.js"),
+        // The translated titles and tag labels this index now overlays.
+        path.join(
+          __dirname,
+          "../../i18n/*/docusaurus-plugin-content-blog/**/index.{md,mdx}",
+        ),
+        path.join(__dirname, "../../i18n/*/docusaurus-plugin-content-blog/tags.yml"),
       ];
     },
   };

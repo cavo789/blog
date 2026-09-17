@@ -17,6 +17,82 @@ import pluginYamlWebpack from "./plugins/yaml-webpack-plugin/index.cjs";
 import remarkReplaceWords from "./plugins/remark-replace-terms/index.cjs";
 import remarkTreeToComponent from "./plugins/remark-tree-to-component/index.cjs";
 import remarkSnippetLoader from "./plugins/remark-snippet-loader/index.cjs";
+import remarkI18nAssets from "./plugins/remark-i18n-assets/index.cjs";
+import remarkI18nLinkTitles from "./plugins/remark-i18n-link-titles/index.cjs";
+import translationsManifest from "./plugins/translations-manifest-plugin/index.cjs";
+
+const { collectTranslations, collectAllArticleSlugs } = translationsManifest;
+
+/**
+ * The site's source-of-truth locale. Declared once so that adding `nl` or `es` never means
+ * hunting for `"en"` literals scattered through this file.
+ */
+const DEFAULT_LOCALE = "en";
+
+/** The site's origin. Declared once: the head tags below build absolute URLs by hand. */
+const SITE_URL = "https://www.avonture.be";
+
+/**
+ * The default locale's own name for itself. Single source of truth: it feeds both
+ * `i18n.localeConfigs` below and the "(English — the whole blog)" suffix on the source-language
+ * discovery links, which the React components word the same way from `localeConfigs`.
+ */
+const DEFAULT_LOCALE_LABEL = "English";
+
+/**
+ * The locale segment for this build's absolute URLs — `""` on the default locale, `"/fr"`
+ * otherwise.
+ *
+ * `DOCUSAURUS_CURRENT_LOCALE` is `undefined` on the FIRST config load (Docusaurus reads the
+ * config once to discover the locale list, then once per locale). Falling back to the default
+ * locale is not defensive padding — it is what that first pass actually describes.
+ */
+const CURRENT_LOCALE = process.env.DOCUSAURUS_CURRENT_LOCALE || DEFAULT_LOCALE;
+const IS_DEFAULT_LOCALE = CURRENT_LOCALE === DEFAULT_LOCALE;
+const LOCALE_SEGMENT = IS_DEFAULT_LOCALE ? "" : `/${CURRENT_LOCALE}`;
+
+/**
+ * A discovery `<link>` for a resource that exists once per locale.
+ *
+ * On a translated locale two are emitted: this locale's, then the source locale's carrying
+ * `hreflang` and a title that says so. Helmet de-duplicates `<link>` on `href`
+ * (`linkTags: x(LINK, ["rel","href"], …)` in react-helmet-async), so both survive — and a
+ * reader's extension or an agent landing on a French page can still find the full English feed.
+ *
+ * @param {{ path: string, type: string, title: string }} options
+ * @returns {import('@docusaurus/types').HtmlTagObject[]}
+ */
+function localizedAlternates({ path, type, title }) {
+  // Annotated: without it the array's type is inferred from its first element, and the
+  // source-locale entry below — the only one carrying `hreflang` — fails to type-check.
+  /** @type {import('@docusaurus/types').HtmlTagObject[]} */
+  const tags = [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "alternate",
+        type,
+        href: `${SITE_URL}${LOCALE_SEGMENT}${path}`,
+        title,
+      },
+    },
+  ];
+
+  if (!IS_DEFAULT_LOCALE) {
+    tags.push({
+      tagName: "link",
+      attributes: {
+        rel: "alternate",
+        type,
+        href: `${SITE_URL}${path}`,
+        hreflang: DEFAULT_LOCALE,
+        title: `${title} (${DEFAULT_LOCALE_LABEL} — the whole blog)`,
+      },
+    });
+  }
+
+  return tags;
+}
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -74,6 +150,10 @@ const config = {
   onDuplicateRoutes: "throw",
 
   customFields: {
+    // Resolves the `{year}` token in the footer copyright (src/theme/Footer/Copyright). Captured
+    // here, at build time, so the server-rendered HTML and the client agree — a year computed at
+    // render time would differ from the prerendered one the first January after a build.
+    buildYear: new Date().getFullYear(),
     bluesky: {
       // This is the Bluesky handle as displayed in your Bluesky profile page
       handle: "avonture.be",
@@ -104,8 +184,16 @@ const config = {
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: DEFAULT_LOCALE,
+    locales: ["en", "fr"],
+    // Declared rather than inferred: these labels are what the navbar's localeDropdown shows,
+    // and a language is always named in its own language — an English speaker looks for
+    // "English", a French one for "Français". `htmlLang` drives <html lang>, which is what a
+    // screen reader switches pronunciation on and what Google reads alongside hreflang.
+    localeConfigs: {
+      en: { label: DEFAULT_LOCALE_LABEL, htmlLang: "en-GB", direction: "ltr" },
+      fr: { label: "Français", htmlLang: "fr-BE", direction: "ltr" },
+    },
   },
   scripts: [
     {
@@ -146,6 +234,16 @@ const config = {
           onUntruncatedBlogPosts: "ignore",
           // Replace words like "vscode" or "markdown" to "VSCode" and "Markdown"
           beforeDefaultRemarkPlugins: [
+            // Must stay FIRST: it rewrites the `./`-relative asset paths of translated articles
+            // so that remarkSnippetLoader below — and Docusaurus's own image handling — resolve
+            // them against the English article's folder. See plugins/remark-i18n-assets.
+            remarkI18nAssets,
+            // After remarkI18nAssets (which must stay first) and before the rest: it only
+            // rewrites link TEXT, so nothing downstream depends on its ordering — but it must
+            // see the tree before any plugin that rewrites links. Relabels a translated
+            // article's citations of other articles as those get translated; see the plugin's
+            // header for why this is resolved at build time instead of stored.
+            remarkI18nLinkTitles,
             remarkSnippetLoader,
             remarkReplaceWords,
             remarkTreeToComponent,
@@ -154,19 +252,65 @@ const config = {
         sitemap: {
           changefreq: "weekly",
           priority: 0.5,
+          // Untranslated articles must not be advertised in a non-default locale's sitemap:
+          // a sitemap entry is an explicit "please index this", and those pages serve English
+          // content under a French URL (Docusaurus's i18n fallback). They already carry
+          // `noindex` + `canonical` via plugins/i18n-seo-guard — this keeps the two consistent.
+          //
+          // Done here rather than by pruning sitemap.xml in a postBuild: the sitemap plugin's
+          // own postBuild runs after any other plugin's and would overwrite the pruning.
+          // `createSitemapItems` is the supported hook for exactly this.
+          createSitemapItems: async ({ defaultCreateSitemapItems, ...rest }) => {
+            const items = await defaultCreateSitemapItems(rest);
+            const locale = process.env.DOCUSAURUS_CURRENT_LOCALE;
+
+            // Compared against the declared default locale, never a literal: adding `nl` must not
+            // require editing this line.
+            if (!locale || locale === DEFAULT_LOCALE) return items;
+
+            const translated = new Set(collectTranslations(process.cwd())[locale] ?? []);
+            const articleSlugs = collectAllArticleSlugs(process.cwd());
+
+            return items.filter((item) => {
+              // Only article URLs are candidates. Matching on "last path segment" alone would
+              // also swallow /blog/tags/ and /blog/page/2/, hence the known-slug check.
+              const match = item.url.match(/\/blog\/([^/]+)\/?$/);
+              if (!match || !articleSlugs.has(match[1])) return true;
+              return translated.has(match[1]);
+            });
+          },
           // Author-only pages carry `noindex` but were still being submitted
           // here — a sitemap entry is an explicit "please index this". They are
           // deliberately absent from robots.txt: a `Disallow` would stop the
           // crawl before the `noindex` is ever read, so the URL could linger in
           // the index with no way out, and would publish the paths in the
           // bargain.
-          ignorePatterns: [
-            "/blog/tags/**",
-            "/admin",
-            "/typo-dashboard",
-            "/reactions-dashboard",
-          ],
+          //
+          // These patterns are matched against the route path, which CARRIES the locale's
+          // baseUrl: under `fr` the tag pages are `/fr/blog/tags/...`, so a bare
+          // `/blog/tags/**` matched nothing and 140 French tag pages were being advertised
+          // while zero English ones were. Every pattern is therefore emitted twice, once bare
+          // and once locale-prefixed. See TODO 0119.
+          ignorePatterns: (() => {
+            const patterns = [
+              "/blog/tags/**",
+              "/admin",
+              "/typo-dashboard",
+              "/reactions-dashboard",
+            ];
+            const locale = process.env.DOCUSAURUS_CURRENT_LOCALE;
+
+            return locale && locale !== DEFAULT_LOCALE
+              ? [...patterns, ...patterns.map((pattern) => `/${locale}${pattern}`)]
+              : patterns;
+          })(),
           filename: "sitemap.xml",
+        },
+        pages: {
+          // The pages plugin had no explicit config, so it ran with no remark plugins at all —
+          // meaning a translated page under i18n/ could not resolve its `./images/…`, exactly
+          // like blog articles before remark-i18n-assets. Same plugin, same reason.
+          beforeDefaultRemarkPlugins: [remarkI18nAssets],
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -200,6 +344,14 @@ const config = {
     ["./plugins/ascii-injector/index.mjs", { bannerPath: "src/data/banner.txt" }],
     "./plugins/sitemap-easter-egg/index.mjs",
     "./plugins/markdown-export-plugin/index.cjs",
+    // Single source of truth for "is this article translated?" — consumed by the SEO guard
+    // below, by the banner/flag components and by every listing surface (TODO 0119).
+    "./plugins/translations-manifest-plugin/index.cjs",
+    // Must come after the sitemap plugin: it rewrites the sitemap that plugin produced.
+    "./plugins/i18n-seo-guard/index.cjs",
+    // Points build/<locale>/.htaccess — a verbatim copy of static/.htaccess — at the locale's own
+    // 404 page and app shell instead of the English ones.
+    "./plugins/i18n-htaccess/index.cjs",
     require.resolve("docusaurus-plugin-image-zoom"),
     ["docusaurus-plugin-pagefind", {}],
     [
@@ -334,34 +486,30 @@ const config = {
         content: "avonture.be",
       },
     },
-    {
-      // The classic preset advertises atom.xml and feed.json on blog routes, but
-      // never /blog/rss.xml — that one is written by plugins/blog-feed-plugin and
-      // is the richest of the three (cleaned content, <enclosure> image,
-      // dc:creator, XSLT stylesheet). Declared globally so a reader's browser
-      // extension finds it from any page, not only from /blog.
-      tagName: "link",
-      attributes: {
-        rel: "alternate",
-        type: "application/rss+xml",
-        href: "https://www.avonture.be/blog/rss.xml",
-        title: "Christophe Avonture — RSS feed",
-      },
-    },
-    {
-      // Site-wide discovery hook for the llms.txt convention (llmstxt.org) —
-      // mirrors how <link rel="alternate" type="application/rss+xml"> lets a
-      // reader/tool find the RSS feed without knowing the URL in advance.
-      // Present on every page since it lives in the global headTags, not a
-      // per-post component. See plugins/markdown-export-plugin.
-      tagName: "link",
-      attributes: {
-        rel: "alternate",
-        type: "text/markdown",
-        href: "https://www.avonture.be/llms.txt",
-        title: "llms.txt — full site index in Markdown, for LLMs and readers",
-      },
-    },
+    // The classic preset advertises atom.xml and feed.json on blog routes, but
+    // never /blog/rss.xml — that one is written by plugins/blog-feed-plugin and
+    // is the richest of the three (cleaned content, <enclosure> image,
+    // dc:creator, XSLT stylesheet). Declared globally so a reader's browser
+    // extension finds it from any page, not only from /blog.
+    //
+    // The href used to be hardcoded to the English URL, so every French page advertised the
+    // English feed. It now follows the locale being built — and offers the English one beside it.
+    ...localizedAlternates({
+      path: "/blog/rss.xml",
+      type: "application/rss+xml",
+      title: "Christophe Avonture — RSS feed",
+    }),
+    // Site-wide discovery hook for the llms.txt convention (llmstxt.org) —
+    // mirrors how <link rel="alternate" type="application/rss+xml"> lets a
+    // reader/tool find the RSS feed without knowing the URL in advance.
+    // Present on every page since it lives in the global headTags, not a
+    // per-post component. See plugins/markdown-export-plugin, which writes one
+    // index per locale into that locale's outDir.
+    ...localizedAlternates({
+      path: "/llms.txt",
+      type: "text/markdown",
+      title: "llms.txt — full site index in Markdown, for LLMs and readers",
+    }),
     {
       tagName: "link",
       attributes: {
@@ -494,6 +642,15 @@ const config = {
             label: "About me",
           },
           {
+            // Without this, the French site is unreachable: a reader has to type `/fr/` into the
+            // address bar themselves. Docusaurus ships the dropdown — it lists every configured
+            // locale and links to the SAME page in the other one, keeping the reader where they
+            // were instead of dumping them on the home page. Placed before the GitHub icon so it
+            // stays inside the navbar's right group rather than becoming the last, smallest item.
+            type: "localeDropdown",
+            position: "right",
+          },
+          {
             href: "https://github.com/cavo789/blog",
             label: "GitHub",
             position: "right",
@@ -507,7 +664,15 @@ const config = {
         // The /follow link is the site's only permanent pointer to the RSS
         // feeds; every other entry point (article action bar, tag and series
         // pages) is contextual and only shows up on those pages.
-        copyright: `<span class="footer-cmdk-hint">Press ⌘K to search · ? for shortcuts · <a href="/follow">follow by RSS</a></span><br />Copyright © ${new Date().getFullYear()} Christophe Avonture. Powered by Docusaurus.`,
+        // English source only. The French version lives in
+        // `i18n/fr/docusaurus-theme-classic/footer.json`, which OVERRIDES this value — a
+        // locale-aware computation here is silently ignored (learned the hard way, TODO 0119).
+        // Raw HTML in themeConfig is never locale-prefixed, so the `/follow` href has to be
+        // fixed in that JSON too, not just the words.
+        // `{year}` is a token, not a literal: that JSON is generated once and never recomputed,
+        // so a year baked into it froze the French footer at the year of translation. The
+        // swizzled Footer/Copyright wrapper substitutes `customFields.buildYear` in both locales.
+        copyright: `<span class="footer-cmdk-hint">Press ⌘K to search · ? for shortcuts · <a href="/follow">follow by RSS</a></span><br />Copyright © {year} Christophe Avonture. Powered by Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

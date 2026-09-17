@@ -27,6 +27,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { useHistory } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 import GroupedList from "./GroupedList";
 import {
   DEFAULT_TOP_N,
@@ -34,7 +36,6 @@ import {
   computeCanvasHeight,
   displayRadius,
   fitTransform,
-  humanizeTag,
   neighborsOf,
   pickMeerkatNodes,
   selectVisibleEdges,
@@ -54,6 +55,7 @@ import meerkatOrphanPeeking from "@site/static/img/meerkat/suricate_peeking.webp
 import meerkatOrphanLying from "@site/static/img/meerkat/suricate_sleeping_lying.webp";
 import meerkatOrphanTowel from "@site/static/img/meerkat/suricate_towel.webp";
 import meerkatOrphanMeditating from "@site/static/img/meerkat/suricate_meditating.webp";
+import Translate, { translate } from "@docusaurus/Translate";
 
 type MeerkatKind = "hub" | "orphan";
 
@@ -168,6 +170,8 @@ function drawImageCover(
 export default function BlogGraph() {
   const graph = usePluginData("blog-graph-plugin") as BlogGraphData | undefined;
   const history = useHistory();
+  const { i18n } = useDocusaurusContext();
+  const tagLabel = useTagLabel();
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -251,10 +255,18 @@ export default function BlogGraph() {
 
   const mainTags = useMemo(() => {
     if (!graph) return [];
-    return [
+    const keys = [
       ...new Set(graph.nodes.map((node) => node.mainTag).filter(Boolean)),
-    ].sort() as string[];
-  }, [graph]);
+    ] as string[];
+
+    // Sorted on the DISPLAYED label, not on the key: under `fr`, "ai" reads "Intelligence
+    // artificielle (IA)" and sorting by key would order the dropdown by invisible values.
+    // `currentLocale` is passed explicitly — the runtime default differs between the Node
+    // render and the browser, which would reorder the list at hydration.
+    return keys.sort((a, b) =>
+      tagLabel(a).localeCompare(tagLabel(b), i18n.currentLocale),
+    );
+  }, [graph, tagLabel, i18n.currentLocale]);
 
   const visibleNodes = useMemo(() => {
     if (!graph) return [];
@@ -502,30 +514,54 @@ export default function BlogGraph() {
     <div className={styles.wrap} ref={wrapRef}>
       <p className={clsx(styles.intro, "text--center")}>
         {showCanvas
-          ? "Every published article, plotted by how it links to, shares a series with, or shares tags with the rest of the corpus. Hover a dot to see its neighbors, click to open the article."
-          : "Every published article, grouped by topic below. Tap a title to open it."}
+          ? translate({
+              id: "blog.graph.intro.canvas",
+              message:
+                "Every published article, plotted by how it links to, shares a series with, or shares tags with the rest of the corpus. Hover a dot to see its neighbors, click to open the article.",
+            })
+          : translate({
+              id: "blog.graph.intro.list",
+              message:
+                "Every published article, grouped by topic below. Tap a title to open it.",
+            })}
       </p>
 
       <div className={styles.controls}>
         <label className={styles.selectLabel} htmlFor="blog-graph-maintag">
-          Filter by topic
+          <Translate id="blog.graph.filterByTopic">Filter by topic</Translate>
           <select
             id="blog-graph-maintag"
             className={styles.select}
             value={mainTag}
             onChange={(event) => setMainTag(event.target.value)}
           >
-            <option value="">{`Top ${DEFAULT_TOP_N} most-linked articles`}</option>
+            <option value="">
+              {translate(
+                { id: "blog.graph.topN", message: "Top {count} most-linked articles" },
+                // The real number of nodes this option draws, not the ceiling. `DEFAULT_TOP_N` is
+                // a cap; `meta.articleCount` is the corpus AFTER the plugin's locale filter, so
+                // /fr/map/ was advertising "Top 120" over a canvas holding 4.
+                { count: Math.min(DEFAULT_TOP_N, graph.meta.articleCount) },
+              )}
+            </option>
             {mainTags.map((tag) => (
               <option key={tag} value={tag}>
-                {humanizeTag(tag)}
+                {tagLabel(tag)}
               </option>
             ))}
           </select>
         </label>
         <p className={styles.counter}>
-          {graph.meta.articleCount} articles · {graph.meta.seriesCount} series ·{" "}
-          {graph.meta.linkCount} internal links
+          <Translate
+            id="blog.graph.stats"
+            values={{
+              articles: graph.meta.articleCount,
+              series: graph.meta.seriesCount,
+              links: graph.meta.linkCount,
+            }}
+          >
+            {"{articles} articles · {series} series · {links} internal links"}
+          </Translate>
         </p>
       </div>
 
@@ -534,18 +570,29 @@ export default function BlogGraph() {
           ref={canvasRef}
           className={styles.canvas}
           role="img"
-          aria-label={`Force-directed map of ${visibleNodes.length} articles and ${visibleEdges.length} connections. Hover a node to see its title and neighbors, click to open the article.`}
+          aria-label={translate(
+            {
+              id: "blog.graph.canvas.ariaLabel",
+              message:
+                "Force-directed map of {nodes} articles and {edges} connections. Hover a node to see its title and neighbors, click to open the article.",
+            },
+            { nodes: visibleNodes.length, edges: visibleEdges.length },
+          )}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           onClick={handleClick}
         >
-          Your browser does not support the canvas element — see the list below instead.
+          <Translate id="blog.graph.canvas.fallback">
+            Your browser does not support the canvas element — see the list below instead.
+          </Translate>
         </canvas>
       )}
 
       {showCanvas ? (
         <details className={styles.listFallback}>
-          <summary>View as list instead</summary>
+          <summary>
+            <Translate id="blog.graph.viewAsList">View as list instead</Translate>
+          </summary>
           <GroupedList nodes={listNodes} />
         </details>
       ) : (

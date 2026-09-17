@@ -1,16 +1,22 @@
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useTranslationState } from "@site/src/components/Blog/utils/translations";
+import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";
 import { PageMetadata } from "@docusaurus/theme-common";
-import { translate } from "@docusaurus/Translate";
+import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
+import Interpolate from "@docusaurus/Interpolate";
+import Translate, { translate } from "@docusaurus/Translate";
 import BlogPostCount from "@site/src/components/Blog/PostCount";
 import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
 import React, { useState, useEffect, useMemo } from "react";
-import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import styles from "./styles.module.css";
 
-const allPosts = getBlogMetadata();
-
 function Archives() {
+  // Was a module-scope constant; it has to live inside the component now that the corpus is
+  // locale-aware (a hook cannot be called at module scope). `useBlogMetadata` is memo-free but
+  // cheap — the underlying require.context is resolved once by webpack.
+  const allPosts = useBlogMetadata();
+  const { isDefaultLocale } = useTranslationState();
   const [selectedYear, setSelectedYear] = useState("all");
   const [selectedTag, setSelectedTag] = useState("all");
   const [activeYearMonth, setActiveYearMonth] = useState(null);
@@ -32,7 +38,7 @@ function Archives() {
 
     if (selectedYear !== "all") {
       filteredPosts = filteredPosts.filter(
-        (post) => new Date(post.date).getFullYear().toString() === selectedYear,
+        (post) => new Date(post.date).getUTCFullYear().toString() === selectedYear,
       );
     }
 
@@ -42,14 +48,28 @@ function Archives() {
     return filteredPosts;
   }, [selectedYear, selectedTag]);
 
+  const monthLabelFormat = useDateTimeFormat({ month: "long", timeZone: "UTC" });
+
+  // The month LABEL is localized; the month KEY deliberately stays the English month name.
+  // That key becomes a DOM id and an `#anchor` (`#2026-September`), so localizing it would
+  // both break every archive link already in the wild and make the same anchor resolve
+  // differently per locale (`#2026-September` here, `#2026-septembre` there). Keeping it
+  // English also keeps `Object.keys()` in insertion order: numeric keys like "01".."12" would
+  // have been hoisted and re-sorted by JS, silently scrambling the months.
+  //
+  // UTC on both sides — `getUTCFullYear()` and `timeZone: "UTC"` — because a post's `date` is
+  // a date-only string parsed as UTC midnight. Read in local time west of Greenwich, every
+  // 1st-of-month article lands in the previous month. Same reason as BlogPostItem/Header/Info.
   const postsByYearAndMonth = displayedPosts.reduce((acc, post) => {
     const date = new Date(post.date);
-    const year = date.getFullYear();
-    const month = date.toLocaleString("en-US", { month: "long" });
+    const year = date.getUTCFullYear();
+    const month = date.toLocaleString("en-US", { month: "long", timeZone: "UTC" });
 
     if (!acc[year]) acc[year] = {};
-    if (!acc[year][month]) acc[year][month] = [];
-    acc[year][month].push(post);
+    if (!acc[year][month]) {
+      acc[year][month] = { label: monthLabelFormat.format(date), posts: [] };
+    }
+    acc[year][month].posts.push(post);
     return acc;
   }, {});
 
@@ -59,7 +79,7 @@ function Archives() {
     ...new Set(
       allPosts
         .filter((post) => !post.draft && !post.unlisted)
-        .map((post) => new Date(post.date).getFullYear()),
+        .map((post) => new Date(post.date).getUTCFullYear()),
     ),
   ].sort((a, b) => b - a);
 
@@ -138,7 +158,13 @@ function Archives() {
   return (
     <>
       <PageMetadata title={title} description={description} image="/img/archives.webp" />
-      <Layout title="Archives" description="Browse all blog posts by year and month.">
+      <Layout
+        title={translate({ id: "blog.archive.layoutTitle", message: "Archives" })}
+        description={translate({
+          id: "blog.archive.layoutDescription",
+          message: "Browse all blog posts by year and month.",
+        })}
+      >
         <div className="container margin-top--lg margin-bottom--xl">
           {/* -------- Layout: Sidebar Left + Posts Right -------- */}
           <div className={styles.contentWrapper}>
@@ -146,12 +172,17 @@ function Archives() {
             <aside
               id="timeline-container"
               className={styles.sidebar}
-              aria-label="Blog Archive Filters and Timeline"
+              aria-label={translate({
+                id: "blog.archive.sidebarAriaLabel",
+                message: "Blog Archive Filters and Timeline",
+              })}
             >
               {/* Filters */}
               <div className={styles.filterContainerSidebar}>
                 <div className={styles.filterGroupSidebar}>
-                  <label htmlFor="year-filter-sidebar">Filter by Year:</label>
+                  <label htmlFor="year-filter-sidebar">
+                    <Translate id="blog.archive.filterByYear">Filter by Year:</Translate>
+                  </label>
                   <select
                     id="year-filter-sidebar"
                     value={selectedYear}
@@ -160,7 +191,9 @@ function Archives() {
                       setSelectedTag("all");
                     }}
                   >
-                    <option value="all">All Years</option>
+                    <option value="all">
+                      {translate({ id: "blog.archive.allYears", message: "All Years" })}
+                    </option>
                     {allYears.map((year) => (
                       <option key={year} value={year}>
                         {year}
@@ -170,7 +203,9 @@ function Archives() {
                 </div>
 
                 <div className={styles.filterGroupSidebar}>
-                  <label htmlFor="tag-filter-sidebar">Filter by Tag:</label>
+                  <label htmlFor="tag-filter-sidebar">
+                    <Translate id="blog.archive.filterByTag">Filter by Tag:</Translate>
+                  </label>
                   <select
                     id="tag-filter-sidebar"
                     value={selectedTag}
@@ -179,7 +214,9 @@ function Archives() {
                       setSelectedYear("all");
                     }}
                   >
-                    <option value="all">All Tags</option>
+                    <option value="all">
+                      {translate({ id: "blog.archive.allTags", message: "All Tags" })}
+                    </option>
                     {uniqueTags.map((tag) => (
                       <option key={tag} value={tag}>
                         {tag} ({tagCounts[tag] || 0})
@@ -192,9 +229,14 @@ function Archives() {
               {/* Timeline */}
               <nav
                 className={styles.verticalTimeline}
-                aria-label="Blog Archive Timeline Navigation"
+                aria-label={translate({
+                  id: "blog.archive.timelineAriaLabel",
+                  message: "Blog Archive Timeline Navigation",
+                })}
               >
-                <h2 className={styles.jumpToHeading}>Jump to</h2>
+                <h2 className={styles.jumpToHeading}>
+                  <Translate id="blog.archive.jumpTo">Jump to</Translate>
+                </h2>
                 <ul className={styles.timelineList}>
                   {years.map((year) => (
                     <li key={year} className={styles.timelineItem}>
@@ -202,20 +244,22 @@ function Archives() {
                         {year}
                       </a>
                       <ul className={styles.timelineMonthList}>
-                        {Object.keys(postsByYearAndMonth[year]).map((month) => (
-                          <li key={`${year}-${month}`} className={styles.timelineMonth}>
-                            <a
-                              href={`#${year}-${month}`}
-                              className={`${styles.timelineMonthLink} ${
-                                activeYearMonth === `${year}-${month}`
-                                  ? styles.activeMonth
-                                  : ""
-                              }`}
-                            >
-                              {month}
-                            </a>
-                          </li>
-                        ))}
+                        {Object.entries(postsByYearAndMonth[year]).map(
+                          ([month, group]) => (
+                            <li key={`${year}-${month}`} className={styles.timelineMonth}>
+                              <a
+                                href={`#${year}-${month}`}
+                                className={`${styles.timelineMonthLink} ${
+                                  activeYearMonth === `${year}-${month}`
+                                    ? styles.activeMonth
+                                    : ""
+                                }`}
+                              >
+                                {group.label}
+                              </a>
+                            </li>
+                          ),
+                        )}
                       </ul>
                     </li>
                   ))}
@@ -225,15 +269,44 @@ function Archives() {
 
             {/* Posts Content */}
             <main className={styles.postsContainer}>
-              <h1 className="text--center">Article Archives</h1>
+              <h1 className="text--center">
+                <Translate id="blog.archive.heading">Article Archives</Translate>
+              </h1>
 
+              {/* `<Interpolate>` rather than `<Translate>`: the count is a React element, and
+                  `<Translate>` only accepts a plain string as children. This keeps the number
+                  bold while leaving the sentence — and its word order — to the translator. */}
               <p className="text--center">
-                We have published{" "}
-                <strong>
-                  <BlogPostCount />
-                </strong>{" "}
-                articles on our blog!
+                <Interpolate
+                  values={{
+                    count: (
+                      <strong>
+                        <BlogPostCount />
+                      </strong>
+                    ),
+                  }}
+                >
+                  {/* Two sentences, not one with a swapped number. `<BlogPostCount />` counts the
+                      LOCALE corpus, so under `fr` the original read "We have published 4 articles
+                      on our blog!" — a statement about the blog itself, and a false one: there are
+                      257. The claim has to change with the corpus it describes, not just its
+                      figure. */}
+                  {translate(
+                    isDefaultLocale
+                      ? {
+                          id: "blog.archive.publishedCount",
+                          message: "We have published {count} articles on our blog!",
+                        }
+                      : {
+                          id: "blog.archive.availableCount",
+                          message: "{count} articles are available in this language.",
+                        },
+                  )}
+                </Interpolate>
               </p>
+
+              {/* Renders nothing on `en`. Says how many of the 257 the {count} above stands for. */}
+              <TranslationCoverage variant="listing" />
 
               {years.length > 0 ? (
                 years.map((year) => (
@@ -241,20 +314,26 @@ function Archives() {
                     <h2 className="margin-top--xl" id={year}>
                       {year}
                     </h2>
-                    {Object.keys(postsByYearAndMonth[year]).map((month) => (
+                    {Object.entries(postsByYearAndMonth[year]).map(([month, group]) => (
                       <div key={month}>
                         <h3 className={styles.monthHeading} id={`${year}-${month}`}>
-                          {month} {year}
+                          {group.label} {year}
                           <a
                             href={`#${year}-${month}`}
                             className={styles.monthAnchor}
-                            aria-label={`Link to ${month} ${year}`}
+                            aria-label={translate(
+                              {
+                                id: "blog.archive.linkTo",
+                                message: "Link to {month} {year}",
+                              },
+                              { month: group.label, year },
+                            )}
                           >
                             #
                           </a>
                         </h3>
                         <div className="row">
-                          {postsByYearAndMonth[year][month].map((post) => (
+                          {group.posts.map((post) => (
                             <PostCard key={post.permalink} post={post} layout="small" />
                           ))}
                         </div>
@@ -264,13 +343,14 @@ function Archives() {
                 ))
               ) : (
                 <p className="text--center">
-                  No posts to display with the selected filters.
+                  <Translate id="blog.archive.noPosts">
+                    No posts to display with the selected filters.
+                  </Translate>
                 </p>
               )}
             </main>
           </div>
         </div>
-        <ScrollToTopButton />
       </Layout>
     </>
   );

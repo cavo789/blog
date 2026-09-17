@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T18:01:35.238Z",
+  "generated": "2026-09-17T09:34:12.217Z",
   "source": "index.js",
-  "sourceHash": "73d67b1b6dfd0dbbb4cb3d9b3088e1b5d1d8c425",
+  "sourceHash": "e672e0883b2b793189aa3afd86cd8a7aade00ff6",
   "lang": "javascript",
-  "summary": "This component renders a blog post item that adapts its appearance depending on whether you're viewing a single post or browsing a list of posts. It conditionally shows certain interactive elements like AI badges, article actions, and engagement features only when viewing the full post page, while adding spacing when the post appears as a card in a list.",
+  "summary": "This component renders a blog post item with different content depending on whether you're viewing a single post or a list of posts. When viewing a full post, it shows extra elements like related posts, social sharing, and user interaction widgets; when viewing a list, it only shows the basic post preview. The component uses Docusaurus's blog plugin to determine the viewing context.",
   "explanations": {
-    "22": "This helper function checks whether we're on the individual post page or viewing a list of posts, and returns a CSS class name only for list view to add bottom spacing between post cards.",
-    "24": "The ternary operator returns the margin class if NOT on the post page (meaning we're in list view), otherwise returns undefined so no extra spacing is added on the full post page.",
-    "28": "We're calling a Docusaurus hook that gives us info about whether this component is rendering as a full post page or as a preview card in a list.",
-    "29": "We're extracting the frontMatter object from metadata—this contains custom fields from the blog post's YAML header like whether it's AI-assisted.",
-    "31": "This conditionally renders the AI icon badge only if two things are true: the post is marked as AI-assisted AND we're viewing the full post page (not a list card).",
-    "34": "Article actions (like share buttons) only make sense to show on the full post page, not on preview cards, so we conditionally create this element.",
-    "38": "clsx is a utility that combines multiple CSS class names together, ignoring undefined values—here we're merging the container spacing class with any additional classes passed to this component.",
-    "44": "The && operator is a common React pattern: if isBlogPostPage is true, render everything inside the fragment; if false, render nothing.",
-    "57": "This checks if tried_it is explicitly set to false in frontMatter—if it's not false (meaning it's true or undefined), render the TriedIt component."
+    "24": "This helper function checks whether we're on a full blog post page or a list view, and returns a CSS class name only for list view to add spacing between post cards.",
+    "25": "The useBlogPost hook is a Docusaurus function that gives us information about the current blog context, including whether we're viewing a single post or a list.",
+    "26": "The ternary returns a margin class name if we're NOT on a full post page (meaning we're in list view), otherwise returns undefined so no extra spacing is added.",
+    "33": "This renders the AI icon badge only if two conditions are both true: the post's front matter says it was AI-assisted AND we're viewing the full post page (not a list card).",
+    "36": "Similar logic to the AI icon: article action buttons only make sense on the full post page, so we only create this element if isBlogPostPage is true.",
+    "40": "The clsx function combines multiple CSS class names together, keeping any undefined or falsy values out of the final string.",
+    "48": "The TranslationNotice banner is deliberately placed outside the markdown content area so translators can't accidentally modify it, and it's only shown on the full post page.",
+    "53": "This entire section with RelatedPosts, Bluesky, TypoReport, and Reaction widgets only renders when viewing the full post page, not when browsing the list view.",
+    "66": "This renders the TriedIt component unless the front matter explicitly sets tried_it to false, allowing posts to opt out of this widget."
   }
 }

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState, type JSX } from "react";
 import clsx from "clsx";
 import scaredImg from "@site/static/img/meerkat/suricate_scared.webp";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 // "Jerk" (rate of change of acceleration) threshold that counts as a shake.
 // History: 28 (initial) fired from a mere tilt; 60 (first field fix) still
@@ -119,11 +120,14 @@ export default function ShakeEasterEgg(): JSX.Element | null {
       type="button"
       className={clsx(styles.overlay, phase === "leaving" && styles.leaving)}
       onClick={dismiss}
-      aria-label="Dismiss"
+      aria-label={translate({ id: "common.dismiss", message: "Dismiss" })}
     >
       <img
         src={scaredImg}
-        alt="A startled meerkat, arms flailing, as if the ground just shook"
+        alt={translate({
+          id: "shakeEasterEgg.alt",
+          message: "A startled meerkat, arms flailing, as if the ground just shook",
+        })}
         className={styles.meerkat}
       />
     </button>

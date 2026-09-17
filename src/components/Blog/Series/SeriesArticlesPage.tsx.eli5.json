@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T18:01:13.101Z",
+  "generated": "2026-09-17T09:31:48.670Z",
   "source": "SeriesArticlesPage.tsx",
-  "sourceHash": "6dc9377f176efce5224fc1d55165116c99afae1f",
+  "sourceHash": "717a669eca453a5882f45f0912dff0b6abf69184",
   "lang": "typescript",
-  "summary": "This React component displays all blog posts that belong to a specific series. It extracts the series slug from the URL, finds matching posts, looks up series metadata like colors and descriptions, and renders either a styled hero section with post cards or a 'not found' message if the series doesn't exist.",
+  "summary": "This component renders a page displaying all blog posts from a specific series. It extracts the series name from the URL, looks up matching posts and their metadata, applies localization and styling, and displays them as a grid of cards with RSS feeds and a markdown export option.",
   "explanations": {
-    "20": "matchPath is Docusaurus's tool for parsing URL patterns — here it's extracting the :slug part from /series/some-slug-here so we know which series the user wants to view.",
-    "24": "We're safely extracting the slug from the match result, which could be undefined if the URL doesn't match the expected pattern.",
-    "42": "We're filtering all blog posts down to only those that have a series field matching our current slug.",
-    "50": "We grab the original series name from the first matching post; if there are no posts (empty list), we fall back to using the slug itself as a placeholder.",
-    "54": "If the series has a custom color defined, we're converting that hex color to RGBA format at different opacity levels and storing them as CSS custom properties (CSS variables) that the styles can reference.",
-    "64": "We're sorting posts newest-first by converting their date strings to timestamps and subtracting them.",
-    "82": "The ?? operator here means 'use the series image if it exists, otherwise use the default fallback image'.",
-    "98": "This is a regular HTML anchor tag, not Docusaurus's Link component, because this page is generated statically by a plugin rather than being a standard registered route.",
-    "137": "We're rendering each post as a PostCard component, using the post's permalink as the React key so React can efficiently track which items changed."
+    "36": "This hook gives us access to the site's configuration object, which contains settings like the base URL (useful when the site isn't at the domain root).",
+    "37": "We're removing any trailing slash from the base URL so we can safely combine it with the series path pattern—without this, we might accidentally create URLs with double slashes.",
+    "38": "This function tries to match the current browser URL against a pattern like `/series/:slug`. If it matches, we extract the slug; if not, match is null and slug becomes undefined.",
+    "59": "We're filtering the full list of blog posts down to only those that have a series name matching our URL slug (after normalizing both to the same format).",
+    "67": "We grab the series name from the first post (which is guaranteed to have one after filtering), or fall back to the slug itself if there are no posts—this ensures we always have a string value to work with.",
+    "79": "If the series has a brand color defined, we create a styles object with CSS custom properties that convert that color to different opacity levels for use in the hero banner; otherwise we leave styles undefined.",
+    "89": "We're sorting posts newest-first by converting their date strings to timestamps and comparing them—the negative sign flips the order from oldest to newest.",
+    "95": "The `translate` function is being called here to generate a page title that can be displayed in different languages, with the series name substituted into the template.",
+    "164": "If we're on a translated version of the site (not the default locale), we also add an RSS feed link pointing to the source language version, which may have more articles since not everything is translated yet."
   }
 }

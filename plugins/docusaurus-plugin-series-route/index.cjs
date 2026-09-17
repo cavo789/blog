@@ -30,6 +30,7 @@
  */
 
 const path = require("path");
+const { normalizeUrl } = require("@docusaurus/utils");
 const { listSeriesSlugs } = require("../lib/blog-taxonomy.cjs");
 
 module.exports = function (context) {
@@ -44,7 +45,9 @@ module.exports = function (context) {
     async contentLoaded({ actions }) {
       for (const slug of listSeriesSlugs(context.siteDir)) {
         actions.addRoute({
-          path: `/series/${slug}`,
+          // Through `baseUrl` — see the same comment in docusaurus-plugin-tag-route: a
+          // hardcoded absolute path registers a route no locale-prefixed link can reach.
+          path: normalizeUrl([context.baseUrl, "series", slug]),
           component: "@site/src/components/Blog/Series/SeriesArticlesPage",
           exact: true,
         });

@@ -392,3 +392,22 @@
   font-weight: 700;
   color: var(--ifm-color-primary);
 }
+
+/*
+ * The source-language feed, offered under the current locale's own. Separated by a border
+ * rather than by a different background: in dark mode there is no headroom between Infima's
+ * surface colors, so two stacked panels read as one flat block.
+ */
+.otherLocale {
+  margin-top: 0.25rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.otherLocaleIntro {
+  margin: 0 0 0.5rem;
+  font-size: 0.8rem;
+
+  /* Not --ifm-color-content-secondary: it resolves to pure white in dark mode. */
+  color: var(--ifm-color-emphasis-700);
+}

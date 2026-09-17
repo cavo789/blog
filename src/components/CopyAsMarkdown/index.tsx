@@ -1,5 +1,6 @@
 import { useState, useCallback, useEffect, type JSX } from "react";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 interface Props {
   metadata: {
@@ -55,10 +56,13 @@ export default function CopyAsMarkdown({ metadata }: Props): JSX.Element {
         disabled={status === "copying"}
       >
         {status === "copied"
-          ? "✓ Copied"
+          ? translate({ id: "blog.copyAsMarkdown.copied", message: "✓ Copied" })
           : status === "error"
-            ? "Could not copy"
-            : "Copy as Markdown"}
+            ? translate({ id: "blog.copyAsMarkdown.error", message: "Could not copy" })
+            : translate({
+                id: "blog.copyAsMarkdown.label",
+                message: "Copy as Markdown",
+              })}
       </button>
       <a
         href={mdUrl}
@@ -66,7 +70,7 @@ export default function CopyAsMarkdown({ metadata }: Props): JSX.Element {
         target="_blank"
         rel="noopener noreferrer"
       >
-        View raw
+        <Translate id="blog.copyAsMarkdown.viewRaw">View raw</Translate>
       </a>
     </div>
   );

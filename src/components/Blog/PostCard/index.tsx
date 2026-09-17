@@ -3,11 +3,12 @@ import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
 import CardImage from "@site/src/components/Card/CardImage";
 import Link from "@docusaurus/Link";
-import Translate from "@docusaurus/Translate";
+import Translate, { translate } from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { formatPostDate } from "@site/src/components/Blog/utils/date";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
-import { getTagLabel } from "@site/src/data/tags";
+import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 import styles from "./styles.module.css";
 
 interface Post {
@@ -40,6 +41,15 @@ export default function PostCard({
   const { permalink, image, title, description, date, counter, mainTag, readingTime } = post;
   const { i18n } = useDocusaurusContext();
   const formattedDate = formatPostDate(date, i18n.currentLocale);
+  const tagLabel = useTagLabel();
+
+  // `image` is a front-matter path (`/img/v2/atuin.webp`) — a string this repo wrote, not one
+  // Docusaurus handed us, so it does NOT carry the locale's baseUrl. Under `fr` the static file
+  // is served from `/fr/img/...`; requesting `/img/...` gets the dev server's SPA fallback,
+  // which answers `200 text/html` and paints a broken banner rather than 404-ing visibly.
+  // Only the "small" layout needs this: the "big" one goes through `<CardImage>`, which calls
+  // `useBaseUrl` itself.
+  const smallLayoutImageUrl = useBaseUrl(image || defaultImage);
 
   if (layout === "small") {
     return (
@@ -47,7 +57,7 @@ export default function PostCard({
         <div className={`card ${styles.cardSmall}`}>
           <div className="card__image">
             <img
-              src={image || defaultImage}
+              src={smallLayoutImageUrl}
               alt={title}
               loading="lazy"
               className={styles.cardSmallImage}
@@ -87,13 +97,16 @@ export default function PostCard({
               to={`/blog/tags/${createSlug(mainTag)}`}
               className={styles.cardTagBadge}
             >
-              {getTagLabel(mainTag)}
+              {tagLabel(mainTag)}
             </Link>
           )}
           <h3 className={styles.cardTitle}>
             <Link
               to={permalink}
-              aria-label={`Read article: ${title}`}
+              aria-label={translate(
+                { id: "blog.postCard.readAriaLabel", message: "Read article: {title}" },
+                { title },
+              )}
               className={styles.cardTitleLink}
             >
               {title}&nbsp;→
@@ -107,7 +120,13 @@ export default function PostCard({
               {readingTime && (
                 <span className={styles.readingTime}>
                   {" "}
-                  · {Math.ceil(readingTime)} min read
+                  ·{" "}
+                  <Translate
+                    id="blog.postCard.readingTime"
+                    values={{ minutes: Math.ceil(readingTime) }}
+                  >
+                    {"{minutes} min read"}
+                  </Translate>
                 </span>
               )}
             </p>

@@ -17,10 +17,49 @@ import TOCCollapsible from "@theme/TOCCollapsible";
 import ContentVisibility from "@theme/ContentVisibility";
 // NEW: Import hook to track URL changes
 import { useLocation } from "@docusaurus/router";
+import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import {
+  slugFromPermalink,
+  useTranslationState,
+} from "@site/src/components/Blog/utils/translations";
+
+/**
+ * Previous/next article, restricted to what the current locale can actually show.
+ *
+ * Docusaurus computes `prevItem`/`nextItem` over the whole blog, English sources included —
+ * i18n falls back to them for every untranslated article. So on `/fr/` the "Older post" link at
+ * the bottom of a translated article almost always led to an English page: with 5 of 257
+ * articles translated, the chronological neighbour is untranslated nearly every time.
+ *
+ * On a non-default locale the neighbours are recomputed over the translated articles only, in
+ * the same newest-first order Docusaurus uses (`prevItem` is the newer post). `useBlogMetadata()`
+ * already filters to those articles AND overlays their translated titles, so the labels come out
+ * in French too. The default locale keeps Docusaurus's own values untouched.
+ */
+function useLocaleNeighbours(metadata) {
+  const { isDefaultLocale } = useTranslationState();
+  const posts = useBlogMetadata();
+
+  if (isDefaultLocale) {
+    return { prevItem: metadata.prevItem, nextItem: metadata.nextItem };
+  }
+
+  const sorted = [...posts].sort(
+    (a, b) =>
+      new Date(b.date) - new Date(a.date) || a.permalink.localeCompare(b.permalink),
+  );
+  const current = slugFromPermalink(metadata.permalink);
+  const index = sorted.findIndex((post) => slugFromPermalink(post.permalink) === current);
+  if (index === -1) return { prevItem: undefined, nextItem: undefined };
+
+  const toItem = (post) => post && { title: post.title, permalink: post.permalink };
+  return { prevItem: toItem(sorted[index - 1]), nextItem: toItem(sorted[index + 1]) };
+}
 
 function BlogPostPageContent({ sidebar, children }) {
   const { metadata, toc } = useBlogPost();
-  const { nextItem, prevItem, frontMatter } = metadata;
+  const { frontMatter } = metadata;
+  const { nextItem, prevItem } = useLocaleNeighbours(metadata);
   const {
     hide_table_of_contents: hideTableOfContents,
     toc_min_heading_level: tocMinHeadingLevel,

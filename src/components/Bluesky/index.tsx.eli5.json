@@ -1,20 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:50:45.508Z",
+  "generated": "2026-09-17T09:32:31.417Z",
   "source": "index.tsx",
-  "sourceHash": "fab3659a6acd89dd0254fdae5d84d62e3b6874c4",
+  "sourceHash": "a6d9af51dd1a830903d0aa5b0e99d736f8dcf14e",
   "lang": "typescript",
-  "summary": "This component displays a Bluesky engagement widget for an article, showing how many people are already talking about it and offering options to share or engage. It tries to find an existing Bluesky post matching the article (either from frontmatter or by searching the account's history), and only renders the widget once that lookup is complete to avoid showing a button that might disappear.",
+  "summary": "This component displays a Bluesky engagement section for a blog article. It fetches data about whether the article has been posted to Bluesky and how many people have engaged with it, then shows either a 'share this article' prompt or an engagement counter with likes and comments. The component carefully handles loading and error states to avoid showing misleading messages to the user.",
   "explanations": {
-    "9": "This function builds the text that appears above the engagement buttons, changing the message based on whether we found a post, are still looking, or already have engagement data.",
-    "20": "If there's no record key (no Bluesky post found), we show a generic invitation to share the article.",
-    "23": "We treat both 'still loading' and 'failed to load' the same way — we don't want to claim nobody has reacted when we simply don't know yet.",
-    "31": "We're storing the count in a variable so we can use it twice in the next line without calling .length again.",
-    "32": "We pluralize the message correctly: 'person is' for 1 person, but 'people are' for any other count.",
-    "43": "This hook tries to find the Bluesky post ID either from frontmatter or by searching the account's post history; resolving is true while that search is happening.",
-    "44": "We're creating a new metadata object that merges the original data with the found record key, so child components see the complete picture.",
-    "53": "While we're still searching for a matching post, we return null to render nothing — this prevents a jarring flash of a share button that disappears once we find the post.",
-    "73": "We only show the engagement UI (likes, replies, etc.) if the data successfully loaded; if the post was deleted or unreachable, we skip this section."
+    "10": "This is a helper function that generates the right headline text based on whether we found a Bluesky post for this article and how many people have engaged with it.",
+    "28": "The comment explains why we use the same generic 'join the conversation' message both when data is still loading and when it fails to load — we never want to mislead users by saying 'no one has engaged yet' when we might just not know.",
+    "42": "The comment notes that we're using two completely different translated sentences for singular vs plural (not just changing a verb), because some languages like French have agreement rules that affect more than just the verb form.",
+    "67": "This hook tries to find a Bluesky post for this article by looking through the account's post history, or uses a manually specified record key from the article's metadata if one was provided.",
+    "68": "We're creating a modified copy of the metadata object where we fill in the discovered record key, so downstream components can see whether a post was found.",
+    "77": "We return null (render nothing) while still searching for a matching Bluesky post, to avoid showing a 'Share on Bluesky' button that would disappear once we find the post.",
+    "97": "We only show the engagement UI (likes, comments, link to post) if the data loaded successfully; if the post was deleted or unreachable, we hide this entire section to avoid showing a broken link."
   }
 }

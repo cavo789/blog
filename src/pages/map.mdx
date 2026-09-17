@@ -6,17 +6,30 @@ image: "/img/map.webp"
 authors: [christophe]
 ---
 
-import ScrollToTopButton from "@site/src/components/ScrollToTopButton";
 import BlogGraph from "@site/src/components/BlogGraph";
+import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";
 
 <!-- markdownlint-disable MD041 -->
 
 <h1 className="text--center">Blog Map</h1>
 
 <div className="text--center">
-  <img src="/img/map.webp" alt="The meerkat's map page." loading="lazy" />
+  {/* `require()`, not a bare "/img/..." string: a site-absolute path carries no locale
+      prefix, so under `fr` the browser asked for /img/map.webp and got the SPA fallback
+      (200 text/html) instead of the image. webpack resolves this to a baseUrl-correct URL. */}
+  <img
+    src={require("@site/static/img/map.webp").default}
+    alt="The meerkat's map page."
+    loading="lazy"
+  />
 </div>
 
-<BlogGraph />
+<!-- Renders nothing on `en`. The graph plugin narrows the corpus to translated articles in a
+     non-default locale (blog-graph-plugin, buildGraph), so /fr/map/ plots 4 nodes out of 257.
+     Placed BEFORE the graph, unlike the other listings: the map carries no heading count to
+     read first, so the caveat has to arrive before the reader interprets a near-empty canvas
+     as the whole blog. -->
 
-<ScrollToTopButton />
+<TranslationCoverage />
+
+<BlogGraph />

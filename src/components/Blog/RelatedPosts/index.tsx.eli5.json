@@ -1,17 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:52:19.339Z",
+  "generated": "2026-09-17T09:31:42.377Z",
   "source": "index.tsx",
-  "sourceHash": "2b751f3e383327178a5ac5c185137afa73adbd00",
+  "sourceHash": "834648f6ac18ab540693eda283223fa6a7cc8223",
   "lang": "typescript",
-  "summary": "This React component displays a grid of blog posts related to the current post being viewed. It uses Docusaurus hooks to get the current post's metadata, then calls a utility function to find related posts based on either a designated main tag or shared tags. If no related posts exist, it shows a fallback message; otherwise, it renders them as cards in a responsive grid.",
+  "summary": "This component displays a grid of blog posts related to the current post, either by a designated main tag or by shared tags. It retrieves the current post's metadata and tag information, fetches matching related posts through a helper hook, and renders them as cards, with fallback handling for when no related posts exist.",
   "explanations": {
-    "38": "useBlogPost() is a Docusaurus hook that gives us information about the blog post currently being displayed, including its front matter and metadata.",
-    "41": "The mainTag property comes from custom front matter (extra fields you can add to posts), but TypeScript doesn't know about it by default, so we use 'as string | undefined' to tell TypeScript what type it actually is.",
-    "42": "We're safely getting the tags array from front matter, defaulting to an empty array if it doesn't exist (the || [] pattern).",
-    "44": "If there's no mainTag and no tags to work with, there's nothing to find related posts by, so we return null to show nothing.",
-    "48": "We're calling a utility function that does the heavy lifting of finding which posts match our criteria, excluding the current post and returning the newest ones first.",
-    "73": "This conditional removes the description field from post data before passing it to PostCard if the description prop is false, letting the caller control whether descriptions appear in the cards."
+    "41": "The frontMatter object comes from Docusaurus, which doesn't know about your custom mainTag field, so TypeScript types it as unknown. We cast it to string | undefined to tell TypeScript what we expect.",
+    "42": "We're safely extracting the tags array from frontMatter with a fallback to an empty array, so tags will always be an array even if frontMatter doesn't have tags defined.",
+    "46": "This hook must be called at the top level (before any early returns) because React hooks have strict ordering rules—we can't call hooks conditionally or after returns.",
+    "53": "If there's no mainTag and no tags at all, there's no criteria to find related posts, so we return null to render nothing instead of showing an empty state.",
+    "75": "When description is false, we spread the post object but override its description to null, effectively hiding descriptions without modifying the original post data."
   }
 }

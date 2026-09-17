@@ -1,6 +1,7 @@
 import type { JSX } from "react";
 import Terminal from "@site/src/components/Terminal";
 import styles from "./styles.module.css";
+import Translate from "@docusaurus/Translate";
 
 interface Props {
   name: string;
@@ -24,12 +25,16 @@ export default function Prerequisite({
   return (
     <div className={styles.wrapper}>
       <p className={styles.name}>
-        Prerequisite: <code>{name}</code>
+        <Translate id="prerequisite.label" values={{ name: <code>{name}</code> }}>
+          {"Prerequisite: {name}"}
+        </Translate>
       </p>
       <Terminal typewriter={typewriter}>
         {`$ ${install}${installOutput ? `\n${installOutput}` : ""}`}
       </Terminal>
-      <p className={styles.verify}>Verify:</p>
+      <p className={styles.verify}>
+        <Translate id="prerequisite.verify">Verify:</Translate>
+      </p>
       <Terminal typewriter={typewriter}>
         {`$ ${check}${checkOutput ? `\n${checkOutput}` : ""}`}
       </Terminal>

@@ -1,6 +1,6 @@
 import type { JSX } from "react";
 import Link from "@docusaurus/Link";
-import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import BlogPostCount from "@site/src/components/Blog/PostCount";
 import PostCard from "@site/src/components/Blog/PostCard";
 import Translate from "@docusaurus/Translate";
@@ -16,7 +16,7 @@ export default function LatestPosts({
   count = 9,
   description = true,
 }: Props): JSX.Element {
-  const posts = getBlogMetadata();
+  const posts = useBlogMetadata();
 
   const sortedPosts = posts
     .filter((p) => p.date)

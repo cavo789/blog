@@ -1,15 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:03:08.478Z",
+  "generated": "2026-09-17T09:31:23.254Z",
   "source": "index.tsx",
-  "sourceHash": "f0dc1ca5e66a784b8d0c9651477364580d319ded",
+  "sourceHash": "990283222468c03b90287e0c60069bf7ca8702cd",
   "lang": "typescript",
-  "summary": "This component renders a small icon badge that indicates a post was written with AI assistance. It displays an SVG icon with the label 'AI Assisted' inside a styled container, and includes a tooltip that appears on hover.",
+  "summary": "This is a React component that displays a small icon with a tooltip indicating that a blog post was written with AI assistance. It renders an SVG graphic alongside a text label, and uses Docusaurus's translation system to make both the tooltip and label translatable into different languages.",
   "explanations": {
-    "4": "The function returns React.JSX.Element, which is TypeScript's way of saying this function creates and returns a piece of React UI that can be displayed on a page.",
-    "7": "className applies CSS styles from the imported stylesheet to this div, similar to how you'd use class attributes in HTML but with module-scoped styles to avoid naming conflicts.",
-    "16": "strokeCurrentColor means the SVG will use whatever text color is currently active, so it automatically adapts if you change the text color in CSS.",
-    "17": "strokeWidth='2' controls how thick the lines of the SVG drawing are, in this case 2 units thick."
+    "5": "This declares a React functional component that returns JSX (React elements). The React.JSX.Element type tells TypeScript this function specifically returns valid React markup.",
+    "8": "className applies a CSS class from the imported styles module, which contains the styling rules for the aiIcon container.",
+    "9": "The translate() function prepares a string for translation by assigning it a unique ID and providing a default English message—Docusaurus uses this ID to find translated versions in other languages.",
+    "33": "The Translate component wraps text that should be translatable; the id attribute lets Docusaurus match it to translations, while the children (the text inside) serve as the default English version."
   }
 }

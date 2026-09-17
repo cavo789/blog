@@ -6,5 +6,10 @@ node_modules/
 iconBundle.generated.js
 blog/
 .unpublished/
+i18n/
 .claude/
 .todos/
+
+# Throwaway build dirs — see .claude/rules/build-verification.md
+build-verify/
+.docusaurus-verify/

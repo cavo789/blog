@@ -2,6 +2,7 @@ import { useMemo, type JSX, type ReactNode } from "react";
 import Head from "@docusaurus/Head";
 import MobileQuickLinks from "@site/src/components/Blog/MobileQuickLinks";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 // Recursively extracts plain text from React nodes for JSON-LD abstract
 function extractText(node: unknown): string {
@@ -39,10 +40,14 @@ export default function TLDR({ children }: Props): JSX.Element {
       <div
         className={`alert alert--info margin-bottom--md ${styles.tldrContainer}`}
         role="region"
-        aria-label="Article Summary"
+        aria-label={translate({ id: "tldr.ariaLabel", message: "Article Summary" })}
       >
         <div className={styles.tldrHeader}>
-          <span role="img" aria-label="lightning" className={styles.tldrIcon}>
+          <span
+            role="img"
+            aria-label={translate({ id: "tldr.iconLabel", message: "lightning" })}
+            className={styles.tldrIcon}
+          >
             ⚡
           </span>
           <strong className={styles.tldrTitle}>TL;DR</strong>

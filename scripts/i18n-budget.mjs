@@ -1,0 +1,69 @@
+#!/usr/bin/env node
+/**
+ * What would a localized sidecar generation actually touch — and cost?
+ *
+ * Run this BEFORE any `--locale` generation run. It answers the only question that matters
+ * before spending: how many files, and why those and not the others.
+ *
+ * Usage:
+ *   node scripts/i18n-budget.mjs [--locale fr] [--verbose]
+ *
+ * See scripts/lib/i18n-eligibility.mjs for the three conditions, and TODO 0120 / 0121.
+ */
+
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import {
+  eli5Candidates,
+  questionCandidates,
+  translatedSlugs,
+} from "./lib/i18n-eligibility.mjs";
+
+const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const localeFlag = process.argv.indexOf("--locale");
+const locale = localeFlag !== -1 ? process.argv[localeFlag + 1] : "fr";
+const verbose = process.argv.includes("--verbose");
+
+// Rough per-file cost, measured on this corpus (claude-haiku-4-5 for ELI5, opus-5 for questions).
+const COST = { eli5: 0.01, questions: 0.05 };
+
+const translated = translatedSlugs(projectRoot, locale);
+const eli5 = eli5Candidates(projectRoot, locale);
+const questions = questionCandidates(projectRoot, locale);
+
+console.log(`\nLocale: ${locale} — ${translated.size} article(s) translated\n`);
+
+const rows = [
+  ["ELI5 snippets", eli5, COST.eli5],
+  ["Question indexes", questions, COST.questions],
+];
+
+for (const [label, result, unit] of rows) {
+  const total = result.eligible.length + result.skipped.length;
+  console.log(
+    `${label.padEnd(18)} ${String(result.eligible.length).padStart(5)} eligible ` +
+      `/ ${String(total).padStart(5)} total   ≈ $${(result.eligible.length * unit).toFixed(2)}`,
+  );
+}
+
+console.log(
+  `\nWithout the eligibility filter this would be ` +
+    `$${((eli5.eligible.length + eli5.skipped.length) * COST.eli5 + (questions.eligible.length + questions.skipped.length) * COST.questions).toFixed(2)}.\n`,
+);
+
+if (verbose) {
+  for (const [label, result] of rows) {
+    console.log(`── ${label}: eligible ──`);
+    result.eligible.forEach((f) => console.log(`   ${path.relative(projectRoot, f)}`));
+
+    const reasons = new Map();
+    for (const s of result.skipped) {
+      const key = s.reason.replace(/"[^"]*"/, '"…"');
+      reasons.set(key, (reasons.get(key) ?? 0) + 1);
+    }
+    console.log(`── ${label}: skipped ──`);
+    for (const [reason, count] of reasons)
+      console.log(`   ${String(count).padStart(4)} × ${reason}`);
+    console.log("");
+  }
+}

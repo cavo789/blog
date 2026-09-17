@@ -1,0 +1,14 @@
+{
+  "title": {
+    "message": "Blog — Christophe Avonture",
+    "description": "The title for the blog used in SEO"
+  },
+  "description": {
+    "message": "Blog personnel sur Docker, Linux, Python, PHP, Quarto, Docusaurus et bien plus",
+    "description": "The description for the blog used in SEO"
+  },
+  "sidebar.title": {
+    "message": "Tous les articles",
+    "description": "The label for the left sidebar"
+  }
+}

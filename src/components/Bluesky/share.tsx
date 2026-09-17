@@ -1,5 +1,6 @@
 import Icon from "./bluesky.svg";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 // Declared locally rather than imported from useBlueskyEngagement — this file (built in the
@@ -37,12 +38,15 @@ export default function BlueskyShare({ metadata }: Props) {
       target="_blank"
       rel="noopener noreferrer"
       className={styles.blueskyButton}
-      aria-label="Share this post on Bluesky"
+      aria-label={translate({
+        id: "bluesky.share.ariaLabel",
+        message: "Share this post on Bluesky",
+      })}
     >
       {/* alt dropped: SVGProps has no such prop — was a no-op DOM attribute even before this
           migration, and the link's own aria-label already names the icon. */}
       <Icon className={styles.blueskyLogo} />
-      Share on Bluesky
+      <Translate id="bluesky.share.label">Share on Bluesky</Translate>
     </a>
   );
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState, type JSX } from "react";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 export default function ReadingProgress(): JSX.Element {
   const [progress, setProgress] = useState(0);
@@ -24,7 +25,10 @@ export default function ReadingProgress(): JSX.Element {
       aria-valuenow={Math.round(progress)}
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-label="Reading progress"
+      aria-label={translate({
+        id: "readingProgress.ariaLabel",
+        message: "Reading progress",
+      })}
     />
   );
 }

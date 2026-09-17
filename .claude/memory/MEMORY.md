@@ -13,7 +13,9 @@
 - [Article Proposals](project_article_proposals.md) — Pending article ideas across all series, incl. "Ollama daily use"
 - [Post Creation Feedback](feedback_post_creation.md) — draft:true for .unpublished, image selection, frontmatter ordering
 - [Challenge Me](feedback_challenge_me.md) — challenger ses affirmations, contredire à voix haute plutôt qu'exécuter ; se corriger soi-même aussi
+- [Verification Discipline](feedback_verification_discipline.md) — vérifier l'artefact pas le exit code ; compter trouve le faux, relire trouve l'absence ; mécanisme > discipline
 - [Quality Over Speed](feedback_quality_over_speed.md) — arbitre pour la fidélité de sortie, pas la vitesse ; proposer le réglage le plus fidèle par défaut
+- [Continuous Improvement](feedback_continuous_improvement.md) — carte blanche permanente : enrichir mémoire/rules/skills/agents à tout moment, sans demander
 - [Article Weight](feedback_article_weight.md) — pas d'empilement de post-mortems ni de setup non-standard ; un article doit donner envie de tester
 - [YAML Date Parsing](feedback_yaml_date_parsing.md) — frontmatter dates arrive as ISO strings after SSR; always use new Date(value), never concatenate
 - [TODO Folder Convention](project_todos_convention.md) — .todos/ est privé : écrire en français, format NNN-slug.md, sections Problème/Risque/Solution
@@ -22,14 +24,16 @@
 - [Internal Linking Rule (new posts)](feedback_internal_linking.md) — tout nouveau post embarque 2-4 `<Link>` inline + lien réciproque ; jamais d'orphelin
 - [Internal Links Audit](project_internal_links.md) — run `internal-link-opportunities.mjs --stats`; verified baseline + the 4 traps that break naive greps
 - [DooD Bind-Mount Trap](project_dood_bind_mount_trap.md) — `docker run -v` résout les chemins sur l'HÔTE ; tester une image via un volume nommé alimenté par stdin
+- [i18n Architecture](project_i18n_architecture.md) — locale fr, les 5 plugins maison qui la portent, et l'invariant posts.ts qui lit blog/ et pas i18n/
 - [Devcontainer Structure](project_devcontainer_structure.md) — scripts/, COPY paths, bind-mounts, wiring points — tout ce qui doit rester synchronisé
 - [File Rename Completeness](feedback_file_rename_completeness.md) — grep exhaustif avant tout rename ; "terminé" = docker build passe, pas juste le fichier déplacé
 - [AnythingLLM Instance](project_anythingllm_instance.md) — 172.17.0.1:3001 depuis le devcontainer, compose sur l'hôte, workspace `blog` (248 posts)
 - [llms.txt Discoverability](project_llms_txt_discoverability.md) — head links + series-bundle link built 2026-08-11 ; directory submissions: llmstxt.site ✅, directory.llmstxt.cloud ✅, llmstxthub.com ❌ retry
 - [Dev Server Restart Authorization](feedback_dev_server_restart.md) — restart allowed for content verification IF ListAgents+broadcast to peer sessions first; curl can't verify dev-mode content, use Playwright
-- [i18n Translation (reopened)](feedback_i18n_translation_rejected.md) — rejetée 2026-08-31, **rouverte 2026-09-16** sur données de trafic + coût mesuré ; plan dans `.todos/0119` ; les 2 pièges : fallback Docusaurus (contenu dupliqué) et `posts.ts` non locale-aware
+- [i18n Translation (reopened)](feedback_i18n_translation_rejected.md) — rouverte 2026-09-16 ; **traducteur déjà écrit et éprouvé** (`scripts/translate-post.mjs`) ; plan `.todos/DONE/DONE_0119` (clos 2026-09-17, suite `.todos/0124`) ; 3 pièges vérifiés par build ; coût mesuré ≈ 41 $
 - [run_ci e2e Known Issue](project_run_ci_e2e_known_issue.md) — React error #418 hydration warning is a known, permanently allowlisted Docusaurus upstream bug (wontfix); check exact message before re-investigating a failure
 - [Flex Column Basis Trap](feedback_flex_column_basis.md) — flex-basis devient min-height dans un conteneur colonne ; toujours override avec flex: 0 0 auto dans les panels/popups
 - [Infima Secondary Color Trap](feedback_infima_secondary_dark.md) — --ifm-color-content-secondary = blanc pur en dark ; utiliser --ifm-color-emphasis-700
 - [Infima Dark Band Contrast](feedback_infima_dark_band_contrast.md) — en dark, aucun headroom entre les fonds Infima ; séparer par la bordure (emphasis-200), token déclaré sur le conteneur pas sur la carte
 - [Snippet Relative Paths](feedback_snippet_relative_paths.md) — `source=` toujours relatif à l'article (`./…`) ; le préfixe `.unpublished/<slug>` ou `blog/YYYY/MM/DD/` ne doit JAMAIS apparaître ; exception : sources du repo (src/, plugins/, .claude/)
+- [Navbar Width Budget](project_navbar_width_budget.md) — saturée entre 997-1260px ; repli de la recherche, dropdown « Plus » écarté, pas de nouvelle entrée prévue

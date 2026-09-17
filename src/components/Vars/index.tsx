@@ -12,6 +12,7 @@ import {
 import { createPortal } from "react-dom";
 import { useLocation } from "@docusaurus/router";
 import clsx from "clsx";
+import Translate, { translate } from "@docusaurus/Translate";
 import {
   getSnapshot,
   getServerSnapshot,
@@ -83,7 +84,11 @@ function VarField({
           value={value}
           onChange={(e) => onChange(name, e.target.value)}
         />
-        {value === defaultValue && <span className={styles.badgeDefault}>default</span>}
+        {value === defaultValue && (
+          <span className={styles.badgeDefault}>
+            <Translate id="vars.badgeDefault">default</Translate>
+          </span>
+        )}
       </div>
     </div>
   );
@@ -208,7 +213,10 @@ export default function Vars({ labels, ...rest }: Props): JSX.Element | null {
   }, [fabOpen]);
 
   const summary = varNames.map((name) => overrides[name] ?? defaults[name]).join(" · ");
-  const explainer = "Used in every command on this page — edit to rewrite them all.";
+  const explainer = translate({
+    id: "vars.explainer",
+    message: "Used in every command on this page — edit to rewrite them all.",
+  });
 
   const fields = (idPrefix: string) =>
     varNames.map((name) => (
@@ -231,16 +239,22 @@ export default function Vars({ labels, ...rest }: Props): JSX.Element | null {
         <div className={styles.varsbarHead}>
           <span className={styles.varsbarTitle}>
             <span className={styles.dot} />
-            Your values for this page
+            <Translate id="vars.title">Your values for this page</Translate>
           </span>
           <button className={styles.resetLink} type="button" onClick={handleReset}>
-            Reset to defaults
+            <Translate id="vars.resetToDefaults">Reset to defaults</Translate>
           </button>
         </div>
         <div className={styles.varsbarFields}>{fields("vars")}</div>
         <div className={styles.varsbarFoot}>
-          <span>Applies to the commands on this page</span>
-          <span>Saved on this device only</span>
+          <span>
+            <Translate id="vars.footApplies">
+              Applies to the commands on this page
+            </Translate>
+          </span>
+          <span>
+            <Translate id="vars.footSaved">Saved on this device only</Translate>
+          </span>
         </div>
       </div>
 
@@ -260,7 +274,7 @@ export default function Vars({ labels, ...rest }: Props): JSX.Element | null {
                 <button
                   className={styles.fabHintClose}
                   type="button"
-                  aria-label="Dismiss"
+                  aria-label={translate({ id: "vars.dismiss", message: "Dismiss" })}
                   onClick={() => setShowHint(false)}
                 >
                   ×
@@ -272,10 +286,10 @@ export default function Vars({ labels, ...rest }: Props): JSX.Element | null {
               <div className={styles.varsbarHead}>
                 <span className={styles.varsbarTitleSmall}>
                   <SlidersIcon className={styles.fabPanelIcon} />
-                  Your values
+                  <Translate id="vars.titleShort">Your values</Translate>
                 </span>
                 <button className={styles.resetLink} type="button" onClick={handleReset}>
-                  Reset
+                  <Translate id="vars.reset">Reset</Translate>
                 </button>
               </div>
               <p className={styles.fabExplainer}>{explainer}</p>
@@ -285,14 +299,22 @@ export default function Vars({ labels, ...rest }: Props): JSX.Element | null {
               className={styles.fabToggle}
               type="button"
               aria-expanded={fabOpen}
-              aria-label={`Your values for this page: ${summary}. Click to edit.`}
+              aria-label={translate(
+                {
+                  id: "vars.fabAriaLabel",
+                  message: "Your values for this page: {summary}. Click to edit.",
+                },
+                { summary },
+              )}
               onClick={() => {
                 setFabOpen((v) => !v);
                 setShowHint(false);
               }}
             >
               <SlidersIcon className={styles.fabIcon} />
-              <span className={styles.fabLabel}>Values:</span>
+              <span className={styles.fabLabel}>
+                <Translate id="vars.fabLabel">Values:</Translate>
+              </span>
               <span className={styles.mono}>{summary}</span>
               {Object.keys(overrides).length > 0 && (
                 <CheckIcon className={styles.fabCheck} />

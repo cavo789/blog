@@ -1,5 +1,6 @@
 import { createSlug } from "@site/src/components/Blog/utils/slug";
 import { getTagLabel } from "@site/src/data/tags";
+import { translate } from "@docusaurus/Translate";
 
 /**
  * breadcrumb.ts
@@ -36,16 +37,37 @@ export interface BreadcrumbInput {
   title?: string;
   /** `mainTag` front matter value, i.e. a key of blog/tags.yml (e.g. "docker"). */
   mainTag?: string;
-  /** `series` front matter value, i.e. the series display name. */
+  /** `series` front matter value — the ENGLISH key that drives `/series/<slug>`. */
   series?: string;
+  /**
+   * What the mainTag level should read as. Defaults to the English `blog/tags.yml` label; a
+   * non-default locale passes `useTagLabel()(mainTag)` so the trail — and the JSON-LD built
+   * from it — stop saying "Component / UI" on a French page. The `href` is unaffected: the
+   * slug is derived from `mainTag`, never from this label.
+   */
+  tagLabel?: string;
+  /**
+   * What the series level should read as. Defaults to `series` itself, which is what the default
+   * locale wants; a non-default locale passes `useSeriesLocalizer()(series)?.label` so the trail
+   * — and the JSON-LD built from it — stop saying the English name on a French page.
+   * The `href` is unaffected: the slug is derived from `series`, never from this label.
+   */
+  seriesLabel?: string;
 }
 
 export function buildBreadcrumbTrail({
   title,
   mainTag,
   series,
+  seriesLabel,
+  tagLabel,
 }: BreadcrumbInput): BreadcrumbItem[] {
-  const trail: BreadcrumbItem[] = [{ label: "Home", href: "/" }];
+  const trail: BreadcrumbItem[] = [
+    {
+      label: translate({ id: "blog.breadcrumb.home", message: "Home" }),
+      href: "/",
+    },
+  ];
 
   // Same link/label pair as PostCard: `/blog/tags/<createSlug(mainTag)>` is the
   // route `plugins/lib/blog-taxonomy.cjs` enumerates from this very front matter
@@ -53,14 +75,14 @@ export function buildBreadcrumbTrail({
   // getTagLabel() resolves the key to its blog/tags.yml display label.
   const tagSlug = mainTag ? createSlug(mainTag) : "";
   if (mainTag && tagSlug) {
-    trail.push({ label: getTagLabel(mainTag), href: `/blog/tags/${tagSlug}` });
+    trail.push({ label: tagLabel ?? getTagLabel(mainTag), href: `/blog/tags/${tagSlug}` });
   }
 
   // Same reasoning for the series level: listSeriesSlugs() registers one route
   // per series found in front matter, drafts included.
   const seriesSlug = series ? createSlug(series) : "";
   if (series && seriesSlug) {
-    trail.push({ label: series, href: `/series/${seriesSlug}` });
+    trail.push({ label: seriesLabel ?? series, href: `/series/${seriesSlug}` });
   }
 
   if (title) {

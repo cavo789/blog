@@ -54,6 +54,10 @@ import {
   type PagefindResult,
 } from "./utils";
 import styles from "./styles.module.css";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Translate, { translate } from "@docusaurus/Translate";
+import { useTranslationState } from "@site/src/components/Blog/utils/translations";
+import { getBlogMetadata } from "@site/src/components/Blog/utils/posts";
 
 const GITHUB_EDIT_BASE = "https://github.com/cavo789/blog/edit/main/";
 
@@ -65,13 +69,48 @@ interface ModeDef {
   label: string;
 }
 
+// Module scope is safe for `translate()`: each locale is its own build, so code.json is already
+// resolved by the time this array is evaluated.
 const MODES: ModeDef[] = [
-  { prefix: "", key: "fuzzy", label: "Jump to article, series, tag or page" },
-  { prefix: "/", key: "fulltext", label: "Full-text search (Pagefind)" },
-  { prefix: "?", key: "ask", label: "Ask my blog a question" },
-  { prefix: "#", key: "tags", label: "Jump to a tag" },
-  { prefix: ":", key: "headings", label: "Jump to a heading on this page" },
-  { prefix: ">", key: "actions", label: "Run an action" },
+  {
+    prefix: "",
+    key: "fuzzy",
+    label: translate({
+      id: "palette.mode.fuzzy",
+      message: "Jump to article, series, tag or page",
+    }),
+  },
+  {
+    prefix: "/",
+    key: "fulltext",
+    label: translate({
+      id: "palette.mode.fulltext",
+      message: "Full-text search (Pagefind)",
+    }),
+  },
+  {
+    prefix: "?",
+    key: "ask",
+    label: translate({ id: "palette.mode.ask", message: "Ask my blog a question" }),
+  },
+  {
+    prefix: "#",
+    key: "tags",
+    label: translate({ id: "palette.mode.tags", message: "Jump to a tag" }),
+  },
+  {
+    prefix: ":",
+    key: "headings",
+    label: translate({
+      id: "palette.mode.headings",
+      message: "Jump to a heading on this page",
+    }),
+  },
+  {
+    prefix: ">",
+    key: "actions",
+    label: translate({ id: "palette.mode.actions", message: "Run an action" }),
+  },
 ];
 
 interface QuestionsIndexData {
@@ -110,8 +149,21 @@ interface PagefindState {
   results: PagefindResult[] | null;
 }
 
-function normalizePath(pathname: string): string {
-  return pathname.replace(/\/$/, "") || "/";
+/**
+ * Strips the trailing slash so two spellings of the same route compare equal.
+ *
+ * `baseUrl` matters: `location.pathname` carries the locale prefix (`/fr/blog/x/`) while the
+ * permalinks in the nav index are bare site paths built from `blog/` (`/blog/x`). Without
+ * removing it, the two never matched under `fr` and the "recently viewed" list silently stayed
+ * empty on the whole French site. See .claude/rules/i18n-locale-safety.md.
+ */
+function normalizePath(pathname: string, baseUrl = "/"): string {
+  const withoutLocale =
+    baseUrl !== "/" && pathname.startsWith(baseUrl)
+      ? pathname.slice(baseUrl.length - 1)
+      : pathname;
+
+  return withoutLocale.replace(/\/$/, "") || "/";
 }
 
 function parseModeAndTerm(raw: string): { mode: ModeKey; term: string } {
@@ -142,6 +194,7 @@ export default function CommandPalette() {
   const { colorMode, setColorMode } = useColorMode();
   const history = useHistory();
   const location = useLocation();
+  const { siteConfig } = useDocusaurusContext();
 
   const [view, setView] = useState<View>(null);
   const [query, setQuery] = useState("");
@@ -168,6 +221,26 @@ export default function CommandPalette() {
     [questions],
   );
   const { mode, term } = useMemo(() => parseModeAndTerm(query), [query]);
+
+  // Cross-locale escape hatch. Under `fr` the Pagefind index holds only the translated
+  // articles (i18n-seo-guard marks the rest `data-pagefind-ignore`), so a reader searching
+  // "docker" gets nothing while the blog carries dozens. The dead end is the empty result
+  // list, not the search box — that is where the way out belongs.
+  const { isDefaultLocale } = useTranslationState();
+  // `term` is what the reader typed AFTER a mode prefix; in fuzzy mode there is no prefix, so the
+  // whole query is the term. `term || query` looked equivalent but is not: typing just "/" leaves
+  // term empty and falls back to the query, so the bare prefix counted as a search and the exit
+  // below offered to look up "/" in the English blog before a single word had been typed.
+  const searchTerm = (mode === "fuzzy" ? query : term).trim();
+  const crossLocale =
+    isDefaultLocale || !searchTerm
+      ? null
+      : // A plain string href, not <Link>: this crosses locales on purpose, and <Link> under
+        // `fr` would resolve /blog/ back to /fr/blog/ — the very corpus that just came up empty.
+        {
+          href: `/blog/?q=${encodeURIComponent(searchTerm)}`,
+          total: getBlogMetadata().length,
+        };
 
   // Fetch the full question corpus the first time the reader opens "?" mode — not on mount,
   // so browsing the site normally never pays for it.
@@ -213,6 +286,31 @@ export default function CommandPalette() {
   );
 
   useEffect(() => registerPalette(open), [open]);
+
+  // Deep link: `/blog/?q=docker` opens the palette already filled in. This exists for the
+  // cross-locale escape hatch below — a French reader whose search found nothing is handed to
+  // the English site carrying their own words, instead of being dropped on a listing and asked
+  // to type them again. The parameter is consumed once and stripped from the URL, so a reload
+  // or a shared link does not keep reopening the palette.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const initial = params.get("q");
+    if (!initial) return;
+
+    // Deferred by a microtask rather than called straight from the effect body: `open()` sets
+    // four pieces of state at once, and doing that synchronously inside an effect is the
+    // cascading-render pattern react-hooks flags. The URL is cleaned up immediately either way,
+    // so a reader who hits Escape before the microtask runs still leaves a clean address bar.
+    queueMicrotask(() => open(initial));
+
+    params.delete("q");
+    const rest = params.toString();
+    window.history.replaceState(
+      null,
+      "",
+      window.location.pathname + (rest ? `?${rest}` : "") + window.location.hash,
+    );
+  }, [open]);
 
   useEffect(() => {
     function onKeyDown(event: globalThis.KeyboardEvent) {
@@ -289,10 +387,10 @@ export default function CommandPalette() {
   // palette is open — it's what feeds the empty state next time it opens.
   useEffect(() => {
     if (!navIndex) return;
-    const here = normalizePath(location.pathname);
+    const here = normalizePath(location.pathname, siteConfig.baseUrl);
     const match = navIndex.articles.find((a) => normalizePath(a.permalink) === here);
     if (match) recordRecentlyViewed(match.permalink);
-  }, [location.pathname, navIndex]);
+  }, [location.pathname, navIndex, siteConfig.baseUrl]);
 
   // ── Pagefind (async, debounced) ─────────────────────────────────────────────────────────
 
@@ -316,9 +414,9 @@ export default function CommandPalette() {
 
   const currentArticle = useMemo(() => {
     if (!navIndex) return null;
-    const here = normalizePath(location.pathname);
+    const here = normalizePath(location.pathname, siteConfig.baseUrl);
     return navIndex.articles.find((a) => normalizePath(a.permalink) === here) ?? null;
-  }, [navIndex, location.pathname]);
+  }, [navIndex, location.pathname, siteConfig.baseUrl]);
 
   const runAction = useCallback(
     (id: string) => {
@@ -330,8 +428,22 @@ export default function CommandPalette() {
               res.ok ? res.text() : Promise.reject(new Error(String(res.status))),
             )
             .then((text) => navigator.clipboard.writeText(text))
-            .then(() => setToast("Copied article as Markdown"))
-            .catch(() => setToast("Could not copy — is this a production build?"));
+            .then(() =>
+              setToast(
+                translate({
+                  id: "palette.toast.copiedMarkdown",
+                  message: "Copied article as Markdown",
+                }),
+              ),
+            )
+            .catch(() =>
+              setToast(
+                translate({
+                  id: "palette.toast.copyFailed",
+                  message: "Could not copy — is this a production build?",
+                }),
+              ),
+            );
           break;
         }
         case "view-markdown":
@@ -343,7 +455,12 @@ export default function CommandPalette() {
           break;
         case "report-typo":
           document.querySelector("article")?.scrollIntoView({ behavior: "smooth" });
-          setToast("Select the text you want to report on the article");
+          setToast(
+            translate({
+              id: "palette.toast.selectText",
+              message: "Select the text you want to report on the article",
+            }),
+          );
           break;
         case "edit-github":
           window.open(
@@ -358,7 +475,11 @@ export default function CommandPalette() {
         case "copy-permalink":
           navigator.clipboard
             .writeText(window.location.href)
-            .then(() => setToast("Permalink copied"));
+            .then(() =>
+              setToast(
+                translate({ id: "palette.toast.permalink", message: "Permalink copied" }),
+              ),
+            );
           break;
         case "toggle-theme":
           setColorMode(colorMode === "dark" ? "light" : "dark");
@@ -377,17 +498,60 @@ export default function CommandPalette() {
   const actions = useMemo<ActionItem[]>(() => {
     const onArticle = Boolean(currentArticle);
     return [
-      onArticle && { id: "copy-markdown", label: "Copy this article as Markdown" },
-      onArticle && { id: "view-markdown", label: "View raw .md" },
-      onArticle && { id: "report-typo", label: "Report a typo" },
-      onArticle && currentArticle?.file && { id: "edit-github", label: "Edit on GitHub" },
-      { id: "show-map", label: "Show on the map" },
-      { id: "copy-permalink", label: "Copy permalink" },
+      onArticle && {
+        id: "copy-markdown",
+        label: translate({
+          id: "palette.action.copyMarkdown",
+          message: "Copy this article as Markdown",
+        }),
+      },
+      onArticle && {
+        id: "view-markdown",
+        label: translate({ id: "palette.action.viewRaw", message: "View raw .md" }),
+      },
+      onArticle && {
+        id: "report-typo",
+        label: translate({ id: "palette.action.reportTypo", message: "Report a typo" }),
+      },
+      onArticle &&
+        currentArticle?.file && {
+          id: "edit-github",
+          label: translate({
+            id: "palette.action.editGithub",
+            message: "Edit on GitHub",
+          }),
+        },
+      {
+        id: "show-map",
+        label: translate({ id: "palette.action.showMap", message: "Show on the map" }),
+      },
+      {
+        id: "copy-permalink",
+        label: translate({
+          id: "palette.action.copyPermalink",
+          message: "Copy permalink",
+        }),
+      },
       {
         id: "toggle-theme",
-        label: `Switch to ${colorMode === "dark" ? "light" : "dark"} theme`,
+        label:
+          colorMode === "dark"
+            ? translate({
+                id: "palette.action.themeLight",
+                message: "Switch to light theme",
+              })
+            : translate({
+                id: "palette.action.themeDark",
+                message: "Switch to dark theme",
+              }),
       },
-      { id: "shortcuts", label: "Keyboard shortcuts" },
+      {
+        id: "shortcuts",
+        label: translate({
+          id: "palette.shortcuts.title",
+          message: "Keyboard shortcuts",
+        }),
+      },
     ].filter((a): a is ActionItem => Boolean(a));
   }, [currentArticle, colorMode]);
 
@@ -403,22 +567,39 @@ export default function CommandPalette() {
         return [
           {
             key: "fulltext",
-            label: "Full text",
+            label: translate({ id: "palette.group.fulltext", message: "Full text" }),
             items: [],
-            hint: "Type your search terms after /",
+            hint: translate({
+              id: "palette.hint.fulltext",
+              message: "Type your search terms after /",
+            }),
           },
         ];
       }
       if (pagefind.term !== term || pagefind.loading) {
-        return [{ key: "fulltext", label: "Full text", items: [], loading: true }];
+        return [
+          {
+            key: "fulltext",
+            label: translate({ id: "palette.group.fulltext", message: "Full text" }),
+            items: [],
+            loading: true,
+          },
+        ];
       }
       if (!pagefind.results) {
-        return [{ key: "fulltext", label: "Full text", items: [], unavailable: true }];
+        return [
+          {
+            key: "fulltext",
+            label: translate({ id: "palette.group.fulltext", message: "Full text" }),
+            items: [],
+            unavailable: true,
+          },
+        ];
       }
       return [
         {
           key: "fulltext",
-          label: "Full text",
+          label: translate({ id: "palette.group.fulltext", message: "Full text" }),
           items: pagefind.results.map((r) => ({
             id: r.permalink,
             kind: "navigate" as const,
@@ -435,20 +616,30 @@ export default function CommandPalette() {
         return [
           {
             key: "ask",
-            label: "Ask my blog",
+            label: translate({ id: "palette.group.ask", message: "Ask my blog" }),
             items: [],
-            hint: 'Type a question after ? — e.g. "how do I reduce my image size?"',
+            hint: translate({
+              id: "palette.hint.ask",
+              message: 'Type a question after ? — e.g. "how do I reduce my image size?"',
+            }),
           },
         ];
       }
       if (questions === "unavailable") {
-        return [{ key: "ask", label: "Ask my blog", items: [], unavailable: true }];
+        return [
+          {
+            key: "ask",
+            label: translate({ id: "palette.group.ask", message: "Ask my blog" }),
+            items: [],
+            unavailable: true,
+          },
+        ];
       }
       const results = searchQuestions(questionIndex, term, 8);
       return [
         {
           key: "ask",
-          label: "Ask my blog",
+          label: translate({ id: "palette.group.ask", message: "Ask my blog" }),
           items: results.map((r) => ({
             id: `${r.permalink}#${r.anchor}`,
             kind: "navigate" as const,
@@ -474,7 +665,13 @@ export default function CommandPalette() {
             item.searchText.toLowerCase().includes(term.toLowerCase()),
           )
         : pool;
-      return [{ key: "tags", label: "Tags", items }];
+      return [
+        {
+          key: "tags",
+          label: translate({ id: "palette.group.tags", message: "Tags" }),
+          items,
+        },
+      ];
     }
 
     if (mode === "headings") {
@@ -487,7 +684,13 @@ export default function CommandPalette() {
       const items = term.trim()
         ? pool.filter((item) => item.title.toLowerCase().includes(term.toLowerCase()))
         : pool;
-      return [{ key: "headings", label: "On this page", items }];
+      return [
+        {
+          key: "headings",
+          label: translate({ id: "palette.group.headings", message: "On this page" }),
+          items,
+        },
+      ];
     }
 
     if (mode === "actions") {
@@ -499,16 +702,38 @@ export default function CommandPalette() {
       const items = term.trim()
         ? pool.filter((item) => item.title.toLowerCase().includes(term.toLowerCase()))
         : pool;
-      return [{ key: "actions", label: "Actions", items }];
+      return [
+        {
+          key: "actions",
+          label: translate({ id: "palette.group.actions", message: "Actions" }),
+          items,
+        },
+      ];
     }
 
     // Default fuzzy mode, grouped by section.
     const matched = searchEntries(entries, term || query, 40);
     const bySection: Record<EntrySection, Group> = {
-      articles: { key: "articles", label: "Articles", items: [] },
-      series: { key: "series", label: "Series", items: [] },
-      tags: { key: "tags", label: "Tags", items: [] },
-      pages: { key: "pages", label: "Pages", items: [] },
+      articles: {
+        key: "articles",
+        label: translate({ id: "palette.group.articles", message: "Articles" }),
+        items: [],
+      },
+      series: {
+        key: "series",
+        label: translate({ id: "palette.group.series", message: "Series" }),
+        items: [],
+      },
+      tags: {
+        key: "tags",
+        label: translate({ id: "palette.group.tags", message: "Tags" }),
+        items: [],
+      },
+      pages: {
+        key: "pages",
+        label: translate({ id: "palette.group.pages", message: "Pages" }),
+        items: [],
+      },
     };
     for (const entry of matched) {
       if (bySection[entry.section].items.length >= 6) continue;
@@ -588,28 +813,70 @@ export default function CommandPalette() {
         className={styles.dialog}
         role="dialog"
         aria-modal="true"
-        aria-label={view === "shortcuts" ? "Keyboard shortcuts" : "Command palette"}
+        aria-label={
+          view === "shortcuts"
+            ? translate({ id: "palette.shortcuts.title", message: "Keyboard shortcuts" })
+            : translate({ id: "palette.ariaLabel", message: "Command palette" })
+        }
         onMouseDown={(event) => event.stopPropagation()}
       >
         {view === "shortcuts" ? (
           <div className={styles.shortcutsPanel}>
-            <h2 className={styles.shortcutsTitle}>Keyboard shortcuts</h2>
+            <h2 className={styles.shortcutsTitle}>
+              <Translate id="palette.shortcuts.title">Keyboard shortcuts</Translate>
+            </h2>
             <ShortcutList
               items={[
-                { keys: ["Ctrl", "K"], desc: "Open the command palette (⌘K on macOS)" },
-                { keys: ["/"], desc: "Full-text search, inside the palette" },
-                { keys: ["?"], desc: "Ask my blog a question, inside the palette" },
-                { keys: ["#"], desc: "Jump to a tag, inside the palette" },
+                {
+                  keys: ["Ctrl", "K"],
+                  desc: translate({
+                    id: "palette.shortcuts.open",
+                    message: "Open the command palette (⌘K on macOS)",
+                  }),
+                },
+                {
+                  keys: ["/"],
+                  desc: translate({
+                    id: "palette.shortcuts.fulltext",
+                    message: "Full-text search, inside the palette",
+                  }),
+                },
+                {
+                  keys: ["?"],
+                  desc: translate({
+                    id: "palette.shortcuts.ask",
+                    message: "Ask my blog a question, inside the palette",
+                  }),
+                },
+                {
+                  keys: ["#"],
+                  desc: translate({
+                    id: "palette.shortcuts.tags",
+                    message: "Jump to a tag, inside the palette",
+                  }),
+                },
                 {
                   keys: [":"],
-                  desc: "Jump to a heading on this page, inside the palette",
+                  desc: translate({
+                    id: "palette.shortcuts.headings",
+                    message: "Jump to a heading on this page, inside the palette",
+                  }),
                 },
-                { keys: [">"], desc: "Run an action, inside the palette" },
-                { keys: ["Esc"], desc: "Close" },
+                {
+                  keys: [">"],
+                  desc: translate({
+                    id: "palette.shortcuts.actions",
+                    message: "Run an action, inside the palette",
+                  }),
+                },
+                {
+                  keys: ["Esc"],
+                  desc: translate({ id: "palette.shortcuts.close", message: "Close" }),
+                },
               ]}
             />
             <button type="button" className={styles.closeShortcuts} onClick={close}>
-              Close
+              <Translate id="palette.close">Close</Translate>
             </button>
           </div>
         ) : (
@@ -621,8 +888,14 @@ export default function CommandPalette() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={onInputKeyDown}
-              placeholder="Search, or try / ? # : >"
-              aria-label="Command palette"
+              placeholder={translate({
+                id: "palette.placeholder",
+                message: "Search, or try / ? # : >",
+              })}
+              aria-label={translate({
+                id: "palette.ariaLabel",
+                message: "Command palette",
+              })}
               aria-activedescendant={activeItem ? `cmdk-${activeItem.id}` : undefined}
               aria-controls="cmdk-listbox"
               aria-expanded="true"
@@ -635,7 +908,7 @@ export default function CommandPalette() {
               <div
                 id="cmdk-listbox"
                 role="listbox"
-                aria-label="Results"
+                aria-label={translate({ id: "palette.resultsLabel", message: "Results" })}
                 className={styles.results}
               >
                 {!query.trim() ? (
@@ -655,15 +928,52 @@ export default function CommandPalette() {
                     activeIndex={activeIndex}
                     onHover={setActiveIndex}
                     onSelect={selectItem}
+                    crossLocale={crossLocale}
                   />
                 )}
               </div>
               {activeItem?.preview ? <PreviewPanel article={activeItem.preview} /> : null}
             </div>
             <div className={styles.statusRow} role="status" aria-live="polite">
-              {query.trim()
-                ? `${flatItems.length} result${flatItems.length === 1 ? "" : "s"}`
-                : null}
+              {query.trim() ? (
+                <span>
+                  {flatItems.length === 1 ? (
+                    <Translate id="palette.resultCount.one">1 result</Translate>
+                  ) : (
+                    <Translate
+                      id="palette.resultCount.other"
+                      values={{ count: flatItems.length }}
+                    >
+                      {"{count} results"}
+                    </Translate>
+                  )}
+
+                  {/*
+                    The discreet, always-available half of the cross-locale exit. The prominent
+                    one lives in the empty state, but zero results is not the only way this
+                    locale comes up short: a French reader searching "docker" gets two hits from
+                    a blog that has dozens, and two hits look like a complete answer. Shown only
+                    when there ARE results, so the two never appear at once.
+                  */}
+                  {crossLocale && flatItems.length > 0 ? (
+                    <>
+                      {" · "}
+                      <a
+                        className={styles.crossLocale}
+                        href={crossLocale.href}
+                        hrefLang="en"
+                      >
+                        <Translate
+                          id="palette.crossLocaleStatus"
+                          values={{ total: crossLocale.total }}
+                        >
+                          {"search the {total} English articles →"}
+                        </Translate>
+                      </a>
+                    </>
+                  ) : null}
+                </span>
+              ) : null}
               {toast ? <span className={styles.toast}>{toast}</span> : null}
             </div>
           </>
@@ -680,6 +990,8 @@ interface ResultGroupsProps {
   activeIndex: number;
   onHover: (index: number) => void;
   onSelect: (item: ResultItem) => void;
+  /** Where to retry this same search in the default locale, or `null` when already there. */
+  crossLocale: { href: string; total: number } | null;
 }
 
 function ResultGroups({
@@ -688,20 +1000,58 @@ function ResultGroups({
   activeIndex,
   onHover,
   onSelect,
+  crossLocale,
 }: ResultGroupsProps) {
   if (groups.every((g) => g.items.length === 0)) {
-    return groups[0]?.loading ? (
-      <p className={styles.empty}>Searching…</p>
-    ) : groups[0]?.unavailable ? (
+    if (groups[0]?.loading) {
+      return (
+        <p className={styles.empty}>
+          <Translate id="palette.searching">Searching…</Translate>
+        </p>
+      );
+    }
+
+    if (groups[0]?.unavailable) {
       // Generic across every mode that can fail to load its backing index (fulltext:
       // Pagefind absent on `yarn start`; ask: the question corpus fetch rejected, e.g. an
       // offline reader — see TODO 0095). Keyed off the group's own label so the wording
       // never claims a mode-specific cause it can't actually distinguish.
-      <p className={styles.empty}>{groups[0].label} isn&apos;t available right now.</p>
-    ) : groups[0]?.hint ? (
-      <p className={styles.empty}>{groups[0].hint}</p>
-    ) : (
-      <p className={styles.empty}>No results — try different words.</p>
+      //
+      // No cross-locale offer here on purpose: the corpus is not what came up short, the index
+      // never loaded. Pointing at the English blog would blame the wrong thing.
+      return (
+        <p className={styles.empty}>
+          <Translate id="palette.unavailable" values={{ label: groups[0].label }}>
+            {"{label} isn't available right now."}
+          </Translate>
+        </p>
+      );
+    }
+
+    return (
+      <>
+        {groups[0]?.hint ? (
+          <p className={styles.empty}>{groups[0].hint}</p>
+        ) : (
+          <p className={styles.empty}>
+            <Translate id="palette.noResults">
+              No results — try different words.
+            </Translate>
+          </p>
+        )}
+        {crossLocale ? (
+          <p className={styles.crossLocaleRow}>
+            <a className={styles.crossLocale} href={crossLocale.href} hrefLang="en">
+              <Translate
+                id="palette.crossLocaleFallback"
+                values={{ total: crossLocale.total }}
+              >
+                {"Search the {total} English articles instead →"}
+              </Translate>
+            </a>
+          </p>
+        ) : null}
+      </>
     );
   }
 
@@ -749,19 +1099,44 @@ function EmptyState({
   hasQuestions,
   onSelect,
 }: EmptyStateProps) {
+  // Deliberately shorter and lower-case than the MODES labels above: this row is a reminder
+  // strip under an empty palette, not a menu.
   const prefixHints = [
-    { prefix: "/", label: "full-text search" },
-    hasQuestions && { prefix: "?", label: "ask my blog" },
-    { prefix: "#", label: "jump to a tag" },
-    { prefix: ":", label: "jump to a heading" },
-    { prefix: ">", label: "run an action" },
+    {
+      prefix: "/",
+      label: translate({
+        id: "palette.prefixHint.fulltext",
+        message: "full-text search",
+      }),
+    },
+    hasQuestions && {
+      prefix: "?",
+      label: translate({ id: "palette.prefixHint.ask", message: "ask my blog" }),
+    },
+    {
+      prefix: "#",
+      label: translate({ id: "palette.prefixHint.tags", message: "jump to a tag" }),
+    },
+    {
+      prefix: ":",
+      label: translate({
+        id: "palette.prefixHint.headings",
+        message: "jump to a heading",
+      }),
+    },
+    {
+      prefix: ">",
+      label: translate({ id: "palette.prefixHint.actions", message: "run an action" }),
+    },
   ].filter((h): h is { prefix: string; label: string } => Boolean(h));
 
   return (
     <div className={styles.emptyState}>
       {continueSeries ? (
         <div className={styles.group}>
-          <div className={styles.groupLabel}>Continue this series</div>
+          <div className={styles.groupLabel}>
+            <Translate id="palette.continueSeries">Continue this series</Translate>
+          </div>
           <ul className={styles.groupList}>
             <li
               className={styles.item}
@@ -774,7 +1149,9 @@ function EmptyState({
       ) : null}
       {recentlyViewed.length > 0 ? (
         <div className={styles.group}>
-          <div className={styles.groupLabel}>Recently viewed</div>
+          <div className={styles.groupLabel}>
+            <Translate id="palette.recentlyViewed">Recently viewed</Translate>
+          </div>
           <ul className={styles.groupList}>
             {recentlyViewed.map((article) => (
               <li

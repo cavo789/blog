@@ -66,14 +66,6 @@ export interface Transform {
   offsetY: number;
 }
 
-/** "docker-compose" -> "Docker Compose" — good enough for a <select> option, no tags.yml fetch. */
-export function humanizeTag(tag: string): string {
-  return tag
-    .split("-")
-    .map((word) => (word.length > 0 ? word[0].toUpperCase() + word.slice(1) : word))
-    .join(" ");
-}
-
 /**
  * The nodes to draw: either every node under the chosen mainTag, or — by default — the top
  * `topN` articles by in-degree across the whole corpus. Never the full corpus at once.

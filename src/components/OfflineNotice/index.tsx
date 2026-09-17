@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type JSX } from "react";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 /**
  * Replaces the browser's bare "no internet" interstitial with an in-app message when an
@@ -81,7 +82,11 @@ export default function OfflineNotice(): JSX.Element | null {
         }
         window.clearTimeout(dismissTimer.current);
         setMessage(
-          "You're offline, and this page hasn't been saved for offline reading. Reconnect and try again.",
+          translate({
+            id: "offlineNotice.notCached",
+            message:
+              "You're offline, and this page hasn't been saved for offline reading. Reconnect and try again.",
+          }),
         );
         dismissTimer.current = window.setTimeout(dismiss, 6000);
       });
@@ -106,7 +111,7 @@ export default function OfflineNotice(): JSX.Element | null {
         type="button"
         className={styles.close}
         onClick={() => setMessage(null)}
-        aria-label="Dismiss"
+        aria-label={translate({ id: "common.dismiss", message: "Dismiss" })}
       >
         ×
       </button>

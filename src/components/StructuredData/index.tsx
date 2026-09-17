@@ -4,6 +4,8 @@ import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import { buildBreadcrumbTrail } from "@site/src/components/Blog/utils/breadcrumb";
+import { useSeriesLocalizer } from "@site/src/components/Blog/utils/seriesI18n";
+import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 
 interface Props {
   metadata: {
@@ -22,6 +24,8 @@ interface Props {
 function StructuredData({ metadata, assets }: Props): JSX.Element | null {
   const { siteConfig } = useDocusaurusContext();
   const { withBaseUrl } = useBaseUrlUtils();
+  const localizeSeries = useSeriesLocalizer();
+  const tagLabel = useTagLabel();
 
   const jsonLd = useMemo(() => {
     if (!metadata) return null;
@@ -90,13 +94,26 @@ function StructuredData({ metadata, assets }: Props): JSX.Element | null {
   // trail in src/components/Blog/Breadcrumb — a breadcrumb whose JSON-LD claims a
   // different path than the one on screen is a crawler-visible contradiction.
   const breadcrumbJsonLd = useMemo(() => {
+    // `siteConfig.baseUrl` is "/" on the default locale and "/fr/" under French. Breadcrumb
+    // hrefs are bare site paths built by breadcrumb.ts, so they need it; `permalink` in the
+    // BlogPosting block above is already prefixed by Docusaurus and must NOT be touched.
+    const localePrefix = siteConfig.baseUrl.endsWith("/")
+      ? siteConfig.baseUrl
+      : `${siteConfig.baseUrl}/`;
+
     if (!metadata) return null;
 
     const { title, frontMatter } = metadata;
+    const series = frontMatter?.series as string | undefined;
+    const mainTag = frontMatter?.mainTag as string | undefined;
     const trail = buildBreadcrumbTrail({
       title,
-      mainTag: frontMatter?.mainTag as string | undefined,
-      series: frontMatter?.series as string | undefined,
+      mainTag,
+      series,
+      // Must match the visible trail exactly — see the note above on why the two are built from
+      // one function.
+      seriesLabel: series ? localizeSeries(series)?.label : undefined,
+      tagLabel: mainTag ? tagLabel(mainTag) : undefined,
     });
 
     // "Home > title" carries no hierarchy; the Breadcrumb component hides itself
@@ -112,10 +129,17 @@ function StructuredData({ metadata, assets }: Props): JSX.Element | null {
         name: entry.label,
         // The trailing item is the current page and carries no href: Schema.org
         // allows omitting `item` there, and Google recommends it.
-        item: entry.href ? `${siteConfig.url}${entry.href}` : undefined,
+        //
+        // `entry.href` is a bare site path built by breadcrumb.ts (`/blog/tags/docker`), with
+        // no locale segment — unlike `permalink` above, which Docusaurus already prefixes. On a
+        // French page this declared English breadcrumb URLs in the JSON-LD, contradicting the
+        // very `canonical` and `hreflang` the same page carries. See TODO 0119.
+        item: entry.href
+          ? `${siteConfig.url}${localePrefix}${entry.href.replace(/^\//, "")}`
+          : undefined,
       })),
     };
-  }, [metadata, siteConfig]);
+  }, [metadata, siteConfig, localizeSeries, tagLabel]);
 
   if (!jsonLd) return null;
 

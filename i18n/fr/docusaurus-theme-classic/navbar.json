@@ -1,0 +1,42 @@
+{
+  "title": {
+    "message": "Christophe Avonture",
+    "description": "The title in the navbar"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Series": {
+    "message": "Séries",
+    "description": "Navbar item with label Series"
+  },
+  "item.label.Tags": {
+    "message": "Tags",
+    "description": "Navbar item with label Tags"
+  },
+  "item.label.Map": {
+    "message": "Carte",
+    "description": "Navbar item with label Map"
+  },
+  "item.label.FAQ": {
+    "message": "FAQ",
+    "description": "Navbar item with label FAQ"
+  },
+  "item.label.Repositories": {
+    "message": "Dépôts",
+    "description": "Navbar item with label Repositories"
+  },
+  "item.label.Archive": {
+    "message": "Archives",
+    "description": "Navbar item with label Archive"
+  },
+  "item.label.About me": {
+    "message": "À propos",
+    "description": "Navbar item with label About me"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

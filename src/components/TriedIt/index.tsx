@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback, type JSX } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 interface Props {
   metadata?: {
@@ -67,21 +68,31 @@ export default function TriedIt({ metadata }: Props): JSX.Element | null {
     <div className={styles.container}>
       {!voted ? (
         <>
-          <span className={styles.question}>Did you try the steps in this article?</span>
+          <span className={styles.question}>
+            <Translate id="blog.triedIt.question">
+              Did you try the steps in this article?
+            </Translate>
+          </span>
           <div className={styles.buttons}>
             <button
               className={styles.btn}
               onClick={() => handleVote("worked")}
-              aria-label="Yes, I tried this and it worked"
+              aria-label={translate({
+                id: "blog.triedIt.yes.ariaLabel",
+                message: "Yes, I tried this and it worked",
+              })}
             >
-              ✅ It worked!
+              ✅ <Translate id="blog.triedIt.yes">It worked!</Translate>
             </button>
             <button
               className={`${styles.btn} ${styles.btnNeutral}`}
               onClick={() => handleVote("didnt_work")}
-              aria-label="No, it didn't work for me"
+              aria-label={translate({
+                id: "blog.triedIt.no.ariaLabel",
+                message: "No, it did not work for me",
+              })}
             >
-              ❌ Didn&apos;t work for me
+              ❌ <Translate id="blog.triedIt.no">Didn't work for me</Translate>
             </button>
           </div>
         </>
@@ -89,15 +100,34 @@ export default function TriedIt({ metadata }: Props): JSX.Element | null {
         <div className={styles.thanks}>
           <span className={styles.thanksMsg}>
             {voted === "worked"
-              ? "Awesome, glad it worked! 🎉"
-              : "Thanks for letting us know!"}
+              ? translate({
+                  id: "triedIt.thanksWorked",
+                  message: "Awesome, glad it worked! 🎉",
+                })
+              : translate({
+                  id: "triedIt.thanksDidnt",
+                  message: "Thanks for letting us know!",
+                })}
           </span>
           {counts && (
             <span className={styles.counts}>
-              <span title={`${counts.worked} readers had it work`}>
+              <span
+                title={translate(
+                  { id: "triedIt.countWorked", message: "{count} readers had it work" },
+                  { count: counts.worked },
+                )}
+              >
                 ✅ {counts.worked}
               </span>
-              <span title={`${counts.didnt_work} readers could not reproduce it`}>
+              <span
+                title={translate(
+                  {
+                    id: "triedIt.countDidnt",
+                    message: "{count} readers could not reproduce it",
+                  },
+                  { count: counts.didnt_work },
+                )}
+              >
                 ❌ {counts.didnt_work}
               </span>
             </span>

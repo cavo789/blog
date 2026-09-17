@@ -15,6 +15,7 @@ import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import { buildSearchIndex, search, type QuestionEntry } from "./utils";
 import { loadQuestionsIndex } from "./questionsIndex";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 interface Props {
   placeholder?: string;
@@ -23,7 +24,7 @@ interface Props {
 }
 
 export default function AskMyBlog({
-  placeholder = 'Ask a question, e.g. "how do I reduce my image size?"',
+  placeholder,
   maxResults = 8,
   showLabel = true,
 }: Props): JSX.Element {
@@ -58,10 +59,30 @@ export default function AskMyBlog({
   const status = !trimmed
     ? null
     : !questions && !loadFailed
-      ? "Loading…"
+      ? translate({ id: "askMyBlog.loading", message: "Loading…" })
       : loadFailed
-        ? "Search is unavailable right now."
-        : `${results.length} result${results.length === 1 ? "" : "s"}`;
+        ? translate({
+            id: "askMyBlog.unavailable",
+            message: "Search is unavailable right now.",
+          })
+        : results.length === 1
+          ? translate({ id: "askMyBlog.resultCount.one", message: "1 result" })
+          : translate(
+              { id: "askMyBlog.resultCount.other", message: "{count} results" },
+              { count: results.length },
+            );
+
+  // Resolved inside the component, not as a parameter default: a default value is evaluated at
+
+  // module scope, where translate() would freeze the locale of the first bundle load.
+
+  const resolvedPlaceholder =
+    placeholder ??
+    translate({
+      id: "blog.askMyBlog.defaultPlaceholder",
+
+      message: 'Ask a question, e.g. "how do I reduce my image size?"',
+    });
 
   return (
     <div className={styles.container}>
@@ -69,7 +90,7 @@ export default function AskMyBlog({
         htmlFor="ask-my-blog-input"
         className={showLabel ? styles.label : styles.srOnly}
       >
-        Ask my blog
+        <Translate id="blog.askMyBlog.label">Ask my blog</Translate>
       </label>
       <input
         id="ask-my-blog-input"
@@ -77,7 +98,7 @@ export default function AskMyBlog({
         className={styles.input}
         value={query}
         onChange={(event) => setQuery(event.target.value)}
-        placeholder={placeholder}
+        placeholder={resolvedPlaceholder}
         autoComplete="off"
         aria-describedby="ask-my-blog-status"
       />
@@ -108,7 +129,11 @@ export default function AskMyBlog({
         </ul>
       )}
       {trimmed && questions && !loadFailed && results.length === 0 && (
-        <p className={styles.empty}>No matching article yet — try different words.</p>
+        <p className={styles.empty}>
+          <Translate id="blog.askMyBlog.empty">
+            No matching article yet — try different words.
+          </Translate>
+        </p>
       )}
     </div>
   );

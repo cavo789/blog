@@ -35,9 +35,16 @@ repos:
     hooks:
       - id: typos
         args: [--config, .config/typos.toml]
-        # Check blog posts and pages; skip component/plugin/script internal docs
+        # Check blog posts and pages; skip component/plugin/script internal docs.
+        #
+        # `i18n/` is excluded because typos ships English dictionaries only — its `--locale`
+        # offers en-us/en-gb and nothing else. Run against the French translations it flagged 158
+        # "errors", every one of them a correctly spelled French word it wanted to turn into its
+        # English cognate: `projets` -> `projects`, `tutoriels` -> `tutorials`, `mesure` ->
+        # `measure`. There is no configuration that fixes this; the checker simply does not know
+        # the language. The English sources these files are translated from are still checked.
         files: '\.(md|mdx)$'
-        exclude: '^(api|src/components/|plugins/|\.scripts/|\.claude/|\.github/|\.todos/|\.unpublished/)'
+        exclude: '^(api|src/components/|plugins/|\.scripts/|\.claude/|\.github/|\.todos/|\.unpublished/|i18n/)'
 
   # ── Markdown linter (uses existing .config/.markdownlint.json) ───────────
   - repo: https://github.com/DavidAnson/markdownlint-cli2
@@ -76,6 +83,17 @@ repos:
       - id: eli5-freshness
         name: eli5 annotation freshness
         entry: node scripts/check-eli5-freshness.mjs --quiet
+        language: system
+        pass_filenames: false
+        always_run: true
+        verbose: true
+
+  # ── French translation freshness (report-only, see TODO 0119) ───────────
+  - repo: local
+    hooks:
+      - id: translation-freshness
+        name: French translation freshness
+        entry: node scripts/check-translation-freshness.mjs --quiet
         language: system
         pass_filenames: false
         always_run: true

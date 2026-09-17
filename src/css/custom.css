@@ -121,6 +121,15 @@
 
 /* Dark/light toggle button: ensure it's visible and styled */
 [class*="colorModeToggle"] button,
+/* A navbar label must never wrap mid-item. "À propos" broke onto two lines once the locale
+   dropdown was added and took horizontal space — two words stacked inside a menu entry read as
+   two entries. Below Docusaurus's own navbar breakpoint the hamburger menu takes over, so
+   forbidding the wrap cannot push anything off-screen. */
+.navbar__item,
+.navbar__link {
+  white-space: nowrap;
+}
+
 .navbar__items--right .clean-btn {
   display: flex !important;
   align-items: center;

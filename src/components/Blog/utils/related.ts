@@ -15,12 +15,12 @@
  * Returns an array of blog metadata objects (possibly empty), never null.
  */
 
-import { getBlogMetadata, type BlogPostMetadata, type BlogTag } from "./posts";
+import { useBlogMetadata, type BlogPostMetadata, type BlogTag } from "./posts";
 
 // Tags may be plain strings (frontmatter) or objects (Docusaurus normalized tags)
 const tagLabel = (tag: BlogTag): string => (typeof tag === "string" ? tag : tag.label);
 
-export function getRelatedPosts({
+export function useRelatedPosts({
   mainTag = null,
   tags = [],
   excludePermalink = null,
@@ -31,11 +31,14 @@ export function getRelatedPosts({
   excludePermalink?: string | null;
   count?: number;
 }): BlogPostMetadata[] {
+  // The corpus read must come before any early return — this is a hook now that it is
+  // locale-aware, and hooks cannot run conditionally.
+  const posts = useBlogMetadata();
+
   if (!mainTag && tags.length === 0) {
     return [];
   }
 
-  const posts = getBlogMetadata();
   let filtered: BlogPostMetadata[] = [];
 
   if (mainTag) {

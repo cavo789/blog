@@ -56,6 +56,9 @@ import {
   forceSimulation,
 } from "d3-force";
 import { loadPosts } from "../../scripts/lib/blog-corpus.mjs";
+import translationsManifest from "../translations-manifest-plugin/index.cjs";
+
+const { collectTranslations, collectTranslatedFrontMatter } = translationsManifest;
 import SERIES_DATA from "../../src/data/series.js";
 import POST_COLORS from "../../src/data/postColors.generated.js";
 
@@ -229,9 +232,36 @@ function computeLayout(nodes, edges) {
   return new Map(simNodes.map((node) => [node.id, { x: node.x, y: node.y }]));
 }
 
-/** Builds the full graph — nodes, edges, layout and corpus-wide counters. */
-function buildGraph() {
-  const posts = loadPosts();
+/**
+ * Builds the full graph — nodes, edges, layout and corpus-wide counters.
+ *
+ * The graph is a listing surface like any other, and a non-default locale needs **two** things
+ * from it, not one. `loadPosts()` reads `blog/`, i.e. the English corpus, and Docusaurus's i18n
+ * fallback gives every one of those articles a live `/fr/` route:
+ *
+ *   1. filter — show only articles that are really translated, or a French reader clicks a node
+ *      and lands on English prose;
+ *   2. localize — label the survivors with their French title, or the French map reads entirely
+ *      in English. Filtering alone is what shipped: the four translated articles were correctly
+ *      the only four nodes on `/fr/map/`, each carrying its English title.
+ *
+ * Both the canvas labels and the `<GroupedList>` fallback read `node.title`, so the overlay
+ * belongs here — once — rather than in either component. See TODO 0119.
+ */
+function buildGraph({ siteDir, currentLocale, defaultLocale } = {}) {
+  let posts = loadPosts();
+
+  /** slug -> localized front matter. Empty on the default locale, where titles are the source. */
+  let localized = {};
+
+  if (currentLocale && defaultLocale && currentLocale !== defaultLocale) {
+    const translated = new Set(collectTranslations(siteDir)[currentLocale] ?? []);
+    posts = posts.filter((post) => {
+      const match = String(post.permalink ?? "").match(/blog\/([^/]+)\/?$/);
+      return match ? translated.has(match[1]) : false;
+    });
+    localized = collectTranslatedFrontMatter(siteDir)[currentLocale] ?? {};
+  }
   const edges = buildEdges(posts);
   const inDegreeByPermalink = computeInDegree(posts, edges);
   const maxInDegree = Math.max(0, ...inDegreeByPermalink.values());
@@ -242,7 +272,10 @@ function buildGraph() {
     const inDegree = inDegreeByPermalink.get(post.permalink) ?? 0;
     return {
       slug: post.slug,
-      title: post.title,
+      // The node label — the only text a reader sees on the map. `post.title` is the English
+      // source; in a non-default locale the corpus above has already been narrowed to articles
+      // that DO have a translation, so the overlay finds one for every surviving node.
+      title: localized[post.slug]?.title || post.title,
       permalink: post.permalink,
       date: post.date,
       mainTag: post.mainTag,
@@ -287,12 +320,16 @@ function buildGraph() {
   };
 }
 
-export default function blogGraphPlugin() {
+export default function blogGraphPlugin(context) {
   return {
     name: "blog-graph-plugin",
 
     async loadContent() {
-      return buildGraph();
+      return buildGraph({
+        siteDir: context.siteDir,
+        currentLocale: context.i18n?.currentLocale,
+        defaultLocale: context.i18n?.defaultLocale,
+      });
     },
 
     async contentLoaded({ content, actions }) {

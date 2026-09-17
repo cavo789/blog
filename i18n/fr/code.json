@@ -1,0 +1,1436 @@
+{
+  "theme.common.askMyBlogClose": {
+    "message": "Fermer",
+    "description": "The aria label for closing the Ask my blog chat panel"
+  },
+  "theme.common.askMyBlog": {
+    "message": "Interroger le blog",
+    "description": "The aria label for the floating Ask my blog chat bubble"
+  },
+  "githubProjects.archived": {
+    "message": "Archivé"
+  },
+  "githubProjects.noDescription": {
+    "message": "Aucune description disponible"
+  },
+  "githubProjects.unknown": {
+    "message": "Inconnu"
+  },
+  "githubProjects.loading": {
+    "message": "Chargement des dépôts…"
+  },
+  "githubProjects.filters.search": {
+    "message": "Rechercher :"
+  },
+  "githubProjects.filters.searchPlaceholder": {
+    "message": "Rechercher par nom ou description"
+  },
+  "githubProjects.filters.language": {
+    "message": "Langage :"
+  },
+  "githubProjects.filters.all": {
+    "message": "Tous"
+  },
+  "githubProjects.filters.status": {
+    "message": "Statut :"
+  },
+  "githubProjects.filters.active": {
+    "message": "Actif"
+  },
+  "githubProjects.filters.archived": {
+    "message": "Archivé"
+  },
+  "githubProjects.filters.minStars": {
+    "message": "Étoiles min. :"
+  },
+  "githubProjects.noMatches": {
+    "message": "Aucun dépôt ne correspond à vos filtres."
+  },
+  "homepage.homeCards.title": {
+    "message": "Explorer le site"
+  },
+  "homepage.mainTags.title": {
+    "message": "Explorer les sujets principaux"
+  },
+  "homepage.mainTags.noTags": {
+    "message": "Aucun tag à afficher."
+  },
+  "homepage.mainTags.seeAll": {
+    "message": "Voir tous les tags"
+  },
+  "myRepositories.title": {
+    "message": "Mes projets GitHub"
+  },
+  "myRepositories.description.intro": {
+    "message": "Vous trouverez ci-dessous la liste de mes dépôts publics hébergés sur GitHub.com. Ils sont répartis en deux parties : les actifs et les inactifs."
+  },
+  "myRepositories.description.usage": {
+    "message": "N'hésitez pas à récupérer le code et à le réutiliser dans vos projets s'il peut vous être utile."
+  },
+  "Project setup:": {
+    "message": "Mise en place du projet :"
+  },
+  "Help": {
+    "message": "Aide"
+  },
+  "Copied!": {
+    "message": "Copié !"
+  },
+  "Copy": {
+    "message": "Copier"
+  },
+  "Collapse all": {
+    "message": "Tout replier"
+  },
+  "Expand all": {
+    "message": "Tout déplier"
+  },
+  "View files": {
+    "message": "Voir les fichiers"
+  },
+  "Generate install script": {
+    "message": "Générer le script d'installation"
+  },
+  "Copy this block to your terminal (Linux/WSL2).": {
+    "message": "Copiez ce bloc dans votre terminal (Linux/WSL2)."
+  },
+  "theme.projectSetup.tip": {
+    "message": "Besoin d'aide ? Cliquez sur le bouton « Aide » ci-dessus pour les instructions de mise en place."
+  },
+  "theme.common.scrollToTop": {
+    "message": "Remonter en haut"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archives",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archives",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.NotFound.title": {
+    "message": "Page introuvable",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.imageAlt": {
+    "message": "Un groupe de suricates à l'air perplexe."
+  },
+  "theme.NotFound.backToHome": {
+    "message": "Ramenez-moi à l'accueil"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tags :",
+    "description": "The label alongside a tag list"
+  },
+  "blog.alertBox.info": {
+    "message": "Information"
+  },
+  "blog.alertBox.note": {
+    "message": "Remarque"
+  },
+  "blog.alertBox.tip": {
+    "message": "Astuce"
+  },
+  "blog.alertBox.caution": {
+    "message": "Attention"
+  },
+  "blog.alertBox.important": {
+    "message": "Important"
+  },
+  "blog.alertBox.highlyImportant": {
+    "message": "Très important"
+  },
+  "blog.alertBox.coreConcept": {
+    "message": "Notion clé"
+  },
+  "blog.alertBox.danger": {
+    "message": "Danger"
+  },
+  "homepage.hero.title": {
+    "message": "Bonjour, je suis {name}"
+  },
+  "homepage.hero.description": {
+    "message": "Bienvenue dans mon jardin numérique. J'y partage des guides pratiques pour fluidifier vos workflows avec Docker, Linux, Python, PHP, Quarto, Docusaurus, …"
+  },
+  "homepage.hero.readBlog": {
+    "message": "Lire le blog"
+  },
+  "homepage.hero.about": {
+    "message": "À propos"
+  },
+  "homepage.hero.video.unmute": {
+    "message": "Activer le son"
+  },
+  "homepage.hero.video.mute": {
+    "message": "Couper le son"
+  },
+  "blog.latestPosts.noPosts": {
+    "message": "Aucun article récent."
+  },
+  "blog.latestPosts.header": {
+    "message": "{count} dernier{s} article{s} (sur {total} au total)"
+  },
+  "blog.latestPosts.seeAll": {
+    "message": "Voir tous les articles"
+  },
+  "blog.mobileQuickLinks.label": {
+    "message": "Articles liés"
+  },
+  "blog.mobileQuickLinks.title": {
+    "message": "Sur le même sujet"
+  },
+  "blog.oldPostNotice.message": {
+    "message": "Cet article a plus d'un an. Les informations peuvent être obsolètes.",
+    "description": "The warning message displayed on old blog posts"
+  },
+  "blog.postCard.readMore": {
+    "message": "Lire la suite"
+  },
+  "blog.relatedPosts.noRelated": {
+    "message": "Aucun article lié."
+  },
+  "blog.relatedPosts.title": {
+    "message": "Articles liés"
+  },
+  "blog.seriesPage.noSeriesSpecified": {
+    "message": "Aucune série indiquée."
+  },
+  "blog.seriesPage.backToSeries": {
+    "message": "Revenir à toutes les séries"
+  },
+  "blog.seriesPage.metaTitle": {
+    "message": "Articles de la série : {name}"
+  },
+  "blog.seriesPage.title": {
+    "message": "Articles de la série : {name}"
+  },
+  "blog.seriesPage.markdownLink": {
+    "message": "📄 Voir cette série en Markdown brut"
+  },
+  "blog.seriesPage.notFound.title": {
+    "message": "Aucun article pour cette série"
+  },
+  "blog.seriesPage.notFound.message": {
+    "message": "Cette série semble ne pas exister. Vérifiez le nom dans l'URL."
+  },
+  "blog.seriesPage.notFound.link": {
+    "message": "Cliquez ici pour parcourir toutes les séries disponibles."
+  },
+  "blog.seriesCards.noSeries": {
+    "message": "Aucune série d'articles trouvée"
+  },
+  "blog.seriesPosts.intro": {
+    "message": "Cet article fait partie de la série {seriesLink} :"
+  },
+  "blog.seriesStats.summary": {
+    "message": "Un ensemble de {seriesCount} séries · {articleCount} articles au total"
+  },
+  "blog.tagPage.noTag": {
+    "message": "Aucun tag indiqué."
+  },
+  "blog.tagPage.backToTags": {
+    "message": "Revenir à tous les tags"
+  },
+  "blog.tagPage.metaTitle": {
+    "message": "Tag : {label}"
+  },
+  "blog.tagPage.notFound": {
+    "message": "Aucun article avec le tag « {label} »"
+  },
+  "blog.tagPage.browseTags": {
+    "message": "Parcourir tous les tags"
+  },
+  "blog.tagPage.title": {
+    "message": "Articles taggés : {label}"
+  },
+  "blog.translationNotice.untranslated.title": {
+    "message": "Article non traduit",
+    "description": "Banner title on a localized URL with no real translation"
+  },
+  "blog.translationNotice.untranslated.body": {
+    "message": "Cet article n'a pas encore de version française. Le texte ci-dessous est l'original en anglais."
+  },
+  "blog.translationNotice.untranslated.link": {
+    "message": "Ouvrir la version anglaise"
+  },
+  "blog.translationNotice.machine.title": {
+    "message": "Traduction automatique",
+    "description": "Banner title on an AI-translated article"
+  },
+  "blog.translationNotice.machine.body": {
+    "message": "Cette traduction a été produite par une IA. Elle peut contenir des contresens ou des maladresses, en particulier sur les termes techniques. En cas de doute,"
+  },
+  "blog.translationNotice.machine.link": {
+    "message": "consultez l'article de référence en anglais"
+  },
+  "blog.translationNotice.machine.tail": {
+    "message": "— c'est lui qui fait foi."
+  },
+  "blog.translationSwitch.toFrench.title": {
+    "message": "Lire cet article en français",
+    "description": "Tooltip on the flag linking to the French translation"
+  },
+  "blog.translationSwitch.toFrench.label": {
+    "message": "Français"
+  },
+  "blog.translationSwitch.toEnglish.title": {
+    "message": "Lire cet article en anglais (version de référence)",
+    "description": "Tooltip on the flag linking back to the English original"
+  },
+  "blog.translationSwitch.toEnglish.label": {
+    "message": "English"
+  },
+  "blog.updated.changelog": {
+    "message": "Journal des modifications"
+  },
+  "blog.updated.latest": {
+    "message": "Dernière"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "Une minute de lecture|{readingTime} minutes de lecture",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.ErrorPageContent.title": {
+    "message": "Cette page a planté.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Retour au début de la page",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Pagination de la liste des articles du blog",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Nouvelles entrées",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Anciennes entrées",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Pagination des articles du blog",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Article plus récent",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Article plus ancien",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "Voir tous les tags",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "mode système",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "mode clair",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "mode sombre",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Basculer entre le mode sombre et clair (actuellement {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Fil d'Ariane",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Pages de documentation",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Précédent",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Suivant",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "Un document tagué|{count} documents tagués",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} avec \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Ceci est la documentation de la prochaine version {versionLabel} de {siteTitle}.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Ceci est la documentation de {siteTitle} {versionLabel}, qui n'est plus activement maintenue.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "Pour une documentation à jour, consultez la {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "dernière version",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Éditer cette page",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Lien direct vers {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " le {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " par {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Dernière mise à jour{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versions",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.admonition.caution": {
+    "message": "attention",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "danger",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "info",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "remarque",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "astuce",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "attention",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Fermer",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Navigation article de blog récent",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Développer la catégorie '{label}' de la barre latérale",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Réduire la catégorie '{label}' de la barre latérale",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(ouvre dans un nouvel onglet)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Principal",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Langues",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.NotFound.p1": {
+    "message": "Nous n'avons pas trouvé ce que vous recherchez.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Veuillez contacter le propriétaire du site qui vous a lié à l'URL d'origine et leur faire savoir que leur lien est cassé.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "Sur cette page",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Lire plus",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "En savoir plus sur {title}",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copier",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copié",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copier le code",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Activer/désactiver le retour à la ligne",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Page d'accueil",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Réduire le menu latéral",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Réduire le menu latéral",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Barre latérale de documentation",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Fermer la barre de navigation",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Retour au menu principal",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Ouvrir/fermer la barre de navigation",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Déplier le menu",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Replier le menu",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Déplier le menu latéral",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Déplier le menu latéral",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.IdealImageMessage.loading": {
+    "message": "Chargement ...",
+    "description": "When the full-scale image is loading"
+  },
+  "theme.IdealImageMessage.load": {
+    "message": "Cliquez pour charger{sizeMessage}",
+    "description": "To prompt users to load the full image. sizeMessage is a parenthesized size figure."
+  },
+  "theme.IdealImageMessage.offline": {
+    "message": "Votre navigateur est hors ligne. Image non chargée",
+    "description": "When the user is viewing an offline document"
+  },
+  "theme.IdealImageMessage.404error": {
+    "message": "404. Image introuvable",
+    "description": "When the image is not found"
+  },
+  "theme.IdealImageMessage.error": {
+    "message": "Erreur. Cliquez pour recharger",
+    "description": "When the image fails to load for unknown error"
+  },
+  "theme.blog.post.plurals": {
+    "message": "Un article|{count} articles",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} tagués avec « {tagName} »",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Auteurs",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "Voir tous les auteurs",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "Cet auteur n'a pas encore écrit d'article.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Page non répertoriée",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "Cette page n'est pas répertoriée. Les moteurs de recherche ne l'indexeront pas, et seuls les utilisateurs ayant un lien direct peuvent y accéder.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Page brouillon",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "Cette page est un brouillon. Elle n'est visible qu'en développement et sera exclue du build de production.",
+    "description": "The draft content banner message"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 élément|{count} éléments",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Réessayer",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Aller au contenu principal",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "faq.page.title": {
+    "message": "Interrogez mon blog"
+  },
+  "faq.page.browseByTopic": {
+    "message": "Parcourir par thème"
+  },
+  "faq.page.imageAlt": {
+    "message": "Un suricate qui passe en revue les sujets du blog."
+  },
+  "faq.page.metaTitle": {
+    "message": "Interrogez mon blog",
+    "description": "The /faq page <title> and og:title"
+  },
+  "faq.page.browseByTopic.ariaLabel": {
+    "message": "Parcourir par thème"
+  },
+  "follow.meta.title": {
+    "message": "Suivre ce blog"
+  },
+  "follow.meta.description": {
+    "message": "Tous les flux RSS publiés par ce blog : le blog entier, un par série, un par tag."
+  },
+  "follow.title": {
+    "message": "Suivre ce blog"
+  },
+  "follow.lede": {
+    "message": "Pas de newsletter, pas de compte, pas de pistage : ce blog publie des {feeds}. Vous collez une URL dans un lecteur de flux une fois pour toutes, et les nouveaux articles y arrivent tout seuls — un peu comme une boîte aux lettres qui vous appartient, sauf que personne n'obtient votre adresse."
+  },
+  "follow.reader.heading": {
+    "message": "Jamais utilisé de lecteur de flux ?"
+  },
+  "follow.whole.heading": {
+    "message": "Le blog entier"
+  },
+  "follow.whole.lede": {
+    "message": "Trois formats de la même chose. Prenez le RSS, sauf si votre lecteur demande autre chose ; les versions Atom et JSON sont générées par Docusaurus et ne contiennent que des résumés."
+  },
+  "follow.format.rss": {
+    "message": "RSS 2.0, avec le texte intégral de chaque article"
+  },
+  "follow.formatNote": {
+    "message": "Ouvrir le flux RSS dans un navigateur affiche une page lisible plutôt que du balisage brut — il embarque une feuille de style XSLT. Atom et JSON n'en ont pas, ces deux-là ressembleront donc à ce qu'ils sont."
+  },
+  "follow.series.heading": {
+    "message": "Une série à la fois"
+  },
+  "follow.series.lede": {
+    "message": "Les plus utiles, honnêtement : un flux de série vous prévient quand le prochain épisode de ce que vous lisez déjà paraît, et rien d'autre."
+  },
+  "follow.topic.heading": {
+    "message": "Un sujet à la fois"
+  },
+  "follow.topic.lede": {
+    "message": "Chaque tag a son propre flux. Suivez {docker} et vous n'entendrez pas parler de VBA pour Outlook."
+  },
+  "follow.reader.lede": {
+    "message": "Choisissez-en un, collez-y une URL de cette page, c'est fait. Les plus connus en ligne sont {feedly} et {inoreader} (les deux sont gratuits pour commencer et fonctionnent dans un navigateur). Côté bureau, {netnewswire} et Thunderbird lisent aussi les flux. N'importe lequel fera l'affaire — les URLs ci-dessous sont standard."
+  },
+  "faq.page.subtitle": {
+    "message": "{questions} questions, générées à partir de {articles} articles — formulées comme un développeur les chercherait vraiment, et pas seulement reprises du titre de l'article."
+  },
+  "blog.askMyBlog.defaultPlaceholder": {
+    "message": "Posez une question, par exemple « comment réduire la taille de mes images ? »"
+  },
+  "blog.askMyBlog.label": {
+    "message": "Interrogez mon blog"
+  },
+  "blog.askMyBlog.empty": {
+    "message": "Aucun article ne correspond — essayez d'autres mots."
+  },
+  "blog.askMyBlog.placeholder": {
+    "message": "Posez une question…"
+  },
+  "blog.reaction.question": {
+    "message": "Cet article vous a-t-il été utile ?"
+  },
+  "blog.reaction.yes.ariaLabel": {
+    "message": "Oui, cet article m'a été utile"
+  },
+  "blog.reaction.yes": {
+    "message": "Utile"
+  },
+  "blog.reaction.no.ariaLabel": {
+    "message": "Non, cet article ne m'a pas été utile"
+  },
+  "blog.reaction.no": {
+    "message": "Pas vraiment"
+  },
+  "blog.triedIt.question": {
+    "message": "Avez-vous suivi les étapes de cet article ?"
+  },
+  "blog.triedIt.yes.ariaLabel": {
+    "message": "Oui, j'ai essayé et ça a marché"
+  },
+  "blog.triedIt.yes": {
+    "message": "Ça a marché !"
+  },
+  "blog.triedIt.no.ariaLabel": {
+    "message": "Non, ça n'a pas marché pour moi"
+  },
+  "blog.triedIt.no": {
+    "message": "Ça n'a pas marché"
+  },
+  "blog.typoReport.type.typo": {
+    "message": "Coquille"
+  },
+  "blog.typoReport.type.incorrect": {
+    "message": "Incorrect"
+  },
+  "blog.typoReport.type.outdated": {
+    "message": "Obsolète"
+  },
+  "blog.typoReport.type.suggestion": {
+    "message": "Suggestion"
+  },
+  "blog.typoReport.prompt": {
+    "message": "De quel type de problème s'agit-il ?"
+  },
+  "blog.typoReport.cancel": {
+    "message": "Annuler"
+  },
+  "blog.typoReport.placeholder": {
+    "message": "Détails facultatifs (300 caractères max.)"
+  },
+  "blog.typoReport.disclaimer": {
+    "message": "Signalement à sens unique — aucune réponse ne sera envoyée."
+  },
+  "blog.typoReport.sending": {
+    "message": "Envoi…"
+  },
+  "blog.typoReport.dismiss": {
+    "message": "Fermer"
+  },
+  "blog.aiIcon.tooltip": {
+    "message": "Cet article a été écrit avec l'aide d'une IA"
+  },
+  "blog.aiIcon.label": {
+    "message": "Rédigé avec l'IA"
+  },
+  "blog.copyAsMarkdown.copied": {
+    "message": "✓ Copié"
+  },
+  "blog.copyAsMarkdown.error": {
+    "message": "Copie impossible"
+  },
+  "blog.copyAsMarkdown.label": {
+    "message": "Copier en Markdown"
+  },
+  "blog.copyAsMarkdown.viewRaw": {
+    "message": "Voir la source"
+  },
+  "blog.followFeed.noReader": {
+    "message": "Pas encore de lecteur de flux ? {link} — ça prend deux minutes."
+  },
+  "blog.followFeed.noReader.link": {
+    "message": "Commencez ici"
+  },
+  "blog.followFeed.follow": {
+    "message": "Suivre {label}"
+  },
+  "blog.followFeed.follow.ariaLabel": {
+    "message": "Suivre {label}"
+  },
+  "blog.followFeed.followStrong": {
+    "message": "Suivre {label}"
+  },
+  "blog.followFeed.anyReader": {
+    "message": "N'importe quel lecteur de flux"
+  },
+  "blog.followFeed.hosted": {
+    "message": "Feedly ou Inoreader"
+  },
+  "blog.followFeed.newToRss": {
+    "message": "Vous débutez avec RSS ?"
+  },
+  "blog.followFeed.startHere": {
+    "message": "Commencez ici →"
+  },
+  "blog.listPage.allPosts": {
+    "message": "Tous les articles"
+  },
+  "blog.breadcrumb.home": {
+    "message": "Accueil"
+  },
+  "theme.searchBar.ariaLabel": {
+    "message": "Rechercher"
+  },
+  "theme.searchBar.withCount": {
+    "message": "Rechercher dans {count} articles…"
+  },
+  "theme.searchBar.empty": {
+    "message": "Rechercher dans le blog…"
+  },
+  "blog.translationNotice.alsoInEnglish": {
+    "message": "Cet article existe aussi en anglais —"
+  },
+  "blog.translationNotice.alsoInEnglish.link": {
+    "message": "lire la version originale"
+  },
+  "blog.translationNotice.alsoInFrench": {
+    "message": "Cet article existe aussi en français —"
+  },
+  "blog.translationNotice.alsoInFrench.link": {
+    "message": "lire la version française"
+  },
+  "blog.translationCoverage.title": {
+    "message": "Traduction en cours"
+  },
+  "blog.translationCoverage.summary": {
+    "message": "{translated} des {total} articles sont traduits en français. Le blog complet est en anglais."
+  },
+  "blog.translationCoverage.link": {
+    "message": "Voir les {total} articles"
+  },
+  "blog.followFeed.label.everyNewPost": {
+    "message": "chaque nouvel article"
+  },
+  "blog.followFeed.label.thisBlog": {
+    "message": "ce blog"
+  },
+  "blog.followFeed.label.series": {
+    "message": "la série « {name} »"
+  },
+  "blog.followFeed.intro": {
+    "message": "Ils arrivent tout seuls dans votre lecteur de flux — sans compte, sans adresse e-mail, sans rien à résilier. Collez cette URL dans votre lecteur :"
+  },
+  "blog.followFeed.copied": {
+    "message": "✓ Copié"
+  },
+  "blog.followFeed.copyError": {
+    "message": "Copie impossible"
+  },
+  "blog.followFeed.copy": {
+    "message": "Copier"
+  },
+  "blog.followFeed.addFeedly": {
+    "message": "Ajouter à Feedly"
+  },
+  "blog.followFeed.addInoreader": {
+    "message": "Ajouter à Inoreader"
+  },
+  "blog.followFeed.openInReader": {
+    "message": "Ouvrir dans mon lecteur"
+  },
+  "blog.tagsListPage.subtitle": {
+    "message": "{count} sujets à explorer"
+  },
+  "blog.tagsListPage.feedHint": {
+    "message": "Chaque sujet a son propre flux RSS —"
+  },
+  "blog.tagsListPage.feedHint.link": {
+    "message": "suivez seulement ceux qui vous intéressent"
+  },
+  "blog.tagsListPage.featured": {
+    "message": "Sujets en vedette"
+  },
+  "blog.tagsListPage.articleCount": {
+    "message": "{count} articles"
+  },
+  "blog.tagsListPage.all": {
+    "message": "Tous les sujets"
+  },
+  "blog.graph.intro.canvas": {
+    "message": "Tous les articles publiés, positionnés selon leurs liens, leur série et leurs tags partagés avec le reste du corpus. Survolez un point pour voir ses voisins, cliquez pour ouvrir l'article."
+  },
+  "blog.graph.intro.list": {
+    "message": "Tous les articles publiés, regroupés par thème ci-dessous. Touchez un titre pour l'ouvrir."
+  },
+  "blog.graph.filterByTopic": {
+    "message": "Filtrer par thème"
+  },
+  "blog.graph.topN": {
+    "message": "Les {count} articles les plus liés"
+  },
+  "blog.graph.stats": {
+    "message": "{articles} articles · {series} séries · {links} liens internes"
+  },
+  "blog.graph.canvas.ariaLabel": {
+    "message": "Carte à forces de {nodes} articles et {edges} connexions. Survolez un nœud pour voir son titre et ses voisins, cliquez pour ouvrir l'article."
+  },
+  "blog.graph.canvas.fallback": {
+    "message": "Votre navigateur ne prend pas en charge l'élément canvas — consultez plutôt la liste ci-dessous."
+  },
+  "blog.graph.viewAsList": {
+    "message": "Afficher sous forme de liste"
+  },
+  "blog.archive.layoutTitle": {
+    "message": "Archives"
+  },
+  "blog.archive.layoutDescription": {
+    "message": "Parcourir tous les articles par année et par mois."
+  },
+  "blog.archive.sidebarAriaLabel": {
+    "message": "Filtres et chronologie des archives"
+  },
+  "blog.archive.filterByYear": {
+    "message": "Filtrer par année :"
+  },
+  "blog.archive.allYears": {
+    "message": "Toutes les années"
+  },
+  "blog.archive.filterByTag": {
+    "message": "Filtrer par tag :"
+  },
+  "blog.archive.allTags": {
+    "message": "Tous les tags"
+  },
+  "blog.archive.timelineAriaLabel": {
+    "message": "Navigation dans la chronologie des archives"
+  },
+  "blog.archive.jumpTo": {
+    "message": "Aller à"
+  },
+  "blog.archive.heading": {
+    "message": "Archives des articles"
+  },
+  "blog.archive.linkTo": {
+    "message": "Lien vers {month} {year}"
+  },
+  "blog.series.publishedCount": {
+    "message": "{count} article(s) publié(s)"
+  },
+  "blog.series.inProgress": {
+    "message": "{count} en cours"
+  },
+  "blog.followFeed.section.lede": {
+    "message": "Sans compte, sans adresse e-mail, sans rien à résilier — les nouveaux articles arrivent tout seuls dans votre lecteur de flux."
+  },
+  "blog.followFeed.section.paste": {
+    "message": "Collez cette URL dans le lecteur que vous utilisez déjà."
+  },
+  "blog.followFeed.section.desktop": {
+    "message": "…ou ouvrez-la dans un lecteur de bureau"
+  },
+  "blog.followFeed.section.hosted": {
+    "message": "Sur un lecteur en ligne ? Un clic et vous êtes abonné."
+  },
+  "blog.followFeed.section.newToRss": {
+    "message": "Choisissez un lecteur, abonnez-vous à ce blog, et ne revenez plus jamais vérifier le site. Ça prend deux minutes."
+  },
+  "faq.theme.allTopics": {
+    "message": "Tous les thèmes"
+  },
+  "faq.theme.description.plurals": {
+    "message": "Une question sur {label}, générée à partir des articles de ce blog — formulée comme un développeur la chercherait vraiment.|{count} questions sur {label}, générées à partir des articles de ce blog — formulées comme un développeur les chercherait vraiment.",
+    "description": "Pluralized subtitle of a /faq/<theme> page. Use as many plural forms (separated by \"|\") as your language supports."
+  },
+  "blog.archive.publishedCount": {
+    "message": "Nous avons publié {count} articles sur ce blog !"
+  },
+  "blog.archive.availableCount": {
+    "message": "{count} articles sont disponibles en français.",
+    "description": "Archive page count, non-default locale: describes what is readable here, not what the blog has published"
+  },
+  "blog.archive.noPosts": {
+    "message": "Aucun article à afficher avec les filtres sélectionnés."
+  },
+  "blog.graph.group.other": {
+    "message": "Autres"
+  },
+  "theme.NotFound.heading": {
+    "message": "Oh non ! On dirait que vous êtes perdu."
+  },
+  "theme.NotFound.search": {
+    "message": "Rechercher sur le site"
+  },
+  "theme.NotFound.lost.companions": {
+    "message": "Pas d'inquiétude : vos compagnons suricates vous indiquent le chemin du terrier principal."
+  },
+  "theme.NotFound.lost.sentries": {
+    "message": "Nos sentinelles ont scruté l'horizon et n'ont trouvé… rien. Cette page n'existe pas."
+  },
+  "theme.NotFound.lost.dug": {
+    "message": "La colonie de suricates a creusé partout et n'a toujours pas trouvé cette page."
+  },
+  "theme.NotFound.lost.tiptoes": {
+    "message": "Même dressés sur la pointe des pattes, les suricates ne voient cette page nulle part."
+  },
+  "theme.NotFound.lost.burrow": {
+    "message": "Ce terrier est vide. Les suricates vous suggèrent de rentrer à l'accueil."
+  },
+  "blog.followFeed.otherLocale": {
+    "message": "Vous lisez aussi l'anglais ? Le flux dans la langue d'origine suit l'intégralité du blog :"
+  },
+  "follow.whole.otherLocale": {
+    "message": "Les mêmes trois formats en anglais, pour suivre l'intégralité du blog :"
+  },
+  "palette.crossLocaleFallback": {
+    "message": "Chercher plutôt dans les {total} articles anglais →"
+  },
+  "palette.mode.fuzzy": {
+    "message": "Aller à un article, une série, un tag ou une page"
+  },
+  "palette.mode.fulltext": {
+    "message": "Recherche plein texte (Pagefind)"
+  },
+  "palette.mode.ask": {
+    "message": "Poser une question à mon blog"
+  },
+  "palette.mode.tags": {
+    "message": "Aller à un tag"
+  },
+  "palette.mode.headings": {
+    "message": "Aller à un titre de cette page"
+  },
+  "palette.mode.actions": {
+    "message": "Lancer une action"
+  },
+  "palette.toast.copiedMarkdown": {
+    "message": "Article copié en Markdown"
+  },
+  "palette.toast.copyFailed": {
+    "message": "Copie impossible — êtes-vous sur un build de production ?"
+  },
+  "palette.toast.selectText": {
+    "message": "Sélectionnez dans l'article le texte à signaler"
+  },
+  "palette.toast.permalink": {
+    "message": "Lien permanent copié"
+  },
+  "palette.action.themeLight": {
+    "message": "Passer au thème clair"
+  },
+  "palette.action.themeDark": {
+    "message": "Passer au thème sombre"
+  },
+  "palette.group.fulltext": {
+    "message": "Plein texte"
+  },
+  "palette.hint.fulltext": {
+    "message": "Tapez vos termes de recherche après /"
+  },
+  "palette.group.ask": {
+    "message": "Interrogez mon blog"
+  },
+  "palette.group.headings": {
+    "message": "Sur cette page"
+  },
+  "palette.group.actions": {
+    "message": "Actions"
+  },
+  "palette.group.articles": {
+    "message": "Articles"
+  },
+  "palette.group.series": {
+    "message": "Séries"
+  },
+  "palette.group.tags": {
+    "message": "Tags"
+  },
+  "palette.group.pages": {
+    "message": "Pages"
+  },
+  "palette.shortcuts.title": {
+    "message": "Raccourcis clavier"
+  },
+  "palette.ariaLabel": {
+    "message": "Palette de commandes"
+  },
+  "palette.shortcuts.open": {
+    "message": "Ouvrir la palette de commandes (⌘K sur macOS)"
+  },
+  "palette.shortcuts.fulltext": {
+    "message": "Recherche plein texte, dans la palette"
+  },
+  "palette.shortcuts.ask": {
+    "message": "Poser une question à mon blog, dans la palette"
+  },
+  "palette.shortcuts.tags": {
+    "message": "Aller à un tag, dans la palette"
+  },
+  "palette.shortcuts.headings": {
+    "message": "Aller à un titre de cette page, dans la palette"
+  },
+  "palette.shortcuts.actions": {
+    "message": "Lancer une action, dans la palette"
+  },
+  "palette.shortcuts.close": {
+    "message": "Fermer"
+  },
+  "palette.close": {
+    "message": "Fermer"
+  },
+  "palette.placeholder": {
+    "message": "Rechercher, ou essayez / ? # : >"
+  },
+  "palette.resultCount.one": {
+    "message": "1 résultat"
+  },
+  "palette.resultCount.other": {
+    "message": "{count} résultats"
+  },
+  "palette.crossLocaleStatus": {
+    "message": "chercher dans les {total} articles anglais →"
+  },
+  "palette.searching": {
+    "message": "Recherche en cours…"
+  },
+  "palette.unavailable": {
+    "message": "{label} n'est pas disponible pour le moment."
+  },
+  "palette.noResults": {
+    "message": "Aucun résultat — essayez d'autres mots."
+  },
+  "palette.prefixHint.fulltext": {
+    "message": "recherche plein texte"
+  },
+  "palette.prefixHint.ask": {
+    "message": "interroger mon blog"
+  },
+  "palette.prefixHint.tags": {
+    "message": "aller à un tag"
+  },
+  "palette.prefixHint.headings": {
+    "message": "aller à un titre"
+  },
+  "palette.prefixHint.actions": {
+    "message": "lancer une action"
+  },
+  "palette.continueSeries": {
+    "message": "Continuer cette série"
+  },
+  "palette.recentlyViewed": {
+    "message": "Consultés récemment"
+  },
+  "palette.resultsLabel": {
+    "message": "Résultats"
+  },
+  "palette.action.copyMarkdown": {
+    "message": "Copier cet article en Markdown"
+  },
+  "palette.action.viewRaw": {
+    "message": "Voir le .md brut"
+  },
+  "palette.action.reportTypo": {
+    "message": "Signaler une coquille"
+  },
+  "palette.action.editGithub": {
+    "message": "Modifier sur GitHub"
+  },
+  "palette.action.showMap": {
+    "message": "Afficher sur la carte"
+  },
+  "palette.action.copyPermalink": {
+    "message": "Copier le lien permanent"
+  },
+  "palette.hint.ask": {
+    "message": "Tapez une question après ? — par exemple « comment réduire la taille de mon image ? »"
+  },
+  "faq.page.empty": {
+    "message": "Aucune question indexée pour l'instant — générez-en avec {command}."
+  },
+  "follow.feedLink": {
+    "message": "flux"
+  },
+  "root.hiddenTabTitle": {
+    "message": "Revenez, le suricate monte la garde ! 👀"
+  },
+  "askMyBlog.loading": {
+    "message": "Chargement…"
+  },
+  "askMyBlog.unavailable": {
+    "message": "La recherche n'est pas disponible pour le moment."
+  },
+  "askMyBlog.resultCount.one": {
+    "message": "1 résultat"
+  },
+  "askMyBlog.resultCount.other": {
+    "message": "{count} résultats"
+  },
+  "askMyBlogWidget.title": {
+    "message": "Interrogez mon blog"
+  },
+  "bluesky.embeddedImage": {
+    "message": "Image intégrée"
+  },
+  "bluesky.avatarAlt": {
+    "message": "Avatar de {name}"
+  },
+  "bluesky.comments.view": {
+    "message": "Voir le commentaire"
+  },
+  "bluesky.comments.loading": {
+    "message": "Chargement des commentaires…"
+  },
+  "bluesky.comments.none": {
+    "message": "Ce post attend son premier commentaire."
+  },
+  "bluesky.comments.cta": {
+    "message": "Donnez votre avis !"
+  },
+  "bluesky.comments.heading": {
+    "message": "💬 Commentaires sur Bluesky ({count})"
+  },
+  "bluesky.heading.share": {
+    "message": "🦋 Cet article vous a plu ? Partagez-le sur Bluesky"
+  },
+  "bluesky.heading.join": {
+    "message": "🦋 Rejoignez la conversation sur Bluesky"
+  },
+  "bluesky.heading.first": {
+    "message": "🦋 Soyez le premier à réagir sur Bluesky"
+  },
+  "bluesky.heading.talkingOne": {
+    "message": "🦋 1 personne en parle déjà sur Bluesky — rejoignez-la"
+  },
+  "bluesky.heading.talkingOther": {
+    "message": "🦋 {count} personnes en parlent déjà sur Bluesky — rejoignez-les"
+  },
+  "bluesky.accountNote": {
+    "message": "Un compte Bluesky gratuit est nécessaire pour aimer, repartager ou commenter. Ce bloc interroge l'API publique de Bluesky directement depuis votre navigateur (sans cookie, sans connexion) — votre adresse IP parvient donc aux serveurs de Bluesky dès que cette section se charge."
+  },
+  "bluesky.likes.verbLiked": {
+    "message": "a aimé"
+  },
+  "bluesky.likes.verbReposted": {
+    "message": "a repartagé"
+  },
+  "bluesky.likes.verbCommented": {
+    "message": "a commenté"
+  },
+  "bluesky.likes.and": {
+    "message": "et"
+  },
+  "bluesky.likes.likesTitle": {
+    "message": "Le post d'origine a {count} j'aime sur Bluesky"
+  },
+  "bluesky.likes.repostsTitle": {
+    "message": "Le post d'origine a été repartagé {count} fois sur Bluesky"
+  },
+  "bluesky.likes.personTitle": {
+    "message": "{name} (@{handle}) {actions} ce post"
+  },
+  "bluesky.post.ariaLabel": {
+    "message": "Voir le post sur Bluesky"
+  },
+  "bluesky.post.label": {
+    "message": "Aimer, partager ou commenter sur Bluesky"
+  },
+  "bluesky.share.ariaLabel": {
+    "message": "Partager ce post sur Bluesky"
+  },
+  "bluesky.share.label": {
+    "message": "Partager sur Bluesky"
+  },
+  "palette.hintPill": {
+    "message": "Appuyez sur {shortcut} pour rechercher"
+  },
+  "common.dismiss": {
+    "message": "Fermer"
+  },
+  "downloadButton.label": {
+    "message": "Télécharger"
+  },
+  "faqThemePage.title": {
+    "message": "{theme} — Interrogez mon blog"
+  },
+  "installPwaHint.label": {
+    "message": "Installer ce site comme une application"
+  },
+  "konamiEasterEgg.alt": {
+    "message": "Un suricate qui traverse l'écran en courant"
+  },
+  "markdownAlternate.title": {
+    "message": "Version Markdown brute de cet article"
+  },
+  "offlineNotice.notCached": {
+    "message": "Vous êtes hors ligne et cette page n'a pas été enregistrée pour une lecture hors ligne. Reconnectez-vous et réessayez."
+  },
+  "prerequisite.label": {
+    "message": "Prérequis : {name}"
+  },
+  "prerequisite.verify": {
+    "message": "Vérifier :"
+  },
+  "projectSetup.zipEmpty": {
+    "message": "Aucun fichier ni dossier à mettre dans le ZIP."
+  },
+  "projectSetup.zipAriaLabel": {
+    "message": "Télécharger le projet en ZIP"
+  },
+  "projectSetup.locatedIn": {
+    "message": "Assurez-vous de vous trouver dans le dossier {folder}."
+  },
+  "reaction.saveError": {
+    "message": "Impossible d'enregistrer votre vote — veuillez réessayer."
+  },
+  "reaction.thanksHelpful": {
+    "message": "Ravi que ça vous ait aidé ! 🙌"
+  },
+  "reaction.thanksNotHelpful": {
+    "message": "Merci pour votre retour !"
+  },
+  "reaction.countHelpful": {
+    "message": "{count} ont trouvé cela utile"
+  },
+  "reaction.countNotHelpful": {
+    "message": "{count} n'ont pas trouvé cela utile"
+  },
+  "readingProgress.ariaLabel": {
+    "message": "Progression de la lecture"
+  },
+  "shakeEasterEgg.alt": {
+    "message": "Un suricate effrayé, bras en l'air, comme si le sol venait de trembler"
+  },
+  "common.copied": {
+    "message": "Copié"
+  },
+  "common.copyCode": {
+    "message": "Copier le code dans le presse-papiers"
+  },
+  "common.copy": {
+    "message": "Copier"
+  },
+  "snippet.explainLine": {
+    "message": "Expliquer la ligne {line}"
+  },
+  "snippet.hideExplanation": {
+    "message": "Masquer l'explication"
+  },
+  "snippet.explain": {
+    "message": "Expliquer ce code"
+  },
+  "snippet.poweredByAi": {
+    "message": "Généré par IA"
+  },
+  "snippet.defaultTitle": {
+    "message": "Extrait"
+  },
+  "tldr.ariaLabel": {
+    "message": "Résumé de l'article"
+  },
+  "tldr.iconLabel": {
+    "message": "éclair"
+  },
+  "terminal.skipAnimation": {
+    "message": "Cliquez pour passer l'animation"
+  },
+  "triedIt.thanksWorked": {
+    "message": "Génial, ravi que ça ait marché ! 🎉"
+  },
+  "triedIt.thanksDidnt": {
+    "message": "Merci de nous l'avoir signalé !"
+  },
+  "triedIt.countWorked": {
+    "message": "{count} lecteurs ont réussi"
+  },
+  "triedIt.countDidnt": {
+    "message": "{count} lecteurs n'ont pas pu le reproduire"
+  },
+  "blog.typoReport.change": {
+    "message": "modifier"
+  },
+  "blog.typoReport.send": {
+    "message": "Envoyer"
+  },
+  "blog.typoReport.thanks": {
+    "message": "Merci pour votre retour ! ✓"
+  },
+  "blog.typoReport.sendError": {
+    "message": "Envoi impossible."
+  },
+  "vars.badgeDefault": {
+    "message": "défaut"
+  },
+  "vars.explainer": {
+    "message": "Utilisé dans chaque commande de cette page — modifiez-le pour toutes les réécrire."
+  },
+  "vars.title": {
+    "message": "Vos valeurs pour cette page"
+  },
+  "vars.resetToDefaults": {
+    "message": "Revenir aux valeurs par défaut"
+  },
+  "vars.footApplies": {
+    "message": "S'applique aux commandes de cette page"
+  },
+  "vars.footSaved": {
+    "message": "Enregistré uniquement sur cet appareil"
+  },
+  "vars.dismiss": {
+    "message": "Fermer"
+  },
+  "vars.titleShort": {
+    "message": "Vos valeurs"
+  },
+  "vars.reset": {
+    "message": "Réinitialiser"
+  },
+  "vars.fabAriaLabel": {
+    "message": "Vos valeurs pour cette page : {summary}. Cliquez pour modifier."
+  },
+  "vars.fabLabel": {
+    "message": "Valeurs :"
+  },
+  "breadcrumb.ariaLabel": {
+    "message": "Fil d'Ariane"
+  },
+  "blog.oldPostNotice.reviewed": {
+    "message": "Cet article a plus d'un an, mais il a été relu le {date} — son contenu est toujours exact."
+  },
+  "blog.postCard.readAriaLabel": {
+    "message": "Lire l'article : {title}"
+  },
+  "blog.postCard.readingTime": {
+    "message": "{minutes} min de lecture"
+  },
+  "feed.linkTitle": {
+    "message": "{name} — flux RSS"
+  },
+  "feed.linkTitleSourceSeries": {
+    "message": "{name} — flux RSS ({language} — la série complète)"
+  },
+  "feed.linkTitleSourceBlog": {
+    "message": "{name} — flux RSS ({language} — le blog complet)"
+  }
+}

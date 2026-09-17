@@ -1,21 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:54:15.459Z",
+  "generated": "2026-09-17T09:30:57.949Z",
   "source": "index.cjs",
-  "sourceHash": "2231d5dcba1b225010da2423812b0d270bbe21a1",
+  "sourceHash": "b497c41f5bc080fd74e958c8e057b58ce470f29e",
   "lang": "javascript",
-  "summary": "This Docusaurus plugin automatically creates individual routes for each article series at build time, so that URLs like `/series/my-series-name` work properly. Instead of using a single dynamic route with a parameter, it generates one real route per series, which allows Docusaurus's link checker to verify that series links are valid without having to ignore broken links site-wide.",
+  "summary": "This Docusaurus plugin automatically creates individual routes for each article series in your blog. Instead of using a single parameterized route that Docusaurus can't validate, it builds a dedicated route for each series at build time (like `/series/writing-better-bash-scripts`), pointing them all to the same React component that displays the articles in that series. This approach lets Docusaurus's link checker verify that series links actually exist, rather than having to ignore all broken links site-wide.",
   "explanations": {
-    "32": "This loads Node's built-in path utility for working with file paths across different operating systems.",
-    "33": "This imports a helper function that scans the blog articles and extracts all the unique series names (slugs) from their metadata.",
-    "35": "A Docusaurus plugin is a function that receives configuration context and returns an object describing what the plugin does.",
-    "41": "This method tells Docusaurus to watch for changes in blog article files, so new series are detected and routes are created even while the dev server is running.",
-    "44": "This method runs after content is loaded during the build process, triggering the main logic to create routes.",
-    "45": "This loops through every unique series slug that was found by scanning the article metadata.",
-    "46": "For each series, this tells Docusaurus to create a new route that maps a URL path to a React component.",
-    "47": "This is the actual URL pattern—for a series slug 'writing-tips', this would create the route `/series/writing-tips`.",
-    "48": "This specifies which React component should be rendered when someone visits that series route; the component receives the slug and uses it to fetch and display relevant articles.",
-    "49": "Setting `exact: true` means this route only matches the exact path—it won't match `/series/writing-tips/foo` or similar variations."
+    "32": "The `path` module provides utilities for working with file and directory paths across different operating systems.",
+    "33": "`normalizeUrl` is a Docusaurus utility that standardizes URL formatting, handling things like trailing slashes and locale prefixes consistently.",
+    "34": "This imports a helper function that scans your blog's article files and extracts all the unique series slugs mentioned in their front matter.",
+    "36": "A Docusaurus plugin is a function that receives the build context and returns an object defining plugin behavior — things like what routes to create and which files to watch.",
+    "42": "The `getPathsToWatch` method tells Docusaurus to monitor all blog article files, so when you add a new series to an article's front matter, the dev server automatically picks it up without restarting.",
+    "46": "This loop runs once at build time, creating one route for each series that exists in your blog articles.",
+    "50": "`normalizeUrl` combines the base URL, the literal string \"series\", and the series slug into a properly formatted route path, accounting for your site's locale and base configuration."
   }
 }

@@ -11,7 +11,14 @@ import FollowFeed from "@site/src/components/FollowFeed";
 import SearchMetadata from "@theme/SearchMetadata";
 import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
+import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";
+import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import {
+  slugFromPermalink,
+  useTranslationState,
+} from "@site/src/components/Blog/utils/translations";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 function resolveImageUrl(frontMatterImage, permalink) {
   if (!frontMatterImage) return null;
@@ -40,6 +47,17 @@ BlogListPageMetadata.propTypes = {
 };
 
 function BlogListPageContent({ metadata, items }) {
+  // In a non-default locale, `items` is whatever Docusaurus paginated — which includes every
+  // untranslated article, since its i18n falls back to the English source. Filtering `items`
+  // here is not enough: the pagination was computed upstream, so page 2 could come back empty
+  // and `metadata.totalCount` would lie. We therefore rebuild the list from our own
+  // locale-aware corpus and drop the paginator for that locale.
+  //
+  // Acceptable while the translated set is small. Once it outgrows one page, this needs real
+  // pagination over the filtered corpus — see TODO 0119, lot F.
+  const { isDefaultLocale, readingTimeOf } = useTranslationState();
+  const translatedPosts = useBlogMetadata();
+
   const posts = items.map(({ content: { metadata: m } }) => ({
     id: m.permalink,
     permalink: m.permalink,
@@ -51,13 +69,32 @@ function BlogListPageContent({ metadata, items }) {
     readingTime: m.readingTime,
   }));
 
+  const localePosts = isDefaultLocale
+    ? posts
+    : [...translatedPosts]
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((post) => ({
+          id: post.permalink,
+          permalink: post.permalink,
+          title: post.title,
+          description: post.description,
+          date: post.date,
+          image: post.image,
+          mainTag: post.mainTag,
+          // Measured on the translated file by translations-manifest-plugin: the metadata this
+          // list is rebuilt from carries no reading time of its own.
+          readingTime: readingTimeOf(slugFromPermalink(post.permalink)),
+        }));
+
   return (
     <Layout>
       <main className={clsx("container", styles.blogListPage)}>
         <div className={styles.pageHeader}>
           <h1 className={styles.pageTitle}>
-            All posts
-            <span className={styles.postCount}>{metadata.totalCount}</span>
+            <Translate id="blog.listPage.allPosts">All posts</Translate>
+            <span className={styles.postCount}>
+              {isDefaultLocale ? metadata.totalCount : localePosts.length}
+            </span>
           </h1>
           {/*
             The compact trigger, not the full card: a reader who lands on "all
@@ -65,14 +102,22 @@ function BlogListPageContent({ metadata, items }) {
             twin of this exact page, so the offer belongs here — just not loud
             enough to delay the list.
           */}
-          <FollowFeed feedUrl="/blog/rss.xml" label="every new post" variant="inline" />
+          <FollowFeed
+            feedUrl="/blog/rss.xml"
+            label={translate({
+              id: "blog.followFeed.label.everyNewPost",
+              message: "every new post",
+            })}
+            variant="inline"
+          />
         </div>
+        <TranslationCoverage variant="listing" />
         <div className={styles.cardsGrid}>
-          {posts.map((post) => (
+          {localePosts.map((post) => (
             <PostCard key={post.id} post={post} layout="big" />
           ))}
         </div>
-        <BlogListPaginator metadata={metadata} />
+        {isDefaultLocale && <BlogListPaginator metadata={metadata} />}
       </main>
     </Layout>
   );

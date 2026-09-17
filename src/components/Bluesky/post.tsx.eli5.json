@@ -1,16 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:51:01.889Z",
+  "generated": "2026-09-17T09:32:42.972Z",
   "source": "post.tsx",
-  "sourceHash": "02e4a5c53c5fb26f584497f5e8e95f9c220c4c53",
+  "sourceHash": "d39d71b4f15a38215ceb99c7db154e99a9791668",
   "lang": "typescript",
-  "summary": "This React component displays a clickable link to a Bluesky post. It pulls the user's Bluesky handle from the site configuration and the specific post ID from the page's metadata, then builds a URL and renders it as a styled button with an icon and text.",
+  "summary": "This React component renders a link to a Bluesky post. It pulls the user's Bluesky handle from the site configuration and the post identifier from the page metadata, then builds a URL and displays it as a clickable button with an icon and text. If either the handle or post ID is missing, it renders nothing instead.",
   "explanations": {
-    "11": "useDocusaurusContext is a hook from the Docusaurus framework that gives us access to the overall site configuration object.",
-    "12": "We're reading the 'bluesky' object out of the site's custom configuration fields, and telling TypeScript to treat it as either BlueskySiteConfig or undefined.",
-    "14": "We're digging into the metadata object to find the blueskyRecordKey, which is a unique identifier for the specific post, possibly stored in the document's front matter (metadata at the top of a markdown file).",
-    "16": "We check if we have both the handle (username) and the record key; if either is missing, we can't build a valid link, so we return null to render nothing.",
-    "20": "We construct the full URL to the Bluesky post by combining Bluesky's domain with the user's handle and post ID."
+    "13": "We're asking Docusaurus for the site's configuration object, then drilling down into customFields.bluesky and telling TypeScript this value might be undefined.",
+    "15": "We're safely extracting the Bluesky post ID from nested properties (metadata → frontMatter → blueskyRecordKey), which might not exist.",
+    "17": "We bail out early and return null (rendering nothing) if we're missing either the Bluesky handle from config or the post key from metadata, so we can't build a valid link.",
+    "29": "The translate function wraps a string to make it available for translation/internationalization — the 'id' acts as a key, and 'message' is the English fallback text shown to users."
   }
 }

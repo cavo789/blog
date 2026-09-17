@@ -2,8 +2,9 @@ import type { JSX } from "react";
 import CopyAsMarkdown from "@site/src/components/CopyAsMarkdown";
 import FollowFeed from "@site/src/components/FollowFeed";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
-import { getTagLabel } from "@site/src/data/tags";
+import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 interface Props {
   metadata: {
@@ -27,13 +28,19 @@ interface Props {
  */
 export default function ArticleActions({ metadata }: Props): JSX.Element {
   const mainTag = metadata.frontMatter?.mainTag;
+  const tagLabel = useTagLabel();
 
   // The most specific feed this reader could want: the post's own main topic,
   // falling back to the site-wide feed when the post declares no mainTag.
   // `plugins/blog-feed-plugin` writes one feed per tag under the same slug
   // `createSlug()` produces here, so this URL always has a file behind it.
   const feedUrl = mainTag ? `/blog/tags/${createSlug(mainTag)}/rss.xml` : "/blog/rss.xml";
-  const label = mainTag ? getTagLabel(mainTag) : "this blog";
+  // The tag label is resolved per locale by `useTagLabel()` (English `blog/tags.yml`, French
+  // `i18n/fr/.../tags.yml`); the no-mainTag fallback is a UI string, so it goes through
+  // `translate()` instead.
+  const label = mainTag
+    ? tagLabel(mainTag)
+    : translate({ id: "blog.followFeed.label.thisBlog", message: "this blog" });
 
   return (
     <div className={styles.actions}>

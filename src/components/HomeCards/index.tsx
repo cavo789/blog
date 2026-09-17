@@ -17,6 +17,16 @@ import type { JSX } from "react";
 import Link from "@docusaurus/Link";
 import Translate from "@docusaurus/Translate";
 import HOME_CARDS from "../../data/home_cards.js";
+import HOME_CARDS_FR from "../../data/home_cards.fr.js";
+import { useTranslationState } from "@site/src/components/Blog/utils/translations";
+
+/** Keyed by card url — see src/data/home_cards.fr.js. */
+const LOCALIZED: Record<
+  string,
+  Record<string, { title: string; description: string }>
+> = {
+  fr: HOME_CARDS_FR,
+};
 import styles from "./styles.module.css";
 import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
@@ -60,13 +70,19 @@ const HomeCardItem = ({
 );
 
 export default function HomeCards(): JSX.Element {
+  // Swap in the locale's row when there is one. Keyed by `url`, the card's stable identifier —
+  // `title` is precisely what changes, so it cannot be the key.
+  const { currentLocale } = useTranslationState();
+  const overrides = LOCALIZED[currentLocale] ?? {};
+  const cards = HOME_CARDS.map((card) => ({ ...card, ...(overrides[card.url] ?? {}) }));
+
   return (
     <section className={styles.cardsSection}>
       <h2>
         <Translate id="homepage.homeCards.title">Explore the site</Translate>
       </h2>
       <div className={styles.cardsGrid}>
-        {HOME_CARDS.map((card, index) => (
+        {cards.map((card, index) => (
           // Only the very first card sits above the fold on mobile (the grid collapses to a
           // single column below 600px — see styles.module.css). Lazy-loading it too was adding
           // a ~10s artificial LCP delay (TODO 0096); every other card is genuinely off-screen

@@ -1,20 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:56:36.264Z",
+  "generated": "2026-09-17T09:31:29.854Z",
   "source": "index.tsx",
-  "sourceHash": "c271c5cd23bacb758781be3038c74bca539fbcea",
+  "sourceHash": "3d15931546e66c3d592b79d64cf0f0550a5cd399",
   "lang": "typescript",
-  "summary": "This component checks if a blog post is older than one year and displays an appropriate warning to readers. If the post has a recent review date, it shows a green success notice saying the content is still accurate; otherwise, it shows a yellow warning that the information may be outdated. If the post is less than a year old, it renders nothing.",
+  "summary": "This component checks if a blog post is older than one year and displays an appropriate warning notice. If the post has been recently reviewed, it shows a green success message confirming the content is still accurate; otherwise it shows a yellow warning that the information may be outdated. If the post is recent enough, the component returns nothing.",
   "explanations": {
-    "28": "useBlogPost() is a Docusaurus hook that gives us access to the current blog post's data, including its metadata (which contains the publish date and other fields).",
-    "33": "We're casting these fields to TypeScript types because they're custom fields this blog added to the standard metadata — Docusaurus doesn't know about them by default, so we have to tell TypeScript what shape they have.",
-    "39": "We sort the updates array in reverse chronological order (newest first) by converting the date strings to timestamps and comparing them.",
-    "46": "We create a new Date object representing right now, so we can compare it against the post date.",
-    "47": "We subtract one year from today's date, so now oneYearAgo represents the cutoff point — anything before this date is considered old.",
-    "57": "We check if the review date is recent enough (at or after the one-year-ago threshold) to override the old post warning.",
-    "60": "toLocaleDateString formats the date into a readable string like 'January 15, 2024' using US English formatting.",
-    "68": "clsx() is a utility that combines multiple CSS class names together, letting us apply both Docusaurus's built-in alert styles and our custom styles at the same time.",
-    "72": "aria-hidden='true' tells screen readers to ignore the emoji, so they don't read out random characters — the text message itself conveys the meaning to everyone."
+    "28": "This function returns either a JSX element (the notice to display) or null (nothing to display), depending on whether the post is old.",
+    "29": "The useBlogPost hook is a Docusaurus function that gives us access to the current blog post's information, including its metadata.",
+    "30": "We're destructuring to get the date and frontMatter fields from the metadata — the date is when the post was published, and frontMatter contains custom fields the blog author added.",
+    "34": "useDateTimeFormat is a hook that creates a formatter function for dates; we configure it here once so it can be used in multiple places below. It must be called early because hooks have rules about when they can be called.",
+    "43": "The frontMatter object only knows about standard blog fields, so we cast (tell TypeScript) that 'updates' exists and has this specific shape. Without the cast, TypeScript would complain that this field doesn't officially exist.",
+    "49": "We spread the updates array into a new array and sort it by date in descending order (newest first), then grab the first element. This finds which update is most recent.",
+    "56": "We create a new Date with no arguments, which automatically gives us today's date and time.",
+    "57": "We subtract 1 from the current year to get the date from exactly one year ago, which we'll use as our cutoff for whether a post is 'old'.",
+    "59": "We compare: if the post's date is earlier than one year ago, then isOld is true.",
+    "67": "If a review_date exists and is more recent than one year ago, we consider the post 'recently reviewed' — even if the original post is old, a recent review means the content might still be accurate.",
+    "76": "clsx is a utility that lets us combine CSS class names; we're adding both Docusaurus's alert styling and our own custom styles from the CSS module.",
+    "83": "The values prop lets us inject dynamic content (the formatted date) into the translated message string, so different languages can have the date in the right place."
   }
 }

@@ -5,7 +5,10 @@ import {
   buildBreadcrumbTrail,
   type BreadcrumbItem,
 } from "@site/src/components/Blog/utils/breadcrumb";
+import { useSeriesLocalizer } from "@site/src/components/Blog/utils/seriesI18n";
+import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 /**
  * Breadcrumb component
@@ -29,22 +32,29 @@ import styles from "./styles.module.css";
  */
 export default function Breadcrumb(): JSX.Element | null {
   const { metadata, isBlogPostPage } = useBlogPost();
+  // Hooks must run before any early return.
+  const localizeSeries = useSeriesLocalizer();
+  const tagLabel = useTagLabel();
 
   if (!isBlogPostPage) return null;
 
   const frontMatter = metadata.frontMatter as Record<string, unknown>;
+  const series = frontMatter?.series as string | undefined;
+  const mainTag = frontMatter?.mainTag as string | undefined;
 
   const trail: BreadcrumbItem[] = buildBreadcrumbTrail({
     title: metadata.title,
-    mainTag: frontMatter?.mainTag as string | undefined,
-    series: frontMatter?.series as string | undefined,
+    mainTag,
+    series,
+    seriesLabel: series ? localizeSeries(series)?.label : undefined,
+    tagLabel: mainTag ? tagLabel(mainTag) : undefined,
   });
 
   // "Home" plus the title alone is not a hierarchy worth drawing.
   if (trail.length < 3) return null;
 
   return (
-    <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+    <nav className={styles.breadcrumb} aria-label={translate({ id: "breadcrumb.ariaLabel", message: "Breadcrumb" })}>
       <ol className={styles.list}>
         {trail.map((item, index) => {
           const isLast = index === trail.length - 1;

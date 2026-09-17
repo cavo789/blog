@@ -49,6 +49,7 @@ import {
 } from "@site/src/components/Vars/substitute";
 import VarToken from "@site/src/components/Vars/VarToken";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 // Extract language from <code className="language-xyz"> inside children
 const getLanguageFromChildren = (children: ReactNode): string | null => {
@@ -430,8 +431,12 @@ function Eli5CodeBlock({ code, lang, eli5 }: Eli5CodeBlockProps): JSX.Element {
           type="button"
           className={styles.eli5_copy_button}
           onClick={() => copy(code)}
-          aria-label={copied ? "Copied" : "Copy code to clipboard"}
-          title="Copy"
+          aria-label={
+            copied
+              ? translate({ id: "common.copied", message: "Copied" })
+              : translate({ id: "common.copyCode", message: "Copy code to clipboard" })
+          }
+          title={translate({ id: "common.copy", message: "Copy" })}
         >
           {copied ? (
             <IconSuccess className={styles.eli5_copy_icon} />
@@ -465,7 +470,10 @@ function Eli5CodeBlock({ code, lang, eli5 }: Eli5CodeBlockProps): JSX.Element {
                         styles.eli5_badge,
                         isActive && styles.eli5_badge_active,
                       )}
-                      aria-label={`Explain line ${lineNum}`}
+                      aria-label={translate(
+                        { id: "snippet.explainLine", message: "Explain line {line}" },
+                        { line: lineNum },
+                      )}
                       aria-expanded={isActive}
                       onClick={() => handleBadgeClick(lineNum)}
                       onMouseEnter={() => {
@@ -538,9 +546,15 @@ function Eli5SummaryBlock({ summary }: Eli5SummaryBlockProps): JSX.Element {
         aria-expanded={open}
         aria-controls={contentId}
       >
-        <span>{open ? "Hide explanation" : "Explain this snippet"}</span>
+        <span>
+          {open
+            ? translate({ id: "snippet.hideExplanation", message: "Hide explanation" })
+            : translate({ id: "snippet.explain", message: "Explain this snippet" })}
+        </span>
         <span className={styles.eli5_summary_toggle_right}>
-          <span className={styles.eli5_summary_badge}>Powered by AI</span>
+          <span className={styles.eli5_summary_badge}>
+            <Translate id="snippet.poweredByAi">Powered by AI</Translate>
+          </span>
           <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>
             &#9662;
           </span>
@@ -696,7 +710,12 @@ export default function Snippet({
 
   const { iconClassName, iconify, ariaLabel } = IconInfo;
 
-  const displayTitle = title || filename || (lang ? lang.toUpperCase() : "Snippet");
+  const displayTitle =
+    title ||
+    filename ||
+    (lang
+      ? lang.toUpperCase()
+      : translate({ id: "snippet.defaultTitle", message: "Snippet" }));
 
   return (
     <div className={clsx(styles.snippet_block, variantClass, "alert alert--info")}>

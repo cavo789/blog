@@ -17,6 +17,10 @@ export default [
       // `yarn start`'s own copy of the above (kept separate so it can't race a concurrent
       // `yarn build` — see package.json's `start` script and README.md's troubleshooting).
       "**/.docusaurus-dev/**",
+      // Throwaway pair for verifying a change without disturbing a running dev server — see
+      // .claude/rules/build-verification.md. Left on disk they add ~4000 phantom lint errors.
+      "**/build-verify/**",
+      "**/.docusaurus-verify/**",
       "**/node_modules/**",
       "**/*.eli5.json",
       // Generated data blob (yarn icons:bundle) — not hand-written source.

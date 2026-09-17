@@ -7,9 +7,9 @@
  * `?` mode (see AskMyBlog/questionsIndex.js for why that fetch is lazy).
  *
  * Reserves a fixed slot stacked above the scroll-to-top button's corner
- * (src/components/ScrollToTopButton) rather than detecting its presence at runtime —
- * scroll-to-top isn't mounted on every page, and the empty space above it when it's absent is
- * harmless.
+ * (src/components/ScrollToTopButton, mounted on every page by src/theme/Layout) rather than
+ * detecting its presence at runtime — that button stays hidden until the reader scrolls, and the
+ * empty space above it meanwhile is harmless.
  */
 
 import { useCallback, useEffect, useRef, useState, type JSX } from "react";
@@ -101,7 +101,7 @@ export default function AskMyBlogWidget(): JSX.Element {
           className={styles.panel}
           role="dialog"
           aria-modal="true"
-          aria-label="Ask my blog"
+          aria-label={translate({ id: "askMyBlogWidget.title", message: "Ask my blog" })}
         >
           <div className={styles.panelHead}>
             <span className={styles.panelHeadTitle}>
@@ -112,7 +112,7 @@ export default function AskMyBlogWidget(): JSX.Element {
                 width="40"
                 height="40"
               />
-              Ask my blog
+              {translate({ id: "askMyBlogWidget.title", message: "Ask my blog" })}
             </span>
             <button
               type="button"
@@ -128,7 +128,14 @@ export default function AskMyBlogWidget(): JSX.Element {
             </button>
           </div>
           <div className={styles.panelBody}>
-            <AskMyBlog placeholder="Ask a question…" maxResults={5} showLabel={false} />
+            <AskMyBlog
+              placeholder={translate({
+                id: "blog.askMyBlog.placeholder",
+                message: "Ask a question…",
+              })}
+              maxResults={5}
+              showLabel={false}
+            />
           </div>
         </div>
       )}

@@ -101,6 +101,22 @@
   font-style: italic;
 }
 
+/* Reads as the second line of the "no results" block above, so it drops that block's generous
+   top padding and keeps only the breathing room underneath. Not `.empty`: the italic there is
+   meant for a status line, not for a link the reader is supposed to click. */
+.crossLocaleRow {
+  padding: 0 1.25rem 1.5rem;
+}
+
+.crossLocale {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.crossLocale:hover {
+  text-decoration: underline;
+}
+
 .emptyState {
   padding-bottom: 0.5rem;
 }

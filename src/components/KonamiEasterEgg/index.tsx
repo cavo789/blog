@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef, useCallback, type JSX } from "react";
 import runningImg from "@site/static/img/meerkat/suricate_running.webp";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
 
 const KONAMI_CODE = [
   "ArrowUp",
@@ -95,7 +96,10 @@ export default function KonamiEasterEgg(): JSX.Element | null {
   return (
     <img
       src={runningImg}
-      alt="A meerkat sprinting across the screen"
+      alt={translate({
+        id: "konamiEasterEgg.alt",
+        message: "A meerkat sprinting across the screen",
+      })}
       className={styles.runner}
     />
   );

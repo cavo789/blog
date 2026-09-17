@@ -1,16 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:13:11.222Z",
+  "generated": "2026-09-17T09:33:01.366Z",
   "source": "index.tsx",
-  "sourceHash": "90bfdcc86e1b2431e97f4ab4b996dae621201bbd",
+  "sourceHash": "ec4921192914674b306177b6128eed2e98d9500d",
   "lang": "typescript",
-  "summary": "This React component adds a special link tag to a blog post's HTML head that points to a plain-Markdown version of the article. It helps tools and crawlers discover that a Markdown mirror exists at a predictable URL (the article's permalink with .md appended), similar to how RSS feeds are discovered.",
+  "summary": "This React component adds a discovery link to each blog post's HTML head, pointing crawlers and tools to a plain-Markdown version of the article. It works similarly to how RSS feeds advertise themselves with alternate links, but scoped to individual pages rather than the entire site.",
   "explanations": {
-    "8": "This imports JSX.Element, which is TypeScript's way of saying 'this function returns something that looks like React/JSX code'.",
-    "9": "This imports Docusaurus's Head component, which lets you inject tags directly into the HTML <head> section of the page.",
-    "10": "This hook gives us access to the current blog post's metadata (like its URL path) that Docusaurus provides.",
-    "13": "We're destructuring to pull out just the metadata object from the hook — this contains things like the permalink (the URL) of the current article.",
-    "20": "We're constructing the URL to the Markdown mirror by taking the article's permalink and appending .md to the end."
+    "13": "This is a React functional component that returns JSX (the React syntax for HTML-like code). It doesn't take any props as arguments.",
+    "14": "useBlogPost() is a Docusaurus hook that gives us metadata about the current blog post we're rendering, like its URL path. We're extracting just the metadata part.",
+    "21": "We're building a URL by taking the post's permalink and appending .md to it — so if the article is at /blog/my-post, the Markdown mirror is at /blog/my-post.md.",
+    "22": "The translate() function looks up a string in Docusaurus's translation system using that id, falling back to the message if no translation exists. This makes the link's title translatable to other languages."
   }
 }

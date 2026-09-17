@@ -8,6 +8,7 @@ import {
 } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.css";
+import Translate, { translate } from "@docusaurus/Translate";
 
 // ── LocalStorage helpers ───────────────────────────────────────────────────────
 
@@ -72,6 +73,28 @@ interface Props {
 }
 
 type Phase = "idle" | "selecting" | "confirming" | "submitting" | "done" | "error";
+
+/**
+ * Localized label for a feedback type.
+ *
+ * FEEDBACK_TYPES lives at module scope, where `translate()` would run once at import time and
+ * freeze the default locale for the whole bundle. Resolving here — inside the render tree —
+ * is what makes the four buttons follow the page's locale.
+ */
+function labelFor(id: string, fallback: string): string {
+  switch (id) {
+    case "typo":
+      return translate({ id: "blog.typoReport.type.typo", message: "Typo" });
+    case "incorrect":
+      return translate({ id: "blog.typoReport.type.incorrect", message: "Incorrect" });
+    case "outdated":
+      return translate({ id: "blog.typoReport.type.outdated", message: "Outdated" });
+    case "suggestion":
+      return translate({ id: "blog.typoReport.type.suggestion", message: "Suggestion" });
+    default:
+      return fallback;
+  }
+}
 
 export default function TypoReport({ metadata }: Props): JSX.Element | null {
   const { siteConfig } = useDocusaurusContext();
@@ -231,7 +254,9 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
     >
       {phase === "selecting" && (
         <div className={styles.typeCard}>
-          <p className={styles.typePrompt}>What kind of issue?</p>
+          <p className={styles.typePrompt}>
+            <Translate id="blog.typoReport.prompt">What kind of issue?</Translate>
+          </p>
           <div className={styles.typeGrid}>
             {FEEDBACK_TYPES.map(({ id, icon, label }) => (
               <button
@@ -240,12 +265,12 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
                 onClick={() => handleTypeSelect(id)}
               >
                 <span className={styles.typeIcon}>{icon}</span>
-                <span>{label}</span>
+                <span>{labelFor(id, label)}</span>
               </button>
             ))}
           </div>
           <button className={styles.cancelSmall} onClick={handleCancel}>
-            Cancel
+            <Translate id="blog.typoReport.cancel">Cancel</Translate>
           </button>
         </div>
       )}
@@ -259,15 +284,18 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
           </div>
           {typeInfo && (
             <div className={styles.typeBadge}>
-              {typeInfo.icon} {typeInfo.label}
+              {typeInfo.icon} {labelFor(typeInfo.id, typeInfo.label)}
               <button type="button" className={styles.changeTypeBtn} onClick={handleBack}>
-                change
+                <Translate id="blog.typoReport.change">change</Translate>
               </button>
             </div>
           )}
           <textarea
             className={styles.commentInput}
-            placeholder="Optional details (max 300 chars)"
+            placeholder={translate({
+              id: "blog.typoReport.placeholder",
+              message: "Optional details (max 300 chars)",
+            })}
             maxLength={300}
             value={comment}
             onChange={(e) => setComment(e.target.value)}
@@ -282,25 +310,33 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
           />
           <div className={styles.actions}>
             <button type="submit" className={styles.btnPrimary}>
-              Send
+              <Translate id="blog.typoReport.send">Send</Translate>
             </button>
             <button type="button" className={styles.btnSecondary} onClick={handleCancel}>
-              Cancel
+              <Translate id="blog.typoReport.cancel">Cancel</Translate>
             </button>
           </div>
-          <p className={styles.disclaimer}>One-way signal — no reply will be sent.</p>
+          <p className={styles.disclaimer}>
+            <Translate id="blog.typoReport.disclaimer">
+              One-way signal — no reply will be sent.
+            </Translate>
+          </p>
         </form>
       )}
 
-      {phase === "submitting" && <div className={styles.status}>Sending…</div>}
+      {phase === "submitting" && (
+        <div className={styles.status}>
+          <Translate id="blog.typoReport.sending">Sending…</Translate>
+        </div>
+      )}
 
       {phase === "done" && (
         <div className={styles.status}>
-          Thanks for the feedback! ✓
+          <Translate id="blog.typoReport.thanks">Thanks for the feedback! ✓</Translate>
           <button
             className={styles.dismissBtn}
             onClick={handleDismiss}
-            aria-label="Dismiss"
+            aria-label={translate({ id: "blog.typoReport.dismiss", message: "Dismiss" })}
           >
             ✕
           </button>
@@ -309,11 +345,11 @@ export default function TypoReport({ metadata }: Props): JSX.Element | null {
 
       {phase === "error" && (
         <div className={styles.statusError}>
-          Could not send.
+          <Translate id="blog.typoReport.sendError">Could not send.</Translate>
           <button
             className={styles.dismissBtn}
             onClick={handleDismiss}
-            aria-label="Dismiss"
+            aria-label={translate({ id: "blog.typoReport.dismiss", message: "Dismiss" })}
           >
             ✕
           </button>

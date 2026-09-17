@@ -1,17 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:53:28.617Z",
+  "generated": "2026-09-17T10:01:26.187Z",
   "source": "index.tsx",
-  "sourceHash": "3838eb9b52c194c5390ad41c70021e1a301ae15c",
+  "sourceHash": "6c1e857bc81cdef30d5bf1ae9f6f440be41981d3",
   "lang": "typescript",
-  "summary": "This component displays a collapsible list of blog posts that belong to the same series. It fetches all blog metadata, filters to only posts matching the given series name, sorts them chronologically, and renders them as links — except for the current post, which is shown as plain text and optionally highlighted to indicate you're already reading it.",
+  "summary": "This React component displays a collapsible list of blog posts that belong to the same series. It fetches all blog posts, filters them to only those matching the given series name, sorts them by date, and then renders each one as either a link or plain text depending on whether it's the current post being read.",
   "explanations": {
-    "44": "getBlogMetadata() returns all blog posts; we chain filter and sort to get only posts in this series, ordered by date.",
-    "46": "We convert the date strings to timestamps so we can numerically compare which post came first.",
-    "48": "If there are no posts in this series, we return null instead of rendering an empty list, which keeps the page cleaner.",
-    "56": "The 'values' object lets us inject the series link into the translation string as a dynamic placeholder named {seriesLink}.",
-    "68": "We check if this post's permalink matches the one we were told to exclude (the current post), which tells us whether to link it or just display the title.",
-    "74": "clsx combines multiple CSS class names conditionally — we always apply currentPost, and additionally apply currentPostDimmed only if highlightCurrent is true."
+    "45": "useBlogMetadata() returns all available blog posts; then we chain .filter() to keep only posts whose series property matches the series prop passed in, and .sort() to arrange them chronologically from oldest to newest.",
+    "51": "useSeriesLocalizer() returns a function that translates series names based on the user's current language; the ?? series part means 'use the English series name as a fallback if no translation exists'.",
+    "59": "Translate is a Docusaurus component that handles multi-language support; the id uniquely identifies this string for translation, and values lets us inject the seriesLink as a variable into the template text.",
+    "73": "We check if this particular post's permalink matches the excludePermalink prop, which tells us whether this is the current article being viewed.",
+    "79": "clsx combines multiple CSS class names together, conditionally including currentPostDimmed only if highlightCurrent is true; this lets us visually emphasize the current post."
   }
 }

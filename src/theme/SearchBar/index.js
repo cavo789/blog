@@ -13,6 +13,8 @@
 import { usePluginData } from "@docusaurus/useGlobalData";
 import { openPalette } from "@site/src/components/CommandPalette/paletteBus";
 import styles from "./styles.module.css";
+import { translate } from "@docusaurus/Translate";
+import { useTranslationState } from "@site/src/components/Blog/utils/translations";
 
 function isMac() {
   return (
@@ -22,20 +24,34 @@ function isMac() {
 
 export default function SearchBar() {
   const navIndex = usePluginData("command-palette-plugin");
-  const count = navIndex?.meta?.articleCount;
+  const { isDefaultLocale } = useTranslationState();
+
+  // The count is a selling point — "Search 248 articles…" is what makes this read as a real
+  // search box rather than a button (see the docblock above). `articleCount` is locale-filtered,
+  // so under a partially translated locale the same lever works backwards: "Rechercher dans 4
+  // articles…", printed on every page, advertises the blog as tiny. The figure is accurate — the
+  // Pagefind index really does hold four French articles — which is why the fix is to drop the
+  // number rather than correct it. The shortfall is stated where it belongs, once per page, by
+  // <TranslationCoverage />.
+  const count = isDefaultLocale ? navIndex?.meta?.articleCount : undefined;
 
   return (
     <button
       type="button"
       className={styles.button}
       onClick={() => openPalette()}
-      aria-label="Search"
+      aria-label={translate({ id: "theme.searchBar.ariaLabel", message: "Search" })}
     >
       <span className={styles.icon} aria-hidden="true">
         🔍
       </span>
       <span className={styles.placeholder}>
-        {count ? `Search ${count} articles…` : "Search…"}
+        {count
+          ? translate(
+              { id: "theme.searchBar.withCount", message: "Search {count} articles…" },
+              { count },
+            )
+          : translate({ id: "theme.searchBar.empty", message: "Search…" })}
       </span>
       <span className={styles.shortcut}>{isMac() ? "⌘K" : "Ctrl K"}</span>
     </button>

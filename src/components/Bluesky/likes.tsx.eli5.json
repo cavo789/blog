@@ -1,19 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:51:07.649Z",
+  "generated": "2026-09-17T09:32:37.391Z",
   "source": "likes.tsx",
-  "sourceHash": "d687547ad81e925a666a3e1385c43f96ae54866e",
+  "sourceHash": "9154daa84773cb61ac060aa2a739d1c007661883",
   "lang": "typescript",
-  "summary": "This component displays Bluesky engagement stats for a post, showing like and repost counts plus a stack of avatars from people who engaged with it. It limits the display to 10 avatars and shows a '+N' indicator if more people engaged than can fit, with each avatar linking to that person's profile and labeled with what actions they took (liked, reposted, commented).",
+  "summary": "This component displays engagement metrics from a Bluesky post—like count, repost count, and a grid of avatars from people who engaged with it. It caps the avatar display at 10 people and shows a '+N' indicator if there are more; it also translates all text for internationalization and builds readable descriptions of what each person did (liked, reposted, commented, or combinations thereof).",
   "explanations": {
-    "11": "This function takes a Set of engagement actions and converts them into a human-readable sentence fragment — like 'liked and reposted' or 'liked, reposted, and commented on'.",
-    "18": "This builds a grammatically correct list: if there are multiple verbs, it joins all but the last with commas, then adds 'and' before the final verb.",
-    "26": "We return nothing (null) if data is still loading or if we don't have engagement data yet, so the component renders invisibly.",
-    "30": "We grab only the first MAX_AVATARS (10) people from the full list so we don't render too many avatars on screen.",
-    "31": "This calculates how many people engaged beyond the 10 we're showing, so we can display a '+5' or '+12' badge later.",
-    "47": "Only render the avatars section if at least one person is in our 'shown' list; if nobody engaged, skip the whole avatar stack.",
-    "56": "The zIndex makes avatars stack visually in order — earlier avatars appear on top — by giving higher z-index values to people earlier in the list.",
-    "57": "The title attribute creates a tooltip that reads like 'Jane Doe (@janedoe) liked and reposted this post' when you hover over the avatar."
+    "12": "This function takes a Set of action types and converts them into a human-readable sentence fragment. Sets are used here because one person can perform multiple actions (like both liking AND commenting).",
+    "27": "If there's only one action, return it as-is; otherwise we need to format multiple actions into a list with commas and 'and'.",
+    "29": "This builds a grammatical list: it takes all verbs except the last one, joins them with ', ', then adds ' and ' before the final verb. For example: 'liked, reposted and commented on'.",
+    "41": "We only show the first MAX_AVATARS (10) people to avoid cluttering the UI; this slice extracts that subset.",
+    "42": "Calculate how many people we're NOT showing so we can display a '+N' badge if needed.",
+    "66": "The `??` operator means 'use this value if the left side is null or undefined, otherwise use the left side'—here we default reposts to 0 if it's null for display purposes.",
+    "80": "The zIndex is set dynamically so earlier avatars in the list appear on top visually, creating a nice overlapping effect.",
+    "81": "The title attribute creates a tooltip that describes what this specific person did—like 'Alice (@alice_handle) liked and commented on this post'."
   }
 }
