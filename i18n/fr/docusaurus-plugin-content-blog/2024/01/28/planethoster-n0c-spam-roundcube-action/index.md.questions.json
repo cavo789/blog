@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:45:55.743Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "60a9fe6bf0fc32a20ec9be06430a35ddfd4eb387",
+  "questions": [
+    {
+      "question": "comment automatiser la génération et le déploiement des filtres sieve roundcube avec GitHub Actions",
+      "anchor": ""
+    },
+    {
+      "question": "voir le fichier sieve arriver automatiquement sur le compte d'hébergement après le push",
+      "anchor": "what-you-get"
+    },
+    {
+      "question": "transformer une liste de domaines et un template sieve en règles de filtrage automatiques",
+      "anchor": "the-idea"
+    },
+    {
+      "question": "initialiser le dossier de travail et le script Bash pour le générateur anti-spam",
+      "anchor": "building-the-generator"
+    },
+    {
+      "question": "structure JSON pour stocker les domaines bloqués dans le projet",
+      "anchor": "storing-the-list-of-values-in-a-json-file"
+    },
+    {
+      "question": "script Bash avec jq pour convertir le JSON en fichier sieve roundcube",
+      "anchor": "create-the-generation-script"
+    },
+    {
+      "question": "déployer le fichier sieve sur l'hébergement N0C de PlanetHoster via FTP",
+      "anchor": "deploying-the-file-by-ftp"
+    },
+    {
+      "question": "configurer le workflow GitHub Actions pour reconstruire et pousser les filtres automatiquement",
+      "anchor": "automating-it-with-github-actions-optional"
+    },
+    {
+      "question": "déclencher le déploiement automatique des règles sieve lors d'un push sur main",
+      "anchor": "everything-is-now-in-place-for-automation"
+    },
+    {
+      "question": "supprimer la gestion manuelle des filtres roundcube pour gagner du temps sur le spam",
+      "anchor": "conclusion"
+    }
+  ]
+}

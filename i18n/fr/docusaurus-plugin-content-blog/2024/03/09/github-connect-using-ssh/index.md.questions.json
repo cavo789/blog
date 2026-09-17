@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:25:23.166Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e87d78892d812d04da392eb1a19e893a19107be8",
+  "questions": [
+    {
+      "question": "0: Pourquoi privilégier le protocole ssh au lieu d'https pour github ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: commande pour générer une paire de clés ed25519 avec ssh-keygen",
+      "anchor": ""
+    },
+    {
+      "question": "0: Comment ajouter la clé à l'agent ssh avec ssh-add ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: coller la clé publique dans les paramètres github",
+      "anchor": ""
+    },
+    {
+      "question": "0: Tester la connexion ssh à github avec ssh -T",
+      "anchor": ""
+    },
+    {
+      "question": "0: Comment forcer git à utiliser ssh globalement sans re-cloner ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: où trouver le chemin de la clé publique id_ed25519.pub sous linux",
+      "anchor": ""
+    },
+    {
+      "question": "0: Faut-il obligatoirement saisir une passphrase avec ssh-keygen ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment ssh protège contre les attaques man in the middle",
+      "anchor": ""
+    },
+    {
+      "question": "0: Utiliser la même clé ssh pour un serveur d'hébergement distant",
+      "anchor": ""
+    }
+  ]
+}

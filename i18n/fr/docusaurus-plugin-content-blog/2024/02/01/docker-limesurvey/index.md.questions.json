@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:48:06.152Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8a7d112e63558986a517d76857b9da3e4393ed9a",
+  "questions": [
+    {
+      "question": "Comment auto-héberger LimeSurvey avec Docker Compose ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker-compose.yml LimeSurvey port 8080",
+      "anchor": "limesurvey-running-in-two-minutes"
+    },
+    {
+      "question": "docker compose up --detach LimeSurvey MySQL prêt",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "docker compose logs -f LimeSurvey prêt connexion",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "identifiants admin LimeSurvey Docker par défaut",
+      "anchor": "first-login"
+    },
+    {
+      "question": "persistance données LimeSurvey Docker volumes",
+      "anchor": "using-volumes"
+    },
+    {
+      "question": "docker-compose.yml volumes LimeSurvey redémarrage container",
+      "anchor": "using-volumes"
+    },
+    {
+      "question": "tag version spécifique LimeSurvey MySQL docker compose",
+      "anchor": "download-an-old-version"
+    },
+    {
+      "question": "récapitulatif installation LimeSurvey self-hosted Docker",
+      "anchor": "conclusion"
+    }
+  ]
+}

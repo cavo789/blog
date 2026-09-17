@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:08:29.680Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "aa7ba9cb5c5325c1d4e23c4e4fc1bea684ed4f6e",
+  "questions": [
+    {
+      "question": "comment faire joindre un container docker depuis un autre réseau",
+      "anchor": ""
+    },
+    {
+      "question": "configurer extra_hosts dans docker compose pour mapper un alias hôte",
+      "anchor": "the-two-line-fix"
+    },
+    {
+      "question": "pourquoi le fichier /etc/hosts de l'hôte reste invisible depuis un container",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "créer un réseau docker isolé avec docker network create",
+      "anchor": "some-preparation-work"
+    },
+    {
+      "question": "lancer un container de test avec curl via docker compose run",
+      "anchor": "creating-our-second-container"
+    },
+    {
+      "question": "curl: (7) Failed to connect to 127.0.0.1 port 8080 depuis un container",
+      "anchor": "when-it-doesnt-work-and-why"
+    },
+    {
+      "question": "connecter un second container au même réseau docker que le premier",
+      "anchor": "we-need-to-run-the-second-container-on-the-same-network"
+    },
+    {
+      "question": "récupérer l'IP de la gateway d'un réseau docker personnalisé",
+      "anchor": "we-need-to-find-the-ip-of-the-network"
+    },
+    {
+      "question": "vérifier la connectivité entre containers après avoir joint le réseau",
+      "anchor": "try-again"
+    },
+    {
+      "question": "réutiliser un alias hosts de la machine physique dans un container docker",
+      "anchor": "extra-use-case---aliases"
+    }
+  ]
+}

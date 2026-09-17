@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:15:47.036Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f3d1750654bc40ab4e58c6cedf16c81172f535a0",
+  "questions": [
+    {
+      "question": "workflow pour créer des slides reveal.js en Markdown avec Quarto et les DevContainers",
+      "anchor": ""
+    },
+    {
+      "question": "comment prévisualiser le rendu des slides en temps réel dans le navigateur",
+      "anchor": "the-result"
+    },
+    {
+      "question": "Pourquoi utiliser Quarto et Decktape plutôt que PowerPoint pour des exports multiples ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "prerequisites Docker et VSCode",
+      "anchor": "installation"
+    },
+    {
+      "question": "initialiser le projet Quarto avec le template fourni",
+      "anchor": "we-need-a-quarto-project"
+    },
+    {
+      "question": "lancer `code .` et utiliser `Dev containers: Rebuild and Reopen in Devcontainer` dans VSCode",
+      "anchor": "open-the-devcontainer"
+    },
+    {
+      "question": "enrichir le deck avec de nouvelles démos et sections",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "lancer le preview server et suivre les changements Markdown",
+      "anchor": "preview-the-slideshow"
+    },
+    {
+      "question": "exporter la présentation en PDF paysage avec Decktape",
+      "anchor": "export-a-pdf"
+    },
+    {
+      "question": "compiler le projet Quarto en site HTML statique pour un déploiement SFTP",
+      "anchor": "export-as-static-html-site"
+    },
+    {
+      "question": "quelles sont les étapes finales pour automatiser le cycle de vie des slides ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

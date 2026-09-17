@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:45:01.716Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b62d66f0a796ff4675cfceb540f49ca8054aec29",
+  "questions": [
+    {
+      "question": "workflow zsh docker fzf gestion interactive sans retenir de commandes",
+      "anchor": ""
+    },
+    {
+      "question": "comment ouvrir une session dans un container docker actif via fzf et zsh ?",
+      "anchor": "start-a-new-terminal-session-in-a-running-docker-container"
+    },
+    {
+      "question": "comment arrêter plusieurs containers docker en même temps avec la sélection multi dans fzf ?",
+      "anchor": "stop-one-or-more-running-docker-containers"
+    },
+    {
+      "question": "consulter les logs d'un container docker avec recherche visuelle et zsh",
+      "anchor": "access-logs-of-a-running-docker-container"
+    },
+    {
+      "question": "nettoyage automatique des containers, images, volumes et réseaux docker orphelins via zsh",
+      "anchor": "clean-up-unused-docker-containers-images-volumes-and-networks"
+    },
+    {
+      "question": "lancer un nouveau container docker depuis le terminal avec interface fzf",
+      "anchor": "creating-a-new-container"
+    },
+    {
+      "question": "existe-t-il une fonction unique pour piloter tous les workflows docker dans zsh ?",
+      "anchor": "one-to-rule-them-all"
+    },
+    {
+      "question": "ajout des scripts zsh docker et fzf dans .zshrc ou fichier dédié",
+      "anchor": "how-to-install"
+    }
+  ]
+}

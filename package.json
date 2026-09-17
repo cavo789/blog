@@ -24,6 +24,7 @@
     "questions:status": "node scripts/questions-review.mjs --status",
     "translate": "node scripts/translate-post.mjs",
     "translate:check": "node scripts/check-translation-freshness.mjs",
+    "translate:plan": "node scripts/translate-plan.mjs",
     "i18n:budget": "node scripts/i18n-budget.mjs",
     "tags:suggest": "node scripts/suggest-tags.mjs",
     "icons:bundle": "node scripts/generate-icon-bundle.mjs",

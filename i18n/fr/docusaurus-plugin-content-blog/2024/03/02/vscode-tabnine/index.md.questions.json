@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:19:58.689Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e30a7a4a146e65902961d296a64e9ef5b354290a",
+  "questions": [
+    {
+      "question": "extension VS Code autocomplétion IA gratuite hors ligne",
+      "anchor": ""
+    },
+    {
+      "question": "comment Tabnine prédisait les setters PHP dans VS Code",
+      "anchor": ""
+    },
+    {
+      "question": "Tabnine fonctionnait-il hors ligne et stockait-il le code",
+      "anchor": ""
+    },
+    {
+      "question": "quels langages étaient supportés par Tabnine pour l'autocomplétion",
+      "anchor": ""
+    },
+    {
+      "question": "article historique Tabnine extension VS Code autocomplétion",
+      "anchor": ""
+    },
+    {
+      "question": "Tabnine offre gratuite supprimée quelle date exacte",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "plan Dev individuel Tabnine arrêté octobre 2025",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "Tabnine réservé aux entreprises prix par utilisateur",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "pourquoi Tabnine n'est plus gratuit pour les devs indépendants",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "tarification actuelle Tabnine entreprise facturation annuelle",
+      "anchor": "bye-bye-tabnine"
+    }
+  ]
+}

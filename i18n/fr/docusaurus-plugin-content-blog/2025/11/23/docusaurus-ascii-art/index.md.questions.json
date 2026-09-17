@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:08:15.447Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8e929a54bc6e1782a395a75dec17682e3b09d128",
+  "questions": [
+    {
+      "question": "injecter une bannière ascii art dans le code source de docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "comment vérifier que le commentaire html est bien inséré après le body",
+      "anchor": "the-result"
+    },
+    {
+      "question": "comprendre le fonctionnement du hook postBuild sur les fichiers html générés",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "configurer docusaurus.config.js pour charger un plugin postBuild",
+      "anchor": "installation"
+    },
+    {
+      "question": "où placer le fichier contenant la bannière ascii et comment le nommer",
+      "anchor": "create-your-personalized-logo"
+    },
+    {
+      "question": "exemple de code pour un plugin docusaurus qui modifie le html après le build",
+      "anchor": "create-the-plugin-and-load-it"
+    },
+    {
+      "question": "trouver d'autres exemples de plugins modifiant le html généré",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "lancer yarn docusaurus build et yarn docusaurus serve pour tester le résultat",
+      "anchor": "time-to-test"
+    },
+    {
+      "question": "pourquoi le plugin ne fonctionne qu'en mode build et pas en preview",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "générer des bannières ascii art en ligne de commande avec bash",
+      "anchor": "conclusion"
+    }
+  ]
+}

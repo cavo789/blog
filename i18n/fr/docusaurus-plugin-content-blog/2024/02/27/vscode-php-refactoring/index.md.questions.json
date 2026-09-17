@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:15:14.669Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3aa6bf6f24705bfbf788f83483bd8ca9938e90fd",
+  "questions": [
+    {
+      "question": "comment refacturer du code php dans vscode gratuitement",
+      "anchor": ""
+    },
+    {
+      "question": "créer les fichiers d'exemple php dans un dossier temporaire sous linux",
+      "anchor": "create-sample-files"
+    },
+    {
+      "question": "lancer le script php dans un conteneur Docker avec php:8.2",
+      "anchor": "run-the-example"
+    },
+    {
+      "question": "installer PHP Refactor Tool dans vscode via CTRL-SHIFT-X",
+      "anchor": "refactoring"
+    },
+    {
+      "question": "renommer un symbole php dans vscode en appuyant sur F2",
+      "anchor": "rename-a-symbol"
+    },
+    {
+      "question": "renommer une classe php et mettre à jour automatiquement toutes les références croisées",
+      "anchor": "rename-a-class"
+    },
+    {
+      "question": "extraire vers une nouvelle méthode un bloc de code php dans vscode",
+      "anchor": "extract-to-a-new-method"
+    },
+    {
+      "question": "utiliser Rector pour appliquer des refactorings automatiques sur tout le code source",
+      "anchor": "other-extensions"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:40:23.656Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "dba844c7f089efae48568918d5245e49db32655a",
+  "questions": [
+    {
+      "question": "comment automatiser la génération de résumés TL;DR pour un blog avec Gemini AI et Python ?",
+      "anchor": ""
+    },
+    {
+      "question": "comparaison avant et après de la réduction des premiers paragraphes",
+      "anchor": "before-and-after"
+    },
+    {
+      "question": "workflow script Python lecture dossier Markdown envoi à Gemini AI réinjection",
+      "anchor": "the-concept"
+    },
+    {
+      "question": "code du composant React pour afficher le résumé dans Docusaurus",
+      "anchor": "the-react-component"
+    },
+    {
+      "question": "où configurer la clé API Google Gemini et structurer le dossier du script Python",
+      "anchor": "the-automation-script"
+    },
+    {
+      "question": "commande docker run avec .env, montage .:/app et installation de google-genai python-dotenv",
+      "anchor": "running-with-docker"
+    },
+    {
+      "question": "exécuter le script Python pour injecter automatiquement les résumés dans les fichiers Markdown",
+      "anchor": "generating-summaries"
+    },
+    {
+      "question": "gérer le quota dépassé et l'erreur 429 RESOURCE_EXHAUSTED lors de l'appel à Gemini AI",
+      "anchor": "error---429-resource_exhausted"
+    },
+    {
+      "question": "finaliser l'intégration du générateur de résumé dans le workflow de publication Docusaurus",
+      "anchor": "conclusion"
+    }
+  ]
+}

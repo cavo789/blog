@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:37:45.991Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "393815cef34601423a089922c51fa95697eac09a",
+  "questions": [
+    {
+      "question": "sed mettre à jour variable .env si existe sinon ajouter",
+      "anchor": ""
+    },
+    {
+      "question": "commande grep -q et sed -i pour .env idempotent",
+      "anchor": "the-one-liner"
+    },
+    {
+      "question": "comment faire un rechercher remplacer ou insérer en une ligne bash ?",
+      "anchor": "the-one-liner"
+    },
+    {
+      "question": "à quoi sert grep -q dans un script bash",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "sed -i s modifier une ligne existante dans un fichier",
+      "anchor": "search-and-replace"
+    },
+    {
+      "question": "signification du flag -i dans sed",
+      "anchor": "search-and-replace"
+    },
+    {
+      "question": "sed ajouter ligne à la fin du fichier si absente",
+      "anchor": "dont-replace-but-add-if-not-found"
+    },
+    {
+      "question": "comment utiliser $a dans sed pour insérer du texte",
+      "anchor": "dont-replace-but-add-if-not-found"
+    },
+    {
+      "question": "combiner grep et sed pour mettre à jour ou créer une variable",
+      "anchor": "combine-both"
+    },
+    {
+      "question": "pourquoi cette approche sed est idempotente pour les scripts de déploiement",
+      "anchor": "conclusion"
+    }
+  ]
+}

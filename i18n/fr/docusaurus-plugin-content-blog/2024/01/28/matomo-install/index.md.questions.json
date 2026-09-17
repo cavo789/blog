@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:44:06.115Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c31bdd557c07a85a6ed5dce59cbd12e5684ac02f",
+  "questions": [
+    {
+      "question": "auto-héberger Matomo gratuitement sur un sous-domaine",
+      "anchor": ""
+    },
+    {
+      "question": "Comment créer la base de données MySQL sur PlanetHoster ?",
+      "anchor": ""
+    },
+    {
+      "question": "télécharger et décompresser la release Matomo via SSH",
+      "anchor": ""
+    },
+    {
+      "question": "suivre l'assistant d'installation Matomo étape par étape",
+      "anchor": ""
+    },
+    {
+      "question": "récupérer le script de tracking une fois le dashboard configuré",
+      "anchor": ""
+    },
+    {
+      "question": "installer le plugin Matomo pour Docusaurus",
+      "anchor": "docusaurus"
+    },
+    {
+      "question": "Comment intégrer le tracking à un site Docusaurus ?",
+      "anchor": "docusaurus"
+    },
+    {
+      "question": "ajouter le code de suivi Matomo aux pages Docusaurus",
+      "anchor": "docusaurus"
+    },
+    {
+      "question": "configurer le plugin analytics Docusaurus avec Matomo",
+      "anchor": "docusaurus"
+    },
+    {
+      "question": "où trouver le plugin de tracking pour Docusaurus ?",
+      "anchor": "docusaurus"
+    }
+  ]
+}

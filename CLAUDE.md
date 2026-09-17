@@ -30,6 +30,7 @@ yarn links:audit        # corpus-wide internal-link opportunities (stats mode)
 yarn links:check <path> # internal-link check for one article
 yarn translate <path>   # translate ONE article (low-level; prefer the `translate` function below)
 yarn translate:check    # translation freshness: fresh / minor / stale, per article
+yarn translate:plan <p> # what a `translate <p>` run would do and cost — offline, spends nothing
 yarn eli5               # generate ELI5 summaries (requires Ollama)
 ```
 
@@ -47,11 +48,21 @@ translate <path> --force               # redo a translation that is already up t
 translate <path> --repair              # fix a BAD translation (see below)
 ```
 
-It resolves a path to every `index.md`/`index.mdx` underneath it, and **prompts with the count and
-the estimated cost before spending anything** whenever more than one article is involved — a
-single article, the everyday case, runs straight through.
+It resolves a path to every `index.md`/`index.mdx` underneath it, then asks
+`scripts/translate-plan.mjs` what that run would **actually** do — and **prompts with that count
+and its cost before spending anything** whenever more than one article needs an API call. Articles
+already up to date never reach the prompt: `translate blog/2024` on a fully translated year prints
+`✅ Nothing to do — 108 article(s) already up to date` and exits 0, instead of quoting 17.28 $ for
+work that would not happen. When exactly one article needs work — the everyday case, right after
+publishing — it runs straight through.
 
-Three cost behaviours worth knowing, because they decide what a command actually bills:
+The plan is pure filesystem work (hashes, drift, and under `--repair` the validator): it never
+constructs the Anthropic client, so `yarn translate:plan blog` is free and is the honest answer to
+"what is left to translate?". `yarn translate:check` answers the neighbouring question — how stale
+each existing translation is.
+
+Three cost behaviours worth knowing, because they decide what a command actually bills, and which
+the plan mirrors state by state (`NEW`, `PATCH`, `FULL`, `UP_TO_DATE`, `REPAIR`/`CLEAN`):
 
 - **Unchanged article → no API call at all.** The sidecar's hash is compared first; the Anthropic
   client is never even constructed.

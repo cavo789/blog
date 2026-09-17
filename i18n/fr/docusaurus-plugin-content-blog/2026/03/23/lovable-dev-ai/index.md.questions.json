@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:53:32.722Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "a4d9941dcfbd5e7be3de8ebcd564854a9b5187e4",
+  "questions": [
+    {
+      "question": "Lovable.dev reconstructeur app full-stack Docker-first prompt unique",
+      "anchor": ""
+    },
+    {
+      "question": "Comment utiliser Lovable.dev pour cloner une application de prise de notes existante ?",
+      "anchor": ""
+    },
+    {
+      "question": "Mise en cache Redis du rendu HTML Markdown dans l'app générée par Lovable",
+      "anchor": "the-result-after-one-hour-and-a-half"
+    },
+    {
+      "question": "Comment tester le moteur de recherche Meilisearch et l'API REST du clone Marknotes ?",
+      "anchor": "the-result-after-one-hour-and-a-half"
+    },
+    {
+      "question": "Prompt Lovable.dev pour architecture Python/FastAPI React et parcours de fichiers récursif",
+      "anchor": "the-objective"
+    },
+    {
+      "question": "Comment spécifier la conversion Markdown vers HTML avec cache Redis dans un prompt IA ?",
+      "anchor": "the-objective"
+    },
+    {
+      "question": "Correction itérative erreur Dockerfile frontend avec Lovable.dev",
+      "anchor": "the-actual-path-there-successive-versions-and-errors"
+    },
+    {
+      "question": "Comment itérer sur les versions de l'app Lovable quand docker compose échoue ?",
+      "anchor": "the-actual-path-there-successive-versions-and-errors"
+    },
+    {
+      "question": "Délai réel pour faire fonctionner une app Marknotes générée par IA avec Lovable.dev",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "Fonctionnalités finales de l'app : navigation récursive, rendu Markdown et recherche Meilisearch",
+      "anchor": "conclusion"
+    }
+  ]
+}

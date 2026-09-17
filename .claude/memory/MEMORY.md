@@ -39,3 +39,4 @@
 - [Infima Dark Band Contrast](feedback_infima_dark_band_contrast.md) — en dark, aucun headroom entre les fonds Infima ; séparer par la bordure (emphasis-200), token déclaré sur le conteneur pas sur la carte
 - [Snippet Relative Paths](feedback_snippet_relative_paths.md) — `source=` toujours relatif à l'article (`./…`) ; le préfixe `.unpublished/<slug>` ou `blog/YYYY/MM/DD/` ne doit JAMAIS apparaître ; exception : sources du repo (src/, plugins/, .claude/)
 - [Navbar Width Budget](project_navbar_width_budget.md) — saturée entre 997-1260px ; repli de la recherche, dropdown « Plus » écarté, pas de nouvelle entrée prévue
+- [Ollama code-quality speed](project_ollama_code_quality_speed.md) — questions FR ≈ 150 s/article : 140 s de "thinking" ; think:false = 10x mais casse le schéma JSON (Ollama 0.18.2) ; num_ctx et think:"low" inutiles

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:13:17.641Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b0f6618f1f9283c5a21a0d5677ece3eb96ad8473",
+  "questions": [
+    {
+      "question": "comment personnaliser le flux rss de docusaurus pour un contenu complet et des images ?",
+      "anchor": ""
+    },
+    {
+      "question": "où se trouve le fichier rss.xml généré par docusaurus",
+      "anchor": "what-is-the-rssxml-file"
+    },
+    {
+      "question": "pourquoi le flux rss par défaut de docusaurus manque-t-il de contenu html et d'images ?",
+      "anchor": "how-docusaurus-is-managing-feeds"
+    },
+    {
+      "question": "dépendances yarn pour plugin rss personnalisé docusaurus cheerio feed front-matter",
+      "anchor": "prepare-your-system"
+    },
+    {
+      "question": "code plugin docusaurus pour remplacer le générateur rss natif",
+      "anchor": "create-the-plugin"
+    },
+    {
+      "question": "configurer docusaurus.config.js désactiver rss atom ajouter plugin custom",
+      "anchor": "update-your-configuration"
+    },
+    {
+      "question": "lancer yarn run build pour générer le nouveau rss.xml",
+      "anchor": "run-the-plugin"
+    },
+    {
+      "question": "comment vérifier le rendu du flux rss enrichi localement après le build ?",
+      "anchor": "visualize-the-new-lookfeel"
+    },
+    {
+      "question": "avantages plugin rss personnalisé vs flux natif docusaurus",
+      "anchor": "why-is-this-better"
+    },
+    {
+      "question": "validateur xml en ligne pour fichier rss.xml docusaurus",
+      "anchor": "validation-tools"
+    }
+  ]
+}

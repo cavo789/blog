@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:06:06.506Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "097a1a0fae494c49cd723d697ab37c3ec99712ef",
+  "questions": [
+    {
+      "question": "comment récupérer l'email d'un compte github quand il est masqué ?",
+      "anchor": ""
+    },
+    {
+      "question": "github email lookup outil en ligne",
+      "anchor": ""
+    },
+    {
+      "question": "astuce pour contacter un dev github sans passer par une issue",
+      "anchor": ""
+    },
+    {
+      "question": "copier coller le nom github dans un outil web pour avoir l'email",
+      "anchor": "using-web-interface"
+    },
+    {
+      "question": "github email finder site tiers",
+      "anchor": "using-web-interface"
+    },
+    {
+      "question": "url events github pour récupérer l'email",
+      "anchor": "using-parametrized-url"
+    },
+    {
+      "question": "filtre jq pour récupérer l'email des events github",
+      "anchor": "using-parametrized-url"
+    },
+    {
+      "question": "champ json des events github contenant l'email",
+      "anchor": "using-parametrized-url"
+    },
+    {
+      "question": "suffixe .patch url commit github",
+      "anchor": "based-on-a-last-commit"
+    },
+    {
+      "question": "afficher email auteur commit github",
+      "anchor": "based-on-a-last-commit"
+    }
+  ]
+}

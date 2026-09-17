@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:03:19.512Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f8cd7e7bc190d805f14846a970b1b101482bac44",
+  "questions": [
+    {
+      "question": "Comment simplifier le développement d'un blog Docusaurus avec Docker et les DevContainers ?",
+      "anchor": ""
+    },
+    {
+      "question": "Lancer un blog Docusaurus en local avec une image Docker",
+      "anchor": "create-the-base-docker-image"
+    },
+    {
+      "question": "TARGET=production make build et make up pour générer le site statique",
+      "anchor": "build-and-run-the-production-image"
+    },
+    {
+      "question": "vscode devcontainer environnement développement isolé",
+      "anchor": "using-devcontainers-for-development"
+    },
+    {
+      "question": "configurer le dossier .devcontainer et devcontainer.json",
+      "anchor": "create-the-devcontainer-folder"
+    },
+    {
+      "question": "Ouvrir le terminal intégré dans un DevContainer VS Code",
+      "anchor": "running-the-terminal-from-the-devcontainer"
+    },
+    {
+      "question": "Ajouter LanguageTool à VS Code pour la relecture du contenu",
+      "anchor": "using-languagetool-in-vscode"
+    },
+    {
+      "question": "code spell checker vscode correction markdown",
+      "anchor": "code-spell-checker"
+    },
+    {
+      "question": "markdown lint vscode validation syntaxe",
+      "anchor": "markdown-lint"
+    },
+    {
+      "question": "Fichiers dockerfile et docker-compose requis pour le projet",
+      "anchor": "create-required-files"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:34:41.723Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ab68e97b2a8fcf744ceafcaedc073d4eb2daee41",
+  "questions": [
+    {
+      "question": "comment afficher un mot de passe WinSCP en clair dans le fichier de log de session",
+      "anchor": ""
+    },
+    {
+      "question": "activer « Log passwords and other sensitive information » dans les préférences de logging",
+      "anchor": ""
+    },
+    {
+      "question": "où se trouve le fichier de log de session WinSCP sous Windows",
+      "anchor": ""
+    },
+    {
+      "question": "récupérer un mot de passe oublié d'un site enregistré dans WinSCP",
+      "anchor": ""
+    },
+    {
+      "question": "modifier les options de logging pour voir les identifiants en clair",
+      "anchor": ""
+    },
+    {
+      "question": "trouver le fichier .log correspondant à ma session WinSCP dans l'explorateur Windows",
+      "anchor": ""
+    },
+    {
+      "question": "désactiver l'enregistrement des mots de passe après récupération",
+      "anchor": ""
+    },
+    {
+      "question": "supprimer le fichier log de session WinSCP une fois lu",
+      "anchor": ""
+    },
+    {
+      "question": "double-cliquer sur le site enregistré dans WinSCP pour générer le log",
+      "anchor": ""
+    },
+    {
+      "question": "comment retrouver le mot de passe d'un site WinSCP sans le retaper",
+      "anchor": ""
+    }
+  ]
+}

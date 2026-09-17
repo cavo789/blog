@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:37:58.832Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "61debc0ada2db93b516fdd6ea02df9d7a8a710be",
+  "questions": [
+    {
+      "question": "comment mettre à jour automatiquement le README GitHub avec un flux RSS Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "GitHub Actions pour injecter les derniers articles de blog dans le profil",
+      "anchor": ""
+    },
+    {
+      "question": "à quoi ressemble la liste dynamique injectée dans le README via ce workflow",
+      "anchor": "the-result"
+    },
+    {
+      "question": "template HTML pour formater les articles RSS dans le README.md",
+      "anchor": "the-result"
+    },
+    {
+      "question": "où placer le fichier workflow YAML et configurer le cron hebdomadaire",
+      "anchor": "create-the-workflow-yaml-file"
+    },
+    {
+      "question": "structure des dossiers GitHub Actions pour planifier une mise à jour automatique",
+      "anchor": "create-the-workflow-yaml-file"
+    },
+    {
+      "question": "comment ajouter un déclencheur manuel et les permissions d'écriture dans le bloc jobs",
+      "anchor": "step-by-step-explanations"
+    },
+    {
+      "question": "paramètres de l'action RSS : rss-url, max-articles, tag et template",
+      "anchor": "step-by-step-explanations"
+    },
+    {
+      "question": "quel tag en commentaire HTML ajouter dans le README.md pour marquer l'emplacement d'injection",
+      "anchor": "updating-the-readmemd-file"
+    },
+    {
+      "question": "remplacer automatiquement une section du README.md via le workflow GitHub Actions",
+      "anchor": "updating-the-readmemd-file"
+    }
+  ]
+}

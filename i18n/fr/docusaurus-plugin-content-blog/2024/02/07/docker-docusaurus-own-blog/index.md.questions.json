@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:53:12.531Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "92ecca23cd0073d7771a8e4798cb65287601a747",
+  "questions": [
+    {
+      "question": "comment synchroniser les fichiers de config docusaurus entre l'hôte et le container docker",
+      "anchor": ""
+    },
+    {
+      "question": "Personnaliser un blog docusaurus dockerisé sans reconstruire l'image à chaque fois",
+      "anchor": ""
+    },
+    {
+      "question": "docker cp docusaurus.config.js vers le disque et montage dans docker-compose.yml",
+      "anchor": "customize-the-name-title-icons-and-url-of-your-site"
+    },
+    {
+      "question": "Comment changer le titre, le favicon et l'URL du site docusaurus dans un container ?",
+      "anchor": "customize-the-name-title-icons-and-url-of-your-site"
+    },
+    {
+      "question": "hot reload de la config docusaurus dans docker avec F5",
+      "anchor": "customize-the-name-title-icons-and-url-of-your-site"
+    },
+    {
+      "question": "synchroniser le dossier src/pages de docusaurus dans un volume docker",
+      "anchor": "the-srcpages-folder"
+    },
+    {
+      "question": "Ajouter des pages personnalisées à un blog docusaurus auto-hébergé",
+      "anchor": "the-srcpages-folder"
+    },
+    {
+      "question": "monter le dossier static de docusaurus dans docker-compose pour les assets",
+      "anchor": "the-static-folder"
+    },
+    {
+      "question": "Comment ajouter des fichiers statiques à un site docusaurus dans un container ?",
+      "anchor": "the-static-folder"
+    },
+    {
+      "question": "workflow copier puis monter les fichiers pour éditer docusaurus en direct",
+      "anchor": "you-now-have-the-basics"
+    }
+  ]
+}

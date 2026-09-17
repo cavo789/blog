@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:03:00.588Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "1fd5d974a93c23906a9657d8d3de35b3671ee929",
+  "questions": [
+    {
+      "question": "moderniser automatiquement son code PHP avec un outil gratuit",
+      "anchor": ""
+    },
+    {
+      "question": "comment visualiser le diff de Rector sans écraser mes fichiers",
+      "anchor": "here-is-what-rector-says-about-it"
+    },
+    {
+      "question": "Rector utilise-t-il l'arbre syntaxique ou le grep pour analyser le code",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "composer require rector/rector ou image docker jakzal/phpqa",
+      "anchor": "install-rector"
+    },
+    {
+      "question": "comment créer le fichier rector.php et lancer l'analyse",
+      "anchor": "run-rector"
+    },
+    {
+      "question": "SimplifyIfElseToTernaryRector transformer un bloc if en expression ternaire",
+      "anchor": "simplifyifelsetoternaryrector"
+    },
+    {
+      "question": "comment supprimer automatiquement une variable inutile avec SimplifyUselessVariableRector",
+      "anchor": "simplifyuselessvariablerector"
+    },
+    {
+      "question": "ReturnTypeFromStrictScalarReturnExprRector ajouter le type de retour strict manquant",
+      "anchor": "returntypefromstrictscalarreturnexprrector"
+    },
+    {
+      "question": "comment utiliser StrictStringParamConcatRector pour gérer la concaténation de chaînes strictes",
+      "anchor": "strictstringparamconcatrector"
+    },
+    {
+      "question": "valider et appliquer les changements de Rector sur le code source",
+      "anchor": "last-thing-make-the-change"
+    }
+  ]
+}

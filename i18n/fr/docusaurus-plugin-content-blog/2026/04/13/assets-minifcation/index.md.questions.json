@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:02:03.057Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "6d3f597fa19c126dbf02021cca582180e44dda2f",
+  "questions": [
+    {
+      "question": "pipeline léger pour minifier css et js sans node",
+      "anchor": ""
+    },
+    {
+      "question": "quelle commande unique pour lancer le pipeline de build ?",
+      "anchor": "running-it"
+    },
+    {
+      "question": "pourquoi privilégier une approche docker first pour la minification frontend",
+      "anchor": "why-this-approach"
+    },
+    {
+      "question": "workflow concaténation fichiers et minification via docker",
+      "anchor": "the-architecture"
+    },
+    {
+      "question": "comment structurer manifest.yaml pour définir les bundles d'entrée et de sortie",
+      "anchor": "1-the-configuration-manifestyaml"
+    },
+    {
+      "question": "comment build.sh utilise yq pour parser le fichier yaml et appeler le minifieur",
+      "anchor": "2-the-orchestrator-script-buildsh"
+    },
+    {
+      "question": "quels sont les prérequis et la commande chmod pour exécuter le script ?",
+      "anchor": "3-how-to-run-it"
+    },
+    {
+      "question": "avantages du pipeline assets reproductible pour les runners ci cd",
+      "anchor": "conclusion"
+    }
+  ]
+}

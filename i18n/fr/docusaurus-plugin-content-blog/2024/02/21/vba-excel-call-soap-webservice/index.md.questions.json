@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:10:52.888Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3a389711c855bd9f20e77d9c86410f9cfb9d8798",
+  "questions": [
+    {
+      "question": "comment appeler un web service SOAP depuis Excel avec VBA",
+      "anchor": ""
+    },
+    {
+      "question": "squelette vba excel requête soap validation tva vies",
+      "anchor": ""
+    },
+    {
+      "question": "structure du fichier .xml pour le service VIES",
+      "anchor": "create-the-xml-message"
+    },
+    {
+      "question": "quel est le contenu exact du message SOAP pour valider un numéro de TVA ?",
+      "anchor": "create-the-xml-message"
+    },
+    {
+      "question": "ouvrir l'éditeur VBA dans Excel et créer un module",
+      "anchor": "create-the-excel-workbook"
+    },
+    {
+      "question": "comment ajouter la référence Microsoft XML dans le classeur ?",
+      "anchor": "create-the-excel-workbook"
+    },
+    {
+      "question": "configurer le chemin du fichier xml dans la constante VBA",
+      "anchor": "create-the-excel-workbook"
+    },
+    {
+      "question": "remplacer les placeholders dans le fichier xml via VBA",
+      "anchor": "about-placeholders"
+    },
+    {
+      "question": "comment injecter des valeurs dynamiques dans la requête SOAP Excel ?",
+      "anchor": "about-placeholders"
+    },
+    {
+      "question": "exécuter la même requête SOAP sous Linux avec curl et xmlstarlet",
+      "anchor": "a-linux-command-line-version"
+    },
+    {
+      "question": "comment rediriger la sortie xmlstarlet vers un fichier sous Linux ?",
+      "anchor": "a-linux-command-line-version"
+    }
+  ]
+}

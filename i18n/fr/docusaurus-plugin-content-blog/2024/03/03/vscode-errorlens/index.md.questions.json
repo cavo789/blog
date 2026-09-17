@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:22:32.440Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "311e6c30c04c706e2feff45c87783ad07f243cb8",
+  "questions": [
+    {
+      "question": "error lens vscode",
+      "anchor": ""
+    },
+    {
+      "question": "comment afficher les erreurs et avertissements directement dans l'éditeur ?",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi les diagnostics restent cachés dans le panneau Problems ?",
+      "anchor": ""
+    },
+    {
+      "question": "où se trouve le panneau Problems dans la barre de statut VSCode ?",
+      "anchor": ""
+    },
+    {
+      "question": "error lens devcontainer PHP linter",
+      "anchor": ""
+    },
+    {
+      "question": "détecter les fautes de frappe dans les noms de classes CSS PHP",
+      "anchor": ""
+    },
+    {
+      "question": "error lens minimap blocs bleus",
+      "anchor": ""
+    },
+    {
+      "question": "extension VSCode pour gérer les TODO et FIXME avec Todo Tree",
+      "anchor": ""
+    },
+    {
+      "question": "installer error lens par défaut dans un devcontainer PHP",
+      "anchor": ""
+    },
+    {
+      "question": "améliorer la qualité du code avec des outils VSCode",
+      "anchor": ""
+    }
+  ]
+}

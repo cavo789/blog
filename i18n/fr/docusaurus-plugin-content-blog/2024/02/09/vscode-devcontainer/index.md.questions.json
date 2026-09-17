@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:00:17.144Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8b5303375e07f4a406963f1e4afaafebc85d3d9f",
+  "questions": [
+    {
+      "question": "comment forcer un formatage php identique sur toute l'équipe avec un devcontainer",
+      "anchor": ""
+    },
+    {
+      "question": "récupérer le repo php_devcontainer avec les fichiers de config prêts à l'emploi",
+      "anchor": "get-the-files"
+    },
+    {
+      "question": "créer le dossier du projet et ouvrir vscode pour php",
+      "anchor": "1-create-the-project"
+    },
+    {
+      "question": "quoi mettre dans devcontainer.json pour php et remote container",
+      "anchor": "3-create-the-devcontainerjson-file"
+    },
+    {
+      "question": "contenu du Dockerfile pour builder l'image du devcontainer php",
+      "anchor": "4-create-the-dockerfile-file"
+    },
+    {
+      "question": "quels outils de qualité de code sont préinstallés dans ce setup",
+      "anchor": "the-tools-pick-the-ones-you-need"
+    },
+    {
+      "question": "configurer PHP-CS-Fixer pour formater le code à la sauvegarde",
+      "anchor": "the-first-tool-weve-used-here-is-php-cs-fixer"
+    },
+    {
+      "question": "installer PHPCBF et PHPCS dans le devcontainer pour le linting",
+      "anchor": "the-second-set-of-tools-is-phpcbf-and-phpcs"
+    },
+    {
+      "question": "activer SonarLint dans vscode pour détecter les bugs php en direct",
+      "anchor": "the-third-tool-is-sonarlint"
+    },
+    {
+      "question": "utiliser Rector pour la mise à niveau automatique du code php",
+      "anchor": "the-best-for-last-the-fifth-tool-is-rector"
+    }
+  ]
+}

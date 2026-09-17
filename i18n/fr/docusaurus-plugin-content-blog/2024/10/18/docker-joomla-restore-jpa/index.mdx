@@ -1,0 +1,202 @@
+---
+slug: docker-joomla-restore-jpa
+title: Restaurer une sauvegarde Joomla avec Docker
+date: 2024-10-18
+description: Restaurez facilement la sauvegarde de votre site Joomla en local avec Docker, Docker Compose et Akeeba Kickstart. Une simple commande make import suffit.
+authors: [christophe]
+image: /img/v2/joomla.webp
+series: Create your joomla website using Docker
+mainTag: joomla
+tags:
+  - docker
+  - joomla
+  - makefile
+language: fr
+blueskyRecordKey: 3lx57wpmj6223
+updates:
+  - date: 2026-01-03
+    note: Review and update YAML files to Joomla 6
+---
+
+<!-- cspell:ignore Akeeba -->
+<!-- markdownlint-disable-file MD010 MD026 -->
+
+![Restaurer une sauvegarde Joomla avec Docker](/img/v2/joomla.webp)
+
+<TLDR>
+  Ce guide explique comment restaurer un site Joomla en local en combinant
+  Docker, une archive Akeeba Backup et l'utilitaire Akeeba Kickstart. On
+  configure un environnement sur mesure avec PHP et Apache, puis on lance une
+  simple commande d'import pour déployer les fichiers et les containers
+  nécessaires. Le processus se termine dans le navigateur, via l'assistant
+  Kickstart, pour finaliser la connexion à la base de données et la restauration
+  du site.
+</TLDR>
+
+Dans les articles précédents ([Partie 1](/blog/docker-joomla) et [Partie 2](/blog/docker-joomla-part-2)), nous avons vu comment créer un site Joomla de zéro avec Docker : récupérer Joomla, PHP, Apache et MySQL depuis Docker Hub et faire un peu de magie pour obtenir un site local tout neuf sur `http://127.0.0.1:8080`.
+
+Dans cet article, nous allons voir comment restaurer sur notre machine une sauvegarde créée grâce à l'excellent composant **[Akeeba Backup](https://www.akeeba.com/products/akeeba-backup.html)**.
+
+Nous allons réutiliser certains fichiers de la [Partie 2](/blog/docker-joomla-part-2) et les adapter.
+
+À la fin, nous aurons une commande `make import` qui démarrera **[Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart)**.
+
+<!-- truncate -->
+
+## Résultat {#result}
+
+Renseignez les informations de base de données affichées dans votre console, et Akeeba Kickstart s'occupe du reste —
+d'une sauvegarde `.jpa` brute à un site consultable :
+
+![Akeeba Kickstart](./images/kickstart.webp)
+
+![Restauration de la base de données](./images/database.webp)
+
+![Le site est restauré](./images/site_is_restored.webp)
+
+## Pourquoi ça fonctionne {#why-it-works}
+
+- Nous réutilisons le même trio `compose.yaml`/`.env`/`makefile` que dans la [Partie 2](/blog/docker-joomla-part-2), donc rien de neuf à apprendre là-dessus.
+- Le seul vrai changement : comme la sauvegarde **est** déjà un site Joomla complet, les containers n'ont besoin que de PHP et Apache, pas d'une image Joomla fraîche — la base de données est reconstruite depuis la sauvegarde par Akeeba Kickstart, et non par l'installateur de Joomla.
+
+## Créer les fichiers nécessaires {#creating-required-files}
+
+<AlertBox variant="info" title="Passer l'étape de création des fichiers">
+Dans les chapitres suivants, vous devrez créer plusieurs fichiers par copier/coller. Si vous voulez aller plus vite, lancez simplement les commandes ci-dessous pour récupérer les fichiers depuis mon [repo Github](https://github.com/cavo789/docker_joomla_restore), vous n'aurez ainsi pas à les créer.
+
+<Terminal typewriter source="./files/terminal-3.txt" />
+
+En suivant les instructions ci-dessous, vous créerez un dossier xxx dans lequel copier tous les fichiers nécessaires à la restauration d'un site Joomla avec Docker. Vous pouvez alors passer directement au chapitre « Lancer le processus d'importation », les fichiers étant déjà en place.
+
+</AlertBox>
+
+_Si vous préférez comprendre ce que vous faites et créer les fichiers à la main, poursuivez la lecture ci-dessous._
+
+Créez un nouveau dossier sur votre machine, par exemple `mkdir /tmp/joomla_restore && cd $_`.
+
+<Terminal typewriter>$ mkdir /tmp/joomla_restore && cd $_</Terminal>
+
+Dans ce dossier, vous devrez créer plusieurs fichiers (référez-vous à la [Partie 2](/blog/docker-joomla-part-2) si vous avez besoin de plus d'explications sur ces fichiers).
+
+### Le fichier d'orchestration : compose.yaml {#the-orchestration-file-composeyaml}
+
+Ci-dessous, en surbrillance, les petites différences par rapport au fichier `compose.yaml` vu dans la [Partie 2](/blog/docker-joomla-part-2#updated-composeyaml).
+
+Voici pourquoi : cette fois, nous n'avons pas besoin de télécharger une copie fraîche de Joomla puisque **nous avons déjà un site Joomla** (notre sauvegarde). Ce dont nous avons besoin, c'est de **PHP** et **Apache**. Pas de Joomla, donc nous utiliserons cette fois une image Docker sur mesure, pas une image existante.
+
+À part les lignes en surbrillance, tout le reste est identique à la [Partie 2](/blog/docker-joomla-part-2).
+
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
+
+### Le fichier .env {#the-env-file}
+
+Comme indiqué plus haut, nous n'avons plus besoin de Joomla, juste de PHP et Apache. Nous allons donc définir une variable `PHP_VERSION` et l'initialiser à la version voulue.
+
+<Snippet filename=".env" source="./files/.env" />
+
+<AlertBox variant="caution">
+Comme nous devons restaurer un site existant, veillez à utiliser la même version de PHP que celle utilisée par votre site.
+
+</AlertBox>
+
+### Notre makefile {#our-makefile}
+
+Il nous faut une nouvelle action appelée `import` :
+
+<Snippet filename="makefile" source="./files/makefile" />
+
+<AlertBox variant="caution">
+Si vous ne savez pas si vous avez déjà `GNU make`, lancez simplement `which make` dans la console. Si vous voyez `make not found`, lancez `sudo apt-get update && sudo apt-get install make` pour procéder à l'installation.
+
+<Terminal typewriter>$ which make</Terminal>
+
+<Terminal typewriter>$ sudo apt-get update && sudo apt-get install make</Terminal>
+
+</AlertBox>
+
+### Il nous faut aussi un fichier appelé Dockerfile {#we-also-need-a-file-called-dockerfile}
+
+Dans les toutes premières lignes du fichier `compose.yaml`, nous avons ce passage :
+
+<Snippet filename="compose.yaml" source="./files/compose_dockerfile.yaml" />
+
+On n'y voit pas d'instruction `image:` mais un `build:`. Cela signifie qu'il nous faut un fichier spécial appelé `Dockerfile`.
+
+Créez un nouveau fichier appelé `Dockerfile` dans votre dossier avec ce contenu :
+
+<Snippet filename="Dockerfile" source="./files/Dockerfile" />
+
+Ce fichier est assez simple pour l'instant : il indique qu'il nous faut une image Docker PHP, et qu'il faut aussi installer les drivers `mysqli`.
+
+### Il nous faut une sauvegarde, évidemment {#we-need-a-backup-for-sure}
+
+Placez également une sauvegarde de votre site existant dans le même dossier. Par souci de standardisation, nommez ce fichier `backup.jpa`.
+
+Pour être plus explicite : rendez-vous sur votre site Joomla existant et, avec Akeeba Backup, créez une sauvegarde (format de fichier : `.jpa`) puis téléchargez-la. Renommez le fichier de sauvegarde ainsi : `backup.jpa`.
+
+### Et enfin, il nous faut Akeeba Kickstart {#and-finally-we-need-akeeba-kickstart}
+
+Enfin, il nous faut aussi deux fichiers provenant d'**[Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart)**.
+
+En suivant le lien [Akeeba Kickstart](https://www.akeeba.com/download.html#kickstart), nous pourrons télécharger un fichier `.zip` (appelé `kickstart-core-xxx.zip` où `xxx` est un numéro de version). Téléchargez-le et ouvrez l'archive : elle contient deux fichiers. Copiez-les dans votre dossier.
+
+Les deux fichiers dont nous avons besoin s'appellent `en-GB.kickstart.ini` et `kickstart.php`.
+
+## Avant de démarrer {#before-starting}
+
+Nous sommes prêts. Juste avant de commencer, vérifiez que vous avez bien tous les fichiers nécessaires (lancez `ls -alh`) :
+
+<Terminal typewriter source="./files/terminal-2.txt" />
+
+<AlertBox variant="info" title="Passer l'étape de création des fichiers">
+Si vous avez sauté l'étape de création des fichiers plus haut en les téléchargeant depuis mon repo, vous aurez tous les fichiers listés ci-dessus.
+
+</AlertBox>
+
+<AlertBox variant="caution">
+Rappel : pour les utilisateurs Linux, nous avons besoin de `GNU make` pour pouvoir lancer des commandes comme `make import` ou `make up`. Si vous voyez `make not found`, lancez `sudo apt-get update && sudo apt-get install make` pour procéder à l'installation.
+
+</AlertBox>
+
+## Lancer le processus d'importation {#run-the-importation-process}
+
+Voilà, vous avez copié pas mal de fichiers. Il est temps de restaurer votre site.
+
+Pour les utilisateurs Linux, profitez simplement de `GNU Make` et lancez l'instruction `make import`.
+
+Pour Windows (Powershell ou DOS), lancez ces commandes :
+
+<Terminal typewriter title="Powershell">
+  mkdir db_data mkdir joomla_data copy en-GB.kickstart.ini joomla_data\ copy
+  kickstart.php joomla_data\ copy backup.jpa joomla_data\ docker compose up
+  --detach
+</Terminal>
+
+Dans les deux cas (Linux et Windows), vous obtiendrez une sortie de ce genre dans la console :
+
+<Terminal typewriter source="./files/terminal-1.txt" />
+
+Une fois terminé, ouvrez votre navigateur et rendez-vous sur `http://127.0.0.1:8080/kickstart.php` pour démarrer la restauration de votre site avec l'assistant **Akeeba Kickstart** — les écrans montrés en haut de cet article.
+
+Lorsque vous devez renseigner les informations de base de données, référez-vous à ce qui s'est affiché dans votre console.
+
+Poursuivez la restauration comme d'habitude ; fermez la fenêtre quand Akeeba Kickstart le demande, puis cliquez sur le bouton _Clean Up_ ; ensuite sur _Visit your site's frontend_ et profitez.
+
+<AlertBox variant="info">
+Si vous avez utilisé le site de démo fourni, le compte admin est **joomla** et son mot de passe est **joomla@secured**.
+
+</AlertBox>
+
+## Conclusion {#conclusion}
+
+Comme nous venons de le voir, restaurer un site Joomla en local est devenu vraiment simple.
+
+Il suffit de récupérer quelques fichiers de configuration, et seul celui nommé `.env` doit être mis à jour avec les versions de PHP et MySQL utilisées sur votre site de production.
+
+Vous téléchargez la sauvegarde locale de votre site et, avec une seule commande (`make import`), votre site est restauré.
+
+<Terminal typewriter>$ make import</Terminal>
+
+Peu importe la version de Joomla ou de MySQL que vous utilisez.
+
+Simple comme bonjour, non ?

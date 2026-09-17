@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:10:21.032Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "4f57909449f5e5c645f4de5eae8192c9743ddfc5",
+  "questions": [
+    {
+      "question": "Zorin OS 18 installation clé USB démarrage F12",
+      "anchor": ""
+    },
+    {
+      "question": "Comment quitter Windows pour Zorin OS sans réapprendre l'interface ?",
+      "anchor": ""
+    },
+    {
+      "question": "Zorin Core gratuit ou Pro moins de 50 euros",
+      "anchor": ""
+    },
+    {
+      "question": "Exécuter des logiciels Windows sur Zorin via WINE",
+      "anchor": ""
+    },
+    {
+      "question": "Zorin OS 18 support gaming et compatibilité jeux",
+      "anchor": ""
+    },
+    {
+      "question": "Clé USB formatée sous Linux incompatible Windows comment réparer",
+      "anchor": "what-can-make-the-differences"
+    },
+    {
+      "question": "Lancer l'utilitaire DOS pour reflasher une clé Zorin",
+      "anchor": "what-can-make-the-differences"
+    },
+    {
+      "question": "Zorin OS intègre-t-il OneDrive nativement ?",
+      "anchor": "what-can-make-the-differences"
+    },
+    {
+      "question": "WINE couche de compatibilité open source pour applications Windows",
+      "anchor": "what-can-make-the-differences"
+    },
+    {
+      "question": "Zorin OS installateur automatique clic et reboot",
+      "anchor": "what-can-make-the-differences"
+    }
+  ]
+}

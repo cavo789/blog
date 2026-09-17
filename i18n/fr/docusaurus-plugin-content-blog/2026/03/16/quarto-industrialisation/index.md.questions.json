@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:51:07.663Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ec80edfda956e5d691579975983e61b98774b886",
+  "questions": [
+    {
+      "question": "comment automatiser la documentation de plus de 50 projets avec quarto et Docker",
+      "anchor": ""
+    },
+    {
+      "question": "voir les diagrammes mermaid se mettre à jour en temps réel dans le navigateur",
+      "anchor": "-the-wow-moment"
+    },
+    {
+      "question": "exécuter du code python au runtime dans un document quarto au lieu de markdown statique",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "configurer docker compose et devcontainer pour lancer le labo en 5 minutes",
+      "anchor": "installation--the-wow-lab-build-your-first-doc-engine-in-5-minutes"
+    },
+    {
+      "question": "quel Dockerfile utiliser pour faire tourner quarto avec des scripts python",
+      "anchor": "2-the-engine-dockerfile"
+    },
+    {
+      "question": "parser docker-compose.yaml et Dockerfile en python pour générer des graphiques d'architecture",
+      "anchor": "4-our-python-scripts"
+    },
+    {
+      "question": "exploiter l'ast python dans une démarche doc-as-code pour analyser l'infrastructure",
+      "anchor": "doc-as-code-the-python-ast-magic"
+    },
+    {
+      "question": "récupérer des données api authentifiées pendant le rendu quarto avec secrets resolver",
+      "anchor": "the-living-documentation-authenticated-api-calls"
+    },
+    {
+      "question": "centraliser et scaler la documentation de plusieurs projets dans un seul pipeline",
+      "anchor": "centralization-at-scale"
+    },
+    {
+      "question": "pourquoi quarto change la donne pour la documentation technique des équipes devops",
+      "anchor": "️-un-dernier-mot--pourquoi-quarto-change-tout-️-a-final-word-why-quarto-changes-everything"
+    }
+  ]
+}

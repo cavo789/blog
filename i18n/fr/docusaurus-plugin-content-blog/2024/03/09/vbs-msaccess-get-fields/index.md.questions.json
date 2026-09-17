@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:30:36.370Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2d450ecf134daf5df65b0fc4445aab6309c1f88e",
+  "questions": [
+    {
+      "question": "comment optimiser la structure d'une base MS Access avec un script vbs",
+      "anchor": ""
+    },
+    {
+      "question": "à quoi ressemble le fichier Excel généré par le script d'audit MS Access",
+      "anchor": "the-report-youll-get"
+    },
+    {
+      "question": "comment interpréter les colonnes FieldSize et LongestSize dans le rapport",
+      "anchor": "understand-the-report"
+    },
+    {
+      "question": "procédure pour lancer l'analyse des tables MS Access depuis l'explorateur",
+      "anchor": "how-to-reproduce-it"
+    },
+    {
+      "question": "où télécharger le code source de access_get_fields_list.vbs",
+      "anchor": "access_get_fields_listvbs"
+    },
+    {
+      "question": "comment modifier le chemin de la base de données dans access_get_fields_list.cmd",
+      "anchor": "access_get_fields_listcmd"
+    },
+    {
+      "question": "comment réduire la taille d'un champ texte grâce aux valeurs ShortestSize et LongestSize",
+      "anchor": "what-to-do-with-the-numbers"
+    },
+    {
+      "question": "pourquoi automatiser l'audit des champs MS Access avec vbs plutôt que manuellement",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:56:08.959Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "82aef77947be97e2dd5a3c29c79f8f3af3cfc6e2",
+  "questions": [
+    {
+      "question": "installer ollama avec docker compose pour ia locale",
+      "anchor": ""
+    },
+    {
+      "question": "docker exec ollama ollama run llama3.1:8b",
+      "anchor": "try-it-in-your-terminal"
+    },
+    {
+      "question": "est-ce que je peux utiliser le français avec ollama",
+      "anchor": "should-i-speak-english-with-the-model"
+    },
+    {
+      "question": "fichier docker-compose.yml pour lancer ollama",
+      "anchor": "installing-and-running-ollama"
+    },
+    {
+      "question": "taille modèle LLM selon ram libre",
+      "anchor": "download-an-llm-model"
+    },
+    {
+      "question": "interface web open webui pour ollama",
+      "anchor": "using-a-web-interface"
+    },
+    {
+      "question": "extension continue vscode ollama",
+      "anchor": "using-a-vscode-extension"
+    },
+    {
+      "question": "libérer de la ram avec ollama stop",
+      "anchor": "freeing-up-ram-with-ollama-stop"
+    },
+    {
+      "question": "supprimer un modèle ollama",
+      "anchor": "remove-a-model"
+    },
+    {
+      "question": "configurer .wslconfig pour wsl",
+      "anchor": "wslconfig-file"
+    }
+  ]
+}

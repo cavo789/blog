@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:59:37.640Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "02e0dfcf6e785b85a5b7efd56eab8355b8a0e78d",
+  "questions": [
+    {
+      "question": "comment éviter de travailler sur la mauvaise branche après une longue pause",
+      "anchor": ""
+    },
+    {
+      "question": "afficher automatiquement les 3 dernières branches git modifiées à l'ouverture d'un dossier",
+      "anchor": ""
+    },
+    {
+      "question": "afficher les branches git récentes directement après un cd ou git status dans le terminal",
+      "anchor": "a-real-world-example"
+    },
+    {
+      "question": "tester le hook zsh git dans un container Docker jetable sans toucher à sa machine",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "où coller le script dans .zshrc pour que le hook se déclenche automatiquement",
+      "anchor": "installation"
+    },
+    {
+      "question": "git log --sort=-committerdate pour trier les branches par date de commit",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "comment vérifier qu'un répertoire est un repository git vide avant d'exécuter le hook",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "filtrer uniquement les branches locales dans le hook zsh",
+      "anchor": "local-branches-only"
+    },
+    {
+      "question": "automatiser l'affichage du contexte de travail git dès un cd dans un projet",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "récupérer le nom de la branche active et des 3 plus récentes dans zsh",
+      "anchor": "conclusion"
+    }
+  ]
+}

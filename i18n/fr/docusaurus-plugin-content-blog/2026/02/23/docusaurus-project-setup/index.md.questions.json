@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:42:44.279Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3528ab13b1d0d99ff877114a39b5f860e2f06bd3",
+  "questions": [
+    {
+      "question": "docusaurus partager arborescence projet interactive",
+      "anchor": ""
+    },
+    {
+      "question": "comment installer ProjectSetup dans un projet Docusaurus ?",
+      "anchor": "seeing-it-work"
+    },
+    {
+      "question": "composant React Docusaurus affichage arborescence fichiers",
+      "anchor": "what-is-projectsetup"
+    },
+    {
+      "question": "générer un script bash automatique pour recréer un dossier projet",
+      "anchor": "core-features"
+    },
+    {
+      "question": "dépendances LogoIcon et Snippet pour ProjectSetup",
+      "anchor": "dependencies"
+    },
+    {
+      "question": "étapes pour installer les composants complémentaires",
+      "anchor": "installing-the-rest"
+    },
+    {
+      "question": "npm install pour ajouter le composant Snippet",
+      "anchor": "1-installing-snippet"
+    },
+    {
+      "question": "commande d'installation du package ProjectSetup",
+      "anchor": "2-installing-projectsetup"
+    },
+    {
+      "question": "page d'aide project_setup configuration des options",
+      "anchor": "3-the-project_setup-help-page"
+    },
+    {
+      "question": "avantages de ProjectSetup pour la documentation technique",
+      "anchor": "conclusion"
+    }
+  ]
+}

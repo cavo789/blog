@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:59:31.654Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "bdfc252fe6d7c1af6f2b4221909368b3e93a122f",
+  "questions": [
+    {
+      "question": "configurer un devcontainer Quarto portable avec VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "Où télécharger un projet Quarto de base pour tester les devcontainers ?",
+      "anchor": "lets-get-a-simple-quarto-project-first"
+    },
+    {
+      "question": "rôle de devcontainer.json et Dockerfile pour optimiser le cache Docker",
+      "anchor": "well-need-to-create-three-files"
+    },
+    {
+      "question": "installer sudo dans l'image Docker du devcontainer",
+      "anchor": "installation-of-sudo"
+    },
+    {
+      "question": "Comment passer des arguments de build personnalisés au Dockerfile Quarto ?",
+      "anchor": "build-arguments-optional--read-only-the-ones-you-need"
+    },
+    {
+      "question": "installer Chromium dans le devcontainer pour les exports PDF Quarto",
+      "anchor": "installation-of-chromium"
+    },
+    {
+      "question": "configurer les pre-commit-hooks pour un projet Quarto dans VSCode",
+      "anchor": "installation-of-pre-commit-hooks"
+    },
+    {
+      "question": "ouvrir un dossier local comme devcontainer dans VSCode",
+      "anchor": "opening-our-project-as-a-devcontainer"
+    },
+    {
+      "question": "activer la régénération automatique de la doc Quarto à la sauvegarde",
+      "anchor": "writing-our-documentation"
+    },
+    {
+      "question": "Qu'est-ce que pre-commit et comment l'intégrer à un workflow Quarto ?",
+      "anchor": "what-is-pre-commit"
+    }
+  ]
+}

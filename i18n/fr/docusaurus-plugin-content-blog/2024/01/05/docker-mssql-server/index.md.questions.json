@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:26:52.062Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "146971df4a235dd5c2b323cf7cdd0eae360d32e8",
+  "questions": [
+    {
+      "question": "Comment lancer MSSQL Server 2022 dans Docker avec docker run ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker run mcr.microsoft.com/mssql/server:2022-latest ACCEPT_EULA=Y MSSQL_SA_PASSWORD",
+      "anchor": ""
+    },
+    {
+      "question": "Configurer le port 1433 et le nom sqlserverdb pour l'instance",
+      "anchor": ""
+    },
+    {
+      "question": "docker container list vérifier le container MSSQL",
+      "anchor": ""
+    },
+    {
+      "question": "Installer SSMS et se connecter à l'instance Docker",
+      "anchor": ""
+    },
+    {
+      "question": "Créer une base de données et une table via SSMS",
+      "anchor": "create-the-database-the-table-and-add-some-records"
+    },
+    {
+      "question": "Exécuter un script SQL pour ajouter des enregistrements dans MSSQL",
+      "anchor": "create-the-database-the-table-and-add-some-records"
+    },
+    {
+      "question": "Actualiser l'explorateur d'objets SSMS après la création d'une base",
+      "anchor": "create-the-database-the-table-and-add-some-records"
+    },
+    {
+      "question": "Écrire un script PowerShell pour se connecter à MSSQL Server 2022",
+      "anchor": "write-a-powershell-script-and-connect-to-the-database"
+    },
+    {
+      "question": "Exécuter une requête SQL depuis PowerShell et récupérer les résultats",
+      "anchor": "write-a-powershell-script-and-connect-to-the-database"
+    },
+    {
+      "question": "Connecter PowerShell à une base Docker sur le port 1433",
+      "anchor": "write-a-powershell-script-and-connect-to-the-database"
+    }
+  ]
+}

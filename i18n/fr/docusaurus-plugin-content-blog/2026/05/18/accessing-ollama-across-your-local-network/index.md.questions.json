@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:14:40.305Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3721bed15c6663673f2afddf6224a0002a08dbf9",
+  "questions": [
+    {
+      "question": "Comment mettre en place un serveur Ollama local pour y accéder depuis un autre ordinateur ?",
+      "anchor": ""
+    },
+    {
+      "question": "Réseau local Ollama connexion Wi-Fi ou switch D-Link DGS-108 pour faible latence",
+      "anchor": "using-a-local-network"
+    },
+    {
+      "question": "Trouver l'adresse IP du serveur Windows 11 avec Powershell",
+      "anchor": "finding-your-servers-ip-address"
+    },
+    {
+      "question": "Tester la connectivité réseau client-serveur Ollama avec ping",
+      "anchor": "setting-up-the-client-computer"
+    },
+    {
+      "question": "Ouvrir Open WebUI sur le navigateur du poste client pour voir les modèles IA",
+      "anchor": "running-open-webui"
+    },
+    {
+      "question": "Vérifier la connexion réseau Ollama et dépanner si les conteneurs Docker ne se joignent pas",
+      "anchor": "double-checking-the-connection"
+    },
+    {
+      "question": "Configurer VSCode pour utiliser Ollama comme backend d'assistant IA",
+      "anchor": "configure-your-code-editor-vscode"
+    },
+    {
+      "question": "Remplacer GitHub Copilot par une solution IA locale gratuite et privée",
+      "anchor": "conclusion"
+    }
+  ]
+}

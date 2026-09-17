@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:32:22.041Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b5739b8c221c2c11783bbf4a72f23771fe73d90b",
+  "questions": [
+    {
+      "question": "comment forcer le lazy loading sur toutes les images d'un blog Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "commande docker pour exécuter check-images.py avec Playwright",
+      "anchor": "running-the-check"
+    },
+    {
+      "question": "surcharger le composant image MDX par défaut dans Docusaurus",
+      "anchor": "step-1-enforcing-lazy-loading-in-docusaurus"
+    },
+    {
+      "question": "automatiser la vérification des attributs loading sur des centaines d'articles",
+      "anchor": "step-2-trust-but-verify"
+    },
+    {
+      "question": "simuler le scroll avec Playwright pour tester l'entrée dans le viewport",
+      "anchor": "the-challenge-scrolling"
+    },
+    {
+      "question": "parser le html des images avec BeautifulSoup et vérifier la taille avec Pillow",
+      "anchor": "the-script"
+    },
+    {
+      "question": "détecter les images manquantes loading lazy et trop lourdes",
+      "anchor": "additional-checks"
+    },
+    {
+      "question": "workflow audit performance images Docusaurus Python Docker",
+      "anchor": "conclusion"
+    }
+  ]
+}

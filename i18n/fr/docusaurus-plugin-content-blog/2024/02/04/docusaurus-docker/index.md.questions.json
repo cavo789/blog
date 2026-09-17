@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:51:22.008Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8c236f5edfeb0366061eecedfcabaeaf27fc6152",
+  "questions": [
+    {
+      "question": "lancer docusaurus avec docker sans nodejs local",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose up --detach --build pour démarrer le site",
+      "anchor": "three-files-one-command"
+    },
+    {
+      "question": "pourquoi le montage de volume active le hot reload",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "contenu du Dockerfile pour builder l'image docusaurus",
+      "anchor": "create-a-dockerfile-file"
+    },
+    {
+      "question": "quoi ignorer dans .dockerignore pour éviter node_modules",
+      "anchor": "create-a-dockerignore-file"
+    },
+    {
+      "question": "montage de volume dans compose.yaml pour le dossier blog",
+      "anchor": "create-a-composeyaml-file"
+    },
+    {
+      "question": "générer des fichiers markdown exemple pour tester le blog",
+      "anchor": "create-simple-blog-items"
+    },
+    {
+      "question": "accéder à l'interface sur localhost 3000",
+      "anchor": "run-docusaurus"
+    },
+    {
+      "question": "détail ligne par ligne des instructions du Dockerfile",
+      "anchor": "under-the-hood--the-dockerfile-line-by-line-skip-this-if-you-just-want-it-running"
+    },
+    {
+      "question": "commandes pour arrêter et relancer le container",
+      "anchor": "stop-and-restart"
+    }
+  ]
+}

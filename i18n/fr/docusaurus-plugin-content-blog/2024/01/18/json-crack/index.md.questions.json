@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:31:19.206Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "fa0aae27644e25c53e8e1b42a0411d74c5f05d12",
+  "questions": [
+    {
+      "question": "comment transformer du json en mind map interactive",
+      "anchor": ""
+    },
+    {
+      "question": "extension vscode alternative à json crack",
+      "anchor": ""
+    },
+    {
+      "question": "limite de lignes version gratuite json crack",
+      "anchor": ""
+    },
+    {
+      "question": "transformer du markdown en mind map automatiquement",
+      "anchor": ""
+    },
+    {
+      "question": "linter et formater du json en ligne",
+      "anchor": ""
+    },
+    {
+      "question": "générer des données json factices pour les tests",
+      "anchor": ""
+    },
+    {
+      "question": "outil gratuit pour visualiser des structures json complexes",
+      "anchor": ""
+    },
+    {
+      "question": "json crack vs markmap pour la doc-as-code",
+      "anchor": ""
+    },
+    {
+      "question": "quand utiliser un linter json plutôt qu'un visualiseur",
+      "anchor": ""
+    },
+    {
+      "question": "lire du json brut sans le convertir en arbre",
+      "anchor": ""
+    }
+  ]
+}

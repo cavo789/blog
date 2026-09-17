@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T19:00:44.587Z",
+  "durationMs": 178566,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "dc858fc03594f13f332c2330da10a5e25db0bd0b",
+  "questions": [
+    {
+      "question": "détourner le champ URL de KeePass pour lancer un exécutable",
+      "anchor": ""
+    },
+    {
+      "question": "KeePass ouvrir programme externe au lieu de navigateur web",
+      "anchor": ""
+    },
+    {
+      "question": "comment configurer le champ URL de KeePass pour exécuter des commandes ?",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter putty.exe au PATH pour que KeePass le trouve",
+      "anchor": "start-putty-from-keepass"
+    },
+    {
+      "question": "lancer PuTTY avec les identifiants KeePass automatiquement",
+      "anchor": "start-putty-from-keepass"
+    },
+    {
+      "question": "syntaxe URL KeePass pour PuTTY",
+      "anchor": "start-putty-from-keepass"
+    },
+    {
+      "question": "ouvrir WinSCP sur chemin SFTP depuis KeePass",
+      "anchor": "start-winscp-from-keepass"
+    },
+    {
+      "question": "utiliser KeePassUrlHost et KeePassUrlPath dans l'entrée KeePass pour WinSCP",
+      "anchor": "start-winscp-from-keepass"
+    },
+    {
+      "question": "lancer mstsc.exe depuis KeePass pour une connexion bureau à distance",
+      "anchor": "start-an-rdpts-connection-from-keepass"
+    },
+    {
+      "question": "URL KeePass pour démarrer une session RDP/TS automatique",
+      "anchor": "start-an-rdpts-connection-from-keepass"
+    }
+  ]
+}

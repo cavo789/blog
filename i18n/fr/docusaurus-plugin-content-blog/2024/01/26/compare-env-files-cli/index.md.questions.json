@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:39:13.818Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "48221db45c981b65b11c93e0b647909c1663aea9",
+  "questions": [
+    {
+      "question": ".env et .env.example désynchronisés comment les comparer",
+      "anchor": ""
+    },
+    {
+      "question": "commande linux pour vérifier les variables d'environnement manquantes",
+      "anchor": ""
+    },
+    {
+      "question": "commande bash diff grep sort pour comparer .env",
+      "anchor": "the-one-liner-and-its-output"
+    },
+    {
+      "question": "comment lire la sortie de la comparaison de deux .env dans le terminal",
+      "anchor": "the-one-liner-and-its-output"
+    },
+    {
+      "question": "ignorer commentaires et ordre des lignes avec diff sous linux",
+      "anchor": "why-plain-diff-isnt-enough"
+    },
+    {
+      "question": "filtrer une variable précise lors d'un diff de .env",
+      "anchor": "why-plain-diff-isnt-enough"
+    },
+    {
+      "question": "créer deux fichiers .env différents pour tester la commande",
+      "anchor": "reproduce-it"
+    },
+    {
+      "question": "ajouter une clé dans .env et vérifier la sortie de diff",
+      "anchor": "reproduce-it"
+    },
+    {
+      "question": "intégrer la comparaison .env dans le workflow git",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "automatiser la vérification de .env.example avant commit",
+      "anchor": "conclusion"
+    }
+  ]
+}

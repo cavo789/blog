@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:04:26.789Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "a16beb9e456ec0df3e0fa6f849ff4931ecba7a69",
+  "questions": [
+    {
+      "question": "comment automatiser la documentation d'infrastructure avec docker et mermaid",
+      "anchor": ""
+    },
+    {
+      "question": "comment faire pour que le schéma png se mette à jour dès qu'on modifie le yaml ?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "transformer du pseudocode texte en image png avec le cli mermaid",
+      "anchor": "why-mermaid"
+    },
+    {
+      "question": "docker build image personnalisée python mermaid",
+      "anchor": "installation--lets-create-the-docker-image"
+    },
+    {
+      "question": "configurer puppeteer et le style personnalisé pour le rendu mermaid",
+      "anchor": "prepare-mermaid-rendering"
+    },
+    {
+      "question": "écrire un script python pour générer du pseudocode mermaid",
+      "anchor": "finally-we-need-a-python-script"
+    },
+    {
+      "question": "parser un compose.yaml avec python pour faire une mindmap",
+      "anchor": "well-read-a-docker-composeyaml-and-create-a-mindmap"
+    },
+    {
+      "question": "générer un camembert ou parcourir une arborescence avec mermaid",
+      "anchor": "more-examples"
+    },
+    {
+      "question": "où trouver le dockerfile et les scripts complets du projet ?",
+      "anchor": "all-needed-files"
+    },
+    {
+      "question": "garder la documentation à jour sans dessin manuel avec docker",
+      "anchor": "conclusion"
+    }
+  ]
+}

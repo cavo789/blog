@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:48:05.023Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ae959a0ff5c87f9f5a29f97191cb1cfdb32df4cb",
+  "questions": [
+    {
+      "question": "ajouter un indicateur de contenu assisté par IA dans un blog Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "à quoi ressemble exactement le rendu de l'icône AI Assisted dans l'en-tête ?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "pourquoi est-il nécessaire de rendre visible l'usage de l'IA dès le header des articles ?",
+      "anchor": "why-do-this"
+    },
+    {
+      "question": "comment utiliser le flag ai_assisted dans le front matter YAML d'un post ?",
+      "anchor": "step-1-the-ai_assisted-front-matter"
+    },
+    {
+      "question": "écrire un composant React basique pour l'icône AIIcon",
+      "anchor": "step-2-creating-the-aiicon-component"
+    },
+    {
+      "question": "lancer le swizzling du thème Docusaurus pour copier les fichiers originaux",
+      "anchor": "step-3-displaying-the-icon-with-swizzling"
+    },
+    {
+      "question": "importer AIIcon et ajouter la logique conditionnelle dans src/theme/BlogPostItem/index.js",
+      "anchor": "31-modify-srcthemeblogpostitemindexjs"
+    },
+    {
+      "question": "afficher la prop AI dans src/theme/BlogPostItem/Header/Info/index.js",
+      "anchor": "33-modify-srcthemeblogpostitemheaderinfoindexjs"
+    },
+    {
+      "question": "configurer Google Gemini comme co-auteur dans le fichier authors.yml",
+      "anchor": "41-define-the-ai-author"
+    },
+    {
+      "question": "modifier src/theme/BlogPostItem/Header/Authors/index.js pour afficher automatiquement l'auteur IA",
+      "anchor": "43-modify-srcthemeblogpostitemheaderauthorsindexjs"
+    }
+  ]
+}

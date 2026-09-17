@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:21:39.604Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f302f93833e3c22dcc4995ce0699a18af61335ee",
+  "questions": [
+    {
+      "question": "comment configurer une connexion ssh sans mot de passe via un alias",
+      "anchor": ""
+    },
+    {
+      "question": "connexion ssh en une commande sans saisie de mot de passe",
+      "anchor": "the-result"
+    },
+    {
+      "question": "pourquoi la clé publique ssh supprime la demande de mot de passe",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "où trouver le port ssh et le nom d'utilisateur sur le tableau de bord PlanetHoster",
+      "anchor": "installation"
+    },
+    {
+      "question": "ssh -p 5022 john_doe@node30-eu.n0c.com tester la connexion et éviter le blocage ip",
+      "anchor": "first-just-try-with-a-manual-ssh-connection"
+    },
+    {
+      "question": "générer et copier clé publique ssh pour PlanetHoster",
+      "anchor": "create-an-ssh-key-to-connect-to-planethoster"
+    },
+    {
+      "question": "adapter la configuration ssh à un autre fournisseur d'hébergement",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "que faire si ssh timeout ou ip blacklistée après plusieurs tentatives",
+      "anchor": "troubleshooting--tips"
+    },
+    {
+      "question": "valider le bon fonctionnement de l'alias ssh en une commande",
+      "anchor": "conclusion"
+    }
+  ]
+}

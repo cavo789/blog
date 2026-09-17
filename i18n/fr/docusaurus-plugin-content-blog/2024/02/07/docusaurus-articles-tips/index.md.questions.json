@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:57:55.560Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "a26b88ef10495d82adac9c1e23414ffc6cd0ffe6",
+  "questions": [
+    {
+      "question": "trucs et astuces pour rédiger des articles Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "comment structurer et enrichir un post de blog Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "comment ajouter un lien Lire la suite dans un article Docusaurus ?",
+      "anchor": "read-more"
+    },
+    {
+      "question": "<!--truncate--> où insérer ce marqueur dans le markdown Docusaurus",
+      "anchor": "read-more"
+    },
+    {
+      "question": "syntaxe pour créer des encadrés type astuce ou attention en markdown Docusaurus",
+      "anchor": "admonitions"
+    },
+    {
+      "question": "comment insérer des boîtes d'info ou callouts dans un article Docusaurus",
+      "anchor": "admonitions"
+    },
+    {
+      "question": "changer la couleur d'un mot en ligne dans Docusaurus",
+      "anchor": "inline-style"
+    },
+    {
+      "question": "appliquer du style inline sur du texte avec span sur Docusaurus",
+      "anchor": "inline-style"
+    },
+    {
+      "question": "configurer le composant Highlight personnalisé sur Docusaurus",
+      "anchor": "highlight-component"
+    },
+    {
+      "question": "comment surligner des lignes modifiées dans un bloc de code Docusaurus",
+      "anchor": "highlight-lines"
+    }
+  ]
+}

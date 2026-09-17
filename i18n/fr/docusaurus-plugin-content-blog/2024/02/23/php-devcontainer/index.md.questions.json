@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:13:06.992Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2e603d16b457be76f7aa670f1973629ccf2db8d9",
+  "questions": [
+    {
+      "question": "devcontainer php vscode docker setup rapide",
+      "anchor": ""
+    },
+    {
+      "question": "Quels outils de code quality sont préinstallés dans le squelette php_devcontainer ?",
+      "anchor": "what-the-environment-gives-you"
+    },
+    {
+      "question": "Comment créer un projet php de zéro avec le template devcontainer ?",
+      "anchor": "you-have-nothing-and-wish-to-create-a-fully-new-project"
+    },
+    {
+      "question": "télécharger extraire php_devcontainer curl tar",
+      "anchor": "1-install-the-php_devcontainer-skeleton"
+    },
+    {
+      "question": "Ouvrir le répertoire du devcontainer dans vscode depuis le terminal",
+      "anchor": "2-open-vscode"
+    },
+    {
+      "question": "passer dans le container vscode via ctrl shift p",
+      "anchor": "3-switch-to-the-dev-container"
+    },
+    {
+      "question": "Comment exécuter php-cs-fixer phpcs et rector dans le terminal du container ?",
+      "anchor": "you-are-ready-to-use-tools"
+    },
+    {
+      "question": "intégrer le devcontainer php à une base de code existante",
+      "anchor": "you-already-have-an-existing-project"
+    },
+    {
+      "question": "Comment passer à docker compose avec apache et postgresql après le devcontainer ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

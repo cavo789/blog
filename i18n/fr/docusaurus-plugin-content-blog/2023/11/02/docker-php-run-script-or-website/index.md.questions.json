@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:57:26.005Z",
+  "durationMs": 127220,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9469b6ced4b56ad86d1e328459db8bda3f8fd15b",
+  "questions": [
+    {
+      "question": "0: `docker run` pour lancer un site PHP local sans Apache ni installation",
+      "anchor": ""
+    },
+    {
+      "question": "0: Comment mapper le port 8080 vers le port 80 dans un conteneur PHP ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: Monter le dossier courant dans `/var/www/html` avec `docker run`",
+      "anchor": ""
+    },
+    {
+      "question": "0: Changer de version PHP dans l'image `php:8.2-apache`",
+      "anchor": ""
+    },
+    {
+      "question": "0: Modifier `php.ini` quand on utilise une image Docker PHP",
+      "anchor": ""
+    },
+    {
+      "question": "0: Initialiser un projet PHP avec `docker init`",
+      "anchor": ""
+    },
+    {
+      "question": "0: Lancer des outils de qualité PHP via `jakzal/phpqa` sans installation locale",
+      "anchor": ""
+    },
+    {
+      "question": "0: Commande `docker run` complète pour tester un `index.php` en local",
+      "anchor": ""
+    },
+    {
+      "question": "0: Synchroniser les fichiers locaux avec un container Docker PHP",
+      "anchor": ""
+    },
+    {
+      "question": "0: Alternative légère Docker pour héberger un site HTML statique",
+      "anchor": ""
+    }
+  ]
+}

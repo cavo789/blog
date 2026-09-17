@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:36:11.860Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b804c58b2b92879175f880e528e14afdfd1d96b2",
+  "questions": [
+    {
+      "question": "comment automatiser le nettoyage des tags Docusaurus avec un script Python",
+      "anchor": ""
+    },
+    {
+      "question": "make tags-manager ARGS=\"list\" pour lister les tags et repérer les doublons",
+      "anchor": "seeing-the-suggestions"
+    },
+    {
+      "question": "comment fusionner ou supprimer des tags Docusaurus sans casser le frontmatter YAML",
+      "anchor": "the-solution-a-smart-tag-manager"
+    },
+    {
+      "question": "comment le script repère automatiquement les variations de casse et les pluriels",
+      "anchor": "smart-suggestions"
+    },
+    {
+      "question": "lancer le gestionnaire de tags dans un conteneur Docker via Makefile",
+      "anchor": "how-to-run-it-docker-first"
+    },
+    {
+      "question": "code source Python du script avec python-frontmatter pour parser les fichiers Markdown",
+      "anchor": "the-script"
+    },
+    {
+      "question": "commande make pour renommer snippets en snippet ou supprimer draft",
+      "anchor": "more-examples"
+    },
+    {
+      "question": "comment auditer régulièrement les tags Docusaurus et adapter le script à un autre générateur statique",
+      "anchor": "conclusion"
+    }
+  ]
+}

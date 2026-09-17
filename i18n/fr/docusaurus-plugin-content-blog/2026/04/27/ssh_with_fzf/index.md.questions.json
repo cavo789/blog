@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:06:55.965Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9f8827c71d28cb69cdf566cc96d019f3be6cae2b",
+  "questions": [
+    {
+      "question": "comment découper sa config SSH par projet pour éviter un fichier monolithique et ajouter de la documentation",
+      "anchor": ""
+    },
+    {
+      "question": "docker build -t sshf-demo . et docker run --rm -it sshf-demo pour tester la TUI dans un container jetable",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "Quelle commande git utiliser pour cloner fzf et lancer le script d'installation ?",
+      "anchor": "install-fzf"
+    },
+    {
+      "question": "structurer ses hosts SSH dans des fichiers séparés par projet avec des blocs de documentation au-dessus des définitions",
+      "anchor": "ssh-configuration"
+    },
+    {
+      "question": "à quoi ressemble un fichier amazing.conf et comment y placer les métadonnées contextuelles ?",
+      "anchor": "look-at-the-amazingconf-file"
+    },
+    {
+      "question": "ajouter la fonction sshf à son .bashrc pour lancer le sélecteur d'hosts",
+      "anchor": "add-the-sshf-function"
+    },
+    {
+      "question": "Comment filtrer la liste des hosts en temps réel dans fzf et afficher les infos contextuelles à droite ?",
+      "anchor": "using-filtering-options"
+    },
+    {
+      "question": "configurer des raccourcis clavier personnalisés dans fzf pour déclencher des actions avancées comme le ping ou un inventaire",
+      "anchor": "my-real-use-case"
+    }
+  ]
+}

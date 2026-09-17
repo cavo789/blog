@@ -1,0 +1,6 @@
+{
+  "sourceHash": "1fb0447cc05e1b23512b4a7814a05028d078c945",
+  "model": "claude-opus-5",
+  "translatedAt": "2026-09-17T18:54:15.125Z",
+  "source": "---\nslug: new-year-2024\ntitle: Happy New Year 2024\ndate: 2023-12-31\ntags: [docusaurus]\ndescription: Happy New Year 2024! Wish you success, curiosity, and new skills in Docker, Linux, Markdown, and PHP this year.\nauthors: [christophe]\ntried_it: false\nimage: /img/v2/happy_new_year.webp\nlanguage: en\nreview_date: 2026-07-30\n---\n![Happy New Year 2024](/img/v2/happy_new_year.webp)\n\n<TLDR>\nThis is a short New Year's greeting post wishing readers curiosity, growth, and new skills in Docker, Linux, Markdown, and PHP for 2024 — no technical content.\n</TLDR>\n\nI wish you all a very happy festive season, and may you continue to be curious about everything.\n\nMay this new year bring you new knowledge and skills, including <Link to=\"/blog/docker-definition-like-im-five\">Docker</Link>, Linux, <Link to=\"/blog/markdown-lint\">Markdown</Link> and <Link to=\"/blog/docker-php-run-script-or-website\">PHP</Link>.\n\nMay you take advantage of these technologies to create new projects and solve complex problems.\n\nMay you be surrounded by caring and inspiring people who will help you grow and succeed.\n\nAbove all, never stop being curious and learning.\n\n**All the best for you and your loved ones!**\n"
+}

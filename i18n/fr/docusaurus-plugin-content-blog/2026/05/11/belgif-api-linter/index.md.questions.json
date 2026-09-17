@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:12:29.378Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9d3408ffd2998780fe6ca450f7e94f97b4d15a2a",
+  "questions": [
+    {
+      "question": "comment valider le schéma openapi de fastapi avec les standards belgif sous docker",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose run belgif-lint masquer les warnings inutiles",
+      "anchor": "seeing-the-linter-run"
+    },
+    {
+      "question": "commande pour générer la structure de projet dummy fastapi belgif",
+      "anchor": "installation--create-a-dummy-application"
+    },
+    {
+      "question": "astuces fastapi pour éviter les conflits de génération de schéma openapi",
+      "anchor": "fastapi-tips"
+    },
+    {
+      "question": "oas-tags comment structurer les tags dans le schéma openapi fastapi",
+      "anchor": "oas-tags---managing-tags"
+    },
+    {
+      "question": "oas-contra pourquoi éviter openapi 3.1 dans le schéma fastapi",
+      "anchor": "oas-contra---dont-use-openapi-31-yet"
+    },
+    {
+      "question": "oas-descr supprimer la propriété title du schéma openapi fastapi",
+      "anchor": "oas-descr---title-property-has-to-be-removed"
+    },
+    {
+      "question": "oas-comp appliquer la notation UpperCamelCase aux noms de composants fastapi",
+      "anchor": "oas-comp---component-names-should-use-uppercamelcase-notation"
+    },
+    {
+      "question": "openapi-opid forcer le lowerCamelCase sur operationId dans fastapi",
+      "anchor": "openapi-opid---lowercamelcase-for-operationid"
+    },
+    {
+      "question": "script openapi.py pour corriger automatiquement les violations du schéma",
+      "anchor": "the-openapipy-helper"
+    }
+  ]
+}

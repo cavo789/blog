@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:17:48.713Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c2f3d466c80454f1c92a16a111294f8739a09159",
+  "questions": [
+    {
+      "question": "Optimiser le démarrage de zsh en externalisant ses fonctions",
+      "anchor": ""
+    },
+    {
+      "question": "Comment changer de dossier projet en tapant juste un mot-clé ?",
+      "anchor": "teleporting-to-a-project"
+    },
+    {
+      "question": "Pourquoi un .zshrc trop long ralentit-il le terminal et comment y remédier ?",
+      "anchor": "the-problem-with-the-monolith"
+    },
+    {
+      "question": "fpath et autoload : comment forcer le chargement paresseux dans zsh ?",
+      "anchor": "the-secret-sauce-fpath-and-autoload"
+    },
+    {
+      "question": "Construire une fonction repo pour lister et ouvrir ses dépôts git avec fzf",
+      "anchor": "-the-super-function-repo-universal-project-navigator"
+    },
+    {
+      "question": "Isoler sa logique zsh dans des fichiers séparés pour plus de clarté",
+      "anchor": "why-this-is-better-in-a-standalone-file"
+    },
+    {
+      "question": "Quelle est la procédure pour installer un gestionnaire de fonctions zsh externes ?",
+      "anchor": "how-to-set-it-up"
+    },
+    {
+      "question": "Quelle arborescence de dossiers créer pour ranger ses scripts zsh autonomes ?",
+      "anchor": "1-create-the-structure"
+    },
+    {
+      "question": "Ajouter un répertoire personnalisé à fpath dans ~/.zshrc",
+      "anchor": "2-configure-your-zshrc"
+    },
+    {
+      "question": "Quel code écrire dans le fichier repo pour qu'il soit chargé automatiquement ?",
+      "anchor": "3-create-the-repo-function-file"
+    }
+  ]
+}

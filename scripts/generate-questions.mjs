@@ -344,13 +344,17 @@ export async function generateQuestions(
   });
 
   const model = LANGUAGES[locale].model;
+  const startedAt = Date.now();
   const modelRaw = await callOllama(userPrompt, locale, model);
   const questions = toValidatedQuestions(modelRaw, headings);
+  const durationMs = Date.now() - startedAt;
 
   const result = {
     version: 1,
     model,
     generated: new Date().toISOString(),
+    // Read back by pastDurations() to estimate how long the next bulk run will take.
+    durationMs,
     source: path.basename(absSource),
     ...(locale === "en" ? {} : { locale }),
     sourceHash: hashSource(raw),
@@ -358,7 +362,7 @@ export async function generateQuestions(
   };
 
   fs.writeFileSync(destPath, JSON.stringify(result, null, 2) + "\n");
-  return { status: "generated", path: destPath, count: questions.length };
+  return { status: "generated", path: destPath, count: questions.length, durationMs };
 }
 
 /**
@@ -392,10 +396,58 @@ function resolveTranslated(articleFile, locale) {
   return translated;
 }
 
+// ── Timing ───────────────────────────────────────────────────────────────────
+
+/**
+ * Past generation times for `model`, read back from the `durationMs` each sidecar records.
+ * Sidecars written before that field existed simply don't count.
+ */
+function pastDurations(model) {
+  const durations = [];
+  for (const root of ["blog", "i18n"]) {
+    const dir = path.join(projectRoot, root);
+    if (!fs.existsSync(dir)) continue;
+    for (const rel of fs.readdirSync(dir, { recursive: true })) {
+      if (!rel.endsWith(".questions.json")) continue;
+      try {
+        const sidecar = JSON.parse(fs.readFileSync(path.join(dir, rel), "utf-8"));
+        if (sidecar.model === model && Number.isFinite(sidecar.durationMs)) {
+          durations.push(sidecar.durationMs);
+        }
+      } catch {
+        /* an unreadable sidecar is reported by questions:check, not here */
+      }
+    }
+  }
+  return durations;
+}
+
+const mean = (values) => values.reduce((sum, value) => sum + value, 0) / values.length;
+
+function formatDuration(ms) {
+  const seconds = Math.round(ms / 1000);
+  if (seconds < 60) return `${seconds} s`;
+  const minutes = Math.round(seconds / 60);
+  if (minutes < 60) return `${minutes} min`;
+  return `${Math.floor(minutes / 60)} h ${String(minutes % 60).padStart(2, "0")} min`;
+}
+
 // ── Bulk mode ────────────────────────────────────────────────────────────────
 
+/**
+ * `--pause` between two articles. It spends no less energy on the run — the same work is done
+ * either way — but it lowers the sustained GPU temperature and fan noise of an unattended
+ * multi-hour batch, which is the point: one process to launch, not a tranche to restart by hand.
+ */
+const pauseBetweenArticles = (seconds) =>
+  new Promise((resolve) => setTimeout(resolve, seconds * 1000));
+
+/** `  3/58` — padded so the counter column stays aligned from the first article to the last. */
+const counterOf = (index, total) =>
+  `${String(index + 1).padStart(String(total).length)}/${total}`;
+
 /** `--locale` bulk run: the eligibility module decides, this only reports and generates. */
-async function runLocalizedBulk({ locale, force, limit, dryRun }) {
+async function runLocalizedBulk({ locale, force, limit, dryRun, pause }) {
   const { eligible, skipped } = questionCandidates(projectRoot, locale);
   // --force re-runs the fresh ones too, never the excluded or the untranslated.
   const fresh = skipped
@@ -409,15 +461,35 @@ async function runLocalizedBulk({ locale, force, limit, dryRun }) {
       `(${fresh.length} already fresh, ${skipped.length - fresh.length} not eligible).`,
   );
 
+  // A French run on the 36B model takes hours — say so before it starts, not after.
+  const model = LANGUAGES[locale]?.model;
+  const history = model ? pastDurations(model) : [];
+  if (model && targets.length > 0) {
+    console.log(
+      history.length > 0
+        ? `⏱  Estimated time: ~${formatDuration(
+            targets.length * mean(history) +
+              Math.max(targets.length - 1, 0) * pause * 1000,
+          )} ` +
+            `(${targets.length} × ${Math.round(mean(history) / 1000)} s average per article ` +
+            `for ${model}, measured on ${history.length} article(s)).`
+        : `⏱  No timing history yet for ${model} — the next run will show an estimate.`,
+    );
+    if (pause) {
+      console.log(`⏸  Pausing ${pause}s between articles to keep the GPU cooler.`);
+    }
+  }
+
   let generated = 0,
     errors = 0;
-  for (const file of targets) {
+  for (const [index, file] of targets.entries()) {
     const rel = path.relative(projectRoot, file);
+    const counter = counterOf(index, targets.length);
     if (dryRun) {
-      console.log(`  [GENERATE] ${rel}`);
+      console.log(`  [GENERATE] ${counter} ${rel}`);
       continue;
     }
-    process.stdout.write(`  📄 ${rel} ... `);
+    process.stdout.write(`  📄 ${counter} ${rel} ... `);
     try {
       const result = await generateQuestions(file, { force, locale });
       console.log(
@@ -430,6 +502,7 @@ async function runLocalizedBulk({ locale, force, limit, dryRun }) {
       console.log(`❌ ${err.message}`);
       errors++;
     }
+    if (pause && index < targets.length - 1) await pauseBetweenArticles(pause);
   }
 
   if (dryRun) console.log("\nDry run — nothing written.");
@@ -437,7 +510,7 @@ async function runLocalizedBulk({ locale, force, limit, dryRun }) {
   if (errors > 0) process.exitCode = 1;
 }
 
-async function runBulk({ force, dir, limit, dryRun }) {
+async function runBulk({ force, dir, limit, dryRun, pause }) {
   // Drafts (blog/ with draft: true, or anything under .unpublished/) aren't public yet — the
   // aggregation plugin already excludes them from the shipped index, but generating sidecars
   // for them here would still burn Ollama time and commit sidecar files for unpublished
@@ -456,9 +529,12 @@ async function runBulk({ force, dir, limit, dryRun }) {
       typeof limit === "number" ? ` (--limit ${limit})` : ""
     }.`,
   );
+  if (pause && !dryRun) {
+    console.log(`⏸  Pausing ${pause}s between articles to keep the GPU cooler.`);
+  }
 
   if (dryRun) {
-    for (const file of targets) {
+    for (const [index, file] of targets.entries()) {
       const rel = path.relative(projectRoot, file);
       const sidecarPath = file + ".questions.json";
       const exists = fs.existsSync(sidecarPath);
@@ -472,7 +548,7 @@ async function runBulk({ force, dir, limit, dryRun }) {
           /* an unreadable sidecar is reported by questions:check, not here */
         }
       }
-      console.log(`  [${label}] ${rel}`);
+      console.log(`  [${label}] ${counterOf(index, targets.length)} ${rel}`);
     }
     console.log("\nDry run — nothing written.");
     return;
@@ -483,9 +559,11 @@ async function runBulk({ force, dir, limit, dryRun }) {
     excluded = 0,
     errors = 0;
 
-  for (const file of targets) {
+  for (const [index, file] of targets.entries()) {
     const rel = path.relative(projectRoot, file);
-    process.stdout.write(`  📄 ${rel} ... `);
+    process.stdout.write(`  📄 ${counterOf(index, targets.length)} ${rel} ... `);
+    // Only a real generation heated anything up — a skipped article never reached Ollama.
+    let calledOllama = false;
     try {
       const result = await generateQuestions(file, { force });
       if (result.status === "excluded") {
@@ -497,10 +575,14 @@ async function runBulk({ force, dir, limit, dryRun }) {
       } else {
         console.log(`✅ ${result.count} questions`);
         generated++;
+        calledOllama = true;
       }
     } catch (err) {
       console.log(`❌ ${err.message}`);
       errors++;
+    }
+    if (pause && calledOllama && index < targets.length - 1) {
+      await pauseBetweenArticles(pause);
     }
   }
 
@@ -533,6 +615,8 @@ Options:
   --limit <n>      (--all mode) only process the first n articles — useful for a
                     hand-reviewed pilot batch before a full corpus run
   --dry-run        (--all mode) show what would be generated without calling Ollama
+  --pause <sec>    (--all mode) wait <sec> between two articles. Same total work, but a
+                    lower sustained GPU temperature on an unattended multi-hour batch
   --locale <code>  Generate from the translated article, in that language (e.g. fr).
                     With --all, only the eligible translated articles are processed.
   --help, -h       Show this help
@@ -562,14 +646,20 @@ Environment:
     const limitIdx = args.indexOf("--limit");
     const limit = limitIdx !== -1 ? parseInt(args[limitIdx + 1], 10) : undefined;
     const dryRun = args.includes("--dry-run");
+    const pauseIdx = args.indexOf("--pause");
+    const pause = pauseIdx !== -1 ? Number(args[pauseIdx + 1]) : 0;
+    if (pauseIdx !== -1 && (!Number.isFinite(pause) || pause < 0)) {
+      console.error(`--pause needs a number of seconds, got "${args[pauseIdx + 1]}".`);
+      process.exit(1);
+    }
 
     if (locale !== "en") {
-      await runLocalizedBulk({ locale, force, limit, dryRun });
+      await runLocalizedBulk({ locale, force, limit, dryRun, pause });
     } else if (!fs.existsSync(dir)) {
       console.error(`Error: directory not found: ${dir}`);
       process.exit(1);
     } else {
-      await runBulk({ force, dir, limit, dryRun });
+      await runBulk({ force, dir, limit, dryRun, pause });
     }
   } else {
     const outputIdx = args.indexOf("--output");

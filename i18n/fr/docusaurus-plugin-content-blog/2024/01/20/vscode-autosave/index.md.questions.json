@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:33:00.410Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f0a1945b05800ca24c61b933b29be06d9080ea81",
+  "questions": [
+    {
+      "question": "comment activer l'autosave dans VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "VSCode enregistrement automatique onFocusChange",
+      "anchor": ""
+    },
+    {
+      "question": "configurer files.autoSave dans settings.json",
+      "anchor": ""
+    },
+    {
+      "question": "comment faire pour que VSCode sauvegarde automatiquement mes fichiers",
+      "anchor": ""
+    },
+    {
+      "question": "activer l'enregistrement automatique via les paramètres VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "VSCode sauvegarde automatique quand je change de fenêtre",
+      "anchor": ""
+    },
+    {
+      "question": "raccourci CTRL + , VSCode paramètres autosave",
+      "anchor": ""
+    },
+    {
+      "question": "alternative Sticky scroll in vscode pour la navigation",
+      "anchor": ""
+    },
+    {
+      "question": "comment éviter de perdre du code non sauvegardé dans VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "paramètre files.autoSave onFocusChange vs manual save",
+      "anchor": ""
+    }
+  ]
+}

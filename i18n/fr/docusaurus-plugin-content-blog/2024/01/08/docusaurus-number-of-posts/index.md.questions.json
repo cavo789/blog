@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:28:15.444Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0a2709d6fb677bc49c6d4458ad427f8d5dfe1f94",
+  "questions": [
+    {
+      "question": "comment compter les articles du blog Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "Docusaurus afficher le nombre total de posts publiés",
+      "anchor": ""
+    },
+    {
+      "question": "comment utiliser la page /blog/archive/ pour compter les publications ?",
+      "anchor": ""
+    },
+    {
+      "question": "snippet JavaScript pour compter les puces dans la console DevTools",
+      "anchor": ""
+    },
+    {
+      "question": "comment autoriser le collage dans la console du navigateur ?",
+      "anchor": ""
+    },
+    {
+      "question": "réutiliser l'analyse du front matter pour un compteur Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "Docusaurus obtenir le nombre d'articles sans plugin",
+      "anchor": ""
+    },
+    {
+      "question": "comment compter les liens de la liste des articles Docusaurus ?",
+      "anchor": ""
+    },
+    {
+      "question": "compter les articles Docusaurus avec les composants personnalisés et l'API du thème",
+      "anchor": ""
+    },
+    {
+      "question": "quelle est l'astuce rapide pour compter les articles Docusaurus ?",
+      "anchor": ""
+    }
+  ]
+}

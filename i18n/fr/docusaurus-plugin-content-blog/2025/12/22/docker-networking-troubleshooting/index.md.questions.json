@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:18:14.379Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "29b8df7307f4bb39f655fa31bf8f9a88ffadd86f",
+  "questions": [
+    {
+      "question": "pourquoi mes containers docker ne parviennent pas à communiquer",
+      "anchor": ""
+    },
+    {
+      "question": "vérifier que deux containers partagent le même réseau docker",
+      "anchor": "first-they-should-be-on-the-same-network"
+    },
+    {
+      "question": "tester le port interne d'un container avec docker ps",
+      "anchor": "then-testing-the-internal-port-for-both-containers"
+    },
+    {
+      "question": "comment tester le port externe mappé sur l'hôte avec curl ?",
+      "anchor": "third-testing-the-external-port-for-both-containers"
+    },
+    {
+      "question": "vérifier la résolution dns entre containers avec ping",
+      "anchor": "fourthly-testing-connectivity-between-the-two-containers"
+    },
+    {
+      "question": "tester un port spécifique à l'intérieur d'un container avec nc",
+      "anchor": "testing-the-port"
+    },
+    {
+      "question": "comment vérifier la réponse de l'api docker avec curl ?",
+      "anchor": "testing-the-application"
+    },
+    {
+      "question": "configurer les variables d'environnement pour contourner le proxy docker",
+      "anchor": "fifthly-finding-the-solution"
+    }
+  ]
+}

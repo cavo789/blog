@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:41:00.468Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "837dc688482029af45328db128e5a42de46d81db",
+  "questions": [
+    {
+      "question": "mise à jour automatique fichier .env sans éditeur",
+      "anchor": ""
+    },
+    {
+      "question": "déployer variables d'environnement cohérentes sur plusieurs serveurs linux",
+      "anchor": ""
+    },
+    {
+      "question": "updateEnv bash retour statut mise à jour variables",
+      "anchor": "what-updateenv-does-for-you"
+    },
+    {
+      "question": "comment vérifier quelles clés ont été ajoutées ou modifiées après updateEnv",
+      "anchor": "what-updateenv-does-for-you"
+    },
+    {
+      "question": "sed remplacer ou ajouter variable en début de ligne .env",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "pourquoi sed ne match pas les variables en milieu de ligne .env",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "fonction bash updateEnv arguments et sous-shell",
+      "anchor": "the-function"
+    },
+    {
+      "question": "où coller la fonction updateEnv pour qu'elle soit permanente",
+      "anchor": "the-function"
+    },
+    {
+      "question": "drapeau skip pour ne pas créer variable absente .env",
+      "anchor": "adding-a-skip-boolean"
+    },
+    {
+      "question": "workflow déploiement .env après docker compose",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:49:37.939Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "413d400dbff2d44c49bf9d5f42cfd9cca25f493d",
+  "questions": [
+    {
+      "question": "Comment utiliser l'image Docker de markdownlint pour scanner et nettoyer automatiquement mes fichiers .md ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker markdownlint auto-formatage fichiers markdown",
+      "anchor": ""
+    },
+    {
+      "question": "Comment créer un .markdownlintignore pour exclure node_modules et vendor du parcours ?",
+      "anchor": "ignore-some-filesfolders"
+    },
+    {
+      "question": ".markdownlintignore ignorer dossiers markdownlint docker",
+      "anchor": "ignore-some-filesfolders"
+    },
+    {
+      "question": "Quelle syntaxe utiliser dans .markdownlint.json pour désactiver des règles précises ?",
+      "anchor": "ignore-some-errors"
+    },
+    {
+      "question": ".markdownlint.json configuration désactiver règles markdownlint",
+      "anchor": "ignore-some-errors"
+    },
+    {
+      "question": "Comment utiliser le flag --fix de markdownlint pour corriger les fichiers .md tout en conservant la propriété ?",
+      "anchor": "some-errors-can-be-fixed-automagically"
+    },
+    {
+      "question": "markdownlint docker --fix auto-correction fichiers md",
+      "anchor": "some-errors-can-be-fixed-automagically"
+    },
+    {
+      "question": "Quelle est la commande docker complète pour combiner le scan, les exclusions et les corrections automatiques ?",
+      "anchor": "put-all-together"
+    },
+    {
+      "question": "commande docker markdownlint pour publication blog avec --fix et exclusions",
+      "anchor": "put-all-together"
+    },
+    {
+      "question": "Comment ajouter une cible dans un Makefile pour exécuter le linting markdown sans retenir la commande complète ?",
+      "anchor": "make-it-easy"
+    },
+    {
+      "question": "Makefile cible linting markdown docker",
+      "anchor": "make-it-easy"
+    }
+  ]
+}

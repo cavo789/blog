@@ -1,0 +1,672 @@
+---
+slug: docker-joomla-part-2
+title: Créez votre site Joomla avec Docker - Partie 2
+date: 2024-10-18
+description: Créez votre site Joomla persistant avec Docker en une seule commande. Ce guide (Partie 2) se concentre sur l'automatisation avancée avec compose.yaml et makefile.
+authors: [christophe]
+image: /img/v2/joomla.webp
+series: Create your joomla website using Docker
+mainTag: joomla
+tags:
+  - docker
+  - joomla
+  - makefile
+language: fr
+blueskyRecordKey: 3lx57rla64c23
+updates:
+  - date: 2025-08-25
+    note: Using Joomla 5.3.3
+  - date: 2026-01-03
+    note: Review and update YAML files to Joomla 6
+---
+
+![Créez votre site Joomla avec Docker - Partie 2](/img/v2/joomla.webp)
+
+<TLDR>
+  Ce guide détaille comment automatiser le développement local de Joomla avec
+  Docker en combinant les configurations `compose.yaml`, `.env` et `makefile`
+  pour déployer des sites entièrement configurés en une seule commande. Il
+  explique comment contourner l'assistant d'installation standard en
+  prédéfinissant des variables d'environnement et montre comment gérer
+  plusieurs projets isolés avec différentes versions de Joomla et de PHP en
+  même temps sur une seule machine. Le tutoriel fournit des exemples de
+  configuration concrets pour garantir la persistance des données et permettre
+  un fonctionnement sans conflit entre instances concurrentes.
+</TLDR>
+
+<!--cspell:ignore runningjoomlaindocker, mysqli -->
+<!-- markdownlint-disable-file MD010 MD026 -->
+
+Fin 2023, j'ai écrit un très long article sur l'utilisation de Joomla avec Docker : [Create your Joomla website using Docker - Part 1](/blog/docker-joomla).
+
+C'était une introduction pas à pas à Docker et à la création d'un site local basé sur Joomla.
+
+J'y expliquais, longuement, les différentes étapes de la création d'un site, le choix d'un moteur de base de données (MySQL, MariaDB ou PostgreSQL), le choix d'une version précise de Joomla / du moteur de base de données, le type de volumes (le site et la base doivent-ils être conservés en RAM ou sur le disque dur (c'est-à-dire la notion de volumes)) et beaucoup d'autres choses comme le choix du port du site, la création d'un alias (quelque chose comme `http://my_project.local` au lieu de `http://127.0.0.1`). Je vous encourage vivement à lire ou relire cet article avant de commencer celui-ci.
+
+<AlertBox variant="caution">
+Voici le lien vers cet article : [Create your Joomla website using Docker - Part 1](/blog/docker-joomla).
+
+</AlertBox>
+
+Comme Docker et Joomla évoluent rapidement, je vous propose ici de repartir de là où nous en étions et de voir ce qui a changé depuis.
+
+Nous allons aussi pousser l'automatisation un cran plus loin, en exploitant beaucoup plus le concept de `makefile` et un fichier de configuration appelé `.env`.
+
+<!-- truncate -->
+
+<QuickJump
+  links={[
+    { label: "Voir le résultat", to: "#result" },
+    { label: "Avant de commencer", to: "#before-starting" },
+  ]}
+/>
+
+## Résultat {#result}
+
+<Terminal typewriter source="./files/terminal-3.txt" />
+
+Voilà tout le déploiement : Docker récupère Joomla, PHP, Apache et MySQL, les relie entre eux, et
+une minute plus tard le site est accessible dans le navigateur — sans configuration manuelle de la
+base de données, sans édition de fichiers PHP à la main.
+
+<BrowserWindow url="http://127.0.0.1:8080/installation/index.php">
+  ![Installateur Joomla](./images/joomla_installer.webp)
+</BrowserWindow>
+
+<AlertBox variant="info" title="Hé ! vous avez remarqué ?">
+Nous avons créé notre site Joomla en **lançant une seule commande**. Vous ne me croyez pas ? Ouvrez votre navigateur et allez sur `http://127.0.0.1:8080`.
+</AlertBox>
+
+## Pourquoi ça fonctionne {#why-it-works}
+
+- `compose.yaml`, `.env` et `makefile` forment ensemble un point de configuration unique : un
+  fichier à modifier pour la version de Joomla ou de PHP, un autre pour le numéro de port et le nom
+  du projet, et des cibles `make` pour que personne n'ait à retenir les incantations `docker compose`
+  brutes.
+- `depends_on` + `healthcheck` dans `compose.yaml` font attendre Joomla jusqu'à ce que la base de
+  données soit réellement prête avant de lancer sa propre installation — plus de crash au démarrage.
+- Comme toute la configuration tient dans trois petits fichiers, la même recette passe à l'échelle
+  avec plusieurs projets isolés (versions différentes de Joomla/PHP/MySQL) sur la même machine,
+  comme le montrent les sections *Configuration avancée* et *Démarrer trois projets différents*
+  ci-dessous.
+
+## Créer les trois fichiers de configuration {#create-the-three-configuration-files}
+
+Contrairement à l'article [Create your Joomla website using Docker - Part 1](/blog/docker-joomla), où j'avais commencé par expliquer quelques concepts avant d'entrer dans le sujet, faisons l'inverse ici : partons des trois fichiers que nous allons utiliser, puis voyons comment ils fonctionnent. N'essayez pas trop de comprendre le contenu des fichiers ; nous y reviendrons plus tard.
+
+Créez les trois fichiers dans un dossier sur votre disque dur pour le moment (par exemple dans `/tmp/joomla`), afin d'aller vite à l'essentiel : créer un site Joomla avec une seule ligne de commande à exécuter sur votre ordinateur.
+
+### Notre fichier d'orchestration : compose.yaml {#our-orchestration-file-composeyaml}
+
+Il nous faut un fichier qui explique à Docker comment nous voulons configurer Joomla et, aussi, le type de base de données souhaité.
+
+Notre fichier d'orchestration va également indiquer à Docker que nous voulons que le site Joomla soit persistant, c'est-à-dire que les fichiers soient enregistrés sur notre disque dur. Idem pour la base de données.
+
+Nous devons faire ça pour que, si nous **supprimons** volontairement le container Docker afin de libérer de la mémoire par exemple, le site Joomla reste sauvegardé sur le disque. Ainsi, la prochaine fois que nous réveillerons notre site, les fichiers et les tables de la base seront restaurés.
+
+<AlertBox variant="info" title="Persistance">
+Il existe deux types de persistance : celle gérée nativement par Docker (*volumes internes*) ou celle où nous voyons les fichiers dans le dossier de notre projet (*volumes montés*). Nous opterons pour la seconde. Voyez mon article [Using volumes with Docker, use cases](/blog/docker-volumes) si vous voulez en savoir plus.
+
+</AlertBox>
+
+Nous allons aussi définir une dépendance (basée sur `depends_on` et `healthcheck`) : Joomla doit attendre que le serveur de base de données soit prêt avant de démarrer son installation (en effet, si l'installateur Joomla essaie d'accéder à MySQL avant même que le système soit chargé, notre projet plantera pendant le chargement des containers).
+
+Comme vous le voyez, notre fichier `compose.yaml` est d'une importance capitale pour bien définir notre projet.
+
+<AlertBox variant="note">
+Ces derniers mois, le nom du fichier à utiliser est passé de `docker-compose.yaml` à `compose.yaml` ; l'ancien nom est toujours supporté pour l'instant, mais autant utiliser le nouveau. Voyez [docs.docker.com](https://docs.docker.com/compose/intro/compose-application-model/#the-compose-file) si vous voulez plus d'infos sur ce changement.
+
+</AlertBox>
+
+Créez un nouveau dossier (par exemple `mkdir /tmp/joomla && cd $_`) sur votre disque dur et créez le fichier `compose.yaml` avec ce contenu :
+
+<Terminal typewriter>$ mkdir /tmp/joomla && cd $_</Terminal>
+
+<Snippet filename="compose.yaml" source="./files/compose.yaml" />
+
+### Nous utiliserons un fichier de configuration appelé .env {#well-use-a-configuration-file-called-env}
+
+Nous allons aussi utiliser un fichier de configuration nommé `.env` (qui n'est jamais rien de plus qu'un bête dictionnaire de clés - valeurs) pour différencier nos projets.
+
+Créez un deuxième fichier appelé `.env` avec ce contenu :
+
+<Snippet filename=".env" source="./files/.env" />
+
+Utiliser un fichier `.env` est vraiment pratique : vous n'avez plus besoin de modifier le fichier `compose.yaml`, qui peut rester standard pour tous vos projets.
+
+Si vous avez besoin de deux sites Joomla ou plus (vous êtes une agence web qui commence à utiliser Docker pour son développement), vous n'aurez à modifier que le fichier `.env` en changeant le `WEB_PORT` (chaque projet doit avoir son port unique) et vous mettrez probablement aussi à jour `PROJECT_NAME`, par exemple avec le nom de votre client.
+
+<AlertBox variant="info">
+`WEB_PORT`, `PROJECT_NAME`, ... ne sont que des *variables*. Si vous regardez à nouveau le contenu du `compose.yaml` que vous venez de copier/coller, vous retrouverez ces variables, par exemple sur la ligne `image: joomla:${JOOMLA_VERSION:-latest}`.
+
+La syntaxe `${XXX:-yyy}` signifie : si la variable existe, utilise-la (la partie `XXX`), sinon utilise une valeur par défaut (la partie `yyy`).
+
+Donc ici, si `JOOMLA_VERSION` existe, et c'est le cas dans notre fichier `.env`, alors sa valeur est utilisée. Nous aurons donc `image: joomla:5.2.0-php8.3-apache`. Si `JOOMLA_VERSION` était absente de notre `.env`, alors nous utiliserions `latest` et donc `image: joomla:latest`.
+
+</AlertBox>
+
+### Simplifions-nous la vie et soyons paresseux ; utilisons un makefile {#lets-make-our-lives-simpler-and-lazier-using-a-makefile}
+
+Le troisième et dernier fichier que nous allons utiliser s'appelle `makefile` et il contiendra quelques _scripts_ : nous allons par exemple créer un script appelé `up` pour construire notre site.
+
+Pour pouvoir utiliser un `makefile`, le binaire `GNU Make` doit être installé sur votre machine.
+
+<AlertBox variant="caution">
+Si vous ne savez pas si `GNU make` est déjà installé, lancez simplement `which make` dans la console. Si vous voyez `make not found`, exécutez `sudo apt-get update && sudo apt-get install make` pour terminer l'installation.
+
+<Terminal typewriter>$ which make</Terminal>
+
+<Terminal typewriter>$ sudo apt-get update && sudo apt-get install make</Terminal>
+
+</AlertBox>
+
+Créez donc un fichier appelé `makefile` dans votre répertoire courant avec ce contenu :
+
+<Snippet filename="makefile" source="./files/makefile" />
+
+<AlertBox
+  variant="highlyImportant"
+  title="L'indentation doit utiliser des TAB, pas des espaces"
+>
+  C'est terriblement vicieux parce que c'est totalement silencieux :
+  l'indentation dans un makefile doit être faite avec des tabulations, pas des
+  espaces. Quand vous copiez/collez le code ci-dessus pour créer votre fichier,
+  assurez-vous que votre éditeur de texte utilise des tabulations. Sinon, les
+  commandes définies dans le fichier ne fonctionneront pas.
+</AlertBox>
+
+<AlertBox variant="note">
+Si vous voulez en savoir plus sur GNU Make, consultez mon article [Linux Makefile - When to use a makefile](/blog/makefile-using-make)
+
+</AlertBox>
+
+## Avant de commencer {#before-starting}
+
+Nous sommes prêts. Juste avant de démarrer, vérifiez que vous avez bien les trois fichiers ci-dessous (lancez `ls -alh`) :
+
+<ProjectSetup folderName="/tmp/joomla" createFolder={true}>
+  <Guideline>
+    Maintenant, lancez 'UID=$(id -u) GID=$(id -g) docker compose up --detach'
+    pour créer votre site Joomla. Patientez un peu et ouvrez votre navigateur,
+    allez sur http://localhost:8080 pour ouvrir votre site Joomla. Le type de
+    base de données doit être `MySQLi`, le nom de l'host doit être `joomladb`,
+    le nom d'utilisateur doit être `root` et le mot de passe de cet utilisateur
+    doit être `example`.
+  </Guideline>
+  <Snippet filename=".env" source="./files/.env" />
+  <Snippet filename="compose.yaml" source="./files/compose.yaml" />
+  <Snippet filename="makefile" source="./files/makefile" />
+</ProjectSetup>
+
+<Terminal typewriter source="./files/terminal-4.txt" />
+
+### Vérifier notre configuration {#check-our-configuration}
+
+En lançant `make config` (`config` est une action que nous avons définie dans notre `makefile`), nous pouvons afficher la configuration de notre projet à l'écran _(juste l'afficher, rien n'est exécuté)_.
+
+<Terminal typewriter>$ make config</Terminal>
+
+Nous devrions voir beaucoup d'informations techniques commençant par quelque chose comme :
+
+<Snippet source="./files/make_config.yaml" />
+
+<AlertBox variant="info">
+La sortie ci-dessus est un **contenu partiel** et ne montre que les premières lignes affichées dans la console par la commande `make config`.
+
+</AlertBox>
+
+L'objectif de `make config` est de s'assurer que tous les fichiers sont corrects (sinon nous aurons des messages d'erreur) et que les variables sont bien remplacées par leurs valeurs. Vous pouvez voir par exemple que la version de Joomla est bien celle spécifiée dans le fichier `.env` et que la ligne user (la dernière ligne ci-dessus) est correctement initialisée avec le **user_id:group_id** de votre utilisateur courant.
+
+<AlertBox variant="info" title="UID/GID">
+Le **user_id:group_id** varie selon votre propre configuration. Ce sera `1000:1000` dans la plupart des cas, mais ça peut être autre chose si, par exemple, vous avez défini plus d'un utilisateur dans votre distribution Linux ; le premier utilisateur sera probablement `1000:1000`, le second `1001:1001` et ainsi de suite.
+
+</AlertBox>
+
+## Réveillons Joomla... {#lets-wake-up-joomla}
+
+Nous voici au cœur du sujet : nous aimerions voir un beau site Joomla tout neuf. Est-ce possible en une seule commande, et même sans rien installer à la main ?
+
+La réponse est « oui » et `make up` fera la magie.
+
+Dans votre console, lancez simplement `make up`, et patientez une minute. La toute première fois, vous obtiendrez la sortie console montrée en haut de cet article.
+
+Qu'est-ce que ça veut dire ? Docker a récupéré (_pulled_) depuis Internet nos services `joomla` et `joomladb` (autrement dit, il a téléchargé le CMS Joomla (avec PHP et Apache) et MySQL).
+
+En lançant ensuite la commande ci-dessous (ou juste `docker container list` pour obtenir toutes les colonnes), vous obtiendrez la liste des containers en cours d'exécution :
+
+<Terminal typewriter source="./files/terminal-2.txt" />
+
+Comme on le voit, youpi !, nous avons nos deux services (des containers nommés) qui sont Joomla et MySQL, et tous les deux sont _Up_ (voyez la colonne `Status`). On voit que Joomla utilise le port `8080` et MySQL le port `3306`.
+
+<AlertBox variant="info">
+Le port `8080` est celui spécifié dans notre `.env` (variable `WEB_PORT`) et, pareil pour MySQL, il utilise le port `3006` parce que c'est celui que nous avons défini (`MYSQL_PORT`).
+
+Notez que `3306` est le port standard de MySQL.
+
+</AlertBox>
+
+### ... ou demandons-lui de s'endormir (on garde les containers) {#-or-lets-ask-him-to-fall-asleep-keep-containers}
+
+La commande inverse de `make up` est `make stop`. L'action `stop` arrêtera nos containers Joomla et MySQL (comprenez `les faire dormir`) mais sans supprimer les fichiers (votre site et votre base) de votre disque dur. En relançant `make up`, vous les retrouverez. `up` et `stop` sont comme un interrupteur.
+
+<Terminal typewriter>$ make stop</Terminal>
+
+### ... ou demandons-lui de supprimer les containers (libérer plus de mémoire) {#-or-lets-ask-him-to-remove-containers-free-more-memory}
+
+La commande `make down` va arrêter les containers et les supprimer. Mais dans notre cas, nous aurons toujours les fichiers sur notre disque dur, donc nous ne perdrons pas notre site.
+
+<Terminal typewriter>$ make down</Terminal>
+
+### ... ou demandons-lui de se suicider (supprimer les containers et les fichiers) {#-or-lets-ask-him-to-suicide-remove-containers-and-files}
+
+La commande `make reset` arrêtera les containers mais supprimera aussi les fichiers sur le disque.
+
+<Terminal typewriter>$ make reset</Terminal>
+
+<AlertBox variant="danger">
+En lançant `make reset`, vous perdrez tout et serez prêt à créer un nouveau site.
+
+</AlertBox>
+
+## Il est temps de démarrer le site {#time-to-starting-the-website}
+
+Une fois `make up` lancé et vos containers dans l'état `Up`, notre site Joomla est prêt.
+
+<Terminal typewriter>$ make up</Terminal>
+
+Vous aurez besoin de quelques informations comme les identifiants de la base de données ; c'est pour ça que l'écran `make start` a été défini.
+
+Lancez `make start` dans la console. Vous obtiendrez un écran comme celui-ci :
+
+<Terminal typewriter>$ make start</Terminal>
+
+```none
+To start your site, please jump to http://127.0.0.1:8080
+
+Go to http://127.0.0.1:8080/administrator to open your backend.
+
+Below a summary of your current installation:
+
+JOOMLA
+
+  * Project name              running-joomla-in-docker
+  * Version                   latest
+  * Port                      8080
+
+DATABASE
+
+  * Host                      joomla-db
+  * User name                 joomla
+  * Password                  examplepass
+  * Database name             joomla
+  * Version                   8.4.2
+  * Port                      3306
+```
+
+Comme vous le voyez, le numéro de port est `8080` ; celui que nous avons spécifié dans notre fichier `.env`. Faites simplement CTRL + clic sur l'URL si votre terminal le supporte (sinon, démarrez manuellement votre navigateur préféré et rendez-vous sur l'URL indiquée) — vous arriverez sur l'écran d'installation montré en haut de cet article.
+
+**Félicitations, vous venez d'installer un site Joomla tout neuf avec Docker !**
+
+Vous devrez configurer votre nouveau site. Dans l'écran **Database Configuration**, vous devrez remplir l'**Host**, le **nom d'utilisateur**, le **mot de passe** et le **nom de la base de données**. Ces informations sont affichées dans la console ; merci `make start`. Utilisez simplement ces valeurs quand on vous les demande.
+
+## Petite pause {#time-for-a-break}
+
+<StepsCard
+  title="Qu'avons-nous vu jusqu'ici ?"
+  variant="remember"
+  steps={[
+    "Sans rien d'autre que Docker, vous pouvez installer Joomla et MySQL depuis la ligne de commande, dans la version que vous voulez ;",
+    "Qu'avec un fichier `.env` nous pouvons faire varier certaines valeurs pour avoir plusieurs projets sur notre disque dur (plusieurs sites Joomla) ;",
+    "Qu'avec le fichier `compose.yaml` nous disons à Docker quoi faire pour que Joomla et MySQL se parlent, et",
+    "Que le fichier `compose.yaml` est précieux puisqu'il permet de définir un certain nombre de variables de configuration.",
+  ]}
+/>
+
+Allons un peu plus loin.
+
+## Configuration avancée pour Joomla {#advanced-configuration-for-joomla}
+
+L'image Docker officielle de Joomla est maintenue par la communauté Joomla sur Docker Hub : [https://hub.docker.com/\_/joomla](https://hub.docker.com/_/joomla).
+
+Vous y retrouverez une liste de _tags_, c'est-à-dire une liste de versions que vous pouvez installer avec Docker, mais vous y trouverez aussi une section **How to use this image** et celle-là est vraiment utile.
+
+Voici la liste des variables supportées par Joomla fin septembre 2024 :
+
+| Nom de la variable        | Description                                                                                                        |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `JOOMLA_DB_HOST`          | Par défaut, l'IP et le port du container mysql lié                                                                 |
+| `JOOMLA_DB_USER`          | `root` par défaut                                                                                                  |
+| `JOOMLA_DB_PASSWORD`      | Par défaut, la valeur de la variable d'environnement `MYSQL_ROOT_PASSWORD` du container mysql lié                  |
+| `JOOMLA_DB_PASSWORD_FILE` | Chemin vers un fichier contenant le mot de passe de la base                                                        |
+| `JOOMLA_DB_NAME`          | `joomla` par défaut                                                                                                |
+| `JOOMLA_DB_TYPE`          | `mysqli` par défaut ; options : `mysqli`, `pgsql`                                                                  |
+
+Les variables d'environnement suivantes sont aussi reconnues pour configurer le déploiement automatique (c'est-à-dire sauter la configuration via le navigateur) de votre instance Joomla :
+
+| Nom de la variable        | Description                                                                          |
+| ------------------------- | ------------------------------------------------------------------------------------ |
+| `JOOMLA_SITE_NAME`        | Nom du site Joomla                                                                   |
+| `JOOMLA_ADMIN_USER`       | Nom complet de l'administrateur Joomla                                               |
+| `JOOMLA_ADMIN_USERNAME`   | Nom d'utilisateur de l'administrateur Joomla                                         |
+| `JOOMLA_ADMIN_PASSWORD`   | Mot de passe de l'administrateur Joomla                                              |
+| `JOOMLA_ADMIN_EMAIL`      | Adresse e-mail de l'administrateur Joomla                                            |
+| `JOOMLA_EXTENSIONS_URLS`  | Liste d'URLs séparées par des points-virgules pour installer des extensions Joomla   |
+| `JOOMLA_EXTENSIONS_PATHS` | Liste de chemins séparés par des points-virgules pour installer des extensions Joomla |
+| `JOOMLA_SMTP_HOST`        | Host SMTP pour les e-mails sortants                                                  |
+| `JOOMLA_SMTP_HOST_PORT`   | Port SMTP pour les e-mails sortants                                                  |
+
+Faites attention au dernier tableau ci-dessus.
+
+<AlertBox variant="info" title="Plutôt cool !">
+Nous pourrions donc complètement ignorer les écrans de configuration de Joomla !!! En spécifiant certaines valeurs, nous pourrions installer un beau Joomla tout neuf et afficher directement un site fonctionnel.
+
+</AlertBox>
+
+Essayons.
+
+Nous allons mettre à jour nos trois fichiers pour sauter le processus d'installation en prédéfinissant des valeurs comme le nom et le mot de passe de notre administrateur.
+
+### compose.yaml mis à jour {#updated-composeyaml}
+
+Nous allons éditer notre fichier `compose.yaml` et ajouter de nouvelles entrées :
+
+<Snippet filename="compose.yaml" source="./files/compose_updated.yaml" />
+
+### .env mis à jour {#updated-env}
+
+Et nous allons aussi mettre à jour notre fichier `.env` comme ceci :
+
+<Snippet filename=".env" source="./files/.env_updated" />
+
+### makefile mis à jour {#updated-makefile}
+
+Et, enfin, mettre aussi à jour le `makefile` comme ceci :
+
+<Snippet filename="makefile" source="./files/makefile_updated" />
+
+Comme vous le voyez, nous avons configuré quelques clés `JOOMLA_ADMIN_xxx` et défini `JOOMLA_SITE_NAME` à _Joomla_ ; le nom de notre site.
+
+### Lancer le site et sauter le processus d'installation {#running-the-website-and-skip-the-installation-process}
+
+Une fois les trois fichiers mis à jour, lancez `make reset` (pour supprimer notre site précédent s'il y en a un) puis `make up` pour en créer un nouveau. Enfin, lancez `make start` pour afficher la liste des variables importantes :
+
+<Terminal typewriter>$ make reset && make up && make start</Terminal>
+
+```none
+To start your site, please jump to http://127.0.0.1:8080
+
+Go to http://127.0.0.1:8080/administrator to open your backend.
+
+Below a summary of your current installation:
+
+JOOMLA
+
+  * Project name              running-joomla-in-docker
+  * Version                   5.2.0-php8.3-apache
+  * Port                      8080
+
+  Administration
+
+  * Site name                 Joomla
+  * Admin friendly username   Joomla Hero
+  * Admin username            joomla
+  * Admin password            joomla@secured
+  * Admin email               joomla@example.com
+
+DATABASE
+
+  * Host                      joomla-db
+  * Version                   8.4.2
+  * Name                      joomla
+  * User                      joomla
+  * Password                  examplepass
+  * Port                      3306
+```
+
+Maintenant, en allant sur `http://127.0.0.1:8080/administrator`, vous ne verrez plus les écrans d'installation mais, immédiatement, l'écran de connexion. Le nom d'utilisateur à utiliser est `joomla` et son mot de passe est `joomla@secured` (comme affiché dans la console).
+
+Votre site Joomla est déjà configuré ; sympa non ?
+
+## Deuxième pause {#time-for-a-second-break}
+
+Bon, à ce stade, nous avons vu comment créer un site Joomla tout neuf en quelques secondes avec la seule commande `make up` et comment contourner les écrans d'installation en fournissant déjà les informations utiles dans notre fichier `.env`.
+
+Essayons un exemple concret : nous sommes une petite agence web, nous voulons utiliser Docker pour nos prochains projets et nous en avons déjà trois en tête. Ou alors vous êtes un particulier avec plusieurs sites, tous avec des versions de Joomla différentes.
+
+## Démarrer trois projets différents {#starting-three-different-projects}
+
+Créez une structure comme ci-dessous, c'est-à-dire `cd /tmp/joomla && mkdir project_1 project_2 project_3`.
+
+<Terminal typewriter>$ cd /tmp/joomla && mkdir project_1 project_2 project_3</Terminal>
+
+Revenez ensuite au chapitre _compose.yaml mis à jour_ et créez le fichier `compose.yaml` dans chacun des trois dossiers de projet. Faites de même pour le `.env` et le `makefile`.
+
+Les mêmes trois fichiers dans les trois dossiers de projet.
+
+Au final, vous devriez avoir cette structure dans votre dossier `/tmp/joomla` :
+
+```tree expanded=true showJSX=false debug=false title="/tmp/joomla"
+├── project_1
+│   ├── .env
+│   ├── compose.yaml
+│   └── makefile
+├── project_2
+│   ├── .env
+│   ├── compose.yaml
+│   └── makefile
+└── project_3
+    ├── .env
+    ├── compose.yaml
+    └── makefile
+```
+
+Un répertoire par projet et, encore une fois, nos trois fichiers.
+
+<AlertBox variant="note">
+La commande `tree` n'est pas native sous Linux. Si vous voulez l'installer, lancez simplement `sudo apt-get update && sudo apt-get install tree`.
+
+<Terminal typewriter>$ sudo apt-get update && sudo apt-get install tree</Terminal>
+
+</AlertBox>
+
+### Projet 1 - Joomla 5.2 {#project-1---joomla-52}
+
+<AlertBox variant="info" title="Le projet 1 sera un Joomla 5.2">
+En très peu de mots : nous allons installer Joomla 5.2 et MySQL 8.4.2.
+
+</AlertBox>
+
+Configurez le fichier `project_1/.env` avec le contenu suivant.
+
+Comme vous le voyez (lignes surlignées), ce fichier est le même que le dernier `.env` utilisé plus haut, mais :
+
+- Nous allons définir `CONTAINER_PREFIX` avec une valeur unique ; dans notre exemple `joomla_5`,
+- Nous devons faire pareil (définir une valeur unique) pour le numéro de port MySQL ; nous pourrions utiliser le port standard `3306` pour notre premier projet mais utilisons plutôt `3301` (`1` parce que c'est notre premier projet)
+- Vous avez compris ; nous ferons de même pour `JOOMLA_SITE_NAME` et `PROJECT_NAME` ; restons humbles et optons pour `Joomla_5` et `joomla5`, et
+- Enfin, nous devons définir un numéro de port web ; nous utiliserons `8081` (notre site sera donc disponible sur `http://127.0.0.1:8081`).
+
+Voici le fichier `.env` pour **notre premier** projet :
+
+<Snippet filename="project_1/.env" source="./files/.env_project1" />
+
+Allez dans votre console et lancez `cd project_1` pour entrer dans le dossier du premier projet puis `make up` pour créer les containers Docker du projet 1.
+
+En allant sur `http://127.0.0.1:8081/administrator/` nous avons notre première page d'administration (comme vous le voyez, le site s'appelle bien **Joomla_5**, comme prévu).
+
+<BrowserWindow url="http://127.0.0.1:8081/administrator/">
+  ![Notre premier site tourne sous Joomla 5.2](./images/project_1.webp)
+</BrowserWindow>
+
+<AlertBox variant="caution">
+Faites bien attention à indiquer le numéro de port de notre projet. Pour le projet 1, le numéro de port est `8081`. C'est en fait ce que nous avons voulu en définissant la variable `WEB_PORT`.
+
+Donc, pour accéder au premier projet, notre URL est bien `http://127.0.0.1:8081`.
+
+</AlertBox>
+
+### Projet 2 - Joomla 4.0 {#project-2---joomla-40}
+
+<AlertBox variant="info" title="Le projet 2 sera un Joomla 4.0">
+En très peu de mots : nous allons installer Joomla 4.0 et MySQL 5.7.37.
+
+</AlertBox>
+
+Configurez le `project_2/.env` avec le contenu suivant. Comme vous le voyez (lignes surlignées), ce fichier est le même que le dernier `.env` utilisé plus haut mais, simplement, nous allons ajuster le nom du projet et le port web (notre site sera donc disponible sur `http://127.0.0.1:8082`).
+
+Faites les mêmes changements que pour le projet 1 mais remplacez juste `1` par `2` :
+
+<Snippet filename="project_2/.env" source="./files/.env_project2" />
+
+Enregistrez le fichier et lancez `make up` pour démarrer le deuxième site. Allez sur `http://127.0.0.1:8082/administrator` et oui, nous avons notre deuxième site qui tourne sur notre machine.
+
+<Terminal typewriter>$ make up</Terminal>
+
+<BrowserWindow url="http://127.0.0.1:8082/administrator">
+  ![Nos deux projets Joomla tournent](./images/project_1_2.webp)
+</BrowserWindow>
+
+<AlertBox variant="info" title="Deux sites Joomla avec deux versions différentes de PHP et MySQL et ... aucun conflit !">
+Vous avez vu ? Nous avons deux sites qui tournent sur notre ordinateur. Le premier est un Joomla 5.2 et le second un Joomla 4.0.
+
+Si vous êtes toujours réveillé après ce long article, pour accéder à notre deuxième site, il faut aller sur `http://127.0.0.1:8082`.
+
+</AlertBox>
+
+### Projet 3 - Joomla 3.5 {#project-3---joomla-35}
+
+<AlertBox variant="info" title="Le projet 3 sera un Joomla 3.5">
+Et maintenant, vous devez faire de la maintenance sur un vieux site J3.5. Créons-en un sur notre ordinateur.
+
+</AlertBox>
+
+Configurez maintenant le `project_3/.env` avec le contenu suivant.
+
+Cette fois, nous utiliserons `3` comme suffixes :
+
+<Snippet filename="project_3/.env" source="./files/.env_project3" />
+
+Enregistrez le fichier et lancez `make up && make start` pour démarrer le troisième site. Allez sur `http://127.0.0.1:8083/administrator` et oui, nous avons notre troisième site qui tourne sur notre machine.
+
+<Terminal typewriter>$ make up && make start</Terminal>
+
+<BrowserWindow url="http://127.0.0.1:8083/administrator">
+  ![Nos trois projets Joomla sont actifs en même temps sur notre machine de développement](./images/project_1_2_3.webp)
+</BrowserWindow>
+
+<AlertBox variant="info" title="Juste wow non ?">
+Trois versions différentes de Joomla, de MySQL et aussi de PHP, et aucun conflit !
+
+En fait, rien d'étonnant, c'est normal avec Docker : tout est isolé dans son propre container. 😊
+
+</AlertBox>
+
+### Démarrer les trois projets en une seule commande {#start-all-three-projects-in-just-one-command}
+
+Si je suis dans mon dossier `/tmp/joomla`, je peux démarrer mes trois projets d'un coup comme ceci :
+
+<Terminal typewriter wrap={true}>
+  $ cd project_1 && make up && cd ../project_2 && make up && cd ../project_3 &&
+  make up
+</Terminal>
+
+Voici ce que vous pouvez obtenir :
+
+<Terminal typewriter wrap={true} source="./files/terminal-1.txt" />
+
+### D'autres projets ? Combien de sites puis-je avoir ? {#other-projects-how-many-sites-can-i-have}
+
+Comme nous venons de le voir, nous pouvons lancer plusieurs projets Joomla en même temps sur notre machine et y accéder le plus simplement possible en faisant varier le numéro de port web (`8081`, `8082`, `8083`, ...).
+
+Mais combien puis-je en avoir ? Eh bien, ça dépend juste de votre machine.
+
+Pour information, voici ce que je vois en ce moment sur mon ordinateur Windows (j'utilise Docker Desktop et WSL2).
+
+![Docker desktop](./images/docker_desktop.webp)
+
+Comme vous le voyez, j'ai en fait quatre projets : mon blog actuel (qui tourne aussi sous Docker) et les trois projets Joomla.
+
+Si vous regardez la colonne **CPU (%)**, vous pouvez voir que les projets sont presque endormis. Et c'est normal : une fois la page web affichée, Joomla et MySQL n'ont plus besoin de CPU. La page est affichée, donc ils dorment.
+
+Pour la mémoire, j'ai alloué 20 Go max. à WSL/Docker et en ce moment, mes quatre projets (blog inclus) consomment 3,3 Go au total. Je peux donc démarrer bien plus de projets.
+
+Mais ai-je besoin de travailler sur les trois projets en même temps ? Probablement pas. Alors pourquoi ne pas arrêter, par exemple, le premier et le troisième projet ?
+
+Dans la console, lancez simplement `make stop` dans les dossiers des projets 1 et 3, en exécutant `( cd project_1 ; make stop ; cd ../project_3 ; make stop)`. Nous allons ainsi arrêter (pas supprimer ; juste geler et libérer de la mémoire) notre premier et notre troisième projet.
+
+<Terminal typewriter>
+  $ ( cd project_1 ; make stop ; cd ../project_3 ; make stop )
+</Terminal>
+
+En revenant sur Docker Desktop, on voit effectivement que nous avons gagné 1 Go de RAM.
+
+![Le premier et le troisième projet sont libérés](./images/docker_desktop_stopped.webp)
+
+<AlertBox variant="note">
+Dans notre exemple ici, nous n'avons gardé que le deuxième projet, nous pouvons donc toujours travailler sur `http://127.0.0.1:8082/` mais les deux autres projets (`http://127.0.0.1:8081/` et `http://127.0.0.1:8083/`) ne répondront plus. Nous les avons arrêtés.
+
+Relancez simplement `make up` dans le dossier `project_1` par exemple pour remettre le site en vie. Ou, si vous préférez l'interface graphique, dans Docker Desktop, cliquez juste sur le bouton `Start` :
+
+<Terminal typewriter>$ ( cd project_1 && make up )</Terminal>
+
+![Démarrer un container dans Docker Desktop](./images/docker_desktop_start.webp)
+
+</AlertBox>
+
+## Sous le capot : les logs Docker {#under-the-hood-docker-logs}
+
+*Optionnel — passez cette section si tout fonctionne et que vous n'avez pas besoin de débugger.*
+
+Parfois, si quelque chose se passe mal, c'est bien d'avoir accès aux logs Docker. Lancez simplement `make log` pour ça.
+
+<Terminal typewriter>$ make log</Terminal>
+
+Les logs ressembleront à ceci :
+
+<!-- cspell:disable -->
+
+```log
+joomla-db  | 2024-10-13 13:30:25+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 8.4.2-1.el9 started.
+joomla-db  | '/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+joomla-db  | 2024-10-13T13:30:26.058140Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+joomla-db  | 2024-10-13T13:30:26.238267Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 8.4.2) starting as process 1
+joomla-db  | 2024-10-13T13:30:26.239450Z 0 [Warning] [MY-010122] [Server] One can only use the --user switch if running as root
+joomla-db  | 2024-10-13T13:30:26.246482Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+joomla-db  | 2024-10-13T13:30:26.568703Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+joomla-db  | 2024-10-13T13:30:26.852192Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+
+[...]
+
+joomla-db  | 2024-10-13T13:30:26.852232Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now
+joomla-app  | ========================================================================
+joomla-app  |
+joomla-app  |
+joomla-app  | Ensuring Joomla database is present
+joomla-app  |
+joomla-app  | MySQL Database Created
+joomla-app  |  This server is now configured to run Joomla!
+joomla-app  |
+joomla-app  |   NOTE: You will need your database server address, database name,
+joomla-app  |         and database user credentials to install Joomla.
+joomla-app  |
+joomla-app  | ========================================================================
+joomla-app  | AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.19.0.3. Set the 'ServerName' directive globally to suppress this message
+
+[...]
+
+joomla-app  | [Fri Oct 04 13:31:46.880743 2024] [mpm_prefork:notice] [pid 1:tid 1] AH00163: Apache/2.4.62 (Debian) PHP/8.3.12 configured -- resuming normal operations
+joomla-app  | [Fri Oct 04 13:31:46.880782 2024] [core:notice] [pid 1:tid 1] AH00094: Command line: 'apache2 -D FOREGROUND'
+joomla-app  | 172.19.0.1 - - [04/Oct/2024:06:57:36 +0000] "POST /installation/index.php HTTP/1.1" 200 6497 "http://127.0.0.1:8080/installation/index.php" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+```
+
+<!-- cspell:enable -->
+
+## Conclusion {#conclusion}
+
+Trois petits fichiers — `compose.yaml`, `.env`, `makefile` — et `make up` devient toute votre
+histoire de déploiement Joomla : installations neuves, sites préconfigurés qui sautent l'assistant
+d'installation, et autant de projets isolés (versions différentes de Joomla/PHP/MySQL) que votre
+machine peut en supporter, chacun démarré, arrêté ou détruit en une seule commande.
+
+À ce stade, vous vous demandez peut-être : tout ça c'est bien beau, mais j'ai déjà un site Joomla et j'aimerais en faire une sauvegarde puis la restaurer en local avec Docker ; comment faire ?
+
+Si c'est bien votre question, lisez l'article suivant : [Restore a Joomla backup using Docker](/blog/docker-joomla-restore-jpa)

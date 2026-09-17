@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:22:27.659Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2edd77dd82ca09695b4dbe2e7074780fa2d89d0a",
+  "questions": [
+    {
+      "question": "quarto éviter hardcoding IP chemins emails doc technique",
+      "anchor": ""
+    },
+    {
+      "question": "Comment centraliser les valeurs récurrentes dans un projet Quarto ?",
+      "anchor": ""
+    },
+    {
+      "question": "syntaxe shortcodes {{< var key >}} et {{< meta key >}} dans le markdown",
+      "anchor": "what-quarto-variables-do-for-you"
+    },
+    {
+      "question": "Mettre à jour automatiquement vingt occurrences dans ma doc Quarto avec un seul fichier",
+      "anchor": "what-quarto-variables-do-for-you"
+    },
+    {
+      "question": "configurer _quarto.yml pour charger des variables externes",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "commande quarto render pour appliquer le fichier de configuration",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "docker run --env-file .env pour passer des variables à Quarto",
+      "anchor": "environment-variables"
+    },
+    {
+      "question": "réutiliser le fichier .env de Laravel dans la doc Quarto",
+      "anchor": "environment-variables"
+    },
+    {
+      "question": "variables Quarto ou templating Mustache quand utiliser quoi",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "coût en fichiers des variables Quarto est-ce rentable",
+      "anchor": "conclusion"
+    }
+  ]
+}

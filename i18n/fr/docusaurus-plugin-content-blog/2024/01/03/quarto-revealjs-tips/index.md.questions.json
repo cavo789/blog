@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:25:30.716Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "cd0e0d55dc5251722bac19e8e74ba1488c125847",
+  "questions": [
+    {
+      "question": "astuces quarto pour améliorer un diaporama reveal.js",
+      "anchor": ""
+    },
+    {
+      "question": "comment créer une slide de titre avec quarto ?",
+      "anchor": "create-a-title-slide"
+    },
+    {
+      "question": "positionner logo quarto en haut à gauche puis en bas à droite",
+      "anchor": "display-a-logo-top-left-on-the-first-slide-then-bottom-right"
+    },
+    {
+      "question": "quarto reveal.js background-size contain cover",
+      "anchor": "adding-a-background-image-to-a-slide"
+    },
+    {
+      "question": "quarto reveal.js slide-level",
+      "anchor": "slide-level"
+    },
+    {
+      "question": "comment mettre en page des colonnes dans une slide quarto ?",
+      "anchor": "creating-columns"
+    },
+    {
+      "question": "charger un fichier css externe dans quarto",
+      "anchor": "use-a-custom-css"
+    },
+    {
+      "question": "personnaliser le style des callouts quarto",
+      "anchor": "callout-can-be-stylized"
+    },
+    {
+      "question": "donner un slug personnalisé à une slide quarto",
+      "anchor": "define-a-name-for-your-slide"
+    },
+    {
+      "question": "activer les notes du présentateur dans quarto reveal.js",
+      "anchor": "using-speaker-notes"
+    }
+  ]
+}

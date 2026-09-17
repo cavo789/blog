@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:42:39.233Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e4cc9b3be5ed48dfefe897f834090be451e03e68",
+  "questions": [
+    {
+      "question": "comment bloquer le spam sur PlanetHoster N0C sans SpamAssassin",
+      "anchor": ""
+    },
+    {
+      "question": "automatiser les règles de filtrage email sur l'infrastructure N0C",
+      "anchor": ""
+    },
+    {
+      "question": "utiliser RoundCube pour filtrer les emails sur PlanetHoster même sans client mail",
+      "anchor": "you-need-to-use-roundcube-for-the-filtering"
+    },
+    {
+      "question": "accès interface filtres RoundCube hébergement N0C",
+      "anchor": "you-need-to-use-roundcube-for-the-filtering"
+    },
+    {
+      "question": "exporter les règles RoundCube vers un fichier .sieve",
+      "anchor": "too-many-manual-actions"
+    },
+    {
+      "question": "générer un fichier .sieve automatiquement depuis une liste JSON",
+      "anchor": "too-many-manual-actions"
+    },
+    {
+      "question": "dossier ftp où uploader le fichier .sieve sur PlanetHoster",
+      "anchor": "where-to-put-our-file"
+    },
+    {
+      "question": "comment forcer les fins de ligne Unix dans un fichier .sieve pour PlanetHoster",
+      "anchor": "where-to-put-our-file"
+    },
+    {
+      "question": "déployer les règles de spam automatiquement avec GitHub Actions",
+      "anchor": "stay-in-touch"
+    },
+    {
+      "question": "trouver le workflow Exterminate them all pour bloquer le spam",
+      "anchor": "special-thanks"
+    }
+  ]
+}

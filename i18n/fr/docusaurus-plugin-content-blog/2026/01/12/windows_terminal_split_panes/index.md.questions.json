@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:27:30.445Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f16a6d953fd80bda27caf6a672e38cd376dfd57b",
+  "questions": [
+    {
+      "question": "comment diviser les panneaux dans Windows Terminal pour faire du multitâche avec WSL",
+      "anchor": ""
+    },
+    {
+      "question": "ouvrir settings.json depuis le menu Windows Terminal",
+      "anchor": "open-windows-terminal-settings"
+    },
+    {
+      "question": "créer un nouveau profil avec une ligne de commande en dur pour diviser l'écran",
+      "anchor": "create-a-new-profile-and-hardcode-the-command-line"
+    },
+    {
+      "question": "configurer un profil workspace en réutilisant des profils existants",
+      "anchor": "create-a-workspace-profile-and-reuse-existing-profiles"
+    },
+    {
+      "question": "activer le zoom sur un panneau spécifique dans Windows Terminal",
+      "anchor": "toggle-zoom-for-a-pane"
+    },
+    {
+      "question": "quels raccourcis clavier utiliser pour gérer les panneaux divisés",
+      "anchor": "keyboard-shortcuts-to-manage-panes"
+    },
+    {
+      "question": "diffuser la saisie vers plusieurs panneaux en même temps",
+      "anchor": "control-panel-actions"
+    },
+    {
+      "question": "disposer quatre panneaux en quadrants dans un seul profil Windows Terminal",
+      "anchor": "create-a-new-profile-and-hardcode-the-command-line"
+    },
+    {
+      "question": "basculer le focus entre les panneaux divisés rapidement",
+      "anchor": "keyboard-shortcuts-to-manage-panes"
+    }
+  ]
+}

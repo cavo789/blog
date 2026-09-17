@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:29:56.470Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "acd2b96d22988c16ee77107a6a3efceb443cacb0",
+  "questions": [
+    {
+      "question": "comment ajouter un profil ssh à Windows Terminal pour accélérer les connexions serveur",
+      "anchor": ""
+    },
+    {
+      "question": "accès direct au serveur via le menu déroulant du terminal",
+      "anchor": "the-result"
+    },
+    {
+      "question": "quels sont les avantages d'un profil ssh personnalisé dans Windows Terminal ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "procédure d'installation du profil ssh",
+      "anchor": "installation"
+    },
+    {
+      "question": "comment ouvrir les paramètres de Windows Terminal pour modifier les profils",
+      "anchor": "open-windows-terminal-settings"
+    },
+    {
+      "question": "définir la commande ssh dans les propriétés d'un nouveau profil",
+      "anchor": "add-a-profile-for-any-ssh-connection"
+    },
+    {
+      "question": "adapter ce profil ssh à n'importe quel hébergement distant",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "personnaliser l'apparence d'un profil avec une image de fond",
+      "anchor": "adding-a-background-image-optional"
+    },
+    {
+      "question": "utiliser les panneaux divisés avec un profil ssh dans Windows Terminal",
+      "anchor": "conclusion"
+    }
+  ]
+}

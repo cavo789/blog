@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T18:28:42.820Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "cba79ea9b8e0b9bc06e39adebb9be4fab2fbb1f1",
+  "questions": [
+    {
+      "question": "comment accélérer une base msaccess existante sans tout refaire",
+      "anchor": ""
+    },
+    {
+      "question": "lancer l'analyseur de performance access 2016",
+      "anchor": "ms-access---analyze-performance"
+    },
+    {
+      "question": "audit taille des champs access avec un script vbs",
+      "anchor": "do-it-yourself"
+    },
+    {
+      "question": "ajouter clé primaire et index sur une table access",
+      "anchor": "tables"
+    },
+    {
+      "question": "faut-il surindexer les tables msaccess",
+      "anchor": "tables"
+    },
+    {
+      "question": "remplacer les fonctions vba par du sql natif dans access",
+      "anchor": "queries"
+    },
+    {
+      "question": "placer le where avant le group by dans une requête access",
+      "anchor": "queries"
+    },
+    {
+      "question": "convertir des macros en modules vba sous access",
+      "anchor": "macros"
+    },
+    {
+      "question": "compiler le code vba pour améliorer les performances",
+      "anchor": "modules"
+    },
+    {
+      "question": "compacter une base de données access pour libérer de l'espace",
+      "anchor": "database"
+    }
+  ]
+}

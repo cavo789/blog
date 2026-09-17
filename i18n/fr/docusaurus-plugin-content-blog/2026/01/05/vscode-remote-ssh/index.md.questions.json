@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:25:00.318Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "51d33d7a0389226e6556b33d24684c08099771f6",
+  "questions": [
+    {
+      "question": "comment développer sur un serveur distant avec VS Code Remote - SSH sans transfert de fichiers",
+      "anchor": ""
+    },
+    {
+      "question": "VS Code édite les fichiers et exécute des commandes directement sur l'hôte distant",
+      "anchor": "the-result"
+    },
+    {
+      "question": "pourquoi le terminal intégré tourne sur le serveur distant avec l extension Remote - SSH",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "simuler un serveur SSH en local avec Docker pour tester le workflow sans risque",
+      "anchor": "installation--simulate-a-server-locally-with-docker"
+    },
+    {
+      "question": "lancer docker build -t ssh-server . puis docker run -d -p 2222:22 --name remote-dev ssh-server",
+      "anchor": "create-the-docker-container-that-will-act-as-our-ssh-server"
+    },
+    {
+      "question": "accepter l empreinte de l host et saisir le mot de passe pour tester la connexion",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "installer l extension Remote - SSH de Microsoft et cliquer sur Remote Explorer",
+      "anchor": "the-remote---ssh-extension"
+    },
+    {
+      "question": "reproduire la même configuration Remote - SSH sur un vrai serveur de production",
+      "anchor": "repeat-on-a-real-production-server"
+    },
+    {
+      "question": "comment fonctionne le protocole sous le capot de VS Code Remote - SSH",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "conclusion du workflow de développement distant en SSH avec VS Code",
+      "anchor": "conclusion"
+    }
+  ]
+}

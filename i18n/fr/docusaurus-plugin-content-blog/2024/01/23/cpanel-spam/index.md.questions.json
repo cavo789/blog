@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T17:36:08.466Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b8bff82d9dd96bed5f83b69075b5366070ea4936",
+  "questions": [
+    {
+      "question": "0: bloquer le spam directement chez l'hébergeur avec cPanel et SpamAssassin",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment configurer les blacklist et whitelist dans l'interface SpamAssassin de cPanel ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: syntaxe des motifs de domaines pour filtrer les emails entrants sur cPanel",
+      "anchor": ""
+    },
+    {
+      "question": "0: où trouver et modifier le fichier user_prefs de SpamAssassin via FTP ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: éditer en masse les règles anti-spam de cPanel pour supprimer les doublons",
+      "anchor": ""
+    },
+    {
+      "question": "0: pourquoi préférer le filtrage serveur au spam plutôt que le marquage client sur smartphone ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: blacklist un domaine entier avec le filtre SpamAssassin de cPanel",
+      "anchor": ""
+    },
+    {
+      "question": "0: gérer les whitelist et blacklist SpamAssassin directement sur le serveur sans passer par le web",
+      "anchor": ""
+    }
+  ]
+}

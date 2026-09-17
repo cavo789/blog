@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T16:05:48.013Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e45190ac03ae607da027989c261cea27d747653f",
+  "questions": [
+    {
+      "question": "docusaurus afficher plusieurs dates de mise à jour dans un article blog",
+      "anchor": ""
+    },
+    {
+      "question": "Comment afficher automatiquement la liste des modifications en haut d'un article ?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "lecture du tableau updated dans le frontmatter yaml",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Étapes pour swizzler BlogPostPage et brancher le composant dans docusaurus",
+      "anchor": "installation"
+    },
+    {
+      "question": "code react pour parser le champ updated du frontmatter",
+      "anchor": "create-the-updated-component"
+    },
+    {
+      "question": "Comment injecter le composant updated dans le template swizzlé BlogPostPage ?",
+      "anchor": "override-the-blogpostpage-template"
+    },
+    {
+      "question": "personnaliser le style du bloc changelog dans docusaurus",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "Quelle est la syntaxe exacte du tableau updated dans le frontmatter yaml ?",
+      "anchor": "use-the-component"
+    },
+    {
+      "question": "Pourquoi préférer un tableau updated au champ natif dans docusaurus ?",
+      "anchor": "conclusion"
+    }
+  ]
+}
