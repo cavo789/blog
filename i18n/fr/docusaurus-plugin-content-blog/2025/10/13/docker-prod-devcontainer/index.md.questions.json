@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:50:20.763Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "bba43914f183a40609a1fa63dafaf2513064e330",
+  "questions": [
+    {
+      "question": "comment construire une seule image docker de base pour la prod et les devcontainers",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi faut-il exclure les linters et formateurs de l'image de déploiement finale",
+      "anchor": "what-does-a-perfect-separation-of-environments-mean"
+    },
+    {
+      "question": "structure de dossiers pour initialiser le projet docker prod",
+      "anchor": "step-1---we-have-to-create-the-production-docker-image"
+    },
+    {
+      "question": "dockerfile minimal rootless surface d'attaque production",
+      "anchor": "creating-the-docker-production-image"
+    },
+    {
+      "question": "docker run container prod port 8000 hello fastapi",
+      "anchor": "running-a-production-container"
+    },
+    {
+      "question": "étendre image docker prod via override pour devcontainer",
+      "anchor": "step-2---override-or-extend-the-production-image-and-get-a-devcontainer-ready-one"
+    },
+    {
+      "question": "dockerfile devcontainer utilisateur host synchronisation fichiers",
+      "anchor": "creating-the-devcontainer-image"
+    },
+    {
+      "question": "vscode devcontainer bouton ouvrir le dossier dans le container",
+      "anchor": "opening-the-container-using-vscode"
+    },
+    {
+      "question": "débogage devcontainer docker configuration vscode",
+      "anchor": "lets-debug"
+    },
+    {
+      "question": "optimisation surface d'attaque et isolation dev/prod",
+      "anchor": "going-further"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:57:24.385Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0106d6314858d13d0f57ddecb2e87e24ed43eb42",
+  "questions": [
+    {
+      "question": "lancer vscode dans le navigateur avec docker",
+      "anchor": ""
+    },
+    {
+      "question": "comment coder sans installer vscode localement",
+      "anchor": ""
+    },
+    {
+      "question": "où est stockée la config de code-server",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker code-server éviter les problèmes de permissions fichiers",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "commande docker run code-server port 8080",
+      "anchor": "installation"
+    },
+    {
+      "question": "comment mapper l'utilisateur local avec le flag -u",
+      "anchor": "installation"
+    },
+    {
+      "question": "monter son dossier projet dans le container code-server",
+      "anchor": "installation"
+    },
+    {
+      "question": "docker logs container code-server récupérer le mot de passe",
+      "anchor": "getting-the-password"
+    },
+    {
+      "question": "ouvrir l'interface web de code-server sur localhost",
+      "anchor": "getting-the-password"
+    },
+    {
+      "question": "démarrer son environnement de développement dans le navigateur",
+      "anchor": "conclusion"
+    }
+  ]
+}

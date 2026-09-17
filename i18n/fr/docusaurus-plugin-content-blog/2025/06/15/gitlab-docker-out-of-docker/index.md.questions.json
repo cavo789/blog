@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:49:23.993Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "7c247139521de2a0a5094ae2a9cb8c91a2a6508e",
+  "questions": [
+    {
+      "question": "comment exécuter docker run dans un job gitlab ci",
+      "anchor": ""
+    },
+    {
+      "question": "erreur cannot connect to the docker daemon dans le pipeline gitlab",
+      "anchor": ""
+    },
+    {
+      "question": "docker socket passthrough gitlab runner",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "comment faire communiquer le job ci avec le démon docker de l'host",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "modifier config.toml pour monter /var/run/docker.sock et /builds",
+      "anchor": "the-runner-configuration-file"
+    },
+    {
+      "question": "où ajouter les volumes dans config.toml du runner gitlab",
+      "anchor": "the-runner-configuration-file"
+    },
+    {
+      "question": "exemple pipeline gitlab ci avec executor docker et php lint",
+      "anchor": "understanding-the-process"
+    },
+    {
+      "question": "comment le runner docker monte les fichiers du projet dans le job",
+      "anchor": "understanding-the-process"
+    },
+    {
+      "question": "lancer des containers imbriqués avec Dagger.io dans gitlab",
+      "anchor": "running-docker-out-of-docker"
+    },
+    {
+      "question": "configurer le runner pour exécuter des outils de static analysis dans un job ci",
+      "anchor": "running-docker-out-of-docker"
+    },
+    {
+      "question": "avantages de Docker-out-of-Docker par rapport à Docker-in-Docker",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "pourquoi éviter un moteur Docker-in-Docker dans le pipeline",
+      "anchor": "conclusion"
+    }
+  ]
+}

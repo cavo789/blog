@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:30:55.011Z",
+  "source": "index.mdx",
+  "locale": "fr",
+  "sourceHash": "758aec2e5b877382b2e40278c92f668cb7d5e797",
+  "questions": [
+    {
+      "question": "Comment passer d'une liste classique à des cartes pour le blog Docusaurus ?",
+      "anchor": ""
+    },
+    {
+      "question": "configurer le composant Card de Docux dans son site",
+      "anchor": "using-the-reusable-card-component-of-docux"
+    },
+    {
+      "question": "vérifier le rendu des cartes avec un fichier .mdx",
+      "anchor": "nice-it-works-lets-continue-with-a-practical-sample"
+    },
+    {
+      "question": "surcharger /blog/tags/tag avec un plugin local",
+      "anchor": "overriding-the-blogtagstag-page-by-creating-a-plugin"
+    },
+    {
+      "question": "implémenter TagArticlesPage pour afficher les posts d'un tag",
+      "anchor": "creating-the-tagarticlespage"
+    },
+    {
+      "question": "script utilitaire pour générer les slugs des articles",
+      "anchor": "the-slug-generator"
+    },
+    {
+      "question": "extraire les métadonnées via getBlogMetaData",
+      "anchor": "the-getblogmetadata-function"
+    },
+    {
+      "question": "structurer le composant PostCard avec les données du post",
+      "anchor": "our-postcard-component"
+    },
+    {
+      "question": "enregistrer le plugin personnalisé dans docusaurus.config.js",
+      "anchor": "we-need-to-load-our-plugin"
+    },
+    {
+      "question": "bonus : quelles options pour peaufiner le design des cartes ?",
+      "anchor": "extra"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:44:46.619Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "5f8ca60768a322a9cbce2e14a5901f43ae1c2d8d",
+  "questions": [
+    {
+      "question": "Comment afficher une bannière d'avertissement sur Docusaurus quand un billet a plus d'un an ?",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus vérifier âge article front matter bannière",
+      "anchor": ""
+    },
+    {
+      "question": "Créer le composant React pour calculer l'ancienneté d'un billet",
+      "anchor": "create-the-component"
+    },
+    {
+      "question": "Comment lire le champ date dans le front matter YAML de Docusaurus ?",
+      "anchor": "create-the-component"
+    },
+    {
+      "question": "docusaurus swizzle BlogPostPage template",
+      "anchor": "override-blogpostpage-template"
+    },
+    {
+      "question": "Injecter un composant personnalisé dans le fichier swizzlé de Docusaurus",
+      "anchor": "override-blogpostpage-template"
+    },
+    {
+      "question": "Ajouter last_update au front matter pour masquer l'avertissement",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "Comment afficher une bannière verte de confirmation sur un article relu dans Docusaurus ?",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "Déplacer la bannière d'âge avant le corps du texte",
+      "anchor": "position-of-the-warning"
+    },
+    {
+      "question": "Extraire la première image d'un billet pour réorganiser l'affichage dans Docusaurus",
+      "anchor": "position-of-the-warning"
+    }
+  ]
+}

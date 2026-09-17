@@ -20,10 +20,17 @@ deux rencontrés le 2026-09-17 :
   « **Jetons** un œil » (verbe *jeter*). Corrigé par une `BANNED_OVERRIDES` qui ne remplace le
   matcher que pour ces termes-là : le nom « jetons » porte toujours un déterminant ou un compte
   devant, le verbe jamais.
-- **Paire de cohérence sur un mot polysémique.** `["commit", "validation"]` retirée : « validation »
-  au sens de validation de données n'a rien à voir avec git. `BANNED_FRENCH` garde
-  « validation de code », qui nomme le sens git sans ambiguïté. Pièges latents du même type
-  restants : `["build", "compilation"]`, `["cache", "antémémoire"]`.
+- **Paire de cohérence sur un mot polysémique.** `["commit", "validation"]` et
+  `["build", "compilation"]` retirées le 2026-09-17 : « validation » (de données) et
+  « compilation » (d'un binaire) sont du français correct sans rapport avec git ni avec un build.
+  Mesuré sur les 104 traductions : 1 déclenchement, un faux positif ; 0 pour la seconde.
+
+**Critère de sûreté d'une paire** — son côté français doit être un mot que **personne n'écrirait
+pour une autre raison** : « pliage », « greffon », « conteneur », « antémémoire », « gabarit »
+passent ; un mot polysémique courant ne passe jamais. Ce ne sont de toute façon qu'un second filet :
+c'est le `GLOSSARY` (« le commit (m.) », « le build (m.) ») qui maintient réellement ces termes en
+anglais. **Principe de Christophe** : un mot technique qu'un lecteur francophone connaît reste tel
+quel — « sinon il n'a rien à faire sur mon blog technique ».
 
 **Why:** un faux positif du validateur ne se voit pas comme un bug — il se voit comme une
 traduction ratée, et pousse à repayer une relance qui échouera à l'identique, indéfiniment.

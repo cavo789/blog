@@ -801,6 +801,12 @@
   "blog.listPage.allPosts": {
     "message": "Tous les articles"
   },
+  "blog.listPage.emptyPage": {
+    "message": "Il n'y a rien sur cette page."
+  },
+  "blog.listPage.backToFirstPage": {
+    "message": "Revenir à la première page"
+  },
   "blog.breadcrumb.home": {
     "message": "Accueil"
   },

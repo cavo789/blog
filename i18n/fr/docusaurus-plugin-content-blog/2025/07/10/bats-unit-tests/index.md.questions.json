@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:00:05.983Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c2890273e3d7a7ed170f33d5605c03b8970e6658",
+  "questions": [
+    {
+      "question": "lancer des tests bats avec docker run sans installation",
+      "anchor": ""
+    },
+    {
+      "question": "exemple de fichier .bats basique pour tester un script",
+      "anchor": "lets-start-with-a-little-hors-doeuvre"
+    },
+    {
+      "question": "vérifier que la sortie stdout correspond exactement à une chaîne attendue",
+      "anchor": "what-did-we-do"
+    },
+    {
+      "question": "s'assurer qu'une commande shell retourne un code d'erreur avec bats",
+      "anchor": "asserting-a-failure"
+    },
+    {
+      "question": "tester si un binaire est présent sur le système avec bats",
+      "anchor": "some-real-world-use-cases"
+    },
+    {
+      "question": "comparer deux variables avec assert_equal dans un test",
+      "anchor": "assert_equal"
+    },
+    {
+      "question": "contrôler la sortie exacte d'un script avec assert_output",
+      "anchor": "assert_output"
+    },
+    {
+      "question": "tester l'affichage de codes couleurs ansi dans un script bash",
+      "anchor": "check-for-ansi-colors"
+    },
+    {
+      "question": "vérifier le contenu d'une sortie multiligne ligne par ligne avec bats",
+      "anchor": "check-for-multi-line-output"
+    },
+    {
+      "question": "définir des fixtures avec setup et teardown dans un fichier bats",
+      "anchor": "some-special-functions"
+    },
+    {
+      "question": "exécuter tous les fichiers .bats d'un répertoire en une commande",
+      "anchor": "running-the-tests"
+    }
+  ]
+}

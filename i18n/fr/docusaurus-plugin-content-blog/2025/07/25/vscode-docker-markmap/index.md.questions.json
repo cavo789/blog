@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:07:23.918Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "89f950c750466a90254775fdb5896117b459ced7",
+  "questions": [
+    {
+      "question": "comment générer une mindmap html attrayante depuis du markdown",
+      "anchor": ""
+    },
+    {
+      "question": "visualiser du markdown en mindmap en ligne sans installation",
+      "anchor": "render-the-markmap-online"
+    },
+    {
+      "question": "markmap preview markdown en ligne",
+      "anchor": "render-the-markmap-online"
+    },
+    {
+      "question": "installer l'extension Markmap dans VSCode",
+      "anchor": "installing-the-vscode-extension"
+    },
+    {
+      "question": "VSCode Markmap lancer l'aperçu avec CTRL + SHIFT + P",
+      "anchor": "installing-the-vscode-extension"
+    },
+    {
+      "question": "personnaliser le thème Markmap VSCode via .vscode/markmap.json",
+      "anchor": "configuring-the-rendering"
+    },
+    {
+      "question": "configurer les paramètres par défaut de l'extension Markmap",
+      "anchor": "configuring-the-rendering"
+    },
+    {
+      "question": "lancer Quarto via un script shell avec Docker",
+      "anchor": "rendering-as-an-html-page-using-quarto"
+    },
+    {
+      "question": "Quarto Docker télécharger l'image et générer le dossier _site",
+      "anchor": "rendering-as-an-html-page-using-quarto"
+    },
+    {
+      "question": "copier le rendu HTML de la mindmap Quarto dans Word ou un email",
+      "anchor": "conclusion"
+    }
+  ]
+}

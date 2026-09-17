@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:29:11.218Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d9c5cb436f941bdc1df7b3ae7c6481f42e5b9ed4",
+  "questions": [
+    {
+      "question": "quarto extensions pour documentation et templating",
+      "anchor": ""
+    },
+    {
+      "question": "Comment injecter du contenu spécifique dans un template avec quarto-partials ?",
+      "anchor": "gadenbuiequarto-partials"
+    },
+    {
+      "question": "quarto-partials yaml frontmatter appel fichier partiel",
+      "anchor": "example"
+    },
+    {
+      "question": "intégrer des icônes Font Awesome dans Quarto HTML et PDF",
+      "anchor": "quarto-extfontawesome"
+    },
+    {
+      "question": "inclure un fichier de code externe via quarto-ext/include-code-files",
+      "anchor": "quarto-extinclude-code-files"
+    },
+    {
+      "question": "Configurer des macros de remplacement globales dans _quarto.yml",
+      "anchor": "quarto-extsearch-replace"
+    },
+    {
+      "question": "Comment remplacer des constantes à la compilation avec quarto-ext/search-replace ?",
+      "anchor": "example-1"
+    },
+    {
+      "question": "afficher du code en plein écran dans une présentation revealjs avec quarto",
+      "anchor": "shafayetshafeecode-fullscreen"
+    }
+  ]
+}

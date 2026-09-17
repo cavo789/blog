@@ -141,7 +141,11 @@ COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" --from=dependencies "${APP_HOME}"
 
 # Switch to root to install global scripts
 USER root
-COPY --chmod=755 .devcontainer/scripts/interactive.sh /usr/local/bin/
+# The whole scripts/ folder, not just interactive.sh: the launcher sources its commands from
+# a sibling helpers/ folder, so copying the file alone gives an image whose every shell dies
+# on startup with an empty cheatsheet. Lands as /usr/local/bin/interactive.sh + helpers/*.sh,
+# which is what docker-entrypoint.sh sources.
+COPY --chmod=755 .devcontainer/scripts/ /usr/local/bin/
 COPY --chmod=755 .devcontainer/docker-entrypoint.sh /usr/local/bin/
 USER "${OS_USERNAME}"
 

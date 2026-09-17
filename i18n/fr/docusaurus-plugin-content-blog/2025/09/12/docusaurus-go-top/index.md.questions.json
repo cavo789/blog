@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:37:36.835Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "60eafcea52e42bb93c7c76726cf416e1e71b6e2f",
+  "questions": [
+    {
+      "question": "comment ajouter un bouton retour en haut sur un blog Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "bouton qui apparaît après 300 pixels de défilement",
+      "anchor": "what-it-looks-like"
+    },
+    {
+      "question": "créer les deux fichiers du composant React et du CSS custom",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "où importer l'image carrée de l'icône dans le code",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "comment swizzler BlogPostItem pour injecter le bouton dans les articles",
+      "anchor": "overriding-the-blogpostitem-page"
+    },
+    {
+      "question": "relancer le serveur de dev après une surcharge de thème Docusaurus",
+      "anchor": "overriding-the-blogpostitem-page"
+    },
+    {
+      "question": "ajouter le bouton retour en haut à la page blog-archive",
+      "anchor": "you-can-do-this-for-other-pages-for-sure"
+    },
+    {
+      "question": "éditer directement les fichiers dans src/pages sans swizzler",
+      "anchor": "you-can-do-this-for-other-pages-for-sure"
+    },
+    {
+      "question": "réutiliser le même fichier de surcharge pour les articles liés",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "comment redémarrer le container docker après une surcharge de thème",
+      "anchor": "conclusion"
+    }
+  ]
+}

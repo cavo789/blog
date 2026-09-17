@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:46:11.894Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9f74756f3ebc9782ea05708bb1bce2900725803b",
+  "questions": [
+    {
+      "question": "recherche ultra-rapide sur serveur FTP avec php_grep",
+      "anchor": ""
+    },
+    {
+      "question": "script PHP léger pour chercher du contenu sur FTP",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi la recherche FTP native est désespérément lente ?",
+      "anchor": ""
+    },
+    {
+      "question": "WinSCP recherche texte affiche tous les fichiers au lieu des résultats",
+      "anchor": "winscp---search-for-text"
+    },
+    {
+      "question": "modifier le script PowerShell utilisé par la recherche WinSCP",
+      "anchor": "winscp---search-for-text"
+    },
+    {
+      "question": "lancer une recherche de motif dans WinSCP via le menu commandes",
+      "anchor": "winscp---search-for-text"
+    },
+    {
+      "question": "où se trouve le script PowerShell exécuté par la recherche WinSCP ?",
+      "anchor": "winscp---search-for-text"
+    },
+    {
+      "question": "uploader php_grep sur FTP et y accéder par URL",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "comment filtrer les résultats php_grep par type de fichier ?",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "utiliser des expressions régulières avec php_grep sur FTP",
+      "anchor": "php_grep"
+    }
+  ]
+}

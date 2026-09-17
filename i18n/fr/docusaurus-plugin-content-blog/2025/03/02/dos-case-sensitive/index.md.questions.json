@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:03:01.247Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "04da776b5b4620a57abc58239059d884c50313b0",
+  "questions": [
+    {
+      "question": "comment rendre un dossier Windows sensible à la casse",
+      "anchor": ""
+    },
+    {
+      "question": "lancer Windows PowerShell en tant qu'administrateur pour activer le case sensitive",
+      "anchor": ""
+    },
+    {
+      "question": "commande fsutil.exe pour activer la sensibilité à la casse sur un répertoire précis",
+      "anchor": ""
+    },
+    {
+      "question": "comment désactiver la sensibilité à la casse sur un dossier Windows",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi il faut supprimer des fichiers avant de désactiver le case sensitive sous Windows",
+      "anchor": ""
+    },
+    {
+      "question": "stocker plusieurs fichiers identiques mais avec une casse différente dans un même dossier Windows",
+      "anchor": ""
+    },
+    {
+      "question": "configurer un dossier Windows pour qu'il accepte la casse comme Linux",
+      "anchor": ""
+    },
+    {
+      "question": "paramètre Git pour empêcher la réécriture silencieuse des fins de ligne entre Windows et Linux",
+      "anchor": ""
+    },
+    {
+      "question": "Windows PowerShell fsutil.exe activer case sensitive dossier spécifique",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi DOS ignore la casse par défaut dans les noms de fichiers",
+      "anchor": ""
+    }
+  ]
+}

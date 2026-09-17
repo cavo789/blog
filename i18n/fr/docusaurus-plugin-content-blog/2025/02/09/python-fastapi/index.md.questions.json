@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:55:05.747Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "82ca97e55f8e29491f7f70605af8236fb6a6acbc",
+  "questions": [
+    {
+      "question": "comment créer une api json avec FastAPI et Docker en moins d'une minute",
+      "anchor": ""
+    },
+    {
+      "question": "Pourquoi l'image Docker de FastAPI ne pèse que 184 Mo et comment une fonction devient endpoint http ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "contenu minimal de main.py et Dockerfile pour définir une route FastAPI qui retourne du json",
+      "anchor": "creating-our-first-api"
+    },
+    {
+      "question": "commande docker build et docker run pour exposer l'api sur 127.0.0.1:82",
+      "anchor": "running-our-api"
+    },
+    {
+      "question": "url endpoints /docs et /redoc pour consulter le schéma OpenAPI et la doc Swagger",
+      "anchor": "automated-documentation-of-your-api"
+    },
+    {
+      "question": "comment modifier main.py pour créer un endpoint qui retourne une blague aléatoire ou précise ?",
+      "anchor": "lets-play---creating-a-joke-generator"
+    },
+    {
+      "question": "montage volume -v .:/app dans docker run pour le hot reload sans reconstruire l'image",
+      "anchor": "recreating-the-docker-image-for-hot-reload-skip-this-if-docker-run--v-app-already-refreshed-for-you"
+    },
+    {
+      "question": "comment structurer et servir une liste de blagues via un endpoint FastAPI",
+      "anchor": "our-joke-generator"
+    },
+    {
+      "question": "comment valider le schéma OpenAPI FastAPI avec les standards Belgif et explorer le framework ?",
+      "anchor": "discover-fastapi"
+    }
+  ]
+}

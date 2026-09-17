@@ -27,9 +27,17 @@
  *   node scripts/questions-review.mjs <post>          # review one article (path or slug)
  *   node scripts/questions-review.mjs --list <post>   # just print its questions, no prompt
  *   node scripts/questions-review.mjs --status        # progress report, no prompt
+ *   node scripts/questions-review.mjs --locale fr     # same, on the French corpus
+ *
+ * Locales (TODO 0126): a sidecar is reviewed next to the article it was generated from, so
+ * `--locale fr` reads `i18n/fr/docusaurus-plugin-content-blog/` and writes the `reviewed` /
+ * `excluded` flags into the French sidecars — never into their English counterparts. The two
+ * corpora are reviewed independently on purpose: the questions are written from each language's
+ * own text, so validating the English set says nothing about the French one. English stays the
+ * default, so every existing invocation behaves exactly as before.
  *
  * In the devcontainer: `questions review`, `questions list <post>`, `questions status`
- * (see .devcontainer/scripts/interactive.sh).
+ * (see .devcontainer/scripts/interactive.sh), each accepting `--locale <code>`.
  */
 
 import fs from "fs";
@@ -42,7 +50,40 @@ import { extractHeadings, generateQuestions } from "./generate-questions.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
-const BLOG_DIR = path.join(projectRoot, "blog");
+const I18N_BLOG_DIR = "docusaurus-plugin-content-blog";
+const DEFAULT_LOCALE = "en";
+
+/**
+ * The tree a review reads. English lives in `blog/`, every other locale in its own `i18n/`
+ * mirror — the same split `questions-index-plugin` and `generate-questions.mjs` already use.
+ */
+function corpusDir(locale) {
+  return locale === DEFAULT_LOCALE
+    ? path.join(projectRoot, "blog")
+    : path.join(projectRoot, "i18n", locale, I18N_BLOG_DIR);
+}
+
+/** `" (fr)"` on a translated corpus, nothing on the default one — so a run is never ambiguous. */
+function localeSuffix(locale) {
+  return locale === DEFAULT_LOCALE ? "" : ` ${C.cyan}(${locale})${C.reset}`;
+}
+
+/** The `--locale fr` fragment to echo back inside a suggested command. */
+function localeFlag(locale) {
+  return locale === DEFAULT_LOCALE ? "" : ` --locale ${locale}`;
+}
+
+/** Locales that actually have a translated blog tree — what `--locale` may name. */
+function availableLocales() {
+  const i18nRoot = path.join(projectRoot, "i18n");
+  if (!fs.existsSync(i18nRoot)) return [DEFAULT_LOCALE];
+  const translated = fs
+    .readdirSync(i18nRoot, { withFileTypes: true })
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .filter((name) => fs.existsSync(corpusDir(name)));
+  return [DEFAULT_LOCALE, ...translated];
+}
 
 const C = {
   reset: "\x1b[0m",
@@ -101,10 +142,10 @@ function writeSidecar(sidecarPath, sidecar) {
 }
 
 /** Every published article, in chronological (path) order, with its sidecar state. */
-function loadCorpus() {
+function loadCorpus(locale = DEFAULT_LOCALE) {
   const posts = [];
 
-  for (const file of findPosts(BLOG_DIR).sort()) {
+  for (const file of findPosts(corpusDir(locale)).sort()) {
     const raw = fs.readFileSync(file, "utf-8");
     const { data, body } = parseFrontMatter(raw);
 
@@ -118,6 +159,7 @@ function loadCorpus() {
 
     posts.push({
       file,
+      locale,
       rel: path.relative(projectRoot, file),
       slug: data.slug || path.basename(path.dirname(file)),
       title: data.title,
@@ -142,8 +184,9 @@ const isStale = (post) =>
   post.sidecar.sourceHash !== post.currentHash;
 
 /**
- * Resolves a user-typed article reference: a path to index.md(x), a directory under blog/,
- * or just the slug ("new-year-2024" → blog/2023/12/31/new-year-2024/index.md).
+ * Resolves a user-typed article reference: a path to index.md(x), a directory, or just the
+ * slug ("new-year-2024"). It matches against the loaded corpus, so the same slug resolves to
+ * the English or the translated article depending on the locale being reviewed.
  */
 function resolvePost(reference, posts) {
   const needle = reference.replace(/^\.\//, "").replace(/\/+$/, "");
@@ -388,7 +431,13 @@ async function reviewPost(rl, post, position) {
     if (command === "r") {
       console.log(`  ${C.dim}Asking Ollama…${C.reset}`);
       try {
-        const result = await generateQuestions(post.file, { force: true });
+        // post.file is already the translated article under a non-default locale, and
+        // generateQuestions() passes a non-blog/ path straight through — but the locale still
+        // decides the prompt and the model, so a French article gets French questions.
+        const result = await generateQuestions(post.file, {
+          force: true,
+          locale: post.locale,
+        });
         post.sidecar = readSidecar(post.sidecarPath);
         post.currentHash = hashSource(fs.readFileSync(post.file, "utf-8"));
         console.log(
@@ -462,7 +511,7 @@ async function reviewPost(rl, post, position) {
 
 // ── Modes ────────────────────────────────────────────────────────────────────
 
-function printStatus(posts) {
+function printStatus(posts, locale = DEFAULT_LOCALE) {
   const withSidecar = posts.filter((post) => post.sidecar && !post.sidecar.unreadable);
   const reviewed = posts.filter(isReviewed);
   const excluded = posts.filter(isExcluded);
@@ -477,7 +526,7 @@ function printStatus(posts) {
   const percent =
     posts.length === 0 ? 0 : Math.round((reviewed.length / posts.length) * 100);
 
-  console.log(`\n${C.bold}Ask my blog — review status${C.reset}`);
+  console.log(`\n${C.bold}Ask my blog — review status${C.reset}${localeSuffix(locale)}`);
   console.log(`${C.dim}${RULE}${C.reset}`);
   console.log(`  ${String(posts.length).padStart(4)} published article(s)`);
   console.log(
@@ -498,11 +547,17 @@ function printStatus(posts) {
   }
   console.log(`${C.dim}${RULE}${C.reset}`);
   console.log(
-    `  ${C.bold}${left}${C.reset} left to review — run ${C.bold}questions review${C.reset} to continue.\n`,
+    `  ${C.bold}${left}${C.reset} left to review — run ${C.bold}questions review${localeFlag(locale)}${C.reset} to continue.\n`,
   );
 }
 
-async function runReview(rl, queue, total, reviewedBefore) {
+async function runReview(
+  rl,
+  queue,
+  total,
+  reviewedBefore,
+  reviewLocale = DEFAULT_LOCALE,
+) {
   let done = 0;
 
   for (const [index, post] of queue.entries()) {
@@ -519,7 +574,7 @@ async function runReview(rl, queue, total, reviewedBefore) {
     `${C.green}${done}${C.reset} article(s) reviewed this session — ${C.bold}${left}${C.reset} left.`,
   );
   console.log(
-    `${C.dim}Resume any time with ${C.reset}${C.bold}questions review${C.reset}${C.dim}.${C.reset}\n`,
+    `${C.dim}Resume any time with ${C.reset}${C.bold}questions review${localeFlag(reviewLocale)}${C.reset}${C.dim}.${C.reset}\n`,
   );
 }
 
@@ -543,6 +598,8 @@ Options:
   --unreviewed      Default — only articles not reviewed yet
   --tag <mainTag>   Only articles with this mainTag
   --limit <n>       Stop the queue after n articles
+  --locale <code>   Review the translated corpus for that locale (e.g. fr) instead of
+                    blog/. Writes into the translated sidecars, never the English ones.
   --help, -h        Show this help
 
 Review state lives in each <article>.questions.json ("reviewed", "excluded"), so it is
@@ -551,11 +608,31 @@ versioned in git and survives across sessions and machines.
   process.exit(0);
 }
 
-const posts = loadCorpus();
+const localeIdx = args.indexOf("--locale");
+const locale = localeIdx === -1 ? DEFAULT_LOCALE : args[localeIdx + 1];
 
-const listIdx = args.indexOf("--list");
-if (listIdx !== -1) {
-  const reference = args[listIdx + 1];
+if (localeIdx !== -1 && (!locale || locale.startsWith("--"))) {
+  console.error("Error: --locale needs a locale code (f.i. --locale fr).");
+  process.exit(1);
+}
+if (!availableLocales().includes(locale)) {
+  console.error(
+    `Error: no blog corpus for locale "${locale}" — known: ${availableLocales().join(", ")}.`,
+  );
+  process.exit(1);
+}
+
+// Options that swallow the next argument: it is a value, never the <post> being targeted.
+// Without --locale in this set, `questions review --locale fr` reviews an article called "fr".
+const VALUE_FLAGS = new Set(["--tag", "--limit", "--locale"]);
+const positionals = args.filter(
+  (arg, i) => !arg.startsWith("--") && !VALUE_FLAGS.has(args[i - 1]),
+);
+
+const posts = loadCorpus(locale);
+
+if (args.includes("--list")) {
+  const reference = positionals[0];
   if (!reference) {
     console.error("Error: --list needs an article (path or slug).");
     process.exit(1);
@@ -568,7 +645,7 @@ if (listIdx !== -1) {
 }
 
 if (args.includes("--status")) {
-  printStatus(posts);
+  printStatus(posts, locale);
   process.exit(0);
 }
 
@@ -584,12 +661,7 @@ const flagValue = (name) => {
   return index === -1 ? null : args[index + 1];
 };
 
-const target = args.find((arg, i) => {
-  if (arg.startsWith("--")) return false;
-  // Skip a value that belongs to a preceding option.
-  const previous = args[i - 1];
-  return previous !== "--tag" && previous !== "--limit";
-});
+const target = positionals[0];
 
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
 const total = posts.length;
@@ -631,13 +703,13 @@ try {
       console.log(
         `\n${C.green}Nothing left to review.${C.reset} Everything matching is done.\n`,
       );
-      printStatus(posts);
+      printStatus(posts, locale);
     } else {
       console.log(
-        `\n${C.bold}Ask my blog — review${C.reset}  ${C.dim}(${queue.length} article(s) queued, ${reviewedBefore}/${total} already reviewed)${C.reset}`,
+        `\n${C.bold}Ask my blog — review${C.reset}${localeSuffix(locale)}  ${C.dim}(${queue.length} article(s) queued, ${reviewedBefore}/${total} already reviewed)${C.reset}`,
       );
       console.log(`${C.dim}Press ? at any prompt for the list of actions.${C.reset}`);
-      await runReview(rl, queue, total, reviewedBefore);
+      await runReview(rl, queue, total, reviewedBefore, locale);
     }
   }
 } catch (err) {

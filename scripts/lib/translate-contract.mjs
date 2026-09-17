@@ -79,13 +79,22 @@ export const GLOSSARY = [
 export const CONSISTENCY_PAIRS = [
   ["folding", "pliage"],
   ["snippet", "extrait de code"],
-  // ["commit", "validation"] was here and had to go: "validation" is an ordinary French word
-  // whose commonest sense in these articles has nothing to do with git ("les deux passent par
-  // une validation" — of a request body). The pair could only ever fire on that sense, never on
-  // the mistranslation it was meant to catch. BANNED_FRENCH keeps "validation de code", which
-  // names the git sense unambiguously.
+  // Two pairs were removed on 2026-09-17, both for the same reason: their French side is an
+  // ordinary French word with a sense of its own, so the pair fires on correct prose and never
+  // on the mistranslation it was meant to catch. A pair is only safe when its French side is a
+  // word no one would write for any other reason — "pliage", "greffon", "antémémoire".
+  //
+  // ["commit", "validation"] — "validation" most often means validating a request body here
+  // ("les deux passent par une validation"). Measured over the 104 translations of the corpus:
+  // 1 hit, and it was a false positive. BANNED_FRENCH keeps "validation de code", which names
+  // the git sense unambiguously.
+  //
+  // ["build", "compilation"] — same shape, caught before it ever fired (0 hits over the corpus).
+  // "la compilation du binaire" is correct French that has nothing to do with a build.
+  //
+  // Both English terms stay pinned by GLOSSARY ("le commit (m.)", "le build (m.)"), which is
+  // what actually keeps them in English — the pairs were only ever a second net.
   ["container", "conteneur"],
-  ["build", "compilation"],
   ["cache", "antémémoire"],
   ["token", "jeton"],
   ["template", "gabarit"],

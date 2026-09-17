@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:54:59.790Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "32901178f744a21c5eeebb81a04d6c67ee1a0ad6",
+  "questions": [
+    {
+      "question": "comment versionner le code VBA et les formulaires MS Access avec Git",
+      "anchor": ""
+    },
+    {
+      "question": "exporter les objets d'une base Access vers des fichiers plats pour GitHub",
+      "anchor": ""
+    },
+    {
+      "question": "structure du dossier et des fichiers générés après l'export",
+      "anchor": "sample"
+    },
+    {
+      "question": "comment le script démarre Access en arrière-plan et traite chaque objet",
+      "anchor": "description"
+    },
+    {
+      "question": "où placer le fichier .vbs et le fichier de configuration par rapport à la base",
+      "anchor": "install"
+    },
+    {
+      "question": "commande DOS pour lancer l'export en spécifiant le nom de la base",
+      "anchor": "usage"
+    },
+    {
+      "question": "quel paramètre unique le script VBS attend-il au lancement",
+      "anchor": "usage"
+    },
+    {
+      "question": "git commit et suivi des diffs sur le code Access après l'export",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "transformer les formulaires et modules Access en fichiers texte pour le versioning",
+      "anchor": "conclusion"
+    }
+  ]
+}

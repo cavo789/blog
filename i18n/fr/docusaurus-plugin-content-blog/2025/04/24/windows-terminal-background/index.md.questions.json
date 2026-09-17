@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:26:29.609Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "5aaaf63f60c33776a4fba5fe25afb08993cbe78a",
+  "questions": [
+    {
+      "question": "comment mettre une image de fond dans Windows Terminal",
+      "anchor": ""
+    },
+    {
+      "question": "Windows Terminal paramètres image de fond profil",
+      "anchor": ""
+    },
+    {
+      "question": "comment voir les modifications en direct dans les paramètres du terminal",
+      "anchor": ""
+    },
+    {
+      "question": "où trouver l'accordéon image de fond dans l'interface de Windows Terminal",
+      "anchor": ""
+    },
+    {
+      "question": "Windows Terminal garder l'onglet paramètres ouvert pendant que je travaille",
+      "anchor": ""
+    },
+    {
+      "question": "comment parcourir et charger une image personnalisée pour le fond du terminal",
+      "anchor": ""
+    },
+    {
+      "question": "utiliser Recraft.ai pour générer une image de fond Windows Terminal",
+      "anchor": ""
+    },
+    {
+      "question": "configurer le fond d'un profil précis sans toucher aux autres consoles",
+      "anchor": ""
+    },
+    {
+      "question": "remplacer l'écran noir par défaut de Windows Terminal par une image",
+      "anchor": ""
+    },
+    {
+      "question": "guide étape par étape pour définir une image de fond dans Windows Terminal",
+      "anchor": ""
+    }
+  ]
+}

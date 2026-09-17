@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:40:13.807Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "836c5bab79a165a481ce2e70bfbcc5246d331d0b",
+  "questions": [
+    {
+      "question": "Comment garantir une terminologie cohérente sur un site Docusaurus sans modifier les fichiers Markdown sources ?",
+      "anchor": ""
+    },
+    {
+      "question": "Plugin Docusaurus pour remplacer automatiquement des termes dans le rendu HTML final",
+      "anchor": ""
+    },
+    {
+      "question": "Appliquer un recherche/remplacement sur l'arbre syntaxique de Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "Comment structurer un plugin remark qui traverse l'AST Markdown avant le rendu HTML ?",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "Créer un fichier JS pour le remplacement de chaînes dans Docusaurus",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "Comment empêcher le plugin de modifier du texte dans les blocs de code ou les URLs ?",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "Quelle est la syntaxe pour définir les paires recherche/remplacement dans le plugin remark ?",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "Où déclarer le plugin custom dans docusaurus.config.js ?",
+      "anchor": "adding-the-plugin-in-your-configuration"
+    },
+    {
+      "question": "Redémarrer le serveur Docusaurus pour appliquer les modifications du plugin remark",
+      "anchor": "adding-the-plugin-in-your-configuration"
+    },
+    {
+      "question": "Comment vérifier dans la console que les remplacements ont bien été appliqués au démarrage ?",
+      "anchor": "adding-the-plugin-in-your-configuration"
+    }
+  ]
+}

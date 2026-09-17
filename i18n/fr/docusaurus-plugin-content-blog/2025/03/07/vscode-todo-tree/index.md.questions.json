@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:05:04.172Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "43981c20e655fc341e28e4ad7e3bc0fc1cf33b3d",
+  "questions": [
+    {
+      "question": "extension vscode todo tree pour lister les FIXME et TODO",
+      "anchor": ""
+    },
+    {
+      "question": "comment afficher les annotations de code dans la barre latérale de VSCode ?",
+      "anchor": ""
+    },
+    {
+      "question": "regrouper les tâches TODO, FIXME et TEMPORARY dans un tableau de bord VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "naviguer directement vers le code d’un todo en un clic sur VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "bloquer un commit git si des marqueurs TODO ou TEMPORARY sont encore présents",
+      "anchor": ""
+    },
+    {
+      "question": "extension vscode pour afficher les erreurs et warnings inline comme Error Lens",
+      "anchor": ""
+    },
+    {
+      "question": "exporter la liste de ses extensions VSCode pour les réinstaller sur une autre machine",
+      "anchor": ""
+    },
+    {
+      "question": "configurer des tags personnalisés pour les todo dans l’extension Todo Tree",
+      "anchor": ""
+    },
+    {
+      "question": "garder une trace des bidouilles temporaires et des blocs de code commentés pendant le debug",
+      "anchor": ""
+    },
+    {
+      "question": "dashboard des corrections à faire et des annotations de code dans VSCode",
+      "anchor": ""
+    }
+  ]
+}

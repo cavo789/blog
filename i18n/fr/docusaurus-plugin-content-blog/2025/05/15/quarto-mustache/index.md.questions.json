@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:34:39.919Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d9f9f756132293252dfa851f226704e651bd3e4d",
+  "questions": [
+    {
+      "question": "Comment utiliser Mustache dans Quarto pour structurer une documentation statique ?",
+      "anchor": ""
+    },
+    {
+      "question": "`quarto-partials` installation Docker et configuration `quarto.yml`",
+      "anchor": "create-some-files"
+    },
+    {
+      "question": "Syntaxe `{{variable}}` pour injecter le frontmatter YAML dans un template partial",
+      "anchor": "lets-discover-the-basics"
+    },
+    {
+      "question": "Quel est le flux de rendu HTML entre le Markdown source et un fichier partial inclus ?",
+      "anchor": "what-have-we-just-done"
+    },
+    {
+      "question": "génération site statique 80 fonctions structure identique pipeline Quarto",
+      "anchor": "my-use-case"
+    },
+    {
+      "question": "Comment tester la présence d'une variable dans un template Mustache sans logique ?",
+      "anchor": "testing-if-a-variable-is-defined-or-not-optional--skip-if-your-templates-dont-need-conditionals"
+    },
+    {
+      "question": "Comment afficher du texte brut sans échappement dans un template Quarto ?",
+      "anchor": "raw-contents-optional--skip-unless-a-rendered-value-looks-wrongly-escaped"
+    },
+    {
+      "question": "avantages templating partials maintenance site statique Quarto vs Markdown isolé",
+      "anchor": "conclusion"
+    }
+  ]
+}

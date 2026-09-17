@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:42:20.310Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "22c619f1147d09f6fc32d326b78faa7677e0b929",
+  "questions": [
+    {
+      "question": "gemini image to image pose sheet suricate",
+      "anchor": ""
+    },
+    {
+      "question": "comment maintenir la cohérence du style entre les bannières de blog avec Gemini",
+      "anchor": ""
+    },
+    {
+      "question": "forcer le format 16:9 dans les prompts Gemini pour les illustrations",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi Gemini échoue sur le texte des images et comment le corriger",
+      "anchor": ""
+    },
+    {
+      "question": "optimiser son workflow avec la limite de 10 images par jour sur le plan gratuit Gemini",
+      "anchor": ""
+    },
+    {
+      "question": "compresser automatiquement les visuels générés en WebP avec CaesiumCLT",
+      "anchor": ""
+    },
+    {
+      "question": "migrer de recraft.ai vers Gemini pour créer une mascotte clipart",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter un badge contenu assisté par IA dans Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "générer des résumés TL;DR automatisés pour un blog technique avec Gemini",
+      "anchor": ""
+    },
+    {
+      "question": "itérer sur un prompt Gemini pour orienter la posture et l'ambiance d'une illustration",
+      "anchor": ""
+    }
+  ]
+}

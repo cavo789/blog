@@ -7,6 +7,7 @@ import {
   PageMetadata,
 } from "@docusaurus/theme-common";
 import BlogListPaginator from "@theme/BlogListPaginator";
+import Link from "@docusaurus/Link";
 import FollowFeed from "@site/src/components/FollowFeed";
 import SearchMetadata from "@theme/SearchMetadata";
 import Layout from "@theme/Layout";
@@ -27,10 +28,30 @@ function resolveImageUrl(frontMatterImage, permalink) {
   return `/blog/${slug}/${frontMatterImage.replace("./", "")}`;
 }
 
+/**
+ * Docusaurus's own pagination URL scheme, reproduced because the locale-aware list below has to
+ * build links the blog plugin never computed: page 1 is the blog root, page N is `<root>/page/N`
+ * (`paginateBlogPosts()` in @docusaurus/plugin-content-blog). Feeding anything else to
+ * `<BlogListPaginator>` would produce links to routes that do not exist.
+ */
+function pagePermalink(basePageUrl, page) {
+  return page > 1 ? `${basePageUrl}/page/${page}` : basePageUrl;
+}
+
+/** `/fr/blog/page/7` -> `/fr/blog`. The base carries the locale, so it is never hardcoded. */
+function basePageUrlOf(permalink) {
+  return permalink.replace(/\/page\/\d+\/?$/, "").replace(/\/$/, "");
+}
+
 const metadataPropTypes = PropTypes.shape({
   blogDescription: PropTypes.string,
   blogTitle: PropTypes.string,
   totalCount: PropTypes.number,
+  // The pagination half of Docusaurus's BlogPaginatedMetadata: read to re-paginate the
+  // translated corpus over the routes the blog plugin generated. See BlogListPageContent.
+  page: PropTypes.number,
+  permalink: PropTypes.string,
+  postsPerPage: PropTypes.number,
 });
 
 function BlogListPageMetadata({ metadata }) {
@@ -49,12 +70,19 @@ BlogListPageMetadata.propTypes = {
 function BlogListPageContent({ metadata, items }) {
   // In a non-default locale, `items` is whatever Docusaurus paginated — which includes every
   // untranslated article, since its i18n falls back to the English source. Filtering `items`
-  // here is not enough: the pagination was computed upstream, so page 2 could come back empty
-  // and `metadata.totalCount` would lie. We therefore rebuild the list from our own
-  // locale-aware corpus and drop the paginator for that locale.
+  // here is not enough: the pagination was computed upstream over the WHOLE corpus, so the
+  // slice handed to page N has no relation to the Nth page of the translated corpus, and
+  // `metadata.totalCount` / `previousPage` / `nextPage` all describe the English blog.
   //
-  // Acceptable while the translated set is small. Once it outgrows one page, this needs real
-  // pagination over the filtered corpus — see TODO 0119, lot F.
+  // So we rebuild the list from our own locale-aware corpus AND re-paginate it here, with the
+  // same page size Docusaurus used (`metadata.postsPerPage`) so that page 1 keeps its URL and
+  // the routes the plugin generated stay usable.
+  //
+  // The route set is still the English one, so a locale whose corpus is shorter has surplus
+  // pages at the end (`/fr/blog/page/18` when only 9 pages have content). They render the
+  // empty state below; `plugins/i18n-seo-guard` marks them `noindex` and the sitemap's
+  // `createSitemapItems` drops them. Nothing links to them. All of this collapses to a no-op
+  // the day the corpus is fully translated — see TODO 0124.
   const { isDefaultLocale, readingTimeOf } = useTranslationState();
   const translatedPosts = useBlogMetadata();
 
@@ -86,6 +114,29 @@ function BlogListPageContent({ metadata, items }) {
           readingTime: readingTimeOf(slugFromPermalink(post.permalink)),
         }));
 
+  // `postsPerPage` is whatever the blog plugin resolved (it turns the `"ALL"` option into the
+  // post count), so reading it back is what keeps this in step with docusaurus.config.js.
+  const { page, postsPerPage } = metadata;
+  const totalPages = Math.max(1, Math.ceil(localePosts.length / postsPerPage));
+  const basePageUrl = basePageUrlOf(metadata.permalink);
+
+  const pagePosts = isDefaultLocale
+    ? localePosts
+    : localePosts.slice((page - 1) * postsPerPage, page * postsPerPage);
+
+  // Rebuilt rather than reused: `metadata`'s own neighbours point into the English pagination.
+  const paginatorMetadata = isDefaultLocale
+    ? metadata
+    : {
+        ...metadata,
+        totalCount: localePosts.length,
+        totalPages,
+        previousPage: page > 1 ? pagePermalink(basePageUrl, page - 1) : undefined,
+        nextPage: page < totalPages ? pagePermalink(basePageUrl, page + 1) : undefined,
+      };
+
+  const isSurplusPage = pagePosts.length === 0;
+
   return (
     <Layout>
       <main className={clsx("container", styles.blogListPage)}>
@@ -112,16 +163,34 @@ function BlogListPageContent({ metadata, items }) {
           />
         </div>
         <TranslationCoverage variant="listing" />
-        <div className={styles.cardsGrid}>
-          {localePosts.map((post) => (
-            <PostCard key={post.id} post={post} layout="big" />
-          ))}
-        </div>
-        {isDefaultLocale && <BlogListPaginator metadata={metadata} />}
+        {isSurplusPage ? (
+          <p className={styles.emptyPage}>
+            <Translate id="blog.listPage.emptyPage">
+              There is nothing on this page.
+            </Translate>{" "}
+            {page > 1 && (
+              <Link to={basePageUrl}>
+                <Translate id="blog.listPage.backToFirstPage">
+                  Back to the first page
+                </Translate>
+              </Link>
+            )}
+          </p>
+        ) : (
+          <>
+            <div className={styles.cardsGrid}>
+              {pagePosts.map((post) => (
+                <PostCard key={post.id} post={post} layout="big" />
+              ))}
+            </div>
+            <BlogListPaginator metadata={paginatorMetadata} />
+          </>
+        )}
       </main>
     </Layout>
   );
 }
+
 BlogListPageContent.propTypes = {
   metadata: metadataPropTypes.isRequired,
   items: PropTypes.arrayOf(

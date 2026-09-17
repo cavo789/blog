@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:52:15.417Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "56620e4f86b2337dbb6596e1d60407338ec9f74e",
+  "questions": [
+    {
+      "question": "dashboard web auto-hébergé docker remplacer favoris navigateur",
+      "anchor": ""
+    },
+    {
+      "question": "Comment configurer les variables UID et GID dans le compose.yaml ?",
+      "anchor": "creating-your-dashboard"
+    },
+    {
+      "question": "Quelle commande docker compose exacte pour démarrer le container ?",
+      "anchor": "running-the-dashboard"
+    },
+    {
+      "question": "accéder à l'interface sur http://localhost:8080 et changer le fond d'écran",
+      "anchor": "first-run"
+    },
+    {
+      "question": "Comment mapper le dossier config de Heimdall sur le host avec Docker ?",
+      "anchor": "saving-the-configuration-on-disk"
+    },
+    {
+      "question": "Faut-il créer les tags avant d'ajouter des liens sur le dashboard ?",
+      "anchor": "adding-some-links"
+    },
+    {
+      "question": "organiser les applications dans des dossiers et personnaliser l'affichage",
+      "anchor": "more-customizations"
+    },
+    {
+      "question": "Où trouver la dernière version du compose.yaml pour Heimdall ?",
+      "anchor": "continue-your-journey"
+    }
+  ]
+}

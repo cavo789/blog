@@ -56,3 +56,13 @@
     grid-template-columns: 1fr;
   }
 }
+
+/*
+ * Surplus listing page: the locale has fewer pages of content than the route set Docusaurus
+ * generated from the English corpus. Reachable only by typing the URL — see index.js.
+ */
+.emptyPage {
+  margin: 3rem 0;
+  text-align: center;
+  color: var(--ifm-color-emphasis-700);
+}

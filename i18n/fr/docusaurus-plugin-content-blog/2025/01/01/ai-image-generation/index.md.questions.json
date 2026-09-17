@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:38:17.973Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "812b91aff73cc6b6e669396b9219e7e1562f1b66",
+  "questions": [
+    {
+      "question": "recraft.ai fine-tuning et variations depuis un seul prompt",
+      "anchor": ""
+    },
+    {
+      "question": "Comment définir des dimensions personnalisées dans un générateur d'images IA ?",
+      "anchor": ""
+    },
+    {
+      "question": "Outil IA pour générer du texte exact dans les images sans erreur de frappe",
+      "anchor": ""
+    },
+    {
+      "question": "Utiliser le prompt \"Realistic photo\" pour un rendu photoréaliste",
+      "anchor": ""
+    },
+    {
+      "question": "Éditeur en ligne pour faire pivoter et redimensionner des images IA",
+      "anchor": ""
+    },
+    {
+      "question": "recraft.ai vs Bing précision texte et tailles personnalisées",
+      "anchor": ""
+    },
+    {
+      "question": "recraft.ai ajouter du texte directement dans l'interface de création",
+      "anchor": ""
+    },
+    {
+      "question": "Convertir une image IA lourde en WebP avec CaesiumCLT",
+      "anchor": ""
+    },
+    {
+      "question": "Générateur d'images IA précision texte et dimensions custom",
+      "anchor": ""
+    },
+    {
+      "question": "Comment obtenir des variations d'une même image IA sans recommencer le prompt ?",
+      "anchor": ""
+    }
+  ]
+}

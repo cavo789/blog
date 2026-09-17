@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:52:58.635Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0abda9c57d3f82ecb79aea674b95f8a805c978b7",
+  "questions": [
+    {
+      "question": "[0] `CaesiumCLT` pour compresser des images en ligne de commande",
+      "anchor": ""
+    },
+    {
+      "question": "[0] Convertir des PNG en WEBP avec une seule commande CLI",
+      "anchor": ""
+    },
+    {
+      "question": "[1] Lancer `CaesiumCLT` sur un répertoire d'images",
+      "anchor": "run-the-optimization-tool"
+    },
+    {
+      "question": "[1] Flag pour compresser récursivement les sous-dossiers avec `CaesiumCLT`",
+      "anchor": "run-the-optimization-tool"
+    },
+    {
+      "question": "[2] Installer `CaesiumCLT` avec `Homebrew` sur `Apple Silicon`",
+      "anchor": "installation"
+    },
+    {
+      "question": "[2] Ajouter `CaesiumCLT` au `PATH` dans `.bashrc`",
+      "anchor": "installation"
+    },
+    {
+      "question": "[3] Commande pour additionner la taille des fichiers par dossier",
+      "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
+    },
+    {
+      "question": "[3] Repérer les dossiers contenant les images les plus lourdes",
+      "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
+    },
+    {
+      "question": "[3] Lister les répertoires par taille de fichiers sous `linux`",
+      "anchor": "how-to-determine-the-biggest-folders-on-your-disk"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:41:17.091Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b6018a5746df8d98d1539e26a30d7dcebd7297b8",
+  "questions": [
+    {
+      "question": "outil auto-hébergé pour formater les formules Excel",
+      "anchor": ""
+    },
+    {
+      "question": "comment rendre une formule Excel illisible plus lisible",
+      "anchor": ""
+    },
+    {
+      "question": "Excel Formula Beautifier fonctionnalités",
+      "anchor": ""
+    },
+    {
+      "question": "indenter automatiquement une formule Excel complexe",
+      "anchor": ""
+    },
+    {
+      "question": "déboguer une longue formule Excel sans effort",
+      "anchor": ""
+    },
+    {
+      "question": "comment utiliser Excel Formula Beautifier",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "coller une formule dans la zone de texte Excel Formula Beautifier",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "changer séparateur virgule point-virgule dans Excel Formula Beautifier",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "guide étape par étape pour formater une formule Excel avec Excel Formula Beautifier",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "détection séparateur automatique Excel Formula Beautifier ne marche pas",
+      "anchor": "how-to-use"
+    }
+  ]
+}

@@ -14,6 +14,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
 import { hashSource } from "./lib/eli5-hash.mjs";
+import { cmd } from "./lib/cheatsheet-hint.mjs";
 
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -103,7 +104,7 @@ async function generateEli5(sourceFile, { force = false, outputPath = null } = {
     throw new Error(
       `"${sourceFile}" is a directory.\n` +
         `  To process an entire directory, use the bulk script instead:\n` +
-        `    yarn eli5:bulk --dir ${sourceFile}`,
+        `    ${cmd("eli5:bulk", "--dir", sourceFile)}`,
     );
   }
 

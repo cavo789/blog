@@ -26,6 +26,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { execFileSync } from "child_process";
 import { hashSource } from "./lib/eli5-hash.mjs";
+import { cmd } from "./lib/cheatsheet-hint.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -78,7 +79,7 @@ for (const jsonPath of files) {
     record = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
   } catch {
     console.warn(`⚠  UNREADABLE — ${relJson} is not valid JSON`);
-    console.warn(`   Fix with: yarn eli5 ${relSource} --force`);
+    console.warn(`   Fix with: ${cmd("eli5", relSource, "--force")}`);
     orphaned++;
     continue;
   }
@@ -91,7 +92,7 @@ for (const jsonPath of files) {
   const currentHash = hashSource(fs.readFileSync(sourcePath, "utf-8"));
   if (currentHash !== record.sourceHash) {
     // No per-file warning here — staleSources feeds the single batched command printed
-    // below, so nothing tempts a one-by-one `yarn eli5 --force` per file.
+    // below, so nothing tempts a one-by-one regeneration per file.
     staleSources.push(relSource);
     stale++;
   } else {
@@ -113,7 +114,7 @@ if (staleSources.length > 0) {
   console.log(
     `⚠  STALE — ${staleSources.length} file(s) changed since their annotation was generated:`,
   );
-  console.log(`   for f in ${list}; do yarn eli5 "$f" --force; done`);
+  console.log(`   for f in ${list}; do ${cmd("eli5", '"$f"', "--force")}; done`);
 }
 
 if (legacy > 0 && !quiet) {
@@ -126,7 +127,8 @@ if (legacy > 0 && !quiet) {
   );
   console.log(
     `   Each one gets a hash the next time it is regenerated. Regenerating them on purpose` +
-      ` means yarn eli5:bulk --force — the whole corpus through the paid API. Not worth it.`,
+      ` means ${cmd("eli5:bulk", "--force")} — the whole corpus through the paid API.` +
+      ` Not worth it.`,
   );
 }
 

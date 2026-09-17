@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:00:26.191Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "52b279fc195858afb5925b73acad71e3832f4d4a",
+  "questions": [
+    {
+      "question": "comment charger une liste déroulante dans un ruban personnalisé depuis une plage excel",
+      "anchor": ""
+    },
+    {
+      "question": "template ruban personnalisé excel plage dynamique vba xml",
+      "anchor": ""
+    },
+    {
+      "question": "comment fonctionne le callback getItems pour un ruban excel",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "pourquoi la liste du ruban se met à jour automatiquement quand je modifie la plage excel",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "comment nommer une plage excel pour un ruban personnalisé",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "préparer le classeur pour un dropdown dynamique vba cellule de sortie",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "comment ajouter un ruban personnalisé avec Custom UI Editor",
+      "anchor": "adding-a-ribbon"
+    },
+    {
+      "question": "xml ribbon dropdown getItems onChange structure",
+      "anchor": "adding-a-ribbon"
+    },
+    {
+      "question": "comment écrire le code vba getItems et onChange pour un ruban",
+      "anchor": "time-to-add-our-vba-code"
+    },
+    {
+      "question": "ajouter un module vba pour les callbacks du ruban excel",
+      "anchor": "time-to-add-our-vba-code"
+    },
+    {
+      "question": "avantages d'utiliser une plage excel dynamique dans un ruban vba",
+      "anchor": "conclusion"
+    }
+  ]
+}

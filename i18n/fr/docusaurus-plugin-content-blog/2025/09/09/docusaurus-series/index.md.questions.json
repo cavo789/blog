@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:34:06.541Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f8282d56edd490ef26dd7335d6985fbabe2bad14",
+  "questions": [
+    {
+      "question": "Comment organiser mes articles Docusaurus en série pour améliorer le maillage interne et la navigation ?",
+      "anchor": ""
+    },
+    {
+      "question": "Créer le composant SeriesPosts pour afficher la bannière de série sur chaque article",
+      "anchor": "part-1---creation-of-the-seriesposts-component"
+    },
+    {
+      "question": "Helpers pour scanner le front matter et extraire series et seriesOrder depuis les fichiers Markdown",
+      "anchor": "11-we-need-some-helpers"
+    },
+    {
+      "question": "Code React du composant SeriesPosts qui récupère et affiche la liste des articles liés",
+      "anchor": "12-our-seriesposts-component"
+    },
+    {
+      "question": "Comment ajouter series et seriesOrder dans le front matter de mes articles ?",
+      "anchor": "13-editing-our-articles"
+    },
+    {
+      "question": "Swizzle de BlogPostItem pour injecter automatiquement la bannière de série",
+      "anchor": "14-overriding-the-blogpostitem-template"
+    },
+    {
+      "question": "Ajouter une page /series qui liste toutes les séries sous forme de cartes",
+      "anchor": "part-2---adding-a-navigation-to-series"
+    },
+    {
+      "question": "Implémenter le composant SeriesCards pour afficher les séries en grille",
+      "anchor": "22-creation-of-the-seriescards-component"
+    },
+    {
+      "question": "Gérer la route dynamique /series/slug pour afficher les détails d'une série spécifique",
+      "anchor": "25-handling-the-seriesslug-url"
+    },
+    {
+      "question": "Configurer /src/data/series.js pour définir les descriptions et images par défaut de chaque série",
+      "anchor": "part-3---adding-a-srcdataseriesjs-file-for-customization"
+    }
+  ]
+}

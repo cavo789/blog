@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:22:39.201Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9d5fc7c7003f74ea46e4ec28664bb6e73031e3c7",
+  "questions": [
+    {
+      "question": "docusaurus lazy loading images MDXComponents.js",
+      "anchor": ""
+    },
+    {
+      "question": "comment activer le chargement différé des images dans Docusaurus sans plugin ?",
+      "anchor": ""
+    },
+    {
+      "question": "surcharger le rendu par défaut des balises img dans Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter loading=\"lazy\" à toutes les images markdown sur un site Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "où intercepter la conversion markdown en html pour modifier les balises img ?",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus personnaliser sortie images MDXComponents.js override",
+      "anchor": ""
+    },
+    {
+      "question": "comment forcer le lazy loading des images en mode dev et build Docusaurus ?",
+      "anchor": ""
+    },
+    {
+      "question": "modifier le comportement des balises <img> dans Docusaurus via MDXComponents",
+      "anchor": ""
+    },
+    {
+      "question": "vérifier que les images chargent en différé après modification de MDXComponents.js",
+      "anchor": ""
+    },
+    {
+      "question": "améliorer les performances images Docusaurus sans créer de composant complexe",
+      "anchor": ""
+    }
+  ]
+}

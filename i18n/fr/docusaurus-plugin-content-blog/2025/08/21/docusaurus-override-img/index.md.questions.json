@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:20:28.343Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "98ee71e174f4152eb97df83372e25c0c27112916",
+  "questions": [
+    {
+      "question": "Comment personnaliser le rendu des balises `<img>` dans Docusaurus avec un composant React ?",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus remplacer images markdown par composant custom lazy loading css",
+      "anchor": ""
+    },
+    {
+      "question": "Créer le fichier et les props du composant Image dans Docusaurus",
+      "anchor": "1-creation-of-our-image-component"
+    },
+    {
+      "question": "Comment ajouter un CSS module et forcer le lazy loading sur un composant d'image personnalisé ?",
+      "anchor": "1-creation-of-our-image-component"
+    },
+    {
+      "question": "Mapper les images markdown vers un composant React dans docusaurus.config.js",
+      "anchor": "2-tell-docusaurus-about-our-component"
+    },
+    {
+      "question": "Syntaxe MDX pour appeler le composant Image dans un article de blog",
+      "anchor": "3-using-the-image-component"
+    },
+    {
+      "question": "Gérer les chemins relatifs lors de l'import du composant Image dans Docusaurus",
+      "anchor": "3-using-the-image-component"
+    },
+    {
+      "question": "Écrire un plugin Remark pour intercepter et remplacer automatiquement les balises `<img>`",
+      "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
+    },
+    {
+      "question": "Ignorer la première image de l'article et enregistrer le plugin dans la config Docusaurus",
+      "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
+    },
+    {
+      "question": "Bénéfices du contrôle total sur le rendu des images avec ce plugin Docusaurus",
+      "anchor": "conclusion"
+    }
+  ]
+}

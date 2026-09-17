@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:12:37.665Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "5b0eac9f98276e6c4030247de10ec5a49a2a8404",
+  "questions": [
+    {
+      "question": "Bruno alternative libre à Postman : stockage local et fichiers texte",
+      "anchor": ""
+    },
+    {
+      "question": "Comment démarrer l'interface graphique de Bruno et initialiser une collection ?",
+      "anchor": "run-bruno"
+    },
+    {
+      "question": "Pourquoi la structure de Bruno est-elle nativement diffable et compatible Git ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "installer Bruno sur Ubuntu et préparer l'API FastAPI de test",
+      "anchor": "installation"
+    },
+    {
+      "question": "Comment s'affiche l'arborescence des fichiers .bru dans VSCode ?",
+      "anchor": "opening-the-project-with-vscode"
+    },
+    {
+      "question": "exécution des requêtes Bruno CLI sous Docker et gestion des erreurs headers undefined",
+      "anchor": "running-requests-from-the-command-line"
+    },
+    {
+      "question": "comment créer un Dockerfile personnalisé pour Bruno CLI 2.8",
+      "anchor": "create-our-own-bruno-cli-image"
+    },
+    {
+      "question": "fonctionnement interne du parsing des collections Bruno",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "ajouter des assertions pour vérifier le schéma OpenAPI dans Bruno",
+      "anchor": "adding-some-assertions"
+    },
+    {
+      "question": "intégrer les tests Bruno dans un pipeline CI GitLab avec Docker-out-of-Docker",
+      "anchor": "conclusion"
+    }
+  ]
+}

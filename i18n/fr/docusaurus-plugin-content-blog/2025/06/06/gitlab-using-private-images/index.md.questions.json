@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:46:27.022Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e33a5fd2068f8afa0c45e8e31d3c65fdd1645773",
+  "questions": [
+    {
+      "question": "gitlab ci cd pull image docker hub privée",
+      "anchor": ""
+    },
+    {
+      "question": "comment faire docker login dans un pipeline gitlab pour une image privée",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi limiter le token docker hub à read:packages dans gitlab ci",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "sécurité variables ci cd gitlab docker private image",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "créer token accès personnel docker hub scope read:packages",
+      "anchor": "create-a-token"
+    },
+    {
+      "question": "docker hub generate personal access token lecture seule",
+      "anchor": "create-a-token"
+    },
+    {
+      "question": "ajouter variables CI CD protégées et masquées gitlab repository",
+      "anchor": "create-two-cicd-variables-in-your-repository-page"
+    },
+    {
+      "question": "configurer DOCKER_USERNAME et DOCKER_PASSWORD dans les settings gitlab",
+      "anchor": "create-two-cicd-variables-in-your-repository-page"
+    },
+    {
+      "question": "docker login $DOCKER_USERNAME $DOCKER_PASSWORD dans .gitlab-ci.yml",
+      "anchor": "your-gitlab-ciyml-file"
+    },
+    {
+      "question": "étape d'authentification docker dans le fichier gitlab ci yml",
+      "anchor": "your-gitlab-ciyml-file"
+    },
+    {
+      "question": "éviter de committer les identifiants docker hub dans le pipeline gitlab",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "guide complet authentification image docker privée gitlab ci cd",
+      "anchor": "conclusion"
+    }
+  ]
+}

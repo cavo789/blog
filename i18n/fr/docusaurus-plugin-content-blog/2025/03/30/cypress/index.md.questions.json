@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:12:51.178Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "5f8bc213e7c2e8e7a8f68fff8a6aa48a6d8e87da",
+  "questions": [
+    {
+      "question": "comment installer Cypress pour des tests fonctionnels dans un container Docker",
+      "anchor": ""
+    },
+    {
+      "question": "automatiser les tests end to end avec Cypress et nodejs",
+      "anchor": ""
+    },
+    {
+      "question": "package.json cypress.config.js configuration initiale",
+      "anchor": "lets-create-some-files-and-run-a-first-test"
+    },
+    {
+      "question": "écrire un premier test Cypress pour vérifier la présence d un texte sur une page",
+      "anchor": "lets-create-some-files-and-run-a-first-test"
+    },
+    {
+      "question": "synchroniser les fichiers de tests locaux avec le container Cypress",
+      "anchor": "synchronize-files-between-our-host-and-the-container"
+    },
+    {
+      "question": "Docker mount pour modifier les fichiers de tests Cypress sans rebuild",
+      "anchor": "synchronize-files-between-our-host-and-the-container"
+    },
+    {
+      "question": "récupérer automatiquement les screenshots d erreur Cypress depuis le container",
+      "anchor": "retrieve-screenshots"
+    },
+    {
+      "question": "configurer Docker pour exporter les captures d écran de Cypress sur l host",
+      "anchor": "retrieve-screenshots"
+    },
+    {
+      "question": "utiliser Cypress pour vérifier qu un site web fonctionne toujours dans le temps",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -35,9 +35,9 @@ yarn eli5               # generate ELI5 summaries (requires Ollama)
 
 ### Translating articles — use `translate`, not `yarn translate`
 
-`translate` is a shell function in `.devcontainer/scripts/interactive.sh` (category `Translation`
-in the startup cheatsheet). It is what the author uses; `yarn translate` is the single-article
-script underneath it.
+`translate` is a shell function in `.devcontainer/scripts/helpers/translation.sh`, loaded by
+`interactive.sh` (category `Translation` in the startup cheatsheet). It is what the author uses;
+`yarn translate` is the single-article script underneath it.
 
 ```bash
 translate blog/2026/09/17/docling      # one article — folder or index.md, both work
@@ -175,6 +175,49 @@ Governance rules in `AGENTS.md` — treat as binding.
 - `internal-link-opportunities.mjs` — powers `yarn links:audit` / `yarn links:check`.
 - `generate-eli5.mjs` / `bulk-eli5.mjs` / `check-eli5-freshness.mjs` — ELI5 summaries via Ollama.
 - `generate-icon-bundle.mjs` — icon bundle.
+- `lib/cheatsheet-hint.mjs` — every "fix it with…" line a script prints goes through its `cmd()`,
+  so the hint names the cheatsheet function (`questions --force <file>`) rather than the yarn
+  script underneath it. It falls back to `yarn <script>` when no **exactly equivalent** function
+  exists, and reads availability from the helpers' own `# @cmd` annotations — renaming a function
+  restores the yarn wording instead of advertising a command that is gone. Under `CI` it always
+  prints the yarn form: `helpers/` is in the checkout there too, but no runner sources it.
+
+### Devcontainer shell commands (`interactive.sh`)
+
+The 19 shell commands of the startup cheatsheet (`start`, `translate`, `run_ci`, …) are **not** in
+`interactive.sh` itself — that file is only a launcher. One module per cheatsheet category:
+
+```text
+.devcontainer/scripts/
+  interactive.sh          # launcher: resolves helpers/ relative to itself, sources it, exports, calls welcome
+  helpers/
+    _cheatsheet.sh        # welcome() + the double awk that parses the @cat/@cmd/@desc annotations
+    server.sh             # start, start_fr, static
+    maintenance.sh        # build, upgrade, check, format
+    metadata.sh           # tags, yaml, links
+    ollama.sh             # eli5, faq, questions
+    anythingllm.sh        # ai-index, ai-search, ai-index-fr, ai-search-fr
+    ci.sh                 # run_ci, _run_ci_links
+    translation.sh        # translate
+```
+
+A function that duplicates a yarn script should also be declared in `scripts/lib/cheatsheet-hint.mjs`,
+so the scripts' own hints point at it.
+
+Adding a command means adding it to the matching module with its three `# @cat` / `# @cmd` /
+`# @desc` annotation lines — `welcome` scans every module, so it appears in the cheatsheet on its
+own — plus one `export -f` line in the launcher, which is the deliberate single list of the public
+surface.
+
+Two things break silently if forgotten, because **the file is loaded from two different paths**
+(`/usr/local/bin/interactive.sh`, copied into the image, sourced by `docker-entrypoint.sh`; and the
+bind-mounted `.devcontainer/scripts/interactive.sh`, sourced from `.bashrc` by `postCreateCommand`):
+
+- the `COPY` in `Dockerfile` takes the **folder** `.devcontainer/scripts/`, never the single file;
+- `.dockerignore` excludes `.devcontainer/`, so `helpers/` needs its own `!` re-inclusion line.
+
+Get either wrong and the image ships a launcher with no modules — every shell in it starts on an
+empty cheatsheet. `welcome` listing 19 commands in 7 categories is the fastest check.
 
 ### TODO backlog
 

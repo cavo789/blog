@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:43:52.244Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8fe2b9399f50c897e58047fa99f758cbc349ee1b",
+  "questions": [
+    {
+      "question": "GitLab CI/CD runner clone projet privé ssh",
+      "anchor": ""
+    },
+    {
+      "question": "variable ci cd masquée portée clé ssh gitlab",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "pourquoi la clé ssh ne s'écrit pas sur le disque dans GitLab CI/CD",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "ssh-keygen générer clé privée pour GitLab",
+      "anchor": "first-i-need-to-have-an-ssh-key"
+    },
+    {
+      "question": "comment encoder ma clé ssh en base64 pour la variable ci",
+      "anchor": "then-i-will-encode-it-for-better-security"
+    },
+    {
+      "question": "créer variable SSH_PRIVATE_KEY masquée GitLab CI/CD",
+      "anchor": "third-i-have-to-create-a-ssh_private_key-ci-variable"
+    },
+    {
+      "question": "scope variable ci ssh GitLab projet ou groupe",
+      "anchor": "third-i-have-to-create-a-ssh_private_key-ci-variable"
+    },
+    {
+      "question": "comment adapter .gitlab-ci.yml pour authentifier le runner en ssh",
+      "anchor": "finally-i-have-to-adjust-my-gitlab-ciyml-file"
+    },
+    {
+      "question": "pourquoi mon job GitLab CI/CD échoue avec une erreur de permission ssh",
+      "anchor": "conclusion"
+    }
+  ]
+}

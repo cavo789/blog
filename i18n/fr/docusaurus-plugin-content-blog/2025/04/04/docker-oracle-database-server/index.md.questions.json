@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:14:56.844Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f520bdf4b2d53d6c070be02d4d5c14165362fc01",
+  "questions": [
+    {
+      "question": "Comment faire tourner Oracle Database Server dans un container Docker localement ?",
+      "anchor": ""
+    },
+    {
+      "question": "Générer un token SSO et une Secret Key sur oracle.com",
+      "anchor": "generate-a-token"
+    },
+    {
+      "question": "docker login container-registry.oracle.com",
+      "anchor": "configure-your-local-docker-environment"
+    },
+    {
+      "question": "docker pull container-registry.oracle.com/database/enterprise:latest",
+      "anchor": "finally-you-can-pull-the-image"
+    },
+    {
+      "question": "Quelle différence entre CDB et PDB dans Oracle 12 ?",
+      "anchor": "container-database-cdb-versus-pluggable-database-pdb"
+    },
+    {
+      "question": "Créer le volume Docker OracleDBData",
+      "anchor": "create-the-oracledbdata-volume"
+    },
+    {
+      "question": "Commande docker run complète pour lancer le container Oracle",
+      "anchor": "ready-to-create-the-container"
+    },
+    {
+      "question": "Accéder au shell interactif du container de la base",
+      "anchor": "running-an-interactive-console-in-the-db-container"
+    },
+    {
+      "question": "Comment ouvrir Oracle Enterprise Manager Database Express dans le navigateur ?",
+      "anchor": "accessing-the-oracle-enterprise-manager-database-express"
+    },
+    {
+      "question": "Se connecter à Oracle DB avec SQL Developer ou en ligne de commande",
+      "anchor": "accessing-our-database-using-oracle-tools"
+    }
+  ]
+}

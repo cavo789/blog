@@ -33,7 +33,15 @@
  * is preferred here over a 301: the redirect list would shrink with every new translation, and
  * a stale rule would make a freshly translated article unreachable. This regenerates itself.
  *
- * See TODO 0119.
+ * # Second job: the surplus listing pages
+ *
+ * The blog's `/page/N/` routes are paginated over the ENGLISH corpus, so a partially translated
+ * locale gets more listing pages than it has content for. `src/theme/BlogListPage` re-paginates
+ * the translated corpus and renders an empty state past its last page; this marks those same
+ * pages `noindex, follow` so an already-indexed URL has a way out. The sitemap drops them
+ * through `createSitemapItems` in docusaurus.config.js, for the ordering reason above.
+ *
+ * Both jobs shrink to nothing as the corpus gets translated. See TODO 0119 and 0124.
  */
 
 const fs = require("fs");
@@ -89,7 +97,34 @@ function guardHtml(html, englishUrl) {
   return out.replace("</head>", `${ROBOTS_TAG}</head>`);
 }
 
-module.exports = function i18nSeoGuard(context) {
+/**
+ * Every `<locale>/blog/page/<N>/index.html` produced for this build, with its page number.
+ * Page 1 is `<locale>/blog/index.html` and always has content, so it is not a candidate.
+ */
+function findListingPages(blogDir) {
+  const pageDir = path.join(blogDir, "page");
+  if (!fs.existsSync(pageDir)) return [];
+
+  const found = [];
+  for (const entry of fs.readdirSync(pageDir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || !/^\d+$/.test(entry.name)) continue;
+    const indexFile = path.join(pageDir, entry.name, "index.html");
+    if (fs.existsSync(indexFile))
+      found.push({ page: Number(entry.name), file: indexFile });
+  }
+  return found;
+}
+
+/**
+ * `noindex, follow` and nothing else. No canonical is written: the English `/blog/page/N/` is a
+ * different list, not another rendering of this one, so pointing at it would be a lie.
+ */
+function guardListingHtml(html) {
+  if (/<meta[^>]+name="robots"/i.test(html)) return null;
+  return html.replace("</head>", `${ROBOTS_TAG}</head>`);
+}
+
+module.exports = function i18nSeoGuard(context, options = {}) {
   return {
     name: "i18n-seo-guard",
 
@@ -149,9 +184,33 @@ module.exports = function i18nSeoGuard(context) {
         guarded += 1;
       }
 
+      // `postsPerPage` comes from docusaurus.config.js, where the blog plugin reads the same
+      // constant — the two must not drift. Without it there is no way to know where this
+      // locale's content stops, so the listing pass is simply skipped.
+      const { postsPerPage } = options;
+      let listingsGuarded = 0;
+
+      if (postsPerPage) {
+        const lastPageWithContent = Math.max(
+          1,
+          Math.ceil(translated.size / postsPerPage),
+        );
+
+        for (const { page, file } of findListingPages(path.join(outDir, "blog"))) {
+          if (page <= lastPageWithContent) continue;
+
+          const guardedHtml = guardListingHtml(fs.readFileSync(file, "utf-8"));
+          if (guardedHtml === null) continue;
+
+          fs.writeFileSync(file, guardedHtml, "utf-8");
+          listingsGuarded += 1;
+        }
+      }
+
       console.log(
         `i18n-seo-guard [${currentLocale}]: ${guarded} untranslated article(s) marked noindex; ` +
-          `${translated.size} translation(s) left indexable.`,
+          `${translated.size} translation(s) left indexable; ` +
+          `${listingsGuarded} surplus listing page(s) marked noindex.`,
       );
     },
   };

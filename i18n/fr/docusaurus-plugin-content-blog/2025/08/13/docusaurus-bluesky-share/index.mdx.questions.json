@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:15:20.178Z",
+  "source": "index.mdx",
+  "locale": "fr",
+  "sourceHash": "63e6b508b577b27347468aa1928c6cd9dc034079",
+  "questions": [
+    {
+      "question": "Comment ajouter un bouton de partage Bluesky sous les articles d'un blog Docusaurus ?",
+      "anchor": ""
+    },
+    {
+      "question": "Surcharger le rendu des posts avec le fichier BlogPostItem dans Docusaurus",
+      "anchor": "we-need-to-override-how-the-article-is-rendered-by-docusaurus"
+    },
+    {
+      "question": "npx docusaurus swizzle pour extraire le template par défaut",
+      "anchor": "extract-the-original-file"
+    },
+    {
+      "question": "Comment ne swisser que le fichier utile sans toucher au reste du thème ?",
+      "anchor": "keep-things-under-control"
+    },
+    {
+      "question": "Structure de base d'un composant React personnalisé pour Docusaurus",
+      "anchor": "time-to-create-our-bluesky-docusaurus-component"
+    },
+    {
+      "question": "Organisation du squelette du composant générique pour Bluesky",
+      "anchor": "15-the-layout-of-our-bluesky-generic-component"
+    },
+    {
+      "question": "Implémenter le bouton de partage avec le lien vers l'API Bluesky",
+      "anchor": "25-our-share-on-bluesky-button"
+    },
+    {
+      "question": "Ajouter du CSS personnalisé à un composant swizzlé dans Docusaurus",
+      "anchor": "45-and-finally-our-css"
+    },
+    {
+      "question": "Intégrer le nouveau composant React dans la mise en page des articles",
+      "anchor": "55-last-thing-we-need-to-implement-our-component-in-docusaurus"
+    },
+    {
+      "question": "Vue d'ensemble de l'arborescence des fichiers créés par swizzle",
+      "anchor": "all-files-at-a-glance"
+    },
+    {
+      "question": "Attention aux pièges de la commande swizzle dans Docusaurus",
+      "anchor": "final-remarks---take-care-about-the-swizzle-command"
+    }
+  ]
+}

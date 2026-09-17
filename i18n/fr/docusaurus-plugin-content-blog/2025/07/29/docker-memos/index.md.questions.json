@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:09:43.737Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b56cba697ac7dac597c0abee8ef46b2ab18fec00",
+  "questions": [
+    {
+      "question": "quelle application de notes auto-hébergée déployer rapidement avec docker",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose memos volume persistant id utilisateur",
+      "anchor": "lets-install-memos"
+    },
+    {
+      "question": "memos créer note markdown checklist",
+      "anchor": "lets-create-a-few-more-tasks"
+    },
+    {
+      "question": "comment filtrer les notes memos par tag",
+      "anchor": "filtering-using-tags"
+    },
+    {
+      "question": "créer un shortcut pour accéder à un filtre",
+      "anchor": "creating-shortcuts"
+    },
+    {
+      "question": "coller une capture d écran directement dans memos",
+      "anchor": "pasting-images"
+    },
+    {
+      "question": "changer la langue et personnaliser l interface memos",
+      "anchor": "customization"
+    },
+    {
+      "question": "pourquoi memos remplace la boîte mail en pense bête",
+      "anchor": "conclusions"
+    },
+    {
+      "question": "documentation et configuration avancée memos",
+      "anchor": "more-info"
+    }
+  ]
+}

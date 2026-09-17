@@ -262,17 +262,55 @@ jobs:
           site_excludes=(--exclude "/assets/***" --exclude "/pagefind/***")
           generated_dirs=(assets pagefind)
           locale_generated_dirs=()
+          # The mirror image of site_excludes: exactly what pass 1 uploads, so that no
+          # HTML document ever reaches the server ahead of the hashed chunks it names.
+          # Expressed as includes under build/ rather than as one rsync per directory
+          # because `<locale>/assets/` has a parent that does not exist before a new
+          # locale's first deploy, and the deploy key is restricted to rsync by rrsync
+          # server-side — there is no `mkdir -p` to reach for here. Syncing from build/
+          # lets rsync create `<locale>/` on its way down.
+          generated_includes=(--include "/assets/***" --include "/pagefind/***")
           for dir in i18n/*/; do
             locale="$(basename "$dir")"
             site_excludes+=(--exclude "/$locale/assets/***" --exclude "/$locale/pagefind/***")
+            generated_includes+=(--include "/$locale/" --include "/$locale/assets/***" --include "/$locale/pagefind/***")
             locale_generated_dirs+=("$locale/assets" "$locale/pagefind")
           done
 
-          # The transfer runs in four passes so that --delete can be used where it
-          # is safe and nowhere else. Splitting it costs nothing: each file is still
-          # checksummed exactly once.
+          # The transfer runs in five passes, for two independent reasons: --delete
+          # must be usable where it is safe and nowhere else, and the order of the
+          # passes is what keeps the live site consistent *during* the upload.
           #
-          # Pass 1 — the site, WITHOUT --delete. The remote web root also holds
+          # Ordering, which is not cosmetic. A Docusaurus HTML document names its JS
+          # and CSS by content hash, so a build's documents and its assets/ are only
+          # valid together. Uploading the documents first — as this job did until
+          # 2026-09-17 — left a window, the whole length of the site pass, in which the
+          # server answered with new HTML pointing at chunks that had not been uploaded
+          # yet. Those 404 and `window.docusaurus` is never defined, which is precisely
+          # the condition Docusaurus's own inline script reports as the red
+          # "Your Docusaurus site did not load properly / wrong baseUrl" banner. Every
+          # visitor landing mid-deploy saw it, and only a cache-defeating reload cleared
+          # it. HTML is served `no-cache` (see static/.htaccess), so nothing shielded
+          # them from it either.
+          #
+          # Uploading assets first and pruning last makes both ends of the window
+          # consistent instead: before the site pass the server holds old documents and
+          # old assets (still present — pass 1 adds, it never deletes), after it new
+          # documents and new assets, and the prune only ever removes what the
+          # just-uploaded documents no longer reference.
+          #
+          # The cost is that assets/ and pagefind/ are checksummed twice, once to
+          # upload and once to prune. That is CPU on both ends and no extra bytes on
+          # the wire: the prune pass finds every file identical and transfers nothing.
+          #
+          # Pass 1 — assets/ and pagefind/, every locale, WITHOUT --delete. Additive by
+          # construction, so it cannot break the documents currently online.
+          rsync "${rsync_args[@]}" \
+            "${generated_includes[@]}" \
+            --exclude "*" \
+            build/ "$remote/" | tee /tmp/rsync-generated.log
+
+          # Pass 2 — the site, WITHOUT --delete. The remote web root also holds
           # things this build never produces: a PHP API with live reader data and
           # its .env, and .well-known/ (the ACME challenge folder for SSL renewal
           # and atproto-did, which backs the Bluesky domain handle). None of it can
@@ -290,7 +328,7 @@ jobs:
             "${site_excludes[@]}" \
             build/ "$remote/" | tee /tmp/rsync-site.log
 
-          # Pass 2 — api/, an explicit allow-list of the four static files, WITHOUT
+          # Pass 3 — api/, an explicit allow-list of the four static files, WITHOUT
           # --delete and WITHOUT a plain directory sync. `api/` on the live server
           # also holds .env (gitignored, never in this repo) and the JSON files the
           # PHP scripts read/write at runtime — reaction counts, typo reports,
@@ -310,26 +348,31 @@ jobs:
             --exclude "*" \
             api/ "$remote/api/" | tee /tmp/rsync-api.log
 
-          # Passes 3 and 4 — assets/ and pagefind/ are 100% generated output with
-          # content-hashed filenames, so anything there that the build no longer
-          # produces is dead weight by definition. Pagefind is the reason this
+          # Passes 4 and 5 — the prune. assets/ and pagefind/ are 100% generated
+          # output with content-hashed filenames, so anything there that the build no
+          # longer produces is dead weight by definition. Pagefind is the reason this
           # matters: it re-chunks its search index on every build, leaving ~59
           # orphan files behind each time. Restricting --delete to these two source
           # and destination paths bounds the blast radius by construction — it
           # cannot reach outside them even if this comment is wrong.
+          #
+          # Pass 1 already uploaded these files, so what is left here is the deletion
+          # of what the new documents no longer name. It runs last on purpose: pruning
+          # before the site pass would delete the chunks the *currently online*
+          # documents still depend on.
           for generated in "${generated_dirs[@]}"; do
             rsync "${rsync_args[@]}" --delete \
               "build/$generated/" "$remote/$generated/" | tee "/tmp/rsync-$generated.log"
           done
 
-          # Same passes for each locale. Still bounded by path: the source and the
+          # Same prune for each locale. Still bounded by path: the source and the
           # destination are both .../<locale>/assets or .../<locale>/pagefind.
           #
-          # One difference, and only in a dry run: pass 1 did not really create
-          # <locale>/ on the server, so before a locale's first real deploy its
-          # destination parent does not exist and rsync refuses the preview. That
-          # case is reported as a warning. In a real run pass 1 has just created the
-          # parent, and any failure here is fatal as usual.
+          # One difference, and only in a dry run: a dry run writes nothing, so
+          # <locale>/ was not really created upstream and before a locale's first real
+          # deploy its destination parent does not exist — rsync then refuses the
+          # preview. That case is reported as a warning. In a real run pass 1 has
+          # already created the parent, and any failure here is fatal as usual.
           for generated in "${locale_generated_dirs[@]}"; do
             log="/tmp/rsync-${generated//\//-}.log"
             if ! rsync "${rsync_args[@]}" --delete \

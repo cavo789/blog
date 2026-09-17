@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:28:24.565Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "04e8756cea50979cf4f1c756ffc22f0df9ffbbc0",
+  "questions": [
+    {
+      "question": "comment ajouter une section articles liés sous les billets Docusaurus ?",
+      "anchor": ""
+    },
+    {
+      "question": "logique de correspondance sur mainTag",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "où placer les fichiers du composant Card ?",
+      "anchor": "we-need-a-card-component"
+    },
+    {
+      "question": "parser le front matter YAML pour récupérer slug et image",
+      "anchor": "we-need-a-way-to-extract-information-from-blog-posts"
+    },
+    {
+      "question": "code du composant React RelatedPosts",
+      "anchor": "our-relatedposts-component"
+    },
+    {
+      "question": "surcharger le template BlogPostItem via docusaurus theme override",
+      "anchor": "overriding-the-blogpostitem-template"
+    },
+    {
+      "question": "comment ajouter mainTag dans le front matter des fichiers markdown ?",
+      "anchor": "editing-our-blog-posts"
+    },
+    {
+      "question": "relancer le serveur de développement après la surcharge de thème",
+      "anchor": "conclusion"
+    }
+  ]
+}

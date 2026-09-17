@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:32:12.161Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "74222488b13d169d723942d1ab3ea4071b0f4d1e",
+  "questions": [
+    {
+      "question": "comment se connecter à un serveur linux sans mot de passe ssh",
+      "anchor": ""
+    },
+    {
+      "question": "commande pour générer une clé ssh ed25519 sur son poste",
+      "anchor": "1-creating-the-ssh-key"
+    },
+    {
+      "question": "utiliser ssh-copy-id pour déployer sa clé publique sur un hôte distant",
+      "anchor": "2-copying-the-key"
+    },
+    {
+      "question": "se connecter à un serveur linux avec ssh sans être invité au mot de passe",
+      "anchor": "3-connect-to-the-server"
+    },
+    {
+      "question": "scp transférer un fichier local vers un serveur distant en précisant la clé privée",
+      "anchor": "copying-files-from-your-host-to-the-server"
+    },
+    {
+      "question": "télécharger un fichier depuis un serveur linux vers sa machine locale via scp",
+      "anchor": "copy-files-from-the-server-to-your-host"
+    },
+    {
+      "question": "scp copier un répertoire entier d'un serveur distant vers son poste en mode récursif",
+      "anchor": "copying-folders"
+    },
+    {
+      "question": "ouvrir une session ssh directement depuis microsoft terminal",
+      "anchor": "running-ssh-from-microsoft-terminal"
+    },
+    {
+      "question": "configurer des alias de connexion ssh dans le fichier ~/.ssh/config",
+      "anchor": "using-the-config-file"
+    },
+    {
+      "question": "explorer les commandes ssh avancées pour gérer plusieurs hôtes",
+      "anchor": "going-further"
+    }
+  ]
+}

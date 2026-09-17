@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:03:08.643Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8393e32bee4fa536ea32ec0c7dc9d87aa8dbd835",
+  "questions": [
+    {
+      "question": "gestionnaire de favoris auto-hébergé avec moteur de recherche puissant",
+      "anchor": ""
+    },
+    {
+      "question": "comment ajouter un favori ou une note dans karakeep",
+      "anchor": "add-a-bookmark"
+    },
+    {
+      "question": "pourquoi centraliser liens, notes et images dans une seule interface",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "configurer docker compose pour karakeep avec PUID et PGID",
+      "anchor": "lets-install-karakeep"
+    },
+    {
+      "question": "créer des listes hiérarchiques pour organiser ses favoris",
+      "anchor": "adding-to-a-list"
+    },
+    {
+      "question": "faut-il obligatoirement sélectionner une liste avant d'ajouter un élément",
+      "anchor": "tips---select-a-list-before-adding-an-item"
+    },
+    {
+      "question": "fonctionnalités avancées karakeep aperçu automatique et recherche",
+      "anchor": "extra-features"
+    },
+    {
+      "question": "comment exporter et importer ses données karakeep",
+      "anchor": "import--export"
+    },
+    {
+      "question": "conclusion sur karakeep et gestion des mots de passe avec Bitwarden",
+      "anchor": "conclusion"
+    }
+  ]
+}

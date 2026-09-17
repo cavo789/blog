@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:56:37.982Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e6e7a198a09274c8f6845599a32b0537a26099e9",
+  "questions": [
+    {
+      "question": "script vbs batch liste références vba excel",
+      "anchor": ""
+    },
+    {
+      "question": "comment extraire automatiquement les références vba de plusieurs fichiers xlsm",
+      "anchor": ""
+    },
+    {
+      "question": "automatiser récupération références vbe pour classeurs .xlam",
+      "anchor": ""
+    },
+    {
+      "question": "lancer fichier vbs pour lister références modules excel sans activer macros",
+      "anchor": ""
+    },
+    {
+      "question": "récupérer liste références vba dans un dossier excel en masse",
+      "anchor": ""
+    },
+    {
+      "question": "outil vbs pour vérifier références vba sur plusieurs classeurs xlsm",
+      "anchor": ""
+    },
+    {
+      "question": "générer liste références vba excel via script .vbs",
+      "anchor": ""
+    },
+    {
+      "question": "comment lister toutes les références vba d'un dossier xlsm ou xlam sans ouvrir chaque classeur",
+      "anchor": ""
+    },
+    {
+      "question": "exécuter script vbs depuis powershell pour extraire références vba",
+      "anchor": ""
+    },
+    {
+      "question": "remplacer vérification manuelle références vba par script excel",
+      "anchor": ""
+    }
+  ]
+}

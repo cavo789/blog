@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:49:48.925Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9116bda3d3ec4b5e5a20aa658fc110ad931966a3",
+  "questions": [
+    {
+      "question": "comment exécuter des commandes git directement depuis un container sans revenir sur l'hôte",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi monter en lecture seule la clé ssh et la config git plutôt que de les copier dans l'image",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "mkdir /tmp/git && cd $_ pour préparer le dossier de test",
+      "anchor": "creating-a-demo-container"
+    },
+    {
+      "question": "docker compose build et docker compose run pour lancer le container et vérifier git",
+      "anchor": "running-it"
+    },
+    {
+      "question": "partager le fichier .gitconfig local avec le container via un volume",
+      "anchor": "sharing-your-configuration"
+    },
+    {
+      "question": "monter ~/.ssh/id_rsa en lecture seule pour authentifier les accès ssh",
+      "anchor": "share-your-credentials"
+    },
+    {
+      "question": "éviter de basculer sur l'hôte pour pousser ses modifications sur github ou gitlab",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "utiliser un devcontainer pour travailler avec git sans quitter l'environnement de développement",
+      "anchor": ""
+    },
+    {
+      "question": "configurer docker-compose.yml pour lier les répertoires locaux aux chemins root du container",
+      "anchor": "sharing-your-configuration"
+    }
+  ]
+}

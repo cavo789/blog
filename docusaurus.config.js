@@ -33,6 +33,13 @@ const DEFAULT_LOCALE = "en";
 const SITE_URL = "https://www.avonture.be";
 
 /**
+ * Articles per blog listing page. Declared once because three places must agree on it: the blog
+ * plugin below, the sitemap filter that drops a non-default locale's surplus listing pages, and
+ * `plugins/i18n-seo-guard`, which marks those same pages `noindex`. See TODO 0124.
+ */
+const POSTS_PER_PAGE = 12;
+
+/**
  * The default locale's own name for itself. Single source of truth: it feeds both
  * `i18n.localeConfigs` below and the "(English — the whole blog)" suffix on the source-language
  * discovery links, which the React components word the same way from `localeConfigs`.
@@ -232,7 +239,7 @@ const config = {
             "Personal blog about Docker, Linux, Python, PHP, Quarto, Docusaurus and more",
           blogSidebarTitle: "All posts",
           blogSidebarCount: "ALL",
-          postsPerPage: 12,
+          postsPerPage: POSTS_PER_PAGE,
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           // Useful options to enforce blogging best practices
@@ -278,7 +285,18 @@ const config = {
             const translated = new Set(collectTranslations(process.cwd())[locale] ?? []);
             const articleSlugs = collectAllArticleSlugs(process.cwd());
 
+            // The listing routes are generated from the ENGLISH corpus, so this locale has
+            // fewer pages with content than pages that exist. The surplus ones render an empty
+            // state (see src/theme/BlogListPage); advertising them here would submit soft-404s.
+            const lastPageWithContent = Math.max(
+              1,
+              Math.ceil(translated.size / POSTS_PER_PAGE),
+            );
+
             return items.filter((item) => {
+              const pageMatch = item.url.match(/\/blog\/page\/(\d+)\/?$/);
+              if (pageMatch) return Number(pageMatch[1]) <= lastPageWithContent;
+
               // Only article URLs are candidates. Matching on "last path segment" alone would
               // also swallow /blog/tags/ and /blog/page/2/, hence the known-slug check.
               const match = item.url.match(/\/blog\/([^/]+)\/?$/);
@@ -355,7 +373,7 @@ const config = {
     // below, by the banner/flag components and by every listing surface (TODO 0119).
     "./plugins/translations-manifest-plugin/index.cjs",
     // Must come after the sitemap plugin: it rewrites the sitemap that plugin produced.
-    "./plugins/i18n-seo-guard/index.cjs",
+    ["./plugins/i18n-seo-guard/index.cjs", { postsPerPage: POSTS_PER_PAGE }],
     // Points build/<locale>/.htaccess — a verbatim copy of static/.htaccess — at the locale's own
     // 404 page and app shell instead of the English ones.
     "./plugins/i18n-htaccess/index.cjs",

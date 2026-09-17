@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:10:15.487Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ea0deaf2f72b4e68067445a4bb4869078196d107",
+  "questions": [
+    {
+      "question": "0: `composer require laravel/telescope --dev`",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment installer Telescope en dépendance de développement sur Laravel ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: Telescope affichage requêtes SQL brutes Eloquent",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment suivre les clés Redis lues et créées avec Telescope ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: Telescope contexte exceptions données POST et URL",
+      "anchor": ""
+    },
+    {
+      "question": "0: voir les événements déclenchés en temps réel avec Laravel Telescope",
+      "anchor": ""
+    },
+    {
+      "question": "0: Telescope interface web monitoring serveur de test",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment accéder à l'interface par défaut de Telescope sur un environnement de test ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: Telescope inspection logs cache et modèles Eloquent",
+      "anchor": ""
+    },
+    {
+      "question": "0: debugger proactivement une application Laravel avec Telescope",
+      "anchor": ""
+    }
+  ]
+}

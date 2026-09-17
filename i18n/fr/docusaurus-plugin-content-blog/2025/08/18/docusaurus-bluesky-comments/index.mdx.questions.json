@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:18:05.132Z",
+  "source": "index.mdx",
+  "locale": "fr",
+  "sourceHash": "06de5b3869a03913a1d102954d0a8a91906515cd",
+  "questions": [
+    {
+      "question": "comment intégrer les commentaires et les compteurs bluesky dans un blog docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "facepile avatars fusionnés pour regrouper likes reposts et commentaires bluesky",
+      "anchor": "what-youll-get"
+    },
+    {
+      "question": "quelle est la structure du fichier composant react générique pour bluesky",
+      "anchor": "16-the-layout-of-our-bluesky-generic-component"
+    },
+    {
+      "question": "centraliser le fetch des likes reposts et commentaires bluesky dans un hook react",
+      "anchor": "26-the-shared-data-fetching-hook"
+    },
+    {
+      "question": "intégrer un bouton like share or comment on bluesky dans les posts markdown",
+      "anchor": "36-our-like-share-or-comment-button"
+    },
+    {
+      "question": "gérer la déduplication et le tri des avatars likers reposteurs commentateurs bluesky",
+      "anchor": "46-our-component-for-getting-the-number-of-likes-and-reposts"
+    },
+    {
+      "question": "comment récupérer et afficher la liste complète des commentaires bluesky sur un article",
+      "anchor": "56-retrieving-all-comments"
+    },
+    {
+      "question": "css pour styliser la facepile et les badges de compteurs bluesky",
+      "anchor": "66-our-new-css"
+    },
+    {
+      "question": "configurer le handle bluesky et la clé front matter dans docusaurus.config",
+      "anchor": "update-the-docusaurus-configuration-file"
+    },
+    {
+      "question": "arborescence complète des fichiers du composant bluesky pour docusaurus",
+      "anchor": "all-files-at-a-glance"
+    }
+  ]
+}

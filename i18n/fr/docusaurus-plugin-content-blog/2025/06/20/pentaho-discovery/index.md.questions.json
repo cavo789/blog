@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:52:07.862Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8ac835a78e357a3cb41ae1ee07b2cae987ac3649",
+  "questions": [
+    {
+      "question": "Pentaho Data Integration et interface Spoon : fonctionnement ETL",
+      "anchor": ""
+    },
+    {
+      "question": "installer PDI sous Linux au lieu de Windows",
+      "anchor": "installation-on-linux"
+    },
+    {
+      "question": "comment ajouter Pentaho à la variable PATH de Linux",
+      "anchor": "adding-pentaho-to-the-path"
+    },
+    {
+      "question": "préparation du fichier Excel avec les colonnes ID, Firstname, Lastname et City",
+      "anchor": "first-we-need-an-excel-file-to-load"
+    },
+    {
+      "question": "configurer un conteneur PostgreSQL via Docker pour l'import de données",
+      "anchor": "then-we-need-a-postgresql-database"
+    },
+    {
+      "question": "écrire un makefile pour automatiser les commandes Docker du projet",
+      "anchor": "and-for-our-easiness-lets-create-a-makefile"
+    },
+    {
+      "question": "relier l'étape de lecture Excel à la sortie PostgreSQL dans le canevas de Spoon",
+      "anchor": "the-pieces-of-the-jigsaw-are-in-place-create-our-flow"
+    },
+    {
+      "question": "comment générer un nouveau fichier de transformation vierge dans PDI",
+      "anchor": "we-need-to-create-a-new-transformation-file"
+    },
+    {
+      "question": "télécharger le fichier de transformation exemple du guide",
+      "anchor": "download-the-transformation-file"
+    },
+    {
+      "question": "quelles sont les prochaines étapes après la configuration initiale ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:37:51.515Z",
+  "source": "index.mdx",
+  "locale": "fr",
+  "sourceHash": "f70c8880c5d703b7669c49c50f08f4e0e9e131a9",
+  "questions": [
+    {
+      "question": "bonnes pratiques pour concevoir une api rest propre et évolutive",
+      "anchor": ""
+    },
+    {
+      "question": "principes de notation et de hiérarchie dans le design rest",
+      "anchor": "main-concepts"
+    },
+    {
+      "question": "notation des uri en lowerCamelCase et suppression des slashes finaux",
+      "anchor": "uniform-resource-identifier"
+    },
+    {
+      "question": "comment mapper GET POST PUT PATCH DELETE aux opérations métier ?",
+      "anchor": "verbs"
+    },
+    {
+      "question": "structurer les réponses json et gérer les codes statut http",
+      "anchor": "responses"
+    },
+    {
+      "question": "exemples d endpoints rest pour une ressource employé",
+      "anchor": "expected-endpoints"
+    },
+    {
+      "question": "documentation et rfc recommandées pour valider son api",
+      "anchor": "some-lectures"
+    },
+    {
+      "question": "pourquoi utiliser le pluriel plutôt que le singulier dans les urls ?",
+      "anchor": "uniform-resource-identifier"
+    },
+    {
+      "question": "éviter les verbes dans les urls et passer par les en têtes http",
+      "anchor": "verbs"
+    },
+    {
+      "question": "gérer les erreurs et la pagination dans les réponses rest",
+      "anchor": "responses"
+    }
+  ]
+}

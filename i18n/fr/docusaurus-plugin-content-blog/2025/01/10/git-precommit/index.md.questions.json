@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:43:04.289Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c707bd7ad665a558292a70766f1fb2d0e9f2b06b",
+  "questions": [
+    {
+      "question": "Comment éviter les échecs CI/CD en exécutant les vérifications de code localement ?",
+      "anchor": ""
+    },
+    {
+      "question": "pre-commit run --all-files corrige automatiquement les violations de formatage",
+      "anchor": "the-result-a-commit-reformatted-before-it-even-happens"
+    },
+    {
+      "question": "Quelle différence entre les hooks pre-commit et post-commit dans Git ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "pip install pre-commit pour un projet Python",
+      "anchor": "installing-pre-commit"
+    },
+    {
+      "question": "Où et comment créer le fichier de configuration YAML des hooks ?",
+      "anchor": "adding-a-configuration-file"
+    },
+    {
+      "question": "Lancer manuellement les vérifications de code avec la commande pre-commit",
+      "anchor": "manually-fire-the-hook"
+    },
+    {
+      "question": "installer les hooks Git dans le dossier .git/hooks",
+      "anchor": "install-hooks"
+    },
+    {
+      "question": "Configuration Python 3.13 prête à l'emploi pour les hooks de qualité",
+      "anchor": "a-ready-made-python-313-config"
+    },
+    {
+      "question": "Chercher des hooks existants ou écrire ses propres hooks Git",
+      "anchor": "search-for-hooks-and-write-your-own"
+    },
+    {
+      "question": "Contourner temporairement les hooks Git avec l'option --no-verify",
+      "anchor": "tip---no-verify"
+    }
+  ]
+}

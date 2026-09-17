@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:25:43.140Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2a018e172511e431eebeece7fb5f38000b4e5dd8",
+  "questions": [
+    {
+      "question": "Comment configurer un environnement Docker pour les tests navigateur avec Pest v4 ?",
+      "anchor": ""
+    },
+    {
+      "question": "pest php tests fonctionnels makefile docker",
+      "anchor": ""
+    },
+    {
+      "question": "créer un Dockerfile et un Makefile pour initialiser Pest dans un dossier temporaire",
+      "anchor": "lets-create-a-temporary-project"
+    },
+    {
+      "question": "commande pour générer le Makefile de Pest",
+      "anchor": "lets-create-a-temporary-project"
+    },
+    {
+      "question": "make build image Docker Pest taille 2GB temps de téléchargement",
+      "anchor": "create-the-image"
+    },
+    {
+      "question": "pourquoi le build Docker de Pest est long et comment le lancer ?",
+      "anchor": "create-the-image"
+    },
+    {
+      "question": "make up lancer container Docker Pest avec volume ./tests",
+      "anchor": "create-the-container"
+    },
+    {
+      "question": "docker run --detach pestphp volume tests commande",
+      "anchor": "create-the-container"
+    },
+    {
+      "question": "make test Pest capture automatique screenshot sur échec",
+      "anchor": "run-tests"
+    },
+    {
+      "question": "Pest ne s'arrête pas au premier échec comment analyser le résultat ?",
+      "anchor": "run-tests"
+    },
+    {
+      "question": "Pest v4 Playwright tests fonctionnels personnalisation avancée",
+      "anchor": "in-depth-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "configurer les captures d'écran de Pest lors d'un échec de test",
+      "anchor": "in-depth-skip-this-if-you-just-want-to-use-it"
+    }
+  ]
+}

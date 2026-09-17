@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:08:10.923Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "55b0fccaeee957175dda5b4e2ce6d1c1206fd635",
+  "questions": [
+    {
+      "question": "tutoriel connexion Excel VBA SQL Server Docker",
+      "anchor": ""
+    },
+    {
+      "question": "Quelle est la différence entre CopyToSheet et AddQueryTable ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "lancer SQL Server dans Docker et créer base test avec SSMS",
+      "anchor": "download-sql-server-and-create-a-dummy-database"
+    },
+    {
+      "question": "Comment importer une classe VBA GitHub dans Excel et configurer le VBE ?",
+      "anchor": "the-excel-part"
+    },
+    {
+      "question": "utiliser CopyToSheet pour exporter requête SQL dans feuille Excel",
+      "anchor": "lets-play-with-copytosheet"
+    },
+    {
+      "question": "code complet sous-routines connexion Excel SQL Server VBA",
+      "anchor": "the-list-of-features-optional-deep-dive--full-code-for-each-subroutine"
+    },
+    {
+      "question": "comment fonctionne la sous-routine CopyToSheet dans le code VBA",
+      "anchor": "copytosheet-subroutine"
+    },
+    {
+      "question": "configuration AddQueryTable pour actualisation données Excel SQL Server",
+      "anchor": "addquerytable-subroutine"
+    },
+    {
+      "question": "exporter résultats requête SQL dans nouveau classeur Excel via VBA",
+      "anchor": "runsqlandexportnewworkbook-subroutine"
+    },
+    {
+      "question": "limites Excel pour gros volumes de données SQL Server alternative",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T14:23:35.287Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e4024f64a7c41b126bf3347bdd7e31c748322e35",
+  "questions": [
+    {
+      "question": "comment se connecter à une base Oracle dans un container Docker depuis .NET NodeJS PHP et Python",
+      "anchor": ""
+    },
+    {
+      "question": "prérequis container Oracle Human Resources article précédent",
+      "anchor": "some-prerequisites"
+    },
+    {
+      "question": "pourquoi l'auteur a utilisé Google Gemini pour générer les exemples de code",
+      "anchor": "the-code-samples-were-largely-created-using-ai"
+    },
+    {
+      "question": "Dockerfile et Oracle Instant Client pour connecter .NET à Oracle DB",
+      "anchor": "access-our-oracle-db-container-using-net"
+    },
+    {
+      "question": "comment structurer le projet NodeJS et construire l'image Docker pour interroger Oracle",
+      "anchor": "access-our-oracle-db-container-using-nodejs"
+    },
+    {
+      "question": "exemple de code PHP et configuration Docker pour accéder à Oracle",
+      "anchor": "access-our-oracle-db-container-using-php"
+    },
+    {
+      "question": "script Python et Dockerfile pour afficher les enregistrements d'Oracle",
+      "anchor": "access-our-oracle-db-container-using-python"
+    },
+    {
+      "question": "comment utiliser Oracle REST Data Services pour exposer Oracle en API REST",
+      "anchor": "conclusion"
+    }
+  ]
+}

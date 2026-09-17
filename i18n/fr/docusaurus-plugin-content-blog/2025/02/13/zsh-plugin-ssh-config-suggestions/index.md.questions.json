@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:57:36.236Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "5929549a1dddedb1a6210d39b7c11d42fb97bfa1",
+  "questions": [
+    {
+      "question": "Comment activer les autosuggestions ssh dans zsh ?",
+      "anchor": ""
+    },
+    {
+      "question": "zsh ssh config TAB completion plugin",
+      "anchor": ""
+    },
+    {
+      "question": "Pourquoi le plugin zsh-ssh-config-suggestions ne crée pas de liste séparée ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "zsh complétion ssh config automatique",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Comment tester le plugin ssh sans se connecter à un vrai serveur avec docker ?",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "docker build ssh-suggest-demo zsh",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "Où cloner le dépôt zsh-ssh-config-suggestions et comment l'activer dans ~/.zshrc ?",
+      "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
+    },
+    {
+      "question": "Oh-My-Zsh plugins zsh-ssh-config-suggestions installation",
+      "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
+    },
+    {
+      "question": "Quelle touche faut-il appuyer après un espace pour voir les hôtes ssh ?",
+      "anchor": "use-it"
+    },
+    {
+      "question": "ssh TAB completion ~/.ssh/config zsh",
+      "anchor": "use-it"
+    }
+  ]
+}

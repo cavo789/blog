@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T15:47:14.195Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f5cb94b3c264fbb86d68ba1285962746a8350368",
+  "questions": [
+    {
+      "question": "Comment regrouper plusieurs containers dans la vue Docker Desktop ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker desktop organiser containers par projet",
+      "anchor": ""
+    },
+    {
+      "question": "transformer docker run en compose.yaml pour avoir une vue groupée",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter name en haut de compose.yaml",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "comment utiliser la propriété name pour nommer un groupe de services ?",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "différence entre name dans compose.yaml et le flag --name de docker run",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "convertir ma commande docker run complète en fichier yaml",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "est-ce que je peux mettre mes fichiers compose dans des dossiers différents ?",
+      "anchor": "tools-can-be-located-in-different-folders"
+    },
+    {
+      "question": "organiser volumes et configs dans des répertoires séparés sans casser le regroupement",
+      "anchor": "tools-can-be-located-in-different-folders"
+    },
+    {
+      "question": "garder le nom de groupe même si les fichiers sont éparpillés sur le disque",
+      "anchor": "tools-can-be-located-in-different-folders"
+    }
+  ]
+}

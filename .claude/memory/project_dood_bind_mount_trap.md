@@ -12,7 +12,19 @@ devcontainer.
 
 Un `-v "$PWD:/workspace"` depuis le scratchpad (`/tmp/claude-.../`) monte donc un
 répertoire vide, et le conteneur répond « file does not exist » sans autre indice.
-Seul `/opt/docusaurus` existe des deux côtés — et encore, sous un chemin hôte différent.
+
+**`/opt/docusaurus` est le piège dans le piège** (vérifié 2026-09-17) : ce chemin existe
+*aussi* côté hôte, mais c'est un **autre dossier** — 6 entrées (`blog/`, `build/`, les certs,
+`nginx.conf`), pas le dépôt. Un `-v /opt/docusaurus/...` ne casse donc pas bruyamment : il
+monte silencieusement le mauvais contenu. Le vrai dépôt est à `${HOST_PROJECT_DIR}`
+(`/home/christophe/repositories/blog`), exporté dans `containerEnv` — **toujours** passer par
+cette variable pour un `-v`.
+
+**Exception importante — `docker build` n'est PAS concerné.** Le contexte de build est empaqueté
+par le *client* (le CLI, dans le devcontainer) puis envoyé au daemon, donc `docker build .` et
+`docker compose build docusaurus` fonctionnent normalement depuis `/opt/docusaurus` avec les
+fichiers du dépôt. À l'inverse, passer `${HOST_PROJECT_DIR}` comme contexte échoue
+(`path not found`) : c'est l'exact miroir de la règle des `-v`.
 
 **Comment tester une image** : créer un volume nommé et l'alimenter par stdin.
 

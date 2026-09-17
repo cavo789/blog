@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T13:40:23.651Z",
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "a75edc9daf4abd6cb169e5e9674dc7e883b756fd",
+  "questions": [
+    {
+      "question": "comment dockeriser rapidement une application PHP existante sans écrire de fichiers à la main",
+      "anchor": ""
+    },
+    {
+      "question": "télécharger le script PHP aeSecure QuickScan pour tester",
+      "anchor": "get-some-scripts"
+    },
+    {
+      "question": "lancer docker init et configurer le port 8080",
+      "anchor": "docker-init"
+    },
+    {
+      "question": "vérifier les fichiers créés automatiquement par l'assistant",
+      "anchor": "lets-take-a-look-on-created-files"
+    },
+    {
+      "question": ".dockerignore pour exclure .git du build",
+      "anchor": "dockerignore"
+    },
+    {
+      "question": "comment fonctionne le fichier compose.yaml avec PHP et Apache",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "inspecter les instructions du Dockerfile généré",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "à quoi sert le README.Docker.md dans un projet Dockerisé",
+      "anchor": "readmedockermd"
+    },
+    {
+      "question": "personnaliser librement les fichiers créés par docker init",
+      "anchor": "generated-files-are-yours"
+    }
+  ]
+}

@@ -1,4 +1,11 @@
 /.docusaurus
+# Same class as the above: `yarn start`'s own codegen dir and the throwaway pair written
+# by safe_build.sh's isolated verification build (see .claude/rules/build-verification.md).
+# No COPY ever reads them; excluding them keeps BuildKit from stat-ing and hashing
+# ~3600 extra files (174 MB) on every build-context scan.
+/.docusaurus-dev
+/.docusaurus-verify
+/build-verify
 /build
 /node_modules
 
@@ -22,6 +29,9 @@ localhost-key.pem
 .devcontainer/
 !.devcontainer/docker-entrypoint.sh
 !.devcontainer/scripts/interactive.sh
+# …and the command modules it sources — see the COPY in the Dockerfile.
+!.devcontainer/scripts/helpers
+!.devcontainer/scripts/helpers/*.sh
 .vscode/
 .editorconfig
 .github/

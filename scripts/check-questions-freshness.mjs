@@ -30,6 +30,7 @@ import { execFileSync } from "child_process";
 import { hashSource } from "./lib/eli5-hash.mjs";
 import { loadPosts } from "./lib/blog-corpus.mjs";
 import { questionCandidates } from "./lib/i18n-eligibility.mjs";
+import { cmd } from "./lib/cheatsheet-hint.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -88,7 +89,7 @@ for (const jsonPath of files) {
     record = JSON.parse(fs.readFileSync(jsonPath, "utf-8"));
   } catch {
     console.warn(`⚠  UNREADABLE — ${relJson} is not valid JSON`);
-    console.warn(`   Fix with: yarn questions --force ${relSource}`);
+    console.warn(`   Fix with: ${cmd("questions", "--force", relSource)}`);
     orphaned++;
     continue;
   }
@@ -104,7 +105,7 @@ for (const jsonPath of files) {
   const currentHash = hashSource(fs.readFileSync(sourcePath, "utf-8"));
   if (currentHash !== record.sourceHash) {
     // No per-file warning here — staleSources feeds the single batched command printed
-    // below, so nothing tempts a one-by-one `yarn questions --force` per file.
+    // below, so nothing tempts a one-by-one `questions --force` per file.
     const localeMatch = relSource.match(/^i18n\/([^/]+)\//);
     if (localeMatch) staleLocales.add(localeMatch[1]);
     else staleSources.push(relSource);
@@ -150,12 +151,12 @@ if (staleSources.length > 0) {
   console.log(
     `⚠  STALE — ${staleSources.length} file(s) changed since their sidecar was generated:`,
   );
-  console.log(`   for f in ${list}; do yarn questions --force "$f"; done`);
+  console.log(`   for f in ${list}; do ${cmd("questions", "--force", '"$f"')}; done`);
 }
 
 for (const locale of staleLocales) {
   console.log(`⚠  STALE — "${locale}" question sidecar(s) behind their translation:`);
-  console.log(`   yarn questions --locale ${locale} --all`);
+  console.log(`   ${cmd("questions", "--locale", locale, "--all")}`);
 }
 if (missingLocalized.length > 0) {
   const byLocale = new Map();
@@ -163,7 +164,8 @@ if (missingLocalized.length > 0) {
     byLocale.set(locale, (byLocale.get(locale) || 0) + 1);
   for (const [locale, count] of byLocale) {
     console.log(
-      `questions coverage (${locale}): ${count} translated article(s) with no sidecar yet — yarn questions --locale ${locale} --all`,
+      `questions coverage (${locale}): ${count} translated article(s) with no sidecar yet — ` +
+        cmd("questions", "--locale", locale, "--all"),
     );
   }
 }
@@ -175,14 +177,15 @@ if (!quiet || missing.length > 0) {
 }
 if (missing.length > 0) {
   // Capped — this is a report-only hook that can run on every commit; a 235-line dump (the
-  // corpus-wide count before `yarn questions:bulk` has caught up) would drown the real signal.
+  // corpus-wide count before the bulk run has caught up) would drown the real signal.
   const MAX_LISTED = 10;
   for (const post of missing.slice(0, MAX_LISTED)) {
-    console.log(`  - yarn questions ${path.relative(projectRoot, post.file)}`);
+    console.log(`  - ${cmd("questions", path.relative(projectRoot, post.file))}`);
   }
   if (missing.length > MAX_LISTED) {
     console.log(
-      `  … and ${missing.length - MAX_LISTED} more — cover them all with: yarn questions:bulk`,
+      `  … and ${missing.length - MAX_LISTED} more — cover them all with: ` +
+        cmd("questions:bulk"),
     );
   }
 }
@@ -200,7 +203,7 @@ const reviewed = files.filter((jsonPath) => {
 if (!quiet) {
   console.log(
     `questions review: ${reviewed}/${files.length} sidecar(s) reviewed by hand.` +
-      (reviewed < files.length ? `  Continue with: yarn questions:review` : ""),
+      (reviewed < files.length ? `  Continue with: ${cmd("questions:review")}` : ""),
   );
 }
 

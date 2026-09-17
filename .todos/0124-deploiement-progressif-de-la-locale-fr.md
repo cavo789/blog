@@ -39,6 +39,16 @@ rangeant 0119 dans `DONE/` aurait été pire. Il est donc repris ici, tel que 01
 - [ ] **Rediriger les navigateurs francophones vers `/fr/`** — décidé le 2026-09-17, à poser
       **une fois le corpus entièrement traduit**, jamais avant. Conditions, garde-fous et pièges
       dans la section dédiée ci-dessous.
+- [ ] **Retirer l'échafaudage des pages de listing en surplus** — à faire **une fois le corpus
+      entièrement traduit**, pas avant. Posé le 2026-09-17 pour corriger `/fr/blog`, qui affichait
+      les 104 traductions sur une seule page sans pagination (les routes `/page/N/` sont
+      paginées sur le corpus anglais, donc la tranche servie à la page N n'avait aucun rapport).
+      `src/theme/BlogListPage/index.js` repagine désormais le corpus traduit sur ces mêmes routes ;
+      les pages au-delà (10 à 22 aujourd'hui) affichent un état vide, sont marquées `noindex` par
+      `plugins/i18n-seo-guard` et retirées du sitemap par `createSitemapItems`. Quand EN et FR
+      auront le même nombre d'articles il n'y aura plus de surplus : les trois morceaux
+      deviendront inertes et pourront disparaître, avec la constante `POSTS_PER_PAGE` qu'ils
+      partagent dans `docusaurus.config.js`.
 
 ## Redirection automatique des navigateurs francophones vers `/fr/`
 
