@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:41.809Z",
+  "source": "data.csv",
+  "sourceHash": "1594a66a3f71d07f7fcd5238e01f146befbd00e7",
+  "lang": "csv",
+  "textLang": "fr",
+  "summary": "Ceci est un fichier CSV simple contenant des données de personnes avec deux colonnes : name (nom) et age (âge). Le fichier définit un en-tête de colonne à la première ligne, suivi de deux enregistrements de données pour Alice et Bob.",
+  "explanations": {}
+}

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:44:09.974Z",
+  "source": "progress_bar.sh",
+  "sourceHash": "1add8303fcf421eda1fd4ee2f0d80bc5e078b4b5",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script fournit une barre de progression réutilisable pour Bash. Il s'utilise en le chargeant avec source, puis en canalisant la sortie d'une boucle vers la fonction progress_bar::process, qui capte les lignes contenant « Progress=nombre » et affiche une barre mise à jour en temps réel. Le script gère aussi le redimensionnement de la fenêtre de terminal pour adapter la barre de progression.",
+  "explanations": {
+    "48": "set -o nounset arrête le script si une variable non définie est utilisée, set -o errexit l'arrête si une commande échoue — ce sont des mesures de sécurité standard pour éviter les erreurs silencieuses.",
+    "52": "PROGRESS_BAR_CHAR est un tableau contenant deux caractères : █ pour la partie complétée de la barre et ▒ pour la partie restante.",
+    "73": "Cette fonction capture le signal WINCH que Linux envoie quand la fenêtre du terminal est redimensionnée, permettant de récupérer le nombre de colonnes actuelles via tput cols.",
+    "88": "La syntaxe ${1?\"message\"} rend le paramètre obligatoire : si l'appelant ne passe pas d'argument, le script s'arrête avec ce message d'erreur.",
+    "90": "${3:-\"In progress\"} utilise la valeur du troisième paramètre si elle existe, sinon utilise « In progress » par défaut.",
+    "99": "printf -v info_segment stocke le résultat formaté dans la variable info_segment au lieu de l'afficher, permettant de le réutiliser dans le template final.",
+    "103": "Calcule le pourcentage de progression en multipliant progress par 100 et en divisant par total, avec une division entière.",
+    "111": "Calcule la taille disponible pour la barre en soustrayant la longueur des segments info et pourcentage de la largeur totale du terminal.",
+    "114": "Printf crée une chaîne de la taille voulue remplie d'espaces, qui seront remplacés par les caractères de barre à la ligne 119.",
+    "119": "Cette substitution de paramètre remplace chaque espace dans progress_segment par le caractère █, créant visuellement la partie « remplie » de la barre.",
+    "155": "trap configure le gestionnaire WINCH pour appeler progress_bar::__change_column_size chaque fois que le terminal est redimensionné.",
+    "159": "[[ $line =~ Progress=([[:digit:]]{1,}) ]] vérifie si la ligne contient « Progress= » suivi d'un ou plusieurs chiffres, et capture les chiffres dans BASH_REMATCH[1].",
+    "167": "(return 0 2> /dev/null) && sourced=1 || sourced=0 teste si le script a été sourcé ou exécuté directement : return fonctionne uniquement dans un script sourcé."
+  }
+}

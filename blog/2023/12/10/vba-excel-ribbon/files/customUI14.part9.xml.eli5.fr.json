@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:21.026Z",
+  "source": "customUI14.part9.xml",
+  "sourceHash": "a880ae57fb2760be3f7475da8c3306f23d07785f",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML définit une interface de ruban personnalisée pour Microsoft Office. Il crée un onglet nommé « Tab » contenant un groupe avec un bouton et une zone de texte éditable, chacun configuré pour déclencher des actions spécifiques quand l'utilisateur interagit avec eux.",
+  "explanations": {
+    "1": "L'attribut xmlns déclare l'espace de noms XML utilisé pour que Office reconnaisse les éléments customUI comme faisant partie de son schéma officiel.",
+    "4": "insertAfterMso=\"TabView\" positionne l'onglet personnalisé juste après l'onglet Affichage standard d'Office dans le ruban.",
+    "11": "onAction=\"OnButtonClicked\" indique que quand l'utilisateur clique sur ce bouton, une fonction nommée OnButtonClicked doit s'exécuter (définie ailleurs, probablement dans du code VBA ou .NET).",
+    "19": "onChange=\"OnEditBoxTextChanged\" déclenche la fonction OnEditBoxTextChanged chaque fois que l'utilisateur modifie le texte dans cette zone de texte."
+  }
+}

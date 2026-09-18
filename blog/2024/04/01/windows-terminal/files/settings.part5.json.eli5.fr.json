@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:39.032Z",
+  "source": "settings.part5.json",
+  "sourceHash": "da9ee89eae69e4d4590d1dfe6716f1aedf055a50",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON définit une structure de configuration contenant une liste de profils. Chaque profil possède un identifiant unique (guid), un nom d'affichage et un flag indiquant s'il est masqué ou non. C'est typiquement une structure de configuration pour une application qui gère plusieurs profils d'exécution ou d'environnement.",
+  "explanations": {
+    "5": "Le guid est un identifiant unique universel au format UUID qui permet d'identifier de manière certaine ce profil, même s'il est renommé par la suite.",
+    "6": "La propriété hidden est un booléen qui contrôle si ce profil doit être affiché ou masqué dans l'interface utilisateur de l'application.",
+    "7": "La propriété name contient simplement le label lisible du profil qui sera affiché à l'utilisateur."
+  }
+}

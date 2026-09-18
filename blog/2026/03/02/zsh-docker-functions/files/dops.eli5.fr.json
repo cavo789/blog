@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:20.366Z",
+  "source": "dops",
+  "sourceHash": "bf529bd7f2d24c8bea3004f81519a737ef370b5b",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script crée un menu interactif en Zsh qui permet à l'utilisateur de choisir parmi plusieurs opérations Docker (comme exécuter une commande dans un conteneur, voir les logs, etc.). Il utilise fzf pour afficher un menu sélectionnable, extrait le nom de l'opération choisie, vérifie qu'elle existe, puis l'exécute.",
+  "explanations": {
+    "4": "_d_check_env fzf vérifie que fzf (un utilitaire de recherche interactive) est disponible dans l'environnement, et retourne une erreur si ce n'est pas le cas.",
+    "6": "local -a options=( crée un tableau Zsh (array) local nommé options qui contient les différentes commandes Docker disponibles.",
+    "15": "print -l \"${options[@]}\" affiche chaque élément du tableau sur une ligne séparée, puis envoie la sortie à fzf pour la sélection interactive.",
+    "16": "fzf --height 30% --layout=reverse --header \"Select Docker Operation\" --border affiche un menu interactif avec 30% de la hauteur, en disposition inversée, avec un titre et une bordure.",
+    "17": "awk -F':' '{print $1}' découpe la ligne sélectionnée par le caractère ':' et extrait seulement la première partie (le nom de la commande).",
+    "19": "[[ -z \"$selected_op\" ]] vérifie si la variable est vide (l'utilisateur a annulé la sélection) et retourne 0 (succès) pour quitter.",
+    "22": "type \"$selected_op\" >/dev/null 2>&1 vérifie que la fonction existe en redirigeant toute sortie vers /dev/null pour éviter d'afficher du bruit."
+  }
+}

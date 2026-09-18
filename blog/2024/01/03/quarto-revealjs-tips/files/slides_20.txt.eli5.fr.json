@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:05.683Z",
+  "source": "slides_20.txt",
+  "sourceHash": "1cb2ee007c1bf3cb70b79d61cf110fde0c6fdf97",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration YAML définit les paramètres de rendu pour un document Reveal.js. Il active l'affichage du numéro de diapositive au format « numéro actuel / total » en bas de chaque présentation.",
+  "explanations": {
+    "3": "slide-number: c/t signifie que chaque diapositive affichera son numéro sous la forme « numéro courant / nombre total » (c pour « current », t pour « total »)"
+  }
+}

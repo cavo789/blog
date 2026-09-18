@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:30.124Z",
+  "source": "Main.java",
+  "sourceHash": "9abc7bdda88a77bfe9e924a4a3ed3a0bea724e57",
+  "lang": "java",
+  "textLang": "fr",
+  "summary": "Ce programme Java définit une classe Main avec une méthode main qui est le point d'entrée de l'application. Quand tu exécutes ce programme, il affiche simplement le message « Hello, World » à la console.",
+  "explanations": {}
+}

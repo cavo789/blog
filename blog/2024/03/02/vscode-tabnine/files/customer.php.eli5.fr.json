@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:48.076Z",
+  "source": "customer.php",
+  "sourceHash": "d908f822771f97cdee95cce12d685f2b545a5598",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "C'est une classe Customer avec une propriété privée firstName de type string. La ligne 7 montre un exemple où un assistant de complétion de code (comme Tabnine) prédit le nom de la méthode setter basée sur le nom de la propriété.",
+  "explanations": {
+    "5": "private string $firstName déclare une propriété d'instance privée typée comme string — seules les méthodes de cette classe peuvent la lire ou la modifier.",
+    "7": "Le commentaire indique que Tabnine complèterait automatiquement 'set' en 'setFirstName(string $firstname)' en se basant sur la propriété firstName définie plus haut."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:49.258Z",
+  "source": "slides_14.txt",
+  "sourceHash": "09fec80219af2d1d3f072849b5e32e2f83ecd05e",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier configure une présentation Reveal.js avec un thème CSS personnalisé et affiche une diapositive contenant une image redimensionnée. L'en-tête YAML spécifie les paramètres de rendu tandis que le contenu crée une diapositive avec une image.",
+  "explanations": {
+    "3": "La clé format indique à Quarto quel type de présentation générer et ses options associées.",
+    "4": "revealjs spécifie qu'on utilise le moteur de présentation Reveal.js plutôt qu'un autre format.",
+    "5": "La propriété theme charge custom.css au lieu du thème par défaut pour styliser la présentation.",
+    "7": "Les deux dièses créent une nouvelle diapositive dans la présentation.",
+    "9": "L'attribut style entre accolades applique du CSS directement à l'image pour définir sa largeur à 400 pixels."
+  }
+}

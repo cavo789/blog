@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:51.467Z",
+  "source": "index.txt",
+  "sourceHash": "ace63329b3bdcb4fc7f4218917d5172730077cbb",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce document Markdown génère automatiquement une analyse visuelle du projet en exécutant plusieurs scripts Python qui produisent des diagrammes et des statistiques. Chaque section importe une fonction spécialisée pour visualiser différents aspects de l'infrastructure, du système de fichiers, du flux métier et des données externes.",
+  "explanations": {
+    "1": "Les tirets délimitent les métadonnées YAML au début du fichier Markdown.",
+    "7": "Les backticks triples ouvrent un bloc de code Python que le moteur de rendu va exécuter.",
+    "8": "L'option echo: false masque le code source dans le document final, affichant uniquement le résultat.",
+    "9": "L'option output: asis indique que la sortie Python doit être insérée brute dans le document sans formatage supplémentaire.",
+    "23": "Le point \".\" représente le répertoire courant, pour analyser tous les fichiers du workspace à partir de la racine."
+  }
+}

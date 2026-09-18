@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:51.492Z",
+  "source": "posts.ts",
+  "sourceHash": "20fc973a84a6078154e8695731526d2628746103",
+  "lang": "typescript",
+  "textLang": "fr",
+  "summary": "Cette fonction extrait et structure les métadonnées de tous les articles de blog au format MDX stockés dans le répertoire `/blog`. Elle utilise `require.context` de Webpack pour charger dynamiquement chaque fichier, parse le frontmatter (en-tête YAML), résout les permaliens et les chemins d'images, puis retourne un tableau d'objets de métadonnées normalisées.",
+  "explanations": {
+    "51": "`require.context` est une fonction Webpack qui crée un contexte permettant de charger dynamiquement tous les fichiers correspondant à un motif donné — ici tous les fichiers `.md` ou `.mdx` dans le répertoire `blog` et ses sous-dossiers.",
+    "57": "On récupère le module chargé par Webpack pour cette clé, puis on l'asserte comme ayant une propriété `frontMatter` contenant les métadonnées du post.",
+    "59": "On extrait le chemin du répertoire contenant le post en supprimant les suffixes `/index.mdx?` (fichier racine du dossier) et le préfixe `./` (notation relative).",
+    "62": "Si le frontmatter définit un `slug` personnalisé sous forme de chaîne, on l'utilise pour construire le permalink.",
+    "63": "Si le slug commence déjà par `/`, on le conserve tel quel pour créer le permalink complet.",
+    "65": "Sinon on préfixe le slug avec `/blog/` et on supprime tout `/` initial redondant.",
+    "71": "Si l'image dans le frontmatter est un chemin relatif commençant par `./`, on la transforme en chemin absolu en la plaçant dans le répertoire du blog.",
+    "79": "On convertit la valeur de `draft` en booléen strictement, au cas où elle serait présente mais non-booléenne dans le frontmatter.",
+    "82": "On récupère le tableau des tags du frontmatter, en utilisant un tableau vide par défaut si le champ n'existe pas ou est vide.",
+    "89": "On filtre le tableau pour supprimer les entrées falsy (null, undefined, false) — c'est une sécurité au cas où un post serait invalide."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:02:36.771Z",
+  "source": ".part10.htaccess",
+  "sourceHash": "bc8bf15ba7580704a21e9947ac751ae0f0af30ea",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc configure le gestionnaire d'erreurs PHP en activant l'affichage des erreurs dans le navigateur, leur enregistrement dans les logs du serveur, et le suivi des erreurs précédentes, tout en spécifiant que les erreurs doivent être écrites dans le fichier error.log. La configuration est conditionnée à la présence du module mod_php5.",
+  "explanations": {
+    "1": "IfModule vérifie si le module mod_php5 est chargé avant d'appliquer les directives PHP à l'intérieur du bloc — cela évite les erreurs si ce module n'existe pas.",
+    "2": "display_errors on fait en sorte que les erreurs PHP s'affichent directement dans le navigateur, utile pour le débogage en développement.",
+    "3": "log_errors on enregistre les erreurs PHP dans le fichier log défini, en plus de les afficher potentiellement à l'écran.",
+    "4": "track_errors on mémorise la dernière erreur survenue dans la variable globale $php_errormsg, ce qui permet d'y accéder par programme.",
+    "5": "error_log error.log spécifie que les erreurs PHP doivent être écrites dans le fichier error.log à la racine du répertoire."
+  }
+}

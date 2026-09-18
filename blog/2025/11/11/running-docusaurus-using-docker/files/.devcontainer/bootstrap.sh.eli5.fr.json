@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:05:14.640Z",
+  "source": "bootstrap.sh",
+  "sourceHash": "2b23ea796a228ba2e2cc2d8521284174af2eee91",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script démarre le serveur de développement Docusaurus en mode HTTPS sur tous les interfaces réseau. Il configure d'abord le shell pour échouer rapidement en cas d'erreur, charge des fonctions utilitaires, puis lance yarn start avec les certificats SSL et paramètres réseau appropriés.",
+  "explanations": {
+    "2": "set -euo pipefail configure le shell pour quitter immédiatement si une commande échoue (-e), empêche l'utilisation de variables indéfinies (-u), et propage les erreurs dans les pipelines (-o pipefail).",
+    "5": "source charge les fonctions définies dans le fichier bash_helpers.sh pour les rendre disponibles dans ce script.",
+    "8": "HTTPS=true passe une variable d'environnement à la commande yarn qui suit, en utilisant la syntaxe backslash pour continuer sur les lignes suivantes."
+  }
+}

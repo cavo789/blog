@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:36.600Z",
+  "source": "your-post.txt",
+  "sourceHash": "2e837d380147c290fc960d3cd20a6f8f62709bf9",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est un en-tête de métadonnées (front matter) pour un article de blog, écrit au format YAML. Il définit les propriétés essentielles de l'article comme son identifiant URL (slug), son titre, ses auteurs et un flag indiquant qu'il a été créé avec assistance IA. Le contenu de l'article apparaît ensuite après la délimitation par les traits d'union.",
+  "explanations": {
+    "2": "slug est l'identifiant utilisé dans l'URL de l'article — ici, l'article serait accessible via une adresse comme /mon-super-article.",
+    "4": "authors est un tableau contenant une liste ; ici il ne contient qu'un seul auteur identifié par le nom christophe.",
+    "5": "ai_assisted est un booléen (vrai/faux) qui indique que cet article a été créé ou modifié avec l'aide d'une intelligence artificielle."
+  }
+}

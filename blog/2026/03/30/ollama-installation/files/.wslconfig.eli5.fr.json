@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:25.790Z",
+  "source": ".wslconfig",
+  "sourceHash": "14b2222257ac28175c444c63b1fda2b7519b9585",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier configure WSL2 (Windows Subsystem for Linux version 2) en définissant des limites de ressources et en activant des fonctionnalités utiles. Il alloue 20GB de RAM à Linux tout en laissant 12GB pour Windows, ajoute de l'espace d'échange, active le mode réseau miroir pour un accès localhost transparent, et configure la compression automatique du disque virtuel et la récupération de mémoire.",
+  "explanations": {
+    "4": "memory=20GB fixe la quantité maximale de RAM que WSL2 peut utiliser; le commentaire ci-dessus indique que cela laisse 12GB disponibles pour Windows lui-même.",
+    "7": "swap=8GB crée un espace d'échange (disque utilisé comme mémoire supplémentaire) de 8GB pour quand WSL2 approche de sa limite de RAM.",
+    "10": "networkingMode=mirrored fait en sorte que WSL2 utilise les mêmes interfaces réseau que Windows, permettant d'accéder à localhost depuis WSL2 sans configuration réseau complexe.",
+    "13": "sparseVhd=true compresse automatiquement le fichier disque virtuel quand tu supprimes des fichiers dans WSL2, libérant cet espace pour Windows.",
+    "18": "autoMemoryReclaim=gradual permet à Windows de reprendre progressivement la RAM que WSL2 n'utilise plus activement, au lieu de la garder retenue indéfiniment."
+  }
+}

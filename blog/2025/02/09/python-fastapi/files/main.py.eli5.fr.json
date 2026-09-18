@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:36.998Z",
+  "source": "main.py",
+  "sourceHash": "ffbbc7602f03b7adbf3638d9aa133656c1dcf018",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée une application web FastAPI basique avec un seul endpoint. Quand on accède à la racine du serveur (l'URL /), l'application répond avec un objet JSON contenant un message de salutation.",
+  "explanations": {
+    "3": "FastAPI() crée une nouvelle instance d'application web — c'est le point de départ de tout serveur FastAPI.",
+    "5": "@app.get(\"/\") est un décorateur qui dit à FastAPI que la fonction en dessous doit répondre aux requêtes GET sur le chemin /.",
+    "7": "return {...} envoie automatiquement ce dictionnaire Python au client sous forme de JSON."
+  }
+}

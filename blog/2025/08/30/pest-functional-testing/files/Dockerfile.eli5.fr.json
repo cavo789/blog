@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:10.153Z",
+  "source": "Dockerfile",
+  "sourceHash": "06dd7540f310474e48583f7b9954a4f6db22e6f3",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker multi-étapes pour exécuter des tests navigateur avec Pest et Playwright. La première étape (builder) compile les dépendances PHP et Node.js, tandis que la deuxième étape (php) prépare l'environnement d'exécution final en copiant les dépendances, en créant un utilisateur non-root, et en installant les navigateurs Playwright.",
+  "explanations": {
+    "3": "Cette directive indique au builder Docker d'utiliser la syntaxe BuildKit version 1.4, qui active des fonctionnalités avancées comme les caches montés.",
+    "5": "PHP_CLI_VERSION définit la version de PHP avec CLI (interface en ligne de commande) utilisée dans l'étape builder pour compiler les dépendances.",
+    "6": "PHP_FPM_VERSION spécifie la version de PHP-FPM (FastCGI Process Manager) pour l'image finale, utilisée pour servir l'application en production.",
+    "15": "FROM php:${PHP_CLI_VERSION} AS builder crée une étape intermédiaire nommée 'builder' qui démarre à partir de l'image PHP CLI, permettant de compiler les dépendances sans les inclure dans l'image finale.",
+    "26": "RUN --mount=type=cache monte un cache réutilisable pour /var/cache/apt afin que les mises à jour de paquets système soient mises en cache entre les constructions, accélérant les builds suivants.",
+    "27": "set -eux active le mode strict du shell : arrêt en cas d'erreur (-e), affichage de chaque commande (-x), et traitement des variables non définies (-u).",
+    "32": "docker-php-ext-install est un script fourni par l'image PHP officielle qui compile et active les extensions PHP spécifiées (zip et sockets ici).",
+    "42": "Un package.json temporaire avec Playwright est créé pour que npm install récupère les dépendances Node nécessaires aux tests navigateur.",
+    "48": "RUN --mount=type=cache monte le répertoire Composer pour réutiliser les dépendances PHP téléchargées, accélérant les reconstructions.",
+    "54": "FROM php:${PHP_FPM_VERSION} AS php lance une nouvelle étape finale basée sur PHP-FPM, séparant l'environnement de compilation du runtime.",
+    "57": "ENV TZ=${TIMEZONE} définit le fuseau horaire global du conteneur, utilisé par PHP et les applications.",
+    "62": "Comme à la ligne 26, ceci monte le cache APT pour accélérer l'installation des dépendances système dans l'étape finale.",
+    "68": "docker-php-ext-install installe pcntl (contrôle de processus), zip et sockets, extensions nécessaires pour la gestion de processus et I/O réseau.",
+    "78": "groupadd crée un groupe système avec l'ID spécifié (OS_GROUPID) pour exécuter les commandes sans privilèges root.",
+    "79": "useradd crée un utilisateur système avec le groupe www-data et les identifiants fournis, permettant un conteneur sécurisé non-root.",
+    "84": "COPY --from=builder copie tous les fichiers de l'étape builder vers l'image finale en changant la propriété à l'utilisateur non-root créé plus tôt.",
+    "89": "PATH est étendu pour inclure node_modules/.bin, rendant les exécutables npm (comme npx playwright) accessibles directement depuis le shell.",
+    "92": "USER ${OS_USERNAME} bascule l'exécution des commandes suivantes et du conteneur vers l'utilisateur non-root pour des raisons de sécurité.",
+    "95": "npx playwright install chromium télécharge et installe les navigateurs Chromium requis par Playwright pour les tests navigateur."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:47.812Z",
+  "source": "rgf.zsh",
+  "sourceHash": "f697462aed83ac27e6b68287fc89c94548e8bd97",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script crée une fonction de recherche interactive qui combine ripgrep pour chercher du texte, fzf pour sélectionner interactivement, et bat pour afficher un aperçu du code. Quand l'utilisateur choisit un résultat, le script ouvre automatiquement le fichier dans VSCode à la ligne exacte où le texte a été trouvé.",
+  "explanations": {
+    "8": "missing_dep est un drapeau qui reste à 0 si tout va bien ; on le met à 1 si on trouve un outil manquant, ce qui permet de vérifier à la fin si la fonction doit s'arrêter.",
+    "10": "uname -s retourne le type de système d'exploitation (Darwin pour macOS, Linux pour Linux, etc.) pour savoir quel gestionnaire de paquets utiliser.",
+    "12": "command -v vérifie si fzf est disponible quelque part dans le PATH ; >/dev/null 2>&1 supprime tout message de sortie pour que la commande serve juste à tester l'existence.",
+    "22": "Cette ligne teste deux noms possibles du même outil car Ubuntu et Debian l'appellent batcat au lieu de bat.",
+    "27": "On teste si au moins une dépendance manquait (missing_dep vaut 1) ; si c'est le cas, on affiche les instructions d'installation.",
+    "29": "On détecte le système d'exploitation en comparant la sortie de uname avec Darwin, ou en vérifiant l'existence de fichiers de version spécifiques à chaque distribution Linux.",
+    "45": "On appelle la fonction de vérification des dépendances ; si elle retourne un code d'erreur (1), on quitte le script avec return 1.",
+    "61": "mktemp crée un fichier temporaire unique dans /tmp avec un nom sécurisé ; on en a besoin parce que fzf doit écrire son résultat quelque part.",
+    "63": "rg cherche le motif dans les fichiers avec les codes couleur activés (--color=always), et fzf reçoit cette sortie ligne par ligne.",
+    "64": "L'option --ansi dit à fzf de reconnaître et respecter les codes couleur ANSI que rg a ajoutés.",
+    "67": "Le délimiteur ':' dit à fzf que les champs sont séparés par des deux-points (format ripgrep: fichier:ligne:contenu).",
+    "68": "--nth=3.. signifie que fzf doit chercher et filtrer en utilisant seulement le 3e champ et au-delà (le contenu), pas le fichier ou la ligne.",
+    "69": "--preview lance bat pour montrer un aperçu du fichier, en mettant en évidence la ligne sélectionnée {2} du fichier {1}.",
+    "70": "--preview-window positionne l'aperçu à droite de l'écran sur 60% de la largeur, centré sur la ligne du résultat avec 3 lignes de contexte.",
+    "72": "On capture le code de sortie de fzf (0 si l'utilisateur a sélectionné quelque chose, 1 ou 130 si l'utilisateur a annulé).",
+    "74": "$(<\"$tmpfile\") lit le contenu du fichier temporaire en une seule opération efficace.",
+    "78": "On quitte si fzf a échoué (code non zéro) ou si la sélection est vide, autrement on continue pour ouvrir le résultat.",
+    "82": "sed supprime tous les codes d'échappement ANSI (codes couleur) du texte sélectionné, puis cut extrait le 1er champ (avant le premier ':'), qui est le nom du fichier.",
+    "83": "On utilise le même sed pour nettoyer, puis cut extrait le 2e champ (entre les deux ':'), qui est le numéro de ligne.",
+    "89": "code --goto ouvre VSCode et va directement à la ligne spécifiée dans le format fichier:numéro."
+  }
+}

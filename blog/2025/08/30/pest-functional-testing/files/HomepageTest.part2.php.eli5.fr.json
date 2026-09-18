@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:13.364Z",
+  "source": "HomepageTest.part2.php",
+  "sourceHash": "527f31f2e3e3d4a605572fb37b82d3e485019579",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier contient une suite de tests de navigation pour vérifier le fonctionnement d'un site web personnel. Chaque test visite une URL spécifique du site et vérifie que le contenu attendu s'affiche correctement — on teste l'accueil, les pages de blog, la recherche, et d'autres fonctionnalités essentielles.",
+  "explanations": {
+    "4": "getenv('WEBSITE') récupère la variable d'environnement WEBSITE qui contient l'URL de base du site à tester.",
+    "14": "On concatène l'URL de base avec '/blog' pour visiter la page blog spécifiquement.",
+    "20": "->click('Blog') simule un clic sur un élément contenant le texte 'Blog' pour naviguer vers la page blog.",
+    "21": "->assertPathIs('/blog') vérifie que l'URL actuelle est bien '/blog' après avoir cliqué.",
+    "37": "->click('.DocSearch-Button') clique sur un élément HTML avec la classe CSS 'DocSearch-Button' — c'est un bouton de recherche.",
+    "38": "->type('.DocSearch-Input', 'Bluesky') trouve le champ de saisie avec la classe 'DocSearch-Input' et y tape le texte 'Bluesky'."
+  }
+}

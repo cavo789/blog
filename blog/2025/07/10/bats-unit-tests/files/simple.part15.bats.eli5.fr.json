@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:21.990Z",
+  "source": "simple.part15.bats",
+  "sourceHash": "d854147ad270f809956e89d3cf526776a3c3c9b9",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la fonction assert::dockerImageExists fonctionne correctement en simulant une image Docker existante. On remplace la commande docker par une version fictive qui retourne un ID d'image, puis on exécute la fonction d'assertion et on vérifie qu'elle réussit sans produire de sortie.",
+  "explanations": {
+    "5": "On définit une fonction docker locale qui remplace la vraie commande docker pour ce test — cela permet de tester la fonction d'assertion sans avoir besoin d'une véritable image Docker.",
+    "9": "On charge le fichier assert.sh qui contient les fonctions d'assertion, y compris assert::dockerImageExists.",
+    "10": "run exécute la fonction assert::dockerImageExists avec le nom d'image 'A-great-Docker-Image' et capture son résultat pour les assertions suivantes.",
+    "11": "On vérifie que la fonction n'affiche rien sur la sortie standard quand elle réussit."
+  }
+}

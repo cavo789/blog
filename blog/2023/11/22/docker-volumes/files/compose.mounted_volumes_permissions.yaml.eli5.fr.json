@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:59.312Z",
+  "source": "compose.mounted_volumes_permissions.yaml",
+  "sourceHash": "cd8fb8bf7d618d843059dcb5999a89b12669eea6",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé counter qui construit une image à partir du répertoire courant et la configure pour s'exécuter avec des permissions utilisateur limitées et un volume monté pour la persistance des données.",
+  "explanations": {
+    "5": "%%name=counter%% est un placeholder qui sera remplacé par la valeur counter lors du traitement du fichier.",
+    "10": "user: 1000:1000 indique que le conteneur s'exécutera en tant qu'utilisateur avec l'UID 1000 et GID 1000 au lieu de root, ce qui améliore la sécurité.",
+    "12": "volumes crée un montage entre le répertoire ./data de la machine hôte et /data à l'intérieur du conteneur pour que les données persistent après l'arrêt du conteneur."
+  }
+}

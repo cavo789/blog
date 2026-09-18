@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:06.422Z",
+  "source": ".gitconfig.part7",
+  "sourceHash": "6dee756291ca8b3c5f1a6a3169e7f5138f24bbf8",
+  "lang": "part7",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Git avec deux profils d'email différents selon le répertoire de travail. Le profil par défaut s'applique à tous les projets, tandis que le profil conditionnel remplace l'email pour les dépôts situés dans le répertoire ~/private_repositories/.",
+  "explanations": {
+    "5": "includeIf avec gitdir crée une condition qui s'active seulement si le dépôt Git se trouve dans le chemin spécifié — ici, n'importe quel dossier sous ~/private_repositories/."
+  }
+}

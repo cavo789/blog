@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:53.114Z",
+  "source": "customui.xml",
+  "sourceHash": "0c440dbfd598f08ed987a3e3e03b55286a6ec8e1",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML définit une interface utilisateur personnalisée pour Microsoft Office en ajoutant un nouvel onglet « demo Ribbon » à la barre de ruban. Cet onglet contient un groupe de paramètres avec une liste déroulante permettant de sélectionner une période, dont le comportement est géré par des fonctions VBA référencées.",
+  "explanations": {
+    "1": "xmlns declare l'espace de noms XML qui spécifie le schéma Microsoft Office pour les interfaces utilisateur personnalisées.",
+    "4": "insertBeforeMso=\"TabHome\" place le nouvel onglet avant l'onglet Accueil natif de Microsoft Office dans la barre de ruban.",
+    "6": "onAction, getSelectedItemID, getItemLabel et les autres attributs pointent vers des fonctions VBA dans le module modToolbar qui gèrent l'interaction de la liste déroulante — par exemple, onAction s'exécute quand l'utilisateur sélectionne une option."
+  }
+}

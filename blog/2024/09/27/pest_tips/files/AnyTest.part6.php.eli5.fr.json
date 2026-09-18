@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:34.910Z",
+  "source": "AnyTest.part6.php",
+  "sourceHash": "d78e9fa03a3d50ad2bd68d480c8234501edee720",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier définit des règles d'architecture pour un projet Laravel en utilisant des tests de dépendances. Il vérifie que les contrôleurs n'importent pas directement Request, que les modèles ne sont utilisés que dans les repositories, que les repositories ne sont appelés que par les contrôleurs, et que certaines fonctions globales et facades ne sont pas utilisées dans le code.",
+  "explanations": {
+    "2": "expect() indique qu'on va vérifier le comportement du namespace 'App\\Http\\Controllers'.",
+    "3": "not->toUse() signifie que le code de ce namespace ne doit pas importer ou utiliser 'Illuminate\\Http\\Request'.",
+    "7": "expect() cible le namespace 'App\\Models' pour vérifier les règles qui suivent.",
+    "8": "toOnlyBeUsedOn() contraint ce namespace à n'être utilisé que par 'App\\Repositories', nulle part ailleurs.",
+    "9": "toOnlyUse() restreint ce namespace à ne pouvoir importer que 'Illuminate\\Database'.",
+    "13": "toOnlyBeUsedOn('App\\Controllers') signifie que les repositories ne peuvent être appelés que par les contrôleurs.",
+    "17": "On peut passer un tableau de noms pour tester plusieurs fonctions globales à la fois, ici dd, dump et var_dump.",
+    "18": "not->toBeUsed() impose que ces fonctions globales ne doivent pas apparaître dans le code source.",
+    "22": "not->toBeUsed() interdit l'utilisation des facades du framework Illuminate.",
+    "23": "ignoring() exempte le namespace 'App\\Providers' de cette règle, il peut donc utiliser les facades."
+  }
+}

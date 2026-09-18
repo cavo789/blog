@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:45:31.662Z",
+  "source": "compose.yaml",
+  "sourceHash": "cb041e52dfcebbabc0216253d08255be0a7c41e3",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service Python appelé app_python qui construit une image Docker à partir du répertoire courant en ciblant l'étape development. Le service configure plusieurs variables d'environnement pour personnaliser la version de Python, le répertoire racine de l'application et les identifiants utilisateur/groupe du conteneur, tout en montant le code source local et deux volumes nommés pour persister les extensions VSCode et l'historique bash.",
+  "explanations": {
+    "7": "target: development indique que le Dockerfile possède plusieurs étapes de build (stages) et on veut construire jusqu'à celle nommée 'development', pas jusqu'à la fin.",
+    "10": "DOCKER_PYTHON_VERSION=${DOCKER_PYTHON_VERSION} passe une variable d'environnement de l'hôte vers le build du conteneur ; cette syntaxe signifie « utilise la valeur de la variable DOCKER_PYTHON_VERSION ».",
+    "12": "DOCKER_APP_HOME=${DOCKER_APP_HOME:-/app} signifie « utilise la valeur de DOCKER_APP_HOME si elle existe, sinon utilise /app par défaut ».",
+    "21": "user: ${DOCKER_OS_USERID:-1000}:${DOCKER_OS_GROUPID:-1000} définit les identifiants Unix (userid:groupid) sous lesquels le conteneur exécutera les processus, avec des valeurs par défaut si non spécifiées.",
+    "27": ".: ${DOCKER_APP_HOME} monte le répertoire courant de l'hôte (le '.') vers le chemin DOCKER_APP_HOME dans le conteneur, afin que les modifications du code local se reflètent immédiatement.",
+    "29": "vscode-extensions:/home/... monte un volume Docker nommé pour stocker les extensions VSCode de manière persistante, sinon elles se réinstalleraient à chaque démarrage du conteneur.",
+    "31": "bashhistory:/home/... monte un volume Docker nommé pour préserver l'historique des commandes bash entre les redémarrages du conteneur."
+  }
+}

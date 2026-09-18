@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:13.872Z",
+  "source": "team.py",
+  "sourceHash": "c71776ae30f1314cd81115dd77510a7bf34b61cf",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script utilise la bibliothèque diagrams pour générer visuellement une architecture AWS représentant une équipe. Il crée un diagramme montrant un load balancer nommé Olivier dirigeant le trafic vers cinq instances EC2 (les membres de l'équipe), lesquelles se connectent à une base de données RDS partagée appelée Work together, le tout sans afficher le résultat à l'écran.",
+  "explanations": {
+    "6": "Diagram() crée un nouveau diagramme avec le titre My Team; show=False empêche l'affichage automatique; direction=\"TB\" signifie que le flux de données s'écoule de haut en bas (Top to Bottom).",
+    "8": "ELB() représente un Elastic Load Balancer (répartiteur de charge) nommé Olivier qui reçoit les requêtes.",
+    "9": "L'opérateur >> indique le flux de connexion entre les composants; les crochets [] regroupent les cinq instances EC2 pour montrer qu'elles reçoivent toutes le trafic du load balancer.",
+    "10": "Après le traitement par les instances EC2, le flux se connecte à RDS (la base de données), aussi nommée Work together."
+  }
+}

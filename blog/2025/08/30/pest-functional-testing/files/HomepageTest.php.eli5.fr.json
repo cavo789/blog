@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:17.431Z",
+  "source": "HomepageTest.php",
+  "sourceHash": "1660874f88d10316f4f57ef9c13c71ac7a6038e7",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier contient une série de tests automatisés qui vérifient le fonctionnement d'un site web personnel. Chaque test utilise la fonction it() pour visiter différentes pages du site via getenv('WEBSITE') et confirmer que le contenu attendu s'affiche correctement, en testant des éléments comme la page d'accueil, le blog, la navigation et la gestion des erreurs.",
+  "explanations": {
+    "4": "getenv('WEBSITE') récupère la variable d'environnement WEBSITE qui contient l'URL du site à tester, et visit() navigue vers cette URL.",
+    "5": "assertSee() vérifie que le texte 'Avonture' apparaît quelque part sur la page chargée.",
+    "14": "On concatène l'URL de base avec '/blog' pour tester spécifiquement la page du blog.",
+    "20": "click('Blog') simule un clic sur un lien ou bouton intitulé 'Blog'.",
+    "21": "assertPathIs() confirme que après l'action précédente, on se trouve effectivement à l'URL '/blog'.",
+    "37": "click('.DocSearch-Button') cible un élément HTML avec la classe CSS 'DocSearch-Button' et simule un clic dessus.",
+    "38": "type() simule la saisie de texte dans un champ d'entrée identifié par le sélecteur CSS '.DocSearch-Input'.",
+    "50": "On teste la gestion des erreurs en visitant une URL inexistante pour vérifier que le site affiche correctement une page 404."
+  }
+}

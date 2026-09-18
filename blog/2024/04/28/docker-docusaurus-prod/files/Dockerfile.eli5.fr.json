@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:11.835Z",
+  "source": "Dockerfile",
+  "sourceHash": "877cdf7d5ded63ec22441610a901f00be71d48d0",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une application Docusaurus en trois étapes : d'abord une image de base Node.js avec yarn configuré, puis une étape intermédiaire qui installe Docusaurus, ses dépendances, et génère le site statique, enfin une image nginx légère qui sert les fichiers générés. Cette approche réduit la taille de l'image finale en ne gardant que ce qui est nécessaire pour servir le site.",
+  "explanations": {
+    "1": "Cette directive indique au moteur Docker d'utiliser la syntaxe Dockerfile moderne avec support des fonctionnalités avancées.",
+    "10": "Cette variable d'environnement désactive la coloration des messages yarn pour que les logs conteneurisés soient plus lisibles.",
+    "13": "Corepack est un gestionnaire de version pour yarn, npm et pnpm ; cette commande l'active pour utiliser la version de yarn spécifiée dans le projet.",
+    "22": "npx crée une nouvelle application Docusaurus avec le template classic en JavaScript dans le répertoire /opt/docusaurus/.",
+    "25": "chown modifie le propriétaire du répertoire pour que l'utilisateur node (moins privilégié) puisse y accéder, au lieu que ce soit root.",
+    "31": "COPY copie package.json et yarn.lock du contexte de build (ta machine) vers l'image, avant de copier le reste du code.",
+    "34": "Le flag --immutable gèle les versions exactes des dépendances, garantissant que chaque build installe exactement les mêmes versions.",
+    "49": "COPY --from=building_production récupère le répertoire build/ de l'étape précédente et le place là où nginx le servira."
+  }
+}

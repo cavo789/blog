@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:14.329Z",
+  "source": "data_flow.py",
+  "sourceHash": "68718b957d504ced92fd06a51a22484c05c5112d",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code construit un diagramme de flux de données en créant un graphe orienté avec trois types de nœuds (sources, processus, et stockage), puis ajoute des arêtes pour représenter comment les données circulent entre ces éléments. Finalement, il exporte le diagramme complet en image PNG.",
+  "explanations": {
+    "1": "pydot.Dot(graph_type='digraph') crée un nouveau graphe vide avec 'digraph' indiquant que c'est un graphe orienté, où les flèches ont une direction.",
+    "4": "pydot.Node() crée un nœud (point) qu'on peut ajouter au graphe ; shape='box' définit l'apparence visuelle du nœud comme un rectangle.",
+    "10": "shape='oval' donne au nœud une forme ovale pour le différencier visuellement des sources rectangulaires.",
+    "16": "shape='cylinder' représente le stockage de données avec une forme de cylindre, symbolisant une base de données.",
+    "20": "pydot.Edge() crée une connexion directionnelle du premier nœud vers le second, et graph.add_edge() l'ajoute au graphe pour montrer le flux de données.",
+    "27": "write_png() génère et sauvegarde le graphe complet sous forme d'image PNG dans le fichier 'data_flow_diagram.png'."
+  }
+}

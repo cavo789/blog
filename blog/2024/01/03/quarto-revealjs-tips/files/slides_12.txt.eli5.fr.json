@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:44.418Z",
+  "source": "slides_12.txt",
+  "sourceHash": "bfbc598f811027a3a09b229a1caa5f4ce71d9f3f",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est un en-tête de configuration YAML pour un document Reveal.js, un framework de présentation. Il injecte un script personnalisé dans la section header du document HTML généré.",
+  "explanations": {
+    "3": "revealjs spécifie le format de sortie souhaité — on veut que Pandoc génère une présentation Reveal.js plutôt qu'un PDF ou HTML standard.",
+    "4": "header-includes permet d'ajouter du contenu HTML brut directement dans la section <head> du document final."
+  }
+}

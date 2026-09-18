@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:52.031Z",
+  "source": "robots.txt",
+  "sourceHash": "6432d2e57bc514879ae83cf84d08768afb8f0ee1",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier robots.txt configure l'accès des robots de moteurs de recherche au site avonture.be. Il autorise tous les robots à crawler le site mais leur interdit d'accéder à certains fichiers XML et JSON, notamment les index de flux, pour éviter d'indexer du contenu dupliqué ou inutile. Le fichier indique aussi au moteur de recherche la localisation du sitemap du site.",
+  "explanations": {
+    "1": "User-Agent: * signifie que les règles suivantes s'appliquent à tous les robots de moteurs de recherche sans exception.",
+    "2": "Sitemap indique aux moteurs de recherche où trouver le plan du site (une liste complète des pages) pour qu'ils découvrent facilement tout le contenu.",
+    "3": "Le $ à la fin de /*index.xml$ est une expression régulière qui signifie « une URL se terminant par index.xml » — cela empêche l'indexation de tous les fichiers nommés index.xml peu importe où ils se trouvent."
+  }
+}

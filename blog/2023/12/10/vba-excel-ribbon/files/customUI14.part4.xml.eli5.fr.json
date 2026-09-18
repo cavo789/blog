@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:09.405Z",
+  "source": "customUI14.part4.xml",
+  "sourceHash": "986ccad01bb9e116cbc441e886b68199b6e31048",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML définit une interface utilisateur personnalisée pour Office en utilisant le schéma customUI. Il crée un ruban avec un onglet nommé TabHome, où on peut ajouter des boutons et d'autres contrôles pour étendre les fonctionnalités de l'application Office.",
+  "explanations": {
+    "1": "Cette ligne déclare le document XML et établit l'espace de noms (namespace) customUI spécifique à Microsoft Office, qui permet au système de reconnaître les éléments personnalisés.",
+    "5": "L'élément tab crée un onglet dans le ruban Office avec l'identifiant TabHome, qui servira de point d'ancrage pour ajouter des contrôles comme des boutons."
+  }
+}

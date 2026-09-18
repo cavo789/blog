@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:32.292Z",
+  "source": "index.php",
+  "sourceHash": "5c72388daf52ed2e4e9ebf2065cf8d4fa530ff97",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script PHP affiche des informations détaillées sur la configuration et l'état du serveur PHP actuel, comme la version installée, les extensions chargées et les paramètres de configuration.",
+  "explanations": {
+    "3": "phpinfo() est une fonction intégrée à PHP qui génère une page HTML contenant toutes les informations de diagnostic sur l'environnement PHP en cours d'exécution."
+  }
+}

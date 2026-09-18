@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:24.632Z",
+  "source": "settings.json",
+  "sourceHash": "40cb93ae801b52dbcf79157981d23c6a95615c86",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration active la fonctionnalité de défilement collant dans l'éditeur de code. Cette feature garde visible en haut de la fenêtre les en-têtes de structure (comme les noms de fonctions ou de classes) pendant que tu fais défiler le code.",
+  "explanations": {}
+}

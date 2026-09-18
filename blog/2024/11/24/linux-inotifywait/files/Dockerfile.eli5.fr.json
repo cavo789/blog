@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:45:50.500Z",
+  "source": "Dockerfile",
+  "sourceHash": "07b501c261cbacaf9ce8560096f41840cd8bd32b",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile configure une image Docker basée sur Python 3.10 allégée, crée deux répertoires (/app/out pour les fichiers de sortie et /app/src comme répertoire de travail), et configure le conteneur pour rester actif indéfiniment avec la commande tail.",
+  "explanations": {
+    "3": "AS base crée une étape de build nommée que tu pourras réutiliser ou référencer plus tard dans d'autres FROM si tu construis une image multi-étapes.",
+    "6": "mkdir -p crée le répertoire /app/out et tous ses parents s'ils n'existent pas déjà, le -p empêche une erreur si le répertoire existe déjà.",
+    "9": "WORKDIR définit le répertoire courant pour toutes les commandes suivantes, donc quand tu exécutes des commandes dans le conteneur, tu seras par défaut dans /app/src.",
+    "12": "ENTRYPOINT avec tail -f /dev/null maintient le conteneur actif indéfiniment en gardant le processus principal vivant, ce qui est utile pour les conteneurs de développement où tu veux garder le contrôle."
+  }
+}

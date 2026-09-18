@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:43.452Z",
+  "source": "composer.part2.json",
+  "sourceHash": "971e896e8b4bdeba45bc9f31293617a3cc43786d",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration JSON définit les métadonnées essentielles d'un plugin Composer appelé ergebnis/composer-normalize. Il s'agit d'un outil qui normalise automatiquement la structure et le format des fichiers composer.json pour maintenir une cohérence dans les projets PHP. Le plugin est distribué sous licence MIT.",
+  "explanations": {
+    "4": "Le type composer-plugin indique à Composer que ce paquet n'est pas une simple bibliothèque mais un plugin qui peut s'intégrer dans l'écosystème Composer et modifier son comportement.",
+    "5": "Le name suit la convention vendor/package, où ergebnis est l'organisation ou l'auteur et composer-normalize est le nom unique du paquet sur Packagist."
+  }
+}

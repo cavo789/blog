@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:05.660Z",
+  "source": "Dockerfile.part3",
+  "sourceHash": "bf205ef940806e65b61f22b76de4fbe21da43e8c",
+  "lang": "part3",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur PHP-FPM pour exécuter des applications PHP qui se connectent à des bases de données Oracle. Il installe les dépendances système nécessaires, télécharge et configure Oracle Instant Client, puis installe l'extension PHP OCI8 pour activer la connectivité Oracle.",
+  "explanations": {
+    "5": "apt-get update rafraîchit la liste des paquets disponibles, et apt-get install -y installe les paquets listés ; --no-install-recommends réduit la taille en évitant les dépendances optionnelles.",
+    "11": "rm -rf /var/lib/apt/lists/* supprime le cache des paquets téléchargés pour réduire la taille finale de l'image Docker.",
+    "18": "ARG définit une variable de construction disponible pendant la création de l'image, ici la version du client Oracle.",
+    "21": "curl télécharge les fichiers ZIP depuis les serveurs Oracle ; -o spécifie où sauvegarder le fichier et -L suit les redirections HTTP.",
+    "27": "ln -s crée un lien symbolique (raccourci) qui pointe vers le répertoire instantclient avec le suffixe de version, facilitant les références futures.",
+    "28": "sh -c exécute une commande shell qui écrit le chemin du client Oracle dans un fichier de configuration du chargeur de bibliothèques.",
+    "29": "ldconfig met à jour le cache du système pour que les bibliothèques Oracle nouvellement installées soient trouvées.",
+    "32": "pecl install télécharge et compile l'extension OCI8 à partir du PHP Extension Community Library ; le echo piped fournit le chemin du client Oracle en réponse à l'installation."
+  }
+}

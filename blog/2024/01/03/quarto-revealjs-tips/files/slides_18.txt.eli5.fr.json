@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:58.455Z",
+  "source": "slides_18.txt",
+  "sourceHash": "bc93eeb820a60a92ca2942d6ef318469f133f12a",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est un document Markdown contenant deux sections principales avec des en-têtes numérotés et des identifiants d'ancre. Chaque section est précédée d'un commentaire de surlignage qui indique au système de rendu de mettre en évidence la ligne suivante, permettant ainsi une meilleure lisibilité visuelle du document.",
+  "explanations": {
+    "1": "Le commentaire <!-- highlight-next-line --> est une directive destinée à un outil de rendu Markdown (comme Docusaurus) pour appliquer un surlignage visuel à la ligne immédiatement suivante.",
+    "2": "La syntaxe ## crée un en-tête de niveau 2, et {#intro} définit un identifiant d'ancre nommé 'intro' qui permet de créer des liens directs vers cette section.",
+    "7": "De la même manière que la ligne 2, ceci crée un second en-tête de niveau 2 avec un identifiant d'ancre {#chapter1} pour permettre la navigation intra-document."
+  }
+}

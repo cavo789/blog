@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:19.181Z",
+  "source": "my-site.part4.conf",
+  "sourceHash": "0419d5bdf71a4598c6dd34f092e09e118991bd15",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce fichier configure deux hôtes virtuels Apache pour servir la même application web sur HTTP (port 80) et HTTPS (port 443). Les deux hôtes redirigent toutes les requêtes vers index.html, ce qui est typique pour les applications single-page qui gèrent leur propre routage côté client. Le second hôte active SSL/TLS avec les certificats appropriés.",
+  "explanations": {
+    "6": "AllowOverride All permet au fichier .htaccess de ce répertoire de surcharger les directives Apache, utile si on veut modifier le comportement sans redéployer la config.",
+    "7": "RewriteEngine On active le moteur de réécriture d'URL d'Apache, qui permet de transformer les URLs entrantes selon des règles.",
+    "8": "RewriteCond %{REQUEST_FILENAME} !-f signifie « si le fichier demandé n'existe pas réellement sur le disque »—c'est la condition pour appliquer la règle suivante.",
+    "9": "RewriteRule ^(.*)$ index.html [QSA,L] redirige toute requête qui ne correspond pas à un fichier physique vers index.html ; QSA préserve les paramètres GET et L arrête le traitement des règles suivantes.",
+    "22": "SSLEngine on active le support HTTPS/SSL pour cet hôte virtuel.",
+    "23": "SSLCertificateFile pointe vers le fichier contenant le certificat public du serveur, nécessaire pour établir une connexion SSL sécurisée.",
+    "24": "SSLCertificateKeyFile pointe vers la clé privée correspondant au certificat—elle doit rester secrète et n'être connue que du serveur."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:02.155Z",
+  "source": "devcontainer.part4.json",
+  "sourceHash": "e8ce5d6e5dfd5aaa9eae00b52c445c1740e7cf21",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce snippet configure les personnalisations pour l'environnement de développement VS Code en spécifiant une liste d'extensions à installer. Ici, on ajoute l'extension SonarLint de SonarSource, qui analyse le code pour détecter les bugs et problèmes de qualité directement dans l'éditeur.",
+  "explanations": {
+    "3": "customizations est l'objet parent qui contient toutes les personnalisations de l'environnement de développement.",
+    "4": "vscode est une clé imbriquée qui regroupe spécifiquement les configurations destinées à VS Code.",
+    "5": "extensions est un tableau qui va contenir les identifiants des extensions VS Code à installer automatiquement.",
+    "8": "sonarsource.sonarlint-vscode est l'identifiant unique (ID de marketplace) de l'extension SonarLint pour VS Code ; il s'écrit au format editeur.nom-extension."
+  }
+}

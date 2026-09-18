@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:23.012Z",
+  "source": "slides_9.txt",
+  "sourceHash": "5aa6945e3fc37ed89219b19a318d43b9e5f872b5",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier crée une présentation avec un titre stylisé qui pose une question, suivie d'une image qui apparaît progressivement lors de la présentation. Il utilise la syntaxe Markdown avec des extensions pour la mise en forme et les animations.",
+  "explanations": {
+    "3": "La syntaxe ::: avec l'attribut style applique du CSS directement — ici on augmente la taille du texte à 2em et on le colore en bleu (#75AADB).",
+    "7": "La classe .fragment .fade-up indique à reveal.js que l'image doit s'animer en apparaissant progressivement vers le haut lorsque l'utilisateur avance dans la présentation."
+  }
+}

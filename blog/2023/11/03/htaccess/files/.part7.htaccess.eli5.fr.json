@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:27.820Z",
+  "source": ".part7.htaccess",
+  "sourceHash": "e75f20d9fa9d7eb6fab1024da1f337624e8a3f68",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc de configuration Apache intercepte les fichiers PDF et force le navigateur à les télécharger plutôt que de les afficher. Il modifie le type MIME en octet-stream et ajoute un en-tête Content-Disposition pour déclencher le comportement de téléchargement.",
+  "explanations": {
+    "1": "FilesMatch est une directive qui s'applique aux fichiers correspondant à un motif regex — ici, tous les fichiers finissant par .pdf.",
+    "2": "ForceType remplace le type MIME détecté par application/octet-stream, ce qui indique au navigateur que c'est un flux binaire générique à télécharger.",
+    "3": "Header set Content-Disposition attachment demande au navigateur d'afficher une boîte de dialogue de téléchargement au lieu de tenter d'afficher le fichier dans l'onglet."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:42.136Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "a6e7eeac60725354c7a6807ca9cc2058db864e8d",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un serveur web qui se construit à partir du répertoire courant et expose le port 8080, et une base de données PostgreSQL qui démarre toujours et reste saine grâce à des vérifications régulières. Le serveur attend que la base de données soit prête avant de démarrer, et les deux services partagent un volume persistant et des secrets pour gérer les données sensibles.",
+  "explanations": {
+    "6": "La syntaxe %%port=8080%% est un placeholder qui sera remplacé par une valeur de port lors du lancement ; ici on mappe le port 8080 de la machine hôte vers le port 80 du conteneur.",
+    "8": "On déclare que le service server dépend du service db avec une condition spécifique.",
+    "9": "La condition service_healthy signifie que le server ne démarre que quand db a réussi ses vérifications de santé (healthcheck).",
+    "14": "On référence un secret nommé db-password qui sera injecté dans le conteneur de manière sécurisée, sans l'exposer dans les variables d'environnement classiques.",
+    "17": "On monte un volume nommé db-data sur le chemin /var/lib/postgresql/data du conteneur pour persister les données PostgreSQL entre les arrêts et redémarrages.",
+    "20": "Au lieu de passer le mot de passe directement en variable, PostgreSQL le lit depuis le fichier secret à /run/secrets/db-password, ce qui est plus sécurisé.",
+    "23": "Le healthcheck définit comment Docker vérifie que PostgreSQL est vraiment prêt à accepter des connexions.",
+    "24": "La commande pg_isready teste si le serveur PostgreSQL répond et est en bonne santé.",
+    "28": "Cette section top-level db-data déclare le volume nommé qui sera utilisé et géré par Docker.",
+    "30": "Cette section top-level déclare les secrets qui seront injectés dans les conteneurs de manière sécurisée.",
+    "32": "Le secret db-password est lu depuis le fichier db/password.txt sur la machine hôte."
+  }
+}

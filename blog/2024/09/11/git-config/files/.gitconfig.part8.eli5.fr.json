@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:08.574Z",
+  "source": ".gitconfig.part8",
+  "sourceHash": "8db6b17aad3af4b009f023275a987c8603268d7d",
+  "lang": "part8",
+  "textLang": "fr",
+  "summary": "Cette configuration Git remplace automatiquement les URLs HTTPS vers GitHub par des URLs SSH. Quand tu clones ou tu fais un push vers un dépôt GitHub en utilisant une URL HTTPS, Git utilisera à la place une connexion SSH avec ta clé privée, ce qui évite de devoir entrer ton mot de passe à chaque fois.",
+  "explanations": {
+    "1": "[url \"git@github.com\"] définit la nouvelle URL de destination — c'est ce que Git utilisera à la place de l'URL originale.",
+    "2": "insteadOf = https://github.com/ signifie que toute URL commençant par https://github.com/ sera remplacée par git@github.com."
+  }
+}

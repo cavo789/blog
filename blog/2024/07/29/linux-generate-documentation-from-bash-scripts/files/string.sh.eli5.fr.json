@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:20.313Z",
+  "source": "string.sh",
+  "sourceHash": "c79b1b46b7d125a664e7daf48809e3662726b05f",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction bash prend une chaîne de caractères en entrée (via stdin) et la convertit entièrement en majuscules en utilisant la commande tr, qui traduit tous les caractères minuscules en majuscules.",
+  "explanations": {
+    "30": "tr '[:lower:]' '[:upper:]' est une commande qui remplace chaque caractère appartenant à la classe [:lower:] (minuscules) par le caractère correspondant dans [:upper:] (majuscules) — c'est le mécanisme standard Unix pour transformer la casse du texte."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:32.196Z",
+  "source": ".pre-commit-config.yaml",
+  "sourceHash": "ccf7ea1624864efd5b1a844c6feed9474a025f54",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure pre-commit, un outil qui exécute automatiquement des vérifications avant chaque commit. Il définit une série de hooks qui contrôlent la qualité du code — en détectant les grands fichiers, les conflits de fusion, en validant le YAML et JSON, en vérifiant les liens Markdown, en contrôlant l'orthographe, et en nettoyant les espaces inutiles. Les hooks proviennent de dépôts publics ou sont des scripts locaux exécutés sur les fichiers correspondants.",
+  "explanations": {
+    "2": "exclude définit les dossiers et fichiers que pre-commit doit ignorer lors de son exécution — ici, les répertoires .build, .git et .quarto sont sautés.",
+    "6": "repo pointe vers le dépôt GitHub contenant la collection pré-construite de hooks universels de pre-commit.",
+    "23": "args fournit des arguments de ligne de commande au hook markdownlint, ici en spécifiant le fichier de configuration personnalisé à utiliser.",
+    "41": "repo: local indique que les hooks suivants ne viennent pas d'un dépôt externe mais sont définis localement dans ce projet.",
+    "45": "Cette commande bash utilise awk pour extraire le bloc YAML entre les premières deux lignes --- du fichier, puis yq valide sa syntaxe — c'est une façon d'isoler et vérifier juste la métadonnée frontale d'un fichier Quarto.",
+    "48": "args: [\"{}\" ] passe le nom du fichier en cours de traitement à la commande — {} est un placeholder que pre-commit remplace par chaque nom de fichier correspondant.",
+    "49": "files: \\.qmd$ limite ce hook aux fichiers dont l'extension est .qmd (fichiers Quarto).",
+    "64": "exclude exclut le dossier _extensions de la vérification orthographique, probablement parce qu'il contient du code généré ou des dépendances externes."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:40.484Z",
+  "source": "AnyTest.part8.php",
+  "sourceHash": "4de581a8efb65fe1cc56ee0d3d0c7ee1f6fbccf1",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce test vérifie qu'une requête GET sur la racine du site retourne une réponse valide. Il compare cette réponse à un snapshot enregistré précédemment pour s'assurer que le contenu de la page d'accueil ne change pas de façon inattendue.",
+  "explanations": {
+    "2": "$this->get('/') effectue une requête HTTP GET sur l'URL racine et stocke la réponse dans la variable.",
+    "3": "toMatchSnapshot() compare la réponse reçue avec un snapshot sauvegardé antérieurement — si le contenu diffère, le test échoue."
+  }
+}

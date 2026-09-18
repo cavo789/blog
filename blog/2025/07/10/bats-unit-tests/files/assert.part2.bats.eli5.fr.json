@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:39.455Z",
+  "source": "assert.part2.bats",
+  "sourceHash": "a23a8655aed7d1e3e4f1c9e9ff43a52a97e76c40",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce fichier de test bats configure un environnement de test avec des bibliothèques d'assertions et un fichier temporaire, puis valide que les fonctions assert::binaryExists et assert::dockerImageExists fonctionnent correctement en testant à la fois les cas de succès et d'échec. Les tests pour Docker utilisent des mocks pour simuler le comportement de la commande docker sans dépendre d'une installation réelle.",
+  "explanations": {
+    "3": "La fonction setup s'exécute avant chaque test pour initialiser l'environnement — charger les bibliothèques d'assertion et créer un fichier temporaire.",
+    "4": "bats_load_library charge une bibliothèque externe ; ici bats-assert fournit les fonctions comme assert_success et assert_output.",
+    "11": "[[ ! -d \"/tmp/bats\" ]] && mkdir \"/tmp/bats\" vérifie si le répertoire n'existe pas, et si c'est le cas, le crée — le && signifie « exécuter la commande suivante seulement si la précédente réussit ».",
+    "13": "touch crée un fichier vide ou met à jour son timestamp si déjà existant.",
+    "18": "[[ -f \"${tmpFile}\" ]] && rm -f \"${tmpFile}\" supprime le fichier temporaire seulement s'il existe effectivement, pour nettoyer après le test.",
+    "24": "run exécute la commande assert::binaryExists \"clear\" et capture son code de sortie et sa sortie pour les tester ensuite.",
+    "54": "docker() { ... } redéfinit la commande docker pour cette portée de test uniquement — c'est un mock qui retourne une valeur simulée au lieu d'appeler le vrai docker.",
+    "72": "assert::dockerImageExists reçoit un deuxième argument qui est le message d'erreur personnalisé à afficher en cas d'échec."
+  }
+}

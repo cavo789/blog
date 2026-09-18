@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:36.656Z",
+  "source": "card.txt",
+  "sourceHash": "3f47be36a34e547d0d66131605719c1e4b218b1d",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce snippet construit une interface utilisateur avec une carte (Card) contenant une image et un pied de page avec trois boutons d'interaction (Like, Comment, Share). La carte est disposée dans une grille de mise en page responsive avec un fond vert et du texte jaune au pied de page.",
+  "explanations": {
+    "10": "cardImageUrl passe le chemin de l'image /img/docux.png au composant CardImage pour qu'il affiche cette image dans la carte.",
+    "12": "style avec backgroundColor et color applique directement des styles CSS en ligne au composant CardFooter pour personnaliser son apparence.",
+    "15": "button-group button-group--block crée un conteneur qui aligne les trois boutons côte à côte et les fait prendre toute la largeur disponible."
+  }
+}

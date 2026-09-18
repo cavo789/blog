@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:51.308Z",
+  "source": "block_hidden_files_folders.htaccess",
+  "sourceHash": "ec70a43e9379e608653ba8227b5cac6c0e984563",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc de configuration Apache utilise mod_rewrite pour bloquer l'accès aux fichiers et répertoires cachés (commençant par un point). Il vérifie d'abord si la requête correspond à un répertoire ou un fichier existant, puis refuse l'accès à ceux dont le nom commence par un point en retournant une erreur 403.",
+  "explanations": {
+    "2": "RewriteCond vérifie une condition avant d'appliquer une règle de réécriture. %{SCRIPT_FILENAME} représente le chemin complet du fichier demandé, et -d teste si c'est un répertoire.",
+    "3": "-f teste si le chemin correspond à un fichier existant. [OR] à la ligne précédente signifie que la règle s'applique si l'une ou l'autre condition est vraie.",
+    "4": "RewriteRule applique la règle : le pattern \"(^|/)\" match un point au début de la chaîne ou après une barre oblique, le tiret \"-\" signifie « pas de substitution », et [F] retourne une erreur 403 Forbidden."
+  }
+}

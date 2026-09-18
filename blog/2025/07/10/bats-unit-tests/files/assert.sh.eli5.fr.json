@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:47.347Z",
+  "source": "assert.sh",
+  "sourceHash": "98597c293c3af018a7f9f875b4f5f8ccff56dd5a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash fournit deux fonctions d'assertion pour valider des conditions. La première vérifie qu'une variable n'est pas vide et affiche un message d'erreur personnalisé si elle l'est. La deuxième s'appuie sur la première pour vérifier qu'un programme binaire existe sur le système, et arrête complètement le script si ce n'est pas le cas.",
+  "explanations": {
+    "4": "local -r crée une variable en lecture seule et locale à la fonction ; ${1:-} récupère le premier argument passé à la fonction, ou une chaîne vide si aucun argument n'est fourni.",
+    "5": "Même chose pour le deuxième argument, mais avec un message d'erreur par défaut si l'appelant n'en fournit pas.",
+    "7": "[[ -z ... ]] teste si la chaîne est vide ; && exécute la commande suivante seulement si le test réussit ; >&2 redirige le message vers la sortie d'erreur standard au lieu de la sortie normale.",
+    "18": "command -v retourne le chemin d'un binaire s'il existe, sinon rien ; || true empêche la fonction de s'arrêter sur une erreur si command -v échoue.",
+    "20": "exit 1 arrête complètement le script bash en renvoyant le code d'erreur 1 pour signaler qu'un problème critique s'est produit."
+  }
+}

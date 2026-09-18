@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:56.675Z",
+  "source": "test-shake-in-console.js",
+  "sourceHash": "979684d86062c05dcd0dee1e2c9f0a03703c3f33",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce code simule les événements d'accélération d'un appareil mobile pour tester un overlay de secousse sans avoir besoin d'un vrai téléphone. Il définit une fonction fire qui envoie un événement DeviceMotionEvent au navigateur, puis l'appelle deux fois avec différentes valeurs d'accélération pour reproduire un geste de secousse.",
+  "explanations": {
+    "5": "const fire = (x, y, z) => crée une fonction fléchée qui prend trois paramètres représentant les accélérations sur les trois axes (x, y, z) de l'appareil.",
+    "6": "window.dispatchEvent envoie un événement personnalisé au navigateur comme s'il provenait du système d'exploitation.",
+    "7": "new DeviceMotionEvent(\"devicemotion\", {...}) crée un événement simulé du type que les capteurs réels d'un téléphone généreraient.",
+    "8": "accelerationIncludingGravity inclut la gravité terrestre dans les mesures d'accélération, comme le ferait un vrai capteur.",
+    "15": "fire(0, 0, 9.8) appelle la fonction avec une accélération neutre (juste la gravité sans mouvement).",
+    "16": "setTimeout(..., 150) décale le deuxième appel de 150 millisecondes pour créer une seconde secousse avec des valeurs d'accélération différentes."
+  }
+}

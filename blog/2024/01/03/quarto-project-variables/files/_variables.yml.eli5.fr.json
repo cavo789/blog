@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:28.215Z",
+  "source": "_variables.yml",
+  "sourceHash": "8a962d4ec376a461b591bd666ac9b28c4b45b4f0",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier YAML définit la configuration d'une application en spécifiant sa version, des adresses email de contact et des liens vers des outils d'exécution de code (Jupyter et Knitr). C'est un fichier de configuration centralisé qui permet de gérer facilement les paramètres importants sans les modifier dans le code.",
+  "explanations": {
+    "3": "email est une clé de section qui regroupe les différentes adresses email utilisées par l'application.",
+    "7": "engine est une autre section qui liste les outils de rendu ou d'exécution disponibles, associés à leurs liens de documentation."
+  }
+}

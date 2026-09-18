@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:31.041Z",
+  "source": "compose.yaml",
+  "sourceHash": "240873f9f93fd3f331df5299997ccc53d08943d1",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Docker Compose définit deux services pour exécuter une installation Joomla complète : un conteneur Joomla qui expose le port 8080 et se connecte à une base de données MySQL, et un conteneur MySQL qui stocke les données. Les deux services partagent la même permission utilisateur et persistent leurs données sur le système hôte via des volumes.",
+  "explanations": {
+    "8": "%%port=8080%% est un placeholder qui sera remplacé à l'exécution ; le port 8080 sur la machine hôte sera mappé vers le port 80 à l'intérieur du conteneur Joomla.",
+    "13": "user: 1000:1000 spécifie que les processus du conteneur doivent s'exécuter avec l'ID utilisateur 1000 et l'ID groupe 1000, au lieu de l'utilisateur par défaut, pour des raisons de sécurité et de permissions de fichiers.",
+    "17": "./site_joomla:/var/www/html monte le répertoire local site_joomla sur la machine hôte dans le chemin /var/www/html du conteneur, permettant à Joomla de persister les fichiers du site en dehors du conteneur.",
+    "25": "user: 1000:1000 applique la même permission utilisateur au conteneur MySQL pour garantir que les fichiers de base de données créés sur l'hôte appartiennent au même utilisateur que ceux de Joomla.",
+    "29": "./db:/var/lib/mysql monte le répertoire local db sur l'hôte dans le chemin de stockage de MySQL du conteneur, assurant que les données de la base de données persistent même si le conteneur est supprimé."
+  }
+}

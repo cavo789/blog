@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:56.316Z",
+  "source": "makefile.part45",
+  "sourceHash": "fe0bfed2bcf80f08c653a3f8c2abccd202397eaa",
+  "lang": "part45",
+  "textLang": "fr",
+  "summary": "Ce makefile extrait l'URL du dépôt Git distant, la convertit au format HTTPS si elle est en SSH, en supprime l'extension .git, puis fournit une cible pour ouvrir ce dépôt dans le navigateur par défaut du système.",
+  "explanations": {
+    "1": "La commande git config récupère l'URL du dépôt distant, sed convertit le format SSH (git@host:path) en HTTPS (https://host/path), et grep -Po extrait tout sauf l'extension .git à la fin.",
+    "4": "sensible-browser est un script qui ouvre une URL dans le navigateur par défaut du système, quel que soit l'environnement de bureau utilisé."
+  }
+}

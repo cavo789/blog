@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:12.777Z",
+  "source": "makefile.part32",
+  "sourceHash": "0e674405956e83ad5a18e47fbdb796afbbb0099f",
+  "lang": "part32",
+  "textLang": "fr",
+  "summary": "Ce fichier définit la version de PHP à utiliser pour ce projet. Il utilise une variable Makefile qui définit PHP_VERSION à 8.1 si aucune valeur n'a déjà été fournie, permettant aux utilisateurs de surcharger cette valeur par défaut lors de l'exécution.",
+  "explanations": {
+    "1": "La syntaxe $(or ...) en Makefile retourne le premier argument non vide, donc si PHP_VERSION est déjà défini, on l'utilise, sinon on utilise 8.1 comme valeur par défaut."
+  }
+}

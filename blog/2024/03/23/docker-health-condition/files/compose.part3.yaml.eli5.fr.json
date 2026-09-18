@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:00.004Z",
+  "source": "compose.part3.yaml",
+  "sourceHash": "f91d18363b23d0a42badacd2ce24df2a66cbae5e",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : Joomla et sa base de données MySQL. Le service Joomla dépend du service joomladb et attend que celui-ci soit en bonne santé avant de démarrer, déterminé par une vérification de santé qui teste la connectivité MySQL.",
+  "explanations": {
+    "6": "depends_on indique que le service joomla ne doit pas démarrer tant que joomladb n'est pas prêt.",
+    "10": "condition: service_healthy force Docker à attendre que la vérification de santé de joomladb réussisse, et pas seulement que le conteneur soit en cours d'exécution.",
+    "16": "Le test healthcheck exécute la commande mysqladmin ping pour vérifier que MySQL répond aux connexions locales."
+  }
+}

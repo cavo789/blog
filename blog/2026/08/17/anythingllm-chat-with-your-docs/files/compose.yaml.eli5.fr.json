@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:42.784Z",
+  "source": "compose.yaml",
+  "sourceHash": "4d9adf7ec4f69c29cb7e11d2d39f9607b4048fb3",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé anythingllm qui exécute une application LLM. Il configure l'application pour utiliser Ollama comme fournisseur de modèles de langage et d'embeddings, en spécifiant les modèles à utiliser, les chemins d'accès aux services, et les paramètres de stockage et de traitement.",
+  "explanations": {
+    "7": "cap_add ajoute des capacités Linux au conteneur — SYS_ADMIN permet au conteneur d'effectuer certaines opérations administratives normalement restreintes.",
+    "10": "La notation %%port=3001%% est un placeholder qui sera remplacé à la génération du conteneur ; elle mappe le port 3001 du conteneur vers le même port sur la machine hôte.",
+    "15": "LLM_PROVIDER=ollama indique à l'application d'utiliser Ollama comme source pour les modèles de langage.",
+    "16": "OLLAMA_BASE_PATH pointe vers l'URL du serveur Ollama qui fournira les modèles linguistiques.",
+    "17": "OLLAMA_MODEL_PREF spécifie le modèle Ollama préféré à utiliser — qwen2.5:14b-instruct est une variante de 14 milliards de paramètres optimisée pour les tâches d'instruction.",
+    "19": "EMBEDDING_ENGINE=ollama configure l'application pour utiliser Ollama également pour générer les embeddings, c'est-à-dire les représentations vectorielles du texte.",
+    "24": "EMBEDDING_MODEL_MAX_CHUNK_LENGTH=400 limite la taille des chunks de texte à 400 tokens pour éviter de dépasser la limite de contexte du modèle mxbai-embed-large.",
+    "28": "anythingllm_storage:/app/server/storage crée un volume Docker nommé qui persiste les données de stockage du conteneur même après son redémarrage."
+  }
+}

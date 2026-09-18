@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:30.007Z",
+  "source": "01_generate_tags.py",
+  "sourceHash": "795cfd5b4ac6cd5c6482e104e367d081af357770",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script traite des articles de blog stockés en markdown en envoyant chaque fichier à un modèle d'IA Ollama pour extraire automatiquement des étiquettes. Les étiquettes extraites sont ensuite compilées dans un fichier JSON de sortie contenant tous les articles avec leurs étiquettes respectifs.",
+  "explanations": {
+    "11": "os.path.dirname(os.path.dirname(...)) remonte deux niveaux dans l'arborescence de répertoires — une fois pour sortir du dossier du script lui-même, une deuxième fois pour atteindre la racine du projet.",
+    "23": "Les trois accolades au début et à la fin ({{ et }}) échappent les accolades littérales afin qu'elles apparaissent dans la chaîne f-string finale — une seule paire d'accolades serait interprétée comme une variable à substituer.",
+    "36": "requests.post envoie une requête HTTP POST au serveur Ollama avec les paramètres du modèle et le contenu à analyser.",
+    "37": "raise_for_status() lève une exception si le code de statut HTTP indique une erreur, ce qui permet de capturer les problèmes réseau ou serveur.",
+    "43": "json.loads convertit la réponse textuelle du modèle en objet Python dictionnaire pour pouvoir accéder aux clés 'tags'.",
+    "46": "Ce bloc vérifie deux structures JSON possibles — soit les tags sont directement à la racine, soit ils sont imbriqués dans une clé 'response' — car le modèle IA peut formater sa réponse de différentes façons.",
+    "62": "Cette compréhension de liste filtre le répertoire POSTS_DIRECTORY pour ne conserver que les fichiers se terminant par l'extension .md.",
+    "65": "tqdm enveloppe la boucle pour afficher une barre de progression visuelle montrant l'avancement du traitement des fichiers.",
+    "68": "Cette condition vérifie que tags n'est pas None (aucune erreur) avant d'ajouter l'article aux données — on ignore les articles qui ont déclenché une exception lors de l'extraction."
+  }
+}

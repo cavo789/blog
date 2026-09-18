@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:33.269Z",
+  "source": "ai_service.py",
+  "sourceHash": "3e00f0bf2180fc93e00afac5c3e9e69b7a712a37",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette classe AIService encapsule l'interaction avec l'API Google Gemini pour générer des résumés TL;DR. La méthode generate_tldr envoie un contenu à Gemini avec un prompt structuré, puis gère les erreurs de limite de débit (429) en réessayant avec un délai exponentiel croissant avant d'abandonner après 5 tentatives.",
+  "explanations": {
+    "4": "Final indique que cette variable ne sera jamais réassignée après son initialisation — c'est une constante de classe.",
+    "17": "_MODEL_NAME est préfixé par un tiret bas pour signaler qu'il s'agit d'une variable interne à la classe, utilisée par les méthodes mais pas directement accessible de l'extérieur.",
+    "19": "api_key: str | None signifie que le paramètre peut être soit une chaîne de caractères, soit None — on accepte l'un ou l'autre type.",
+    "42": "range(max_retries) génère une boucle de 0 à 4 (soit 5 itérations), où attempt commence à 0 et augmente à chaque passage.",
+    "44": "self._client.models.generate_content() appelle la méthode Gemini pour générer du texte basé sur le prompt fourni.",
+    "47": "types.GenerateContentConfig() crée un objet de configuration pour la génération — ici on fixe temperature à 0.3 pour que les réponses soient déterministes et peu créatives.",
+    "52": "response.text vérifie si la réponse contient du texte; si elle est vide ou None, on lève une exception car Gemini n'a rien retourné.",
+    "59": "e.code == 429 vérifie si le code d'erreur spécifique est 429 (Quota Exceeded), ce qui permet de traiter cette erreur différemment des autres.",
+    "64": "2 ** attempt calcule une puissance de 2 — pour les tentatives 0, 1, 2, 3, 4 cela donne 1, 2, 4, 8, 16, multiplié par base_delay pour le délai d'attente.",
+    "71": "Le bloc except Exception générique capture tout ce qui n'est pas ClientError — c'est un filet de sécurité pour les erreurs imprévisibles."
+  }
+}

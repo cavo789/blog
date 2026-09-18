@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:28.759Z",
+  "source": "settings.json",
+  "sourceHash": "5406da9a01b339d59424be8c5ef448349ffa1af9",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit un profil de terminal pour une distribution Ubuntu WSL (Windows Subsystem for Linux) avec des paramètres d'apparence et de comportement. Il spécifie une image de fond semi-transparente, un répertoire de démarrage personnalisé et un titre d'onglet.",
+  "explanations": {
+    "2": "backgroundImage est le chemin absolu vers le fichier image JPG utilisé comme arrière-plan du terminal.",
+    "3": "backgroundImageOpacity contrôle la transparence de l'image : 0.3 signifie 30% d'opacité (70% transparent).",
+    "4": "guid est un identifiant unique universel qui distingue ce profil des autres profils de terminal.",
+    "7": "source indique que ce profil utilise le backend WSL (Windows Subsystem for Linux) plutôt qu'une autre source de terminal.",
+    "8": "startingDirectory définit le répertoire initial quand le terminal Ubuntu se lance ; ici c'est le dossier repositories de l'utilisateur christophe dans WSL."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:34.125Z",
+  "source": "config",
+  "sourceHash": "1faa883bea5a8a18aa50ecad820ee3220a77a0fe",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Cette configuration SSH définit les paramètres de connexion pour un hôte appelé my_app. Elle spécifie le nom d'hôte réel, l'utilisateur à utiliser pour la connexion et le chemin vers la clé privée Ed25519 qui authentifiera la connexion.",
+  "explanations": {
+    "1": "Host my_app crée un alias — quand tu tapes 'ssh my_app', SSH utilisera les paramètres définis dans ce bloc plutôt que de chercher un hôte littéral nommé my_app.",
+    "4": "IdentityFile spécifie le fichier de clé privée que SSH doit utiliser pour l'authentification par clé ; ~/.ssh/id_ed25519_my_blog se développe au chemin complet dans ton répertoire utilisateur."
+  }
+}

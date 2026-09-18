@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:24.875Z",
+  "source": "rgtodo.zsh",
+  "sourceHash": "76e543e7229754761cad92b68b6b81ac5971f1c0",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction recherche tous les commentaires TODO, FIXME, HACK et NOTE dans un répertoire donné en utilisant ripgrep, puis les affiche triés. Si aucun répertoire n'est fourni, elle examine le répertoire courant par défaut.",
+  "explanations": {
+    "3": "La variable local dir reçoit le premier argument de la fonction, ou le point (répertoire courant) si aucun argument n'est fourni — c'est ce que ${1:-.} signifie.",
+    "5": "rg est l'outil ripgrep, une alternative rapide à grep pour chercher du texte dans les fichiers.",
+    "9": "Cette expression régulière cherche les mots TODO, FIXME, HACK ou NOTE suivis optionnellement d'un deux-points et d'un espace blanc — les parenthèses créent un groupe, la barre verticale | signifie « ou ».",
+    "11": "sort classe les résultats de la recherche par ordre alphabétique, rendant la sortie plus lisible."
+  }
+}

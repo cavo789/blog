@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:45.084Z",
+  "source": "block_fileextensions_option2.htaccess",
+  "sourceHash": "f0f275eb9cbcd2f3dbcca041f5cc5ae414a56263",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Cette configuration Apache filtre les requêtes HTTP pour bloquer l'accès direct à un dossier spécifique, tout en permettant aux fichiers statiques courants (images, CSS, JavaScript, polices) de passer. Les trois conditions RewriteCond énumèrent les extensions autorisées, et si une requête ne correspond à aucune d'elles, la règle RewriteRule la rejette avec une erreur 403.",
+  "explanations": {
+    "1": "Le [NC] signifie « no case » : la comparaison n'est pas sensible à la casse, donc un fichier .PNG sera traité de la même façon qu'un .png.",
+    "2": "Le groupe (?.*)?$ permet de matcher les fichiers JavaScript même s'ils ont une query string en paramètre (par exemple, script.js?v=123).",
+    "3": "Idem pour les fichiers de police : cette condition accepte les polices web (eot, svg, ttf, woff, woff2) y compris quand elles ont des paramètres de version ou de cache en URL.",
+    "5": "Le tiret - signifie « ne fais rien » (pas de réécriture), et [F] force une réponse 403 Forbidden, bloquant effectivement la requête."
+  }
+}

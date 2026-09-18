@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:20.864Z",
+  "source": "script.sh",
+  "sourceHash": "6fcb68077716d0a7ee463610bc40afa02ecbe210",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script compare deux versions du même fichier (string.sh) situées dans deux dossiers différents. Il commence par vérifier que tous les chemins et fichiers existent, puis affiche un message de présentation avant d'exécuter un diff pour montrer les différences entre les deux fichiers.",
+  "explanations": {
+    "3": "FOLDER_COMPARE_WITH est défini avec un chemin relatif (./../another_project/src) qui remonte d'un niveau du dossier courant, puis accède au dossier another_project.",
+    "7": "[[ ! -d \"${FOLDER_SOURCE}\" ]] vérifie que le dossier source existe; le ! signifie « non », donc cette condition est vraie si le dossier n'existe pas, auquel cas on affiche une erreur en rouge et on quitte.",
+    "12": "printf avec les codes \\033[1;34m active l'affichage en bleu gras, et \\033[0m réinitialise la mise en forme; cela affiche le message de comparaison en couleur.",
+    "15": "pushd change le répertoire courant vers FOLDER_SOURCE, puis diff compare le fichier local avec le fichier distant en supprimant les lignes identiques; popd revient au répertoire initial, et > /dev/null supprime l'affichage des messages de changement de répertoire."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:09.059Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "634a7e86e5bb411493bb6b9615e675b6648b3142",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application LimeSurvey complète avec deux services : un conteneur applicatif qui se connecte à une base de données MySQL. L'application expose un port web et utilise des volumes persistants pour stocker les données, tandis que la base de données inclut une vérification de santé pour s'assurer qu'elle est prête avant que l'application démarre.",
+  "explanations": {
+    "6": "%%app_name=limesurvey-app%% est un placeholder qui sera remplacé par la valeur réelle du nom du conteneur lors du déploiement.",
+    "10": "%%db_name=limesurvey-db%% est un placeholder pour le nom d'hôte du service base de données — l'application l'utilise pour se connecter à MySQL.",
+    "21": "limesurvey:/var/www/html/upload/surveys crée un volume nommé qui persiste les fichiers de sondages entre les redémarrages du conteneur.",
+    "23": "%%port=8080%%:8080 mappe un port configuré sur votre machine au port 8080 du conteneur, exposant l'application web.",
+    "26": "%%db_name=limesurvey-db%% référence le service MySQL pour déclarer que l'app en dépend.",
+    "28": "condition: service_healthy indique que le conteneur applicatif attendra que la base de données rapporte un statut sain avant de démarrer.",
+    "36": "data:/var/lib/mysql crée un volume nommé pour stocker les données MySQL de façon persistante.",
+    "45": "test: [\"CMD\", \"mysqladmin\", \"ping\", \"-h\", \"localhost\"] vérifie que MySQL répond aux pings pour détecter si le service est réellement prêt.",
+    "47": "timeout: 10s définit le délai maximal d'attente pour que la commande de vérification réponde.",
+    "49": "retries: 10 signifie que Docker tentara la vérification jusqu'à 10 fois avant de déclarer la base de données comme indisponible."
+  }
+}

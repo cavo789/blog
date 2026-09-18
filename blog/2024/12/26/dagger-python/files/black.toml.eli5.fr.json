@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:14.895Z",
+  "source": "black.toml",
+  "sourceHash": "5bfb03cec15964a75c82c7b2352558461f2cc918",
+  "lang": "toml",
+  "textLang": "fr",
+  "summary": "Cette section configure l'outil Black, un formateur de code Python. Elle définit la longueur maximale des lignes à 120 caractères et spécifie que le code doit être formaté pour Python 3.13, ce qui garantit la compatibilité avec cette version tout en appliquant les conventions de formatage appropriées.",
+  "explanations": {
+    "3": "Ce commentaire rappelle que cette même configuration de longueur de ligne (120) est utilisée dans d'autres fichiers de configuration du projet pour maintenir la cohérence.",
+    "6": "Ce commentaire explique que target-version définit la version Python cible ; on peut spécifier plusieurs versions en utilisant une syntaxe liste séparée par des virgules, par exemple ['py312', 'py313'].",
+    "8": "target-version indique à Black quelle version Python utiliser pour le formatage — ici Python 3.13 — ce qui affecte les fonctionnalités et syntaxes que Black considère comme disponibles."
+  }
+}

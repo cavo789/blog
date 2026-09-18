@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:44:30.283Z",
+  "source": "compose.yaml",
+  "sourceHash": "587499886289fe87432b93562faeb59bcfc58088",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un conteneur Joomla qui sert l'application web, et un conteneur MySQL qui fournit la base de données. Les deux services communiquent via un réseau Docker dédié, et le conteneur Joomla attend que MySQL soit prêt avant de démarrer. Les variables d'environnement permettent de personnaliser les ports, identifiants, versions et autres paramètres sans modifier le fichier.",
+  "explanations": {
+    "1": "La syntaxe ${PROJECT_NAME:-your-project-name} signifie « utiliser la variable d'environnement PROJECT_NAME si elle existe, sinon utiliser la valeur par défaut 'your-project-name'.",
+    "5": "Même logique que la ligne 1 : ${JOOMLA_VERSION:-latest} prend la version spécifiée ou 'latest' par défaut.",
+    "9": "Le format ${WEB_PORT:-8080}:80 mappe le port local (celui de ta machine) vers le port 80 du conteneur ; 8080 est le port par défaut sur ta machine s'il n'est pas défini.",
+    "16": "joomladb est le nom du service MySQL tel que défini plus bas ; Joomla peut l'atteindre par ce nom dans le réseau Docker.",
+    "17": "condition: service_healthy signifie que Joomla ne démarre que quand MySQL répond avec succès à son healthcheck (ligne 35-38).",
+    "18": "${UID:-1000}:${GID:-1000} définit l'utilisateur et groupe Unix qui exécutera les processus du conteneur pour les permissions de fichiers.",
+    "20": "./joomla_data:/var/www/html monte le dossier local joomla_data sur le chemin interne du conteneur où Joomla stocke ses fichiers.",
+    "29": "Attention : il y a une typo ici (${MYSQL_PORT-:3306} au lieu de ${MYSQL_PORT:-3306}) qui rend cette variable toujours vide, utilisant 3306 par défaut.",
+    "33": "MYSQL_RANDOM_ROOT_PASSWORD='1' génère un mot de passe aléatoire pour root au lieu d'en fournir un explicite, renforçant la sécurité.",
+    "36": "Le test mysqladmin ping vérifie que MySQL répond ; Docker réutilisera ce résultat pour décider si le service est healthy."
+  }
+}

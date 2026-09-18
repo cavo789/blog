@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:39.031Z",
+  "source": "config.yaml",
+  "sourceHash": "25759f54944637817dbd08c0e8437023669b3e4a",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier YAML définit les métadonnées de base d'un projet ou d'une application, en spécifiant son nom comme 'Example' et sa version comme '1.0.0'. C'est une structure minimale couramment utilisée pour identifier et versionner un composant logiciel.",
+  "explanations": {}
+}

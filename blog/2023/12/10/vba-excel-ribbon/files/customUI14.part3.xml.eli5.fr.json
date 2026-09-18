@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:06.963Z",
+  "source": "customUI14.part3.xml",
+  "sourceHash": "20d68cea4e6b602c17f8c4194a71667d9584cc65",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML définit une interface utilisateur personnalisée pour Microsoft Office en créant un nouvel onglet dans le ruban (ribbon). L'onglet s'insère après l'onglet View existant et contient un groupe vide où tu peux ajouter tes propres contrôles et fonctionnalités.",
+  "explanations": {
+    "1": "L'attribut xmlns déclare l'espace de noms XML standard pour les interfaces personnalisées Office 2009.",
+    "7": "insertAfterMso=\"TabView\" positionne ton onglet personnalisé après l'onglet View natif d'Office dans le ruban."
+  }
+}

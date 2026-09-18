@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:27.109Z",
+  "source": "compose_service_joomla.yaml",
+  "sourceHash": "64fa8c7024f0d4e1aa6ed1888ad6f7ef2cce6f12",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Docker Compose définit un service nommé joomla. La ligne 2 contient un commentaire de highlight qui indique à l'outil de documentation de mettre en évidence la ligne suivante dans le rendu final.",
+  "explanations": {
+    "2": "Le commentaire // highlight-next-line est une directive spéciale utilisée par des outils comme Docusaurus pour mettre visuellement en avant la ligne joomla: dans la documentation générée."
+  }
+}

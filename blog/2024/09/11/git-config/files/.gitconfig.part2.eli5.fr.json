@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:57.723Z",
+  "source": ".gitconfig.part2",
+  "sourceHash": "4406f2b9e27f2c1550372e1b01fd3bc8bf9d2397",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Cette configuration Git active l'option autoSetupRemote pour les opérations push, ce qui établit automatiquement une branche de suivi sur le serveur distant quand vous poussez une branche locale pour la première fois, sans devoir spécifier explicitement la destination.",
+  "explanations": {
+    "2": "autoSetupRemote = true signifie que Git va automatiquement configurer la relation de suivi entre ta branche locale et la branche distante correspondante lors d'un push initial."
+  }
+}

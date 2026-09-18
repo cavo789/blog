@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:06.321Z",
+  "source": "compose.yaml",
+  "sourceHash": "128e19ea3ea900f6466e8110eacc4c3bf4b464a4",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé app_python qui construit une image à partir du Dockerfile du répertoire courant, puis monte le code source local dans le conteneur pour permettre le développement en direct sans avoir à rebâtir l'image à chaque changement.",
+  "explanations": {
+    "3": "build: . indique à Docker Compose de construire l'image en utilisant le Dockerfile trouvé dans le répertoire courant (le point représente le répertoire actuel).",
+    "5": "Le chemin local . (répertoire courant) est monté sur le chemin /app/src à l'intérieur du conteneur, ce qui signifie que les modifications apportées aux fichiers locaux sont immédiatement visibles dans le conteneur sans redémarrage."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:42.406Z",
+  "source": "AnyTest.part9.php",
+  "sourceHash": "2414a6d80d63e44068d1b89101fb0eb1a33a7a4b",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette ligne configure l'environnement de test en spécifiant que tous les tests du répertoire 'Feature' doivent utiliser la classe TestCase comme classe de base. Cela permet à Pest (le framework de test) de savoir quel contexte appliquer à ces tests.",
+  "explanations": {
+    "1": "uses() enregistre une classe de base pour un ensemble de tests, et in('Feature') limite cette configuration à tous les fichiers de test dans le répertoire Feature."
+  }
+}

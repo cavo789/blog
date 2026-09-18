@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:17.272Z",
+  "source": "config.toml",
+  "sourceHash": "998c6def12dc7607e3e6b34b245a5435b3ad4c1e",
+  "lang": "toml",
+  "textLang": "fr",
+  "summary": "Cette configuration TOML définit les volumes montés pour les runners Docker utilisés en intégration continue. Elle expose deux chemins : /cache pour stocker des données persistantes entre exécutions, et /var/run/docker.sock pour permettre aux scripts CI d'exécuter des commandes Docker directement à l'intérieur des conteneurs.",
+  "explanations": {
+    "1": "La section [runners.docker] configure les paramètres spécifiques au runner Docker dans le fichier de configuration GitLab CI.",
+    "5": "Le tableau volumes liste les chemins à monter dans le conteneur ; le format cible:source permet de mapper un chemin hôte vers un chemin conteneur, et /var/run/docker.sock est le socket Unix qui permet la communication avec le démon Docker."
+  }
+}

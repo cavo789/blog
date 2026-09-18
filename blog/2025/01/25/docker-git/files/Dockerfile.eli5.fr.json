@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:11.462Z",
+  "source": "Dockerfile",
+  "sourceHash": "b84987780153313f456b9e5a2f0b022c32a772d2",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Alpine Linux, installe Git et SSH pour pouvoir utiliser des credentials SSH, configure un répertoire de travail et un point d'entrée qui maintient le conteneur actif indéfiniment. C'est utile pour un conteneur de développement ou de build qui doit rester vivant.",
+  "explanations": {
+    "1": "Cette directive indique à Docker d'utiliser la syntaxe de buildkit moderne, qui active des fonctionnalités avancées du Dockerfile.",
+    "3": "FROM alpine:latest télécharge et utilise l'image de base Alpine Linux, une distribution minimaliste idéale pour les conteneurs.",
+    "10": "set -e -x fait échouer le script si une commande échoue (set -e) et affiche chaque commande avant l'exécution pour le débogage (set -x).",
+    "11": "mkdir -p -m 0700 ~/.ssh crée le répertoire .ssh avec les permissions 0700 (rwx pour le propriétaire uniquement), nécessaire pour stocker les clés SSH.",
+    "14": "tail -f /dev/null crée une boucle infinie sans consommer de ressources, gardant le conteneur en vie au lieu de terminer immédiatement."
+  }
+}

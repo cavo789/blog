@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:40.704Z",
+  "source": "Dockerfile",
+  "sourceHash": "43059ddd5a0122688adc0feaf0a2e9af308efdb9",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker multi-étapes pour un conteneur de développement Quarto. Il commence par une image de base Quarto, installe les dépendances système essentielles (Git, TeX Live, outils YAML), puis ajoute optionnellement des outils supplémentaires comme pre-commit, Node.js/cspell, et Graphviz. Enfin, il crée un utilisateur non-root, configure son environnement shell avec des alias et des messages de bienvenue, et prépare le conteneur pour le développement de documentation.",
+  "explanations": {
+    "1": "Cette directive spéciale indique à Docker d'utiliser une version spécifique du format Dockerfile (1.4) qui supporte les fonctionnalités avancées comme les montages de cache.",
+    "3": "Cette directive désactive la vérification orthographique automatique pour ce fichier lors de l'analyse de code.",
+    "24": "Le mount de type cache préserve le contenu entre les constructions Docker pour accélérer les installations apt futures sans utiliser d'espace d'image permanent.",
+    "26": "set -eux active un mode strict du shell : arrêter sur erreur (-e), afficher les commandes exécutées (-x), et traiter les variables non-définies comme des erreurs (-u).",
+    "45": "Cette ligne ajoute une règle sudoers permettant à l'utilisateur de lancer les commandes sudo sans entrer de mot de passe.",
+    "56": "FROM base AS extras crée une nouvelle étape de construction nommée extras qui part de l'image base et ajoutera les composants optionnels.",
+    "65": "Cette condition n'installe pre-commit que si la variable de construction INSTALL_PRECOMMIT_HOOKS vaut true.",
+    "78": "Le mount de cache pour npm préserve les paquets téléchargés entre les constructions pour éviter de tout retélécharger.",
+    "114": "L'opérateur :- fournit une valeur par défaut (1000) si USER_UID n'est pas défini, permettant une construction sans arguments explicites.",
+    "127": "USER ${USERNAME} bascule le contexte d'exécution vers l'utilisateur non-root au lieu de rester en root, améliorant la sécurité du conteneur.",
+    "130": "Le mount de cache pour Quarto tools évite de retélécharger Chromium à chaque construction du conteneur.",
+    "139": "Ces lignes configurent l'historique Bash pour persister les commandes entre les sessions et utiliser un fichier d'historique spécifique à l'utilisateur.",
+    "147": "Cette ligne ajoute un prompt shell personnalisé avec un emoji baleine, le nom d'utilisateur, et le répertoire courant."
+  }
+}

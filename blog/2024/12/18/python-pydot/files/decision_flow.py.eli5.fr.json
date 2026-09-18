@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:17.478Z",
+  "source": "decision_flow.py",
+  "sourceHash": "dc6724066b749ac4d33f795c07fd76cf572cf9bf",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code construit un organigramme (flowchart) avec pydot en créant des nœuds de différentes formes — début/fin en ovales, processus en rectangles, décision en losange — puis les relie avec des arêtes pour former un flux logique. Finalement, il exporte le diagramme en image PNG.",
+  "explanations": {
+    "1": "pydot.Dot() crée un nouveau graphe orienté (digraph signifie que les arêtes ont une direction).",
+    "4": "shape='oval' définit la forme du nœud ; 'oval' est utilisé pour les points de début/fin par convention d'organigramme.",
+    "6": "shape='diamond' crée un losange, la forme standard pour les nœuds de décision.",
+    "13": "Le paramètre label='Yes' ajoute du texte sur l'arête pour indiquer le chemin pris si la décision est affirmative.",
+    "18": "write_png() génère le fichier image en appliquant l'algorithme de rendu Graphviz."
+  }
+}

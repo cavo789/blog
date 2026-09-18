@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:37.229Z",
+  "source": "behat.part2.yaml",
+  "sourceHash": "c4a76f0ffd6133780f108392f71edfb431205c13",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Behat, un framework de test, pour exécuter des tests dans Chrome. Il active deux extensions : ChromeExtension pour contrôler le navigateur Chrome, et MinkExtension pour gérer les sessions de navigation. Les tests vont s'exécuter contre l'URL https://www.avonture.be en communiquant avec une instance Chrome locale sur le port 9222.",
+  "explanations": {
+    "3": "Le tilde (~) signifie que l'extension ChromeExtension est activée avec sa configuration par défaut, sans paramètres supplémentaires.",
+    "10": "api_url spécifie l'adresse où Behat peut communiquer avec le navigateur Chrome; 0.0.0.0:9222 est l'adresse standard du protocole de débogage Chrome sur la machine locale."
+  }
+}

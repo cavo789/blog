@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:43.958Z",
+  "source": "Dockerfile",
+  "sourceHash": "ecb7ed32d54c632b14b6e7f9505b4689ce5df232",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Apache httpd version 2.4, puis copie un fichier de configuration de site personnalisé dans le répertoire de configuration Apache. Il configure essentiellement un serveur web Apache avec une configuration spécifique pour un site.",
+  "explanations": {
+    "3": "COPY copie le fichier my-site.conf depuis le répertoire httpd de ta machine locale vers le chemin /etc/apache2/sites-available/ à l'intérieur du conteneur, ce qui permet à Apache de trouver et utiliser cette configuration de site."
+  }
+}

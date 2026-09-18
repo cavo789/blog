@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:20.218Z",
+  "source": "index.js",
+  "sourceHash": "b5afd985508e29742f2c9b64915a8c44373ff988",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant React encapsule le contenu d'un article de blog en le rendant avec les styles markdown appropriés. Il utilise un hook personnalisé pour déterminer si on affiche la page complète d'un article, et dans ce cas, ajoute un ID spécifique qui sert à la génération de flux de contenu.",
+  "explanations": {
+    "3": "blogPostContainerID est une constante importée qui contient l'identifiant unique utilisé par Docusaurus pour marquer le conteneur principal d'un article.",
+    "7": "useBlogPost() est un hook qui retourne des informations sur l'article courant, notamment isBlogPostPage qui indique si on est sur la page dédiée à cet article ou juste un aperçu.",
+    "11": "On applique l'ID seulement si isBlogPostPage est vrai, sinon on passe undefined, ce qui signifie que l'attribut id ne sera pas présent du tout.",
+    "12": "clsx combine plusieurs noms de classe CSS en une seule chaîne, en gérant les cas où certains seraient undefined ou faux — ici on combine toujours 'markdown' avec la className passée en prop."
+  }
+}

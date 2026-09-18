@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:14.908Z",
+  "source": "makefile.part11",
+  "sourceHash": "c3dbc5840fe5a0b963185f8000895e6d9376194c",
+  "lang": "part11",
+  "textLang": "fr",
+  "summary": "Ce snippet Makefile affiche un message de couleur jaune selon la version PHP configurée — il dit d'upgrader les dépendances si PHP 8 est utilisé, ou de les downgrader si c'est PHP 7. C'est une cible init qui aide les développeurs à savoir quelle action prendre pour l'environnement de dépendances.",
+  "explanations": {
+    "2": "La commande shell expr compare SET_PHP_VERSION avec 8 et retourne 1 si c'est supérieur ou égal, 0 sinon — ifeq teste alors si ce résultat vaut 1.",
+    "3": "printf utilise des codes ANSI (\\e[1;${COLOR_YELLOW}m) pour afficher le texte en gras et jaune, puis \\e[0m pour réinitialiser la couleur — %s est le placeholder pour la chaîne.",
+    "5": "Cette branche else s'exécute quand SET_PHP_VERSION est inférieur à 8, affichant un message similaire mais pour un downgrade vers PHP 7."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:41.115Z",
+  "source": "makefile.part21",
+  "sourceHash": "273b8ea2503af62252010569c187b5beead6a7bb",
+  "lang": "part21",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit deux codes de couleur ANSI (rouge et jaune) et crée une cible runsql qui affiche un message coloré avant d'exécuter une commande SQL, ou affiche un message d'erreur en rouge si la variable SQL n'est pas définie.",
+  "explanations": {
+    "1": "COLOR_RED:=31 assigne la valeur 31 (le code ANSI pour le rouge) à la variable COLOR_RED en Makefile.",
+    "2": "COLOR_YELLOW:=33 assigne la valeur 33 (le code ANSI pour le jaune) à la variable COLOR_YELLOW en Makefile.",
+    "5": "Cette ligne vérifie si la variable SQL est définie avec [ \"${SQL}\" ]; si oui, elle affiche le message \"Running ${SQL}\" en jaune avec printf, sinon elle affiche un message d'erreur en rouge et quitte avec le code 1. Les codes \\e[1;...m et \\e[0m sont des séquences ANSI pour colorer et réinitialiser la couleur du texte."
+  }
+}

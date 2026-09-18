@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:30.445Z",
+  "source": "C:\\temp\\checkVat.xml",
+  "sourceHash": "50694a5774dcadbfcf8b7972150a1e3d64c3d46b",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ceci est un message SOAP (protocole d'appel de service web) qui encapsule une requête pour vérifier un numéro de TVA auprès du service VIES de l'Union européenne. Le message contient deux paramètres variables : un code pays et un numéro de TVA qui seront remplacés lors de l'exécution.",
+  "explanations": {
+    "2": "soapenv:Envelope est l'élément racine qui enveloppe tout message SOAP et déclare l'espace de noms standard pour SOAP.",
+    "4": "checkVat est l'opération distante qu'on appelle, identifiée par son espace de noms urn qui pointe vers le service de vérification de TVA de l'UE.",
+    "5": "countryCode est un champ qui sera remplacé par la variable %COUNTRY% contenant le code du pays (comme FR, DE, IT).",
+    "6": "vatNumber est un champ qui sera remplacé par la variable %VATNUMBER% contenant le numéro de TVA à vérifier."
+  }
+}

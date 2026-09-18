@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:01.381Z",
+  "source": "customUI14.part11.xml",
+  "sourceHash": "ccb33f733803f1bbdd8a26756ce6d6ce85893711",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce snippet définit un bouton personnalisé pour une interface utilisateur, probablement dans un contexte Office ou similaire. Le bouton affiche une icône intégrée, possède une taille large, et déclenche une action nommée OnButtonClicked quand on clique dessus.",
+  "explanations": {
+    "4": "imageMso=\"AddFolderToFavorites\" utilise une icône prédéfinie du système Microsoft Office plutôt qu'une image personnalisée.",
+    "6": "onAction=\"OnButtonClicked\" spécifie le nom de la fonction ou procédure qui s'exécutera quand l'utilisateur clique sur le bouton."
+  }
+}

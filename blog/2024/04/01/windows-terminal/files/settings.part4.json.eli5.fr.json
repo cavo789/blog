@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:36.554Z",
+  "source": "settings.part4.json",
+  "sourceHash": "b06ed8fd8be30f000b6983e8a6d79c97fd87b609",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Cette ligne de configuration définit une action de démarrage qui ouvre automatiquement un nouvel onglet avec le profil nommé 'DOS Command Prompt'. C'est une instruction pour un terminal ou une application similaire qui interprète ces directives lors du lancement.",
+  "explanations": {
+    "1": "La syntaxe new-tab crée un nouvel onglet, et l'option --profile spécifie quel profil de terminal utiliser — ici 'DOS Command Prompt' est le nom du profil à charger dans cet onglet."
+  }
+}

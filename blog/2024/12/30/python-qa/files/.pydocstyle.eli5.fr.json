@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:10.560Z",
+  "source": ".pydocstyle",
+  "sourceHash": "676a545b3fec2ecc3b5661fc75f72a9d6b2178cd",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration pydocstyle définit les règles de vérification des docstrings Python. Il exclut plusieurs codes d'erreur spécifiques (comme D100 pour les docstrings de module manquantes) et configure l'outil pour analyser tous les fichiers se terminant par .py.",
+  "explanations": {
+    "2": "ignore liste les codes d'erreur pydocstyle à ignorer — chaque code représente une règle de docstring (par exemple D100 = module docstring missing, D203 = blank line before class docstring). L'outil ne signalera pas ces violations.",
+    "3": "match = .*\\.py indique à pydocstyle de vérifier tous les fichiers correspondant à ce motif regex — en l'occurrence, tous les fichiers dont le nom se termine par .py."
+  }
+}

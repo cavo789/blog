@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:55.513Z",
+  "source": "demo_commit.diff",
+  "sourceHash": "f447e3b470b8b09784178f25cce5a5b8e36c1a74",
+  "lang": "diff",
+  "textLang": "fr",
+  "summary": "Ce diff ajoute une validation au début du script PHP pour vérifier que le paramètre slug n'est pas vide. Si slug est absent ou vide, le script retourne immédiatement une réponse d'erreur HTTP 400 avec un message JSON, au lieu de continuer l'exécution avec une valeur vide.",
+  "explanations": {
+    "9": "La condition vérifie si slug est une chaîne vide (après le ?? qui fournit une chaîne vide par défaut si la clé POST n'existe pas).",
+    "10": "http_response_code(400) envoie au client un code d'erreur HTTP 400 (Bad Request) pour signaler que la requête est mal formée.",
+    "11": "json_encode() convertit le tableau PHP en JSON, puis exit() arrête immédiatement l'exécution du script et envoie cette réponse au client."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:03.791Z",
+  "source": "Dockerfile",
+  "sourceHash": "cc5a5d0dad6351fd0df28e15bad889eb71dca69d",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Quarto avec des outils supplémentaires pour convertir des documents en PDF. Il installe les dépendances système nécessaires, crée un dossier d'entrée, configure un utilisateur non-root pour des raisons de sécurité, puis installe TinyTeX et ses packages pour activer la conversion en PDF.",
+  "explanations": {
+    "4": "ARG déclare une variable de construction que tu peux passer au build avec --build-arg; ici on spécifie quelle version de Quarto télécharger.",
+    "10": "FROM charge l'image de base Quarto en utilisant la variable QUARTO_VERSION définie plus tôt — c'est comme un point de départ héritant de tout ce qui est déjà configuré dans cette image.",
+    "14": "Le mount type=cache optimise les builds en réutilisant le cache apt entre les constructions d'images, ce qui rend les installations de paquets plus rapides.",
+    "15": "set -e -x ordonne au shell de sortir en cas d'erreur (-e) et d'afficher chaque commande (-x) pour déboguer.",
+    "37": "On redéclare ARG OS_USERNAME pour qu'il soit accessible après FROM; les ARG avant FROM ne sont pas disponibles après.",
+    "42": "groupadd crée un groupe système avec l'ID GID, et -o permet les IDs dupliquées si nécessaire.",
+    "43": "useradd crée un utilisateur non-root avec les paramètres spécifiés: -l ignore NIS, -m crée le répertoire home, -u définit l'UID, -g assigne le groupe, -s définit le shell.",
+    "51": "quarto install tool tinytex télécharge et configure TinyTeX, un écosystème LaTeX léger nécessaire pour générer des PDFs."
+  }
+}

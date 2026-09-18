@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:27.547Z",
+  "source": "rector.php",
+  "sourceHash": "618c762fe7442d2b11ddbb5739034e901fc7d3ae",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Rector, un outil d'automatisation de refactoring PHP. Il active la vérification stricte des types, exclut certains répertoires de l'analyse, cible PHP 8.2, et active trois ensembles de transformations : amélioration de la qualité du code, suppression du code mort, et ajout de déclarations de type.",
+  "explanations": {
+    "3": "declare(strict_types=1) force PHP à vérifier que tous les arguments et retours de fonction correspondent exactement aux types déclarés, sans conversion automatique.",
+    "13": "withPhpSets(php82: true) configure Rector pour appliquer les transformations spécifiques à PHP 8.2, en utilisant les nouveautés de cette version.",
+    "14": "withPreparedSets active trois ensemble de règles préconfigurées : codeQuality améliore le code existant, deadCode supprime le code inutilisé, et typeDeclarations ajoute les déclarations de type manquantes."
+  }
+}

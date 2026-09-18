@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:42.967Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "b126d5a56d8fb8fa5694758f578681d8cbb9528e",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé app qui construit une image Docker à partir du contexte courant et configure un conteneur nommé php-app. Le conteneur synchronise le répertoire du projet local avec /opt/behat dans le conteneur et utilise des identifiants utilisateur personnalisables pour éviter les problèmes de permissions.",
+  "explanations": {
+    "7": "Le commentaire explique que DOCKER_UID et DOCKER_GID doivent correspondre à vos identifiants d'utilisateur Linux pour que les permissions de fichiers fonctionnent correctement entre votre machine et le conteneur.",
+    "12": "La syntaxe %%name=php-app%% est un placeholder que tu dois remplacer par un vrai nom de conteneur — ici ce serait php-app.",
+    "15": "Ce volume monte le répertoire courant (.) de ta machine locale dans le chemin /opt/behat du conteneur, permettant au conteneur d'accéder et modifier tes fichiers de projet en temps réel."
+  }
+}

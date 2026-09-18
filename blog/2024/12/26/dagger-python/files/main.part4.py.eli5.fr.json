@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:26.139Z",
+  "source": "main.part4.py",
+  "sourceHash": "ebb7fc092be6551f7c8e48e6505dd3458871ccd2",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script utilise le module random pour générer aléatoirement 0 ou 1, puis affiche un message en anglais ou en français selon le résultat. C'est un exemple simple de branchement conditionnel basé sur un tirage aléatoire.",
+  "explanations": {
+    "5": "random.randint(0, 1) génère un nombre entier aléatoire entre 0 et 1 inclus, donc soit 0 soit 1 avec probabilité égale."
+  }
+}

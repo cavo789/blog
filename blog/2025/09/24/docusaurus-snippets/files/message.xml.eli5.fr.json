@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:58.498Z",
+  "source": "message.xml",
+  "sourceHash": "fb16250a44026cd59a98947d5008ee716745206d",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML contient une structure simple avec un élément message contenant un élément text avec le contenu « Hello, world! ». C'est un exemple basique de document XML bien formé montrant la hiérarchie parent-enfant.",
+  "explanations": {}
+}

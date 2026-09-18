@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:23.418Z",
+  "source": "web.php",
+  "sourceHash": "a4ba5b11bac777b471ad8ab7916263807b981c2c",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce snippet définit une route GET qui crée une instance Employee, déclenche un événement SampleEvent en lui passant cet employé, puis affiche les propriétés de l'employé (prénom, nom, pseudo). L'événement peut modifier l'objet Employee avant que ses données soient affichées.",
+  "explanations": {
+    "7": "SampleEvent::dispatch() envoie l'événement SampleEvent avec l'employé en paramètre — les listeners de cet événement peuvent exécuter du code et potentiellement modifier l'objet Employee.",
+    "9": "PHP_EOL est une constante PHP qui représente le caractère de fin de ligne approprié pour le système d'exploitation courant (\\n sur Linux, \\r\\n sur Windows)."
+  }
+}

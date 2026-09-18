@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:45.161Z",
+  "source": "config_with_autocompletion.yaml",
+  "sourceHash": "8fcacc934da24ec293f83e5f3dea5460159e67b3",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration YAML définit les paramètres locaux pour deux modèles d'IA exécutés via Ollama — un modèle rapide pour le chat et l'édition, et un modèle spécialisé pour l'autocomplétion. Les deux modèles sont accessibles via la même instance Ollama locale sur le port 11434.",
+  "explanations": {
+    "3": "schema: v1 indique la version du schéma de configuration que ce fichier respecte, permettant au système de valider et interpréter correctement la structure.",
+    "8": "apiBase: http://127.0.0.1:11434 spécifie l'adresse locale et le port où Ollama écoute les requêtes — 127.0.0.1 signifie 'machine locale' et 11434 est le port standard d'Ollama.",
+    "9": "roles: liste les capacités ou les cas d'usage autorisés pour ce modèle — ici le modèle peut gérer des conversations (chat) et des tâches d'édition de texte."
+  }
+}

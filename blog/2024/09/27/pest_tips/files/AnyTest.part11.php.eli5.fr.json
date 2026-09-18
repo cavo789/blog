@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:16.779Z",
+  "source": "AnyTest.part11.php",
+  "sourceHash": "c2e959edcf54c1b6065a569676d96deba295fd5d",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Pest pour exécuter les tests unitaires en utilisant la classe TestCase du projet. Il indique au framework de test quels fichiers charger et dans quel contexte les exécuter.",
+  "explanations": {
+    "1": "uses() enregistre une classe de base (TestCase) qui sera hérité par tous les tests situés dans le répertoire 'Unit', ce qui permet de partager une configuration commune entre ces tests."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:02.402Z",
+  "source": "run.txt",
+  "sourceHash": "4c51ab8b38af4844abe96490c7394b29e919ad90",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce document explique comment exécuter une action en ligne de commande et liste les flags optionnels disponibles pour contrôler le comportement de la commande, notamment l'affichage du débogage, la couleur et le niveau de verbosité.",
+  "explanations": {}
+}

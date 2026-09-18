@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:01.790Z",
+  "source": "no_execution.htaccess",
+  "sourceHash": "d294a8c7dc570982599320cdd0bd4e31cdfb4e0c",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier .htaccess sécurise un répertoire en empêchant l'exécution de scripts. Il ajoute d'abord des associations de fichiers pour les scripts, puis désactive l'exécution CGI et refuse explicitement l'accès à tous les fichiers de script potentiels via une correspondance de motif regex.",
+  "explanations": {
+    "2": "AddHandler lie les extensions de fichier listées au gestionnaire cgi-script, ce qui indique au serveur web de traiter ces fichiers comme des scripts exécutables.",
+    "3": "Options -ExecCGI désactive l'exécution des scripts CGI dans ce répertoire et ses sous-répertoires.",
+    "6": "FilesMatch utilise une expression régulière pour cibler les fichiers dont le nom se termine par l'une des extensions listées (asp, aspx, cgi, php, pl, py).",
+    "7": "Deny from all refuse l'accès HTTP à tous les fichiers correspondant au motif ci-dessus, empêchant même la lecture de ces fichiers."
+  }
+}

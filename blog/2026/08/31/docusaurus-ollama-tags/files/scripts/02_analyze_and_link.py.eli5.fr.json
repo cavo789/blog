@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:36.281Z",
+  "source": "02_analyze_and_link.py",
+  "sourceHash": "cd6899255f5170777da97093cccd96585aaeff0a",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script analyse la fréquence des balises (tags) dans un ensemble d'articles et suggère des interconnexions entre articles partageant des balises communes. Il charge les données d'articles depuis un fichier JSON, calcule les balises les plus utilisées, puis génère des suggestions de liens entre articles basées sur leurs balises partagées.",
+  "explanations": {
+    "9": "os.path.dirname() remonte d'un niveau dans l'arborescence (le deuxième dirname remonte deux niveaux au total) pour atteindre le répertoire racine du projet, indépendamment de l'endroit où le script est exécuté.",
+    "19": "Cette ligne utilise une compréhension de liste pour extraire toutes les balises de tous les articles en une seule liste aplatie — c'est un moyen concis d'itérer imbriqué.",
+    "25": "Counter est un objet spécialisé qui compte automatiquement les occurrences de chaque élément; ici il crée un dictionnaire où chaque balise unique est associée à son nombre d'apparitions.",
+    "35": "Cette liste par compréhension transforme chaque paire (balise, nombre) en un dictionnaire avec les clés \"tag\" et \"count\" pour créer une structure JSON lisible.",
+    "54": "tag_to_articles crée un index inversé: au lieu de chercher \"quelles balises a cet article\", on peut chercher \"quels articles ont cette balise\" — c'est beaucoup plus rapide pour trouver les liens.",
+    "64": "set() crée une collection sans doublons; si plusieurs balises d'un article pointent vers le même article lié, il n'apparaîtra qu'une seule fois dans suggested_links.",
+    "75": "sorted() ordonne la liste de façon cohérente et list() la convertit d'un set en liste (les sets ne sont pas sérialisables en JSON).",
+    "87": "encoding=\"utf-8\" garantit que le fichier est lu avec le bon jeu de caractères, nécessaire pour les caractères spéciaux ou accentués.",
+    "93": "JSONDecodeError est capturé séparément pour distinguer les fichiers manquants des fichiers corrompus ou vides, permettant des messages d'erreur plus précis."
+  }
+}

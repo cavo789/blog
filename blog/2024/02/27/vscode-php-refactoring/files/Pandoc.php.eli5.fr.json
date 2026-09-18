@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:35.070Z",
+  "source": "Pandoc.php",
+  "sourceHash": "37db3459911104ae399cbffc16b34fcea6417c43",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette méthode gère le téléchargement d'un fichier généré par Pandoc. Elle valide le nom de fichier, vérifie que le fichier existe, puis configure les en-têtes HTTP appropriés avant d'envoyer le contenu du fichier au navigateur.",
+  "explanations": {
+    "9": "Sanitize::sanitizeFileName nettoie le nom de fichier pour supprimer les caractères dangereux, et trim() enlève les espaces au début et à la fin.",
+    "11": "On vérifie que le nom de fichier n'est pas vide après sanitisation, sinon on lève une exception.",
+    "15": "is_file() teste si le chemin complet (dossier + nom) pointe vers un fichier réel qui existe.",
+    "20": "On construit le chemin absolu en ajoutant le dossier de sortie au début, et ltrim() retire les barres obliques au début du nom pour éviter les doublons.",
+    "22": "pathinfo() extrait l'extension du fichier (txt, pdf, etc.) qu'on stocke pour déterminer le type MIME.",
+    "24": "getContentType() retourne un tableau contenant le type MIME et l'encodage appropriés selon l'extension.",
+    "26": "On envoie le type MIME au navigateur pour qu'il sache comment traiter le fichier (PDF, Word, etc.).",
+    "29": "Content-Disposition force le téléchargement plutôt que l'affichage, et basename() extrait juste le nom du fichier sans le chemin.",
+    "30": "On indique la taille du fichier au navigateur; utf8_decode() convertit l'encodage car filesize() ne supporte pas directement UTF-8.",
+    "35": "ob_end_flush() vide le buffer de sortie pour s'assurer que tout ce qui a été généré est envoyé au navigateur.",
+    "37": "Le @ supprime les avertissements potentiels; readfile() lit et envoie le fichier directement au navigateur par chunks."
+  }
+}

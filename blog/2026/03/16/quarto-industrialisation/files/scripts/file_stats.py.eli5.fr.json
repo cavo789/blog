@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:59.150Z",
+  "source": "file_stats.py",
+  "sourceHash": "8f2eb0d6d6f1e6ef5fc52d1726f39bc7fa11b827",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette fonction scanne un répertoire et ses sous-dossiers pour collecter les extensions de fichiers, en ignorant les dossiers courants comme .git et node_modules. Elle compte chaque type de fichier et génère un graphique en secteurs au format Mermaid pour visualiser la distribution des types de fichiers dans le projet.",
+  "explanations": {
+    "7": "Path(directory) crée un objet chemin qui permet d'utiliser des méthodes comme rglob pour naviguer facilement dans le système de fichiers.",
+    "12": "rglob('*') parcourt récursivement tous les fichiers et dossiers du répertoire, en descendant dans tous les sous-dossiers.",
+    "13": "Cette condition vérifie deux choses : que le chemin est bien un fichier (pas un dossier), et qu'aucune partie du chemin n'est dans la liste des dossiers ignorés.",
+    "14": "f.suffix donne l'extension du fichier (par exemple '.py'), .lower() la minusculise, et si elle est vide on utilise 'No extension' à la place.",
+    "17": "Counter(extensions) compte automatiquement combien de fois chaque extension apparaît, retournant un dictionnaire avec extension → nombre.",
+    "21": "Cette ligne reformate l'extension pour l'affichage : elle enlève le point et convertit en majuscules (par exemple '.py' devient 'PY'), ou garde le texte tel quel s'il ne commence pas par un point."
+  }
+}

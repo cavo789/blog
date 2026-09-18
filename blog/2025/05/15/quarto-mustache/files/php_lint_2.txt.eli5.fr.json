@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:58.911Z",
+  "source": "php_lint_2.txt",
+  "sourceHash": "5000da6f1abe159f03d8fdf707bf652bad09666a",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de documentation décrit un linter PHP, qui est un outil d'analyse de code. Il configure les métadonnées du document en en-tête YAML, puis structure la documentation avec des sections standards comme description, type de projet, et instructions d'exécution et de configuration.",
+  "explanations": {
+    "6": "partial-data est une section qui définit les données utilisées pour charger et afficher des fragments de contenu réutilisables dans la documentation.",
+    "7": "command indique le nom de la commande CLI que les utilisateurs utiliseront pour exécuter ce linter.",
+    "8": "config_file spécifie le nom du fichier de configuration par défaut que cet outil cherche et utilise.",
+    "9": "config_url pointe vers l'exemple ou la documentation du fichier de configuration sur GitHub pour que les utilisateurs voient comment le configurer.",
+    "12": "type catégorise cet outil comme étant destiné au langage PHP.",
+    "23": "{{< partial indique que le contenu sera remplacé par un fichier partiel importé depuis le répertoire _partials.",
+    "31": "Cette ligne importe un fichier partiel qui contient les instructions de configuration génériques, adaptées au type de configuration par fichier."
+  }
+}

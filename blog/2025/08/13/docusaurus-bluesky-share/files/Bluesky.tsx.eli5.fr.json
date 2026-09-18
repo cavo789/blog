@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:35.885Z",
+  "source": "Bluesky.tsx",
+  "sourceHash": "acd2001f9a8bad72962122726a3707c6122a6cb5",
+  "lang": "typescript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche un conteneur stylisé qui enveloppe le composant BlueskyShare, en lui transmettant les métadonnées reçues. Il sert principalement de wrapper pour organiser l'interface utilisateur liée au partage Bluesky.",
+  "explanations": {
+    "4": "interface Props définit la structure des propriétés que ce composant accepte — c'est une façon TypeScript de spécifier quelles données le composant attend en entrée.",
+    "6": "frontMatter? signifie que cette propriété est optionnelle (le ? veut dire « peut ne pas être présente »).",
+    "7": "blueskyRecordKey? est une clé optionnelle qui contiendra probablement l'identifiant unique d'un enregistrement Bluesky.",
+    "12": "La destructuration { metadata } extrait la propriété metadata de l'objet Props pour l'utiliser directement dans le composant.",
+    "14": "className={styles.blueskyContainer} applique une classe CSS importée depuis le module styles pour styliser le div."
+  }
+}

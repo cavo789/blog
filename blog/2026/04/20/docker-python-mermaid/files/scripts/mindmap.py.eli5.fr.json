@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:08.454Z",
+  "source": "mindmap.py",
+  "sourceHash": "1d7afa8ac3535ac56dd454782d460d04211fb22a",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script lit un fichier Docker Compose au format YAML et génère une carte mentale visuelle de l'infrastructure qu'il définit. Il crée un fichier Mermaid contenant la structure des services, réseaux et volumes, puis utilise l'outil mmdc pour le convertir en image PNG.",
+  "explanations": {
+    "7": "Convertit le nom en minuscules pour que la comparaison soit insensible à la casse, peu importe comment le nom est écrit.",
+    "8": "Vérifie si l'une des chaînes dans la liste (db, postgres, etc.) apparaît n'importe où dans le nom du service.",
+    "18": "safe_load analyse le YAML de manière sécurisée et retourne une structure Python (généralement un dictionnaire) représentant le contenu du fichier.",
+    "23": "Itère sur tous les services définis dans la section 'services' du Compose; si cette clé n'existe pas, .items() retourne une liste vide.",
+    "27": "Vérifie si le service a une clé 'depends_on' qui liste les services dont il dépend.",
+    "32": "Récupère les clés (noms) de tous les réseaux; .keys() retourne seulement les noms, pas les configurations.",
+    "36": "Récupère les clés (noms) de tous les volumes définis.",
+    "44": "Définit une option '-o' ou '--output' avec une valeur par défaut; si l'utilisateur ne la fournit pas, elle sera 'infra_map.png'.",
+    "45": "Spécifie le chemin vers un fichier de configuration Mermaid; la valeur par défaut suppose que le script s'exécute dans un conteneur.",
+    "63": "Vérifie que le fichier de configuration Mermaid existe avant de l'ajouter à la commande, sinon mmdc pourrait échouer.",
+    "64": "extend ajoute plusieurs arguments à la liste de commandes existante, contrairement à append qui ajouterait la liste comme un seul élément.",
+    "66": "Lance le processus mmdc; check=True lève une exception si la commande échoue, au lieu de continuer silencieusement."
+  }
+}

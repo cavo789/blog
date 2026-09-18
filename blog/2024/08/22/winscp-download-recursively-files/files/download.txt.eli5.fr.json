@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:21.952Z",
+  "source": "C:\\temp\\download.txt",
+  "sourceHash": "79971550fe620951750aea6e027ed71cc91337e0",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script WinSCP change le répertoire local vers c:\\temp, se connecte à un serveur FTP avec les identifiants fournis, navigue vers le dossier /public_html, configure le mode de transfert en ASCII, télécharge tous les fichiers PHP, puis ferme la connexion et quitte.",
+  "explanations": {
+    "1": "lcd change le répertoire de travail local (sur ta machine) plutôt que sur le serveur distant.",
+    "3": "open établit une connexion FTP en utilisant l'URL avec les identifiants intégrés (USERNAME et PASSWORD sont remplacés par des valeurs réelles).",
+    "7": "option transfer ascii définit le mode de transfert en texte ASCII au lieu du mode binaire, ce qui convertit les sauts de ligne selon le système d'exploitation.",
+    "9": "get -filemask:*.php * télécharge tous les fichiers PHP du répertoire courant du serveur vers le répertoire local, le masque de fichier filtre les résultats."
+  }
+}

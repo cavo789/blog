@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:13.381Z",
+  "source": "EventServiceProvider.part2.php",
+  "sourceHash": "0830d901d0de704a75997b50bdfcb8145c7bb053",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ceci définit une propriété protégée qui mappe les événements aux écouteurs qui doivent réagir à ces événements. Pour le moment, le listener SampleListener est commenté, donc aucun code ne s'exécutera quand SampleEvent se déclenche.",
+  "explanations": {
+    "1": "La propriété $listen est protégée, ce qui signifie qu'elle ne peut être accédée que depuis cette classe ou ses sous-classes, pas de l'extérieur.",
+    "2": "SampleEvent::class retourne le nom complet de la classe SampleEvent sous forme de chaîne, servant de clé pour associer un événement à ses listeners."
+  }
+}

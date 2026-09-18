@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:25.191Z",
+  "source": "prospector.yaml",
+  "sourceHash": "afbc39fc6a0e64301285260b1a712d950e71f2bb",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure les outils de vérification de qualité de code Python. Il active des vérificateurs comme bandit, dodgy, pyflakes et mccabe, désactive certaines règles de documentation pycodestyle jugées trop strictes, et fixe la longueur maximale des lignes à 120 caractères.",
+  "explanations": {
+    "1": "strictness: high indique que les vérifications doivent être appliquées au niveau le plus strict possible.",
+    "2": "test-warnings: true active les avertissements lors de l'analyse du code de test.",
+    "3": "doc-warnings: false désactive les avertissements relatifs à la documentation, c'est-à-dire les règles de style des docstrings.",
+    "7": "max-line-length: 120 fixe la limite de caractères par ligne à 120 au lieu du standard PEP8 de 79.",
+    "9": "La section disable liste les codes de règles pycodestyle qu'on veut ignorer — D100, D203, etc. sont des identifiants de règles de documentation.",
+    "23": "run: true active l'outil bandit, qui cherche les failles de sécurité courantes en Python."
+  }
+}

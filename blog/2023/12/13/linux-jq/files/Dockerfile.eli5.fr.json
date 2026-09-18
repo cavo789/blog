@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:33.559Z",
+  "source": "Dockerfile",
+  "sourceHash": "090c30382b3cb557df8a95af81fdaea3ad274506",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Ubuntu 24.04 légère en installant quelques outils utiles (jq, curl, ca-certificates), en créant un répertoire de démonstration avec un fichier JSON statique simulant une réponse API, et en configurant un shell interactif avec un prompt personnalisé pour signaler visuellement qu'on est dans un conteneur.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive supprime les invites interactives pendant l'installation des paquets, permettant au build de s'exécuter sans attendre de réponse utilisateur.",
+    "5": "Le && enchaîne les commandes afin que si apt-get update échoue, les commandes suivantes ne s'exécutent pas, garantissant un état cohérent.",
+    "9": "rm -rf /var/lib/apt/lists/* supprime les caches de paquets après l'installation pour réduire la taille finale de l'image.",
+    "16": "printf '%s' écrit le JSON sur une seule ligne sans retour à la ligne final (contrairement à echo), puis > redirige la sortie dans le fichier sample.json.",
+    "22": ">> ajoute la nouvelle ligne PS1 au fichier .bashrc existant plutôt que de le remplacer, préservant les configurations antérieures.",
+    "24": "CMD avec la forme JSON et -i lance bash en mode interactif par défaut quand le conteneur démarre, permettant une utilisation immédiate du shell."
+  }
+}

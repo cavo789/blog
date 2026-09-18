@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:43.374Z",
+  "source": "simple.part7.bats",
+  "sourceHash": "4d1d37a41979416b8b63cad532a3ed9cdbc3f455",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la fonction helpers::showHelp affiche correctement le message d'aide quand on lui passe l'argument --help. Le test charge d'abord le fichier helpers.sh, puis exécute la fonction avec cet argument et vérifie que la sortie contient le texte attendu.",
+  "explanations": {
+    "2": "source charge le fichier helpers.sh dans l'environnement courant du test pour que les fonctions qu'il contient soient disponibles.",
+    "4": "arrArguments crée un tableau bash contenant l'argument --help qu'on veut passer à la fonction testée.",
+    "6": "run exécute la commande helpers::showHelp avec les éléments du tableau (${arrArguments[@]} expande tous les éléments) et capture sa sortie et son code de sortie pour les assertions suivantes.",
+    "8": "assert_output --partial vérifie que la sortie contient la sous-chaîne spécifiée, sans exiger une correspondance exacte."
+  }
+}

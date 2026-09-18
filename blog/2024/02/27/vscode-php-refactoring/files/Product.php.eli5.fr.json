@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:40.279Z",
+  "source": "Product.php",
+  "sourceHash": "2ce0dce85267e2dd5128e59006023ad6a9fd41fd",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette classe Product représente un produit avec un nom et un prix. Elle encapsule ces deux propriétés privées et fournit des méthodes publiques pour les lire et les modifier, ainsi qu'un constructeur pour initialiser l'objet avec des valeurs par défaut.",
+  "explanations": {
+    "3": "namespace Cavo organise cette classe dans un espace de noms pour éviter les conflits de noms avec d'autres classes Product dans le projet.",
+    "7": "La syntaxe private string $productName = '' déclare une propriété privée typée (accessible seulement à l'intérieur de la classe) initialisée à une chaîne vide.",
+    "10": "Le constructeur accepte un nom et un prix optionnels (avec des valeurs par défaut) et les passe aux setters pour initialiser l'objet.",
+    "20": "void signifie que cette méthode ne retourne rien, elle modifie simplement l'état interne de l'objet.",
+    "24": "float est le type de retour, garantissant que getProductPrice() retourne toujours un nombre décimal."
+  }
+}

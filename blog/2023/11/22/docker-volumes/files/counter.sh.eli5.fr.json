@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:08.582Z",
+  "source": "counter.sh",
+  "sourceHash": "fa5366319fd790b13b9c895d76faaa7992390917",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script maintient un compteur persistent dans un fichier texte pour suivre combien de fois il a été exécuté. Au premier lancement, il crée le fichier de données avec la valeur 0 ; à chaque exécution, il incrémente le compteur d'une unité, l'affiche et le sauvegarde.",
+  "explanations": {
+    "2": "set -euo pipefail active trois modes de sécurité : -e arrête le script à la première erreur, -u traite les variables non définies comme des erreurs, et -o pipefail propage les erreurs à travers les pipes.",
+    "4": "[[ ! -f /data/counter.txt ]] teste si le fichier n'existe pas ; les crochets doubles [[ ]] sont la syntaxe bash moderne pour les conditions.",
+    "5": "mkdir -p /data crée le répertoire /data et tous les répertoires parents s'ils n'existent pas (le flag -p empêche les erreurs si le dossier existe déjà).",
+    "10": "$(cat /data/counter.txt) exécute la commande cat et remplace cette partie par son résultat (le contenu du fichier), puis $(( ... + 1 )) effectue l'addition arithmétique et stocke le résultat dans counter."
+  }
+}

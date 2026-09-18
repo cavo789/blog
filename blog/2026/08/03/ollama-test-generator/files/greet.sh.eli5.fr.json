@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:25.143Z",
+  "source": "greet.sh",
+  "sourceHash": "16b95319f49526b14265edaee9522e4aad9e4151",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash définit des fonctions pour saluer quelqu'un dans la langue choisie. Il commence par normaliser le nom (enlever les espaces et mettre en majuscule la première lettre), puis sélectionne le message de salutation selon la langue demandée. Quand le script s'exécute directement, il demande le nom et la langue via des prompts interactifs.",
+  "explanations": {
+    "11": "Cette syntaxe enlève les espaces au début du nom. ${name%%[![:space:]]*} trouve tout jusqu'au premier caractère non-espace, et on le soustrait du nom pour garder le reste.",
+    "12": "Pareille logique mais à la fin : on cherche tous les caractères non-espace à la fin du nom et on les enlève.",
+    "14": "On vérifie que la variable name n'est pas vide après suppression des espaces, sinon le nom était juste des espaces blancs.",
+    "19": "Le ${name^} en majuscule la première lettre du nom — c'est une syntaxe de parameter expansion bash pour faire une transformation.",
+    "26": "Si aucun deuxième argument n'est passé à greet, lang devient automatiquement 'en' (c'est la syntaxe ${variable:-valeur_par_défaut}).",
+    "29": "On capture la sortie de normalize_name dans clean, et le || return 1 fait sortir la fonction greet si normalize_name échoue (retourne un code d'erreur).",
+    "31": "Le ${lang,,} convertit la langue en minuscules, donc 'EN' et 'en' seront traités de la même façon.",
+    "44": "Le flag -r empêche bash d'interpréter les caractères d'échappement comme \\n, et -p affiche le texte qui suit avant de demander l'entrée.",
+    "52": "On compare BASH_SOURCE[0] (le fichier en cours d'exécution) avec $0 (le programme lancé) : si c'est le même, le script a été exécuté directement, pas sourcé."
+  }
+}

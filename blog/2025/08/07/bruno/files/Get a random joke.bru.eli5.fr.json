@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:13.687Z",
+  "source": "Get a random joke.bru",
+  "sourceHash": "6517817aa635873f8c906060fbab2fbd5f1ba0fb",
+  "lang": "bru",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une requête HTTP GET vers un endpoint de blagues et valide que la réponse est correcte — le statut doit être 200, l'en-tête content-type doit être défini et contenir 'application/json', et le corps doit contenir une propriété joke qui est une chaîne non vide.",
+  "explanations": {
+    "8": "{{host}} est une variable de substitution qui sera remplacée par la valeur de host au moment de l'exécution de la requête.",
+    "15": "eq 200 vérifie que le code de statut HTTP de la réponse est exactement 200 (succès).",
+    "16": "isDefined vérifie que l'en-tête 'content-type' existe dans la réponse.",
+    "18": "contains 'application/json' vérifie que la valeur de l'en-tête content-type inclut la chaîne 'application/json'.",
+    "19": "gt 0 vérifie que la longueur de res.body.joke est supérieure à 0, donc la blague n'est pas vide."
+  }
+}

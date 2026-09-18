@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:40.704Z",
+  "source": "simple.part6.bats",
+  "sourceHash": "95affc95f57c22de219a1d19de7fdaab78c764d2",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la fonction assert::binaryExists détecte correctement l'absence d'un binaire sur le système. On simule une commande which qui échoue, puis on appelle la fonction avec un binaire inexistant et un message d'erreur personnalisé, en s'assurant que la fonction échoue et retourne le message attendu.",
+  "explanations": {
+    "3": "On redéfinit la commande which localement dans le test pour toujours échouer (sortie 1), simulant un binaire qui n'existe pas.",
+    "7": "run exécute la commande qui suit et capture son statut de sortie et sa sortie, ce qui permet aux assertions suivantes de vérifier le comportement.",
+    "16": "Si msg n'est pas fourni, on utilise un message par défaut qui inclut le nom du binaire manquant — l'expression ${...:-...} définit une valeur par défaut.",
+    "18": "On cherche le binaire avec which, et si le résultat est vide (le binaire n'existe pas), on affiche le message et on quitte avec une erreur (exit 1). Le || true empêche que which qui échoue n'arrête le script."
+  }
+}

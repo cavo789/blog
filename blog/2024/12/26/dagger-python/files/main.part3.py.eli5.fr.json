@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:24.639Z",
+  "source": "main.part3.py",
+  "sourceHash": "8fe4ff8c6105788e0bd6a744cdbe7cd02cab1994",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code définit une classe Dagger appelée Src qui expose une fonction lint pour analyser du code Python. La fonction crée un conteneur Docker, installe pylint, monte le répertoire source fourni en paramètre, puis exécute pylint sur ce répertoire et retourne le résultat.",
+  "explanations": {
+    "4": "@object_type transforme la classe suivante en un type Dagger exposable, ce qui permet à Dagger de la découvrir et de l'utiliser comme module réutilisable.",
+    "6": "@function marque la méthode suivante comme une fonction Dagger exécutable, la rendant appelable depuis la CLI ou depuis d'autres pipelines.",
+    "7": "Annotated[Directory, DefaultPath(\"src\")] signifie que le paramètre source attend un répertoire Dagger, et si aucun n'est fourni, Dagger utilisera par défaut le répertoire \"src\" du projet.",
+    "11": "f\"...{source}...\" est une f-string Python qui insère la valeur de source dans la chaîne, et \\033[33m et \\033[0m sont des codes ANSI pour colorer le texte en jaune à l'affichage.",
+    "13": "await indique que cette opération est asynchrone et qu'on attend son résultat avant de retourner.",
+    "14": "dag.container() crée un nouveau conteneur Dagger vierge sur lequel on va enchaîner les opérations.",
+    "15": ".from_(\"python:3.13-slim\") définit l'image de base du conteneur, ici Python 3.13 dans une version légère.",
+    "17": ".with_mounted_directory(\"/app/src\", source) monte le répertoire source fourni en paramètre à l'emplacement /app/src à l'intérieur du conteneur.",
+    "20": ".stdout() récupère la sortie standard du conteneur et la retourne sous forme de chaîne."
+  }
+}

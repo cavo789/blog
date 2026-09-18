@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:00.527Z",
+  "source": "main_helper.py",
+  "sourceHash": "9e93a2e93637d346831b2dfa114f859ba0c27133",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce module fournit des fonctions utilitaires pour personnaliser le schéma OpenAPI généré par FastAPI afin de respecter les normes Belgif. Il nettoie les champs 'title' redondants, renomme les schémas pour qu'ils suivent les conventions CamelCase strictes (par exemple HTTPValidationError devient HttpValidationError), et convertit les identifiants d'opération du snake_case au camelCase. La fonction configure_custom_openapi() remplace le générateur OpenAPI par défaut et applique toutes ces corrections avant de retourner le schéma final.",
+  "explanations": {
+    "22": "JsonNode est un alias de type qui peut représenter n'importe quel nœud dans une structure JSON — soit un dictionnaire, soit une liste, soit n'importe quelle autre valeur. Cela permet aux fonctions récursives de traiter tous les types possibles.",
+    "31": "cast() indique au vérificateur de type que tu sais que 'schema' est un dictionnaire, même s'il était typé comme 'Any'. C'est un moyen de tranquilliser le linter sans changer la logique du code.",
+    "33": "pop(\"title\", None) supprime la clé 'title' du dictionnaire si elle existe, et ne fait rien (retourne None) si elle n'existe pas — c'est plus sûr que de simplement supprimer une clé qui pourrait ne pas être là.",
+    "47": "Cette ligne construit un nom en camelCase : elle garde le premier composant tel quel, puis ajoute tous les autres composants avec leur première lettre en majuscule. Par exemple 'user_profile_id' devient 'userProfileId'.",
+    "60": "get(\"$ref\") retourne la valeur de la clé '$ref' s'il existe, ou None sinon. Cette ligne vérifie si le nœud actuel est une référence qui pointe vers l'ancien nom.",
+    "85": "schemas.pop(\"HTTPValidationError\") supprime la clé 'HTTPValidationError' du dictionnaire et retourne sa valeur, qui est ensuite assignée à la nouvelle clé 'HttpValidationError'. Cela renomme effectivement la définition du schéma.",
+    "102": "cast(str, ...) dit au vérificateur de type que tu es certain que operation[\"operationId\"] est une chaîne, même si le dictionnaire 'operation' est typé comme 'Any'. Cela évite les avertissements du linter.",
+    "114": "Cette fonction interne custom_openapi() remplace le générateur OpenAPI par défaut. Elle encapsule la logique pour générer et corriger le schéma, et elle peut accéder à la variable 'app' de la portée externe.",
+    "115": "Cette vérification évite de régénérer le schéma à chaque fois — si un schéma a déjà été généré et mis en cache, on le retourne directement au lieu de refaire tout le travail.",
+    "143": "Cette ligne remplace la méthode openapi de l'instance FastAPI par ta fonction custom_openapi(). Le # type: ignore[method-assign] indique au vérificateur de type d'ignorer l'avertissement selon lequel tu assigns une fonction à un endroit où la méthode originale était attendue."
+  }
+}

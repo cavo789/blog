@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:50.110Z",
+  "source": "hello_world.pas",
+  "sourceHash": "39b28d9827743f770f23951290330a2be7d55b7a",
+  "lang": "pas",
+  "textLang": "fr",
+  "summary": "Ce programme Pascal affiche le message 'Hello, world!' sur la sortie standard. C'est un exemple basique qui démontre la structure minimale d'un programme Pascal avec ses sections de déclaration (ici vide) et d'exécution.",
+  "explanations": {
+    "1": "program HelloWorld; déclare le nom du programme. En Pascal, tout programme commence par ce mot-clé suivi d'un identificateur unique.",
+    "2": "begin marque le début du bloc d'instructions exécutables du programme.",
+    "3": "writeln() affiche du texte à l'écran et ajoute automatiquement un saut de ligne à la fin.",
+    "4": "end. termine le programme avec un point qui est obligatoire en Pascal pour indiquer la fin du bloc principal."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:11.920Z",
+  "source": "Dockerfile",
+  "sourceHash": "8a0adbb85cc2929e631a50e36e67d06908e9ab09",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur PHP 8.2 avec support FPM, en installant les dépendances système nécessaires, en créant un utilisateur avec des identifiants spécifiques, et en téléchargeant et configurant Chrome et ChromeDriver pour les tests d'automatisation du navigateur.",
+  "explanations": {
+    "3": "ARG définit une variable de construction que tu peux passer au moment du build avec --build-arg ; ici on spécifie l'UID (identifiant utilisateur) par défaut à 1000.",
+    "19": "On redéclare ARG DOCKER_UID pour pouvoir l'utiliser dans les instructions RUN suivantes, car les variables ARG ne persistent que dans le segment FROM où elles sont déclarées.",
+    "23": "groupadd crée un groupe système avec l'ID spécifié ; les accolades ${DOCKER_GID} remplacent la variable par sa valeur.",
+    "24": "useradd crée un nouvel utilisateur avec un répertoire home, un ID utilisateur et un groupe spécifiés, et /bin/sh comme shell de connexion.",
+    "29": "On stocke l'URL d'une API Google qui liste toutes les versions de Chrome disponibles pour téléchargement.",
+    "45": "curl récupère le JSON depuis DOWNLOAD_URL, jq le parse pour trouver la ligne correspondant à CHROME_VERSION et la plateforme linux64, puis extrait l'URL de téléchargement.",
+    "47": "printf affiche un message coloré (code couleur ANSI 105) montrant la version du chromedriver qui a été installé.",
+    "49": "unzip -j extrait les fichiers sans créer de sous-dossier (le -j supprime les chemins d'archive) directement dans /usr/local/bin/chrome.",
+    "54": "On récupère maintenant l'URL du chromedriver avec une requête curl et jq similaire, en cherchant cette fois la clé downloads.chromedriver au lieu de downloads.chrome.",
+    "65": "COPY --from copie le binaire composer depuis une image intermédiaire (composer:latest) vers l'image actuelle, sans avoir besoin d'installer composer nous-même."
+  }
+}

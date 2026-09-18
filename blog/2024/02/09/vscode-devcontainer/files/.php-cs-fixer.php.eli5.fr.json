@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:34.565Z",
+  "source": ".php-cs-fixer.php",
+  "sourceHash": "985dc8aa5a418c33563bb18547be37470a93e64c",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier configure PHP CS Fixer, un outil qui formate automatiquement le code PHP selon des règles de style. Il crée un finder pour cibler tous les fichiers PHP du projet en excluant les dossiers inutiles, puis définit les règles de formatage incluant la norme PSR12 et l'ajout d'un en-tête de licence en haut de chaque fichier.",
+  "explanations": {
+    "3": "PhpCsFixer\\Finder::create() initialise un objet qui va chercher les fichiers à formater.",
+    "4": "->in('.') indique au finder de commencer à chercher à partir du répertoire courant (le point signifie « ici »).",
+    "5": "->exclude([...]) dit au finder d'ignorer les dossiers listés dans le tableau, car ils ne contiennent pas de code à formatter.",
+    "13": "file_get_contents() lit le contenu du fichier licenseHeader.txt et le stocke dans $header pour l'utiliser plus tard.",
+    "21": "rtrim($header, \"\\r\\n\") supprime les retours à la ligne et caractères de fin du fichier pour que l'en-tête se formate correctement.",
+    "27": "->setCacheFile() définit où PHP CS Fixer doit stocker son cache pour savoir quels fichiers ont déjà été traités."
+  }
+}

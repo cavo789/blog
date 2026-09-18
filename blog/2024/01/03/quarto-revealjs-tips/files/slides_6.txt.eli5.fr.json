@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:16.495Z",
+  "source": "slides_6.txt",
+  "sourceHash": "2866ebe85cdaa7ee92e2d597809ac54ffdecf7a3",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un document Quarto/Pandoc pour générer une présentation Reveal.js. Il définit le niveau de titre qui crée des diapositives individuelles (ici, les titres de niveau 3 avec ### créeront chacun une nouvelle diapositive), ce qui permet de contrôler la granularité de la présentation.",
+  "explanations": {
+    "8": "slide-level: 3 signifie que les titres markdown de niveau 3 (###) marqueront le début d'une nouvelle diapositive dans la présentation générée."
+  }
+}

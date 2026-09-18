@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:11.007Z",
+  "source": "my-site.part2.conf",
+  "sourceHash": "1e80d95e28e6ced255f7b13881810ce0a9528c2d",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce fichier configure deux hôtes virtuels Apache : l'un écoute sur le port 80 (HTTP) et l'autre sur le port 443 (HTTPS). Chacun redirige les requêtes vers des fichiers non-existants vers index.html, ce qui est typique pour les applications single-page. Le second hôte active le SSL/TLS avec les certificats appropriés.",
+  "explanations": {
+    "7": "RewriteEngine On active le moteur de réécriture d'URL, qui permet de modifier les chemins des requêtes selon des règles.",
+    "8": "RewriteCond %{REQUEST_FILENAME} !-f signifie « appliquer la règle suivante seulement si le fichier demandé n'existe pas ».",
+    "9": "RewriteRule ^(.*)$ index.html [QSA,L] capture toute requête et la redirige vers index.html, en conservant les paramètres de requête (QSA) et en stoppant le traitement des règles (L).",
+    "26": "SSLEngine on active le chiffrement SSL/TLS pour cette connexion sécurisée.",
+    "28": "SSLCertificateFile pointe vers le fichier contenant le certificat public de sécurité du serveur.",
+    "30": "SSLCertificateKeyFile pointe vers le fichier contenant la clé privée qui correspond au certificat."
+  }
+}

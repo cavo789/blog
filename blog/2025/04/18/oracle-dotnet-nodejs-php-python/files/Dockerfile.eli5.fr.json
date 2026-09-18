@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:57.886Z",
+  "source": "Dockerfile",
+  "sourceHash": "843080a55f94a3704270bdedb249a1314fa50611",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une application .NET 8 qui se connecte à Oracle Database. Il utilise un stage de construction pour compiler le projet OracleConnector, puis crée une image finale légère en copiant seulement les binaires compilés et en y ajoutant les bibliothèques Oracle Instant Client nécessaires.",
+  "explanations": {
+    "3": "La directive AS build crée une étape intermédiaire nommée « build » qui sera utilisée plus tard pour copier les artefacts compilés, plutôt que de les conserver dans l'image finale.",
+    "7": "COPY copie uniquement les fichiers .csproj du projet dans le conteneur de construction, pour que l'étape dotnet restore suivante puisse télécharger les dépendances.",
+    "13": "Cette nouvelle étape FROM démarre une image finale séparée basée sur le runtime .NET sans les outils de compilation, ce qui rend l'image finale beaucoup plus petite.",
+    "20": "ARG crée une variable de construction que tu peux surcharger au moment de la construction avec --build-arg, ici pour contrôler la version du client Oracle.",
+    "23": "Le paramètre --no-install-recommends réduit la taille de l'image en installant uniquement les paquets strictement nécessaires, et la suppression de /var/lib/apt/lists/* nettoie le cache apt.",
+    "29": "Cette longue chaîne de commandes RUN les regroupe en une seule couche pour réduire la taille de l'image : elle télécharge, extrait et configure les bibliothèques Oracle Instant Client.",
+    "33": "ln -s crée des liens symboliques vers les versions spécifiques des bibliothèques, pour que le système trouve automatiquement libclntsh.so sans connaître le numéro de version exact."
+  }
+}

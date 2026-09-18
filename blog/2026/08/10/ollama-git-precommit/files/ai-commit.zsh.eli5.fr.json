@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:43.892Z",
+  "source": "ai-commit.zsh",
+  "sourceHash": "6b82688883eaed3e5c0badd2fb8d54776c1054c4",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction utilise un modèle local pour générer un message de commit Conventional Commits basé sur les changements indexés, puis affiche le message et demande à l'utilisateur s'il faut l'utiliser tel quel, l'éditer, ou l'annuler. La fonction ne valide jamais le commit automatiquement — l'utilisateur doit explicitement taper 'y' ou 'e' pour confirmer.",
+  "explanations": {
+    "11": "La fonction _git_staged_diff récupère la différence des fichiers indexés; le || return 1 signifie que si cette commande échoue, on sort immédiatement de ai-commit en signalant une erreur.",
+    "13": "Ceci construit un prompt pour le modèle IA qui explique exactement quoi faire (écrire un message de commit au format Conventional Commits) et comment le formater.",
+    "16": "${diff} insère ici le contenu des changements indexés que nous avons récupéré plus tôt.",
+    "19": "_ollama_query envoie le prompt au modèle local et récupère la réponse générée; de nouveau, || return 1 quitte la fonction si le modèle n'est pas disponible.",
+    "26": "read -k1 capture un seul caractère au clavier sans attendre d'appui sur Entrée, ce qui permet une réponse rapide de l'utilisateur.",
+    "30": "git commit -m utilise directement le message généré, tandis que git commit -e -m ouvre l'éditeur pour que l'utilisateur puisse modifier le message avant validation."
+  }
+}

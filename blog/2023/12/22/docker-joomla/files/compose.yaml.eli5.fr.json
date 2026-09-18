@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:05.682Z",
+  "source": "compose.yaml",
+  "sourceHash": "60be85f3869a3bee61e3a0de6c83d82637a19fe4",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Docker Compose définit deux services : joomla (l'application web) et joomladb (la base de données). Les commentaires highlight-next-line marquent les lignes importantes de cette configuration.",
+  "explanations": {
+    "2": "Le commentaire // highlight-next-line est une directive pour un outil de documentation ou de présentation qui met en évidence la ligne suivante.",
+    "5": "Ce deuxième commentaire highlight-next-line marque de la même façon le service joomladb pour le différencier visuellement du service joomla."
+  }
+}

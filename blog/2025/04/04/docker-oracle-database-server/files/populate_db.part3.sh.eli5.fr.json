@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:48.376Z",
+  "source": "populate_db.part3.sh",
+  "sourceHash": "25bd3b61e48c9bf4909b5ae8763ed502236a5852",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash se connecte à une base de données Oracle en tant que SYSDBA avec des paramètres interpolés, puis exécute une séquence de commandes SQL : il bascule vers un conteneur spécifique, se reconnecte avec un autre utilisateur, crée le schéma HR et le remplit avec des données de test.",
+  "explanations": {
+    "3": "sqlplus -S établit une connexion SQL*Plus en mode silencieux vers Oracle ; les paramètres entre %% sont remplacés à l'exécution ; <<EOF...EOF crée un bloc d'entrée sur plusieurs lignes qui sera transmis à sqlplus.",
+    "4": "Cette commande SQL bascule la session vers un pluggable database (PDB) spécifique nommé par le paramètre %%pdb%%.",
+    "5": "Se reconnecte avec l'utilisateur system au lieu de sys, toujours dans le PDB défini par le paramètre.",
+    "6": "Exécute un script SQL situé à ce chemin pour créer les objets du schéma HR.",
+    "7": "Exécute un script SQL pour insérer les données de test dans les tables HR précédemment créées."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:56.031Z",
+  "source": ".gitconfig",
+  "sourceHash": "f700e2e214fd956451b1d30f1d50f7cb6fc9361c",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Git définit un alias personnalisé appelé 'undo' qui permet d'annuler les changements en revenant à un état antérieur du dépôt. L'alias utilise une fonction shell pour récupérer la référence de la branche courante et la réinitialiser à un commit précédent dans l'historique de reflog, avec une valeur par défaut d'une étape en arrière si aucun paramètre n'est fourni.",
+  "explanations": {
+    "2": "git reset --hard restaure complètement le dépôt à un commit spécifique, éliminant tous les changements non validés. $(git rev-parse --abbrev-ref HEAD) récupère le nom de la branche actuelle, et @{${1-1}} accède à l'historique de reflog (l'historique des mouvements de la branche) — le paramètre ${1-1} utilise le premier argument passé ou 1 par défaut, permettant d'écrire 'git undo' pour annuler un changement ou 'git undo 2' pour en annuler deux."
+  }
+}

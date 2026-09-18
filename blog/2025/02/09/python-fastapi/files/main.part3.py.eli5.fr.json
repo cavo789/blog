@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:34.502Z",
+  "source": "main.part3.py",
+  "sourceHash": "c4c6e9157c757debdacbce6a9cd5656dd494e3c7",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée une API web avec FastAPI qui expose deux endpoints pour accéder à des blagues : l'un retourne une blague aléatoire, l'autre retourne une blague spécifique par son index. Les blagues sont stockées dans une liste et l'API gère les cas où l'index demandé n'existe pas.",
+  "explanations": {
+    "2": "choice() est une fonction qui sélectionne un élément au hasard dans une liste.",
+    "8": "Cette liste contient toutes les blagues disponibles que l'API pourra servir.",
+    "16": "@app.get() crée un endpoint HTTP GET ; quand quelqu'un visite /jokes, la fonction en dessous s'exécute.",
+    "17": "async signifie que cette fonction peut faire plusieurs opérations en même temps sans bloquer ; ici c'est compatible avec FastAPI.",
+    "21": "choice(jokes) tire une blague au hasard de la liste et la retourne dans un dictionnaire JSON.",
+    "23": "{joke_id} est un paramètre variable dans l'URL ; /jokes/2 appellera cette fonction avec joke_id = 2.",
+    "24": "Le paramètre : int force que joke_id doit être un nombre entier.",
+    "29": "jokes[joke_id] accède à la blague à la position joke_id, comme si tu disais « donne-moi le 2e élément ».",
+    "30": "IndexError se déclenche quand on essaie d'accéder à une position qui n'existe pas dans la liste (par exemple, demander la blague numéro 10 alors qu'il n'y en a que 5).",
+    "31": "La fonction retourne un message d'erreur et le code HTTP 404 pour indiquer que la ressource n'a pas été trouvée."
+  }
+}

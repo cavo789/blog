@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:48.309Z",
+  "source": "block_filenames.htaccess",
+  "sourceHash": "d2711058dc2838cb9602d522456871c28f508384",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc .htaccess utilise FilesMatch pour cibler deux fichiers spécifiques (file_1.gif et file_2.png) par leurs noms, puis refuse l'accès à tous les visiteurs. L'ordre des directives Allow et Deny indique au serveur de vérifier les autorisations avant les refus, mais le Deny from all final bloque tout accès à ces fichiers.",
+  "explanations": {
+    "1": "La directive FilesMatch avec l'expression régulière (file_1\\.gif|file_2\\.png) sélectionne exactement ces deux fichiers — les barres obliques inverses échappent les points pour qu'ils correspondent à des points littéraux, et le pipe | signifie « ou ».",
+    "2": "Order Allow,Deny définit la priorité d'évaluation : Apache vérifie d'abord les règles Allow, puis les Deny — cela signifie qu'une règle Deny peut contredire une Allow si elle vient après.",
+    "3": "Deny from all refuse l'accès à tous les clients, peu importe leur adresse IP ou leur origine."
+  }
+}

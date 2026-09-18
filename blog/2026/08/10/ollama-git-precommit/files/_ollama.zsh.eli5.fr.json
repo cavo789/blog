@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:39.559Z",
+  "source": "_ollama.zsh",
+  "sourceHash": "5d2f5c8b6041d2943fb52817f7b2fff829ff8768",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce fichier de fondation définit les utilitaires partagés pour toutes les fonctions ai-*: vérification de connexion à Ollama, envoi de requêtes au modèle, nettoyage de la sortie, interaction avec git, et un système de menu interactif en fzf pour découvrir et lancer les commandes enregistrées. Le nommage avec tiret bas garantit que ce fichier se charge en premier parmi tous les fichiers de fonction.",
+  "explanations": {
+    "18": "typeset -gA crée une variable associative globale (clé-valeur), ici pour stocker les commandes ai-* enregistrées.",
+    "28": "${OLLAMA_HOST:-http://localhost:11434} utilise la variable d'environnement OLLAMA_HOST si elle existe, sinon le défaut http://localhost:11434.",
+    "39": "${OLLAMA_MODEL:-qwen3-coder:30b} utilise la variable d'environnement OLLAMA_MODEL si elle existe, sinon le modèle par défaut qwen3-coder:30b.",
+    "49": "print -r empêche l'expansion des séquences d'échappement, gardant le contenu du prompt exactement tel quel.",
+    "50": "jq -Rs prend l'entrée standard, la traite comme une chaîne brute unique, et -s l'accumule sans la diviser par lignes.",
+    "69": "[[ \"$text\" != *'```'* ]] teste si la variable text ne contient aucune occurrence de ```.",
+    "75": "inside = !inside bascule entre true et false chaque fois qu'une ligne commence par des backticks, permettant d'imprimer uniquement le contenu entre les blocs.",
+    "98": "${1:A} prend le premier argument et résout son chemin absolu avec la modification :A.",
+    "99": "${path#${PWD}/} retire le répertoire courant du début du chemin si présent, retournant un chemin relatif.",
+    "107": "[[ \"$answer\" == [yY]* ]] retourne 0 (succès) si answer commence par y ou Y, 1 sinon.",
+    "126": "AI_DIFF_MAX_CHARS est lue avec un défaut de 12000 caractères pour limiter la taille des diffs.",
+    "143": "(( ${#diff} <= max )) teste si la longueur de diff est inférieure ou égale à max.",
+    "154": "grep -E ^(diff --git|...) sélectionne uniquement les lignes d'en-tête de fichier et de bloc (hunk headers).",
+    "158": "${summary[1,$max]} prend les premiers max caractères de la chaîne summary.",
+    "172": "bat_bin=$(_ai_bat) && preview=... exécute _ai_bat et utilise le résultat pour construire la commande preview.",
+    "176": "fd --type f | fzf lance fzf avec la sortie de fd (fichiers uniquement).",
+    "194": "read n lit une ligne depuis l'entrée standard dans la variable n sans l'indicateur -r, ce qui permet l'expansion.",
+    "238": "(( ${+AI_COMMANDS[$cmd]} )) teste si la clé cmd existe dans le tableau associatif AI_COMMANDS.",
+    "250": "${(ok)AI_COMMANDS} énumère les clés du tableau associatif triées alphabétiquement (ok = order keys).",
+    "261": "--with-nth=2 demande à fzf d'afficher uniquement la deuxième colonne (la description).",
+    "269": "${(s: :)${AI_PARAMS[$picked]:-none}} divise la valeur de AI_PARAMS par espaces (s: :) pour obtenir une liste de types de paramètres."
+  }
+}

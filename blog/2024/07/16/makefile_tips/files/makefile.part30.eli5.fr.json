@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:08.661Z",
+  "source": "makefile.part30",
+  "sourceHash": "e75a511a4d071658e98dce6385daed14fcd5fe43",
+  "lang": "part30",
+  "textLang": "fr",
+  "summary": "Ce snippet de Makefile définit une variable CMD qui change selon l'environnement. En production, CMD reste vide pour exécuter les commandes directement, tandis qu'en développement, CMD préfixe les commandes avec docker compose exec pour les lancer dans le conteneur.",
+  "explanations": {
+    "1": "ifeq compare deux valeurs — ici on vérifie si la variable APP_ENV vaut exactement 'production'.",
+    "2": "Le := assigne une valeur vide à CMD, ce qui signifie que les commandes s'exécuteront sans préfixe.",
+    "4": "Le := assigne à CMD le préfixe docker compose exec my_docker_image, si bien que les commandes suivantes s'exécuteront à l'intérieur du conteneur."
+  }
+}

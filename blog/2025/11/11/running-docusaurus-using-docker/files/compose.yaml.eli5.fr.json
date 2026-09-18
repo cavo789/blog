@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:05:38.104Z",
+  "source": "compose.yaml",
+  "sourceHash": "5041ba1a5ddfc889640aa9b8f9a212f9bfad7d6f",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé docusaurus qui construit une image à partir du Dockerfile du répertoire courant. Le service expose le port 443 et exécute une commande sleep infinity pour rester actif en arrière-plan.",
+  "explanations": {
+    "7": "La variable TARGET est remplacée par sa valeur d'environnement, ou par 'development' par défaut si elle n'existe pas.",
+    "9": "%%name=docusaurus%% est une variable de substitution qui sera remplacée par le nom du service ou du projet lors du lancement du conteneur.",
+    "13": "Cette commande garde le conteneur actif indéfiniment ; sans elle, le conteneur s'arrêterait immédiatement après son démarrage."
+  }
+}

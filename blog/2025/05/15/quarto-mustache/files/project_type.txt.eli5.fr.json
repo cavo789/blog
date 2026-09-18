@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:01.326Z",
+  "source": "project_type.txt",
+  "sourceHash": "2a5816a17c4db1bf709e81ecea5fd3800f0faca7",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce template utilise la syntaxe Mustache pour afficher un message différent selon que la variable type est définie ou non. Si type contient une valeur comme PHP ou PYTHON, on affiche un message spécifique à ce type de projet; sinon, on affiche un message indiquant que l'étape s'applique à tous les projets.",
+  "explanations": {
+    "2": "{{#type}} ouvre un bloc conditionnel qui ne s'exécute que si la variable type existe et a une valeur définie.",
+    "4": "{{ type }} insère la valeur de la variable type directement dans le texte rendu.",
+    "9": "{{^type}} est l'inverse du bloc précédent: ce bloc s'exécute uniquement si type est vide ou n'existe pas.",
+    "11": "Ce message s'affichera quand type n'a pas été défini, indiquant que l'étape concerne tous les types de projets."
+  }
+}

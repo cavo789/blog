@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:34.987Z",
+  "source": "Hangman.py",
+  "sourceHash": "fe1e1b58ef29288128f53ad531de91200c573a6d",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script implémente un jeu du pendu complet. Le joueur doit deviner une lettre à la fois dans un mot caché, avec un maximum de 5 erreurs avant de perdre. Le jeu affiche progressivement un pendu ASCII à chaque mauvaise tentative et propose de rejouer après chaque partie.",
+  "explanations": {
+    "9": "La boucle continue de demander une entrée tant que le joueur n'entre pas 'y' ou 'n' en minuscules.",
+    "19": "display crée une chaîne de tirets de la même longueur que le mot à deviner, représentant les lettres non encore trouvées.",
+    "22": "letters convertit le mot en liste pour pouvoir supprimer facilement les lettres trouvées.",
+    "25": "strip() supprime les espaces inutiles au début et à la fin de l'entrée.",
+    "26": "Cette boucle force le joueur à entrer exactement une seule lettre.",
+    "35": "remove() enlève la première occurrence de la lettre trouvée de la liste.",
+    "36": "find() cherche l'index de la première occurrence de la lettre devinée.",
+    "37": "On reconstruit display en gardant les caractères avant et après l'index, en insérant la lettre trouvée à la bonne position.",
+    "125": "Cette commande efface l'écran du terminal : 'cls' sur Windows, 'clear' sur Linux/Mac.",
+    "144": "random.choice() sélectionne un mot aléatoire dans la liste pour cette partie.",
+    "152": "Cette condition garantit que play_hangman() n'est exécutée que si ce fichier est lancé directement, pas s'il est importé."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:56.777Z",
+  "source": "user_prefs",
+  "sourceHash": "c8abbb59533c1608ca618e65408c0297c42929c0",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un système de filtrage d'e-mails en définissant des domaines et adresses à bloquer (blacklist) et à autoriser (whitelist). Les quatre premiers domaines sont ajoutés à la liste noire, suivi d'un domaine e-mail spécifique, puis deux adresses e-mail sont explicitement autorisées malgré les blocages généraux.",
+  "explanations": {
+    "1": "blacklist_from bloque tous les e-mails provenant de domaines se terminant par .hr (extension Croatie), empêchant toute communication depuis ces adresses.",
+    "6": "Cette ligne bloque spécifiquement tous les e-mails du domaine @hair.com, complétant les blocages par domaine de premier niveau.",
+    "8": "whitelist_from crée une exception en autorisant explicitement les e-mails de @avonture.be même s'ils seraient normalement filtrés par d'autres règles de blocage."
+  }
+}

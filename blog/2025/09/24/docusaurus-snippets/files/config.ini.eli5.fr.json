@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:36.849Z",
+  "source": "config.ini",
+  "sourceHash": "0ee854be8e3d49424c7df3eda9500d3a53ad9def",
+  "lang": "ini",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit les paramètres du serveur en utilisant le format INI. Il spécifie que le serveur doit écouter sur le port 8080 et se lier à l'adresse localhost, ce qui signifie que le serveur n'sera accessible que depuis la machine locale.",
+  "explanations": {}
+}

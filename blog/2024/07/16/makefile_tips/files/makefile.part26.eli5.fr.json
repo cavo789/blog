@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:55.288Z",
+  "source": "makefile.part26",
+  "sourceHash": "457620255905ba255114facee119c051ef1e929f",
+  "lang": "part26",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit une variable PWD contenant le répertoire courant en exécutant la commande shell pwd, puis crée une cible current_dir qui affiche cette valeur. C'est un exemple simple montrant comment capturer le résultat d'une commande shell dans une variable Makefile.",
+  "explanations": {
+    "1": "$(shell pwd) exécute la commande pwd du système et substitue son résultat (le chemin du répertoire courant) dans la variable PWD.",
+    "3": "current_dir est une cible Makefile — un label que tu peux exécuter avec make current_dir.",
+    "4": "Le @ au début supprime l'affichage de la commande elle-même, seule sa sortie (echo) s'affiche ; ${PWD} récupère la valeur de la variable PWD définie plus haut."
+  }
+}

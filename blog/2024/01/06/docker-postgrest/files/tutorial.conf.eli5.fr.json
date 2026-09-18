@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:41.727Z",
+  "source": "tutorial.conf",
+  "sourceHash": "79dad3b119e17e6737a92923eff2f00a3dfc642b",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit les paramètres de connexion à une base de données PostgreSQL et les rôles d'authentification. Il indique où se connecter (localhost:5433), quel schéma utiliser (api), et quel rôle attribuer aux utilisateurs non authentifiés (web_anon).",
+  "explanations": {
+    "1": "db-uri spécifie la chaîne de connexion complète : authenticator est l'utilisateur PostgreSQL, mysecretpassword son mot de passe, localhost:5433 l'adresse du serveur, et postgres la base de données cible.",
+    "3": "db-anon-role définit le rôle PostgreSQL utilisé par défaut pour les requêtes sans authentification, limitant les permissions aux opérations autorisées pour ce rôle."
+  }
+}

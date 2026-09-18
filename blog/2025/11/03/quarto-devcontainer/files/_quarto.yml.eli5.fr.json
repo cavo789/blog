@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:43.377Z",
+  "source": "_quarto.yml",
+  "sourceHash": "318ff436f7448c3460b5e39fb6ba27b492eda09a",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier YAML configure un projet de site web avec des métadonnées de marque. Il définit le type de projet, le titre du site, et personnalise la barre de navigation en y ajoutant un titre et un lien vers un dépôt GitHub via une icône.",
+  "explanations": {
+    "1": "project: est la clé racine qui contient tous les paramètres de configuration du projet.",
+    "4": "website: est une section distincte qui regroupe les paramètres spécifiques au site web, comme son titre et sa navigation.",
+    "8": "tools: est une liste (indiquée par le tiret) d'outils ou de liens externes à afficher dans la navbar.",
+    "9": "icon: github indique quel icône afficher pour ce lien — dans ce cas, l'icône GitHub standard."
+  }
+}

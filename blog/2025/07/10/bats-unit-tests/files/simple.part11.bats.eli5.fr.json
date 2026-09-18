@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:05.762Z",
+  "source": "simple.part11.bats",
+  "sourceHash": "e6cc4c40fbcfb2ec8d60d0fa3f08bff8591d36df",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la fonction console::banner affiche correctement une bannière formatée avec des bordures en égales de part et d'autre du texte. Le test exécute la fonction avec un message et valide que chaque ligne du résultat correspond exactement au format attendu, puis vérifie que la commande s'est exécutée sans erreur.",
+  "explanations": {
+    "2": "run exécute la commande console::banner et capture sa sortie dans la variable lines, un tableau où chaque élément est une ligne de résultat.",
+    "4": "assert_equal compare la première ligne de sortie (lines[0]) avec la bordure supérieure attendue en caractères égales.",
+    "5": "assert_equal vérifie que la deuxième ligne contient le message formaté avec des espaces de remplissage pour centrer le texte entre les bordures.",
+    "8": "assert_success confirme que la fonction console::banner s'est terminée avec un code de sortie 0 (succès), sans erreur."
+  }
+}

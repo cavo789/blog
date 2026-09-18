@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:39.439Z",
+  "source": "compose.yaml",
+  "sourceHash": "530a9776d3b2f209129cd839b49b2c47bf7124ce",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé 'app' qui construit une image Docker à partir du répertoire courant, expose le port 8000 de la machine hôte vers le port 80 du conteneur, et monte le fichier main.py du répertoire courant dans le conteneur pour permettre les modifications en direct sans reconstruire l'image.",
+  "explanations": {
+    "3": "build: . indique à Docker Compose de construire l'image Docker en utilisant le Dockerfile présent dans le répertoire courant (le point).",
+    "5": "%%port=8000%% est une variable substitutable qui sera remplacée par le port réel (8000 par défaut) lors du lancement du conteneur, permettant de mapper ce port vers le port 80 interne du conteneur.",
+    "7": "volumes monte le fichier main.py de la machine hôte vers /code/main.py dans le conteneur, ce qui permet de modifier le code sans reconstruire l'image."
+  }
+}

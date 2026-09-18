@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:51.043Z",
+  "source": "product.php",
+  "sourceHash": "26a4d5a3eba8e70cb658aeb57077440c225801ab",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette classe Product encapsule les données d'un produit avec un nom et un prix. Elle fournit des getters et setters pour accéder et modifier ces propriétés de manière contrôlée. Le constructeur accepte optionnellement un nom et un prix au moment de la création, mais ne définit actuellement que le nom.",
+  "explanations": {
+    "5": "private string déclare une propriété accessible uniquement à l'intérieur de la classe, avec le type string garanti. L'initialisation à '' crée une chaîne vide par défaut.",
+    "8": "Le constructeur accepte des paramètres optionnels (avec valeurs par défaut) pour initialiser l'objet lors de sa création avec new Product().",
+    "10": "Plutôt que d'assigner directement, on passe par setProductName() pour que toute logique de validation dans ce setter soit exécutée.",
+    "25": "Le paramètre float garantit que seule une valeur numérique décimale peut être assignée à setProductPrice(), rejettant les types incompatibles."
+  }
+}

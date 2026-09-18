@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:15.513Z",
+  "source": "index.part6.php",
+  "sourceHash": "9e339320da7ef9b225a55b815fd1a4065cde74b2",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette fonction sayHello accepte un prénom optionnel et retourne un message de salutation personnalisé. Si aucun prénom n'est fourni, elle retourne « Hello World! », sinon elle retourne « Hello » suivi du prénom. Le script appelle ensuite cette fonction sans argument et affiche le résultat.",
+  "explanations": {
+    "3": "Le paramètre $firstname a un type string et une valeur par défaut vide, ce qui signifie qu'on peut appeler la fonction sans argument et $firstname sera une chaîne vide.",
+    "5": "L'opérateur ternaire ? : teste si $firstname est une chaîne vide et retourne « Hello World! » dans ce cas, sinon concatène « Hello » avec la valeur de $firstname."
+  }
+}

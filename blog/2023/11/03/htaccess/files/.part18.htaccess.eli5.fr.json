@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:04.462Z",
+  "source": ".part18.htaccess",
+  "sourceHash": "a036800d32f8eb77b9561ca0798e948395d2c314",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc désactive l'affichage automatique du contenu des répertoires sur le serveur web. Si un visiteur accède à un dossier sans fichier index, au lieu de voir la liste des fichiers, il recevra une erreur 403. C'est une mesure de sécurité courante pour éviter l'exposition accidentelle de fichiers sensibles.",
+  "explanations": {
+    "1": "IfModule vérifie que le module mod_autoindex est chargé sur le serveur Apache avant d'appliquer les directives à l'intérieur du bloc.",
+    "2": "Options -Indexes désactive l'indexation automatique : le trait d'union signifie « retirer cette option »."
+  }
+}

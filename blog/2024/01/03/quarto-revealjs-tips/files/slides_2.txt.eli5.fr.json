@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:03.873Z",
+  "source": "slides_2.txt",
+  "sourceHash": "9881b59f53f2c8b7af3bdf16ff2ead47c74cd306",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier YAML configure une présentation Reveal.js avec métadonnées de base (titre, auteur, date) et des paramètres de rendu incluant un logo personnalisé, une feuille de styles CSS et un script JavaScript personnalisé.",
+  "explanations": {
+    "5": "last-modified indique que la date affichée sera automatiquement celle de la dernière modification du fichier.",
+    "12": "resources: images spécifie le répertoire où chercher les ressources (images) référencées dans la présentation.",
+    "13": "header-includes permet d'injecter du HTML brut dans l'en-tête du document généré, ici pour charger un script JavaScript personnalisé."
+  }
+}

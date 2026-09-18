@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:17.791Z",
+  "source": "compose.yaml",
+  "sourceHash": "479d57f703185166bd265fe038b57abdf55ce6cb",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Docker Compose définit un conteneur de développement pour Quarto en construisant une image à partir d'un Dockerfile local, en montant le répertoire de travail et les fichiers de configuration utilisateur, et en gardant le conteneur actif indéfiniment pour permettre le développement interactif.",
+  "explanations": {
+    "2": "Cette directive indique à l'outil de vérification orthographique de ne pas signaler « tinytex » comme une faute.",
+    "8": "La section build spécifie comment construire l'image Docker plutôt que de la télécharger d'un registre.",
+    "15": "USER_UID et USER_GID sont des valeurs par défaut pour les identifiants utilisateur/groupe, mais seront remplacées à l'exécution par la directive user du Dockerfile.",
+    "18": "Ces drapeaux contrôlent l'installation optionnelle de composants supplémentaires durant la construction de l'image.",
+    "22": "L'utilisateur root est configuré pour que le conteneur s'exécute avec les privilèges de root.",
+    "27": "Le répertoire parent du projet est monté en lecture-écriture dans /workspace, donnant accès à tous les fichiers du projet.",
+    "28": "L'historique bash est conservé entre les sessions en le montant depuis le conteneur vers le répertoire hôte.",
+    "29": "Le socket Docker est monté pour permettre au conteneur d'accéder à l'engine Docker et de construire/lancer d'autres conteneurs.",
+    "31": "${HOME} est une variable d'environnement qui se résout au répertoire personnel de l'utilisateur hôte.",
+    "36": "read_only: true rend le fichier de clé SSH inaccessible en écriture à l'intérieur du conteneur pour des raisons de sécurité.",
+    "39": "Cette boucle infinie maintient le conteneur actif en arrière-plan, permettant de l'utiliser pour l'exécution de commandes sans qu'il s'arrête."
+  }
+}

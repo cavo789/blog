@@ -168,7 +168,7 @@ And now the final part, imagine you've defined an alias in the hosts file (for W
 
 Imagine you've created an alias like:
 
-<Snippet filename="C:\Windows\System32\Drivers\etc\hosts" source="./files/C:\Windows\System32\Drivers\etc\hosts" />
+<Snippet filename="C:\Windows\System32\Drivers\etc\hosts" source="./files/windows_hosts.txt" />
 
 and thus, on your host, you're not using `http://127.0.0.1:8080` but `http://mysite.local:8080`
 

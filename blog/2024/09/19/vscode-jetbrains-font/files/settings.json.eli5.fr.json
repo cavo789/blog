@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:12.744Z",
+  "source": "settings.json",
+  "sourceHash": "6acd5279d341f556007414f33cb2183d8a29324b",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration VS Code définit les paramètres de police pour l'éditeur de texte. Il spécifie la famille de police à utiliser (JetBrains Mono), la taille en points (14) et active les ligatures, qui sont des combinaisons de caractères affichées comme des symboles uniques pour améliorer la lisibilité du code.",
+  "explanations": {
+    "2": "JetBrains Mono est le nom de la police que l'éditeur va utiliser pour afficher le texte du code.",
+    "3": "14 est la taille de la police mesurée en points, qui détermine la hauteur visible des caractères.",
+    "4": "Les ligatures sont des caractères spéciaux qui combinent deux ou plus symboles (comme => ou ==) en une seule forme visuelle optimisée pour la lecture."
+  }
+}

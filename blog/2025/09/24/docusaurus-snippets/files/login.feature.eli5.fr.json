@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:53.747Z",
+  "source": "login.feature",
+  "sourceHash": "40da7f440f41adf2502ef3e8b4c2cdc1799e2616",
+  "lang": "feature",
+  "textLang": "fr",
+  "summary": "Ce fichier décrit un scénario de test pour la fonctionnalité de connexion utilisateur. Il teste le parcours complet : l'utilisateur accède à la page de connexion, saisit des identifiants valides, et doit être redirigé vers le tableau de bord. C'est un test de comportement écrit en langage Gherkin qui vérifie le flux de connexion standard.",
+  "explanations": {}
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:18.036Z",
+  "source": ".part24.htaccess",
+  "sourceHash": "701bdb4029603feb547a8cf1bae53b32699cbcf2",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Cette règle redirige permanemment (code 301) toutes les URLs commençant par /category/ vers la racine, en supprimant le préfixe /category/. Par exemple, /category/produits devient /produits. C'est utile quand on réorganise la structure d'un site et qu'on veut que les anciennes URLs restent fonctionnelles.",
+  "explanations": {
+    "1": "RedirectMatch utilise une expression régulière pour capturer ce qui suit /category/ dans les parenthèses (.*), puis la variable $1 remplace ce contenu capturé dans l'URL de destination — ici simplement / suivi du contenu capturé."
+  }
+}

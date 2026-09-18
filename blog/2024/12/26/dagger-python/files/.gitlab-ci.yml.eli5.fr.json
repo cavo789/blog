@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:55.183Z",
+  "source": ".gitlab-ci.yml",
+  "sourceHash": "5f87975658d9fcb740412c1b4fed47ff83284c32",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration GitLab CI définit des modèles réutilisables pour exécuter des outils de qualité de code (lint, format, mypy, ruff) via Dagger dans des conteneurs Docker. Le modèle .docker configure l'accès à Docker en tant que service, le modèle .dagger l'étend et installe Dagger, puis quatre jobs héritent de .dagger pour lancer chacun un outil de vérification spécifique.",
+  "explanations": {
+    "4": "DOCKER_VERSION est une variable qui sera substituée lors de l'exécution — elle permet de spécifier quelle version de Docker on veut utiliser sans coder la version en dur.",
+    "8": "extends: [.docker] signifie que la section .dagger réutilise toute la configuration de .docker, puis y ajoute ses propres paramètres (before_script).",
+    "10": "apk add curl installe curl, qui est le gestionnaire de paquets Alpine Linux — apk est spécifique aux conteneurs basés sur Alpine.",
+    "11": "Ce curl télécharge et exécute le script d'installation de Dagger, puis l'installe dans /usr/local/bin pour qu'il soit disponible dans le PATH."
+  }
+}

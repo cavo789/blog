@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:08.037Z",
+  "source": "index.txt",
+  "sourceHash": "0715eda5a58d754223d7d9d94748b5e89472ec05",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ceci est un fichier de métadonnées (frontmatter) au format YAML pour un article de documentation. Il définit le titre de l'article, indique que c'est la première partie d'une série, et contient d'autres propriétés de configuration. Le commentaire HTML sert à mettre en évidence la ligne suivante dans le rendu final.",
+  "explanations": {
+    "4": "Le commentaire <!-- highlight-next-line --> indique au système de documentation de mettre en évidence visuellement la ligne immédiatement suivante (la ligne 5) dans le rendu HTML final.",
+    "5": "La propriété series relie cet article à une collection d'articles du même nom, permettant à la plateforme de les grouper ensemble et d'afficher les liens de navigation entre les parties."
+  }
+}

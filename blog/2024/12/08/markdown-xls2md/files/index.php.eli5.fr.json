@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:03.756Z",
+  "source": "index.php",
+  "sourceHash": "09d6d136aeec62eb785a65f55848870fd0d56aa2",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier PHP génère une page web qui convertit des tableaux Excel collés en markdown et HTML. Il charge un template GitHub optionnel, puis affiche une interface Vue.js avec une zone de texte où l'utilisateur colle des données Excel; le JavaScript détecte le collage, reformate les données en syntaxe markdown avec les bonnes largeurs de colonnes, et affiche un aperçu HTML rendu avec Bootstrap.",
+  "explanations": {
+    "5": "declare(strict_types = 1) force PHP à vérifier que les types de données passés aux fonctions correspondent exactement à ce qui est déclaré.",
+    "28": "On définit une constante REPO avec l'URL du dépôt GitHub, utilisée plus tard pour remplacer un placeholder dans le template.",
+    "32": "is_file() vérifie si le fichier octocat.tmpl existe dans le répertoire courant du script avant d'essayer le lire.",
+    "33": "str_replace() remplace %REPO% par la valeur de la constante REPO dans le contenu du fichier, puis file_get_contents() charge ce contenu.",
+    "86": "v-model=\"editor\" lie bidirectionnellement la textarea au variable editor de Vue, @change et @paste sont des listeners qui appellent les méthodes onChange et onPaste quand l'utilisateur modifie ou colle du texte.",
+    "105": "columnWidth() parcourt toutes les lignes du tableau et retourne la longueur maximale de la colonne spécifiée pour calculer l'espacement.",
+    "115": "split(/[\\n\\u0085\\u2028\\u2029]|\\r\\n?/g) divise le texte par n'importe quel type de saut de ligne, puis chaque ligne est divisée par les tabulations pour obtenir un tableau 2D.",
+    "119": "Pour chaque colonne, on appelle columnWidth() pour obtenir sa largeur maximale, ce qui servira à aligner proprement les colonnes en markdown.",
+    "134": "Array(columnWidths[index] - column.length).join(\" \") crée des espaces pour remplir jusqu'à la largeur de la colonne, afin que le markdown soit bien aligné.",
+    "140": "Cette ligne row.map; ne fait rien (elle n'assigne pas le résultat), c'est probablement du code mort.",
+    "143": "splice(1, 0, ...) insère à la position 1 (après la première ligne) une ligne de tirets pour créer le séparateur d'en-tête markdown.",
+    "189": "event.preventDefault() empêche le comportement par défaut du paste (qui collerait dans la textarea), permettant au code de traiter le collage manuellement.",
+    "191": "event.clipboardData donne accès aux données du presse-papiers du navigateur.",
+    "202": "marked() convertit la chaîne markdown en HTML; { sanitize: true } supprime les balises HTML dangereuses.",
+    "204": "On remplace la balise <table> générique par une avec les classes Bootstrap pour un style plus joli avec rayures et survol."
+  }
+}

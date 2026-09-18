@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:53.344Z",
+  "source": "schema_test.py",
+  "sourceHash": "f99bbf7c243a4266aa17d98dee541861780d0691",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script interroge l'API Mockaroo pour générer des données de test. Il construit une URL avec la clé API, le schéma et le nombre d'enregistrements souhaités, envoie la requête HTTP, puis affiche les données reçues ou un message d'erreur selon que la requête a réussi.",
+  "explanations": {
+    "11": "La f-string insère les variables api_key, num_records et schema directement dans l'URL pour former l'adresse complète de l'API Mockaroo.",
+    "14": "requests.get() envoie une requête HTTP GET à l'URL et stocke la réponse du serveur dans la variable response.",
+    "17": "On vérifie si status_code égale 200, ce qui signifie que la requête a réussi et que le serveur a retourné les données sans erreur.",
+    "19": "response.json() convertit le texte JSON reçu du serveur en objet Python (dictionnaire ou liste) qu'on peut utiliser directement.",
+    "24": "Si la requête a échoué, response.text contient le message d'erreur envoyé par le serveur, qu'on affiche pour diagnostiquer le problème."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:21.921Z",
+  "source": "rgenv.zsh",
+  "sourceHash": "2887ae467a7bf840adab834237e86f1d99339826",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction rgenv cherche toutes les références à une variable d'environnement dans les fichiers de configuration et de code source. Elle valide d'abord que l'utilisateur a fourni un nom de variable, puis utilise ripgrep avec plusieurs types de fichiers prédéfinis pour localiser toutes les occurrences.",
+  "explanations": {
+    "3": "local var=\"${1}\" stocke le premier argument passé à la fonction (le nom de la variable à chercher) dans une variable locale nommée var.",
+    "5": "[[ -z \"${var}\" ]] teste si var est vide ; -z signifie « longueur zéro ».",
+    "11": "--type-add 'config:*.{env,cfg,ini,conf}' crée un nouveau type de fichier appelé config qui correspond aux fichiers se terminant par .env, .cfg, .ini ou .conf."
+  }
+}

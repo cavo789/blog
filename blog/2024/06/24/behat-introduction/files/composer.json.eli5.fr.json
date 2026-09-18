@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:50.101Z",
+  "source": "composer.json",
+  "sourceHash": "690a6b1eb24cc4ec72c31921ee7b136389bc3767",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ceci est un fichier composer.json qui configure un projet Behat pour les tests de comportement. Il déclare l'espace de noms PHP du projet, liste l'auteur, et spécifie les dépendances de développement nécessaires comme Behat lui-même et ses extensions pour tester des applications web avec Mink et Chrome.",
+  "explanations": {
+    "6": "psr-4 est un standard PHP pour mapper les espaces de noms aux répertoires du système de fichiers; ici, tout code dans l'espace Johndoe\\Behat\\ sera trouvé dans le dossier src/",
+    "16": "^3 signifie que Composer acceptera n'importe quelle version de Behat 3.x mais pas la version 4 ou supérieure.",
+    "17": "mink-extension est un module Behat qui ajoute des capacités de simulation de navigateur web pour tester des interfaces utilisateur.",
+    "18": "L'extension Chrome permet à Behat de contrôler un vrai navigateur Chrome pendant les tests, plutôt que de faire juste du parsing HTML."
+  }
+}

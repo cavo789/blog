@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:17.662Z",
+  "source": "compose_mariadb.yaml",
+  "sourceHash": "aaec6cedb53189c9c5f9beacba7167d91819921d",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier docker-compose définit une application Joomla avec deux services : un conteneur Joomla qui expose le port 8080 et se connecte à une base de données, et un conteneur MariaDB qui stocke les données. Les variables entre %% %% sont des paramètres remplaçables pour personnaliser le nom, le port et le mot de passe.",
+  "explanations": {
+    "1": "Les variables entre %% %% sont des placeholders — elles seront remplacées par de vraies valeurs quand tu utiliseras ce fichier.",
+    "9": "Le format `%%port=8080%%:80` signifie que le port 8080 sur ta machine (à gauche) sera routé vers le port 80 du conteneur (à droite).",
+    "11": "JOOMLA_DB_HOST doit correspondre au nom du service MariaDB ci-dessous (joomladb), Docker résout ce nom automatiquement en adresse IP interne.",
+    "18": "MariaDB 11.1.2 est une version spécifique de la base de données — sans version fixée, Docker prendrait automatiquement la plus récente et ton app pourrait se casser à chaque redémarrage."
+  }
+}

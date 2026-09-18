@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:20.508Z",
+  "source": ".part25.htaccess",
+  "sourceHash": "68cfc86d33c273d5c5cc6d0e3beab16994c28cbe",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Cette règle redirige permanemment (code 301) toutes les URL commençant par /fruit/ vers /fruits/ en conservant le reste du chemin. Cela permet de corriger une ancienne URL mal orthographiée et de préserver les paramètres de route.",
+  "explanations": {
+    "1": "RedirectMatch applique une redirection basée sur une expression régulière (regex) ; 301 signifie une redirection permanente (« moved permanently ») que les moteurs de recherche et navigateurs mémoriseront. ^/fruit/(.*)$ capture /fruit/ suivi de n'importe quel contenu (les parenthèses créent un groupe), et /fruits/$1 remplace l'URL en utilisant $1 pour injecter le contenu capturé."
+  }
+}

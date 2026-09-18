@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:55.662Z",
+  "source": "mermaid-config.json",
+  "sourceHash": "0525a1002254f7577027f6c50f1fc5217942b8d7",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit un thème de base pour un diagramme ou une visualisation, en spécifiant les polices, les couleurs de texte et de fond, ainsi qu'une palette de couleurs échelonnées pour représenter différentes catégories ou intensités avec leurs étiquettes correspondantes.",
+  "explanations": {
+    "4": "fontFamily liste les polices à utiliser dans l'ordre de préférence — le système essaie Inter d'abord, puis Segoe UI si non disponible, etc.",
+    "6": "lineColor définit la couleur des lignes ou des bordures par défaut dans le diagramme.",
+    "9": "cScale0 à cScale4 représentent cinq niveaux de couleur distincts, probablement pour coder visuellement différentes valeurs ou catégories.",
+    "10": "cScaleLabel0 et cScaleLabel1 à cScaleLabel4 définissent les couleurs du texte affichées sur les zones coloriées correspondantes — ici toujours blanc pour assurer la lisibilité.",
+    "24": "nodeBorder spécifie la couleur du contour des nœuds ou des boîtes dans le diagramme.",
+    "25": "clusterBkg définit la couleur de fond des groupes ou des clusters qui regroupent plusieurs éléments."
+  }
+}

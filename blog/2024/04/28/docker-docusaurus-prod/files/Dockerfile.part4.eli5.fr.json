@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:20.636Z",
+  "source": "Dockerfile.part4",
+  "sourceHash": "5d1c16eaf80f92fa657ce1ab720876498044ffa3",
+  "lang": "part4",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image de production en démarrant depuis une image nginx légère (basée sur Alpine Linux), puis copie le résultat de la compilation Docusaurus dans le répertoire web standard de nginx pour le servir.",
+  "explanations": {
+    "1": "FROM nginx:stable-alpine3.19-perl utilise comme base une image nginx stable sur Alpine Linux (une distribution minimaliste), ce qui garde l'image finale petite et rapide.",
+    "4": "COPY --from=building_production récupère les fichiers compilés depuis une étape de build précédente nommée building_production et les place où nginx peut les servir.",
+    "6": "WORKDIR définit le répertoire courant pour les commandes suivantes du Dockerfile à /usr/share/nginx/html."
+  }
+}

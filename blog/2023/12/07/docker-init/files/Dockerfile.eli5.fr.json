@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:50.549Z",
+  "source": "Dockerfile",
+  "sourceHash": "828b9abdbebfe499968a8caf97d0ae7ba1c50a63",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur PHP 8.2 avec Apache, configure PHP pour la production, copie les fichiers de l'application dans le répertoire web, et change l'utilisateur pour exécuter les processus sous www-data au lieu de root pour des raisons de sécurité.",
+  "explanations": {
+    "2": "La variable $PHP_INI_DIR pointe vers le répertoire de configuration PHP ; cette ligne renomme le fichier de configuration de production (php.ini-production) en php.ini actif pour que Apache l'utilise.",
+    "3": "Le point (.) référence tous les fichiers du répertoire courant sur la machine hôte, qui sont copiés dans /var/www/html — le répertoire par défaut où Apache cherche les fichiers web à servir.",
+    "4": "Tous les processus suivants dans le conteneur s'exécuteront en tant qu'utilisateur www-data au lieu de root, ce qui limite les dégâts en cas de compromission de sécurité."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:21.828Z",
+  "source": "licenseHeader.txt",
+  "sourceHash": "ce6ff9440f834d8c7aec140e37d21b36c61760e8",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ceci est une notice de licence GPL v3 standard qui permet la redistribution et la modification du logiciel sous certaines conditions. Elle précise que le logiciel est fourni sans garantie et renvoie vers les termes complets de la licence GNU General Public License.",
+  "explanations": {}
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:27.810Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "df7a86862f6d8fa633ec620dc6efe464aac702c2",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier YAML définit un secret nommé a_secret_name qui sera chargé à partir du contenu d'un fichier existant appelé existing_file. C'est typiquement utilisé dans les orchestrateurs de conteneurs comme Docker Swarm ou Kubernetes pour gérer des données sensibles.",
+  "explanations": {
+    "3": "La clé file indique que la valeur du secret provient du fichier existing_file plutôt que d'être écrite directement dans la configuration."
+  }
+}

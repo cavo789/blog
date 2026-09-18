@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:04.697Z",
+  "source": "Blog.part2.feature",
+  "sourceHash": "a05365646b8b2c889b2ae522c33fe25d26003c44",
+  "lang": "feature",
+  "textLang": "fr",
+  "summary": "Ce fichier de test décrit un scénario de comportement utilisateur : vérifier qu'en cliquant sur l'élément de menu « Blog » depuis la page d'accueil, l'utilisateur est redirigé vers la page /blog. C'est un test d'acceptation écrit en Gherkin qui valide un flux de navigation simple.",
+  "explanations": {
+    "1": "Feature est le mot-clé Gherkin qui introduit une fonctionnalité métier à tester — ici, accéder à la liste des articles via le menu Blog.",
+    "3": "Scenario définit un cas de test spécifique avec des étapes concrètes à exécuter dans un ordre défini.",
+    "4": "Given établit l'état initial du test — l'utilisateur commence déjà sur la page d'accueil du site.",
+    "5": "Then est l'action que l'utilisateur effectue — cliquer sur le lien ou bouton « Blog » dans le menu.",
+    "6": "Then vérifie le résultat attendu — après le clic, l'URL de la page doit être /blog."
+  }
+}

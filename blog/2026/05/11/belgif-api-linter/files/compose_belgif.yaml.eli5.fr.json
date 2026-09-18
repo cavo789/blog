@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:43.545Z",
+  "source": "compose_belgif.yaml",
+  "sourceHash": "b989ce5d1b6de51f7f008bda54c5dfc5c23fdd11",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un service app qui construit une image locale et expose le port 8000, et un service belgif-lint qui valide un fichier OpenAPI en utilisant Maven. Les volumes permettent de monter le code local et de mettre en cache les dépendances Maven entre les exécutions.",
+  "explanations": {
+    "5": "%%port=8000%% est une variable de substitution qui sera remplacée à l'exécution ; elle mappe le port 8000 de la machine hôte au port 80 du conteneur.",
+    "7": "./main.py:/code/main.py monte le fichier main.py du répertoire courant à l'intérieur du conteneur au chemin /code/main.py, permettant au conteneur d'accéder et d'exécuter ce fichier.",
+    "11": "image: maven:3.9.9-eclipse-temurin-17-alpine spécifie l'image Docker à utiliser pour ce service plutôt que de la construire localement.",
+    "13": "Le suffixe :ro signifie read-only, montant le répertoire courant en lecture seule pour éviter que le conteneur ne modifie les fichiers originaux.",
+    "14": "maven-cache:/root/.m2 persiste le répertoire des dépendances Maven entre les exécutions du conteneur, évitant de télécharger à nouveau les mêmes artefacts.",
+    "16": "Le symbole > permet de continuer la commande sur plusieurs lignes YAML, et les espaces supplémentaires sont normalisés en espaces uniques.",
+    "21": "Cette section top-level définit les volumes nommés réutilisables que les services peuvent monter, contrairement aux volumes anonymes définis directement dans chaque service."
+  }
+}

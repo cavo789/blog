@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:33.577Z",
+  "source": "compose.part4.yaml",
+  "sourceHash": "7c384d958eb77ca23b0614dcf46e8881abcd0918",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce snippet de configuration Docker Compose monte le répertoire SSH de l'utilisateur hôte dans le conteneur pour que l'application puisse accéder aux clés SSH. La variable d'environnement ${HOME} se résout au répertoire personnel de l'utilisateur, ce qui rend la configuration portable entre différentes machines.",
+  "explanations": {
+    "7": "${HOME} est une variable d'environnement qui représente le répertoire personnel de l'utilisateur sur la machine hôte; Docker substitue cette valeur au moment de l'exécution, et le format gauche:droite indique qu'on monte le dossier ~/.ssh de l'hôte vers /root/.ssh dans le conteneur."
+  }
+}

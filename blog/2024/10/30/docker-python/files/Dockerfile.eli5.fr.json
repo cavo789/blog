@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:45:26.785Z",
+  "source": "Dockerfile",
+  "sourceHash": "6327ac8226c1a43ddcd4284fe907646f352963bd",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker pour une application Python en deux étapes. D'abord, on crée une image de base qui installe Python, les dépendances Linux et Python, puis on étend cette base pour créer une image de développement avec un utilisateur non-root, VS Code Server et un historique bash persistant.",
+  "explanations": {
+    "1": "Cette directive spéciale indique à Docker d'utiliser la syntaxe Dockerfile améliorée (version 1), ce qui active des fonctionnalités avancées comme les montages de cache.",
+    "7": "ARG définit une variable de construction disponible lors du build ; ici on fixe le répertoire de l'application à /app.",
+    "17": "FROM crée une nouvelle étape de build nommée 'base' en utilisant l'image officielle Python avec la version spécifiée par DOCKER_PYTHON_VERSION.",
+    "20": "ENV PYTHONDONTWRITEBYTECODE=1 empêche Python de générer des fichiers .pyc, ce qui réduit l'espace disque et améliore les performances.",
+    "24": "ENV PYTHONUNBUFFERED=1 force Python à afficher immédiatement les logs à la sortie standard au lieu de les mettre en mémoire tampon.",
+    "27": "WORKDIR définit le répertoire de travail courant dans le conteneur pour toutes les commandes suivantes.",
+    "30": "RUN --mount=type=cache crée un montage de cache qui persiste entre les builds pour accélérer les reconstructions ; ici on l'utilise pour le cache APK.",
+    "31": "set -e -x configure bash pour arrêter si une commande échoue (-e) et afficher chaque commande exécutée (-x).",
+    "45": "RUN --mount=type=cache... utilise un montage de cache pour le pip et un bind mount pour lire requirements.txt depuis la machine hôte.",
+    "56": "FROM base AS development crée une nouvelle étape de build nommée 'development' en partant de l'image 'base' précédemment créée.",
+    "58": "On fixe SHELL à /bin/bash pour s'assurer que les commandes shell utilisent bash plutôt que sh.",
+    "76": "addgroup crée un groupe système avec le nom et l'identifiant spécifiés.",
+    "78": "adduser crée un nouvel utilisateur système sans mot de passe avec les paramètres fournis.",
+    "88": "USER bascule le contexte d'exécution pour que les commandes suivantes s'exécutent avec cet utilisateur au lieu de root.",
+    "92": "Cette commande ajoute un prompt PS1 personnalisé au fichier .bashrc qui affiche le nom du conteneur, le mot 'DEV' et l'utilisateur courant.",
+    "98": "SNIPPET crée une variable contenant deux export qui activent l'enregistrement immédiat de l'historique bash et le redirigent vers un fichier spécifique."
+  }
+}

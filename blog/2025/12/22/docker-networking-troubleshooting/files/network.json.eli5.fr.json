@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:39.956Z",
+  "source": "network.json",
+  "sourceHash": "904723cc9c9fe4c12a00f52047365af5e803c7e1",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fragment JSON décrit la configuration réseau d'un conteneur Docker connecté à un réseau nommé « your_network ». Il contient les informations d'adressage IP, MAC, les alias DNS et les paramètres de routage pour ce conteneur sur ce réseau spécifique.",
+  "explanations": {
+    "3": "IPAMConfig est défini à null, ce qui signifie qu'aucune configuration personnalisée de gestion d'adresses IP n'a été appliquée — le réseau utilise les paramètres par défaut.",
+    "4": "Links est un tableau vide, indiquant qu'aucune liaison réseau directe vers d'autres conteneurs n'a été établie.",
+    "6": "Aliases contient les noms alternatifs par lesquels ce conteneur peut être adressé sur le réseau — ici « facade » apparaît deux fois (probablement une redondance).",
+    "12": "NetworkID est l'identifiant unique du réseau Docker auquel ce conteneur est connecté.",
+    "13": "EndpointID identifie de façon unique l'interface de ce conteneur sur ce réseau particulier — différent du conteneur lui-même.",
+    "14": "Gateway est l'adresse IP du routeur du réseau — les paquets destinés à d'autres sous-réseaux transitent par cette adresse.",
+    "15": "IPAddress est l'adresse IP assignée à ce conteneur sur le réseau — elle appartient au sous-réseau 192.168.0.0/24.",
+    "16": "MacAddress est l'adresse physique (MAC) de l'interface virtuelle du conteneur sur ce réseau.",
+    "17": "IPPrefixLen de 24 signifie un masque de sous-réseau /24, soit 255.255.255.0 — définit la portée du réseau local.",
+    "21": "DNSNames liste les noms d'hôte associés à ce conteneur — « facade » (l'alias) et « 5abd45eecfa3 » (probablement l'ID court du conteneur)."
+  }
+}

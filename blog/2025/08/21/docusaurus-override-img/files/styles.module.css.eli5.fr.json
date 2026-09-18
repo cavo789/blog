@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:55.717Z",
+  "source": "styles.module.css",
+  "sourceHash": "d8d1ce72a029a902ff9d75e72ec39b33f399d303",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fichier CSS définit un conteneur avec un effet de verre dépoli (frosted glass) et ajoute des animations d'interaction sur les images à l'intérieur. Quand on survole une image, elle s'agrandit légèrement, remonte, et devient plus lumineuse, avec des transitions fluides entre ces états.",
+  "explanations": {
+    "4": "rgb(255, 255, 255, 0.15) crée du blanc translucide (15% d'opacité), ce qui permet au fond de montrer au travers du conteneur.",
+    "7": "backdrop-filter applique l'effet de flou et de saturation au contenu derrière le conteneur, créant l'effet de verre dépoli caractéristique.",
+    "13": "La propriété transition sans valeur de durée par défaut sur une même ligne continue sur les lignes suivantes ; chaque propriété listée aura une animation fluide.",
+    "20": "transform: scale(1.05) agrandit l'image à 105% de sa taille, et translateY(-4px) la déplace de 4 pixels vers le haut simultanément.",
+    "22": "filter: brightness(1.05) rend l'image 5% plus lumineuse, et saturate(1.1) augmente la saturation des couleurs de 10%."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:11:19.066Z",
+  "source": "render.sh",
+  "sourceHash": "5c7500c5b429069d2d46a32d27f5f1d93acd642c",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script crée un répertoire de cache, puis lance un conteneur Docker qui exécute Quarto pour générer un fichier HTML à partir d'une source Markdown. Ensuite il ouvre le fichier HTML généré dans l'explorateur de fichiers Windows. Le script s'arrête immédiatement à la première erreur grâce aux options de sécurité définies au début.",
+  "explanations": {
+    "2": "set -euo pipefail active trois modes de sécurité : -e arrête le script à la première erreur, -u échoue si on référence une variable non définie, et -o pipefail fait échouer le script si une commande dans un pipeline échoue.",
+    "4": "mkdir -p crée le répertoire .build/.quarto_deno_cache_data/deno et tous les répertoires parents nécessaires s'ils n'existent pas déjà.",
+    "5": "chmod -R 777 donne des permissions de lecture, écriture et exécution complètes à tout le monde sur ce répertoire et tout son contenu.",
+    "9": "$(id -u):$(id -g) exécute les commandes id -u et id -g pour récupérer l'identifiant utilisateur et de groupe actuels, et les passe à Docker pour que le conteneur utilise les mêmes identifiants.",
+    "10": "-v \".:/public\" monte le répertoire courant de la machine hôte dans le répertoire /public du conteneur Docker.",
+    "11": "-w /public définit /public comme répertoire de travail par défaut à l'intérieur du conteneur.",
+    "12": "-v \"./.build/.quarto_deno_cache_data:/container_cache\" monte le dossier de cache local dans le conteneur pour que Deno et Quarto puissent réutiliser les données en cache.",
+    "19": "cd .build change dans le répertoire .build, puis explorer.exe ouvre le fichier overview.html dans l'explorateur de fichiers Windows."
+  }
+}

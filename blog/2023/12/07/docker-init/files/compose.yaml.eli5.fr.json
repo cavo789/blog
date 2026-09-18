@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:54.756Z",
+  "source": "compose.yaml",
+  "sourceHash": "71c94d8411995c0b2a603b96b101d313ebd0138e",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé 'server' qui construit une image Docker à partir du répertoire courant et expose le port 8080 de la machine hôte sur le port 80 du conteneur.",
+  "explanations": {
+    "6": "Le format %%port=8080%% est une syntaxe de templating qui remplace cette variable par 8080 lors de l'exécution, permettant de configurer le port d'écoute de manière flexible sans modifier le fichier directement."
+  }
+}

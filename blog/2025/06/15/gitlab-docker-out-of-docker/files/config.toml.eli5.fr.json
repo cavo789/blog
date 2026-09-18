@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:21.255Z",
+  "source": "config.toml",
+  "sourceHash": "af2eadf8854da7ccd771b9b895fb08efa2397ccd",
+  "lang": "toml",
+  "textLang": "fr",
+  "summary": "Ce fichier TOML définit la configuration d'un runner GitLab CI/CD en spécifiant que ce runner doit utiliser l'exécuteur Docker pour lancer les jobs. C'est une section de tableau imbriqué qui permet de configurer plusieurs runners si nécessaire.",
+  "explanations": {
+    "1": "La syntaxe [[runners]] crée un nouvel élément dans un tableau appelé runners — c'est là qu'on définit les propriétés d'un runner spécifique.",
+    "2": "Le champ executor définit la technologie que ce runner utilisera pour exécuter les jobs — en l'occurrence Docker, qui lancera les jobs dans des conteneurs."
+  }
+}

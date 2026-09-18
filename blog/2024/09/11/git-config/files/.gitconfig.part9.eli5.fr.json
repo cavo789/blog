@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:10.590Z",
+  "source": ".gitconfig.part9",
+  "sourceHash": "0e75b40080587209fe8ce4831eb1784f990e099a",
+  "lang": "part9",
+  "textLang": "fr",
+  "summary": "C'est un fichier de configuration Git qui désactive la conversion automatique des sauts de ligne entre les formats Windows (CRLF) et Unix (LF). Le paramètre autocrlf = false signifie que Git ne modifiera jamais les sauts de ligne dans tes fichiers, peu importe le système d'exploitation utilisé.",
+  "explanations": {
+    "1": "[core] est la section de configuration qui regroupe les paramètres fondamentaux de Git.",
+    "2": "autocrlf = false désactive la normalisation automatique des fins de ligne — Git gardera exactement les sauts de ligne présents dans tes fichiers sans les convertir."
+  }
+}

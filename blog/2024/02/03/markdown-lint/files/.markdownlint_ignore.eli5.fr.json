@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:17.106Z",
+  "source": ".markdownlint_ignore",
+  "sourceHash": "efcf13ae69daa0f7f71028e4878d00c3086bcf57",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration liste les motifs de chemins à ignorer, probablement pour un outil comme un linter, un formatter ou un système de contrôle de version. Il exclut tous les fichiers markdown présents dans les répertoires node_modules et vendor, puisque ce sont des dépendances externes qu'on ne souhaite pas traiter.",
+  "explanations": {}
+}

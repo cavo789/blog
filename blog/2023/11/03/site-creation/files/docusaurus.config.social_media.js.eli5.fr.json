@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:44.217Z",
+  "source": "docusaurus.config.social_media.js",
+  "sourceHash": "24ab0b4699a99d34ffaa30ccc744c1114a354dc8",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier exporte une configuration de thème qui spécifie l'image par défaut utilisée quand on partage un article sur les réseaux sociaux. C'est un objet de configuration simple qui sera probablement importé par un outil de build ou un framework comme Docusaurus.",
+  "explanations": {
+    "1": "export default signifie que cet objet est l'export principal du module — quand quelqu'un importe ce fichier, il reçoit directement cet objet.",
+    "4": "Le chemin 'img/social-card.jpg' est une URL relative qui pointe vers une image dans le dossier img du projet, utilisée comme aperçu lors du partage."
+  }
+}

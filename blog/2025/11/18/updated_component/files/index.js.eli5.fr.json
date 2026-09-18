@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:06:02.537Z",
+  "source": "index.js",
+  "sourceHash": "a90dd0d8f29070bd97275b132fda34b7b3f35cfe",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche le contenu d'un article de blog en récupérant les métadonnées via le hook useBlogPost. Il rend conditionnellement un composant Updated qui affiche l'historique des modifications uniquement si on est sur la page complète de l'article, en passant les données d'updates depuis les frontmatter.",
+  "explanations": {
+    "4": "La fonction composant reçoit children en paramètre, qui représente le contenu enfant passé à ce composant par ses parents.",
+    "6": "useBlogPost est un hook personnalisé qui retourne un objet contenant metadata (les infos de l'article) et isBlogPostPage (un booléen indiquant si on affiche la page complète ou juste un aperçu).",
+    "12": "Cette condition vérifie que isBlogPostPage est vrai avant de rendre le composant Updated, pour évicher de l'afficher sur les listes ou aperçus d'articles."
+  }
+}

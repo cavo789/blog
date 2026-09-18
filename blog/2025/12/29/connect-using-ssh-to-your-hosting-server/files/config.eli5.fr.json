@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:42.773Z",
+  "source": "config",
+  "sourceHash": "042042cc06d7540eadadaa83b51e275ed60f1811",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ceci est une configuration SSH pour se connecter à un serveur de PlanetHoster. Elle définit le nom d'hôte réel, le nom d'utilisateur, le port personnalisé et le chemin de la clé privée à utiliser pour l'authentification.",
+  "explanations": {
+    "1": "Host planethoster crée un alias que tu peux utiliser pour te connecter rapidement : au lieu de taper la commande complète, tu écriras simplement ssh planethoster.",
+    "2": "HostName spécifie l'adresse IP ou le nom de domaine réel du serveur auquel tu vas te connecter.",
+    "4": "Port 5022 indique que le serveur SSH écoute sur le port 5022 au lieu du port 22 par défaut, une pratique courante pour renforcer la sécurité.",
+    "5": "IdentityFile pointe vers ta clé privée ED25519 ; SSH l'utilisera automatiquement pour s'authentifier au lieu de demander un mot de passe."
+  }
+}

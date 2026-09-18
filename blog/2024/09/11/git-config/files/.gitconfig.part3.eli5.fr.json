@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:59.425Z",
+  "source": ".gitconfig.part3",
+  "sourceHash": "61b9267f5ec803265c9a20c9ef8295a7ad74561b",
+  "lang": "part3",
+  "textLang": "fr",
+  "summary": "Cette configuration définit le comportement de la commande fetch dans git en activant l'option prune, qui supprime automatiquement les références locales aux branches distantes qui n'existent plus sur le serveur distant.",
+  "explanations": {
+    "2": "prune = true active le nettoyage automatique des branches de suivi distant qui ont été supprimées sur le serveur distant lors d'un fetch."
+  }
+}

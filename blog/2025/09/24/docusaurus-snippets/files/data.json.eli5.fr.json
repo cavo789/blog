@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:43.088Z",
+  "source": "data.json",
+  "sourceHash": "c2723c3b5a64031d77fa22591918cf1225458752",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON définit les métadonnées de base d'un paquet ou projet, avec un nom et un numéro de version. C'est généralement la structure minimale qu'on trouve dans un fichier package.json ou manifest.",
+  "explanations": {}
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:07.589Z",
+  "source": "Dockerfile",
+  "sourceHash": "d93e477296a71c385452545328e3c2ba9eb7a61f",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile configure une image Docker basée sur Python 3.13 en version allégée, désactive la génération de fichiers compilés Python, installe l'utilitaire graphviz depuis les dépôts système, puis installe la bibliothèque pydot via pip — tout cela pour supporter la visualisation de graphes en Python.",
+  "explanations": {
+    "4": "PYTHONDONTWRITEBYTECODE=1 empêche Python de créer les fichiers .pyc (versions compilées du code) dans l'image, ce qui réduit la taille et améliore les performances d'image Docker.",
+    "7": "set -e -x configure le shell pour s'arrêter au premier erreur (-e) et afficher chaque commande exécutée (-x), utile pour déboguer les problèmes de build.",
+    "9": "--no-install-recommends réduit la taille de l'image en installant uniquement les dépendances strictement nécessaires de graphviz, sans les paquets optionnels supplémentaires.",
+    "11": "Les commandes apt-get clean et rm -rf nettoient les caches et fichiers temporaires laissés par apt-get pour réduire la taille finale de l'image Docker.",
+    "14": "--no-cache-dir indique à pip de ne pas mettre en cache les roues et sources téléchargées, économisant de l'espace disque dans l'image."
+  }
+}

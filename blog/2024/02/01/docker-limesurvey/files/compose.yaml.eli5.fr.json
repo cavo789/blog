@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:15.715Z",
+  "source": "compose.yaml",
+  "sourceHash": "314d33ace6759089556e602f698f663fb6625c05",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application LimeSurvey avec deux services : un conteneur applicatif qui exécute l'application web, et un conteneur MySQL qui fournit la base de données. L'application est configurée pour se connecter à la base de données et expose le port 8080 ; elle attend que la base de données soit saine avant de démarrer.",
+  "explanations": {
+    "6": "%%app_name=limesurvey-app%% est un placeholder qui sera remplacé par une valeur lors du déploiement, permettant de personnaliser le nom du conteneur.",
+    "10": "%%db_name=limesurvey-db%% est un placeholder pour le nom du service de base de données, utilisé ici comme nom d'hôte pour que l'application puisse le trouver sur le réseau Docker.",
+    "19": "%%port=8080%% est un placeholder pour le port sur la machine hôte ; le :8080 à droite est le port interne du conteneur auquel il sera mappé.",
+    "21": "depends_on avec condition: service_healthy force l'application à attendre que le healthcheck du service de base de données réussisse avant de démarrer.",
+    "33": "Le healthcheck exécute mysqladmin ping pour vérifier que MySQL répond, avec un timeout de 10 secondes et jusqu'à 10 tentatives de reconnexion."
+  }
+}

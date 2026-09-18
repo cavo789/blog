@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:47.401Z",
+  "source": "_d_has_running_containers",
+  "sourceHash": "c8f73b2b10d13c365f494c641038d37aba86ccaa",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script vérifie si au moins un conteneur Docker est actuellement en cours d'exécution. Il utilise docker ps avec les options -q et -n 1 pour obtenir rapidement l'ID du conteneur le plus récent sans traiter la sortie avec grep. Si aucun conteneur n'est trouvé, il affiche un message d'avertissement en jaune sur stderr et retourne 1 (erreur).",
+  "explanations": {
+    "5": "Le test [[ -z \"...\" ]] retourne vrai si la chaîne entre guillemets est vide — ici, on vérifie si docker ps -q -n 1 ne retourne rien, ce qui signifierait qu'aucun conteneur n'est en cours d'exécution.",
+    "6": "echo >&2 redirige la sortie vers stderr au lieu de stdout (le flux d'erreur standard). Les séquences \\033[0;33m et \\033[0m sont des codes ANSI pour colorier le texte en jaune et le réinitialiser."
+  }
+}

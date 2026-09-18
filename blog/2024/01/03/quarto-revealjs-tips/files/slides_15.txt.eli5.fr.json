@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:51.114Z",
+  "source": "slides_15.txt",
+  "sourceHash": "3075a40a7b7d19217971bc53867e134b355887dd",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Cette section documente comment personnaliser l'apparence et le comportement du terminal. Elle commence par une note optionnelle indiquant que les lecteurs peuvent sauter cette partie s'ils ne veulent pas faire de personnalisation immédiatement.",
+  "explanations": {
+    "3": ":::{.callout-note} est une syntaxe Markdown spéciale qui crée une boîte de note visuelle — le texte qui suit apparaîtra dans un encadré distinctif dans le document rendu."
+  }
+}

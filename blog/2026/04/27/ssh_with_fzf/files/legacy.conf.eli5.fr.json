@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:06:45.761Z",
+  "source": "legacy.conf",
+  "sourceHash": "73313d6c7a87ce431f5d8c6d95f44ca2464ccda3",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce bloc de configuration SSH définit un alias nommé LegacyApp pour se connecter à un serveur spécifique avec une adresse IP et un utilisateur particuliers. Quand tu tapes ssh LegacyApp, SSH utilisera automatiquement ces paramètres au lieu de devoir les passer en ligne de commande.",
+  "explanations": {
+    "1": "Host LegacyApp crée un alias — c'est un raccourci nommé que tu peux utiliser dans les commandes ssh au lieu de taper l'adresse IP complète.",
+    "2": "Hostname 1.2.3.4 indique l'adresse IP réelle du serveur vers lequel cet alias doit se connecter.",
+    "3": "User legacy spécifie le nom d'utilisateur à utiliser pour l'authentification quand tu te connectes via cet alias."
+  }
+}

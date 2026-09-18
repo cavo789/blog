@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:46.256Z",
+  "source": "simple.part8.bats",
+  "sourceHash": "c875a82bc00f5f3f8f568878467b609541a556ab",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la fonction helpers::__process affiche un message d'erreur approprié quand on lui passe un fichier d'entrée invalide. On construit un tableau d'arguments contenant --input InvalidFile, on appelle la fonction avec ces arguments, et on vérifie que la sortie correspond au motif d'erreur attendu.",
+  "explanations": {
+    "2": "source charge le fichier 'src/helpers.sh' dans l'environnement du test pour qu'on puisse appeler les fonctions qu'il définit.",
+    "3": "arrArguments=(...) crée un tableau bash contenant les arguments à passer à la fonction testée, ici --input suivi d'un nom de fichier qui n'existe pas.",
+    "4": "run exécute la commande et enregistre sa sortie et son code de retour pour qu'on puisse les vérifier ensuite avec les assertions.",
+    "5": "assert_output --regexp vérifie que la sortie produite correspond à l'expression régulière donnée, permettant de tester le message d'erreur sans correspondance exacte."
+  }
+}

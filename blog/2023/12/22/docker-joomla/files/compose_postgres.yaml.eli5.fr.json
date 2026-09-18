@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:23.527Z",
+  "source": "compose_postgres.yaml",
+  "sourceHash": "085c6bca1678522851c03fff8136830d2118e612",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application Joomla avec sa base de données PostgreSQL. Il configure deux services qui communiquent ensemble : un conteneur Joomla accessible sur le port 8080 et un conteneur PostgreSQL qui stocke les données, en utilisant des variables de configuration pour les noms et mots de passe.",
+  "explanations": {
+    "1": "%%name=kingsbridge%% est une variable de substitution qui sera remplacée par la valeur 'kingsbridge' partout dans le fichier pour nommer les services.",
+    "9": "%%port=8080%% remplace le port exposé du conteneur — ici on mappe le port 8080 de la machine hôte au port 80 du conteneur Joomla.",
+    "13": "JOOMLA_DB_USER est défini à 'postgres', qui doit correspondre à l'utilisateur PostgreSQL créé dans le service joomladb.",
+    "14": "%%dbPassword=example%% est une variable de substitution pour le mot de passe de la base de données, utilisé à la fois par Joomla et par PostgreSQL.",
+    "18": "JOOMLA_DB_TYPE=pgsql indique à Joomla d'utiliser PostgreSQL comme système de base de données au lieu du MySQL par défaut.",
+    "24": "postgres:16.0-alpine utilise une image PostgreSQL légère basée sur Alpine Linux plutôt que l'image standard complète.",
+    "29": "POSTGRES_DB crée automatiquement une base de données nommée 'joomla_db' au démarrage du conteneur PostgreSQL.",
+    "31": "POSTGRES_USER=postgres crée l'utilisateur administrateur PostgreSQL qui sera utilisé par Joomla pour se connecter.",
+    "33": "Le même mot de passe défini ici doit correspondre à celui utilisé dans la variable JOOMLA_DB_PASSWORD du service Joomla."
+  }
+}

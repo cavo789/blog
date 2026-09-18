@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:02:50.855Z",
+  "source": ".part13.htaccess",
+  "sourceHash": "d7e3a69c5d735ee6a5993cefc7b6bad3733f85c0",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier configure la mise en cache HTTP du serveur pour optimiser les performances. Il active les en-têtes de connexion persistante, puis définit des durées d'expiration différentes selon le type de fichier : les ressources statiques comme les polices et images sont cachées longtemps (1 mois à 1 an), tandis que le contenu dynamique comme le HTML et JSON ne sont pas cachés du tout (0 seconde).",
+  "explanations": {
+    "3": "Header set Connection keep-alive indique au serveur de réutiliser la même connexion TCP pour plusieurs requêtes au lieu d'en ouvrir une nouvelle à chaque fois, ce qui accélère le chargement.",
+    "8": "ExpiresActive On active le module mod_expires pour que les directives d'expiration suivantes soient traitées.",
+    "11": "ExpiresDefault définit la durée de vie par défaut pour tous les fichiers qui n'ont pas de règle spécifique : ici 1 mois après l'accès.",
+    "14": "ExpiresByType text/css applique une règle d'expiration spécifiquement aux fichiers CSS, remplaçant la valeur par défaut.",
+    "35": "AddType image/vnd.microsoft.icon .cur enregistre l'extension .cur comme étant du type image/vnd.microsoft.icon pour que le serveur le reconnaisse correctement.",
+    "56": "2592000 seconds équivaut à 30 jours en secondes, une façon alternative de spécifier la durée d'expiration.",
+    "78": "FilesMatch \"\\.(swf)$\" cible tous les fichiers se terminant par .swf en utilisant une expression régulière.",
+    "79": "Header set Expires avec une valeur en secondes raw est une alternative à ExpiresByType pour définir l'expiration des fichiers SWF."
+  }
+}

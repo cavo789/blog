@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:00.086Z",
+  "source": "compose.part3.yaml",
+  "sourceHash": "072a0f353c411654944b1f3464ced9cf7f8637aa",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nginx qui construit une image à partir du répertoire courant, expose les ports HTTP et HTTPS, et monte le dossier src local dans le répertoire de contenu web du conteneur.",
+  "explanations": {
+    "3": "build indique à Docker Compose de construire une image personnalisée plutôt que d'utiliser une image préexistante.",
+    "4": "context: . spécifie que le Dockerfile et les fichiers de build se trouvent dans le répertoire courant.",
+    "6": "Le premier nombre (80) est le port du conteneur, le second (80) est le port de la machine hôte — les requêtes HTTP externes arrivent sur le port 80 de l'hôte et sont transférées au port 80 du conteneur.",
+    "7": "De même, le port 443 (HTTPS) du conteneur est exposé sur le port 443 de l'hôte.",
+    "9": "volumes établit une liaison entre ./src sur la machine hôte et /usr/share/nginx/html dans le conteneur, permettant à nginx de servir les fichiers locaux en temps réel sans reconstruire l'image."
+  }
+}

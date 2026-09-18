@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:39.912Z",
+  "source": "console.part2.sh",
+  "sourceHash": "d6caeafe8faa6bf9563ba57d0b04a296090ebb55",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une bibliothèque de fonctions utilitaires pour formater et afficher du texte dans le terminal avec différentes couleurs et styles. Il sert de module réutilisable que d'autres scripts peuvent importer pour obtenir des messages colorés et structurés sans avoir à redéfinir ces fonctions à chaque fois.",
+  "explanations": {
+    "1": "Le shebang indique au système d'utiliser bash pour exécuter ce script, quel que soit l'interpréteur par défaut.",
+    "3": "console::printCyan définit une fonction avec un namespace (console) et un nom (printCyan) séparés par ::, ce qui est une convention pour organiser les fonctions en groupes logiques.",
+    "6": "askYesNo est une fonction destinée à poser une question à l'utilisateur et attendre une réponse oui/non, souvent utilisée dans des scripts interactifs."
+  }
+}

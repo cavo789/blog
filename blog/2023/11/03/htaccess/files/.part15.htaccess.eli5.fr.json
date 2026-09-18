@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:02:56.526Z",
+  "source": ".part15.htaccess",
+  "sourceHash": "d0eaf546f1a795125dc145b38f3033035a6a6d12",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier configure le contrôle d'accès Apache pour restreindre l'accès à un répertoire web. Les lignes 2-4 montrent la syntaxe pour Apache 2.2, qui refuse d'abord tout le monde puis autorise une adresse IP spécifique. Les lignes 7-8 commentées affichent l'équivalent moderne pour Apache 2.4, qui utilise une directive Require différente.",
+  "explanations": {
+    "2": "Order deny,allow établit l'ordre de traitement : d'abord on applique les règles Deny, puis les règles Allow.",
+    "3": "Deny from all refuse l'accès à tous les visiteurs par défaut.",
+    "4": "Allow from xxx.xxx.xxx.xxx accorde l'accès à l'adresse IP spécifiée, créant une exception à la règle de refus générale.",
+    "7": "Require all denied est la directive Apache 2.4 moderne qui remplace Deny from all — elle refuse tout accès d'un coup.",
+    "8": "Require ip xxx.xxx.xxx.xxx est la syntaxe Apache 2.4 pour autoriser une adresse IP, équivalente à Allow from avec la nouvelle syntaxe Require."
+  }
+}

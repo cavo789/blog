@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:05.099Z",
+  "source": "compose.yaml",
+  "sourceHash": "8a8110b1753e7df42b76552dfa2d49b61c164ba7",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de composition Docker définit un service appelé counter qui construit une image à partir du répertoire courant et lui assigne un nom de conteneur spécifique. La structure utilise des variables de substitution (%%name=counter%%) pour injecter des valeurs dynamiquement dans la configuration.",
+  "explanations": {
+    "5": "%%name=counter%% est une variable de substitution qui sera remplacée par la valeur 'counter' lors de l'exécution — cela définit le nom du service.",
+    "6": "build: . indique à Docker de construire l'image en utilisant le Dockerfile présent dans le répertoire courant (le point représente le répertoire actuel).",
+    "7": "container_name: %%name=counter%% assigne le nom 'counter' au conteneur qui sera créé quand ce service démarre — cela vous permet de le référencer par ce nom au lieu d'un ID aléatoire."
+  }
+}

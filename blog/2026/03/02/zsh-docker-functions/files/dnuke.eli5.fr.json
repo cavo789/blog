@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:14.162Z",
+  "source": "dnuke",
+  "sourceHash": "d73ddacae2463c6f4d0f0e95bafa21dc4b43b34e",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script zsh implémente un assistant de nettoyage Docker interactif appelé dnuke qui supprime les ressources inutilisées. Il analyse l'environnement Docker pour identifier les conteneurs arrêtés, les images orphelines, les volumes inutilisés et le cache de compilation, puis présente un plan d'exécution à l'utilisateur avec la possibilité de confirmer ou ignorer chaque étape. Deux modes sont disponibles : un nettoyage standard qui supprime uniquement les images orphelines, et un mode --all qui supprime toutes les images inutilisées.",
+  "explanations": {
+    "4": "_d_check_env docker vérifie que Docker est installé et disponible avant de continuer ; si ce n'est pas le cas, le script s'arrête.",
+    "6": "force est un drapeau qui sera défini à 1 si l'utilisateur passe l'option -y, ce qui désactivera les invites de confirmation.",
+    "7": "prune_all est un drapeau pour passer en mode nettoyage en profondeur ; s'il vaut 1, le script supprimera toutes les images inutilisées au lieu de seulement les images orphelines.",
+    "26": "Cette boucle analyse les arguments de ligne de commande ; pour chaque argument trouvé, elle définit le flag correspondant et utilise shift pour passer au suivant.",
+    "42": "Cette commande extrait la taille du cache de compilation en utilisant awk pour trouver la ligne contenant 'Build Cache' et récupérer la 5ème colonne.",
+    "46": "La syntaxe ${(@f)c_out} divise c_out ligne par ligne dans un tableau ; @ force le fractionnement et f traite chaque ligne comme un élément distinct.",
+    "58": "Ce bloc bascule entre deux logiques : si prune_all est 1, on calcule les images inutilisées en soustrayant les images utilisées de toutes les images disponibles.",
+    "70": "Cette commande obtient les IDs des images utilisées par les conteneurs en inspectant chaque conteneur, en supprimant le préfixe 'sha256:' et en gardant seulement les 12 premiers caractères.",
+    "74": "La syntaxe ${all_imgs:|used_imgs} est une soustraction d'array zsh qui supprime de all_imgs tous les éléments qui sont dans used_imgs.",
+    "86": "Pour le mode standard, img_cmd construit une commande docker rmi avec les IDs spécifiques des images orphelines, tandis qu'en mode --all on utilise docker image prune -a.",
+    "96": "Cette fonction imbriquée _fmt formate et colore l'affichage d'une étape en fonction de son état (en attente, actuelle, complétée, ignorée ou vide).",
+    "139": "Si force est 1 (mode automatique), _ask retourne immédiatement 0 pour simuler une confirmation ; sinon elle affiche une vraie question interactive.",
+    "140": "read -q affiche une question et attend une seule touche (y ou n) sans nécessiter d'appuyer sur Entrée.",
+    "171": "eval est utilisé ici car img_cmd est une variable contenant une commande complexe (docker image prune -a ou docker buildx prune -f) qui doit être exécutée dynamiquement.",
+    "208": "Ce test vérifie si buildx est disponible en exécutant docker buildx version en silencieux ; si c'est le cas, on utilise une commande de pruning plus moderne."
+  }
+}

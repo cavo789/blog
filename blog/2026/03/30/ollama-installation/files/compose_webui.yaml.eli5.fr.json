@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:38.795Z",
+  "source": "compose_webui.yaml",
+  "sourceHash": "7aaf8355933178ba14066ab435d6e506d54e7357",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services conteneurisés : ollama, un modèle d'IA local, et open-webui, une interface web pour interagir avec lui. Les deux services sont configurés pour communiquer ensemble, avec ollama exposé sur le port 11434 et open-webui sur le port 4000, tandis que des volumes persistants sauvegardent les données entre les redémarrages.",
+  "explanations": {
+    "6": "%%name=ollama%% est une variable de substitution qui sera remplacée lors de la construction du conteneur pour donner un nom personnalisé au conteneur ollama.",
+    "8": "Le premier nombre (%%port=11434%%) est le port sur la machine hôte, le second est le port à l'intérieur du conteneur ; ils ne doivent pas nécessairement être identiques.",
+    "10": "Un volume nommé ollama_data est monté au chemin /root/.ollama pour que les données du modèle persistent après l'arrêt du conteneur.",
+    "27": "Cette ligne permet au conteneur open-webui de résoudre host.docker.internal vers l'adresse IP de la passerelle Docker, facilitant la communication entre conteneurs.",
+    "29": "La variable d'environnement OLLAMA_BASE_URL indique à open-webui où trouver le service ollama ; elle utilise le nom du service comme nom d'hôte DNS et est substituée avec les valeurs définies.",
+    "34": "depends_on garantit que le service ollama est lancé avant open-webui, même si cela ne garantit pas que ollama soit prêt à accepter les requêtes."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:32.852Z",
+  "source": "active.sql",
+  "sourceHash": "fa5d3ce34ab00134798242eb1ba93d76386e716a",
+  "lang": "sql",
+  "textLang": "fr",
+  "summary": "Cette requête récupère tous les enregistrements de la table users où la colonne active a la valeur 1, ce qui signifie typiquement que seuls les utilisateurs actifs sont retournés.",
+  "explanations": {}
+}

@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:09:27.053Z",
+  "source": "nginx.conf",
+  "sourceHash": "1a48afecb3a2a90192d49fdd6c31607ec2c99708",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce fichier configure nginx pour servir une application Docusaurus en HTTPS. Il redirige tout le trafic HTTP vers HTTPS, configure les certificats SSL, redirige la racine du site vers /blog, et configure le routage côté client ainsi que la mise en cache des assets statiques.",
+  "explanations": {
+    "8": "return 301 envoie une redirection permanente HTTP vers HTTPS en préservant le chemin et les paramètres de la requête originale.",
+    "13": "listen 443 ssl http2 indique que ce serveur écoute sur le port HTTPS standard (443) avec SSL activé et le protocole HTTP/2.",
+    "16": "root définit le répertoire de base d'où nginx servira les fichiers — tous les chemins de fichiers seront relatifs à ce dossier.",
+    "24": "ssl_certificate et ssl_certificate_key pointent vers les fichiers de certificat et clé privée nécessaires pour le chiffrement SSL/TLS.",
+    "28": "ssl_protocols restreint nginx à n'utiliser que les versions TLS modernes et sécurisées (1.2 et 1.3).",
+    "35": "Cette redirection force les visiteurs qui accèdent à la racine à aller plutôt sur /blog, l'URL préférée de l'application.",
+    "40": "try_files cherche d'abord le fichier demandé, puis le répertoire, et en dernier recours redirige vers index.html pour que Docusaurus gère le routage côté client.",
+    "44": "~* \\.(?:...) est une expression régulière qui correspond aux fichiers statiques (images, CSS, fonts, etc.) pour leur appliquer une politique de cache spéciale.",
+    "45": "expires 1y dit au navigateur que ces assets peuvent être mis en cache pendant un an sans vérifier s'il y a une nouvelle version.",
+    "46": "add_header Cache-Control ajoute un en-tête indiquant au navigateur que le contenu est public et ne changera jamais (immutable)."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:08.133Z",
+  "source": "result.txt",
+  "sourceHash": "7d80e57f18e5f64bab1deb1adae10721847b8f0d",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ceci montre le résultat d'une validation d'un fichier OpenAPI (une spécification d'API REST) en utilisant l'outil belgif-rest-guide-validator. Le validateur a exécuté 30 vérifications de conformité sur le fichier openapi.json et a trouvé 30 violations de règles obligatoires, détaillant chaque problème avec sa localisation exacte dans le fichier et une explication de pourquoi c'est non-conforme.",
+  "explanations": {
+    "3": "C'est le format standard Maven affichant le projet en cours de traitement — ici un stub (projet factice) utilisé pour lancer l'outil de validation.",
+    "7": "Cette ligne indique quel plugin Maven et sa version sont en train d'exécuter — belgif-rest-guide-validator version 3.1.0 qui valide les fichiers OpenAPI.",
+    "8": "Le validateur a commencé à traiter le fichier openapi.json situé dans /app/.",
+    "9": "Le validateur a chargé ses règles de validation depuis un fichier kmodule.xml dans une dépendance Maven — cela déclare comment les règles de validation sont organisées et structurées.",
+    "10": "Le système prépare un module Kie (moteur de règles) avec les règles de validation téléchargées.",
+    "11": "Le système note que les règles de validation sont en format « executable model » optimisé pour la performance.",
+    "12": "Le système commence à construire la base de connaissances (KieBase) qui exécutera toutes les vérifications de conformité.",
+    "15": "Résumé global : 30 violations trouvées, 0 violations ignorées — le build a échoué.",
+    "16": "Voici la première catégorie de violations : les réponses d'erreur ne retournent pas le type de contenu application/problem+json comme requis, trouvé 2 fois.",
+    "17": "Cet élément spécifique du fichier (le chemin /items/{item_id} en GET, réponse 422) viole la règle err-problem.",
+    "40": "Les identifiants d'opération (operationId) ne suivent pas la convention lowerCamelCase — ils utilisent snake_case (avec des underscores) au lieu."
+  }
+}

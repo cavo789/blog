@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:00.123Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "d64e6e37bb5144c922729845bdf22fa225e3dbf4",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un preset Docusaurus nommé classic avec des options de blog personnalisées, notamment la génération de flux Atom. Il ajoute aussi un plugin personnalisé pour le flux du blog, limité à 20 éléments maximum.",
+  "explanations": {
+    "2": "presets est un tableau de configurations de présets — des ensembles de plugins et thèmes préconfigurés pour Docusaurus.",
+    "3": "Les crochets imbriqués indiquent qu'on passe un preset avec ses options : d'abord le nom du preset, puis un objet de configuration.",
+    "6": "blog est un objet de configuration spécifique au preset classic qui contrôle le comportement de la section blog.",
+    "8": "feedOptions configure les paramètres du flux de syndication (RSS/Atom) généré pour le blog.",
+    "9": "type: [\"atom\"] spécifie qu'on veut générer uniquement des flux Atom, pas RSS.",
+    "14": "plugins est un tableau séparé de plugins additionnels à charger en plus de ceux fournis par le preset.",
+    "17": "Le chemin ./plugins/blog-feed-plugin/index.js pointe vers un fichier de plugin personnalisé relatif à la racine du projet.",
+    "18": "maxItems: 20 passe une option au plugin personnalisé pour limiter le nombre d'articles dans le flux à 20."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:48.307Z",
+  "source": "Dockerfile.part2",
+  "sourceHash": "12330501d9c6ecf23bdf328cdb1385eebe3267cb",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile configure un serveur Apache HTTP avec support SSL/TLS et PHP. Il installe les dépendances nécessaires, copie les certificats SSL et la configuration personnalisée du site, puis active les modules Apache requis pour fonctionner en HTTPS.",
+  "explanations": {
+    "6": "apt-get update récupère la liste des paquets disponibles, puis on installe les outils et modules dont on a besoin en une seule commande RUN pour réduire la taille de l'image Docker.",
+    "10": "On nettoie le cache apt après installation pour diminuer la taille de la couche Docker, puisque ces fichiers temporaires ne sont pas nécessaires dans l'image finale.",
+    "23": "sed -i modifie le fichier httpd.conf directement (in-place) en exécutant plusieurs substitutions pour décommenter les lignes de configuration SSL et du cache.",
+    "25": "Cette expression sed remplace les lignes commentées qui incluent la configuration SSL en supprimant le # au début, rendant ces directives actives.",
+    "27": "Cette ligne décommente le module mod_ssl qui fournit le support HTTPS à Apache.",
+    "29": "Cette ligne décommente mod_socache_shmcb, un module nécessaire pour que mod_ssl fonctionne correctement en stockant les sessions SSL.",
+    "35": "a2enmod ssl active le module SSL dans Apache, et les commandes suivantes activent la réécriture d'URL et désactivent les sites par défaut pour utiliser votre configuration personnalisée."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:01.481Z",
+  "source": "order.sh",
+  "sourceHash": "7bccfd395a2f07a7fb499469776d354ddc21a709",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script vérifie que toutes les fonctions déclarées dans les fichiers Bash d'un dossier sont triées alphabétiquement. Il affiche un rapport côte à côte montrant l'ordre actuel versus l'ordre alphabétique pour chaque fichier où les fonctions ne sont pas correctement ordonnées.",
+  "explanations": {
+    "5": "[ ! $# -eq 1 ] vérifie que exactement un argument a été passé au script; si ce n'est pas le cas, le script affiche l'usage et s'arrête.",
+    "12": "[[ ! -d \"${sourceFolder}\" ]] && ... teste si le dossier fourni existe réellement, et s'il n'existe pas, affiche une erreur et quitte.",
+    "18": "pushd bascule le répertoire courant vers sourceFolder et supprime le message de sortie avec >/dev/null pour un affichage propre.",
+    "20": "set +e désactive l'arrêt automatique du script en cas d'erreur, ce qui permet au diff de signaler des différences sans terminer l'exécution.",
+    "23": "diff --side-by-side --width 83 compare deux listes de fonctions côte à côte sur 83 caractères de largeur.",
+    "24": "grep -P \"^(function\\s+.*\\)\\(\\)\" extrait les déclarations de fonctions qui commencent par le mot-clé function, et awk '{print $2}' récupère le nom de la fonction.",
+    "25": "La deuxième grep et awk font la même extraction, mais | sort trie ensuite les noms alphabétiquement pour montrer l'ordre idéal.",
+    "31": "set -e réactive le comportement normal où le script s'arrête à la première erreur."
+  }
+}

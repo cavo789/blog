@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:44.187Z",
+  "source": "makefile.part22",
+  "sourceHash": "2378378f6267bf5cea1cea22cfd3c56b90de8739",
+  "lang": "part22",
+  "textLang": "fr",
+  "summary": "Cette cible Makefile vérifie que le conteneur SonarQube est actuellement en cours d'exécution avant de procéder à une analyse. Si le conteneur n'existe pas ou n'est pas actif, elle affiche un message d'erreur en rouge et arrête l'exécution.",
+  "explanations": {
+    "2": "La commande docker ps -a -q -f name=sonarqube -f status=running retourne l'ID du conteneur s'il existe et fonctionne, ou rien si ce n'est pas le cas. L'ifeq compare ce résultat à une chaîne vide.",
+    "3": "Ce commentaire explique que la variable shell est vide soit parce que le conteneur n'a jamais été créé, soit parce qu'il s'est arrêté ou a échoué.",
+    "4": "$(_RED) est une variable Makefile contenant un code ANSI pour afficher le texte en rouge; @ supprime l'affichage de la commande elle-même."
+  }
+}

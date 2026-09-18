@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:35.487Z",
+  "source": "compose.part5.yaml",
+  "sourceHash": "4479fa004079051d1f1070caa232ec637d98a8eb",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce snippet de configuration Docker Compose monte le répertoire SSH de la machine hôte dans le conteneur pour que l'utilisateur christophe puisse accéder aux clés SSH. Cela permet au conteneur d'utiliser l'authentification SSH sans dupliquer les credentials.",
+  "explanations": {
+    "7": "${HOME} est une variable d'environnement qui se développe au chemin du répertoire personnel de l'utilisateur sur la machine hôte — ici on monte son dossier .ssh vers /christophe/.ssh à l'intérieur du conteneur."
+  }
+}

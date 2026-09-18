@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:15.100Z",
+  "source": "main.cs",
+  "sourceHash": "b5d8780034b0792a89be5efc7b8a65daf45feb3a",
+  "lang": "cs",
+  "textLang": "fr",
+  "summary": "Ce programme établit une connexion à une base de données Oracle en lisant les paramètres de connexion depuis les variables d'environnement (avec des valeurs par défaut), puis exécute une requête SQL pour récupérer et afficher les 25 premiers employés dans un format tabulaire.",
+  "explanations": {
+    "12": "Environment.GetEnvironmentVariable() récupère la valeur d'une variable d'environnement ; l'opérateur ?? fournit une valeur par défaut si la variable n'existe pas.",
+    "18": "La chaîne de caractères utilise l'interpolation (symbole $) pour insérer les variables dans la chaîne, construisant ainsi l'URL de connexion Oracle au format TNS.",
+    "22": "L'instruction using garantit que la connexion sera fermée automatiquement à la fin du bloc, même en cas d'erreur.",
+    "28": "Deux instructions using imbriquées s'assurent que la commande et le lecteur de données sont tous deux correctement libérés après utilisation.",
+    "34": "La boucle while itère sur chaque ligne retournée par la requête ; reader.Read() retourne true s'il y a une ligne suivante.",
+    "36": "reader.GetInt32(0) récupère la valeur du premier colonne (index 0) comme entier ; les index 1, 2, 3 correspondent aux colonnes suivantes.",
+    "41": "La mise en forme avec {employeeId,-12} aligne le texte à gauche dans une largeur de 12 caractères, créant ainsi un tableau aligné."
+  }
+}

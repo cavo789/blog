@@ -35,7 +35,7 @@ Comme WinSCP permet l'automatisation, il est facile d'écrire un petit script po
 
 Le script est plutôt simple, si vous voulez bien me croire :
 
-<Snippet filename="C:\temp\download.txt" source="./files/C:\temp\download.txt" />
+<Snippet filename="C:\temp\download.txt" source="./files/download.txt" />
 
 ## Comment l'utiliser {#how-to-use}
 

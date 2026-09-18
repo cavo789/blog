@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:52.894Z",
+  "source": "devcontainer.json",
+  "sourceHash": "bd52c81c23ba9d5c5e925e9daedce9309498f566",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un conteneur de développement Docker pour PHP 8.2 avec des outils de formatage et d'analyse de code. Il monte le dossier de travail local dans le conteneur, configure VS Code avec des extensions PHP et des règles de formatage automatique (PHP CS Fixer, PHPCS), puis installe Rector après la création du conteneur.",
+  "explanations": {
+    "3": "La clé build définit comment construire l'image Docker — on spécifie le Dockerfile et les arguments à passer lors de la compilation.",
+    "5": "args contient les variables d'environnement passées au Dockerfile pendant la construction, comme les numéros de version pour les outils PHP.",
+    "14": "workspaceMount lie le dossier de travail local de ta machine (localWorkspaceFolder) au chemin /var/www/html à l'intérieur du conteneur avec un type bind pour synchroniser les fichiers en temps réel.",
+    "16": "remoteUser définit l'utilisateur (docker) qui exécutera les commandes dans le conteneur au lieu de root.",
+    "22": "editor.defaultFormatter indique à VS Code d'utiliser l'extension php-cs-fixer comme outil principal pour formater le code PHP.",
+    "25": "source.fixAll active les corrections automatiques à la sauvegarde de fichier pour tous les langages configurés.",
+    "38": "php-cs-fixer.rules définit la règle de style de code @PSR12, qui est un standard PHP reconnu pour la mise en forme.",
+    "63": "postCreateCommand s'exécute automatiquement après que le conteneur soit créé — ici on installe le package Rector comme dépendance de développement via Composer."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:38.683Z",
+  "source": "AnyTest.part7.php",
+  "sourceHash": "8f61d4f07ed28571d3e2f8d11608e5dfdb267ce4",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce test définit un ensemble de règles architecturales pour les contrôleurs de l'application. Il vérifie que tous les fichiers dans le répertoire App\\Http\\Controllers respectent des contraintes strictes : types déclarés, noms suffixés par Controller, propriétés en lecture seule, et classes finales qui n'héritent ni n'implémentent rien.",
+  "explanations": {
+    "1": "test() lance une nouvelle assertion de test dans le framework PestPHP.",
+    "2": "expect() cible le namespace App\\Http\\Controllers pour appliquer les vérifications suivantes.",
+    "3": "toUseStrictTypes() vérifie que tous les fichiers contiennent declare(strict_types=1) en haut.",
+    "4": "toHaveSuffix('Controller') impose que chaque classe se termine par le mot Controller dans son nom.",
+    "5": "toBeReadonly() s'assure que les classes sont marquées readonly, interdisant la modification de propriétés après l'initialisation.",
+    "6": "toBeClasses() confirme que les éléments analysés sont effectivement des classes (par opposition à des interfaces ou traits).",
+    "7": "classes->toBeFinal() accède spécifiquement aux classes et exige qu'elles soient marquées final, empêchant toute héritage.",
+    "8": "classes->toExtendNothing() vérifie que les classes n'héritent d'aucune autre classe parente.",
+    "9": "classes->toImplementNothing() s'assure que les classes n'implémentent aucune interface."
+  }
+}

@@ -104,6 +104,18 @@ function translate() {
 
     local count=${#todo[@]}
 
+    # What the French ELI5 annotations of those same articles will cost (TODO 0121). Pure
+    # filesystem work, like the translation plan above: --porcelain never constructs the API
+    # client, so asking costs nothing. --assume-translated because the eligibility module's
+    # first condition — "the article is really translated" — is what this very run is about to
+    # make true; without it a brand-new article quotes 0 and then bills after the fact.
+    local eli5_count=0 eli5_cost="0" eli5_plan
+    if eli5_plan=$(node scripts/generate-eli5.mjs --locale fr --articles \
+        --assume-translated --porcelain "${todo[@]}" 2>/dev/null); then
+        IFS=$'\t' read -r eli5_count eli5_cost <<< "${eli5_plan}"
+    fi
+    : "${eli5_count:=0}" "${eli5_cost:=0}"
+
     # Shown, never enforced — the point is that `translate blog` is a ~41 $ command and must not
     # start by surprise. A single article skips the prompt: that is the everyday case, right
     # after publishing.
@@ -117,6 +129,12 @@ function translate() {
         if [[ ${skipped} -gt 0 ]]; then
             printf "   %d already up to date, skipped — they cost nothing.\n" "${skipped}"
         fi
+        if [[ ${eli5_count} -gt 0 ]]; then
+            printf "   + %d ELI5 snippet annotation(s) — about %.2f \$ (Haiku 4.5).\n" \
+                "${eli5_count}" "${eli5_cost}"
+            printf "   Total: about %.2f \$.\n" \
+                "$(awk "BEGIN { print ${cost}+${eli5_cost} }")"
+        fi
         printf "Continue? [y/N] "
         local reply
         read -r reply
@@ -128,18 +146,37 @@ function translate() {
         printf "🇫🇷 %d already up to date; translating %s.\n" "${skipped}" "${todo[0]}"
     fi
 
-    local ok=0 failed=0 index=0
+    # The single-article case never prompts, so the ELI5 work would otherwise be a surprise
+    # line in the middle of the run.
+    if [[ ${count} -eq 1 && ${eli5_count} -gt 0 ]]; then
+        printf "   + %d ELI5 snippet annotation(s) afterwards — about %.2f \$ (Haiku 4.5).\n" \
+            "${eli5_count}" "${eli5_cost}"
+    fi
+
+    local ok=0 failed=0 index=0 translated_ok=()
     for file in "${todo[@]}"; do
         index=$((index + 1))
         printf "\n\033[1;33m── [%d/%d] %s\033[0m\n" "${index}" "${count}" "${file}"
         if node scripts/translate-post.mjs "${file}" "${extra[@]+"${extra[@]}"}"; then
             ok=$((ok + 1))
+            translated_ok+=("${file}")
         else
             failed=$((failed + 1))
         fi
     done
 
     printf "\n🇫🇷 %d ok, %d failed.\n" "${ok}" "${failed}"
+
+    # French ELI5 annotations for the articles that really landed (TODO 0121). Deliberately NOT
+    # given "${extra[@]}": `translate --force` retranslates the PROSE, and the code it explains
+    # did not change — re-billing its annotations would be paying twice for the same file. What
+    # gets regenerated is decided by the eligibility module's hash check, nothing else.
+    if [[ ${#translated_ok[@]} -gt 0 ]]; then
+        if ! node scripts/generate-eli5.mjs --locale fr --articles "${translated_ok[@]}"; then
+            printf "⚠  Some ELI5 annotations failed; those snippets keep their English text.\n" >&2
+        fi
+    fi
+
     if [[ ${failed} -gt 0 ]]; then
         printf "   A translation rejected by the validator is NOT written; its output is kept\n"
         printf "   under .translation-rejected/ so you can see what the model produced.\n" >&2

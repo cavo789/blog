@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:32.355Z",
+  "source": "dstop",
+  "sourceHash": "9040c98c68e56e0a9b85fdb866079ab118733665",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script zsh permet d'arrêter ou de tuer plusieurs conteneurs Docker à la fois en utilisant fzf pour la sélection interactive. L'utilisateur peut choisir les conteneurs avec la souris ou le clavier, voir des détails en temps réel (utilisation des ressources, ports, montages) dans la fenêtre de prévisualisation, puis appuyer sur Entrée pour un arrêt gracieux ou Ctrl-K pour un arrêt forcé.",
+  "explanations": {
+    "4": "Vérifie que fzf et docker sont installés et accessibles ; si ce n'est pas le cas, quitte le script avec le code d'erreur 1.",
+    "5": "Vérifie qu'il y a au moins un conteneur en cours d'exécution ; si aucun n'existe, quitte simplement sans faire autre chose.",
+    "7": "Déclare plusieurs variables locales qui seront utilisées pour stocker le résultat de fzf, la touche pressée, les conteneurs sélectionnés et la commande à exécuter.",
+    "14": "Commence une commande complexe sur plusieurs lignes qui formate les informations détaillées d'un conteneur Docker avec docker inspect pour l'afficher dans la fenêtre de prévisualisation de fzf.",
+    "29": "Lance docker ps pour lister tous les conteneurs en cours d'exécution, puis pipe la sortie vers fzf pour permettre à l'utilisateur de sélectionner plusieurs conteneurs.",
+    "39": "Extrait la première ligne de la sortie de fzf, qui contient la touche spéciale pressée (Enter par défaut ou ctrl-k si Ctrl-K a été appuyé).",
+    "41": "Prend le reste de la sortie de fzf (à partir de la ligne 2) et extrait uniquement la première colonne avec awk, qui contient les identifiants des conteneurs sélectionnés.",
+    "46": "Convertit la chaîne de texte contenant les identifiants en un vrai tableau Zsh pour pouvoir l'utiliser correctement dans les commandes suivantes.",
+    "53": "Vérifie si l'utilisateur a appuyé sur Ctrl-K plutôt que sur Entrée, ce qui change le comportement du script.",
+    "59": "Affiche la commande qui va être exécutée à l'écran avec couleur avant de l'exécuter réellement, pour que l'utilisateur confirme ce qu'il va faire.",
+    "60": "Exécute la commande docker stop ou docker kill sur tous les conteneurs sélectionnés en une seule fois."
+  }
+}

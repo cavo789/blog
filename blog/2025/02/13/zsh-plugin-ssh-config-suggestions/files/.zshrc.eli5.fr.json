@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:41.450Z",
+  "source": ".zshrc",
+  "sourceHash": "5757681f9995bbf8f7b28b6d78b93267b4e1df37",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Cet extrait configure un tableau de plugins pour Zsh en ajoutant le plugin zsh-ssh-config-suggestions à la liste existante. Le commentaire à la ligne 3 indique où placer tes plugins actuels, et zsh-ssh-config-suggestions sera chargé en même temps qu'eux.",
+  "explanations": {
+    "1": "La syntaxe plugins=( ...) déclare un tableau en Zsh où tu énumères les noms des plugins à charger.",
+    "4": "zsh-ssh-config-suggestions est le nom du plugin qu'on ajoute au tableau — il va être activé au démarrage de Zsh."
+  }
+}

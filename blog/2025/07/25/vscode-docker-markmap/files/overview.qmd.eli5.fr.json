@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:59.599Z",
+  "source": "overview.qmd",
+  "sourceHash": "420e888cbf71aee68d6ebe41bd372d1263d5d302",
+  "lang": "qmd",
+  "textLang": "fr",
+  "summary": "Ce document Quarto présente un aperçu de projet décrivant les objectifs (lancer un MVP et collecter les retours utilisateurs), la stack technique (Next.js, Tailwind, OpenAI, PostgreSQL), la boucle de feedback (interviews, sondages, métriques) et le calendrier de développement réparti sur trois trimestres.",
+  "explanations": {
+    "6": "Le surlignage avec == indique que 'user feedback' est un terme important à mettre en évidence visuellement dans le rendu final du document.",
+    "11": "Les backticks autour de Next.js et Tailwind les formatent comme du code ou des identifiants techniques distincts du texte normal.",
+    "25": "L'emoji 🚢 est une façon visuelle et informelle de marquer le jalon MVP, indiquant que c'est un moment clé du projet."
+  }
+}

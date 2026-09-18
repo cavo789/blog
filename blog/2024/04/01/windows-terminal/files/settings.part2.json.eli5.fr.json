@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:32.404Z",
+  "source": "settings.part2.json",
+  "sourceHash": "65b14f007a4d36b96016c7847fa3b2ef9c91052d",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit un profil de terminal personnalisé pour Windows Terminal. Le profil configure l'exécution de Docker Compose dans un conteneur Ubuntu via WSL, avec des paramètres d'apparence comme une image de fond, une couleur d'onglet et une icône personnalisée.",
+  "explanations": {
+    "5": "commandline spécifie la commande à exécuter au lancement du profil — ici, elle lance docker-compose exec dans WSL pour accéder au service docusaurus.",
+    "6": "backgroundImage définit le chemin vers l'image PNG ou JPG affichée en arrière-plan du terminal pour ce profil.",
+    "7": "backgroundImageOpacity contrôle la transparence de l'image de fond, où 0.3 signifie 30% d'opacité (70% transparent).",
+    "8": "tabColor définit la couleur hex de l'onglet du terminal dans l'interface Windows Terminal.",
+    "9": "guid est un identifiant unique universal généré pour ce profil, utilisé en interne par Windows Terminal pour le reconnaître.",
+    "10": "icon spécifie le chemin vers l'image affichée comme icône du profil dans les menus et onglets.",
+    "12": "startingDirectory définit le répertoire initial où se trouve le shell au lancement, pointant ici vers le dossier du projet blog sur le système WSL."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:34.186Z",
+  "source": "application.log",
+  "sourceHash": "943cace34601f5ffe6cf353247f5865001f239f0",
+  "lang": "log",
+  "textLang": "fr",
+  "summary": "Ce fichier de log enregistre les événements d'une application : le démarrage du serveur a réussi à 10:00, mais une tentative de connexion ultérieure a échoué. Ces deux entrées montrent l'historique d'exécution avec les niveaux de sévérité (INFO et ERROR) pour aider au diagnostic.",
+  "explanations": {}
+}

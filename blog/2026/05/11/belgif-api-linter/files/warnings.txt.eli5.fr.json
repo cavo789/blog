@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:15.673Z",
+  "source": "warnings.txt",
+  "sourceHash": "687b6260e24349e3e594930ae66480264cb2efe7",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Le compilateur signale une série d'avertissements de performance concernant des expressions eval utilisées dans des patterns de reconnaissance. Ces expressions vérifient des conditions sur des objets extraits de patterns précédents (chemins, types de contenu, schémas), mais le compilateur suggère de déplacer ces vérifications directement dans les patterns pour éviter l'surcharge de l'évaluation dynamique. Les avertissements indiquent aussi que d'autres messages similaires sont supprimés et qu'une ligne ne peut pas être mappée correctement.",
+  "explanations": {
+    "1": "ApiFunctions.existsPathWithPathParamAfter() teste si un chemin a des paramètres après une certaine position ; les variables entre $ viennent de patterns reconnus précédemment, et cette logique s'exécute en eval au lieu d'être filtrée lors de la correspondance du pattern initial.",
+    "2": "ApiFunctions.isMediaTypeIncluded() vérifie si un type MIME donné appartient à un ensemble spécifique (application/json) ; c'est un test qu'on pourrait faire pendant la reconnaissance du pattern plutôt que après.",
+    "3": "isObjectType() vérifie si un schéma représente un objet ; comme les autres, c'est une validation qui pourrait être intégrée au pattern lui-même pour éviter l'évaluation tardive.",
+    "10": "La comparaison $schema != null est une vérification triviale de non-nullité qu'on pourrait exprimer directement dans le pattern pour améliorer la performance.",
+    "11": "Le compilateur indique qu'il y a trop d'avertissements eval similaires et qu'il supprime les messages supplémentaires pour ne pas surcharger la sortie.",
+    "12": "Le compilateur n'a pas pu trouver de numéro de ligne valide pour la position /servers/0 dans le fichier source, ce qui peut indiquer un problème de mapping ou une référence mal formée."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:07.121Z",
+  "source": "gwt.zsh",
+  "sourceHash": "ff90e6272899291b1360cb74b5082636a880c07c",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction bash permet de naviguer entre les git worktrees du projet courant. Si appelée sans argument, elle affiche une liste interactive via fzf pour sélectionner et ouvrir un worktree existant ; si appelée avec un nom de branche, elle crée un nouveau worktree pour cette branche et s'y place automatiquement.",
+  "explanations": {
+    "7": "git worktree list récupère la liste des worktrees, et si la commande échoue (par exemple hors d'un dépôt git), le bloc entre accolades affiche un message d'erreur et sort la fonction.",
+    "12": "L'option -z teste si la chaîne $1 est vide, pour déterminer si la fonction a reçu un argument ou non.",
+    "14": "echo avec le pipe transmet la liste des worktrees à fzf pour affichage interactif.",
+    "16": "L'option --preview affiche l'aperçu du contenu du répertoire en utilisant {1}, qui est le premier champ de la ligne sélectionnée.",
+    "18": "Si l'utilisateur annule la sélection fzf (chaîne vide), la fonction sort sans erreur via return 0.",
+    "19": "awk '{print $1}' extrait le premier champ (le chemin du worktree) de la ligne sélectionnée.",
+    "23": "$(git rev-parse --show-toplevel) obtient la racine du dépôt, et ${branch//\\/\\-} remplace tous les slashes du nom de branche par des tirets pour créer un nom de répertoire valide.",
+    "24": "git worktree add -b crée et ajoute un nouveau worktree avec une branche basée sur main ; si l'opération échoue, la fonction s'arrête avec un code d'erreur."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:06:43.522Z",
+  "source": "amazing.conf",
+  "sourceHash": "d425205b1d56c0cb173869884049db44d1812644",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration SSH définit trois hôtes distants avec leurs paramètres de connexion. Les deux premiers concernent MyAmazingApp en environnement de production et de test, avec des détails sur leur infrastructure (base de données PostgreSQL, version PHP, répertoires). Le fichier utilise des commentaires colorés pour mettre en évidence les informations critiques et note que l'environnement de production est un serveur sensible.",
+  "explanations": {
+    "12": "Host est une directive SSH qui commence la définition d'un nouvel hôte distant nommé MyAmazingApp_PROD; les paramètres suivants (indentés) s'appliquent à cet hôte.",
+    "13": "Hostname spécifie l'adresse IP réelle du serveur distant pour MyAmazingApp_PROD.",
+    "14": "User définit le nom d'utilisateur SSH à utiliser lors de la connexion à cet hôte.",
+    "26": "De même, Host MyAmazingApp_TEST définit un nouvel hôte SSH distinct pour l'environnement de test.",
+    "27": "Hostname 6.7.8.9 indique l'adresse IP différente du serveur de test.",
+    "30": "Host YourAmazingApp est une troisième configuration SSH pour un hôte différent nommé YourAmazingApp."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:02.584Z",
+  "source": "simple.part10.bats",
+  "sourceHash": "3c90f3066e3dd2ae9c4b5e8f3cc28e7ef9f59f44",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la fonction console::printRed affiche correctement une chaîne de caractères en rouge dans la console. Il exécute la fonction avec un message test, puis valide que la sortie contient les codes ANSI pour le texte rouge avec contraste fort et qu'aucune erreur ne s'est produite.",
+  "explanations": {
+    "2": "run exécute la commande console::printRed avec le message fourni et capture sa sortie pour les assertions suivantes.",
+    "3": "assert_output vérifie que la sortie correspond exactement au message entouré de codes ANSI : [1;31m active le texte rouge avec contraste fort, et [0m réinitialise les attributs."
+  }
+}

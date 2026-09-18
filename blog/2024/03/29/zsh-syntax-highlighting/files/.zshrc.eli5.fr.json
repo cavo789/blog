@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:14.715Z",
+  "source": ".zshrc",
+  "sourceHash": "686acc065160236646110cb560bee8b1343b6cb6",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce snippet configure la liste des plugins à charger dans Zsh, un shell Unix. On ajoute le plugin zsh-syntax-highlighting qui colore le code au fur et à mesure de la frappe, en plus des plugins existants comme git.",
+  "explanations": {
+    "1": "plugins=( ouvre une déclaration de tableau en Zsh où on va énumérer les noms des plugins à activer.",
+    "4": "zsh-syntax-highlighting est un plugin qui ajoute la coloration syntaxique en temps réel dans le terminal."
+  }
+}

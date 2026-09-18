@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:10.210Z",
+  "source": "module.part2.bas",
+  "sourceHash": "e5bb67321d39ae7262da326b49e4a01d99f5d24e",
+  "lang": "bas",
+  "textLang": "fr",
+  "summary": "Ce code configure les paramètres de connexion à une base de données SQL Server (nom du serveur, nom de la base, identifiants), puis exécute une requête SELECT pour copier les données des clients vers une feuille de calcul active en commençant à la cellule A1.",
+  "explanations": {
+    "4": "On force une connexion avec le compte SA (administrateur système) au lieu d'utiliser les identifiants de l'utilisateur connecté.",
+    "6": "On définit le mot de passe en dur pour l'authentification SQL Server — c'est marqué en évidence probablement parce que c'est une mauvaise pratique de sécurité.",
+    "12": "La méthode SQL_CopyToSheet exécute la requête et place automatiquement le résultat dans la feuille active, en démarrant à la cellule A1."
+  }
+}

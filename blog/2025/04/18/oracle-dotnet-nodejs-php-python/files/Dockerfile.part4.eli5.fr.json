@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:07.844Z",
+  "source": "Dockerfile.part4",
+  "sourceHash": "383f2e3b164e1785664f834bab1ed92d5b5023d8",
+  "lang": "part4",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Python en version allégée, installe le pilote Oracle oracledb, copie le script principal et configure le conteneur pour exécuter ce script au démarrage.",
+  "explanations": {
+    "3": "FROM python:slim utilise une image de base Python optimisée pour la taille, sans les outils de développement inutiles pour une exécution en production.",
+    "5": "WORKDIR /app définit le répertoire de travail à l'intérieur du conteneur — tous les chemins relatifs suivants seront relatifs à /app.",
+    "7": "Le flag --no-cache-dir évite de stocker les fichiers de cache pip dans l'image finale, ce qui réduit significativement sa taille."
+  }
+}

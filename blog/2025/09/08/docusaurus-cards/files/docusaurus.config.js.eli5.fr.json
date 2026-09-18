@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:38.664Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "ff19dfe3cbe77f0b06b3487d709df1b251dfe294",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un projet Docusaurus en important un plugin personnalisé et l'enregistrant dans le tableau plugins avec une configuration vide. Le plugin pluginTagRoute est chargé depuis un fichier CommonJS local et ajouté à la liste des plugins actifs.",
+  "explanations": {
+    "7": "Le tableau contient un élément : pluginTagRoute (la fonction du plugin) et un objet vide {} qui représente ses options de configuration. Quand les options sont vides, le plugin utilise ses valeurs par défaut."
+  }
+}

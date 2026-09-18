@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:29.117Z",
+  "source": "compose.yaml",
+  "sourceHash": "2d8ffecfc15b586b3a28dacd620842a5503a71f3",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé markitdown qui construit une image à partir du Dockerfile du répertoire courant. Le service s'exécute avec des restrictions de sécurité strictes : système de fichiers en lecture seule, capacités Linux supprimées, et permissions limitées, tout en montant le répertoire de travail dans le conteneur.",
+  "explanations": {
+    "8": "UID=${UID:-1000} signifie utiliser la variable d'environnement UID si elle existe, sinon utiliser 1000 par défaut.",
+    "11": "Le répertoire courant (.) est monté dans le conteneur à /workspace avec le mode cached pour améliorer les performances.",
+    "13": "tmpfs crée des systèmes de fichiers en mémoire temporaires : /tmp limité à 64 Mo sans exécution de fichiers, /run limité à 16 Mo.",
+    "15": "cap_drop: ALL supprime toutes les capacités Linux du conteneur pour réduire les risques de sécurité.",
+    "19": "read_only: true rend tout le système de fichiers du conteneur en lecture seule, sauf les volumes explicites.",
+    "20": "Le conteneur s'exécute avec l'ID utilisateur et l'ID groupe spécifiés, ou 1000:1000 par défaut."
+  }
+}

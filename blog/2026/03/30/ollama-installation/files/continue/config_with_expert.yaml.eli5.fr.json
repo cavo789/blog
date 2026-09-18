@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:48.468Z",
+  "source": "config_with_expert.yaml",
+  "sourceHash": "b1adf60b47aa1d4e550ec4d788f91cc1ddedeb2c",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration YAML définit trois modèles d'IA locaux alimentés par Ollama pour différentes tâches : un modèle rapide et deux modèles spécialisés pour le chat, l'édition et l'autocomplétion. Chaque modèle est configuré avec son nom, son fournisseur, sa taille et les rôles qu'il peut accomplir.",
+  "explanations": {
+    "3": "schema: v1 indique la version du schéma de configuration utilisée, pour garantir la compatibilité avec les versions futures du format.",
+    "8": "apiBase spécifie l'URL du serveur Ollama en cours d'exécution localement sur le port 11434, où les requêtes API seront envoyées.",
+    "14": "qwen3-coder:30b est un modèle avec 30 milliards de paramètres, plus volumineux et potentiellement plus puissant que les autres, adapté aux tâches de codage complexes."
+  }
+}

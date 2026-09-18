@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:37.469Z",
+  "source": "Dockerfile",
+  "sourceHash": "22332d6752fe0a49fb5a963212528de312865585",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec xmlstarlet préinstallé, prépare un répertoire de démonstration contenant un fichier XML de test, et configure un shell interactif avec un prompt personnalisé affichant une baleine emoji pour indiquer qu'on est dans un conteneur.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive supprime les invites interactives pendant l'installation de paquets, ce qui permet aux commandes d'apt-get de s'exécuter sans attendre une réponse utilisateur.",
+    "5": "Le && enchaîne les commandes pour qu'elles s'exécutent successivement; si l'une échoue, les suivantes ne s'exécutent pas.",
+    "8": "rm -rf /var/lib/apt/lists/* supprime le cache de paquets après l'installation pour réduire la taille de l'image, car ces fichiers ne sont plus nécessaires.",
+    "12": "printf '%s' écrit la chaîne XML sans ajouter de retour à la ligne, et > redirige le contenu vers le fichier data.xml.",
+    "15": "WORKDIR définit /root/demo comme le répertoire de travail par défaut; toutes les commandes futures s'exécuteront à partir de là.",
+    "18": ">> ajoute le nouveau PS1 à la fin du fichier .bashrc; PS1 contrôle l'affichage du prompt shell.",
+    "20": "CMD définit la commande par défaut exécutée au démarrage du conteneur; /bin/bash -i lance un shell interactif."
+  }
+}

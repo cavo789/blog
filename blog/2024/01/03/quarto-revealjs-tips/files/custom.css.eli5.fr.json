@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:30.456Z",
+  "source": "custom.css",
+  "sourceHash": "e4649fa8f922af0ca0c99f988816ff9605249a4e",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fichier CSS configure l'apparence de base d'une présentation Reveal.js en définissant la couleur de fond de l'élément .reveal sur un jaune pâle. C'est un thème ou une feuille de style personnalisée pour contrôler l'aspect visuel de la présentation.",
+  "explanations": {
+    "1": "Le commentaire /*-- scss:defaults --*/ est une directive spéciale pour Quarto ou Reveal.js qui indique que les variables CSS définies ici doivent être utilisées comme valeurs par défaut pour le thème.",
+    "2": ".reveal est la classe principale qui enveloppe tout le contenu de la présentation Reveal.js, donc appliquer des styles ici affecte l'arrière-plan global."
+  }
+}

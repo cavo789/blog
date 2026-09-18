@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:40.133Z",
+  "source": "Hello.asm",
+  "sourceHash": "937bde7bb1b941c838b2419e186cf879d788c88d",
+  "lang": "asm",
+  "textLang": "fr",
+  "summary": "Ce programme assembleur x86 définit une chaîne de caractères dans la section data, puis utilise des appels système Linux pour afficher le message « Hello, World! This message comes from Docker. » sur la sortie standard avant de quitter proprement avec le code de sortie 0.",
+  "explanations": {
+    "4": "db signifie « define byte » — cela crée les octets du message texte en mémoire, et le 0 à la fin marque la fin de la chaîne (convention des chaînes null-terminées).",
+    "11": "edx reçoit la longueur du message (45 caractères) ; sys_write a besoin de savoir combien d'octets écrire.",
+    "12": "ecx reçoit l'adresse mémoire de la variable hello où est stocké le message ; sys_write ira lire les octets à partir de là.",
+    "13": "ebx = 1 signifie « descripteur de fichier 1 », qui est stdout — la sortie standard où les messages s'affichent.",
+    "14": "eax = 4 est le numéro d'appel système pour sys_write sur les vieux noyaux Linux x86 32-bit.",
+    "15": "int 0x80 déclenche une interruption logicielle qui transfère le contrôle au noyau pour exécuter l'appel système dont le numéro est dans eax.",
+    "18": "eax = 1 est le numéro d'appel système pour exit sur x86 32-bit ; on exécute cet appel après avoir écrit le message."
+  }
+}

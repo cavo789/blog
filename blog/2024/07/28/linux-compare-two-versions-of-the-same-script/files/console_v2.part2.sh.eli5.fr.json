@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:45.540Z",
+  "source": "console_v2.part2.sh",
+  "sourceHash": "051bc4746cfb3bf19b7af91aefd0d67f5028d63a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une bibliothèque de fonctions utilitaires pour afficher du texte coloré et interagir avec l'utilisateur dans le terminal. Les fonctions permettent d'imprimer des messages en différentes couleurs (cyan, rouge, vert, bleu) et de gérer l'affichage d'erreurs, de bannières et de questions oui/non.",
+  "explanations": {
+    "1": "Le shebang indique que ce script doit être exécuté avec bash, peu importe quel shell appelle le fichier.",
+    "3": "Cette fonction est déclarée avec la syntaxe console::printCyan, où les deux points doubles sont juste une convention de nommage pour regrouper les fonctions par « namespace » logique.",
+    "6": "La fonction console::askYesNo est probablement destinée à poser une question à l'utilisateur et attendre une réponse oui ou non, mais le corps est vide ici."
+  }
+}

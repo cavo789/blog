@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:56.296Z",
+  "source": "devcontainer.part2.json",
+  "sourceHash": "d70dde48853b6cd613757a5f752b1a0d86f030b3",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit l'environnement de développement pour un projet PHP en Docker. Il configure VS Code pour formater automatiquement le code PHP à la sauvegarde en utilisant php-cs-fixer selon les règles PSR12, et installe l'extension correspondante.",
+  "explanations": {
+    "11": "[php] est une clé spéciale qui dit à VS Code d'appliquer ces paramètres seulement aux fichiers PHP.",
+    "13": "editor.formatOnSave active le formatage automatique chaque fois que tu sauvegardes un fichier.",
+    "15": "editor.defaultFormatter spécifie quelle extension doit formater le code PHP — ici junstyle.php-cs-fixer.",
+    "19": "files.autoSave: onFocusChange sauvegarde automatiquement les fichiers quand tu passes ta fenêtre de focus ailleurs.",
+    "22": "php-cs-fixer.config indique où trouver le fichier de configuration personnalisé pour php-cs-fixer dans le conteneur.",
+    "24": "php-cs-fixer.executablePath désigne l'emplacement exact du programme php-cs-fixer installé dans l'image Docker.",
+    "26": "php-cs-fixer.onsave active php-cs-fixer à chaque sauvegarde de fichier PHP.",
+    "28": "@PSR12 est un ensemble de règles de style de code reconnu ; ici on demande au formatter d'appliquer le standard PSR12."
+  }
+}

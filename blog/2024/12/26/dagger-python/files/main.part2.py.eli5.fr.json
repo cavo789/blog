@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:19.988Z",
+  "source": "main.part2.py",
+  "sourceHash": "e8c13c324f8aa83ba5be897eff12d87aca9c157d",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette fonction asynchrone simule l'exécution de Pylint sur une base de code en retournant un message formaté. Elle accepte une chaîne source en paramètre et renvoie un texte coloré en jaune (via les codes ANSI) indiquant qu'elle s'exécute dans un pipeline Dagger.",
+  "explanations": {
+    "1": "@function est un décorateur qui marque cette méthode comme une fonction exposée ou exécutable, probablement dans le contexte du framework Dagger.",
+    "2": "async def signifie que cette fonction est asynchrone — elle peut être mise en pause et reprise, ce qui permet d'autres tâches de s'exécuter pendant qu'elle attend.",
+    "6": "Les séquences \\033[33m et \\033[0m sont des codes ANSI : la première active la couleur jaune et la seconde réinitialise les couleurs du texte pour le reste de la sortie."
+  }
+}

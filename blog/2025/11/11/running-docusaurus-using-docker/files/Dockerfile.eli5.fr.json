@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:05:36.012Z",
+  "source": "Dockerfile",
+  "sourceHash": "977875153af8ca0f70c5959c729b61b15f1d9c3d",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker multi-étapes pour un site Docusaurus. D'abord, il configure une image de base Node.js avec support devcontainer, en s'assurant que les permissions d'utilisateur correspondent à celles du host. Ensuite, il installe les dépendances, prépare l'environnement de développement, puis construit le site statique. Finalement, pour la production, il sert le site généré via Nginx avec support HTTPS.",
+  "explanations": {
+    "5": "ARG définit une variable de construction qui peut être passée à la compilation ; ici l'ID numérique de l'utilisateur système dans le conteneur, par défaut 1000.",
+    "18": "FROM initialise une nouvelle étape de build nommée 'base' en partant de l'image Microsoft devcontainer Node.js 20.",
+    "21": "RUN --mount=type=cache crée des montages de cache temporaires pour apt qui persisteront entre les builds docker, accélérant les reconstructions.",
+    "34": "ARG sans valeur réutilise la variable définie en haut, la rendant disponible pour les commandes RUN suivantes dans cette étape.",
+    "39": "La condition vérifie si les IDs d'utilisateur/groupe fournis diffèrent de 1000, et si c'est le cas, modifie l'utilisateur 'node' existant pour éviter les conflits de permissions.",
+    "47": "groupadd docker || true crée le groupe docker s'il n'existe pas déjà ; le '|| true' masque l'erreur si le groupe existe déjà.",
+    "74": "ENV définit une variable d'environnement persistante dans le conteneur qui sera utilisée pendant l'exécution, contrairement à ARG qui n'existe que pendant la compilation.",
+    "80": "COPY --chown change immédiatement le propriétaire des fichiers copiés à l'utilisateur non-root, évitant les problèmes de permissions plus tard.",
+    "85": "RUN --mount=type=cache avec uid et gid crée un cache de yarn avec les permissions appropriées, synchronisé avec l'utilisateur du conteneur.",
+    "98": "COPY . . copie tout le code source du projet depuis le contexte de build vers le répertoire courant du conteneur.",
+    "99": "COPY --from=dependencies récupère les modules node_modules compilés de l'étape 'dependencies' précédente, réutilisant le travail au lieu de réinstaller.",
+    "110": "RUN yarn build exécute le script de construction Docusaurus qui génère les fichiers statiques HTML/CSS/JS.",
+    "126": "COPY --from=build copie uniquement les fichiers statiques générés depuis l'étape 'build' vers la racine web de Nginx, minimisant la taille de l'image production."
+  }
+}

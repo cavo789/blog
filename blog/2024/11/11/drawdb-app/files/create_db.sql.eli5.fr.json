@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:45:47.446Z",
+  "source": "create_db.sql",
+  "sourceHash": "cfbe0402b238d65d666c5a08c71020cabfd7f2ee",
+  "lang": "sql",
+  "textLang": "fr",
+  "summary": "Ce script crée un schéma de base de données pour une gestion d'entreprise avec sept tables interconnectées. Il établit une hiérarchie : régions contiennent des pays, qui contiennent des emplacements, qui hébergent des départements, qui emploient des salariés ayant des rôles spécifiques et des personnes à charge. Les clés étrangères avec ON CASCADE assurent que les modifications ou suppressions en cascade maintiennent l'intégrité des données à travers toutes les relations.",
+  "explanations": {
+    "2": "SERIAL génère automatiquement un numéro unique et croissant pour chaque nouvelle région.",
+    "3": "CHARACTER VARYING (25) crée un champ texte flexible jusqu'à 25 caractères — si le texte est plus court, il utilise moins d'espace.",
+    "7": "CHARACTER (2) fixe exactement 2 caractères, idéal pour les codes pays ISO standardisés.",
+    "10": "ON UPDATE CASCADE ON DELETE CASCADE signifie que si une région est modifiée ou supprimée, tous les pays liés se mettront à jour ou seront supprimés automatiquement.",
+    "33": "NUMERIC (8, 2) stocke un nombre avec 8 chiffres totaux dont 2 après la virgule, parfait pour les montants en euros.",
+    "50": "Cette clé étrangère permet à un employé d'avoir un manager qui est lui-même un employé — c'est une relation récursive."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:26.486Z",
+  "source": "Dockerfile",
+  "sourceHash": "9d3615007979801f323b1649114dadc837c36922",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu légère avec l'outil eza (un remplaçant moderne de ls) préinstallé et configuré. Il configure le shell avec des alias et crée un répertoire de démonstration contenant des fichiers variés pour montrer joliment comment eza affiche les listings.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives pendant l'installation, ce qui est nécessaire dans les conteneurs.",
+    "5": "Le && chaîne les commandes pour que si l'une échoue, tout s'arrête ; c'est une bonne pratique dans les Dockerfile.",
+    "9": "rm -rf /var/lib/apt/lists/* supprime les caches de paquets téléchargés pour réduire la taille de l'image Docker.",
+    "14": "curl -fsSL télécharge silencieusement le fichier avec gestion d'erreur ; le | tar -xz -C /usr/local/bin déplie directement l'archive compressée dans le répertoire des binaires.",
+    "19": "echo ... >> /root/.bashrc ajoute la ligne à la fin du fichier de configuration du shell sans l'écraser.",
+    "24": "mkdir -p crée les répertoires intermédiaires manquants (demo et src/docs) en une seule commande.",
+    "28": "dd if=/dev/zero of=/root/demo/docs/report.pdf bs=1024 count=200 status=none crée un fichier de 200 KB rempli de zéros pour avoir des fichiers de tailles différentes à afficher.",
+    "35": "CMD définit la commande par défaut exécutée au lancement du conteneur ; /bin/bash -i lance un shell interactif."
+  }
+}

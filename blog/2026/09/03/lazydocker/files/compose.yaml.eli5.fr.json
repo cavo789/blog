@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:44.961Z",
+  "source": "compose.yaml",
+  "sourceHash": "80b5afa3ffef6b8675bd5f377278c16eac650cf6",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service lazydocker qui construit une image à partir du Dockerfile du répertoire courant et la lance dans un conteneur. Le conteneur est configuré pour avoir accès au socket Docker de l'hôte, aux fichiers de configuration utilisateur et au répertoire courant du projet, avec l'entrée standard et un terminal actifs pour l'interaction utilisateur.",
+  "explanations": {
+    "6": "stdin_open: true permet au conteneur de recevoir l'entrée standard même si aucun processus n'est attaché, utile pour les applications interactives.",
+    "7": "tty: true alloue un pseudo-terminal au conteneur, ce qui permet d'afficher correctement les interfaces textes interactives comme celles de lazydocker.",
+    "9": "Cette ligne monte le socket Docker de l'hôte dans le conteneur, permettant à lazydocker de communiquer avec le démon Docker et de gérer les conteneurs.",
+    "10": "Ce volume nommé persiste les fichiers de configuration de lazydocker entre les exécutions du conteneur.",
+    "11": "Cette ligne monte le répertoire courant du projet dans le conteneur, permettant au conteneur d'accéder et de modifier les fichiers du projet.",
+    "19": "En donnant un nom explicite au volume nommé, on s'assure que différentes exécutions du conteneur réutilisent le même volume plutôt que d'en créer de nouveaux préfixés par le nom du projet."
+  }
+}

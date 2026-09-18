@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:56.933Z",
+  "source": "compose.mounted_volumes.yaml",
+  "sourceHash": "e3062cd9ebe7f34732ca8691015a04af4fea31e1",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé 'counter' qui construit une image à partir du répertoire courant, la nomme 'demo/counter', et monte un volume pour persister les données entre les redémarrages du conteneur.",
+  "explanations": {
+    "5": "%%name=counter%% est une variable de substitution qui sera remplacée par la valeur 'counter' — c'est ainsi que le service reçoit son nom.",
+    "12": "Cette ligne monte le répertoire ./data de ta machine hôte dans le répertoire /data du conteneur, ce qui permet au conteneur de lire et écrire des données qui persisteront même après son arrêt."
+  }
+}

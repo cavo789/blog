@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:18.707Z",
+  "source": "SampleEvent.php",
+  "sourceHash": "ceac65c51d12f72cd07dec6a0b83aac7e0471603",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette classe définit un événement Laravel qui encapsule un employé et permet de modifier ses propriétés (prénom, nom, pseudo) via une interface fluente. Chaque méthode de modification retourne l'instance courante pour permettre l'enchaînement des appels.",
+  "explanations": {
+    "10": "use Dispatchable ajoute à la classe la capacité de se dispatcher elle-même comme événement dans le système d'événements Laravel.",
+    "12": "Le constructeur accepte un Employee en paramètre et le stocke automatiquement comme propriété privée grâce à la syntaxe de promotion de propriété de PHP 8.",
+    "16": "Cette méthode retourne self (l'instance courante) plutôt que void, ce qui permet d'appeler plusieurs setters à la suite sans réassigner la variable.",
+    "19": "return $this permet le pattern d'interface fluente, où tu peux faire $event->setFirstName('John')->setLastName('Doe')->setPseudo('johndoe')."
+  }
+}

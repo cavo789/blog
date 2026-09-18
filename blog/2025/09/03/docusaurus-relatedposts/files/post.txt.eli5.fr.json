@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:29.689Z",
+  "source": "post.txt",
+  "sourceHash": "b5dadc80f8dc62a3555d4a99355c2721ad4d3b76",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier contient les métadonnées d'un article de blog Docusaurus, incluant la date de publication, un identifiant URL, le titre, l'auteur et des tags de catégorisation. Les lignes 8 à 11 marquent une section surlignée pour la mise en évidence visuelle dans le rendu final.",
+  "explanations": {
+    "3": "slug est l'identifiant unique qui forme l'URL finale de cet article — ici l'article sera accessible via /docusaurus-relatedposts",
+    "7": "series indique que cet article fait partie d'une suite d'articles sur le même sujet, ce qui permet à Docusaurus de les regrouper",
+    "8": "# highlight-start et # highlight-end (ligne 11) sont des directives Docusaurus pour marquer les lignes entre elles comme devant être visuellement surlignées dans le rendu"
+  }
+}

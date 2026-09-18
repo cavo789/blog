@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:08.976Z",
+  "source": "sample.asm",
+  "sourceHash": "9d8b813d44e2f3940a5acdc71d59f22d30f4d2da",
+  "lang": "asm",
+  "textLang": "fr",
+  "summary": "Ce programme assembleur x86 définit une chaîne de caractères 'Hello, world!' suivie d'une nouvelle ligne, puis configure le registre edx avec la valeur 13, qui représente la longueur de cette chaîne. C'est le début d'un programme qui s'apprête probablement à afficher ce message via un appel système.",
+  "explanations": {
+    "1": "section .data déclare la section où on stocke les données statiques du programme, contrairement au code exécutable.",
+    "2": "msg db 'Hello, world!', 0Ah crée une étiquette msg contenant les octets de la chaîne 'Hello, world!' suivi de 0Ah (un retour à la ligne), et l'absence de valeur après signifie que la chaîne n'est pas terminée par un zéro de fin automatiquement.",
+    "3": "section .text marque le début de la section contenant le code exécutable du programme.",
+    "4": "global _start expose le symbole _start comme point d'entrée du programme pour l'éditeur de liens.",
+    "6": "mov edx, 13 copie la valeur 13 dans le registre edx, qui sera probablement utilisée comme paramètre de taille pour un appel système d'écriture."
+  }
+}

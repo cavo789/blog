@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:03.960Z",
+  "source": "dlogs",
+  "sourceHash": "e1eb03c5f6add02dd0f55ebdba7b77a0ce287ec0",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script zsh crée un visualiseur interactif de logs Docker utilisant fzf. L'utilisateur sélectionne un conteneur dans une liste avec aperçu en temps réel des métadonnées et des 50 dernières lignes de logs, puis peut soit voir les logs complets en direct soit éditer la commande avant exécution. Le script détecte les outils de coloration disponibles (lnav, bat, batcat) et les utilise dans cet ordre de préférence pour améliorer la lisibilité.",
+  "explanations": {
+    "4": "_d_check_env vérifie que fzf et docker sont disponibles sur le système; si l'un manque, la fonction retourne une erreur et s'arrête.",
+    "9": "command -v teste si une commande existe dans le PATH sans l'exécuter; >/dev/null 2>&1 supprime toute sortie pour juste récupérer le code de retour.",
+    "16": "preview_cmd est une chaîne de caractères multi-lignes qui sera exécutée par fzf; les accolades comme {1} sont remplacées par fzf avec la sélection courante.",
+    "23": "Le code vérifie si bat_cmd a été défini (c'est-à-dire qu'un coloriseur a été trouvé) et adapte la commande en conséquence.",
+    "28": "Cette ligne awk définit des substitutions: elle remplace ERROR/FATAL/ERR par la même chaîne entourée de codes ANSI rouge (\\033[1;31m), et WARNING/WARN en codes jaune (\\033[1;33m).",
+    "34": "docker ps -a retourne tous les conteneurs (incluant arrêtés) avec leur ID, nom, statut et image, formatés avec des tabulations.",
+    "35": "--ansi dit à fzf d'interpréter les codes couleur ANSI dans l'aperçu; --layout=reverse place l'entrée en bas; --preview-window=right:60%:wrap affiche l'aperçu à droite sur 60% de la largeur.",
+    "43": "head -n 1 récupère la première ligne (la touche spéciale pressée, ou vide si juste Enter), tail -n +2 récupère le reste (la ligne sélectionnée).",
+    "45": "awk '{print $1}' extrait le premier champ (séparé par des espaces/tabulations), qui est l'ID du conteneur.",
+    "50": "lnav est un lecteur de logs avancé avec recherche et filtrage; il a la priorité sur bat car il offre plus de fonctionnalités.",
+    "59": "Si l'utilisateur pressait Ctrl-E, print -z place la commande dans le buffer zsh pour édition manuelle au lieu de l'exécuter.",
+    "62": "_d_print_cmd affiche la commande en cyan avant exécution; eval exécute la chaîne comme une commande shell."
+  }
+}

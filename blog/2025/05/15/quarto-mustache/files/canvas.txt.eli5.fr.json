@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:43.108Z",
+  "source": "canvas.txt",
+  "sourceHash": "f8deae6cccaf6a760656c5eb77b45abee9672415",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce document présente Contextual Canvas, une fonctionnalité qui crée un espace de travail dynamique et visuel intégré directement dans votre application principale. Elle rassemble intelligemment les informations pertinentes en fonction de votre contexte actuel, permettant de gérer plusieurs documents et tâches sans basculer entre plusieurs fenêtres ou onglets.",
+  "explanations": {
+    "13": "La syntaxe {{< partial ../_partials/run.md >}} est une directive de template Hugo qui inclut le contenu d'un fichier externe nommé run.md situé dans le répertoire _partials parent."
+  }
+}

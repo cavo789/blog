@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:59.351Z",
+  "source": "customUI14.part10.xml",
+  "sourceHash": "04e4fc7bc90545cb28f2a29a891b32d7a42cd354",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML définit une interface utilisateur personnalisée pour Office, en modifiant le ruban (ribbon). Il masque l'onglet Accueil standard, ajoute un nouvel onglet personnalisé après l'onglet Affichage, contenant un groupe avec un bouton qui déclenche une action quand on clique dessus.",
+  "explanations": {
+    "4": "idMso fait référence à un identifiant Microsoft Office prédéfini pour l'onglet standard Accueil ; visible=\"false\" le cache complètement.",
+    "5": "insertAfterMso positionne ce nouvel onglet après l'onglet Affichage (TabView) dans le ruban.",
+    "11": "imageMso utilise une icône prédéfinie de Microsoft Office au lieu d'une image personnalisée.",
+    "13": "onAction spécifie le nom de la fonction à appeler côté serveur ou dans votre macro quand l'utilisateur clique sur ce bouton."
+  }
+}

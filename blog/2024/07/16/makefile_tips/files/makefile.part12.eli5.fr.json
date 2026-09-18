@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:16.989Z",
+  "source": "makefile.part12",
+  "sourceHash": "2113ad0a42e339b79421b9c4f5126cd201465e4b",
+  "lang": "part12",
+  "textLang": "fr",
+  "summary": "Ce snippet teste la variable DB_TYPE à deux reprises : d'abord il vérifie qu'elle n'est pas vide, puis il vérifie qu'elle est vide. Chaque test affiche un message différent selon le résultat. C'est une démonstration basique des conditions dans un Makefile.",
+  "explanations": {
+    "1": "ifneq est une directive conditionnelle du Makefile qui signifie « si pas égal ». Elle teste si DB_TYPE contient quelque chose (n'est pas égal à une chaîne vide).",
+    "5": "ifeq est l'opposé : elle teste si DB_TYPE est égal à une chaîne vide, c'est-à-dire si la variable ne contient rien."
+  }
+}

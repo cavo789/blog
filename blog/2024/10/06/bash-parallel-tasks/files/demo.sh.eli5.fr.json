@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:47.360Z",
+  "source": "demo.sh",
+  "sourceHash": "14fdceff1f8d3170dedee1068015715f31f0d211",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash exécute une fonction demo dix fois en boucle, chaque appel attendant 3 secondes. Il mesure le temps total d'exécution et l'affiche à la fin.",
+  "explanations": {
+    "2": "set -euo pipefail configure bash pour arrêter l'exécution en cas d'erreur, signaler les variables non définies, et interrompre sur erreur dans un pipeline.",
+    "11": "La boucle for i in {1..10} itère dix fois, de 1 à 10, exécutant le bloc de code à chaque itération.",
+    "16": "$(date +%s) exécute la commande date et récupère son résultat en tant que valeur ; +%s demande à date d'afficher l'heure en secondes depuis l'époque Unix.",
+    "19": "$((end_time - start_time)) effectue une arithmétique entière : on soustrait la valeur end_time de start_time pour obtenir la différence."
+  }
+}

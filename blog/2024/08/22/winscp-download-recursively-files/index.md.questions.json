@@ -1,41 +1,42 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:38.219Z",
+  "generated": "2026-09-18T15:45:57.359Z",
+  "durationMs": 6039,
   "source": "index.md",
-  "sourceHash": "ba9c30ef9442badc513b3c59440cea5368c02c5f",
+  "sourceHash": "fbb7acc7716506043e30caffeebff85e53e2c0ba",
   "questions": [
     {
-      "question": "How do I use WinSCP to download files with a specific extension recursively from an FTP/SFTP server?",
+      "question": "How do I use WinSCP's scripting feature to recursively download files with a specific extension from my FTP/SFTP server?",
       "anchor": "the-script"
     },
     {
-      "question": "What is the purpose of using WinSCP's scripting feature for downloading files with a specific extension?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I download all PHP files from an FTP/SFTP server to my local machine using WinSCP and automation scripts?",
+      "question": "What is the purpose of the script provided in this article for downloading files with a specific extension using WinSCP?",
       "anchor": "the-script"
     },
     {
-      "question": "What is the script example provided in this article for downloading specific file types recursively with WinSCP?",
+      "question": "How can I modify the script to download files with a different file extension from my FTP/SFTP server?",
       "anchor": "the-script"
     },
     {
-      "question": "How does WinSCP's scripting feature simplify the process of downloading files with a specific extension from an FTP/SFTP server?",
-      "anchor": ""
+      "question": "What are some advantages of using WinSCP's scripting feature for downloading files from an FTP/SFTP server compared to manually downloading each file?",
+      "anchor": "how-to-use"
     },
     {
-      "question": "What are some advantages of using WinSCP for automating file downloads from an FTP/SFTP server?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I modify the script to download files with a different extension than .php?",
+      "question": "How can I automate the process of downloading specific files from my FTP/SFTP server using WinSCP's scripting feature?",
       "anchor": "the-script"
     },
     {
-      "question": "What are some other file types that can be downloaded using WinSCP and automation scripts?",
-      "anchor": ""
+      "question": "What are some best practices for writing a script to download files with a specific extension using WinSCP?",
+      "anchor": "the-script"
+    },
+    {
+      "question": "How can I modify the script to handle sub-folders when downloading files from my FTP/SFTP server?",
+      "anchor": "the-script"
+    },
+    {
+      "question": "What are some common issues that may arise when using WinSCP's scripting feature for downloading files from an FTP/SFTP server, and how can I troubleshoot them?",
+      "anchor": "how-to-use"
     }
   ]
 }

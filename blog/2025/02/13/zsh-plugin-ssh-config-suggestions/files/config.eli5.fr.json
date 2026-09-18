@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:50.485Z",
+  "source": "config",
+  "sourceHash": "14ae73d64d2d36bb08d1b430f19a2bdaf2b170e6",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration SSH définit quatre hôtes distants avec leurs paramètres de connexion respectifs. Chaque entrée Host spécifie un alias mémorisable, l'adresse IP réelle de la machine (Hostname) et l'utilisateur à utiliser pour se connecter. Cela permet de se connecter simplement avec ssh MyAmazingApp_PROD au lieu de taper l'adresse IP et l'utilisateur complet.",
+  "explanations": {
+    "1": "Host crée un alias nommé MyAmazingApp_PROD que tu peux utiliser dans la commande ssh pour te connecter à cet ensemble de paramètres.",
+    "2": "Hostname spécifie l'adresse IP réelle ou le nom de domaine du serveur auquel tu veux te connecter.",
+    "3": "User indique quel nom d'utilisateur SSH doit être utilisé lors de la connexion à ce serveur."
+  }
+}

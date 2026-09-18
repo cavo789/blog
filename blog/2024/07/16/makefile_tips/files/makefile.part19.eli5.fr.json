@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:35.028Z",
+  "source": "makefile.part19",
+  "sourceHash": "71ee9e7a042b97f6b89766a81b9a2b4c71fd283d",
+  "lang": "part19",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit une règle appelée changeExt qui affiche un message de confirmation. La première ligne change le préfixe des commandes de recette de tabulation à >, ce qui permet d'utiliser > à la place de Tab pour indenter les commandes.",
+  "explanations": {
+    "1": ".RECIPEPREFIX = > remplace le caractère par défaut (tabulation) qui précède les commandes d'une recette par le caractère >. Cela te permet d'écrire les commandes avec > au lieu de Tab.",
+    "3": "changeExt: est le nom de la cible (target) — c'est ce que tu peux appeler en exécutant make changeExt.",
+    "5": "@printf \"%s\\n\" \"It works\" exécute la commande printf ; le @ au début empêche make d'afficher la commande elle-même avant de l'exécuter."
+  }
+}

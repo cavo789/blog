@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:29.847Z",
+  "source": "makefile",
+  "sourceHash": "41ebb8127833cf88730d191e79263d8864068e20",
+  "lang": "makefile",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit deux cibles utiles pour démarrer l'application. La première cible start lance l'application Pentaho Spoon localement avec des variables d'environnement spécifiques pour forcer l'utilisation de GTK3 et désactiver les vérifications WebKit. La deuxième cible up démarre les services définis dans docker-compose de manière simple.",
+  "explanations": {
+    "1": ".PHONY déclare que start est un nom de cible fictive (pas un fichier réel) pour que make l'exécute toujours même si un fichier nommé start existe.",
+    "3": "SWT_GTK3=1 force la bibliothèque SWT à utiliser GTK3, SKIP_WEBKITGTK_CHECK=1 ignore les vérifications de WebKit, et KETTLE_HOME=${PWD} définit le répertoire de travail courant comme répertoire d'installation de Kettle avant de lancer spoon.sh.",
+    "5": ".PHONY déclare que up est une cible fictive pour qu'elle s'exécute toujours, de la même manière que start."
+  }
+}

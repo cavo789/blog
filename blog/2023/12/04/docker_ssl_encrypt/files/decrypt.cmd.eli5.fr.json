@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:11.309Z",
+  "source": "decrypt.cmd",
+  "sourceHash": "f76fcbcb7dc73b1af3c9afb6be010cb159fa6ff8",
+  "lang": "batch",
+  "textLang": "fr",
+  "summary": "Ce script batch exécute une commande Docker qui déchiffre un fichier chiffré avec AES-256-CBC. Le conteneur Docker utilise l'image alpine/openssl, monte le répertoire C:\\temp du système hôte dans /data du conteneur, et exécute openssl pour déchiffrer secrets.encrypted en utilisant le chiffrement AES-256-CBC avec dérivation de clé PBKDF2.",
+  "explanations": {
+    "1": "@echo off supprime l'affichage des commandes exécutées dans la fenêtre de commande, pour une sortie plus propre.",
+    "3": "cls efface l'écran de la console avant d'exécuter la commande suivante.",
+    "5": "docker run crée et lance un conteneur ; --rm le supprime automatiquement après son exécution ; -it permet l'interaction en terminal ; -v C:\\temp:/data mappe le dossier Windows C:\\temp vers /data dans le conteneur ; -w /data définit le répertoire de travail du conteneur ; alpine/openssl est l'image utilisée ; enc -aes-256-cbc -salt -pbkdf2 -a -d lance le déchiffrement AES-256-CBC avec salt aléatoire, dérivation de clé PBKDF2, et sortie en base64 ; -in /data/secrets.encrypted spécifie le fichier à déchiffrer."
+  }
+}

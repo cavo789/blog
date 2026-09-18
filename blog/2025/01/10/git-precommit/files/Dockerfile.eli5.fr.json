@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:03.900Z",
+  "source": "Dockerfile",
+  "sourceHash": "55ce46bc4611dc19ef5d2b006507927fb331f699",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Python 3.13 allégée, installe git et définit le répertoire de travail à /app/src. Le conteneur reste actif indéfiniment en exécutant une commande tail qui ne fait rien, ce qui permet de l'utiliser comme environnement de développement interactif.",
+  "explanations": {
+    "1": "Cette directive spéciale indique à Docker d'utiliser la syntaxe Dockerfile moderne (version 1) du namespace docker/dockerfile, qui active les fonctionnalités avancées.",
+    "3": "AS base crée une étape intermédiaire nommée 'base' qu'on peut réutiliser ou référencer dans d'autres étapes du Dockerfile.",
+    "5": "Les antislashes à la fin des lignes permettent de continuer une commande RUN sur plusieurs lignes pour la lisibilité, tout en exécutant les trois opérations comme une seule commande.",
+    "6": "Le flag --no-install-recommends réduit la taille de l'image en installant uniquement les dépendances strictement requises sans les paquets recommandés supplémentaires.",
+    "7": "Cette commande efface le cache des listes de paquets apt pour diminuer la taille finale de l'image Docker.",
+    "12": "tail -f /dev/null crée une boucle infinie sans consommer de ressources : le conteneur tourne indéfiniment sans rien faire, utile pour un environnement où on veut se connecter manuellement en exec."
+  }
+}

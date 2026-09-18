@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:47.404Z",
+  "source": "main.py",
+  "sourceHash": "0b42a2b2dcf8936c48a5ad74a0beb0a9b71b022b",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code génère un nombre aléatoire entre 0 et 1, puis affiche soit « Hello world » soit « Bonjour le monde! » selon le résultat obtenu. C'est une simple démonstration de branchement conditionnel basé sur une valeur aléatoire.",
+  "explanations": {
+    "1": "random.randint(0, 1) génère un entier aléatoire qui vaut soit 0 soit 1 avec une probabilité égale, et on le compare à 0 pour décider quelle branche exécuter."
+  }
+}

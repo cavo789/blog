@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:59.674Z",
+  "source": "pr-description.txt",
+  "sourceHash": "6b23e0f0d26674c782029ad12f04044eb77a69ff",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script génère automatiquement une description de pull-request en analysant les différences et l'historique Git entre une branche de base (main par défaut) et la branche actuelle. Il produit un résumé en un paragraphe expliquant la raison des changements, suivi d'une liste à puces détaillant ce qui a changé, en omettant le plan de test sauf si des fichiers de test sont modifiés.",
+  "explanations": {
+    "3": "Le paramètre optionnel entre crochets indique que l'utilisateur peut spécifier une branche de base différente, mais si rien n'est fourni, main sera utilisée par défaut.",
+    "4": "Cette ligne énumère les outils autorisés : on peut exécuter des commandes git diff et git log, ainsi que lire des fichiers.",
+    "9": "La variable $ARGUMENTS contient ce que l'utilisateur a fourni (ou main si rien n'a été fourni), et HEAD désigne le commit actuel; on compare donc la branche de base avec le code en cours de travail pour déterminer les changements à documenter."
+  }
+}

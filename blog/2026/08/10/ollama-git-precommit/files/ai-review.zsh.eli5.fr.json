@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:47.958Z",
+  "source": "ai-review.zsh",
+  "sourceHash": "3b230a2a16ca82a6cd9fb525427d05c5c18d1f9c",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction bash récupère les modifications en attente de commit (staged changes), les envoie à un modèle d'IA avec une requête structurée pour une revue de code stricte, et affiche les retours directement dans le terminal. L'IA vérifie les violations SOLID, les constantes magiques, les fonctions trop longues, la qualité de nommage et la qualité générale du code sans modifier le diff.",
+  "explanations": {
+    "5": "AI_COMMANDS est un tableau associatif qui stocke les descriptions des commandes disponibles; ici on ajoute une entrée 'review' avec sa description.",
+    "6": "AI_PARAMS stocke les paramètres requis pour chaque commande; 'none' signifie que ai-review n'a besoin d'aucun paramètre supplémentaire.",
+    "10": "_git_staged_diff est une fonction appelée pour récupérer le diff des fichiers en attente; le '|| return 1' signifie que si elle échoue, on quitte la fonction ai-review immédiatement avec un code d'erreur.",
+    "23": "${diff} insère le contenu du diff récupéré directement dans la chaîne prompt, pour que l'IA puisse analyser les changements réels.",
+    "25": "_ollama_query envoie le prompt au modèle d'IA et affiche la réponse; c'est l'étape qui fait la revue de code proprement dite."
+  }
+}

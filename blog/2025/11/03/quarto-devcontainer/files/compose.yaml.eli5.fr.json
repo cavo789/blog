@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:47.828Z",
+  "source": "compose.yaml",
+  "sourceHash": "9e5250bb36856723a6b3ced224d3ea5d78324743",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose configure un conteneur de développement pour Quarto qui construit une image personnalisée avec divers outils optionnels. Le conteneur monte votre répertoire local comme espace de travail, configure des fichiers de configuration Quarto et SSH depuis votre machine hôte, et reste actif indéfiniment pour permettre le développement interactif.",
+  "explanations": {
+    "6": "quarto-devcontainer:latest est le nom qu'on donne à l'image Docker qu'on va construire et utiliser — c'est l'identifiant qu'on peut référencer plus tard.",
+    "9": "context: . signifie que Docker va chercher le Dockerfile dans le répertoire courant (le point représente le dossier actuel).",
+    "15": "USER_UID: 1000 passe la valeur 1000 comme argument de construction au Dockerfile — c'est l'ID utilisateur standard dans les conteneurs Linux, mais le commentaire indique que VS Code le remplacera à l'exécution.",
+    "28": "..:/workspace:cached monte le répertoire parent (votre projet) dans le conteneur à /workspace avec cache optimisé pour les performances.",
+    "31": "${HOME}/.quarto accède à une variable d'environnement de votre machine hôte — elle se résout en chemin complet comme /home/utilisateur/.quarto.",
+    "39": "Cette commande boucle indéfiniment pour éviter que le conteneur ne s'arrête — sans elle, le conteneur quitterait après avoir exécuté son processus principal."
+  }
+}

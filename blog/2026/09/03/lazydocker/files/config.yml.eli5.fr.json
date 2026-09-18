@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:47.628Z",
+  "source": "config.yml",
+  "sourceHash": "cf31c66439d508af19f1b57adea3d00adfc46a93",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit des commandes personnalisées pour interagir avec Docker. Il configure deux commandes (bash et sh) pour les conteneurs en cours d'exécution et deux autres pour lancer des images Docker, chacune permettant une interaction interactive avec le shell du conteneur ou de l'image.",
+  "explanations": {
+    "5": "Les doubles accolades {{ }} sont une syntaxe de templating qui remplacent .Container.ID par l'identifiant réel du conteneur au moment de l'exécution.",
+    "6": "serviceNames: [] est une liste vide indiquant que cette commande s'applique à tous les services, pas seulement à certains spécifiques.",
+    "14": "Les trois sections {{ .Image.Name }}, {{ .Image.Tag }} et bash sont des variables de template qui seront remplacées par le nom de l'image, son tag et l'interpréteur de commandes utilisé."
+  }
+}

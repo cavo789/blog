@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:49.602Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "91cb41c749f1695735a59fb28df29a63cc8804ca",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application de vote distribuée avec plusieurs services : redis pour la mise en cache, une base de données postgres, une interface de vote, un service de résultats, un worker pour traiter les votes, et un visualiseur. Chaque service est configuré avec ses propres paramètres de déploiement, réseaux et contraintes pour fonctionner dans un cluster Docker Swarm.",
+  "explanations": {
+    "6": "ports avec juste le numéro (6379 sans port hôte) signifie que le port sera exposé mais pas mappé à un port spécifique de la machine hôte.",
+    "10": "replicas: 2 indique que Docker Swarm doit lancer 2 instances identiques du service redis pour la redondance et la charge.",
+    "12": "parallelism: 2 permet à Docker de mettre à jour 2 instances en parallèle plutôt que une à la fois, accélérant le processus de mise à jour.",
+    "13": "delay: 10s ajoute une pause de 10 secondes entre chaque lot de mises à jour pour laisser le temps aux instances de se stabiliser.",
+    "20": "db-data:/var/lib/postgresql/data monte un volume Docker nommé db-data sur le chemin interne du conteneur pour persister les données de la base.",
+    "25": "constraints: [ node.role == manager ] force ce service à s'exécuter uniquement sur les nœuds ayant le rôle manager dans le cluster.",
+    "29": "ports: - 5000:80 mappe le port 5000 de la machine hôte au port 80 du conteneur (le port interne de l'application).",
+    "32": "depends_on: - redis déclare que le service vote a besoin que redis soit disponible (Docker attend son démarrage).",
+    "62": "mode: replicated spécifie explicitement que ce service peut avoir plusieurs instances, contrairement au mode global qui en crée une par nœud.",
+    "64": "labels: [ APP=VOTING ] ajoute des étiquettes de métadonnées au service pour l'identifier et le filtrer dans les outils de monitoring.",
+    "68": "max_attempts: 3 limite le nombre de tentatives de redémarrage à 3 avant d'abandonner.",
+    "69": "window: 120s signifie que Docker compte les tentatives échouées sur une fenêtre de 120 secondes; au-delà, le compteur réinitialise.",
+    "77": "stop_grace_period: 1m30s donne au conteneur 1 minute 30 secondes pour s'arrêter proprement avant d'être tué de force.",
+    "79": "volumes: - /var/run/docker.sock:/var/run/docker.sock monte le socket Docker du serveur pour que le visualiseur puisse accéder à l'API Docker."
+  }
+}

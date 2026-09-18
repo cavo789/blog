@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:18.962Z",
+  "source": "makefile.diff",
+  "sourceHash": "d432284f4cbe498956b6df6c9c4512642a9966de",
+  "lang": "diff",
+  "textLang": "fr",
+  "summary": "Cette modification ajoute le flag --parallel à la commande pest qui s'exécute dans un conteneur Docker. Cela permet aux tests de s'exécuter en parallèle au lieu de séquentiellement, ce qui accélère le temps d'exécution global de la suite de tests.",
+  "explanations": {
+    "2": "Le flag --parallel indique à pest de diviser les tests entre plusieurs processus et de les exécuter simultanément, plutôt que l'un après l'autre."
+  }
+}

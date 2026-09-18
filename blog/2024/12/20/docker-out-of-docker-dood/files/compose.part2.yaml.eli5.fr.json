@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:40.558Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "f620a5a60b8b1338d4eb3568818be18561fdc4cc",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé dood qui construit une image à partir du répertoire courant et la lance dans un conteneur interactif avec le répertoire /src comme espace de travail. Les lignes commentées montrent comment configurer Docker-out-of-Docker en montant le socket Docker, une technique permettant au conteneur d'accéder au daemon Docker de l'hôte.",
+  "explanations": {
+    "4": "build: . signifie construire l'image Docker en utilisant le Dockerfile du répertoire courant.",
+    "5": "tty: true alloue un terminal pseudo-TTY, ce qui permet l'interaction interactive avec le conteneur.",
+    "6": "working_dir: /src définit /src comme répertoire de travail par défaut à l'intérieur du conteneur — c'est là où les commandes s'exécutent.",
+    "10": "Le montage /var/run/docker.sock:/var/run/docker.sock permet au conteneur d'accéder au socket Docker de l'hôte, ce qui lui permet de lancer d'autres conteneurs Docker (c'est la technique dood mentionnée dans le nom du service)."
+  }
+}

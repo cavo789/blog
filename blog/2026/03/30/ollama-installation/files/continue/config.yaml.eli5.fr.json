@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:42.313Z",
+  "source": "config.yaml",
+  "sourceHash": "f1793b20cf48f999e69e6ac6bbe9916ed36906dd",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration YAML définit un modèle d'IA local utilisant Ollama, en spécifiant le nom du service, sa version et les paramètres de connexion au serveur Ollama qui tourne en local. Le modèle llama3.1:8b est configuré pour gérer deux rôles : les conversations de chat et l'édition de texte.",
+  "explanations": {
+    "3": "schema: v1 indique la version du format de schéma utilisé dans ce fichier de configuration, permettant de gérer les évolutions futures du format.",
+    "6": "provider: ollama spécifie que le modèle d'IA est fourni par Ollama, un gestionnaire de modèles de langage qui tourne localement.",
+    "7": "model: llama3.1:8b désigne le modèle spécifique à utiliser — llama3.1 est le nom du modèle, et 8b signifie qu'il a 8 milliards de paramètres.",
+    "8": "apiBase: http://127.0.0.1:11434 est l'adresse du serveur Ollama local — 127.0.0.1 représente ta machine, et 11434 est le port standard qu'Ollama écoute.",
+    "9": "roles liste les fonctionnalités que ce modèle peut assurer — chat pour les conversations et edit pour modifier du texte existant."
+  }
+}

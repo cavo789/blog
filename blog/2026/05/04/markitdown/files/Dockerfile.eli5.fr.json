@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:25.716Z",
+  "source": "Dockerfile",
+  "sourceHash": "da0732d037d6461f1ce5f70439b663426a50c236",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker minimale en deux étapes pour exécuter l'outil markitdown. D'abord, on installe markitdown et ses dépendances dans un répertoire isolé, puis on crée une image finale épurée qui copie uniquement ce répertoire, configure un utilisateur sans privilèges, et lance l'outil en ligne de commande.",
+  "explanations": {
+    "1": "Cette directive indique à Docker d'utiliser la syntaxe de construction avancée du fichier Dockerfile (version 1.7-labs), qui déverrouille des fonctionnalités supplémentaires comme les caches de montage.",
+    "3": "La clause AS builder crée une première étape de construction nommée builder, qu'on utilisera plus tard pour copier uniquement les artefacts finaux sans les fichiers temporaires.",
+    "6": "PYTHONDONTWRITEBYTECODE empêche Python de créer des fichiers .pyc (bytecode compilé), ce qui réduit la taille de l'image.",
+    "7": "PYTHONUNBUFFERED désactive la mise en buffer des logs, garantissant que les messages s'affichent immédiatement dans les journaux Docker.",
+    "8": "PIP_DISABLE_PIP_VERSION_CHECK supprime les vérifications de mise à jour de pip à chaque installation, accélérant le build.",
+    "13": "Le mount de type cache crée un cache Docker persistant pour les téléchargements pip, réutilisé entre les builds pour gagner du temps.",
+    "14": "On installe markitdown avec les extras docx, xlsx, et pdf dans le répertoire /python plutôt que dans la localisation système par défaut.",
+    "16": "Cette deuxième étape FROM crée une image finale complètement neuve basée sur python:3.14-slim, sans aucun des fichiers temporaires du builder.",
+    "22": "PYTHONPATH pointe vers le répertoire site-packages où on a installé markitdown, permettant à Python de le trouver.",
+    "23": "On ajoute /python/bin au PATH pour que les scripts exécutables installés par pip soient accessibles directement.",
+    "25": "ARG UID et ARG GID acceptent des arguments de build pour créer l'utilisateur avec des IDs personnalisables (utile pour l'alignement de permissions avec l'hôte).",
+    "29": "On crée un groupe nommé developer avec l'ID passé en argument, puis un utilisateur sans shell de connexion /usr/sbin/nologin pour des raisons de sécurité.",
+    "32": "COPY --from=builder copie uniquement le répertoire /python installé depuis l'étape builder, laissant derrière tous les fichiers temporaires du build.",
+    "36": "USER developer bascule tous les processus suivants pour s'exécuter sous l'utilisateur unprivileged developer au lieu de root.",
+    "39": "ENTRYPOINT configure le conteneur pour exécuter directement python -m markitdown avec les arguments fournis à docker run."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:08.187Z",
+  "source": "compose.yaml",
+  "sourceHash": "2a301e34dafa39cf472403c34674aa92ff1e6185",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service unique appelé 'memos' qui exécute un conteneur basé sur l'image neosmemo/memos en version stable. Le conteneur est configuré pour s'exécuter avec des permissions utilisateur spécifiques, expose le port 5230, monte un répertoire de données local et redémarre automatiquement en cas d'arrêt inattendu.",
+  "explanations": {
+    "7": "init: true lance un processus init à l'intérieur du conteneur, ce qui gère correctement les signaux et évite l'accumulation de processus orphelins.",
+    "8": "Les variables ${UID:-1000} et ${GID:-1000} utilisent les identifiants utilisateur et groupe de la machine hôte (ou par défaut 1000 si non définis), ce qui permet au conteneur d'accéder aux fichiers avec les bonnes permissions.",
+    "10": "Le format %%port=5230%% est un substitution de template, probablement remplacée avant le déploiement par un port réel, tandis que :5230 expose ce port sur le conteneur.",
+    "13": "unless-stopped signifie que le conteneur redémarrera automatiquement après un arrêt, sauf s'il a été arrêté manuellement par l'utilisateur."
+  }
+}

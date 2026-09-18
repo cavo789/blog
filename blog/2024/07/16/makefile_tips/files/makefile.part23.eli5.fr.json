@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:47.619Z",
+  "source": "makefile.part23",
+  "sourceHash": "eb0999f703867538d88e9ba7ff1db32f84188cad",
+  "lang": "part23",
+  "textLang": "fr",
+  "summary": "Ce fragment Makefile vérifie si un conteneur Docker nommé sonarqube existe. S'il n'existe pas, il le crée à partir de l'image sonarqube:latest. S'il existe déjà, il s'assure que le conteneur est en cours d'exécution.",
+  "explanations": {
+    "1": "La commande shell docker ps -a -q -f name=sonarqube liste les identifiants des conteneurs (l'option -q signifie quiet, juste les IDs) qui correspondent au nom sonarqube. Si aucun conteneur ne correspond, la condition est vraie.",
+    "3": "L'option -d lance le conteneur en arrière-plan (detached mode), et --name sonarqube lui donne un nom pour pouvoir le référencer facilement plus tard.",
+    "6": "Le tiret initial - supprime les erreurs de commande (au cas où le conteneur serait déjà en cours d'exécution), et @ empêche Make d'afficher la commande avant de l'exécuter. Le redirection > /dev/null 2>&1 cache la sortie standard et les erreurs."
+  }
+}

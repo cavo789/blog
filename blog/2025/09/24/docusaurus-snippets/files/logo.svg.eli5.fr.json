@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:54.861Z",
+  "source": "logo.svg",
+  "sourceHash": "5dcb9f7c4f7d446b8d5297c2119fce9ff4149979",
+  "lang": "svg",
+  "textLang": "fr",
+  "summary": "Ce fichier SVG crée un simple graphique vectoriel carré de 100×100 pixels contenant un cercle rouge centré. SVG permet de définir des formes géométriques en XML qui s'affichent nativement dans les navigateurs et se redimensionnent sans perte de qualité.",
+  "explanations": {}
+}

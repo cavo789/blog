@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:36.263Z",
+  "source": "navigation.cy.js",
+  "sourceHash": "c062bab83e4d43f448e22ea43c77ffc8afa7d2af",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce test automatisé vérifie que la navigation vers la page Tags fonctionne correctement. Il visite le site, clique sur le lien Tags, puis confirme que l'URL et le titre de la page ont changé comme prévu.",
+  "explanations": {
+    "3": "cy.visit() demande à Cypress de charger la page web à cette adresse URL dans le navigateur de test.",
+    "5": "cy.contains('a', 'Tags') trouve un élément lien (<a>) contenant le texte 'Tags', et .click() simule un clic de souris dessus.",
+    "7": "cy.url() récupère l'adresse URL actuelle, et .should('include', '/tags') vérifie que cette URL contient bien le segment '/tags'.",
+    "9": "cy.get('h1') sélectionne le premier titre de niveau 1 sur la page, et .should('contain', 'Tags') confirme qu'il contient le texte 'Tags'."
+  }
+}

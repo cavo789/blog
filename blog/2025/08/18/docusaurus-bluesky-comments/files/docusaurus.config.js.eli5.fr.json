@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:38.545Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "73a98c00f94708ea7fa6d77ee8a6a3f417521d19",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce snippet montre une structure de configuration partielle où tu dois ajouter tes identifiants personnels pour les services externes. Ici, on voit comment configurer ton handle Bluesky dans l'objet customFields pour que l'application puisse l'utiliser.",
+  "explanations": {
+    "5": "config est un objet JavaScript qui contient tous les paramètres de configuration de l'application.",
+    "9": "customFields est une section de la configuration dédiée aux champs personnalisés, où tu ajoutes tes propres identifiants pour différents services.",
+    "10": "bluesky est une clé qui regroupe tous les paramètres spécifiques au service Bluesky.",
+    "12": "Tu dois remplacer your-bluesky-handle par ton vrai identifiant Bluesky (celui que tu vois sur ta page de profil)."
+  }
+}

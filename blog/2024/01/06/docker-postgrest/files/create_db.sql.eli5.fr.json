@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:39.773Z",
+  "source": "create_db.sql",
+  "sourceHash": "7237b66102b5566ab3d9d9be22c464cef51201e6",
+  "lang": "sql",
+  "textLang": "fr",
+  "summary": "Ce script configure une base de données pour une API de gestion de tâches. Il crée un schéma api avec une table todos contenant des tâches avec dates d'échéance, insère deux tâches d'exemple, puis met en place deux rôles PostgreSQL : un rôle web_anon en lecture seule et un rôle authenticator qui hériterait de ses permissions pour permettre l'accès authentifié à l'API.",
+  "explanations": {
+    "4": "serial crée automatiquement une séquence et attribue un identifiant unique à chaque ligne — c'est la façon PostgreSQL de faire des auto-increment.",
+    "7": "timestamptz stocke un moment dans le temps avec information de fuseau horaire, utile pour une date d'échéance qui doit être cohérente quel que soit le fuseau horaire du client.",
+    "13": "nologin signifie que ce rôle ne peut pas se connecter directement à la base — c'est un rôle de groupe qui servira uniquement à grouper des permissions.",
+    "18": "noinherit signifie que ce rôle n'hérite pas automatiquement des permissions des rôles qu'on lui attribue — il faut les activer explicitement à chaque session.",
+    "19": "grant web_anon to authenticator rend authenticator capable de devenir web_anon, ce qui permet à une session authentifiée d'utiliser les permissions de lecture du rôle web_anon."
+  }
+}

@@ -222,6 +222,12 @@ function collectSourceFrontMatter(siteDir) {
 }
 
 module.exports.collectTranslations = collectTranslations;
+// Exported so anything holding an article PATH can ask what slug the manifest filed it under,
+// instead of assuming the folder name is the slug. 27 articles on this corpus set a `slug:` that
+// differs from their folder, and `collectTranslations()` keys on the front matter — so a caller
+// re-deriving the slug from the path silently declares those articles untranslated. That is
+// exactly what kept 73 snippets from ever getting a French ELI5; see i18n-eligibility.mjs.
+module.exports.slugFor = slugFor;
 module.exports.collectTranslatedFrontMatter = collectTranslatedFrontMatter;
 module.exports.collectAllArticleSlugs = collectAllArticleSlugs;
 module.exports.collectSourceFrontMatter = collectSourceFrontMatter;

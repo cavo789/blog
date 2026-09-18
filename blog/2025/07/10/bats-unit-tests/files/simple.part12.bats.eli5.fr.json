@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:10.034Z",
+  "source": "simple.part12.bats",
+  "sourceHash": "9d9a309a4dd27e903c183c7aea3efbe0813bb97e",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie qu'une fonction nommée html::removeTopOfFileComments supprime correctement les commentaires HTML situés au début d'un fichier, y compris les lignes vides qui les entourent. Le test crée un fichier temporaire contenant des lignes vides, un commentaire HTML avec espaces superflus, puis du contenu HTML valide, puis exécute la fonction et valide que seul le contenu HTML reste après suppression du commentaire et conservation des lignes vides.",
+  "explanations": {
+    "2": "mktemp crée un fichier temporaire unique et retourne son chemin d'accès complet, qu'on stocke dans la variable tempfile pour l'utiliser ensuite.",
+    "5": "Le premier echo '' crée une ligne vide dans le fichier ; le > redirige la sortie et écrase le fichier s'il existait déjà.",
+    "6": "Le >> ajoute une ligne à la fin du fichier existant au lieu de l'écraser, donc ici on ajoute une deuxième ligne vide.",
+    "28": "cat --show-ends --show-tabs affiche chaque fin de ligne avec un $, puis tr \"\\n\" \"#\" remplace chaque retour à la ligne par un #, transformant le fichier en une seule chaîne de caractères où on peut voir la structure exacte.",
+    "31": "Les échappements \\ devant $ sont nécessaires parce que assert_equal interprète les $ comme des variables, donc \\$ signifie un $ littéral à comparer dans la chaîne attendue."
+  }
+}

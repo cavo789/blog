@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:14.635Z",
+  "source": "decrypt.sh",
+  "sourceHash": "756ea721ce0fcaaec1b1b995a281d586bf48f008",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script configure un environnement bash sécurisé, puis exécute un conteneur Docker pour déchiffrer un fichier chiffré avec AES-256-CBC en utilisant un mot de passe défini localement dans une sous-shell isolée.",
+  "explanations": {
+    "2": "set -euo pipefail rend le script strict : -e arrête à la première erreur, -u signale les variables indéfinies, -o pipefail propage les erreurs dans les pipelines.",
+    "4": "Les parenthèses créent une sous-shell isolée pour que les variables définies à l'intérieur (comme MY_PASSWORD) ne restent pas en mémoire après l'exécution du script.",
+    "5": "MY_PASSWORD=\"...\" && assigne le mot de passe et la syntaxe && garantit que la commande docker ne s'exécute que si cette assignation réussit.",
+    "6": "docker run lance un conteneur éphémère (--rm) avec un terminal interactif (-it), monte le répertoire courant en /data, et utilise alpine/openssl pour déchiffrer le fichier avec -d (déchiffrement) en utilisant le mot de passe via -k."
+  }
+}

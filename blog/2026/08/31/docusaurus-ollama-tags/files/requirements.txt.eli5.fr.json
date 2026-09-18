@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:24.372Z",
+  "source": "requirements.txt",
+  "sourceHash": "3766d580d3f8f6a394d2d805414172cbdfca2147",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier liste les dépendances Python requises pour le projet. Il contient trois packages : requests pour les requêtes HTTP, et tqdm pour afficher des barres de progression dans le terminal.",
+  "explanations": {}
+}

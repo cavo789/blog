@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:30.980Z",
+  "source": "simple.part3.bats",
+  "sourceHash": "0d162c8f052c750f211f505a0d1fd09da9ebc1c4",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que le fichier simple.bats existe en lançant la commande ls et en s'assurant qu'elle réussit et affiche bien le nom du fichier (avec la première lettre en majuscule ou minuscule).",
+  "explanations": {
+    "2": "run exécute la commande ls simple.bats et capture son résultat (code de sortie et texte affiché) pour que les assertions suivantes puissent le vérifier.",
+    "3": "assert_output --regexp vérifie que le texte affiché correspond à l'expression régulière donnée ; [Ss]imple\\.bats accepte Simple ou simple, avec un point littéral.",
+    "4": "assert_success vérifie que la commande exécutée à la ligne 2 a réussi (code de sortie zéro)."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:25.495Z",
+  "source": "HelloWorld.java",
+  "sourceHash": "14de65491e85d53e0d9f1abd684bf6addc364e65",
+  "lang": "java",
+  "textLang": "fr",
+  "summary": "C'est un programme Java minimal qui affiche un message de texte sur la console. La classe HelloWorld contient une méthode main qui est le point d'entrée du programme, et elle imprime simplement « Hello, world! » à l'écran.",
+  "explanations": {
+    "2": "La méthode main avec les paramètres public static void est le point d'entrée obligatoire que la machine virtuelle Java cherche pour lancer le programme. Elle doit toujours avoir cette signature exacte.",
+    "3": "System.out.println() envoie du texte vers la sortie standard (la console) et ajoute une nouvelle ligne à la fin du message."
+  }
+}

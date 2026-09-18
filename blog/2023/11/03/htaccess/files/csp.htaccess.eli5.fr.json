@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:56.740Z",
+  "source": "csp.htaccess",
+  "sourceHash": "598c50a0ceb2ccb0c9b6c51e0d549460cd97c10e",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier configure les en-têtes de sécurité HTTP via le module Apache mod_headers. Il active plusieurs protections : une politique de sécurité du contenu, une protection contre le clickjacking, le forçage HTTPS, la filtration XSS du navigateur, et le masquage du référent. Une ligne de Content-Security-Policy complète est commentée pour utilisation avancée après test approfondi.",
+  "explanations": {
+    "1": "IfModule vérifie que le module mod_headers est chargé sur le serveur avant d'exécuter les directives à l'intérieur ; cela évite les erreurs si le module n'existe pas.",
+    "4": "Protected-by est un en-tête personnalisé optionnel que vous pouvez remplacer ou supprimer ; il n'a aucun effet de sécurité standard.",
+    "7": "Feature-Policy restreint les capacités du navigateur (caméra, microphone, paiement, etc.) ; remplacez XXXXXXXXXXXXXX par votre domaine réel comme www.votresite.com.",
+    "12": "X-Content-Type-Options nosniff force le navigateur à respecter le type MIME déclaré au lieu de deviner, prévenant ainsi certaines attaques.",
+    "16": "X-Frame-Options SAMEORIGIN empêche que votre page soit intégrée dans une iframe d'un autre domaine, protection contre le clickjacking.",
+    "21": "Strict-Transport-Security force HTTPS pour les visites futures ; l'expression \"expr=%{HTTPS} == 'on'\" applique l'en-tête uniquement si la connexion est déjà en HTTPS.",
+    "25": "X-XSS-Protection 1; mode=block active le filtre XSS du navigateur pour arrêter le rendu si une attaque est détectée.",
+    "29": "Referrer-Policy no-referrer supprime complètement l'en-tête Referer, cachant la page source lors des requêtes sortantes.",
+    "40": "Cette ligne Content-Security-Policy complète est commentée car elle est complexe et peut bloquer des ressources légitimes ; décommentez et testez en profondeur avant de l'utiliser."
+  }
+}

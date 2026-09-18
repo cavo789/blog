@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:11.883Z",
+  "source": ".part21.htaccess",
+  "sourceHash": "ea3fe918a8a8059b18633d61090a92e6c59fbf38",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Cette directive redirige de manière permanente (code 301) toutes les demandes du domaine actuel vers un nouveau site. Le code 301 indique aux moteurs de recherche et aux navigateurs que ce changement est permanent, ce qui préserve le référencement.",
+  "explanations": {
+    "1": "Redirect 301 signifie une redirection permanente ; le / représente toutes les URL du domaine actuel, et https://www.newsite.com/ est la nouvelle destination où les utilisateurs seront redirigés."
+  }
+}

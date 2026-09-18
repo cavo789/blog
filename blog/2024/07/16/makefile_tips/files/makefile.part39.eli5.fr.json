@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:32.725Z",
+  "source": "makefile.part39",
+  "sourceHash": "577ba5a91a4aa92bbd2619c062dfe7ff7baa2cea",
+  "lang": "part39",
+  "textLang": "fr",
+  "summary": "Ce makefile définit une cible git_wip qui crée rapidement un commit de travail en cours sans vérifications. Elle ajoute tous les fichiers modifiés, les commite avec le message 'wip', puis pousse les changements vers le dépôt distant.",
+  "explanations": {
+    "3": "Le flag --no-verify contourne les hooks git (comme les linters ou tests) qui s'exécuteraient normalement avant le commit, permettant de commiter rapidement sans attendre les vérifications."
+  }
+}

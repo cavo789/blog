@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:05.111Z",
+  "source": ".editorconfig",
+  "sourceHash": "76898ec195f97b4027e7bb6c82ca1f37f9e42bbb",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration EditorConfig définit les règles de formatage pour les fichiers du projet. La section générale impose les fins de ligne en LF et l'ajout d'une nouvelle ligne à la fin de chaque fichier, tandis que la section Makefile configure l'indentation avec des tabulations de taille 4.",
+  "explanations": {
+    "1": "[*] désigne la section qui s'applique à tous les fichiers du projet.",
+    "3": "insert_final_newline = true force l'ajout automatique d'une nouvelle ligne à la fin de chaque fichier.",
+    "5": "[Makefile] crée une section de configuration spécifique aux fichiers nommés Makefile, qui surcharge les paramètres généraux.",
+    "6": "indent_style = tab indique d'utiliser des caractères de tabulation pour l'indentation plutôt que des espaces.",
+    "7": "indent_size = 4 définit la largeur d'affichage d'une tabulation à 4 espaces dans les éditeurs."
+  }
+}

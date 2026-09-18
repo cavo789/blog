@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:46:35.468Z",
+  "source": "make.bat",
+  "sourceHash": "00867b2b9442a02850d718b786050898ecdb87c2",
+  "lang": "batch",
+  "textLang": "fr",
+  "summary": "Ce script Batch est un utilitaire pour gérer un conteneur Docker Python. Il vérifie l'argument passé et exécute la commande correspondante : lancer un shell interactif, construire l'image, ouvrir le conteneur dans VSCode, démarrer le conteneur, ou exécuter un script Python. Si aucun argument ou un argument invalide est fourni, il affiche l'aide.",
+  "explanations": {
+    "1": "@echo off désactive l'affichage des commandes exécutées dans la console, pour un résultat plus propre.",
+    "3": "cls efface l'écran de la console avant de commencer.",
+    "5": "Cette condition vérifie si aucun argument n'a été passé au script ; si c'est le cas, on saute à la section help.",
+    "7": "On définit une variable APP_NAME contenant le nom du conteneur Docker pour la réutiliser ailleurs.",
+    "12": "DEV_CODE stocke la représentation hexadécimale du nom d'app pour que VSCode puisse identifier le conteneur distant.",
+    "18": "Contrairement aux autres cas, ce goto passe également l'argument %2 (le nom du fichier) à la section start.",
+    "20": "On appelle la fonction error pour afficher un message d'erreur formaté, puis on affiche l'aide.",
+    "56": "Cette condition vérifie que l'utilisateur a bien fourni un deuxième argument (le nom du script à exécuter).",
+    "65": "On capture tous les arguments passés à la fonction error dans ERROR_MESSAGE.",
+    "66": "Cette ligne supprime les guillemets au début et à la fin du message d'erreur pour un affichage plus propre."
+  }
+}

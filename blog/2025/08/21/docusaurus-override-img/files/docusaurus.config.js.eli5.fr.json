@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:42.564Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "5c75d05f8bcdcb3611cd2d55de7b7a6383d19a8c",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier exporte une configuration Docusaurus qui personnalise le préset 'classic' en injectant un plugin remark personnalisé pour transformer les images dans le blog avant que les plugins par défaut ne s'exécutent.",
+  "explanations": {
+    "9": "beforeDefaultRemarkPlugins insère des plugins remark qui s'exécutent avant les transformations standard de Docusaurus, permettant au plugin remark-image-transformer de modifier le contenu du blog en premier."
+  }
+}

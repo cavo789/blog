@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:20.228Z",
+  "source": "Dockerfile.part2",
+  "sourceHash": "2dea0743a0003d95ccca82646659dfc328645933",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur PHP 8.2 pour exécuter des tests Behat avec Chrome. Il configure un utilisateur non-root avec les mêmes identifiants que la machine hôte, installe Chrome et son driver, puis ajoute Composer et prépare le répertoire de travail.",
+  "explanations": {
+    "4": "ARG définit une variable de build que Docker peut utiliser lors de la construction de l'image ; DOCKER_UID=1000 est la valeur par défaut si elle n'est pas fournie lors du build.",
+    "12": "FROM spécifie l'image de base sur laquelle construire : php:8.2-fpm fournit PHP 8.2 avec FastCGI Process Manager préinstallé.",
+    "15": "Cette commande RUN met à jour les listes de paquets apt, puis installe plusieurs outils système en une seule couche Docker (plus efficace qu'exécuter plusieurs RUN).",
+    "16": "apt-get clean supprime les fichiers cache d'apt pour réduire la taille de l'image finale.",
+    "20": "Ces ARG répètent les variables déclarées plus haut pour les rendre disponibles dans cette étape du build (chaque section peut avoir besoin de sa propre déclaration ARG).",
+    "24": "groupadd crée un groupe système avec l'identifiant GID spécifié, ce qui permet au conteneur d'avoir les mêmes permissions de groupe que sur l'hôte.",
+    "25": "useradd crée un utilisateur non-root avec --create-home pour créer automatiquement son répertoire personnel et les mêmes uid/gid que la machine hôte.",
+    "30": "Cette variable stocke l'URL d'une API Google qui contient la liste des versions disponibles de Chrome et leurs URLs de téléchargement.",
+    "33": "wget télécharge la clé GPG publique de Google et apt-key add - l'ajoute pour pouvoir vérifier les signatures des paquets Chrome.",
+    "46": "curl récupère le fichier JSON, puis jq parse et filtre pour extraire l'URL de téléchargement du Chrome browser spécifique à linux64 et à la version demandée.",
+    "50": "unzip -j extrait les fichiers sans créer de sous-dossier (le -j signifie « jettez les noms de chemin »), directement dans /usr/local/bin/chrome.",
+    "55": "Même opération que la ligne 46, mais cette fois-ci pour extraire l'URL du chromedriver au lieu du navigateur lui-même.",
+    "66": "COPY --from copie le binaire composer depuis l'image composer:latest sans inclure toute cette image dans l'image finale (on ne copie que ce qu'on utilise)."
+  }
+}

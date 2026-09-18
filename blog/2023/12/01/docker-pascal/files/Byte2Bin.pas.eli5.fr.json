@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:42.742Z",
+  "source": "Byte2Bin.pas",
+  "sourceHash": "855358c2ffd6dec142cf755cb00aab716509bb9d",
+  "lang": "pas",
+  "textLang": "fr",
+  "summary": "Cette fonction convertit un nombre entier (byte) en sa représentation binaire sous forme de chaîne de caractères. Elle examine chaque bit du nombre de gauche à droite en utilisant des opérations binaires et ajoute '0' ou '1' à une chaîne résultat selon que le bit est vide ou non.",
+  "explanations": {
+    "10": "La boucle parcourt les positions 7 à 0, ce qui correspond aux 8 bits d'un byte, en commençant par le bit le plus significatif (le poids fort).",
+    "11": "Cette ligne effectue un décalage binaire (1 shl I crée une puissance de 2) puis utilise and pour vérifier si le bit à cette position est activé, le résultat étant stocké dans Temp.",
+    "12": "Si Temp vaut 0, c'est que le bit n'était pas activé donc on ajoute '0', sinon on ajoute '1' à la chaîne."
+  }
+}

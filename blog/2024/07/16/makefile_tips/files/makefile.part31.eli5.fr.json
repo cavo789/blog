@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:11.057Z",
+  "source": "makefile.part31",
+  "sourceHash": "5cc2016cf46049eeedac94af000c0a1d5642bfc4",
+  "lang": "part31",
+  "textLang": "fr",
+  "summary": "Cette cible Makefile exécute la commande composer update avec le flag --no-interaction pour mettre à jour les dépendances PHP du projet sans attendre d'entrée utilisateur.",
+  "explanations": {
+    "2": "${CMD} est une variable qui référence la commande shell à exécuter, et --no-interaction empêche composer de poser des questions interactives pendant la mise à jour."
+  }
+}

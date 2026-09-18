@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:32.966Z",
+  "source": "settings.json",
+  "sourceHash": "bdcb12768e115918082dac23510d247069ec6845",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure les paramètres d'analyse Python pour Pylance ou un outil d'analyse similaire. Il réduit le niveau de sévérité des diagnostiques relatifs aux éléments inutilisés (classes, fonctions, imports, variables) du niveau d'erreur au niveau d'information, pour que ces avertissements soient moins intrusifs.",
+  "explanations": {
+    "1": "python.analysis.diagnosticSeverityOverrides est une clé de configuration qui permet de personnaliser le niveau de sévérité des messages d'analyse du code Python.",
+    "2": "reportUnusedClass détecte les classes définies mais jamais utilisées ; régler sa sévérité à 'information' le rend moins invasif qu'une erreur.",
+    "3": "reportUnusedFunction fonctionne de la même manière pour les fonctions non utilisées.",
+    "4": "reportUnusedImport signale les imports ajoutés au fichier mais non exploités dans le code.",
+    "5": "reportUnusedVariable détecte les variables déclarées mais jamais lues après leur assignation."
+  }
+}

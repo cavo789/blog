@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:07:29.512Z",
+  "source": "markdown-mirror-plugin.cjs",
+  "sourceHash": "313576e49bee731709890f0811307f50dacba46c",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce plugin Docusaurus crée des fichiers Markdown bruts à côté de chaque article de blog publié durant la phase de construction. Il parcourt tous les fichiers index.md et index.mdx du répertoire blog, valide qu'ils sont effectivement publiés via les routes connues de Docusaurus, puis écrit des miroirs Markdown nettoyés avec un commentaire HTML contenant l'URL canonique et la date de génération.",
+  "explanations": {
+    "15": "fs.readdirSync retourne les entrées du répertoire avec { withFileTypes: true } pour obtenir des objets Entry au lieu de simples chaînes, ce qui permet de vérifier le type (dossier ou fichier) directement.",
+    "18": "found.push(...findPosts(target)) utilise l'opérateur spread pour aplatir récursivement les résultats : chaque appel récursif retourne un tableau, et on fusionne tous ces tableaux en un seul.",
+    "46": "new Set(routesPaths) convertit le tableau des chemins connus en ensemble pour pouvoir vérifier l'existence en O(1) au lieu de chercher dans un tableau.",
+    "53": "frontMatter(raw) analyse le contenu Markdown brut et sépare les métadonnées YAML au début (attributes) du reste du contenu (body).",
+    "55": "continue saute l'itération courante si l'article n'a pas de slug — on ne peut pas générer de fichier sans identifiant.",
+    "61": "Cette vérification filtre automatiquement les articles en brouillon puisque Docusaurus ne les ajoute pas à routesPaths, évitant de dupliquer la logique de détection.",
+    "64": "replace('<!-- truncate -->\\n', '') supprime le marqueur de troncature utilisé par Docusaurus pour limiter l'aperçu, puis trim() enlève les espaces superflus avant d'ajouter une newline finale.",
+    "67": "mkdirSync crée le dossier de destination et tous ses parents si nécessaire grâce à { recursive: true }, ce qui garantit que le répertoire existe avant d'écrire le fichier."
+  }
+}

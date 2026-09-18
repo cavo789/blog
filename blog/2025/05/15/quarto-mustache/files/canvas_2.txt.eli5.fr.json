@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:46.559Z",
+  "source": "canvas_2.txt",
+  "sourceHash": "80784809a0008d9ff8243ca2cc5b17006b157857",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de documentation décrit Contextual Canvas, une fonctionnalité qui crée un espace de travail dynamique dans votre application principale. Le fichier utilise des métadonnées frontmatter pour spécifier qu'il faut exécuter la commande 'make canvas' et inclut une explication de pourquoi cet outil aide les développeurs à gérer plusieurs documents et contextes sans basculer entre différentes fenêtres.",
+  "explanations": {
+    "4": "partial-data est une section de métadonnées qui contient des données utilisées pour traiter ce fichier de documentation.",
+    "6": "command: \"make canvas\" spécifie la commande à exécuter pour tester ou exécuter la fonctionnalité décrite dans ce document.",
+    "17": "{{< partial ../_partials/run.md >}} est une directive de template qui inclut et affiche le contenu d'un fichier partagé contenant les instructions d'exécution communes."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:14.012Z",
+  "source": "ai-blog-search.zsh",
+  "sourceHash": "1cb1a0736a0af97e6becd6ed8a5875f7e4687ef8",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash implémente une commande shell ai-blog-search qui pose une question à ton blog via AnythingLLM, un système qui utilise la recherche vectorielle pour trouver les articles pertinents. Il affiche d'abord la réponse générée par le modèle, puis liste les articles sources utilisés, et enfin effectue une recherche exacte dans les métadonnées du blog comme filet de sécurité supplémentaire.",
+  "explanations": {
+    "14": ": ${VAR:=valeur} définit VAR à valeur si elle n'est pas déjà définie — c'est un moyen portable de fixer des valeurs par défaut en bash/zsh.",
+    "20": "L'expansion ${ANYTHINGLLM_API_KEY:-} retourne la valeur de la variable si elle existe, sinon une chaîne vide; -z teste si cette chaîne est vide.",
+    "35": "-t 1 teste si le descripteur de fichier 1 (stdout) est un terminal; c'est comment on détecte si la sortie est affichée à l'écran ou redirigée.",
+    "36": "\\e]8;;URL\\e\\\\ est la séquence OSC 8 qui fait les hyperliens cliquables dans les terminaux modernes; \\e[1;32m et \\e[0m sont les codes pour colorer et réinitialiser.",
+    "37": "${1:t} en zsh supprime tout le chemin et garde seulement la dernière partie du nom.",
+    "46": "(( $+aliases[nom] )) teste si l'alias 'nom' existe (+ retourne 1 si la clé existe dans un tableau associatif).",
+    "67": "jq -nc construit du JSON à partir de zéro sans lire d'entrée; --arg ajoute des variables shell comme champs JSON.",
+    "76": "jq -r '.error // empty' extrait le champ 'error' et affiche une chaîne vide s'il n'existe pas — l'opérateur // est l'alternative si la gauche est null/absent.",
+    "86": "jq avec ${(f)...} en zsh divise la sortie ligne par ligne; '.sources[]?' itère sur le tableau 'sources' en ignorant s'il n'existe pas.",
+    "88": "startswith() teste si la chaîne commence par une valeur; ici on filtre pour garder seulement les sources avec des URLs.",
+    "89": "sub() remplace la première occurrence d'une regex — ici on enlève le préfixe 'link://' des URLs.",
+    "90": "unique_by(.url) déduplique les sources en gardant une seule par URL unique.",
+    "95": "${(f)sources} en zsh divise la chaîne sources sur les retours à la ligne et itère sur chacune.",
+    "96": "${ligne%%$'\\t'*} supprime tout après la première tabulation; ${ligne#*$'\\t'} supprime tout avant.",
+    "133": "${(L)question//[^[:alnum:]]/ } met la question en minuscules et remplace les caractères non-alphanumériques par des espaces; ${(s: :)...} divise sur les espaces; ${(u)...} déduplique.",
+    "138": "find avec -type f \\( -name X -o -name Y \\) cherche les fichiers nommés X ou Y; | wc -l compte le nombre de lignes.",
+    "148": "grep -rliE cherche récursivement (-r) en retournant juste les noms (-l) avec regex étendue (-E), en ignorant la casse (-i).",
+    "152": "print -r -- préserve les caractères spéciaux bruts; | grep -c . compte les lignes non-vides.",
+    "156": "matched+=(${(f)files}) ajoute chaque fichier à l'array matched; ${(f)...} divise files sur les retours à la ligne.",
+    "164": "${(u)matched} déduplique les fichiers avant de boucler — évite d'afficher la même source deux fois.",
+    "166": "sed -n 's/^slug: *//p' cherche la ligne commençant par 'slug:' et imprime juste la partie après (supprimant le préfixe)."
+  }
+}

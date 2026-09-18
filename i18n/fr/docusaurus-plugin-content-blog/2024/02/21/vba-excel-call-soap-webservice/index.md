@@ -38,7 +38,7 @@ Lorsqu'on appelle un service SOAP, il faut toujours préparer un message XML au 
 
 Créez le fichier `C:\temp\checkVat.xml` avec ce contenu. Ce message (contenu) est celui attendu par le web service VIES de validation de numéro de TVA. Dans le fichier, nous prévoyons deux placeholders pour nos variables : `%COUNTRY%` et `%VATNUMBER%`. Nous y reviendrons plus loin.
 
-<Snippet filename="C:\temp\checkVat.xml" source="./files/C:\temp\checkVat.xml" />
+<Snippet filename="C:\temp\checkVat.xml" source="./files/checkVat.xml" />
 
 ## Créer le classeur Excel {#create-the-excel-workbook}
 

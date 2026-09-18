@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:39.080Z",
+  "source": "my_class.php",
+  "sourceHash": "c0952ada293838bd08d31d5cad9efca3dc500892",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette classe définit une méthode qui construit et exécute une requête de base de données pour récupérer toutes les notes associées au contenu ID 8 depuis la table content_ratings. La méthode retourne les résultats sous forme de colonne.",
+  "explanations": {
+    "7": "getQuery(true) crée un nouvel objet de requête; le paramètre true signifie que c'est une requête de sélection (SELECT).",
+    "8": "select('note') spécifie que seule la colonne 'note' doit être récupérée.",
+    "9": "from('#__content_ratings') indique la table source; le préfixe #__ est remplacé automatiquement par le préfixe réel de la base de données.",
+    "10": "where('content_id = 8') ajoute une condition pour filtrer uniquement les lignes où content_id vaut 8.",
+    "12": "setQuery($query) enregistre la requête construite auprès de l'objet base de données avant son exécution.",
+    "13": "loadColumn() exécute la requête et retourne les résultats sous forme de tableau à une dimension contenant tous les éléments de la colonne sélectionnée."
+  }
+}

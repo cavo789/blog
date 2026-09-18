@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:52.945Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "b001fd77cf1b9443dfe4af374f3c6685a94fa931",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier YAML définit la configuration des services Docker Compose. Il déclare un service appelé « server » dont les détails de configuration sont abrégés par des points de suspension, ce qui indique que les propriétés complètes du service sont définies ailleurs ou omises pour la lisibilité.",
+  "explanations": {
+    "2": "Le commentaire « highlight-next-line » est une directive utilisée par certains outils de documentation ou de présentation (comme Docusaurus) pour mettre en évidence la ligne suivante dans les affichages ou les documents générés."
+  }
+}

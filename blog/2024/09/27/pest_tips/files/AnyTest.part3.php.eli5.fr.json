@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:24.100Z",
+  "source": "AnyTest.part3.php",
+  "sourceHash": "1ffda22505b4da12ac5785452c73a8b2aac01b71",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que chaque email fourni dans le tableau n'est pas vide. Pest exécute le test plusieurs fois, une fois par email, pour s'assurer que tous les emails passent cette validation.",
+  "explanations": {
+    "1": "La fonction it() définit un cas de test paramétrisé qui reçoit une chaîne $email en argument.",
+    "2": "expect($email)->not->toBeEmpty() affirme que l'email ne doit pas être une chaîne vide.",
+    "3": "La méthode with() fournit un tableau de valeurs — Pest exécutera le test une fois pour chaque élément du tableau."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:02:53.021Z",
+  "source": ".part14.htaccess",
+  "sourceHash": "a8e42ed2302198fc3b37cd5cf919634b59a703ba",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier .htaccess contient deux approches pour bloquer l'accès à un répertoire selon la version d'Apache. La première ligne utilise la syntaxe obsolète pour Apache 2.2, tandis que la ligne 5 montre la syntaxe moderne pour Apache 2.4 et plus récent.",
+  "explanations": {
+    "2": "Deny from all refuse l'accès à toutes les requêtes dans Apache 2.2 — c'est l'ancienne directive pour bloquer complètement.",
+    "5": "Require all denied est le remplaçant moderne de Deny from all, utilisant le système d'autorisation d'Apache 2.4+."
+  }
+}

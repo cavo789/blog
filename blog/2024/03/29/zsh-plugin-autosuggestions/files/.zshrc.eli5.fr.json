@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:08.236Z",
+  "source": ".zshrc",
+  "sourceHash": "cdee1fe4801a83abfac4d90924c2f6972511b225",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Cet extrait configure le tableau des plugins pour zsh en ajoutant zsh-autosuggestions à la liste existante. Le commentaire indique qu'il faut placer cette nouvelle ligne parmi les plugins déjà configurés.",
+  "explanations": {
+    "1": "plugins=( crée un tableau zsh (délimité par des parenthèses) nommé plugins qui va contenir une liste de noms de plugins.",
+    "4": "zsh-autosuggestions est le nom du plugin à ajouter au tableau — ce plugin offre des suggestions automatiques pendant la saisie dans le shell."
+  }
+}

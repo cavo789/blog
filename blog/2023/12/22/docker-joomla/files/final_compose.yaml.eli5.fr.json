@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:38.753Z",
+  "source": "final_compose.yaml",
+  "sourceHash": "54b3fe9c5296711516b623b69e500e942a661e9e",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application Joomla avec deux services : un conteneur Joomla qui s'exécute sur Apache et PHP 8.3, et une base de données MySQL qui le supporte. Les deux services redémarrent automatiquement en cas d'arrêt, partagent des volumes locaux pour persister les données, et le conteneur Joomla attend que la base de données soit saine avant de démarrer.",
+  "explanations": {
+    "6": "%%name=kingsbridge%% est un placeholder (variable) qui sera remplacé par « kingsbridge » lors du déploiement pour nommer le conteneur Joomla.",
+    "9": "%%port=8080%% signifie que le port 8080 de ta machine locale sera mappé vers le port 80 (HTTP standard) du conteneur.",
+    "12": "%%dbPassword=example%% est un placeholder pour le mot de passe de la base de données, remplacé par « example » par défaut mais modifiable au déploiement.",
+    "14": "joomladb: sous depends_on indique que le service joomla dépend du service joomladb.",
+    "15": "condition: service_healthy signifie que Joomla ne doit démarrer que lorsque MySQL a rapporté qu'il était opérationnel (via le healthcheck).",
+    "16": "${UID:-1000}:${GID:-1000} utilise des variables d'environnement de l'hôte pour définir l'utilisateur du conteneur ; si UID n'existe pas, il utilise 1000 par défaut.",
+    "27": "Le healthcheck exécute mysqladmin ping pour vérifier que MySQL répond aux connexions.",
+    "28": "timeout: 20s signifie que la commande ping doit répondre en 20 secondes ou moins.",
+    "29": "retries: 10 indique que Docker tentera jusqu'à 10 fois avant de considérer le service comme non sain."
+  }
+}

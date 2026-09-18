@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:44:02.365Z",
+  "source": "demo.sh",
+  "sourceHash": "728363dee7be9099faff64fb18649f67c98a114a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script exécute une boucle qui appelle 50 fois une fonction demo, puis canalise toute la sortie vers une barre de progression importée depuis un autre fichier. L'objectif est d'afficher visuellement la progression d'une tâche qui s'exécute en 50 étapes.",
+  "explanations": {
+    "2": "set -euo pipefail configure le bash pour quitter immédiatement en cas d'erreur (-e), traiter les variables non définies comme des erreurs (-u), et propager les erreurs à travers les tubes (-o pipefail).",
+    "11": "La syntaxe {1..50} génère une séquence de nombres de 1 à 50, permettant à la boucle for d'itérer exactement 50 fois.",
+    "16": "source charge et exécute le fichier progress_bar.sh dans le contexte du script actuel, rendant ses fonctions disponibles.",
+    "18": ">() est une substitution de processus qui capture la sortie standard de main et la canalise vers une fonction progress_bar::process, passant le nombre 50 comme paramètre pour indiquer le nombre total d'étapes attendues."
+  }
+}

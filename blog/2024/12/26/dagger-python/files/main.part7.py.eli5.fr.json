@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:43.024Z",
+  "source": "main.part7.py",
+  "sourceHash": "83f71b05a4e6cede0ada2f7925f5075c0b630e2a",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce snippet définit deux variables annotées qui décrivent des chemins de répertoires : un dossier source où le code se trouve et un dossier de configuration pour les fichiers de configuration. Chaque variable utilise des annotations pour spécifier son type, sa documentation et son chemin par défaut.",
+  "explanations": {
+    "1": "Annotated est un type générique qui permet d'attacher des métadonnées supplémentaires à un type — ici, Directory est le type réel, et ce qui suit sont des informations additionnelles sur cette variable.",
+    "3": "Doc est une annotation qui ajoute une description textuelle à la variable pour expliquer son rôle.",
+    "4": "DefaultPath spécifie le chemin par défaut que ce répertoire doit utiliser si aucune valeur n'est fournie ailleurs."
+  }
+}

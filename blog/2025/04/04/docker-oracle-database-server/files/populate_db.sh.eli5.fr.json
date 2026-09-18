@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:53.025Z",
+  "source": "populate_db.sh",
+  "sourceHash": "25bd3b61e48c9bf4909b5ae8763ed502236a5852",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash lance sqlplus (l'outil en ligne de commande Oracle) en mode silencieux pour exécuter une série de commandes SQL. Il se connecte à une base de données Oracle avec des paramètres interpolés, bascule vers un conteneur de base de données spécifique, puis exécute deux fichiers SQL qui créent et remplissent un schéma HR (Human Resources), avant de valider les changements.",
+  "explanations": {
+    "3": "sqlplus -S lance sqlplus en mode silencieux (S) avec les identifiants sys/admin, une chaîne de connexion spécifiant le port et le CDB (conteneur principal), et AS SYSDBA pour obtenir les privilèges administrateur. Le <<EOF indique un document ici (heredoc) qui contient les commandes SQL à exécuter jusqu'au EOF final.",
+    "4": "ALTER SESSION SET CONTAINER bascule la session SQL actuelle vers le PDB (pluggable database) spécifié, changant le contexte de la base de données pour les opérations suivantes.",
+    "5": "CONNECT ferme la connexion sys précédente et établit une nouvelle connexion avec l'utilisateur system sur le PDB, utilisant les paramètres interpolés pour la chaîne de connexion.",
+    "6": "Le @ est la directive sqlplus pour exécuter un fichier SQL externe ; ici on lance le script hr_create.sql qui contient les commandes DDL (création de tables et structures) pour le schéma HR.",
+    "7": "Similaire à la ligne 6, on exécute hr_populate.sql qui remplit les tables créées précédemment avec les données initiales."
+  }
+}

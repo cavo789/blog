@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:45.610Z",
+  "source": "main.part8.py",
+  "sourceHash": "e739217a0f5f80a413d402731a4efbcdf18135b8",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette méthode lance quatre tâches asynchrones en parallèle — ruff, lint, format et mypy — en utilisant un gestionnaire de groupe de tâches pour attendre que toutes se terminent. C'est un moyen efficace d'exécuter plusieurs outils de qualité de code simultanément au lieu de les faire s'attendre les uns après les autres.",
+  "explanations": {
+    "2": "Le mot-clé async indique que cette fonction peut être mise en pause et reprendre plus tard, ce qui permet à d'autres code de s'exécuter pendant ce temps.",
+    "4": "anyio.create_task_group() crée un conteneur qui supervise plusieurs tâches asynchrones et attend que tous les travaux qu'on lui confie soient terminés avant de quitter ce bloc.",
+    "5": "tg.start_soon() ajoute une tâche au groupe sans attendre qu'elle se termine immédiatement — cela lance simplement le travail en arrière-plan."
+  }
+}

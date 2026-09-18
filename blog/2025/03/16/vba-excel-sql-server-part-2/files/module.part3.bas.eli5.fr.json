@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:13.245Z",
+  "source": "module.part3.bas",
+  "sourceHash": "dedb540579ccd51e0e4e7a530ef0c927bc74f8ee",
+  "lang": "bas",
+  "textLang": "fr",
+  "summary": "Ce code configure les paramètres de connexion à une base de données SQL Server (nom du serveur, nom de la base, identifiant et mot de passe), puis exécute une requête SELECT pour récupérer tous les clients et les affiche dans un tableau de requête à partir de la cellule active.",
+  "explanations": {
+    "4": "On assigne le nom d'utilisateur \"SA\" (System Administrator) pour se connecter à SQL Server avec les droits administrateur.",
+    "6": "On fournit le mot de passe correspondant à l'utilisateur SA pour authentifier la connexion.",
+    "8": "Ce commentaire explique que si on ne fournit pas UserName et Password, la connexion utilisera automatiquement les identifiants de l'utilisateur Windows connecté au système.",
+    "14": "On appelle la méthode AddQueryTable pour exécuter la requête SQL et placer les résultats dans un tableau commençant à ActiveCell (la cellule sélectionnée), avec le paramètre True qui signifie probablement qu'on veut inclure les en-têtes."
+  }
+}

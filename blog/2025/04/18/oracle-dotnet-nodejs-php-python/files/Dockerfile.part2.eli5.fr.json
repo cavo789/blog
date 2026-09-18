@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:01.079Z",
+  "source": "Dockerfile.part2",
+  "sourceHash": "a21d9f2611ad9dcd4a1224d7ffb9e8236daa5afb",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Node.js 20 Alpine, configure le répertoire de travail, installe les dépendances npm, ajoute des outils système nécessaires, puis configure le conteneur pour démarrer l'application avec npm start.",
+  "explanations": {
+    "3": "FROM node:20-alpine spécifie l'image de base : Node.js version 20 sur Alpine Linux, une distribution minimale qui réduit la taille du conteneur.",
+    "5": "WORKDIR définit le répertoire courant à /app, donc toutes les commandes suivantes s'exécutent dedans et les fichiers copiés y vont.",
+    "9": "Cette ligne met à jour npm à la dernière version disponible avant d'installer les dépendances du projet.",
+    "12": "apk add est le gestionnaire de paquets d'Alpine pour installer curl, unzip et libaio ; --no-cache évite de stocker le cache des paquets dans l'image finale.",
+    "16": "CMD spécifie la commande par défaut qui s'exécute quand le conteneur démarre : npm start lance l'application définie dans package.json."
+  }
+}

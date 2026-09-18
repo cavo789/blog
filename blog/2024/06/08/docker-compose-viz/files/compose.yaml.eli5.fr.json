@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:51.994Z",
+  "source": "compose.yaml",
+  "sourceHash": "ea3cd65d9e96c0754ebe1ebaf6526bd991b153f3",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un conteneur Joomla exposé sur le port 8080 et une base de données PostgreSQL. Le service Joomla dépend du service joomladb, ce qui signifie que Docker créera et démarrera la base de données avant le CMS.",
+  "explanations": {
+    "5": "Le mappage 8080:80 signifie que les requêtes arrivant sur le port 8080 de la machine hôte seront dirigées vers le port 80 à l'intérieur du conteneur Joomla.",
+    "6": "depends_on assure que le service joomladb sera démarré avant joomla, car Joomla a besoin de la base de données pour fonctionner.",
+    "10": "Cette image PostgreSQL est basée sur Alpine (une distribution Linux très légère) en version 16.0, optimisée pour réduire la taille du conteneur."
+  }
+}

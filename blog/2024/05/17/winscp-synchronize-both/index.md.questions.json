@@ -1,41 +1,42 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:53.043Z",
+  "generated": "2026-09-18T15:45:51.246Z",
+  "durationMs": 4974,
   "source": "index.md",
-  "sourceHash": "3bb8b07a2b71786fa1785623fe0b724e831004ed",
+  "sourceHash": "d3523d77e2c7cdddce13f5098b1179a9893f5596",
   "questions": [
     {
-      "question": "What does WinSCP do?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I use a script with WinSCP to synchronize files between my local host and a remote FTP/SFTP server?",
+      "question": "How do I synchronize files between my host and remote server using WinSCP?",
       "anchor": "the-script"
     },
     {
-      "question": "What are the commands for local, remote, or bi-directional synchronization in WinSCP?",
+      "question": "What are the different synchronization directions available in WinSCP?",
+      "anchor": "local--remote--both"
+    },
+    {
+      "question": "Can you explain how to modify the script for a full backup of my folders to Synology NAS using WinSCP?",
+      "anchor": ""
+    },
+    {
+      "question": "What are some additional WinSCP scripts available on this blog?",
       "anchor": "how-to-use"
     },
     {
-      "question": "How can I automate backups using a script with WinSCP?",
-      "anchor": "more-info"
-    },
-    {
-      "question": "What are the options for the Synchronize verb of WinSCP?",
+      "question": "How does the Synchronize verb in WinSCP work and what options do I have for synchronization directions?",
       "anchor": "local--remote--both"
     },
     {
-      "question": "How can I modify changes from remote directories to local directories in WinSCP?",
-      "anchor": "local--remote--both"
+      "question": "Can you provide an example of how to modify the script to synchronize files from a specific folder on my local machine to a remote server using WinSCP?",
+      "anchor": "the-script"
     },
     {
-      "question": "How can I modify changes from the local directories to remote directories in WinSCP?",
-      "anchor": "local--remote--both"
+      "question": "What are some best practices for using WinSCP scripts for automated backups?",
+      "anchor": ""
     },
     {
-      "question": "How can I modify both local and remote directories in WinSCP?",
-      "anchor": "local--remote--both"
+      "question": "How can I modify the script to synchronize files from a remote server to my local machine using WinSCP?",
+      "anchor": "the-script"
     }
   ]
 }

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:18.553Z",
+  "source": "MDXComponents.js",
+  "sourceHash": "338cc71dcb0858dce7d9faccaa6b6e6cb643b221",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier configure les composants disponibles pour le rendu MDX en réutilisant les composants par défaut et en ajoutant le composant TLDR personnalisé. Il exporte un objet qui sera utilisé pour transformer les éléments markdown en composants React.",
+  "explanations": {
+    "4": "import TLDR depuis le chemin @site/src/components/TLDR récupère le composant TLDR défini ailleurs dans le projet.",
+    "8": "...MDXComponents utilise la syntaxe spread pour copier tous les composants par défaut déjà définis dans MDXComponents dans ce nouvel objet.",
+    "11": "TLDR ajoute le composant TLDR importé à la liste des composants disponibles, ce qui le rend utilisable dans les fichiers MDX."
+  }
+}

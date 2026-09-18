@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:51.879Z",
+  "source": "index.tsx",
+  "sourceHash": "a5fdd37459f2abafc78ddef3e8de56d73b197239",
+  "lang": "typescript",
+  "textLang": "fr",
+  "summary": "Ce composant React enveloppe le rendu d'images dans Docusaurus en résolvant correctement leurs chemins relatifs à l'URL de base du site. Il utilise useBaseUrl() pour les chemins absolus, applique du style via CSS modules, supporte des attributs alt et title pour l'accessibilité, et active le chargement différé pour optimiser les performances.",
+  "explanations": {
+    "21": "Le type src accepte soit une chaîne de caractères soit un objet avec une propriété default — c'est utile quand on importe des assets via require() qui retourne un objet au lieu d'une string.",
+    "29": "On vérifie si src est une chaîne qui commence par un slash — cela indique que c'est un chemin absolu qui doit être résolu par Docusaurus, plutôt qu'un chemin local ou un objet importé.",
+    "30": "On passe le chemin à useBaseUrl() seulement s'il est absolu (commence par /), sinon on passe undefined pour qu'il ne soit pas traité.",
+    "31": "On construit imgSrc en utilisant soit l'URL résolue (si c'était un chemin absolu) soit la source originale, puis on caste le résultat en string.",
+    "35": "Si alt n'existe pas, on utilise title à la place pour l'attribut alt — cela garantit qu'il y a toujours du texte alternatif pour l'accessibilité."
+  }
+}

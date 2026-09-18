@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:53.285Z",
+  "source": "compose.yaml",
+  "sourceHash": "d397c66dcddd951b2f2033336615b761bae97c63",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application multi-conteneurs appelée 'tools' avec trois services : un serveur web Karakeep, un navigateur Chrome pour l'automation, et un moteur de recherche Meilisearch. Chaque service est configuré avec son image, ses variables d'environnement, ses volumes de stockage et ses paramètres de redémarrage.",
+  "explanations": {
+    "7": "La syntaxe ${KARAKEEP_VERSION:-release} charge la variable d'environnement KARAKEEP_VERSION s'il elle existe, sinon utilise 'release' comme valeur par défaut.",
+    "12": "La notation %%port=2000%% est un placeholder (variable de substitution) qui sera remplacée au moment du déploiement ; elle mappe le port 2000 de ta machine au port 3000 du conteneur.",
+    "15": "${UID:-1000}:${GID:-1000} utilise les variables d'environnement UID et GID de ton système (ou 1000 par défaut) pour que les fichiers dans le conteneur appartiennent à l'utilisateur qui lance Docker.",
+    "40": "Le chemin meilisearch:/meili_data monte un volume Docker nommé 'meilisearch' (défini plus bas) dans le répertoire /meili_data du conteneur, ce qui persiste les données entre les redémarrages."
+  }
+}

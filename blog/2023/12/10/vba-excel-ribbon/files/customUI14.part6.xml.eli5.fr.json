@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:13.109Z",
+  "source": "customUI14.part6.xml",
+  "sourceHash": "92ca31167fdfdc9a228f41a49d14fd7c13c9c82c",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Cet extrait définit un élément XML nommé group avec un identifiant unique customGroup et un libellé affiché Group. C'est probablement la déclaration d'un conteneur ou d'une catégorie dans une structure de configuration ou d'interface utilisateur.",
+  "explanations": {
+    "1": "L'attribut id=\"customGroup\" assigne un identifiant unique à cet élément pour pouvoir le référencer ailleurs dans le code, tandis que label=\"Group\" définit le texte qui sera affiché à l'utilisateur."
+  }
+}

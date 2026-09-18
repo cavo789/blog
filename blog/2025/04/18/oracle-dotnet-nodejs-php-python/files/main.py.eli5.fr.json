@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:26.589Z",
+  "source": "main.py",
+  "sourceHash": "7a2de970c8d6a748a16096ec62189d5697cc41ef",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script établit une connexion à une base de données Oracle, exécute une requête SQL pour récupérer une liste d'employés, puis affiche les résultats dans un tableau formaté avant de fermer proprement la connexion et le curseur.",
+  "explanations": {
+    "13": "On déclare une variable qui contiendra la connexion à la base de données, initialisée à None pour indiquer qu'elle n'existe pas encore.",
+    "14": "De même, on crée une variable pour le curseur (l'objet qui exécute les requêtes SQL), aussi initialisée à None.",
+    "17": "On construit la chaîne de caractères DSN qui contient l'adresse du serveur Oracle, le port et le nom du service auquel se connecter.",
+    "23": "Le mode SYSDBA demande des droits administrateur à Oracle pour se connecter en tant qu'utilisateur système.",
+    "28": "On écrit la requête SQL en plusieurs lignes pour la lisibilité; Python les concatène automatiquement comme une seule chaîne.",
+    "31": "ROWNUM <= :max_rows limite le résultat à un certain nombre de lignes; le :max_rows est un paramètre qui sera remplacé par sa valeur lors de l'exécution.",
+    "35": "On exécute la requête SQL en passant max_rows=25, ce qui remplace le paramètre :max_rows par 25 dans la requête.",
+    "37": "cursor.fetchall() récupère tous les résultats de la requête sous forme de liste de tuples, où chaque tuple représente une ligne.",
+    "42": "On déclare les types des variables qu'on utilisera dans la boucle pour que le code soit plus lisible et que les outils de vérification de type comprennent ce qu'on fait.",
+    "48": "On déplie le tuple record en quatre variables distinctes (employee_id, first_name, etc.) pour pouvoir les utiliser facilement dans le print.",
+    "49": "Les accolades comme <12 signifient « aligner à gauche dans un espace de 12 caractères »; cela crée un tableau bien aligné."
+  }
+}

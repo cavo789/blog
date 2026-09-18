@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:19.659Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "c72186ff4d8acddaeba8e68a450b871d58a6d7f1",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un preset Docusaurus 'classic' en important un plugin Remark personnalisé et en l'ajoutant à la liste des plugins Remark qui s'exécutent avant les plugins par défaut pour le traitement des articles de blog. Le plugin remarkReplaceWords va transformer le contenu markdown avant que les plugins standard de Remark ne le traitent.",
+  "explanations": {
+    "2": "On importe un plugin Remark personnalisé depuis le dossier plugins — c'est un module qui va modifier ou transformer le contenu markdown.",
+    "12": "beforeDefaultRemarkPlugins est un tableau où on peut placer des plugins Remark qui doivent s'exécuter avant les plugins standards — cela garantit que notre plugin personnalisé traite le contenu en premier.",
+    "15": "On ajoute notre plugin importé à ce tableau pour qu'il soit appliqué au traitement des articles du blog."
+  }
+}

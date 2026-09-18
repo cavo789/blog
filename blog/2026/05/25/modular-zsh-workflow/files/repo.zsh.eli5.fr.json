@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:24.919Z",
+  "source": "repo.zsh",
+  "sourceHash": "9b9281f8814901fdeeecfbf732eb85c59da44fd0",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script zsh fournit une fonction pour naviguer rapidement vers des projets git stockés localement. Il vérifie d'abord que les dépendances requises (fzf et fd) sont installées, puis utilise fzf pour afficher une liste interactive de répertoires contenant un dossier .git, permet de basculer vers le répertoire sélectionné, et propose optionnellement d'ouvrir le projet dans un éditeur de code.",
+  "explanations": {
+    "7": "missing_dep est une variable de drapeau initialisée à 0 ; elle sera définie à 1 si des dépendances manquent, ce qui permettra de vérifier à la fin si quelque chose doit être signalé.",
+    "9": "uname -s retourne le type de système d'exploitation (Darwin pour macOS, Linux pour les systèmes Linux, etc.), stocké dans os_type pour déterminer plus tard les bonnes instructions d'installation.",
+    "12": "command -v vérifie si une commande existe dans le PATH du système ; >/dev/null 2>&1 supprime toute sortie, on ne veut que le code de retour pour savoir si la commande a été trouvée.",
+    "18": "Cette ligne teste deux alternatives : fd est le nom standard, mais sur Debian/Ubuntu c'est fdfind à cause d'une collision de noms de paquets.",
+    "23": "Cette condition demande : si missing_dep vaut 1 (au moins une dépendance manque), alors affiche des instructions d'installation adaptées au système détecté.",
+    "25": "On teste si os_type égale Darwin, ce qui signifie macOS ; cela permet de proposer la commande brew appropriée.",
+    "27": "On vérifie l'existence du fichier /etc/debian_version pour identifier un système basé sur Debian (y compris Ubuntu).",
+    "42": "Si la vérification des dépendances échoue (retourne 1), on quitte le script avec return 1, empêchant l'exécution du reste du code.",
+    "48": "On teste laquelle des deux commandes existe : fd ou fdfind, puis on stocke le nom dans fd_bin pour l'utiliser plus tard.",
+    "55": "On définit visual_editor en utilisant la variable d'environnement $EDITOR si elle existe, sinon par défaut code ; c'est l'éditeur qui sera lancé plus tard.",
+    "62": "Cette commande chaîne plusieurs opérations : fd cherche tous les répertoires .git, sed nettoie les chemins en supprimant /.git, et fzf affiche une interface interactive pour que l'utilisateur choisisse un projet.",
+    "74": "Après la sélection, on s'assure de nettoyer tout suffixe /.git qui aurait pu rester du path retourné par fzf, au cas où la version de sed n'aurait pas fonctionné parfaitement.",
+    "85": "read -k 1 REPLY lit exactement un caractère (clavier) sans attendre Enter, ce qui permet une réponse rapide Y/n.",
+    "88": "On teste si REPLY est un newline (l'utilisateur a juste appuyé sur Enter, acceptant le défaut) ou s'il correspond à Y ou y ; dans les deux cas, on ouvre l'éditeur."
+  }
+}

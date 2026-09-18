@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:14.842Z",
+  "source": "003-advanced-python.txt",
+  "sourceHash": "d411a4b9230d6f34f31f18b893ca827f7e905857",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce document introduit des concepts avancés de Python comme les décorateurs, générateurs et gestionnaires de contexte pour améliorer l'efficacité et la lisibilité du code. Il couvre aussi l'interaction avec des API REST en utilisant la bibliothèque `requests`, une compétence essentielle pour les développeurs modernes.",
+  "explanations": {}
+}

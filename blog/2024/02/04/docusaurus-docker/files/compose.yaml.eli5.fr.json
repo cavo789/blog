@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:27.057Z",
+  "source": "compose.yaml",
+  "sourceHash": "a8f077987295d2fece9b0906c6f239a3607b509c",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé blog qui construit une image Docker à partir du répertoire courant, expose le port 3000, exécute le conteneur avec l'utilisateur 1000:1000, et monte le répertoire ./blog du host vers /app/blog dans le conteneur.",
+  "explanations": {
+    "7": "La syntaxe %%port=3000%% est un placeholder qui sera remplacé par une valeur réelle au moment du déploiement ; les deux 3000 signifient que le port 3000 du host est mappé vers le port 3000 du conteneur.",
+    "8": "user: 1000:1000 configure le conteneur pour s'exécuter avec l'utilisateur et le groupe ayant les IDs 1000 au lieu de root, ce qui améliore la sécurité.",
+    "10": "Le mount ./blog:/app/blog synchronise le répertoire blog du host avec le répertoire /app/blog du conteneur en temps réel, ce qui permet de modifier le code localement et de voir les changements immédiatement."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:50.346Z",
+  "source": "script.part2.sh",
+  "sourceHash": "98d3d79edec3dcad0229300e6a0ed841dfe5ea34",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction affiche un message centré dans une boîte de caractères égaux, comme une bannière. Elle prend en paramètre le texte à afficher et l'entoure de lignes décoratives pour le mettre en évidence.",
+  "explanations": {
+    "2": "printf %s\\n affiche la chaîne telle quelle suivie d'une nouvelle ligne — c'est juste une ligne de tirets qui forme le haut de la boîte.",
+    "3": "%-40s signifie « aligner le texte à gauche dans un espace de 40 caractères » ; $@ représente tous les arguments passés à la fonction, et on ajoute des espaces puis un = de chaque côté pour la mise en forme.",
+    "4": "C'est la même chaîne qu'à la ligne 2, qui ferme la boîte en bas."
+  }
+}

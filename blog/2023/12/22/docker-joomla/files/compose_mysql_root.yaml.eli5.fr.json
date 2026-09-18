@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:19.460Z",
+  "source": "compose_mysql_root.yaml",
+  "sourceHash": "e03e4f1a38a8151b6d1dc0ad4253f6021b406fb8",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Docker Compose définit un service de base de données Joomla. Il configure un conteneur MySQL avec un mot de passe root spécifié via une variable d'environnement qui sera remplacée lors du déploiement.",
+  "explanations": {
+    "3": "La directive highlight-next-line est un marqueur pour la documentation ou l'affichage du code, indiquant que la ligne suivante doit être mise en évidence visuellement.",
+    "8": "Le format %%dbPassword=example%% est un placeholder qui sera remplacé par une valeur réelle lors du traitement ou du déploiement du fichier de configuration."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:21.657Z",
+  "source": "decision_tree.py",
+  "sourceHash": "9215d3d3722b4895afba7e4d85f89ef7cf39a15a",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code construit et dessine un arbre de décision en utilisant pydot. Il crée d'abord un graphe orienté vide, puis ajoute des nœuds représentant les étapes de décision (la racine et ses enfants sur deux niveaux), les met en forme avec des boîtes et des ellipses, puis les relie avec des arêtes étiquetées par des conditions de seuil. Finalement, il exporte le graphe en fichier PNG pour visualisation.",
+  "explanations": {
+    "1": "pydot.Dot() crée un conteneur graphique vide; graph_type='digraph' spécifie que c'est un graphe orienté (les arêtes ont une direction).",
+    "4": "pydot.Node() crée un élément individuel du graphe avec le label 'Root' et shape='box' le rend rectangulaire à l'affichage.",
+    "7": "shape='ellipse' fait que ce nœud s'affiche sous forme d'ovale au lieu de boîte, pour distinguer visuellement les feuilles des nœuds internes.",
+    "22": "pydot.Edge() crée une connexion orientée entre deux nœuds; le label ajoute du texte sur la flèche pour indiquer la condition de décision.",
+    "30": "write_png() génère le fichier PNG final en calculant la disposition du graphe et en le rastérisant."
+  }
+}

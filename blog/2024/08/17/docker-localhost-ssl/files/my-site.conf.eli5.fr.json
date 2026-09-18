@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:07.732Z",
+  "source": "my-site.conf",
+  "sourceHash": "05c306348d9d26a5ffff3428a294af7c584732c3",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un hôte virtuel Apache qui écoute sur le port 80 et sert des fichiers depuis /usr/local/apache2/htdocs. Il active la réécriture d'URL pour rediriger toutes les requêtes vers index.html, sauf celles correspondant à des fichiers existants, ce qui est typique pour les applications single-page. Les logs d'erreur et d'accès sont dirigés vers des fichiers spécifiques.",
+  "explanations": {
+    "6": "AllowOverride All permet aux fichiers .htaccess de la racine des documents de modifier la configuration Apache.",
+    "7": "RewriteEngine On active le moteur de réécriture d'URL pour ce répertoire.",
+    "8": "Cette condition vérifie que le fichier demandé n'existe pas réellement sur le disque (le ! signifie NOT et -f teste si c'est un fichier).",
+    "9": "Si la condition est vraie, toutes les requêtes sont redirigées vers index.html en préservant les paramètres de requête (QSA) et en arrêtant le traitement (L)."
+  }
+}

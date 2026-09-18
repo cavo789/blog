@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:40.873Z",
+  "source": "MDXComponents.js",
+  "sourceHash": "2f85367374aa67a66929e24e6d4433f02e3c8839",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier exporte un objet de composants MDX personnalisés en réutilisant tous les composants par défaut et en remplaçant le composant Image par une version personnalisée du projet. C'est un mécanisme courant pour étendre ou modifier le comportement des composants MDX sans tout réécrire.",
+  "explanations": {
+    "6": "L'opérateur spread (...) copie toutes les propriétés de MDXComponents dans le nouvel objet, ce qui préserve tous les composants MDX standard.",
+    "7": "Cette ligne réassigne la propriété Image pour utiliser le composant personnalisé au lieu de celui inclus dans MDXComponents, le remplaçant effectivement."
+  }
+}

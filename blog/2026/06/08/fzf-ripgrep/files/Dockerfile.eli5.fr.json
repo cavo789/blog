@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:37.504Z",
+  "source": "Dockerfile",
+  "sourceHash": "2fe3fc7e55471412ea1e7e4ae6ce9723ff6e4fac",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec des outils de recherche de code (ripgrep, fzf, bat) et configure un shell zsh personnalisé. Il installe une fonction interactive rgf qui permet de chercher du texte dans le code et d'ouvrir les résultats dans VSCode, puis crée un projet de démonstration contenant des fichiers d'exemple pour tester la fonction.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive évite que apt demande une confirmation interactive pendant la construction de l'image — les scripts d'installation fonctionnent sans intervention humaine.",
+    "7": "sed remplace la ligne des composants activés dans les sources APT pour ajouter universe et multiverse, car fzf et bat se trouvent dans ces dépôts moins standards.",
+    "15": "rm -rf /var/lib/apt/lists/* supprime le cache des paquets téléchargés pour réduire la taille de l'image Docker finale.",
+    "22": "printf '%s\\n' suivi de nombreuses chaînes écrit une fonction zsh ligne par ligne ; chaque chaîne devient une ligne du fichier final.",
+    "32": "uname -s détecte le système d'exploitation (Darwin pour macOS, Linux pour les autres) pour adapter les instructions d'installation.",
+    "34": "command -v fzf >/dev/null 2>&1 vérifie silencieusement si le programme fzf existe dans le PATH en redirigeant toute sortie vers /dev/null.",
+    "83": "mktemp /tmp/rgf.XXXXXX crée un fichier temporaire avec un nom unique où les X sont remplacés par des caractères aléatoires.",
+    "85": "rg --color=always affiche les résultats de ripgrep avec des codes couleur ANSI pour que fzf puisse les afficher en couleur.",
+    "89": "Le séparateur ':' indique à fzf de diviser chaque ligne à chaque deux-points pour accéder individuellement au fichier, numéro de ligne et contenu.",
+    "90": "--nth=3.. dit à fzf que seule la 3e partie et au-delà (le contenu) doivent être filtrés pendant la recherche interactive.",
+    "92": "Le résultat de fzf est écrit dans tmpfile plutôt que capturé directement, car capturer via $(...)  bloquerait l'interface utilisateur en particulier sous WSL.",
+    "94": "$? capture le code de sortie de la commande fzf précédente pour vérifier si l'utilisateur a appuyé sur Échap ou sélectionné quelque chose.",
+    "96": "$(<\"$tmpfile\") lit le contenu du fichier temporaire de manière efficace sans créer de sous-shell.",
+    "104": "sed $'s/\\033\\[[0-9;]*m//g' supprime tous les codes de couleur ANSI de la chaîne sélectionnée avant d'extraire le nom du fichier.",
+    "111": "code --goto \"$file:$line\" ouvre VSCode et saute directement à la ligne spécifiée dans le fichier.",
+    "118": "fpath=(~/.zsh/fns $fpath) ajoute le répertoire ~/.zsh/fns au chemin de recherche de zsh pour les fonctions autoloadables.",
+    "119": "autoload -Uz rgf enregistre la fonction rgf pour un chargement automatique et lazy — elle sera chargée seulement à la première utilisation.",
+    "126": "printf '...' > /root/demo/config/.env crée un fichier .env contenant une variable sensible (mot de passe) pour démontrer la détection de secrets.",
+    "141": "PROMPT='%B%F{yellow}🐳 %F{cyan}%n%f%b %~ %# ' configure l'affichage du prompt pour montrer une baleine emoji et identifier clairement que le shell s'exécute dans un conteneur."
+  }
+}

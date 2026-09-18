@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:29.223Z",
+  "source": "Dockerfile",
+  "sourceHash": "a6914eccdf70047537970c301fb61f15a0417d60",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image basée sur Alpine Linux minimale et installe le client Docker à l'intérieur. L'image résultante pourra exécuter des commandes Docker, typiquement utilisée pour créer un conteneur capable d'interagir avec l'engine Docker du host.",
+  "explanations": {
+    "1": "La directive de syntaxe indique à Docker d'utiliser la version 1 du format Dockerfile standard pour bénéficier des fonctionnalités modernes et des améliorations de parsing.",
+    "3": "Alpine:latest est une image de base extrêmement légère basée sur Alpine Linux — une distribution minimale d'environ 5MB, idéale quand la taille de l'image doit rester petite.",
+    "5": "hadolint est un linter pour Dockerfiles qui vérifie les bonnes pratiques; cette directive demande d'ignorer l'avertissement DL3008 sur cette ligne suivante.",
+    "6": "Le commentaire note qu'apk est le gestionnaire de paquets spécifique à Alpine; les autres distributions (comme Debian/Ubuntu) utilisent apt-get, ce qui change la syntaxe des commandes d'installation.",
+    "7": "apk update récupère la liste des paquets disponibles, puis apk add docker installe le paquet docker du dépôt Alpine."
+  }
+}

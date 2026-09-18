@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:04.316Z",
+  "source": "script.sh",
+  "sourceHash": "d8d00eba46d2df48bfb4b291c2e6275abb6f1b87",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script génère un fichier de filtres Sieve pour Roundcube en lisant des motifs depuis patterns.json, en les triant, et en les injectant dans un template pour créer des règles de spam. Il vérifie d'abord que le fichier de configuration existe, puis reconstruit le fichier de sortie à partir de zéro.",
+  "explanations": {
+    "2": "set -euo pipefail configure bash pour s'arrêter immédiatement en cas d'erreur (-e), traiter les variables non définies comme des erreurs (-u), et propager les erreurs à travers les pipes (-o pipefail).",
+    "6": "[[ ! -f patterns.json ]] vérifie que le fichier patterns.json n'existe pas ; si c'est le cas, le script affiche un message d'erreur et s'arrête.",
+    "12": "rm -f roundcube.sieve supprime le fichier s'il existe sans générer d'erreur, puis touch roundcube.sieve crée un fichier vide.",
+    "14": "cat patterns.json lit le contenu du fichier JSON et l'envoie à la commande suivante dans le pipeline.",
+    "15": "jq '.patterns[]' extrait tous les éléments du tableau patterns du JSON.",
+    "16": "sort trie les motifs de manière alphabétique.",
+    "17": "while read -r pattern boucle sur chaque ligne (motif) en la lisant comme variable.",
+    "19": "pattern=$(echo \"$pattern\" | tr -d '\"') supprime les guillemets doubles du motif pour qu'il soit utilisable dans la substitution sed.",
+    "21": "sed \"s/{{ pattern }}/${pattern}/g\" remplace toutes les occurrences de {{ pattern }} par la valeur du motif actuel dans spam.template, puis ajoute le résultat à la fin du fichier roundcube.sieve."
+  }
+}

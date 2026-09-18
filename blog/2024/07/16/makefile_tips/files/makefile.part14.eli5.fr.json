@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:21.483Z",
+  "source": "makefile.part14",
+  "sourceHash": "0d68abf2d150f2e8b1a932c6a58a1ee3d640e518",
+  "lang": "part14",
+  "textLang": "fr",
+  "summary": "Ce snippet crée un réseau Docker de type bridge appelé my_network, en supprimant tout message de sortie. Le @ au début empêche l'affichage de la commande elle-même, et || true garantit que le Makefile continue même si le réseau existe déjà.",
+  "explanations": {
+    "2": "Le @ désactive l'affichage de la commande dans la sortie du Makefile. Le >/dev/null 2>&1 redirige la sortie standard et les erreurs vers nulle part. Le || true signifie que si la commande échoue (par exemple, si le réseau existe déjà), la recette continue plutôt que de s'arrêter."
+  }
+}

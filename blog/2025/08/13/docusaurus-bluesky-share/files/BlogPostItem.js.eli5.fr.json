@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:24.248Z",
+  "source": "BlogPostItem.js",
+  "sourceHash": "0337e4733c5a90540e742c9e029870fdc4563c2d",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche un article de blog en combinant un en-tête, le contenu et un pied de page dans un conteneur. Il ajoute automatiquement une marge inférieure lorsque l'article est affiché dans une liste plutôt que sur sa propre page, en utilisant un hook personnalisé pour déterminer le contexte d'affichage.",
+  "explanations": {
+    "10": "useBlogPost() est un hook fourni par Docusaurus qui récupère les informations sur l'article actuel, notamment isBlogPostPage qui indique si on est sur la page dédiée de l'article ou dans une liste.",
+    "11": "Cette ligne retourne une classe CSS de marge uniquement si on n'est pas sur la page de l'article lui-même (donc on est dans une liste), sinon retourne undefined pour ne pas ajouter de classe.",
+    "16": "clsx() combine plusieurs noms de classes CSS en une seule chaîne, en ignorant les valeurs undefined ou false, ce qui permet d'appliquer les styles conditionnellement."
+  }
+}

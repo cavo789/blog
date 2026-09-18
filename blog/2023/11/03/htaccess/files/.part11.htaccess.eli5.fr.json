@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:02:41.204Z",
+  "source": ".part11.htaccess",
+  "sourceHash": "2d4b277ff3ff07de17a4a9a67cd3e99807fb0e57",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier .htaccess redirige tout le trafic vers une page de maintenance, sauf pour certaines adresses IP locales et le fichier maintenance.php lui-même. Il utilise le module mod_rewrite d'Apache pour intercepter les requêtes HTTP et les acheminer vers une page de maintenance à afficher aux visiteurs.",
+  "explanations": {
+    "1": "IfModule vérifie que le module mod_rewrite est disponible sur le serveur avant d'exécuter les directives à l'intérieur, pour éviter les erreurs si le module n'est pas chargé.",
+    "3": "RewriteCond est une condition qui vérifie l'adresse IP du client ; le ! inverse la condition, donc « ne pas être 127.0.0.1 » signifie « appliquer la redirection sauf si tu es localhost ».",
+    "5": "ADD_YOUR_IP_HERE est un placeholder que tu dois remplacer par une véritable adresse IP pour exempler cette redirection de maintenance — c'est là qu'on ajoute les IPs des administrateurs qui doivent accéder au site normal.",
+    "6": "Cette condition empêche maintenance.php lui-même d'être redirigé, sinon créerait une boucle infinie où le fichier de maintenance se redirigerait vers lui-même.",
+    "7": "RewriteRule applique la redirection : chaque requête (.*) est envoyée vers /maintenance.php ; [L] arrête le traitement, [NC] ignore la casse, [QSA] préserve les paramètres de la requête originale."
+  }
+}

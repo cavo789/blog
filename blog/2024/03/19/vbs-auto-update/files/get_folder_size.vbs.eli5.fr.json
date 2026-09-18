@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:55.184Z",
+  "source": "get_folder_size.vbs",
+  "sourceHash": "2707096baae65d751c862e8d515e89e0f4dbde20",
+  "lang": "vbs",
+  "textLang": "fr",
+  "summary": "Ce script télécharge une version d'un fichier depuis GitHub et la compare avec la version locale du script lui-même. Si le contenu téléchargé est différent, le script se remplace automatiquement avec la nouvelle version, réalisant ainsi une auto-mise à jour.",
+  "explanations": {
+    "17": "url contient l'adresse complète du fichier brut sur GitHub qu'on veut télécharger.",
+    "19": "CreateObject crée un objet qui permet de faire des requêtes HTTP pour communiquer avec internet.",
+    "21": "setTimeouts configure les délais d'attente en millisecondes pour la connexion et la réception des données.",
+    "27": "open prépare une requête GET (demande de téléchargement) vers l'URL, et False signifie qu'on attend la réponse avant de continuer.",
+    "28": "send envoie réellement la requête HTTP et récupère le fichier.",
+    "31": "req.Status = 200 vérifie que le téléchargement a réussi (code 200 = succès en HTTP).",
+    "37": "wScript.ScriptFullName donne le chemin complet du script VBS en cours d'exécution.",
+    "39": "OpenTextFile ouvre le fichier avec le mode 1, qui signifie lecture seule.",
+    "47": "OpenTextFile avec le mode 2 ouvre le fichier en écriture, ce qui permettra de le remplacer.",
+    "49": "Write écrit le contenu téléchargé dans le fichier, remplaçant complètement l'ancienne version.",
+    "61": "Err.Clear efface les informations d'erreur pour éviter que l'erreur ne se propage plus loin."
+  }
+}

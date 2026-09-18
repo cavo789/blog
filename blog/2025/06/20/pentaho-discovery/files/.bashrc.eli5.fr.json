@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:23.403Z",
+  "source": ".bashrc",
+  "sourceHash": "b05be42a41d5ef958d4aec937de181198a106469",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script ajoute le répertoire de Pentaho Data Integration aux chemins exécutables du système pour que les outils Pentaho soient accessibles en ligne de commande. Cela permet à l'utilisateur de lancer les commandes Pentaho depuis n'importe quel répertoire sans devoir spécifier le chemin complet.",
+  "explanations": {
+    "1": "La variable PATH regroupe tous les répertoires où le système cherche les programmes exécutables. Ici on ajoute le dossier Pentaho en tête et on concatène l'ancien PATH avec ':' pour que le système continue à trouver les autres commandes existantes."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:43.236Z",
+  "source": "assert.part2.sh",
+  "sourceHash": "c422364bac4bd94785c2afdf0b56fe0061406d13",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash définit trois fonctions de validation : assert::notEmpty vérifie qu'une variable contient une valeur, assert::binaryExists confirme qu'un programme existe sur le système, et assert::dockerImageExists s'assure qu'une image Docker est disponible localement. Chaque fonction affiche un message d'erreur personnalisable et sort avec le code 1 en cas d'échec.",
+  "explanations": {
+    "4": "local -r crée une variable locale en lecture seule ; ${1:-} récupère le premier argument passé à la fonction, ou une chaîne vide si absent.",
+    "7": "[[ -z ${variable} ]] teste si la variable est vide ; && exécute la commande suivante seulement si le test réussit ; >&2 redirige le message vers stderr au lieu de stdout.",
+    "18": "command -v recherche la commande dans le PATH ; || true fait en sorte que la fonction ne s'arrête pas si la commande n'existe pas, permettant de capturer le résultat vide.",
+    "29": "Les guillemets doubles autour de $imageName dans la chaîne permettent de substituer la variable dans le message d'erreur par défaut.",
+    "34": "docker images -q $imageName retourne l'ID de l'image si elle existe, ou rien si elle n'existe pas ; 2> /dev/null supprime les messages d'erreur potentiels."
+  }
+}

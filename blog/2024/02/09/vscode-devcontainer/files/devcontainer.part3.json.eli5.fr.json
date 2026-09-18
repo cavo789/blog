@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:59.487Z",
+  "source": "devcontainer.part3.json",
+  "sourceHash": "b4405f1d28b53e4e84fdacd3c5110426f56be1c7",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration JSON défini les paramètres VS Code pour l'extension phpsab, qui est un outil de vérification et de formatage de code PHP. Il spécifie les chemins vers les exécutables phpcbf et phpcs, active la correction automatique, configure l'affichage des sources, définit le standard de codage à utiliser et enregistre l'extension à installer.",
+  "explanations": {
+    "8": "phpcbf.phar est l'outil de formatage PHP qui corrige automatiquement les violations de style détectées.",
+    "10": "phpcs.phar est l'outil de vérification PHP qui analyse le code et rapporte les violations de style.",
+    "12": "Activer phpsab.fixerEnable demande à l'extension de lancer automatiquement phpcbf pour corriger les fichiers.",
+    "14": "phpsab.snifferShowSources affiche les sources de chaque violation détectée, utile pour comprendre pourquoi une règle s'applique.",
+    "16": "Le fichier phpcs.xml définit les règles et standards de codage spécifiques au projet, plutôt que d'utiliser les defaults.",
+    "22": "L'extension ValeryanM.vscode-phpsab est l'extension VS Code qui intègre phpcbf et phpcs dans l'éditeur."
+  }
+}

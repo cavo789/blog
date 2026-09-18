@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:17.757Z",
+  "source": "encrypt.cmd",
+  "sourceHash": "4c62ca61ca155a4890e4d15fa1376e1418074732",
+  "lang": "batch",
+  "textLang": "fr",
+  "summary": "Ce script batch efface l'écran, puis lance un conteneur Docker avec OpenSSL pour chiffrer un fichier secrets.md avec AES-256-CBC. Si le fichier chiffré est créé avec succès, le script supprime le fichier original en clair.",
+  "explanations": {
+    "1": "@echo off désactive l'affichage des commandes exécutées dans la fenêtre du terminal, pour une sortie plus propre.",
+    "3": "cls efface tout le contenu de l'écran du terminal avant de lancer le conteneur Docker.",
+    "5": "docker run crée et exécute un conteneur Docker; --rm le supprime après son exécution, -it permet l'interaction en direct, -v %CD%:/data monte le répertoire courant dans le conteneur, -w /data définit le répertoire de travail, et alpine/openssl est l'image Docker utilisée. Les options enc -aes-256-cbc -salt -pbkdf2 -a chiffrent le fichier avec AES-256 en mode CBC, ajoutent du salt, utilisent PBKDF2 pour dériver la clé, et encodent le résultat en base64.",
+    "8": "IF EXIST vérifie que le fichier secrets.encrypted existe réellement sur le disque avant de continuer."
+  }
+}

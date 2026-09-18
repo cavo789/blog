@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:23.687Z",
+  "source": "Dockerfile",
+  "sourceHash": "b3642ac29588c88132f9d938c9d7c9b33db0e1b2",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Node.js 18, copie le code source de l'application, installe les dépendances npm, et configure l'exécution du fichier index.js au démarrage du conteneur.",
+  "explanations": {
+    "1": "FROM node:18 télécharge et utilise l'image de base officielle Node.js version 18, qui contient déjà Node.js et npm installés.",
+    "2": "WORKDIR /app définit le répertoire de travail par défaut dans le conteneur — tous les chemins relatifs qui suivront partiront de là.",
+    "3": "COPY . . copie tous les fichiers et dossiers du répertoire courant (côté hôte) vers le répertoire de travail /app (côté conteneur).",
+    "4": "RUN npm install exécute la commande npm install dans le conteneur pour télécharger et installer toutes les dépendances listées dans package.json.",
+    "5": "CMD [\"node\", \"index.js\"] spécifie la commande par défaut à exécuter quand le conteneur démarre — elle lance l'application Node.js."
+  }
+}

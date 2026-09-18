@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:20.629Z",
+  "source": "main.php",
+  "sourceHash": "0ef680c7e4c6bb1f3e3ae25434bfa046a42dcc86",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script établit une connexion à une base de données Oracle, exécute une requête SQL pour récupérer les données des employés avec une limite de 25 lignes, puis affiche les résultats formatés dans la console. Le code gère les erreurs à chaque étape et nettoie les ressources à la fin.",
+  "explanations": {
+    "3": "declare(strict_types=1) force PHP à vérifier que tous les types passés aux fonctions correspondent exactement à ce qui est déclaré, sans conversion automatique.",
+    "17": "Cette chaîne de caractères construit la DSN (Data Source Name) au format Oracle en insérant les variables de configuration pour créer l'adresse de connexion complète.",
+    "20": "oci_connect établit une connexion physique au serveur Oracle en utilisant les identifiants et la DSN fournis.",
+    "23": "oci_error() récupère les détails de la dernière erreur Oracle; sans paramètre, il retourne les infos de l'erreur de connexion globale.",
+    "30": "oci_parse prépare la requête SQL sur le serveur Oracle, ce qui crée un handle de statement prêt à recevoir des paramètres et à être exécuté.",
+    "38": "oci_bind_by_name lie la variable PHP $numRows au paramètre nommé :max_rows dans la requête SQL, en spécifiant que c'est un entier (SQLT_INT).",
+    "40": "oci_execute lance l'exécution du statement préparé sur le serveur Oracle avec les paramètres liés.",
+    "50": "La boucle while récupère chaque ligne du résultat sous forme de tableau associatif (clés = noms de colonnes) et itère jusqu'à ce qu'il n'y ait plus de données.",
+    "51": "Le cast (int) convertit explicitement la valeur texte de EMPLOYEE_ID en nombre entier pour le formatage ultérieur.",
+    "55": "printf formate et affiche chaque ligne d'employé avec des colonnes alignées à gauche et des largeurs fixes pour la lisibilité.",
+    "61": "is_resource vérifie que $statement est effectivement une ressource active avant de la libérer, évitant une erreur si elle n'a pas été initialisée."
+  }
+}

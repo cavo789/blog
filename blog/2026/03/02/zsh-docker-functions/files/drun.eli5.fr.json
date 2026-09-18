@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:26.339Z",
+  "source": "drun",
+  "sourceHash": "5099c484cfbc56fb11af27fecc64e3438bfc85b1",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script zsh crée un outil interactif pour lancer des conteneurs Docker éphémères. L'utilisateur sélectionne une image via fzf (un sélecteur flou en terminal), avec un aperçu montrant les détails de l'image, puis le script lance le conteneur avec les options appropriées — soit en tant qu'utilisateur normal, soit en tant que root si l'utilisateur appuie sur Ctrl-R.",
+  "explanations": {
+    "4": "_d_check_env vérifie que fzf et docker sont installés et disponibles ; si ce n'est pas le cas, la fonction retourne une erreur.",
+    "10": "preview_cmd est une chaîne de caractères contenant une commande docker inspect qui sera exécutée pour chaque image sélectionnée dans fzf, affichant des détails formatés comme les tags, l'ID et les labels.",
+    "18": "{2} est un placeholder pour fzf qui sera remplacé par le deuxième champ de la ligne sélectionnée (le ID de l'image).",
+    "22": "docker images génère une liste des images locales dans un format personnalisé (Repository:Tag, ID, taille et date), qui est ensuite passée à fzf pour sélection interactive.",
+    "31": "head -n 1 extrait la première ligne de la sortie de fzf, qui contient la touche spéciale pressée (ou une ligne vide si aucune n'a été configurée).",
+    "32": "tail -n +2 extrait toutes les lignes à partir de la deuxième (donc la ligne sélectionnée par l'utilisateur dans fzf).",
+    "33": "awk '{print $2}' récupère le deuxième champ (l'ID de l'image) de la ligne de sélection en utilisant l'espace comme séparateur.",
+    "42": "command -v cherche le chemin du binaire en vérifiant d'abord zsh, puis bash, puis sh en dernier recours, permettant au conteneur de démarrer avec le meilleur shell disponible.",
+    "43": "tr -s ' ' compresse les espaces multiples en un seul espace dans la commande docker run finale pour éviter les espacements superflus.",
+    "45": "_d_print_cmd affiche la commande qui va être exécutée en utilisant une couleur cyan (le code ANSI 1;36m) pour que l'utilisateur voit exactement ce qu'il va lancer."
+  }
+}

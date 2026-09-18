@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:37.608Z",
+  "source": "administrator.htaccess",
+  "sourceHash": "e36643c226a9328e2e9bd60dff6ef040d82374c0",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier configure le serveur web pour empêcher les moteurs de recherche d'indexer les pages du dossier contenant ce fichier. Il utilise le module mod_headers pour ajouter un en-tête HTTP X-Robots-Tag avec les directives noindex et nofollow.",
+  "explanations": {
+    "3": "IfModule est une directive conditionnelle qui n'exécute le bloc que si mod_headers est disponible sur le serveur, évitant les erreurs si le module n'est pas chargé.",
+    "4": "Header set ajoute ou remplace l'en-tête HTTP X-Robots-Tag; les robots reçoivent ainsi l'instruction de ne pas indexer (noindex) et de ne pas suivre les liens (nofollow) de ces pages."
+  }
+}

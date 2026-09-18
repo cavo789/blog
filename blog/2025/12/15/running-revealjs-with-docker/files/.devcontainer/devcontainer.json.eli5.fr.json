@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:26.900Z",
+  "source": "devcontainer.json",
+  "sourceHash": "7615a523fb7361a6e425e0fa5094c2c1fe264938",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un environnement de développement containerisé pour un projet de documentation Quarto. Il spécifie le service Docker à utiliser, les fonctionnalités à installer (Docker, Git, yamllint), et personnalise VS Code avec des paramètres éditeur, des schémas YAML, des extensions et des règles de formatage adaptées au travail sur de la documentation et du YAML.",
+  "explanations": {
+    "3": "dockerComposeFile spécifie le fichier compose.yaml qui définit la configuration Docker pour ce projet.",
+    "4": "service indique quel service du fichier compose.yaml doit être utilisé comme conteneur de développement.",
+    "8": "LOCAL_WORKSPACE est une variable d'environnement qui se substitue à ${localWorkspaceFolder}, le chemin du dossier local sur la machine hôte.",
+    "11": "Cette fonctionnalité installe Docker à l'intérieur du conteneur, permettant de construire et exécuter d'autres conteneurs depuis l'environnement de développement.",
+    "13": "enableNonRootDocker permet à l'utilisateur non-root vscode d'utiliser Docker sans avoir besoin de droits administrateur.",
+    "14": "moby remplace Docker par Moby, une implémentation alternative plus légère.",
+    "19": "initializeCommand crée le dossier d'historique bash et configure git pour ignorer ce fichier, préservant l'historique du terminal entre les sessions.",
+    "20": "postAttachCommand installe les hooks pre-commit s'ils existent, ce qui exécute automatiquement les vérifications avant chaque commit.",
+    "21": "forwardPorts expose les ports 8000 et 5931 du conteneur vers la machine locale, permettant d'accéder aux services en développement.",
+    "47": "cSpell.language configure le vérificateur orthographique pour supporter l'anglais, le français et le néerlandais.",
+    "55": "editor.formatOnSave formate automatiquement le code à chaque sauvegarde de fichier.",
+    "62": "editor.rulers affiche des lignes verticales à 120 et 70 caractères pour guider la longueur des lignes.",
+    "73": "files.associations traite les fichiers JSON dans le dossier resources comme du JSONC (JSON with Comments), activant le support des commentaires.",
+    "75": "files.autoSave sauvegarde automatiquement les fichiers quand le focus quitte l'éditeur.",
+    "113": "yaml.schemas associe les fichiers de configuration Quarto et GitHub Workflows à leurs schémas JSON respectifs pour la validation et l'autocomplétion.",
+    "120": "window.title personnalise la barre de titre de VS Code pour afficher l'état dirty, le nom du projet et l'indication que c'est un DevContainer."
+  }
+}

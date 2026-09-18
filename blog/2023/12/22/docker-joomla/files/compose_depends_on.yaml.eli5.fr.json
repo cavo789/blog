@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:09.378Z",
+  "source": "compose_depends_on.yaml",
+  "sourceHash": "ccfb49b04ef32de139bc8a85206a70113de76d6f",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : joomla et joomladb. Le service joomla dépend du service joomladb et attend que celui-ci soit en bonne santé avant de démarrer. Le service joomladb inclut une vérification de santé qui teste la connexion MySQL toutes les quelques secondes avec un délai d'attente et un nombre de tentatives définis.",
+  "explanations": {
+    "6": "depends_on déclare que joomla a besoin que joomladb soit opérationnel avant de pouvoir démarrer.",
+    "10": "condition: service_healthy signifie que joomla ne démarre que quand joomladb rapporte qu'il est sain, pas simplement quand le conteneur a lancé.",
+    "16": "healthcheck définit un test périodique pour vérifier que le service est en bon état de fonctionnement.",
+    "18": "Le test exécute la commande mysqladmin ping pour vérifier que MySQL répond sur localhost, confirmant que la base de données est accessible.",
+    "20": "timeout: 20s impose un délai maximal de 20 secondes pour que la commande ping se termine; si ça prend plus longtemps, le test échoue.",
+    "22": "retries: 10 signifie que Docker relancera le test de santé jusqu'à 10 fois avant de marquer le service comme malsain."
+  }
+}

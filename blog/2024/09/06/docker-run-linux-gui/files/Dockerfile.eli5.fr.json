@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:41.157Z",
+  "source": "Dockerfile",
+  "sourceHash": "b6c33ab4f33cb2750b4e8967d15d86127b95b7a5",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu qui installe les applications X11 (un système graphique), puis démarre automatiquement l'application xeyes quand le conteneur s'exécute. C'est un exemple simple de conteneur pour afficher une interface graphique.",
+  "explanations": {
+    "3": "apt-get update actualise la liste des paquets disponibles, et apt-get install -y installe x11-apps sans demander de confirmation. Le && enchaîne les deux commandes pour qu'elles s'exécutent l'une après l'autre.",
+    "5": "CMD spécifie la commande par défaut qui s'exécutera au démarrage du conteneur — ici xeyes, une petite application graphique qui dessine deux yeux qui suivent le curseur."
+  }
+}

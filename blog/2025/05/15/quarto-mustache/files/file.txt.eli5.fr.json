@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:48.955Z",
+  "source": "file.txt",
+  "sourceHash": "bbe1102957ab4049b4499c4dc41df72e70e00b66",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de template affiche du texte différent selon que la variable config_file existe et contient une valeur ou non. Si config_file est définie, il montre le nom du fichier de configuration et un lien pour en savoir plus. Sinon, il affiche un message indiquant qu'il n'y a pas de fichier de configuration.",
+  "explanations": {
+    "2": "{{#config_file}} commence un bloc conditionnel qui s'affiche uniquement si config_file est définie et non-vide.",
+    "4": "{{ name }} et {{ config_file }} sont des variables que le moteur de template remplacera par leurs valeurs réelles lors du rendu.",
+    "9": "{{^config_file}} inverse la condition : ce bloc s'affiche uniquement si config_file est vide ou non définie."
+  }
+}

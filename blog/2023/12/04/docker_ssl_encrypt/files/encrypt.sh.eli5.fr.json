@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:20:58.746Z",
+  "source": "encrypt.sh",
+  "sourceHash": "bf627f57a380646d6fc47718735d998c8ed83438",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script exécute une commande Docker qui chiffre un fichier secrets.md en utilisant OpenSSL avec l'algorithme AES-256-CBC. Le fichier est traité à l'intérieur d'un conteneur Alpine isolé, avec les permissions utilisateur conservées, et le résultat chiffré est sauvegardé dans secrets_encrypted.md.",
+  "explanations": {
+    "2": "set -euo pipefail configure bash pour quitter immédiatement en cas d'erreur (e), interdire les variables non définies (u), et propager les erreurs dans les pipes (o pipefail) — cela rend le script plus robuste.",
+    "4": "Les parenthèses créent un sous-shell, une sorte d'environnement isolé où les variables comme MY_PASSWORD ne pollueront pas le shell parent après la fin du script.",
+    "5": "La variable MY_PASSWORD contient le mot de passe utilisé pour dériver la clé de chiffrement via pbkdf2.",
+    "6": "docker run lance un conteneur jetable (--rm); -it active le mode interactif; -v monte le répertoire courant comme /data dans le conteneur; -w /data change le répertoire courant; -u \"$(id -u):$(id -g)\" exécute la commande avec l'ID utilisateur et groupe de l'hôte pour éviter les problèmes de permissions."
+  }
+}

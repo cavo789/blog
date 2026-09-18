@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:21.044Z",
+  "source": ".gitignore",
+  "sourceHash": "73f45260281c890c41041101739f776e8a19bf9b",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier .gitignore spécifie trois répertoires et fichiers que Git doit ignorer lors du suivi des modifications du projet. node_modules/ contient les dépendances installées, dist/ contient les fichiers compilés ou générés, et .env contient les variables d'environnement sensibles — on ne les version pas pour éviter les fuites de données ou les fichiers volumineux inutiles.",
+  "explanations": {}
+}

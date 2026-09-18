@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:20.907Z",
+  "source": ".dockerignore",
+  "sourceHash": "9096368489db7ec3c1ce26723e073795062b0452",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier énumère les fichiers et répertoires à ignorer lors du versioning avec Git et de la construction d'images Docker. Il exclut les artefacts de build, les dépendances installées, les fichiers de configuration, et les répertoires de contenu pour éviter de polluer le dépôt avec des fichiers générés ou volumineux.",
+  "explanations": {
+    "1": "build/ est le répertoire contenant les fichiers compilés ou générés lors de la construction du projet, qu'on ne veut pas versionner.",
+    "2": "node_modules/ est le répertoire où npm installe toutes les dépendances JavaScript du projet — très volumineux et toujours régénérable à partir de package.json.",
+    "4": ".dockerignore indique à Docker quels fichiers ignorer lors de la création de l'image, similaire à .gitignore mais pour Docker.",
+    "8": "*.log capture tous les fichiers journaux (logs) avec l'extension .log pour les exclure du versioning.",
+    "15": "blog/ est un répertoire contenant le contenu du blog qui n'est probablement pas du code à versionner, ou qui est généré.",
+    "16": "pages/ est un répertoire de pages (possiblement générées ou du contenu) à exclure du suivi Git."
+  }
+}

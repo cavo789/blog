@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:13.560Z",
+  "source": ".gitlab-ci.yml.part2",
+  "sourceHash": "0fdc604c697eddd98b3ee74b585edee6bf7fe523",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Cette tâche GitLab CI exécute phplint, un outil de vérification de syntaxe PHP, sur tout le projet en utilisant Docker. Elle configure Docker pour communiquer avec le daemon Docker de l'hôte et lance un conteneur qui analyse tous les fichiers PHP du répertoire du projet.",
+  "explanations": {
+    "2": "image: docker:28.1.1 spécifie l'image Docker de base utilisée pour cette tâche — ici une image Docker officielle version 28.1.1.",
+    "4": "DOCKER_HOST pointe vers le socket Unix du daemon Docker de l'hôte, permettant à ce conteneur d'accéder aux capacités Docker.",
+    "5": "DOCKER_TLS_CERTDIR vide désactive la vérification TLS, simplifiant la communication entre le conteneur et le daemon Docker.",
+    "7": "docker run lance un conteneur temporaire (--rm le supprime après exécution), monte le répertoire du projet via --volume, définit /app comme répertoire de travail, et exécute phplint pour vérifier la syntaxe de tous les fichiers PHP."
+  }
+}

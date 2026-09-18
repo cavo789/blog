@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:46:47.081Z",
+  "source": "merge.py",
+  "sourceHash": "66c58fad015755d70b6d8cb3182134512c6ac623",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette fonction charge des fichiers CSV contenant des données d'employés pour différentes années, renomme la colonne salary en salary_YYYY pour chaque année, puis les fusionne tous ensemble sur les colonnes id, first_name et last_name. Le résultat final est sauvegardé dans un nouveau fichier CSV contenant toutes les salaires côte à côte par année.",
+  "explanations": {
+    "3": "pd.read_csv charge le fichier CSV avec un séparateur point-virgule, et f\"{filename}_2020.csv\" construit le nom du fichier en substituant la variable filename dans la chaîne.",
+    "4": "inplace=True modifie le DataFrame directement au lieu de retourner une copie, ce qui économise de la mémoire et simplifie le code.",
+    "7": "range(2021, 2025) génère les années 2021, 2022, 2023 et 2024 (le dernier nombre n'est pas inclus).",
+    "11": "f'salary_{year}' crée une chaîne dynamique comme 'salary_2021', 'salary_2022', etc., en injectant la variable year.",
+    "15": "merge() combine deux DataFrames en trouvant les lignes avec les mêmes valeurs dans les colonnes spécifiées; how='outer' garde toutes les lignes même si elles ne correspondent pas parfaitement."
+  }
+}

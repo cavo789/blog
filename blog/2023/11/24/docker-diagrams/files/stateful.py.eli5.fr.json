@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:10.256Z",
+  "source": "stateful.py",
+  "sourceHash": "cfb6915cb2298083cd6554ff7f20138352b8bb99",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script crée un diagramme d'architecture Kubernetes montrant une architecture stateful. Il définit un cluster contenant un service, un StatefulSet, et trois pods, chacun avec son propre PVC (Persistent Volume Claim), tous connectés à un PV (Persistent Volume) partagé géré par une StorageClass.",
+  "explanations": {
+    "6": "Diagram() crée un objet diagramme nommé \"Stateful Architecture\" et show=False signifie qu'il ne s'affichera pas automatiquement à l'écran mais sera sauvegardé en tant que fichier.",
+    "7": "with Cluster() regroupe visuellement les éléments à l'intérieur dans le diagramme, créant une boîte conteneur étiquetée \"Apps\".",
+    "11": "apps = [] initialise une liste vide qui servira à stocker les connexions entre les services, pods et PVCs pour les afficher plus tard.",
+    "12": "for _ in range(3) crée une boucle qui s'exécute exactement 3 fois, permettant de créer trois pods identiques sans écrire le code trois fois.",
+    "15": "pod - sts - pvc crée des connexions visuelles bidirectionnelles dans le diagramme : le pod est connecté au StatefulSet et le StatefulSet au PVC.",
+    "16": "svc >> pod >> pvc crée des connexions directionnelles (flèches) montrant le flux de données : service vers pod vers PVC, et cette connexion est ajoutée à la liste apps.",
+    "18": "apps << PV(\"pv\") << StorageClass(\"sc\") connecte tous les éléments stockés dans apps au PV, qui lui-même reçoit une connexion du StorageClass."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:53.729Z",
+  "source": "makefile",
+  "sourceHash": "f73e1ec2e86e328e9e72757853697951709b8675",
+  "lang": "makefile",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit une série de cibles (bash, code, build, deploy, install, start, watch) qui affichent des messages d'aide en jaune gras. Chaque cible est marquée comme .PHONY pour indiquer qu'elle n'est pas associée à un fichier réel, et utilise printf pour formatter et colorier les messages destinés à l'utilisateur.",
+  "explanations": {
+    "1": "SHELL:=bash définit le shell utilisé pour exécuter les commandes de ce Makefile — par défaut c'est sh, mais ici on force bash.",
+    "3": "COLOR_YELLOW:=33 stocke le code ANSI pour la couleur jaune dans une variable réutilisable, ce qui évite de répéter 33 partout.",
+    "5": ".PHONY: bash indique à make que 'bash' est une cible virtuelle (pas un vrai fichier), donc make l'exécute toujours sans vérifier si un fichier bash existe.",
+    "7": "@printf avec \\e[1;${COLOR_YELLOW}m...\\e[0m affiche le texte en jaune gras (\\e[1; pour le gras, ${COLOR_YELLOW} pour la couleur, \\e[0m pour réinitialiser) et @ supprime l'affichage de la commande elle-même.",
+    "18": "deploy: build signifie que la cible deploy dépend de build — make exécutera d'abord build avant deploy."
+  }
+}

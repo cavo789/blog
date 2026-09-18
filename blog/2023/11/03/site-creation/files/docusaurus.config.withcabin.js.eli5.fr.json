@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:48.942Z",
+  "source": "docusaurus.config.withcabin.js",
+  "sourceHash": "95fa075d9d6b7dab60bd929d4ef49ff1073fcd30",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Cet objet de configuration déclare un script externe à charger sur la page. Le script hello.js vient du domaine withcabin.com et sera téléchargé en parallèle du rendu HTML grâce aux attributs async et defer, ce qui évite de bloquer l'affichage de la page.",
+  "explanations": {
+    "4": "async indique que le script doit être téléchargé en arrière-plan sans attendre ; il s'exécutera dès qu'il sera disponible.",
+    "5": "defer signifie que le script attendra que le DOM soit complètement analysé avant de s'exécuter, ce qui est utile quand le script dépend du contenu HTML."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:37.388Z",
+  "source": "makefile.part40",
+  "sourceHash": "e635c4cd4b1c7a0e1c1b28a7259827928838d850",
+  "lang": "part40",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit deux cibles qui gèrent les dépendances PHP du projet avec Composer. La cible composer.lock met à jour les dépendances déclarées dans composer.json, tandis que vendor installe les dépendances basées sur les versions verrouillées dans composer.lock. Les deux utilisent ${CMD} pour exécuter les commandes Composer.",
+  "explanations": {
+    "1": "composer.lock est une cible qui dépend de composer.json — si composer.json change, cette cible doit être reconstruite.",
+    "2": "composer update télécharge les dernières versions des dépendances autorisées par composer.json et met à jour composer.lock; --no-interaction évite les prompts interactifs.",
+    "4": "vendor est une cible qui dépend de composer.lock — elle s'exécute seulement si composer.lock a changé.",
+    "5": "composer install lit composer.lock et installe exactement les versions spécifiées, sans modification de composer.lock."
+  }
+}

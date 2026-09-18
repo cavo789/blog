@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:06.908Z",
+  "source": ".part19.htaccess",
+  "sourceHash": "f4aa361740a8118db575cf353147603d8fea0a28",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier configure une authentification HTTP Basic pour protéger un fichier spécifique nommé confidential.md. Seuls les utilisateurs ayant des identifiants valides dans le fichier .htpasswd pourront accéder à ce fichier.",
+  "explanations": {
+    "1": "AuthName définit le message affiché dans la boîte de dialogue de connexion du navigateur.",
+    "2": "AuthType Basic spécifie le mécanisme d'authentification à utiliser, ici l'authentification basique HTTP.",
+    "3": "AuthUserFile indique le chemin absolu vers le fichier .htpasswd contenant les noms d'utilisateurs et mots de passe chiffrés.",
+    "5": "La balise <Files> restreint les directives d'authentification à un fichier spécifique, ici confidential.md.",
+    "6": "Require valid-user signifie qu'un utilisateur authentifié (n'importe lequel parmi ceux du .htpasswd) peut accéder au fichier."
+  }
+}

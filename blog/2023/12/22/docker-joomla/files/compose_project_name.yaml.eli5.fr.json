@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:25.553Z",
+  "source": "compose_project_name.yaml",
+  "sourceHash": "d2a47c42b825d968352a349b5195f498da94a9a1",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application Joomla multi-conteneurs avec deux services : un conteneur d'application Joomla et un conteneur de base de données. Les noms des conteneurs utilisent une variable de substitution %%name=kingsbridge%% pour assurer la cohérence entre les services.",
+  "explanations": {
+    "2": "%%name=kingsbridge%% est une variable de substitution qui sera remplacée par la valeur 'kingsbridge' lors du traitement du fichier Compose.",
+    "6": "Le container_name définit le nom du conteneur Docker qui sera créé pour ce service ; ici il sera nommé 'kingsbridge-app'.",
+    "11": "De la même façon, le conteneur de la base de données sera nommé 'kingsbridge-db' en utilisant la même variable de substitution."
+  }
+}

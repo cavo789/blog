@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:24.890Z",
+  "source": "anythingllm-index.sh",
+  "sourceHash": "c76ff40048a6d46b3f9e7f70f124b4c7ab79e7ae",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script indexe les articles de blog dans un espace de travail AnythingLLM en envoyant les fichiers Markdown modifiés ou nouveaux. Il maintient un fichier d'état pour suivre quels articles ont déjà été traités, évitant de renvoyer les fichiers inchangés, et génère un rapport récapitulatif des opérations effectuées.",
+  "explanations": {
+    "10": "set -o errexit fait échouer le script dès qu'une commande retourne un code d'erreur non-zéro, plutôt que de continuer — c'est une sécurité pour ne pas laisser passer des erreurs silencieuses.",
+    "11": "set -o nounset force l'utilisation de variables déclarées, ce qui empêche les typos de variable de passer inaperçus.",
+    "12": "set -o pipefail veut dire que si une commande dans un pipeline échoue, tout le pipeline échoue, pas juste la dernière commande.",
+    "22": "L'opérateur :- retourne la valeur de la variable si elle existe et n'est pas vide, sinon retourne la chaîne après les deux points — c'est un raccourci pour un défaut.",
+    "23": "On extrait ANYTHINGLLM_API_KEY du fichier .env en cherchant la ligne qui commence par ANYTHINGLLM_API_KEY=, on prend la première occurrence, on coupe au = et on retire les guillemets.",
+    "25": "La syntaxe :variable:?message échoue le script et affiche le message si la variable est vide, ce qui force l'utilisateur à fournir une clé API valide.",
+    "31": "curl teste silencieusement si l'URL répond avec un code HTTP valide en 2 secondes max; si oui, on la garde et on sort de la boucle.",
+    "39": "La fonction api() est un wrapper qui réutilisera curl avec la clé d'authentification à chaque appel, sans avoir à la répéter partout.",
+    "45": "La fonction frontmatter() extrait une valeur depuis l'en-tête YAML d'un fichier Markdown (la section entre les --- au début du fichier).",
+    "48": "On utilise awk avec une variable key passée depuis le shell, et on parcourt le fichier ligne par ligne en suivant si on est dans la section frontmatter.",
+    "69": "declare -A previous=() crée un tableau associatif (comme un dictionnaire) vide pour stocker l'état précédent des fichiers.",
+    "71": "IFS=$'\t' dit à read que le séparateur de champs est une tabulation, ce qui permet de découper chaque ligne en hash, path et location.",
+    "83": "sha256sum calcule le hash du fichier; on coupe au premier espace pour garder juste le hash, le reste étant le nom du fichier.",
+    "85": "L'expansion ${entry%%$'\t'*} retire tout depuis la tabulation jusqu'à la fin, laissant juste le hash du fichier précédent s'il existait.",
+    "100": "Si le frontmatter n'a pas de slug, on utilise le nom du dossier parent (puisque chaque article est un index.md dans son propre dossier).",
+    "111": "On ajoute la date de publication dans le titre si elle existe, car AnythingLLM tamponnerait automatiquement une mauvaise date (aujourd'hui).",
+    "116": "L'expansion ${entry#*$'\t'} retire tout avant la tabulation, laissant juste l'emplacement du document dans le workspace.",
+    "134": "jq extrait le champ location de la réponse JSON; // empty retourne une valeur vide si le champ n'existe pas, au lieu de null.",
+    "149": "find cherche tous les index.md et index.mdx dans le dossier blog; -print0 utilise des zéros comme séparateur pour éviter les soucis avec les espaces; sort -z trie par nom de fichier."
+  }
+}

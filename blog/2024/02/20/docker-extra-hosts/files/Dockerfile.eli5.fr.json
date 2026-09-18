@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:23.372Z",
+  "source": "Dockerfile",
+  "sourceHash": "06f03eb45635b584bf3a7b2b1d9641f55edf342b",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Alpine Linux 3.14, une distribution très légère. Il met à jour les paquets disponibles et installe curl, un outil pour télécharger des fichiers depuis Internet via des commandes.",
+  "explanations": {
+    "3": "apk update récupère la liste actuelle des paquets disponibles, puis apk add curl installe l'outil curl. Le && enchaîne les deux commandes pour qu'elles s'exécutent successivement."
+  }
+}

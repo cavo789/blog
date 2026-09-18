@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:31.527Z",
+  "source": "compare.part2.sh",
+  "sourceHash": "bac6fc207d37d89011020e43c18996759faaeeae",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script compare deux dossiers contenant des fichiers bash et affiche les fonctions qui existent dans l'un des fichiers mais pas dans l'autre. Il valide d'abord que deux dossiers sont fournis en arguments, affiche des explications sur le format de sortie, puis pour chaque fichier .sh du premier dossier, il extrait les noms de fonctions et les compare côte à côte avec le deuxième dossier en utilisant diff.",
+  "explanations": {
+    "5": "Le $# représente le nombre d'arguments passés au script; cette ligne vérifie qu'exactement 2 arguments ont été fournis.",
+    "13": "Cette construction teste si le dossier source existe; si ce n'est pas le cas (le ! inverse le test), elle affiche une erreur et quitte le script.",
+    "16": "pushd change le répertoire courant vers sourceFolder et redirige la sortie vers /dev/null pour ne pas afficher le message de confirmation.",
+    "18": "printf avec les séquences \\e[ produit du texte colorisé et en gras dans le terminal (code ANSI).",
+    "41": "diff --suppress-common-lines affiche uniquement les lignes qui diffèrent; --side-by-side les montre côte à côte, et --width 83 fixe la largeur maximale.",
+    "42": "grep -P utilise les expressions régulières Perl; cette ligne extrait les définitions de fonctions (commençant par 'function' suivi de parenthèses) et awk extrait le deuxième champ qui est le nom de la fonction.",
+    "43": "La substitution de processus <(...) passe la sortie d'une commande comme un fichier à diff; le grep final à la fin filtre les résultats pour exclure les lignes contenant seulement '<', qui représentent des doublons."
+  }
+}

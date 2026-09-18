@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:19.137Z",
+  "source": "config.part3.toml",
+  "sourceHash": "5265f7f8d561f341fa1b5e67b6fb2f46cf8d6db2",
+  "lang": "toml",
+  "textLang": "fr",
+  "summary": "Ce bloc de configuration TOML définit un runner GitLab CI qui utilise Docker comme exécuteur. Il configure l'image Docker à utiliser (PHP 8.4) et monte des volumes spécifiques, notamment le socket Docker et le répertoire des builds, pour permettre au conteneur d'accéder à l'hôte Docker et aux fichiers du projet.",
+  "explanations": {
+    "1": "[[runners]] crée un nouveau tableau de sections nommées 'runners' — c'est la syntaxe TOML pour définir un élément dans un tableau de tables.",
+    "4": "[[runners.docker]] crée une sous-section imbriquée sous le runner actuel, spécifiquement pour configurer les options relatives à Docker.",
+    "8": "volumes monte des chemins du système hôte à l'intérieur du conteneur Docker ; /var/run/docker.sock permet au conteneur d'utiliser le daemon Docker de l'hôte (Docker-in-Docker), et /builds:/builds rend accessible le répertoire des builds du projet."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:46:54.114Z",
+  "source": "index.php",
+  "sourceHash": "36a3f2ef7f5e49d5c4ccd9e883f1d5d84de860e2",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script PHP reçoit des données CSV via une requête AJAX, les convertit en tableau Markdown en utilisant la classe Csv2Md, puis retourne le résultat encodé en base64. Le reste du fichier affiche une page HTML interactive avec Vue.js qui permet à l'utilisateur de coller du CSV, configurer les délimiteurs et séparateurs, et visualiser le résultat en Markdown et HTML.",
+  "explanations": {
+    "3": "declare(strict_types = 1) force PHP à vérifier que les types passés aux fonctions correspondent exactement à leurs déclarations, sans conversion automatique.",
+    "26": "file_get_contents('php://input') lit le corps brut de la requête HTTP, et json_decode le transforme en tableau PHP associatif.",
+    "29": "filter_var avec FILTER_SANITIZE_STRING nettoie la chaîne en supprimant les balises HTML/PHP, et ($data['task'] ?? '') retourne une chaîne vide si la clé n'existe pas.",
+    "33": "base64_decode décode la chaîne encodée en base64 reçue du client JavaScript pour récupérer le contenu CSV original.",
+    "36": "Le code décode le délimiteur depuis base64, puis le remplace par une virgule par défaut s'il est vide ou composé uniquement d'espaces.",
+    "56": "filter_var avec FILTER_VALIDATE_BOOLEAN convertit diverses représentations booléennes (like '1', 'true', 'on') en vrai booléen PHP.",
+    "59": "new Csv2Md() crée une instance de la classe qui parsera et convertira le CSV en Markdown.",
+    "69": "base64_encode encode le résultat en base64 avant de l'envoyer au client, et echo l'envoie comme réponse HTTP.",
+    "76": "is_file vérifie que le fichier template 'octocat.tmpl' existe avant de le charger.",
+    "188": "window.btoa encode la chaîne CSV en base64 côté JavaScript avant de l'envoyer au serveur PHP.",
+    "195": "window.atob décode la réponse base64 du serveur pour récupérer le Markdown lisible.",
+    "203": "event.clipboardData.getData('Text') récupère le texte brut depuis le presse-papiers lors d'un collage.",
+    "204": "replace(/\t/g, ',') remplace globalement tous les caractères de tabulation par des virgules, utile quand on copie depuis Excel."
+  }
+}

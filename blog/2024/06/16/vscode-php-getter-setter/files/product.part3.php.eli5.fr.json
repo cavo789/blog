@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:57.081Z",
+  "source": "product.part3.php",
+  "sourceHash": "7d84cd661e9c0fbcb3e022b35012b92be494330b",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce code définit des accesseurs et mutateurs (getters et setters) pour gérer deux propriétés d'un produit : son nom et son prix. Les setters appliquent des règles métier : le nom est converti en minuscules et le prix ne peut pas être négatif.",
+  "explanations": {
+    "11": "strtolower() convertit la chaîne en minuscules avant de la stocker, pour normaliser le format du nom indépendamment de ce que l'utilisateur passe en paramètre.",
+    "13": "Le setter retourne $this pour permettre l'enchaînement de méthodes (fluent interface), tu peux appeler plusieurs setters d'affilée.",
+    "25": "On vérifie que le prix est positif et on lance une exception si quelqu'un essaie de passer une valeur négative.",
+    "31": "Comme le premier setter, on retourne $this pour permettre l'enchaînement de mutateurs."
+  }
+}

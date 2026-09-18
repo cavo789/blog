@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:50.258Z",
+  "source": "superheroes.json",
+  "sourceHash": "3d194b4b7251c9417dc7c0edddc12b20dd635c83",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON décrit un personnage de super-héros en structurant ses informations de base : identité, pouvoirs spécialisés et équipement disponible. La structure utilise des clés imbriquées pour organiser les données de manière hiérarchique et lisible.",
+  "explanations": {
+    "4": "abilities est un tableau (array) qui contient une liste de chaînes de caractères représentant chacun des pouvoirs du héros.",
+    "9": "equipment est un objet imbriqué qui regroupe les équipements du personnage sous forme de paires clé-valeur booléennes indiquant leur disponibilité."
+  }
+}

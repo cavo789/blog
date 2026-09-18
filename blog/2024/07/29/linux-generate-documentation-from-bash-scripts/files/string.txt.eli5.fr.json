@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:22.896Z",
+  "source": "string.txt",
+  "sourceHash": "f6ccfd635b7215eafaf5619a0ad002bce5c785f6",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est une documentation générée automatiquement pour un script bash appelé string.sh. Il décrit une fonction publique string::upper qui convertit du texte en majuscules, avec des exemples d'utilisation et les codes de sortie possibles.",
+  "explanations": {
+    "3": "Le commentaire indique qu'il faut exécuter un script de génération (identifié par 'true') pour mettre à jour cette documentation si elle devient obsolète.",
+    "5": "Ce commentaire marque la date de la dernière actualisation de ce fichier de documentation."
+  }
+}

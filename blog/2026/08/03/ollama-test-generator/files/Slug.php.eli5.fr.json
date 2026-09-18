@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:44.982Z",
+  "source": "Slug.php",
+  "sourceHash": "5df82381b48c230341fd039692764eedae589a2d",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette classe contient une méthode statique qui transforme un titre lisible en slug compatible avec les URLs. Elle convertit le texte en minuscules, remplace tous les caractères non alphanumériques par des tirets, puis lève une exception si le résultat est vide.",
+  "explanations": {
+    "3": "declare(strict_types=1) force PHP à vérifier strictement les types des paramètres et valeurs de retour — si tu passes le mauvais type, ça génère une erreur au lieu de faire une conversion silencieuse.",
+    "14": "strtolower() convertit tout en minuscules et trim() enlève les espaces au début et à la fin du titre.",
+    "18": "preg_replace() cherche toute séquence d'un ou plusieurs caractères qui ne sont pas des lettres ou chiffres (le pattern [^a-z0-9]+) et les remplace par un tiret unique.",
+    "19": "Le cast (string) garantit que $slug est bien une chaîne avant d'utiliser trim(), et trim(..., '-') enlève les tirets superflus au début et à la fin.",
+    "21": "Si après tout ce nettoyage il ne reste rien (slug vide), on lève une InvalidArgumentException pour signaler que le titre original n'était pas valide."
+  }
+}

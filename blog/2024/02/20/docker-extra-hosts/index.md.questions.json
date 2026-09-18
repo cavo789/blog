@@ -1,57 +1,50 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:22.333Z",
+  "generated": "2026-09-18T15:45:38.483Z",
+  "durationMs": 8028,
   "source": "index.md",
-  "sourceHash": "97cb3ea3e4adef35a336ea5793fd6174239451cd",
+  "sourceHash": "26e0c819ee350a1590907311a2a85af0c3e50eb0",
   "questions": [
     {
-      "question": "How do I connect two containers running on different networks?",
-      "anchor": ""
+      "question": "How do I access a host alias inside a Docker container?",
+      "anchor": "the-two-line-fix"
     },
     {
-      "question": "What is Docker's default network and how does it affect container communication?",
-      "anchor": ""
+      "question": "Why can't a Docker container reach another container on a different network?",
+      "anchor": "why-it-works"
     },
     {
-      "question": "Why can't a container reach another container when they are not on the same network?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create a shared Docker network and find its gateway IP?",
+      "question": "What is the purpose of the `extra_hosts` property in Docker Compose?",
       "anchor": "some-preparation-work"
     },
     {
-      "question": "What is the extra_hosts property in Docker Compose used for?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I use host-side hosts-file aliases inside a container with Docker?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create and run an Apache container on a network using Docker Compose?",
-      "anchor": "some-preparation-work"
-    },
-    {
-      "question": "What is the purpose of the extra_hosts property in Docker Compose?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create and run an interactive bash shell in a container using Docker Compose?",
-      "anchor": "some-preparation-work"
-    },
-    {
-      "question": "What is the difference between the default Docker network and a shared network?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create and run a second container on the same network as the first one?",
+      "question": "How do I create a shared network between two Docker containers?",
       "anchor": "creating-our-second-container"
     },
     {
-      "question": "What is the purpose of the Docker inspect command with the --format option?",
-      "anchor": ""
+      "question": "What is the gateway IP of a Docker network?",
+      "anchor": "when-it-doesnt-work-and-why"
+    },
+    {
+      "question": "How do I connect a second container to a shared network in Docker Compose?",
+      "anchor": "we-need-to-run-the-second-container-on-the-same-network"
+    },
+    {
+      "question": "How can I reuse a host-side hosts-file alias inside a container using the `extra_hosts` property?",
+      "anchor": "we-need-to-find-the-ip-of-the-network"
+    },
+    {
+      "question": "What is the difference between running a Docker container on its own network and the default network?",
+      "anchor": "try-again"
+    },
+    {
+      "question": "How do I access a host alias inside a Docker container using a custom network?",
+      "anchor": "extra-use-case---aliases"
+    },
+    {
+      "question": "What is the purpose of the `docker compose run` command in Docker Compose?",
+      "anchor": "conclusion"
     }
   ]
 }

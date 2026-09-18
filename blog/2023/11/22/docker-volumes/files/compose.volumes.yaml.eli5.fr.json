@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:02.401Z",
+  "source": "compose.volumes.yaml",
+  "sourceHash": "322651954b7a7760426c0a3f557027c3bdcd32aa",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé counter qui construit une image à partir du répertoire courant et la nomme demo/counter. Il configure également un volume nommé counter_data pour persister les données du conteneur dans le répertoire /data.",
+  "explanations": {
+    "5": "%%name=counter%% est un placeholder (variable) qui sera remplacé par la valeur 'counter' lors du traitement du fichier — cela permet de réutiliser le même nom dans plusieurs endroits sans duplication.",
+    "12": "counter_data:/data monte le volume Docker nommé counter_data dans le conteneur au chemin /data, de sorte que les données écrites à cet emplacement persistent même après l'arrêt du conteneur.",
+    "17": "counter_data: déclare un volume Docker nommé qui sera créé et géré par Docker, prêt à être utilisé par les services qui le référencent."
+  }
+}

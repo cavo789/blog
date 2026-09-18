@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:31.775Z",
+  "source": "_quarto.yaml",
+  "sourceHash": "3961969e628c86724ec49adfe553ca81218d6c9a",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier YAML définit une opération de recherche-remplacement qui ajoute un lien Markdown vers le site de Quarto. L'entrée `+quarto` indique qu'on ajoute une nouvelle clé avec sa valeur correspondante, qui contient du texte formaté en Markdown avec un lien hypertexte.",
+  "explanations": {
+    "2": "Le symbole `+` au début de `+quarto` signifie qu'on ajoute une nouvelle entrée plutôt que de remplacer une existante. La valeur entre guillemets est du Markdown où `[Quarto]` est le texte affiché et `(https://quarto.org)` est l'URL cible du lien."
+  }
+}

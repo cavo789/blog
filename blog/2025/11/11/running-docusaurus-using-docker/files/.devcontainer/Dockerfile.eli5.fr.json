@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:05:07.321Z",
+  "source": "Dockerfile",
+  "sourceHash": "69ce2e26ffa78ef2039c821223f42af970d47218",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile configure un conteneur de développement pour un projet Docusaurus, en partant d'une image de base personnalisée qui inclut Node.js. Il installe les outils système nécessaires, configure un utilisateur non-root avec des droits sudo, prépare l'environnement VSCode, optimise bash et yarn, puis installe les dépendances du projet.",
+  "explanations": {
+    "1": "Cette directive spécifie la version 1.6 du parser Dockerfile, qui déverrouille des fonctionnalités avancées comme les cache mounts utilisés plus tard pour accélérer les reconstructions.",
+    "8": "ARG définit un argument passable à la construction ; OS_USERID=1002 est la valeur par défaut mais peut être surchargée lors du build.",
+    "16": "FROM récupère l'image blog-docusaurus:latest comme base ; c'est l'image parent qui contient déjà Node.js et les dépendances Docusaurus.",
+    "19": "ARG APP_HOME est re-déclaré car les arguments ne persévèrent pas automatiquement entre les étapes ; cette redéclaration le rend disponible pour les commandes suivantes.",
+    "25": "RUN --mount=type=cache monte des chemins du système hôte en cache pour cette couche seulement, évitant de recréer ces fichiers lors des reconstructions futures.",
+    "27": "set -eux active trois options bash : -e (quitter si erreur), -u (erreur si variable indéfinie), et -x (afficher chaque commande).",
+    "38": "git config --global --add safe.directory ajoute APP_HOME à la liste Git des répertoires de confiance, prévenant les avertissements de sécurité lors du clone.",
+    "47": "set -eux est répété ici car chaque RUN commence dans un contexte shell vierge ; les options précédentes ne s'appliquent pas au suivant.",
+    "48": "echo crée un fichier sudoers qui autorise OS_USERNAME à lancer n'importe quelle commande avec sudo sans mot de passe.",
+    "49": "chmod 0440 restreint les permissions du fichier sudoers à la lecture seule pour root et group, comme exigé par sudo pour la sécurité.",
+    "53": "mkdir -p crée les répertoires avec les parents nécessaires (-p signifie ne pas échouer si le dossier existe déjà).",
+    "56": "chown -R change récursivement le propriétaire et groupe de .vscode-server et tous ses contenus vers l'utilisateur OS_USERNAME.",
+    "71": "ENV définit une variable d'environnement persistante ; YARN_CACHE_FOLDER sera utilisée par les commandes yarn ultérieures.",
+    "79": "Le mount type=cache avec uid et gid lie le cache yarn à cet utilisateur spécifique, préservant le cache entre les builds tout en respectant les permissions.",
+    "81": "yarn install --immutable --frozen-lockfile installe exactement les versions du fichier lock sans mise à jour ; --prefer-offline utilise d'abord le cache local.",
+    "82": "yarn add sharp installe le plugin d'optimisation d'images Sharp pour la plateforme linux x64, requis par Docusaurus pour traiter les images.",
+    "85": "USER bascule du contexte root vers OS_USERNAME pour les étapes suivantes, renforçant la sécurité en exécutant la plupart des opérations sans privilèges root."
+  }
+}

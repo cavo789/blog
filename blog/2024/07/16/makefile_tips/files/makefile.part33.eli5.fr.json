@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:14.756Z",
+  "source": "makefile.part33",
+  "sourceHash": "1b1572fd19cd13a6dd1f7d5b6fa76e09118811ab",
+  "lang": "part33",
+  "textLang": "fr",
+  "summary": "Ce script affiche le chemin du répertoire d'accueil de l'application Docker. S'il existe une variable d'environnement DOCKER_APP_HOME, il l'utilise ; sinon il affiche le chemin par défaut /var/www/html. C'est utile pour déterminer dynamiquement où l'application est installée.",
+  "explanations": {
+    "1": "La syntaxe ${DOCKER_APP_HOME} accède à la variable d'environnement DOCKER_APP_HOME. Si elle est vide ou inexistante, l'opérateur 'or' (${variable,valeur}) revient à la valeur par défaut /var/www/html fournie après la virgule."
+  }
+}

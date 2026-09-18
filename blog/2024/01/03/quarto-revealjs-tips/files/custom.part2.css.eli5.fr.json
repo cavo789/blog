@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:34.867Z",
+  "source": "custom.part2.css",
+  "sourceHash": "41309a798eb1ade9aba6af1dbd2c44b15350cb90",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fragment CSS masque tous les éléments paragraphe ayant la classe 'caption' à l'intérieur d'éléments avec la classe 'reveal'. La propriété display: none les rend invisibles et les retire complètement du flux de la page.",
+  "explanations": {}
+}

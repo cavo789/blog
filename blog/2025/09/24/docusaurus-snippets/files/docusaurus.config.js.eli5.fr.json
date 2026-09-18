@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:45.424Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "c21cd561d3bf30aa3d675ecca34c4ef6caf30947",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un preset Docusaurus classique en injectant un plugin remark personnalisé appelé remarkSnippetLoader dans le pipeline de traitement du blog, avant les plugins remark par défaut. Le plugin est importé depuis un module local et ajouté à la configuration qui est ensuite exportée.",
+  "explanations": {
+    "2": "Cette ligne importe le module remarkSnippetLoader depuis un chemin local en utilisant l'extension .cjs (CommonJS) au lieu du format ES modules habituel.",
+    "12": "beforeDefaultRemarkPlugins est un tableau qui ordonne à Docusaurus d'exécuter ces plugins avant ses plugins remark intégrés, ce qui donne au plugin personnalisé une priorité plus élevée dans la chaîne de transformation."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:47.492Z",
+  "source": ".dockerignore",
+  "sourceHash": "2927213fd13ffc5ac0da169daafa5e92655c27e3",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier .dockerignore spécifie les fichiers et répertoires à exclure lors de la construction d'une image Docker, réduisant ainsi la taille du contexte de build. Il ignore les artefacts locaux, les fichiers de configuration d'IDE, les dépendances installées et autres fichiers non essentiels, tout en préservant explicitement les fichiers composer.json et composer.lock nécessaires aux dépendances PHP.",
+  "explanations": {
+    "7": "**/ signifie « chercher ce pattern dans tous les répertoires et sous-répertoires », donc **/.classpath exclut le fichier .classpath peu importe où il se trouve.",
+    "24": "docker-compose* exclut tous les fichiers commençant par docker-compose (docker-compose.yml, docker-compose.override.yml, etc.).",
+    "27": "Le point d'exclamation ! inverse la règle : ceci dit « n'exclus pas composer.json malgré la règle précédente **/compose* ».",
+    "30": "Dockerfile* exclut tous les fichiers Dockerfile et ses variantes (Dockerfile.prod, Dockerfile.dev, etc.)."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:10.501Z",
+  "source": ".gitlab-ci.yml",
+  "sourceHash": "4f45a7ba0d6c90684093a835fe6ede3c85fb70f1",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Cette configuration GitLab CI exécute une vérification de syntaxe PHP sur tous les fichiers du projet. Le script recherche chaque fichier .php et le teste avec php -l pour s'assurer qu'il n'y a pas d'erreurs de syntaxe.",
+  "explanations": {
+    "3": "find . -name \"*.php\" -print0 trouve tous les fichiers PHP et les sépare avec des caractères nuls au lieu d'espaces, xargs -0 les récupère par lot de 1 (-n1) pour éviter les problèmes avec les noms de fichiers contenant des espaces, et php -l vérifie la syntaxe de chaque fichier sans l'exécuter."
+  }
+}

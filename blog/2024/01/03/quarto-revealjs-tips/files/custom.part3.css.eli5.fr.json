@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:39.759Z",
+  "source": "custom.part3.css",
+  "sourceHash": "887fd46479981b45ef329937e89103c187fc4924",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce snippet CSS masque les titres des callouts dans les présentations Reveal en les supprimant du flux d'affichage. C'est une personnalisation de thème pour épurer l'interface en retirant les étiquettes des boîtes de contenu particulier.",
+  "explanations": {
+    "2": "display: none supprime complètement l'élément de la page, comme s'il n'existait pas — il ne prend pas de place et n'est pas visible."
+  }
+}

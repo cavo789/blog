@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:19.591Z",
+  "source": "Dockerfile",
+  "sourceHash": "c534db870da71b15eaf141fad374e08bc999b08a",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Ubuntu avec ripgrep, zsh et git pré-configurés pour des recherches de code avancées. Il crée un projet de démonstration contenant du code PHP, JavaScript et des fichiers de configuration pour montrer comment ripgrep peut trouver des TODOs, des références de variables d'environnement, et filtrer les dossiers indésirables comme vendor/ et node_modules/.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives pendant l'installation, ce qui est nécessaire dans un conteneur où il n'y a pas de terminal utilisateur.",
+    "5": "L'opérateur && chaîne les commandes pour que si l'une échoue, les suivantes ne s'exécutent pas, et le rm -rf final nettoie le cache apt pour réduire la taille de l'image.",
+    "13": "Ce commentaire indique que les lignes suivantes écrivent la configuration de ripgrep dans le fichier ~/.ripgreprc, qui sera lu automatiquement par ripgrep.",
+    "14": "printf '%s\\n' affiche chaque argument sur sa propre ligne, ce qui permet de construire un fichier multi-lignes en passant chaque ligne comme argument séparé.",
+    "30": "Le > redirige la sortie de printf dans le fichier /root/.ripgreprc pour le créer avec le contenu fourni.",
+    "33": "mkdir -p crée le répertoire /root/.zsh/fns/ et crée aussi les répertoires parents s'ils n'existent pas.",
+    "38": "local dir=\"${1:-.}\" récupère le premier argument passé à la fonction zsh, ou utilise le répertoire courant (.) si aucun argument n'est fourni.",
+    "47": "[[ -z \"${var}\" ]] vérifie si la variable var est vide, et si c'est le cas, affiche un message d'usage et sort de la fonction avec un code d'erreur.",
+    "48": "Le --type-add 'config:...' enregistre un nouveau type de fichier appelé config qui inclut les fichiers avec les extensions .env, .cfg, .ini et .conf pour les recherches ciblées.",
+    "55": "Cette boucle zsh source (charge) tous les fichiers .zsh du répertoire ~/.zsh/fns/, ce qui rend disponibles les fonctions rgtodo et rgenv.",
+    "59": "Les guillemets échappés \\\" dans la chaîne zsh permettent d'inclure des guillemets littéraux dans la commande alias sans les interpréter.",
+    "60": "Le >> ajoute le contenu à /root/.zshrc au lieu de le remplacer, car le fichier peut déjà avoir du contenu.",
+    "65": "mkdir -p crée l'arborescence complète /root/demo/vendor/legacy et /root/demo/src en une seule commande.",
+    "79": "git -C /root/demo init -q initialise un dépôt git dans le répertoire /root/demo avec -q (quiet) pour supprimer le bavardage.",
+    "80": "Les options -c user.email et -c user.name configurent temporairement git pour cette commande sans modifier le fichier ~/.gitconfig global.",
+    "90": "CMD spécifie la commande par défaut qui s'exécute au démarrage du conteneur : zsh en mode interactif (-i) avec fichiers de profil chargés (-l)."
+  }
+}

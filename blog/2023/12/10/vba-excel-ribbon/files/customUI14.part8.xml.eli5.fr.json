@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:18.061Z",
+  "source": "customUI14.part8.xml",
+  "sourceHash": "b0183cf53c314d303780474f1b974d742518f245",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce snippet définit un bouton personnalisé pour une interface utilisateur, probablement dans un contexte de ruban Office ou similaire. Le bouton affiche une étiquette « Button » avec une icône souriante, occupe l'espace large, et déclenche la fonction OnButtonClicked quand l'utilisateur clique dessus.",
+  "explanations": {
+    "4": "imageMso=\"HappyFace\" fait référence à une icône prédéfinie dans la bibliothèque Microsoft Office — ici un visage souriant — plutôt que de charger une image personnalisée depuis un fichier.",
+    "6": "onAction=\"OnButtonClicked\" indique le nom de la fonction qui s'exécutera quand l'utilisateur clique sur le bouton."
+  }
+}

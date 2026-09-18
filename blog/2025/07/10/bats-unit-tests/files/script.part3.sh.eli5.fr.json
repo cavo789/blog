@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:53.807Z",
+  "source": "script.part3.sh",
+  "sourceHash": "f24ce3cb6fc4001cb10b431599bc99e6e91030c4",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction vérifie qu'une image Docker existe et arrête le script avec une erreur si ce n'est pas le cas. Elle prend le nom de l'image en premier paramètre et un message d'erreur optionnel en second, puis utilise docker images -q pour vérifier la présence de l'image.",
+  "explanations": {
+    "2": "local rend la variable image locale à cette fonction, isolée du reste du script. Le \"${1}\" récupère simplement le premier argument passé à la fonction.",
+    "3": "La syntaxe \"${2:-valeur}\" signifie : utilise la variable 2 si elle existe, sinon utilise la valeur par défaut après le tiret. Ici on fournit un message d'erreur par défaut qui inclut le nom de l'image.",
+    "6": "docker images -q retourne l'ID de l'image si elle existe, ou une chaîne vide sinon. Le [[ ]] teste si le résultat est vide (==\" \"), et si c'est le cas, affiche le message et quitte avec le code 1 (erreur)."
+  }
+}

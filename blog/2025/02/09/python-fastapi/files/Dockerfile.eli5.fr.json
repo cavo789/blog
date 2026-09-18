@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:24.270Z",
+  "source": "Dockerfile",
+  "sourceHash": "9da875fede33c4c7b067637af617b05de2d6d036",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker contenant une application FastAPI minimale. Il démarre à partir de l'image Python slim pour réduire la taille, installe FastAPI avec ses dépendances standard, copie le script main.py dans l'image, puis configure le conteneur pour exécuter l'application FastAPI sur le port 82.",
+  "explanations": {
+    "2": "FROM python:slim utilise une version allégée de l'image Python officielle qui contient juste le nécessaire pour exécuter Python, ce qui rend l'image finale plus petite.",
+    "5": "WORKDIR /app définit le répertoire de travail courant dans le conteneur — tous les chemins relatifs par la suite seront relatifs à /app.",
+    "8": "RUN pip install --no-cache-dir fastapi[standard] exécute la commande pip lors de la construction de l'image ; le flag --no-cache-dir évite de stocker les fichiers de cache pip pour économiser de l'espace disque.",
+    "11": "COPY main.py main.py copie le fichier main.py depuis ta machine hôte vers le répertoire courant (/app) à l'intérieur du conteneur.",
+    "14": "CMD spécifie la commande par défaut qui s'exécutera quand le conteneur démarre — ici elle lance FastAPI et sert l'application main.py sur le port 82."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:02.148Z",
+  "source": ".part17.htaccess",
+  "sourceHash": "b46b8309b20ffed25317c0cc5e11bbea7af81b12",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc configure les en-têtes de sécurité HTTP pour les fichiers exécutables (Perl, PHP, CGI, SPL) en utilisant le module mod_headers d'Apache. Il empêche le clickjacking en interdisant l'intégration dans des frames et active la protection XSS du navigateur.",
+  "explanations": {
+    "1": "FilesMatch utilise une expression régulière pour cibler tous les fichiers dont l'extension est .pl, .php, .cgi ou .spl — autrement dit, les fichiers qui contiennent du code exécutable côté serveur.",
+    "2": "IfModule vérifie que le module mod_headers est disponible avant d'appliquer les directives Header, ce qui évite les erreurs si le module n'est pas installé.",
+    "4": "X-Frame-Options DENY indique aux navigateurs que ce contenu ne doit jamais être affiché à l'intérieur d'une balise iframe, frame ou object, ce qui prévient le clickjacking.",
+    "5": "X-XSS-Protection active le filtre XSS intégré du navigateur et le configure pour bloquer la page (plutôt que de simplement nettoyer) si une attaque XSS est détectée."
+  }
+}

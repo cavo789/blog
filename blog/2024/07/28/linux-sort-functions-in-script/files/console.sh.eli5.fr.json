@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:56.906Z",
+  "source": "console.sh",
+  "sourceHash": "051bc4746cfb3bf19b7af91aefd0d67f5028d63a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce fichier bash déclare un ensemble de fonctions pour afficher du texte coloré et interagir avec l'utilisateur via la console. Les fonctions définissent une interface réutilisable pour l'affichage de messages (en cyan, rouge, vert, bleu), la gestion des erreurs et les interactions oui/non, sans implémenter leurs corps pour le moment.",
+  "explanations": {
+    "1": "La ligne shebang indique au système d'utiliser l'interpréteur bash situé dans le PATH pour exécuter ce script, plutôt qu'un chemin absolu.",
+    "3": "La syntaxe function nomme une fonction à exécuter plus tard; printCyan affichera probablement du texte en couleur cyan.",
+    "6": "askYesNo est une fonction destinée à poser une question oui/non à l'utilisateur et récupérer sa réponse.",
+    "9": "printRed servira à afficher du texte en couleur rouge, généralement pour mettre en évidence des informations importantes.",
+    "12": "printError est réservée à l'affichage de messages d'erreur, souvent en rouge ou avec formatage spécial.",
+    "15": "banner sert probablement à afficher un en-tête visuel ou un message d'accueil au démarrage du script.",
+    "18": "printGreen affichera du texte en couleur verte, typiquement pour les messages de succès ou d'information positive.",
+    "21": "printBlue affichera du texte en couleur bleue, souvent pour les messages informatifs ou les éléments distinctifs."
+  }
+}

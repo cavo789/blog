@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:56.859Z",
+  "source": "Dockerfile",
+  "sourceHash": "443599d3ade2570d535fafd2dffef31bd9251154",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image de production basée sur Python 3.13 qui installe les dépendances système requises (locales, tini), configure la langue et le fuseau horaire, installe les dépendances Python à partir d'un requirements.txt, puis lance une application avec gunicorn et uvicorn. L'image utilise des montages de cache pour optimiser les couches Docker et éviter de réinstaller les paquets à chaque build.",
+  "explanations": {
+    "5": "ARG définit une variable de build Dockerfile qui peut être passée en paramètre lors du build — ici le répertoire d'accueil de l'application.",
+    "6": "ARG définit la version de Python à utiliser comme variable, ce qui permet de la modifier facilement sans éditer le Dockerfile.",
+    "9": "FROM python:${PYTHON_VERSION}-slim utilise l'image Python officielle en version slim (plus légère qu'une version complète) avec la version spécifiée par la variable ARG.",
+    "11": "ARG TIMEZONE réaffirme la variable TIMEZONE dans ce stage, car les ARG définis avant FROM ne sont pas disponibles après sans les réclarer.",
+    "13": "ENV TZ=${TIMEZONE} définit la variable d'environnement système TZ en utilisant la valeur de la variable build TIMEZONE — c'est pour que le conteneur utilise le bon fuseau horaire.",
+    "15": "RUN --mount=type=cache monte un cache persistant pour /var/cache/apt afin que les listes de paquets apt téléchargées ne soient pas répétées à chaque rebuild.",
+    "16": "set -eux active le mode strict du shell : -e arrête si une commande échoue, -u erreur sur variables non définies, -x affiche les commandes exécutées.",
+    "37": "RUN --mount=type=cache monte le cache pip pour que les paquets Python téléchargés lors du pip install ne soient pas réinstallés à chaque rebuild.",
+    "47": "ENTRYPOINT définit tini comme processus PID 1 — c'est un petit programme qui gère correctement les signaux de terminaison pour l'application qui suit.",
+    "49": "ENV PYTHONPATH ajoute le répertoire src au chemin de recherche Python, ce qui permet d'importer les modules du projet sans chemins relatifs complexes.",
+    "51": "CMD spécifie la commande par défaut : gunicorn lance le serveur web avec uvicorn comme worker pour exécuter l'application asynchrone main:app sur le port 8000."
+  }
+}

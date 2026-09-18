@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:26.314Z",
+  "source": "compose.yaml",
+  "sourceHash": "1bc4efb41a0b2ca18d936a14bef3b43fa1ca5f0c",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un service Docker Compose nommé 'tools' qui lance un conteneur Memos (une application de prise de notes). Le conteneur expose le port 5230, stocke ses données dans un dossier local './data', et redémarre automatiquement en cas d'arrêt inattendu.",
+  "explanations": {
+    "1": "Cette directive de commentaire indique au système de documentation que la ligne suivante doit être mise en évidence ou traitée spécialement.",
+    "8": "L'option init: true lance un processus init dans le conteneur, ce qui gère correctement les signaux système et nettoie les processus zombies.",
+    "12": "Le volume mappe le répertoire local './data' vers '/var/opt/memos' dans le conteneur, permettant à Memos de persister ses données au-delà du redémarrage.",
+    "13": "restart: unless-stopped signifie que le conteneur redémarre automatiquement après un arrêt, sauf s'il a été arrêté manuellement par l'utilisateur."
+  }
+}

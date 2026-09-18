@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:01.667Z",
+  "source": ".gitconfig.part4",
+  "sourceHash": "8ccc9a7c7d8ca7ad2b8523b38fc692b2e1684043",
+  "lang": "part4",
+  "textLang": "fr",
+  "summary": "Cette configuration Git définit un ordre de tri pour les branches basé sur la date du commit, en ordre décroissant (les branches les plus récentes d'abord). C'est utile pour voir rapidement quelles branches ont été modifiées le plus récemment.",
+  "explanations": {
+    "2": "Le tiret devant committerdate indique un tri décroissant, donc les dates les plus récentes apparaîtront en premier."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:15.461Z",
+  "source": "module.part4.bas",
+  "sourceHash": "87aa0d1a1a25557a3a843a8d3e68c343bc0f6ee2",
+  "lang": "bas",
+  "textLang": "fr",
+  "summary": "Ce code configure une connexion à une base de données SQL Server avec des identifiants en dur, puis exécute une requête SELECT sur la table Customers et exporte les résultats dans un nouveau classeur Excel.",
+  "explanations": {
+    "4": "On définit le nom d'utilisateur sur \"SA\", qui est le compte administrateur par défaut de SQL Server.",
+    "6": "On affecte directement le mot de passe en texte brut à la variable Password — cette pratique n'est pas sécurisée en production.",
+    "10": "On appelle la méthode RunSQLAndExportNewWorkbook avec la requête SQL, un titre pour le classeur, et False (probablement pour indiquer de ne pas afficher d'interface utilisateur ou de ne pas créer de graphiques)."
+  }
+}

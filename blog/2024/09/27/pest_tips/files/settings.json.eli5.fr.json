@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:58.975Z",
+  "source": "settings.json",
+  "sourceHash": "9ffbed3cccef4141ef945bf01031d4317d1ecdc3",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure l'extension better-pest pour exécuter les tests Pest à l'intérieur d'un conteneur Docker via docker compose. Il active le support Docker, définit la commande pour accéder au conteneur avec les droits root, et mappe les chemins locaux vers les chemins distants du conteneur.",
+  "explanations": {
+    "3": "Cette commande docker compose exec se connecte au service 'app' et exécute les tests avec les permissions root:root, ce qui est nécessaire pour que better-pest puisse modifier les fichiers dans le conteneur.",
+    "4": "Cette section mappe les chemins du système de fichiers local vers les chemins correspondants à l'intérieur du conteneur, permettant à l'extension de localiser correctement tes fichiers de test.",
+    "5": "Tu dois remplacer /your/local/path par le chemin réel de ton projet sur ta machine, et /your/remote/path par le chemin où ce projet est monté dans le conteneur."
+  }
+}

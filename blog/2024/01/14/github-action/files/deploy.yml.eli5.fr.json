@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:48.302Z",
+  "source": "deploy.yml",
+  "sourceHash": "6d446e4229c3a871b3b9e6461aafcdb7f5714868",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce workflow GitHub Actions déploie automatiquement un blog sur avonture.be à chaque push sur la branche main, ou manuellement via workflow_dispatch. Il récupère le code, installe les dépendances Node.js avec cache, construit le site, puis envoie les fichiers via FTP. Un mode manuel avec clean_slate permet de nettoyer l'état FTP corrompu en cas de besoin.",
+  "explanations": {
+    "7": "Un commentaire explique que workflow_dispatch permet un déclenchement manuel, et clean_slate est un paramètre spécial pour récupérer d'une synchronisation FTP corrompue.",
+    "29": "Cette condition vérifie que le workflow s'exécute soit par déclenchement manuel (workflow_dispatch), soit par un push dont le message de commit ne commence pas par 'wip' (évite de déployer les commits de travail en cours).",
+    "37": "fetch-depth: 0 télécharge l'historique git complet au lieu d'un clone superficiel, ce qui permet au plugin blog de lire la vraie date et l'auteur de la dernière modification de chaque article.",
+    "52": "Cette clé de cache utilise le hash du fichier yarn.lock pour créer une clé unique; si yarn.lock change, le cache est invalidé et les dépendances sont réinstallées.",
+    "57": "Cette condition saute l'installation des dépendances si le cache a déjà été trouvé (cache-hit == 'true'), économisant du temps.",
+    "74": "dangerous-clean-slate supprime tous les fichiers du serveur FTP avant de tout réuploader, mais seulement si clean_slate est passé à 'true' lors d'un appel manuel du workflow."
+  }
+}

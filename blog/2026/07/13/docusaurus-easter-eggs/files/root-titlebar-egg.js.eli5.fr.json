@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:41.336Z",
+  "source": "root-titlebar-egg.js",
+  "sourceHash": "a206b6919bb751c6df526c56bfd5944e9adb2ee8",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce code crée un effet amusant : quand un utilisateur quitte l'onglet du navigateur, le titre et l'icône changent pour montrer une suricate endormie, puis reviennent à la normale quand l'utilisateur revient. L'effet s'active en écoutant l'événement visibilitychange du navigateur et se nettoie correctement quand le composant se démonte.",
+  "explanations": {
+    "3": "useBaseUrl construit une URL complète vers l'image du favicon dormant en la plaçant correctement dans la structure du site.",
+    "10": "L'opérateur ?. (optional chaining) accède à href seulement si faviconLink existe, sinon retourne undefined au lieu de lever une erreur.",
+    "13": "document.hidden est une propriété booléenne qui indique si l'onglet courant est actuellement visible à l'écran.",
+    "22": "Cette ligne attache le gestionnaire d'événement visibilitychange au document, qui se déclenche chaque fois que l'utilisateur bascule vers ou depuis cet onglet.",
+    "23": "La fonction retournée ici est un nettoyage (cleanup) : elle enlève l'écouteur d'événement quand le composant est détruit pour éviter les fuites mémoire.",
+    "25": "location et sleepingFaviconUrl dans ce tableau indiquent au useEffect de relancer l'effet si ces valeurs changent, sinon il ne s'exécute qu'une fois au montage."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:40.398Z",
+  "source": "behat.yaml",
+  "sourceHash": "c4a76f0ffd6133780f108392f71edfb431205c13",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Behat définit les extensions et paramètres pour exécuter des tests d'acceptation dans un navigateur Chrome. Il active l'extension ChromeExtension personnalisée et configure MinkExtension pour communiquer avec une instance Chrome locale en mode debugging sur le port 9222, en testant contre le site avonture.be.",
+  "explanations": {
+    "3": "Cela charge l'extension ChromeExtension personnalisée depuis le namespace DMore\\ChromeExtension\\Behat\\ServiceContainer, qui ajoute les capacités de contrôle Chrome spécifiques à Behat.",
+    "4": "MinkExtension est la couche d'abstraction Behat qui permet de contrôler différents navigateurs via une interface commune.",
+    "5": "browser_name: chrome indique à Mink d'utiliser Chrome comme navigateur pour les tests.",
+    "6": "base_url définit l'adresse de base vers laquelle les tests navigueront par défaut.",
+    "10": "api_url pointe vers le port de debugging Chrome (Chrome DevTools Protocol) où Behat peut envoyer des commandes au navigateur Chrome en cours d'exécution."
+  }
+}

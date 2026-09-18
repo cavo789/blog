@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:27.331Z",
+  "source": "zshrc_snippet.zsh",
+  "sourceHash": "f4a5e9c9d256d75f228e3c2c51f1578cf3f0a62a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script configure l'environnement ZSH en établissant le chemin de configuration pour ripgrep, en chargeant des fonctions personnalisées depuis un répertoire, et en créant des raccourcis (alias) pour des recherches ripgrep spécifiques à différents types de fichiers. C'est une initialisation de shell qui améliore la productivité en préconfigurant des commandes courantes.",
+  "explanations": {
+    "1": "RIPGREP_CONFIG_PATH indique à ripgrep où trouver son fichier de configuration personnalisé ; ici dans le répertoire home de l'utilisateur.",
+    "5": "La boucle itère sur tous les fichiers .zsh du répertoire ~/.zsh/fns/ pour les charger automatiquement.",
+    "6": "source exécute le contenu du fichier ZSH dans le shell courant, rendant ses fonctions disponibles dans la session active."
+  }
+}

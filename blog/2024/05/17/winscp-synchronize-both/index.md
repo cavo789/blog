@@ -32,7 +32,7 @@ I'm using such script for making a full backup of some of my folders to my Synol
 
 ## The script
 
-<Snippet filename="c:\temp\synchronize.txt" source="./files/c:\temp\synchronize.txt" />
+<Snippet filename="c:\temp\synchronize.txt" source="./files/synchronize.txt" />
 
 ## How to use
 

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:11.270Z",
+  "source": "customUI14.part5.xml",
+  "sourceHash": "6bf2a0964816af82c2d308ed9c9246fd9117bb5c",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Cet extrait définit un élément XML pour un onglet personnalisé nommé customTab. L'onglet sera inséré après TabView dans l'interface et porte le label « Tab » qui s'affichera à l'utilisateur.",
+  "explanations": {
+    "1": "L'attribut insertAfterMso spécifie la position relative de cet onglet — il sera placé après l'élément TabView existant dans la hiérarchie d'onglets."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:36.663Z",
+  "source": "Dockerfile",
+  "sourceHash": "fac4c3607e3e6859108d9bfce571268e5d230365",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker pour une application FastAPI. Il part d'une image Python 3.11 allégée, installe les dépendances FastAPI et uvicorn, copie le code applicatif, expose le port 80, et configure le démarrage automatique du serveur uvicorn.",
+  "explanations": {
+    "2": "FROM python:3.11-slim utilise une version compacte de Python 3.11 plutôt que l'image complète, ce qui réduit la taille finale de l'image Docker.",
+    "5": "WORKDIR /code définit le répertoire courant du conteneur à /code, donc toutes les commandes suivantes s'exécutent depuis cet endroit.",
+    "9": "Le drapeau --no-cache-dir demande à pip de ne pas stocker les fichiers d'installation en cache, ce qui réduit la taille de l'image finale.",
+    "12": "COPY ./main.py /code/main.py prend le fichier main.py depuis ta machine locale et le place dans le conteneur au chemin /code/main.py.",
+    "15": "EXPOSE 80 déclare que le conteneur écoute sur le port 80, mais ce n'est qu'informatif — il faut passer -p au docker run pour vraiment rediriger le trafic.",
+    "18": "CMD lance uvicorn avec main:app (l'application FastAPI dans le module main), en écoutant sur 0.0.0.0 (toutes les interfaces réseau) sur le port 80."
+  }
+}

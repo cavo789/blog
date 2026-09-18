@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:50.504Z",
+  "source": "workspace-prompt.txt",
+  "sourceHash": "75e6763d68e670414c8fdbee8e7719df203b9541",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce document explique comment répondre à des questions sur un blog technique personnel en utilisant uniquement les extraits récupérés, et comment interpréter les métadonnées de chaque document pour fournir des informations correctes.",
+  "explanations": {
+    "5": "Le titre de l'article se trouve dans sourceDocument et peut inclure une date de publication au format (published YYYY-MM-DD) — c'est la vraie date de l'article, pas celle de l'indexation.",
+    "7": "Le champ published indique quand l'article a été indexé dans le système de recherche, mais ce n'est jamais une information utile à citer puisqu'il correspond toujours à aujourd'hui.",
+    "9": "Le champ source contient l'adresse web réelle de l'article que tu dois utiliser tel quel sans la modifier ou la reconstruire.",
+    "11": "Quand tu fournis une date, utilise le format jour/mois/année (par exemple 25/12/2023) plutôt que d'autres formats.",
+    "14": "Si les extraits fournis ne contiennent pas la réponse à la question posée, il faut le dire directement au lieu de faire une supposition ou d'inventer une réponse."
+  }
+}

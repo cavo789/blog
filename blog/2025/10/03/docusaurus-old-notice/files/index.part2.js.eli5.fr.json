@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:23.462Z",
+  "source": "index.part2.js",
+  "sourceHash": "f710bf9b2e324111d6d6274efbc320858c7e63da",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche le contenu d'un article de blog en combinant un avis pour les anciens articles avec le contenu MDX rendu. Il applique un identifiant spécifique et des classes CSS conditionnellement selon que l'on affiche la page complète du blog ou un aperçu.",
+  "explanations": {
+    "7": "On importe un composant personnalisé OldPostNotice depuis le dossier components du site, qui s'affichera au-dessus du contenu de l'article.",
+    "10": "useBlogPost() est un hook qui donne accès au contexte du blog ; ici on récupère isBlogPostPage, un booléen indiquant si on est sur la page d'un article complet.",
+    "13": "On utilise un Fragment React (les balises <> </>) pour regrouper plusieurs éléments enfants sans ajouter un nœud DOM supplémentaire.",
+    "18": "L'identifiant blogPostContainerID est défini sur le conteneur seulement si isBlogPostPage est vrai, ce qui permet au générateur de flux de localiser le contenu principal."
+  }
+}

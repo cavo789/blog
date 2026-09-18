@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:48.178Z",
+  "source": "hangman.part2.php",
+  "sourceHash": "5e536271d0a66c94e5d1eceb9b51c28a9bbc96d7",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce code implémente un jeu du pendu où l'ordinateur choisit un mot aléatoire et le joueur doit deviner les lettres une par une. Le jeu affiche le dessin du pendu qui s'aggrave à chaque mauvaise réponse, et révèle progressivement les lettres correctes jusqu'à ce que le joueur gagne ou épuise ses 6 tentatives.",
+  "explanations": {
+    "12": "array_rand() retourne un index aléatoire du tableau, ce qui nous permet d'accéder à un mot au hasard dans la liste.",
+    "26": "PHP_EOL est une constante qui représente le caractère de nouvelle ligne adapté au système d'exploitation (saut de ligne).",
+    "33": "str_split() découpe le mot en un tableau où chaque élément est une lettre individuelle.",
+    "40": "trim() supprime les espaces inutiles à la fin de la chaîne affichée, créant une présentation plus propre.",
+    "54": "fgets(STDIN) lit une ligne de texte saisie par l'utilisateur depuis la console; trim() enlève l'espace blanc au début et à la fin.",
+    "56": "strlen() vérifie que la saisie fait exactement 1 caractère, et ctype_alpha() s'assure que c'est une lettre alphabétique.",
+    "61": "strtolower() convertit la lettre en minuscule pour la comparer uniformément avec le mot (qui est supposé être en minuscules).",
+    "70": "strpos() cherche la position de la lettre dans le mot; si elle retourne false, la lettre n'existe pas et c'est une mauvaise réponse.",
+    "74": "Cette ligne vérifie si le joueur a deviné tout le mot en comparant le mot affiché (sans espaces) au mot original.",
+    "80": "Cette condition vérifie si le joueur a perdu en vérifiant si les tentatives restantes sont exactement zéro."
+  }
+}

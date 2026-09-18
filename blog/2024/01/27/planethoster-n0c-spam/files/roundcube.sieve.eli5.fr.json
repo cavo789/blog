@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:59.923Z",
+  "source": "roundcube.sieve",
+  "sourceHash": "caf80671f392d338d381dcc995e9ed3cbf5aeca1",
+  "lang": "sieve",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit une liste de motifs pour filtrer les messages électroniques dans Sieve. Les motifs ciblent les domaines spécifiques (Inde, Russie), les adresses de bulletins d'information et les adresses de réponse automatique, probablement pour les organiser, les bloquer ou les gérer automatiquement.",
+  "explanations": {
+    "2": "La clé patterns contient un tableau de chaînes de caractères qui servent de règles de correspondance pour les adresses e-mail.",
+    "3": "Le joker * en début signifie « n'importe quel nom d'utilisateur ou sous-domaine », donc ce motif correspond à tous les e-mails terminant par le domaine .india.",
+    "6": "Ce motif utilise * de chaque côté du @ : il correspondrait à n'importe quelle adresse contenant « newsletter » dans la partie domaine (par exemple user@newsletter.example.com)."
+  }
+}

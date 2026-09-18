@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:16.826Z",
+  "source": "readme.txt",
+  "sourceHash": "94dbdc2854cc0711c3a8ded528752a1016bc728e",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est un document HTML généré automatiquement qui sert de page d'index listant les différents fichiers de documentation des helpers disponibles. Il contient une note indiquant qu'il faut exécuter le script generate_doc.sh pour mettre à jour le contenu si besoin.",
+  "explanations": {
+    "2": "Ce commentaire indique que le contenu du fichier a été créé automatiquement par un processus de génération plutôt qu'écrit manuellement.",
+    "3": "Le script generate_doc.sh est l'outil qui crée ou met à jour ce fichier de documentation — tu dois l'exécuter si tu modifies les helpers sous-jacents.",
+    "5": "Cette ligne était destinée à afficher la date de la dernière génération du document, mais elle n'a pas encore été remplie avec une date réelle (xxx est un placeholder)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:24.149Z",
+  "source": "Dockerfile",
+  "sourceHash": "35e48cb7df7e641eeb6ddfa3c6d4df70b4086bcc",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker pour une application Docusaurus en utilisant Node.js 22 sur Alpine Linux. Il crée un nouveau projet Docusaurus, configure les permissions pour l'utilisateur non-root, installe les dépendances, copie le code source et démarre l'application en écoutant sur toutes les interfaces réseau.",
+  "explanations": {
+    "3": "create-docusaurus@latest génère une nouvelle application Docusaurus dans le répertoire /app avec le template classic en JavaScript, puis chown change le propriétaire du répertoire à l'utilisateur node pour la sécurité.",
+    "6": "USER node bascule vers l'utilisateur non-root nommé node au lieu de root, ce qui réduit les risques de sécurité en cas de compromission du conteneur.",
+    "10": "yarn install télécharge et installe toutes les dépendances du projet listées dans package.json et yarn.lock.",
+    "12": "COPY . . copie tous les fichiers du contexte de build (ton répertoire local) dans le répertoire /app du conteneur.",
+    "14": "--host 0.0.0.0 expose le serveur de développement sur toutes les adresses IP disponibles du conteneur, ce qui le rend accessible de l'extérieur plutôt que seulement en local."
+  }
+}

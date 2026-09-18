@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:27.027Z",
+  "source": "index.js",
+  "sourceHash": "a4986869b284c747b66c209cb4bfd703afc765b3",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant affiche un article de blog avec son en-tête, son contenu et son pied de page. Il ajoute une marge inférieure quand l'article est affiché dans une liste plutôt que sur sa propre page, et montre une section d'articles connexes uniquement quand on consulte la page complète de l'article.",
+  "explanations": {
+    "11": "Cette fonction personnalisée retourne le nom de classe CSS à appliquer au conteneur de l'article — elle centralise la logique pour éviter de la répéter.",
+    "12": "useBlogPost() est un crochet Docusaurus qui fournit le contexte de l'article actuel, notamment le booléen isBlogPostPage qui indique si on affiche l'article seul ou dans une liste.",
+    "13": "On retourne la classe de marge que si on n'est pas sur la page de l'article lui-même, c'est-à-dire si on est dans une liste d'articles.",
+    "15": "BlogPostItem est le composant principal qui reçoit en props les enfants (contenu à afficher) et une classe CSS personnalisée optionnelle.",
+    "20": "clsx() est une utilitaire qui fusionne les noms de classes CSS de manière intelligente, en gérant les valeurs undefined ou nulles.",
+    "25": "On affiche le composant RelatedPosts uniquement si isBlogPostPage est vrai, grâce à l'opérateur && qui s'évalue conditionnellement."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:19.746Z",
+  "source": "phpdoc.xml",
+  "sourceHash": "45ee16fb3a71bf48facb1f0f1766d5f708ddbc0b",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure PHPDocumentor, l'outil qui génère automatiquement la documentation d'un projet PHP. Il spécifie où trouver le code source (dossier src/), où stocker les fichiers générés (./.phpdoc), et où mettre en cache les données temporaires (/tmp/phpdoc).",
+  "explanations": {
+    "3": "configVersion=\"3\" indique que ce fichier utilise la version 3 du format de configuration de PHPDocumentor.",
+    "4": "xmlns:xsi définit l'espace de noms pour les attributs de validation XML qui permettront de vérifier que ce fichier respecte le schéma officiel.",
+    "6": "xsi:noNamespaceSchemaLocation pointe vers le fichier de schéma officiel qui valide la structure et les éléments autorisés dans ce fichier de configuration.",
+    "14": "dsn=\".\" indique que la source du code se trouve à partir du répertoire courant (le point représente le répertoire racine du projet)."
+  }
+}

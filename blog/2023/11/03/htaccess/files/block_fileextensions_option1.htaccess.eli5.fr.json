@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:40.760Z",
+  "source": "block_fileextensions_option1.htaccess",
+  "sourceHash": "fd860218299a77c1d5e5b96526121a4fe83b7a39",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc empêche l'accès direct aux fichiers qui ne sont pas des ressources statiques (images, feuilles de style, polices, etc.). Si une requête cible un fichier qui n'a pas l'une des extensions autorisées, le serveur retourne une erreur 403 Forbidden pour le bloquer.",
+  "explanations": {
+    "1": "RewriteCond vérifie une condition avant d'appliquer une règle. Ici, on teste si le nom du fichier demandé NE correspond PAS (!) à l'une des extensions listées (bmp, css, eot, html, png, etc.) — c'est une liste blanche inversée.",
+    "2": "RewriteRule . - [F] signifie : si la condition ci-dessus est vraie, applique cette règle à toutes les requêtes (le point .). Le tiret (-) dit 'ne pas récrire vers une autre URL', et le flag [F] retourne une erreur 403 Forbidden au client."
+  }
+}

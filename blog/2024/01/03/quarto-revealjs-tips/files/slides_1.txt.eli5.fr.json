@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:42.312Z",
+  "source": "slides_1.txt",
+  "sourceHash": "e5429911e00ec7d293d252057d7b2f33487dcbb7",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier configure une présentation de diapositives en définissant des métadonnées YAML en en-tête. Il spécifie le titre principal et personnalise l'apparence de la première diapositive avec une image de fond, en contrôlant sa taille et sa transparence.",
+  "explanations": {
+    "3": "title-slide-attributes est une clé qui regroupe les propriétés visuelles spécifiques à la diapositive de titre.",
+    "4": "data-background-image définit le chemin vers l'image à afficher en arrière-plan de la première diapositive.",
+    "5": "data-background-size: cover indique que l'image doit couvrir toute la surface, en s'adaptant sans laisser d'espaces vides.",
+    "6": "data-background-opacity: \"0.9\" règle la transparence de l'image d'arrière-plan à 90%, la rendant légèrement semi-transparente."
+  }
+}

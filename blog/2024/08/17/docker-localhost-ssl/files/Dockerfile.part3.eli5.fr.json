@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:50.423Z",
+  "source": "Dockerfile.part3",
+  "sourceHash": "d901179a3693660bcb846cbd4f0aed0eec6114d7",
+  "lang": "part3",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image nginx en installant openssl pour le support SSL, puis copie les certificats SSL et le fichier de configuration nginx dans l'image. Le nettoyage des caches apt réduit la taille finale de l'image.",
+  "explanations": {
+    "3": "apt-get update rafraîchit la liste des paquets disponibles ; les backslashes permettent de continuer la commande sur plusieurs lignes pour la lisibilité.",
+    "5": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache téléchargés, ce qui diminue significativement la taille de l'image Docker."
+  }
+}

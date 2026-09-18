@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:44:41.062Z",
+  "source": "make_config.yaml",
+  "sourceHash": "66b61dae509e08e786dccde833b68d9e2c4fe7ea",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit une application Joomla complète avec deux services : un conteneur Joomla qui exécute Apache et PHP, et un conteneur MySQL qui fournit la base de données. Le service Joomla attend que la base de données soit saine avant de démarrer, et les deux communiquent via un réseau Docker partagé en utilisant des volumes montés pour persister les données.",
+  "explanations": {
+    "5": "depends_on indique que le service joomla dépend du service joomladb — il ne démarrera que lorsque joomladb sera prêt.",
+    "7": "condition: service_healthy signifie que Docker attendrra que le healthcheck du service joomladb réussisse avant de lancer joomla, plutôt que juste d'attendre que le conteneur démarre.",
+    "8": "required: true force l'attente de la condition de santé ; sans cela Docker continuerait même si le healthcheck échouait.",
+    "23": "user: 1002:1002 indique que les processus dans le conteneur tournent avec l'UID 1002 et le GID 1002 au lieu de root, pour des raisons de sécurité.",
+    "26": "source: /tmp/joomla/joomla_data est le chemin sur la machine hôte qui sera connecté au conteneur.",
+    "27": "target: /var/www/html est le répertoire dans le conteneur où les fichiers Joomla seront accessibles.",
+    "29": "create_host_path: true demande à Docker de créer automatiquement le répertoire source s'il n'existe pas.",
+    "35": "MYSQL_RANDOM_ROOT_PASSWORD: \"'1'\" génère un mot de passe aléatoire pour l'utilisateur root de MySQL plutôt que d'en définir un fixe.",
+    "37": "healthcheck définit un test que Docker exécutera régulièrement pour vérifier que la base de données est opérationnelle.",
+    "40": "CMD indique que le healthcheck exécutera la commande mysqladmin ping pour vérifier que MySQL répond.",
+    "44": "timeout: 20s limite à 20 secondes le temps d'attente pour que la commande de healthcheck se termine.",
+    "45": "retries: 10 signifie que Docker retentera le healthcheck jusqu'à 10 fois avant de marquer le conteneur comme non sain.",
+    "64": "name: running-joomla-in-docker_joomla_network assigne un nom explicite au réseau Docker pour l'éviter qu'il ne soit généré automatiquement."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:10.485Z",
+  "source": "tags.py",
+  "sourceHash": "6b8e743f2c47e9f99199f7baed5355eb42385a9f",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée une liste de métadonnées pour organiser les tags dans la documentation OpenAPI d'une application FastAPI. Chaque tag groupe des endpoints liés ensemble — par exemple, tous les endpoints de récupération de données portent le tag « Retrieving data ». La liste est ensuite passée à FastAPI pour structurer la documentation générée automatiquement.",
+  "explanations": {
+    "3": "list[dict[str, str]] est une annotation de type qui dit : cette variable contient une liste, et chaque élément est un dictionnaire dont les clés et les valeurs sont toutes des chaînes de caractères.",
+    "16": "openapi_tags=tags_metadata enregistre tes métadonnées auprès de FastAPI pour que la documentation OpenAPI/Swagger les utilise quand elle génère l'interface interactive."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:40.878Z",
+  "source": "compose.yaml",
+  "sourceHash": "6ce2d68ad276d32f0c6d7ed3b552d4c2e0a36196",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose configure un conteneur de développement nommé my_sample_devcontainer_app qui construit une image à partir du Dockerfile dans ./.devcontainer. Le conteneur monte le répertoire courant comme volume, partage le port 5679 pour le débogage, charge les variables d'environnement depuis deux fichiers .env, et reste actif indéfiniment grâce à la commande sleep infinity.",
+  "explanations": {
+    "7": "DOCKER_APP_HOME=${APP_HOME:-/app} utilise la syntaxe de substitution Docker : elle prend la variable APP_HOME si elle existe, sinon utilise la valeur par défaut /app.",
+    "8": "OS_USERID=${LOCAL_UID:-1000} fait la même chose que la ligne précédente : elle passe l'UID local au build, avec 1000 comme valeur par défaut si LOCAL_UID n'est pas définie.",
+    "18": "Le volume .:${APP_HOME:-/app} monte le répertoire courant du host dans le répertoire APP_HOME du conteneur, permettant au code source d'être modifié sur la machine hôte et visible instantanément dans le conteneur.",
+    "19": "Ce volume nommé vscode-extensions persiste les extensions VS Code entre les relances du conteneur, évitant de devoir les réinstaller à chaque fois.",
+    "20": "Ce volume monte le fichier .bash_history du conteneur vers un dossier sur le host, avec rw permettant une lecture-écriture bidirectionnelle, pour conserver l'historique des commandes entre les sessions.",
+    "22": "La commande sleep infinity gardera le conteneur en cours d'exécution indéfiniment au lieu qu'il s'arrête immédiatement après son démarrage."
+  }
+}

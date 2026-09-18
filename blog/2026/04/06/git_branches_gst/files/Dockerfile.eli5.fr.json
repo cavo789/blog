@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:06:11.420Z",
+  "source": "Dockerfile",
+  "sourceHash": "66a9c7016671d0cdbdd1ca30224ce40d2f71ac72",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec zsh et git, puis configure un environnement de démonstration. Il ajoute une fonction zsh personnalisée au fichier de configuration pour afficher les trois branches git les plus récemment modifiées, et initialise un dépôt git d'exemple avec trois branches ayant des dates de commit différentes pour illustrer un scénario courant où on oublie de changer de branche.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives lors de l'installation, ce qui est nécessaire dans un conteneur où il n'y a pas d'utilisateur pour répondre.",
+    "5": "Les commandes apt-get update et apt-get install sont chaînées avec && sur la même instruction RUN pour réduire la taille de la couche Docker en évitant une couche intermédiaire.",
+    "9": "rm -rf /var/lib/apt/lists/* nettoie le cache du gestionnaire de paquets après l'installation pour réduire la taille finale de l'image.",
+    "12": "printf '%s\\n' est utilisé pour écrire plusieurs lignes dans un fichier; chaque argument devient une ligne, ce qui est plus lisible que d'échapper des sauts de ligne.",
+    "14": "La séquence '\\'' permet d'inclure un guillemet simple dans une chaîne délimitée par des guillemets simples: on ferme la chaîne, on ajoute un guillemet échappé, puis on la rouvre.",
+    "19": "command git rev-parse --is-inside-work-tree vérifie si le répertoire courant est dans un dépôt git; la redirection >/dev/null 2>&1 supprime toute sortie car on ne veut que le code de retour.",
+    "31": "echo $'\\e[1;36m...' utilise la syntaxe $'...' de zsh pour interpréter les séquences d'échappement comme \\e (qui produit une vraie couleur ANSI dans le terminal).",
+    "42": "unalias gst 2>/dev/null supprime l'alias gst s'il existe déjà, en ignorant l'erreur si l'alias n'existe pas, ce qui permet à la nouvelle fonction d'être définie sans conflit.",
+    "53": ">> /root/.zshrc ajoute tout le texte généré par printf à la fin du fichier .zshrc existant dans le conteneur.",
+    "58": "git config --global définit la configuration git au niveau système du conteneur, ce qui s'appliquera à tous les dépôts créés après.",
+    "63": "GIT_AUTHOR_DATE et GIT_COMMITTER_DATE permettent de créer des commits avec des dates antérieures à maintenant; date -d '-100 days' calcule la date d'il y a 100 jours.",
+    "74": "git checkout -q main revient à la branche main; le flag -q supprime les messages informationnels de checkout.",
+    "88": "CMD avec -i et -l lance zsh en mode interactif et comme shell de login, ce qui charge les fichiers de configuration comme .zshrc."
+  }
+}

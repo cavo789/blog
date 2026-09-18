@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:42.027Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "f05b203d122bf0c85232d95a387a6b1f7d3fb757",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier exporte une configuration de thème qui active le masquage automatique de la barre de navigation lors du défilement vers le bas, et la réaffiche lors du défilement vers le haut.",
+  "explanations": {
+    "1": "export default exporte cet objet comme valeur par défaut du module, ce qui signifie que tout fichier qui importe ce module recevra directement cet objet.",
+    "5": "hideOnScroll: true indique au système de configuration que la navbar doit disparaître automatiquement quand l'utilisateur scrolle vers le bas."
+  }
+}

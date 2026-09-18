@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:55.722Z",
+  "source": "styles.modules.css",
+  "sourceHash": "647026277c3be555b355ada86f11302d98871974",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fichier CSS définit les styles pour deux éléments : une description avec une police petite et une date avec une couleur grise, une taille légèrement réduite, un espacement en bas et un style italique.",
+  "explanations": {
+    "8": "margin-bottom: 8 sans unité n'appliquera aucun espacement — il faut ajouter une unité comme px, em ou rem pour que la propriété fonctionne correctement."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:58.594Z",
+  "source": "hangman_minify.php",
+  "sourceHash": "b896b3b2a10cbb336977563180ede73ec7ce5a0a",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script implémente un jeu du pendu en ligne de commande. Le joueur doit deviner les lettres d'un mot caché, en disposant d'un nombre limité de tentatives avant que le jeu ne se termine. Le programme affiche l'état du pendu, les lettres devinées et demande continuellement au joueur d'entrer une lettre jusqu'à la victoire ou la défaite.",
+  "explanations": {
+    "3": "La fonction ppms retourne un tableau de mots parmi lesquels le jeu en sélectionnera un au hasard.",
+    "10": "array_rand récupère une clé aléatoire du tableau passé en paramètre, permettant de choisir un mot au hasard dans la liste.",
+    "11": "Cette fonction affiche les différentes étapes du dessin du pendu selon le nombre d'erreurs, avec la dernière entrée du tableau étant le message d'erreur.",
+    "20": "La variable ppmb accumule progressivement les lettres devinées correctement entrelacées avec des traits de soulignement pour les lettres non devinées.",
+    "21": "Cette boucle parcourt chaque lettre du mot et la montre si elle a été devinée, sinon affiche un trait de soulignement à la place.",
+    "22": "La boucle principale du jeu initialise le mot à deviner, la liste des lettres devinées et le compteur d'erreurs à 6.",
+    "24": "Cette ligne longue gère l'entrée du joueur : elle vérifie qu'une seule lettre alphabétique a été entrée, qu'elle n'a pas déjà été devinée, l'ajoute à la liste et décrémente le compteur si la lettre n'existe pas dans le mot.",
+    "25": "On supprime les espaces du résultat affiché pour comparer uniquement les lettres, et si le mot complet est deviné, le joueur gagne et la boucle s'arrête.",
+    "26": "Cette condition vérifie si le compteur d'erreurs a atteint zéro, ce qui signifie que le joueur a perdu toutes ses tentatives."
+  }
+}

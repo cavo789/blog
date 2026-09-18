@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:05:19.007Z",
+  "source": "compose.yaml",
+  "sourceHash": "ce1d3412e4c89b726372953340e13c69e1d095b1",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : docusaurus construit à partir du Dockerfile local avec des variables d'environnement pour les chemins et permissions, et languagetool qui utilise une image pré-existante pour la correction de langue. Les deux services partagent des volumes persistants pour éviter de reconstruire les dépendances à chaque démarrage.",
+  "explanations": {
+    "9": "APP_HOME=${APP_HOME:-/opt/docusaurus} passe une variable build à Docker, en utilisant /opt/docusaurus comme valeur par défaut si APP_HOME n'est pas défini dans l'environnement.",
+    "12": "user définit l'identifiant utilisateur et groupe sous lequel le conteneur docusaurus s'exécutera, avec des valeurs par défaut standard (1000) pour éviter de tourner en root.",
+    "16": ".. désigne le répertoire parent du fichier compose, monté dans le conteneur au chemin APP_HOME pour que le code source soit accessible.",
+    "17": "node_modules:/opt/docusaurus/node_modules crée un volume nommé qui persiste les dépendances npm entre les redémarrages, évitant une réinstallation complète.",
+    "19": "sleep infinity garde le conteneur docusaurus actif indéfiniment pour qu'on puisse y exécuter des commandes, plutôt que de quitter immédiatement.",
+    "25": "langtool_languageModel=/ngrams configure languagetool pour utiliser le dossier /ngrams (monté via le volume) pour stocker ses modèles de langue."
+  }
+}

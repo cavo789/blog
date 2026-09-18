@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:56.403Z",
+  "source": "index.php",
+  "sourceHash": "5c72388daf52ed2e4e9ebf2065cf8d4fa530ff97",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier PHP simple appelle phpinfo() pour afficher des informations détaillées sur la configuration PHP installée sur le serveur, notamment les modules chargés, les paramètres de configuration et les variables d'environnement.",
+  "explanations": {
+    "3": "phpinfo() est une fonction PHP intégrée qui génère et affiche une page HTML contenant toutes les informations de configuration PHP du serveur actuel."
+  }
+}

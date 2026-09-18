@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:28.779Z",
+  "source": "HelloWorld.vb",
+  "sourceHash": "25b331b8a6fc711572a14da3b7341095448e8558",
+  "lang": "vb",
+  "textLang": "fr",
+  "summary": "Ce programme VB.NET définit un point d'entrée simple qui affiche le message « Hello, world! » dans la console. C'est un exemple basique montrant la structure minimale d'une application exécutable en VB.NET.",
+  "explanations": {}
+}

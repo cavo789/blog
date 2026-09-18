@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:31.700Z",
+  "source": "makefile.part18",
+  "sourceHash": "2a185c173706ba34a151fc3bd6efead4e1a3b06c",
+  "lang": "part18",
+  "textLang": "fr",
+  "summary": "Ce fichier Makefile définit une cible appelée helloWorld qui, lorsqu'elle est exécutée, affiche le texte 'Hello World' à l'écran. C'est un exemple simple de tâche automatisée qu'on peut invoquer avec la commande make.",
+  "explanations": {
+    "1": "helloWorld est le nom de la cible dans ce Makefile — c'est ce qu'on appellera avec 'make helloWorld' pour exécuter les commandes qui suivent.",
+    "2": "La ligne doit commencer par une tabulation (pas des espaces) car c'est une règle syntaxique stricte de Make ; cette tabulation indique à Make que c'est une commande à exécuter."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:34.865Z",
+  "source": "windows_hosts.txt",
+  "sourceHash": "302e42f54d3afe22f7cf588009690ddd77d17d3b",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier hosts configure des alias de noms d'hôtes locaux en redirigeant des domaines vers l'adresse localhost. La ligne 2 est un commentaire spécial utilisé par des outils de documentation ou d'affichage pour marquer la ligne suivante comme importante.",
+  "explanations": {
+    "2": "Ce commentaire highlight-next-line est une directive destinée à des outils externes (comme Docusaurus) pour mettre en évidence ou faire ressortir la ligne qui suit dans la documentation ou l'affichage.",
+    "3": "Cette entrée redirige le domaine mysite.local vers 127.0.0.1, permettant d'accéder à un serveur local via ce nom de domaine au lieu de l'adresse IP brute."
+  }
+}

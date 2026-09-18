@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:46.622Z",
+  "source": ".pre-commit-config.yaml",
+  "sourceHash": "a4fe6ae044a8c90d0f043d637619265cc44c357e",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure pre-commit, un outil qui exécute automatiquement des vérifications et des corrections sur le code avant chaque commit. Il définit trois dépôts de hooks : le premier fournit des vérifications basiques (YAML valide, fin de fichier, espaces inutiles), et le second applique le formateur de code Black pour assurer une cohérence de style Python.",
+  "explanations": {
+    "3": "rev spécifie la version exacte du dépôt à utiliser — ici v2.3.0 des pre-commit-hooks standards.",
+    "9": "rev indique la version de Black à utiliser, ici 24.10.0, pour que tous les développeurs appliquent le même formateur."
+  }
+}

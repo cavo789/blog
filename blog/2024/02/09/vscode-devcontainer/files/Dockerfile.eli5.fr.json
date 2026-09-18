@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:33:42.418Z",
+  "source": "Dockerfile",
+  "sourceHash": "5bf3fd6ea01933a122fb93ff7af8f477f4bef2fa",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image PHP-FPM avec des outils de développement (php-cs-fixer, phpcbf, phpcs) et Composer. Il configure un utilisateur non-root avec des répertoires de travail, installe les dépendances système nécessaires, et prépare l'environnement pour exécuter des applications PHP dans un conteneur.",
+  "explanations": {
+    "17": "Cela crée une étape intermédiaire nommée composer_base basée sur l'image officielle Composer — on l'utilisera plus tard pour copier juste l'exécutable Composer.",
+    "19": "FROM php:${PHP_VERSION}-fpm démarre une nouvelle étape de build à partir de l'image PHP officielle avec FPM (FastCGI Process Manager), ce qui abandonne les couches de la précédente étape.",
+    "22": "ENV TZ=${TIMEZONE} définit la variable d'environnement TZ (fuseau horaire) dans l'image finale — elle persistera quand le conteneur s'exécutera.",
+    "27": "set -e -x fait échouer le script au premier erreur (set -e) et affiche chaque commande exécutée (set -x), utile pour déboguer les builds.",
+    "28": "Cette condition vérifie si PHPCSFIXER_INSTALL vaut 'true' en tant que chaîne — si oui, les commandes suivantes s'exécutent, sinon elles sont ignorées.",
+    "29": "printf avec les codes \\e[0;105m affiche le texte en couleur magenta sur la sortie build — c'est juste cosmétique pour rendre le build plus lisible.",
+    "31": "chmod +x rend le fichier .phar exécutable directement depuis la ligne de commande sans passer par 'php' en préfixe.",
+    "47": "ENV COMPOSER_HOME=${COMPOSER_HOME} expose la valeur ARG en tant que variable d'environnement persistante dans le conteneur.",
+    "50": "mkdir -p crée les répertoires intermédiaires au besoin — le flag -p évite les erreurs si les dossiers existent déjà.",
+    "52": "chmod -R 777 donne les permissions complètes (lecture, écriture, exécution) à tous les utilisateurs sur ce dossier et son contenu récursivement.",
+    "54": "COPY --from=composer_base copie l'exécutable Composer depuis l'étape builder précédente au lieu de le télécharger — c'est plus rapide et sûr.",
+    "60": "useradd crée un utilisateur nommé docker avec l'ID 1000, l'ajoute aux groupes www-data et root, sans mot de passe (--password '').",
+    "66": "apt-get update -yqq rafraîchit la liste des paquets disponibles — le flag -yqq accepte automatiquement et réduit le bruit de sortie.",
+    "68": "docker-php-ext-install zip compile et active l'extension PHP zip — c'est un helper spécifique aux images Docker PHP officielles.",
+    "69": "docker-php-source delete supprime les sources PHP téléchargées temporairement pendant la compilation, ce qui réduit la taille de l'image."
+  }
+}

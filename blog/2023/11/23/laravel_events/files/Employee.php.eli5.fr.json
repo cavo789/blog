@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:11.401Z",
+  "source": "Employee.php",
+  "sourceHash": "5351a50225a3fca986f1565345c87d0bf4560202",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Cette classe Employee représente un employé avec trois propriétés : prénom, nom et pseudo. Elle fournit des méthodes pour accéder et modifier ces propriétés, chacune avec des valeurs par défaut spécifiées directement dans le constructeur. Les setters retournent l'objet lui-même pour permettre le chaînage de méthodes.",
+  "explanations": {
+    "7": "Le constructeur PHP 8 utilise la promotion de propriétés : les paramètres avec des modificateurs d'accès (private) deviennent automatiquement des propriétés de classe sans besoin de code supplémentaire.",
+    "8": "La valeur 'John' est une valeur par défaut ; si aucun prénom n'est fourni lors de la création d'un objet Employee, il sera défini à 'John'.",
+    "22": "Le setter retourne $this, qui est l'objet courant ; cela permet de chaîner plusieurs appels de méthode comme $employee->setFirstName('Jane')->setLastName('Smith')."
+  }
+}

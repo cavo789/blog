@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:15.743Z",
+  "source": ".part23.htaccess",
+  "sourceHash": "c1f1472a7c0ab653f14c3fdd5b3e7be7063a3eef",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier contient une directive de redirection permanente qui envoie les visiteurs accédant à /old.php vers http://www.yoursite.com/new.php. Le code 301 indique au navigateur et aux moteurs de recherche que cette redirection est permanente, ce qui aide à préserver le classement SEO de l'ancienne page.",
+  "explanations": {
+    "1": "Redirect 301 signifie une redirection HTTP permanente — les navigateurs et moteurs de recherche sauront que l'ancienne URL ne reviendra pas et mettront à jour leurs enregistrements en conséquence."
+  }
+}

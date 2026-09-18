@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:29.573Z",
+  "source": "package.json",
+  "sourceHash": "34d34f5e7cbb11cf545c0675c2a8762253901e78",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier package.json configure un projet Node.js appelé oracle-connector-nodejs qui se connecte à une base de données Oracle. Il définit le point d'entrée principal, les scripts disponibles et la dépendance externe oracledb nécessaire pour communiquer avec Oracle.",
+  "explanations": {
+    "5": "main indique le fichier JavaScript que Node.js doit charger en priorité quand le projet est importé comme module par un autre projet.",
+    "7": "Cette entrée scripts crée une commande raccourcie : en tapant npm start, on exécute node main.js sans avoir à taper la commande complète.",
+    "10": "Le caret (^) signifie que npm peut installer n'importe quelle version 6.x.x d'oracledb tant qu'elle est compatible, mais pas la version 7.0.0 ou supérieure."
+  }
+}

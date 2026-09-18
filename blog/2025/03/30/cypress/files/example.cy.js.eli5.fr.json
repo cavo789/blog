@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:31.553Z",
+  "source": "example.cy.js",
+  "sourceHash": "3baf42046ac68370f319d9217dcd9cfa1cea222f",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce code définit un test automatisé avec Cypress qui visite un site web et vérifie qu'un nom spécifique apparaît sur la page. C'est un test de fumée basique pour s'assurer que le contenu attendu est présent.",
+  "explanations": {
+    "1": "describe() crée un groupe de tests nommé 'Testing my blog' pour organiser les tests associés.",
+    "2": "it() définit un test individuel appelé 'Check my last name is somewhere' qui sera exécuté.",
+    "3": "cy.visit() demande à Cypress de naviguer vers l'URL spécifiée dans le navigateur du test.",
+    "4": "cy.contains() fait échouer le test si le texte 'Christophe Avonture' n'est pas trouvé n'importe où sur la page."
+  }
+}

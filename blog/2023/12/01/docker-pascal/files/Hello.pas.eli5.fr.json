@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:44.226Z",
+  "source": "Hello.pas",
+  "sourceHash": "cd621fe7df0365d4dd2b26011811a2e2d888e924",
+  "lang": "pas",
+  "textLang": "fr",
+  "summary": "Ce programme Pascal affiche simplement un message texte à l'écran. C'est un exemple minimal qui démontre la structure de base d'un programme Pascal exécutable.",
+  "explanations": {
+    "2": "writeln affiche du texte suivi d'un saut de ligne. Les deux apostrophes consécutives '' représentent une seule apostrophe littérale dans la chaîne de caractères."
+  }
+}

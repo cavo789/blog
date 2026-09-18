@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:36.886Z",
+  "source": "Dockerfile",
+  "sourceHash": "fb2244227dff88c651a39115a1e6689783df052c",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur PHP 8.2 avec Apache. Il copie le code source dans le répertoire de l'application web, configure PHP pour la production, et change l'utilisateur d'exécution pour des raisons de sécurité.",
+  "explanations": {
+    "3": "COPY . /var/www/html copie tous les fichiers du répertoire courant (sur ta machine) dans le dossier /var/www/html du conteneur, où Apache servira les fichiers PHP par défaut.",
+    "5": "RUN exécute une commande dans le conteneur en construction : ici on renomme le fichier de configuration PHP de production en php.ini pour que PHP l'utilise.",
+    "7": "USER www-data change l'utilisateur qui exécutera les processus suivants et pendant le démarrage du conteneur — www-data est un utilisateur avec des droits limités pour plus de sécurité au lieu de tourner en root."
+  }
+}

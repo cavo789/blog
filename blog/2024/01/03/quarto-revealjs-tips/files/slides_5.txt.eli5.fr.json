@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:14.519Z",
+  "source": "slides_5.txt",
+  "sourceHash": "eb9d8001b11987aabeea786ccbe1b5794e9138bc",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce document Markdown décrit les technologies et outils utilisés dans un projet, en commençant par Apache comme serveur web. Il explique que l'équipe utilise Apache via Docker plutôt que de l'installer localement sur chaque machine.",
+  "explanations": {
+    "1": "Les tirets délimitent une section de métadonnées YAML au début du fichier Markdown, contenant des informations comme le titre du document.",
+    "9": "Les crochets carrés et parenthèses créent un lien hypertexte Markdown : le texte entre crochets s'affiche, et l'URL entre parenthèses est la cible du lien."
+  }
+}

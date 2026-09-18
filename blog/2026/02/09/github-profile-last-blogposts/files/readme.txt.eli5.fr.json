@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:14.327Z",
+  "source": "readme.txt",
+  "sourceHash": "ed94f4263843d11c3ae6ae6eca28c65530daf795",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est un profil README pour GitHub qui présente un développeur avec son nom d'utilisateur, des liens vers ses repositories et articles de blog, ainsi que des badges affichant ses statistiques GitHub et langages les plus utilisés. Le contenu se structure autour d'une introduction, de visualisations de stats, et d'une section destinée à lister dynamiquement les derniers articles publiés.",
+  "explanations": {
+    "1": "Cette directive désactive la règle MD033 de markdownlint, qui normalement empêche l'utilisation de balises HTML directes en Markdown — ici on en a besoin pour la table.",
+    "7": "C'est une image générée dynamiquement par vercel.app qui affiche les statistiques GitHub de l'utilisateur cavo789 (nombre de commits, repositories, etc.) avec un thème visuel appelé radical.",
+    "9": "Cette image affiche un graphique des langages de programmation que cavo789 utilise le plus souvent dans ses repositories publics.",
+    "17": "Ces balises HTML commentées servent de marqueurs pour un script automatisé qui injectera la liste des derniers articles de blog entre START et END à chaque mise à jour."
+  }
+}

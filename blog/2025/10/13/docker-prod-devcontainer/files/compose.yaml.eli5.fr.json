@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:00.310Z",
+  "source": "compose.yaml",
+  "sourceHash": "c8b823cbad0b066d8852efa34efbd595a7dbd5e7",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé 'app' qui construit une image Docker à partir du Dockerfile du répertoire courant, en passant plusieurs variables de configuration (chemin d'accueil, version Python, fuseau horaire). Le service expose le port 8000, utilise un fichier .env pour les variables d'environnement, et s'exécute avec des restrictions de sécurité pour limiter les privilèges du conteneur.",
+  "explanations": {
+    "8": "La section args passe des variables au build Docker, chacune avec une valeur par défaut après :- qui est utilisée si la variable n'est pas définie.",
+    "9": "DOCKER_APP_HOME=${APP_HOME:-/app} signifie utiliser la variable APP_HOME s'il existe, sinon utiliser /app par défaut.",
+    "16": "Le mappage de port %%port=8000%%:8000 expose le port 8000 du conteneur sur le port 8000 de l'hôte (%%port=8000%% sera remplacé au runtime).",
+    "17": "user: \"1001:1001\" fait tourner le conteneur avec l'utilisateur et le groupe ayant l'ID 1001, plutôt que root pour des raisons de sécurité.",
+    "19": "no-new-privileges:true empêche le conteneur d'acquérir de nouveaux privilèges, même via les bits setuid/setgid."
+  }
+}

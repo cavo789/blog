@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:04.971Z",
+  "source": "Dockerfile",
+  "sourceHash": "11bc5d8f6fc8769b70698b75b673fca78a990636",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker pour un environnement de développement basé sur Python 3.11, fourni par Microsoft. Il configure le répertoire de travail où le code de l'application sera situé dans le conteneur.",
+  "explanations": {
+    "2": "FROM charge une image de base existante — ici, l'image officielle de Microsoft pour les devcontainers avec Python 3.11 pré-installé.",
+    "8": "WORKDIR définit le répertoire par défaut à l'intérieur du conteneur où les commandes suivantes s'exécuteront et où le code sera placé."
+  }
+}

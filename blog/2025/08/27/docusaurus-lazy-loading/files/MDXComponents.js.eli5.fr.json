@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:00.854Z",
+  "source": "MDXComponents.js",
+  "sourceHash": "9666ef5e59a9835c059f5bad1b9de9622c07c396",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier exporte une configuration de composants MDX personnalisés pour Docusaurus. Il réutilise tous les composants par défaut et remplace spécifiquement le composant img pour ajouter des attributs de chargement optimisé et un style de bordure personnalisé à toutes les images du contenu.",
+  "explanations": {
+    "3": "MDXComponents est un objet fourni par le thème Docusaurus qui contient les composants React par défaut pour chaque élément MDX (comme img, h1, p, etc.).",
+    "8": "La syntaxe ...MDXComponents copie tous les composants par défaut dans l'objet exporté, ce qui signifie qu'on garde leur comportement sauf pour ceux qu'on redéfinit après.",
+    "10": "On redéfinit le composant img en tant que fonction qui reçoit les propriétés (props) passées à chaque balise img du contenu MDX.",
+    "11": "On utilise la déstructuration pour extraire certaines propriétés spécifiques et mettre tout le reste dans rest, qu'on réutilisera plus tard avec ...rest.",
+    "20": "Si aucun attribut loading n'est fourni, on utilise 'lazy' par défaut, ce qui fait charger l'image seulement quand elle devient visible.",
+    "21": "De même, si decoding n'est pas spécifié, on utilise 'async' pour permettre au navigateur de décoder l'image sans bloquer le rendu.",
+    "22": "On combine la classe CSS passée en prop avec une chaîne vide pour être sûr qu'on a toujours une valeur valide.",
+    "25": "On crée un nouvel objet de style qui combine la bordure personnalisée avec n'importe quel style passé en prop (grâce à ...style qui écrase les propriétés du même nom)."
+  }
+}

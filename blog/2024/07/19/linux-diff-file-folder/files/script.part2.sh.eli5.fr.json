@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:13.191Z",
+  "source": "script.part2.sh",
+  "sourceHash": "d8ee1d020afc9bae4c73298536f55f14ad84c30a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script compare le contenu de deux dossiers source en affichant les différences entre eux. Il commence par vérifier que les deux chemins existent, puis utilise diff pour lister les fichiers qui diffèrent, en ignorant les lignes vides.",
+  "explanations": {
+    "6": "Cette ligne teste si le dossier FOLDER_SOURCE n'existe pas ; si c'est le cas, elle affiche un message d'erreur en rouge et quitte le script avec return 0.",
+    "7": "Même vérification pour FOLDER_COMPARE_WITH : si le dossier n'existe pas, affichage d'un message d'erreur et sortie du script.",
+    "9": "printf affiche un message informatif en bleu indiquant quels dossiers vont être comparés ; les séquences \\033 sont des codes ANSI pour la couleur du terminal.",
+    "11": "pushd change le répertoire courant vers FOLDER_SOURCE (en masquant le résultat avec > /dev/null), lance diff pour comparer, puis popd revient au répertoire précédent ; LC_ALL=C force un tri cohérent indépendant de la locale."
+  }
+}

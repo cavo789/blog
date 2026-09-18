@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:44.531Z",
+  "source": "Dockerfile",
+  "sourceHash": "6c3873d2ec88219b0673a9c3e5ae9fb7b469d0d5",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Ubuntu 22.04 avec Python, pip, et Quarto (un outil de publication scientifique) préinstallés. Il configure ensuite l'environnement Python pour désactiver la mise en cache bytecode et activer la sortie non bufferisée, puis installe les dépendances Python nécessaires à Quarto.",
+  "explanations": {
+    "5": "apt-get update rafraîchit les listes de paquets disponibles, puis apt-get install -y curl python3 python3-pip installe ces trois outils (le -y accepte automatiquement les confirmations).",
+    "6": "curl -L -o quarto.tar.gz télécharge le fichier Quarto depuis GitHub en suivant les redirections et en le sauvegardant sous le nom quarto.tar.gz.",
+    "7": "tar -xzf quarto.tar.gz -C /opt/quarto --strip-components=1 extrait l'archive compressée dans /opt/quarto en supprimant le premier niveau de répertoires (la couche parent inutile), et ln -s crée un lien symbolique pour accéder à Quarto depuis n'importe où.",
+    "13": "PYTHONDONTWRITEBYTECODE=1 dit à Python de ne pas créer les fichiers .pyc (bytecode compilé), ce qui allège l'image Docker.",
+    "16": "PYTHONUNBUFFERED=1 oblige Python à afficher immédiatement les logs au lieu de les accumuler en mémoire, utile pour voir les messages en temps réel dans les conteneurs.",
+    "19": "pip3 install --no-cache-dir jupyter PyYAML installe deux paquets Python essentiels à Quarto sans conserver les fichiers cache téléchargés, ce qui économise de l'espace disque."
+  }
+}

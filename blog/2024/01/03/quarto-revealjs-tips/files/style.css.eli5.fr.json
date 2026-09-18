@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:27.694Z",
+  "source": "style.css",
+  "sourceHash": "b0a235ef50e70cd5f645e695f50af60d0f906dff",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fichier CSS définit les styles pour les logos affichés sur des slides de présentation. Il crée trois classes : une pour positionner un logo en bas à droite avec hauteur limitée, une pour un logo plus grand en haut à gauche, et une classe de base pour le logo lui-même avec positionnement fixe.",
+  "explanations": {
+    "2": "bottom: 0 !important force le logo à se coller au bas de l'écran, et le !important écrase tout autre style CSS qui pourrait s'appliquer.",
+    "3": "left: unset !important retire toute valeur de positionnement à gauche, car ce logo se positionne par la droite (right).",
+    "5": "max-height: 2.2rem !important limite la hauteur maximale du logo à 2.2 unités de taille (rem), pour qu'il ne devienne pas trop gros.",
+    "6": "right: 12px !important éloigne le logo de 12 pixels du bord droit de l'écran.",
+    "10": "bottom: unset !important retire le positionnement depuis le bas, parce que ce logo se positionne depuis le haut (top).",
+    "11": "left: 12px éloigne le logo de 12 pixels du bord gauche de l'écran.",
+    "13": "max-height: unset !important retire toute limite de hauteur maximale, pour permettre au logo d'utiliser sa hauteur complète.",
+    "15": "top: 5px positionne le logo à 5 pixels du haut de l'écran.",
+    "21": "position: fixed ancre le logo à une position fixe dans la fenêtre du navigateur, donc il reste visible même en défilant.",
+    "22": "width: 100x !important est probablement une typo (devrait être 100% ou 100px) et force la largeur avec le !important."
+  }
+}

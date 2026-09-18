@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:14.520Z",
+  "source": "compose_joomla_latest.yaml",
+  "sourceHash": "f55755295783fc6a7d9449d0fb9599503ceed677",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un conteneur Joomla exposé sur le port 8080 et une base de données MySQL associée. Les deux services redémarrent automatiquement en cas d'arrêt, et ils communiquent entre eux via des variables d'environnement qui configurent la connexion à la base de données.",
+  "explanations": {
+    "6": "La syntaxe %%port=8080%% est un placeholder qui sera remplacé par la valeur 8080 lors du déploiement, permettant de mapper le port 80 du conteneur au port 8080 de la machine hôte.",
+    "8": "JOOMLA_DB_HOST=joomladb indique au conteneur Joomla que le serveur de base de données s'appelle joomladb, ce qui correspond au nom du service MySQL défini plus bas.",
+    "9": "Le placeholder %%dbPassword=example%% sera remplacé par un mot de passe réel avant le déploiement, c'est la même valeur que celle utilisée pour MYSQL_ROOT_PASSWORD."
+  }
+}

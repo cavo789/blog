@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:37.351Z",
+  "source": "_quarto.yml",
+  "sourceHash": "f62b42e6652facc2a4ebdadd09b03adf6a5fc8d9",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un projet Quarto pour générer un site web. Il définit le répertoire de sortie, la langue, et les paramètres du site comme le titre, la navigation et la barre latérale. Il active aussi le filtre partials pour permettre l'utilisation de fragments de contenu réutilisables.",
+  "explanations": {
+    "3": "output-dir: . signifie que les fichiers générés seront écrits dans le répertoire courant (le point représente le dossier actuel).",
+    "12": "style: \"docked\" configure la barre latérale pour qu'elle reste fixe et visible en permanence sur le côté de la page.",
+    "13": "toc-depth: 4 limite la table des matières à afficher seulement les en-têtes jusqu'à 4 niveaux de profondeur.",
+    "14": "contents: auto demande à Quarto de découvrir automatiquement le contenu à afficher dans la barre latérale au lieu de le spécifier manuellement.",
+    "19": "partials est un filtre Quarto qui permet d'inclure et réutiliser des fragments de fichiers dans plusieurs documents."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:28.264Z",
+  "source": "BlogPostItem_2.js",
+  "sourceHash": "42a1bcbe4f8090f0c20c1193b04d7387a2b3421c",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant affiche un article de blog en assemblant plusieurs sous-composants (en-tête, contenu, pied de page) à l'intérieur d'un conteneur. Il ajoute automatiquement une marge inférieure quand on affiche une liste d'articles, mais pas sur la page de l'article complet. Le composant inclut également un texte rouge d'avertissement pour indiquer qu'on peut personnaliser ce layout.",
+  "explanations": {
+    "3": "useBlogPost() est un hook fourni par Docusaurus qui donne accès au contexte global de l'article du blog, notamment l'information sur sa page actuelle.",
+    "10": "isBlogPostPage indique si on est actuellement sur la page dédiée à un seul article ou sur une liste/archive d'articles.",
+    "11": "Si on n'est pas sur la page de l'article complet (donc on est dans une liste), on applique une classe de marge; sinon undefined veut dire pas de classe supplémentaire.",
+    "14": "On appelle le hook pour récupérer le nom de classe conditionnel à utiliser sur le conteneur.",
+    "16": "clsx combine plusieurs noms de classes ensemble, en ignorant les valeurs undefined ou false, pour créer une chaîne de classes CSS finales."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:06:16.612Z",
+  "source": "zshrc",
+  "sourceHash": "0fd21716458f0d71c4b0fa06cab1b43e37c5cfea",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script ajoute à la fin de votre fichier ~/.zshrc une fonction qui affiche les 3 branches locales Git les plus récemment modifiées, avec la branche courante en vert et les autres en jaune. Il remplace l'alias gst pour appeler cette fonction avant d'afficher le statut Git, et l'exécute aussi automatiquement chaque fois que vous changez de répertoire.",
+  "explanations": {
+    "7": "command git rev-parse --is-inside-work-tree vérifie si le répertoire courant est dans un dépôt Git. Les redirections >/dev/null 2>&1 supprimment tout message affiché.",
+    "12": "command git rev-parse HEAD vérifie s'il existe au moins un commit dans le dépôt, ce qui évite une erreur si le dépôt vient d'être créé.",
+    "17": "command git rev-parse --abbrev-ref HEAD récupère le nom de la branche courante et le stocke dans la variable current_branch.",
+    "19": "Le \\e[1;36m ... \\e[0m utilise les codes ANSI pour afficher le texte en cyan clair (1;36) puis le réinitialiser (0m).",
+    "22": "command git for-each-ref --sort=-committerdate refs/heads/ liste toutes les branches locales triées par date de dernière modification (le moins récent en premier avec le -).",
+    "23": "Le format conditionnel avec %(if:equals=...) compare chaque branche avec current_branch : si c'est la branche courante elle est affichée en vert avec un astérisque, sinon en jaune sans astérisque.",
+    "30": "unalias gst 2>/dev/null supprime d'abord tout alias existant nommé gst pour éviter les conflits.",
+    "34": "return $? retourne le code d'exit de la dernière commande (git status) pour que gst se comporte exactement comme git status du point de vue du shell.",
+    "38": "chpwd() est une fonction spéciale de Zsh qui s'exécute automatiquement chaque fois que vous changez de répertoire avec cd."
+  }
+}

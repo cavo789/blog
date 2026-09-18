@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:39.922Z",
+  "source": "devcontainer.json",
+  "sourceHash": "c7695606b473bb3904a8a7378d2aaeff0c23eaa3",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "C'est un fichier de configuration pour un environnement de développement VS Code en conteneur Docker. Il définit un service appelé 'docs' qui utilise une image Docker composée, configure l'espace de travail, et installe automatiquement plusieurs extensions VS Code utiles pour écrire de la documentation avec Quarto et Markdown.",
+  "explanations": {
+    "3": "dockerComposeFile pointe vers le fichier compose.yaml qui décrit les services Docker nécessaires ; le chemin ../ remonte d'un niveau de répertoire.",
+    "4": "service spécifie le nom du service Docker à utiliser dans le fichier compose.yaml.",
+    "5": "workspaceFolder définit le répertoire racine visible dans VS Code à l'intérieur du conteneur.",
+    "8": "extensions est un tableau des modules VS Code à installer automatiquement dans l'environnement.",
+    "15": "files.exclude permet de masquer certains fichiers et dossiers de l'explorateur de fichiers VS Code pour réduire le désordre.",
+    "19": "quarto.renderOnSave active la compilation automatique des documents Quarto chaque fois qu'on sauvegarde.",
+    "20": "editor.formatOnSave formate automatiquement le code selon les règles définies quand on sauvegarde le fichier."
+  }
+}

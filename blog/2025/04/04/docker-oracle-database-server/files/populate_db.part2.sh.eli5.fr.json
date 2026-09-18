@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:44.819Z",
+  "source": "populate_db.part2.sh",
+  "sourceHash": "6dfa75f9dfcd86b9690e89d39478dcaf50a74ada",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script établit une connexion SQL*Plus à une base de données Oracle en tant que SYSDBA, bascule vers un conteneur de base de données pluggable (PDB), se reconnecte avec un utilisateur système, puis exécute deux scripts SQL pour créer et remplir un schéma HR avant de valider les changements.",
+  "explanations": {
+    "2": "sqlplus -S lance SQL*Plus en mode silencieux (pas de bannière ni de messages informatifs) avec les identifiants sys/admin sur une instance locale ; les %%variable%% sont des variables d'environnement ou de configuration qu'on substituera à l'exécution.",
+    "4": "ALTER SESSION SET CONTAINER change le contexte de la session courante pour travailler avec la base de données pluggable spécifiée au lieu de la base conteneur.",
+    "6": "CONNECT reconnecte à la base de données avec des identifiants différents (utilisateur system au lieu de sys), ce qui change les droits disponibles pour les opérations suivantes.",
+    "7": "@ est la commande SQL*Plus qui exécute le fichier SQL donné ; c'est un raccourci pour START.",
+    "10": "EXIT termine la session SQL*Plus et retourne le contrôle au shell après avoir fermé la connexion."
+  }
+}

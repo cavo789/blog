@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:30.780Z",
+  "source": "_quarto.yml",
+  "sourceHash": "dd60b04e09fe968a591e06bd3ba935433c450ccf",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un projet Quarto qui génère des présentations reveal.js à partir de fichiers Quarto markdown. Il définit le type de rendu par défaut et personnalise largement l'apparence et le comportement de la présentation, comme la mise en page, les transitions, le thème et les images de fond.",
+  "explanations": {
+    "3": "render spécifie les fichiers source à traiter — ici tous les fichiers avec l'extension .qmd seront convertis en présentation.",
+    "6": "revealjs est le format de sortie choisi, qui produit une présentation interactive basée sur reveal.js.",
+    "10": "code-line-numbers: false désactive l'affichage des numéros de ligne pour les blocs de code dans les diapos.",
+    "13": "navigation-mode: linear force une navigation séquentielle à travers les diapos au lieu de permettre une navigation 2D.",
+    "18": "slide-level: 6 signifie que les titres de niveau 6 (######) marquent le début de nouvelles diapos.",
+    "19": "slide-number: c/t affiche le numéro de diapo actuelle et le total — par exemple '3/15' — en bas de l'écran.",
+    "22": "data-background-image définit une image de fond pour la diapo de titre spécifiée en chemin relatif.",
+    "23": "data-background-size: cover fait en sorte que l'image s'étire pour couvrir toute la diapo sans distorsion."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:42.501Z",
+  "source": "data.part3.xml",
+  "sourceHash": "2a2ebfc217376a8c204b115c2dcebc40283c4b63",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce snippet montre la structure d'un document XML représentant une librairie. L'élément racine bookstore contient des éléments book, chacun ayant des attributs (comme category) et des enfants (comme title avec son propre attribut lang). Les commentaires highlight-next-line indiquent probablement que ce fichier est utilisé pour la documentation ou la mise en évidence syntaxique.",
+  "explanations": {
+    "4": "L'attribut category=\"cooking\" est une paire clé-valeur attachée à l'élément book pour classifier le type de livre.",
+    "6": "L'attribut lang=\"en\" sur l'élément title spécifie que le contenu est en anglais; c'est une façon standard en XML de marquer la langue du texte."
+  }
+}

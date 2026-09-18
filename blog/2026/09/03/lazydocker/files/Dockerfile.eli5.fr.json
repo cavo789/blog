@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:40.909Z",
+  "source": "Dockerfile",
+  "sourceHash": "d4752e84368934bfea0c345caa5a80ed20b9c1d6",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Alpine légère équipée de lazydocker, un outil d'interface graphique pour Docker. Il télécharge la version spécifiée de lazydocker, l'extrait et l'installe dans le PATH système, en nettoyant les fichiers temporaires après. Le conteneur exécutera lazydocker par défaut quand il démarre.",
+  "explanations": {
+    "1": "Cette directive indique à Docker d'utiliser une version récente du parseur Dockerfile (1.7-labs) qui active des fonctionnalités expérimentales avancées.",
+    "7": "ARG définit une variable de build qu'on peut passer à la compilation avec --build-arg ; ici elle fixe la version de lazydocker, ce qui rend facile de mettre à jour juste cette ligne au lieu de chercher dans tout le fichier.",
+    "11": "apk add --no-cache télécharge et installe les paquets système directement sans les garder en cache local, ce qui garde l'image plus petite.",
+    "13": "curl -Lo télécharge le fichier depuis l'URL en ligne et le sauvegarde sous le nom /tmp/lazydocker.tar.gz.",
+    "15": "tar -xzf décompresse l'archive gzip et extrait le fichier lazydocker dans le répertoire /tmp.",
+    "16": "install copie le binaire lazydocker vers /usr/local/bin avec les permissions exécutables (0755), le rendant accessible depuis n'importe où.",
+    "19": "ENTRYPOINT configure le conteneur pour lancer lazydocker automatiquement au démarrage, sans qu'on ait à le spécifier à chaque fois."
+  }
+}

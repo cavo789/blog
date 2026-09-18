@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:58.449Z",
+  "source": "puppeteer-config.json",
+  "sourceHash": "ed4ad7387767df0658546e16d045e73c009fc882",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure une liste d'arguments de ligne de commande pour lancer un navigateur Chrome ou Chromium, généralement dans un environnement automatisé ou contraint. Ces drapeaux désactivent des fonctionnalités de sécurité et d'accélération matérielle pour permettre l'exécution dans des environnements sandboxés, des conteneurs Docker ou des machines virtuelles où ces fonctionnalités posent problème.",
+  "explanations": {
+    "3": "--no-sandbox désactive le mécanisme de isolation de sécurité du navigateur, nécessaire quand le processus s'exécute déjà avec des privilèges restreints.",
+    "5": "--disable-dev-shm-usage évite l'utilisation de la mémoire partagée /dev/shm qui peut être limitée ou indisponible dans certains conteneurs.",
+    "9": "--disable-gpu désactive l'accélération GPU pour éviter les problèmes de rendu dans les environnements sans affichage physique ou sans support GPU."
+  }
+}

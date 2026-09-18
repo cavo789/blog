@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:15.736Z",
+  "source": "EventServiceProvider.php",
+  "sourceHash": "fe01edb6865140ea4ce6282a6b31937b59bcff71",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce code définit un tableau de mapping entre des événements et leurs écouteurs (listeners) correspondants. Le tableau $listen spécifie que lorsque SampleEvent est déclenché, SampleListener doit être exécuté pour traiter cet événement.",
+  "explanations": {
+    "1": "$listen est une propriété protégée (accessible seulement dans cette classe et ses enfants) qui stocke la configuration des événements et des listeners.",
+    "2": "SampleEvent::class est une syntaxe PHP qui récupère le nom complet de la classe SampleEvent sous forme de chaîne — c'est utilisé comme clé du tableau.",
+    "3": "La valeur est un tableau contenant SampleListener::class, car un événement peut avoir plusieurs listeners qui réagissent tous à cet événement."
+  }
+}

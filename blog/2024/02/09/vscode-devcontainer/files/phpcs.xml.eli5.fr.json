@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:24.620Z",
+  "source": "phpcs.xml",
+  "sourceHash": "aa8e6e60e48b2f8932e3302b6ff618446371f13e",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un ensemble de règles de style de code PHP appelé MyRules. Il active l'affichage en couleur, définit l'extension de fichier à analyser comme PHP, configure le mode verbose et de parallélisation, puis applique l'ensemble de normes PSR12 pour vérifier la conformité du code.",
+  "explanations": {
+    "3": "L'argument colors active la coloration syntaxique dans la sortie pour une meilleure lisibilité.",
+    "4": "On spécifie que l'analyseur doit traiter uniquement les fichiers avec l'extension .php.",
+    "5": "Le flag s affiche un résumé simplifié des résultats (summary mode).",
+    "6": "Le flag p parallélise le traitement sur plusieurs processus pour analyser plus rapidement.",
+    "7": "PSR12 est une norme de codage PHP qu'on applique à tous les fichiers analysés."
+  }
+}

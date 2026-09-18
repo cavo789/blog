@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:07.013Z",
+  "source": ".dockerignore",
+  "sourceHash": "f51b5fce9dbee0c390f38a1bc89840aeab7319e6",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier .dockerignore spécifie les fichiers et dossiers que Docker doit ignorer lors de la construction d'une image, c'est-à-dire ne pas copier dans le contexte de build. Il évite d'inclure des éléments inutiles comme les dépendances Node déjà installées, l'historique Git ou les artefacts de build, ce qui réduit la taille de l'image et accélère le processus.",
+  "explanations": {
+    "1": "build/ est un dossier contenant probablement les fichiers compilés ou les sorties de construction — il n'est pas nécessaire de le copier dans l'image Docker puisqu'on recompilera de toute façon.",
+    "2": "node_modules/ contient des milliers de petits fichiers de dépendances JavaScript — on les réinstalle à partir de package.json ou package-lock.json dans le conteneur plutôt que de les copier.",
+    "3": ".git/ est l'historique et les métadonnées du dépôt Git — complètement inutile dans une image de production.",
+    "9": "*.log capture tous les fichiers journaux qui traînent, ce qui évite d'empiler des logs inutiles dans l'image finale."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:33.180Z",
+  "source": "md-convert.sh",
+  "sourceHash": "a7393f49ae0a80cca452a88204c302495466611e",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash lance un conteneur Docker isolé pour convertir des documents en Markdown. Il monte le répertoire courant en lecture seule, supprime toutes les capacités de sécurité du conteneur, et exécute le processus avec les mêmes permissions que l'utilisateur courant pour garantir la sécurité.",
+  "explanations": {
+    "5": "set -euo pipefail active trois modes stricts : -e quitte au premier erreur, -u traite les variables non définies comme des erreurs, et -o pipefail fait échouer un pipeline si une commande intermédiaire échoue.",
+    "7": "exec remplace le processus shell courant par docker run, ce qui signifie que le script devient le conteneur Docker et hérite de ses signaux.",
+    "8": "-v monte le répertoire courant ($PWD) vers /workspace dans le conteneur avec le flag cached pour optimiser les performances sur Docker Desktop.",
+    "9": "--read-only rend le système de fichiers racine du conteneur immuable, ce qui empêche toute modification accidentelle ou malveillante.",
+    "10": "--tmpfs crée un système de fichiers temporaire en mémoire pour /tmp avec des restrictions : size limite la taille, noexec empêche l'exécution de fichiers binaires, nosuid supprime le bit setuid.",
+    "14": "id -u et id -g récupèrent l'identifiant numérique de l'utilisateur et du groupe courants pour que le conteneur s'exécute avec les mêmes permissions."
+  }
+}

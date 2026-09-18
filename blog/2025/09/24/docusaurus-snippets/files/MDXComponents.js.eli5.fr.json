@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:31.892Z",
+  "source": "MDXComponents.js",
+  "sourceHash": "da614985c1664023c6ac61dd7a76498ecd968f83",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier exporte une configuration d'objets MDX en combinant les composants MDX par défaut avec un composant personnalisé Snippets. Il utilise l'opérateur de spread pour fusionner deux sources de composants en un seul objet de export.",
+  "explanations": {
+    "6": "L'opérateur ... (spread) copie toutes les paires clé-valeur de MDXComponents dans l'objet courant, permettant de conserver les composants par défaut tout en y ajoutant d'autres.",
+    "7": "Ceci ajoute le composant Snippets à l'objet, le rendant disponible pour utilisation dans les fichiers MDX."
+  }
+}

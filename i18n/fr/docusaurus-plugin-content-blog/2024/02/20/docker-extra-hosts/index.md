@@ -168,7 +168,7 @@ Et maintenant la dernière partie : imaginez que vous ayez défini un alias dans
 
 Imaginez que vous ayez créé un alias comme celui-ci :
 
-<Snippet filename="C:\Windows\System32\Drivers\etc\hosts" source="./files/C:\Windows\System32\Drivers\etc\hosts" />
+<Snippet filename="C:\Windows\System32\Drivers\etc\hosts" source="./files/windows_hosts.txt" />
 
 et donc, sur votre machine hôte, vous n'utilisez pas `http://127.0.0.1:8080` mais `http://mysite.local:8080`
 

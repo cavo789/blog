@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:55.338Z",
+  "source": "slides_17.txt",
+  "sourceHash": "dec08d2f27fbd62d917a50d57e70450f41272c55",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier contient du texte Lorem Ipsum organisant du contenu factice en deux sections avec des en-têtes de niveau 2. Il s'agit d'un document de remplissage typique utilisé pour démontrer la mise en page ou la structure sans contenu significatif.",
+  "explanations": {}
+}

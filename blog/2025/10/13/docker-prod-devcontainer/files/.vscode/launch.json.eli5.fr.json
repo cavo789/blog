@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:50.691Z",
+  "source": "launch.json",
+  "sourceHash": "f009ac5fb807ce68a10b3c121ac9551399887864",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure le débogueur Visual Studio Code pour se connecter à un processus Python FastAPI en cours d'exécution sur localhost:5679. Il mappe le dossier local src du projet vers la racine distante et limite le débogage au code utilisateur plutôt qu'aux bibliothèques.",
+  "explanations": {
+    "6": "type: debugpy indique qu'on utilise le débogueur Python natif de VS Code.",
+    "7": "request: attach signifie qu'on se connecte à un processus Python déjà lancé, au lieu de le démarrer depuis le débogueur.",
+    "12": "justMyCode: true fait en sorte que le débogueur ignore les fichiers des dépendances externes et se concentre uniquement sur ton code.",
+    "15": "${workspaceFolder}/src est un alias VS Code qui pointe vers le dossier src à la racine de ton espace de travail.",
+    "16": "remoteRoot: \".\" indique que sur la machine distante, les fichiers se trouvent à la racine du répertoire de travail Python."
+  }
+}

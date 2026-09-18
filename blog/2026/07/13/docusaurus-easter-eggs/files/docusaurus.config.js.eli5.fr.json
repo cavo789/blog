@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:29.567Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "8731fc15b1a70304a33638f99bb5ae92ca0098ae",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce snippet configure un tableau de plugins pour un système de build ou un générateur de site. Deux plugins sont enregistrés : le premier avec des options de configuration (un chemin vers un fichier banner), le second sans options.",
+  "explanations": {
+    "4": "La syntaxe avec crochets imbriqués crée un tableau à deux éléments : le premier élément est lui-même un tableau contenant le chemin du plugin et son objet de configuration.",
+    "6": "bannerPath est une clé d'option passée au plugin ascii-injector pour lui indiquer où trouver le fichier banner.txt à utiliser."
+  }
+}

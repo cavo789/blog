@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:25.243Z",
+  "source": ".part6.htaccess",
+  "sourceHash": "aecbb60bc3583641e817a31e83ca99863536dec9",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Cette configuration Apache intercepte les fichiers avec les extensions tex, log ou aux et force leur type MIME à text/plain, ce qui empêche le navigateur de les télécharger ou de les traiter comme des fichiers binaires.",
+  "explanations": {
+    "1": "FilesMatch utilise une expression régulière pour cibler les fichiers — le $ signifie « fin de nom de fichier » et l'échappement des points (\\.) les traite comme des caractères littéraux plutôt que comme des jokers.",
+    "2": "Header set remplace complètement le type MIME déclaré pour ces fichiers, en disant au navigateur de les traiter comme du texte brut plutôt que selon leur extension."
+  }
+}

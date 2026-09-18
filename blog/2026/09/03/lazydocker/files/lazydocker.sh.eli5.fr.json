@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:51.334Z",
+  "source": "lazydocker.sh",
+  "sourceHash": "bf33c40c8385cda20924cc52cb3ad66c2b8c48aa",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script lance une interface lazydocker dans un conteneur Docker en montant le répertoire courant comme espace de travail. Cela permet à lazydocker de détecter un fichier compose.yaml local et d'afficher une vue projet plutôt qu'une simple liste de conteneurs.",
+  "explanations": {
+    "7": "set -euo pipefail active trois modes de sécurité : -e arrête le script à la première erreur, -u signale les variables non définies comme erreurs, -o pipefail propage les erreurs dans les pipelines.",
+    "9": "exec remplace le processus shell courant par la commande docker run, ce qui signifie que quand docker run se termine, le script se termine aussi au lieu de continuer.",
+    "10": "Cette ligne monte le socket Docker de l'hôte dans le conteneur pour que lazydocker puisse communiquer avec le démon Docker.",
+    "11": "Un volume nommé persistant conserve les fichiers de configuration lazydocker entre les exécutions au lieu de les perdre à chaque arrêt du conteneur.",
+    "12": "PWD est remplacé par le chemin du répertoire courant, ce qui le rend accessible à lazydocker dans le conteneur à /workdir.",
+    "13": "Défine /workdir comme répertoire de travail du conteneur, ce qui fait que lazydocker y cherchera le compose.yaml local."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:58.952Z",
+  "source": "makefile.part5",
+  "sourceHash": "8a2c6318b3088ac228a3c52a23a466092e756749",
+  "lang": "part5",
+  "textLang": "fr",
+  "summary": "Ce snippet Makefile vérifie l'existence d'un dossier vendor/a/b/c de deux façons différentes. D'abord il teste si le dossier n'existe pas et affiche un message, puis il teste si le dossier existe et affiche un autre message. Les deux approches font la même vérification mais avec une logique inversée.",
+  "explanations": {
+    "1": "$(shell ...) exécute une commande shell et retourne son résultat. Ici on teste si vendor/a/b/c existe avec test -e, et on affiche 'no' seulement si le test échoue (le dossier n'existe pas).",
+    "2": "Le symbole @ supprime l'affichage de la commande elle-même dans le terminal, on ne voit que son output.",
+    "5": "Semblable à la ligne 1, mais cette fois on affiche 'yes' si le test réussit (le dossier existe)."
+  }
+}

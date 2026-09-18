@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:37.033Z",
+  "source": "simple.part5.bats",
+  "sourceHash": "2b85ffc57a58845406813a79e0f46f517fb14479",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce fichier teste une fonction utilitaire array::length qui compte le nombre d'éléments dans un tableau. Le test crée un tableau de cinq chaînes de caractères et vérifie que la fonction retourne bien 5.",
+  "explanations": {
+    "8": "local -n crée une référence de nom vers le paramètre passé, permettant à la fonction d'accéder au tableau original sans le copier.",
+    "9": "${#array_length[@]} est la syntaxe bash pour obtenir le nombre d'éléments dans un tableau; le # compte et [@] signifie tous les éléments."
+  }
+}

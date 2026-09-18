@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:06:40.019Z",
+  "source": "Dockerfile",
+  "sourceHash": "0872fb4cfde69d800009eb72321f83ab9e066c8e",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu configurée pour SSH interactif avec une fonction shell sshf qui utilise fzf et Perl pour rechercher et se connecter à des serveurs SSH de manière conviviale. Il installe les dépendances nécessaires, configure plusieurs fichiers de configuration SSH organisés en répertoire conf.d, et ajoute une fonction bash sophistiquée qui analyse les configurations SSH, affiche les alias disponibles avec leurs commentaires formatés en couleurs, et établit les connexions.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives pendant l'installation des paquets, ce qui est nécessaire dans un conteneur où l'utilisateur ne peut pas répondre.",
+    "7": "sed modifie le fichier sources.list pour activer les dépôts 'universe' et 'multiverse' en plus des dépôts par défaut, afin que fzf soit disponible à l'installation.",
+    "14": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache d'apt pour réduire la taille de l'image Docker, puisqu'ils ne sont plus nécessaires après l'installation.",
+    "17": "mkdir -p crée le répertoire de configuration SSH avec les permissions 700 (lecture/écriture/exécution pour le propriétaire uniquement) pour la sécurité.",
+    "103": "Le pipe vers perl avec l'option -ne lit les fichiers SSH ligne par ligne et exécute le script Perl sur chaque ligne, permettant d'parser et d'agréger les commentaires avec les définitions Host.",
+    "111": "$buf accumule les lignes de commentaires en les concaténant avec le séparateur ' ;; ', de sorte que tous les commentaires avant un Host sont attachés à cet alias.",
+    "132": "Le padding de 150 espaces sépare le nom d'hôte et l'alias de la description dans la sortie, empêchant les descriptions longues de s'afficher dans la liste principale de fzf.",
+    "137": "fzf --query=\"$1\" pré-remplit la recherche avec le premier argument passé à sshf, permettant de filtrer les serveurs dès l'ouverture.",
+    "139": "--delimiter=\"#####\" indique à fzf où diviser chaque ligne pour identifier les colonnes affichables séparément dans la preview.",
+    "146": "Le preview=... affiche le contenu du deuxième champ (la description) dans le panneau droit, après conversion des balises personnalisées en codes ANSI.",
+    "160": "ssh -G \"$selected\" retourne les paramètres SSH résolus pour cet alias (nom d'utilisateur, hôte réel, clé d'identité), en tenant compte de toutes les héritages de configuration.",
+    "176": "echo ajoute une invite de commande personnalisée au .bashrc qui affiche un emoji de conteneur Docker et met en évidence qu'on est dans un conteneur plutôt qu'un système normal."
+  }
+}

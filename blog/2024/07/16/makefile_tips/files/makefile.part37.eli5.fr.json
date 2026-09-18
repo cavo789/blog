@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:28.422Z",
+  "source": "makefile.part37",
+  "sourceHash": "1097b391b1db03d3525c0d274e4eebd1ba78c719",
+  "lang": "part37",
+  "textLang": "fr",
+  "summary": "Ce bloc Makefile capture des informations sur le dépôt Git courant : la branche actuelle, le répertoire racine du projet, et l'URL du dépôt distant en la convertissant du format SSH au format HTTPS. Ces variables sont stockées pour être réutilisées dans d'autres règles du Makefile.",
+  "explanations": {
+    "1": "$(shell ...) exécute une commande shell et insère son résultat comme valeur de variable ; ici git rev-parse --abbrev-ref HEAD retourne le nom court de la branche courante.",
+    "3": "git rev-parse --show-toplevel retourne le chemin absolu du répertoire racine du dépôt Git, peu importe d'où on exécute la commande.",
+    "5": "git config --get remote.origin.url récupère l'URL du dépôt distant, puis sed transforme le format git@host:path.git en format https://host/path, et enfin grep -Po extrait tout sauf l'extension .git."
+  }
+}

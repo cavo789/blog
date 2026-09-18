@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:47.076Z",
+  "source": "embedder-sanity-check.py",
+  "sourceHash": "51dd0a6503476decd3c5cc0516ec01a2c507d6c4",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script teste si un modèle d'embedding Ollama peut bien distinguer des textes similaires des textes non-apparentés. Il envoie trois phrases à un modèle (deux sur WordPress et Docker, une sur zsh), reçoit leurs représentations vectorielles, puis calcule la similarité cosinus entre elles pour vérifier que les phrases apparentées sont plus proches que la phrase non-apparentée.",
+  "explanations": {
+    "23": "json.dumps convertit un dictionnaire Python en chaîne JSON, et .encode() le transforme en bytes pour l'envoyer dans une requête HTTP.",
+    "24": "urllib.request.Request crée un objet requête HTTP avec l'URL, les données (payload) et les en-têtes nécessaires.",
+    "27": "urllib.request.urlopen exécute la requête HTTP et utilise 'with' pour s'assurer que la connexion se ferme automatiquement après.",
+    "32": "sum(x * y for x, y in zip(a, b)) calcule le produit scalaire en multipliant chaque paire d'éléments des deux vecteurs et en les additionnant.",
+    "33": "La formule calcule la similarité cosinus : le produit scalaire divisé par le produit des normes (longueurs) des deux vecteurs.",
+    "36": "sys.argv[1:] récupère tous les arguments en ligne de commande après le nom du script ; si aucun n'est fourni, on utilise mxbai-embed-large par défaut.",
+    "37": "embed retourne une liste de vecteurs, un pour chaque phrase dans SENTENCES.",
+    "41": "La chaîne f-string formate l'affichage avec le nom du modèle, la dimension des vecteurs, et les trois scores de similarité alignés en colonnes."
+  }
+}

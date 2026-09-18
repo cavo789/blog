@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:49.866Z",
+  "source": "php.ini",
+  "sourceHash": "5b8c5b86c94b025683d87e502aecfbadf9589c64",
+  "lang": "ini",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration PHP augmente les limites par défaut pour permettre des opérations plus exigeantes : uploads de fichiers volumineux, utilisation accrue de mémoire, et durée d'exécution plus longue. Les quatre premières directives travaillent ensemble pour supporter des fichiers jusqu'à 500 Mo, tandis que la dernière donne au script 10 minutes pour s'exécuter.",
+  "explanations": {
+    "1": "file_uploads = On active la fonctionnalité d'upload de fichiers via formulaires HTTP.",
+    "2": "memory_limit = 500M alloue 500 mégaoctets de mémoire à chaque script PHP au lieu de la valeur par défaut (généralement 128 Mo).",
+    "3": "upload_max_filesize = 500M définit la taille maximale d'un fichier qu'on peut envoyer via upload.",
+    "4": "post_max_size = 500M limite la taille des données POST ; elle doit être au moins égale à upload_max_filesize.",
+    "5": "max_execution_time = 600 permet aux scripts de s'exécuter jusqu'à 600 secondes (10 minutes) au lieu de 30 secondes par défaut."
+  }
+}

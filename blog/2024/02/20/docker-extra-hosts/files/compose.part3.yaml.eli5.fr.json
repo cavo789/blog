@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:28.516Z",
+  "source": "compose.part3.yaml",
+  "sourceHash": "c1b5e2a072de54e7ff82038217b3e9fab2a99a34",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service conteneur nommé my_second_container qui se construit à partir du répertoire courant, se connecte à un réseau existant appelé my_network, et ajoute une entrée DNS locale pour mapper my_site.local à l'adresse IP 172.20.0.1.",
+  "explanations": {
+    "8": "extra_hosts permet d'ajouter des entrées manuelles au fichier /etc/hosts du conteneur, utile pour faire pointer des noms de domaine vers des adresses IP spécifiques sans modifier le DNS système.",
+    "13": "networks: my_network: declare le réseau qui sera référencé par les services.",
+    "14": "external: true indique que ce réseau existe déjà en dehors de ce fichier Compose et ne doit pas être créé par Compose lui-même — il faut l'avoir créé manuellement avant."
+  }
+}

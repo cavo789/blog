@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:20.727Z",
+  "source": "slides_8.txt",
+  "sourceHash": "980ef552ec087471f53a1dacef4fa5bf3eeb63dd",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une diapositive Quarto avec une image centralisée qui s'étire pour remplir l'espace disponible, suivie d'un texte. La classe CSS .r-stretch fait en sorte que l'image s'adapte dynamiquement à la taille de la diapositive.",
+  "explanations": {
+    "5": "La syntaxe ![texte](fichier){.classe} est la syntaxe Markdown de Quarto pour insérer une image avec une classe CSS ; ici .r-stretch est une classe de présentation qui agrandit l'image pour occuper tout l'espace vertical disponible."
+  }
+}

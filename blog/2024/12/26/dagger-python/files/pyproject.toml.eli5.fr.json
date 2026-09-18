@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:05.152Z",
+  "source": "pyproject.toml",
+  "sourceHash": "4dd5e4aa623039144aa827b4744e4059245f55ad",
+  "lang": "toml",
+  "textLang": "fr",
+  "summary": "Ce fichier configure l'outil Ruff, un linter et formateur Python rapide. Il désactive les exclusions par défaut, définit une longueur de ligne à 120 caractères et une indentation de 4 espaces, alignant ainsi la configuration avec d'autres outils de contrôle de qualité du projet.",
+  "explanations": {
+    "3": "exclude=[] vide la liste des fichiers/répertoires que Ruff ignorerait normalement, forçant l'outil à analyser tout le code du projet.",
+    "6": "line-length = 120 définit la largeur maximale autorisée pour une ligne de code avant que Ruff ne signale un dépassement.",
+    "7": "indent-width = 4 spécifie que chaque niveau d'indentation doit représenter 4 espaces (la convention standard Python)."
+  }
+}

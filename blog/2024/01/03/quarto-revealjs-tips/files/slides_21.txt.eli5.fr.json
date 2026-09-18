@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:08.462Z",
+  "source": "slides_21.txt",
+  "sourceHash": "2694dbfcc8350b83b8734aa1058af5eb05b7af90",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier Markdown utilise la syntaxe Pandoc pour créer une diapositive avec une mise en page en deux colonnes : la colonne gauche occupe 70% de la largeur avec une image, la colonne droite occupe 30% avec deux images empilées. Des notes de présentation sont ajoutées pour expliquer le contenu visuel aux yeux du présentateur.",
+  "explanations": {
+    "3": "::: columns délimite un conteneur pour créer une disposition multi-colonnes.",
+    "4": "::: {.column width=\"70%\"} crée une colonne qui occupe 70% de la largeur disponible.",
+    "8": "::: {.column width=\"30%\"} crée une seconde colonne occupant les 30% restants.",
+    "15": "::: notes démarre une section de notes de présentation qui ne s'affichent que pour le présentateur, pas dans la diapositive publique."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:04.295Z",
+  "source": "create_db.sql",
+  "sourceHash": "27755d13f07fe955718062ce98a9b8768bd55c1a",
+  "lang": "sql",
+  "textLang": "fr",
+  "summary": "Ce script SQL crée une nouvelle base de données appelée SampleDB, puis définit une table Customers avec des colonnes pour stocker les informations client. Ensuite, il insère dix enregistrements d'exemple dans la table et affiche tous les résultats pour vérifier que l'opération a réussi.",
+  "explanations": {
+    "2": "CREATE DATABASE crée une nouvelle base de données vierge nommée SampleDB sur le serveur.",
+    "3": "GO est un séparateur de lots SQL Server qui indique la fin d'un groupe de commandes à exécuter.",
+    "6": "USE bascule le contexte de la session courante vers la base de données SampleDB, de sorte que toutes les commandes suivantes s'y appliqueront.",
+    "11": "IDENTITY(1,1) génère automatiquement un identifiant unique pour chaque nouvelle ligne, en commençant à 1 et en augmentant de 1 à chaque insertion.",
+    "34": "SELECT * récupère et affiche tous les enregistrements et toutes les colonnes de la table Customers pour confirmer que les données ont été correctement insérées."
+  }
+}

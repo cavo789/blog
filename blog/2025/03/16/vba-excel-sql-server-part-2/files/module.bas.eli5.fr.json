@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:07.714Z",
+  "source": "module.bas",
+  "sourceHash": "d378b79437a272abd9e76f1dc0d10752c67eb392",
+  "lang": "bas",
+  "textLang": "fr",
+  "summary": "Cette procédure configure les identifiants de connexion à une base de données (nom du serveur, base de données, utilisateur et mot de passe), puis exécute une requête SQL pour copier les résultats dans la feuille active à partir de la cellule A1. Les identifiants sont codés en dur, ce qui pose un risque de sécurité.",
+  "explanations": {
+    "3": "Déclare une variable nommée rng qui contiendra une référence à une plage de cellules Excel.",
+    "5": "Assigne le nom du serveur stocké dans cServerName à la propriété ServerName de l'objet cData.",
+    "6": "Assigne le nom de la base de données stocké dans cDBName à la propriété DatabaseName de l'objet cData.",
+    "8": "Définit le nom d'utilisateur de connexion à 'SA' (System Administrator, l'administrateur système par défaut de SQL Server).",
+    "10": "Définit le mot de passe de connexion de manière codée en dur, ce qui est une mauvaise pratique de sécurité.",
+    "12": "Exécute la méthode SQL_CopyToSheet qui lance la requête SQL stockée dans cSQLStatement et place les résultats dans la plage commençant à A1 de la feuille active ; le résultat est assigné à rng."
+  }
+}

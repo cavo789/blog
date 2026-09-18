@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:06.197Z",
+  "source": "check-images.py",
+  "sourceHash": "93c772182fb171bf08627ae21ec4cede6b690c6c",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script automatise l'audit des images sur des sites React en utilisant Playwright pour les rendre dans un navigateur headless, les faire scroller pour déclencher le lazy loading, puis analyse chaque balise <img> pour vérifier son format, ses dimensions, sa taille, et la présence d'attributs appropriés. Il génère un rapport récapitulatif indiquant quelles images utilisent le lazy loading et lesquelles nécessitent une optimisation.",
+  "explanations": {
+    "1": "Cette directive indique au vérificateur de type TypeScript d'ignorer les erreurs de typage dans ce fichier, car le code mélange plusieurs styles ou des types incompatibles.",
+    "2": "Cette directive indique au vérificateur orthographique de ne pas signaler 'networkidle' comme une erreur, car c'est un nom spécifique utilisé par Playwright.",
+    "50": "On désactive les avertissements SSL d'urllib3 pour pouvoir faire des requêtes HTTPS vers des serveurs avec des certificats auto-signés sans voir des messages d'avertissement à chaque fois.",
+    "54": "On ignore les images encodées directement en base64 dans les attributs src (data:image/...) car elles ne peuvent pas être téléchargées ni analysées comme des fichiers externes.",
+    "57": "On crée une URL absolue à partir de l'attribut src et de l'URL de base de la page, au cas où src serait un chemin relatif.",
+    "60": "On télécharge l'image avec un délai d'attente de 5 secondes et verify=False pour ignorer les erreurs de certificat SSL.",
+    "62": "On ouvre l'image téléchargée en mémoire (sans la sauvegarder sur disque) en utilisant BytesIO, une structure de données qui simule un fichier.",
+    "84": "On crée une nouvelle page de navigateur en lui disant d'ignorer les erreurs HTTPS, ce qui lui permet de charger des sites avec des certificats auto-signés.",
+    "88": "On attend que l'état 'networkidle' soit atteint, ce qui signifie que le navigateur a fini de charger les ressources principales de la page.",
+    "92": "On effectue un scroll vers le bas avec la souris virtuelle, ce qui déclenche le chargement des images en lazy loading définies dans les balises.",
+    "96": "On récupère le contenu HTML complet de la page rendue, une fois tous les scrolls effectués et les images lazy-loaded visibles dans le DOM.",
+    "116": "On vérifie si l'attribut loading de la balise img a la valeur 'lazy', ce qui indique que l'image utilise le lazy loading natif du navigateur.",
+    "119": "On vérifie que la balise img possède à la fois les attributs width et height, ce qui aide à prévenir les décalages visuels pendant le chargement.",
+    "134": "On vérifie si le format de l'image est JPEG, JPG ou PNG, et on suggère de convertir vers WebP car ce format offre une meilleure compression."
+  }
+}

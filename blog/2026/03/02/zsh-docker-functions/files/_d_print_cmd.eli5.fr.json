@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:50.188Z",
+  "source": "_d_print_cmd",
+  "sourceHash": "4d5674cb74a75be7369911ba663108f564de2291",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script zsh affiche une commande exécutée avec une couleur optionnelle, en tronquant le texte s'il dépasse 200 caractères pour maintenir une lisibilité acceptable.",
+  "explanations": {
+    "5": "Le paramètre $2 fournit la couleur ANSI, ou par défaut \\033[1;32m (vert gras) si rien n'est passé.",
+    "9": "${#cmd_str} donne la longueur de la chaîne, et on teste si elle dépasse 200 caractères.",
+    "10": "La syntaxe ${cmd_str:0:197} extrait les 197 premiers caractères, puis on ajoute \"...\" pour indiquer qu'il y a du texte tronqué.",
+    "13": "echo -e interprète les séquences ANSI comme \\033[0m pour appliquer les couleurs ; les variables sont interpolées pour construire le message final."
+  }
+}

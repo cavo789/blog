@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:49.790Z",
+  "source": "simple.part9.bats",
+  "sourceHash": "7dbc9e62541f696176450b40ffe44311f086cf46",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce code teste une fonction utilitaire qui vérifie qu'une commande binaire existe sur le système. Le test appelle assert::binaryExists avec la commande « clear », s'attend à aucune sortie et à un code de succès, tandis que la fonction elle-même cherche le binaire dans le PATH et quitte avec une erreur si introuvable.",
+  "explanations": {
+    "8": "On crée une variable locale qui reçoit le premier argument passé à la fonction — c'est le nom du binaire à chercher.",
+    "9": "On prépare un message d'erreur personnalisable : si un deuxième argument est fourni on l'utilise, sinon on utilise un message par défaut construit avec FUNCNAME[0] qui donne le nom de la fonction actuelle.",
+    "11": "On utilise which pour chercher le binaire dans le PATH ; si rien n'est trouvé (résultat vide), on affiche le message et on quitte avec le code 1 (erreur). Le || true à la fin empêche which de causer une sortie immédiate en cas d'échec."
+  }
+}

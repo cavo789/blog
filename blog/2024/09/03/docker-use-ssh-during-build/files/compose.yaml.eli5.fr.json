@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:38.848Z",
+  "source": "compose.yaml",
+  "sourceHash": "e811b6ea95b684a78607145439d55d969b09d6be",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose configure un service appelé app qui se construit à partir d'un Dockerfile dans le répertoire courant. Lors de la construction, il injecte une clé SSH privée comme secret et passe le nom de la clé en argument au processus de build. La section secrets au bas du fichier définit d'où charger la clé SSH (depuis le fichier ~/.ssh/id_ed25519 sur la machine hôte).",
+  "explanations": {
+    "7": "La section secrets sous build énumère les secrets qui seront accessibles lors de la construction de l'image Docker.",
+    "9": "my_ssh_key est le nom du secret à injecter, qui doit être défini dans la section secrets du niveau supérieur.",
+    "12": "KEY_NAME=id_ed25519 passe une variable d'environnement au Dockerfile pour indiquer le nom du fichier de clé que le build doit utiliser.",
+    "17": "my_ssh_key définit concrètement le secret en pointant vers un fichier réel sur la machine hôte.",
+    "19": "${HOME}/.ssh/id_ed25519 charge la clé privée SSH depuis le répertoire .ssh de l'utilisateur; ${HOME} se remplace par le chemin du répertoire personnel."
+  }
+}

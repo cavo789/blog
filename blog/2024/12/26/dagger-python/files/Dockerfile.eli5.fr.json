@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:07.191Z",
+  "source": "Dockerfile",
+  "sourceHash": "98be2d60b6af77693f07f373218c1f70de1d0f09",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Python 3.11 allégée, ajoute Docker et wget via le gestionnaire de paquets, puis télécharge et installe Dagger (un outil d'orchestration) dans le répertoire /usr/local/bin. L'image est configurée pour exécuter Dagger par défaut.",
+  "explanations": {
+    "3": "FROM python:3.11-slim-buster AS base indique que l'image de base est Python 3.11 sur Debian Buster allégée (slim), et AS base crée une étape nommée que d'autres étapes pourraient réutiliser plus tard.",
+    "8": "set -e -x configure le shell pour arrêter à la première erreur (-e) et afficher chaque commande exécutée (-x), ce qui aide au débogage.",
+    "10": "--no-install-recommends réduit la taille de l'image en n'installant que les paquets strictement nécessaires, pas les dépendances optionnelles.",
+    "16": "ARG ARCHIVE=dagger_v${VERSION}_linux_amd64.tar.gz crée une variable de construction qui interpole la valeur de VERSION pour construire le nom du fichier archive.",
+    "17": "ARG URL=... construit l'URL complète de téléchargement en combinant le lien GitHub avec le nom d'archive basé sur la version.",
+    "22": "wget --quiet --output-document ${ARCHIVE} ${URL} télécharge silencieusement le fichier depuis l'URL et l'enregistre sous le nom spécifié par la variable ARCHIVE.",
+    "23": "tar xvfz ${ARCHIVE} extrait l'archive tar gzippée (x pour extract, v pour verbose, f pour file, z pour gzip).",
+    "27": "WORKDIR /app/src définit le répertoire de travail par défaut pour toute commande ultérieure dans l'image.",
+    "29": "ENTRYPOINT [ \"/usr/local/bin/dagger\" ] configure Dagger comme programme principal qui s'exécutera quand le conteneur démarre."
+  }
+}

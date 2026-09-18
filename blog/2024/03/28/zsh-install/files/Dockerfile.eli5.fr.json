@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:06.254Z",
+  "source": "Dockerfile",
+  "sourceHash": "3b624dd33ffaa994463545381549a0f9cb26a8f9",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec zsh, git et curl, installe Oh-My-Zsh en mode silencieux, puis prépare un dépôt git de démonstration avec une arborescence profonde et un fichier non commité pour tester les fonctionnalités quotidiennes. Au démarrage, le conteneur lance un shell zsh interactif avec un prompt personnalisé affichant une baleine emoji.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive supprime les invites interactives pendant l'installation des paquets, ce qui est nécessaire dans un conteneur où il n'y a pas d'interaction utilisateur possible.",
+    "5": "Les trois commandes (apt-get update, apt-get install, rm) sont chaînées avec && sur plusieurs lignes pour réduire le nombre de couches Docker et nettoyer le cache apt en une seule étape.",
+    "15": "Le script d'installation d'Oh-My-Zsh est téléchargé et exécuté directement depuis GitHub avec les options --unattended (pas de prompt) et --keep-zshrc (conservation du fichier de config existant).",
+    "25": "git init -q -b main crée un dépôt git silencieusement (-q) avec main comme branche par défaut, au lieu de la branche par défaut du système.",
+    "37": "CMD avec -i rend le shell interactif et -l charge les fichiers de profil, assurant que zsh se comporte comme un shell de login avec tous les alias et configurations disponibles."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:07:11.281Z",
+  "source": "extend_remark.js",
+  "sourceHash": "fab47cd787fd51cf144ba3d3810bd725094ee44f",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce code cherche un fichier JSON companion nommé <source>.eli5.json à côté du fichier source actuel. S'il existe et contient des explications valides, il les injecte dans le nœud MDX en tant qu'attribut pour les afficher dans la documentation.",
+  "explanations": {
+    "2": "On construit le chemin du fichier eli5 en ajoutant '.eli5.json' à la fin du chemin du fichier source.",
+    "3": "fs.existsSync() vérifie simplement si le fichier existe sur le disque avant de tenter de le lire.",
+    "5": "fs.readFileSync() lit tout le contenu du fichier en une seule fois et le retourne sous forme de chaîne de caractères UTF-8.",
+    "6": "JSON.parse() transforme la chaîne de caractères JSON en objet JavaScript utilisable dans le code.",
+    "7": "Cette vérification s'assure que la propriété 'explanations' existe et est bien un objet (pas null, pas un array, pas une primitive).",
+    "11": "On reconvertit l'objet des explications en chaîne JSON pour l'inclure comme valeur d'attribut dans le nœud MDX.",
+    "15": "Le message d'avertissement s'affiche si le fichier ELI5 existe mais est invalide ou corrompu, sans arrêter l'exécution du programme."
+  }
+}

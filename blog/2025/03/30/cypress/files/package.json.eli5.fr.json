@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:38.732Z",
+  "source": "package.json",
+  "sourceHash": "120b642292744b1d9631b1b71ea8578b46a11845",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier package.json définit une configuration de projet Node.js appelé cypress_sandbox. Il déclare deux scripts npm pour lancer Cypress en mode interactif ou en mode exécution automatisée, et spécifie Cypress comme dépendance de développement.",
+  "explanations": {
+    "6": "Le script cypress:open lance l'interface graphique de Cypress, permettant de voir et déboguer les tests en temps réel.",
+    "7": "Le script cypress:run exécute les tests Cypress en mode headless sans interface visuelle, typiquement pour les pipelines CI/CD.",
+    "10": "La notation ^15.19.0 signifie installer Cypress en version 15.19.0 ou compatible, en acceptant les mises à jour mineures et patch mais pas les changements majeurs."
+  }
+}

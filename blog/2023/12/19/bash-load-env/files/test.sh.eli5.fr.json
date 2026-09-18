@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:58.617Z",
+  "source": "test.sh",
+  "sourceHash": "1e9ec8a0d900dc53682dacb0f7d9387a2e00a271",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script charge les variables d'environnement depuis un fichier .env, puis les utilise pour afficher le nom complet et l'email d'un utilisateur Git au format Docker. Les options set contrôlent comment les variables importées sont traitées par le shell.",
+  "explanations": {
+    "3": "set -o allexport active le mode où chaque variable définie est automatiquement exportée, ce qui la rend disponible aux processus enfants.",
+    "4": "source .env exécute le fichier .env dans le shell courant, chargeant ainsi toutes les variables qu'il contient.",
+    "5": "set +o allexport désactive le mode allexport pour éviter que les variables définies après ce point ne soient exportées automatiquement."
+  }
+}

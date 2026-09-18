@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:38.490Z",
+  "source": "index.php",
+  "sourceHash": "274b797e09c8a0819586b38f2b89ed6ccbfd111b",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script démontre la différence de comportement de json_decode avec et sans le flag JSON_THROW_ON_ERROR. La première tentative échoue silencieusement sans retourner de valeur utile, tandis que la seconde lève une exception quand le JSON est invalide.",
+  "explanations": {
+    "5": "utf8_decode convertit une chaîne depuis UTF-8 vers ISO-8859-1, puis json_decode essaie de parser le résultat comme JSON — mais \"Ipso lorem\" n'est pas du JSON valide, donc la fonction retourne null sans avertir.",
+    "9": "JSON_THROW_ON_ERROR est un flag qui force json_decode à lever une exception (erreur) au lieu de retourner silencieusement null quand le JSON est invalide, ce qui rend le problème plus visible."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:10.181Z",
+  "source": "series.js",
+  "sourceHash": "dad6ea2a5b2a34524cc1f31e71eee018043af9f0",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier définit un tableau de données contenant des informations sur plusieurs séries de tutoriels ou articles, chacun avec un nom, une description et une image associée. Le tableau est ensuite exporté par défaut pour pouvoir être utilisé dans d'autres fichiers du projet.",
+  "explanations": {
+    "1": "SERIES_DATA est une constante qui stocke un tableau d'objets — il ne peut pas être réassigné après sa création.",
+    "29": "export default rend SERIES_DATA disponible pour l'import dans d'autres modules JavaScript du projet."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:49.566Z",
+  "source": "main.py",
+  "sourceHash": "9b98c2b7e49cd1feeff794a9f6ce3c74da9cd60d",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée une application web FastAPI avec trois routes HTTP GET. La première route retourne un message simple, la deuxième accepte un identifiant d'élément comme paramètre de chemin et un paramètre de requête optionnel, et la troisième gère la pagination avec des paramètres par défaut.",
+  "explanations": {
+    "2": "Union[str, None] signifie que le paramètre q peut être soit une chaîne de caractères, soit None (c'est-à-dire absent ou pas fourni).",
+    "11": "item_id: int dans la signature indique que FastAPI extraira automatiquement cet identifiant du chemin de l'URL et le convertira en entier.",
+    "15": "skip et limit sont des paramètres de requête avec des valeurs par défaut (0 et 10) — ils peuvent être passés dans l'URL mais ne sont pas obligatoires."
+  }
+}

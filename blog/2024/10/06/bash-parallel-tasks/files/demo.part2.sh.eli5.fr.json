@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:43.630Z",
+  "source": "demo.part2.sh",
+  "sourceHash": "333a92c002bca572b29fef8d4bb2a5b08f770a28",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash lance 10 fonctions demo en parallèle, en limitant le nombre de tâches simultanées au double du nombre de cores disponibles sur la machine. Il attend que tous les processus se terminent avant de continuer, puis affiche le temps total d'exécution.",
+  "explanations": {
+    "2": "set -euo pipefail active trois modes de sécurité : -e arrête le script si une commande échoue, -u arrête si une variable n'existe pas, -o pipefail arrête si une commande dans un pipe échoue.",
+    "14": "declare -a pids crée un tableau vide appelé pids qui stockera les identifiants de processus des tâches lancées en arrière-plan.",
+    "23": "$(nproc) retourne le nombre de cores logiques ; multiplier par 2 donne le nombre de tâches parallèles autorisées à tourner simultanément.",
+    "34": "demo & lance la fonction demo en arrière-plan et rend immédiatement le contrôle au script sans attendre que demo se termine.",
+    "39": "$! contient l'identifiant du dernier processus lancé en arrière-plan ; pids+=($!) ajoute cet ID au tableau pids.",
+    "44": "jobs | wc -l compte le nombre de tâches actives en arrière-plan ; si ce nombre atteint ou dépasse NUMBER_OF_THREADS, on attend que tous les processus se terminent.",
+    "46": "Cette boucle appelle wait pour chaque PID stocké, bloquant l'exécution jusqu'à ce que tous les processus se terminent.",
+    "56": "Après que tous les processus soient terminés, on vide le tableau pids pour recommencer à accumuler les nouveaux PIDs.",
+    "64": "Cette dernière boucle s'assure que tout processus restant en arrière-plan (ceux lancés lors de la dernière itération) se termine avant la fin du script.",
+    "71": "date +%s retourne le timestamp Unix actuel (secondes écoulées depuis 1970) ; ce résultat est sauvegardé pour mesurer le temps d'exécution total."
+  }
+}

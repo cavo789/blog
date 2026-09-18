@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:05:53.564Z",
+  "source": "Dockerfile",
+  "sourceHash": "af66d47fc0113cbeedc130bf27c09fac57f14a10",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec git et git-delta installés, configure git pour utiliser delta comme pager avec un thème Dracula et des options de diff améliorées, puis pré-crée un dépôt de démonstration contenant un fichier JavaScript modifié pour pouvoir montrer immédiatement les capacités de diff.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive évite que le système pospose des questions interactives pendant l'installation des paquets, ce qui est crucial en Docker où il n'y a pas d'utilisateur pour répondre.",
+    "7": "sed -i modifie directement le fichier sources.list.d/ubuntu.sources pour ajouter les dépôts 'universe' et 'multiverse' car git-delta ne se trouve que là.",
+    "13": "rm -rf /var/lib/apt/lists/* supprime le cache des paquets téléchargés pour réduire la taille de l'image Docker.",
+    "29": "mkdir -p crée le répertoire /root/demo et tous les parents nécessaires s'ils n'existent pas, puis cd le définit comme répertoire courant pour les commandes suivantes.",
+    "31": "printf écrit le contenu du fichier JavaScript directement avec des échappements de newline ; la multiplication est échappée \\* pour être littérale au lieu d'être interprétée par le shell.",
+    "34": "sed -i effectue une substitution dans auth.js pour ajouter + TOKEN_GRACE_MS à l'expression, créant ainsi une modification déjà présente mais non indexée (unstaged) que git diff peut afficher.",
+    "39": "echo ajoute une variable PS1 au bashrc qui affiche un emoji de conteneur, le nom d'utilisateur, et le répertoire courant, rendant évident qu'on exécute dans un conteneur.",
+    "41": "CMD définit la commande par défaut que le conteneur exécutera : /bin/bash -i lance un shell interactif permettant à l'utilisateur d'interagir directement avec le conteneur."
+  }
+}

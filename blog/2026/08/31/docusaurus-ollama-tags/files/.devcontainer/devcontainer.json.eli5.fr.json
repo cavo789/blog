@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:07.645Z",
+  "source": "devcontainer.json",
+  "sourceHash": "bdf64531de6a81ef4b4f61364e9cbf7b1f0d26bc",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un environnement de développement containerisé pour un projet d'analyse de blog. Il définit comment VS Code doit se connecter au conteneur Docker, quels paramètres appliquer dans l'éditeur, quelles extensions installer, et quelles commandes exécuter automatiquement après la création du conteneur.",
+  "explanations": {
+    "3": "dockerComposeFile pointe vers le fichier compose.yaml qui décrit les services Docker; le chemin ../compose.yaml remonte d'un niveau depuis ce fichier de configuration.",
+    "8": "updateRemoteUserUID synchronise l'identifiant utilisateur entre la machine hôte et le conteneur pour éviter les problèmes de permissions sur les fichiers partagés.",
+    "12": "${dirty} et ${rootName} sont des variables que VS Code remplace automatiquement pour afficher l'état du projet dans la barre de titre.",
+    "19": "postCreateCommand s'exécute automatiquement une fois le conteneur créé pour installer les dépendances Python listées dans requirements.txt."
+  }
+}

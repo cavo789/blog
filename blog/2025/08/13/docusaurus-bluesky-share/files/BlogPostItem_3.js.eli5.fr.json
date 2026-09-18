@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:32.930Z",
+  "source": "BlogPostItem_3.js",
+  "sourceHash": "1576564e460bd152004619658c46787ebb79f256",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche un article de blog avec ses sections standard (en-tête, contenu, pied de page) et ajoute un composant Bluesky personnalisé qui s'affiche uniquement quand on consulte l'article complet, pas dans la liste des articles. Il gère aussi l'espacement visuel différent selon qu'on est sur la page d'un article ou sur la liste.",
+  "explanations": {
+    "12": "import Bluesky récupère le composant personnalisé Bluesky depuis le dossier components du site, ce qui permet de l'utiliser plus bas dans le rendu.",
+    "15": "Cette fonction utilitaire détermine si on doit ajouter une marge au bas du conteneur — elle retourne une classe CSS seulement si on n'est pas sur la page complète de l'article.",
+    "16": "useBlogPost() est un hook fourni par Docusaurus qui donne accès aux informations du contexte du blog, notamment isBlogPostPage pour savoir si on affiche un seul article ou une liste.",
+    "24": "On récupère metadata (les informations de l'article) et isBlogPostPage (un booléen indiquant si c'est la page d'un article) du hook useBlogPost pour les utiliser dans le rendu.",
+    "27": "clsx() fusionne plusieurs classes CSS ensemble, ce qui permet d'appliquer conditionnellement la marge et les autres styles passés en props.",
+    "34": "Le composant Bluesky ne s'affiche que si isBlogPostPage est true, grâce à l'opérateur && qui vérifie la condition avant de rendre; metadata est passé en prop pour que Bluesky accède aux données de l'article."
+  }
+}

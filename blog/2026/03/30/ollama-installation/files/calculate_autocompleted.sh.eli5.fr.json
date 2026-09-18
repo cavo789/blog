@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:31.686Z",
+  "source": "calculate_autocompleted.sh",
+  "sourceHash": "946a465f392bc9d4bf21f40d84410f8ee5c7815a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash implémente une calculatrice simple qui prend deux nombres et un opérateur en arguments, puis effectue l'opération arithmétique correspondante. Le script valide d'abord que trois arguments sont fournis, exécute le calcul via une fonction qui traite chaque opérateur (+, -, *, /), et gère les cas d'erreur comme la division par zéro ou un opérateur invalide.",
+  "explanations": {
+    "4": "local crée une variable locale à la fonction afin qu'elle ne pollue pas l'espace global ; $1 récupère le premier argument passé à la fonction.",
+    "8": "case $operator in lance une structure conditionnelle qui compare la valeur de operator contre plusieurs motifs.",
+    "10": "$((...)) effectue une expansion arithmétique qui calcule l'opération entre les nombres et retourne le résultat.",
+    "19": "[ $num2 -ne 0 ] teste si num2 n'est pas égal à 0 (ne signifie « not equal ») pour éviter une division par zéro.",
+    "32": "[ $# -ne 3 ] vérifie que le nombre total d'arguments ($#) est exactement 3, sinon le script affiche l'usage et se termine.",
+    "48": "[[ \"$1\" == \"help\" ]] teste si le premier argument est exactement la chaîne \"help\" pour décider d'afficher l'aide ou d'exécuter le calcul.",
+    "51": "\"$@\" passe tous les arguments du script à la fonction main, en les préservant individuellement."
+  }
+}

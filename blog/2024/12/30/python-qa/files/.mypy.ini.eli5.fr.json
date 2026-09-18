@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:07.798Z",
+  "source": ".mypy.ini",
+  "sourceHash": "0e7326664b80e363457307d415984e89a96a3bd1",
+  "lang": "ini",
+  "textLang": "fr",
+  "summary": "Ce fichier configure mypy, l'outil de vérification de types pour Python, en activant le mode strict pour détecter les erreurs de typage. On active tous les contrôles stricts possibles et on configure quelques paramètres comme la version Python et le répertoire de cache.",
+  "explanations": {
+    "4": "Le commentaire explique la stratégie : plutôt que d'énumérer chaque option stricte individuellement, on active tout d'un coup avec strict = True, puis on désactiverait les options trop gênantes si nécessaire.",
+    "7": "Cela définit où mypy stockera son cache (les résultats précédents) pour accélérer les vérifications futures au lieu de tout re-analyser à chaque fois."
+  }
+}

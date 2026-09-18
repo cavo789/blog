@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:31.306Z",
+  "source": "compose.part3.yaml",
+  "sourceHash": "b9878735782da3b6f782d1a754636a3eaca4d3d3",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service appelé app qui construit une image Docker en utilisant le Dockerfile du répertoire courant. Le service injecte une clé SSH privée depuis la machine hôte pour que le conteneur puisse accéder à des ressources sécurisées, tout en montant le répertoire .ssh de l'hôte dans le conteneur pour un accès persistant aux clés SSH.",
+  "explanations": {
+    "6": "secrets déclare que ce build doit avoir accès à des données sensibles définies dans la section secrets du fichier.",
+    "7": "my_ssh_key référence le secret nommé ci-dessous, qui sera disponible lors de la construction de l'image.",
+    "8": "args passe des arguments de build au Dockerfile, ici le nom du fichier de clé SSH attendu.",
+    "13": "${HOME}/.ssh:/root/.ssh monte le répertoire .ssh de l'utilisateur hôte sur le chemin /root/.ssh dans le conteneur pour que l'application puisse accéder aux clés SSH.",
+    "17": "file: ${HOME}/.ssh/id_ed25519 indique où Docker Compose doit chercher le fichier de clé SSH sur la machine hôte pour le fournir comme secret."
+  }
+}

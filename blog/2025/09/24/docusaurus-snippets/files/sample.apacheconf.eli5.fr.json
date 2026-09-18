@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:05.245Z",
+  "source": "sample.apacheconf",
+  "sourceHash": "bcedfb20f9d01ba3233c1db47dcab52cdaff767e",
+  "lang": "apacheconf",
+  "textLang": "fr",
+  "summary": "Cette configuration Apache définit un hôte virtuel qui écoute sur le port 80 (HTTP standard) et associe le nom de domaine www.example.com à un répertoire racine de documents situé à /www/domain. Quand des requêtes arrivent pour ce nom de domaine, Apache servira les fichiers depuis ce répertoire.",
+  "explanations": {
+    "1": "La directive VirtualHost *:80 crée un bloc de configuration pour un site web qui accepte les connexions sur n'importe quelle adresse IP de la machine (*) sur le port 80.",
+    "2": "ServerName spécifie le nom de domaine auquel ce bloc s'applique — les requêtes HTTP pour www.example.com seront traitées par cette configuration.",
+    "3": "DocumentRoot indique où Apache doit chercher les fichiers à servir (index.html, images, etc.) pour ce site web."
+  }
+}

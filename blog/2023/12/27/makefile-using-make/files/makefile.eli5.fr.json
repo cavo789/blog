@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:24.891Z",
+  "source": "makefile",
+  "sourceHash": "547734b1c9b8cb048d1b5dbb009eb034eabc2bbc",
+  "lang": "makefile",
+  "textLang": "fr",
+  "summary": "Ce fichier Makefile définit des cibles pour gérer une infrastructure Docker Joomla. Il propose des commandes pour démarrer/arrêter les conteneurs, ouvrir des outils d'administration comme Adminer et phpMyAdmin, afficher les logs, et accéder à un shell interactif dans le conteneur Joomla.",
+  "explanations": {
+    "2": "printf avec \\e[1;033m applique du formatage jaune gras au texte d'accueil, puis \\e[0m réinitialise le style. Les %% sont des variables de configuration qui seront remplacées (port_adminer vaut 8088 par défaut).",
+    "4": "docker run lance un conteneur Adminer en arrière-plan (flag -d), le connecte à la base de données via --link, le place sur le réseau Docker spécifié, et expose le port 8088 localement vers le port 8080 du conteneur.",
+    "5": "Le tiret au début permet à cette commande de s'exécuter même si la précédente échoue. sensible-browser ouvre l'URL dans le navigateur par défaut, et & lance la commande en arrière-plan.",
+    "9": "docker compose exec exécute une commande dans un conteneur en cours d'exécution. /bin/sh ouvre un shell interactif à l'intérieur du conteneur joomla.",
+    "31": "docker compose up --detach démarre tous les services définis dans docker-compose.yml en mode détaché (arrière-plan), sans bloquer le terminal."
+  }
+}

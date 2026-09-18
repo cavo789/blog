@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:39:17.497Z",
+  "source": "makefile.part34",
+  "sourceHash": "cdfae8a18ada34606357dfcdad1576a3355501c9",
+  "lang": "part34",
+  "textLang": "fr",
+  "summary": "Ce fragment définit une variable Makefile appelée DOCKER_PHPQA qui construit le nom complet d'une image Docker. L'image combine le nom de base jakzal/phpqa avec la version PHP spécifiée dans la variable PHP_VERSION, et cible l'architecture alpine pour un conteneur minimaliste.",
+  "explanations": {
+    "1": "L'opérateur := en Makefile assigne la valeur à la variable DOCKER_PHPQA au moment de l'analyse du fichier. La syntaxe ${PHP_VERSION} remplace cette variable par sa valeur pour construire le chemin complet de l'image Docker."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:42.894Z",
+  "source": "erase.php",
+  "sourceHash": "7b9fbcb7911cb2fe66141701877a26a829ed29f3",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script supprime récursivement tous les fichiers et dossiers d'un répertoire, en commençant par les éléments les plus profonds pour remonter vers la racine. Il affiche l'état de chaque suppression et s'auto-détruit à la fin.",
+  "explanations": {
+    "3": "basename(__FILE__) extrait le nom du fichier courant (sans le chemin complet).",
+    "4": "dirname(__FILE__) retourne le répertoire parent du fichier courant.",
+    "8": "RecursiveDirectoryIterator crée un itérateur qui peut traverser le répertoire et tous ses sous-dossiers.",
+    "10": "RecursiveIteratorIterator::CHILD_FIRST garantit que les enfants (fichiers et dossiers imbriqués) sont traités avant leurs parents, ce qui est essentiel pour pouvoir supprimer les dossiers vides.",
+    "11": "in_array vérifie que le nom du dossier n'est pas '.' ou '..' (références spéciales qui désignent le dossier courant et parent).",
+    "15": "$file->getPathname()!=__FILE__ assure qu'on ne supprime pas le script lui-même pendant la boucle.",
+    "24": "unlink(__FILE__) supprime le script courant à la fin, après que tout le reste ait été nettoyé."
+  }
+}

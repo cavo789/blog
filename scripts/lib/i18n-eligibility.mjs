@@ -26,10 +26,20 @@ import { hashSource } from "./eli5-hash.mjs";
 const require = createRequire(import.meta.url);
 const {
   collectTranslations,
+  slugFor,
 } = require("../../plugins/translations-manifest-plugin/index.cjs");
 
 const BLOG_DIR = "blog";
 const I18N_BLOG_DIR = "docusaurus-plugin-content-blog";
+
+/**
+ * Rough per-file cost of one localized ELI5, measured on this corpus (claude-haiku-4-5).
+ *
+ * Deliberately pessimistic: the token arithmetic over the 723 eligible files lands nearer
+ * $0.002 each. It lives here rather than in `i18n-budget.mjs` because `translate` quotes the
+ * same number before spending — two copies of a price is how the two prompts start disagreeing.
+ */
+export const ELI5_COST_PER_FILE = 0.01;
 
 /** Recursively collects every file under a directory matching a predicate. */
 function walk(directory, keep) {
@@ -42,6 +52,35 @@ function walk(directory, keep) {
     else if (keep(entry.name, target)) found.push(target);
   }
   return found;
+}
+
+/**
+ * The slug the translations manifest filed an article under — its front matter's `slug:`, not
+ * its folder name.
+ *
+ * The two agree for most of the corpus, which is why keying on the folder name looked right for
+ * as long as it did. Where they disagree the manifest lookup misses, the article is declared
+ * untranslated, and its snippets are skipped in silence — the Snippet loader then falls back to
+ * the English sidecar (TODO 0121), so nothing ever fails loudly. `slugFor` is borrowed from the
+ * manifest plugin on purpose: a second local copy of "how do I get a slug from a path" is what
+ * produced the bug in the first place.
+ *
+ * @returns {string|null} null when no `index.md`/`index.mdx` sits in that folder.
+ */
+function articleSlugOf(projectRoot, articleDir, cache) {
+  if (cache.has(articleDir)) return cache.get(articleDir);
+
+  let slug = null;
+  for (const name of ["index.md", "index.mdx"]) {
+    const candidate = path.join(projectRoot, BLOG_DIR, articleDir, name);
+    if (fs.existsSync(candidate)) {
+      slug = slugFor(candidate);
+      break;
+    }
+  }
+
+  cache.set(articleDir, slug);
+  return slug;
 }
 
 /** The article folder a file belongs to, e.g. `blog/2026/09/14/atuin-bash-history`. */
@@ -58,14 +97,52 @@ export function translatedSlugs(projectRoot, locale) {
 }
 
 /**
+ * The `YYYY/MM/DD/slug` key of whatever article a path belongs to — an `index.md`, a snippet
+ * under `files/`, a sidecar. Exported so a caller holding article paths (the `translate`
+ * cheatsheet function, which knows what it just translated) can scope `eli5Candidates` to them
+ * without re-deriving how this repo lays articles out.
+ *
+ * @returns {string|null} null when the path is not inside an article folder.
+ */
+export function articleKeyOf(projectRoot, filePath) {
+  const relative = path.relative(
+    path.join(projectRoot, BLOG_DIR),
+    path.resolve(filePath),
+  );
+  if (relative.startsWith("..")) return null;
+
+  const parts = relative.split(path.sep);
+  // Four segments is the article FOLDER itself (`blog/2026/09/17/docling`), more is something
+  // inside it (`index.md`, `files/Dockerfile`). `articleDirOf` above demands five because it
+  // only ever sees sidecars; a caller naming an article legitimately passes either shape.
+  return parts.length >= 4 ? parts.slice(0, 4).join("/") : null;
+}
+
+/**
  * Source files eligible for a localized ELI5, with the reason each candidate was kept or not.
  *
+ * @param {object} [options]
+ * @param {Iterable<string>} [options.articleKeys] restrict the scan to these articles
+ *   (`YYYY/MM/DD/slug`, as `articleKeyOf` returns). Omit for the whole corpus. A run right
+ *   after translating one article must not pay to re-scan — or re-report — the other 256.
+ * @param {boolean} [options.assumeTranslated] treat the scoped articles as already translated.
+ *   For quoting a price BEFORE the translation runs: condition 1 is exactly what the imminent
+ *   `translate` is about to make true, so applying it would quote $0.00 for every new article
+ *   and then bill for it afterwards. Meaningless — and ignored — without `articleKeys`.
  * @returns {{eligible: string[], skipped: {file: string, reason: string}[]}}
  */
-export function eli5Candidates(projectRoot, locale) {
+export function eli5Candidates(
+  projectRoot,
+  locale,
+  { articleKeys, assumeTranslated = false } = {},
+) {
   const translated = translatedSlugs(projectRoot, locale);
+  const scope = articleKeys ? new Set(articleKeys) : null;
+  const skipCondition1 = assumeTranslated && scope !== null;
   const eligible = [];
   const skipped = [];
+  // One front-matter read per article folder, not per sidecar: htaccess alone carries 29.
+  const slugCache = new Map();
 
   // Every file that already carries an English ELI5 — condition 2, applied first because it is
   // the cheapest filter and it eliminates most of the corpus.
@@ -77,13 +154,18 @@ export function eli5Candidates(projectRoot, locale) {
   for (const sidecar of englishSidecars) {
     const source = sidecar.replace(/\.eli5\.json$/, "");
     const articleDir = articleDirOf(sidecar, projectRoot);
-    const slug = articleDir ? articleDir.split("/").pop() : null;
+
+    // Out of scope is not the same as skipped: a caller asking about one article wants
+    // "2 eligible", not "2 eligible, 796 skipped" drowning it.
+    if (scope && !scope.has(articleDir)) continue;
+
+    const slug = articleDir ? articleSlugOf(projectRoot, articleDir, slugCache) : null;
 
     if (!slug) {
       skipped.push({ file: source, reason: "not inside an article folder" });
       continue;
     }
-    if (!translated.has(slug)) {
+    if (!skipCondition1 && !translated.has(slug)) {
       skipped.push({
         file: source,
         reason: `article "${slug}" is not translated into ${locale}`,
@@ -91,11 +173,16 @@ export function eli5Candidates(projectRoot, locale) {
       continue;
     }
 
+    // Condition 3, measured against the CODE — not against the English sidecar's recorded hash.
+    // Both sidecars hash the same source file, so comparing them looks equivalent, but it makes
+    // French freshness hostage to English bookkeeping: the one legacy English sidecar carrying
+    // no `sourceHash` (generated before hashing existed) never compares equal, so its French
+    // counterpart was re-generated — and re-billed — on every single run, forever. An English
+    // sidecar that has merely drifted would do the same.
     const localized = `${source}.eli5.${locale}.json`;
     if (fs.existsSync(localized)) {
-      const englishHash = readHash(sidecar);
       const localizedHash = readHash(localized);
-      if (englishHash && englishHash === localizedHash) {
+      if (localizedHash && localizedHash === currentHashOf(source)) {
         skipped.push({ file: source, reason: "localized sidecar already fresh" });
         continue;
       }
@@ -110,6 +197,15 @@ export function eli5Candidates(projectRoot, locale) {
 function readHash(sidecarPath) {
   try {
     return JSON.parse(fs.readFileSync(sidecarPath, "utf-8")).sourceHash ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Hash of the source file as it stands right now, or null if it cannot be read. */
+function currentHashOf(sourcePath) {
+  try {
+    return hashSource(fs.readFileSync(sourcePath, "utf-8"));
   } catch {
     return null;
   }

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:12.402Z",
+  "source": "001-intro-to-docker.txt",
+  "sourceHash": "a8b1f8034315a3b79ea485a45f9cbda33928c773",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce document introduit Docker, une plateforme qui permet de packager des applications avec leurs dépendances dans des conteneurs isolés pour les déployer facilement sur n'importe quel système. Il couvre les concepts fondamentaux comme les conteneurs et images Docker, et mentionne Docker Compose pour gérer plusieurs conteneurs ensemble.",
+  "explanations": {}
+}

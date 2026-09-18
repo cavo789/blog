@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:14.695Z",
+  "source": ".pylintrc",
+  "sourceHash": "defb82ce096591443170368933520b815cb6b07e",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier configure pylint, un outil qui vérifie la qualité du code Python. Il active la sauvegarde des résultats pour des comparaisons futures, charge plusieurs extensions de vérification, utilise tous les processeurs disponibles pour accélérer l'analyse, et définit des seuils de qualité minimale pour le projet.",
+  "explanations": {
+    "3": "persistent=yes enregistre les données collectées dans un cache pour que pylint puisse comparer les résultats d'une exécution à l'autre.",
+    "7": "load-plugins indique à pylint quels modules d'extension charger pour ajouter des vérifications supplémentaires au-delà des vérifications par défaut.",
+    "21": "jobs=0 demande à pylint de détecter automatiquement le nombre de processeurs disponibles et les utiliser tous pour paralléliser l'analyse.",
+    "25": "suggestion-mode=yes fait que pylint propose des solutions d'aide plutôt que de simplement rapporter des erreurs potentielles.",
+    "28": "py-version = 3.13.0 spécifie que ce projet cible Python 3.13.0, ce qui permet à pylint d'adapter ses vérifications à cette version spécifique.",
+    "31": "fail-under=9.50 configure pylint pour échouer (retourner une erreur) si la note de qualité globale du code descend sous 9.50/10.",
+    "34": "max-line-length=120 limite la longueur maximale d'une ligne de code à 120 caractères."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:19.244Z",
+  "source": "AnyTest.part12.php",
+  "sourceHash": "e2b8b9e82240c83b097d3975210ea1f7dbcbf1ab",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce code teste une réponse en enchaînant plusieurs assertions pour vérifier d'abord que la clé 'data' existe, puis qu'elle est vide. Il utilise une bibliothèque de test fluide qui permet d'écrire les vérifications de manière lisible et enchaînée.",
+  "explanations": {
+    "2": "La méthode dd() affiche et arrête l'exécution pour déboguer la réponse — utile pour voir sa structure pendant le développement.",
+    "3": "toHaveKey('data') vérifie que la réponse contient effectivement une clé nommée 'data'.",
+    "4": "->data accède à la clé 'data' de l'objet de réponse, puis toBeEmpty() affirme qu'elle ne contient aucun élément."
+  }
+}

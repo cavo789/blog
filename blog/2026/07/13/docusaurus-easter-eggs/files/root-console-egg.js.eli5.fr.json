@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:36.710Z",
+  "source": "root-console-egg.js",
+  "sourceHash": "2f5ab05de764d40cc3e0b248791745d70438ee17",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce code utilise un hook useEffect pour afficher un message ludique dans la console du navigateur quand un développeur ouvre les DevTools. Le message s'affiche une seule fois au chargement de la page, pas à chaque changement de route côté client, et invite l'utilisateur à découvrir un code secret (Konami code) sur le site.",
+  "explanations": {
+    "5": "useEffect est un hook React qui exécute du code après le rendu du composant. Ici, il lance une fonction une seule fois au montage du composant.",
+    "6": "console.log accepte un premier argument qui est une chaîne contenant des directives de formatage CSS (précédées de %c), suivie des styles à appliquer à cette chaîne.",
+    "7": "Le %c au début de la chaîne indique que le texte suivant doit être stylisé avec les règles CSS passées en deuxième argument. L'emoji \\u{1F9AB} est un code Unicode pour le emoji meerkat.",
+    "8": "Cette chaîne CSS applique un style au texte du premier console.log : augmente la taille de la police à 18px, la rend gras et colore le texte en orange.",
+    "12": "Cette chaîne CSS applique un style au texte du deuxième console.log : taille de police de 12px et couleur grise.",
+    "14": "Le tableau vide [] en deuxième argument du useEffect signifie que cet effet n'a aucune dépendance, donc il s'exécute une seule fois au montage du composant et jamais après."
+  }
+}

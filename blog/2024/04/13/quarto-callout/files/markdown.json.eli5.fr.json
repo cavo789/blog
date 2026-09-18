@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:38.224Z",
+  "source": "markdown.json",
+  "sourceHash": "573f5b00af6785833acf7ae95d44c357ec62618c",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier définit un snippet VSCode pour insérer rapidement une boîte de callout Quarto dans un fichier markdown. Quand l'utilisateur tape le préfixe « quarto-callout », l'éditeur génère automatiquement la structure complète avec des emplacements à remplir pour le type de callout, le titre et le contenu.",
+  "explanations": {
+    "3": "Le « prefix » est le texte que tu tapes dans l'éditeur pour déclencher l'insertion du snippet — ici « quarto-callout ».",
+    "5": "La syntaxe ${1|note,tip,warning,caution,important|} crée un menu déroulant : après insertion, tu peux choisir entre ces cinq types de callout avec Tab ou Entrée.",
+    "6": "Le ${2:title} est le deuxième emplacement à remplir — quand tu appuies sur Tab après le type de callout, le curseur te permet de taper le titre.",
+    "7": "Le ${3:body} est le troisième emplacement — c'est là que tu taperas le contenu principal de ta boîte après avoir complété le titre."
+  }
+}

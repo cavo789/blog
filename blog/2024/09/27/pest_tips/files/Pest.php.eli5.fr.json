@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:49.505Z",
+  "source": "Pest.php",
+  "sourceHash": "a532c887f96f1991635d6d3c030706c0f54dffbe",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Pest pour exécuter tous les tests situés dans le répertoire Features en utilisant la classe TestCase du projet. C'est une configuration globale qui établit le contexte de base pour une suite de tests.",
+  "explanations": {
+    "1": "uses() enregistre une configuration par défaut qui s'applique à tous les fichiers de test correspondant au chemin spécifié — ici, TestCase::class est la classe parente et 'Features' est le répertoire contenant les tests."
+  }
+}

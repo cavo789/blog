@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:25.372Z",
+  "source": "etl.py",
+  "sourceHash": "f4c8c69ef2fd6d3654a8fe9cc08f82253d72c1e5",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code construit un diagramme de flux de travail ETL (Extract-Transform-Load) en utilisant pydot. Il crée des nœuds représentant différentes étapes du pipeline de données (sources CSV/JSON, extraction, nettoyage, transformation, enrichissement et chargement) puis les relie avec des arêtes pour montrer le flux. Finalement, il exporte le diagramme sous forme d'image PNG.",
+  "explanations": {
+    "1": "Crée un nouveau graphique orienté (digraph) avec rankdir='TB' qui signifie que les nœuds sont disposés de haut en bas (top to bottom).",
+    "3": "Crée un nœud nommé 'CSV' avec une forme de boîte, rempli avec la couleur lightblue pour le distinguer visuellement.",
+    "6": "Crée le nœud 'Extract' sans couleur de remplissage, contrairement aux sources de données qui sont en bleu.",
+    "11": "Crée le nœud 'Load' final avec une couleur lightgreen pour indiquer qu'c'est la destination du pipeline.",
+    "13": "Ajoute une arête reliant le nœud CSV au nœud Extract, créant ainsi une connexion entre ces deux étapes.",
+    "19": "Crée un nœud supplémentaire 'Get more data' qui sera inséré dans le flux pour enrichir les données pendant la transformation.",
+    "23": "Exporte le graphique complet au format PNG avec le nom de fichier 'etl.png'."
+  }
+}

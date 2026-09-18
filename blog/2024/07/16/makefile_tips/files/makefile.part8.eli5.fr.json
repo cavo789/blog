@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:07.452Z",
+  "source": "makefile.part8",
+  "sourceHash": "631229cfbd4e628aa687f141ce53f974f2ef685f",
+  "lang": "part8",
+  "textLang": "fr",
+  "summary": "Ce fragment Makefile cherche tous les fichiers Markdown du répertoire courant et les stocke dans une variable concat, puis exécute le script concat.sh pour les traiter. C'est une façon d'automatiser la fusion de plusieurs fichiers Markdown dans une seule étape de build.",
+  "explanations": {
+    "1": "$(shell ...) exécute une commande shell et remplace le contenu par son résultat — ici find *.md -type f récupère la liste de tous les fichiers .md du répertoire courant et la stocke dans la variable concat.",
+    "2": "Cette ligne lance le script concat.sh chaque fois que la cible concat est demandée; sans dépendances explicites, elle s'exécute toujours."
+  }
+}

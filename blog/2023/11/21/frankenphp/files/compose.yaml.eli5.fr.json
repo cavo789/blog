@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:04:05.959Z",
+  "source": "compose.yaml",
+  "sourceHash": "1d57cc164367983cf92bcf7002bc4fe3504807da",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un conteneur Joomla avec FrankenPHP qui expose les ports HTTP et HTTPS, et un conteneur MySQL 8.2 pour la base de données. Les deux services sont connectés via des variables d'environnement et des volumes persistants pour conserver les données.",
+  "explanations": {
+    "4": "alexandreelise/frankenphp-joomla:hardened-mysql-0.1.1 est l'image Docker qui contient Joomla préconfiguré avec FrankenPHP et le support MySQL.",
+    "7": "%%port=80%% est un placeholder qui sera remplacé par un port réel au moment du lancement — c'est une façon de paramétrer le port sans le coder en dur.",
+    "11": "JOOMLA_DB_HOST=db utilise le nom du service db comme adresse réseau — Docker Compose résout automatiquement 'db' vers l'adresse IP interne du conteneur MySQL.",
+    "16": "joomla:/app/public monte le volume nommé joomla sur le chemin /app/public du conteneur pour persister les fichiers Joomla.",
+    "17": "depends_on garantit que le service db est créé et lancé avant joomla, car Joomla a besoin de la base de données.",
+    "28": "db:/var/lib/mysql monte le volume nommé db sur le chemin où MySQL stocke ses données pour les conserver entre les redémarrages.",
+    "30": "Cette section définit les volumes nommés utilisés par les services — ils existent en dehors des conteneurs et survivent à leur suppression."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:05.540Z",
+  "source": "index.js",
+  "sourceHash": "02c59a2d37c282870e33d7f13a66e83db14444b0",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche un article de blog avec ses sections d'en-tête, contenu et pied de page, en y intégrant optionnellement une liste de posts associés à la même série. Il ajoute une marge inférieure au conteneur uniquement quand l'article est affiché dans une liste, pas sur la page de détail de l'article.",
+  "explanations": {
+    "12": "Cette fonction personnalisée retourne un nom de classe CSS différent selon que tu te trouves sur la page d'un article unique ou dans une liste d'articles.",
+    "13": "useBlogPost() est un hook qui fournit des informations sur le contexte actuel du blog, notamment le flag isBlogPostPage pour savoir si tu consultes un article seul ou dans une liste.",
+    "14": "Si tu n'es pas sur la page d'un article unique (c'est-à-dire que tu es dans une liste), applique la classe margin-bottom--xl ; sinon retourne undefined pour ne pas appliquer de classe.",
+    "18": "Le hook useBlogPost() fournit ici les métadonnées de l'article (incluant le titre, la série, le permalien) et le flag isBlogPostPage.",
+    "24": "Cet opérateur && affiche le composant SeriesPosts uniquement si isBlogPostPage est vrai, c'est-à-dire seulement quand tu consultes la page complète d'un article.",
+    "26": "metadata.frontMatter.series accède à la propriété series définie dans les métadonnées frontmatter du fichier markdown de l'article."
+  }
+}

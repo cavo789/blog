@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:06.109Z",
+  "source": ".gitlab-ci.yml",
+  "sourceHash": "d2d45ac2ae00b64c2e1c82dac1b8a39b05def58a",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce job CI/CD configure une connexion SSH pour se connecter à un serveur GitLab auto-hébergé. Il installe les outils nécessaires, déploie une clé SSH privée stockée en base64, configure les permissions SSH correctement, ajoute le serveur aux hôtes connus, puis teste la connexion.",
+  "explanations": {
+    "6": "ssh-agent -s affiche les variables d'environnement nécessaires pour initialiser l'agent SSH, et eval les exécute pour que les commandes SSH suivantes puissent accéder à l'agent.",
+    "7": "On crée le répertoire ~/.ssh avec les permissions 700 (lecture/écriture/exécution pour le propriétaire uniquement), ce qui est obligatoire pour SSH de fonctionner correctement.",
+    "9": "La variable SSH_PRIVATE_KEY contient la clé privée en base64, donc on la décode avec base64 -d et la redirige vers le fichier de clé SSH standard pour ed25519.",
+    "11": "On change les permissions à 400 (lecture seule pour le propriétaire) car SSH refuse de fonctionner si la clé privée a des permissions trop permissives.",
+    "13": "ssh-keyscan récupère la clé d'hôte publique du serveur GitLab et l'ajoute au fichier known_hosts pour éviter le message d'acceptation interactif lors de la première connexion."
+  }
+}

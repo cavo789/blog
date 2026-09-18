@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:35.329Z",
+  "source": ".part9.htaccess",
+  "sourceHash": "ec594f5122dfadaecd4dad79f93786a6a0e6414f",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc configure le comportement des erreurs PHP en désactivant leur affichage aux utilisateurs tout en les enregistrant dans un fichier log pour que les développeurs puissent les consulter. Il active le suivi des erreurs et définit où les logs doivent être sauvegardés.",
+  "explanations": {
+    "1": "La directive IfModule vérifie que le module mod_php5 est chargé sur le serveur avant d'appliquer les règles à l'intérieur — si le module n'existe pas, tout ceci est ignoré.",
+    "2": "php_flag display_errors off empêche les messages d'erreur de s'afficher directement sur le site web, ce qui est plus sûr en production.",
+    "3": "php_flag log_errors on active l'enregistrement des erreurs dans les logs du serveur plutôt que de les afficher.",
+    "4": "php_flag track_errors on permet à PHP de stocker le dernier message d'erreur dans la variable spéciale $php_errormsg, utile pour un traitement personnalisé.",
+    "5": "php_value error_log error.log spécifie le fichier nommé error.log où tous les messages d'erreur doivent être écrits."
+  }
+}

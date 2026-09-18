@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:22.164Z",
+  "source": "Dockerfile",
+  "sourceHash": "5fe02d3d15ac0f001fcf9a9684389a6bb6ff0980",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker pour exécuter des tests Cypress. Il part d'une image de base qui inclut déjà Cypress, installe les dépendances npm du projet, copie la configuration et les tests Cypress, vérifie que Cypress fonctionne correctement, puis configure le conteneur pour lancer les tests dans Chrome au démarrage.",
+  "explanations": {
+    "5": "COPY --chown=node:node transfère les fichiers package.json et package-lock.json (si présent) depuis ta machine vers le conteneur, tout en changeant leur propriétaire au compte node plutôt que root pour des raisons de sécurité.",
+    "9": "COPY --chown=node:node transfère le dossier cypress qui contient tous tes tests de spécifications, en donnant la propriété à l'utilisateur node.",
+    "12": "npx cypress verify vérifie que Cypress est correctement installé et fonctionnel dans cette image avant de la finaliser.",
+    "14": "USER node bascule l'utilisateur actif du conteneur de root à node, ce qui signifie que les processus ultérieurs s'exécuteront avec les permissions limitées d'un utilisateur non-root pour la sécurité.",
+    "16": "CMD définit la commande par défaut qui s'exécutera automatiquement quand le conteneur démarre : cela lancera Cypress en mode headless avec le navigateur Chrome."
+  }
+}

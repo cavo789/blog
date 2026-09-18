@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:52.088Z",
+  "source": "Dockerfile",
+  "sourceHash": "22f374cccc61b3b4aa7514f530b6db4df8d3ce85",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Cette image Docker configure un environnement Node.js avec les dépendances nécessaires pour exécuter Mermaid CLI, un outil de génération de diagrammes. Elle installe Chromium et les polices requises, configure Puppeteer pour utiliser le Chromium du système au lieu de le télécharger, et prépare les répertoires de cache et de travail.",
+  "explanations": {
+    "3": "apk add --no-cache installe les paquets listés sans garder le cache local, ce qui réduit la taille de l'image Docker en supprimant les fichiers temporaires de téléchargement.",
+    "15": "fc-cache reconstruit le cache des polices du système, ce qui permet à Chromium et autres applications de trouver et d'utiliser les nouvelles polices qu'on vient d'installer.",
+    "19": "mkdir -p crée le répertoire de cache de Puppeteer s'il n'existe pas, puis chmod -R 777 donne à tous les utilisateurs les droits de lecture, écriture et exécution sur ce répertoire et son contenu.",
+    "22": "Cette variable d'environnement indique à Puppeteer de ne pas télécharger sa propre version de Chromium, puisqu'on en a déjà une disponible dans le conteneur.",
+    "23": "Cette variable pointe Puppeteer vers le Chromium pré-installé à /usr/bin/chromium-browser au lieu de chercher son propre exécutable."
+  }
+}

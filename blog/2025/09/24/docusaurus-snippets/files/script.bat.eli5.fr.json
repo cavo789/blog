@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:10.680Z",
+  "source": "script.bat",
+  "sourceHash": "c024de92a2575b265474b7f8bbd19f599937979a",
+  "lang": "batch",
+  "textLang": "fr",
+  "summary": "Ce script batch affiche simplement le message « Hello, world! » à l'écran. La première ligne désactive l'affichage des commandes elles-mêmes, de sorte que seul le résultat s'affiche.",
+  "explanations": {
+    "1": "Le paramètre off de echo off supprime l'affichage des commandes batch au fur et à mesure de leur exécution, rendant la sortie plus propre pour l'utilisateur."
+  }
+}

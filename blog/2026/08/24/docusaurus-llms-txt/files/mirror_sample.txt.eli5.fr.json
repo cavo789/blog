@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:08:53.178Z",
+  "source": "mirror_sample.txt",
+  "sourceHash": "b57fcb09fe83e884188541a6f5ead933fdc11dda",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est un en-tête de document Markdown statique généré automatiquement qui décrit un article de blog Docusaurus sur l'implémentation d'un bouton « retour en haut ». Le contenu explique comment créer un composant React personnalisé pour ajouter cette fonctionnalité aux articles de blog, avec des détails sur le styling et l'intégration dans le thème.",
+  "explanations": {
+    "2": "canonical-url indique l'adresse web officielle de cet article en version pleinement rendue, avec images et composants interactifs.",
+    "4": "generated-at horodatise le moment où ce fichier statique a été créé automatiquement lors de la construction du site.",
+    "5": "Ce commentaire explique que le fichier actuel est une copie en Markdown pur créée au moment du build, différente de la version interactive originale."
+  }
+}

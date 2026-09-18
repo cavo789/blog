@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:12.751Z",
+  "source": "Dockerfile",
+  "sourceHash": "85865284beb47596cc64645ec526cd81ce56cff1",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec un shell Zsh configuré et amélioré. Il installe les dépendances nécessaires, puis ajoute Oh-My-Zsh avec le plugin zsh-autosuggestions pour améliorer l'expérience de ligne de commande. Finalement, il pré-remplit l'historique shell avec des commandes Docker courantes et personnalise le prompt pour indiquer clairement qu'on est dans un conteneur.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive évite que apt-get pose des questions interactives durant l'installation, ce qui sinon bloquerait la construction de l'image.",
+    "11": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache d'apt après l'installation pour réduire la taille de l'image Docker.",
+    "14": "Le script d'installation Oh-My-Zsh est téléchargé et exécuté directement via curl ; les arguments --unattended et --keep-zshrc assurent une installation sans interaction et préservent la configuration existante.",
+    "20": "sed -i remplace la ligne de la configuration des plugins dans .zshrc pour ajouter zsh-autosuggestions à côté du plugin git existant.",
+    "24": "printf '%s\\n' écrit plusieurs lignes formatées ; chaque ligne préfixée par ':' et un timestamp est reconnue comme une entrée d'historique Zsh.",
+    "31": "echo ajoute une variable PROMPT personnalisée au fichier .zshrc ; %B rend le texte gras, %F{color} change la couleur, et 🐳 affiche une emoji de baleine."
+  }
+}

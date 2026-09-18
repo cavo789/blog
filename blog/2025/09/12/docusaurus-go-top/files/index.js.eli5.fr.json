@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:13.136Z",
+  "source": "index.js",
+  "sourceHash": "4ee9a7ad458ec4210b4a91fa007bec39b9bc84ba",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche un article de blog en assemblant des sous-composants pour l'en-tête, le contenu et le pied de page. Il applique automatiquement une marge inférieure supplémentaire lorsque l'article apparaît dans une liste plutôt que sur sa propre page.",
+  "explanations": {
+    "3": "useBlogPost() est un hook personnalisé fourni par Docusaurus qui donne accès aux informations du contexte actuel de l'article de blog.",
+    "10": "isBlogPostPage indique si on est actuellement en train de visualiser un article seul ou dans une liste d'articles.",
+    "11": "Si ce n'est pas une page d'article seul (donc une liste), on retourne une classe CSS pour ajouter une marge; sinon undefined pour ne pas ajouter d'espacement supplémentaire.",
+    "16": "clsx() fusionne les noms de classes CSS conditionnels avec ceux passés en prop, en ignorant les valeurs undefined."
+  }
+}

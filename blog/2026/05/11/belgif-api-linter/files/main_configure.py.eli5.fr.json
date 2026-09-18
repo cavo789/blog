@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:51.640Z",
+  "source": "main_configure.py",
+  "sourceHash": "19e6cc11cb4c96e9211f5a33d9f3e0cb46d06524",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce snippet configure une application FastAPI en appelant une fonction helper qui personnalise la documentation OpenAPI. La fonction configure_custom_openapi reçoit l'instance app pour appliquer des modifications spécifiques à la génération du schéma OpenAPI.",
+  "explanations": {
+    "1": "Importe la fonction configure_custom_openapi depuis le module helpers.openapi, qui contient la logique de personnalisation.",
+    "5": "Crée une instance FastAPI qui sera le point d'entrée de l'application web.",
+    "11": "Appelle la fonction helper en passant l'application FastAPI pour que celle-ci applique les configurations OpenAPI personnalisées."
+  }
+}

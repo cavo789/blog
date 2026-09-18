@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:16.268Z",
+  "source": "004-local-llms-future.txt",
+  "sourceHash": "62115d4d550dd7a697a12cae21a331032e4affab",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Cet article présente les avantages d'exécuter des modèles de langage volumineux sur sa propre machine plutôt que sur des serveurs distants. Il explique comment des outils comme Ollama facilitent cette approche locale, et compare cette stratégie avec les solutions basées sur le cloud en examinant les besoins matériels et les cas d'usage appropriés.",
+  "explanations": {}
+}

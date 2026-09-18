@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:40.309Z",
+  "source": "main.part6.py",
+  "sourceHash": "dae305129984afea9de685b867bbe97f5658b20f",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une classe Src qui encapsule des opérations de linting et formatage Python dans des conteneurs isolés avec Dagger. Chaque méthode crée un conteneur Python, installe un outil spécifique (Pylint, Black, Mypy ou Ruff), monte les répertoires source et config, puis exécute l'outil et retourne son résultat. La méthode run_all exécute tous ces outils en parallèle pour un contrôle de qualité complet.",
+  "explanations": {
+    "2": "anyio est une bibliothèque qui permet d'écrire du code asynchrone compatible avec plusieurs backends (asyncio, Trio); ici elle est utilisée pour exécuter les tâches en parallèle.",
+    "4": "Annotated permet d'attacher des métadonnées (ici Doc et DefaultPath) à un type pour enrichir sa définition sans changer le type lui-même.",
+    "7": "Ces imports importent les composants clés de Dagger: dag est le point d'entrée pour construire des pipelines, function et object_type sont des décorateurs pour définir des fonctions et classes exposables, DefaultPath et Doc sont des annotateurs de métadonnées.",
+    "9": "Le décorateur object_type expose cette classe comme un objet réutilisable dans les pipelines Dagger.",
+    "13": "Annotated crée un type Directory enrichi avec une description Doc et un chemin par défaut DefaultPath; cela dit à Dagger comment traiter ce paramètre.",
+    "26": "Le décorateur function expose cette méthode comme une tâche Dagger exécutable.",
+    "27": "async indique que cette fonction utilise la programmation asynchrone et doit être attendue avec await.",
+    "31": "await attend le résultat de la chaîne Dagger; sans await, vous auriez juste l'objet Promise sans exécuter le pipeline.",
+    "32": "dag.container() crée un nouveau conteneur vide que vous allez configurer étape par étape.",
+    "33": ".from_() définit l'image de base du conteneur (python:3.13-slim est une image Python légère).",
+    "35": ".with_mounted_directory() lie un répertoire local (self.source) à un chemin du conteneur (/app/src), ce qui rend les fichiers accessibles à l'intérieur.",
+    "37": ".with_workdir() change le répertoire de travail courant du conteneur, comme cd dans un shell.",
+    "38": "with_exec() exécute une commande shell dans le conteneur; ici pylint analyse le code avec le fichier config .pylintrc.",
+    "39": ".stdout() récupère la sortie texte complète de la dernière commande exécutée.",
+    "63": "dag.cache_volume() crée un cache persistant nommé pour Mypy; cela accélère les exécutions suivantes en réutilisant les données en cache.",
+    "71": ".with_mounted_cache() monte ce cache dans le conteneur à /tmp/mypy pour que Mypy puisse l'utiliser.",
+    "74": "L'f-string (f\"/app/config/mypy.ini\") construit une chaîne avec interpolation; ici il n'y a rien à interpoler mais c'est le style utilisé.",
+    "98": "anyio.create_task_group() crée un contexte où on peut lancer plusieurs tâches asynchrones; elle attend que toutes se terminent avant de continuer.",
+    "99": "tg.start_soon() lance une tâche asynchrone sans attendre son résultat; elle s'exécute en parallèle avec les autres."
+  }
+}

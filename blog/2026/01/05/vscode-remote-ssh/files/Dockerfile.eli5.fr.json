@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:47.627Z",
+  "source": "Dockerfile",
+  "sourceHash": "059f3b95da68d5fb14476e8dfa9cbc1e89f2532a",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu avec un serveur SSH configuré et prêt à accepter des connexions. On installe openssh-server, crée un utilisateur de test nommé christophe avec un mot de passe, puis on configure le serveur SSH pour autoriser l'authentification par mot de passe tout en désactivant l'accès root. Finalement, on expose le port 22 et lance le serveur SSH au démarrage du conteneur.",
+  "explanations": {
+    "5": "apt-get update met à jour la liste des paquets disponibles, indispensable avant d'installer de nouveaux paquets.",
+    "7": "apt-get clean supprime les fichiers de cache téléchargés pendant l'installation pour réduire la taille de l'image.",
+    "8": "rm -rf /var/lib/apt/lists/* efface les listes de paquets stockées localement, une autre façon de minimiser la taille de l'image.",
+    "12": "useradd -rm -d /home/christophe -s /bin/bash christophe crée un nouvel utilisateur christophe avec un répertoire personnel /home/christophe et le shell bash.",
+    "13": "echo 'christophe:p@ssword' | chpasswd définit le mot de passe p@ssword pour l'utilisateur christophe en le passant à travers chpasswd.",
+    "16": "sed -i remplace la configuration PermitRootLogin (commencée par # ou non) par PermitRootLogin no, ce qui empêche la connexion SSH directe du compte root.",
+    "20": "ListenAddress 0.0.0.0 configure le serveur SSH pour écouter sur toutes les interfaces réseau du conteneur, pas seulement localhost.",
+    "25": "CMD ['/usr/sbin/sshd', '-D'] lance le serveur SSH en mode foreground (-D) au démarrage, ce qui le maintient actif."
+  }
+}

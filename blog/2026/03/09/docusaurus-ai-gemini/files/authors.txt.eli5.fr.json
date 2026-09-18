@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:33.681Z",
+  "source": "authors.txt",
+  "sourceHash": "40e738f8db694d7ac9d5eb0d20a9791c1d612ef6",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier définit la configuration d'une entrée pour Google Gemini, un assistant IA. Il spécifie le nom, le titre, l'URL d'accès et le chemin vers l'image du logo pour afficher cet outil dans une interface.",
+  "explanations": {}
+}

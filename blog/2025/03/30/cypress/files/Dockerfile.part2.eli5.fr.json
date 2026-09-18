@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:27.450Z",
+  "source": "Dockerfile.part2",
+  "sourceHash": "74707fdc2fb2504d62f6c4c99a05d8ca8d3adf2f",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker pour exécuter des tests Cypress dans un navigateur Chrome. Il part d'une image Cypress préconfigurée, crée un utilisateur non-root avec des permissions appropriées, copie les fichiers du projet, installe les dépendances npm, vérifie que Cypress fonctionne correctement, puis configure l'image pour lancer les tests Cypress au démarrage.",
+  "explanations": {
+    "3": "ARG déclare une variable de build Docker que tu peux passer lors de la création de l'image avec --build-arg USER_ID=... ; ici on définit une valeur par défaut de 1000 au cas où elle ne serait pas fournie.",
+    "13": "On redéclare ARG USER_ID à nouveau dans cette section pour qu'il soit accessible aux commandes RUN qui suivent, car les variables ARG déclarées avant FROM ne sont disponibles que dans cette première section.",
+    "18": "groupadd crée un groupe Linux avec un ID spécifique, et useradd ajoute un utilisateur à ce groupe tout en le mettant aussi dans le groupe node existant avec -G pour que l'utilisateur ait les bonnes permissions.",
+    "22": "chown change le propriétaire du dossier /app et de son contenu récursivement (-R) pour que l'utilisateur johndoe puisse y écrire, sinon Docker utiliserait root et l'utilisateur non-root ne pourrait pas modifier les fichiers.",
+    "27": "COPY --chown= copie les fichiers depuis ta machine locale vers l'image Docker tout en changeant leur propriétaire en même temps, ce qui évite que root soit le propriétaire.",
+    "30": "npm install télécharge et installe Cypress et toutes ses dépendances basées sur le package.json, ce qui peut prendre du temps mais c'est fait une seule fois lors de la création de l'image.",
+    "37": "npx cypress verify vérifie que Cypress a été correctement installé et que tous les fichiers binaires nécessaires sont présents, avant de lancer réellement les tests."
+  }
+}

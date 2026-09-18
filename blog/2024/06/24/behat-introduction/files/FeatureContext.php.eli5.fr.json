@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:34.345Z",
+  "source": "FeatureContext.php",
+  "sourceHash": "37407ca21aca73f5dfeaf7b2180e60627b19ede1",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une classe de contexte FeatureContext pour les tests Behat qui contrôlent un navigateur Chrome. Elle initialise une instance Mink avec un driver Chrome connecté à un serveur de débogage distant, permettant d'automatiser les tests d'interface utilisateur sur un site web spécifique.",
+  "explanations": {
+    "14": "Déclare une propriété privée qui stockera l'instance Mink pour contrôler le navigateur dans les tests.",
+    "25": "Crée une nouvelle instance Mink avec une configuration qui définit un navigateur Chrome comme session de test.",
+    "27": "Enveloppe le ChromeDriver dans une Session, qui est l'abstraction Mink pour gérer un navigateur.",
+    "28": "Initialise le driver Chrome qui communiquera avec le serveur de débogage distant pour contrôler le navigateur réel.",
+    "29": "Spécifie l'adresse du serveur de débogage Chrome; 9222 est le port standard pour le protocole de débogage.",
+    "44": "Lance une exception PendingException pour marquer que cette étape de test n'a pas encore d'implémentation concrète."
+  }
+}

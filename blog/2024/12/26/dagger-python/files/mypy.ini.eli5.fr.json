@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:02.764Z",
+  "source": "mypy.ini",
+  "sourceHash": "71d1cc13029893ae3062aac720e68846d50fcf19",
+  "lang": "ini",
+  "textLang": "fr",
+  "summary": "Ce fichier configure mypy, l'outil de vérification de types pour Python. Il active le mode strict pour détecter les erreurs de typage, puis désactive une vérification spécifique qui génère des faux positifs sur les attributs. Il configure également mypy pour exiger des annotations de types complètes, interdire les optionnels implicites, et cible Python 3.13.",
+  "explanations": {
+    "4": "Les lignes suivantes activent tous les contrôles de mypy en mode strict, puis en désactivent certains qui sont problématiques.",
+    "7": "mypy signale à tort que des attributs n'existent pas même quand ils sont présents dans le code.",
+    "10": "On désactive temporairement le contrôle attr-defined pour éviter ces faux positifs.",
+    "12": "cache_dir spécifie où mypy doit stocker ses fichiers de cache pour accélérer les analyses futures.",
+    "15": "disallow_untyped_defs force à ajouter des annotations de type à toutes les fonctions, sans exception.",
+    "17": "no_implicit_optional empêche mypy de deviner que les paramètres sans annotation sont optionnels.",
+    "19": "strict_equality oblige à utiliser == et != seulement entre types compatibles, pas n'importe quoi.",
+    "20": "warn_redundant_casts signale les conversions de type inutiles qui n'ont aucun effet.",
+    "21": "warn_unused_ignores met en évidence les directives qui ignorent des erreurs mypy mais qui ne sont pas nécessaires.",
+    "23": "python_version indique à mypy la version de Python cible pour adapter sa vérification."
+  }
+}

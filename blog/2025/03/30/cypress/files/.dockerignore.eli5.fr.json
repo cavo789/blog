@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:18.240Z",
+  "source": ".dockerignore",
+  "sourceHash": "b47b1cf438b86107eb9f54df4e2f5fccb2731be9",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier .gitignore liste les répertoires et fichiers à exclure du contrôle de version Git. Il ignore node_modules (dépendances npm), le Dockerfile (configuration de conteneur), et .dockerignore (fichier de configuration Docker), ce qui évite de commiter des fichiers volumineux ou spécifiques à l'environnement.",
+  "explanations": {
+    "1": "node_modules est le répertoire contenant toutes les dépendances npm installées — il est énorme et peut être régénéré depuis package.json, donc pas besoin de le versionner.",
+    "2": "Dockerfile est la recette pour construire une image Docker ; on l'exclut probablement du dépôt source car il appartient à la configuration d'infrastructure.",
+    "3": ".dockerignore indique à Docker quels fichiers ignorer lors de la construction d'une image — il n'y a pas besoin de le versionner si on le génère automatiquement ou s'il est spécifique à l'environnement local."
+  }
+}

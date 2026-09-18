@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:59.089Z",
+  "source": "module.bas",
+  "sourceHash": "d5d8660960eddfb328396fc71500ce0d4c8c05b0",
+  "lang": "bas",
+  "textLang": "fr",
+  "summary": "Ce module gère une liste déroulante dans le ruban Excel qui permet de sélectionner une période. Il charge les périodes disponibles depuis une plage nommée dans le classeur, initialise la sélection avec la dernière valeur, et expose des fonctions pour que le ruban affiche les éléments et récupère la valeur sélectionnée par l'utilisateur.",
+  "explanations": {
+    "1": "Option Base 0 configure les tableaux et les collections pour commencer à l'indice 0 au lieu de 1, ce qui est le comportement par défaut en VBA.",
+    "2": "Option Compare Text force les comparaisons de chaînes à ignorer la casse (majuscules/minuscules).",
+    "5": "cRangeName stocke le nom de la plage Excel qui contient la liste des périodes disponibles.",
+    "12": "cName est le nom qui sera créé dans le classeur pour stocker la période sélectionnée, accessible par les formules avec _Period.",
+    "14": "sVariable privée qui mémorise la valeur de la période actuellement sélectionnée.",
+    "25": "wLastIndex est déclaré en Byte, un type de données entier petit (0-255), ce qui suffit pour compter les lignes dans un petit tableau.",
+    "28": "shParams.Range(cRangeName).Rows.Count compte le nombre de lignes dans la plage nommée pour trouver l'index du dernier élément.",
+    "29": "Cells(wLastIndex, 1) accède à la cellule à la ligne wLastIndex et colonne 1 ; on récupère sa valeur pour initialiser la sélection.",
+    "32": "Range(cName).Value assigne la valeur à un nom de plage créé dans le classeur, ce qui la rend accessible aux formules Excel.",
+    "56": "Cette routine callback est appelée par le ruban Excel quand l'utilisateur sélectionne un élément ; id contient la valeur de cet élément.",
+    "71": "ByRef returnedVal signifie que ce paramètre est passé par référence, donc la procédure modifie la valeur reçue plutôt que d'en créer une copie.",
+    "82": "Cells(index + 1, 1) ajoute 1 à l'index car le ruban compte à partir de 0, mais les lignes Excel commencent à 1."
+  }
+}

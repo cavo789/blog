@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:01.778Z",
+  "source": "slides_19.txt",
+  "sourceHash": "3e22ac49c2861552f9da51622b45567df3ae75ac",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier contient des titres Markdown avec des attributs personnalisés pour la génération de documentation. Les commentaires highlight-next-line indiquent au générateur de mettre en évidence les lignes suivantes, tandis que les attributs entre accolades définissent des identifiants, des menus et d'autres métadonnées pour structurer le document.",
+  "explanations": {
+    "1": "Ce commentaire HTML indique au générateur de documentation (probablement Docusaurus ou similaire) de mettre en évidence visuellement la ligne suivante dans la sortie finale.",
+    "2": "Les accolades en fin de ligne contiennent des attributs MDX : #intro crée un identifiant unique pour cette section, et data-menu-title=\"Introduction\" définit le texte affiché dans le menu de navigation.",
+    "4": "Comme la ligne 1, ce commentaire signale que le titre suivant doit être mis en évidence.",
+    "5": "Ce titre utilise #chapter1 comme identifiant unique et affiche \"Chapter 1\" dans le menu de navigation, permettant une navigation facile entre les sections du document."
+  }
+}

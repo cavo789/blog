@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:23.411Z",
+  "source": "tag_analysis.json",
+  "sourceHash": "573193014f6369817e28daaf91cd653f7f300f8d",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON contient des statistiques sur les tags utilisés dans une collection de ressources. Il indique qu'il y a 23 tags uniques au total, et présente une liste des tags les plus fréquents avec leur nombre d'occurrences, où « local » et « LLMs » apparaissent deux fois chacun tandis que les autres tags n'apparaissent qu'une seule fois.",
+  "explanations": {
+    "2": "total_unique_tags dénombre le nombre distinct de catégories (tags) qui existent dans l'ensemble des données, indépendamment de leur fréquence d'apparition.",
+    "3": "top_tags est un tableau qui liste les tags ordonnés par importance, généralement du plus au moins fréquent, permettant de voir rapidement quels sujets dominent la collection."
+  }
+}

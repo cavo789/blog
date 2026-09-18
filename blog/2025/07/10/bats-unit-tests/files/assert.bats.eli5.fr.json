@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:53:34.286Z",
+  "source": "assert.bats",
+  "sourceHash": "274d8f31e4efb235570592cfe8400552833c33e7",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce fichier de test bats vérifie le comportement d'une fonction assert::binaryExists qui contrôle si des commandes existent sur le système. Avant chaque test, setup() charge les bibliothèques de test et crée un fichier temporaire ; après chaque test, teardown() nettoie ce fichier. Les deux tests valident que la fonction retourne succès avec une sortie vide quand un binaire existe (comme 'clear' ou 'ls'), et échec avec un message d'erreur spécifique quand le binaire n'existe pas.",
+  "explanations": {
+    "4": "bats_load_library charge la bibliothèque bats-assert qui fournit les fonctions d'assertion comme assert_success et assert_output utilisées plus bas.",
+    "5": "bats_load_library charge bats-support, une dépendance auxiliaire qu'assert a besoin pour fonctionner.",
+    "7": "source exécute le fichier assert.sh depuis le répertoire src, ce qui rend disponible la fonction assert::binaryExists qu'on teste.",
+    "10": "tmpFile définit le chemin du fichier temporaire qu'on va créer et utiliser pendant les tests.",
+    "11": "Cette condition vérifie que le répertoire /tmp/bats n'existe pas déjà, puis le crée uniquement s'il manque.",
+    "24": "run exécute la commande assert::binaryExists 'clear' et capture son code de sortie et sa sortie pour les tests suivants.",
+    "27": "assert_success affirme que la commande précédente a retourné un code de sortie 0 (succès).",
+    "30": "assert_output vérifie que la sortie de la commande est exactement une chaîne vide.",
+    "43": "assert_failure 1 affirme que la commande a échoué avec le code d'erreur 1."
+  }
+}

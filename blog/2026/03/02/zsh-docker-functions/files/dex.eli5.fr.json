@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:56.267Z",
+  "source": "dex",
+  "sourceHash": "e67a4966542551b97bb2d2c537f9458caabbdb60",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script zsh utilise fzf pour afficher une liste interactive des conteneurs Docker en cours d'exécution, permettant à l'utilisateur de se connecter à l'un d'eux. Selon la touche pressée, le script exécute la commande docker exec immédiatement ou la place dans le buffer pour édition; il supporte également l'exécution en tant que root et détecte automatiquement le shell disponible dans le conteneur.",
+  "explanations": {
+    "4": "_d_check_env vérifie que les dépendances fzf et docker sont disponibles dans l'environnement; si ce n'est pas le cas, return 1 arrête le script.",
+    "5": "_d_has_running_containers vérifie qu'il y a au moins un conteneur en cours d'exécution; sinon le script s'arrête sans erreur.",
+    "12": "La variable preview_cmd contient une template Docker avec des sauts de ligne littéraux qui affichent les détails du conteneur sélectionné dans l'aperçu fzf.",
+    "22": "docker ps extrait les ID, noms et images des conteneurs, puis les pipe à fzf pour sélection interactive.",
+    "31": "head -n 1 extrait la première ligne de fzf_out, qui contient la touche spéciale pressée (ou rien si on appuie sur Entrée).",
+    "32": "tail -n +2 extrait toutes les lignes suivantes de fzf_out, c'est-à-dire la ligne de sélection du conteneur.",
+    "33": "awk '{print $1}' extrait le premier champ (l'ID du conteneur) de la ligne de sélection.",
+    "44": "Cette commande tente d'exécuter zsh en priorité, puis bash, et en dernier recours sh; c'est l'interpréteur par défaut du conteneur.",
+    "45": "tr -s ' ' compresse les espaces multiples en un seul, nettoyant la chaîne de commande avant évaluation.",
+    "49": "print -z place la commande dans le buffer zsh pour édition manuelle au lieu de l'exécuter immédiatement.",
+    "51": "_d_print_cmd affiche la commande en couleur cyan avant son exécution, pour que l'utilisateur voie ce qui s'exécute."
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:11.104Z",
+  "source": "compose.yaml",
+  "sourceHash": "c8ac0ba0124130798d8eb5c44abc2cd06a413865",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : ollama, qui exécute le modèle de langage accessible sur le port 11444, et app, qui configure l'environnement de développement VS Code. Les deux services fonctionnent ensemble, avec app dépendant d'ollama pour opérer.",
+  "explanations": {
+    "10": "Le port 11444 sur la machine hôte est mappé au port 11434 à l'intérieur du conteneur ollama, permettant d'accéder au service via localhost:11444.",
+    "12": "ollama_data est un volume nommé qui persiste les données du modèle dans /root/.ollama à l'intérieur du conteneur, de sorte qu'elles survivent aux redémarrages.",
+    "25": "context: . signifie que Docker va construire l'image à partir du répertoire courant (le répertoire racine du projet).",
+    "28": "Le répertoire courant du projet est monté dans le conteneur à /workspaces/blog_analyzer, permettant à l'éditeur d'accéder et modifier les fichiers.",
+    "29": "depends_on garantit que le service ollama démarre avant app, car app en dépend pour fonctionner.",
+    "32": "sleep infinity garde le conteneur app en fonctionnement indéfiniment, sinon il s'arrêterait immédiatement après le démarrage."
+  }
+}

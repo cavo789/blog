@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:47.988Z",
+  "source": "script.sh",
+  "sourceHash": "69e54980e38d3b5ff80db197b499b9d7bb1f45f7",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash configure un environnement sûr pour l'exécution, affiche un banneau ASCII stylisé au démarrage, puis appelle la fonction principale. La structure permet d'organiser la logique du programme dans la fonction __main et de la lancer avec tous les arguments passés au script.",
+  "explanations": {
+    "2": "set -euo pipefail configure trois comportements de sécurité : -e arrête le script à la première erreur, -u traite les variables non définies comme des erreurs, -o pipefail fait échouer le script si une commande dans un pipe échoue.",
+    "9": "cat <<\\EOF affiche un bloc de texte littéral jusqu'à la ligne contenant EOF, le backslash empêche l'interprétation des variables et caractères spéciaux dans le bloc.",
+    "28": "__main \"$@\" appelle la fonction __main en passant tous les arguments que le script a reçus, permettant au script parent de transmettre des paramètres à la fonction principale."
+  }
+}

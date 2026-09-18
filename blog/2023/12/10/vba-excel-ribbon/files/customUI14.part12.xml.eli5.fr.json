@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:03.086Z",
+  "source": "customUI14.part12.xml",
+  "sourceHash": "00d6a7f0abe0ce46d5d45b06fd793a25d82a8b4b",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Cet élément XML définit une boîte de texte éditable avec un identifiant unique et un gestionnaire d'événement. Quand l'utilisateur modifie le texte, la fonction OnEditBoxTextChanged est appelée automatiquement.",
+  "explanations": {
+    "2": "L'attribut id=\"customEditBox\" assigne un identifiant unique à cet élément pour pouvoir le référencer dans le code ou les styles.",
+    "4": "L'attribut onChange=\"OnEditBoxTextChanged\" spécifie que la fonction OnEditBoxTextChanged doit être exécutée chaque fois que le contenu de la boîte de texte change."
+  }
+}

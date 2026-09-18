@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:54.746Z",
+  "source": "Dockerfile",
+  "sourceHash": "80e56143113f040d6c6a97977a9cf0e024247e72",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Alpine Linux 3.14, copie un script shell appelé counter.sh dans le conteneur, le rend exécutable, puis configure le conteneur pour rester actif indéfiniment en affichant un fichier vide. C'est une approche courante pour créer un conteneur qui ne s'arrête pas immédiatement après son démarrage.",
+  "explanations": {
+    "3": "COPY counter.sh counter.sh copie le fichier counter.sh depuis ta machine hôte dans le système de fichiers du conteneur, au même emplacement relatif.",
+    "5": "chmod +x counter.sh rend le script exécutable en ajoutant la permission de lecture-exécution pour tous les utilisateurs.",
+    "7": "ENTRYPOINT configure la commande par défaut que le conteneur exécutera au démarrage — ici, tail -f /dev/null affiche continuellement un fichier vide, ce qui garde le conteneur en vie sans rien faire."
+  }
+}

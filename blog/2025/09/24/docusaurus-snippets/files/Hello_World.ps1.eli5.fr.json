@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:29.795Z",
+  "source": "Hello_World.ps1",
+  "sourceHash": "122207b3d616c106cb02db843ce18dadae2067e8",
+  "lang": "powershell",
+  "textLang": "fr",
+  "summary": "Ce script affiche simplement le message 'Hello, world!' dans la console en utilisant la cmdlet Write-Output, qui est le moyen standard en PowerShell pour produire une sortie de texte.",
+  "explanations": {}
+}

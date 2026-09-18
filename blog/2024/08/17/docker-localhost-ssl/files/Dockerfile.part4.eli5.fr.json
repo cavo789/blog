@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:54.455Z",
+  "source": "Dockerfile.part4",
+  "sourceHash": "bcc0e29463ef05eae92799104c7e01dc2af7b1fb",
+  "lang": "part4",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur PHP 8.3 avec Apache, configure SSL en copiant les certificats et clés, puis active les modules Apache nécessaires et désactive les sites par défaut au profit d'une configuration personnalisée.",
+  "explanations": {
+    "3": "FROM php:8.3-apache spécifie l'image de base — on part d'une image officielle qui contient déjà PHP 8.3 et Apache préinstallés.",
+    "5": "Cette ligne copie le certificat SSL depuis le répertoire local ssl/ vers le conteneur, dans le chemin standard où Apache s'attend à trouver les certificats.",
+    "6": "De même, on copie la clé privée SSL du répertoire local vers le conteneur, en la plaçant dans le répertoire réservé aux clés privées.",
+    "8": "On copie un fichier de configuration Apache personnalisé depuis le répertoire httpd/ local vers le répertoire sites-available du conteneur, ce qui permet à Apache de la reconnaître.",
+    "10": "a2enmod ssl active le module SSL dans Apache, indispensable pour que le serveur puisse utiliser HTTPS.",
+    "11": "a2enmod rewrite active le module rewrite, qui permet de réécrire les URLs (utile pour le routing, les redirections, etc.).",
+    "12": "a2dissite désactive les deux configurations de site par défaut qui viendraient interférer avec notre configuration personnalisée.",
+    "13": "a2ensite my-ssl active notre configuration personnalisée my-ssl.conf, la rendant opérationnelle."
+  }
+}

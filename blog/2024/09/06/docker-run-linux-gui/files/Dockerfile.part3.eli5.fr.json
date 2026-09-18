@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:49.795Z",
+  "source": "Dockerfile.part3",
+  "sourceHash": "6130918e3a6b539f6086ca9ed5c6c44b5bc873f2",
+  "lang": "part3",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu et y installe Google Chrome. Il configure l'environnement pour éviter les dialogues interactifs durant l'installation, puis télécharge et installe Chrome avant de nettoyer les caches. Enfin, il définit Chrome comme commande par défaut avec des drapeaux de désactivation pour la mémoire partagée et l'accélération GPU.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives durant l'installation, ce qui est nécessaire dans un conteneur automatisé.",
+    "5": "apt-get update récupère les listes des paquets disponibles depuis les dépôts Ubuntu; le backslash à la fin permet de continuer la commande sur la ligne suivante.",
+    "9": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache d'apt après l'installation pour réduire la taille de l'image Docker.",
+    "11": "CMD définit la commande par défaut exécutée au démarrage du conteneur; les drapeaux --disable-dev-shm-usage et --disable-gpu sont souvent nécessaires pour Chrome en environnement conteneurisé pour éviter des problèmes de mémoire et de rendu."
+  }
+}

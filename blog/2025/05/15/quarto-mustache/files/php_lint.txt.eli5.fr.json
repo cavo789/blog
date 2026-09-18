@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:53.153Z",
+  "source": "php_lint.txt",
+  "sourceHash": "956fc533bd926310ef0aa9ed3e87c9d875a1a91e",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier est un document de configuration pour la documentation d'un linter PHP appelé phplint. Il définit les métadonnées du projet (titre, catégories, ordre d'affichage) et les paramètres techniques (commande à exécuter, fichier de configuration, constante PHP associée), puis structure le contenu avec des sections standard expliquant son fonctionnement, sa configuration et ses points d'attention.",
+  "explanations": {
+    "5": "La clé partial-data contient les informations spécifiques que des modèles de documentation réutilisables vont utiliser pour générer le contenu.",
+    "6": "command indique le nom de la commande CLI que les utilisateurs doivent exécuter pour lancer le linter.",
+    "7": "config_file spécifie le nom du fichier de configuration que phplint cherchera par défaut dans le projet.",
+    "8": "config_url pointe vers un exemple de fichier de configuration sur le dépôt GitHub pour que les utilisateurs voient comment bien l'écrire.",
+    "9": "constant est le nom de la constante PHP que ce linter définit ou utilise en interne.",
+    "21": "{{< partial ... >}} est une directive du générateur de site statique Hugo qui inclut le contenu d'un fichier de modèle à cet endroit.",
+    "29": "Ce partial inclut le modèle pour expliquer comment configurer le linter à partir d'un fichier."
+  }
+}

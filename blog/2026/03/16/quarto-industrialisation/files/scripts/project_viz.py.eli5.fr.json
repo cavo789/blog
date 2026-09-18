@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:09.596Z",
+  "source": "project_viz.py",
+  "sourceHash": "6a2b872c722a2853d0e2cc9650c9a0b907e5e510",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette fonction lit les fichiers Dockerfile et compose.yaml pour extraire des informations sur l'architecture du projet (image parent, volumes, ports, commandes), puis génère et affiche un diagramme Mermaid qui visualise comment ces composants interagissent.",
+  "explanations": {
+    "6": "Path() crée un objet chemin plutôt qu'une simple chaîne, ce qui permet des opérations comme .exists() et .read_text() directement sur le chemin.",
+    "16": "re.search() cherche le pattern regex dans le texte et retourne un objet match si trouvé, ou None sinon.",
+    "18": ".group(1) extrait le premier groupe capturé entre parenthèses dans la regex (ici, tout ce qui suit FROM).",
+    "22": "yaml.safe_load() parse le fichier YAML et le convertit en dictionnaire Python — c'est plus sûr que load() pour les fichiers non fiables.",
+    "23": "data.get('services', {}) accède à la clé 'services' du dictionnaire, en retournant un dictionnaire vide {} si la clé n'existe pas.",
+    "25": "On vérifie d'abord si ':' existe dans la chaîne avant d'appeler .split(':'), sinon .split(':')[0] retournerait juste la chaîne entière.",
+    "38": "La chaîne f'...' est une f-string qui insère la valeur de parent_image directement dans le texte en remplaçant {parent_image}.",
+    "51": "\".join(mermaid) combine tous les éléments de la liste mermaid en une seule chaîne, avec des retours à la ligne '\\n' entre chaque ligne."
+  }
+}

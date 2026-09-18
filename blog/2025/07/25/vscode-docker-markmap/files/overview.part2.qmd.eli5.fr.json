@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:56.699Z",
+  "source": "overview.part2.qmd",
+  "sourceHash": "e48b7737523bbf7e5adbfdc3eb57d233105b97ed",
+  "lang": "qmd",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration JSON définit l'apparence et le comportement d'une visualisation markmap (une carte mentale interactive). Il spécifie des styles CSS personnalisés pour les liens, nœuds et éléments en surbrillance, ainsi que des options par défaut comme la taille de police, l'espacement et les animations.",
+  "explanations": {
+    "2": "markmap.customCSS contient du CSS brut qui stylise les éléments visuels : les traits en gris (#505050), les cercles des nœuds en gris foncé (#242424), les liens de texte en gris clair (#bbbbbb), et les boîtes de surbrillance avec une transformation d'échelle et transparence.",
+    "3": "markmap.defaultOptions configure le rendu de la carte : la fonction color utilise un gradient d'arc-en-ciel d3, nodeFont définit la police à 20px, spacingVertical et spacingHorizontal contrôlent l'écart entre éléments, initialExpandLevel à -1 signifie tout fermé au départ, duration règle la durée des animations à 1000ms, et paddingX/Y ajoute de l'espace interne."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:56.595Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "d09c989db0022aea1d93362399af360a9afc7cfb",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service Apache avec une image construite à partir du répertoire courant. Le service expose les ports HTTP et HTTPS vers l'hôte et monte un répertoire local pour servir les fichiers web.",
+  "explanations": {
+    "6": "Le format ports mappe un port de l'hôte vers un port du conteneur ; %%port=80%% est un placeholder qui sera remplacé par une valeur à l'exécution.",
+    "10": "volumes monte le répertoire ./src du système hôte dans le chemin /usr/local/apache2/htdocs du conteneur, permettant à Apache de servir les fichiers locaux."
+  }
+}

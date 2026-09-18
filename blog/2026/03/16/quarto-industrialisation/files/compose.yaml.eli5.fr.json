@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:47.907Z",
+  "source": "compose.yaml",
+  "sourceHash": "73d4bfa74dbc80cbbccc12287a0e39f685e31146",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé 'docs' qui construit une image à partir du répertoire courant, monte le workspace local pour le développement, expose le port 4242, configure les variables d'environnement Python, et lance un script de prévisualisation en arrière-plan.",
+  "explanations": {
+    "3": "build: . signifie que Docker doit construire l'image en utilisant le Dockerfile présent dans le répertoire courant.",
+    "5": "Le volume -. :/workspace mappe le répertoire courant de ta machine dans le conteneur à /workspace, ce qui te permet de modifier les fichiers localement et de voir les changements immédiatement.",
+    "7": "Le syntaxe %%port=4242%% est un placeholder qui sera remplacé dynamiquement avec un vrai port; le port 4242 du conteneur est exposé sur ce port de la machine hôte.",
+    "9": "PYTHONPATH=/workspace/scripts dit à Python où chercher les modules à importer, dans ce cas le dossier scripts du workspace.",
+    "11": "chmod +x rend le fichier preview.sh exécutable, puis sleep infinity garde le conteneur actif indéfiniment plutôt que de le fermer après exécution."
+  }
+}

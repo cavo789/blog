@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:42.939Z",
+  "source": "console.sh",
+  "sourceHash": "c68f1c971da2bc75001782c2f3508fdbe08119d0",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une bibliothèque de fonctions utilitaires pour l'affichage console avec du formatage coloré et des interactions utilisateur. Les fonctions permettront d'afficher du texte en cyan, rouge, des messages d'erreur, des bannières et de poser des questions oui/non avec des codes couleur pour une meilleure lisibilité.",
+  "explanations": {
+    "1": "#!/usr/bin/env bash indique au système d'utiliser bash pour exécuter ce script, peu importe où bash est installé sur la machine.",
+    "3": "function console::printCyan() définit une fonction avec un namespace :: pour afficher du texte en couleur cyan dans le terminal.",
+    "6": "function console::askYesNo() crée une fonction qui va poser une question oui/non à l'utilisateur et attendre sa réponse.",
+    "9": "function console::printRed() définit une fonction pour afficher du texte en rouge dans la console.",
+    "12": "function console::printError() crée une fonction spécialisée pour afficher des messages d'erreur, probablement en rouge et sur stderr.",
+    "15": "function console::banner() définit une fonction pour afficher une bannière de texte, généralement utilisée au démarrage ou pour les en-têtes visuels."
+  }
+}

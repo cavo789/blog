@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:05.452Z",
+  "source": "preview.sh",
+  "sourceHash": "31637e62d87701a67b155c691a54068181ed7298",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script démarre le moteur WritingDoc en affichant des messages de bienvenue colorés, puis lance Quarto pour prévisualiser la documentation sur le port 4242 accessible localement et en réseau.",
+  "explanations": {
+    "2": "set -euo pipefail configure le shell pour arrêter immédiatement en cas d'erreur (-e), rejeter les variables non définies (-u), et propager les erreurs dans les pipelines (-o pipefail).",
+    "3": "echo -e active l'interprétation des séquences d'échappement comme \\e[1;34m (couleur bleue gras) et \\e[0m (réinitialisation du formatage), permettant d'afficher du texte coloré dans le terminal.",
+    "7": "--host 0.0.0.0 expose le serveur sur toutes les interfaces réseau (pas seulement localhost), tandis que --no-browser empêche l'ouverture automatique du navigateur."
+  }
+}

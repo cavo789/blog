@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:52.138Z",
+  "source": "console.part2.sh",
+  "sourceHash": "cbe8634d645343ef4ee5060ec4a97f6b91e8822d",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une bibliothèque de fonctions utilitaires pour l'affichage en console, avec des fonctions pour poser des questions oui/non, afficher des bannières, et imprimer du texte coloré en bleu, cyan, rouge, vert ou comme erreur. Les implémentations réelles des fonctions sont vides et devront être complétées ailleurs.",
+  "explanations": {
+    "1": "Le shebang #!/usr/bin/env bash indique au système d'exécuter ce script avec bash, en trouvant bash dans le PATH plutôt que de supposer son emplacement exact.",
+    "3": "La syntaxe function console::askYesNo() déclare une fonction nommée avec des doubles deux-points (::) pour créer un namespace, ce qui aide à éviter les conflits de noms dans les gros scripts.",
+    "6": "console::banner() est une fonction qui affichera probablement un en-tête ou une décoration visuelle, mais son corps n'est pas implémenté ici.",
+    "9": "console::printBlue() est une fonction destinée à afficher du texte en couleur bleue, utile pour mettre en évidence certains messages dans la console."
+  }
+}

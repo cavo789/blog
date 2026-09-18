@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:26.510Z",
+  "source": "AnyTest.part4.php",
+  "sourceHash": "b3751208365ad293f149e51d024b2fafa13815ec",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce test paramétrisé vérifie que chaque adresse email fournie n'est pas vide. La méthode with() injecte plusieurs ensembles de données (nom et email) dans le test, ce qui exécute le test une fois pour chaque paire de valeurs.",
+  "explanations": {
+    "1": "La fonction it() définit un test unitaire qui accepte deux paramètres : $name et $email, lesquels seront remplis par les données fournies plus tard.",
+    "2": "expect($email)->not->toBeEmpty() est une assertion qui vérifie que la variable $email n'est pas vide ; le ->not inverse la logique de vérification.",
+    "3": "with() est une méthode de paramétrage qui fournit un tableau de données test ; le test sera exécuté une fois pour chaque ligne du tableau."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:56.973Z",
+  "source": "MDXComponents.js",
+  "sourceHash": "794a8dab9ffad9fbd151cc80b7652143a4d7a877",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier exporte un objet qui redéfinit le composant img utilisé par MDX en préservant tous les composants par défaut. Le composant img personnalisé force le chargement différé et le décodage asynchrone des images pour améliorer les performances, sauf si ces valeurs sont explicitement fournies.",
+  "explanations": {
+    "5": "L'opérateur spread (...MDXComponents) copie tous les composants originaux dans cet objet, ce qui permet de réutiliser les valeurs par défaut tout en ajoutant nos personnalisations.",
+    "9": "Cette destructuration sépare loading, decoding, className et style des autres propriétés (rest), pour pouvoir traiter spécialement les deux premiers attributs et passer le reste tel quel au vrai élément img.",
+    "15": "L'expression loading || \"lazy\" utilise la valeur loading si elle existe, sinon applique \"lazy\" par défaut pour que les images se chargent seulement quand l'utilisateur les approche.",
+    "17": "L'expression decoding || \"async\" force le décodage asynchrone par défaut, ce qui empêche le navigateur de bloquer l'affichage pendant qu'il traite l'image."
+  }
+}

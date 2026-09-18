@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:13.697Z",
+  "source": "002-getting-started-with-ollama.txt",
+  "sourceHash": "82178485d054fc38425b32f969c4b114b03264b0",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce guide présente Ollama, un outil permettant d'exécuter des modèles de langage volumineux localement sur ta machine. Il couvre l'installation, le téléchargement d'un premier modèle et l'interaction via la ligne de commande et une API REST, offrant ainsi confidentialité et économies.",
+  "explanations": {}
+}

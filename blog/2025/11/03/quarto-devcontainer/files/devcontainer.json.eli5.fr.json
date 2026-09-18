@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:53.961Z",
+  "source": "devcontainer.json",
+  "sourceHash": "7c54a41e4c5cc35d10d3833b64f5ce053bdfa605",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un conteneur de développement pour un projet Quarto avec Docker. Il définit l'environnement VS Code, les paramètres d'édition, les formateurs de code, les extensions et l'accès SSH pour les développeurs qui travaillent dans ce conteneur.",
+  "explanations": {
+    "3": "dockerComposeFile indique le fichier YAML qui décrit comment construire et lancer le conteneur Docker pour ce projet.",
+    "8": "Cette variable d'environnement configure SSH pour utiliser une clé Ed25519 stockée dans le conteneur, avec une sécurité réduite pour accepter les hôtes inconnus.",
+    "10": "initializeCommand crée des dossiers et des fichiers nécessaires avant que l'environnement ne soit attaché, notamment pour conserver l'historique Bash.",
+    "11": "postAttachCommand exécute pre-commit install après la connexion si l'outil pre-commit est disponible, en ignorant les erreurs avec 'true'.",
+    "27": "editor.wordWrap: 'wordWrapColumn' force les lignes à se casser au nombre de caractères spécifié au lieu de s'étendre indéfiniment.",
+    "40": "cSpell.language configure le vérificateur orthographique pour accepter les mots en anglais, français et néerlandais.",
+    "55": "editor.rulers affiche des guides verticales à 120 et 70 caractères pour aider à respecter les limites de longueur de ligne.",
+    "68": "files.associations mappe les fichiers JSON dans le dossier 'resources/' pour être traités comme du JSONC (JSON avec commentaires).",
+    "72": "files.defaultLanguage utilise la variable ${activeEditorLanguage} pour assigner automatiquement le langage selon le fichier ouvert.",
+    "94": "markdownlint.config désactive deux règles de linting Markdown spécifiques (MD033 et MD036) pour ce projet.",
+    "109": "yaml.schemas associe des fichiers YAML spécifiques à des schémas JSON en ligne pour la validation et l'autocomplétion."
+  }
+}

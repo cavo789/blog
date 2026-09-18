@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:27:40.147Z",
+  "source": "index.php",
+  "sourceHash": "b3187814bbb79b5cbdfd206dd93943752bf21085",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script PHP simple affiche un titre HTML avec le texte 'Hello world! I'm a shared script'. C'est un exemple basique montrant comment utiliser echo pour envoyer du contenu HTML au navigateur.",
+  "explanations": {
+    "3": "echo envoie la chaîne de caractères au navigateur, qui interprète les balises HTML <h1> pour afficher le texte en tant que titre de premier niveau."
+  }
+}

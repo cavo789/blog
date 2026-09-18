@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:29.358Z",
+  "source": "cypress.config.js",
+  "sourceHash": "625da946864a7d89eaae1109bd32eaf669be4a54",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Cypress, un framework de test automatisé pour les applications web. Il exporte une configuration qui indique à Cypress de tester l'application en cours d'exécution sur localhost:3100 et de désactiver le fichier de support par défaut.",
+  "explanations": {
+    "1": "defineConfig est une fonction importée de Cypress qui aide à structurer et valider la configuration du projet.",
+    "7": "supportFile: false désactive le chargement automatique du fichier de support Cypress, ce qui signifie qu'aucun code préalable ne s'exécutera avant chaque test."
+  }
+}

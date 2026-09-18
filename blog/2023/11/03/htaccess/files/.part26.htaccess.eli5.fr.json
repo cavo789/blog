@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:23.122Z",
+  "source": ".part26.htaccess",
+  "sourceHash": "4c50ad8353149b0ba831e4c95f07b6a94782f16c",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Cette règle de réécriture d'URL redirige de manière permanente (code 301) toutes les requêtes vers le chemin archive/2020/ vers le chemin 2020/ simplifié, en préservant tout ce qui suit 2020 dans l'URL. La correspondance ignore la casse grâce au flag NC, et le flag L arrête le traitement des autres règles.",
+  "explanations": {
+    "1": "Le pattern ^archive/2020/(.*)$ capture tout ce qui vient après archive/2020/ entre parenthèses, ce qui devient accessible via $1 dans la cible /2020/$1. Les flags [R=301,NC,L] signifient : redirection permanente (R=301), ignore la casse (NC), et arrête le traitement des règles suivantes (L)."
+  }
+}

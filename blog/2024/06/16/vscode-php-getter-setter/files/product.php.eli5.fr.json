@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:59.248Z",
+  "source": "product.php",
+  "sourceHash": "be1b3e3ff954db764f1a9389b7222883bd6dc6f1",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une classe Product simple dans l'espace de noms Cavo. La classe contient deux propriétés publiques : name pour stocker le nom du produit et price pour stocker son prix.",
+  "explanations": {
+    "3": "namespace Cavo; place cette classe dans l'espace de noms Cavo, ce qui permet d'organiser le code et d'éviter les conflits de noms si d'autres classes portent le même nom.",
+    "7": "public string $name = ''; déclare une propriété de type string (texte) avec une valeur par défaut vide, accessible de l'extérieur de la classe.",
+    "8": "public float $price = 0; déclare une propriété de type float (nombre décimal) avec une valeur par défaut zéro, accessible de l'extérieur de la classe."
+  }
+}

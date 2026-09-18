@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:29.487Z",
+  "source": "health.sh",
+  "sourceHash": "aa9bf755476ddc71249cd98091a175b997dfad93",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script affiche l'état de santé de tous les conteneurs Docker avec un code couleur : vert pour sain, rouge pour défaillant, gris pour pas de vérification configurée. Il utilise des codes ANSI pour colorer la sortie et traite chaque conteneur indépendamment sans arrêter si l'un d'eux échoue.",
+  "explanations": {
+    "4": "set -o nounset arrête si une variable non définie est utilisée, et set -o pipefail fait échouer le pipeline entier si une commande intermédiaire échoue (mais pas errexit comme dit le commentaire, donc un conteneur défaillant ne bloque pas la boucle).",
+    "6": "GRAY, GREEN et RED stockent les codes numériques ANSI pour les couleurs de terminal.",
+    "14": "Cette boucle lit chaque ligne (nom de conteneur) produite par docker container list et la traite une par une dans le bloc qui suit.",
+    "15": "docker inspect récupère les données JSON du conteneur, jq -r '.Status' extrait juste la chaîne de caractères du statut de santé (sans guillemets JSON).",
+    "18": "La couleur par défaut (gris) est assignée à tous les conteneurs, puis elle sera changée ci-dessous si le statut est autre chose.",
+    "23": "[[ ! \"$healthcheckStatus\" == \"null\" ]] vérifie que le statut n'est pas \"null\" (c'est-à-dire qu'il y a une vérification de santé configurée mais le conteneur n'est pas sain), ce qui déclenche la couleur rouge.",
+    "27": "printf formate et affiche chaque ligne : le nom sur 40 caractères, puis le statut en couleur avec codes ANSI pour activer la couleur et réinitialiser après."
+  }
+}

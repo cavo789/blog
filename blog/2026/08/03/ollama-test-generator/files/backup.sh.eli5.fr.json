@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:19.350Z",
+  "source": "backup.sh",
+  "sourceHash": "06df9224c68d00567cca9efd60c98fed75a10de7",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script définit une fonction backup_dir qui compresse un répertoire en archive tar.gz avec un horodatage dans le nom. La fonction valide que le répertoire source existe, génère un nom unique avec la date/heure actuelle, crée le répertoire de destination s'il n'existe pas, puis exécute tar pour créer l'archive compressée.",
+  "explanations": {
+    "5": "local rend la variable src locale à cette fonction ; \"$1\" capture le premier argument passé à backup_dir.",
+    "6": "Le paramètre d'expansion \"${2:-.}\" utilise le deuxième argument si fourni, sinon par défaut au répertoire courant (le point).",
+    "8": "[[ -z \"$src\" ]] teste si src est vide ; si oui, c'est une erreur d'utilisation.",
+    "13": "[[ ! -d \"$src\" ]] vérifie que src est un répertoire existant ; le ! inverse le test.",
+    "19": "date +%Y%m%d-%H%M%S génère un horodatage au format YYYYMMDD-HHMMSS.",
+    "21": "basename extrait juste le nom du répertoire sans le chemin ; ce nom devient le préfixe de l'archive avec l'horodatage.",
+    "25": "tar -czf crée (-c), compresse avec gzip (-z) et écrit dans un fichier (-f) ; l'option -C change de répertoire avant compression pour éviter les chemins absolus dans l'archive ; 2>/dev/null supprime les messages d'erreur tar."
+  }
+}

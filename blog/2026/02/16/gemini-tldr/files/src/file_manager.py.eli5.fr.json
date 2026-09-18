@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:37.906Z",
+  "source": "file_manager.py",
+  "sourceHash": "1148b4bfab0f9a35d2473d902576f61ea38db68e",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette classe FileManager gère la lecture et modification sécurisée de fichiers markdown. Elle détecte la structure du fichier (en-tête frontmatter et images) puis injecte un composant React <TLDR> au bon endroit — après la première image suivant le frontmatter.",
+  "explanations": {
+    "9": "Final[str] signifie que cette constante ne peut pas être modifiée après sa définition, garantissant qu'elle reste toujours \"---\" dans la classe.",
+    "14": "On vérifie que le fichier existe avant de le stocker, sinon on lève une exception pour éviter les erreurs silencieuses plus tard.",
+    "33": "splitlines() divise le contenu en une liste de lignes, ce qui permet de les examiner et modifier une par une.",
+    "39": "index(delimiter, 1) cherche le deuxième occurrence du délimiteur (en commençant à partir de l'indice 1) pour trouver où se termine le frontmatter.",
+    "41": "Le except ValueError capture le cas où il n'y a pas de deuxième occurrence du délimiteur, ce qui signifie qu'il n'y a pas de frontmatter valide.",
+    "45": "On boucle à partir de insertion_index (après le frontmatter) pour trouver la première ligne contenant une image.",
+    "47": "strip() enlève les espaces au début et fin de la ligne pour éviter que les indentations n'interfèrent avec la détection du tag d'image.",
+    "59": "insert() ajoute la chaîne formatée du composant TLDR à la position calculée dans la liste de lignes.",
+    "60": "join() reconstitue le contenu en joignant toutes les lignes avec des retours à la ligne pour restaurer la structure du fichier."
+  }
+}

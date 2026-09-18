@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:44.858Z",
+  "source": "data.xml",
+  "sourceHash": "882083e0b1937416383d4a686b0c69fc24ae5420",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML définit un catalogue de livres avec une structure hiérarchique : un élément racine bookstore contient plusieurs éléments book, chacun ayant des attributs (category) et des enfants (title, author, year, price) qui décrivent les propriétés du livre. C'est un exemple classique de données structurées en XML montrant comment organiser des collections d'objets similaires.",
+  "explanations": {
+    "1": "La déclaration <?xml version=\"1.0\" encoding=\"UTF-8\"?> indique qu'il s'agit d'un document XML en version 1.0 utilisant l'encodage UTF-8 pour les caractères. Les éléments book peuvent avoir plusieurs auteurs (author) quand nécessaire, contrairement aux autres champs qui n'apparaissent qu'une fois par livre."
+  }
+}

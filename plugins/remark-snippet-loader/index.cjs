@@ -41,10 +41,42 @@ function resolveSourcePath(sourcePath, currentFileDir, projectRoot = process.cwd
   return path.resolve(projectRoot, sourcePath);
 }
 
+// i18n/<locale>/docusaurus-plugin-content-<kind>/… — the locale of the file being compiled.
+// It has to come from the file's own path and not from the `source` attribute, because
+// remark-i18n-assets runs FIRST and has already rewritten that attribute to point back at the
+// English article's folder. The vfile path is the only thing left that still says "fr".
+const I18N_LOCALE_RE =
+  /(^|[/\\])i18n[/\\]([^/\\]+)[/\\]docusaurus-plugin-content-(?:blog|pages)(?:[/\\]|$)/;
+
+/** The locale a file is compiled for, or null for the English sources. */
+function localeOf(filePath) {
+  const match = String(filePath ?? "").match(I18N_LOCALE_RE);
+  return match ? match[2] : null;
+}
+
+/**
+ * The ELI5 sidecar to read for this locale, preferring the localized one.
+ *
+ * Falling back to the English sidecar is deliberate (TODO 0121): a reader of a technical blog
+ * reads English, and showing nothing would cost them information for the sake of visual
+ * uniformity. The fallback only fires on a gap — a failed generation, or a snippet added to the
+ * article after it was translated.
+ */
+function eli5PathFor(absolutePath, locale) {
+  if (locale) {
+    const localized = `${absolutePath}.eli5.${locale}.json`;
+    if (fs.existsSync(localized)) return localized;
+  }
+  const english = `${absolutePath}.eli5.json`;
+  return fs.existsSync(english) ? english : null;
+}
+
 function snippetLoader() {
   return (tree, vfile) => {
     // The absolute path of the currently processed .mdx/blog/doc file
     const blogPostPath = vfile.path;
+    // Which locale this compilation is for — drives ELI5 sidecar selection below.
+    const locale = localeOf(blogPostPath);
     // The directory of the .mdx/blog/doc file
     const currentFileDir = path.dirname(blogPostPath);
     // The Docusaurus project root (where docusaurus.config.js is located)
@@ -160,8 +192,8 @@ function snippetLoader() {
       // Auto-inject ELI5 explanations if a <source>.eli5.json file exists alongside the
       // source. This one stays a soft-fail: a missing/broken ELI5 cache is a content
       // nicety, not the code sample itself — losing it shouldn't fail the build.
-      const eli5Path = absolutePath + ".eli5.json";
-      if (fs.existsSync(eli5Path)) {
+      const eli5Path = eli5PathFor(absolutePath, locale);
+      if (eli5Path) {
         try {
           const eli5Raw = fs.readFileSync(eli5Path, "utf-8");
           const eli5Data = JSON.parse(eli5Raw);

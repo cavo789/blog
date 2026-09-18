@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:46:20.200Z",
+  "source": "compose.yaml",
+  "sourceHash": "cb041e52dfcebbabc0216253d08255be0a7c41e3",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service Python appelé app_python qui construit une image Docker à partir du répertoire courant en utilisant l'étape de développement du Dockerfile. Il configure le conteneur avec des variables d'environnement pour la version de Python, le répertoire racine, l'identité de l'utilisateur et du groupe OS, puis monte le code source et deux volumes persistants pour préserver les extensions VSCode et l'historique bash entre les redémarrages.",
+  "explanations": {
+    "7": "target: development indique que seule l'étape nommée 'development' du Dockerfile multi-étapes sera construite, ce qui optimise l'image pour le développement plutôt que la production.",
+    "10": "Cette ligne passe la variable d'environnement DOCKER_PYTHON_VERSION au Dockerfile lors de la construction, permettant de contrôler quelle version de Python installer dans l'image.",
+    "12": "La syntaxe ${DOCKER_APP_HOME:-/app} utilise une valeur par défaut : si DOCKER_APP_HOME n'est pas défini, il vaudra /app, sinon il utilisera la valeur fournie.",
+    "21": "L'attribut user définit l'utilisateur et le groupe (au format userid:groupid) qui exécutera les processus dans le conteneur, plutôt que root par défaut.",
+    "27": "Le point . représente le répertoire courant de votre machine locale, qui est monté à ${DOCKER_APP_HOME} dans le conteneur, permettant à Docker d'accéder et modifier votre code en direct.",
+    "29": "Ce volume nommé vscode-extensions persiste les extensions VSCode installées dans le conteneur, évitant de devoir les réinstaller à chaque redémarrage.",
+    "31": "Ce volume nommé bashhistory préserve l'historique des commandes bash tapées dans le conteneur entre les sessions."
+  }
+}

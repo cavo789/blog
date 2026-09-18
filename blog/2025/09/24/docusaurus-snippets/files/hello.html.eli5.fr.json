@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:46.606Z",
+  "source": "hello.html",
+  "sourceHash": "5c1498c19cb2bdbf2e9f90bb651f9324af94d719",
+  "lang": "html",
+  "textLang": "fr",
+  "summary": "Ceci est un document HTML minimal qui affiche un simple message de bienvenue. La structure respecte les standards du web moderne avec la déclaration de type de document, l'élément racine html, et le contenu encadré dans des balises body.",
+  "explanations": {}
+}

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:02.533Z",
+  "source": "Dockerfile",
+  "sourceHash": "4a663c1f4ef079f4cb543523fe0b47e19f8f5a91",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Ubuntu avec Git, Zsh et fzf pour démontrer un scénario de hotfix Git. Il initialise un dépôt distant nu, crée un projet exemple avec plusieurs fichiers source sur des branches différentes, installe une fonction Zsh interactive (gwt) pour naviguer entre les worktrees Git, et configure le shell pour démarrer en mode interactif.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives lors de l'installation, ce qui est nécessaire dans les Dockerfiles où aucune interaction utilisateur n'est possible.",
+    "7": "sed remplace une ligne dans le fichier sources APT pour ajouter les dépôts « universe » et « multiverse », car fzf se trouve dans le dépôt « universe » qui n'est pas activé par défaut.",
+    "15": "rm -rf /var/lib/apt/lists/* supprime les listes de paquets en cache pour réduire la taille de l'image Docker.",
+    "24": "git init -q --bare /root/origin.git crée un dépôt Git nu (sans répertoire de travail) qui simule un serveur distant comme GitHub, permettant aux commandes git push de fonctionner.",
+    "29": "mkdir -p crée tous les répertoires parents nécessaires en une seule commande, même s'ils n'existent pas encore.",
+    "40": "git commit -q -m « chore: update dependencies » enregistre les fichiers avec -q pour minimiser le bruit dans la sortie, simulant un commit initial.",
+    "42": "git checkout -q -b feature/user-notifications crée et bascule vers une nouvelle branche nommée feature/user-notifications.",
+    "52": "printf '%s\\n' suivi de plusieurs lignes crée un bloc de texte multi-lignes qui sera écrit dans le fichier gwt — chaque élément entre guillemets devient une ligne.",
+    "59": "Le test || { ... } exécute le bloc entre accolades si la commande échoue, permettant une gestion d'erreur gracieuse.",
+    "64": "if [[ -z \"$1\" ]] vérifie si le premier argument est vide (mode interactif) ; sinon, la fonction crée un nouveau worktree directement.",
+    "71": "awk '{print $1}' extrait le premier champ (le chemin du worktree) de la ligne sélectionnée par fzf.",
+    "75": "${$(git rev-parse --show-toplevel)-${branch//\\/-}} crée un chemin en combinant la racine du dépôt avec le nom de la branche en remplaçant les slashes par des tirets.",
+    "85": "fpath=(~/.zsh/fns $fpath) ajoute le répertoire ~/.zsh/fns au début du chemin de recherche de Zsh pour que les fonctions autoload puissent être trouvées.",
+    "86": "autoload -Uz gwt charge la fonction gwt comme une fonction autoload, ce qui la rend disponible de manière transparente la première fois qu'elle est appelée.",
+    "87": ">> /root/.zshrc ajoute les lignes au fichier .zshrc (au lieu de le remplacer avec >).",
+    "94": "[\"bin/zsh\", \"-i\", \"-l\"] démarre Zsh en mode interactif (-i) avec un shell login (-l), donnant une vraie session shell au lieu d'une simple exécution de commande."
+  }
+}

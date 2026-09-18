@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:10:54.344Z",
+  "source": "Dockerfile",
+  "sourceHash": "485e6f8c674d268573291d24f1a8086605dfae0e",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Cette Dockerfile crée une image Ubuntu avec bash, git et curl, puis installe fzf (un outil de recherche floue) avec ses intégrations bash. Elle configure ensuite un répertoire de démonstration contenant des fichiers journaux et des scripts, pré-remplit l'historique bash avec des commandes utiles, et lance un shell interactif au démarrage du conteneur.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives durant l'installation des paquets, ce qui permet à la Dockerfile de s'exécuter sans intervention.",
+    "5": "Les && chainés permettent d'exécuter plusieurs commandes dans une seule couche Docker, réduisant la taille de l'image en les regroupant.",
+    "11": "Supprimer /var/lib/apt/lists/* après l'installation réduit significativement la taille de l'image en nettoyant les métadonnées des paquets qui ne sont plus nécessaires.",
+    "14": "git clone --depth 1 ne télécharge que le dernier commit au lieu de tout l'historique, ce qui accélère l'installation et réduit l'usage disque.",
+    "16": "echo '[ -f ~/.fzf.bash ] && source ~/.fzf.bash' >> /root/.bashrc ajoute une ligne au fichier .bashrc pour charger automatiquement les bindings fzf à chaque lancement du shell.",
+    "22": "printf avec %s et \"$i\" remplace le placeholder par le numéro de boucle, générant des noms de fichiers comme run1.sh.log, run2.sh.log, etc.",
+    "30": "printf '%s\n' suivi de plusieurs lignes écrit chaque ligne séparée par un retour à la ligne dans le fichier spécifié.",
+    "41": "\\e[...m sont des codes ANSI pour la couleur du texte terminal — ici 33m (jaune) et 36m (cyan) — créant un prompt coloré avec une emoji baleine."
+  }
+}

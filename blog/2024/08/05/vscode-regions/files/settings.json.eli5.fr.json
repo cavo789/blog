@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:42.257Z",
+  "source": "settings.json",
+  "sourceHash": "e73e4dce181655a2837f44b77bef9a322ef0a00e",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit les règles de repliage de code (folding) pour les Dockerfiles dans l'extension VS Code maptz.regionfolder. Il spécifie les marqueurs de début et fin de région ainsi que les expressions régulières correspondantes pour permettre au éditeur de reconnaître et de replier des blocs de code commentés.",
+  "explanations": {
+    "3": "[dockerfile] indique que ces paramètres s'appliquent spécifiquement aux fichiers Dockerfile.",
+    "4": "foldEnd définit la chaîne exacte que l'éditeur recherche pour marquer la fin d'une région repliable.",
+    "5": "foldEndRegex est une expression régulière qui reconnaît le motif de fin de région, avec des caractères d'espacement optionnels et du contenu après le commentaire.",
+    "6": "foldStart définit la chaîne exacte marquant le début d'une région repliable, où [NAME] sera remplacé par le nom de la région.",
+    "7": "foldStartRegex est une expression régulière qui détecte le motif de début de région, capturant le nom de la région dans un groupe de capture."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:12:37.647Z",
+  "source": "index.cjs",
+  "sourceHash": "4f3e67b111378c5c98cf3010dec7916356c380b7",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce plugin Remark transforme les images Markdown en composants MDX `<Image />` adaptés à Docusaurus. Il détecte les chemins relatifs, absolus et externes, puis construit des nœuds JSX avec les attributs appropriés — les chemins relatifs utilisent `require()`, tandis que les chemins absolus et URLs externes sont passés directement.",
+  "explanations": {
+    "26": "acorn.parse() analyse la chaîne d'expression JavaScript en un arbre de syntaxe abstraite (AST), et on extrait le corps de l'expression du premier nœud.",
+    "52": "expressionToEstree() convertit la chaîne d'expression en nœud ESTree valide, qui sera imbriqué dans le attribut JSX pour que MDX puisse l'interpréter comme du code exécutable.",
+    "75": "On saute le traitement du premier nœud image si skipFirst est vrai — utile pour conserver une image d'en-tête inchangée.",
+    "77": "node.url contient le chemin ou l'URL de l'image; on l'initialise à une chaîne vide si absente.",
+    "88": "Cette regex teste si l'URL commence par `.` ou `./` (chemins relatifs); si oui, on doit l'envelopper dans un `require()`.",
+    "92": "Les URLs commençant par `/` sont des chemins absolus que Docusaurus résout automatiquement, donc on les passe directement sans `require()`.",
+    "115": "splice() remplace le nœud image original par le nouveau nœud MDX à la même position dans l'arbre des enfants du parent."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:01.688Z",
+  "source": "requirements.txt",
+  "sourceHash": "881ebcc20ce4ffecfb092e08f4f119afc30e10b8",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier liste les dépendances Python nécessaires pour exécuter une application web avec FastAPI. FastAPI est le framework principal pour créer l'API, uvicorn[standard] est le serveur ASGI qui exécute l'application, et gunicorn est un gestionnaire de processus qui permet de déployer et de gérer plusieurs instances du serveur en production.",
+  "explanations": {}
+}

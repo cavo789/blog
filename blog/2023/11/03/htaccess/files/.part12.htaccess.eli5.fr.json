@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:02:45.771Z",
+  "source": ".part12.htaccess",
+  "sourceHash": "ea0b77d715eff5bce6350d8f8d9ff3c8ac201bd9",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier configure la compression HTTP sur le serveur Apache pour réduire la taille des réponses envoyées aux navigateurs. Il essaie d'abord d'utiliser mod_deflate s'il est disponible, puis bascule sur mod_gzip comme solution de secours pour les hébergeurs qui ne disposent que de ce dernier module. Dans les deux cas, la compression s'applique aux types de contenu courants comme HTML, CSS, JavaScript et les polices web.",
+  "explanations": {
+    "2": "SetOutputFilter DEFLATE active la compression par défaut sur toutes les réponses du serveur.",
+    "3": "Ce bloc vérifie si le module mod_filter est disponible avant d'utiliser une configuration plus granulaire.",
+    "4": "AddOutputFilterByType applique la compression uniquement aux types MIME listés, évitant de compresser les contenus déjà compressés ou non-textuels.",
+    "10": "mod_gzip_on Yes active le module mod_gzip.",
+    "11": "mod_gzip_dechunk Yes nettoie les en-têtes de chunking avant compression.",
+    "12": "mod_gzip_item_include file inclut les fichiers correspondant à ce motif regex dans la compression.",
+    "13": "mod_gzip_item_include handler inclut les scripts CGI (identifiés par le gestionnaire cgi-script) dans la compression.",
+    "14": "Cette ligne inclut tous les types MIME commençant par text/ (HTML, CSS, JavaScript, etc.).",
+    "20": "mod_gzip_item_exclude mime exclut tous les types d'images de la compression.",
+    "21": "Cette ligne écrase l'exclusion précédente pour SVG, qui est du texte et bénéficie de la compression."
+  }
+}

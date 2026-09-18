@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:56.364Z",
+  "source": "docusaurus.config.js",
+  "sourceHash": "413d6b71053cb60895bb86f32251f6ef059a995c",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce snippet configure un plugin Rollup qui injecte une bannière ASCII dans le build. Le plugin est situé dans le répertoire ./plugins/ascii-injector/ et reçoit un chemin vers un fichier texte contenant le contenu de la bannière à injecter.",
+  "explanations": {
+    "4": "Le tableau imbriqué indique qu'on passe à la fois le chemin du plugin et un objet de configuration — c'est le format standard de Rollup pour les plugins avec options.",
+    "5": "On importe le plugin depuis un fichier local ./plugins/ascii-injector/index.mjs plutôt que depuis un package npm.",
+    "6": "L'objet bannerPath spécifie où Rollup trouvera le fichier texte contenant la bannière ASCII à injecter dans le code compilé."
+  }
+}

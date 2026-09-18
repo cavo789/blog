@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:29:24.372Z",
+  "source": "customUI14.xml",
+  "sourceHash": "a1edd05ef83e3970b46510ad95d6fdaa962ea308",
+  "lang": "xml",
+  "textLang": "fr",
+  "summary": "Ce fichier XML définit une interface personnalisée pour le ruban Office, en ajoutant un onglet customisé nommé « Tab » après l'onglet View. Cet onglet contient un groupe avec un bouton qui affiche une icône smiley et une zone de texte modifiable, chacun connecté à des fonctions de rappel qui s'exécutent lors des interactions utilisateur.",
+  "explanations": {
+    "1": "Cet élément racine déclare un namespace XML qui indique à Office comment interpréter cette structure comme une définition de ruban personnalisé.",
+    "4": "insertAfterMso=\"TabView\" positionne l'onglet customTab immédiatement après l'onglet View standard dans le ruban Office.",
+    "9": "imageMso=\"HappyFace\" fait référence à une icône prédéfinie de Microsoft Office plutôt que de charger une image personnalisée.",
+    "11": "onAction=\"OnButtonClicked\" spécifie le nom de la fonction VBA ou du gestionnaire d'événements qui s'exécutera quand l'utilisateur clique sur ce bouton.",
+    "15": "onChange=\"OnEditBoxTextChanged\" déclenche la fonction nommée chaque fois que l'utilisateur modifie le contenu de la zone de texte."
+  }
+}

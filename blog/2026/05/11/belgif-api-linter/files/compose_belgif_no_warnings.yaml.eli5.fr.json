@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:47.289Z",
+  "source": "compose_belgif_no_warnings.yaml",
+  "sourceHash": "672741a605207093b9e4e60cf7acd757c568feeb",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un service applicatif qui construit une image locale et expose le port 8000, et un service belgif-lint qui valide des fichiers OpenAPI en utilisant Maven dans un conteneur Alpine, en filtrant certains avertissements de la sortie.",
+  "explanations": {
+    "5": "%%port=8000%% est un placeholder qui sera remplacé par une variable d'environnement au moment du déploiement ; il mappe le port 8000 de la machine hôte vers le port 80 du conteneur.",
+    "7": "Le volume monte le fichier main.py de la machine hôte dans le conteneur à /code/main.py, permettant à l'application de voir les changements en temps réel.",
+    "14": "maven-cache est un volume nommé persistant qui stocke les dépendances Maven téléchargées, évitant de les retélécharger à chaque exécution du conteneur.",
+    "17": "On remplace le point d'entrée par un shell pour pouvoir utiliser les pipes et opérateurs shell dans la commande.",
+    "21": "Le > en YAML démarre une commande multi-lignes ; les lignes suivantes sont concaténées en une seule chaîne.",
+    "28": "2>&1 redirige les erreurs (stderr) vers la sortie standard (stdout) pour que grep puisse filtrer les deux flux ensemble."
+  }
+}

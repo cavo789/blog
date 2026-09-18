@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:07:15.063Z",
+  "source": "output_format.json",
+  "sourceHash": "32e9985835678424493fe80c73a5ec4a2ae740b9",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON décrit la structure et le contenu d'un Dockerfile pour une application Node.js. Il documente les explications ligne par ligne des commandes Docker principales : sélection de l'image de base Alpine, copie des dépendances, installation optimisée sans outils de développement, exposition du port réseau, et définition de la commande de démarrage.",
+  "explanations": {
+    "3": "Le modèle claude-haiku-4-5-20251001 est l'IA qui a généré ces explications du Dockerfile.",
+    "8": "FROM sélectionne l'image de base — la fondation pré-construite sur laquelle repose ton image. node:20-alpine est Node 20 fonctionnant sur Alpine Linux, une distribution Linux très légère.",
+    "9": "COPY package*.json ./ copie uniquement les fichiers de manifeste de dépendances d'abord, permettant à Docker de mettre en cache l'étape npm install séparément de ton code applicatif.",
+    "10": "npm ci fonctionne comme npm install mais suit strictement package-lock.json sans négociation. --omit=dev exclut les outils de développement uniquement, réduisant la taille de l'image finale.",
+    "11": "EXPOSE documente le port écouté par le conteneur — c'est une étiquette, pas une règle de pare-feu. C'est docker run -p qui ouvre réellement le port.",
+    "12": "CMD est la commande par défaut au démarrage du conteneur. La syntaxe en crochets (exec form) exécute node directement sans shell intermédiaire."
+  }
+}

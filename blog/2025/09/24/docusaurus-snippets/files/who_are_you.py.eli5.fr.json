@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:16.892Z",
+  "source": "who_are_you.py",
+  "sourceHash": "365b476430a2b03f728c1085b7cc957244571f7c",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce programme demande ton nom à l'aide de input(), puis vérifie si tu as saisi quelque chose. Si tu as fourni un nom, il te salue par ton nom, sinon il te salue comme un étranger. Enfin, il affiche un message d'accueil général à tous les cas.",
+  "explanations": {
+    "3": "L'instruction if name: vérifie si la chaîne name n'est pas vide — une chaîne vide est considérée comme false en Python, une chaîne avec du contenu comme true."
+  }
+}

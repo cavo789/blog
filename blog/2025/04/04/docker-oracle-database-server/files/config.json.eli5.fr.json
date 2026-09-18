@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:51:41.279Z",
+  "source": "config.json",
+  "sourceHash": "94e9394b17f0a8461e821b36e91412f478b5824c",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Docker définit deux registres de conteneurs autorisés : Oracle Container Registry et Docker Hub. Il prépare les informations d'authentification pour que Docker puisse accéder à ces deux services lors du téléchargement ou de la mise en place d'images.",
+  "explanations": {
+    "3": "container-registry.oracle.com est l'adresse du registre Oracle où sont stockées les images de conteneurs ; l'objet vide {} indique qu'il n'y a pas encore d'identifiants configurés pour ce registre.",
+    "4": "https://index.docker.io/v1/ est l'endpoint d'authentification de Docker Hub, le registre public par défaut de Docker ; l'objet vide {} signifie que les credentials ne sont pas encore renseignés ici non plus."
+  }
+}

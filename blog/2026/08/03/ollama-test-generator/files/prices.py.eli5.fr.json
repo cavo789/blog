@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:28.629Z",
+  "source": "prices.py",
+  "sourceHash": "af6a83cfdb0f5f51295385f62a781064f605a09d",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce fichier contient deux fonctions utilitaires pour gérer les prix : apply_discount calcule un prix réduit par un pourcentage donné et l'arrondit au centime, tandis que cheapest trouve l'offre la moins chère dans un dictionnaire en tranchant les égalités alphabétiquement.",
+  "explanations": {
+    "12": "Cette condition vérifie que le pourcentage est entre 0 et 100 inclus — la syntaxe `0 <= percent <= 100` en Python teste deux inégalités à la fois.",
+    "15": "On soustrait la réduction du prix en multipliant par (1 - percent / 100) — par exemple, une réduction de 20% multiplie par 0.8 — puis round(x, 2) arrondit au centième.",
+    "23": "On teste si le dictionnaire est vide en booléen : un dict vide est évalué à False, donc `not offers` déclenche l'erreur si aucune offre n'existe.",
+    "26": "sorted(offers) trie les clés du dictionnaire alphabétiquement, puis min(..., key=offers.__getitem__) retourne le nom (clé) dont la valeur de prix est minimale — le tri garanti que les égalités se règlent alphabétiquement."
+  }
+}

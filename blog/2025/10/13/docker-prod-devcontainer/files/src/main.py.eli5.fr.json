@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:59:03.884Z",
+  "source": "main.py",
+  "sourceHash": "0de7c376d335a5d9ed924d7840024cfd11d92df0",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée une application FastAPI minimale avec une seule route GET qui retourne un message JSON. Lorsqu'on accède à la racine du serveur, la fonction read_root() répond avec un dictionnaire contenant un message de bienvenue.",
+  "explanations": {
+    "3": "FastAPI() crée une nouvelle instance d'application web — c'est l'objet central qui va gérer toutes les routes et les requêtes HTTP.",
+    "5": "@app.get(\"/\") est un décorateur qui dit à FastAPI : quand quelqu'un fait une requête GET sur la racine du site, exécute la fonction juste en dessous.",
+    "7": "return {...} envoie au client un dictionnaire Python que FastAPI convertit automatiquement en JSON dans la réponse HTTP."
+  }
+}

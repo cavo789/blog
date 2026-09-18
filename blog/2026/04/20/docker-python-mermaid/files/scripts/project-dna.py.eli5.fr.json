@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:18.243Z",
+  "source": "project-dna.py",
+  "sourceHash": "1ba1ab6dfd667a3ed550aa3c9b8ada8996c00f4f",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script analyse la structure d'un dossier de projet, catégorise les fichiers par type (code, configuration, documentation, etc.) et génère une visualisation en diagramme en arbre appelée « mindmap » au format image PNG. Il utilise l'outil Mermaid pour transformer le texte du diagramme en image finale.",
+  "explanations": {
+    "6": "os.path.splitext() scinde le nom du fichier en deux parties : le nom et l'extension (par exemple, 'script.py' devient ('script', '.py')). L'indice [1] prend juste l'extension.",
+    "22": "dirs[:] = [...] remplace la liste dirs sur place pour que os.walk() ignore les dossiers commençant par un point (cachés) et __pycache__ lors des prochaines itérations.",
+    "26": "setdefault(cat, set()) retourne l'ensemble existant pour cat, ou en crée un vide si cat n'existe pas encore, puis add(file) y ajoute le fichier.",
+    "36": "sorted(list(files)) convertit l'ensemble en liste et la trie alphabétiquement, enumerate() fournit à la fois l'indice i et le nom du fichier f dans la boucle.",
+    "41": "replace() supprime les caractères spéciaux (), [], [ et ] du nom car Mermaid les interprète comme syntaxe et pourrait générer une image invalide.",
+    "53": "os.path.abspath() convertit un chemin relatif en chemin absolu complet, assurant que le script fonctionne peu importe le répertoire depuis lequel il est lancé.",
+    "61": "subprocess.run() exécute la commande mmdc (le compilateur Mermaid) avec les options de configuration et check=True lève une erreur si la commande échoue."
+  }
+}

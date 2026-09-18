@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:56.200Z",
+  "source": "pest.php",
+  "sourceHash": "2414a6d80d63e44068d1b89101fb0eb1a33a7a4b",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier configure PestPHP pour exécuter tous les tests situés dans le dossier Feature en les traitant comme des instances de la classe TestCase. Cela établit l'environnement de base et les fonctionnalités communes que tous ces tests vont utiliser.",
+  "explanations": {
+    "1": "uses() enregistre une classe de base (TestCase) que tous les tests du dossier Feature vont hériter ou utiliser, et in('Feature') spécifie que cette configuration s'applique uniquement aux fichiers de test trouvés dans ce dossier."
+  }
+}

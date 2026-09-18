@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:48:02.470Z",
+  "source": ".pylintrc",
+  "sourceHash": "432cf1ef0b76e286d78545030abe2bc93bc9c895",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ceci est un fichier de configuration pour Pylint, l'outil d'analyse statique de code Python. Il désactive certaines vérifications trop strictes, active des extensions supplémentaires pour des contrôles avancés, configure l'analyse parallèle, et fixe des paramètres comme la version Python minimale et la longueur maximale des lignes.",
+  "explanations": {
+    "2": "La section disable= liste les contrôles que Pylint ne doit pas appliquer — ici on ignore des avertissements comme broad-exception-caught qui seraient trop verbeux pour ce projet.",
+    "12": "persistent=yes indique à Pylint de sauvegarder les données collectées entre les exécutions pour pouvoir comparer les résultats et détecter les régressions.",
+    "16": "load-plugins= charge des extensions Pylint supplémentaires qui ajoutent des vérifications spécialisées au-delà des contrôles standard.",
+    "31": "jobs=0 configure Pylint pour utiliser tous les processeurs disponibles en parallèle, ce qui accélère significativement l'analyse sur les gros projets.",
+    "35": "suggestion-mode=yes active le mode où Pylint propose des corrections probables plutôt que de rapporter simplement des erreurs.",
+    "38": "py-version = 3.13.0 spécifie que le code doit être compatible avec Python 3.13.0, ce qui affecte les avertissements sur la syntaxe obsolète.",
+    "41": "fail-under=9.50 indique que Pylint doit retourner un code d'erreur si le score de qualité tombe sous 9.50 sur 10."
+  }
+}

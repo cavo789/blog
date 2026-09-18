@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:37.964Z",
+  "source": "custom.part2.js",
+  "sourceHash": "1fdc072bae51e8e4c3eed774db69f12e053b8301",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce code attend que la page se charge complètement, puis écoute les changements de diapositives. À chaque fois qu'on change de diapositive, il cherche du texte encadré par des doubles égales (comme ==texte==) et le remplace par ce même texte entouré d'une balise HTML mark, ce qui permet au CSS de le mettre en surbrillance.",
+  "explanations": {
+    "7": "Cette expression régulière /==([^=]*)==/ capture tout ce qui se trouve entre deux paires de signes égales — les parenthèses mémorisent la partie qu'on veut garder (le [^=]* signifie « n'importe quel caractère sauf un égal »).",
+    "8": "On crée une nouvelle RegExp avec le flag \"g\" pour remplacer toutes les occurrences du motif dans le contenu HTML, pas juste la première — puis on remplace chaque match par <mark>$1</mark>, où $1 représente ce qui était capturé entre les égales."
+  }
+}

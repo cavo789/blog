@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:41.464Z",
+  "source": "windows_hosts.txt",
+  "sourceHash": "d8daf53fe8dbc8ab97963dbf5bfe997250fe69aa",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier configure le mappage des noms d'hôte locaux en associant des adresses IP à des noms de domaine. Les lignes 1 et 3 mappent l'adresse de bouclage locale 127.0.0.1 à deux noms d'hôte différents : localhost et kingsbridge, permettant d'accéder à des services locaux via ces noms plutôt que par l'adresse IP brute.",
+  "explanations": {
+    "2": "Le commentaire // highlight-next-line est une directive pour des outils de documentation ou de mise en évidence syntaxique, signalant que la ligne suivante mérite une attention particulière.",
+    "3": "Cette ligne ajoute un alias de nom d'hôte supplémentaire en pointant kingsbridge vers la même adresse 127.0.0.1, permettant d'accéder à un service local en utilisant http://kingsbridge au lieu de l'adresse IP."
+  }
+}

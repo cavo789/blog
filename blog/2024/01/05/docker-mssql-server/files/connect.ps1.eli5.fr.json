@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:30.839Z",
+  "source": "connect.ps1",
+  "sourceHash": "b6e349cfa374aaea93048fd23675235df8a3be6a",
+  "lang": "powershell",
+  "textLang": "fr",
+  "summary": "Ce script établit une connexion à une base de données SQL Server, exécute une requête pour récupérer les noms et prénoms d'une table, puis affiche les résultats ligne par ligne avant de fermer la connexion. C'est un exemple basique d'accès aux données SQL depuis PowerShell.",
+  "explanations": {
+    "4": "L'opérateur -f remplace les espaces réservés {0} et {1} par les valeurs $SqlServer et $SqlDatabase pour construire la chaîne de connexion complète.",
+    "7": "New-Object crée une instance de la classe SqlConnection et passe la chaîne de connexion au constructeur via -ArgumentList pour initialiser la connexion.",
+    "9": "CreateCommand() crée un objet SqlCommand associé à la connexion, qui va servir à exécuter la requête SQL.",
+    "13": "ExecuteReader() exécute la requête et retourne un SqlDataReader, un objet spécialisé pour lire les résultats ligne par ligne de façon efficace.",
+    "19": "La boucle while appelle Read() à chaque itération pour charger la ligne suivante du résultat jusqu'à épuisement des données.",
+    "20": "Les crochets ['LastName'] accèdent à la colonne par son nom dans la ligne courante du SqlDataReader."
+  }
+}

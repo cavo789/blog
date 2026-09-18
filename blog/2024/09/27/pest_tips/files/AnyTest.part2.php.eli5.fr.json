@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:22.137Z",
+  "source": "AnyTest.part2.php",
+  "sourceHash": "5cc624aac4cd8289667bc4172c3ba25ca962d6af",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la valeur true est bien true en utilisant deux syntaxes différentes de test — l'ancienne méthode avec assertTrue et la nouvelle avec expect. Le commentaire indique qu'une seule de ces deux assertions est nécessaire et qu'il faudrait supprimer l'autre pour éviter la redondance.",
+  "explanations": {
+    "3": "test() est une fonction qui définit un cas de test nommé 'assert true is true', suivi d'une fonction anonyme contenant les assertions à exécuter.",
+    "5": "$this->assertTrue(true) est l'ancienne syntaxe pour affirmer qu'une valeur est true — elle appelle une méthode de la classe de test.",
+    "6": "expect(true)->toBeTrue() est la syntaxe moderne et plus lisible pour la même assertion — elle utilise une API fluide."
+  }
+}

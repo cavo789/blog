@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:03.896Z",
+  "source": "devcontainer.part5.json",
+  "sourceHash": "68ec5d3c4c3673e62c73f670dec5968f1a39fdb5",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce snippet JSON configure un environnement de développement avec une commande exécutée automatiquement après création du conteneur. La ligne postCreateCommand installe Rector, un outil PHP qui refactorise automatiquement le code, en tant que dépendance de développement via composer.",
+  "explanations": {
+    "7": "postCreateCommand est une clé spéciale qui dit au conteneur de développement d'exécuter cette commande composer automatiquement dès qu'il est créé, installant ainsi Rector dans le projet."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:23.545Z",
+  "source": "makefile.part15",
+  "sourceHash": "d5fb0ba3a14a764cc1688d88536abbce64a5330d",
+  "lang": "part15",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit la variable SHELL pour utiliser bash au lieu du shell par défaut du système. Cela garantit que toutes les commandes exécutées dans les recettes Make utiliseront bash plutôt que sh, ce qui permet d'accéder à des fonctionnalités bash spécifiques.",
+  "explanations": {
+    "1": "La variable SHELL est une variable spéciale dans Make qui détermine quel interpréteur de commandes utiliser pour exécuter les lignes de recette. En la définissant sur bash, on force Make à utiliser bash plutôt que le shell par défaut du système (souvent sh sur certains systèmes)."
+  }
+}

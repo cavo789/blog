@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:10.134Z",
+  "source": ".part20.htaccess",
+  "sourceHash": "b01a67c79eedf2b07fe4fa776820392c2a02f096",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier .htaccess configure Apache pour bloquer l'accès à tous les fichiers sauf ceux ayant certaines extensions (png, jpg, jpeg, gif, svg, icon). La règle utilise une expression régulière négative pour inverser la logique : elle cible tous les fichiers dont le nom n'est PAS suivi par ces extensions autorisées.",
+  "explanations": {
+    "3": "(?<!...) est une assertion négative rétroactive en regex : elle signifie « correspond à une position qui n'est pas précédée par ». Donc ce motif cherche les fins de nom de fichier qui ne sont pas précédées par .png, .jpg, etc.",
+    "5": "Cette ligne Apache 2.2 bloquerait l'accès en utilisant la directive obsolète deny from all, mais elle est commentée parce que les serveurs modernes utilisent une syntaxe différente.",
+    "7": "La syntaxe Apache 2.4 moderne qui remplace deny from all ; elle refuse d'accorder les permissions à qui que ce soit pour les fichiers correspondant."
+  }
+}

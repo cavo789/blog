@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:45.711Z",
+  "source": "index.tsx",
+  "sourceHash": "9633d61baf364eaa127ea50d1c529f1fe57a4038",
+  "lang": "typescript",
+  "textLang": "fr",
+  "summary": "Ce composant PostCard affiche une préview de article de blog dans l'un de deux layouts possibles. Il utilise des props optionnels pour personnaliser l'image, le titre, la description et la date, en fournissant des valeurs par défaut lorsque nécessaire. Le rendu change complètement selon le prop layout pour adapter le rendu à des contextes différents.",
+  "explanations": {
+    "31": "La fonction retourne soit un élément JSX soit null, ce qui signifie qu'elle peut décider de ne rien afficher du tout si la date n'existe pas.",
+    "37": "On utilise un opérateur ternaire pour appliquer une classe CSS ou aucune classe selon la valeur de layout, puis on fait pareil avec des styles inline pour la disposition \"small\".",
+    "41": "On crée un objet Date à partir de la chaîne de caractères date, puis on formate cette date en texte lisible dans la locale \"en-US\" avec un format personnalisé.",
+    "67": "Le paramètre layout a une valeur par défaut de \"big\", donc si l'appelant ne spécifie rien, le composant utilisera \"big\".",
+    "68": "defaultImage a une valeur par défaut fournie, donc si post.image manque, on utilisera cette image de secours au lieu de laisser une image cassée.",
+    "72": "On teste si layout vaut \"small\" pour décider quel rendu HTML utiliser ; c'est un branchement au niveau du rendu global du composant.",
+    "74": "La classe col col--4 fait partie du système de grille de Docusaurus/Infima et crée une colonne qui prend 1/3 de la largeur (4 sur 12 colonnes).",
+    "86": "L'expression image || defaultImage retourne l'image du post si elle existe, sinon la defaultImage fournie en prop.",
+    "97": "flex: 1 fait que ce conteneur s'étire pour remplir tout l'espace disponible, poussant le footer du card vers le bas.",
+    "126": "La classe col col--3 prend 1/4 de la largeur (3 sur 12 colonnes), différente du layout \"small\" qui utilise col--4.",
+    "131": "aria-label fournit une description textuelle pour les lecteurs d'écran, ce qui est important car le titre est suivi d'une flèche qui ne décrit pas vraiment l'action."
+  }
+}

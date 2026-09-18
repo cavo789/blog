@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:47:10.628Z",
+  "source": "class_diagram.py",
+  "sourceHash": "91410a47d439a53903f8ce95693f7a8cf4bb58be",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée un diagramme de graphe orienté représentant une hiérarchie de classes avec pydot. Il définit trois nœuds (Person, Student, Teacher), les ajoute au graphe, établit des relations d'héritage entre eux (Student et Teacher héritent de Person), puis exporte le résultat en image PNG.",
+  "explanations": {
+    "1": "pydot.Dot() crée un nouveau graphe vide; graph_type='digraph' signifie que c'est un graphe dirigé où les flèches pointent dans une direction spécifique.",
+    "4": "pydot.Node() crée un nœud représentant une entité (ici 'Person'); shape='box' le dessine comme une boîte rectangulaire au lieu de la forme par défaut.",
+    "14": "pydot.Edge() crée une flèche de connexion entre deux nœuds; ici elle va de Person vers Student, indiquant que Student hérite de Person.",
+    "18": "write_png() exporte le graphe visualisé en fichier image PNG nommé 'class_diagram.png' que tu peux ouvrir et consulter."
+  }
+}

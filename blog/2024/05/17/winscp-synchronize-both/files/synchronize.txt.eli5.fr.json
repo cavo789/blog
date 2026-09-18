@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:07:55.756Z",
+  "source": "synchronize.txt",
+  "sourceHash": "b5659a27a6f8b0d9d51b04c69b5e71866850fdd5",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script FTP établit une connexion à un serveur distant, configure le mode de transfert en ASCII, navigue vers des répertoires spécifiques sur la machine locale et le serveur, puis synchronise les fichiers distants en excluant le dossier .git avant de fermer la connexion.",
+  "explanations": {
+    "3": "option transfer ascii configure le mode de transfert en ASCII au lieu du mode binaire par défaut, utile pour les fichiers texte afin d'éviter les problèmes de fins de ligne entre systèmes d'exploitation différents.",
+    "5": "lcd change le répertoire courant sur la machine locale (le client FTP) vers C:\\Christophe, tandis que cd à la ligne suivante change le répertoire sur le serveur distant.",
+    "8": "synchronize remote copie les fichiers du serveur distant vers le client, -preservetime conserve les dates de modification, -transfer=automatic choisit le mode de transfert approprié selon le type de fichier, et -filemask=|.git/ exclut le dossier .git de la synchronisation."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:20.741Z",
+  "source": "index.php",
+  "sourceHash": "ed226f71b4e896fc2ae15a070e010eb5edae96e3",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce snippet définit une fonction simple appelée sayHello qui retourne la chaîne de caractères \"Hello World!\", puis affiche le résultat de cette fonction à l'écran.",
+  "explanations": {
+    "3": "Les parenthèses vides après sayHello indiquent que cette fonction n'accepte aucun paramètre en entrée.",
+    "4": "On crée une variable $text (précédée du symbole $ comme en PHP) et on lui assigne la valeur \"Hello World!\".",
+    "5": "Le mot-clé return envoie la valeur de $text au code qui a appelé la fonction.",
+    "8": "echo affiche le résultat retourné par sayHello() directement dans la sortie (généralement le navigateur)."
+  }
+}

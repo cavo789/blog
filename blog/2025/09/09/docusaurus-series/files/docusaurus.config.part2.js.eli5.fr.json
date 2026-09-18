@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:01.412Z",
+  "source": "docusaurus.config.part2.js",
+  "sourceHash": "1e0620d920cdaff449d534896516747135f73c01",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Docusaurus en important un plugin personnalisé qui crée des routes dynamiques, puis exporte une configuration qui ignore les liens cassés (puisque le vérificateur de liens de Docusaurus ne peut pas les reconnaître) et enregistre ce plugin dans le tableau plugins.",
+  "explanations": {
+    "2": "pluginSeriesRoute importe un fichier .cjs (CommonJS) depuis le dossier plugins, ce qui permet d'utiliser du code Node.js classique dans une configuration Docusaurus.",
+    "12": "onBrokenLinks: \"ignore\" désactive la vérification des liens cassés pendant la compilation, sinon Docusaurus échouerait en détectant les routes créées dynamiquement par le plugin.",
+    "16": "[pluginSeriesRoute, {}] enregistre le plugin avec une configuration vide (les options du plugin seraient passées dans l'objet vide si nécessaire)."
+  }
+}

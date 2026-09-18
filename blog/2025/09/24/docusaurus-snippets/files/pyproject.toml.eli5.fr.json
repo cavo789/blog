@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:59.888Z",
+  "source": "pyproject.toml",
+  "sourceHash": "5704fa54715e15555f55dde0c664a3aa99da7d1c",
+  "lang": "toml",
+  "textLang": "fr",
+  "summary": "Ceci est un fichier de configuration TOML pour un paquet Rust. Il définit les métadonnées de base du projet : son nom est « example » et sa version est « 0.1.0 ». Ces informations sont essentielles pour identifier et distribuer le paquet.",
+  "explanations": {}
+}

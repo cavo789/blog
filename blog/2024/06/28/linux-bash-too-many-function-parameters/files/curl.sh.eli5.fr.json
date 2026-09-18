@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:02.488Z",
+  "source": "curl.sh",
+  "sourceHash": "3d0063f6d14b0c91e8ab1925c8f3e41c4d3ac87f",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash démontre comment passer un tableau associatif à une fonction et utiliser ses valeurs pour construire dynamiquement une commande curl. La fonction runCurl reçoit un tableau par référence, extrait les propriétés optionnelles avec des valeurs par défaut, puis assemble et exécute une commande curl personnalisée en fonction des paramètres fournis.",
+  "explanations": {
+    "4": "set -o nounset force le script à échouer si tu essaies d'utiliser une variable qui n'a pas été définie, ce qui aide à détecter les erreurs de typage.",
+    "5": "set -o errexit fait que le script s'arrête immédiatement si n'importe quelle commande retourne un code d'erreur, plutôt que de continuer.",
+    "8": "local -n arrCall=$1 crée une référence (un alias) vers le tableau passé en paramètre, permettant à la fonction d'accéder au tableau original par le nom arrCall.",
+    "14": "[[ ! -v arrCall[header] ]] vérifie si la clé 'header' existe dans le tableau ; si elle n'existe pas, on définit header à une chaîne vide, sinon on utilise la valeur du tableau.",
+    "24": "cmd=\"curl ...\" construit la commande curl de base en tant que chaîne, qui sera complétée par les conditions suivantes selon les paramètres disponibles.",
+    "26": "[[ -n ${payload} ]] teste si la variable payload n'est pas vide ; si c'est le cas, on ajoute l'option --data à la commande curl.",
+    "31": "eval \"${cmd}\" exécute la chaîne cmd en tant que commande bash réelle, ce qui permet de lancer la commande curl construite dynamiquement.",
+    "41": "declare -A arr crée un tableau associatif (comme un dictionnaire ou une map) avec les paires clé-valeur pour endpoint et token.",
+    "48": "runCurl arr appelle la fonction en passant le nom du tableau arr sans le symbole $, puisque la fonction attend une référence au tableau et non sa valeur."
+  }
+}

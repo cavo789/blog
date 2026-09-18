@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:27.116Z",
+  "source": "log.sh",
+  "sourceHash": "624fb1307dfad3d2b3fa5fe0ae0f7f99619e9495",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script fournit un système de journalisation pour Bash. Il crée un fichier log temporaire au démarrage, capture les messages d'erreur avec horodatage et trace d'appel, puis affiche le contenu du log à la fin de l'exécution. Le script doit être sourcé (inclus) dans un autre script Bash pour fonctionner, pas exécuté directement.",
+  "explanations": {
+    "19": "set -o nounset fait échouer le script si une variable non définie est utilisée, nounset fait échouer le script si une commande retourne un code d'erreur non zéro.",
+    "48": "LOG_FILE est défini avec un fichier temporaire unique si la variable n'existe pas déjà ; mktemp crée un nom de fichier aléatoire pour éviter les collisions.",
+    "60": "BASH_LINENO est un tableau Bash qui contient les numéros de ligne de chaque fonction dans la pile d'appels actuels.",
+    "62": "La boucle commence à l'index 2 car l'index 0 est la fonction __trace elle-même et l'index 1 est log::write qui l'appelle.",
+    "74": "Le descripteur de fichier 3 est redirigé vers le fichier log, permettant à toute sortie vers >&3 d'être écrite dans ce fichier.",
+    "98": "-s vérifie que le fichier existe et n'est pas vide.",
+    "137": "local -r crée une variable locale en lecture seule, nommée message, avec la valeur du premier argument passé à la fonction.",
+    "141": "-f vérifie que le fichier existe, et /dev/stdout est un cas spécial où aucun fichier physique n'est créé.",
+    "144": "-w vérifie que le fichier est accessible en écriture.",
+    "154": "printf envoie le message formaté avec horodatage et trace de la pile d'appels vers le descripteur 3 (le fichier log).",
+    "185": "sed supprime tous les codes de couleur ANSI du fichier log pour afficher du texte brut.",
+    "195": "La sous-shell (return 0 2> /dev/null) teste si le script est sourcé : elle retourne 0 si sourcé, échoue sinon."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:04:12.762Z",
+  "source": "pie.py",
+  "sourceHash": "a81e57279e326cb9c98e6e9a280455a73f458848",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script analyse les fichiers d'un répertoire, les classe par type (Code, Config, Doc, etc.) et génère un diagramme en camembert en utilisant Mermaid. Il parcourt récursivement le dossier fourni en paramètre, ignore les dossiers cachés et les caches Python, compte les fichiers par catégorie, puis génère une image PNG avec les proportions de chaque type.",
+  "explanations": {
+    "6": "os.path.splitext() retourne un tuple (nom, extension) ; on prend l'extension avec [1] et la convertit en minuscules pour normaliser la comparaison.",
+    "22": "dirs[:] = ... modifie la liste sur place pendant os.walk(), ce qui fait que les dossiers filtrés seront ignorés dans la récursion (sans cela os.walk visiterait quand même leurs sous-dossiers).",
+    "26": "counts.get(cat, 0) retourne le compte actuel pour cette catégorie, ou 0 si elle n'existe pas encore, puis on ajoute 1.",
+    "35": "La f-string construit une ligne Mermaid au format 'nom : nombre', où le nombre sera automatiquement converti en pourcentage par le diagramme.",
+    "46": "os.path.abspath() convertit un chemin relatif en chemin absolu, utile si l'utilisateur passe './' ou un chemin partiel.",
+    "49": "On écrit le code Mermaid dans un fichier temporaire en UTF-8 avant de le transmettre à mmdc.",
+    "54": "subprocess.run() exécute la commande mmdc (Mermaid CLI) avec les options de configuration ; check=True lève une exception si la commande échoue."
+  }
+}

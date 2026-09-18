@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:10.337Z",
+  "source": ".ripgreprc",
+  "sourceHash": "01865d479eb5e17d31928e32097f4de3fbcf1299",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Cette configuration définit des options de recherche pour un outil de type grep ou ripgrep. Elle colore les correspondances en rouge et gras, affiche les chemins en bleu, suit les liens symboliques, exclut les répertoires courants de cache et de dépendances, inclut les fichiers cachés, limite la taille des fichiers et active la sensibilité intelligente à la casse.",
+  "explanations": {
+    "1": "--colors=match:fg:red colore le texte correspondant en rouge (fg signifie foreground, la couleur du texte).",
+    "2": "--colors=match:style:bold rend le texte correspondant en gras pour le rendre plus visible.",
+    "4": "--follow indique à l'outil de suivre les liens symboliques au lieu de les ignorer.",
+    "13": "--hidden inclut les fichiers et répertoires cachés (ceux commençant par un point) dans la recherche.",
+    "14": "--max-filesize=10M saute les fichiers plus gros que 10 mégaoctets pour accélérer la recherche.",
+    "15": "--smart-case active la correspondance sensible à la casse uniquement si la requête contient des lettres majuscules."
+  }
+}

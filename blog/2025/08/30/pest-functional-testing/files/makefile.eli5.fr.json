@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:22.949Z",
+  "source": "makefile",
+  "sourceHash": "3587923e63f36cba16d9a340ad65684f2f7d7f8b",
+  "lang": "makefile",
+  "textLang": "fr",
+  "summary": "Ce Makefile configure et gère un conteneur Docker pour exécuter des tests Pest. Il permet de construire une image Docker avec les permissions utilisateur appropriées, de démarrer/arrêter le conteneur, et de lancer les tests contre un site web spécifié (par défaut https://www.avonture.be).",
+  "explanations": {
+    "2": "WEBSITE ?= affecte la valeur par défaut seulement si la variable n'est pas déjà définie; on peut la surcharger en passant WEBSITE=autre_valeur à la commande make.",
+    "4": "$(shell id -u) exécute la commande shell id -u pour obtenir l'ID numérique de l'utilisateur courant et le stocke dans la variable UID.",
+    "5": "De même, $(shell id -g) récupère l'ID du groupe de l'utilisateur courant.",
+    "10": "Les arguments --build-arg passent UID et GID au Dockerfile pour que le conteneur s'exécute avec les mêmes permissions que l'utilisateur hôte, évitant les problèmes de droits d'accès aux fichiers.",
+    "18": "-v ./tests:/var/www/html/tests monte le répertoire tests local à l'intérieur du conteneur pour que les fichiers de test soient accessibles.",
+    "26": "WEBSITE=$(WEBSITE) injecte la valeur de la variable WEBSITE du Makefile dans l'environnement de la commande shell exécutée dans le conteneur."
+  }
+}

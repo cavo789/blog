@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:07:23.242Z",
+  "source": "styles.module.css",
+  "sourceHash": "6a12a96cd179a715465523f829d3fcaf16c3de5d",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fichier CSS structure l'apparence d'un composant de bloc de code avec des badges interactifs et des tooltips explicatifs. Il définit le conteneur principal, le style des lignes de code, les badges cliquables qui apparaissent à côté du code, et les bulles d'information qui s'affichent au survol. Le thème s'adapte automatiquement entre mode clair et mode sombre.",
+  "explanations": {
+    "5": "var(--prism-background-color, #282c34) utilise une variable CSS personnalisée si elle existe, sinon utilise le gris foncé #282c34 comme couleur de fond par défaut.",
+    "7": "var(--ifm-font-family-monospace) récupère la police monospace définie globalement dans le thème du site, garantissant la cohérence typographique.",
+    "13": "display: flex transforme les enfants en disposition flexible, permettant à la ligne de code et aux badges de s'aligner horizontalement.",
+    "14": "align-items: flex-start aligne les éléments au sommet plutôt qu'au centre, utile quand les badges et le texte ont des hauteurs différentes.",
+    "24": "flex: 1 fait que .eli5_code occupe tout l'espace disponible restant après les badges, poussant les badges vers la droite.",
+    "25": "white-space: pre préserve les espaces et sauts de ligne exacts du code source au lieu de les compresser.",
+    "30": "display: inline-block crée un espace réservé pour un badge qui peut ne pas être affiché, conservant l'alignement uniforme des lignes.",
+    "38": "display: inline-flex combine inline avec flexbox pour que l'élément s'adapte à la largeur de son contenu tout en utilisant les capacités du flex.",
+    "50": "border-radius: 50% crée un cercle parfait en rendant les coins arrondis égaux à la moitié de la largeur et hauteur.",
+    "59": "transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease anime progressivement les changements de ces propriétés sur 150ms pour un effet fluide.",
+    "75": "top: calc(100% + 5px) positionne la tooltip juste en dessous du badge avec 5px d'espacement, utilisant le calcul CSS pour la précision.",
+    "78": "max-width: 90vw limite la largeur de la tooltip à 90% de la largeur de la fenêtre pour éviter qu'elle sorte de l'écran sur mobile.",
+    "89": "pointer-events: none empêche la tooltip de capturer les clics souris, la rendant transparente aux événements utilisateur.",
+    "92": "::before crée un pseudo-élément permettant d'afficher une petite flèche pointant vers le badge sans ajouter de HTML.",
+    "102": "transform: rotate(45deg) tourne le petit carré de 45 degrés pour créer l'effet de flèche pointant vers le haut.",
+    "105": "[data-theme=\"dark\"] cible les styles qui s'appliquent uniquement quand l'attribut data-theme est défini à dark sur un ancêtre."
+  }
+}

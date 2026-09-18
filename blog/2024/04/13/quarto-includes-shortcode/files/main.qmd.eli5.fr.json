@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:03.532Z",
+  "source": "main.qmd",
+  "sourceHash": "c84daab7dfca468c481fc089d0562e3dae4cd94d",
+  "lang": "qmd",
+  "textLang": "fr",
+  "summary": "Ce document Quarto inclut deux fichiers markdown externes (chapter1.md et chapter2.md) dans un document principal titré 'My thesis in Latin'. Les directives {{< include >}} permettent de composer un document long en le divisant en chapitres séparés.",
+  "explanations": {
+    "3": "La syntaxe {{< include chapter1.md >}} est une directive Quarto qui insère le contenu du fichier chapter1.md à cet endroit du document.",
+    "5": "De même, cette ligne inclut le contenu du fichier chapter2.md pour ajouter le deuxième chapitre à la suite du premier."
+  }
+}

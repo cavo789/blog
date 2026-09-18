@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:17.816Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "97598081dc5939e4135d722844cbd655cf14ecea",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Cette section définit les volumes pour un conteneur Docker, en mappant un répertoire local ./config vers le chemin /config à l'intérieur du conteneur. Cela permet au conteneur d'accéder et de persister les fichiers de configuration entre l'hôte et le conteneur.",
+  "explanations": {
+    "2": "Le chemin à gauche (./config) est le répertoire sur ta machine locale, et le chemin à droite (/config) est où ce répertoire sera accessible à l'intérieur du conteneur."
+  }
+}

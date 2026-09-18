@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:13.791Z",
+  "source": ".part22.htaccess",
+  "sourceHash": "51d0631ef5482ade9aaaa7e43fe3f7277024666c",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce fichier .htaccess configure une redirection HTTP permanente (code 301) qui envoie les visiteurs accédant à /old.php vers http://www.yoursite.com/new.php. C'est utile pour migrer du contenu vers une nouvelle URL tout en préservant le classement SEO et en informant les navigateurs que le changement est définitif.",
+  "explanations": {
+    "1": "RedirectPermanent envoie un code de statut 301 (moved permanently) au navigateur, lui disant que la vieille page a été déplacée de manière permanente vers la nouvelle adresse."
+  }
+}

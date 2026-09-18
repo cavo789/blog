@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:51.384Z",
+  "source": ".pre-commit-config.yaml.part2",
+  "sourceHash": "0c49677e2f83fafdc333c9456d02729ac33fed7a",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un hook pre-commit local qui exécute prospector, un outil d'analyse statique Python. Le hook est défini pour s'exécuter en tant que commande système lors des commits.",
+  "explanations": {
+    "1": "La clé repo: local indique que ce hook provient d'un référentiel local plutôt que d'un dépôt distant.",
+    "5": "entry: prospector spécifie la commande exacte à exécuter quand le hook se déclenche.",
+    "6": "language: system signifie que prospector s'exécute directement comme une commande système disponible dans le PATH, plutôt que d'être installé par pre-commit lui-même."
+  }
+}

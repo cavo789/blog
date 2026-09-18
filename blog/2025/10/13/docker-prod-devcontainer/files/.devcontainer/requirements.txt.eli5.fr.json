@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:44.845Z",
+  "source": "requirements.txt",
+  "sourceHash": "ecf672e034e4cea29f699910d16586af9b99ecd6",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier contient simplement le nom 'debugpy', qui est le nom d'un paquet Python utilisé pour le débogage à distance et l'intégration avec des environnements de développement. C'est probablement un fichier de configuration ou de métadonnées qui identifie le paquet.",
+  "explanations": {}
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:27.552Z",
+  "source": "simple.part2.bats",
+  "sourceHash": "3b9f5f201888e06d6f5993a9f555c00f20df7b93",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie qu'une commande echo retourne bien « hello » comme sortie et s'exécute sans erreur. Il utilise le framework bats pour exécuter et valider le comportement d'une commande shell simple.",
+  "explanations": {
+    "2": "run exécute la commande echo « hello » et capture sa sortie et son code de retour pour les assertions suivantes.",
+    "3": "assert_output vérifie que la sortie capturée par run correspond exactement à la chaîne « hello ».",
+    "4": "assert_success vérifie que la commande exécutée par run s'est terminée avec un code de retour de succès (0)."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:29.453Z",
+  "source": "main.part2.py",
+  "sourceHash": "56e623d51cd618aacdd20473ed27bb86df19da17",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée une application web FastAPI simple avec une seule route. Quand un utilisateur accède à l'URL racine avec une requête GET, le serveur répond avec un message JSON contenant une salutation.",
+  "explanations": {
+    "3": "FastAPI() instancie une nouvelle application web - c'est l'objet principal qui va gérer toutes les routes et requêtes HTTP.",
+    "5": "@app.get(\"/\") est un décorateur qui associe la fonction suivante à la route GET sur le chemin racine (/) du serveur.",
+    "6": "def read_root(): définit la fonction qui sera exécutée chaque fois qu'un client fait une requête GET sur /."
+  }
+}

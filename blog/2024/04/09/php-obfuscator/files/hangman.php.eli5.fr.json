@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:52.947Z",
+  "source": "hangman.php",
+  "sourceHash": "6f0d1ee8b5344f230a67ca63547f8ae933b70bbc",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script implémente le jeu du pendu en PHP. Il génère une liste de mots, en choisit un au hasard, puis demande au joueur de deviner des lettres jusqu'à trouver le mot ou épuiser ses essais. Le jeu affiche l'état du pendu et les lettres devinées correctement, et termine quand le joueur gagne ou perd.",
+  "explanations": {
+    "15": "array_rand() retourne l'indice d'une clé aléatoire dans le tableau, on l'utilise pour accéder à un mot aléatoire.",
+    "29": "On accède à l'étage du pendu correspondant au nombre d'essais restants, puis on l'affiche avec PHP_EOL qui insère une nouvelle ligne.",
+    "34": "La boucle parcourt chaque caractère du mot en utilisant strlen() pour obtenir la longueur.",
+    "36": "in_array() vérifie si la lettre figure dans le tableau des lettres devinées.",
+    "42": "trim() supprime les espaces inutiles à la fin de la chaîne affichée.",
+    "56": "fgets(STDIN) lit l'entrée de l'utilisateur depuis le terminal, trim() enlève les espaces et sauts de ligne.",
+    "58": "strlen($guess) !== 1 vérifie qu'on a exactement un caractère, ctype_alpha() vérifie que c'est une lettre.",
+    "63": "strtolower() convertit la lettre en minuscule pour uniformiser les comparaisons.",
+    "72": "strpos() cherche la position de la lettre dans le mot; il retourne false si elle n'existe pas.",
+    "76": "On compare le mot affiché (avec str_replace qui enlève les espaces) au mot original pour voir si tout est deviné.",
+    "82": "On vérifie si le joueur a perdu en ayant épuisé ses 6 essais."
+  }
+}

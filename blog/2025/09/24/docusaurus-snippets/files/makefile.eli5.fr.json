@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:57.305Z",
+  "source": "makefile",
+  "sourceHash": "ec13ea77399d7c1cd5ad3315c60034c1bba1017c",
+  "lang": "makefile",
+  "textLang": "fr",
+  "summary": "Ce Makefile définit une cible de compilation appelée build qui utilise gcc pour compiler le fichier source main.c et générer un exécutable nommé app. C'est une automatisation simple pour construire le projet sans avoir à taper la commande complète à chaque fois.",
+  "explanations": {
+    "2": "La tabulation au début est obligatoire en Makefile — elle indique à make qu'il s'agit d'une commande shell à exécuter, pas juste du texte. L'option -o app dit au compilateur gcc de créer un fichier de sortie (output) nommé app au lieu du nom par défaut a.out."
+  }
+}

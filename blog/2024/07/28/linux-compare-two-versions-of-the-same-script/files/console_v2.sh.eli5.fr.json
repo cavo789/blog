@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:40:48.723Z",
+  "source": "console_v2.sh",
+  "sourceHash": "051bc4746cfb3bf19b7af91aefd0d67f5028d63a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce fichier définit une bibliothèque de fonctions utilitaires pour la console, organisées avec un préfixe de namespace console::. Les fonctions permettent d'afficher du texte coloré (cyan, rouge, vert, bleu), de gérer les erreurs, de poser des questions oui/non à l'utilisateur, et d'afficher des bannières. Pour l'instant, toutes les fonctions sont vides et attendent leur implémentation.",
+  "explanations": {
+    "3": "console::printCyan crée une fonction avec un namespace console:: pour afficher du texte en couleur cyan; le double deux-points est une convention bash pour organiser les fonctions en groupes logiques.",
+    "6": "console::askYesNo est une fonction destinée à interagir avec l'utilisateur en posant une question binaire et attendre une réponse oui ou non.",
+    "15": "console::banner est une fonction destinée à afficher un élément visuel de bannière, typiquement utilisé pour les en-têtes ou les séparations visuelles dans la sortie console."
+  }
+}

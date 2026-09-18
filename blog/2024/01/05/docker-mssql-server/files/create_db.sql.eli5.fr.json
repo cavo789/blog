@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:34.502Z",
+  "source": "create_db.sql",
+  "sourceHash": "bce4377a9bf1621b3aaf91f886f27c50c141560c",
+  "lang": "sql",
+  "textLang": "fr",
+  "summary": "Ce script SQL crée une nouvelle base de données nommée MyDB avec des fichiers de données et de journal spécifiés, puis crée une table Person contenant des colonnes pour les noms et prénoms, et y insère deux enregistrements d'exemple.",
+  "explanations": {
+    "5": "CONTAINMENT = NONE signifie que cette base de données n'est pas une base de données autonome, elle dépend donc de l'instance SQL Server pour certaines configurations.",
+    "7": "SIZE = 8192KB définit la taille initiale du fichier de données, MAXSIZE = UNLIMITED permet au fichier de croître sans limite, et FILEGROWTH = 65536KB définit l'incrément d'agrandissement automatique.",
+    "9": "LOG ON introduit la section de configuration du fichier journal de transactions (fichier .ldf), qui enregistre tous les changements effectués sur la base de données.",
+    "10": "CATALOG_COLLATION = DATABASE_DEFAULT utilise l'ordre de tri (collation) par défaut de la base de données pour les métadonnées du catalogue système.",
+    "17": "[varchar](50) NULL signifie que la colonne accepte du texte de jusqu'à 50 caractères et peut contenir des valeurs NULL (absence de valeur).",
+    "19": "ON [PRIMARY] indique que la table doit être créée sur le groupe de fichiers PRIMARY, qui est le groupe par défaut."
+  }
+}

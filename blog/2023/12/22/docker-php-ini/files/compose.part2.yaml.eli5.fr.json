@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:30:43.853Z",
+  "source": "compose.part2.yaml",
+  "sourceHash": "9fc02e9070cb428786250757706cde66cefdf223",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit deux services : un conteneur Joomla qui écoute sur le port 8080 et se connecte à une base de données MySQL, et un conteneur MySQL pour stocker les données de Joomla. Les deux services redémarrent automatiquement en cas de problème.",
+  "explanations": {
+    "6": "%%port=8080%% est un placeholder qui sera remplacé par la valeur du port 8080 à l'exécution; cela mappe le port 8080 de l'hôte au port 80 du conteneur Joomla.",
+    "8": "JOOMLA_DB_HOST=joomladb indique au conteneur Joomla que le serveur de base de données s'appelle 'joomladb' — c'est le nom du service MySQL dans ce même fichier Compose.",
+    "13": "Cette ligne monte le fichier php.ini de la machine hôte dans le conteneur pour personnaliser la configuration PHP de Joomla."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:45:37.760Z",
+  "source": "devcontainer.json",
+  "sourceHash": "edf70050370f1c881002aba50538bb0f9e83e263",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un environnement de développement VS Code pour un projet Python exécuté dans un conteneur Docker. Il spécifie le service Docker à utiliser, l'utilisateur distant, le répertoire de travail, puis installe une collection d'extensions VS Code et configure leurs paramètres pour imposer des normes de style de code, l'édition structurée et les vérifications de qualité.",
+  "explanations": {
+    "3": "dockerComposeFile spécifie où trouver le fichier compose.yaml qui décrit les services Docker, y compris le conteneur Python.",
+    "6": "service indique quel service dans compose.yaml doit être utilisé comme environnement de développement.",
+    "7": "remoteUser est l'utilisateur Unix à l'intérieur du conteneur Docker qui exécutera VS Code et vos commandes.",
+    "8": "workspaceFolder est le répertoire dans le conteneur Docker où VS Code ouvrira et exécutera les fichiers du projet.",
+    "65": "formatOnSave applique automatiquement le formatage black quand tu sauvegardes un fichier Python.",
+    "66": "codeActionsOnSave exécute automatiquement des corrections de code (comme trier les imports) lors de la sauvegarde.",
+    "85": "cSpell.language configure le vérificateur orthographique pour vérifier des mots en anglais, français et néerlandais.",
+    "87": "bracketPairColorization.enabled colore les paires de parenthèses/crochets appariés avec des couleurs différentes pour les repérer facilement.",
+    "95": "formatOnSave applique le formatage automatique à tous les types de fichiers lors de la sauvegarde.",
+    "102": "rulers affiche des lignes verticales à 120 et 70 caractères pour te montrer la limite de longueur de ligne.",
+    "106": "stickyScroll garde la première ligne d'un bloc visible au haut de l'écran quand tu fais défiler.",
+    "115": "files.autoSave sauvegarde automatiquement les modifications quand tu passes à un autre fichier ou application.",
+    "139": "typeCheckingMode strict signifie que mypy applique les vérifications de type les plus rigoureuses."
+  }
+}

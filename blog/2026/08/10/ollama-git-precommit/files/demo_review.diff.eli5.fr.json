@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:07:59.417Z",
+  "source": "demo_review.diff",
+  "sourceHash": "0c80e7bfa7aa01831e32190dfeb2c23900084842",
+  "lang": "diff",
+  "textLang": "fr",
+  "summary": "Ce diff ajoute une méthode process() à la classe InvoiceProcessor qui valide les données de facture, calcule la taxe, stocke les informations en base de données, puis envoie un email de confirmation au client. La méthode retourne un booléen indiquant le succès ou l'échec du traitement.",
+  "explanations": {
+    "7": "La méthode process() accepte un paramètre $d qui est censé être un tableau contenant les données de la facture (montant, email, etc.).",
+    "9": "isset() vérifie que la clé existe et n'est pas nulle — on s'assure que 'amount' et 'email' sont présents dans le tableau avant de continuer.",
+    "13": "On vérifie que le montant est strictement positif pour rejeter les montants nuls ou négatifs qui n'auraient pas de sens.",
+    "17": "On multiplie le montant par 0.21 pour appliquer une TVA de 21%, puis on additionne ce montant à l'original pour obtenir le total.",
+    "20": "Cette ligne crée une connexion directe à la base de données MySQL avec des identifiants en dur — ce n'est pas une bonne pratique pour la production.",
+    "21": "prepare() crée un modèle SQL avec des points d'interrogation (?) comme espaces réservés pour éviter les injections SQL.",
+    "22": "execute() insère les valeurs réelles dans la requête préparée en substituant les ? par les vraies données.",
+    "26": "mail() envoie un email au client avec le sujet et le corps de message concernant sa facture."
+  }
+}

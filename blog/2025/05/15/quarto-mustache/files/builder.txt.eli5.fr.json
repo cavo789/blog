@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:52:41.061Z",
+  "source": "builder.txt",
+  "sourceHash": "ac2782d11b64de2861087f1bdafc2df37348811d",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de documentation décrit Intent-Driven Interface Builder, un outil qui permet aux développeurs de décrire l'intention d'un élément d'interface utilisateur plutôt que de le configurer manuellement. L'outil utilise l'IA et une bibliothèque de composants pré-construits pour générer automatiquement les éléments d'interface appropriés, y compris le choix des widgets, l'arrangement en layout et les suggestions de style selon le langage de design de l'application.",
+  "explanations": {
+    "3": "partial-data est une variable de configuration qui fournit des données au modèle de template, ici une commande à exécuter.",
+    "4": "Cette commande make builder sera disponible comme variable dans le template pour que les utilisateurs sachent comment construire le projet.",
+    "15": "Cette ligne inclut un fichier template partiel (un morceau de contenu réutilisable) depuis un répertoire parent pour éviter de dupliquer les instructions d'exécution."
+  }
+}

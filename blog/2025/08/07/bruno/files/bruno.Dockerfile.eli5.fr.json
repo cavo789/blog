@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:16.907Z",
+  "source": "bruno.Dockerfile",
+  "sourceHash": "1e55a540c54c634e1c7dacffe65e5fc6af534841",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Node.js LTS avec l'environnement Debian Bookworm allégé. Il installe l'outil CLI Bruno (un client API) globalement, puis configure le conteneur pour exécuter la commande bru par défaut.",
+  "explanations": {
+    "1": "FROM node:lts-bookworm-slim utilise une image de base Node.js en version LTS sur Debian Bookworm dans sa version allégée (moins de dépendances système inutiles).",
+    "3": "RUN npm install -g installe le package npm @usebruno/cli en version 2.8.0 globalement, le rendant disponible comme commande système dans le conteneur.",
+    "4": "ENTRYPOINT [\"bru\"] définit le point d'entrée du conteneur : la commande bru s'exécutera toujours au démarrage du conteneur.",
+    "5": "CMD [\"run\"] fournit l'argument par défaut \"run\" à la commande bru si aucun argument n'est fourni au lancement du conteneur."
+  }
+}

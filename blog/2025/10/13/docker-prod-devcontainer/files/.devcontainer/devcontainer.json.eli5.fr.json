@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:58:43.641Z",
+  "source": "devcontainer.json",
+  "sourceHash": "a4077a0e4e2c8c86be88d1cb02abf96f9f789df2",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier configure un environnement de développement containerisé pour VS Code en utilisant Docker Compose. Il définit le service à lancer, l'espace de travail, les variables d'environnement pour SSH, et personnalise l'éditeur avec des paramètres spécifiques et des extensions.",
+  "explanations": {
+    "3": "dockerComposeFile accepte un tableau pour charger plusieurs fichiers compose dans l'ordre — le premier est un fichier parent, le second surcharge ou ajoute des configurations spécifiques au devcontainer.",
+    "12": "GIT_SSH_COMMAND configure git pour utiliser une clé SSH spécifique au lieu de la clé par défaut, et UserKnownHostsFile=/dev/null désactive la vérification des hôtes connus pour éviter les erreurs de première connexion.",
+    "14": "initializeCommand crée la structure de répertoires et fichiers avant que le conteneur ne démarre, notamment un fichier .bash_history persistant et un .gitignore pour l'exclure du versioning."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:20.847Z",
+  "source": "compose.yaml",
+  "sourceHash": "655b14571416d61d88b903c0143417d73e6312fd",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé heimdall qui exécute un conteneur Heimdall (un tableau de bord de portail). Le service est configuré avec des variables d'environnement pour l'ID utilisateur et la timezone, mappe les ports HTTP et HTTPS, monte un répertoire de configuration local, et redémarre automatiquement sauf s'il est arrêté manuellement.",
+  "explanations": {
+    "9": "PUID=${USER_ID:-1000} utilise la variable USER_ID si elle existe, sinon elle prend par défaut la valeur 1000 — c'est pour que le conteneur s'exécute avec les bonnes permissions utilisateur sur ton système.",
+    "10": "De même, PGID=${GROUP_ID:-1000} définit l'ID du groupe avec une valeur par défaut de 1000 pour les permissions de groupe.",
+    "15": "Le %%port=80%% est un placeholder (un espace vide à remplir) — le vrai port sera remplacé lors du déploiement, et il mappera vers le port 80 à l'intérieur du conteneur."
+  }
+}

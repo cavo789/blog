@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:30.975Z",
+  "source": "FeatureContext.part4.php",
+  "sourceHash": "3261a98d5e0a29a27a2cd63ab90c098887b77711",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier définit un contexte Behat pour tester une application web avec un navigateur Chrome. Il initialise une instance Mink configurée pour piloter Chrome, puis fournit une étape de test qui clique sur un élément de menu de navigation en cherchant le lien correspondant au texte fourni et en capturant des captures d'écran avant et après le clic.",
+  "explanations": {
+    "14": "Ceci déclare une propriété privée qui stockera l'instance Mink, l'outil principal pour contrôler le navigateur et interagir avec la page web.",
+    "25": "On crée une nouvelle instance Mink en lui passant un tableau contenant une session 'browser' qui utilise ChromeDriver pour communiquer avec Chrome.",
+    "28": "ChromeDriver est configuré pour se connecter au port 9222 (où Chrome écoute en mode debug) et pour tester le site spécifié dans l'URL.",
+    "43": "Cette vérification crée le répertoire '.output' s'il n'existe pas encore, car on va y sauvegarder les captures d'écran.",
+    "53": "findAll cherche tous les éléments DOM correspondant au sélecteur CSS fourni et retourne un tableau d'objets NodeElement représentant chaque lien trouvé.",
+    "59": "Cette condition compare le texte visible du lien avec le paramètre $menu fourni à la fonction, pour identifier le bon lien à cliquer."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:46:43.649Z",
+  "source": "generate_fake_data.py",
+  "sourceHash": "2234939cc56a23bf3ad44f19131aed5dc0a4a4fb",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette fonction génère des données d'employés fictives et les sauvegarde dans des fichiers CSV séparés par année. Elle crée d'abord une liste de 10 employés avec des noms générés aléatoirement, puis pour chaque année de 2020 à 2024, elle construit un fichier CSV contenant les salaires de ces employés plus un employé supplémentaire spécifique à cette année.",
+  "explanations": {
+    "8": "employees est typé comme dict mais initialisé comme une liste vide [] — cela crée une liste qui contiendra les dictionnaires d'employés.",
+    "19": "extra_employees est typé comme dict mais c'est effectivement un dictionnaire qui mappe des années à des tuples de prénoms et noms de famille.",
+    "28": "salaries est typé comme dict mais initialisé comme une liste vide [], de la même manière que employees.",
+    "30": "La boucle va jusqu'à max+1 pour inclure une itération supplémentaire destinée à ajouter l'employé spécial de l'année en cours.",
+    "32": "Quand l'id atteint la valeur max (10), on entre dans ce cas spécial pour ajouter l'employé extra associé à l'année en cours.",
+    "33": "La variable id est réassignée à year pour utiliser year comme clé pour chercher dans extra_employees.",
+    "43": "int() convertit le résultat de randint() en entier — randint() retourne déjà un entier, donc cette conversion est redondante."
+  }
+}

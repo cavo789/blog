@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:36:01.641Z",
+  "source": "settings.json",
+  "sourceHash": "ed1a75abe2f44a6e3c221cea0b60ad2a77ee81a1",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit un mappage de renommage pour obfusquer les noms de fonctions et variables d'un jeu du pendu. Chaque identificateur lisible est remplacé par un code court et opaque (comme ppmx, ppnx, etc.) pour réduire la taille du code ou le rendre plus difficile à comprendre.",
+  "explanations": {
+    "2": "La clé replace indique que ceci est une configuration de remplacement — chaque paire clé-valeur en dessous spécifie quoi remplacer et par quoi.",
+    "3": "getRandomWord est le nom original d'une fonction; ppmx est son nouveau nom court après obfuscation.",
+    "10": "wordList est probablement une liste ou tableau contenant les mots du jeu; il sera renommé ppmu partout dans le code."
+  }
+}

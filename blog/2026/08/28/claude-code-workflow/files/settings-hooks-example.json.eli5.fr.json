@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:09:03.052Z",
+  "source": "settings-hooks-example.json",
+  "sourceHash": "36d834bff8eb3fae24135c1686895c4d001db706",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit des règles de sécurité et d'automatisation pour contrôler l'accès aux fichiers sensibles et exécuter des vérifications de code. Il interdit la lecture de fichiers d'environnement et de clés, puis automatise les tests et vérifications de style lors de l'utilisation d'outils spécifiques.",
+  "explanations": {
+    "3": "Cette ligne énumère les chemins de fichiers auxquels l'accès est refusé : .env, tous les fichiers .key, et tout ce qui se trouve dans le répertoire secrets.",
+    "12": "Le hook extrait la commande en cours d'exécution avec jq, et n'autorise l'action que si c'est une commande pytest, sinon il la bloque implicitement.",
+    "23": "Le hook extrait le chemin du fichier modifié et exécute l'outil ruff check dessus si c'est un fichier Python, pour vérifier la qualité du code.",
+    "30": "À l'arrêt du processus, cette commande lance pytest en mode silencieux pour exécuter tous les tests en dernier."
+  }
+}

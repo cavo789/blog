@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:54:25.337Z",
+  "source": "simple.part16.bats",
+  "sourceHash": "6f045efc11fe5f8f047662e785f36d3240987888",
+  "lang": "bats",
+  "textLang": "fr",
+  "summary": "Ce test vérifie que la fonction assert::dockerImageExists signale correctement quand une image Docker n'existe pas. On simule une commande docker qui retourne vide (comme si l'image était absente), on appelle la fonction d'assertion avec un message d'erreur personnalisé, puis on vérifie que ce message s'affiche et que la fonction échoue.",
+  "explanations": {
+    "6": "On remplace la vraie commande docker par une fonction shell qui retourne juste une chaîne vide, simulant ainsi le comportement de docker images -q quand aucune image ne correspond.",
+    "10": "On charge le fichier assert.sh qui contient les fonctions d'assertion qu'on veut tester.",
+    "11": "run exécute la commande et capture son statut de sortie et son output, au lieu de l'exécuter directement.",
+    "12": "On vérifie que le message d'erreur personnalisé apparaît quelque part dans la sortie avec --partial (pas besoin qu'il soit exact).",
+    "13": "On confirme que la fonction s'est terminée en erreur (statut de sortie non-zéro)."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:43.452Z",
+  "source": "tutorial.part2.conf",
+  "sourceHash": "d2bfd0be7e6effa5248c700e1cbddbf37b586e0f",
+  "lang": "conf",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit le port sur lequel le serveur REST écoutera les connexions entrantes. La valeur par défaut est 3000, mais elle peut être remplacée en fournissant une variable d'environnement ou un paramètre nommé restPort au moment du déploiement.",
+  "explanations": {
+    "1": "La syntaxe %% %% indique une variable de substitution : au moment de l'exécution, restPort sera remplacée par sa valeur, ou par 3000 si elle n'est pas définie ailleurs."
+  }
+}

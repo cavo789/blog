@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:27.395Z",
+  "source": "calculate.sh",
+  "sourceHash": "1378184a357e2fbad3c3b615cac72103d2a5d634",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash démarre mais est incomplet — il déclare une fonction sans nom ni corps, ce qui causera une erreur de syntaxe lors de l'exécution.",
+  "explanations": {
+    "3": "Le mot-clé 'function' en bash introduit la déclaration d'une fonction, mais il manque le nom de la fonction et les accolades qui contiendraient son code."
+  }
+}

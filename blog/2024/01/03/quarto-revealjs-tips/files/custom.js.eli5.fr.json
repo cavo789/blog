@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:33.723Z",
+  "source": "custom.js",
+  "sourceHash": "2a445953ea4626f52eb502e6d1fafa76fa9be22c",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce script gère l'affichage du logo dans une présentation (probablement créée avec Reveal.js). Au chargement initial, le logo s'affiche en pleine taille en haut à gauche. Dès qu'on navigue vers une autre diapositive, le logo devient petit et se repositionne en bas à droite.",
+  "explanations": {
+    "7": "matches() vérifie si l'élément actuel correspond au sélecteur CSS '#title-slide', c'est-à-dire si on est sur la diapositive titre.",
+    "8": "querySelectorAll() récupère tous les éléments HTML ayant la classe 'slide-logo' dans la page.",
+    "9": "[].forEach.call() est une astuce pour utiliser forEach sur la liste retournée par querySelectorAll (qui n'est pas un vrai tableau) — on utilise la méthode forEach d'un tableau vide pour itérer sur nos éléments.",
+    "22": "addEventListener('load', ...) exécute la fonction callback une fois que la page et ses ressources sont entièrement chargées.",
+    "31": "Reveal.on('slidechanged', ...) enregistre un écouteur qui se déclenche chaque fois que l'utilisateur change de diapositive dans la présentation Reveal.js."
+  }
+}

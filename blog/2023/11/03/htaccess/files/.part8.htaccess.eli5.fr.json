@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:03:31.918Z",
+  "source": ".part8.htaccess",
+  "sourceHash": "e8876de72735841885b357712ed155a64620ecac",
+  "lang": "htaccess",
+  "textLang": "fr",
+  "summary": "Ce bloc de configuration Apache active la réécriture d'URL pour forcer deux redirections successives : d'abord basculer le trafic en HTTPS, puis ajouter le préfixe www. si absent. Cette approche progressive satisfait les exigences de hstspreload.org qui préfère traiter ces redirections séparément plutôt que en une seule étape.",
+  "explanations": {
+    "1": "IfModule vérifie que mod_rewrite (le module Apache de réécriture d'URL) est disponible avant d'exécuter les règles à l'intérieur.",
+    "4": "RewriteEngine On active la fonctionnalité de réécriture d'URL pour ce répertoire et ses sous-répertoires.",
+    "7": "RewriteCond %{HTTPS} !=on est une condition qui s'applique seulement si HTTPS n'est pas actif — le != signifie « différent de ».",
+    "8": "RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] redirige toute URL (^ = début de la chaîne) vers sa version HTTPS en conservant le domaine et le chemin ; [L] arrête le traitement, [R=301] indique une redirection permanente.",
+    "12": "RewriteCond %{HTTP_HOST} !^www\\. est une condition qui s'applique seulement si le domaine ne commence pas par www. (^= début, ! = négation).",
+    "13": "RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301] redirige toute URL en ajoutant www. devant le domaine, tout en conservant le protocole HTTPS et le chemin."
+  }
+}

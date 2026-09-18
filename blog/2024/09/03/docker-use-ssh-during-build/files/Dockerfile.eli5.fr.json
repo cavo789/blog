@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:42:26.322Z",
+  "source": "Dockerfile",
+  "sourceHash": "b6fb77182ed56795fc190d4b96d3942e13b9a127",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Alpine avec Git et SSH pour cloner un dépôt privé GitHub. Il configure les clés SSH de manière sécurisée en utilisant les secrets Docker, ajoute GitHub aux hôtes connus, puis clone le dépôt dans le conteneur avant de le laisser tourner indéfiniment.",
+  "explanations": {
+    "3": "ARG définit une variable de build nommée KEY_NAME qui vaut par défaut « id_rsa » et peut être changée lors de la construction de l'image avec --build-arg.",
+    "7": "apk add installe les paquets nécessaires (bash, certificats CA, git, client SSH) sans créer de cache local avec --no-cache pour réduire la taille de l'image.",
+    "10": "mkdir crée le dossier .ssh avec les permissions 0700 (lecture/écriture/exécution pour le propriétaire uniquement), puis ssh-keyscan récupère la clé publique de github.com et l'ajoute aux hôtes connus pour éviter une demande de confirmation.",
+    "13": "Le mount de type secret injecte de manière sécurisée la clé SSH privée dans le chemin /root/.ssh/${KEY_NAME} uniquement pendant cette étape, sans la laisser dans l'image finale.",
+    "17": "ssh -T git@github.com teste la connexion SSH à GitHub pour valider la clé ; le || true ignore tout échec pour continuer l'exécution.",
+    "24": "ENTRYPOINT lance tail -f /dev/null qui lit indéfiniment le fichier /dev/null, gardant le conteneur actif sans faire rien d'utile."
+  }
+}

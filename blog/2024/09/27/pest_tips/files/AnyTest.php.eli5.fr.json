@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:44.990Z",
+  "source": "AnyTest.php",
+  "sourceHash": "8ede6ded0716c0fc05683614fcf2243975a315f7",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce test démontre la différence entre deux méthodes de comparaison : toBe() fait une comparaison stricte (type et valeur doivent correspondre), tandis que toEqual() fait une comparaison souple où 4 et '4' sont considérés comme égaux.",
+  "explanations": {
+    "4": "toBe() vérifie que la valeur ET le type sont identiques, donc 2 + 2 = 4 (nombre) réussit, mais comparé à '4' (chaîne) échoue.",
+    "5": "Cette assertion échoue car toBe() est strict : l'entier 4 n'est pas égal à la chaîne '4', même si numériquement ils valent la même chose.",
+    "8": "toEqual() fait une comparaison plus souple qui ignore les différences de type, donc l'entier 4 et la chaîne '4' sont considérés comme égaux."
+  }
+}

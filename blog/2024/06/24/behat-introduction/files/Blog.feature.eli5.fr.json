@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:01.551Z",
+  "source": "Blog.feature",
+  "sourceHash": "4c902fa51f9036a6162b3996c1cbc95cac47fa14",
+  "lang": "feature",
+  "textLang": "fr",
+  "summary": "Ce scénario de test vérifie qu'en cliquant sur l'élément de menu Blog depuis la page d'accueil, l'utilisateur est redirigé vers la page /blog. C'est un test d'acceptation qui valide le comportement de navigation du site web.",
+  "explanations": {
+    "4": "Given établit l'état initial du test en naviguant vers l'URL spécifiée avant de commencer les actions.",
+    "5": "Then exécute une action — le clic sur l'élément de menu — plutôt que de vérifier un résultat.",
+    "6": "Then vérifie que l'URL actuelle a changé vers /blog, confirmant que la navigation a fonctionné."
+  }
+}

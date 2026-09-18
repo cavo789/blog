@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:41:32.692Z",
+  "source": "Dockerfile",
+  "sourceHash": "7aceac9ae49217e14389f527c26674c552c2b797",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker multi-étapes pour Docusaurus : d'abord une image de base Node.js avec corepack activé, ensuite une étape développement qui crée un utilisateur personnalisé, puis une étape de construction qui installe et compile le site Docusaurus, et enfin une étape production qui sert les fichiers compilés avec nginx.",
+  "explanations": {
+    "5": "HOMEDIR est une variable qu'on passe au conteneur pour définir où installer Docusaurus — il faut l'utiliser partout plutôt que d'écrire le chemin en dur.",
+    "6": "TARGET est un argument qu'on va changer selon qu'on veut développer ou produire, et il servira à personnaliser le prompt bash dans le conteneur.",
+    "9": "DOCKER_UID et DOCKER_GID permettent de créer un utilisateur dans le conteneur avec les mêmes identifiants que ta machine — ça évite les problèmes de permissions entre fichiers du conteneur et de l'hôte.",
+    "15": "node:lts AS base crée une première étape nommée 'base' en partant de l'image Node.js stable, qu'on réutilisera dans les étapes suivantes.",
+    "18": "FORCE_COLOR=0 désactive les codes couleur dans les logs yarn pour qu'ils soient plus faciles à lire dans les logs Docker.",
+    "21": "corepack enable active corepack, l'outil que npm fournit pour gérer les versions de gestionnaires de paquets comme yarn et pnpm.",
+    "24": "Cette commande ajoute un prompt bash personnalisé au fichier ~/.bashrc — la balise ${TARGET} s'insère dynamiquement avec le contexte de développement ou production.",
+    "30": "FROM base AS development réutilise l'étape 'base' qu'on a créée plus tôt pour construire l'environnement de développement.",
+    "34": "apt-get update et apt-get install téléchargent et installent git, puis la ligne suivante configure git pour faire confiance au répertoire du projet.",
+    "46": "Cette condition vérifie si DOCKER_UID n'est pas 1000 — on crée un utilisateur personnalisé seulement si c'est nécessaire, sinon on garde l'utilisateur par défaut de Node.",
+    "47": "groupadd crée un groupe avec l'identifiant fourni, et useradd crée l'utilisateur qui appartient à ce groupe avec le répertoire home spécifié.",
+    "61": "FROM base AS building_production réutilise encore l'étape 'base' mais cette fois pour construire et compiler le site Docusaurus en production.",
+    "66": "NODE_ENV=${TARGET} passe le contexte (développement ou production) comme variable d'environnement pour que Docusaurus configure son comportement en conséquence.",
+    "70": "npx create-docusaurus télécharge et exécute le générateur Docusaurus pour créer une nouvelle installation, puis on supprime les fichiers d'exemple qu'il crée par défaut.",
+    "73": "chown change le propriétaire de tous les fichiers du répertoire pour que l'utilisateur 'node' les possède, évitant les problèmes de permissions.",
+    "82": "yarn install --immutable installe exactement les versions listées dans le fichier lock pour que le build soit reproductible — pas de variations accidentelles.",
+    "88": "yarn build compile le site Docusaurus en fichiers statiques qu'on servira avec nginx.",
+    "94": "FROM nginx:stable-alpine3.19-perl AS production crée l'étape finale avec une image nginx léger pour servir le site en production.",
+    "97": "apk update et apk add installent bash sur la minuscule image alpine, puis on nettoie le cache pour garder l'image petite.",
+    "107": "COPY --from=building_production copie les fichiers compilés de l'étape précédente dans le répertoire web de nginx pour qu'il les serve."
+  }
+}

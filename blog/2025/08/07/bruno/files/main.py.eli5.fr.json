@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:55:21.172Z",
+  "source": "main.py",
+  "sourceHash": "56f220afdf3371c723a3e68627d308c9bdec4f76",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce code crée une API web simple avec FastAPI qui expose deux endpoints pour récupérer des blagues : l'un retourne une blague aléatoire, l'autre retourne une blague spécifique par son identifiant. Les blagues sont stockées dans une liste et l'API gère les cas où l'ID demandé n'existe pas.",
+  "explanations": {
+    "1": "choice est une fonction du module random qui sélectionne aléatoirement un élément d'une liste.",
+    "4": "FastAPI() crée une nouvelle instance d'application web qui va gérer les requêtes HTTP.",
+    "14": "@app.get(\"/jokes\") est un décorateur qui indique que cette fonction répond aux requêtes HTTP GET sur la route /jokes.",
+    "15": "async def signifie que cette fonction peut traiter d'autres tâches pendant qu'elle attend une réponse, ce qui rend l'application plus performante.",
+    "19": "choice(jokes) sélectionne une blague au hasard dans la liste et la retourne au format JSON.",
+    "21": "@app.get(\"/jokes/{joke_id}\") crée une route dynamique où {joke_id} est un paramètre variable capturé depuis l'URL.",
+    "22": "def read_item(joke_id: int) déclare que le paramètre joke_id doit être un entier ; FastAPI convertira automatiquement la valeur de l'URL.",
+    "26": "try-except est un bloc qui capture les erreurs : si l'accès à jokes[joke_id] échoue (index invalide), le code dans except s'exécute au lieu de crasher.",
+    "29": "Cette ligne retourne un dictionnaire d'erreur avec le code HTTP 404 (non trouvé) quand l'ID de blague n'existe pas."
+  }
+}

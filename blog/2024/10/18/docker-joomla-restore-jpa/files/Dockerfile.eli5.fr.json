@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:44:58.274Z",
+  "source": "Dockerfile",
+  "sourceHash": "2e0dccbf72c46ef060fba5c11f65fae6a8af80f1",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur PHP avec Apache, en utilisant la version spécifiée en argument (8.3-apache par défaut). Il installe ensuite les extensions MySQL nécessaires pour permettre à PHP de se connecter à des bases de données MySQL.",
+  "explanations": {
+    "1": "ARG définit une variable de build que tu peux passer au moment de la construction avec --build-arg ; si tu ne la fournis pas, elle vaut 8.3-apache par défaut.",
+    "3": "FROM utilise la variable PHP_VERSION entre ${} pour sélectionner l'image de base ; le :- offre une valeur de secours (latest) au cas où la variable serait vide.",
+    "5": "set -e -x rend le script d'exécution strict : -e arrête à la première erreur, et -x affiche chaque commande pour le débogage.",
+    "6": "docker-php-ext-install compile et installe les extensions mysqli, pdo et pdo_mysql, puis docker-php-ext-enable active spécifiquement pdo_mysql pour que PHP la chargerait au démarrage."
+  }
+}

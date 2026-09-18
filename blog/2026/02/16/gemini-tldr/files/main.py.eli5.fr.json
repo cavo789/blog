@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:01:27.716Z",
+  "source": "main.py",
+  "sourceHash": "7518ee435114d9bb21e056cc6390030b5a5aee66",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script automatise l'injection de résumés générés par l'IA Gemini dans des fichiers markdown. Il prend en argument un chemin (fichier unique ou répertoire), récupère la clé API depuis une variable d'environnement, puis traite récursivement tous les fichiers .md trouvés en générant et injectant un TL;DR pour chacun, tout en comptabilisant les succès, omissions et erreurs.",
+  "explanations": {
+    "33": "BASE_DIR pointe vers le répertoire parent du script courant (où se trouve main.py), résolu en chemin absolu grâce à resolve().",
+    "34": "On vérifie si ce répertoire n'est pas déjà dans sys.path pour éviter les doublons, car sys.path contrôle où Python cherche les modules importables.",
+    "35": "insert(0, ...) ajoute BASE_DIR au début de sys.path pour que les imports suivants trouvent d'abord nos modules locaux dans src/.",
+    "41": "On capture l'exception ImportError si les modules internes manquent (par exemple si src/ n'existe pas), ce qui indiquerait un problème de configuration du projet.",
+    "71": "load_dotenv(dotenv_path=...) cherche d'abord un fichier .env au répertoire du script, ce qui fonctionne bien dans Docker où le répertoire courant est monté à /app.",
+    "73": "Si la clé API n'a pas été trouvée à la première tentative, on appelle load_dotenv() sans argument pour chercher .env au répertoire courant, comme dernier recours.",
+    "80": "On vérifie si le chemin fourni est relatif ; si oui, on le rend absolu en le joignant au répertoire courant.",
+    "88": "La syntaxe str | None indique que api_key est soit une chaîne, soit None ; c'est le nouveau typage Python pour les unions.",
+    "101": "On initialise une liste vide pour accumuler tous les chemins des fichiers à traiter avant de les parcourir.",
+    "104": "suffix.lower() retourne l'extension en minuscules (.md), permettant une comparaison insensible à la casse.",
+    "109": "rglob('*.md') cherche récursivement tous les fichiers se terminant par .md dans le répertoire et ses sous-répertoires.",
+    "118": "On crée un dictionnaire pour comptabiliser les trois états possibles d'un fichier : SUCCESS, SKIPPED, ou ERROR.",
+    "121": "end='' supprime le saut de ligne et flush=True affiche immédiatement le message, utile pour afficher un état qui sera écrasé à la ligne suivante.",
+    "125": "On teste si la chaîne 'SKIPPED' apparaît dans status plutôt que de vérifier l'égalité exacte, car le status complet peut contenir plus de détails.",
+    "127": "\\r retourne au début de la ligne courante, ce qui permet de remplacer le message 'Processing' par le résultat final."
+  }
+}

@@ -32,7 +32,7 @@ J'utilise ce genre de script pour faire une sauvegarde complète de certains de 
 
 ## Le script {#the-script}
 
-<Snippet filename="c:\temp\synchronize.txt" source="./files/c:\temp\synchronize.txt" />
+<Snippet filename="c:\temp\synchronize.txt" source="./files/synchronize.txt" />
 
 ## Comment l'utiliser {#how-to-use}
 

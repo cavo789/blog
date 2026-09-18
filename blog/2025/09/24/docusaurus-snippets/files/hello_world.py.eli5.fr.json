@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:52.400Z",
+  "source": "hello_world.py",
+  "sourceHash": "54406ab4279db2913717676068ac736a75fc5b7c",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script demande le nom de l'utilisateur, vérifie qu'il a saisi quelque chose de valide, puis affiche un message de bienvenue personnalisé. Le bloc `if __name__ == \"__main__\"` garantit que le code ne s'exécute que si le script est lancé directement, et non importé comme module.",
+  "explanations": {
+    "6": "name.strip() supprime les espaces blancs au début et à la fin de la chaîne ; la condition teste si ce qui reste n'est pas vide, pour éviter les entrées contenant uniquement des espaces.",
+    "11": "Cette vérification spéciale en Python s'évalue à True uniquement quand le fichier est exécuté directement (pas quand il est importé dans un autre script)."
+  }
+}

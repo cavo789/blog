@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:35:34.827Z",
+  "source": "settings.part3.json",
+  "sourceHash": "2cb83a4751623580934904047a08da7838881e8b",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON configure les profils de Windows Terminal. Il définit un profil nommé Ubuntu qui utilise le backend WSL (Windows Subsystem for Linux) et spécifie le répertoire de démarrage dans le système de fichiers WSL.",
+  "explanations": {
+    "6": "source indique quel backend Terminal doit utiliser pour ce profil — ici Windows.Terminal.Wsl qui lance un environnement Linux via WSL.",
+    "7": "startingDirectory définit le dossier où tu atterris quand tu ouvres ce profil; les barres obliques inverses échappées (\\\\) et le chemin wsl$ accèdent le système de fichiers WSL depuis Windows."
+  }
+}

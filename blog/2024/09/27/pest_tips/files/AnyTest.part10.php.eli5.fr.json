@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:43:14.911Z",
+  "source": "AnyTest.part10.php",
+  "sourceHash": "1470260bbd7d5a79ede714456c0df5178dfcf66a",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce fichier configure Pest pour que tous les tests Feature utilisent deux traits : TestCase (la classe de base pour les tests Laravel) et RefreshDatabase (qui réinitialise la base de données après chaque test). C'est une façon centralisée de définir le comportement commun à tous les tests du dossier Feature.",
+  "explanations": {
+    "1": "La fonction uses() applique les traits listés à tous les tests du dossier spécifié par in('Feature'). Chaque test héritera automatiquement de TestCase et aura la capacité de rafraîchir la base de données grâce à RefreshDatabase."
+  }
+}

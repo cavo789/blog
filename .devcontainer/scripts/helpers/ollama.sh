@@ -11,12 +11,17 @@
 function eli5() {
     local target="" extra=()
 
-    # `--output` carries a value and belongs to the single-file script; `--dir` is the bulk
-    # script's own spelling of the positional target, accepted so a command copy/pasted from
-    # bulk-eli5.mjs's help still works here.
+    # `--output` and `--locale` carry a value and belong to the single-file script; `--dir` is
+    # the bulk script's own spelling of the positional target, accepted so a command copy/pasted
+    # from bulk-eli5.mjs's help still works here.
+    #
+    # `--locale` must be listed here, not left to the bare-flag branch: its value would then be
+    # read as the positional target, and `eli5 <file> --locale fr --force` would silently run
+    # against a folder named "fr". That exact line is what check-eli5-freshness.mjs prints for a
+    # stale French annotation.
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            --dir | --output)
+            --dir | --output | --locale)
                 if [[ -z "${2:-}" ]]; then
                     printf "❌ %s needs a value.\n" "$1" >&2
                     return 1

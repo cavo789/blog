@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:34.478Z",
+  "source": "compose.yaml",
+  "sourceHash": "ebcb97b03f150fc8721a6e137e12b0572006d3f2",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier docker-compose définit un service appelé ollama qui exécute un conteneur basé sur l'image ollama/ollama. Le service expose le port 11434, persiste ses données dans un volume nommé ollama_data, et redémarre automatiquement en cas d'arrêt. Des lignes commentées permettent d'activer le support GPU NVIDIA si nécessaire.",
+  "explanations": {
+    "6": "%%name=ollama%% est un paramètre de template qui sera remplacé au moment du déploiement par la valeur de la variable name; ici il dénomme le conteneur.",
+    "8": "%%port=11434%% est un paramètre de template pour le port côté hôte, qui peut être personnalisé lors du déploiement; le port 11434 est le port interne du conteneur.",
+    "10": "ollama_data:/root/.ollama monte un volume Docker nommé ollama_data sur le répertoire /root/.ollama du conteneur pour persister les données entre les redémarrages."
+  }
+}

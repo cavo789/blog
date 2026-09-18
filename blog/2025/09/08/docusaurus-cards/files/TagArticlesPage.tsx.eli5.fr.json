@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:56:34.213Z",
+  "source": "TagArticlesPage.tsx",
+  "sourceHash": "6fba812f9f307b7408927b227e99e21dbcaec50d",
+  "lang": "typescript",
+  "textLang": "fr",
+  "summary": "Ce composant affiche les articles du blog filtrés par un tag spécifique extrait de l'URL. Il récupère le tag depuis le chemin, retrouve son nom d'affichage original, filtre les articles correspondants en les triant du plus récent au plus ancien, et affiche soit une liste d'articles soit un message si aucun n'est trouvé.",
+  "explanations": {
+    "9": "pathname.match() cherche le pattern d'une URL de tag (par exemple /blog/tags/javascript) et extrait la partie après le dernier slash.",
+    "10": "decodeURIComponent() convertit les caractères encodés en URL (comme %20 pour espace) vers des caractères lisibles; on retourne null si le pattern n'a pas été trouvé.",
+    "14": "useLocation() est un hook Docusaurus qui donne accès à l'URL actuelle, incluant le pathname.",
+    "31": "On crée un Set de tous les tags uniques en aplatissant le tableau de tags de chaque article, puis on le reconvertit en tableau.",
+    "32": "On cherche le vrai nom du tag en comparant les slugs générés (version URL-friendly) avec le rawTag extrait de l'URL; si on ne trouve pas de match, on affiche le rawTag tel quel.",
+    "37": "On garde seulement les articles dont au moins un tag transformé en slug correspond au rawTag de l'URL.",
+    "38": "new Date() convertit les chaînes de date en objets Date, getTime() les transforme en millisecondes, et la soustraction b - a les classe du plus récent au plus ancien (ordre décroissant)."
+  }
+}

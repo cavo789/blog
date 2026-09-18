@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:00:33.905Z",
+  "source": "curl.txt",
+  "sourceHash": "09ee58daea5f4d53a7dc4a32b9e4dd7f72271f80",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ceci montre une trace de requête HTTP effectuée avec curl vers un serveur local écoutant sur le port 8001. Le client demande la racine (/) avec GET, le serveur répond avec un statut 200 OK et du contenu JSON, puis la connexion est fermée.",
+  "explanations": {
+    "1": "curl tente d'établir une connexion TCP à l'adresse IP 127.0.0.1 (localhost) sur le port 8001.",
+    "3": "Ceci est la ligne de requête HTTP : on demande la ressource / en utilisant la méthode GET et le protocole HTTP version 1.1.",
+    "8": "Le serveur indique que cette connexion ne supporte pas le mécanisme HTTP/1.1 de réutilisation de connexion (keep-alive).",
+    "9": "Le serveur répond avec un code de statut 200, signifiant que la requête a réussi sans erreur.",
+    "11": "Le serveur exécutant la requête est uvicorn, un serveur ASGI utilisé couramment pour les applications Python asynchrones."
+  }
+}

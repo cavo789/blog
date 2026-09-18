@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:52.490Z",
+  "source": "superheroes.part2.json",
+  "sourceHash": "d5874a0fd51996eb8863938a228fb4db7625387d",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON décrit une équipe de super-héros appelée « Super hero squad » avec ses informations générales (ville d'origine, année de formation, base secrète) et une liste détaillée de trois membres, chacun ayant son nom public, son identité secrète, son âge et ses pouvoirs spécifiques.",
+  "explanations": {
+    "7": "members est un tableau qui contient plusieurs objets, chaque objet représentant un membre distinct de l'équipe.",
+    "12": "powers est un tableau de chaînes de caractères énumérant les capacités spéciales d'un personnage.",
+    "18": "Les tableaux peuvent s'étendre sur plusieurs lignes en JSON pour améliorer la lisibilité quand il y a beaucoup d'éléments."
+  }
+}

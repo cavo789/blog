@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:34:43.152Z",
+  "source": "index.part2.php",
+  "sourceHash": "ac8b7cbbb229d60155b459d37d3a8b6da69f2801",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "Ce script instancie une classe Product, configure ses propriétés (nom et prix) via des setters, puis affiche le produit formaté avec printf en utilisant les getters correspondants.",
+  "explanations": {
+    "3": "namespace Cavo définit l'espace de noms de ce fichier, ce qui permet d'organiser le code et d'éviter les conflits de noms de classes.",
+    "5": "require_once charge le fichier Product.php une seule fois, peu importe combien de fois cette ligne est exécutée.",
+    "13": "PHP_EOL est une constante PHP qui représente le caractère de fin de ligne approprié au système d'exploitation (\\n sur Linux, \\r\\n sur Windows).",
+    "14": "getName() retourne la valeur stockée du nom du produit pour l'afficher à la place du placeholder %s dans la chaîne printf."
+  }
+}

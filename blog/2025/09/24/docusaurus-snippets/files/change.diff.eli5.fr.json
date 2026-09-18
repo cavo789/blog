@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:57:35.734Z",
+  "source": "change.diff",
+  "sourceHash": "ed7530d2c9568e4ec4cc4af6ed51864e4b57a8de",
+  "lang": "diff",
+  "textLang": "fr",
+  "summary": "Ce diff montre une modification simple : une ligne a été supprimée (old line) et remplacée par une nouvelle ligne (new line). C'est le format standard pour représenter les changements entre deux versions d'un fichier.",
+  "explanations": {
+    "1": "Le tiret (-) indique que cette ligne existait dans la version précédente et a été supprimée.",
+    "2": "Le plus (+) indique que cette ligne est nouvelle et a été ajoutée dans la version actuelle."
+  }
+}

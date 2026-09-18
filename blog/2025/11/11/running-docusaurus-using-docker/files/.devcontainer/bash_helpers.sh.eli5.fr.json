@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T14:05:11.907Z",
+  "source": "bash_helpers.sh",
+  "sourceHash": "0817bfcc0542d4f2e5c64ecc6d54c4e7828b1a33",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script ajoute un message de bienvenue et des alias utiles au fichier bashrc d'un conteneur de développement Docusaurus. Il vérifie d'abord que le message n'existe pas déjà pour éviter les doublons, puis ajoute des alias de commandes pratiques et un message informatif qui s'affichera à chaque ouverture d'un terminal.",
+  "explanations": {
+    "2": "set -euo pipefail rend le script strict : il s'arrête si une commande échoue (-e), traite les variables non définies comme des erreurs (-u), et arrête les pipelines dès qu'une commande échoue (-o pipefail).",
+    "4": "Cette ligne construit le chemin vers le fichier bashrc en utilisant la variable OS_USERNAME si elle existe, sinon elle utilise 'node' comme valeur par défaut.",
+    "7": "grep -qxF cherche si le marqueur existe exactement dans le fichier ; le ! inverse le résultat, donc le bloc s'exécute seulement si le marqueur n'est pas trouvé.",
+    "8": "cat <<EOF >> ajoute le texte qui suit à la fin du fichier bashrc jusqu'à la ligne contenant EOF.",
+    "11": "Cette ligne définit une variable d'environnement BLOG_HOST_DIR dans le bashrc, en utilisant sa valeur courante ou une chaîne vide par défaut.",
+    "14": "upgrade est un alias qui lance plusieurs commandes yarn pour mettre à jour Docusaurus et ses plugins vers les versions les plus récentes.",
+    "17": "echo -e permet d'interpréter les séquences spéciales comme \\n (retour à la ligne) et les emojis."
+  }
+}

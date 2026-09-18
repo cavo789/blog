@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:49:30.097Z",
+  "source": "pyright.json",
+  "sourceHash": "37967a41f1c2bbafbefd49c376ea33f5ccee4a41",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration pyrightconfig.json configure l'analyseur statique Pyright pour vérifier le code Python du répertoire courant. Il spécifie que le projet cible Python 3.13 sur une plateforme Linux.",
+  "explanations": {
+    "2": "include indique à Pyright les répertoires à analyser — le point \".\" signifie le répertoire courant et tous ses sous-répertoires.",
+    "3": "pythonVersion fixe la version de Python que Pyright doit supposer lors de la vérification des types et de la syntaxe — ici Python 3.13.",
+    "4": "pythonPlatform indique la plateforme système cible pour que Pyright puisse adapter ses vérifications aux spécificités de Linux."
+  }
+}

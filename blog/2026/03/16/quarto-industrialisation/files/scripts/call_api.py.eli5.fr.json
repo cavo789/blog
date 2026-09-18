@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:02:55.509Z",
+  "source": "call_api.py",
+  "sourceHash": "68e7c25cab340256845bc4a89d0b7f31533ad32e",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script récupère 10 utilisateurs fictifs depuis l'API RandomUser, puis formate et affiche les données sous forme de tableau Markdown. Les trois fonctions principalement font : la requête HTTP, la conversion en tableau, et l'orchestration du programme.",
+  "explanations": {
+    "15": "On crée un dictionnaire params avec la clé results définie à 10 pour dire à l'API qu'on veut exactement 10 utilisateurs.",
+    "17": "requests.get() envoie une requête HTTP GET à l'URL avec les paramètres et un délai d'attente de 10 secondes maximum.",
+    "22": "raise_for_status() lève une exception si la réponse HTTP indique une erreur (code 4xx ou 5xx), ce qui arrête le programme proprement.",
+    "24": "response.json() parsing la réponse en format JSON et la transforme en dictionnaire Python.",
+    "25": "On retourne data[\"results\"] car l'API RandomUser enveloppe la liste des utilisateurs sous cette clé.",
+    "34": "[\"---\"] * len(headers) crée une liste de tirets répétée autant de fois qu'il y a de colonnes, pour la ligne de séparation du Markdown.",
+    "37": "On concatène prénom et nom avec une f-string, en accédant aux clés imbriquées 'first' et 'last' dans le dictionnaire user[\"name\"].",
+    "40": "On va chercher la ville dans l'objet imbriqué location du dictionnaire utilisateur."
+  }
+}

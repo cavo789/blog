@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:06:32.732Z",
+  "source": "print-easter-egg.css",
+  "sourceHash": "14e2f1a535abbc21117cac26483da8ba861eaa58",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fragment CSS ajoute un message de pied de page caché qui s'affiche uniquement quand on imprime une page du site avonture.be. Le message inclut un emoji de suricate (le mascotte du site) et apparaît en petit texte gris au bas de la page imprimée.",
+  "explanations": {
+    "6": "@media print est une règle CSS qui s'applique uniquement quand on imprime le document, pas à l'écran.",
+    "7": "body::after crée un élément visuel fictif placé après tout le contenu du body pour l'affichage.",
+    "8": "content définit le texte à afficher — \\1F9AB est le code Unicode de l'emoji suricate, et \\2014 crée un tiret cadratin.",
+    "9": "position: fixed fait en sorte que le message reste toujours au même endroit sur chaque page imprimée, indépendamment du scroll.",
+    "10": "bottom: 10px positionne le message à 10 pixels du bas de la page imprimée."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:20.978Z",
+  "source": "SampleListener.php",
+  "sourceHash": "32515640e4939de318590cd5a646d18a48f17a86",
+  "lang": "php",
+  "textLang": "fr",
+  "summary": "C'est une classe listener qui réagit aux événements SampleEvent. Quand l'événement est déclenché, la méthode handle() est appelée automatiquement et modifie l'événement en définissant un prénom et un nom de famille.",
+  "explanations": {
+    "3": "namespace App\\Listeners; permet d'organiser ce listener dans un dossier logique de l'application et évite les conflits de noms avec d'autres classes.",
+    "9": "La signature public function handle(SampleEvent $event): void indique que cette méthode reçoit un SampleEvent et ne retourne rien (void).",
+    "11": "Les deux appels successifs setFirstName()->setLastName() fonctionnent grâce au chaînage de méthodes : chaque setter retourne l'objet $event pour permettre l'appel suivant."
+  }
+}

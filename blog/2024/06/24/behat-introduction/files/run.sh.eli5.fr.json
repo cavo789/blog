@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:37:57.787Z",
+  "source": "run.sh",
+  "sourceHash": "e05abe98fe0479e77fa3fe5fb030949dcf3a888a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script démarre Chrome en mode headless (sans interface graphique) sur le port 9222 pour permettre à Behat (un framework de test) de piloter le navigateur, puis exécute les tests Behat avant de terminer le processus Chrome.",
+  "explanations": {
+    "3": "clear efface l'écran du terminal pour avoir un affichage propre au démarrage du script.",
+    "8": "nohup permet que le processus Chrome continue de tourner même si le terminal se ferme; le & à la fin lance Chrome en arrière-plan.",
+    "10": "> /dev/null 2>&1 redirige tous les messages de sortie et d'erreur vers nulle part, ce qui rend Chrome silencieux.",
+    "13": "$! capture l'identifiant du processus (PID) du dernier processus lancé en arrière-plan, ici Chrome.",
+    "15": "shellcheck disable=SC2048,SC2086 désactive temporairement certains avertissements du linter pour les deux lignes suivantes parce que les variables sans guillemets y sont intentionnelles.",
+    "16": "-d memory_limit=-1 enlève la limite de mémoire PHP pour que Behat ait assez de ressources pour exécuter les tests.",
+    "18": "Cette vérification s'assure que chromePID est un nombre positif valide avant de tenter de tuer le processus, pour éviter une erreur."
+  }
+}

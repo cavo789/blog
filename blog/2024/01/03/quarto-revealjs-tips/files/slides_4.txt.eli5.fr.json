@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:32:12.364Z",
+  "source": "slides_4.txt",
+  "sourceHash": "0c5d7e09ad5e8778c8b4dc438511008004cd698a",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier définit deux en-têtes de section avec des images de fond. La première utilise une image par défaut, tandis que la seconde ajoute une propriété background-size pour contrôler comment l'image s'affiche dans l'espace disponible.",
+  "explanations": {
+    "3": "background-size=\"contain\" force l'image à rester entièrement visible à l'intérieur de la zone en-tête, quitte à laisser des espaces vides si les proportions ne correspondent pas."
+  }
+}

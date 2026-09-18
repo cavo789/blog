@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T13:03:02.746Z",
+  "source": "my_feature.py",
+  "sourceHash": "e7a2af42642206d8c4adb9e8b459443148b58ed7",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Cette fonction prend une liste de noms et génère un diagramme de flux Mermaid qui les affiche en ligne avec des flèches les reliant. Elle formate le résultat en bloc Markdown spécialisé pour que Quarto l'interprète correctement.",
+  "explanations": {
+    "3": "On initialise une liste avec le header Mermaid 'flowchart LR' qui indique un diagramme de flux orienté de gauche à droite.",
+    "4": "enumerate() donne à la fois l'index (i) et la valeur (name) à chaque itération, ce qui permet de numéroter les nœuds.",
+    "5": "On crée une chaîne de caractères formatée qui déclare un nœud Mermaid avec un identifiant numérique (node0, node1, etc.) et le nom comme étiquette.",
+    "6": "On saute le premier nœud (quand i vaut 0) car il n'y a pas de nœud précédent vers lequel pointer.",
+    "7": "On ajoute une flèche Mermaid qui connecte le nœud précédent (node{i-1}) au nœud actuel (node{i}).",
+    "10": "On enveloppe la sortie avec les balises Markdown spéciales pour Quarto afin qu'il reconnaisse et rende correctement le bloc Mermaid."
+  }
+}

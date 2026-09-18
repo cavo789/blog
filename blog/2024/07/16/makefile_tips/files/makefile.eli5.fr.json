@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:38:09.873Z",
+  "source": "makefile",
+  "sourceHash": "ff42aec3a0fa351de5ad6aa0869d84ce73ffbb21",
+  "lang": "makefile",
+  "textLang": "fr",
+  "summary": "Ces deux lignes vérifient l'existence du fichier .config/phpunit.xml de manière opposée. La première affiche un message d'erreur si le fichier n'existe pas ou est vide, tandis que la deuxième affiche un message de confirmation s'il existe et contient du contenu.",
+  "explanations": {
+    "1": "test -s vérifie que le fichier existe ET n'est pas vide; || signifie « sinon exécute la commande suivante » (ici afficher un message).",
+    "3": "test -s vérifie les mêmes conditions; && signifie « si le test réussit, alors exécute la commande suivante » (ici afficher un message de confirmation)."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:27.328Z",
+  "source": "Dockerfile.part2",
+  "sourceHash": "7ab2d6de84c4c13b8a7464b9e490cccc8a26c60d",
+  "lang": "part2",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Docker légère basée sur Python pour exécuter une application FastAPI. Il installe FastAPI, copie le script principal dans le conteneur, puis configure Uvicorn pour servir l'application avec rechargement automatique activé sur le port 82.",
+  "explanations": {
+    "2": "python:slim est une image de base officielle qui contient Python mais sans les outils de développement supplémentaires, ce qui la rend plus compacte qu'une image Python standard.",
+    "5": "WORKDIR définit le répertoire de travail à l'intérieur du conteneur — tous les chemins relatifs suivants seront résolus par rapport à /app.",
+    "8": "Le flag --no-cache-dir réduit la taille de l'image en omettant le cache pip, qui ne serait pas nécessaire une fois l'installation terminée.",
+    "11": "COPY copie le fichier main.py depuis votre machine hôte vers le répertoire courant (/app) dans l'image Docker.",
+    "16": "Le flag --reload redémarre le serveur Uvicorn automatiquement quand des fichiers changent, --host 0.0.0.0 le rend accessible de l'extérieur du conteneur, et --port 82 l'expose sur le port 82."
+  }
+}

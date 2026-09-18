@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:50:14.880Z",
+  "source": "compose.yaml",
+  "sourceHash": "9e03578852c4628ec12346d26f85cf06a891206c",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service nommé docker_git qui construit une image à partir du Dockerfile du répertoire courant. Le service monte deux volumes : la clé SSH privée de l'hôte (en lecture seule) et le fichier de configuration Git, ce qui permet au conteneur d'utiliser les identifiants et paramètres Git du système hôte.",
+  "explanations": {
+    "3": "build: . indique à Docker Compose de construire l'image à partir du Dockerfile situé dans le répertoire courant (le point représente le répertoire actuel).",
+    "4": "tty: true alloue un pseudo-terminal au conteneur, ce qui le rend interactif et permet de communiquer avec lui via la ligne de commande.",
+    "7": "${HOME}/.ssh/id_ed25519:/root/.ssh/id_ed25519:ro monte la clé SSH privée de l'utilisateur hôte dans le conteneur au même chemin, avec :ro signifiant lecture seule pour éviter que le conteneur ne la modifie.",
+    "9": "De la même façon, cela monte le fichier .gitconfig de l'hôte dans le conteneur, permettant au conteneur d'utiliser la même configuration Git (nom, email, etc.)."
+  }
+}

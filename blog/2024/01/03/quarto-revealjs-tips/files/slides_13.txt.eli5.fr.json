@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:31:46.428Z",
+  "source": "slides_13.txt",
+  "sourceHash": "81514463b018282f276b54fb875c2f54014a5410",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier montre comment appliquer des styles CSS inline en Markdown pour colorer du texte et son arrière-plan. Il utilise la syntaxe de crochets suivis d'attributs style pour mettre en évidence certaines parties du contenu.",
+  "explanations": {
+    "3": "La syntaxe [texte]{style=\"propriétés CSS\"} permet d'ajouter des styles CSS directement à des portions de texte en Markdown — le texte entre crochets reçoit les styles spécifiés dans l'attribut style."
+  }
+}

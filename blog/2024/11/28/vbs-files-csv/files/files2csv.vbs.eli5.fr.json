@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:46:03.572Z",
+  "source": "files2csv.vbs",
+  "sourceHash": "581010fee4772445aa6669e760d391c480a3ce99",
+  "lang": "vbs",
+  "textLang": "fr",
+  "summary": "Ce script VBScript parcourt tous les fichiers du dossier courant et de ses sous-dossiers, puis exporte les informations de chaque fichier (chemin, taille, date de modification, propriétaire, etc.) dans un fichier CSV portant le même nom que le script. Le résultat peut ensuite être ouvert dans Excel pour analyser facilement la structure des fichiers.",
+  "explanations": {
+    "16": "Option Explicit force à déclarer toutes les variables avant de les utiliser, ce qui aide à éviter les erreurs dues à des typos dans les noms de variables.",
+    "23": "Cette fonction parcourt récursivement tous les fichiers d'un dossier et ses sous-dossiers en s'appelant elle-même pour chaque dossier enfant.",
+    "29": "On récupère l'objet représentant le dossier passé en paramètre pour pouvoir accéder à ses fichiers et sous-dossiers.",
+    "34": "chr(34) génère le caractère guillemet (\" en ASCII), utilisé ici pour délimiter les valeurs CSV afin que celles contenant des points-virgules ne cassent pas le format.",
+    "42": "getextensionname extrait l'extension du fichier (par exemple .txt, .docx) à partir de son chemin complet.",
+    "45": "On crée un objet Shell pour accéder aux propriétés avancées des fichiers comme le propriétaire, qui ne sont pas disponibles via l'objet FileSystemObject standard.",
+    "59": "Appel récursif : la fonction s'appelle elle-même avec le chemin du sous-dossier pour continuer le parcours en profondeur.",
+    "71": "ForWriting = 2 est une constante qui signifie « ouvrir le fichier en mode écriture » (elle remplace le nombre 2 par un nom lisible).",
+    "76": "replace remplace .vbs par .csv dans le chemin du script pour créer un fichier de sortie portant le même nom mais avec l'extension CSV.",
+    "79": "CreateTextFile crée un nouveau fichier vide et le retourne prêt à être écrit ; le True signifie que le fichier doit être encodé en Unicode.",
+    "82": "On écrit l'en-tête du fichier CSV avec les noms des colonnes; le trait de soulignement _ permet de continuer une ligne trop longue à la ligne suivante.",
+    "96": "CurrentDirectory retourne le dossier dans lequel le script a été lancé, qui sera le point de départ du parcours récursif."
+  }
+}

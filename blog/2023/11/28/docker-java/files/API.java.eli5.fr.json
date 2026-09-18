@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:29.089Z",
+  "source": "API.java",
+  "sourceHash": "4394f0697a1c9a26c4b0d682af74f12101a427d8",
+  "lang": "java",
+  "textLang": "fr",
+  "summary": "Ce programme établit une connexion HTTP à une API publique de test, envoie une requête GET, vérifie que la réponse a réussi (code 200), puis affiche le contenu JSON reçu ligne par ligne avant de fermer la connexion.",
+  "explanations": {
+    "10": "openConnection() retourne une URLConnection générique, donc on la caste explicitement en HttpURLConnection pour accéder aux méthodes HTTP spécifiques.",
+    "14": "On vérifie que le serveur a répondu avec le code 200 (succès) ; tout autre code signifie que quelque chose s'est mal passé.",
+    "19": "InputStreamReader convertit le flux binaire brut de la réponse en caractères texte lisibles.",
+    "20": "BufferedReader encapsule l'InputStreamReader pour lire efficacement le texte ligne par ligne au lieu de caractère par caractère.",
+    "23": "Cette boucle lit chaque ligne de la réponse jusqu'à ce qu'il n'y en ait plus ; readLine() retourne null quand le flux est épuisé."
+  }
+}

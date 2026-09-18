@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T12:28:35.937Z",
+  "source": "Hello.py",
+  "sourceHash": "e343a35cf2fa04782749dab102d45129cdb0b644",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce programme affiche simplement le message 'Hello World!' à l'écran en utilisant la fonction print().",
+  "explanations": {}
+}
