@@ -12,14 +12,18 @@ export const DEFAULT_TOP_N = 120;
 // only label on hover, per the spec's "pas 248 labels" rule.
 export const PERMANENT_LABEL_COUNT = 8;
 
-// A handful of nodes get a meerkat illustration instead of a flat-colored dot — purely for
-// personality, reusing the site's own mascot (see /404, ScrollToTopButton). Kept small and
-// capped: this is a garnish, not a redesign of how the map reads.
-export const MEERKAT_HUB_COUNT = 3;
-export const MEERKAT_ORPHAN_COUNT = 5;
-// A degree-3 orphan node would otherwise draw at MIN_NODE_RADIUS (a few px) — too small for a
-// meerkat face to read. Only special-illustrated nodes get this floor; everything else keeps
-// its data-driven size.
+// Nodes are drawn as the site's own mascot (see ./meerkats for which sticker) rather than as
+// flat-colored dots — but only where the sticker still says something. Measured on the
+// rendered sizes: at a 16px diameter the meerkat is recognizable, at 12px it is a warm blob
+// with a colored ring, and below that the 1.5px ring eats a third of it and a flat dot reads
+// better. In the default view every node clears this at any desktop width (drawn radii run
+// 6-18px); the leftovers are the marginal satellites of a filtered view.
+export const MEERKAT_MIN_DRAWN_RADIUS = 6;
+
+// A node with no visible connection sits at MIN_NODE_RADIUS (a few px) — under the threshold
+// above, so it would be the one node the reader's eye lands on and the only one still a dot.
+// Only those get this floor; everything else keeps its data-driven size, which is what the
+// build-time collision layout was computed against.
 export const MEERKAT_MIN_RADIUS = 13;
 
 /** One article, as shipped by `plugins/blog-graph-plugin` (build-time layout already computed). */
@@ -244,52 +248,32 @@ export function computeVisibleDegree(
   return degree;
 }
 
-export interface MeerkatSpot {
-  kind: "hub" | "orphan";
-  rank: number;
-}
-
 /**
- * Which visible nodes get a meerkat instead of a flat color, and which one of several: the
- * busiest hubs (by in-degree) each get their own "success" pose (running, trophy, superhero —
- * see MEERKAT_SOURCES in index.tsx), nodes with no visible connection at all — degree zero in
- * the *currently drawn* edge set — each get their own "nobody's noticed me yet" pose
- * (sleeping, peeking from hiding, curled up, wrapped in a towel, meditating). `rank` is the
- * index into that pose list, so the caller can pick a different image per node instead of
- * repeating the same one.
+ * The visible nodes with no visible connection at all — degree zero in the *currently drawn*
+ * edge set, which is not the same as `inDegree === 0` (a post can be linked to by an article
+ * the top-N cutoff or the mainTag filter left out). They are the only nodes whose drawn size
+ * is not purely data-driven; see MEERKAT_MIN_RADIUS.
  */
-export function pickMeerkatNodes(
+export function pickOrphanNodes(
   nodes: BlogGraphNode[],
   edges: BlogGraphEdge[],
-): Map<string, MeerkatSpot> {
-  const spots = new Map<string, MeerkatSpot>();
+): Set<string> {
   const degree = computeVisibleDegree(nodes, edges);
-
-  const orphans = nodes
-    .filter((node) => (degree.get(node.permalink) ?? 0) === 0)
-    // Stable, deterministic pick among however many orphans there are — not "most recent" or
-    // anything meaningful, just consistent between renders.
-    .sort((a, b) => a.permalink.localeCompare(b.permalink))
-    .slice(0, MEERKAT_ORPHAN_COUNT);
-  orphans.forEach((node, rank) => spots.set(node.permalink, { kind: "orphan", rank }));
-
-  const hubs = [...nodes]
-    .filter((node) => node.inDegree > 0)
-    .sort((a, b) => b.inDegree - a.inDegree)
-    .slice(0, MEERKAT_HUB_COUNT);
-  hubs.forEach((node, rank) => spots.set(node.permalink, { kind: "hub", rank }));
-
-  return spots;
+  return new Set(
+    nodes
+      .filter((node) => (degree.get(node.permalink) ?? 0) === 0)
+      .map((node) => node.permalink),
+  );
 }
 
-/** The on-canvas radius for a node, boosted when it's meerkat-illustrated (see MEERKAT_MIN_RADIUS). */
+/** The on-canvas radius for a node, floored for orphans only (see MEERKAT_MIN_RADIUS). */
 export function displayRadius(
   node: BlogGraphNode,
   transform: Transform,
-  isSpecial: boolean,
+  isOrphan: boolean,
 ): number {
   const base = node.radius * transform.scale;
-  return isSpecial ? Math.max(base, MEERKAT_MIN_RADIUS) : base;
+  return isOrphan ? Math.max(base, MEERKAT_MIN_RADIUS) : base;
 }
 
 /** Groups posts by mainTag for the no-JS / mobile fallback list, each group sorted by date desc. */

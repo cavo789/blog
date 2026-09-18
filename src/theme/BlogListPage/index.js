@@ -8,6 +8,7 @@ import {
 } from "@docusaurus/theme-common";
 import BlogListPaginator from "@theme/BlogListPaginator";
 import Link from "@docusaurus/Link";
+import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import FollowFeed from "@site/src/components/FollowFeed";
 import SearchMetadata from "@theme/SearchMetadata";
 import Layout from "@theme/Layout";
@@ -84,6 +85,7 @@ function BlogListPageContent({ metadata, items }) {
   // `createSitemapItems` drops them. Nothing links to them. All of this collapses to a no-op
   // the day the corpus is fully translated — see TODO 0124.
   const { isDefaultLocale, readingTimeOf } = useTranslationState();
+  const { withBaseUrl } = useBaseUrlUtils();
   const translatedPosts = useBlogMetadata();
 
   const posts = items.map(({ content: { metadata: m } }) => ({
@@ -165,6 +167,19 @@ function BlogListPageContent({ metadata, items }) {
         <TranslationCoverage variant="listing" />
         {isSurplusPage ? (
           <p className={styles.emptyPage}>
+            {/* Unlike the search widget's empty state, this one is a whole page
+                a reader landed on, so the illustration can carry it. */}
+            <img
+              src={withBaseUrl("/img/meerkat/emojis/emotion_confused.webp")}
+              alt={translate({
+                id: "blog.listPage.emptyPageImageAlt",
+                message: "A puzzled meerkat.",
+              })}
+              className={styles.emptyPageImage}
+              width={140}
+              height={140}
+              loading="lazy"
+            />
             <Translate id="blog.listPage.emptyPage">
               There is nothing on this page.
             </Translate>{" "}

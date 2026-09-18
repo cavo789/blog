@@ -66,3 +66,14 @@
   text-align: center;
   color: var(--ifm-color-emphasis-700);
 }
+
+/* The thumbnail ships on an opaque cream background, so round it off and let it
+   sit on its own tint rather than cutting a pale square out of a dark page. */
+.emptyPageImage {
+  display: block;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}

@@ -41,3 +41,5 @@
 - [Navbar Width Budget](project_navbar_width_budget.md) — saturée entre 997-1260px ; repli de la recherche, dropdown « Plus » écarté, pas de nouvelle entrée prévue
 - [Ollama code-quality speed](project_ollama_code_quality_speed.md) — questions FR ≈ 150 s/article : 140 s de "thinking" ; think:false = 10x mais casse le schéma JSON (Ollama 0.18.2) ; num_ctx et think:"low" inutiles
 - [Slug/Folder Seam](project_slug_folder_seam.md) — 27 dossiers ≠ slug front-matter ; dériver un slug d'un chemin casse en silence, utiliser slugFor()
+- [Build vs Dev Server Clear](project_build_devserver_clear_clash.md) — safe_build.sh et `start` font tous deux `yarn clear` : chacun détruit le codegen de l'autre
+- [Webpack Inline Image Trap](project_webpack_inline_image_trap.md) — importer une petite image de static/ l'inline en base64 (502 KB de chunk) ; withBaseUrl + require.context "weak"

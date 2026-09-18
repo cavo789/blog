@@ -7,7 +7,7 @@ series: Creating Docusaurus components
 mainTag: component
 tags: [docusaurus, react, component, nodejs, doc-as-code]
 date: 2026-10-13
-description: Build an interactive map of your whole Docusaurus corpus — every article as a dot, sized by how many other posts link to it, positioned by a force-directed layout that runs at build time in Node so the browser never ships d3-force. Includes the plugin, the canvas component, and the plain-list fallback that keeps the page usable with JavaScript disabled.
+description: Build an interactive map of your whole Docusaurus corpus — every article as a bubble wearing the site's mascot, sized by how many other posts link to it, positioned by a force-directed layout that runs at build time in Node so the browser never ships d3-force. Includes the plugin, the canvas component, and the plain-list fallback that keeps the page usable with JavaScript disabled.
 language: en
 ai_assisted: true
 draft: true
@@ -37,7 +37,7 @@ So I built a page that draws the blog as a graph. Here is what came out of it.
 
 ## What the Map Page Shows You
 
-One page, `/map`, one picture. Every published article is a dot. The bigger the dot, the more other articles link to it. Lines connect posts that are genuinely related, and hovering one dims everything that is not its neighbor:
+One page, `/map`, one picture. Every published article is a bubble wearing the blog's mascot. The bigger the bubble, the more other articles link to it. Lines connect posts that are genuinely related, and hovering one dims everything that is not its neighbor:
 
 ```plaintext title="/map"
 ┌─ Blog Map ──────────────────────────────────────────────────────────────────┐
@@ -52,8 +52,8 @@ One page, `/map`, one picture. Every published article is a dot. The bigger the 
 │       ·  ╱  │ ╲  ·               ╲ ╱                                        │
 │         ·   ·                     ●                                         │
 │                                                       🦫                    │
-│                                              (a sleeping meerkat: nothing   │
-│                                               links to this one yet)        │
+│                                              (drawn bigger than its size:   │
+│                                               nothing links to this one yet)│
 │                                                                             │
 │  ▸ View as list instead                                                     │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -184,9 +184,16 @@ useEffect(() => {
 
 ### The meerkats
 
-This blog has a mascot — it hides in the <Link to="/blog/docusaurus-ascii-art">page source</Link>, rides the <Link to="/blog/docusaurus-go-top">scroll-to-top button</Link>, and shows up on the 404 page. On the map, eight nodes get a meerkat illustration clipped into their circle instead of a flat dot: the three biggest hubs get a "success" pose (running, trophy, superhero), and up to five nodes with **zero visible connections** get a "nobody has noticed me yet" pose (sleeping, peeking, curled up).
+This blog has a mascot — it hides in the <Link to="/blog/docusaurus-ascii-art">page source</Link>, rides the <Link to="/blog/docusaurus-go-top">scroll-to-top button</Link>, and shows up on the 404 page. On the map it is not a garnish on a few nodes: **every bubble is a meerkat**, wearing the sticker its `mainTag` earned it. PHP articles hold a small purple elephant, Bash articles wear a hoodie, `code-quality` comes with a green checkmark. Around thirty tags have an explicit sticker and the rest draw one deterministically from whatever is left, so a topic always looks the same and its articles read as a family across the canvas.
 
-It is a garnish, but an informative one. A sleeping meerkat on the map is a genuinely orphaned article, and it is the fastest way I have found to spot one.
+What makes this work is the images, not the code: they are square, face-centered portraits. The full-body poses I started with lost their head to a 20px circular crop, so they had to be picked and cropped one by one; a centered portrait survives a plain "cover" draw with no per-image tuning.
+
+Two rules keep it from turning into mush:
+
+- **a sticker needs room.** Below a 12px diameter the ring eats a third of the image and a flat colored dot says more — so that is what those nodes keep.
+- **an orphan is drawn bigger.** A node with **zero visible connections** sits at the minimum radius, which is exactly under that threshold. It gets a floor of 13px instead, so the one article nothing links to is the one you cannot miss.
+
+The ring around each bubble keeps the article's own accent color, so nothing of the series/tag signal is lost to the illustration.
 
 ## Conclusion
 

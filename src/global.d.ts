@@ -28,9 +28,9 @@ declare module "*.webp" {
 }
 
 // `require.context()` is a webpack build-time extension, not part of Node's `require` —
-// `@types/webpack-env` would normally supply this, but it isn't installed (this is the only
-// call site: Blog/utils/posts.ts, reading every blog article's front matter). Minimal shape
-// covering only what that call site uses.
+// `@types/webpack-env` would normally supply this, but it isn't installed. Two call sites:
+// Blog/utils/posts.ts (every blog article's front matter) and BlogGraph/meerkats.ts (the
+// meerkat sticker folder). Minimal shape covering only what they use.
 interface RequireContext {
   keys(): string[];
   (id: string): unknown;
@@ -42,6 +42,10 @@ declare namespace NodeJS {
       directory: string,
       useSubdirectories?: boolean,
       regExp?: RegExp,
+      // "weak" bundles nothing and leaves only `keys()` usable — what BlogGraph/meerkats.ts
+      // wants: the folder's file names at build time, without webpack inlining 68 images
+      // into the page's chunk. "sync" is webpack's default and what posts.ts relies on.
+      mode?: "sync" | "eager" | "weak" | "lazy" | "lazy-once",
     ): RequireContext;
   }
 }

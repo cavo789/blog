@@ -687,6 +687,9 @@
   "blog.askMyBlog.empty": {
     "message": "Aucun article ne correspond — essayez d'autres mots."
   },
+  "blog.askMyBlog.emptyImageAlt": {
+    "message": "Un suricate qui cherche à la loupe."
+  },
   "blog.askMyBlog.placeholder": {
     "message": "Posez une question…"
   },
@@ -803,6 +806,9 @@
   },
   "blog.listPage.emptyPage": {
     "message": "Il n'y a rien sur cette page."
+  },
+  "blog.listPage.emptyPageImageAlt": {
+    "message": "Un suricate perplexe."
   },
   "blog.listPage.backToFirstPage": {
     "message": "Revenir à la première page"

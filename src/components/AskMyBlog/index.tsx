@@ -130,6 +130,19 @@ export default function AskMyBlog({
       )}
       {trimmed && questions && !loadFailed && results.length === 0 && (
         <p className={styles.empty}>
+          {/* Deliberately small: this state comes and goes on every keystroke,
+              so a large illustration would flash while the reader types. */}
+          <img
+            src={withBaseUrl("/img/meerkat/emojis/activity_searching.webp")}
+            alt={translate({
+              id: "blog.askMyBlog.emptyImageAlt",
+              message: "A meerkat searching with a magnifying glass.",
+            })}
+            className={styles.emptyImage}
+            width={56}
+            height={56}
+            loading="lazy"
+          />
           <Translate id="blog.askMyBlog.empty">
             No matching article yet — try different words.
           </Translate>

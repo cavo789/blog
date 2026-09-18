@@ -76,7 +76,20 @@
 }
 
 .empty {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   margin-top: 0.75rem;
   color: var(--ifm-color-emphasis-600);
   font-style: italic;
+}
+
+/* The thumbnail ships on an opaque cream background, so round it off and let it
+   sit on its own tint rather than cutting a pale square out of a dark page. */
+.emptyImage {
+  flex: 0 0 auto;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
 }
