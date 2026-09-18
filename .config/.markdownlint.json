@@ -37,6 +37,8 @@
     ]
   },
   "MD024": { "siblings_only": true },
+  "MD049": { "style": "asterisk" },
+  "MD050": { "style": "asterisk" },
   "MD034": false,
   "no-hard-tabs": true,
   "whitespace": false

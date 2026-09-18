@@ -11,8 +11,9 @@
  *
  *   1. the ARTICLE is really translated into that locale (Docusaurus's i18n falls back to the
  *      English source, so a `/fr/` route existing proves nothing);
- *   2. an ENGLISH sidecar already exists — if the author never wanted one in English, generating
- *      a French one invents content nobody asked for;
+ *   2. an ENGLISH sidecar already exists AND is not an `{"excluded": true}` marker — if the
+ *      author never wanted one in English, generating a French one invents content nobody
+ *      asked for, and the marker is how that refusal is recorded;
  *   3. the LOCALIZED sidecar is missing or stale — never regenerate what is already fresh.
  *
  * A checklist is a discipline; this module is a mechanism. See TODO 0120 and 0121.
@@ -155,6 +156,15 @@ export function eli5Candidates(
     const source = sidecar.replace(/\.eli5\.json$/, "");
     const articleDir = articleDirOf(sidecar, projectRoot);
 
+    // A snippet the author declared deliberately unannotated (check-eli5-freshness.mjs's
+    // escape hatch). The file exists, so condition 2 reads as satisfied — but there is no
+    // English annotation to translate, and billing for a French one would resurrect in fr
+    // exactly what was refused in en.
+    if (isExcluded(sidecar)) {
+      skipped.push({ file: source, reason: "annotation deliberately excluded" });
+      continue;
+    }
+
     // Out of scope is not the same as skipped: a caller asking about one article wants
     // "2 eligible", not "2 eligible, 796 skipped" drowning it.
     if (scope && !scope.has(articleDir)) continue;
@@ -192,6 +202,15 @@ export function eli5Candidates(
   }
 
   return { eligible, skipped };
+}
+
+/** Does this sidecar declare the snippet deliberately unannotated? */
+function isExcluded(sidecarPath) {
+  try {
+    return JSON.parse(fs.readFileSync(sidecarPath, "utf-8")).excluded === true;
+  } catch {
+    return false;
+  }
 }
 
 function readHash(sidecarPath) {

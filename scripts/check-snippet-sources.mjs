@@ -18,10 +18,9 @@
  * boundary detection. Neither pattern is used anywhere in this corpus today. The build's
  * own loader is the authoritative check; this script exists to catch the common case fast.
  *
- * Fenced and inline code spans are blanked out before scanning — several articles show
- * `<Snippet source="...">` as a *documentation example* inside backticks (this very script
- * is documented that way in eli5-snippet-docusaurus), which is prose, not a real component
- * invocation, and must not be flagged as a dangling reference.
+ * The scan itself — which tags count, and the code-span blanking that keeps a documented
+ * `<Snippet source="...">` inside backticks from being read as a real invocation — lives in
+ * `scripts/lib/snippet-scan.mjs`, shared with check-eli5-freshness.mjs's coverage pass.
  *
  * Usage:
  *   node scripts/check-snippet-sources.mjs [--quiet]
@@ -33,80 +32,39 @@
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { execFileSync } from "child_process";
-import { createRequire } from "module";
+import { scanSnippetTags } from "./lib/snippet-scan.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
-const require = createRequire(import.meta.url);
-const { resolveSourcePath } = require("../plugins/remark-snippet-loader/index.cjs");
 
 const quiet = process.argv.includes("--quiet");
 
-// Same rationale as check-eli5-freshness.mjs: `git ls-files` avoids recursing into
-// sibling git worktrees (e.g. .claude/worktrees/agent-*) that a plain glob would hit.
-const gitListArgs = [
-  "ls-files",
-  "--cached",
-  "--others",
-  "--exclude-standard",
-  "-z",
-  "--",
-  "blog/**/*.md",
-  "blog/**/*.mdx",
-  ".unpublished/**/*.md",
-  ".unpublished/**/*.mdx",
-];
-const relFiles = execFileSync("git", gitListArgs, { cwd: projectRoot, encoding: "utf-8" })
-  .split("\0")
-  .filter(Boolean);
+// Both components: a `<Terminal source="…">` pointing at a deleted file breaks the build
+// exactly like a `<Snippet>` one. Drafts are scanned too — a dangling path is worth fixing
+// before the article goes live, not after.
+const { files, hits } = scanSnippetTags(projectRoot, {
+  pathspecs: [
+    "blog/**/*.md",
+    "blog/**/*.mdx",
+    ".unpublished/**/*.md",
+    ".unpublished/**/*.mdx",
+  ],
+});
 
-// Matches an opening <Snippet …> or <Terminal …> tag (self-closing or not), across
-// multiple lines — attributes are frequently wrapped one-per-line in this corpus.
-const tagRegex = /<(Snippet|Terminal)\b([^>]*?)\/?>/gs;
-const sourceAttrRegex = /\bsource\s*=\s*"([^"]*)"/;
-
-// Blank out fenced (```…```) and inline (`…`) code spans, preserving every
-// newline so reported line numbers still point at the right source line.
-function blankOutCodeSpans(text) {
-  const blank = (s) => s.replace(/[^\n]/g, " ");
-  return text.replace(/```[\s\S]*?```/g, blank).replace(/`[^`\n]*`/g, blank);
-}
-
-let checked = 0;
 let missing = 0;
 
-for (const relFile of relFiles) {
-  const absFile = path.resolve(projectRoot, relFile);
-  // `--cached` still lists a tracked file whose deletion has not been staged yet (a draft
-  // moved from .unpublished/ to blog/ before `git add`). Nothing to check in that case.
-  if (!fs.existsSync(absFile)) continue;
-  const rawContent = fs.readFileSync(absFile, "utf-8");
-  const content = blankOutCodeSpans(rawContent);
-  const currentFileDir = path.dirname(absFile);
+for (const hit of hits) {
+  if (fs.existsSync(hit.absoluteSourcePath)) continue;
 
-  for (const match of content.matchAll(tagRegex)) {
-    const [, tagName, attrsText] = match;
-    const sourceMatch = attrsText.match(sourceAttrRegex);
-    if (!sourceMatch) continue; // e.g. inline <Terminal>content</Terminal>, no source=
-
-    const sourcePath = sourceMatch[1];
-    checked += 1;
-
-    const absoluteSourcePath = resolveSourcePath(sourcePath, currentFileDir, projectRoot);
-    if (!fs.existsSync(absoluteSourcePath)) {
-      missing += 1;
-      const lineNumber = content.slice(0, match.index).split("\n").length;
-      console.error(
-        `${relFile}:${lineNumber}  <${tagName} source="${sourcePath}">  →  missing ${path.relative(projectRoot, absoluteSourcePath)}`,
-      );
-    }
-  }
+  missing += 1;
+  console.error(
+    `${hit.relFile}:${hit.lineNumber}  <${hit.tagName} source="${hit.sourcePath}">  →  missing ${path.relative(projectRoot, hit.absoluteSourcePath)}`,
+  );
 }
 
 if (!quiet) {
   console.log(
-    `\nsnippet sources: ${checked} checked across ${relFiles.length} file(s), ${missing} missing.`,
+    `\nsnippet sources: ${hits.length} checked across ${files.length} file(s), ${missing} missing.`,
   );
 }
 

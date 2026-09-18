@@ -90,7 +90,7 @@ Bluesky's `searchPosts` endpoint would have been a better fit (indexed lookup in
 
 ## 🔒 Privacy Note
 
-This component talks to Bluesky's public API directly from the visitor's browser — no cookies, no sign-in required, but each call does reach Bluesky's servers and carries the visitor's IP address (same pattern as embedding any third-party widget, e.g. the Google Fonts CDN case). This is disclosed to the reader directly in the rendered block. No new information is sent _to Bluesky itself_ — everything read back (likes, reposts, comments, post text) is already public there.
+This component talks to Bluesky's public API directly from the visitor's browser — no cookies, no sign-in required, but each call does reach Bluesky's servers and carries the visitor's IP address (same pattern as embedding any third-party widget, e.g. the Google Fonts CDN case). This is disclosed to the reader directly in the rendered block. No new information is sent *to Bluesky itself* — everything read back (likes, reposts, comments, post text) is already public there.
 
 ## 🧩 Internal Components
 

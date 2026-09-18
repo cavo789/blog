@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:39:10.448Z",
+  "source": "Dockerfile",
+  "sourceHash": "3d559277a519453e81713faa88946eccde2f71a5",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec Atuin, un gestionnaire d'historique de commandes shell. Il installe les dépendances système nécessaires, télécharge et configure Atuin avec bash-preexec pour intercepter les commandes, puis pré-remplit la base de données avec un historique de démonstration afin que les utilisateurs aient immédiatement des commandes à rechercher.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives pendant l'installation, ce qui est essentiel dans un conteneur où on ne peut pas répondre aux invites.",
+    "5": "Le double ampersand && enchaîne les commandes pour qu'elles s'exécutent séquentiellement, et si l'une échoue, les suivantes ne s'exécutent pas.",
+    "13": "Supprimer /var/lib/apt/lists/* après l'installation réduit la taille de l'image en nettoyant les métadonnées de cache que apt n'a plus besoin de conserver.",
+    "16": "curl -fsSL télécharge silencieusement le fichier (-s), échoue rapidement en cas d'erreur (-f), et suit les redirections (-L).",
+    "18": "Le pipe | envoie la sortie de curl directement à tar pour extraire l'archive sans la sauvegarder d'abord sur le disque.",
+    "19": "atuin-*/atuin utilise un pattern glob pour trouver le binaire atuin où qu'il se trouve dans le répertoire extrait.",
+    "33": "printf '%s\\n' avec >> ajoute chaque ligne à /root/.bashrc en insérant des sauts de ligne entre elles pour un formatage lisible.",
+    "39": "L'option -i lance un shell bash interactif, ce qui permet à l'utilisateur d'interagir avec le conteneur en ligne de commande au démarrage."
+  }
+}

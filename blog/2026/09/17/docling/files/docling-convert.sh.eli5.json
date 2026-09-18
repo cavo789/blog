@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:39:00.407Z",
+  "source": "docling-convert.sh",
+  "sourceHash": "3b379edbb12320307ad51713856b5c80e731c8a3",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script wraps the Docling document converter in a Docker container, automatically detecting GPU availability and configuring the container with security restrictions and temporary filesystems. It filters out known spurious error messages from the output, reports timing information, and suggests command-line flags that might improve the conversion quality on subsequent runs.",
+  "explanations": {
+    "21": "This line makes the script exit immediately if any command fails (set -e), treat undefined variables as errors (set -u), and preserve pipeline exit codes (set -o pipefail), preventing silent failures.",
+    "30": "The local keyword declares variables inside a function so they don't pollute the global scope; shift removes the first argument ($1) so the loop iterates over the remaining ones.",
+    "33": "This checks if the current argument exactly matches the needle or starts with 'needle=' (like '--pipeline standard'), using == for string comparison rather than regex.",
+    "44": "The ${DOCLING_CONVERT_NO_TIP:-} syntax retrieves the environment variable DOCLING_CONVERT_NO_TIP if it exists, or expands to nothing if it doesn't; this avoids an undefined-variable error.",
+    "45": "The ${1,,} syntax lowercases the first argument; this line returns early if the file isn't a PDF, since the tips only apply to PDF conversions.",
+    "47": "This initializes an empty array that will collect the command-line suggestions to display to the user.",
+    "51": "This checks if the tips array is empty by examining its length; if there's nothing to suggest, the function returns without printing.",
+    "54": "Printf formats each tip followed by a comma and space, storing the result in the variable joined; the trailing comma gets trimmed in the next line.",
+    "61": "This initializes an empty array that will either contain --gpus all (if NVIDIA is available) or stay empty.",
+    "62": "Docker info outputs a JSON object; this pipes it to grep to check if the word 'nvidia' appears anywhere in the Runtimes section.",
+    "88": "SECONDS is a bash built-in variable that counts elapsed seconds since the shell started; this saves the current time to calculate duration later.",
+    "89": "Set +e temporarily disables exit-on-error so the script can capture the Docker command's exit code in the PIPESTATUS variable instead of exiting.",
+    "91": "This expands the gpu_args array; if it's empty, nothing is added, but if it contains --gpus all, that flag gets passed to Docker.",
+    "110": "The pipe 2>&1 redirects stderr to stdout so the awk filter can see and remove the spurious exception message; stderr is then sent to >&2 (stderr again) after filtering.",
+    "111": "This awk rule triggers when it sees the exact start of the VlmConvertModel exception, setting a flag to skip lines until the error block ends.",
+    "112": "While skipping, this counts lines (n++) and exits skip mode either when it sees AttributeError (the typical next error) or after 8 lines (a safety limit).",
+    "115": "PIPESTATUS is a bash array containing the exit codes of each command in the pipeline; [0] gets the exit code from docker run (before the awk filter).",
+    "122": "The ${1%.*} removes the file extension from the first argument; this constructs the expected folder name that Docling created.",
+    "124": "Rmdir fails if the folder contains anything, which is the desired behavior; the || true suppresses that failure so the script doesn't exit."
+  }
+}

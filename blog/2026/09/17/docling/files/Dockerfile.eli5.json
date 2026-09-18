@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:38:46.396Z",
+  "source": "Dockerfile",
+  "sourceHash": "ea321bef9656088e00a19473df206479d8f5534c",
+  "lang": "docker",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a container for Docling, a document processing tool. It starts with Python 3.12 on Debian, installs system dependencies needed for document processing and machine learning, sets up an unprivileged user for security, downloads and bakes in pre-trained models so they're available offline, and configures the environment to suppress unnecessary logging output.",
+  "explanations": {
+    "6": "The 'AS final' names this stage, though there's only one stage here — it's good practice for clarity. 'slim-trixie' specifies we want the lightweight Debian version pinned to a specific release, not a floating tag that could break unexpectedly.",
+    "9": "These ENV variables configure Python to not create .pyc cache files, unbuffer output so logs appear immediately, and skip pip's version check to speed up installation.",
+    "12": "This sets where Docling will look for its pre-downloaded AI models instead of trying to fetch them from the internet at runtime.",
+    "15": "ARG creates a build-time variable we can override when building, making it easy to upgrade Docling's version without editing the file.",
+    "21": "The RUN command chains three things: update the package list, install libraries, then clean up the package cache to keep the image smaller.",
+    "23": "libgl1 and libglib2.0-0t64 are system libraries that OpenCV (the image processing library) needs; gcc and libc6-dev let PyTorch's compiler build small pieces of code at runtime.",
+    "31": "We create a non-root user with UID 1000 so the container runs with minimal privileges; the nologin shell prevents anyone from logging in as this user.",
+    "39": "The '--mount=type=cache' keeps pip's downloaded wheels between builds without storing them in the final image, saving space and rebuild time.",
+    "40": "This installs the specified version of Docling and all its dependencies.",
+    "48": "We download AI models now while root can write anywhere; later the container runs read-only and unprivileged, so models must already be present.",
+    "52": "chmod makes the model files readable by any user so the unprivileged developer user can access them at runtime.",
+    "58": "These suppress verbose output from the machine learning libraries — transformers and huggingface hub would otherwise print status updates and progress bars on every run."
+  }
+}

@@ -24,7 +24,7 @@ review_date: 2026-07-30
 Cet article traite de la personnalisation de Windows Terminal via son fichier `settings.json` : définir une image de fond par profil, ajouter un nouveau profil pour ouvrir un shell dans une distribution WSL ou un container Docker précis, définir le profil par défaut et le dossier de démarrage, et utiliser `startupActions` pour ouvrir automatiquement plusieurs onglets (par exemple Ubuntu plus un prompt DOS) au lancement.
 </TLDR>
 
-Pour ceux qui aiment travailler dans une console, Windows Terminal peut être vu comme le successeur de la vieille console DOS ; vous savez, cet _écran noir_ où vous pouvez taper des commandes comme `dir` ou `mkdir`.
+Pour ceux qui aiment travailler dans une console, Windows Terminal peut être vu comme le successeur de la vieille console DOS ; vous savez, cet *écran noir* où vous pouvez taper des commandes comme `dir` ou `mkdir`.
 
 Windows Terminal est un logiciel multi-onglets : au lieu d'avoir plusieurs fenêtres, vous avez plusieurs onglets. Mais la fonctionnalité qui me séduit le plus, c'est la possibilité d'avoir une console DOS dans un onglet, une Powershell dans un deuxième, un ou plusieurs onglets pour Linux et, pourquoi pas, <Link to="/blog/windows-terminal-ssh-profile">un onglet pour une connexion SSH</Link>. Et au lieu d'onglets, vous pouvez aussi afficher plusieurs consoles côte à côte ; voyez <Link to="/blog/windows-terminal-split-panes">Windows Terminal - Split Panes</Link>.
 

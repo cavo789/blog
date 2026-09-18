@@ -24,7 +24,7 @@ review_date: 2026-07-30
 This article covers customizing Windows Terminal through its `settings.json`: setting a background image per profile, adding a new profile to open a shell inside a specific WSL distribution or Docker container, setting the default profile and starting directory, and using `startupActions` to automatically open multiple tabs (e.g. Ubuntu plus a DOS prompt) on launch.
 </TLDR>
 
-For people who like working in a console, Windows Terminal can be seen as a successor of the old DOS console; you know the _black screen_ where you can type commands like `dir` or `mkdir`.
+For people who like working in a console, Windows Terminal can be seen as a successor of the old DOS console; you know the *black screen* where you can type commands like `dir` or `mkdir`.
 
 Windows Terminal is a multi-tab software so instead of having multiple windows, you just have multiple tabs but the killer feature for me is the possibility to have a DOS console in one tab, a Powershell one in a second tab, one or more tabs for Linux and, why not, <Link to="/blog/windows-terminal-ssh-profile">a tab for an SSH connection</Link>. And instead of tabs, you can also display several consoles side by side; see <Link to="/blog/windows-terminal-split-panes">Windows Terminal - Split Panes</Link>.
 

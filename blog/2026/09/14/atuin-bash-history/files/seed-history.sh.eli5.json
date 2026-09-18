@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:38:36.443Z",
+  "source": "seed-history.sh",
+  "sourceHash": "b76726ee5828e1d17d66014c0248caab40f147b3",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script populates a demo Atuin shell history database with realistic command records spanning several weeks. It reads a predefined table of commands with metadata, converts them into SQLite INSERT statements with proper timestamps and escaped values, and executes them all in a single transaction to avoid timestamp collisions.",
+  "explanations": {
+    "25": "This line makes the script strict: it exits immediately if any command fails (set -e), treats undefined variables as errors (set -u), and fails if any command in a pipeline fails (set -o pipefail).",
+    "30": "We run a dummy Atuin search to trigger database initialization and migrations before we try writing to it; the '|| true' prevents the script from failing if the search has no results.",
+    "38": "We're checking if the history table already has rows; if it does, we skip seeding because the container may have been restarted and we don't want duplicate data.",
+    "42": "We capture the current Unix timestamp (seconds since epoch) so we can calculate past times relative to 'now' for each seeded command.",
+    "51": "This helper function generates a random 16-byte blob, converts it to hexadecimal, and lowercases it — this creates a unique ID suitable for Atuin's schema.",
+    "64": "We're using 'read -r -d \\'\\'\\'' to read a multiline string into a variable; the '|| true' prevents failure if the string doesn't end with the delimiter.",
+    "125": "We're adding a small jitter (7 nanoseconds per row) to each timestamp so commands with the same minutes_ago value don't violate the unique constraint.",
+    "126": "We convert minutes and jitter into nanoseconds (the unit Atuin's schema expects): first subtract from 'now', multiply by 60 to get seconds, then by 1 billion to get nanoseconds.",
+    "137": "The '#HOME' syntax removes 'HOME' from the start of the cwd string and replaces it with the actual $HOME directory path.",
+    "139": "In SQL strings, single quotes need to be escaped by doubling them; this replaces each \\' with \\'\\'\\' so the SQL parser treats it as a literal quote.",
+    "141": "We're generating a single INSERT statement per row; the printf formats the command, working directory, and other metadata into the SQL syntax.",
+    "145": "We pipe all the accumulated SQL (wrapped in BEGIN/COMMIT for a single transaction) to sqlite3, which executes them all at once against the Atuin database."
+  }
+}

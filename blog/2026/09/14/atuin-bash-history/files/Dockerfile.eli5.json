@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:38:26.476Z",
+  "source": "Dockerfile",
+  "sourceHash": "3d559277a519453e81713faa88946eccde2f71a5",
+  "lang": "docker",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Ubuntu container with Atuin, which is a tool that enhances bash shell history search. It downloads and installs Atuin along with its dependencies, sets up a hook system called bash-preexec, pre-loads some demo history into a database, and configures bash to load everything automatically when the container starts.",
+  "explanations": {
+    "3": "This environment variable tells the installer to skip interactive prompts that would normally pause the build, letting Docker build the image without waiting for user input.",
+    "5": "The double ampersand (&&) chains commands together so they all run in sequence as one layer; if any command fails, the whole thing stops instead of continuing.",
+    "13": "After installing packages, this removes the package manager's cache files to shrink the final image size, since we won't need to install anything else.",
+    "18": "The pipe (|) sends the downloaded tar file directly to tar for extraction instead of saving it to disk first, keeping things efficient.",
+    "19": "This moves the Atuin binary from wherever it extracted (atuin-*/ wildcard matches any version folder) into a standard system location where it can be run from anywhere.",
+    "37": "The >> operator appends these lines to the bashrc file (rather than overwriting it), so these commands run every time an interactive bash shell starts."
+  }
+}

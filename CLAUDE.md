@@ -191,7 +191,19 @@ Governance rules in `AGENTS.md` — treat as binding.
 `scripts/` holds Node.js utilities:
 
 - `internal-link-opportunities.mjs` — powers `yarn links:audit` / `yarn links:check`.
-- `generate-eli5.mjs` / `bulk-eli5.mjs` / `check-eli5-freshness.mjs` — ELI5 summaries via Ollama.
+- `generate-eli5.mjs` / `bulk-eli5.mjs` / `check-eli5-freshness.mjs` — ELI5 snippet annotations,
+  generated through the **Anthropic API** (`ANTHROPIC_API_KEY`), not Ollama. The checker answers
+  two questions: **freshness** (walk the sidecars, compare each recorded hash to its source) and
+  **coverage** (walk the published `<Snippet source>` and report the ones with no sidecar at all).
+  Only the first half existed until 2026-09-18, which is why two articles shipped un-annotated
+  through every pre-commit run — a sidecar that does not exist appears in no `git ls-files`
+  listing. A snippet deliberately left unannotated carries `{"excluded": true}` as its sidecar;
+  `lib/i18n-eligibility.mjs` honours that marker too, so the refusal is never resurrected in `fr`.
+- `lib/snippet-scan.mjs` — the single implementation of "find every `<Snippet>`/`<Terminal>`
+  `source=` in the corpus", shared by `check-snippet-sources.mjs` and the coverage pass above.
+  The part that must not be re-hand-rolled is `blankOutCodeSpans`: several articles **document**
+  the component inside backticks, and a scan that counts those reports 15 dangling references on
+  a corpus that has zero.
 - `generate-icon-bundle.mjs` — icon bundle.
 - `lib/cheatsheet-hint.mjs` — every "fix it with…" line a script prints goes through its `cmd()`,
   so the hint names the cheatsheet function (`questions --force <file>`) rather than the yarn
@@ -275,20 +287,20 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 | `/bash-review`                  | `bash-best-practices-reviewer`       | `bash-best-practices`                                                 |
 | `/python-review`                | `python-best-practices-reviewer`     | `python-best-practices`                                               |
 | `/docker-review`                | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices`, `devcontainer-dockerfile-best-practices` |
-| `/docker-dive-optimization`     | _(none)_                             | `docker-image-slimming`                                               |
-| `/deep_review`                  | _(none)_                             | _(inline, see command)_                                               |
-| `/review_blog`                  | _(none)_                             | _(inline, see command)_                                               |
-| `/reader_review`                | _(none)_                             | `reader-first-docs`, `blog-post-structure`                            |
-| `/freshness`                    | _(none)_                             | _(inline, see command)_                                               |
-| `/links`                        | _(none)_                             | _(inline, see command)_                                               |
-| `/refresh`                      | _(none)_                             | _(inline, see command)_                                               |
-| `/todo`                         | _(none)_                             | `todo-authoring` (via lock scripts)                                   |
-| `/todo-add`                     | _(none)_                             | `todo-authoring`                                                      |
-| `/todo-plan`                    | _(none)_                             | _(inline, via `todo_parse_backlog.sh`)_                               |
-| `/suggestions-add`              | _(none)_                             | _(inline, see command)_                                               |
-| `/suggestions-write`            | _(none)_                             | `blog-post-structure`                                                 |
-| _(no command — loaded by rule)_ | _(none)_                             | `safe-install-commands`                                               |
-| `/tags-review`                  | _(none)_                             | _(inline, see command)_                                               |
+| `/docker-dive-optimization`     | *(none)*                             | `docker-image-slimming`                                               |
+| `/deep_review`                  | *(none)*                             | *(inline, see command)*                                               |
+| `/review_blog`                  | *(none)*                             | *(inline, see command)*                                               |
+| `/reader_review`                | *(none)*                             | `reader-first-docs`, `blog-post-structure`                            |
+| `/freshness`                    | *(none)*                             | *(inline, see command)*                                               |
+| `/links`                        | *(none)*                             | *(inline, see command)*                                               |
+| `/refresh`                      | *(none)*                             | *(inline, see command)*                                               |
+| `/todo`                         | *(none)*                             | `todo-authoring` (via lock scripts)                                   |
+| `/todo-add`                     | *(none)*                             | `todo-authoring`                                                      |
+| `/todo-plan`                    | *(none)*                             | *(inline, via `todo_parse_backlog.sh`)*                               |
+| `/suggestions-add`              | *(none)*                             | *(inline, see command)*                                               |
+| `/suggestions-write`            | *(none)*                             | `blog-post-structure`                                                 |
+| *(no command — loaded by rule)* | *(none)*                             | `safe-install-commands`                                               |
+| `/tags-review`                  | *(none)*                             | *(inline, see command)*                                               |
 
 ### Rule → skill map
 
@@ -299,15 +311,15 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 | `.claude/rules/python.md`             | `**/*.py`                                                                      | `python-best-practices`   |
 | `.claude/rules/install-commands.md`   | `**/*.md`, `**/*.mdx`                                                          | `safe-install-commands`   |
 | `.claude/rules/blog-prose.md`         | `blog/**`, `.unpublished/**`                                                   | `blog-post-structure`     |
-| `.claude/rules/i18n-locale-safety.md` | `plugins/**`, `src/theme/**`, `src/components/Blog/**`, `docusaurus.config.js` | _(none — self-contained)_ |
-| `.claude/rules/build-verification.md` | `plugins/**`, `scripts/**`, `docusaurus.config.js`                             | _(none — self-contained)_ |
+| `.claude/rules/i18n-locale-safety.md` | `plugins/**`, `src/theme/**`, `src/components/Blog/**`, `docusaurus.config.js` | *(none — self-contained)* |
+| `.claude/rules/build-verification.md` | `plugins/**`, `scripts/**`, `docusaurus.config.js`                             | *(none — self-contained)* |
 
 ### Known gap
 
 `agents/reader-first-docs-reviewer.md` audits long-form docs (README, CONTRIBUTING) and uses the
 `reader-first-docs` skill, but has no corresponding command — it cannot be triggered via `/`.
-Note: `/reader_review` already handles _blog articles_ via the same skill; this agent would
-cover _project docs_, a different scope. To activate it, add a `reader-first-docs-review.md`
+Note: `/reader_review` already handles *blog articles* via the same skill; this agent would
+cover *project docs*, a different scope. To activate it, add a `reader-first-docs-review.md`
 command.
 
 ## OCI image labels (for `/docker-review`)

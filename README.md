@@ -14,13 +14,13 @@ Start a console and run `cd ~ && git clone https://github.com/cavo789/blog.git &
 
 Then run `make install` to install dependencies.
 
-_If you don't have `make` on your computer, please run `sudo apt-get update && sudo apt-get -y install make`._
+*If you don't have `make` on your computer, please run `sudo apt-get update && sudo apt-get -y install make`.*
 
 ## Build, run and start the blog in production mode
 
 Just run `TARGET=production make build` to create the Docker image then `TARGET=production make up` to run a container based on that image.
 
-This done, the site is now running, and you can access to it using `https://localhost`. _If you don't have the site running, please wait a little and refresh the page. Sometimes it helps to create a new browser tab and surf to `https://localhost` again._
+This done, the site is now running, and you can access to it using `https://localhost`. *If you don't have the site running, please wait a little and refresh the page. Sometimes it helps to create a new browser tab and surf to `https://localhost` again.*
 
 If you want to remove the image later on, just run `TARGET=production make remove` and that's all.
 
@@ -33,7 +33,7 @@ If you want to push your blog as a Docker image on Docker Hub:
 
 ## Build, run and open the blog as a developer
 
-This time, please run `make build && make devcontainer`. Once in VSCode, press <kbd>F1</kbd> and select the option **Dev Containers: Rebuild without cache and Reopen in Container**. _If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft)._
+This time, please run `make build && make devcontainer`. Once in VSCode, press <kbd>F1</kbd> and select the option **Dev Containers: Rebuild without cache and Reopen in Container**. *If you don't have this command, please make sure to install the VSCode [Dev Container from Microsoft](https://marketplace.visualstudio.com/publishers/Microsoft).*
 
 Wait until the devcontainer is fully created then so to `https://localhost:3000` to surf on the site.
 
@@ -68,7 +68,7 @@ For this repository, the deployment is made using GitHub actions. By pushing cha
 
 The production build registers a service worker (`@docusaurus/plugin-pwa`, see `docusaurus.config.js`) so the blog can be installed as an app. It only activates for a reader who installed the app or is running it standalone (or added `?offlineMode=true` to a URL) — a normal browser visit never registers it, so this only ever matters when reproducing an issue reported from an installed instance.
 
-It no longer precaches any HTML document (TODO 0127): the generated `fetch` handler is cache-first _unconditionally_, so a precached page was served to online readers too — stale at best, and outright broken once a deploy renamed the hashed assets that page referenced. The long comment at the plugin entry in `docusaurus.config.js` has the full reasoning.
+It no longer precaches any HTML document (TODO 0127): the generated `fetch` handler is cache-first *unconditionally*, so a precached page was served to online readers too — stale at best, and outright broken once a deploy renamed the hashed assets that page referenced. The long comment at the plugin entry in `docusaurus.config.js` has the full reasoning.
 
 If something looks stale or broken only in that installed/standalone context (an old version won't go away, a page that should render doesn't), suspect the service worker first — it's a layer of caching most people forget exists once it's out of sight.
 
@@ -82,7 +82,7 @@ If something looks stale or broken only in that installed/standalone context (an
 **Android (Chrome)** — where this actually gets reported, and where DevTools isn't an option. A reader seeing a broken or ancient page on their phone can fix it without a cable:
 
 - If the blog is installed on the home screen, **uninstall that icon first** — otherwise the worker is re-registered on the next launch.
-- In Chrome, open the site → tap the **padlock / tune icon** left of the address bar → **Site settings** → **Delete and reset** (older builds: _Clear & reset_). This unregisters the service worker and drops its caches.
+- In Chrome, open the site → tap the **padlock / tune icon** left of the address bar → **Site settings** → **Delete and reset** (older builds: *Clear & reset*). This unregisters the service worker and drops its caches.
 - Reload.
 
 (For remote debugging instead: `chrome://inspect/#devices` from a desktop Chrome with the phone connected over USB gives the same Application tab as above.)

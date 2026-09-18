@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:39:29.251Z",
+  "source": "Dockerfile",
+  "sourceHash": "ea321bef9656088e00a19473df206479d8f5534c",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker pour exécuter Docling, un outil de traitement de documents. Il utilise une base Python Debian épinglée, installe les dépendances système nécessaires pour OpenCV et PyTorch, crée un utilisateur non privilégié, télécharge les modèles de machine learning au moment du build plutôt qu'à l'exécution, et configure les variables d'environnement pour minimiser les logs.",
+  "explanations": {
+    "1": "La syntaxe de ce Dockerfile utilise une version spécifique du analyseur Docker pour des comportements cohérents.",
+    "6": "FROM python:3.12-slim-trixie signifie qu'on part d'une image de base Python 3.12 sur Debian Trixie (version majeure épinglée), pas sur une version flottante qui pourrait casser le build.",
+    "9": "PYTHONDONTWRITEBYTECODE=1 empêche Python de générer des fichiers .pyc compilés, ce qui réduit la taille de l'image et améliore la vitesse de construction.",
+    "10": "PYTHONUNBUFFERED=1 envoie les logs directement à la sortie plutôt que de les mettre en mémoire, utile pour voir les messages en temps réel dans Docker.",
+    "15": "ARG déclare une variable de construction qui peut être surpassée avec --build-arg, permettant de changer la version Docling sans modifier le Dockerfile.",
+    "21": "apt-get update met à jour l'index des paquets; c'est une ligne classique mais nécessaire pour que les paquets suivants soient trouvés.",
+    "22": "--no-install-recommends installe seulement les dépendances strictement requises, pas les paquets « recommandés » supplémentaires qui gonflent l'image.",
+    "25": "rm -rf /var/lib/apt/lists/* supprime le cache apt après installation pour réduire la taille de la couche d'image.",
+    "31": "groupadd -g 1000 developer crée un groupe system avec l'ID 1000; cet ID est statique pour que les fichiers créés dans le conteneur apparaissent comme appartenant à votre utilisateur hôte.",
+    "39": "--mount=type=cache montage en cache BuildKit réutilise les wheels pip entre builds sans les enregistrer dans la couche finale de l'image.",
+    "48": "docling-tools models download télécharge les modèles au moment du build et les bake dans l'image, car à l'exécution le conteneur sera en lecture seule et non privilégié.",
+    "52": "chmod -R a+rX rend les modèles lisibles et traversables par tous les utilisateurs, sinon l'utilisateur non privilégié developer ne pourrait pas y accéder."
+  }
+}

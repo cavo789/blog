@@ -21,6 +21,11 @@ which rules are actually enforced versus left to you.
   filenames like `__init__.py` into `**init**.py`. Nothing will flag a wrong bold
   marker — get it right by hand.
 - **Emphasis (italic): always `*single asterisks*`.** Never `_underscores_`.
+  Underscores are not a neutral alternative: `_file_.py` is emphasis to CommonMark (a `_` may
+  close before punctuation), so a Python filename written that way renders as an italicised
+  `file.py` and the leading/trailing underscores vanish. Asterisks have no such collision with
+  code-ish identifiers. Enforce with MD049/MD050 set to `asterisk`, and keep Prettier away from
+  Markdown — it normalises emphasis to `_` and exposes no option to change it.
   The emphasis-style rule (MD049) is often **disabled** too, because it rewrites
   filename-glob spans like `_runner_` into `*runner*`. Same consequence: unguarded.
 - **Never rewrite a dunder or underscore-glob filename** (`__init__.py`, `__main__.py`,

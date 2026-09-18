@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:39:22.434Z",
+  "source": "seed-history.sh",
+  "sourceHash": "b76726ee5828e1d17d66014c0248caab40f147b3",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script remplit la base de données Atuin locale avec un historique de commandes réaliste pour montrer des résultats intéressants lors d'une démo. Il génère des entrées d'historique échelonnées sur plusieurs semaines avec des timestamps variés, en écrivant directement dans SQLite plutôt que d'utiliser les commandes Atuin normales qui timbreraient tout avec l'heure actuelle.",
+  "explanations": {
+    "25": "set -euo pipefail active la sortie en cas d'erreur, empêche l'utilisation de variables non définies, et propage les erreurs dans les pipelines — cela rend le script plus robuste.",
+    "27": "DB est défini comme constante en lecture seule pour stocker le chemin complet vers la base de données Atuin, que le script réutilisera plusieurs fois.",
+    "30": "Cette ligne exécute atuin search pour créer et initialiser la base de données avec son schéma ; || true supprime l'erreur si la commande échoue, puisqu'on ne se soucie que de l'effet secondaire.",
+    "38": "On interroge SQLite pour compter les lignes existantes dans la table history ; si le compte est supérieur à zéro, la base n'est pas vide et on quitte sans rien faire.",
+    "42": "now capture l'heure actuelle en secondes depuis l'époque Unix, servant de point de référence pour calculer les timestamps antérieurs des entrées d'historique.",
+    "43": "me capture le nom d'utilisateur actuel avec whoami pour construire la partie utilisateur des identifiants d'hôte.",
+    "51": "new_id est une fonction qui génère une chaîne aléatoire de 32 caractères hexadécimaux en utilisant SQLite, servant d'identifiant unique pour les entrées ou les sessions.",
+    "64": "read -r -d '' SEED charge un bloc de texte multi-lignes dans la variable SEED ; chaque ligne contient les données d'une commande d'historique en format délimité par pipes.",
+    "121": "jitter commence à zéro et sera augmenté avant chaque insertion pour ajouter une variation aléatoire aux timestamps, évitant les doublons qui violeraient la contrainte unique.",
+    "122": "Cette boucle parcourt chaque ligne du texte SEED, en découpant sur le pipe | pour extraire les sept champs : minutes_ago, exit code, duration, session, host, cwd, command.",
+    "126": "Calcule le timestamp en nanosecondes en partant de maintenant, en soustrayant les minutes écoulées et le jitter aléatoire, puis en convertissant en nanosecondes.",
+    "127": "Convertit la durée stockée en millisecondes en nanosecondes pour correspondre au format Atuin.",
+    "129": "Une instruction case mappe le numéro de session (1, 2, ou 3) à l'une des trois variables session générées au début, groupant les commandes par session.",
+    "135": "Sélectionne le hostname correct : HOST_REMOTE si le code hôte est \"R\", sinon HOST_LOCAL, permettant à la démo de montrer des commandes provenant de deux machines différentes.",
+    "137": "Remplace le placeholder HOME dans le chemin par la valeur réelle de $HOME, adaptant les chemins de répertoires au système actuel.",
+    "139": "Échappe les guillemets simples en les doublant, convertissant ' en '', ce qui est la syntaxe SQL pour inclure un guillemet simple dans une chaîne entre guillemets simples.",
+    "141": "printf construit une instruction SQL INSERT complète ; les %s sont remplacés par les valeurs interpolées.",
+    "145": "Le bloc entier de commands (echo BEGIN, la boucle, echo COMMIT) est canalisé vers sqlite3, qui exécute toutes les instructions en une seule transaction pour plus d'efficacité."
+  }
+}

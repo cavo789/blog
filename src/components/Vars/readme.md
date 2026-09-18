@@ -91,7 +91,7 @@ independent copy of the same regex) by `degrade.cjs` for the exported `.md`/`llm
   another bottom-corner widget competing with the site's chat bubble and scroll-to-top button.
   The inline bar itself stays on mobile; only the pinned/floating copy is dropped.
 - **Persistence** — `localStorage`, keyed by the article's own path (`docusaurus:vars:<pathname>`),
-  so a reader's values survive a reload of _that_ article but never leak into another one.
+  so a reader's values survive a reload of *that* article but never leak into another one.
 
 ## Explicit scope (see AGENTS.md)
 

@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-18T16:39:39.801Z",
+  "source": "docling-convert.sh",
+  "sourceHash": "3b379edbb12320307ad51713856b5c80e731c8a3",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script encapsule l'outil docling dans un conteneur Docker isolé pour convertir des documents en Markdown, en activant l'accélération GPU si disponible et en nettoyant les artefacts inutiles après la conversion. Il gère les options de conversion de manière intelligente, affiche des conseils contextuels pour améliorer les résultats, et filtre les messages de log parasites spécifiques à la version.",
+  "explanations": {
+    "21": "set -euo pipefail configure le shell pour quitter immédiatement en cas d'erreur (-e), traiter les variables non définies comme des erreurs (-u), et propager les erreurs à travers les pipelines (-o pipefail).",
+    "29": "Cette fonction parcourt tous les arguments reçus pour vérifier si l'argument recherché (needle) existe déjà, soit exactement soit comme préfixe d'une option de la forme --opt=value.",
+    "33": "La comparaison teste deux cas : l'argument correspond exactement au needle, ou il commence par needle suivi d'un signe égal (ce qui indique une option avec valeur attachée).",
+    "44": "${DOCLING_CONVERT_NO_TIP:-} récupère la variable d'environnement DOCLING_CONVERT_NO_TIP avec une valeur par défaut vide si elle n'existe pas; le test retourne 0 (succès) immédiatement si la variable vaut 1.",
+    "45": "${1,,} convertit le premier argument en minuscules; le test retourne 0 seulement si le fichier a l'extension .pdf.",
+    "48": "Si has_arg détecte que --pipeline n'est pas déjà dans les arguments supplémentaires (${@:2}), on ajoute un conseil à l'array tips.",
+    "54": "printf '%s, ' ajoute une virgule et un espace après chaque élément du tableau; le résultat est stocké dans joined.",
+    "55": "${joined%, } supprime la dernière virgule et l'espace de la chaîne joined pour un affichage correct.",
+    "62": "docker info --format '{{json .Runtimes}}' retourne la liste des runtimes disponibles au format JSON; grep -q recherche la chaîne nvidia en silence (sans afficher le résultat).",
+    "88": "SECONDS est une variable bash intégrée qui contient le nombre de secondes écoulées depuis le démarrage du shell; start la capture pour calculer la durée totale après.",
+    "89": "set +e désactive l'arrêt automatique en cas d'erreur (le contraire de -e ligne 21), car on veut capturer le code de sortie de docker run dans status.",
+    "102": "$1 est le premier argument (le fichier à convertir); tout ce qui suit est passé à docling convert.",
+    "110": "2>&1 redirige les erreurs standards (stderr) vers la sortie standard (stdout), ce qui permet au pipeline awk de les traiter.",
+    "111": "skip = 1 active un mode qui saute les lignes; n compte les lignes passées pour déterminer quand arrêter le saut (ce bloc traite le bug de __del__).",
+    "115": "${PIPESTATUS[0]} capture le code de sortie du premier élément du pipeline (docker run), car set +e empêche bash de le perdre.",
+    "122": "${1%.*} supprime l'extension du fichier (le % retire le suffixe); basename retire le chemin complet.",
+    "124": "rmdir échoue silencieusement si le répertoire n'est pas vide (|| true capture l'erreur pour que le script continue).",
+    "131": "$((SECONDS - start)) calcule le temps écoulé en soustrayant le moment du démarrage au temps actuel."
+  }
+}

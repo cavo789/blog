@@ -13,3 +13,19 @@ i18n/
 # Throwaway build dirs — see .claude/rules/build-verification.md
 build-verify/
 .docusaurus-verify/
+
+# Markdown belongs to markdownlint, not Prettier.
+#
+# Prettier rewrites *emphasis* to _emphasis_ and there is NO option to stop it: on 3.9.5,
+# `getSupportInfo()` reports zero options applicable to the markdown parser (only --prose-wrap,
+# which is about wrapping). Upstream has declined to make the marker configurable.
+#
+# That rewrite is not cosmetic here. A Python file named *file*.py becomes _file_.py — which
+# CommonMark parses as emphasis (a `_` may close before punctuation), so the page renders a
+# silently italicised "file.py" and the real name is lost. Backticked spans are safe; running
+# prose is not.
+#
+# The house style (asterisks, see .claude/skills/markdown-style) is now enforced mechanically
+# by MD049/MD050 in .config/.markdownlint.json instead of being contradicted here.
+*.md
+*.mdx
