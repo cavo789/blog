@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T19:42:27.215Z",
+  "durationMs": 189047,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8d78c9f85bf7ef45e55ed446bbcb098bf4b17da4",
+  "questions": [
+    {
+      "question": "automatiser le push markdown vers github avec docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "lancer docusaurus dans un conteneur docker sans node.js",
+      "anchor": ""
+    },
+    {
+      "question": "site statique react docusaurus pour docs techniques",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus react ssg open source équipe facebook",
+      "anchor": ""
+    },
+    {
+      "question": "blog de notes personnelles devops et php avec docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "générateur de site statique gratuit pour développeur",
+      "anchor": ""
+    },
+    {
+      "question": "conserver son workflow markdown github avec docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "gestion des environnements de travail documentation docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi choisir docusaurus pour archiver ses notes",
+      "anchor": ""
+    },
+    {
+      "question": "publication instantanée site web markdown docusaurus",
+      "anchor": ""
+    }
+  ]
+}

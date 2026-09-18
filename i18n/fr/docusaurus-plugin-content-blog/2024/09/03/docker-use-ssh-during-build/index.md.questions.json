@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:15:51.572Z",
+  "durationMs": 187147,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "05364aae1134a8cbce0d05e32ef7a2a6bd8bbd4c",
+  "questions": [
+    {
+      "question": "Comment cloner un repository github privé pendant le build docker sans inscrire la clé ssh dans l'image finale ?",
+      "anchor": ""
+    },
+    {
+      "question": "Vérifier qu'aucune trace de la clé ssh n'apparaît dans l'image après le build",
+      "anchor": "preview"
+    },
+    {
+      "question": "Pourquoi le montage éphémère de BuildKit évite les fuites contrairement à la suppression dans un layer ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "ssh-add -l identifier la clé privée exacte liée à github",
+      "anchor": "which-key-to-use"
+    },
+    {
+      "question": "Fichiers compose.yaml et Dockerfile nécessaires pour configurer le secret",
+      "anchor": "creating-files"
+    },
+    {
+      "question": "Ajouter la directive secrets et l'argument build dans compose.yaml",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "Syntaxe RUN --mount=type=secret pour authentifier git clone pendant le build",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "docker compose up construire l'image et entrer dans le container avec le secret actif",
+      "anchor": "create-the-image-and-jump-in-the-container"
+    },
+    {
+      "question": "Bind mount du dossier ssh local dans le container en cours d'exécution pour travailler en continu",
+      "anchor": "sharing-your-keys-also-with-the-container"
+    },
+    {
+      "question": "Résumé de la méthode pour sécuriser les accès git privé lors des builds docker",
+      "anchor": "conclusion"
+    }
+  ]
+}

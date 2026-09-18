@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:02:53.809Z",
+  "durationMs": 131229,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "175466b21c7b85646742a94d88fe215efb9da5f1",
+  "questions": [
+    {
+      "question": "Comment automatiser des transferts SFTP en ligne de commande sous Linux ?",
+      "anchor": ""
+    },
+    {
+      "question": "sftp ligne de commande sshpass proxy http port personnalisé",
+      "anchor": ""
+    },
+    {
+      "question": "commande pour se connecter à un serveur SFTP en saisissant le mot de passe automatiquement",
+      "anchor": "how-to-run-an-sftp-connection"
+    },
+    {
+      "question": "sftp sshpass connexion non interactive Linux",
+      "anchor": "how-to-run-an-sftp-connection"
+    },
+    {
+      "question": "comment router une connexion sftp via un proxy HTTP avec nc ?",
+      "anchor": "using-a-proxy-server"
+    },
+    {
+      "question": "sftp -o ProxyCommand nc --proxy-type http --proxy %h %p",
+      "anchor": "using-a-proxy-server"
+    },
+    {
+      "question": "quel paramètre passer à sftp pour utiliser un port autre que le 22 ?",
+      "anchor": "setting-the-port-number-to-use-for-the-sftp-server"
+    },
+    {
+      "question": "sftp spécifier port non standard -P",
+      "anchor": "setting-the-port-number-to-use-for-the-sftp-server"
+    },
+    {
+      "question": "comment utiliser un here-document pour lancer des commandes SFTP comme lcd et mget *.zip ?",
+      "anchor": "running-commands-on-the-sftp-server-then-exit"
+    }
+  ]
+}

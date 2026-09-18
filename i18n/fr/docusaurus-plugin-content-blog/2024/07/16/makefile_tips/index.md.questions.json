@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:33:52.753Z",
+  "durationMs": 178883,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "323034f75d138f48a9affa7656e2a824b8a98f7e",
+  "questions": [
+    {
+      "question": "comment automatiser des tâches récurrentes avec un makefile",
+      "anchor": ""
+    },
+    {
+      "question": "makefile vérifier existence fichier",
+      "anchor": "how-to-check-if-a-file-exists-or-not"
+    },
+    {
+      "question": "makefile enchaîner targets dépendantes",
+      "anchor": "running-dependent-targets"
+    },
+    {
+      "question": "comment masquer l'affichage des commandes dans make",
+      "anchor": "dont-echo-the-command"
+    },
+    {
+      "question": "makefile conditions ifeq ifdef",
+      "anchor": "using-conditional-statements"
+    },
+    {
+      "question": "comment ignorer une erreur shell make",
+      "anchor": "ignore-error"
+    },
+    {
+      "question": "makefile docker compose",
+      "anchor": "working-with-docker"
+    },
+    {
+      "question": "makefile charger variables .env",
+      "anchor": "getting-information-from-the-env-file"
+    },
+    {
+      "question": "makefile mode verbeux",
+      "anchor": "verbose-mode"
+    },
+    {
+      "question": "makefile cible help auto-documentée",
+      "anchor": "self-documenting-makefile"
+    }
+  ]
+}

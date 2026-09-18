@@ -27,6 +27,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { useHistory } from "@docusaurus/router";
 import { usePluginData } from "@docusaurus/useGlobalData";
+import { useBaseUrlUtils } from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 import GroupedList from "./GroupedList";
@@ -170,6 +171,7 @@ function drawImageCover(
 export default function BlogGraph() {
   const graph = usePluginData("blog-graph-plugin") as BlogGraphData | undefined;
   const history = useHistory();
+  const { withBaseUrl } = useBaseUrlUtils();
   const { i18n } = useDocusaurusContext();
   const tagLabel = useTagLabel();
 
@@ -504,9 +506,15 @@ export default function BlogGraph() {
 
   const handleMouseLeave = useCallback(() => setHovered(null), []);
 
+  // `withBaseUrl` because `history.push` does not add the locale prefix the way `<Link>` does —
+  // and the graph's nodes carry bare, locale-agnostic permalinks (`/blog/x`, built by
+  // `scripts/lib/blog-corpus.mjs`). Under `fr` a click pushed `/blog/x`, which is not a route in
+  // the French build at all, so every bubble landed on the 404 — the `<GroupedList>` fallback
+  // below was never affected because `<Link>` prefixes on its own. Idempotent, so an already
+  // prefixed path is left alone. See .claude/rules/i18n-locale-safety.md.
   const handleClick = useCallback(() => {
-    if (hovered) history.push(hovered);
-  }, [hovered, history]);
+    if (hovered) history.push(withBaseUrl(hovered));
+  }, [hovered, history, withBaseUrl]);
 
   if (!graph) return null;
 

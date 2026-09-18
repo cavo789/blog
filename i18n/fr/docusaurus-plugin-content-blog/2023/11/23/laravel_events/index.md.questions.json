@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:14:23.316Z",
+  "durationMs": 113165,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9ed50ed23766957eacc04ef24237926473a3350e",
+  "questions": [
+    {
+      "question": "comment découpler son code avec les events et listeners de Laravel",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter une fonctionnalité sans modifier le controller qui déclenche l'event",
+      "anchor": "what-an-event-actually-buys-you"
+    },
+    {
+      "question": "comment le listener reçoit et modifie l'objet transporté par un event Laravel ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "créer et brancher un event listener dans Laravel étape par étape",
+      "anchor": "building-it"
+    },
+    {
+      "question": "comment commenter un listener dans le fichier de câblage Laravel ?",
+      "anchor": "building-it"
+    },
+    {
+      "question": "pourquoi les setters de l'event doivent être publics pour qu'un listener puisse modifier l'objet ?",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "implémenter le pattern event listener en PHP pur sans framework",
+      "anchor": "the-same-idea-outside-laravel"
+    },
+    {
+      "question": "comment les events facilitent l'ajout de fonctionnalités futures ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

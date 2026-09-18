@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:24:01.971Z",
+  "durationMs": 156416,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "14e61f8290206dbbdcad100761ebb99b58ec904c",
+  "questions": [
+    {
+      "question": "comment configurer Behat avec PHP et Docker pour des tests fonctionnels",
+      "anchor": ""
+    },
+    {
+      "question": "Qu'est-ce que le BDD et comment écrire des scénarios en langage naturel ?",
+      "anchor": "introduction-to-bdd---behavior-driven-development"
+    },
+    {
+      "question": "composer require behat/behat",
+      "anchor": "lets-install-behat"
+    },
+    {
+      "question": "écrire les définitions d'étapes en PHP",
+      "anchor": "writing-your-steps-in-php"
+    },
+    {
+      "question": "installer behat/mink-extension",
+      "anchor": "installing-the-mink-extension"
+    },
+    {
+      "question": "comment créer la méthode iClickOnTheMenuItem dans Behat ?",
+      "anchor": "writing-our-iclickonthemenuitem-method"
+    },
+    {
+      "question": "configurer behat.yaml pour Mink et Chrome",
+      "anchor": "behatyaml"
+    },
+    {
+      "question": "rédiger un scénario Gherkin dans Blog.feature",
+      "anchor": "blogfeature"
+    },
+    {
+      "question": "paramétrer compose.yaml pour lancer les tests dans Docker",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "où et comment structurer FeatureContext.php pour Behat ?",
+      "anchor": "featurecontextphp"
+    }
+  ]
+}

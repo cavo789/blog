@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:35:00.657Z",
+  "durationMs": 151071,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "60493b9cf6bd850d9ee930780f6f974d1783853c",
+  "questions": [
+    {
+      "question": "quarto callout encadré tips warnings",
+      "anchor": ""
+    },
+    {
+      "question": "équivalent admonition Docusaurus dans Quarto",
+      "anchor": ""
+    },
+    {
+      "question": "comment créer des blocs mis en évidence dans un rapport Quarto ?",
+      "anchor": ""
+    },
+    {
+      "question": "syntaxe callout warning Quarto markdown",
+      "anchor": "syntax"
+    },
+    {
+      "question": "comment écrire un bloc callout pour une astuce en Quarto ?",
+      "anchor": "syntax"
+    },
+    {
+      "question": "support callout Quarto PDF HTML revealJS",
+      "anchor": "syntax"
+    },
+    {
+      "question": "lien documentation officielle syntaxe callout Quarto",
+      "anchor": "syntax"
+    },
+    {
+      "question": "configurer snippet VSCode pour callout Quarto",
+      "anchor": "vscode-snippet"
+    },
+    {
+      "question": "fichier JSON snippets VSCode pour générer des callout interactifs",
+      "anchor": "vscode-snippet"
+    },
+    {
+      "question": "raccourci CTRL-Space pour déclencher snippet callout VSCode",
+      "anchor": "vscode-snippet"
+    }
+  ]
+}

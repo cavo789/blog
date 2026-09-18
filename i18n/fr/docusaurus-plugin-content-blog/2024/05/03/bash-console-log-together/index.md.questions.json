@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:00:09.263Z",
+  "durationMs": 235619,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "591a00e2750bb16d8ca689c7f329748dd71c0f86",
+  "questions": [
+    {
+      "question": "comment afficher la sortie d'un script bash sur la console et dans un fichier log en même temps ?",
+      "anchor": ""
+    },
+    {
+      "question": "bash script sortie console et fichier log simultané",
+      "anchor": ""
+    },
+    {
+      "question": "éviter le buffering de sortie dans un script bash long",
+      "anchor": ""
+    },
+    {
+      "question": "afficher ligne par ligne console et log bash",
+      "anchor": ""
+    },
+    {
+      "question": "vérifier que la sortie console et le fichier log sont synchronisés en temps réel",
+      "anchor": "result"
+    },
+    {
+      "question": "résultat affichage double sortie bash script",
+      "anchor": "result"
+    },
+    {
+      "question": "comment savoir si le script écrit bien sur les deux sorties en même temps ?",
+      "anchor": "result"
+    },
+    {
+      "question": "pourquoi la boucle while read empêche le buffering en bash",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "mécanisme affichage temps réel console log bash",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "comment forcer l'écriture immédiate ligne par ligne bash",
+      "anchor": "why-it-works"
+    }
+  ]
+}

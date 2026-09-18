@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:12:15.267Z",
+  "durationMs": 159382,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "63ba797a90e70d0309fc39ba8fcb2bf343d9c900",
+  "questions": [
+    {
+      "question": "zsh coloration commandes vert rouge pendant frappe",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi ma commande zsh passe-t-elle au rouge avant que j'appuie sur enter ?",
+      "anchor": "what-syntax-highlighting-looks-like"
+    },
+    {
+      "question": "zsh syntax highlighting détection erreur saisie pendant frappe",
+      "anchor": "what-syntax-highlighting-looks-like"
+    },
+    {
+      "question": "zsh-syntax-highlighting nécessite-t-il une config ou des alias",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "recharger zsh après ajout plugin syntax highlighting",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "docker build syntax-demo tester coloration zsh sans config",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "cloner zsh-syntax-highlighting oh my zsh plugins .zshrc",
+      "anchor": "installation"
+    },
+    {
+      "question": "comment ajouter zsh-syntax-highlighting à la liste des plugins oh my zsh ?",
+      "anchor": "installation"
+    },
+    {
+      "question": "zsh-autosuggestions compagnon naturel zsh-syntax-highlighting",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "quelle est la différence entre la coloration syntaxique et les suggestions dans zsh ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

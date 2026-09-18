@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:18:02.252Z",
+  "durationMs": 185756,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b76e94b4948f4ae74855483723bfc2b6e2afb717",
+  "questions": [
+    {
+      "question": "comment générer des diagrammes d'infrastructure en tant que code avec diagrams et docker",
+      "anchor": ""
+    },
+    {
+      "question": "commande docker run -i --rm pour exporter team.py en schéma",
+      "anchor": "what-comes-out"
+    },
+    {
+      "question": "à quoi servent les flags -v $(pwd):/out et -u 1000:1000 dans le conteneur",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "adapter la commande docker pour un environnement windows",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "créer team.py et exécuter le pipeline diagrams sous linux",
+      "anchor": "the-source"
+    },
+    {
+      "question": "dessiner une vraie architecture cloud avec le script diagrams python",
+      "anchor": "a-real-architecture"
+    },
+    {
+      "question": "trouver la liste des icônes aws/Azure/GCP/K8S pour diagrams",
+      "anchor": "icons-and-other-tools-reference-skip-this-for-now"
+    },
+    {
+      "question": "liste des outils Mermaid PlantUML Graphviz Kroki DBML-renderer Structurizr",
+      "anchor": "icons-and-other-tools-reference-skip-this-for-now"
+    },
+    {
+      "question": "retrouver le code source de gtramontina/diagrams et les exemples officiels",
+      "anchor": "conclusion"
+    }
+  ]
+}

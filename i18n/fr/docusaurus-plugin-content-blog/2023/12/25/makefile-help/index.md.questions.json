@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:29:22.340Z",
+  "durationMs": 257575,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ffa5c0aa54ca2af21cbd3dce6ef7cc298a392763",
+  "questions": [
+    {
+      "question": "comment ajouter un écran d'aide auto-documenté à un makefile",
+      "anchor": ""
+    },
+    {
+      "question": "make help affiche liste targets et descriptions makefile",
+      "anchor": "what-you-will-get"
+    },
+    {
+      "question": "makefile indentation tabulations vs espaces",
+      "anchor": "the-starting-point"
+    },
+    {
+      "question": "makefile cible par défaut première action",
+      "anchor": "adding-the-default-action"
+    },
+    {
+      "question": "ajouter target help makefile",
+      "anchor": "step-1---adding-the-default-action"
+    },
+    {
+      "question": "make help usage makefile",
+      "anchor": "step-2---adding-the-help-target"
+    },
+    {
+      "question": "makefile ajouter description target ##",
+      "anchor": "step-3---add-a-description-for-each-target"
+    },
+    {
+      "question": "makefile grouper targets sous en-tête ###",
+      "anchor": "step-4---add-a-subtitle-between-each-main-section"
+    },
+    {
+      "question": "exemple makefile auto-documenté github",
+      "anchor": "take-a-look-on-mine-for-this-blog"
+    },
+    {
+      "question": "avantages makefile aide synchronisée linux",
+      "anchor": "conclusion"
+    }
+  ]
+}

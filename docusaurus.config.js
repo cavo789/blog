@@ -405,10 +405,36 @@ const config = {
         // spreads `injectManifestConfig` and then unconditionally re-sets `globPatterns` to
         // that broad default, so anything passed here for that key is silently discarded
         // (see its lib/index.js `postBuild`). `globIgnores` *is* honored, so that's the
-        // lever: cut every page-content and asset directory, leaving only the homepage
-        // document — the one file an offline relaunch of the installed app needs before
-        // React Router can even boot — plus root-level files like the manifest and the
-        // Ask-my-blog question corpus (small enough, and worth having offline).
+        // lever.
+        //
+        // Every HTML *document* is ignored here too (TODO 0127), which looks like it defeats
+        // the point of a PWA and doesn't. The generated `fetch` handler is cache-first
+        // *unconditionally* — it never probes the network and never falls back to it — so any
+        // precached document is served to an installed reader who is perfectly online. Two
+        // consequences, one cosmetic and one that took the homepage down in production on
+        // 2026-09-17:
+        //
+        //   1. Staleness: the home is a feed of the latest posts. A reader with the app
+        //      installed kept seeing last deploy's feed until the next service worker
+        //      activated.
+        //   2. Hard failure: `assets/**` is ignored (the 100+ MB reason above), so a
+        //      precached `index.html` and the hashed `main.*.js`/`styles.*.css` it references
+        //      have *decoupled lifetimes*. After a deploy renames those assets, the cached
+        //      shell requests names the server no longer has → 404 served as `text/html` →
+        //      React never boots → the "did not load properly" banner Docusaurus inlines into
+        //      every page stays visible, unstyled. Reported from a real phone; reproduced
+        //      from the deployed `sw.js`.
+        //
+        // That second failure was masked in testing because `static/.htaccess` serves assets
+        // `immutable, max-age=31536000`, so the browser's own HTTP cache usually still had
+        // them. "Usually" is the whole problem: that cache isn't ours, mobile browsers evict
+        // it aggressively, and nothing synchronises it with the precache.
+        //
+        // Fixing this by precaching the shell's three files instead (measured: 1.58 MB of
+        // `styles.*.css` + `main.*.js` + `runtime~main.*.js`) was considered and rejected — it
+        // makes the cached page *coherent* but still *stale*, and hydration would additionally
+        // need the route chunk for `/`, which is not selectable by glob among 777 hashed
+        // names. See TODO 0127 for the full comparison.
         //
         // What this deliberately does NOT attempt: caching articles as the reader visits
         // them. The obvious next step — a `swCustom` module registering a runtime
@@ -445,6 +471,25 @@ const config = {
             "img/**",
             "assets/**",
             "pagefind/**",
+            // The HTML documents themselves — see the long note above. Left in the precache,
+            // each of these is served cache-first to online readers and breaks outright once a
+            // deploy renames the assets it points at.
+            "index.html",
+            "404.html",
+            "follow/**",
+            // Not a reader-facing page; precaching it also dragged in its .eli5.json sidecar.
+            "shake-debug.*",
+            // Deliberately NOT ignored: `questions-index.json`, the one entry left in the
+            // precache. It carries the same cache-first staleness as everything above (an
+            // installed reader's ⌘K "ask my blog" index is one deploy behind until the next
+            // worker activates), which is tolerable — it self-heals, and a missing question is
+            // not a broken page. It stays because emptying the precache outright would leave
+            // the service worker doing nothing at all, and Chrome's *install prompt* algorithm
+            // still requires a non-trivial fetch handler even though installability itself no
+            // longer does (menu install: no service worker needed since Chrome 108 mobile /
+            // 112 desktop — https://developer.chrome.com/blog/update-install-criteria). Losing
+            // the prompt would give back exactly what TODO 0090 set out to obtain. Removing
+            // the plugin is therefore a real trade-off, not free cleanup — see TODO 0127.
           ],
         },
       },

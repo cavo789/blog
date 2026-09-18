@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:22:30.250Z",
+  "durationMs": 168228,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e5c671a77f96d89a43a420df8d58eda82fb803eb",
+  "questions": [
+    {
+      "question": "comment configurer un devcontainer python sous windows sans installer python localement",
+      "anchor": ""
+    },
+    {
+      "question": "console ms-dos dossier projet commandes de départ",
+      "anchor": "time-to-start"
+    },
+    {
+      "question": "docker build image python",
+      "anchor": "build-the-python-docker-image"
+    },
+    {
+      "question": "comment créer le container docker une fois par jour",
+      "anchor": "create-a-docker-container"
+    },
+    {
+      "question": "entrer dans le container python en cours d'exécution",
+      "anchor": "entering-the-container"
+    },
+    {
+      "question": "lancer vscode dans le container avec code .",
+      "anchor": "starting-vscode-and-start-your-developer-journey"
+    },
+    {
+      "question": "extensions python vscode devcontainer",
+      "anchor": "can-i-add-pythons-addons-in-vscode"
+    },
+    {
+      "question": "comment organiser la structure de fichiers et dossiers du projet",
+      "anchor": "create-a-filefolder-structure"
+    },
+    {
+      "question": "créer fichier batch dos à la place de GNU Make",
+      "anchor": "create-our-dos-batch-file"
+    },
+    {
+      "question": "vérifier la configuration actuelle des fichiers du devcontainer",
+      "anchor": "our-configuration-right-now"
+    },
+    {
+      "question": "changer de version python dans le dockerfile",
+      "anchor": "can-i-use-another-version-of-python"
+    }
+  ]
+}

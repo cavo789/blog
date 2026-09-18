@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:49:53.665Z",
+  "durationMs": 153238,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "68ab5b23768ef9aded4502515c4b45df1ee000a9",
+  "questions": [
+    {
+      "question": "raccourci VSCode pour activer les curseurs multiples",
+      "anchor": ""
+    },
+    {
+      "question": "comment transformer une liste de lignes en puces avec plusieurs curseurs",
+      "anchor": ""
+    },
+    {
+      "question": "supprimer les deux premiers caractères sur plusieurs lignes sans rechercher/remplacer",
+      "anchor": ""
+    },
+    {
+      "question": "navigation avec Shift + Alt + I dans VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "quitter le mode curseurs multiples VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "quand utiliser sed plutôt que les curseurs multiples",
+      "anchor": ""
+    },
+    {
+      "question": "entourer chaque ligne de doubles crochets VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "avancer d'un mot avec curseurs multiples VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "sticky scroll et autosave VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "modifier en masse des lignes irrégulières VSCode",
+      "anchor": ""
+    }
+  ]
+}

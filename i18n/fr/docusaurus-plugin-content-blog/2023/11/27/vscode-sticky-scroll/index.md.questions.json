@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:26:22.097Z",
+  "durationMs": 144738,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0831c37a7f3d0273c572f50f7030e642a15a390a",
+  "questions": [
+    {
+      "question": "comment activer le sticky scroll dans vscode",
+      "anchor": ""
+    },
+    {
+      "question": "vscode sticky scroll configurer les lignes de contexte",
+      "anchor": ""
+    },
+    {
+      "question": "garder les titres markdown épinglés en haut de l'éditeur",
+      "anchor": ""
+    },
+    {
+      "question": "vscode comment suivre le nom de la classe et de la fonction en scrollant",
+      "anchor": ""
+    },
+    {
+      "question": "savoir où on se trouve dans un fichier php ou markdown long",
+      "anchor": ""
+    },
+    {
+      "question": "combiner le sticky scroll avec le folding de code dans vscode",
+      "anchor": ""
+    },
+    {
+      "question": "activer le sticky scroll dans le fichier de configuration vscode",
+      "anchor": ""
+    },
+    {
+      "question": "lignes de contexte qui restent fixes pendant le défilement vscode",
+      "anchor": ""
+    },
+    {
+      "question": "vscode sticky scroll navigation fichiers longs",
+      "anchor": ""
+    },
+    {
+      "question": "perdre le contexte en scrollant dans vscode comment faire",
+      "anchor": ""
+    }
+  ]
+}

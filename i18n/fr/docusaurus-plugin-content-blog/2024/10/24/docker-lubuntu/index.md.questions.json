@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:56:29.690Z",
+  "durationMs": 134922,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0ceed04969c7619a684322b07c9e095bd970322f",
+  "questions": [
+    {
+      "question": "comment lancer un bureau Lubuntu complet dans Docker sur Windows",
+      "anchor": ""
+    },
+    {
+      "question": "à quoi ressemble le bureau Lubuntu une fois le conteneur démarré",
+      "anchor": "result"
+    },
+    {
+      "question": "mécanisme X Server pour afficher le rendu Docker sous Windows",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Dockerfile Lubuntu Desktop contenu exact",
+      "anchor": "step-1---create-the-dockerfile"
+    },
+    {
+      "question": "configuration VcXsrv et écran noir au lancement",
+      "anchor": "step-2---install-windows-x-server"
+    },
+    {
+      "question": "commande docker run pour démarrer le bureau et délai d'attente",
+      "anchor": "step-3---start-the-container"
+    },
+    {
+      "question": "volumes Docker pour rendre les données persistantes",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "bug d'affichage avec un deuxième écran sous VcXsrv",
+      "anchor": "step-3---start-the-container"
+    },
+    {
+      "question": "alternative navigateur pour les GUI Docker sans serveur X",
+      "anchor": ""
+    }
+  ]
+}

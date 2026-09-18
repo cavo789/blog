@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:11:35.522Z",
+  "durationMs": 182825,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2221afe3f5d1fdf00576d7fa49de4ec69911b110",
+  "questions": [
+    {
+      "question": "comment générer et valider des données json factices pour des tests ETL en python",
+      "anchor": ""
+    },
+    {
+      "question": "quel outil cli utiliser pour inspecter et mapper la structure d'un json inconnu",
+      "anchor": ""
+    },
+    {
+      "question": "script python avec Faker pour générer un fichier json de test personnalisé",
+      "anchor": "generate-faker-json-file"
+    },
+    {
+      "question": "comment installer Faker et configurer Faker python pour produire des enregistrements français",
+      "anchor": "generate-faker-json-file"
+    },
+    {
+      "question": "Mockaroo.com créer un schéma et exporter des données json de test gratuitement",
+      "anchor": "using-mockaroocom"
+    },
+    {
+      "question": "comment générer plus de 1 000 enregistrements json depuis Mockaroo sans écrire de code",
+      "anchor": "using-mockaroocom"
+    },
+    {
+      "question": "transformer une chaîne json existante en schéma Mockaroo pour batcher des données",
+      "anchor": "creating-a-fake-data-using-a-schema"
+    },
+    {
+      "question": "appeler l'api Mockaroo en python avec requests et une clé gratuite pour récupérer des données",
+      "anchor": "using-api"
+    },
+    {
+      "question": "convertir un fichier json en schéma de validation en ligne pour python",
+      "anchor": "online-json-to-schema-converter"
+    },
+    {
+      "question": "valider un fichier json reçu avec jsonschema python après conversion en ligne",
+      "anchor": "online-json-to-schema-converter"
+    }
+  ]
+}

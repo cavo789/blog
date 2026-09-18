@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:51:02.510Z",
+  "durationMs": 160510,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "85a190ba7667c80c9369f0577042553e03d3a09b",
+  "questions": [
+    {
+      "question": "comment tagger automatiquement et suggérer des liens internes sur des articles markdown avec un modèle local sans api cloud",
+      "anchor": ""
+    },
+    {
+      "question": "à quoi ressemblent les fichiers tags.json et links.json après l'exécution des deux scripts",
+      "anchor": "the-result"
+    },
+    {
+      "question": "commande docker compose pour démarrer le projet et les deux containers associés",
+      "anchor": "installation"
+    },
+    {
+      "question": "raccourci Ctrl + Shift + P et commande Visual Studio Code pour recharger le dossier dans un devcontainer",
+      "anchor": "copy-the-directory-structure-and-files"
+    },
+    {
+      "question": "commande docker exec pour télécharger llama3:8b dans le conteneur tags-ollama-1",
+      "anchor": "download-the-llm-model"
+    },
+    {
+      "question": "vérifier la disponibilité de http://localhost:11444/api/tags avec curl et jq",
+      "anchor": "test-the-ollama-service"
+    },
+    {
+      "question": "exécuter le script python qui envoie le contenu brut des fichiers markdown au modèle ollama",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "lancer le second script pour comparer les tags et obtenir les suggestions de liens internes",
+      "anchor": "run-the-tag-generation-script"
+    },
+    {
+      "question": "critères pour remplacer llama3:8b par un autre modèle ollama compatible",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "avantages de l'analyse sémantique locale par rapport au tag manuel pour un blog docusaurus",
+      "anchor": "conclusion"
+    }
+  ]
+}

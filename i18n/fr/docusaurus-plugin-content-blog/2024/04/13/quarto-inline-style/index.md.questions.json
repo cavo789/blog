@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:39:45.315Z",
+  "durationMs": 118711,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f0a10276935299a3e0b8e8f5b67e21c33077fd79",
+  "questions": [
+    {
+      "question": "syntaxe []{} pour appliquer du css inline dans quarto",
+      "anchor": ""
+    },
+    {
+      "question": "comment mettre en évidence un mot sans écrire de classe css",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi le style css inline de quarto ne s'affiche pas en pdf",
+      "anchor": ""
+    },
+    {
+      "question": "comment utiliser les spans css inline dans quarto pour du html",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi quarto ignore le style inline []{} dans word",
+      "anchor": ""
+    },
+    {
+      "question": "mettre en forme du texte dans quarto sans fichier css externe",
+      "anchor": ""
+    },
+    {
+      "question": "quand utiliser conditional display plutôt que le style inline dans quarto",
+      "anchor": ""
+    },
+    {
+      "question": "où écrire les propriétés css dans la syntaxe []{} de quarto",
+      "anchor": ""
+    },
+    {
+      "question": "le style inline de quarto fonctionne-t-il uniquement en html",
+      "anchor": ""
+    },
+    {
+      "question": "syntaxe span css quarto pour documents html uniquement",
+      "anchor": ""
+    }
+  ]
+}

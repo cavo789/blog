@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:23:24.120Z",
+  "durationMs": 113780,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "7f599f81de58c41b22659756549df4ee456802d3",
+  "questions": [
+    {
+      "question": "github.com remplacer par github.dev url",
+      "anchor": ""
+    },
+    {
+      "question": "comment lancer vscode.dev directement depuis une page github",
+      "anchor": ""
+    },
+    {
+      "question": "raccourci clavier pour ouvrir un repo dans l'éditeur en ligne",
+      "anchor": ""
+    },
+    {
+      "question": "éditer du code sur github sans cloner le projet localement",
+      "anchor": ""
+    },
+    {
+      "question": "modifier l'url github pour accéder à vscode web",
+      "anchor": ""
+    },
+    {
+      "question": "corriger une faute de frappe sur son repo depuis un téléphone",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
+    },
+    {
+      "question": "mettre à jour le readme.md sans cloner le projet",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
+    },
+    {
+      "question": "solution légère pour coder en ligne sur github",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
+    },
+    {
+      "question": "quand privilégier vscode en ligne plutôt qu'un conteneur Docker",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
+    },
+    {
+      "question": "proposer une Pull request rapidement depuis le navigateur",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
+    }
+  ]
+}

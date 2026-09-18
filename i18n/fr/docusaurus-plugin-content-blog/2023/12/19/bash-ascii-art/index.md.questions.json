@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:11:44.731Z",
+  "durationMs": 138519,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "004ff0740510dcbe7ae1de2bf0342ecd229dd995",
+  "questions": [
+    {
+      "question": "Comment afficher une bannière ascii art dans un script Bash ?",
+      "anchor": ""
+    },
+    {
+      "question": "bannière ascii art terminal bash",
+      "anchor": ""
+    },
+    {
+      "question": "Intégrer un en-tête visuel au début de mes scripts Bash",
+      "anchor": ""
+    },
+    {
+      "question": "utiliser patorjk taag pour créer des bannières shell",
+      "anchor": ""
+    },
+    {
+      "question": "Afficher du contenu stylisé en haut de la console linux",
+      "anchor": ""
+    },
+    {
+      "question": "exemple code bannière ascii bash",
+      "anchor": ""
+    },
+    {
+      "question": "Structurer mes scripts Bash avec une bannière et une fonction de logging",
+      "anchor": ""
+    },
+    {
+      "question": "générer du ascii art pour l'affichage terminal",
+      "anchor": ""
+    },
+    {
+      "question": "Comment personnaliser le début de mes scripts Bash ?",
+      "anchor": ""
+    },
+    {
+      "question": "afficher logo texte bash patorjk taag",
+      "anchor": ""
+    }
+  ]
+}

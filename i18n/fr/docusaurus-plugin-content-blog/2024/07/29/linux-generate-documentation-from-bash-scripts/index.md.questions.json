@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:53:09.590Z",
+  "durationMs": 128943,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "127504d3bfa3497a4a842dc489f727f16ebe12e1",
+  "questions": [
+    {
+      "question": "comment générer automatiquement la documentation de scripts bash sous linux",
+      "anchor": ""
+    },
+    {
+      "question": "équivalent bash à phpDocumentor pour extraire les blocs de doc",
+      "anchor": ""
+    },
+    {
+      "question": "script maison pour parser les commentaires php docblock dans les fichiers sh",
+      "anchor": ""
+    },
+    {
+      "question": "quel est le format du readme.md créé avec la table des matières ?",
+      "anchor": "result"
+    },
+    {
+      "question": "génération d'un fichier markdown par script bash analysé",
+      "anchor": "result"
+    },
+    {
+      "question": "rendre le script exécutable et lancer la génération de doc dans la console",
+      "anchor": "how-to-reproduce-it"
+    },
+    {
+      "question": "comment analyser un dossier complet de fichiers sh pour produire la documentation ?",
+      "anchor": "how-to-reproduce-it"
+    },
+    {
+      "question": "commande exacte pour exécuter le générateur de documentation bash",
+      "anchor": "how-to-reproduce-it"
+    },
+    {
+      "question": "réordonner les fonctions par ordre alphabétique dans un script bash",
+      "anchor": "going-further"
+    },
+    {
+      "question": "transformer un dossier de fichiers markdown en site de documentation avec quarto",
+      "anchor": "going-further"
+    }
+  ]
+}

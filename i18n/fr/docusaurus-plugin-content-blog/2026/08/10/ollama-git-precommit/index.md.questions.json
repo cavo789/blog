@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:35:29.802Z",
+  "durationMs": 121555,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b812b4c2374159e81bd657b3b7ccdfea5fe2afa6",
+  "questions": [
+    {
+      "question": "hook zsh local ollama avant git commit",
+      "anchor": ""
+    },
+    {
+      "question": "comment ai-review détecte-t-il les violations SOLID et les problèmes de nommage que les linters manquent ?",
+      "anchor": "what-ai-review-catches-before-you-even-write-a-commit-message"
+    },
+    {
+      "question": "pourquoi les trois fonctions partagent-elles _git_staged_diff et une regex préalable ?",
+      "anchor": "why-its-built-this-way"
+    },
+    {
+      "question": "installer ai-review ai-secrets ai-commit dans zsh",
+      "anchor": "installing-the-three-functions"
+    },
+    {
+      "question": "ai-secrets filtre les faux positifs et identifie les vrais identifiants en dur",
+      "anchor": "ai-secrets-catching-real-credentials"
+    },
+    {
+      "question": "générer automatiquement un message Conventional Commits après nettoyage du diff",
+      "anchor": "ai-commit-writing-the-message-for-the-diff-youve-just-cleaned-up"
+    },
+    {
+      "question": "comment fonctionne le helper _git_staged_diff pour les clauses de garde ?",
+      "anchor": "under-the-hood-_git_staged_diff-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "ordre d'exécution des vérifications pre-commit : revue, secrets et message",
+      "anchor": "running-them-together"
+    },
+    {
+      "question": "intérêt de faire une pause et relire son diff localement avant de commiter",
+      "anchor": "conclusion"
+    }
+  ]
+}

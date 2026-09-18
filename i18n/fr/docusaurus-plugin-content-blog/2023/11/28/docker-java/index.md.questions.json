@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:29:51.163Z",
+  "durationMs": 175842,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "46e0058a16b0b059b794cb37f61db20855ad0642",
+  "questions": [
+    {
+      "question": "lancer java avec docker sans installer jdk localement",
+      "anchor": ""
+    },
+    {
+      "question": "Quelle commande docker run utiliser pour compiler Main.java ?",
+      "anchor": "two-commands-and-java-runs"
+    },
+    {
+      "question": "executer le fichier compilé java dans un container eclipse-temurin:21",
+      "anchor": "two-commands-and-java-runs"
+    },
+    {
+      "question": "Comment docker partage le dossier courant et gere les permissions avec -u 1000:1000 ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "compiler Main.java dans le container et verifier le fichier .class",
+      "anchor": "the-source"
+    },
+    {
+      "question": "Appeler une api rest depuis java et recuperer le JSON dans docker",
+      "anchor": "a-slightly-more-difficult-example-calling-a-rest-api"
+    },
+    {
+      "question": "signification des flags -it --rm -v -w -u 1000:1000 dans docker run",
+      "anchor": "under-the-hood-the-docker-run-flags-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "Pourquoi docker run --rm supprime le container apres execution ?",
+      "anchor": "under-the-hood-the-docker-run-flags-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "configurer zero dockerfile pour compiler et executer java avec eclipse-temurin:21",
+      "anchor": "conclusion"
+    }
+  ]
+}

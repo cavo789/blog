@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:05:26.931Z",
+  "durationMs": 152477,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3b6191804b8a48a74a29fcdd529ddaa0633667f3",
+  "questions": [
+    {
+      "question": "[0] `explorer.exe .` wsl explorateur windows",
+      "anchor": ""
+    },
+    {
+      "question": "[0] comment ouvrir le dossier courant de WSL dans l'explorateur ?",
+      "anchor": ""
+    },
+    {
+      "question": "[0] chemin UNC wsl windows 11 vs windows 10",
+      "anchor": ""
+    },
+    {
+      "question": "[0] lancer un programme windows depuis la console wsl",
+      "anchor": ""
+    },
+    {
+      "question": "[0] préfixe réseau wsl.localhost et wsl$ différence",
+      "anchor": ""
+    },
+    {
+      "question": "[1] corriger wsl.localhost is not accessible registry",
+      "anchor": "wsl-localhost-is-not-accessible"
+    },
+    {
+      "question": "[1] regedit AllowUnsafeRemotes wsl localhost",
+      "anchor": "wsl-localhost-is-not-accessible"
+    },
+    {
+      "question": "[1] comment ajouter wsl.localhost à AllowUnsafeRemotes ?",
+      "anchor": "wsl-localhost-is-not-accessible"
+    },
+    {
+      "question": "[1] erreur wsl.localhost inaccessible clé de registre",
+      "anchor": "wsl-localhost-is-not-accessible"
+    },
+    {
+      "question": "[1] redémarrer pc après modification registre wsl localhost",
+      "anchor": "wsl-localhost-is-not-accessible"
+    }
+  ]
+}

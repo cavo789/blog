@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:36:44.632Z",
+  "durationMs": 194020,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "6291379028453e5d58d0d79d194739c1536a195d",
+  "questions": [
+    {
+      "question": "comment assembler un hello world en x86 avec docker sans installation locale",
+      "anchor": ""
+    },
+    {
+      "question": "image docker pour exécuter du code assembleur vintage sur linux et windows",
+      "anchor": ""
+    },
+    {
+      "question": "esolang/x86asm-nasm docker",
+      "anchor": ""
+    },
+    {
+      "question": "alternative à l'installation locale pour jouer avec l'assembleur x86",
+      "anchor": ""
+    },
+    {
+      "question": "faire tourner un fichier asm dans un environnement docker moderne",
+      "anchor": ""
+    },
+    {
+      "question": "commande docker run pour exécuter hello.asm dans une console dos",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "monter le répertoire courant dans un conteneur x86asm-nasm sous windows",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "docker volume %CD%:/code pour assembler sous dos",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "remplacer %CD% par $(pwd) dans la commande docker run pour linux",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "exécuter un fichier asm avec x86asm-nasm et docker sous dos",
+      "anchor": "lets-play-in-ms-dos"
+    }
+  ]
+}

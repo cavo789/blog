@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:19:08.663Z",
+  "durationMs": 263617,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "347efe2de1fd395b707d2653567bd4ac49ec839d",
+  "questions": [
+    {
+      "question": "comment exporter la liste des fichiers d'un dossier Windows en CSV avec un script",
+      "anchor": ""
+    },
+    {
+      "question": "VBScript extraire taille dates modification accès création et propriétaire fichiers CSV",
+      "anchor": ""
+    },
+    {
+      "question": "exécuter un script VBScript depuis DOS avec cscript pour générer le listing",
+      "anchor": ""
+    },
+    {
+      "question": "enregistrer le code source dans un fichier .vbs et le lancer",
+      "anchor": ""
+    },
+    {
+      "question": "modifier le nom du fichier CSV de sortie dans le script VBScript",
+      "anchor": ""
+    },
+    {
+      "question": "utiliser le CSV généré par VBScript dans Excel ou Pandas pour analyser les fichiers",
+      "anchor": ""
+    },
+    {
+      "question": "script windows pour récupérer chemin nom type et taille de tous les fichiers en CSV",
+      "anchor": ""
+    },
+    {
+      "question": "commande exacte pour lancer un VBScript de listing de répertoire",
+      "anchor": ""
+    },
+    {
+      "question": "VBScript parcourir sous dossiers et exporter les métadonnées des fichiers",
+      "anchor": ""
+    },
+    {
+      "question": "comment remplacer un script DOS par un VBScript pour lister les fichiers en CSV",
+      "anchor": ""
+    }
+  ]
+}

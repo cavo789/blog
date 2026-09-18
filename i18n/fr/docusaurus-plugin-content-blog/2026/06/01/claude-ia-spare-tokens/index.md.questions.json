@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:02:20.361Z",
+  "durationMs": 184008,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c80e5c11f4176c92450ce7ee39f5c429e8905115",
+  "questions": [
+    {
+      "question": "comment réduire la consommation de tokens dans Claude Code",
+      "anchor": ""
+    },
+    {
+      "question": "limiter le contexte envoyé à Claude Code",
+      "anchor": "reducing-context"
+    },
+    {
+      "question": "quel modèle Claude Code consomme le moins de tokens",
+      "anchor": "model-choice"
+    },
+    {
+      "question": "optimiser le fichier CLAUDE.md pour économiser des tokens",
+      "anchor": "claudemd-file"
+    },
+    {
+      "question": "configurer les règles de récupération des données",
+      "anchor": "data-fetching-rules"
+    },
+    {
+      "question": "activer le mode de sortie agressif dans Claude Code",
+      "anchor": "output-mode"
+    },
+    {
+      "question": "ne recevoir que les diffs lors de la génération de code",
+      "anchor": "code-generation"
+    },
+    {
+      "question": "travailler aux heures creuses pour économiser son quota Claude Code",
+      "anchor": "off-peak-and-peak-hours"
+    },
+    {
+      "question": "astuce bonus pour économiser des tokens sans installer de dépendances",
+      "anchor": "extra"
+    },
+    {
+      "question": "alternative à caveman pour Claude Code",
+      "anchor": "if-you-dont-want-to-install-caveman"
+    }
+  ]
+}

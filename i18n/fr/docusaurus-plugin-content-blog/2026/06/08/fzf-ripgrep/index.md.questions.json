@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:06:54.020Z",
+  "durationMs": 240300,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f5fd9814c04ee09d329a659f997c470821814899",
+  "questions": [
+    {
+      "question": "comment configurer une recherche de code interactive dans le terminal avec fzf et ripgrep",
+      "anchor": ""
+    },
+    {
+      "question": "fzf affiche un panneau de prévisualisation qui se met à jour quand je navigue dans les résultats",
+      "anchor": "seeing-the-preview-panel"
+    },
+    {
+      "question": "pourquoi utiliser ripgrep plutôt que grep pour les gros projets",
+      "anchor": "why-ripgrep-instead-of-grep"
+    },
+    {
+      "question": "installer ripgrep sur linux ou wsl2",
+      "anchor": "ripgrep"
+    },
+    {
+      "question": "installer bat pour la coloration syntaxique dans le terminal",
+      "anchor": "bat"
+    },
+    {
+      "question": "tester rgf avec docker sans installer les dépendances localement",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "brancher la sortie de ripgrep sur fzf pour le filtrage interactif",
+      "anchor": "step-1--connect-ripgrep-to-fzf"
+    },
+    {
+      "question": "configurer le preview panel bat dans fzf pour voir le contexte du code",
+      "anchor": "step-2--add-a-bat-preview-panel"
+    },
+    {
+      "question": "créer la fonction zsh rgf qui combine rg fzf et bat",
+      "anchor": "step-3--the-rgf-function"
+    },
+    {
+      "question": "chercher tous les TODO et FIXME dans un projet avec rgf",
+      "anchor": "find-all-todos-in-the-project"
+    },
+    {
+      "question": "mapper rgf à un raccourci clavier dans .zshrc",
+      "anchor": "bind-rgf-to-a-keyboard-shortcut"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T19:59:07.946Z",
+  "durationMs": 128636,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "9651c94b44be0b702acf1b3e2ee4c199d4e6f4eb",
+  "questions": [
+    {
+      "question": "comment déplacer sa distro WSL2 du disque C: vers D:",
+      "anchor": ""
+    },
+    {
+      "question": "libérer de l'espace sur C: en déplaçant WSL",
+      "anchor": ""
+    },
+    {
+      "question": "commandes wsl --export et wsl --import pour changer le chemin d'installation",
+      "anchor": ""
+    },
+    {
+      "question": "déplacer la partition Docker vers un autre disque",
+      "anchor": ""
+    },
+    {
+      "question": "étapes pour exporter et réimporter une distribution Linux WSL",
+      "anchor": ""
+    },
+    {
+      "question": "wsl --export suivi de wsl --import sur un second lecteur",
+      "anchor": ""
+    },
+    {
+      "question": "faut-il redémarrer après avoir déplacé WSL vers un autre emplacement ?",
+      "anchor": ""
+    },
+    {
+      "question": "déplacer WSL sans perdre ses dossiers et configurations",
+      "anchor": ""
+    },
+    {
+      "question": "commande PowerShell pour arrêter WSL avant le déplacement",
+      "anchor": ""
+    },
+    {
+      "question": "comment changer l'emplacement par défaut de WSL sur Windows",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:40:34.421Z",
+  "durationMs": 137288,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d65e9ad0e17919c612caff1e16c95923e95bc780",
+  "questions": [
+    {
+      "question": "[0] `docker inspect` configuration json complète conteneur",
+      "anchor": ""
+    },
+    {
+      "question": "[0] comment afficher l'état et les détails techniques d'un objet Docker ?",
+      "anchor": ""
+    },
+    {
+      "question": "[1] extraire le nom du réseau et l'IP d'un container avec jq",
+      "anchor": "get-the-network-name-in-one-line"
+    },
+    {
+      "question": "[1] comment savoir à quel réseau est rattaché un container docker ?",
+      "anchor": "get-the-network-name-in-one-line"
+    },
+    {
+      "question": "[1] commande jq pour filtrer NetworkSettings.Networks dans docker inspect",
+      "anchor": "get-the-network-name-in-one-line"
+    },
+    {
+      "question": "[2] naviguer dans la sortie json brute de docker inspect",
+      "anchor": "the-full-inspect-output"
+    },
+    {
+      "question": "[2] comment lire les variables d'environnement et les mounts dans le résultat inspect",
+      "anchor": "the-full-inspect-output"
+    },
+    {
+      "question": "[2] retrouver le nom exact d'un container après sa création",
+      "anchor": "the-full-inspect-output"
+    },
+    {
+      "question": "[3] attacher une interface phpmyadmin ou adminer à un container existant",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "[3] diagnostiquer pourquoi deux containers docker n'arrivent pas à communiquer",
+      "anchor": "conclusion"
+    }
+  ]
+}

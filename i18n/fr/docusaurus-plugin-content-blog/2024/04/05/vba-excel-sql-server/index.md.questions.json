@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:25:39.794Z",
+  "durationMs": 178358,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "66ad2a5cfd55d4e655c7952ed3bbf89aa535fce7",
+  "questions": [
+    {
+      "question": "0: vba MS Excel SQL Server requete injection mise en forme",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment exécuter une requête SQL Server directement depuis une macro VBA dans MS Excel ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: QueryTable ou Range pour MS Excel SQL Server sans identifiants",
+      "anchor": ""
+    },
+    {
+      "question": "0: quelle méthode VBA choisir pour rafraîchir les données MS Excel sans exposer les identifiants SQL Server ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: github VBA MS Excel SQL Server ThisWorkbook .bas",
+      "anchor": ""
+    },
+    {
+      "question": "0: où trouver le code source pour connecter MS Excel à une base SQL Server et conserver les filtres existants ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: rafraichir tableau MS Excel SQL Server clic droit",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment injecter le résultat d'une requête SQL dans une plage nommée MS Excel sans perdre la mise en page ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: partager un fichier MS Excel avec requête SQL Server sans conserver les identifiants VBA",
+      "anchor": ""
+    },
+    {
+      "question": "0: quel est le fichier .bas nécessaire pour automatiser l'exécution de requêtes SQL Server dans MS Excel ?",
+      "anchor": ""
+    }
+  ]
+}

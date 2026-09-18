@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:40:11.691Z",
+  "durationMs": 173835,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "1612f001e833bdc179387382f63dc834c97631f4",
+  "questions": [
+    {
+      "question": "Comment compiler du Turbo Pascal 7.0 avec Docker sans installation locale ?",
+      "anchor": ""
+    },
+    {
+      "question": "Image Docker fpc pour exécuter du code Pascal vieux de 30 ans",
+      "anchor": ""
+    },
+    {
+      "question": "Récupérer du code TP7 dans l'archive SWAG et le faire tourner en 2023",
+      "anchor": ""
+    },
+    {
+      "question": "Commande docker run complète avec les flags -it --rm -v -w pour Free Pascal",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "Générer un Hello.exe à partir d'un source TP7 via l'image fpc",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "Compiler un programme MS-DOS en 2023 avec fpc et docker",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "Flags docker run pour partager le dossier courant et définir le répertoire de travail dans le container",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "Fonction Pascal pour convertir un nombre en binaire avec l'opérateur shl",
+      "anchor": "convert-a-number-to-a-byte"
+    },
+    {
+      "question": "Compiler Byte2Bin.exe et obtenir la représentation binaire d'un octet",
+      "anchor": "convert-a-number-to-a-byte"
+    },
+    {
+      "question": "Exécuter un ancien devoir scolaire TP7 de 1992 dans un conteneur Docker",
+      "anchor": "convert-a-number-to-a-byte"
+    }
+  ]
+}

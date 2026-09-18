@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:57:12.789Z",
+  "durationMs": 130798,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2fc2529dda9c0804d4294902cf3ef5416770311c",
+  "questions": [
+    {
+      "question": "devcontainer vscode ssh réseau privé serveur linux",
+      "anchor": ""
+    },
+    {
+      "question": "comment fonctionne l'architecture du devcontainer distant avec ProxyJump",
+      "anchor": "what-you-get-at-the-end"
+    },
+    {
+      "question": "tester la connectivité ssh -J vers la vm windows depuis le portable",
+      "anchor": "which-approach-works-for-you"
+    },
+    {
+      "question": "pourquoi l'enchaînement ssh proxyjump et devcontainer est fiable",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "configurer ProxyJump dans le fichier ssh config",
+      "anchor": "configure-ssh"
+    },
+    {
+      "question": "se connecter au serveur linux directement depuis son portable avec ProxyJump",
+      "anchor": "recommended-approach--proxyjump-from-your-laptop"
+    },
+    {
+      "question": "installer OpenSSH.Server sur une vm windows pour vscode remote",
+      "anchor": "fallback-approach--vscode-on-the-windows-vm"
+    },
+    {
+      "question": "établir la connexion vscode remote ssh vers le serveur linux",
+      "anchor": "connect-with-vscode"
+    },
+    {
+      "question": "ouvrir le projet dans un devcontainer après la connexion ssh",
+      "anchor": "open-the-devcontainer"
+    },
+    {
+      "question": "utiliser un one-liner ssh -J pour tester le saut de proxy",
+      "anchor": "bonus---ssh--j-one-liners"
+    }
+  ]
+}

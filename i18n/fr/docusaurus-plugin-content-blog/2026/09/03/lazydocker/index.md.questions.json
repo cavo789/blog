@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:54:28.630Z",
+  "durationMs": 172785,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "5e5dbd6f175bd18b69d92b6c46976f41bc895b95",
+  "questions": [
+    {
+      "question": "lazydocker dashboard terminal containerisé wrapper compose",
+      "anchor": ""
+    },
+    {
+      "question": "comment suivre les logs webpack et les métriques cpu mémoire Docker en temps réel",
+      "anchor": "the-dashboard-running"
+    },
+    {
+      "question": "navigation clavier vim et groupement des services compose dans l interface lazydocker",
+      "anchor": "what-lazydocker-actually-shows"
+    },
+    {
+      "question": "dockerfile lazydocker mount docker.sock et cli Docker",
+      "anchor": "containerizing-it"
+    },
+    {
+      "question": "script wrapper global pour lancer lazydocker avec le bon compose.yaml",
+      "anchor": "the-global-wrapper"
+    },
+    {
+      "question": "personnaliser les raccourcis et la config par défaut de lazydocker",
+      "anchor": "customize"
+    },
+    {
+      "question": "lazydocker ou fonctions ZSH dex pour administrer les containers",
+      "anchor": "my-dex-function-vs-lazydocker"
+    },
+    {
+      "question": "Docker Desktop mérite t il encore sa place sur linux",
+      "anchor": "does-docker-desktop-still-earn-its-place"
+    },
+    {
+      "question": "points clés du container et du wrapper lazydocker",
+      "anchor": "key-takeaways"
+    },
+    {
+      "question": "transition vers lazydocker pour un workflow Docker plus léger",
+      "anchor": "conclusion"
+    }
+  ]
+}

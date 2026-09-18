@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:33:00.805Z",
+  "durationMs": 184790,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "60b645e7ebe0fe5d4952cc493279611de3f64f01",
+  "questions": [
+    {
+      "question": "comment fusionner plusieurs fichiers csv annuels en python avec pandas",
+      "anchor": ""
+    },
+    {
+      "question": "Comment transformer des fichiers de salaires 2020 à 2024 en un seul dataframe pandas ?",
+      "anchor": "the-result-five-years-of-salaries-one-file"
+    },
+    {
+      "question": "gérer les enregistrements manquants et les nouveaux arrivants lors d'une fusion pandas",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "installer pandas et openpyxl avec pip install pandas openpyxl",
+      "anchor": "installation"
+    },
+    {
+      "question": "Comment boucler sur des fichiers csv et les merger itérativement avec pandas ?",
+      "anchor": "more-demos-the-merge-script-line-by-line"
+    },
+    {
+      "question": "comment pandas traite la jointure en mémoire lors de la fusion de fichiers",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "Pourquoi choisir outer join plutôt que inner ou left pour consolider des données temporelles ?",
+      "anchor": "why-outer-and-not-inner-or-left"
+    },
+    {
+      "question": "renommer les colonnes avant merge pandas pour éviter les collisions de noms",
+      "anchor": "why-the-columns-dont-collide"
+    },
+    {
+      "question": "ajouter un nouveau fichier csv annuel et relancer la consolidation pandas",
+      "anchor": "conclusion"
+    }
+  ]
+}

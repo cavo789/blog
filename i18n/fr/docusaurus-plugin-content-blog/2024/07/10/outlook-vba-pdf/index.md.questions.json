@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:30:20.511Z",
+  "durationMs": 164864,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "e88ea36038ecaa8bae2817fecce79497f78f7d88",
+  "questions": [
+    {
+      "question": "Macro VBA Outlook pour exporter plusieurs emails sélectionnés en PDF",
+      "anchor": ""
+    },
+    {
+      "question": "Comment sauvegarder automatiquement des messages Outlook en fichier PDF sur le disque ?",
+      "anchor": ""
+    },
+    {
+      "question": "Fonctionnement de la macro : confirmation, choix du dossier et suppression après export",
+      "anchor": "result"
+    },
+    {
+      "question": "La macro génère-t-elle un PDF distinct pour chaque email sélectionné ?",
+      "anchor": "result"
+    },
+    {
+      "question": "Outlook VBA PDF : faut-il la version bureau ou Office en ligne suffit ?",
+      "anchor": "prerequisites"
+    },
+    {
+      "question": "Word doit-il être installé pour que la macro VBA Outlook fonctionne correctement ?",
+      "anchor": "prerequisites"
+    },
+    {
+      "question": "Importer du code VBA GitHub dans l'éditeur Outlook avec ALT + F11",
+      "anchor": "installation-steps"
+    },
+    {
+      "question": "Personnaliser le Ribbon Outlook pour ajouter un bouton de macro VBA",
+      "anchor": "installation-steps"
+    },
+    {
+      "question": "Choix du dossier de destination et format de nommage dans la macro Outlook",
+      "anchor": "the-folder-and-naming-dialogs"
+    },
+    {
+      "question": "La macro propose-t-elle de conserver le sujet du mail comme nom de fichier PDF ?",
+      "anchor": "the-folder-and-naming-dialogs"
+    }
+  ]
+}

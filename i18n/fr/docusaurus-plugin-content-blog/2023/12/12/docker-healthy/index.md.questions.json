@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:55:44.416Z",
+  "durationMs": 157099,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8e7948d67a337fae08f8416f2b63b4cac5a25ebb",
+  "questions": [
+    {
+      "question": "Comment vérifier l'état de santé de tous mes containers Docker en une seule commande ?",
+      "anchor": ""
+    },
+    {
+      "question": "script bash afficher statut santé containers docker",
+      "anchor": ""
+    },
+    {
+      "question": "docker ps colonne Health comment l'interpréter ?",
+      "anchor": "the-one-glance-overview"
+    },
+    {
+      "question": "Que signifient les états healthy, unhealthy et sleeping dans docker ps ?",
+      "anchor": "the-one-glance-overview"
+    },
+    {
+      "question": "Comment afficher uniquement la colonne de santé des containers avec docker ?",
+      "anchor": "the-one-glance-overview"
+    },
+    {
+      "question": "Comment créer un script bash qui utilise docker inspect pour lire le champ Health ?",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "rendre le script exécutable avec chmod +x et le lancer",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "script bash parcourt containers et affiche champ Health",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "outil monitoring notification quand service tombe docker",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "gagner du temps sur vérification santé containers bash",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "troubleshooting container docker injoignable depuis un autre",
+      "anchor": "conclusion"
+    }
+  ]
+}

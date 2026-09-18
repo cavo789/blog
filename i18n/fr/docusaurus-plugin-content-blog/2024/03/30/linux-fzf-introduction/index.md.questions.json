@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:16:41.220Z",
+  "durationMs": 232648,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f64325a21dcd1547e4db6a0f2f0cc9b73df0d86c",
+  "questions": [
+    {
+      "question": "fzf linux recherche floue historique bash",
+      "anchor": ""
+    },
+    {
+      "question": "lancer un environnement de test fzf avec docker",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "installer fzf sur linux via le script officiel",
+      "anchor": "installation"
+    },
+    {
+      "question": "retrouver une commande bash oubliée avec ctrl+r et la correspondance floue",
+      "anchor": "playing-with-the-history"
+    },
+    {
+      "question": "sélectionner plusieurs fichiers dans le terminal avec fzf et tab",
+      "anchor": "getting-a-list-of-files"
+    },
+    {
+      "question": "changer de dossier rapidement avec alt+c dans fzf",
+      "anchor": "keybindings"
+    },
+    {
+      "question": "pourquoi la recherche floue de fzf est plus rapide que ctrl+r natif",
+      "anchor": ""
+    },
+    {
+      "question": "docker build fzf-demo terrain de jeu local",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "configurer bashrc après l'installation de fzf",
+      "anchor": "installation"
+    },
+    {
+      "question": "sélectionner plusieurs fichiers avec fzf et valider avec enter",
+      "anchor": "getting-a-list-of-files"
+    }
+  ]
+}

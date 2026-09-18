@@ -61,7 +61,7 @@ function faq() {
 
 # @cat Ollama
 # @cmd questions
-# @desc "Ask my blog" questions — type 'questions' alone to see the actions (review, list, status)
+# @desc "Ask my blog" questions — type 'questions' alone to see the actions (review, list, status, progress)
 function questions() {
     local action="${1:-}"
 
@@ -85,6 +85,31 @@ function questions() {
             shift
             node scripts/questions-review.mjs --status "$@"
             ;;
+        progress)
+            shift
+            # Live view of a bulk run started elsewhere — another terminal, or nohup overnight.
+            # Reads the filesystem only (the --dry-run underneath never calls Ollama), so it is
+            # safe to open, close and reopen while the generation keeps going.
+            local interval=30
+            if [[ "${1:-}" == "--interval" ]]; then
+                if [[ -z "${2:-}" ]]; then
+                    printf "Usage: questions progress [--interval <sec>] [locale]\n" >&2
+                    return 1
+                fi
+                interval="$2"
+                shift 2
+            fi
+            # watch runs its command from the caller's cwd, which is not necessarily the
+            # project — resolve the script to an absolute path before handing it over.
+            local script=".claude/scripts/questions_progress.sh"
+            [[ -x "${script}" ]] || script="/opt/docusaurus/.claude/scripts/questions_progress.sh"
+            if ! command -v watch >/dev/null 2>&1; then
+                printf "watch is not installed - printing a single snapshot instead.\n" >&2
+                "${script}" "${1:-fr}"
+                return
+            fi
+            watch -n "${interval}" "${script} ${1:-fr}"
+            ;;
         "" | help | --help | -h)
             # A literal format string we own, reused for every row (shellcheck's SC2059
             # warns about variables here — it is safe precisely because no caller input
@@ -99,6 +124,7 @@ function questions() {
             printf "${fmt}" "questions review <post>" "review one precise article"
             printf "${fmt}" "questions list <post>" "just print one article's questions"
             printf "${fmt}" "questions status" "how many reviewed, left, excluded, stale"
+            printf "${fmt}" "questions progress" "live screen: what a running --all batch has left"
             printf "${fmt}" "questions review --locale fr" "review the French corpus instead"
             printf "  \033[2m<post> = a path, a folder or just a slug — f.i. 'new-year-2024'\033[0m\n"
             printf "  \033[2m--locale works on review, status and list. Each corpus is reviewed on its own:\033[0m\n"

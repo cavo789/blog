@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:21:28.566Z",
+  "durationMs": 132713,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "bba839cf7be9a8492eb8d4b966d7ecc1d2e2ff90",
+  "questions": [
+    {
+      "question": "comment afficher une interface graphique linux depuis un container docker sur la machine hôte",
+      "anchor": ""
+    },
+    {
+      "question": "xeyes qui suit le curseur dans un container",
+      "anchor": "a-first-look"
+    },
+    {
+      "question": "quel rôle jouent $DISPLAY et le montage de /tmp/.X11-unix pour le partage d'affichage",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "commande xhost + et docker build pour lancer xeyes",
+      "anchor": "creating-our-own-xeyes-docker-image"
+    },
+    {
+      "question": "dockerfile firefox et commande pour démarrer le navigateur avec gui",
+      "anchor": "creating-our-own-firefox-docker-image"
+    },
+    {
+      "question": "comment créer et exécuter chrome dans un container docker avec affichage natif",
+      "anchor": "creating-our-own-chrome-docker-image"
+    },
+    {
+      "question": "image docker gimp et lancement de l'interface dans une fenêtre hôte",
+      "anchor": "creating-our-own-gimp-docker-image"
+    },
+    {
+      "question": "exécuter plusieurs gui docker simultanément sur un système wsl2",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:19:18.827Z",
+  "durationMs": 124259,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "78434e5966a9f9d02925fb0f155ee07bffd41b59",
+  "questions": [
+    {
+      "question": "PuTTY No supported authentication methods available registre",
+      "anchor": ""
+    },
+    {
+      "question": "comment réinitialiser les paramètres par défaut de PuTTY sous Windows",
+      "anchor": ""
+    },
+    {
+      "question": "PuTTY se connecte au mauvais serveur au démarrage comment corriger",
+      "anchor": ""
+    },
+    {
+      "question": "supprimer clé de registre PuTTY sessions par défaut",
+      "anchor": ""
+    },
+    {
+      "question": "configurer KeePass pour lancer PuTTY automatiquement avec identifiants",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter profil SSH Windows Terminal à la place de PuTTY",
+      "anchor": ""
+    },
+    {
+      "question": "récupérer mot de passe WinSCP enregistré",
+      "anchor": ""
+    },
+    {
+      "question": "passer à l'authentification par clé SSH pour éviter les mots de passe",
+      "anchor": ""
+    },
+    {
+      "question": "PuTTY erreur fatale après modification taille police par défaut",
+      "anchor": ""
+    },
+    {
+      "question": "comment vider la session par défaut de PuTTY dans le registre",
+      "anchor": ""
+    }
+  ]
+}

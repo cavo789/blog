@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:37:13.255Z",
+  "durationMs": 99247,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "55d11c8ff76b039e4ac06f44a6d011a1340c63ec",
+  "questions": [
+    {
+      "question": "Comment découper un long document Quarto en plusieurs fichiers markdown ?",
+      "anchor": ""
+    },
+    {
+      "question": "Organiser un projet Quarto avec des fichiers externes",
+      "anchor": ""
+    },
+    {
+      "question": "quarto diviser document long fichiers externes",
+      "anchor": ""
+    },
+    {
+      "question": "syntaxe include quarto chemin relatif",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "Comment écrire un include dans un fichier .qmd ?",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "quarto short code includes path syntax",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "Inclure un fichier externe dans un document Quarto",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "rendu final des fichiers inclus quarto",
+      "anchor": "result"
+    },
+    {
+      "question": "Comment Quarto fusionne-t-il les fichiers lors du build ?",
+      "anchor": "result"
+    },
+    {
+      "question": "Est-ce que l'extension du fichier inclus change le traitement dans quarto ?",
+      "anchor": "result"
+    }
+  ]
+}

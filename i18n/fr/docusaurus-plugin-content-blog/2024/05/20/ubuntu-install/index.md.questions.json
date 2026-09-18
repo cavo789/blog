@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:08:28.976Z",
+  "durationMs": 123432,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f58edfee4db05efc9f29837b3ed865d663d601e9",
+  "questions": [
+    {
+      "question": "comment installer ubuntu 24.04 desktop proprement depuis zéro",
+      "anchor": ""
+    },
+    {
+      "question": "erreur secure boot key not valid ubuntu pilotes nvidia",
+      "anchor": "result"
+    },
+    {
+      "question": "comment désactiver bitlocker windows avant de passer à ubuntu",
+      "anchor": "turn-off-bitlocker-first"
+    },
+    {
+      "question": "graver iso ubuntu 24.04 sur clé usb avec balenaEtcher",
+      "anchor": "download-ubuntu-and-create-your-bootable-usb-stick"
+    },
+    {
+      "question": "brancher câble ethernet avant installation ubuntu pour télécharger les pilotes",
+      "anchor": "think-to-plug-an-ethernet-cable-before-installing-ubuntu"
+    },
+    {
+      "question": "booter sur clé usb ubuntu via bios f12 ou del",
+      "anchor": "start-the-installation-wizard"
+    },
+    {
+      "question": "activer ubuntu pro après le premier redémarrage de l'installation",
+      "anchor": "reboot-and-enable-ubuntu-pro"
+    },
+    {
+      "question": "installer firefox thunderbird libreoffice vscode docker et gimp en snap",
+      "anchor": "time-to-add-software"
+    }
+  ]
+}

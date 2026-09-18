@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:15:19.454Z",
+  "durationMs": 181436,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d145bc7adbf609dd7fe34d3b82fa7a8b8f73f5f0",
+  "questions": [
+    {
+      "question": "0: comment charger un fichier .env dans un script bash avec source",
+      "anchor": ""
+    },
+    {
+      "question": "0: bash .env gérer les valeurs avec des espaces",
+      "anchor": ""
+    },
+    {
+      "question": "0: externaliser la config de laravel via un .env bash",
+      "anchor": ""
+    },
+    {
+      "question": "0: variables d'environnement bash script sous-shell disparition après exécution",
+      "anchor": ""
+    },
+    {
+      "question": "0: importer des constantes depuis un fichier externe dans un script shell",
+      "anchor": ""
+    },
+    {
+      "question": "0: éviter les patterns imprévisibles pour charger un .env en bash",
+      "anchor": ""
+    },
+    {
+      "question": "0: bash source .env comment les variables sont accessibles dans le script",
+      "anchor": ""
+    },
+    {
+      "question": "0: la méthode la plus propre pour charger un .env dans un script bash",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment réutiliser des variables d'environnement entre un script bash et laravel",
+      "anchor": ""
+    },
+    {
+      "question": "0: bash lire et injecter des variables depuis un fichier de configuration externe",
+      "anchor": ""
+    }
+  ]
+}

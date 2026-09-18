@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:05:09.851Z",
+  "durationMs": 102682,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2136b79f739936ce6fa520805c8fde85b00489f8",
+  "questions": [
+    {
+      "question": "vérifier syntaxe JSON en ligne sans installation",
+      "anchor": ""
+    },
+    {
+      "question": "coller chaîne JSON pour voir l'arborescence repliable",
+      "anchor": ""
+    },
+    {
+      "question": "quel outil web pour inspecter une réponse API JSON ?",
+      "anchor": ""
+    },
+    {
+      "question": "trouver les erreurs de format dans un JSON brut",
+      "anchor": ""
+    },
+    {
+      "question": "jsonlint.avonture.be code source github",
+      "anchor": ""
+    },
+    {
+      "question": "extension Chrome qui formate automatiquement les pages JSON",
+      "anchor": "chrome-addon"
+    },
+    {
+      "question": "comment installer JSON Formatter sur Chrome ?",
+      "anchor": "chrome-addon"
+    },
+    {
+      "question": "afficher une réponse JSON brute sous forme d'arbre dans Chrome",
+      "anchor": "chrome-addon"
+    },
+    {
+      "question": "complément navigateur pour rendre le JSON lisible instantanément",
+      "anchor": "chrome-addon"
+    },
+    {
+      "question": "remplacer le texte brut JSON par une vue arborescente Chrome",
+      "anchor": "chrome-addon"
+    }
+  ]
+}

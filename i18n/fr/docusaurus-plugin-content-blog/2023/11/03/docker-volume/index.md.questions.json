@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T19:50:16.126Z",
+  "durationMs": 179052,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "98cee616ed85058ffa5a9c3ed4537e1cc089dafb",
+  "questions": [
+    {
+      "question": "docker persister les données entre l'hôte et le container",
+      "anchor": ""
+    },
+    {
+      "question": "comment synchroniser un dossier local avec un container php en cours d'exécution",
+      "anchor": ""
+    },
+    {
+      "question": "docker run -v $(pwd):/var/www/html sert à quoi exactement",
+      "anchor": "what--v-does-for-you"
+    },
+    {
+      "question": "synchroniser dossier local et container apache en direct",
+      "anchor": "what--v-does-for-you"
+    },
+    {
+      "question": "comment éviter que les fichiers créés par docker appartiennent à root sur l'hôte",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "différence entre stockage en mémoire et bind mount dans docker",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "remplacer $(pwd) par %cd% sous windows pour le volume docker",
+      "anchor": "doing-it-yourself"
+    },
+    {
+      "question": "lancer vscode depuis le terminal linux pour éditer un fichier monté dans docker",
+      "anchor": "doing-it-yourself"
+    },
+    {
+      "question": "pourquoi apache renvoie forbidden quand le dossier monté est vide",
+      "anchor": "the-same-container-before-the-file-existed"
+    },
+    {
+      "question": "exécuter un script php non fiable dans docker sans toucher au disque hôte",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "récapitulatif commande docker volume pour développement local php apache",
+      "anchor": "conclusion"
+    }
+  ]
+}

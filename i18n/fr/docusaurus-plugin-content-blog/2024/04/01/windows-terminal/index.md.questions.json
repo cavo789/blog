@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:22:08.084Z",
+  "durationMs": 135904,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "688fb27032db166549c8f1ee7dace35b5f55db23",
+  "questions": [
+    {
+      "question": "windows terminal split panes et onglets multiples",
+      "anchor": ""
+    },
+    {
+      "question": "comment ajouter une image de fond à un profil dans windows terminal",
+      "anchor": "customize-your-profile"
+    },
+    {
+      "question": "installer windows terminal sur windows 10",
+      "anchor": "installation"
+    },
+    {
+      "question": "créer un nouveau profil docker dans settings.json",
+      "anchor": "add-a-new-profile"
+    },
+    {
+      "question": "modifier defaultProfile pour changer le profil par défaut",
+      "anchor": "set-the-default-profile"
+    },
+    {
+      "question": "définir startingDirectory pour ubuntu dans windows terminal",
+      "anchor": "set-the-default-folder-for-ubuntu"
+    },
+    {
+      "question": "comment ouvrir plusieurs onglets automatiquement au lancement",
+      "anchor": "open-multiple-tabs-during-the-startup-process"
+    },
+    {
+      "question": "ajouter un profil ssh dans windows terminal",
+      "anchor": "going-further"
+    }
+  ]
+}

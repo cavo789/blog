@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:44:04.944Z",
+  "durationMs": 195796,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c204664f130c32bdff5af6e0c7aebc43e63474f3",
+  "questions": [
+    {
+      "question": "eza est-il le successeur de exa pour remplacer ls ?",
+      "anchor": ""
+    },
+    {
+      "question": "comment configurer un alias pour utiliser eza à la place de ls",
+      "anchor": ""
+    },
+    {
+      "question": "eza : alternative moderne à la commande ls sous Linux",
+      "anchor": ""
+    },
+    {
+      "question": "quel rendu donne eza avec --all --long --group-directories-first --icons",
+      "anchor": "result"
+    },
+    {
+      "question": "comment afficher un header et des dates au format long-iso avec eza",
+      "anchor": "result"
+    },
+    {
+      "question": "alias ls vers eza pour grouper les dossiers en premier",
+      "anchor": "result"
+    },
+    {
+      "question": "tester eza dans un container Docker jetable sans installation locale",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "docker build et docker run pour simuler un listing eza",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "Dockerfile pour tester eza avec fichiers cachés et sous-dossiers",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "installer eza sur son poste de développement",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "configurer l'alias eza dans .zshrc plutôt que .bashrc",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "quelle commande exacte copier-coller pour l'alias ls vers eza",
+      "anchor": "install-eza"
+    }
+  ]
+}

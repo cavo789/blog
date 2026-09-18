@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:43:05.073Z",
+  "durationMs": 117331,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c547876673dd5adf92f2ceb5b8ae979ca7579df8",
+  "questions": [
+    {
+      "question": "Comment générer la documentation d'un projet PHP avec Docker sans rien installer ?",
+      "anchor": ""
+    },
+    {
+      "question": "phpDocumentor docker image pour créer un site de doc PHP",
+      "anchor": ""
+    },
+    {
+      "question": "docker run phpdoc/phpdoc:3 commande exacte pour analyser le code",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "Comment utiliser le flag `-v .:/data` avec l'image phpdoc/phpdoc:3 ?",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "docker run --rm phpDocumentor suppression automatique du container",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "Où placer le fichier de configuration XML phpDocumentor dans un projet PHP ?",
+      "anchor": "the-configuration-file"
+    },
+    {
+      "question": "Comment configurer phpDocumentor pour définir le dossier source et le répertoire de sortie dans le fichier XML ?",
+      "anchor": "the-configuration-file"
+    },
+    {
+      "question": "WSL2 explorer.exe . ouvrir la documentation HTML générée",
+      "anchor": "the-configuration-file"
+    },
+    {
+      "question": "La qualité de la documentation HTML dépend de quel élément du code PHP ?",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "Comment identifier les parties mal documentées d'un projet PHP existant grâce à phpDocumentor ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

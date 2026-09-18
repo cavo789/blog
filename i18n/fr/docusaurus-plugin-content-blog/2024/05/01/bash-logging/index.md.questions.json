@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:55:40.301Z",
+  "durationMs": 126797,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "83e984a800cf3bf5a79ce6d62ad20fd9126ba61f",
+  "questions": [
+    {
+      "question": "Comment ajouter un logging horodaté et réutilisable à un script Bash prévu pour le cron ?",
+      "anchor": ""
+    },
+    {
+      "question": "bash script logging bibliothèque réutilisable jobs parallèles",
+      "anchor": ""
+    },
+    {
+      "question": "Comment afficher le contenu du fichier de log généré directement dans la console ?",
+      "anchor": "the-result"
+    },
+    {
+      "question": "commenter ligne affichage console log bash",
+      "anchor": "the-result"
+    },
+    {
+      "question": "Comment obtenir la pile d'appels complète (fonction, ligne, appelant) dans un log Bash ?",
+      "anchor": "trace"
+    },
+    {
+      "question": "trace appel fonction ligne bash log débogage",
+      "anchor": "trace"
+    },
+    {
+      "question": "Quelle commande utiliser pour rendre un script Bash exécutable avant de le lancer ?",
+      "anchor": "your-script"
+    },
+    {
+      "question": "rendre script.sh exécutable bash chmod +x",
+      "anchor": "your-script"
+    },
+    {
+      "question": "Où placer le fichier `log.sh` par rapport au script principal pour que le sourcing fonctionne ?",
+      "anchor": "the-log-helper"
+    },
+    {
+      "question": "comment inclure la bibliothèque de logging dans un script Bash existant sans tout réécrire ?",
+      "anchor": "the-log-helper"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:07:59.339Z",
+  "durationMs": 136129,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3545803e12e2c61b02b9c27f0f462b66f41b3698",
+  "questions": [
+    {
+      "question": "drawdb-app générer diagramme ER visuel depuis un fichier sql",
+      "anchor": ""
+    },
+    {
+      "question": "Comment charger un fichier .sql PostgreSQL dans drawdb-app ?",
+      "anchor": "create-and-import-a-dummy-sql-file"
+    },
+    {
+      "question": "lancer drawdb-app en auto-hébergement avec Docker",
+      "anchor": "you-can-self-host-the-application-thanks-to-docker-if-you-want"
+    },
+    {
+      "question": "Quelle option choisir pour exporter un schéma en Mermaid et Markdown ?",
+      "anchor": "playing-with-exportation-feature"
+    },
+    {
+      "question": "drawdb.app génère automatiquement la documentation des tables",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "Visualiser les types de colonnes et les clés primaires d'une table",
+      "anchor": "table-structure"
+    },
+    {
+      "question": "Comment afficher les relations et les clés étrangères entre les tables ?",
+      "anchor": "relationships"
+    },
+    {
+      "question": "Intégrer drawdb-app dans un pipeline Documentation as Code",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:56:21.340Z",
+  "durationMs": 158404,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "4b14cccab0e0c822f9f48f59953fb2347df1793f",
+  "questions": [
+    {
+      "question": "scanner de virus gratuit pour Joomla maintenu par l'AFUJ",
+      "anchor": ""
+    },
+    {
+      "question": "interface web pour scanner un site Joomla sans installation locale",
+      "anchor": "result"
+    },
+    {
+      "question": "liste blanche par hash pour ignorer les fichiers natifs de Joomla",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "pourquoi le scanner ne vérifie que les fichiers inconnus ou modifiés",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "créer un fichier quickscan.php depuis le dépôt GitHub officiel",
+      "anchor": "download-the-scanner"
+    },
+    {
+      "question": "éviter les timeouts PHP en lançant le scanner localement avec Docker",
+      "anchor": "download-the-scanner"
+    },
+    {
+      "question": "exécuter quickscan.php en ajoutant le nom du script à l'URL du site",
+      "anchor": "run-the-scanner"
+    },
+    {
+      "question": "quel bouton permet de vider les dossiers cache et temp avant le scan",
+      "anchor": "run-the-scanner"
+    },
+    {
+      "question": "détection automatique de la version Joomla pour charger la bonne liste blanche",
+      "anchor": "under-the-hood"
+    },
+    {
+      "question": "pourquoi il faut supprimer quickscan.php une fois le scan terminé",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:02:31.848Z",
+  "durationMs": 143993,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "da6338d72bc968cc6a95832799f13a2029f85979",
+  "questions": [
+    {
+      "question": "`xmlstarlet` est-il l'équivalent CLI de `jq` pour le XML sous Linux ?",
+      "anchor": ""
+    },
+    {
+      "question": "`xmlstarlet sel` extraire une valeur précise d'un XML minifié",
+      "anchor": "a-wall-of-xml-in-one-word-out"
+    },
+    {
+      "question": "rendre un fichier XML sur une seule ligne plus lisible avec `xmlstarlet format`",
+      "anchor": "beautifying-the-file"
+    },
+    {
+      "question": "tester `xmlstarlet` dans un container Docker jetable sans rien installer sur la machine",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "vérifier si `xmlstarlet` est déjà présent sur le système avec `--version`",
+      "anchor": "installing-xmlstarlet"
+    },
+    {
+      "question": "configurer un fichier de test local pour exécuter les exemples `xmlstarlet`",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "comment fonctionne le préfixe `//` dans une expression XPath ?",
+      "anchor": "understanding-the-xpath-expression"
+    },
+    {
+      "question": "utiliser `xmlstarlet` en pipe dans un script bash pour automatiser le traitement XML",
+      "anchor": "conclusion"
+    }
+  ]
+}

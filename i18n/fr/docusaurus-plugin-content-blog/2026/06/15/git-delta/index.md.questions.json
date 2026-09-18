@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:10:17.614Z",
+  "durationMs": 170235,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "bf078190b8531d1e8a88e8fb9ca1f6be91f8c2ee",
+  "questions": [
+    {
+      "question": "Pourquoi utiliser delta à la place de less pour git diff ?",
+      "anchor": ""
+    },
+    {
+      "question": "git diff sortie brute trop de bruit visuel",
+      "anchor": "a-changed-line-without-delta"
+    },
+    {
+      "question": "Comment delta met en évidence les mots modifiés ?",
+      "anchor": "the-same-line-with-delta"
+    },
+    {
+      "question": "tester delta sans installation avec docker",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "installer delta via le gestionnaire de paquets ou le binaire",
+      "anchor": "install"
+    },
+    {
+      "question": "configurer git core.pager delta dans le shell",
+      "anchor": "configure-git-to-use-delta"
+    },
+    {
+      "question": "Comment activer la vue côte à côte avec delta ?",
+      "anchor": "side-by-side-mode"
+    },
+    {
+      "question": "changer le thème de colorisation de delta",
+      "anchor": "themes"
+    },
+    {
+      "question": "naviguer entre les hunks de diff avec delta",
+      "anchor": "navigation-between-hunks"
+    },
+    {
+      "question": "delta fonctionne avec git log et git show sans changer de commande",
+      "anchor": "delta-works-everywhere-git-does"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:34:41.701Z",
+  "durationMs": 129148,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8790fade61fc78ae13d010410a3fc9e9c0448747",
+  "questions": [
+    {
+      "question": "quarto convertir markdown en powerpoint",
+      "anchor": ""
+    },
+    {
+      "question": "comment transformer sa doc markdown en diaporama pptx ?",
+      "anchor": ""
+    },
+    {
+      "question": "quarto render slides.md --to pptx",
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
+    },
+    {
+      "question": "flag quarto pour exporter en pptx",
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
+    },
+    {
+      "question": "lancer quarto render pour générer un fichier pptx",
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
+    },
+    {
+      "question": "syntaxe markdown pour créer des slides quarto",
+      "anchor": "the-source-file"
+    },
+    {
+      "question": "saut de ligne pour nouvelle slide quarto markdown",
+      "anchor": "the-source-file"
+    },
+    {
+      "question": "comment structurer un fichier md pour quarto presentation",
+      "anchor": "the-source-file"
+    },
+    {
+      "question": "quarto render revealjs",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "garder documentation et diaporama synchronisés avec quarto",
+      "anchor": "conclusion"
+    }
+  ]
+}

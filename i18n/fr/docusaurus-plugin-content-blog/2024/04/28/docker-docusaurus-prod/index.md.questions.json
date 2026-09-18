@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:53:00.243Z",
+  "durationMs": 153239,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "da809f6abc2150a2e9789c8eefceb2a9fd1b6674",
+  "questions": [
+    {
+      "question": "Comment empaqueter un site Docusaurus complet dans une image Docker autonome ?",
+      "anchor": ""
+    },
+    {
+      "question": "créer un blog Docusaurus bidon avec des fichiers markdown pour tests",
+      "anchor": "create-a-dummy-blog-if-needed"
+    },
+    {
+      "question": "Dockerfile multi-stage node yarn build statique Docusaurus",
+      "anchor": "create-a-dockerfile-file"
+    },
+    {
+      "question": "configurer un .dockerignore pour optimiser le contexte de build",
+      "anchor": "create-a-dockerignore-file"
+    },
+    {
+      "question": "commande docker build pour compiler l'image locale du site",
+      "anchor": "build-our-docker-image"
+    },
+    {
+      "question": "exécuter l'image Docker Docusaurus après compilation",
+      "anchor": "and-use-it"
+    },
+    {
+      "question": "Quelle commande docker run pour exposer le site en local ?",
+      "anchor": "run-the-image-ie-create-a-container-and-run-the-site"
+    },
+    {
+      "question": "accéder au shell interactif d'un container Docusaurus en cours d'exécution",
+      "anchor": "start-an-interactive-shell-session"
+    },
+    {
+      "question": "taguer et pusher une image Docker vers Docker Hub",
+      "anchor": "push-it-on-docker"
+    },
+    {
+      "question": "docker pull image Docusaurus Docker Hub",
+      "anchor": "retrieve-it-from-docker-hub"
+    }
+  ]
+}

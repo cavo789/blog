@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:24:22.769Z",
+  "durationMs": 140846,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "657808180ef8670a1a98eea363a4b26f30624986",
+  "questions": [
+    {
+      "question": "personnalisation .gitconfig workflow git wsl",
+      "anchor": ""
+    },
+    {
+      "question": "alias git undo pour annuler le dernier commit local",
+      "anchor": "aliases"
+    },
+    {
+      "question": "git push crée automatiquement la branche distante manquante",
+      "anchor": "create-the-new-branch-on-the-remote-automatically"
+    },
+    {
+      "question": "Comment nettoyer automatiquement les branches mortes après un git fetch ?",
+      "anchor": "cleaning-dead-branches"
+    },
+    {
+      "question": "trier les branches git par date du dernier commit plutôt que par nom",
+      "anchor": "sorting-branches-on-the-last-commit-date"
+    },
+    {
+      "question": "gestion des credentials git pour l'authentification distante",
+      "anchor": "credentials"
+    },
+    {
+      "question": "partager le Credential Manager de Windows avec Linux",
+      "anchor": "sharing-windows-credentials-manager-with-linux"
+    },
+    {
+      "question": "configurer plusieurs credentials git par dossier de projet",
+      "anchor": "using-multiple-credentials-on-the-same-computer"
+    },
+    {
+      "question": "Comment forcer SSH au lieu de HTTPS globalement dans Git ?",
+      "anchor": "force-ssh-instead-of-https"
+    },
+    {
+      "question": "empêcher le remplacement automatique de LF par CRLF sous Windows",
+      "anchor": "prevent-auto-replacing-lf-with-crlf"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:50:27.299Z",
+  "durationMs": 159985,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "1fee68eb63a56f56af1ddce30ea676c0e20a7333",
+  "questions": [
+    {
+      "question": "comment vérifier si les fonctions d'un script Bash sont définies dans l'ordre alphabétique ?",
+      "anchor": ""
+    },
+    {
+      "question": "utiliser diff et sort pour comparer l'ordre des fonctions dans un fichier .sh",
+      "anchor": ""
+    },
+    {
+      "question": "que signifient les lignes qui ne correspondent pas dans le diff des fonctions ?",
+      "anchor": "result"
+    },
+    {
+      "question": "afficher un message de confirmation quand toutes les fonctions sont bien rangées",
+      "anchor": "result"
+    },
+    {
+      "question": "créer un fichier .sh de test avec des fonctions vides dans le désordre",
+      "anchor": "create-a-simple-bash-script-to-play-with-this-blog-post"
+    },
+    {
+      "question": "générer un script Bash minimal pour pratiquer la vérification du tri des fonctions",
+      "anchor": "create-a-simple-bash-script-to-play-with-this-blog-post"
+    },
+    {
+      "question": "extraire les noms de fonctions d'un script et les comparer à une liste triée avec diff",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    },
+    {
+      "question": "corriger l'ordre des fonctions dans un script shell pour éliminer les différences",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    },
+    {
+      "question": "scanner un dossier complet pour vérifier automatiquement si les fonctions sont triées dans les fichiers .sh",
+      "anchor": "process-all-scripts-from-a-specific-folder"
+    },
+    {
+      "question": "script bash pour industrialiser le contrôle de l'ordre alphabétique des fonctions sur plusieurs fichiers",
+      "anchor": "process-all-scripts-from-a-specific-folder"
+    }
+  ]
+}

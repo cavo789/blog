@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:46:01.947Z",
+  "durationMs": 136678,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "fb0819c79565e81e0a3a847d763c7ef77a17429b",
+  "questions": [
+    {
+      "question": "0: docker uptime kuma volume mount persistance données",
+      "anchor": ""
+    },
+    {
+      "question": "0: Comment installer Uptime Kuma en auto-hébergé avec une seule commande Docker ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: configurer les alertes Mattermost quand un site passe en down",
+      "anchor": ""
+    },
+    {
+      "question": "0: Comment activer la langue française dans les paramètres d'Uptime Kuma ?",
+      "anchor": ""
+    },
+    {
+      "question": "0: uptime kuma ajouter url site monitoring gratuit",
+      "anchor": ""
+    },
+    {
+      "question": "0: centraliser mes outils auto-hébergés sur un seul dashboard Heimdall",
+      "anchor": ""
+    },
+    {
+      "question": "0: obtenir les informations de santé des conteneurs Docker en cours",
+      "anchor": ""
+    },
+    {
+      "question": "0: docker uptime kuma conserver sites surveillés entre les redémarrages",
+      "anchor": ""
+    },
+    {
+      "question": "0: notification email downtime site web Uptime Kuma",
+      "anchor": ""
+    },
+    {
+      "question": "0: différence entre monitoring externe et health check Docker",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:00:09.222Z",
+  "durationMs": 186181,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "706bd1c9b41e4811df41c83c1d1993c56599030b",
+  "questions": [
+    {
+      "question": "Comment configurer un devcontainer Python pour VSCode avec Docker ?",
+      "anchor": ""
+    },
+    {
+      "question": "make up",
+      "anchor": "lets-see-it-running"
+    },
+    {
+      "question": "requirements.txt vide Python",
+      "anchor": "srcrequirementstxt"
+    },
+    {
+      "question": "Comment exécuter un script Python dans le container ?",
+      "anchor": "lets-start-creating-our-first-script"
+    },
+    {
+      "question": "Dockerfile Python 3.13",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "Comment mapper les dossiers host et container avec compose.yaml ?",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": ".docker.env version Python",
+      "anchor": "dockerenv"
+    },
+    {
+      "question": "Makefile make up make down",
+      "anchor": "makefile"
+    },
+    {
+      "question": "Comment configurer les extensions devcontainer VSCode pour Python ?",
+      "anchor": "now-lets-create-our-devcontainer-environment"
+    },
+    {
+      "question": "VSCode ouvre devcontainer fichiers synchronisés",
+      "anchor": "start-the-project-in-a-devcontainer"
+    }
+  ]
+}

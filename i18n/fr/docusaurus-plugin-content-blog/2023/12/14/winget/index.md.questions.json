@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:05:27.428Z",
+  "durationMs": 142308,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3eaa93bdbd52e55ff8eb3255cbbaaef19bb2cef2",
+  "questions": [
+    {
+      "question": "Comment faire un upgrade batch de tous les programmes Windows avec winget ?",
+      "anchor": ""
+    },
+    {
+      "question": "winget mettre à jour tous les softs obsolètes en une commande",
+      "anchor": ""
+    },
+    {
+      "question": "Lancer le scan et l'installation des patches en arrière-plan sur Windows",
+      "anchor": ""
+    },
+    {
+      "question": "Étendre la détection des mises à jour avec winget pour ne rien rater",
+      "anchor": ""
+    },
+    {
+      "question": "Lister les paquets installés et les updates disponibles via winget",
+      "anchor": "getting-the-list-of-software"
+    },
+    {
+      "question": "winget list trié alphabétiquement dans PowerShell",
+      "anchor": "getting-the-list-of-software"
+    },
+    {
+      "question": "Comment voir quels programmes ont une version plus récente sur le disque ?",
+      "anchor": "getting-the-list-of-software"
+    },
+    {
+      "question": "Mettre à jour un seul soft par son nom avec winget",
+      "anchor": "upgrade-just-one-application"
+    },
+    {
+      "question": "Commande winget pour upgrader un paquet spécifique sans toucher aux autres",
+      "anchor": "upgrade-just-one-application"
+    },
+    {
+      "question": "Comment faire un upgrade ciblé d'une application installée ?",
+      "anchor": "upgrade-just-one-application"
+    }
+  ]
+}

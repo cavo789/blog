@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:33:10.673Z",
+  "durationMs": 145852,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b0358291ff268e578a2c5b300518aba813ecd969",
+  "questions": [
+    {
+      "question": "comment lancer joomla avec docker en moins de 5 minutes",
+      "anchor": ""
+    },
+    {
+      "question": "commande exacte pour démarrer le projet joomla via docker compose",
+      "anchor": ""
+    },
+    {
+      "question": "url localhost:8080 et identifiants par défaut pour se connecter à joomla",
+      "anchor": ""
+    },
+    {
+      "question": "où récupérer le snippet docker compose officiel sur Docker Hub",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter un conteneur Adminer ou phpmyadmin à mon docker compose joomla",
+      "anchor": ""
+    },
+    {
+      "question": "configurer un volume persistant pour les données de joomla dans docker",
+      "anchor": ""
+    },
+    {
+      "question": "comment augmenter la limite de taille des fichiers uploadés dans joomla docker",
+      "anchor": ""
+    },
+    {
+      "question": "modifier php.ini quand on utilise l'image officielle joomla sur docker",
+      "anchor": ""
+    },
+    {
+      "question": "joomla docker compose démarrage rapide sans configuration complexe",
+      "anchor": ""
+    },
+    {
+      "question": "accéder à l'interface d'administration de joomla après docker compose up",
+      "anchor": ""
+    }
+  ]
+}

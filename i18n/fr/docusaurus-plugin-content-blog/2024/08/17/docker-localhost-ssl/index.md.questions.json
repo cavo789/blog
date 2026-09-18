@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:09:34.195Z",
+  "durationMs": 166584,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "324c4f4f6706f430a0e0676817d9c53cdf47b19b",
+  "questions": [
+    {
+      "question": "comment configurer localhost Docker pour utiliser SSL sans avertissement navigateur",
+      "anchor": ""
+    },
+    {
+      "question": "télécharger et décompresser le template Sedna pour tester en local",
+      "anchor": "create-a-temporary-folder-and-download-a-sample-static-site"
+    },
+    {
+      "question": "passer de http à https dans un container Apache Dockerisé",
+      "anchor": "lets-begin-the-journey-to-https"
+    },
+    {
+      "question": "comment générer un certificat SSL local approuvé avec mkcert",
+      "anchor": "create-the-ssl-certificate"
+    },
+    {
+      "question": "mettre à jour compose.yaml pour exposer le port 443 et monter les certificats",
+      "anchor": "updating-our-composeyaml-file"
+    },
+    {
+      "question": "copier les fichiers ssl dans le Dockerfile Apache",
+      "anchor": "and-finally-updating-our-dockerfile-file"
+    },
+    {
+      "question": "comment lancer le site sur http et https simultanément",
+      "anchor": "run-the-site"
+    },
+    {
+      "question": "configurer nginx pour utiliser SSL dans un container",
+      "anchor": "bonus---configure-nginx-to-use-ssl"
+    },
+    {
+      "question": "importer la CA racine mkcert dans Windows depuis WSL2",
+      "anchor": "import-into-windows-from-wsl2-or-powershell"
+    },
+    {
+      "question": "comment ajouter la CA racine au magasin de confiance système Linux",
+      "anchor": "linux-system-trust-store-only"
+    }
+  ]
+}

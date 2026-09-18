@@ -146,7 +146,7 @@ vérifier que la config du plugin les réutilise au lieu d'en régénérer un je
   Verified with Playwright/Chromium: after the worker idled and the page was reloaded
   offline, that import failed and threw *before* the plugin's own built-in fetch listener
   (the one that serves the precached homepage) ever got registered — which broke the
-  shell-offline fallback that works reliably without `swCustom`. Shipping it would have been
+  shell-offline fallback that works without `swCustom`. Shipping it would have been
   strictly worse than not having per-article caching at all, since it silently breaks exactly
   the scenario a PWA exists for: reopening the installed app while offline. Routing around
   this by precaching every article at build time would mean reintroducing the >100 MB payload
@@ -177,3 +177,32 @@ intercepting the link click client-side and checking `caches.match()` before nav
 deliberately outside the service worker, so it carries none of the `swCustom` respawn risk
 documented above. Verified offline (Playwright `context.setOffline`): homepage → article click
 now shows the notice and stays on the current page, instead of navigating to a dead request.
+
+
+## Addendum (2026-09-17) — correction : le repli « coquille hors ligne » ne marchait pas *par construction*
+
+Écrit en traitant [[0127]], et ça corrige une prémisse de ce Status.
+
+Le Status ci-dessus qualifie le repli coquille-hors-ligne de fiable (« the shell-offline fallback
+that DOES work », formulation depuis atténuée dans le texte). C'était **trop fort**, et c'est
+important parce que c'est sur cette prémisse que `swCustom` a été rejeté : « strictly worse than
+not having per-article caching at all ».
+
+Ce qui était précaché : `index.html` seul. Ce qui ne l'était pas : `assets/**`, exclu pour la
+raison des 100+ Mo. Donc la coquille servie depuis le cache réclamait des `main.*.js` /
+`styles.*.css` **jamais mis en cache par le service worker**. Si ça a fonctionné en test, c'est
+parce que `static/.htaccess:143` sert ces fichiers en `immutable, max-age=31536000` et que le
+cache HTTP du navigateur les détenait encore. Ce cache-là n'appartient pas au site, les
+navigateurs mobiles l'évincent agressivement, et rien ne le synchronise avec le précache du SW.
+Le repli marchait **par accident**.
+
+Constaté en production le 2026-09-17 : bandeau « Your Docusaurus site did not load properly »
+sur un vrai téléphone, home entièrement dé-stylée, après le déploiement de 19:45 qui avait
+renommé les assets hachés.
+
+Le rejet de `swCustom` **reste valide** — l'argument de l'import dynamique non garanti au respawn
+du worker est indépendant de celui-ci et tient toujours. Seule la comparaison « strictly worse
+than » était faussée : elle opposait `swCustom` à un repli qu'on croyait solide et qui ne l'était
+pas.
+
+Traité par [[0127]] : tous les documents HTML sont sortis du précache.

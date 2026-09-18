@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:42:13.827Z",
+  "durationMs": 158694,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "898a7ea31d42618fc2560d2f08e2e505d1c11c26",
+  "questions": [
+    {
+      "question": "comment rendre un site lisible par les assistants IA avec llms.txt",
+      "anchor": ""
+    },
+    {
+      "question": "générer un index llms.txt et des bundles full-text par série",
+      "anchor": "what-gets-generated"
+    },
+    {
+      "question": "pourquoi le HTML rendu perd des informations comparé à la source MDX",
+      "anchor": "why-the-source-and-never-the-html"
+    },
+    {
+      "question": "plugin docusaurus pour exporter le markdown pur au build",
+      "anchor": "building-it"
+    },
+    {
+      "question": "table de dégradation composants MDX vers markdown",
+      "anchor": "the-degradation-table"
+    },
+    {
+      "question": "comment orchestrer le build pour créer les bundles full-text par série",
+      "anchor": "the-orchestrator"
+    },
+    {
+      "question": "règle de repli composants inconnus export markdown",
+      "anchor": "the-one-rule-that-makes-this-safe"
+    },
+    {
+      "question": "rendre le fichier llms.txt et les bundles markdown découvrables",
+      "anchor": "making-it-discoverable"
+    },
+    {
+      "question": "pourquoi exporter son contenu en markdown plutôt que de convertir le HTML",
+      "anchor": "conclusion"
+    }
+  ]
+}

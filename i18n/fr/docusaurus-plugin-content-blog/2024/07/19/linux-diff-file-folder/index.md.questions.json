@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:40:15.801Z",
+  "durationMs": 151166,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "7c937c02f2f47447507b2899a3fda16c5c519d34",
+  "questions": [
+    {
+      "question": "comment comparer efficacement des fichiers ou dossiers sous linux avec diff",
+      "anchor": ""
+    },
+    {
+      "question": "snippets bash avancés pour comparaison industrielle de fichiers",
+      "anchor": ""
+    },
+    {
+      "question": "afficher uniquement les différences entre deux fichiers avec diff",
+      "anchor": "compare-two-files"
+    },
+    {
+      "question": "script diff avec variables pour comparer n'importe quel fichier",
+      "anchor": "compare-two-files"
+    },
+    {
+      "question": "comparer un même fichier présent dans deux dossiers différents",
+      "anchor": "compare-two-files"
+    },
+    {
+      "question": "masquer only in source lors de comparaison d'arborescences avec diff",
+      "anchor": "compare-two-folders"
+    },
+    {
+      "question": "liste des fichiers présents dans un seul des deux dossiers comparés",
+      "anchor": "compare-two-folders"
+    },
+    {
+      "question": "utiliser delta pour rendre la sortie de git diff plus lisible",
+      "anchor": "compare-two-folders"
+    },
+    {
+      "question": "comparer deux arborescences entières de manière scriptée sous linux",
+      "anchor": "compare-two-folders"
+    },
+    {
+      "question": "diff linux comparer dossiers et voir fichiers présents dans un seul",
+      "anchor": "compare-two-folders"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:43:12.001Z",
+  "durationMs": 147075,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ecedc81868eed24030a77a83ead942273446eb3a",
+  "questions": [
+    {
+      "question": "comment chiffrer des fichiers sensibles avec docker et openssl",
+      "anchor": ""
+    },
+    {
+      "question": "docker run --rm openssl enc aes-256-cbc pbkdf2 salt",
+      "anchor": "what-this-looks-like"
+    },
+    {
+      "question": "pourquoi le chiffrement avec docker openssl ne produit pas le même fichier à chaque fois",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "script bash et dos pour automatiser le chiffrement docker",
+      "anchor": "the-scripts"
+    },
+    {
+      "question": "comment afficher le contenu déchiffré dans la console sans écrire sur le disque",
+      "anchor": "decrypt-on-the-console-dont-write-a-file"
+    },
+    {
+      "question": "où stocker des secrets chiffrés pour éviter qu'ils passent en clair dans git",
+      "anchor": "use-case"
+    },
+    {
+      "question": "signification des arguments enc pbkdf2 salt et -a dans docker",
+      "anchor": "the-openssl-arguments-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "workflow complet pour chiffrer et déchiffrer avec docker",
+      "anchor": "conclusion"
+    }
+  ]
+}

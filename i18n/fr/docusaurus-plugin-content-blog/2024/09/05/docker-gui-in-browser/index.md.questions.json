@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:18:42.513Z",
+  "durationMs": 137596,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "a89f6316213edf4070c1a6c6e4a015332515ecf5",
+  "questions": [
+    {
+      "question": "Comment lancer une app graphique Linux dans Docker et l'accéder via le navigateur ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker run interface graphique navigateur sans installation locale",
+      "anchor": ""
+    },
+    {
+      "question": "docker run firefox container port 3000 navigateur",
+      "anchor": "start-firefox-in-your-browser"
+    },
+    {
+      "question": "Comment vérifier l'affichage d'un site sur une version précise de Firefox via Docker ?",
+      "anchor": "start-firefox-in-your-browser"
+    },
+    {
+      "question": "Lancer Firefox dans Docker depuis Windows ou MS-DOS",
+      "anchor": "start-firefox-in-your-browser"
+    },
+    {
+      "question": "docker run gimp container port 3000 navigateur",
+      "anchor": "start-gimp-in-your-browser"
+    },
+    {
+      "question": "Comment partager un sous-dossier local avec GIMP dans Docker ?",
+      "anchor": "start-gimp-in-your-browser"
+    },
+    {
+      "question": "Accéder à GIMP dans un onglet de navigateur avec docker run",
+      "anchor": "start-gimp-in-your-browser"
+    },
+    {
+      "question": "docker run GUI navigateur vs fenêtre bureau sur le poste",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "Alternative docker run pour afficher les interfaces graphiques en mode fenêtre",
+      "anchor": "conclusion"
+    }
+  ]
+}

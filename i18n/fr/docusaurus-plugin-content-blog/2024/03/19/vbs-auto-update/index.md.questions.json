@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:59:29.714Z",
+  "durationMs": 152698,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "289a44ded7bb37499bd7f1137e5f0de48b814a24",
+  "questions": [
+    {
+      "question": "script vbs auto-mise à jour github",
+      "anchor": ""
+    },
+    {
+      "question": "Comment faire en sorte qu'un fichier vbs télécharge et écrase son propre code depuis une url github ?",
+      "anchor": ""
+    },
+    {
+      "question": "comparer version locale et distante dans un script vbs pour mise à jour automatique",
+      "anchor": ""
+    },
+    {
+      "question": "automatiser la mise à jour d'utilitaires vbs sans redistribution manuelle",
+      "anchor": ""
+    },
+    {
+      "question": "est-ce possible de faire un script vbs qui se met à jour tout seul au démarrage ?",
+      "anchor": ""
+    },
+    {
+      "question": "script vbs pour DOS mise à jour automatique github",
+      "anchor": ""
+    },
+    {
+      "question": "Quelle méthode utiliser pour détecter un diff entre le script local et le dépôt github ?",
+      "anchor": ""
+    },
+    {
+      "question": "vérifier les changements de code source vbs sur github à chaque exécution",
+      "anchor": ""
+    },
+    {
+      "question": "comment intégrer un mécanisme de versioning dans un script console Windows vbs ?",
+      "anchor": ""
+    },
+    {
+      "question": "mise à jour silencieuse script vbs github",
+      "anchor": ""
+    }
+  ]
+}

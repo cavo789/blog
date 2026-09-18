@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:29:22.661Z",
+  "durationMs": 142908,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "325623a872e25f17a1bff6f21ecda81acae33958",
+  "questions": [
+    {
+      "question": "0: vscode dev containers python assistant automatique",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment générer un devcontainer python sans fichier de config manuel",
+      "anchor": ""
+    },
+    {
+      "question": "0: commande Dev Containers: Add Dev Container Configuration files... dans la palette",
+      "anchor": ""
+    },
+    {
+      "question": "0: ouvrir un projet python dans un conteneur Docker sur Windows Linux Mac",
+      "anchor": ""
+    },
+    {
+      "question": "0: cliquer sur Reopen in Container après la génération automatique",
+      "anchor": ""
+    },
+    {
+      "question": "0: lancer un script python dans le terminal du devcontainer",
+      "anchor": ""
+    },
+    {
+      "question": "0: dev containers extension vscode python version la plus récente",
+      "anchor": ""
+    },
+    {
+      "question": "0: environnement de développement python reproductible avec Docker",
+      "anchor": ""
+    },
+    {
+      "question": "0: configuration automatique d'un devcontainer python via vscode",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment passer en mode conteneur Docker pour python sans installation préalable",
+      "anchor": ""
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:46:47.080Z",
+  "durationMs": 106065,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "7865b75ed04124607e2bc70dd42d22a9adc663c6",
+  "questions": [
+    {
+      "question": "comment récupérer la liste des extensions VS Code installées",
+      "anchor": ""
+    },
+    {
+      "question": "`code --list-extensions` afficher les plugins actifs",
+      "anchor": ""
+    },
+    {
+      "question": "convertir la liste `code --list-extensions` en commandes d'installation",
+      "anchor": ""
+    },
+    {
+      "question": "one-liner PowerShell pour installer les extensions VS Code en lot",
+      "anchor": ""
+    },
+    {
+      "question": "commande Linux pour installer les extensions VS Code depuis un fichier",
+      "anchor": ""
+    },
+    {
+      "question": "intégrer la liste des extensions VS Code dans un devcontainer",
+      "anchor": ""
+    },
+    {
+      "question": "extension VS Code Error Lens pour afficher les erreurs inline",
+      "anchor": ""
+    },
+    {
+      "question": "extension VS Code Todo Tree pour regrouper les TODO et FIXME",
+      "anchor": ""
+    },
+    {
+      "question": "automatiser le setup VS Code sur une nouvelle machine",
+      "anchor": ""
+    },
+    {
+      "question": "partager automatiquement les plugins VS Code avec une équipe",
+      "anchor": ""
+    }
+  ]
+}

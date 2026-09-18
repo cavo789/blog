@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:44:44.496Z",
+  "durationMs": 117308,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "626365faf2bc4c7e791b05a57a0bae68e3c16d31",
+  "questions": [
+    {
+      "question": "easter egg secousse téléphone Chrome PWA suricate plein écran",
+      "anchor": ""
+    },
+    {
+      "question": "comment faire apparaître la mascotte en secouant le téléphone sans recharger la page",
+      "anchor": "shake-your-phone-see-what-happens"
+    },
+    {
+      "question": "calcul du jerk avec devicemotion pour détecter une secousse volontaire",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "pourquoi iOS Safari bloque la détection de mouvement des easter eggs",
+      "anchor": "why-ios-is-left-out-on-purpose"
+    },
+    {
+      "question": "simuler une secousse de téléphone dans DevTools sur ordinateur",
+      "anchor": "testing-it-without-shaking-anything"
+    },
+    {
+      "question": "autoriser les capteurs de mouvement pour un site dans Chrome Android",
+      "anchor": "1-allow-motion-sensors-for-the-site"
+    },
+    {
+      "question": "lire les valeurs brutes de l'accéléromètre via devicemotion",
+      "anchor": "2-watch-the-raw-sensor-data"
+    },
+    {
+      "question": "corriger un damier PNG opaque au lieu d'un canal alpha généré par IA",
+      "anchor": "the-image-was-the-hard-part-not-the-code"
+    },
+    {
+      "question": "régler le seuil de jerk pour adapter la détection de secousse sur appareil réel",
+      "anchor": "tuning-the-jerk-threshold-on-a-real-phone"
+    },
+    {
+      "question": "ajouter une vibration haptique à une animation déclenchée par capteur",
+      "anchor": "conclusion"
+    }
+  ]
+}

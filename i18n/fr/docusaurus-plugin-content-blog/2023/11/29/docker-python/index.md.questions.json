@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:32:57.372Z",
+  "durationMs": 152967,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3cd718b9c4653ff5b25835794d703b6c5a32eda7",
+  "questions": [
+    {
+      "question": "Comment lancer des scripts Python dans Docker sans installation locale ?",
+      "anchor": ""
+    },
+    {
+      "question": "Docker pour exécuter du Python rapidement du hello world au pendu",
+      "anchor": ""
+    },
+    {
+      "question": "docker run -it --rm -v .:/app -w /app python python hello.py",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "Comment partager le dossier courant avec un container Docker ?",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "Utiliser l'image python officielle pour lancer un premier script",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "docker run python script.py utilité du flag -w",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "Lancer un jeu du pendu en console avec Docker",
+      "anchor": "playing-the-hangman"
+    },
+    {
+      "question": "Exécuter un fichier python externe dans un container éphémère",
+      "anchor": "playing-the-hangman"
+    },
+    {
+      "question": "Passer à un devcontainer VSCode pour Python après le hello world",
+      "anchor": "playing-the-hangman"
+    },
+    {
+      "question": "Trouver des scripts d'exemple Python compatibles Docker",
+      "anchor": "playing-the-hangman"
+    }
+  ]
+}

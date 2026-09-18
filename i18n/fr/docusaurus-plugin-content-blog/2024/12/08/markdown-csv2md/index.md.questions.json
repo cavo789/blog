@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:36:28.012Z",
+  "durationMs": 173855,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8418730cd6ff00ed6169b4ec1aa7f27ac0ad75d1",
+  "questions": [
+    {
+      "question": "comment convertir du CSV en tableau Markdown avec csv2md",
+      "anchor": ""
+    },
+    {
+      "question": "csv2md délimiteur transposition tableau",
+      "anchor": ""
+    },
+    {
+      "question": "coller du CSV dans csv2md.avonture.be et obtenir du Markdown",
+      "anchor": ""
+    },
+    {
+      "question": "formater un CSV en tableau Markdown propre",
+      "anchor": ""
+    },
+    {
+      "question": "alternative en ligne à XLS2MD pour les fichiers CSV",
+      "anchor": ""
+    },
+    {
+      "question": "convertir CSV en Markdown sans logiciel installé",
+      "anchor": ""
+    },
+    {
+      "question": "où trouver le code source de csv2md",
+      "anchor": "source-code"
+    },
+    {
+      "question": "lien vers le dépôt GitHub csv2md.avonture.be",
+      "anchor": "source-code"
+    },
+    {
+      "question": "cloner csv2md depuis GitHub",
+      "anchor": "source-code"
+    },
+    {
+      "question": "accès au code source csv2md",
+      "anchor": "source-code"
+    }
+  ]
+}

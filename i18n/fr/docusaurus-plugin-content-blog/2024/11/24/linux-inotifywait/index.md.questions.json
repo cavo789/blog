@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:14:11.706Z",
+  "durationMs": 122845,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "bd7dbe4a10dc1c3ff244c11eeba20e8be55c7908",
+  "questions": [
+    {
+      "question": "Comment obtenir un compteur de fichiers mis à jour en temps réel dans un dossier Linux ?",
+      "anchor": ""
+    },
+    {
+      "question": "inotifywait surveiller répertoire fichiers créés bash",
+      "anchor": ""
+    },
+    {
+      "question": "Quel ordre suivre pour lancer le script de monitoring et le générateur de fichiers dans deux terminaux ?",
+      "anchor": "running-the-scripts"
+    },
+    {
+      "question": "docker compose up -d volume partagé script host container",
+      "anchor": "setting-up-the-demo-environment-optional--skip-if-you-already-have-python-and-a-folder-to-watch"
+    },
+    {
+      "question": "Comment monter un container Docker pour partager un dossier et un script Python avec l'hôte ?",
+      "anchor": "setting-up-the-demo-environment-optional--skip-if-you-already-have-python-and-a-folder-to-watch"
+    },
+    {
+      "question": "Quel est le code minimal pour un script Python qui génère des fichiers en boucle ?",
+      "anchor": "create-a-sample-python-script"
+    },
+    {
+      "question": "inotify-tools installation chmod +x monitor.sh inotifywait --help",
+      "anchor": "creating-the-monitorsh-script"
+    },
+    {
+      "question": "Comment vérifier si inotifywait est installé et rendre le script monitor.sh exécutable ?",
+      "anchor": "creating-the-monitorsh-script"
+    },
+    {
+      "question": "inotifywait monitor dossier fichiers nouveaux bash script",
+      "anchor": "creating-the-monitorsh-script"
+    },
+    {
+      "question": "Comment utiliser un compteur de fichiers comme barre de progression pour un script Python ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:23:35.865Z",
+  "durationMs": 191536,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "6d52a7b04fa890bd76a75389d00fa650c59d3a42",
+  "questions": [
+    {
+      "question": "Comment semer des easter eggs discrets sur un blog Docusaurus sans gêner la lecture ?",
+      "anchor": ""
+    },
+    {
+      "question": "Plugin Docusaurus pour injecter un commentaire HTML avec ASCII art après le doctype",
+      "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source"
+    },
+    {
+      "question": "Comment utiliser console.log avec une directive console pour afficher un message stylé dans les DevTools ?",
+      "anchor": "2-a-consolelog-wink-for-devtools-visitors"
+    },
+    {
+      "question": "Générer des messages 404 aléatoires sur un site Docusaurus",
+      "anchor": "3-a-404-page-with-a-sense-of-humor"
+    },
+    {
+      "question": "Déclencher un sprite via le code Konami dans un composant React",
+      "anchor": "4-the-star-of-the-show-a-konami-code-easter-egg"
+    },
+    {
+      "question": "Corriger une race condition de répétition de touche dans le handler Konami",
+      "anchor": "the-bug-that-nearly-killed-the-fun"
+    },
+    {
+      "question": "Gérer l'incompatibilité clavier AZERTY pour les codes secrets",
+      "anchor": "the-bug-a-real-user-found-that-automated-testing-missed"
+    },
+    {
+      "question": "Changer le titre et le favicon quand on quitte l'onglet",
+      "anchor": "5-tab-away-easter-egg-title-and-favicon-swap"
+    },
+    {
+      "question": "Cacher un message dans la feuille de style d'impression CSS",
+      "anchor": "7-print-stylesheet-easter-egg"
+    },
+    {
+      "question": "Résoudre un favicon flou en redessinant le cadrage du fichier image",
+      "anchor": "what-we-ended-up-with"
+    }
+  ]
+}

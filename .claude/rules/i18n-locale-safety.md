@@ -5,7 +5,11 @@ paths:
   - "plugins/**/*.js"
   - "src/theme/**/*.js"
   - "src/theme/**/*.tsx"
-  - "src/components/Blog/**/*.tsx"
+  # Every component, not just Blog/: the two defects where a bare permalink was pushed
+  # programmatically were in BlogGraph/ and CommandPalette/, which a "Blog/**" glob misses by
+  # one character. Any component that assembles a URL is in scope.
+  - "src/components/**/*.tsx"
+  - "src/components/**/*.js"
   - "docusaurus.config.js"
 ---
 
@@ -98,6 +102,19 @@ test — just a feature quietly missing from one locale. Those only surface by r
   at `baseUrl: "/"`, so adding it never changes the default locale.
   ❌ DON'T touch a Docusaurus-provided `permalink` — `MarkdownAlternate`'s `${permalink}.md` is
   already prefixed.
+- ⚠️ NOTE: **`history.push()` is not `<Link to>`.** Docusaurus gives its `BrowserRouter` no
+  `basename` (`clientEntry.js`) — every route path already contains the locale's `baseUrl`, and
+  `<Link>` prefixes on its own. So a bare `/blog/x` pushed under `fr` matches no route at all and
+  lands on the 404, even in production where that English URL exists: the click is SPA navigation
+  inside the French bundle, not a page load. It fails ONLY in a non-default locale, so English CI
+  and the `<Link>`-based fallback beside it both stay green. Hit `CommandPalette`, then
+  `BlogGraph`'s canvas (`/fr/map/`: every bubble 404'd).
+- ✅ DO: wrap a programmatic navigation target in `withBaseUrl` whenever **your own code
+  assembled it** from a slug or a bare permalink — `history.push`, `window.location.href`,
+  `router.replace`. A target read back from a real element or the current location is already
+  resolved and must be left alone (`OfflineNotice` pushes `url.href` off a clicked `<a>`). Grep
+  for these after touching any component that navigates from a computed path: a canvas or a
+  palette has no `<a>` for a link checker to find.
 - ⚠️ NOTE: a **duplicated `translate()` id breaks only the translated locales.** Two calls sharing
   `theme.NotFound.title` looked fine in English — a missing key falls back to each call's own
   `message` — and both rendered "Page introuvable" in French. The bug ships with the translation,

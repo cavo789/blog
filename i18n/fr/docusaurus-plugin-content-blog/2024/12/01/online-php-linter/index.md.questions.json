@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:26:26.407Z",
+  "durationMs": 202820,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3bea5abcea02dc3ccf1c147af2160014b0dc1824",
+  "questions": [
+    {
+      "question": "comment formater du code PHP en ligne sans rien installer",
+      "anchor": ""
+    },
+    {
+      "question": "outil en ligne pour nettoyer du code PHP copié-collé d'un forum",
+      "anchor": ""
+    },
+    {
+      "question": "Pint-express comment ça marche pour le code PHP",
+      "anchor": ""
+    },
+    {
+      "question": "linter PHP en ligne gratuit pour le code mal formaté",
+      "anchor": ""
+    },
+    {
+      "question": "transformer du code PHP en vrac en code propre rapidement",
+      "anchor": ""
+    },
+    {
+      "question": "intégrer PHP-CS-Fixer dans VSCode",
+      "anchor": "if-youre-a-php-developer"
+    },
+    {
+      "question": "configurer PHP_CodeSniffer pour un projet PHP",
+      "anchor": "if-youre-a-php-developer"
+    },
+    {
+      "question": "image Docker pour l'analyse statique PHP avec jakzal/phpqa",
+      "anchor": "if-youre-a-php-developer"
+    },
+    {
+      "question": "configurer pre-commit-hooks pour formater le code PHP avant commit",
+      "anchor": "if-youre-a-php-developer"
+    },
+    {
+      "question": "pipeline distant formater PHP automatiquement",
+      "anchor": "if-youre-a-php-developer"
+    }
+  ]
+}

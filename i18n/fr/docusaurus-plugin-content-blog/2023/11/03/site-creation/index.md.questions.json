@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:02:21.256Z",
+  "durationMs": 160155,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d652375fbf257dbf19e5ca635eef8a9479f08552",
+  "questions": [
+    {
+      "question": "Comment créer un blog Docusaurus avec l'image docker officielle sans installer nodejs localement ?",
+      "anchor": ""
+    },
+    {
+      "question": "lancer npx create-docusaurus@latest blog classic --javascript dans un container docker",
+      "anchor": "using-docusaurus"
+    },
+    {
+      "question": "comment exposer le port 3000 et lancer le watcher avec le flag --host 0.0.0.0 ?",
+      "anchor": "run-the-website"
+    },
+    {
+      "question": "retirer la section tutoriel par défaut pour ne garder que le blog",
+      "anchor": "some-settings"
+    },
+    {
+      "question": "configurer navbar.hideOnScroll et l'image par défaut pour les réseaux sociaux dans docusaurus.config.js",
+      "anchor": "file-docusaurusconfigjs"
+    },
+    {
+      "question": "où placer le dossier et le fichier index.md pour rédiger un premier article",
+      "anchor": "make-my-first-article"
+    },
+    {
+      "question": "quelles options de mise en page et frontmatter utiliser pour un article de blog Docusaurus",
+      "anchor": "using-some-layouts"
+    },
+    {
+      "question": "installer et activer les plugins recherche, sitemap, zoom sur les images et Giscus",
+      "anchor": "adding-plugins"
+    },
+    {
+      "question": "versionner et pousser le code source du blog sur Github",
+      "anchor": "push-to-github"
+    },
+    {
+      "question": "commande pour construire la version statique du site Docusaurus",
+      "anchor": "build-static-version-of-the-blog"
+    },
+    {
+      "question": "intégrer withcabin pour des statistiques conformes au RGPD",
+      "anchor": "adding-withcabin-for-gdpr-compliant-stats"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:16:35.932Z",
+  "durationMs": 132823,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3a205bc133227983864c37fa8173a331f09f11db",
+  "questions": [
+    {
+      "question": "Comment utiliser git worktree pour travailler sur deux branches simultanément sans stasher ?",
+      "anchor": ""
+    },
+    {
+      "question": "git stash fait perdre le contexte des fichiers ouverts et des containers Docker comment éviter",
+      "anchor": "the-stash-workflow-and-its-pain"
+    },
+    {
+      "question": "git worktree add créer un worktree sur une nouvelle branche depuis main",
+      "anchor": "add-a-worktree"
+    },
+    {
+      "question": "git worktree list afficher tous les worktrees actifs d'un repository",
+      "anchor": "list-all-worktrees"
+    },
+    {
+      "question": "garder les stacks Docker en route pendant un hotfix en parallèle",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "Étape par étape comment corriger un bug en production sans quitter sa branche de feature ?",
+      "anchor": "the-hotfix-scenario-step-by-step"
+    },
+    {
+      "question": "Une branche peut-elle être checkoutée dans plusieurs worktrees en même temps ?",
+      "anchor": "one-constraint-a-branch-can-only-be-in-one-worktree-at-a-time"
+    },
+    {
+      "question": "fonction zsh pour naviguer rapidement entre les worktrees git",
+      "anchor": "a-zsh-function-to-navigate-between-worktrees"
+    },
+    {
+      "question": "Comment ouvrir un worktree git directement dans VS Code ?",
+      "anchor": "worktrees-work-with-vs-code"
+    },
+    {
+      "question": "git worktree remove supprimer un worktree obsolète sans toucher à la branche",
+      "anchor": "prune-stale-worktrees"
+    }
+  ]
+}

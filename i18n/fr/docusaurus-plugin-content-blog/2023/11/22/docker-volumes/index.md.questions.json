@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:11:56.936Z",
+  "durationMs": 156060,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "33456884b39d470130eaa2848552962d510543be",
+  "questions": [
+    {
+      "question": "Comment éviter de perdre les données de son site local quand on arrête et redémarre un container Docker ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose redémarre et le compteur repart de zéro, comment le faire persister ?",
+      "anchor": "what-a-volume-changes"
+    },
+    {
+      "question": "Quelle stratégie de persistance choisir entre aucun volume, volume géré et bind mount ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "Comment structurer docker-compose.yml pour lancer la démo du compteur ?",
+      "anchor": "setting-up-the-demo"
+    },
+    {
+      "question": "Déclarer un volume géré par Docker dans docker-compose.yml",
+      "anchor": "volumes-managed-by-docker"
+    },
+    {
+      "question": "bind mount dossier local et éviter les problèmes de permissions avec .bashrc",
+      "anchor": "mounted-volumes"
+    },
+    {
+      "question": "Comprendre le fonctionnement interne des volumes Docker",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "Récupérer ses propres fichiers depuis un volume monté",
+      "anchor": "getting-your-own-files-back-from-a-mounted-volume"
+    },
+    {
+      "question": "Où se trouvent physiquement les volumes gérés par Docker sur le disque ?",
+      "anchor": "location-of-the-volumes-managed-by-docker"
+    },
+    {
+      "question": "Consulter le contenu d'un volume Docker via l'interface Docker Desktop",
+      "anchor": "accessing-files-in-the-volume-using-docker-desktop"
+    },
+    {
+      "question": "Éditer les fichiers d'un volume directement depuis VSCode",
+      "anchor": "accessing-files-in-the-volume-using-vscode"
+    },
+    {
+      "question": "Quand faut-il absolument utiliser un bind mount plutôt qu'un volume géré ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

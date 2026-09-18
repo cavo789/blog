@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:49:40.679Z",
+  "durationMs": 195340,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "29d748304742dade90821e39008723fcb6f50f2a",
+  "questions": [
+    {
+      "question": "comment ouvrir un pdf depuis la console wsl avec l'application windows par défaut",
+      "anchor": ""
+    },
+    {
+      "question": "lancer le navigateur par défaut depuis wsl pour un fichier html",
+      "anchor": ""
+    },
+    {
+      "question": "utiliser powershell.exe dans wsl pour ouvrir un fichier avec l'associé windows",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi explorer.exe ne fonctionne pas dans un script bash sous wsl",
+      "anchor": ""
+    },
+    {
+      "question": "astuce wsl ouvrir un fichier généré sans quitter le terminal linux",
+      "anchor": ""
+    },
+    {
+      "question": "quelle est la syntaxe exacte pour passer un nom de fichier à explorer.exe dans wsl",
+      "anchor": ""
+    },
+    {
+      "question": "wsl console lancer programme windows par défaut commande",
+      "anchor": ""
+    },
+    {
+      "question": "comment wsl délègue l'ouverture de fichier à l'associé windows par défaut",
+      "anchor": ""
+    },
+    {
+      "question": "contourner l'explorateur windows pour ouvrir un fichier depuis wsl",
+      "anchor": ""
+    },
+    {
+      "question": "explorer.exe wsl ouvrir fichier associé",
+      "anchor": ""
+    }
+  ]
+}

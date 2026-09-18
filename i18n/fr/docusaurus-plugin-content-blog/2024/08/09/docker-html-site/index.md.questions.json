@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:03:42.207Z",
+  "durationMs": 199727,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "6a4283e5ebbed32485b922ac26961698b224e91e",
+  "questions": [
+    {
+      "question": "lancer un site html en local avec une seule commande docker",
+      "anchor": ""
+    },
+    {
+      "question": "comment éviter l'installation d'apache ou nginx pour un setup rapide",
+      "anchor": ""
+    },
+    {
+      "question": "docker run httpd avec montage de $(pwd) vers /usr/local/apache2/htdocs",
+      "anchor": "result"
+    },
+    {
+      "question": "url localhost:8080 pour accéder au site après le lancement",
+      "anchor": "result"
+    },
+    {
+      "question": "pourquoi le montage volume docker sert immédiatement le dossier courant",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": ".htaccess fonctionne-t-il avec l'image httpd de docker",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "télécharger un site statique gratuit pour tester docker",
+      "anchor": "dont-have-a-site-to-try-this-on-yet"
+    },
+    {
+      "question": "commande powershell avec curl et tar pour décompresser un zip",
+      "anchor": "dont-have-a-site-to-try-this-on-yet"
+    },
+    {
+      "question": "docker rm pour supprimer le container apache après utilisation",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "servir html statique en local avec docker sans fichier de configuration",
+      "anchor": "conclusion"
+    }
+  ]
+}

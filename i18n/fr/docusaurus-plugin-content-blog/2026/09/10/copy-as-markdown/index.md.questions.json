@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T03:00:58.399Z",
+  "durationMs": 192261,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "fbb717dead25f6b3c9492398fa24447bebcc4221",
+  "questions": [
+    {
+      "question": "comment ajouter un bouton copy as markdown à mon blog docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "qu’est-ce qui atterrit dans le presse-papiers quand on clique sur le bouton",
+      "anchor": "what-gets-copied"
+    },
+    {
+      "question": "pourquoi l’implémentation ne nécessite qu’un plugin build et un composant react",
+      "anchor": "why-its-just-two-moving-parts"
+    },
+    {
+      "question": "générer un miroir en Markdown pur pendant l’étape build",
+      "anchor": "step-1--generate-a-plain-markdown-mirror-at-build-time"
+    },
+    {
+      "question": "composant react pour récupérer et copier le fichier miroir",
+      "anchor": "step-2--the-copyasmarkdown-component"
+    },
+    {
+      "question": "dérivation de l’url depuis le permalien dans le state du composant",
+      "anchor": "21--state-and-the-derived-url"
+    },
+    {
+      "question": "gestionnaire d’événement pour copier le texte brut dans le presse-papiers",
+      "anchor": "22--the-copy-handler"
+    },
+    {
+      "question": "mécanisme de remise à zéro automatique de l’état après copie",
+      "anchor": "23--auto-reset"
+    },
+    {
+      "question": "rendu du bouton copy as markdown dans le header de l’article",
+      "anchor": "24--rendering"
+    },
+    {
+      "question": "module css pour styliser le bouton de copie docusaurus",
+      "anchor": "step-3--the-css-module"
+    },
+    {
+      "question": "intégration du bouton copy markdown dans l’en-tête d’un post",
+      "anchor": "step-4--wire-it-into-the-blog-post-header"
+    },
+    {
+      "question": "structure complète des fichiers et modules à créer",
+      "anchor": "all-files-at-a-glance"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:31:56.230Z",
+  "durationMs": 176364,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "877d7b03a4745d3d27ca7042a0b2614650a47a1b",
+  "questions": [
+    {
+      "question": "`php_obfuscator` protège-t-il vraiment le code PHP face à l'IA ?",
+      "anchor": ""
+    },
+    {
+      "question": "est-ce que l'obfuscation de code propriétaire a encore un intérêt aujourd'hui",
+      "anchor": ""
+    },
+    {
+      "question": "Générer un jeu du pendu en PHP avec Gemini",
+      "anchor": "obtaining-a-previously-non-existent-code-ask-gemini"
+    },
+    {
+      "question": "comment exécuter un script PHP généré par l'IA sur son poste",
+      "anchor": "obtaining-a-previously-non-existent-code-ask-gemini"
+    },
+    {
+      "question": "lancer le script PHP hangman créé par Gemini avec la commande `php`",
+      "anchor": "obtaining-a-previously-non-existent-code-ask-gemini"
+    },
+    {
+      "question": "configurer `php_obfuscator.conf` pour remplacer les identifiants par des chaînes aléatoires",
+      "anchor": "obfuscate"
+    },
+    {
+      "question": "`php_obfuscator` supprime les espaces et minifie le code PHP",
+      "anchor": "obfuscate"
+    },
+    {
+      "question": "comment générer `obfuscated.php` avec le script de l'auteur",
+      "anchor": "obfuscate"
+    },
+    {
+      "question": "Copilot réécrit du code PHP obfusqué en version commentée et lisible",
+      "anchor": "make-the-code-readable-again-ask-copilot"
+    },
+    {
+      "question": "comment demander à Copilot de désobfusquer un fichier PHP minifié",
+      "anchor": "make-the-code-readable-again-ask-copilot"
+    }
+  ]
+}

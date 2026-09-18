@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:44:27.700Z",
+  "durationMs": 249051,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d135b1739ee85a23aea8be9f50f7ac2989cc73ce",
+  "questions": [
+    {
+      "question": "comment prendre une belle capture de code dans VS Code",
+      "anchor": ""
+    },
+    {
+      "question": "extension VS Code pour screenshots de snippets",
+      "anchor": ""
+    },
+    {
+      "question": "lancer CodeSnap avec CTRL - SHIFT - P",
+      "anchor": ""
+    },
+    {
+      "question": "pourquoi éviter les screenshots pour un blog",
+      "anchor": ""
+    },
+    {
+      "question": "sélectionner des lignes dans l'aperçu en direct",
+      "anchor": ""
+    },
+    {
+      "question": "alternative aux images pour partager du code dans un article",
+      "anchor": ""
+    },
+    {
+      "question": "à quoi ressemble le rendu final de CodeSnap",
+      "anchor": "result"
+    },
+    {
+      "question": "fenêtre d'aperçu verticale CodeSnap",
+      "anchor": "result"
+    },
+    {
+      "question": "enregistrer l'image après sélection dans CodeSnap",
+      "anchor": "result"
+    },
+    {
+      "question": "police de caractères dans les captures CodeSnap",
+      "anchor": "result"
+    },
+    {
+      "question": "exemple de capture php avec CodeSnap",
+      "anchor": "result"
+    },
+    {
+      "question": "bouton pour sauvegarder le résultat CodeSnap",
+      "anchor": "result"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:53:17.384Z",
+  "durationMs": 183363,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d96762da2ef9f8016ea6dc19c1a69dfc712c8cef",
+  "questions": [
+    {
+      "question": "comment installer wordpress avec docker en 3 commandes sans docker compose",
+      "anchor": ""
+    },
+    {
+      "question": "quelles commandes exécuter pour avoir l'assistant d'installation wordpress sur le port 8080",
+      "anchor": "three-commands-one-wordpress-site"
+    },
+    {
+      "question": "docker network create wordpress pour relier les containers",
+      "anchor": "first-step-we-need-a-network"
+    },
+    {
+      "question": "lancer un container mysql 8 ou mariadb 11 avec les variables MYSQL_DATABASE et MYSQL_USER",
+      "anchor": "second-step-we-need-a-database-container"
+    },
+    {
+      "question": "mapper le port 8080 sur le container wordpress et configurer WORDPRESS_DB_HOST",
+      "anchor": "third-step-we-need-wordpress"
+    },
+    {
+      "question": "démarrer phpmyadmin en complément d'une installation wordpress docker existante",
+      "anchor": "optional-start-phpmyadmin"
+    },
+    {
+      "question": "comment arrêter et supprimer les containers wordpress et le réseau associé",
+      "anchor": "remove-containers"
+    },
+    {
+      "question": "docker run en ligne de commande ou docker compose pour un site jetable",
+      "anchor": "conclusion"
+    }
+  ]
+}

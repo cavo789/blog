@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:48:00.791Z",
+  "durationMs": 224549,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "854cdc6410f07ae2bc9a519d8be7ce7b2f837dbb",
+  "questions": [
+    {
+      "question": "à quoi sert Docker exactement",
+      "anchor": ""
+    },
+    {
+      "question": "Docker définition simple pour débutant",
+      "anchor": ""
+    },
+    {
+      "question": "analogie recette cuisine Docker images",
+      "anchor": "culinary-analogy"
+    },
+    {
+      "question": "pourquoi Docker garantit un résultat identique comme un gâteau",
+      "anchor": "culinary-analogy"
+    },
+    {
+      "question": "liste dépendances techniques échec installation 95%",
+      "anchor": "lets-go-back-to-the-it-world"
+    },
+    {
+      "question": "envoyer un dossier complet au lieu d'une liste de specs",
+      "anchor": "lets-go-back-to-the-it-world"
+    },
+    {
+      "question": "Docker vs machine virtuelle différence",
+      "anchor": "-and-docker"
+    },
+    {
+      "question": "Docker analogie télétravail connexion bureau à distance",
+      "anchor": "-and-docker"
+    },
+    {
+      "question": "installer Joomla MySQL Docker local ports",
+      "anchor": "-and-to-an-example-such-as-joomla"
+    },
+    {
+      "question": "faire tourner Joomla et MySQL en local sans conflits",
+      "anchor": "-and-to-an-example-such-as-joomla"
+    },
+    {
+      "question": "devcontainer Python Docker isolation",
+      "anchor": "some-more-information"
+    },
+    {
+      "question": "avantages conteneurisation pour les projets Python",
+      "anchor": "some-more-information"
+    }
+  ]
+}

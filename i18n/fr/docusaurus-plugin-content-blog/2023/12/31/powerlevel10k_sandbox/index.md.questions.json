@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:56:23.710Z",
+  "durationMs": 153027,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f81dfb3ab8d6339ce9b6f2c7e191eb0223797b6e",
+  "questions": [
+    {
+      "question": "comment tester powerlevel10k pour zsh sans installer quoi que ce soit",
+      "anchor": ""
+    },
+    {
+      "question": "sandbox docker alpine pour essayer le prompt zsh",
+      "anchor": ""
+    },
+    {
+      "question": "powerlevel10k affiche le temps de la commande et le statut git",
+      "anchor": "what-powerlevel10k-looks-like"
+    },
+    {
+      "question": "comment voir les fichiers modifiés et le code de sortie dans le prompt",
+      "anchor": "what-powerlevel10k-looks-like"
+    },
+    {
+      "question": "lancer powerlevel10k via docker sans laisser de traces sur le disque",
+      "anchor": "try-it-without-installing-anything"
+    },
+    {
+      "question": "commande officielle docker pour tester le thème zsh en une fois",
+      "anchor": "try-it-without-installing-anything"
+    },
+    {
+      "question": "powerlevel10k temps d'exécution commande et indicateur exit code",
+      "anchor": "why-i-kept-it"
+    },
+    {
+      "question": "configurer powerlevel10k avec windows terminal et wsl",
+      "anchor": "why-i-kept-it"
+    },
+    {
+      "question": "installer powerlevel10k après oh-my-zsh sur linux",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "documentation officielle configuration powerlevel10k zsh",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:37:43.810Z",
+  "durationMs": 148784,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b81cf3d42f97dc4198db44fdb4a2a85ab89e860e",
+  "questions": [
+    {
+      "question": "docker run interface web gestion base de données container éphémère",
+      "anchor": ""
+    },
+    {
+      "question": "Comment accéder à une base SQL dans un container Docker sans toucher au fichier docker compose ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker run --rm --network --link -p port adminer commande unique",
+      "anchor": "one-command-your-database-in-a-browser"
+    },
+    {
+      "question": "docker ps liste containers docker inspect jq NetworkSettings.Networks",
+      "anchor": "find-your-container-and-its-network"
+    },
+    {
+      "question": "Comment récupérer le nom du réseau docker d'un container avec docker inspect et jq ?",
+      "anchor": "find-your-container-and-its-network"
+    },
+    {
+      "question": "adminer docker run --link db:nom_service --rm",
+      "anchor": "run-adminer"
+    },
+    {
+      "question": "Champs de connexion adminer : que mettre dans server, username, password et database ?",
+      "anchor": "run-adminer"
+    },
+    {
+      "question": "docker run pgadmin network link container postgresql",
+      "anchor": "run-pgadmin"
+    },
+    {
+      "question": "docker run phpmyadmin --link db:db -p 8089:80",
+      "anchor": "run-phpmyadmin"
+    },
+    {
+      "question": "docker compose prévoir service database admin au cas où ou en urgence",
+      "anchor": "conclusion"
+    }
+  ]
+}

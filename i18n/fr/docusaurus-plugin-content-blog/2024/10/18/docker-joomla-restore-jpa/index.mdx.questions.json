@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:53:41.429Z",
+  "durationMs": 143129,
+  "source": "index.mdx",
+  "locale": "fr",
+  "sourceHash": "42224ddbe093b77a1330a553bf7ede7b21d474e1",
+  "questions": [
+    {
+      "question": "Comment restaurer un site Joomla en local avec Docker et Akeeba Kickstart ?",
+      "anchor": ""
+    },
+    {
+      "question": "Pourquoi les containers n'ont besoin que de PHP et Apache lors d'une restauration Akeeba ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "mkdir /tmp/joomla_restore && cd $_ pour préparer le dossier de travail",
+      "anchor": "creating-required-files"
+    },
+    {
+      "question": "Quelles lignes changer dans compose.yaml quand on restaure une sauvegarde existante ?",
+      "anchor": "the-orchestration-file-composeyaml"
+    },
+    {
+      "question": "Comment ajouter la cible import dans le makefile pour automatiser le déploiement ?",
+      "anchor": "our-makefile"
+    },
+    {
+      "question": "Pourquoi construire une image PHP/Apache sur mesure via Dockerfile au lieu d'utiliser une image Joomla toute faite ?",
+      "anchor": "we-also-need-a-file-called-dockerfile"
+    },
+    {
+      "question": "Quel type d'archive Akeeba Backup faut-il récupérer pour la restauration ?",
+      "anchor": "we-need-a-backup-for-sure"
+    },
+    {
+      "question": "Que faut-il vérifier avant d'exécuter make import ?",
+      "anchor": "before-starting"
+    },
+    {
+      "question": "make import pour lancer la restauration de la base de données et des fichiers",
+      "anchor": "run-the-importation-process"
+    },
+    {
+      "question": "Finaliser la configuration de la base de données dans le navigateur après l'import Docker",
+      "anchor": "conclusion"
+    }
+  ]
+}

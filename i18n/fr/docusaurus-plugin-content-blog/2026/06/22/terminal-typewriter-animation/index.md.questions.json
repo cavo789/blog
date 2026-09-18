@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:13:49.755Z",
+  "durationMs": 178782,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ce56157ac4cfbd853d91df2c8083e846329706f5",
+  "questions": [
+    {
+      "question": "Animer les blocs de commandes CLI dans un blog Docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "Comment activer la prop `typewriter` et faire défiler les lignes caractère par caractère ?",
+      "anchor": "the-new-typewriter-prop"
+    },
+    {
+      "question": "Déclencher l'animation du terminal uniquement quand il entre dans la zone visible",
+      "anchor": "animation-starts-only-when-visible"
+    },
+    {
+      "question": "Ajustement automatique de la vitesse de frappe selon le nombre de lignes",
+      "anchor": "speed-scales-automatically-with-line-count"
+    },
+    {
+      "question": "Comment le composant distingue-t-il les commandes tapées des sorties affichées ?",
+      "anchor": "how-the-lines-are-classified"
+    },
+    {
+      "question": "Est-ce que l'ajout de l'animation machine à écrire impacte les anciens blocs de code Docusaurus ?",
+      "anchor": "zero-breaking-changes"
+    },
+    {
+      "question": "Implémentation de l'animation en React pur sans bibliothèques tierces",
+      "anchor": "implementation-sketch"
+    },
+    {
+      "question": "Comment intégrer ce composant Terminal animé dans un site Docusaurus existant ?",
+      "anchor": "create-the-component"
+    }
+  ]
+}

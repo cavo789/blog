@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:14:37.810Z",
+  "durationMs": 188280,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "cbb0a5cb6e83fd8dc810fd16e116c9f4515c57a7",
+  "questions": [
+    {
+      "question": "comment lier une feuille Excel aux données de ma base Joomla sans passer par le CMS",
+      "anchor": ""
+    },
+    {
+      "question": "requête SQL Joomla affichage tableau HTML lien Excel",
+      "anchor": ""
+    },
+    {
+      "question": "où copier le fichier pour tester l'export Joomla vers Excel",
+      "anchor": "lets-create-an-example"
+    },
+    {
+      "question": "quel est le mot de passe par défaut du script d'export",
+      "anchor": "lets-create-an-example"
+    },
+    {
+      "question": "comment passer de la liste des utilisateurs à celle des articles dans le script",
+      "anchor": "show-the-list-of-articles"
+    },
+    {
+      "question": "quelles lignes modifier dans le fichier pour activer la requête articles",
+      "anchor": "show-the-list-of-articles"
+    },
+    {
+      "question": "importer un tableau HTML Joomla dans Excel avec Obtenir les données à partir du Web",
+      "anchor": "from-within-excel-retrieve-our-joomla-data"
+    },
+    {
+      "question": "pourquoi ajouter ?raw=1 à l'url du script pour Excel",
+      "anchor": "from-within-excel-retrieve-our-joomla-data"
+    },
+    {
+      "question": "changer le mot de passe par défaut du script d'export Joomla",
+      "anchor": "using-another-password"
+    },
+    {
+      "question": "écrire sa propre requête SQL dans le script d'export Joomla",
+      "anchor": "creating-your-own-sql"
+    }
+  ]
+}

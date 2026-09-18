@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:27:02.298Z",
+  "durationMs": 146996,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "689841dd96153154b096de72b57f1c6ba017e7f8",
+  "questions": [
+    {
+      "question": "comment passer plusieurs paramètres à une fonction bash sans passer d'objets",
+      "anchor": ""
+    },
+    {
+      "question": "bash fonction trop de paramètres utiliser un tableau associatif",
+      "anchor": ""
+    },
+    {
+      "question": "éviter la confusion des arguments positionnels dans un script shell",
+      "anchor": ""
+    },
+    {
+      "question": "déclarer un tableau associatif avec declare -A comme unique paramètre",
+      "anchor": ""
+    },
+    {
+      "question": "ajouter de nouveaux champs à une fonction bash existante sans casser les appels",
+      "anchor": ""
+    },
+    {
+      "question": "clean code bash limiter le nombre de paramètres de fonction",
+      "anchor": ""
+    },
+    {
+      "question": "tester un script bash avec bats après avoir modifié les paramètres",
+      "anchor": ""
+    },
+    {
+      "question": "organiser et trier les fonctions bash pour un code maintenable",
+      "anchor": ""
+    },
+    {
+      "question": "passer des données structurées à une fonction shell au lieu de plusieurs arguments",
+      "anchor": ""
+    },
+    {
+      "question": "rendre les paramètres d'une fonction bash évolutifs et non cassants",
+      "anchor": ""
+    }
+  ]
+}

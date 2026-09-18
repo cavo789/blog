@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:58:43.007Z",
+  "durationMs": 139610,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "dd3b61b40cd7104fb8064d0030b83fd165bdbb0a",
+  "questions": [
+    {
+      "question": "exposer une base oracle en api restful avec ords dans docker",
+      "anchor": ""
+    },
+    {
+      "question": "Quels sont les prérequis techniques avant de déployer ords ?",
+      "anchor": "some-prerequisites"
+    },
+    {
+      "question": "docker pull container-registry.oracle.com/database/ords-developer:latest",
+      "anchor": "download-a-docker-image-for-oracle-rest-data-services"
+    },
+    {
+      "question": "créer un volume docker pour stocker les secrets et la config d'ords",
+      "anchor": "create-a-volume-for-the-ords-configuration"
+    },
+    {
+      "question": "comment configurer le fichier conn_string.txt pour la chaîne de connexion ?",
+      "anchor": "configure-the-connection-string"
+    },
+    {
+      "question": "lancer le container ords avec ORDDISABLEAPEX=true",
+      "anchor": "create-the-container"
+    },
+    {
+      "question": "créer un utilisateur oracle dédié pour l'accès rest",
+      "anchor": "we-need-to-create-our-user-in-our-database"
+    },
+    {
+      "question": "appliquer pagination filtrage et tri via querystring dans les requêtes ords",
+      "anchor": "using-paging-filtering-and-ordering-options-on-the-querystring-optional--skip-if-the-default-endpoint-is-enough"
+    },
+    {
+      "question": "consulter la documentation swagger openapi des endpoints exposés",
+      "anchor": "swagger"
+    },
+    {
+      "question": "valider le schéma openapi généré contre les standards belgif",
+      "anchor": "further-reading"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:47:13.963Z",
+  "durationMs": 155674,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "aaf58c3d815b12893f1a9b6ace750f9e65f6bd3f",
+  "questions": [
+    {
+      "question": "comment comparer deux versions d'un script bash pour identifier les fonctions ajoutées ou supprimées",
+      "anchor": ""
+    },
+    {
+      "question": "outil en ligne de commande pour voir l'évolution des fonctions entre deux fichiers .sh",
+      "anchor": ""
+    },
+    {
+      "question": "signification des indicateurs > < et ! dans le résultat de diff sur des fonctions",
+      "anchor": "result"
+    },
+    {
+      "question": "comment savoir quelles fonctions sont absentes d'un seul côté après un diff",
+      "anchor": "result"
+    },
+    {
+      "question": "créer deux fichiers de test pour reproduire la comparaison de fonctions bash",
+      "anchor": "create-some-files-for-this-blog-post"
+    },
+    {
+      "question": "regex grep pour extraire les noms de fonctions d'un fichier .sh",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    },
+    {
+      "question": "comment extraire et trier les noms de toutes les fonctions déclarées dans un script bash ?",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
+    },
+    {
+      "question": "pipeline bash pour comparer les fonctions de deux scripts sans tenir compte de l'ordre",
+      "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
+    },
+    {
+      "question": "comment repérer les fonctions renommées entre deux versions d'un script bash ?",
+      "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
+    },
+    {
+      "question": "comparer automatiquement les fonctions de tous les scripts de deux dossiers",
+      "anchor": "compare-bash-scripts-in-two-folders"
+    }
+  ]
+}

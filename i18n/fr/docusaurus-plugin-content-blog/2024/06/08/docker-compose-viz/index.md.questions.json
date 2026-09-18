@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:17:30.763Z",
+  "durationMs": 139610,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "95aa9146d0d7cb9aeca378ea503e5288bc710492",
+  "questions": [
+    {
+      "question": "visualiser architecture docker compose graphe dépendances",
+      "anchor": ""
+    },
+    {
+      "question": "comment générer un diagramme des services et ports depuis compose.yaml",
+      "anchor": ""
+    },
+    {
+      "question": "lancer compose-viz pour avoir un png",
+      "anchor": "reproduce-it-yourself"
+    },
+    {
+      "question": "exporter en svg avec compose-viz",
+      "anchor": "reproduce-it-yourself"
+    },
+    {
+      "question": "créer un compose.yaml minimal pour tester le rendu",
+      "anchor": "reproduce-it-yourself"
+    },
+    {
+      "question": "interpréter un graphe compose-viz avec volumes et ports multiples",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "mapper les dépendances et les ports exposés dans un schéma docker",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "outils similaires à compose-viz pour les schémas d'infrastructure",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "docker compose config fusionner fichiers yaml et variables",
+      "anchor": "docker-config"
+    },
+    {
+      "question": "afficher la version résolue de compose.yaml avec docker compose config",
+      "anchor": "docker-config"
+    }
+  ]
+}

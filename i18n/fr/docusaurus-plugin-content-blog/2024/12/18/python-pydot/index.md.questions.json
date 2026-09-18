@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:45:06.960Z",
+  "durationMs": 281622,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b24010b31905a171ce32a7ab2a04e479e344a026",
+  "questions": [
+    {
+      "question": "Comment générer un diagramme ETL avec pydot et Docker ?",
+      "anchor": ""
+    },
+    {
+      "question": "pydot diagram as code python docker png",
+      "anchor": ""
+    },
+    {
+      "question": "graphviz documentation exemples python pydot",
+      "anchor": "some-other-examples"
+    },
+    {
+      "question": "Où trouver des scripts pydot prêts à l'emploi sur Internet ?",
+      "anchor": "some-other-examples"
+    },
+    {
+      "question": "pydot générer schéma classes POO python",
+      "anchor": "oop-classes"
+    },
+    {
+      "question": "Comment lier les classes entre elles dans un diagramme pydot ?",
+      "anchor": "oop-classes"
+    },
+    {
+      "question": "pydot flux de données python script",
+      "anchor": "data-flow"
+    },
+    {
+      "question": "Transformer un flux de données en image avec pydot",
+      "anchor": "data-flow"
+    },
+    {
+      "question": "pydot flux de décision python exemple",
+      "anchor": "decision-flow"
+    },
+    {
+      "question": "Comment créer un schéma de flux de décision à partir de code Python ?",
+      "anchor": "decision-flow"
+    },
+    {
+      "question": "pydot arbre de décision python png output",
+      "anchor": "decision-tree"
+    },
+    {
+      "question": "Générer un arbre de décision avec la bibliothèque pydot",
+      "anchor": "decision-tree"
+    }
+  ]
+}

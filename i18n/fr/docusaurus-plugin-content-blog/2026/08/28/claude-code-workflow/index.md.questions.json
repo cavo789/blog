@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:47:48.641Z",
+  "durationMs": 150790,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "31b538bdc3acaf81398156fd2d9429c97673c463",
+  "questions": [
+    {
+      "question": ".claude/ de slash commands isolées à workflow en couches",
+      "anchor": ""
+    },
+    {
+      "question": "Comment distinguer les composants automatiques des commandes manuelles dans l'organisation en couches ?",
+      "anchor": "what-five-layers-look-like-in-practice"
+    },
+    {
+      "question": "Créer sa première slash command pour automatiser une tâche récurrente",
+      "anchor": "start-here-your-first-slash-command"
+    },
+    {
+      "question": "Configurer un hook Claude Code pour bloquer ou valider un commit automatiquement",
+      "anchor": "draw-a-hard-line-hooks"
+    },
+    {
+      "question": "Encoder des standards dans une skill et les faire valider par un agent en contexte isolé",
+      "anchor": "encode-your-standards-skills-checked-by-agents"
+    },
+    {
+      "question": "Comment vérifier que la valeur principale d'un article technique apparaît avant l'installation ?",
+      "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
+    },
+    {
+      "question": "Rules toujours actives sans invocation : comment les activer à l'ouverture d'un fichier ?",
+      "anchor": "always-on-no-invocation-needed-rules"
+    },
+    {
+      "question": "Enchaîner commands, agents et skills pour un pipeline de review automatique",
+      "anchor": "wiring-it-all-together"
+    },
+    {
+      "question": "Pourquoi les agents reviewers doivent rester en lecture seule plutôt que d'éditer le code ?",
+      "anchor": "why-the-reviewer-agents-cant-edit"
+    },
+    {
+      "question": "Quand privilégier un script Bash zéro token plutôt qu'un prompt IA pour compter des fichiers ?",
+      "anchor": "the-zero-token-script-one-more-time"
+    }
+  ]
+}

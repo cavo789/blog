@@ -66,14 +66,26 @@ For this repository, the deployment is made using GitHub actions. By pushing cha
 
 ## Troubleshooting: purging the service worker
 
-The production build registers a service worker (`@docusaurus/plugin-pwa`, see `docusaurus.config.js`) so the blog can be installed as an app and its homepage stays reachable offline. It only activates for a reader who installed the app or is running it standalone (or added `?offlineMode=true` to a URL) — a normal browser visit never registers it, so this only ever matters when reproducing an issue reported from an installed instance.
+The production build registers a service worker (`@docusaurus/plugin-pwa`, see `docusaurus.config.js`) so the blog can be installed as an app. It only activates for a reader who installed the app or is running it standalone (or added `?offlineMode=true` to a URL) — a normal browser visit never registers it, so this only ever matters when reproducing an issue reported from an installed instance.
 
-If something looks stale or broken only in that installed/standalone context (an old version won't go away, a page that should render doesn't), suspect the service worker first — it's a layer of caching most people forget exists once it's out of sight. To clear it in Chrome/Edge:
+It no longer precaches any HTML document (TODO 0127): the generated `fetch` handler is cache-first _unconditionally_, so a precached page was served to online readers too — stale at best, and outright broken once a deploy renamed the hashed assets that page referenced. The long comment at the plugin entry in `docusaurus.config.js` has the full reasoning.
+
+If something looks stale or broken only in that installed/standalone context (an old version won't go away, a page that should render doesn't), suspect the service worker first — it's a layer of caching most people forget exists once it's out of sight.
+
+**Desktop (Chrome/Edge):**
 
 - Open DevTools → **Application** tab → **Service Workers** in the sidebar.
 - Click **Unregister** next to this site's worker (or check **Update on reload** while debugging).
-- Still in **Application**, open **Storage** and click **Clear site data** to also drop the cached shell (homepage, manifest, the "Ask my blog" question index) alongside it.
+- Still in **Application**, open **Storage** and click **Clear site data** to also drop anything cached alongside it.
 - Reload the page.
+
+**Android (Chrome)** — where this actually gets reported, and where DevTools isn't an option. A reader seeing a broken or ancient page on their phone can fix it without a cable:
+
+- If the blog is installed on the home screen, **uninstall that icon first** — otherwise the worker is re-registered on the next launch.
+- In Chrome, open the site → tap the **padlock / tune icon** left of the address bar → **Site settings** → **Delete and reset** (older builds: _Clear & reset_). This unregisters the service worker and drops its caches.
+- Reload.
+
+(For remote debugging instead: `chrome://inspect/#devices` from a desktop Chrome with the phone connected over USB gives the same Application tab as above.)
 
 A rebuild alone doesn't force this: existing installs keep running their currently-installed worker until it detects a byte-level change in `sw.js` and a reader accepts the in-app "New version available" reload prompt — the steps above are the manual override when that isn't happening.
 

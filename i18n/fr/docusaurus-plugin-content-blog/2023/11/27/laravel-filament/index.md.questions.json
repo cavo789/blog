@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:20:57.155Z",
+  "durationMs": 141711,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "58d12646a211aa188a46a704314a4363c5ac3bce",
+  "questions": [
+    {
+      "question": "stack TALL (Tailwind, Alpine, Laravel, Livewire) pour construire des panneaux d'administration",
+      "anchor": ""
+    },
+    {
+      "question": "alternative gratuite à Laravel Nova pour les back-office Laravel",
+      "anchor": ""
+    },
+    {
+      "question": "comment installer et configurer Filament rapidement sur un projet Laravel",
+      "anchor": ""
+    },
+    {
+      "question": "générer un CRUD complet depuis une seule classe PHP avec une Resource Filament",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "pourquoi éviter de maintenir une API ou un frontend séparé pour un panneau interne",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "comment Filament réutilise automatiquement les policies Laravel existantes",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "gérer les relations Eloquent (belongsTo, hasMany, many-to-many) avec les widgets Filament",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "plugins Filament disponibles pour l'import/export, l'impersonation et la multi-tenancy",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "Filament adapté à une interface client soignée ou uniquement aux outils internes",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "est-ce que Laravel Filament vaut vraiment le coup pour un back-office rapide",
+      "anchor": "conclusion"
+    }
+  ]
+}

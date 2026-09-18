@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T19:53:23.188Z",
+  "durationMs": 153966,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "04bd93bf379118841a511404560396ad65b8aef8",
+  "questions": [
+    {
+      "question": "Comment configurer .htaccess pour tester des redirections Apache en local avec Docker ?",
+      "anchor": ""
+    },
+    {
+      "question": "Exemples de règles Content Security Policy pour Apache",
+      "anchor": "csp---content-security-policy"
+    },
+    {
+      "question": "Bloquer l'accès à des fichiers par leur nom exact dans .htaccess",
+      "anchor": "block-access-to-some-files-based-on-their-names"
+    },
+    {
+      "question": "Comment empêcher l'accès aux fichiers et dossiers cachés (préfixe point) sous Apache ?",
+      "anchor": "block-access-to-hidden-files--directories"
+    },
+    {
+      "question": "Forcer le HTTPS et le www avec HSTS preload dans .htaccess",
+      "anchor": "force"
+    },
+    {
+      "question": "Désactiver les erreurs Apache en production via .htaccess",
+      "anchor": "misc"
+    },
+    {
+      "question": "Ajouter des en-têtes expires et activer les ETags pour la mise en cache",
+      "anchor": "compress-files-based-on-their-type-or-extensions"
+    },
+    {
+      "question": "Refuser l'accès à un dossier entier dans .htaccess",
+      "anchor": "deny-all-access"
+    },
+    {
+      "question": "Activer la protection XSS des navigateurs et bloquer le clickjacking avec Apache",
+      "anchor": "avoid-clickjacking-and-enable-xss-protection-for-browsers"
+    },
+    {
+      "question": "Configurer une redirection permanente ou temporaire vers un sous-dossier dans .htaccess",
+      "anchor": "redirect"
+    },
+    {
+      "question": "Comment empêcher les moteurs de recherche d'indexer un répertoire via .htaccess ?",
+      "anchor": "disallow-indexing"
+    }
+  ]
+}

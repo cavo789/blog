@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:50:44.950Z",
+  "durationMs": 130812,
+  "source": "index.mdx",
+  "locale": "fr",
+  "sourceHash": "bbd98089d78357ac5f483978c5f76cb521e06a7a",
+  "questions": [
+    {
+      "question": "automatisation développement local Joomla Docker compose.yaml Makefile",
+      "anchor": ""
+    },
+    {
+      "question": "comment créer les trois fichiers de configuration Docker pour Joomla",
+      "anchor": "create-the-three-configuration-files"
+    },
+    {
+      "question": "rendre les fichiers et la base de données persistants dans compose.yaml",
+      "anchor": "our-orchestration-file-composeyaml"
+    },
+    {
+      "question": "remplacer les commandes Docker par des cibles Makefile",
+      "anchor": "lets-make-our-lives-simpler-and-lazier-using-a-makefile"
+    },
+    {
+      "question": "lancer un site Joomla Docker en une seule commande",
+      "anchor": "lets-wake-up-joomla"
+    },
+    {
+      "question": "comment arrêter les containers sans perdre les données ?",
+      "anchor": "-or-lets-ask-him-to-fall-asleep-keep-containers"
+    },
+    {
+      "question": "sauter l'assistant d'installation Joomla via .env",
+      "anchor": "advanced-configuration-for-joomla"
+    },
+    {
+      "question": "isoler plusieurs versions de Joomla sur une même machine",
+      "anchor": "starting-three-different-projects"
+    },
+    {
+      "question": "exécuter trois projets Joomla différents avec une seule commande",
+      "anchor": "start-all-three-projects-in-just-one-command"
+    },
+    {
+      "question": "lire les logs Docker pour diagnostiquer un problème de démarrage",
+      "anchor": "under-the-hood-docker-logs"
+    }
+  ]
+}

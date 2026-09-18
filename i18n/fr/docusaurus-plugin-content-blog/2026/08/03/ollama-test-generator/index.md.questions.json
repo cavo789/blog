@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:32:54.907Z",
+  "durationMs": 135209,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "cc166d97aa6f15dc87d9797f9884d4f81694680f",
+  "questions": [
+    {
+      "question": "ai-test terminal generateur tests unitaires ollama local",
+      "anchor": ""
+    },
+    {
+      "question": "comment ai-test détecte les cas Bats, Pest ou Pytest manquants depuis un seul fichier",
+      "anchor": "what-ai-test-does-for-you"
+    },
+    {
+      "question": "pourquoi l'outil ne propose que les tests manquants et valide dans un container jetable",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "installation ai-test dépendances jq bat docker compose et configuration zshrc",
+      "anchor": "installing-it"
+    },
+    {
+      "question": "commande ai menu de sélection des fonctions de test",
+      "anchor": "one-entry-point-ai"
+    },
+    {
+      "question": "générer des tests Pytest pour Python ou Pest pour PHP avec la même commande",
+      "anchor": "the-same-command-in-php-and-in-python"
+    },
+    {
+      "question": "logique étape par étape de la génération des tests par le LLM",
+      "anchor": "the-logic-step-by-step"
+    },
+    {
+      "question": "où le script enregistre automatiquement les fichiers de tests selon les conventions du framework",
+      "anchor": "where-the-file-gets-saved"
+    },
+    {
+      "question": "lancer la suite de tests dans un container Docker sans installer de test runner",
+      "anchor": "running-the-suite-without-installing-a-test-runner"
+    },
+    {
+      "question": "choisir et configurer le modèle Ollama pour ai-test",
+      "anchor": "choosing-your-model"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:52:41.986Z",
+  "durationMs": 197096,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ff7055760f8332a20540ef36cfe7573874a99b8e",
+  "questions": [
+    {
+      "question": "Comment automatiser sa CI Python avec Dagger au lieu de YAML ?",
+      "anchor": ""
+    },
+    {
+      "question": "pipeline Dagger sans YAML ni push : comment le lancer en local",
+      "anchor": "the-result-a-working-pipeline-no-yaml-no-push"
+    },
+    {
+      "question": "Pourquoi Dagger garantit-il le même résultat en local et sur GitLab ?",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "installation Dagger créer dossier temporaire et hello.py",
+      "anchor": "installation"
+    },
+    {
+      "question": "transformer les fonctions exemple de Dagger en étapes Pylint Black et mypy",
+      "anchor": "daggerize-our-application"
+    },
+    {
+      "question": "implémenter une étape de linting avec Ruff dans Dagger",
+      "anchor": "create-our-linting-function"
+    },
+    {
+      "question": "créer un Makefile pour envelopper les appels CLI de Dagger",
+      "anchor": "create-a-makefile"
+    },
+    {
+      "question": "comment formater le code Python avec Black via Dagger ?",
+      "anchor": "formatting-the-code-using-black"
+    },
+    {
+      "question": "comment organiser les fichiers de configuration Dagger dans le projet",
+      "anchor": "configuration-files"
+    },
+    {
+      "question": "configurer le runner GitLab et le socket Docker pour Dagger",
+      "anchor": "implementing-a-gitlab-ci-using-dagger"
+    }
+  ]
+}

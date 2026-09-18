@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:48:58.794Z",
+  "durationMs": 143613,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "ca6fa7134f3894629aa59362d4ece877b1adc1b7",
+  "questions": [
+    {
+      "question": "comment utiliser docker init pour php apache sous docker desktop 4.26",
+      "anchor": ""
+    },
+    {
+      "question": "docker init template php apache assistant interactif",
+      "anchor": ""
+    },
+    {
+      "question": "mapper le port 8080 dans compose.yaml",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "corriger le bug COPY dans le Dockerfile généré par docker init",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "docker compose up php retourne 404 comment ajouter index.php",
+      "anchor": "run-the-container"
+    },
+    {
+      "question": "lancer le container php en arrière plan avec docker compose up -d",
+      "anchor": "run-the-container"
+    },
+    {
+      "question": "entrer dans le shell du container docker avec docker compose exec",
+      "anchor": "enter-in-the-container"
+    },
+    {
+      "question": ".dockerignore ignore les fichiers locaux dans l'image construite",
+      "anchor": "dockerignore"
+    }
+  ]
+}

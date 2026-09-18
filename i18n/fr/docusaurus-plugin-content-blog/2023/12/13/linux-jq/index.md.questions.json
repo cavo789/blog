@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:59:34.611Z",
+  "durationMs": 196951,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0ca306224c86c4ae6112f8a17a9a71e29195cd73",
+  "questions": [
+    {
+      "question": "comment formater et parser du json en ligne de commande avec jq",
+      "anchor": ""
+    },
+    {
+      "question": "pipe curl --silent vers jq pour afficher du json indenté",
+      "anchor": "the-same-answer-twice"
+    },
+    {
+      "question": "filtre jq pour extraire un champ précis d une réponse api",
+      "anchor": "filtering-the-output"
+    },
+    {
+      "question": "utiliser jq dans un container docker sans installation locale",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "commande pour tester la version de jq installée sur le système",
+      "anchor": "installing-jq"
+    },
+    {
+      "question": "formater du json brut sans expression de filtre avec jq",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "cas d utilisation de jq pour le debugging de containers et le parsing de réponses api",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "syntaxe jq pour récupérer le premier élément d un tableau json",
+      "anchor": "filtering-the-output"
+    },
+    {
+      "question": "docker run jq sample.json pour tester des filtres hors ligne",
+      "anchor": "seeing-it-in-action-with-docker"
+    }
+  ]
+}

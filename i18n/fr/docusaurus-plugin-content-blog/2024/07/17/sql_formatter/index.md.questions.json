@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:37:11.279Z",
+  "durationMs": 165176,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "558c7d3b6cbe17ba895ce3a14550d8072ce277b9",
+  "questions": [
+    {
+      "question": "pourquoi il n'y a pas de formateur sql comme pour json ou php",
+      "anchor": ""
+    },
+    {
+      "question": "coller du sql sur une seule ligne pour le rendre lisible",
+      "anchor": ""
+    },
+    {
+      "question": "récupérer les sources sql formatter sur github",
+      "anchor": ""
+    },
+    {
+      "question": "héberger son propre formateur sql en self hosted",
+      "anchor": ""
+    },
+    {
+      "question": "comment préparer du code sql pour une revue de code ?",
+      "anchor": ""
+    },
+    {
+      "question": "transformer du sql compact en sql indenté automatiquement",
+      "anchor": ""
+    },
+    {
+      "question": "démo en ligne gratuite pour formater du sql",
+      "anchor": ""
+    },
+    {
+      "question": "outil minimaliste dédié au formatage sql",
+      "anchor": ""
+    },
+    {
+      "question": "comment relire un vieux script sql mal indenté ?",
+      "anchor": ""
+    },
+    {
+      "question": "formater du sql monoligne rapidement sans installation",
+      "anchor": ""
+    }
+  ]
+}

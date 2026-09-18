@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:31:59.312Z",
+  "durationMs": 123681,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "74a930aee9507a3198b510cb55ef2f689faaca53",
+  "questions": [
+    {
+      "question": "Comment générer un seul fichier markdown pour pdf html et slides avec quarto",
+      "anchor": ""
+    },
+    {
+      "question": "Masquer les tableaux trop larges dans la sortie pdf quarto",
+      "anchor": ""
+    },
+    {
+      "question": "Quarto : ajouter une slide de clôture uniquement pour reveal.js",
+      "anchor": ""
+    },
+    {
+      "question": "Retirer automatiquement les listings de code longs des diaporamas quarto",
+      "anchor": ""
+    },
+    {
+      "question": "Unifier la documentation technique en markdown pour pdf Word et slides",
+      "anchor": ""
+    },
+    {
+      "question": "Syntaxe du bloc content-visible avec le filtre when dans quarto",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "Comment utiliser content-visible when pour masquer du texte en pdf",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "Quel est le bloc opposé à content-visible dans quarto pour cacher du contenu",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "Exemple concret de content-visible when quarto markdown",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "Filtrer dynamiquement le contenu quarto selon le format de sortie avec content-visible",
+      "anchor": "content-visible-when"
+    }
+  ]
+}

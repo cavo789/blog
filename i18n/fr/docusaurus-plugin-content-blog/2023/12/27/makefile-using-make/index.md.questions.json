@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:45:52.017Z",
+  "durationMs": 133693,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "aed6c15fba5099d851a02c28ae12c4307ab6bd8d",
+  "questions": [
+    {
+      "question": "comment centraliser les commandes docker complexes dans un projet linux",
+      "anchor": ""
+    },
+    {
+      "question": "quand est-il préférable d'utiliser un makefile plutôt que des scripts shell ?",
+      "anchor": ""
+    },
+    {
+      "question": "remplacer une longue commande docker compose par un mot clé make",
+      "anchor": "one-word-instead-of-that-command"
+    },
+    {
+      "question": "comment afficher les identifiants et l'url directement depuis une target ?",
+      "anchor": "one-word-instead-of-that-command"
+    },
+    {
+      "question": "makefile indentation tabulation ou espace obligatoire",
+      "anchor": "whats-inside-the-makefile"
+    },
+    {
+      "question": "comment structurer les targets dans un makefile pour démarrer un projet ?",
+      "anchor": "whats-inside-the-makefile"
+    },
+    {
+      "question": "installer make sur linux avec apt install make",
+      "anchor": "why-bother"
+    },
+    {
+      "question": "pourquoi stocker les commandes de build dans un fichier plutôt que dans l'historique du shell ?",
+      "anchor": "why-bother"
+    },
+    {
+      "question": "versionner les commandes de projet dans le repository git",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "rendre un makefile auto-documenté pour faciliter la prise en main ?",
+      "anchor": "conclusion"
+    }
+  ]
+}

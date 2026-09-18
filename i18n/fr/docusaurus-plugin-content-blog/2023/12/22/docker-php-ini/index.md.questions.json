@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:24:31.471Z",
+  "durationMs": 169517,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "dfc25b6294b068fc1a892480d6196dd7ef4e7525",
+  "questions": [
+    {
+      "question": "comment surcharger les paramètres php.ini dans un container Docker",
+      "anchor": ""
+    },
+    {
+      "question": "erreur taille d'upload Joomla Docker",
+      "anchor": ""
+    },
+    {
+      "question": "modifier la configuration PHP d'une image Docker existante sans reconstruire",
+      "anchor": ""
+    },
+    {
+      "question": "syntaxe du bloc volumes pour php.ini dans compose.yaml",
+      "anchor": "step-one---update-your-yaml-file"
+    },
+    {
+      "question": "mapper un fichier php.ini local dans docker compose",
+      "anchor": "step-one---update-your-yaml-file"
+    },
+    {
+      "question": "comment surcharger le php.ini par défaut via compose.yaml",
+      "anchor": "step-one---update-your-yaml-file"
+    },
+    {
+      "question": "créer un fichier php.ini personnalisé dans le dossier du projet",
+      "anchor": "step-two---create-your-own-phpini-file"
+    },
+    {
+      "question": "directives PHP à ajouter dans le php.ini local",
+      "anchor": "step-two---create-your-own-phpini-file"
+    },
+    {
+      "question": "lancer docker compose up après modification de php.ini",
+      "anchor": "step-three---restart-your-container"
+    },
+    {
+      "question": "appliquer les changements de php.ini sans reconstruire l'image",
+      "anchor": "step-three---restart-your-container"
+    }
+  ]
+}

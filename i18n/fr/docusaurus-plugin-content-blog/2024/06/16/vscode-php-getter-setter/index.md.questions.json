@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:20:52.200Z",
+  "durationMs": 168183,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f858f7d3db045998b8ed420accec505e98ec7d88",
+  "questions": [
+    {
+      "question": "pourquoi utiliser des propriétés privées PHP avec des accesseurs pour valider les données",
+      "anchor": ""
+    },
+    {
+      "question": "quelle extension VSCode permet de générer les getters et setters PHP sans écrire de code",
+      "anchor": ""
+    },
+    {
+      "question": "clic droit VSCode générer getters et setters PHP",
+      "anchor": "see-the-extension-in-action"
+    },
+    {
+      "question": "comment configurer l'extension VSCode pour créer les accesseurs PHP en un clic",
+      "anchor": "see-the-extension-in-action"
+    },
+    {
+      "question": "propriété publique PHP pas de validation prix négatif",
+      "anchor": "the-bad-scenario"
+    },
+    {
+      "question": "pourquoi éviter les propriétés publiques en PHP",
+      "anchor": "the-bad-scenario"
+    },
+    {
+      "question": "valider un prix négatif dans un setter PHP",
+      "anchor": "the-good-way"
+    },
+    {
+      "question": "passer à des propriétés privées PHP avec accesseurs et validation",
+      "anchor": "the-good-way"
+    },
+    {
+      "question": "configurer un devcontainer PHP avec linters et analyse statique",
+      "anchor": "the-good-way"
+    },
+    {
+      "question": "comment utiliser Rector et Tabnine pour détecter et compléter les setters PHP",
+      "anchor": "the-good-way"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:02:39.432Z",
+  "durationMs": 156382,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3774885d7d863a0a8fe0cc073aac1316de9e9a87",
+  "questions": [
+    {
+      "question": "docker compose éviter erreurs Connection refused lors du démarrage des containers",
+      "anchor": ""
+    },
+    {
+      "question": "Comment synchroniser le démarrage d'un service app et d'une base de données ?",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose remplacer scripts de retry manuels pour éviter les crashes au lancement",
+      "anchor": ""
+    },
+    {
+      "question": "configurer healthcheck avec test mysqladmin ping dans docker compose",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "comment régler interval et retries pour un healthcheck docker ?",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "docker compose healthcheck attendre code de sortie 0 pour marquer service healthy",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "utiliser depends_on avec condition service_healthy dans docker compose",
+      "anchor": "the-depends_on-property"
+    },
+    {
+      "question": "docker compose bloquer démarrage container app jusqu'à healthcheck réussi",
+      "anchor": "the-depends_on-property"
+    },
+    {
+      "question": "configurer dépendance conditionnelle dans docker-compose.yml pour base de données",
+      "anchor": "the-depends_on-property"
+    }
+  ]
+}

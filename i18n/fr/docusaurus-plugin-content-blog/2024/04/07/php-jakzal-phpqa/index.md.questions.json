@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:28:26.510Z",
+  "durationMs": 133359,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "6e4bfd6814b2cd846b877b5fc255732b913b1263",
+  "questions": [
+    {
+      "question": "docker run jakzal/phpqa pour analyser du php sans installation",
+      "anchor": ""
+    },
+    {
+      "question": "comment repérer les dépendances inutilisées dans composer.json avec composer-unused ?",
+      "anchor": "composer-unused"
+    },
+    {
+      "question": "réordonner composer.json automatiquement avec composer-normalize",
+      "anchor": "composer-normalize"
+    },
+    {
+      "question": "PHP-Parallel-Lint pour traquer les erreurs de syntaxe dans les fichiers .php",
+      "anchor": "php-parallel-lint"
+    },
+    {
+      "question": "PHP-CS-FIXER pour reformater le code php automatiquement",
+      "anchor": "php-cs-fixer"
+    },
+    {
+      "question": "PHP_CodeSniffer pour vérifier les standards de codage",
+      "anchor": "php_codesniffer"
+    },
+    {
+      "question": "où trouver la liste exhaustive des outils disponibles dans l'image ?",
+      "anchor": "a-whole-host-of-other-tools-await-you"
+    },
+    {
+      "question": "comment spécifier une version de php précise pour du code legacy avec jakzal/phpqa ?",
+      "anchor": "change-php-versions"
+    }
+  ]
+}

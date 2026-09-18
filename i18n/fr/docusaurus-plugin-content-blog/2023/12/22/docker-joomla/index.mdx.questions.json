@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:21:08.715Z",
+  "durationMs": 120159,
+  "source": "index.mdx",
+  "locale": "fr",
+  "sourceHash": "73ece2e9c82869ad44d774ba79904f5f9ccbce0b",
+  "questions": [
+    {
+      "question": "Comment déployer un site Joomla en local avec Docker en quelques secondes ?",
+      "anchor": ""
+    },
+    {
+      "question": "Lancer Joomla en deux minutes avec un seul fichier docker compose",
+      "anchor": "two-minutes-one-file-your-joomla-is-running"
+    },
+    {
+      "question": "Configurer docker-compose.yml pour lier Apache, PHP et MySQL",
+      "anchor": "docker-compose"
+    },
+    {
+      "question": "Télécharger les images Docker pour Joomla et la base de données",
+      "anchor": "download-images"
+    },
+    {
+      "question": "Pourquoi Docker ajoute joomlaxxx au nom de mes containers ?",
+      "anchor": "why-joomla-joomlaxxx-names"
+    },
+    {
+      "question": "Finaliser l'installation de Joomla via l'interface web",
+      "anchor": "install-joomla"
+    },
+    {
+      "question": "Exécuter une commande CLI à l'intérieur du container Joomla",
+      "anchor": "start-a-cli-command"
+    },
+    {
+      "question": "Changer le port d'écoute de Joomla dans docker compose",
+      "anchor": "using-another-port"
+    },
+    {
+      "question": "Remplacer MySQL par MariaDB ou PostgreSQL dans docker compose",
+      "anchor": "did-you-prefer-postgresql-or-mariadb"
+    },
+    {
+      "question": "Déployer tout l'environnement Joomla avec une seule commande",
+      "anchor": "bonus---install-joomla-with-a-cli-one-liner"
+    }
+  ]
+}

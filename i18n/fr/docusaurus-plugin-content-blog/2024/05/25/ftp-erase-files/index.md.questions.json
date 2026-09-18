@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:10:56.169Z",
+  "durationMs": 113912,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "bd3ecbb457a3f565f4d83e5f782cee156753ca2e",
+  "questions": [
+    {
+      "question": "0: comment supprimer un dossier FTP en quelques secondes sans SSH",
+      "anchor": ""
+    },
+    {
+      "question": "0: script PHP pour vider un répertoire via le navigateur",
+      "anchor": ""
+    },
+    {
+      "question": "0: contourner la lenteur de la suppression de fichiers FTP",
+      "anchor": ""
+    },
+    {
+      "question": "0: exécuter un script PHP à distance pour effacer un site complet",
+      "anchor": ""
+    },
+    {
+      "question": "0: script PHP qui s'autodétruit après suppression d'un dossier FTP",
+      "anchor": ""
+    },
+    {
+      "question": "0: comment supprimer tous les fichiers d'un site web FTP rapidement",
+      "anchor": ""
+    },
+    {
+      "question": "0: supprimer un répertoire serveur sans accès SSH",
+      "anchor": ""
+    },
+    {
+      "question": "0: lancer un script PHP par URL pour vider un dossier FTP",
+      "anchor": ""
+    },
+    {
+      "question": "0: suppression massive de fichiers FTP sans client lourd",
+      "anchor": ""
+    },
+    {
+      "question": "0: exécuter un script PHP pour vider un dossier FTP en une fois",
+      "anchor": ""
+    }
+  ]
+}

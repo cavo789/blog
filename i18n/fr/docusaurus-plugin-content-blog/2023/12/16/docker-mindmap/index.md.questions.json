@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:08:52.976Z",
+  "durationMs": 172267,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "acab7257d751fbd53bae0a39aced953acd0dc8db",
+  "questions": [
+    {
+      "question": "comment générer une mind map interactive depuis du markdown avec Docker",
+      "anchor": ""
+    },
+    {
+      "question": "mind map Markmap SVG interactive branches repliables et zoom",
+      "anchor": "what-comes-out"
+    },
+    {
+      "question": "syntaxe markdown pour mapper les titres en branches et les listes en feuilles",
+      "anchor": "and-here-is-the-text-that-produced-it"
+    },
+    {
+      "question": "commande Docker pour convertir un fichier markdown en HTML Markmap",
+      "anchor": "doing-it-on-your-machine"
+    },
+    {
+      "question": "Comment utiliser l'éditeur en ligne de Markmap sans installation locale ?",
+      "anchor": "without-docker-in-your-browser"
+    },
+    {
+      "question": "quelles options json sont supportées pour configurer le rendu Markmap",
+      "anchor": "go-further"
+    },
+    {
+      "question": "versionner et comparer des mind maps markdown dans un éditeur de texte",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "ouvrir le fichier HTML Markmap dans l'explorer Windows depuis WSL2",
+      "anchor": "doing-it-on-your-machine"
+    }
+  ]
+}

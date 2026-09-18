@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T21:18:35.274Z",
+  "durationMs": 162538,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "32ce58e96315b979f188ead5167292de7911cbad",
+  "questions": [
+    {
+      "question": "Comment exécuter Quarto dans Docker pour faire du doc-as-code sans installation locale ?",
+      "anchor": ""
+    },
+    {
+      "question": "quarto docker doc-as-code markdown rendering",
+      "anchor": ""
+    },
+    {
+      "question": "docker run quarto render pdf -v .:/input -u $(id -u):$(id -g)",
+      "anchor": "render-your-first-pdf-without-installing-anything"
+    },
+    {
+      "question": "Quelle commande pour générer un PDF Quarto sans rien installer ?",
+      "anchor": "render-your-first-pdf-without-installing-anything"
+    },
+    {
+      "question": "Comment configurer le YAML frontmatter d'un fichier source Quarto ?",
+      "anchor": "the-source-file"
+    },
+    {
+      "question": "Comment passer de --to pdf à --to html ou --to slides avec Quarto ?",
+      "anchor": "the-same-file-as-html-and-as-a-slideshow"
+    },
+    {
+      "question": "quarto --to slides --- syntaxe saut de slide",
+      "anchor": "the-same-file-as-html-and-as-a-slideshow"
+    },
+    {
+      "question": "Quand build sa propre image Docker pour Quarto au lieu de ghcr.io/quarto-dev/quarto:latest ?",
+      "anchor": "build-your-own-image-optional--skip-it-if-the-official-one-is-enough"
+    },
+    {
+      "question": "Comment masquer les logs inutiles avec l'option --quiet de Quarto ?",
+      "anchor": "going-further"
+    },
+    {
+      "question": "quarto render --quiet output suppression",
+      "anchor": "going-further"
+    }
+  ]
+}

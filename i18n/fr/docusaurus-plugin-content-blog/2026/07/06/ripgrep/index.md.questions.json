@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:19:50.972Z",
+  "durationMs": 161681,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b3fd4fa962fb72760169ec3aa874acc10155e742",
+  "questions": [
+    {
+      "question": "Pourquoi passer à ripgrep sur WSL2 au lieu de grep ?",
+      "anchor": ""
+    },
+    {
+      "question": "ripgrep ignore automatiquement les fichiers binaires et le .gitignore",
+      "anchor": "what-is-ripgrep"
+    },
+    {
+      "question": "installation ripgrep Ubuntu WSL2",
+      "anchor": "installation-on-ubuntu--wsl2"
+    },
+    {
+      "question": "configurer les alias rg dans ~/.zshrc",
+      "anchor": "zsh-setup--zshrc"
+    },
+    {
+      "question": "lancer rgf pour naviguer dans les résultats avec fzf",
+      "anchor": "rgf--interactive-search-with-fzf"
+    },
+    {
+      "question": "extraire toute la dette technique avec rgtodo",
+      "anchor": "rgtodo--surface-all-technical-debt-at-once"
+    },
+    {
+      "question": "chercher la définition d'une fonction dans un projet PHP",
+      "anchor": "finding-a-function-definition-across-a-php-project"
+    },
+    {
+      "question": "voir le code autour d'une correspondance avec les lignes de contexte",
+      "anchor": "context-lines--understanding-code-around-a-match"
+    },
+    {
+      "question": "renommer des fichiers en masse avec rg et sed",
+      "anchor": "bulk-rename-with-rg--sed"
+    },
+    {
+      "question": "restreindre la profondeur de recherche récursive",
+      "anchor": "limiting-search-depth"
+    }
+  ]
+}

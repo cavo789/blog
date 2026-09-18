@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:40:28.736Z",
+  "durationMs": 168738,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "2cf5b3ac56761bec7505c82bb5eacb73a900288b",
+  "questions": [
+    {
+      "question": "ajouter une barre de progression visuelle à un script bash",
+      "anchor": ""
+    },
+    {
+      "question": "comment suivre l'avancement de jobs concurrents dans le terminal",
+      "anchor": ""
+    },
+    {
+      "question": "barre de progression console sans outils externes",
+      "anchor": "result"
+    },
+    {
+      "question": "afficher une jauge en direct avec une simple boucle",
+      "anchor": "result"
+    },
+    {
+      "question": "sourcer progress_bar.sh et piloter la barre avec echo",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "comment passer le nombre d'itérations et envoyer le signal de progression",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "créer demo.sh et le rendre exécutable",
+      "anchor": "create-demosh"
+    },
+    {
+      "question": "étapes pour initialiser le script principal sous linux",
+      "anchor": "create-demosh"
+    },
+    {
+      "question": "générer progress_bar.sh pour réutiliser la barre de progression",
+      "anchor": "create-progress_barsh"
+    },
+    {
+      "question": "où copier le code du helper progress_bar.sh",
+      "anchor": "create-progress_barsh"
+    },
+    {
+      "question": "lancer demo.sh pour uploader des pdf via une API RESTful POST",
+      "anchor": "time-to-run-the-code"
+    },
+    {
+      "question": "comment gérer le logging et traiter un fichier CSV avec cette barre de progression",
+      "anchor": "time-to-run-the-code"
+    }
+  ]
+}

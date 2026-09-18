@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:27:11.369Z",
+  "durationMs": 135241,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3c87cd977a7b6a0022c889e4ab303b64ec1ec388",
+  "questions": [
+    {
+      "question": "configurer vscode avec la police JetBrains Mono et activer les ligatures",
+      "anchor": ""
+    },
+    {
+      "question": "Comment personnaliser l'éditeur de code avec une police gratuite et lisible ?",
+      "anchor": ""
+    },
+    {
+      "question": "police de code qui distingue clairement le O majuscule du chiffre 0",
+      "anchor": "why-this-font"
+    },
+    {
+      "question": "pourquoi JetBrains Mono est autorisée pour un usage commercial",
+      "anchor": "why-this-font"
+    },
+    {
+      "question": "télécharger et extraire le dossier .ttf de JetBrains Mono",
+      "anchor": "install-jetbrains-mono-font"
+    },
+    {
+      "question": "installer une police sur Windows en faisant clic droit sur les fichiers",
+      "anchor": "install-jetbrains-mono-font"
+    },
+    {
+      "question": "éditer settings.json pour ajouter editor.fontFamily",
+      "anchor": "configure-vscode-to-use-jetbrains-mono-font"
+    },
+    {
+      "question": "ouvrir les paramètres VSCode avec CTRL + , et changer la police via l'interface",
+      "anchor": "configure-vscode-to-use-jetbrains-mono-font"
+    },
+    {
+      "question": "recharger VSCode après modification de settings.json",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "utiliser CodeSnap pour transformer une sélection de code en capture partageable",
+      "anchor": "conclusion"
+    }
+  ]
+}

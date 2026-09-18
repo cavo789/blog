@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:43:42.890Z",
+  "durationMs": 160795,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3e1568ac3587a87c87ad6cdd4e1f314cbb016ec4",
+  "questions": [
+    {
+      "question": "astuces pour gérer l'historique des commandes sous linux bash zsh",
+      "anchor": ""
+    },
+    {
+      "question": "Comment afficher la liste des commandes exécutées dans le terminal ?",
+      "anchor": "getting-your-history"
+    },
+    {
+      "question": "où se trouve le fichier d'historique .bash_history ou .zsh_history",
+      "anchor": "location-of-your-history"
+    },
+    {
+      "question": "Comment configurer HISTIGNORE ou HISTORY_IGNORE pour exclure des motifs ?",
+      "anchor": "histignore--history_ignore-variables"
+    },
+    {
+      "question": "empêcher une commande précise d'être enregistrée avec une espace avant",
+      "anchor": "dont-put-a-specific-command-in-the-history"
+    },
+    {
+      "question": "Comment filtrer l'historique avec grep en ignorant la casse ?",
+      "anchor": "using-grep-to-filter-your-history"
+    },
+    {
+      "question": "recherche floue dans l'historique avec CTRL + R",
+      "anchor": "ctrl-r-is-your-friend"
+    },
+    {
+      "question": "Comment activer les suggestions automatiques dans la console avec zsh-autosuggestions ?",
+      "anchor": "autosuggestions-in-the-console-using-zsh"
+    },
+    {
+      "question": "supprimer une instruction précise de l'historique des commandes",
+      "anchor": "delete-an-instruction-from-your-history"
+    }
+  ]
+}

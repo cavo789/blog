@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:09:02.633Z",
+  "durationMs": 149416,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0784b154e51ded7cb2aa4796ac05e4318dd19b31",
+  "questions": [
+    {
+      "question": "comment activer les suggestions automatiques de commandes dans zsh",
+      "anchor": ""
+    },
+    {
+      "question": "quel plugin Oh-My-Zsh affiche l'historique en gris pendant la frappe",
+      "anchor": ""
+    },
+    {
+      "question": "accepter une suggestion zsh avec TAB ou faire défiler avec les flèches",
+      "anchor": "three-characters-and-the-command-is-already-there"
+    },
+    {
+      "question": "comment naviguer entre les suggestions de commandes dans zsh-autosuggestions",
+      "anchor": "three-characters-and-the-command-is-already-there"
+    },
+    {
+      "question": "zsh-autosuggestions fonctionne-t-il sans index ni configuration",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "pourquoi les suggestions de zsh s'améliorent-elles après plusieurs jours d'utilisation",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "tester zsh-autosuggestions avec un container Docker et un historique pré-rempli",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "Dockerfile pour simuler une démo de zsh-autosuggestions",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "ajouter zsh-autosuggestions à la liste des plugins de ~/.zshrc",
+      "anchor": "installation"
+    },
+    {
+      "question": "quelles étapes pour cloner le repo et recharger zsh après l'installation",
+      "anchor": "installation"
+    },
+    {
+      "question": "comment l'historique shell impacte la pertinence des suggestions zsh",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "quel plugin zsh propose des suggestions pour les hosts ssh",
+      "anchor": "conclusion"
+    }
+  ]
+}

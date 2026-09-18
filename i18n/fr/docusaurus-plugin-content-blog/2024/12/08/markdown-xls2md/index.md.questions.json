@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T01:39:51.979Z",
+  "durationMs": 170625,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "01fae66dc2ebcf8c3eeafc2ef59c65e979a68388",
+  "questions": [
+    {
+      "question": "convertir une plage Excel copiée en tableau Markdown propre",
+      "anchor": ""
+    },
+    {
+      "question": "XLS2MD affiche-t-il un aperçu HTML en direct lors du collage ?",
+      "anchor": ""
+    },
+    {
+      "question": "coller des cellules Excel dans un fichier Markdown avec CTRL + C et CTRL + V",
+      "anchor": ""
+    },
+    {
+      "question": "outil gratuit pour exporter une sélection Excel vers Markdown pour Quarto",
+      "anchor": ""
+    },
+    {
+      "question": "différence entre XLS2MD et Markitdown pour des plages Excel",
+      "anchor": ""
+    },
+    {
+      "question": "générer un tableau Markdown depuis le presse-papier Excel sans extension",
+      "anchor": ""
+    },
+    {
+      "question": "application web VueJS pour transformer des plages Excel en tableaux Markdown",
+      "anchor": ""
+    },
+    {
+      "question": "où trouver le code source de XLS2MD sur Github",
+      "anchor": "source-code"
+    },
+    {
+      "question": "repository VueJS de XLS2MD",
+      "anchor": "source-code"
+    },
+    {
+      "question": "télécharger le code source de XLS2MD",
+      "anchor": "source-code"
+    }
+  ]
+}

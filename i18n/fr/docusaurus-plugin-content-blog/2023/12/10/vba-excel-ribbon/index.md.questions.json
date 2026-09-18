@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T20:52:34.077Z",
+  "durationMs": 181985,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "84edba64cb2846e4c392f37a249a2c7fab6511f6",
+  "questions": [
+    {
+      "question": "comment créer un ruban personnalisé dans Excel avec XML et VBA",
+      "anchor": ""
+    },
+    {
+      "question": "XML onglet bouton champ saisie Excel",
+      "anchor": "what-were-going-to-build"
+    },
+    {
+      "question": "pourquoi un classeur xlsm est une archive ZIP et comment y injecter customUI.xml",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "outil gratuit éditer manifeste ruban Office",
+      "anchor": "download-the-editor-for-free"
+    },
+    {
+      "question": "ouvrir xlsm dans l'éditeur de ruban sans conflit avec Excel",
+      "anchor": "add-a-ribbon-in-ms-office"
+    },
+    {
+      "question": "namespace racine customUI fichier manifeste",
+      "anchor": "the-root-customui-node-and-the-namespace"
+    },
+    {
+      "question": "balise XML définition onglet personnalisé",
+      "anchor": "define-the-tab"
+    },
+    {
+      "question": "identifiants icônes standard contrôles Office",
+      "anchor": "find-images"
+    },
+    {
+      "question": "lier un clic de bouton du ruban à une subroutine VBA avec onAction",
+      "anchor": "assign-callbacks"
+    },
+    {
+      "question": "recharger le ruban après modification XML classeur",
+      "anchor": "conclusion"
+    }
+  ]
+}

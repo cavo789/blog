@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:03:15.905Z",
+  "durationMs": 153307,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "0c6625a02dc7437b730029a836bd13e15d88d0f5",
+  "questions": [
+    {
+      "question": "Comment utiliser Postman comme outil de tests unitaires pour ses API ?",
+      "anchor": ""
+    },
+    {
+      "question": "Configurer un environnement Postman avec des variables globales",
+      "anchor": "creating-an-environment"
+    },
+    {
+      "question": "Partager des tests par défaut sur une collection Postman",
+      "anchor": "creating-a-collection"
+    },
+    {
+      "question": "Comment envoyer une requête SOAP avec un corps XML dans Postman ?",
+      "anchor": "creating-a-request"
+    },
+    {
+      "question": "Exporter et importer une collection Postman au format json",
+      "anchor": "exporting--importing-a-collection"
+    },
+    {
+      "question": "Tester un service SOAP de validation de numéro de TVA avec Postman",
+      "anchor": "real-world-example"
+    },
+    {
+      "question": "Vérifier la métrique responseTime d'une requête API",
+      "anchor": "check-some-metrics-like-the-responsetime"
+    },
+    {
+      "question": "Contrôler le code de statut HTTP renvoyé par une API",
+      "anchor": "controls-the-http-status-code"
+    },
+    {
+      "question": "S'assurer que la réponse renvoie le bon content-type",
+      "anchor": "ensure-the-response-returns-a-content-type"
+    },
+    {
+      "question": "Valider qu'un corps de réponse est une chaîne XML bien formée",
+      "anchor": "assert-the-response-is-a-valid-xml-string"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T19:56:26.201Z",
+  "durationMs": 149857,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "911878c903961d073b025e9224cfa546e3d549b2",
+  "questions": [
+    {
+      "question": "installer docker desktop et lancer php apache sans configuration locale",
+      "anchor": ""
+    },
+    {
+      "question": "Quelle commande docker pour démarrer un serveur php 8.3 apache en local ?",
+      "anchor": "one-command-a-working-php-server"
+    },
+    {
+      "question": "Pourquoi privilégier les images docker php plutôt que wamp ou easyphp ?",
+      "anchor": "why-docker-images"
+    },
+    {
+      "question": "docker run php apache première fois téléchargement et exécution cross-platform",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "docker exec -it bash créer un fichier index.php dans le container",
+      "anchor": "creating-our-php-script"
+    },
+    {
+      "question": "Comment passer de php 7.4 à 8.1 dans docker sans toucher au système ?",
+      "anchor": "changing-the-php-version-in-one-word"
+    },
+    {
+      "question": "docker run --detach --name -p 80:80 php:8.3-apache explication des arguments",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "Développer en php localement avec docker pour éviter les conflits de versions",
+      "anchor": "conclusion"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:37:06.638Z",
+  "durationMs": 202610,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "735def68f80a37778266a0a635d8bbf3fb97dd4f",
+  "questions": [
+    {
+      "question": "lancer des jobs concurrents en bash",
+      "anchor": ""
+    },
+    {
+      "question": "Comment optimiser un script bash pour traiter un fichier CSV et appeler une API en parallèle ?",
+      "anchor": ""
+    },
+    {
+      "question": "utiliser tous les cœurs CPU disponibles dans un script bash",
+      "anchor": ""
+    },
+    {
+      "question": "calculer le nombre maximum de threads avec nproc",
+      "anchor": "now-the-optimized-version"
+    },
+    {
+      "question": "limiter le nombre de processus bash pour respecter les limites de débit de l API",
+      "anchor": "now-the-optimized-version"
+    },
+    {
+      "question": "lancer une fonction en arrière-plan avec le caractère &",
+      "anchor": "now-the-optimized-version"
+    },
+    {
+      "question": "garder le pid de chaque appel et utiliser wait pour contrôler la concurrence",
+      "anchor": "in-depth"
+    },
+    {
+      "question": "Comment vérifier le nombre de jobs actifs avant de lancer un nouveau processus en bash ?",
+      "anchor": "in-depth"
+    },
+    {
+      "question": "calculer le temps écoulé en secondes avec la commande date dans bash",
+      "anchor": "how-many-seconds-would-i-have-waited"
+    },
+    {
+      "question": "mesurer le gain de temps entre une boucle séquentielle et parallèle en bash",
+      "anchor": "how-many-seconds-would-i-have-waited"
+    }
+  ]
+}

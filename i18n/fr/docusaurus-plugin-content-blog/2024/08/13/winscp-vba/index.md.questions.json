@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:06:14.253Z",
+  "durationMs": 118707,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "eb358500f85306a073fad57d21fa1f2ba3a992b8",
+  "questions": [
+    {
+      "question": "Comment appeler la DLL WinSCP depuis un script VBA dans Excel ?",
+      "anchor": ""
+    },
+    {
+      "question": "winscp vba sftp transfert automatisé",
+      "anchor": ""
+    },
+    {
+      "question": "Exemple de code VBA pour uploader un fichier sur serveur distant",
+      "anchor": ""
+    },
+    {
+      "question": "Comment gérer les erreurs de connexion SFTP avec l'objet WinSCP en VBA ?",
+      "anchor": ""
+    },
+    {
+      "question": "winscp com excel ftp scp webdav",
+      "anchor": ""
+    },
+    {
+      "question": "Vérifier l'empreinte clé SSH lors de l'initialisation de la session WinSCP",
+      "anchor": ""
+    },
+    {
+      "question": "Alternative au VBA pour automatiser WinSCP avec son propre langage",
+      "anchor": ""
+    },
+    {
+      "question": "Comment parcourir les résultats de chaque transfert dans une macro VBA ?",
+      "anchor": ""
+    },
+    {
+      "question": "Intégrer WinSCP dans une application MS Office pour synchronisation fichiers",
+      "anchor": ""
+    },
+    {
+      "question": "winscp vba credentials empreinte ssh connexion",
+      "anchor": ""
+    }
+  ]
+}

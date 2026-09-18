@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T00:30:11.459Z",
+  "durationMs": 146737,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "74e37eede3f2d1acf9e94e312cf4cfebe7efb644",
+  "questions": [
+    {
+      "question": "Pest remplace-t-il PHPUnit ou s'agit-il d'un wrapper et quels sont les avantages ?",
+      "anchor": ""
+    },
+    {
+      "question": "composer require pestphp/pest --dev",
+      "anchor": "installation"
+    },
+    {
+      "question": "Comment utiliser les assertions PHPUnit classiques dans un test Pest ?",
+      "anchor": "assertions"
+    },
+    {
+      "question": "différence entre toBe et toEqual avec expect dans Pest",
+      "anchor": "expectations"
+    },
+    {
+      "question": "passer des datasets inline et partagés à la fonction it",
+      "anchor": "using-datasets"
+    },
+    {
+      "question": "tests architecturaux Pest : imposer des règles comme pas de validation dans les controllers",
+      "anchor": "architectural-tests"
+    },
+    {
+      "question": "comment faire du snapshot testing avec Pest ?",
+      "anchor": "taking-snapshots"
+    },
+    {
+      "question": "déboguer un test avec dump() et die() dans Pest",
+      "anchor": "dump-and-die"
+    },
+    {
+      "question": "extensions VSCode pour Pest : Better Pest et Pest Snippets",
+      "anchor": "visual-studio-code-add-on"
+    },
+    {
+      "question": "réutiliser un cas de test PHPUnit existant sans modification dans Pest",
+      "anchor": "convert-from-phpunit-to-pest"
+    }
+  ]
+}

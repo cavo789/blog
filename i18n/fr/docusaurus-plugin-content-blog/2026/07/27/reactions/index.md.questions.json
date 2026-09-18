@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:30:06.354Z",
+  "durationMs": 171344,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "b722fd1482bd566d962923d5a7b60ac5b40b35c2",
+  "questions": [
+    {
+      "question": "widget réactions Docusaurus sans service tiers ni cookies",
+      "anchor": ""
+    },
+    {
+      "question": "Comment structurer le backend PHP qui persiste les votes dans un fichier JSON ?",
+      "anchor": "step-1--the-php-backend"
+    },
+    {
+      "question": "configurer CORS requêtes POST domaine Docusaurus",
+      "anchor": "12--cors"
+    },
+    {
+      "question": "limiter fréquence email notification par article PHP",
+      "anchor": "13--email-notification-with-per-article-throttling"
+    },
+    {
+      "question": "Comment créer le composant React qui affiche le widget en bas des articles ?",
+      "anchor": "step-2--the-react-component"
+    },
+    {
+      "question": "fetch compteurs votes au mount composant React",
+      "anchor": "23--loading-counts-on-mount"
+    },
+    {
+      "question": "swizzle Docusaurus injection widget bas page",
+      "anchor": "step-4--injecting-the-widget-via-swizzling"
+    },
+    {
+      "question": "Comment développer un tableau de bord pour visualiser les taux d'approbation ?",
+      "anchor": "step-5--the-admin-dashboard"
+    },
+    {
+      "question": "sécuriser endpoint votes et panneau admin PHP",
+      "anchor": "security-considerations"
+    },
+    {
+      "question": "Comment tester le widget de réactions avant la mise en production ?",
+      "anchor": "testing-it"
+    }
+  ]
+}

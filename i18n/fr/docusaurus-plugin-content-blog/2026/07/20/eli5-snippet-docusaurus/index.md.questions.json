@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-18T02:26:41.651Z",
+  "durationMs": 152427,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "4d1d0e72b7f539e818da85cffb09b97f3f6b4283",
+  "questions": [
+    {
+      "question": "0: Comment ajouter des tooltips explicatifs sur les lignes de code dans Docusaurus sans latence côté client ?",
+      "anchor": ""
+    },
+    {
+      "question": "3: Créer un script node pour appeler l'API Claude et générer des annotations JSON par ligne de code",
+      "anchor": "step-1--the-annotation-script"
+    },
+    {
+      "question": "5: Structure du fichier JSON de sortie pour les annotations de code Docusaurus",
+      "anchor": "the-output-format"
+    },
+    {
+      "question": "6: Lancer la génération d'annotations sur tous les fichiers markdown du dossier docs en une seule commande",
+      "anchor": "step-2--the-batch-script"
+    },
+    {
+      "question": "10: Pourquoi le script d'annotation ignore les fichiers déjà traités et comment forcer la régénération",
+      "anchor": "the-skip-rule--idempotent-by-design"
+    },
+    {
+      "question": "12: Utiliser dry-run pour auditer les fichiers à annoter avant de dépenser des crédits",
+      "anchor": "phase-1--audit-with-dry-run"
+    },
+    {
+      "question": "20: Injecter automatiquement les badges d'annotation dans les blocs de code via un plugin remark personnalisé",
+      "anchor": "step-3--extend-the-remark-plugin"
+    },
+    {
+      "question": "22: Comment le composant React superpose les tooltips au survol sur les lignes annotées",
+      "anchor": "how-the-renderer-works"
+    },
+    {
+      "question": "26: Configurer la clé API Anthropic dans un projet Docusaurus",
+      "anchor": "step-1--create-an-anthropic-account-and-get-an-api-key"
+    },
+    {
+      "question": "30: Quel modèle Claude choisir pour générer des explications de code simples et rapides",
+      "anchor": "what-claude-model-to-use"
+    }
+  ]
+}

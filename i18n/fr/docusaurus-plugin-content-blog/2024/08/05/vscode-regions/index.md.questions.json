@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T23:59:49.145Z",
+  "durationMs": 174458,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d3f0e56f8ccf3ae22c3709677cafc9f17221a248",
+  "questions": [
+    {
+      "question": "comment activer le code folding avec les regions dans vscode",
+      "anchor": ""
+    },
+    {
+      "question": "regions vscode replier blocs logiques sur une ligne",
+      "anchor": "regions-in-action"
+    },
+    {
+      "question": "syntaxe tags region php vscode",
+      "anchor": "code-folding-in-php"
+    },
+    {
+      "question": "activer le code folding dans un dockerfile vscode",
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
+    },
+    {
+      "question": "`CTRL + P` vscode recharger la fenêtre après installation dune extension",
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
+    },
+    {
+      "question": "extension auto fold vscode configurer le repli automatique",
+      "anchor": "auto-fold-extension"
+    },
+    {
+      "question": "ou trouver le paramètre auto fold dans vscode",
+      "anchor": "auto-fold-extension"
+    },
+    {
+      "question": "combien de tags region suffisent pour le folding dans vscode",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "étendre le folding aux fichiers non supportés par défaut vscode",
+      "anchor": "conclusion"
+    }
+  ]
+}

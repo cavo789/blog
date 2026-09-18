@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-09-17T22:05:59.912Z",
+  "durationMs": 167214,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "fc084012d9c415b64a3a74277eedee365de219e7",
+  "questions": [
+    {
+      "question": "comment installer Zsh et Oh-My-ZSH sur Linux",
+      "anchor": ""
+    },
+    {
+      "question": "afficher branche Git et fichiers non commit dans le prompt",
+      "anchor": "where-were-going"
+    },
+    {
+      "question": "Oh-My-ZSH framework ou thème : quels gains concrets",
+      "anchor": "why-its-worth-the-ten-minutes"
+    },
+    {
+      "question": "tester Oh-My-ZSH dans un container Docker jetable",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "quelles sont les trois commandes pour installer Zsh et Oh-My-ZSH ?",
+      "anchor": "installation"
+    },
+    {
+      "question": "configurer Powerlevel10k et masquer le nom d'hôte par défaut",
+      "anchor": "powerlevel10k"
+    },
+    {
+      "question": "utiliser take, ...... et les alias Git comme gst au quotidien",
+      "anchor": "some-features-i-use-daily"
+    },
+    {
+      "question": "comment éviter que le fichier .zshrc devienne un monstre",
+      "anchor": "conclusion"
+    }
+  ]
+}
