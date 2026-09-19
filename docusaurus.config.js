@@ -525,7 +525,7 @@ const config = {
       tagName: "meta",
       attributes: {
         name: "theme-color",
-        content: "#2e8555",
+        content: "#9b5a31",
       },
     },
     {
@@ -599,7 +599,7 @@ const config = {
       tagName: "link",
       attributes: {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap",
       },
     },
     {
@@ -745,8 +745,13 @@ const config = {
         copyright: `<span class="footer-cmdk-hint">Press ⌘K to search · ? for shortcuts · <a href="/follow">follow by RSS</a></span><br />Copyright © {year} Christophe Avonture. Powered by Docusaurus.`,
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        // Both modes use a DARK token palette, because code is a dark surface
+        // everywhere on this site (Terminal, Snippet, ELI5) regardless of the
+        // site theme. prism-react-renderer applies token colours as inline
+        // styles, so this cannot be fixed from CSS — it has to be the theme.
+        // vsDark over dracula: dracula's purples fight the terracotta palette.
+        theme: prismThemes.vsDark,
+        darkTheme: prismThemes.vsDark,
         defaultLanguage: "php",
         // Every language `remark-snippet-loader`'s `extensionToLang` map (or
         // Snippet's own `mapLangToVariant` fallback) can hand to a `<Snippet>`

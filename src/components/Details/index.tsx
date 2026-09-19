@@ -14,7 +14,7 @@
  */
 
 import type { JSX, ReactNode } from "react";
-import "./styles.module.css";
+import styles from "./styles.module.css";
 
 interface Props {
   /** The label */
@@ -25,9 +25,9 @@ interface Props {
 
 export default function Details({ label, children }: Props): JSX.Element {
   return (
-    <details className={`alert alert--info`}>
+    <details className={styles.details}>
       <summary>{label}</summary>
-      <div className="content">{children}</div>
+      <div className={styles.content}>{children}</div>
     </details>
   );
 }

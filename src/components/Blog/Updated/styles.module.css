@@ -1,48 +1,44 @@
-.revisionHistoryContainer {
-  background-color: var(--ifm-color-emphasis-100);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--card-radius, 14px);
-  padding: 1.5rem 1.5rem 1.25rem;
-  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.04);
-}
+/*
+ * Updated — the timeline structure is good and is kept as-is. What changed:
+ * it no longer borrows --card-radius from PostCard's module (see that file),
+ * the timeline node is the shared .mk-dot, and the title is an eyebrow rather
+ * than a 1.1rem bold heading competing with the article's own.
+ */
 
-[data-theme="dark"] .revisionHistoryContainer {
-  background-color: var(--ifm-color-emphasis-100);
-  border-color: var(--ifm-color-emphasis-300);
-  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.25);
+.revisionHistoryContainer {
+  composes: mk-surface from global;
+  padding: 1.25rem 1.375rem;
 }
 
 .revisionHistoryTitle {
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-  font-weight: 700;
+  composes: mk-eyebrow from global;
   display: flex;
-  align-items: center;
   gap: 0.5rem;
-  color: var(--ifm-font-color-base);
+  align-items: center;
+  margin: 0 0 1rem;
 }
 
 .timeline {
   position: relative;
 }
 
-/* Ligne verticale reliant les entrées */
+/* The connecting line: centred on the 26px node (13px) rather than the old
+ * 30px one (15px). */
 .timeline::before {
-  content: "";
   position: absolute;
   top: 4px;
-  left: 15px; /* milieu de l'icône de 30px */
-  height: calc(100% - 8px);
+  left: 13px;
   width: 2px;
-  background: var(--ifm-color-emphasis-300);
+  height: calc(100% - 8px);
+  content: "";
+  background: var(--mk-border);
 }
 
 .timelineItem {
-  display: flex;
   position: relative;
+  display: flex;
+  min-height: 26px;
   margin-bottom: 1.25rem;
-  min-height: 30px;
 }
 
 .timelineItem:last-child {
@@ -50,61 +46,50 @@
 }
 
 .timelineIcon {
+  composes: mk-dot from global;
   position: absolute;
-  left: 0;
   top: 0;
-  background: var(--ifm-color-emphasis-100);
-  border: 2px solid var(--ifm-color-emphasis-400);
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  left: 0;
   z-index: 1;
-  font-size: 0.85rem;
+  color: var(--mk-on-line);
+  background: var(--mk-n-300);
 }
 
+/* The latest revision is the only filled terracotta node, with a halo in the
+ * key tone — the halo used to be a color-mix() of the primary at 15%. */
 .timelineItemLatest .timelineIcon {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ifm-color-primary) 15%, transparent);
+  background: var(--mk-primary);
+  box-shadow: 0 0 0 4px var(--mk-key-bg);
 }
 
 .timelineContent {
-  padding-left: 44px;
   flex: 1;
   padding-top: 0.15rem;
+  padding-left: 40px;
 }
 
 .timelineDate {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-700);
+  align-items: center;
   margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mk-ink-soft);
+  font-variant-numeric: tabular-nums;
 }
 
 .timelineItemLatest .timelineDate {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
 }
 
 .latestBadge {
-  display: inline-block;
-  padding: 0.1rem 0.5rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: var(--ifm-color-white);
-  background: var(--ifm-color-primary);
+  composes: mk-pill from global;
 }
 
 .timelineDescription {
-  line-height: 1.55;
-  color: var(--ifm-font-color-base);
   font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mk-ink);
 }

@@ -1,26 +1,50 @@
-.tldrContainer {
-  border-left-width: 5px;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgb(0, 0, 0, 0.1);
-}
+/*
+ * TL;DR — was borrowing Infima's "alert alert--info" utility classes, which is
+ * where its unexplained Docusaurus blue came from. The summary is the first
+ * block of every article on the site: it should carry the site's own colour,
+ * not a framework default.
+ *
+ * Remove "alert alert--info margin-bottom--md" from index.tsx (see the
+ * migration notes) — those classes are what this file now replaces.
+ */
 
-.tldrHeader {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
+.tldrContainer {
+  composes: mk-callout from global;
+  composes: mk-callout--key from global;
 }
 
 .tldrIcon {
-  font-size: 1.5rem;
-  margin-right: 10px;
+  composes: mk-dot from global;
+  font-size: 0.9rem;
+}
+
+.tldrBody {
+  min-width: 0;
 }
 
 .tldrTitle {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  composes: mk-eyebrow from global;
+  display: block;
+  margin-bottom: 0.25rem;
+  color: inherit;
 }
 
+/*
+ * The old rule indented the summary by a hardcoded 2.5rem to clear the icon,
+ * and dimmed it with opacity: 0.9. Both are gone: the flex row aligns the text
+ * for free, and a summary is the last thing on the page that should be faded.
+ */
 .tldrContent {
-  padding-left: 2.5rem;
-  opacity: 0.9;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.tldrContent > :last-child {
+  margin-bottom: 0;
+}
+
+.tldrContent a {
+  color: var(--tone-line);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

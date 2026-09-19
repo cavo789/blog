@@ -1,20 +1,25 @@
+/*
+ * ProjectSetup — shares Snippet's toolbar and surface exactly. Before, the two
+ * sat one above the other in the same article with different radii, different
+ * header backgrounds and different header type.
+ */
+
 .projectSetupContainer {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-global-radius);
+  composes: mk-surface from global;
   margin: 2rem 0;
   overflow: hidden;
 }
 
 .header {
-  padding: 10px 15px;
-  background: var(--ifm-color-emphasis-100);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  composes: mk-toolbar from global;
+}
+
+.headerTitle {
+  composes: mk-eyebrow from global;
 }
 
 .content {
-  padding: 15px;
+  padding: 1rem 1.25rem;
 }
 
 .scriptContainer {
@@ -27,12 +32,39 @@
 }
 
 .error {
-  color: var(--ifm-color-danger);
-  font-size: 0.875rem;
   margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--mk-danger-line);
 }
 
 .buttonGroup {
-  display: flex;
-  gap: 0.5rem;
+  composes: mk-toolbar__actions from global;
+}
+
+/* Toolbar actions: quiet by default, terracotta on hover. They used to be
+ * Infima buttons, which put two filled buttons in a header bar. */
+.buttonGroup button,
+.buttonGroup a {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--mk-ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--mk-radius-sm);
+}
+
+.buttonGroup button:hover,
+.buttonGroup a:hover {
+  color: var(--mk-primary);
+  background: var(--ifm-hover-overlay);
+}
+
+.buttonGroup button:focus-visible,
+.buttonGroup a:focus-visible {
+  outline: 2px solid var(--mk-primary);
+  outline-offset: 2px;
 }

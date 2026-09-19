@@ -1,63 +1,60 @@
-/* Inline bar */
+/*
+ * Vars — the inline bar, the pinned FAB panel and the inline tokens.
+ *
+ * Retokenised only: the behavioural comments from the original file (why the
+ * FAB sits at bottom: 11.5rem, why z-index is 9999, why it is hidden under
+ * 600px, why .tokenInline is a real <code>) all still apply and are preserved.
+ *
+ * Visual changes: the three different eyebrow sizes (.8rem / .72rem / .06em)
+ * collapse into the shared one; the 7px input radius and 10px panel radius
+ * become --mk-radius-sm / --mk-radius-md; the "edited" state uses the tip tone
+ * instead of Infima's success green.
+ */
 
 .varsbar {
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-card-border-radius, 10px);
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.06);
+  composes: mk-surface from global;
   padding: 1rem 1.15rem 1.05rem;
   margin: 1.5rem 0;
 }
 
 .varsbarHead {
   display: flex;
+  gap: 0.75rem;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.75rem;
   margin-bottom: 0.85rem;
 }
 
 .varsbarTitle,
 .varsbarTitleSmall {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ifm-color-emphasis-700);
+  composes: mk-eyebrow from global;
   display: flex;
-  align-items: center;
   gap: 0.45rem;
-}
-
-.varsbarTitle {
-  font-size: 0.8rem;
-}
-
-.varsbarTitleSmall {
-  font-size: 0.72rem;
+  align-items: center;
 }
 
 .dot {
+  flex-shrink: 0;
   width: 0.5rem;
   height: 0.5rem;
+  background: var(--mk-tip-line);
   border-radius: 50%;
-  background: var(--ifm-color-success);
-  flex-shrink: 0;
 }
 
 .resetLink {
-  background: none;
-  border: none;
-  color: var(--ifm-color-emphasis-600);
+  padding: 0;
   font: inherit;
   font-size: 0.78rem;
-  cursor: pointer;
+  color: var(--mk-ink-soft);
   text-decoration: underline;
   text-underline-offset: 2px;
-  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
 .resetLink:hover {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
 }
 
 .varsbarFields {
@@ -68,12 +65,12 @@
 
 .varsbarFoot {
   display: flex;
+  gap: 0.75rem;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
   margin-top: 0.8rem;
   font-size: 0.76rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
 }
 
 /* One field, reused by both the inline bar and the pinned panel */
@@ -85,40 +82,40 @@
 
 .field label {
   display: block;
-  font-size: 0.74rem;
-  color: var(--ifm-color-emphasis-600);
   margin-bottom: 0.3rem;
+  font-size: 0.74rem;
+  color: var(--mk-ink-soft);
 }
 
 .inputWrap {
   display: flex;
   align-items: center;
-  background: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 7px;
   padding: 0.1rem 0.65rem;
+  background: var(--mk-sunken);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
   transition:
     border-color 0.15s,
     box-shadow 0.15s;
 }
 
 .inputWrap:focus-within {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px var(--ifm-color-primary-contrast-background);
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
 }
 
 .field.isEdited .inputWrap {
-  border-color: var(--ifm-color-success);
+  border-color: var(--mk-tip-line);
 }
 
 .field input {
   flex: 1;
   min-width: 0;
-  border: none;
-  background: transparent;
-  font-size: 0.9rem;
-  color: var(--ifm-font-color-base);
   padding: 0.5rem 0.5rem 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--mk-ink);
+  background: transparent;
+  border: none;
   outline: none;
 }
 
@@ -127,12 +124,12 @@
 }
 
 .badgeDefault {
-  font-size: 0.65rem;
-  color: var(--ifm-color-emphasis-600);
-  background: var(--ifm-color-emphasis-100);
-  border-radius: 999px;
   padding: 0.1rem 0.45rem;
+  font-size: 0.65rem;
+  color: var(--mk-ink-soft);
   white-space: nowrap;
+  background: var(--mk-n-100);
+  border-radius: 999px;
 }
 
 /* Pinned trigger — see index.js for why it exists only once the inline bar
@@ -144,91 +141,86 @@
   position: fixed;
   /* Bottom-right, same corner as the site's own two widgets — the "Ask my
    * blog" chat bubble and the meerkat-styled scroll-to-top button — which
-   * stack there at a fixed 60x60px each with a ~1rem gap between them
-   * (measured live: bubble at viewport-bottom 106-166px, scroll-to-top at
-   * 30-90px). 6.5rem cleared the lower one but still overlapped the bubble
-   * — see review feedback with a screenshot. 11.5rem clears both, with the
-   * same ~1rem gap the site's own two widgets already use between each
-   * other. Bottom-left was tried and reverted: the article sidebar's own
-   * post links live there and, being in normal flow inside a tall
-   * scrollable list, intercepted clicks meant for this fixed button —
-   * confirmed by a real click failing in testing, not a guess. */
+   * stack there at a fixed 60x60px each with a ~1rem gap between them.
+   * 11.5rem clears both with the same ~1rem gap. Bottom-left was tried and
+   * reverted: the article sidebar's post links intercepted the clicks. */
   right: 1.25rem;
   bottom: 11.5rem;
-  /* 60 lost a real click to the article's own sticky table-of-contents
-   * sidebar in testing (its `.toc-highlight` link painted on top despite
-   * being a plain sibling with no explicit z-index of its own — sticky
-   * elements get their own stacking context, and 60 wasn't enough to beat
-   * it). Matches Snippet's ELI5 tooltip, the codebase's own established
-   * "escape every stacking context on the page" value. */
+  /* 60 lost a real click to the sticky table-of-contents sidebar in testing.
+   * Matches Snippet's ELI5 tooltip — the codebase's established "escape every
+   * stacking context" value. */
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   gap: 0.5rem;
+  align-items: flex-end;
+  pointer-events: none;
   opacity: 0;
   transform: translateY(8px);
-  pointer-events: none;
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
 }
 
 .fabVisible {
+  pointer-events: auto;
   opacity: 1;
   transform: translateY(0);
-  pointer-events: auto;
 }
 
 .fabToggle {
   display: inline-flex;
-  align-items: center;
   gap: 0.5rem;
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  color: var(--ifm-font-color-base);
-  border-radius: 999px;
-  padding: 0.55rem 0.95rem;
-  font-size: 0.82rem;
-  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.16);
-  cursor: pointer;
+  align-items: center;
   /* Cap the pill width so long summaries (many vars) don't overflow the viewport */
   max-width: min(360px, calc(100vw - 2.5rem));
+  padding: 0.55rem 0.95rem;
+  font-size: 0.82rem;
+  color: var(--mk-ink);
+  cursor: pointer;
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: 999px;
+  box-shadow: var(--mk-shadow-3);
 }
 
-/* Truncate the summary text with an ellipsis when the pill is too wide.
- * min-width: 0 is required: flex children won't shrink below their content
- * width without it, so the ellipsis never fires. */
+/* Truncate the summary text when the pill is too wide. min-width: 0 is
+ * required: flex children won't shrink below their content width without it. */
 .fabToggle .mono {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .fabToggle:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--mk-primary);
+}
+
+.fabToggle:focus-visible {
+  outline: 2px solid var(--mk-primary);
+  outline-offset: 2px;
 }
 
 .fabIcon {
+  flex-shrink: 0;
   width: 1.05rem;
   height: 1.05rem;
-  color: var(--ifm-color-primary);
-  flex-shrink: 0;
+  color: var(--mk-primary);
 }
 
 .fabLabel {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
 }
 
 .fabCheck {
   width: 0.85rem;
   height: 0.85rem;
-  color: var(--ifm-color-success);
+  color: var(--mk-tip-line);
 }
 
 .chevron {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
   transition: transform 0.2s ease;
 }
 
@@ -237,19 +229,17 @@
 }
 
 .fabPanel {
+  display: none;
   width: 280px;
   max-width: calc(100vw - 2.5rem);
-  /* At large zoom levels or when there are many fields the panel can exceed the
-   * viewport height and the top fields scroll off-screen. Cap the height and
-   * let the fields area scroll rather than overflow invisibly. */
+  /* Cap the height and let the fields scroll rather than overflow invisibly. */
   max-height: calc(100vh - 14rem);
-  overflow-y: auto;
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-card-border-radius, 10px);
-  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.16);
   padding: 0.9rem 1rem 1rem;
-  display: none;
+  overflow-y: auto;
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-3);
 }
 
 .fabOpen .fabPanel {
@@ -257,17 +247,17 @@
 }
 
 .fabPanelIcon {
+  flex-shrink: 0;
   width: 0.85rem;
   height: 0.85rem;
-  color: var(--ifm-color-primary);
-  flex-shrink: 0;
+  color: var(--mk-primary);
 }
 
 .fabExplainer {
   margin: -0.3rem 0 0.85rem;
   font-size: 0.78rem;
   line-height: 1.5;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
 }
 
 .fabFields {
@@ -277,29 +267,26 @@
 }
 
 /* In a column flex container flex-basis becomes a min-height, not a min-width.
- * The shared .field rule sets flex: 1 1 180px for the inline bar (row layout);
- * reset it here so each panel field is only as tall as its content. */
+ * Reset the shared .field rule so each panel field is only as tall as needed. */
 .fabFields > .field {
   flex: 0 0 auto;
   min-width: 0;
 }
 
-/* One-time teaching callout — shown the first time the trigger appears on a
- * page view, auto-dismissed. A first-timer has no reason to know a small
- * port/name pill is (a) meaningful or (b) clickable; see TODO 0088 review
- * feedback ("pas très visuel", "on ne comprend pas ce que c'est"). */
+/* One-time teaching callout — a first-timer has no reason to know a small
+ * port/name pill is (a) meaningful or (b) clickable. */
 .fabHint {
   display: flex;
-  align-items: flex-start;
   gap: 0.5rem;
+  align-items: flex-start;
   max-width: 220px;
-  background: var(--ifm-color-primary);
-  color: var(--ifm-button-color);
-  border-radius: 10px;
   padding: 0.6rem 0.55rem 0.6rem 0.75rem;
   font-size: 0.8rem;
   line-height: 1.4;
-  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.22);
+  color: var(--mk-on-line);
+  background: var(--mk-primary);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-3);
   animation: fabHintIn 0.25s ease;
 }
 
@@ -315,22 +302,22 @@
 }
 
 .fabHintIcon {
+  flex-shrink: 0;
   width: 1.1rem;
   height: 1.1rem;
-  flex-shrink: 0;
   margin-top: 0.1rem;
 }
 
 .fabHintClose {
-  background: none;
-  border: none;
-  color: inherit;
-  opacity: 0.8;
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
   padding: 0 0.1rem;
   margin-left: auto;
+  font-size: 1rem;
+  line-height: 1;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: none;
+  opacity: 0.8;
 }
 
 .fabHintClose:hover {
@@ -338,32 +325,28 @@
 }
 
 /* Token — a reader-adjustable value inside a <Terminal>/<Snippet> block.
- * The dotted underline is a permanent affordance ("this value is yours"),
- * not just a change indicator: without it a substitution is invisible and
- * the article can silently look like it's lying about what it shows. */
+ * The dotted underline is a permanent affordance ("this value is yours"), not
+ * just a change indicator: without it a substitution is invisible and the
+ * article can silently look like it's lying about what it shows. */
 
 .token {
-  font-family: var(--ifm-font-family-monospace);
-  border-bottom: 1.5px dotted var(--ifm-color-primary);
-  border-radius: 2px;
   padding: 0 1px;
+  font-family: var(--ifm-font-family-monospace);
+  border-bottom: 1.5px dotted var(--mk-term-prompt);
+  border-radius: 2px;
   transition: background-color 0.5s ease;
 }
 
-/* Prose usage (<Var>, see readme.md) — a real <code> tag so Infima's own
- * `code` element styling (background pill, padding, border-radius) applies
- * for free and matches the ordinary `` `backtick` `` spans it sits next to
- * (e.g. `` `http://localhost:` `` + <Var>8080</Var>): without this the token
- * read as a plain-text gap breaking up what looked like one continuous
- * command (see TODO 0104 review feedback). Only the dotted underline is this
- * component's own addition on top of that inherited pill. */
+/* Prose usage (<Var>) — a real <code> tag so Infima's own code styling applies
+ * for free and matches the backtick spans it sits next to. Only the dotted
+ * underline is this component's own addition. */
 .tokenInline {
-  border-bottom: 1.5px dotted var(--ifm-color-primary);
+  border-bottom: 1.5px dotted var(--mk-primary);
   transition: background-color 0.5s ease;
 }
 
 .tokenFlash {
-  background-color: var(--ifm-color-primary-contrast-background);
+  background-color: var(--mk-key-bg);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -374,10 +357,9 @@
   }
 }
 
-/* Editing a value only matters when copy/pasting the resulting command into a
- * terminal — a PC activity, not a phone one. On a small screen the pinned
- * trigger is pure clutter on top of the site's own two bottom-corner
- * widgets, so it's dropped entirely rather than shrunk like they are. */
+/* Editing a value only matters when copy/pasting into a terminal — a PC
+ * activity. On a small screen the pinned trigger is pure clutter on top of the
+ * site's own two bottom-corner widgets, so it is dropped rather than shrunk. */
 @media (max-width: 600px) {
   .fab {
     display: none;

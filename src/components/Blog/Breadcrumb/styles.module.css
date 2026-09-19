@@ -1,9 +1,15 @@
 /*
- * Deliberately discreet: the breadcrumb sits directly above the <h1> and must
- * never compete with it, especially now that the standfirst (TODO 0115) adds a
- * second block to the article head. Small type, secondary content color, no
- * background, no border.
+ * Breadcrumb — deliberately discreet, and that judgement is kept: it sits
+ * directly above the <h1> and must never compete with it. Only the separator
+ * and the token names change.
+ *
+ * The contrast reasoning from the original file still holds: emphasis-700 is
+ * remapped to --mk-n-700 (#6e6153 light / #a79987 dark), measured 5.9:1 and
+ * 6.5:1 respectively — still clear of AA at 0.8rem. The current item keeps the
+ * same colour as the links rather than a dimmer one; it is told apart by being
+ * non-interactive, not by being faded.
  */
+
 .breadcrumb {
   margin-bottom: 0.5rem;
 }
@@ -11,58 +17,51 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
   gap: 0.25rem 0.4rem;
+  align-items: center;
   margin: 0;
   padding: 0;
-  list-style: none;
   font-size: 0.8rem;
   line-height: 1.4;
+  list-style: none;
 }
 
 .item {
   display: flex;
-  align-items: center;
   min-width: 0;
+  align-items: center;
 }
 
 /* Separator drawn in CSS rather than in the markup, so screen readers announce
    the list items and not a stream of chevrons. */
 .item:not(:first-child)::before {
-  content: "›";
   margin-right: 0.4rem;
-  color: var(--ifm-color-emphasis-500);
+  color: var(--mk-border-strong);
+  content: "›";
 }
 
-/* --ifm-color-emphasis-700, not --ifm-color-content-secondary: the latter is pure
-   white in dark mode, which would make this discreet trail louder than the <h1> it
-   sits above. emphasis-700 stays a real grey in both themes (#606770 / #dadde1) and
-   clears AA at this size. */
 .link {
-  color: var(--ifm-color-emphasis-700);
+  color: var(--mk-ink-soft);
   text-decoration: none;
 }
 
 .link:hover {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-/* Same colour as the links rather than a dimmer one: emphasis-600 is #8d949e in
-   light mode, only 3.0:1 on white, which fails AA at 0.8rem. The current item is
-   told apart by being non-interactive, not by being faded. */
 .current {
-  color: var(--ifm-color-emphasis-700);
   min-width: 0;
+  color: var(--mk-ink);
 }
 
 /* On a phone the article title is often longer than the viewport; letting it
-   wrap over three lines would push the <h1> below the fold, which is exactly
-   the cost this feature must not pay. */
+   wrap over three lines would push the <h1> below the fold. */
 @media (max-width: 576px) {
   .current {
     overflow: hidden;
-    text-overflow: ellipsis;
     white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }

@@ -1,5 +1,6 @@
 # Memory Index
 
+- [Design Harmonization 2026-09](project_design_harmonization_2026_09.md) — theme.css token layer + mk-* primitives (callout/surface/toolbar/dot/eyebrow), Bricolage Grotesque/Source Sans 3/JetBrains Mono, what's migrated vs. still pending
 - [User Profile](user_profile.md) — Christophe Avonture, technical blogger, Docker/WSL/Markdown, cavo789
 - [Reply Language](feedback_reply_language.md) — reply in French by default (chat/summaries), not just tolerate French input; code/content stays English
 - [Project Overview](project_overview.md) — Docusaurus 3.x blog, stack, URLs, commands, Docker-first infra

@@ -752,24 +752,22 @@ export default function Snippet({
       : translate({ id: "snippet.defaultTitle", message: "Snippet" }));
 
   return (
-    <div className={clsx(styles.snippet_block, variantClass, "alert alert--info")}>
+    <div className={clsx(styles.snippet_block, variantClass)}>
       <button
         className={styles.snippet_summary}
         onClick={handleToggle}
         aria-expanded={open}
         aria-controls={contentId}
       >
-        <span className={styles.filename_wrapper}>
-          {IconInfo && (
-            <LogoIcon
-              name={iconify}
-              className={iconClassName}
-              aria-label={ariaLabel}
-              size="32"
-            />
-          )}{" "}
-          {displayTitle}
-        </span>
+        {IconInfo && (
+          <LogoIcon
+            name={iconify}
+            className={clsx(iconClassName, styles.snippet_logo)}
+            aria-label={ariaLabel}
+            size="32"
+          />
+        )}
+        <span className={styles.snippet_filename}>{displayTitle}</span>
         <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>&#9662;</span>
       </button>
 

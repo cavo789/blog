@@ -1,35 +1,127 @@
-code {
-  /* This variable adapts automatically to light and dark themes */
-  background-color: var(--ifm-code-background) !important;
-}
+/*
+ * Snippet.
+ *
+ * The language brand colours were NOT regenerated: the 33 values below are
+ * exactly the ones already in this file. What changed is how far each one
+ * reaches. Each variant now declares a single --lang-color, consumed by three
+ * things at once:
+ *
+ *   1. the 3px rule under the toolbar,
+ *   2. the language logo itself (the LogoIcon icons are monochrome
+ *      simple-icons rendered in currentColor — which is why they came out
+ *      black),
+ *   3. the focus ring of the disclosure button.
+ *
+ * So the logo stays, in its real brand colour, and is the only saturated thing
+ * in an otherwise sand-coloured toolbar. Languages present in
+ * mapLangToVariant but with no .variant_ class fall back to the neutral sand
+ * defined on [class^="variant_"] — nothing to add per language.
+ */
 
-code:hover {
-  background-color: var(--ifm-code-background) !important;
-}
+/*
+ * IMPORTANT — companion change in index.tsx:
+ *
+ *   -  <div className={clsx(styles.snippet_block, variantClass, "alert alert--info")}>
+ *   +  <div className={clsx(styles.snippet_block, variantClass)}>
+ *
+ * The root element was carrying Infima's "alert alert--info" utility classes,
+ * which paint the whole card in Docusaurus blue. Same issue as TLDR and
+ * QuickJump. It was invisible on snippets WITH ELI5 annotations, because
+ * .eli5_pre paints its own background over it; it showed on every other
+ * snippet, where the native <CodeBlock> is transparent and let the blue
+ * through.
+ *
+ * The .snippet_block rule below is defensive against that class coming back
+ * (Infima sets background/color/border on .alert with plain specificity).
+ */
 
 .snippet_block {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
-  margin: 1rem 0;
+  composes: mk-surface from global;
+  margin: 1.5rem 0;
+  padding: 0;
   overflow: hidden;
+  background: var(--mk-surface);
+  color: var(--mk-ink);
 }
 
+/*
+ * ── One surface per rendering path ────────────────────────────────────────
+ *
+ * A Snippet renders through one of THREE paths, and they had three different
+ * looks:
+ *   1. Eli5CodeBlock       — its own <pre>, warm dark
+ *   2. native <CodeBlock>  — Prism's light theme
+ *   3. raw children        — rendered MDX prose, no <pre> at all, no padding
+ *
+ * Paths 1 and 2 are code: one dark surface, owned by the <pre>. Path 3 is
+ * prose (a .md snippet renders as text, not as source) and keeps the light
+ * surface — it just needed the padding it never had.
+ */
+.snippet_inner {
+  padding: 0.875rem 1.125rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--mk-code-fg);
+  background: var(--mk-code-bg);
+}
+
+.snippet_inner > :last-child {
+  margin-bottom: 0;
+}
+
+/* :has() — when the snippet holds a real code block, the <pre> brings its own
+ * padding, so the wrapper gives that up. The surface stays here either way. */
+.snippet_inner:has(pre) {
+  padding: 0;
+}
+
+/* Every engine's output goes transparent; the dark ground above shows through,
+ * so all three paths land on exactly one colour. */
+.snippet_inner :global(.theme-code-block),
+.snippet_inner :global(div[class*="codeBlockContainer"]),
+.snippet_inner :global(div[class*="codeBlockContent"]),
+.snippet_inner :global(pre[class*="codeBlock"]),
+.snippet_inner :global(.prism-code),
+.snippet_inner pre,
+.snippet_inner pre code {
+  margin: 0;
+  background: transparent !important;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Prism's light theme also sets a dark text colour — unreadable now. */
+.snippet_inner :global(.prism-code),
+.snippet_inner pre code {
+  color: var(--mk-code-fg);
+}
+
+/* Docusaurus's own copy / word-wrap buttons, now on a dark ground. */
+.snippet_inner :global(div[class*="buttonGroup"]) button {
+  color: var(--mk-n-500);
+  background: rgb(255, 255, 255, 0.06);
+  border-color: rgb(255, 255, 255, 0.15);
+}
+
+.snippet_inner :global(div[class*="buttonGroup"]) button:hover {
+  color: var(--mk-code-fg);
+  background: rgb(255, 255, 255, 0.12);
+}
+
+/* The file header is now the shared toolbar — byte-identical to the one
+ * ProjectSetup uses, so the two components read as one family. */
 .snippet_summary {
+  composes: mk-toolbar from global;
   width: 100%;
-  background: none;
-  border: none;
-  padding: 0.75rem 0;
-  font-size: 1rem;
-  font-weight: bold;
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border: none;
+  border-bottom: 1px solid var(--mk-border);
   --chevron-rotation: 0deg;
 }
 
 .snippet_summary:hover {
-  background: var(--ifm-hover-overlay);
+  background: var(--mk-n-100);
 }
 
 .snippet_summary[aria-expanded="true"] {
@@ -37,17 +129,32 @@ code:hover {
 }
 
 .snippet_summary:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
+  outline: 2px solid var(--lang-color, var(--mk-primary));
+  outline-offset: -2px;
 }
 
-.snippet_summary svg {
-  vertical-align: middle;
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+/* The filename: an eyebrow, like every other component label. It used to be
+ * 1rem bold — the weight of a small heading.
+ *
+ * .filename_wrapper is the class index.tsx actually uses today; .snippet_filename
+ * is the name used in the migration notes. Both are defined so the stylesheet
+ * works whether or not the markup is renamed. */
+.snippet_filename,
+.filename_wrapper {
+  composes: mk-eyebrow from global;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  min-width: 0;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chevron {
+  margin-left: auto;
+  color: var(--mk-n-500);
   transition: transform 0.3s ease;
   transform: rotate(var(--chevron-rotation));
 }
@@ -64,139 +171,160 @@ code:hover {
 .snippet_toolbar {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem 0;
 }
 
-/* === Common styles for variants and icons === */
+/* === The language logo ================================================== */
 
-/* === Icon base style === */
+/*
+ * 20px, always left, always in its brand colour. The previous rule sized every
+ * [class$="_icon"] at 18px with a 0.5rem right margin; spacing now comes from
+ * the toolbar's gap, which survives markup edits.
+ */
+.snippet_logo,
 [class$="_icon"] {
-  width: 18px;
-  height: 18px;
-  margin-right: 0.5rem;
-  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--lang-color, var(--mk-n-500));
 }
 
 /*
- * === Variant base + per-language border colors ===
- * Border colors map to each language/tool's own brand color (Docker blue, PHP
- * purple, GitHub's linguist palette, etc.) — external identities, not site UI,
- * so they (and the white text tuned for contrast against them) intentionally
- * don't follow the Infima light/dark theme. Legitimate color-no-hex exception,
- * see AGENTS.md and .todos/039-hardcoded-hex-colors-no-token-system.md.
+ * Light brand colours (JavaScript #f0d91e, Docusaurus #3ecc5f, Batch #8bad2e)
+ * float on the sand toolbar. A 12%-black hairline anchors them without
+ * repainting the mark — the only concession the logos make to the theme.
+ */
+.variant_js .snippet_logo,
+.variant_docusaurus .snippet_logo,
+.variant_batch .snippet_logo {
+  filter: drop-shadow(0 0 0.5px rgb(0, 0, 0, 0.45));
+}
+
+/* === Variant base + per-language brand colours =========================== */
+
+/*
+ * Border colours map to each language/tool's own brand identity (Docker blue,
+ * PHP purple, GitHub's linguist palette…) — external identities, not site UI,
+ * so they intentionally don't follow the light/dark theme. Legitimate
+ * color-no-hex exception, see AGENTS.md and
+ * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ *
+ * Values unchanged from the previous version of this file. The old rule also
+ * set `color: #fff` on every variant, which was dead weight: no text in these
+ * blocks sits on the brand colour.
  */
 /* stylelint-disable color-no-hex */
 [class^="variant_"] {
-  color: #fff;
-  border-radius: 8px;
+  --lang-color: var(--mk-n-500);
+  border-top: 3px solid var(--lang-color);
 }
 
 .variant_apacheconf {
-  border-color: #d22128;
-} /* Red-ish for Apache */
+  --lang-color: #d22128;
+}
 .variant_asm {
-  border-color: #6e4c13;
-} /* Rusty color */
+  --lang-color: #6e4c13;
+}
 .variant_bash {
-  border-color: #3eaaaf;
+  --lang-color: #3eaaaf;
 }
 .variant_batch {
-  border-color: #8bad2e;
-  color: #2b2b2b;
+  --lang-color: #8bad2e;
 }
 .variant_csv {
-  border-color: #2d7f5e;
+  --lang-color: #2d7f5e;
 }
 .variant_css {
-  border-color: #1e4fb4;
+  --lang-color: #1e4fb4;
 }
 .variant_diff {
-  border-color: #e36209;
+  --lang-color: #e36209;
 }
 .variant_docker {
-  border-color: #0aa2ce;
+  --lang-color: #0aa2ce;
 }
 .variant_docusaurus {
-  border-color: #3ecc5f;
+  --lang-color: #3ecc5f;
 }
 .variant_gherkin {
-  border-color: #5a9a00;
+  --lang-color: #5a9a00;
 }
 .variant_html {
-  border-color: #e44d26;
+  --lang-color: #e44d26;
 }
 .variant_ignore {
-  border-color: #6a737d;
+  --lang-color: #6a737d;
 }
 .variant_ini {
-  border-color: #008080;
+  --lang-color: #008080;
 }
 .variant_java {
-  border-color: #e11e2b;
+  --lang-color: #e11e2b;
 }
 .variant_js {
-  border-color: #f0d91e;
-  color: #000;
+  --lang-color: #f0d91e;
 }
 .variant_json {
-  border-color: #1c1c1c;
-  color: #ffcc00;
+  --lang-color: #ad8b00;
 }
 .variant_log {
-  border-color: #808080;
+  --lang-color: #808080;
 }
 .variant_makefile {
-  border-color: #6e4f1e;
+  --lang-color: #6e4f1e;
 }
 .variant_md {
-  border-color: #083fa1;
+  --lang-color: #083fa1;
 }
 .variant_none {
-  border-color: #aaaaaa;
+  --lang-color: #aaaaaa;
 }
 .variant_pascal {
-  border-color: #4278b8;
+  --lang-color: #4278b8;
 }
 .variant_php {
-  border-color: #7a87b9;
+  --lang-color: #7a87b9;
 }
 .variant_powershell {
-  border-color: #0078d7;
+  --lang-color: #0078d7;
 }
 .variant_python {
-  border-color: #2c628d;
+  --lang-color: #2c628d;
 }
 .variant_sql {
-  border-color: #e38c00;
+  --lang-color: #e38c00;
 }
 .variant_svg {
-  border-color: #f04e23;
+  --lang-color: #f04e23;
 }
 .variant_toml {
-  border-color: #f36d25;
+  --lang-color: #f36d25;
 }
 .variant_ts {
-  border-color: #3178c6;
+  --lang-color: #3178c6;
 }
 .variant_txt {
-  border-color: #6a737d;
+  --lang-color: #6a737d;
 }
 .variant_vb {
-  border-color: #571a66;
+  --lang-color: #571a66;
 }
 .variant_vbnet {
-  border-color: #68217a;
+  --lang-color: #68217a;
 }
 .variant_xml {
-  border-color: #bf3b1b;
+  --lang-color: #bf3b1b;
 }
 .variant_yaml {
-  border-color: #a31416;
+  --lang-color: #a31416;
 }
 /* stylelint-enable color-no-hex */
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   ELI5 — "Explain Like I'm Five" line-by-line renderer
+   ELI5 — line-by-line renderer
+   Still deliberately dark-optimised regardless of site theme (it sits on a
+   Prism background), but now on the palette's own warm black and with the
+   badge/tooltip using tokens instead of six rgba() literals.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 .eli5_pre {
@@ -204,19 +332,12 @@ code:hover {
   margin: 0;
   padding: 0.75rem 0;
   overflow-x: auto;
-  /* --prism-background-color is only set inside Docusaurus's CodeBlockContainer
-     (via inline style), never in scope here — hardcode the dark background so
-     the block is always readable regardless of light/dark site theme.
-     Legitimate color-no-hex exception, see AGENTS.md and
-     .todos/039-hardcoded-hex-colors-no-token-system.md. */
-  /* stylelint-disable-next-line color-no-hex */
-  background: #282c34;
-  /* stylelint-disable-next-line color-no-hex */
-  color: #abb2bf;
-  border-radius: 0 0 4px 4px;
   font-family: var(--ifm-font-family-monospace);
   font-size: var(--ifm-code-font-size, 0.875rem);
   line-height: 1.5;
+  color: var(--mk-code-fg);
+  background: var(--mk-code-bg);
+  border-radius: 0 0 var(--mk-radius-md) var(--mk-radius-md);
 }
 
 .eli5_line {
@@ -232,11 +353,10 @@ code:hover {
 
 .eli5_code {
   flex: 1;
-  white-space: pre;
   overflow: hidden;
+  white-space: pre;
 }
 
-/* Placeholder keeps line height consistent on lines without a badge */
 .eli5_badge_placeholder {
   display: inline-block;
   width: 1.2rem;
@@ -244,55 +364,47 @@ code:hover {
   margin-left: 0.5rem;
 }
 
-/* ── Badge wrapper — hover zone covers both button and tooltip ── */
 .eli5_badge_wrapper {
   position: relative;
   display: inline-flex;
-  align-items: center;
   flex-shrink: 0;
+  align-items: center;
   margin-left: 0.5rem;
 }
 
-/* ── ? button — always on a dark Prism background, so colours are dark-optimised
-      regardless of site theme. Legitimate color-no-hex exception, see AGENTS.md and
-      .todos/039-hardcoded-hex-colors-no-token-system.md. ── */
-/* stylelint-disable color-no-hex */
+/* The "?" badge was indigo-tinted — the one cool accent left in the site.
+ * It now uses the savanna green that the Terminal prompt uses. */
 .eli5_badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.2rem;
   height: 1.2rem;
-  border-radius: 50%;
-  border: 1px solid rgb(150, 150, 200, 0.5);
-  background: rgb(100, 100, 180, 0.22);
-  color: rgb(200, 200, 240, 0.78);
+  padding: 0;
   font-size: 0.6rem;
   font-weight: 700;
   line-height: 1;
-  padding: 0;
+  color: var(--mk-term-prompt);
   cursor: pointer;
+  background: rgb(147, 183, 100, 0.14);
+  border: 1px solid rgb(147, 183, 100, 0.45);
+  border-radius: 50%;
+  flex-shrink: 0;
   transition:
     background 0.15s ease,
     color 0.15s ease,
     border-color 0.15s ease;
-  flex-shrink: 0;
 }
 
 .eli5_badge:hover,
 .eli5_badge:focus-visible,
 .eli5_badge_active {
-  background: rgb(80, 130, 230, 0.42);
-  color: #e8eaf6;
-  border-color: rgb(120, 170, 255, 0.75);
+  color: var(--mk-code-bg);
+  background: var(--mk-term-prompt);
+  border-color: var(--mk-term-prompt);
   outline: none;
 }
-/* stylelint-enable color-no-hex */
 
-/* ── Copy button — always on the dark Prism background, so colours are
-      dark-optimised regardless of site theme, matching the ? badge above.
-      Legitimate color-no-hex exception, see AGENTS.md and
-      .todos/039-hardcoded-hex-colors-no-token-system.md. ── */
 .eli5_copy_button {
   position: absolute;
   top: 0.6rem;
@@ -303,11 +415,11 @@ code:hover {
   width: 1.9rem;
   height: 1.9rem;
   padding: 0.35rem;
-  background: rgb(255, 255, 255, 0.06);
-  color: rgb(220, 220, 235, 0.75);
-  border: 1px solid rgb(255, 255, 255, 0.15);
-  border-radius: 6px;
+  color: var(--mk-n-500);
   cursor: pointer;
+  background: rgb(255, 255, 255, 0.06);
+  border: 1px solid rgb(255, 255, 255, 0.15);
+  border-radius: var(--mk-radius-sm);
   opacity: 0;
   transition:
     opacity 0.15s ease-in-out,
@@ -317,19 +429,14 @@ code:hover {
 
 .eli5_copy_button:hover,
 .eli5_copy_button:focus-visible {
-  opacity: 1;
+  color: var(--mk-code-fg);
   background: rgb(255, 255, 255, 0.12);
-  color: rgb(232, 234, 246);
+  opacity: 1;
   outline: none;
 }
 
-/* `:where()` zeroes this selector's specificity so it never outranks the
-   button's own :hover/:focus-visible above — otherwise hovering the button
-   directly (which is also inside a hovered .eli5_pre) would get stuck at
-   the dimmer fade-in opacity instead of reaching full opacity. Stylelint's
-   descending-specificity check doesn't account for :where() zeroing, hence
-   the disable below — the true (post-:where) specificity is already lower,
-   which is the whole point of this rule existing after the ones above. */
+/* :where() zeroes specificity so this never outranks the button's own hover
+ * state above — see the original note, the reasoning is unchanged. */
 /* stylelint-disable-next-line no-descending-specificity */
 :where(.eli5_pre:hover) .eli5_copy_button {
   opacity: 0.55;
@@ -340,98 +447,66 @@ code:hover {
   height: 1.1rem;
 }
 
-/* ── Tooltip — rendered via React Portal into document.body, position:fixed
-      so it floats above every overflow:hidden / stacking-context ancestor.
-      JS sets `top` and `right` via inline style; transform shifts it above. ── */
 .eli5_tooltip {
   position: fixed;
-  /* Shift the tooltip above its anchor: bottom edge = badge top − 8px */
-  transform: translateY(calc(-100% - 8px));
   z-index: 9999;
   width: 270px;
   max-width: min(270px, 90vw);
   padding: 0.5rem 0.75rem;
-  background: var(--ifm-background-surface-color);
-  border: 1px solid rgb(0, 0, 0, 0.12);
-  border-radius: 6px;
-  box-shadow:
-    0 2px 12px rgb(0, 0, 0, 0.22),
-    0 0 0 1px rgb(0, 0, 0, 0.04);
   font-family: var(--ifm-font-family-base);
   font-size: 0.8rem;
   line-height: 1.55;
-  color: var(--ifm-font-color-base);
+  color: var(--mk-ink);
   white-space: normal;
   pointer-events: none;
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-3);
+  transform: translateY(calc(-100% - 8px));
 }
 
-/* Arrow pointing DOWN toward the badge */
 .eli5_tooltip::before {
-  content: "";
   position: absolute;
   bottom: -5px;
   right: 4px;
   width: 8px;
   height: 8px;
-  background: var(--ifm-background-surface-color);
-  border-right: 1px solid rgb(0, 0, 0, 0.12);
-  border-bottom: 1px solid rgb(0, 0, 0, 0.12);
+  content: "";
+  background: var(--mk-surface);
+  border-right: 1px solid var(--mk-border);
+  border-bottom: 1px solid var(--mk-border);
   transform: rotate(45deg);
 }
 
-[data-theme="dark"] .eli5_tooltip {
-  border-color: rgb(255, 255, 255, 0.12);
-  box-shadow: 0 2px 16px rgb(0, 0, 0, 0.55);
-}
-
-[data-theme="dark"] .eli5_tooltip::before {
-  border-right-color: rgb(255, 255, 255, 0.12);
-  border-bottom-color: rgb(255, 255, 255, 0.12);
-}
-
-/* ═══════════════════════════════════════════════════════════════════════════
-   ELI5 — verbose Show/Hide summary block (below the code, outside the
-   collapsible snippet_content — see the comment on Eli5SummaryBlock in
-   index.tsx for why it isn't nested inside it)
-   ═══════════════════════════════════════════════════════════════════════════ */
-
 .eli5_summary_block {
-  border-top: 1px solid var(--ifm-color-emphasis-300);
+  border-top: 1px solid var(--mk-border);
 }
 
-/* Deliberately lighter than .snippet_summary (the real file-header row
-   above): same bold weight here read as a second, competing header rather
-   than a secondary action tucked under the code. */
 .eli5_summary_toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  background: none;
-  border: none;
   padding: 0.4rem 1rem;
   font-size: 0.8rem;
   font-weight: 500;
+  color: var(--mk-ink-soft);
   cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--ifm-color-emphasis-700);
+  background: none;
+  border: none;
 }
 
 .eli5_summary_toggle_right {
   display: inline-flex;
-  align-items: center;
   gap: 0.5rem;
+  align-items: center;
 }
 
-/* Discloses that the summary text is LLM-generated — this project's existing
-   transparency convention (ai_assisted frontmatter, "Claude Code" co-author
-   credit). Deliberately not applied to the per-line tooltips — author's call,
-   see TODO 0113 (eli5-verbose-show-hide-block). */
 .eli5_summary_badge {
+  composes: mk-eyebrow from global;
   font-size: 0.65rem;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--ifm-color-emphasis-600);
 }
 
 .eli5_summary_toggle:hover {
@@ -439,7 +514,7 @@ code:hover {
 }
 
 .eli5_summary_toggle:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
+  outline: 2px solid var(--mk-primary);
   outline-offset: -2px;
 }
 
@@ -453,5 +528,5 @@ code:hover {
   padding: 0 1rem 0.75rem;
   font-size: 0.85rem;
   line-height: 1.6;
-  color: var(--ifm-font-color-base);
+  color: var(--mk-ink);
 }

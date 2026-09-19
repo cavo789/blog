@@ -38,22 +38,22 @@ export default function TLDR({ children }: Props): JSX.Element {
       </Head>
 
       <div
-        className={`alert alert--info margin-bottom--md ${styles.tldrContainer}`}
+        className={styles.tldrContainer}
         role="region"
         aria-label={translate({ id: "tldr.ariaLabel", message: "Article Summary" })}
       >
-        <div className={styles.tldrHeader}>
-          <span
-            role="img"
-            aria-label={translate({ id: "tldr.iconLabel", message: "lightning" })}
-            className={styles.tldrIcon}
-          >
-            ⚡
-          </span>
-          <strong className={styles.tldrTitle}>TL;DR</strong>
-        </div>
+        <span
+          role="img"
+          aria-label={translate({ id: "tldr.iconLabel", message: "lightning" })}
+          className={styles.tldrIcon}
+        >
+          ⚡
+        </span>
 
-        <div className={styles.tldrContent}>{children}</div>
+        <div className={styles.tldrBody}>
+          <strong className={styles.tldrTitle}>TL;DR</strong>
+          <div className={styles.tldrContent}>{children}</div>
+        </div>
       </div>
 
       {/*

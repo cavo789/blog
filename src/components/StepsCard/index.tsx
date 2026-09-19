@@ -1,5 +1,4 @@
 import type { JSX, ReactNode } from "react";
-import clsx from "clsx";
 import styles from "./styles.module.css";
 import { parseMarkdown } from "@site/src/components/Blog/utils/markdown";
 
@@ -32,61 +31,53 @@ export default function StepsCard({
   if (!steps || steps.length === 0) return null;
 
   return (
-    /* Ajout des classes card et shadow--md pour matcher Updated */
-    <div
-      className={clsx(styles.steps_wrapper, "card", "shadow--md")}
-      data-variant={variant}
-    >
+    <div className={styles.steps_wrapper} data-variant={variant}>
       {title && (
-        <div className="card__header">
-          <h3 className={styles.steps_title}>
-            <span aria-hidden="true">{VARIANT_ICONS[variant]}</span> {title}
-          </h3>
-        </div>
+        <h3 className={styles.steps_title}>
+          <span aria-hidden="true">{VARIANT_ICONS[variant]}</span> {title}
+        </h3>
       )}
-      <div className="card__body">
-        <ul className={styles.steps_list}>
-          {steps.map((step, index) => {
-            const isString = typeof step === "string";
-            const content = isString ? step : step.content;
-            const icon = variant === "remember" ? "💡" : index + 1;
+      <ul className={styles.steps_list}>
+        {steps.map((step, index) => {
+          const isString = typeof step === "string";
+          const content = isString ? step : step.content;
+          const icon = variant === "remember" ? "💡" : index + 1;
 
-            return (
-              <li key={index} className={styles.step_item}>
-                <span className={styles.step_bullet}>{icon}</span>
-                <div className={styles.step_content}>
-                  {typeof content === "string" ? (
-                    <span
-                      dangerouslySetInnerHTML={{
-                        __html: parseMarkdown(content),
-                      }}
-                    />
-                  ) : (
-                    content
-                  )}
-                  {!isString && step.substeps && (
-                    <ul className={styles.substeps_list}>
-                      {step.substeps.map((sub, i) => (
-                        <li key={i}>
-                          {typeof sub === "string" ? (
-                            <span
-                              dangerouslySetInnerHTML={{
-                                __html: parseMarkdown(sub),
-                              }}
-                            />
-                          ) : (
-                            sub
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+          return (
+            <li key={index} className={styles.step_item}>
+              <span className={styles.step_bullet}>{icon}</span>
+              <div className={styles.step_content}>
+                {typeof content === "string" ? (
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: parseMarkdown(content),
+                    }}
+                  />
+                ) : (
+                  content
+                )}
+                {!isString && step.substeps && (
+                  <ul className={styles.substeps_list}>
+                    {step.substeps.map((sub, i) => (
+                      <li key={i}>
+                        {typeof sub === "string" ? (
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html: parseMarkdown(sub),
+                            }}
+                          />
+                        ) : (
+                          sub
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

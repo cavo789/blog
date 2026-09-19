@@ -1,0 +1,438 @@
+/**
+ * theme.css — "Suricate" design tokens for avonture.be
+ * ---------------------------------------------------------------------------
+ * The single source of truth for colour, radius, elevation, rails and the
+ * eyebrow label style. Every component stylesheet consumes these and declares
+ * no raw values of its own.
+ *
+ * Imported from custom.css (@import "./theme.css";) BEFORE any other rule so
+ * that Infima's own defaults can be remapped below.
+ *
+ * Palette provenance: sampled from static/img/meerkat/suricate.webp — amber
+ * fur, cream belly, cocoa mask, and the cyan ground-shadow the mascot stands
+ * on. The primary ramp is NOT redefined here: --ifm-color-primary already came
+ * from the mascot's fur and its AA contrast is verified (see custom.css).
+ *
+ * The hex values below ARE the token source-of-truth — legitimate
+ * color-no-hex exception, same rationale as the --ifm-color-primary block in
+ * custom.css. See AGENTS.md and
+ * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ */
+/* stylelint-disable color-no-hex */
+
+:root {
+  /* ── Typography ───────────────────────────────────────────────────────── */
+  /* Proposal A "Savane": Bricolage Grotesque for headings (an optical-size
+   * grotesque with real character), Source Sans 3 for prose (humanist, built
+   * for long technical reading), JetBrains Mono for code. Swapping the whole
+   * site's voice later means editing these three lines and the Google Fonts
+   * <link> in docusaurus.config.js — nothing else. */
+  --mk-font-display: "Bricolage Grotesque", system-ui, -apple-system, sans-serif;
+  --mk-font-text: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  --mk-font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* ── Geometry ─────────────────────────────────────────────────────────── */
+  /* Three radii replace the nine in circulation (2/4/5/6/7/8/10/12/14px). */
+  --mk-radius-sm: 6px; /* inputs, kbd, inline chips, code blocks */
+  --mk-radius-md: 10px; /* callouts, toolbars, panels */
+  --mk-radius-lg: 16px; /* cards, large surfaces */
+
+  /* One rail thickness replaces the four in circulation (3/4/5/6px).
+   * Used by callouts, article h2, blockquote and the mobile TOC alike. */
+  --mk-rail: 4px;
+
+  /* ── Elevation ────────────────────────────────────────────────────────── */
+  /* Three steps replace eight ad-hoc formulas. Warm-tinted rather than neutral
+   * black: a pure-black shadow over a sand surface reads grey. */
+  --mk-shadow-1: 0 1px 2px rgb(59, 44, 30, 0.07); /* at rest */
+  --mk-shadow-2: 0 6px 16px rgb(59, 44, 30, 0.1); /* hover / raised */
+  --mk-shadow-3: 0 14px 32px rgb(59, 44, 30, 0.14); /* floating (FAB, tooltip) */
+
+  /* ── The eyebrow ──────────────────────────────────────────────────────── */
+  /* One small-caps label style replaces the four variants currently in the
+   * codebase (TLDR .05em, QuickJump .85rem/.05em, Vars .8rem+.72rem/.06em,
+   * PostCard badge .68rem/.05em). Applied via .mk-eyebrow (below). */
+  --mk-eyebrow-size: 0.72rem;
+  --mk-eyebrow-weight: 700;
+  --mk-eyebrow-tracking: 0.08em;
+
+  /* ── Warm neutrals ────────────────────────────────────────────────────── */
+  /* Infima's greys are cold; next to terracotta they grizzle. These carry the
+   * mascot's warmth, so the primary stops looking bolted on. */
+  --mk-n-0: #fffdf7;
+  --mk-n-50: #faf5ea;
+  --mk-n-100: #f3ebda;
+  --mk-n-200: #e9e0cf;
+  --mk-n-300: #d6c9b2;
+  --mk-n-500: #a2917a;
+  --mk-n-700: #6e6153;
+  --mk-n-900: #2b2118;
+
+  /* ── Semantic surfaces ────────────────────────────────────────────────── */
+  --mk-bg: var(--mk-n-0);
+  --mk-surface: #ffffff;
+  --mk-sunken: var(--mk-n-50);
+  --mk-ink: var(--mk-n-900);
+  --mk-ink-soft: var(--mk-n-700);
+  --mk-border: var(--mk-n-200);
+  --mk-border-strong: var(--mk-n-300);
+
+  /* The primary is NOT redefined — it is already the mascot's fur. */
+  --mk-primary: var(--ifm-color-primary);
+
+  /* Foreground used on top of a filled --mk-*-line pill or dot. */
+  --mk-on-line: #fffdf7;
+
+  /* ── Tone sets ────────────────────────────────────────────────────────── */
+  /* Every callout in the site is one of these six. bg/line/fg are always used
+   * together; line doubles as the filled-dot background, so each one clears
+   * 4.5:1 against --mk-on-line. */
+
+  /* info — the cyan puddle the mascot stands on */
+  --mk-info-bg: #e6f4f7;
+  --mk-info-line: #27798a;
+  --mk-info-fg: #123f49;
+
+  /* tip / success — savanna green */
+  --mk-tip-bg: #eef4e3;
+  --mk-tip-line: #5b7b36;
+  --mk-tip-fg: #2b3c18;
+
+  /* note — the cocoa eye mask */
+  --mk-note-bg: #f5efe4;
+  --mk-note-line: #7d5f41;
+  --mk-note-fg: #3d3124;
+
+  /* caution / warning — saturated fur ochre */
+  --mk-warn-bg: #fbf0da;
+  --mk-warn-line: #94640f;
+  --mk-warn-fg: #4c3307;
+
+  /* danger / highly important — terracotta pushed to brick */
+  --mk-danger-bg: #fae9e2;
+  --mk-danger-line: #af3a1d;
+  --mk-danger-fg: #54180b;
+
+  /* key — core concept, TL;DR, tags, "latest" badges: the site's own primary */
+  --mk-key-bg: #faf0de;
+  --mk-key-line: var(--ifm-color-primary);
+  --mk-key-edge: #e0b682;
+  --mk-key-fg: #4a2e18;
+
+  /* ── Code & terminal ──────────────────────────────────────────────────── */
+  /* Deliberately theme-independent: a terminal is a terminal in both themes.
+   * What changed is only that the shell is warm-black instead of neutral
+   * #1e1e1e, and the prompt is savanna green instead of #00ff00. */
+  --mk-code-bg: #2b2118;
+  --mk-code-fg: #e7ddcb;
+  --mk-term-bg: #241d16;
+  --mk-term-head: #322a20;
+  --mk-term-border: #3f352a;
+  --mk-term-prompt: #93b764;
+  --mk-term-comment: #8a9e6b;
+  --mk-term-dot-red: #c4614a;
+  --mk-term-dot-amber: #d69a3c;
+  --mk-term-dot-green: #7c9e51;
+}
+
+[data-theme="dark"] {
+  --mk-n-0: #1a1510;
+  --mk-n-50: #221c15;
+  --mk-n-100: #2b241b;
+  --mk-n-200: #372f25;
+  --mk-n-300: #4b4134;
+  --mk-n-500: #7d6f5d;
+  --mk-n-700: #a79987;
+  --mk-n-900: #f0e7d8;
+
+  --mk-bg: var(--mk-n-0);
+  --mk-surface: var(--mk-n-50);
+  --mk-sunken: var(--mk-n-100);
+  --mk-ink: var(--mk-n-900);
+  --mk-ink-soft: var(--mk-n-700);
+  --mk-border: var(--mk-n-200);
+  --mk-border-strong: var(--mk-n-300);
+
+  --mk-shadow-1: 0 1px 2px rgb(0, 0, 0, 0.35);
+  --mk-shadow-2: 0 6px 16px rgb(0, 0, 0, 0.45);
+  --mk-shadow-3: 0 14px 32px rgb(0, 0, 0, 0.55);
+
+  /* Lines lighten in dark mode, so the text ON them flips to the page black. */
+  --mk-on-line: #1a1510;
+
+  --mk-info-bg: #14282d;
+  --mk-info-line: #5fc3d4;
+  --mk-info-fg: #cbeaf1;
+
+  --mk-tip-bg: #1d2617;
+  --mk-tip-line: #93b764;
+  --mk-tip-fg: #ddebc9;
+
+  --mk-note-bg: #262019;
+  --mk-note-line: #be9a70;
+  --mk-note-fg: #eadcc6;
+
+  --mk-warn-bg: #2e2411;
+  --mk-warn-line: #e0a83c;
+  --mk-warn-fg: #f7e3b8;
+
+  --mk-danger-bg: #31170f;
+  --mk-danger-line: #e2724f;
+  --mk-danger-fg: #fbd8cb;
+
+  --mk-key-bg: #2c2013;
+  --mk-key-edge: #8a6134;
+  --mk-key-fg: #f5e3c8;
+
+  --mk-code-bg: #12100c;
+  --mk-term-bg: #151109;
+  --mk-term-head: #221c13;
+  --mk-term-border: #332b20;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INFIMA REMAP
+   ---------------------------------------------------------------------------
+   This is the block that harmonises everything NOT individually restyled:
+   Docusaurus's own navbar, sidebar, pagination, admonitions, TOC and every
+   component still reading --ifm-color-emphasis-*. Remapping here is what makes
+   the migration incremental — a component keeps working untouched and simply
+   inherits warm neutrals instead of cold greys.
+
+   To roll back: delete this block. Nothing else depends on it.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --ifm-font-family-base: var(--mk-font-text);
+  --ifm-font-family-monospace: var(--mk-font-mono);
+  --ifm-heading-font-family: var(--mk-font-display);
+
+  --ifm-background-color: var(--mk-bg);
+  --ifm-background-surface-color: var(--mk-surface);
+  --ifm-card-background-color: var(--mk-surface);
+  --ifm-font-color-base: var(--mk-ink);
+
+  --ifm-global-radius: var(--mk-radius-md);
+  --ifm-card-border-radius: var(--mk-radius-lg);
+  --ifm-border-radius: var(--mk-radius-sm);
+
+  --ifm-global-shadow-lw: var(--mk-shadow-1);
+  --ifm-global-shadow-md: var(--mk-shadow-2);
+  --ifm-global-shadow-tl: var(--mk-shadow-3);
+
+  /* Warm equivalents of Infima's grey ramp. emphasis-600 is #7e6f5c rather
+   * than a lighter tan on purpose: it is used as body text in several places
+   * and needs 4.5:1 on the page background (measured 4.8:1). */
+  --ifm-color-emphasis-100: var(--mk-n-50);
+  --ifm-color-emphasis-200: var(--mk-n-100);
+  --ifm-color-emphasis-300: var(--mk-n-200);
+  --ifm-color-emphasis-400: var(--mk-n-300);
+  --ifm-color-emphasis-500: var(--mk-n-500);
+  --ifm-color-emphasis-600: #7e6f5c;
+  --ifm-color-emphasis-700: var(--mk-n-700);
+  --ifm-color-emphasis-800: #453b30;
+  --ifm-color-emphasis-900: var(--mk-n-900);
+
+  --ifm-code-background: var(--mk-key-bg);
+  --ifm-hover-overlay: rgb(155, 90, 49, 0.06);
+
+  --ifm-toc-border-color: var(--mk-border);
+  --ifm-table-border-color: var(--mk-border);
+  --ifm-table-stripe-background: var(--mk-n-50);
+
+  /* Infima's own admonitions, so a plain :::tip in Markdown matches AlertBox */
+  --ifm-color-info: var(--mk-info-line);
+  --ifm-color-success: var(--mk-tip-line);
+  --ifm-color-warning: var(--mk-warn-line);
+  --ifm-color-danger: var(--mk-danger-line);
+  --ifm-color-secondary: var(--mk-n-300);
+}
+
+[data-theme="dark"] {
+  --ifm-color-emphasis-600: #8e8170;
+  --ifm-color-emphasis-800: #cfc3b1;
+  --ifm-hover-overlay: rgb(221, 127, 60, 0.1);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SHARED PRIMITIVES
+   ---------------------------------------------------------------------------
+   Global (non-module) classes, so any component — and any MDX file — can use
+   them without importing a stylesheet.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* The eyebrow: every small uppercase label in the site. */
+.mk-eyebrow {
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--mk-ink-soft);
+}
+
+/*
+ * The callout: ONE primitive replacing six independent implementations
+ * (AlertBox, TLDR, QuickJump, OldPostNotice, StepsCard, blockquote). A
+ * variant sets only the three tone variables; anatomy never changes.
+ */
+.mk-callout {
+  --tone-bg: var(--mk-note-bg);
+  --tone-line: var(--mk-note-line);
+  --tone-fg: var(--mk-note-fg);
+
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin: 2rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+  border-left: var(--mk-rail) solid var(--tone-line);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  box-shadow: var(--mk-shadow-1);
+}
+
+.mk-callout--info {
+  --tone-bg: var(--mk-info-bg);
+  --tone-line: var(--mk-info-line);
+  --tone-fg: var(--mk-info-fg);
+}
+.mk-callout--tip {
+  --tone-bg: var(--mk-tip-bg);
+  --tone-line: var(--mk-tip-line);
+  --tone-fg: var(--mk-tip-fg);
+}
+.mk-callout--note {
+  --tone-bg: var(--mk-note-bg);
+  --tone-line: var(--mk-note-line);
+  --tone-fg: var(--mk-note-fg);
+}
+.mk-callout--warn {
+  --tone-bg: var(--mk-warn-bg);
+  --tone-line: var(--mk-warn-line);
+  --tone-fg: var(--mk-warn-fg);
+}
+.mk-callout--danger {
+  --tone-bg: var(--mk-danger-bg);
+  --tone-line: var(--mk-danger-line);
+  --tone-fg: var(--mk-danger-fg);
+}
+.mk-callout--key {
+  --tone-bg: var(--mk-key-bg);
+  --tone-line: var(--mk-key-line);
+  --tone-fg: var(--mk-key-fg);
+}
+
+/* Elevated variant — how "highly important" is now told apart, instead of by
+ * a geometry of its own (it used to carry a full border and a 6px radius). */
+.mk-callout--loud {
+  box-shadow: var(--mk-shadow-2);
+}
+
+/* The filled dot: the callout icon slot, the StepsCard bullet and the Updated
+ * timeline node are all the same object at the same 26px. */
+.mk-dot {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--tone-line, var(--mk-primary));
+  color: var(--mk-on-line);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mk-dot svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* The toolbar: Snippet's file header and ProjectSetup's header are now one
+ * object — eyebrow left, actions right, sand ground. */
+.mk-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.625rem 1rem;
+  background: var(--mk-sunken);
+  border-bottom: 1px solid var(--mk-border);
+}
+
+.mk-toolbar__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* The surface: every card-like box (PostCard, HomeCards, Updated, Vars,
+ * ProjectSetup, Snippet) starts here. */
+.mk-surface {
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-lg);
+  box-shadow: var(--mk-shadow-1);
+}
+
+/* One hover behaviour for every liftable card: -4px and one elevation step. */
+.mk-liftable {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mk-liftable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mk-shadow-2);
+  border-color: var(--mk-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-liftable,
+  .mk-liftable:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* The pill: tags, badges, "latest" markers, language chips. */
+.mk-pill {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mk-primary);
+  background: var(--mk-key-bg);
+  border: 1px solid var(--mk-key-edge);
+  border-radius: 999px;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.mk-pill:hover {
+  color: var(--mk-primary);
+  text-decoration: none;
+  border-color: var(--mk-primary);
+  background: var(--mk-n-100);
+}
+
+/* One focus ring for the whole site. */
+.mk-focusable:focus-visible,
+.mk-callout a:focus-visible,
+.mk-pill:focus-visible {
+  outline: 2px solid var(--mk-primary);
+  outline-offset: 2px;
+  border-radius: var(--mk-radius-sm);
+}
+/* stylelint-enable color-no-hex */

@@ -25,10 +25,7 @@ export default function QuickJump({
   if (!links || links.length === 0) return null;
 
   return (
-    <nav
-      className={`alert alert--info margin-bottom--md ${styles.quickJump}`}
-      aria-label={title}
-    >
+    <nav className={styles.quickJump} aria-label={title}>
       <strong className={styles.title}>{title}:</strong>
       <ul className={styles.list}>
         {links.map((link) => (
