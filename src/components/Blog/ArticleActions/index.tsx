@@ -1,21 +1,24 @@
 import type { JSX } from "react";
 import CopyAsMarkdown from "@site/src/components/CopyAsMarkdown";
 import FollowFeed from "@site/src/components/FollowFeed";
+import ShareArticle from "@site/src/components/ShareArticle";
 import { createSlug } from "@site/src/components/Blog/utils/slug";
 import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 import styles from "./styles.module.css";
 import { translate } from "@docusaurus/Translate";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 interface Props {
   metadata: {
     permalink: string;
+    title?: string;
     frontMatter?: { mainTag?: string | null };
   };
 }
 
 /**
  * The horizontal row of article-level actions, under the date/reading-time line
- * and above the authors: "Copy as Markdown", "View raw", "Follow <topic>".
+ * and above the authors: "Copy as Markdown", "View raw", "Share", "Follow <topic>".
  *
  * It exists because there was no such row — `CopyAsMarkdown` rendered its own
  * inline-flex wrapper and the header dropped it in as-is, which worked right up
@@ -27,8 +30,14 @@ interface Props {
  * report, Bluesky) which are about giving something back.
  */
 export default function ArticleActions({ metadata }: Props): JSX.Element {
+  const { siteConfig } = useDocusaurusContext();
   const mainTag = metadata.frontMatter?.mainTag;
   const tagLabel = useTagLabel();
+
+  // `metadata.permalink` already carries the locale's baseUrl (Docusaurus-provided,
+  // see .claude/rules/i18n-locale-safety.md) — `siteConfig.url` is the bare origin, so
+  // concatenating the two is the whole job, same as BlueskyShare does.
+  const shareUrl = `${siteConfig.url}${metadata.permalink}`;
 
   // The most specific feed this reader could want: the post's own main topic,
   // falling back to the site-wide feed when the post declares no mainTag.
@@ -45,6 +54,7 @@ export default function ArticleActions({ metadata }: Props): JSX.Element {
   return (
     <div className={styles.actions}>
       <CopyAsMarkdown metadata={metadata} />
+      <ShareArticle title={metadata.title ?? ""} url={shareUrl} />
       <FollowFeed feedUrl={feedUrl} label={label} variant="inline" />
     </div>
   );

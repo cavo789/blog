@@ -50,11 +50,66 @@
   padding-right: 1.5rem;
   box-sizing: border-box;
   background-color: var(--mk-bg);
-  border-radius: var(--mk-radius-lg);
   scroll-behavior: smooth;
   box-shadow: inset -5px 0 8px -6px rgb(59, 44, 30, 0.12);
   scrollbar-width: thin;
   scrollbar-color: var(--mk-border-strong) transparent;
+  transition:
+    width 0.2s ease,
+    padding-right 0.2s ease;
+}
+
+.sidebarHidden {
+  width: 30px;
+  padding-right: 0;
+  box-shadow: none;
+}
+
+.collapseButton,
+.expandStrip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: var(--mk-radius-sm);
+}
+
+.collapseButton {
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.expandStrip {
+  width: 100%;
+  height: 3rem;
+}
+
+.collapseButton:hover,
+.collapseButton:focus-visible,
+.expandStrip:hover,
+.expandStrip:focus-visible {
+  background-color: var(--mk-n-100);
+}
+
+.collapseButton::after,
+.expandStrip::after {
+  content: "";
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: var(--ifm-menu-link-sublist-icon) 50% 50% / 1.2rem 1.2rem no-repeat;
+  filter: var(--ifm-menu-link-sublist-icon-filter);
+}
+
+.collapseButton::after {
+  transform: rotate(90deg);
+}
+
+.expandStrip::after {
+  transform: rotate(-90deg);
 }
 
 /* Scrollbar styles for sidebar */
@@ -284,7 +339,8 @@
     flex-direction: column;
     min-height: auto;
   }
-  .sidebar {
+  .sidebar,
+  .sidebarHidden {
     position: static;
     width: 100%;
     height: auto;
@@ -297,6 +353,13 @@
   .filterContainerSidebar {
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
+  }
+
+  /* Collapsing only reclaims horizontal space, which a stacked mobile layout doesn't have —
+     the toggle stays desktop-only, same as the article-page sidebar's own collapse button. */
+  .collapseButton,
+  .expandStrip {
+    display: none;
   }
 
   /* The desktop anchor is a hover-reveal permalink — meaningless on a touchscreen, which

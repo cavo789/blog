@@ -441,6 +441,14 @@
     "message": "Navigation article de blog récent",
     "description": "The ARIA label for recent posts in the blog sidebar"
   },
+  "theme.blog.sidebar.collapseButtonTitle": {
+    "message": "Masquer la liste des articles",
+    "description": "The title of the button that collapses the blog sidebar"
+  },
+  "theme.blog.sidebar.expandButtonTitle": {
+    "message": "Afficher la liste des articles",
+    "description": "The title of the button that expands the collapsed blog sidebar"
+  },
   "theme.DocSidebarItem.expandCategoryAriaLabel": {
     "message": "Développer la catégorie '{label}' de la barre latérale",
     "description": "The ARIA label to expand the sidebar category"
@@ -774,6 +782,15 @@
   "blog.copyAsMarkdown.viewRaw": {
     "message": "Voir la source"
   },
+  "blog.shareArticle.label": {
+    "message": "Partager"
+  },
+  "blog.shareArticle.copied": {
+    "message": "✓ Lien copié"
+  },
+  "blog.shareArticle.error": {
+    "message": "Copie impossible"
+  },
   "blog.followFeed.noReader": {
     "message": "Pas encore de lecteur de flux ? {link} — ça prend deux minutes."
   },
@@ -926,6 +943,12 @@
   },
   "blog.archive.sidebarAriaLabel": {
     "message": "Filtres et chronologie des archives"
+  },
+  "blog.archive.sidebarCollapseButtonTitle": {
+    "message": "Masquer les filtres et la chronologie"
+  },
+  "blog.archive.sidebarExpandButtonTitle": {
+    "message": "Afficher les filtres et la chronologie"
   },
   "blog.archive.filterByYear": {
     "message": "Filtrer par année :"
@@ -1361,6 +1384,10 @@
   "snippet.defaultTitle": {
     "message": "Extrait"
   },
+  "snippet.showRemaining": {
+    "message": "Afficher les {count} lignes restantes",
+    "description": "Control revealing the rest of a truncated snippet"
+  },
   "tldr.ariaLabel": {
     "message": "Résumé de l'article"
   },
@@ -1447,5 +1474,14 @@
   },
   "feed.linkTitleSourceBlog": {
     "message": "{name} — flux RSS ({language} — le blog complet)"
+  },
+  "blog.listPage.filterBarLabel": {
+    "message": "Filtrer les articles par tag"
+  },
+  "blog.listPage.filterAll": {
+    "message": "tous"
+  },
+  "blog.listPage.allTagsLink": {
+    "message": "tous les tags →"
   }
 }

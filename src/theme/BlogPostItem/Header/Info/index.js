@@ -42,7 +42,7 @@ DateTime.propTypes = {
 function Spacer() {
   return <>{" · "}</>;
 }
-export default function BlogPostItemHeaderInfo({ className, aiIcon }) {
+export default function BlogPostItemHeaderInfo({ className }) {
   const { metadata } = useBlogPost();
   const { date, readingTime } = metadata;
   const dateTimeFormat = useDateTimeFormat({
@@ -61,12 +61,9 @@ export default function BlogPostItemHeaderInfo({ className, aiIcon }) {
           <ReadingTime readingTime={readingTime} />
         </>
       )}
-      {aiIcon && <Spacer />}
-      {aiIcon}
     </div>
   );
 }
 BlogPostItemHeaderInfo.propTypes = {
   className: PropTypes.string,
-  aiIcon: PropTypes.node,
 };

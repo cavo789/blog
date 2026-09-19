@@ -1,23 +1,24 @@
 /*
- * The "this post is part of a series" box. It is a callout in everything but
- * name, so it now uses the shared anatomy — but NOT .mk-callout itself: that
- * primitive is a flex row built around a .mk-dot, and this box is a titled
- * list with no icon. It borrows the tone, the rail and the radius instead.
+ * The "this post is part of a series" box.
  *
- * Fixed on the way: the intro line was bold AND italic AND 1.1rem — three
- * emphases at once on a sentence that only introduces a list.
+ * NO BACKGROUND TINT. That was tried and removed on review, and the reason is
+ * worth keeping: the page ground is already cream (--mk-bg #fffdf7) and the
+ * "key" tone is cream too (--mk-key-bg #faf0de). A tinted block on a tinted
+ * page reads as a washed-out rectangle rather than as a distinct object — it
+ * costs a lot of visual weight to say very little. The rail alone says
+ * "this is an aside" perfectly well, and it is the same rail as the article's
+ * own h2, so the box sits in the page's existing grid of left marks instead of
+ * interrupting it.
+ *
+ * Keep this in mind for any future aside: on this site, tint is for callouts
+ * that carry a WARNING or a KEY IDEA. A navigation aid gets a rail and nothing
+ * more (see QuickJump, which made the same call).
  */
 .seriesBlogPost {
-  background-color: var(--mk-key-bg);
-  color: var(--mk-key-fg);
+  color: var(--mk-ink);
   border-left: var(--mk-rail) solid var(--mk-primary);
-  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
-  padding: 1.25rem 1.5rem;
+  padding: 0.25rem 0 0.25rem 1.25rem;
   margin-bottom: 2rem;
-  transition:
-    background-color 200ms ease-in-out,
-    color 200ms ease-in-out,
-    border-color 200ms ease-in-out;
 }
 
 /* Applied to Details's <summary> via its summaryClassName prop — not a
@@ -27,14 +28,18 @@
    rule here was dead CSS. */
 .seriesIntro {
   composes: mk-eyebrow from global;
-  color: inherit;
+  cursor: pointer;
+}
+
+.seriesIntro:hover {
+  color: var(--mk-primary);
 }
 
 .seriesBlogPost ul {
   list-style-type: none;
   padding-left: 0;
   counter-reset: post-counter;
-  margin-bottom: 0;
+  margin: 0.625rem 0 0;
 }
 
 .seriesBlogPost li {
@@ -46,7 +51,7 @@
 }
 
 .seriesBlogPost li:not(:last-child) {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .seriesBlogPost li::before {
@@ -73,6 +78,7 @@
 
 .currentPost {
   font-weight: 700;
+  color: var(--mk-primary);
 }
 
 .currentPostDimmed {
@@ -80,8 +86,8 @@
 }
 
 /*
- * The dark-mode override is gone: --mk-key-bg / --mk-key-fg already flip on
- * their own, which is the whole point of the tone sets. The old rule pointed
- * at --ifm-background-surface-color, i.e. the card colour, which made this box
- * indistinguishable from the article around it in dark mode.
+ * No dark-mode block: every value above is a token that flips on its own.
+ * (The pre-harmonisation override pointed at --ifm-background-surface-color,
+ * the CARD colour, which made this box indistinguishable from the article
+ * around it in dark mode.)
  */

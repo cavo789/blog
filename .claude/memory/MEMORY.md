@@ -31,6 +31,7 @@
 - [AnythingLLM Instance](project_anythingllm_instance.md) — 172.17.0.1:**3200** depuis le devcontainer, compose sur l'hôte, workspaces `blog` (257 EN) + `blog-fr` (103 FR), plafond d'embedding num_ctx 400
 - [llms.txt Discoverability](project_llms_txt_discoverability.md) — head links + series-bundle link built 2026-08-11 ; directory submissions: llmstxt.site ✅, directory.llmstxt.cloud ✅, llmstxthub.com ❌ retry
 - [Dev Server Restart Authorization](feedback_dev_server_restart.md) — restart allowed for content verification IF ListAgents+broadcast to peer sessions first; curl can't verify dev-mode content, use Playwright
+- [Build Verification Trigger Gap](feedback_build_verification_trigger_gap.md) — build-verification.md rule doesn't auto-load on src/** edits ; default to isolated `.docusaurus-verify` build over safe_build.sh, which wipes the live dev server's `.docusaurus-dev/`
 - [i18n Translation (reopened)](feedback_i18n_translation_rejected.md) — rouverte 2026-09-16 ; **traducteur déjà écrit et éprouvé** (`scripts/translate-post.mjs`) ; plan `.todos/DONE/DONE_0119` (clos 2026-09-17, suite `.todos/0124`) ; 3 pièges vérifiés par build ; coût mesuré ≈ 41 $
 - [Translation Rejects Workflow](project_translation_rejects.md) — rejouer le validateur hors-ligne (gratuit) avant toute relance ; un dump propre s'installe sans API
 - [Validator False Positives](feedback_validator_false_positives.md) — homographes FR/EN et match par préfixe ; lire le contexte avant d'accuser le modèle

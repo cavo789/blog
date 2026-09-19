@@ -1,0 +1,8 @@
+$ ai-summarize contract.docx 4
+
+→ Converting 'contract.docx' with docling-convert...
+
+- First increment delivery due within 6 weeks of signature; subsequent increments delivered every ≤4 weeks, requiring staging deployment and Appendix B test completion within a 5-working-day acceptance window.
+- Invoices payable 30 days from receipt; payment withholding permitted only for failed increments until remedied, with late interest accruing at the statutory rate.
+- Either party may terminate with 60 days written notice, mandating handover of all work-in-progress, source code, and documentation, plus immediate payment for completed and accepted work.
+- Framework agreement prevails except for the payment schedule, which is entirely replaced; first increment is delivered, second increment is due at 10 weeks.

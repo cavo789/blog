@@ -29,6 +29,35 @@
   font-variant-numeric: tabular-nums;
 }
 
+.tagFilterBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.tagPill {
+  composes: mk-pill from global;
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.tagPillActive,
+.tagPillActive:hover {
+  color: var(--mk-on-line);
+  background: var(--mk-primary);
+  border-color: var(--mk-primary);
+}
+
+.allTagsLink {
+  margin-left: 0.25rem;
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  color: var(--mk-ink-soft);
+}
+
 .cardsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

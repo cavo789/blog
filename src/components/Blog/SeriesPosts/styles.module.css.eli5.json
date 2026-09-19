@@ -1,21 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-19T14:22:37.542Z",
+  "generated": "2026-09-19T14:47:17.684Z",
   "source": "styles.module.css",
-  "sourceHash": "c0599810331565e48a64f83fcd5cc4d748e5ac35",
+  "sourceHash": "8979d35d8116f105432aeae2c355990a52491f98",
   "lang": "css",
   "textLang": "en",
-  "summary": "This CSS styles a 'series box' — a callout that lists other posts in a blog series. It uses CSS counters to automatically number the list items, applies a left border and background color to make it stand out, and includes hover effects for links. The code also fixes previous over-styling of the intro text and removes unnecessary dark-mode overrides.",
+  "summary": "This stylesheet styles a 'series box' that shows which post in a series the reader is currently viewing. Instead of using a background color (which would look washed out on the cream-colored page), it uses a left border as a visual accent, similar to a rail used elsewhere on the site. The list inside uses custom numbering, and the current post is highlighted in bold.",
   "explanations": {
-    "13": "The border-left property creates a thick colored stripe on the left side; var(--mk-rail) is the width and var(--mk-primary) is the color, both defined elsewhere.",
-    "17": "The transition property makes background, text color, and border color smoothly animate over 200 milliseconds when they change — this creates a polished feel on hover or theme changes.",
-    "29": "The composes keyword (from CSS Modules) imports styles from the global mk-eyebrow class, letting this class inherit those styles without repeating them.",
-    "36": "counter-reset initializes a named counter called 'post-counter' to zero, which will track list item numbers throughout this unordered list.",
-    "41": "counter-increment bumps up the post-counter by 1 for each list item, so each one gets a unique incrementing number.",
-    "53": "content: counter(post-counter) displays the current value of the counter as generated text before each list item, creating the automatic numbering.",
-    "59": "font-variant-numeric: tabular-nums makes all numbers the same width so they align vertically in a column, preventing the text from jiggling when numbers change width (like 9 to 10).",
-    "64": "text-decoration: none removes the default underline from links so they blend with the series box styling until hovered.",
-    "75": "This marks the current post in the series with bold text so readers can see which post they're on."
+    "19": "The border-left property creates a colored line on the left edge; var(--mk-rail) sets the width and var(--mk-primary) sets the color.",
+    "30": "The 'composes' keyword pulls in styles from a global CSS class called mk-eyebrow, applying those styles to this element as well.",
+    "41": "counter-reset starts a named counter called 'post-counter' at zero so it can count list items automatically.",
+    "46": "counter-increment increases the post-counter by 1 for each list item, so we can display 1, 2, 3, etc.",
+    "58": "The content property inserts the current value of the post-counter before each list item (this only works in ::before and ::after pseudo-elements).",
+    "64": "font-variant-numeric: tabular-nums makes all numbers the same width so lists align neatly instead of shifting when numbers like '9' change to '10'.",
+    "70": "color: inherit makes both links and spans use whatever text color their parent has, instead of the browser's default link color."
   }
 }

@@ -38,7 +38,9 @@ Simply download the scanner onto your site, run it from a URL and it will scan t
 
 ## Result
 
-![The welcome page of aeSecure QuickScan](./images/aesecure_quickscan_welcome.webp)
+<BrowserWindow url="http://localhost/">
+  ![The welcome page of aeSecure QuickScan](./images/aesecure_quickscan_welcome.webp)
+</BrowserWindow>
 
 This is aeSecure QuickScan running against a live Joomla site: drop one PHP file onto the
 server, open it in a browser, and four buttons take you from "nothing scanned yet" to a full
@@ -108,7 +110,9 @@ At the end of action 2, we've then the list of unknown files, the ones the scann
 
 Scanning the site (action 3) then means scanning only unknown files; those not on the whitelist. By default, maximum 500 files will be scanned at a time. If your web server returns a timeout (meaning the scan has taken too many times and the server has stopped the action), you can try to reduce the number by clicking on the top left accordion to get the menu and select a lower value:
 
-![aeSecure Quick-Scan - Accordion](./images/aesecure_quickscan_accordion.webp)
+<BrowserWindow url="http://localhost/">
+  ![aeSecure Quick-Scan - Accordion](./images/aesecure_quickscan_accordion.webp)
+</BrowserWindow>
 
 ## Conclusion
 

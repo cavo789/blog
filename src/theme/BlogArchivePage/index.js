@@ -8,8 +8,12 @@ import Translate, { translate } from "@docusaurus/Translate";
 import BlogPostCount from "@site/src/components/Blog/PostCount";
 import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
+import { useStorageSlot, useWindowSize } from "@docusaurus/theme-common";
+import clsx from "clsx";
 import React, { useState, useEffect, useMemo } from "react";
 import styles from "./styles.module.css";
+
+const SIDEBAR_HIDDEN_STORAGE_KEY = "docusaurus.blog.archive.sidebar.hidden";
 
 function Archives() {
   // Was a module-scope constant; it has to live inside the component now that the corpus is
@@ -20,6 +24,17 @@ function Archives() {
   const [selectedYear, setSelectedYear] = useState("all");
   const [selectedTag, setSelectedTag] = useState("all");
   const [activeYearMonth, setActiveYearMonth] = useState(null);
+  // Closed by default, same as the article-page "All posts" sidebar — no stored preference yet
+  // (first visit) means hidden, so the archive gets the full width from the start.
+  const [sidebarHiddenValue, sidebarHiddenStorage] = useStorageSlot(
+    SIDEBAR_HIDDEN_STORAGE_KEY,
+  );
+  const windowSize = useWindowSize();
+  // Collapsing only reclaims horizontal space, which the mobile stacked layout doesn't have — a
+  // preference saved on desktop must not leave filters/timeline inaccessible on a phone.
+  const sidebarHidden =
+    windowSize !== "mobile" &&
+    (sidebarHiddenValue === null || sidebarHiddenValue === "true");
 
   const uniqueTags = [...new Set(allPosts.flatMap((post) => post.tags))].sort();
 
@@ -171,100 +186,143 @@ function Archives() {
             {/* Left Sidebar: Filters + Timeline */}
             <aside
               id="timeline-container"
-              className={styles.sidebar}
+              className={clsx(styles.sidebar, sidebarHidden && styles.sidebarHidden)}
               aria-label={translate({
                 id: "blog.archive.sidebarAriaLabel",
                 message: "Blog Archive Filters and Timeline",
               })}
             >
-              {/* Filters */}
-              <div className={styles.filterContainerSidebar}>
-                <div className={styles.filterGroupSidebar}>
-                  <label className={styles.filterLabel} htmlFor="year-filter-sidebar">
-                    <Translate id="blog.archive.filterByYear">Filter by Year:</Translate>
-                  </label>
-                  <select
-                    id="year-filter-sidebar"
-                    value={selectedYear}
-                    onChange={(e) => {
-                      setSelectedYear(e.target.value);
-                      setSelectedTag("all");
-                    }}
-                  >
-                    <option value="all">
-                      {translate({ id: "blog.archive.allYears", message: "All Years" })}
-                    </option>
-                    {allYears.map((year) => (
-                      <option key={year} value={year}>
-                        {year}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+              {sidebarHidden ? (
+                <button
+                  type="button"
+                  onClick={() => sidebarHiddenStorage.set("false")}
+                  className={styles.expandStrip}
+                  aria-expanded={false}
+                  aria-label={translate({
+                    id: "blog.archive.sidebarExpandButtonTitle",
+                    message: "Show filters and timeline",
+                  })}
+                  title={translate({
+                    id: "blog.archive.sidebarExpandButtonTitle",
+                    message: "Show filters and timeline",
+                  })}
+                />
+              ) : (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => sidebarHiddenStorage.set("true")}
+                    className={styles.collapseButton}
+                    aria-expanded={true}
+                    aria-label={translate({
+                      id: "blog.archive.sidebarCollapseButtonTitle",
+                      message: "Hide filters and timeline",
+                    })}
+                    title={translate({
+                      id: "blog.archive.sidebarCollapseButtonTitle",
+                      message: "Hide filters and timeline",
+                    })}
+                  />
+                  {/* Filters */}
+                  <div className={styles.filterContainerSidebar}>
+                    <div className={styles.filterGroupSidebar}>
+                      <label className={styles.filterLabel} htmlFor="year-filter-sidebar">
+                        <Translate id="blog.archive.filterByYear">
+                          Filter by Year:
+                        </Translate>
+                      </label>
+                      <select
+                        id="year-filter-sidebar"
+                        value={selectedYear}
+                        onChange={(e) => {
+                          setSelectedYear(e.target.value);
+                          setSelectedTag("all");
+                        }}
+                      >
+                        <option value="all">
+                          {translate({
+                            id: "blog.archive.allYears",
+                            message: "All Years",
+                          })}
+                        </option>
+                        {allYears.map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
-                <div className={styles.filterGroupSidebar}>
-                  <label className={styles.filterLabel} htmlFor="tag-filter-sidebar">
-                    <Translate id="blog.archive.filterByTag">Filter by Tag:</Translate>
-                  </label>
-                  <select
-                    id="tag-filter-sidebar"
-                    value={selectedTag}
-                    onChange={(e) => {
-                      setSelectedTag(e.target.value);
-                      setSelectedYear("all");
-                    }}
-                  >
-                    <option value="all">
-                      {translate({ id: "blog.archive.allTags", message: "All Tags" })}
-                    </option>
-                    {uniqueTags.map((tag) => (
-                      <option key={tag} value={tag}>
-                        {tag} ({tagCounts[tag] || 0})
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+                    <div className={styles.filterGroupSidebar}>
+                      <label className={styles.filterLabel} htmlFor="tag-filter-sidebar">
+                        <Translate id="blog.archive.filterByTag">
+                          Filter by Tag:
+                        </Translate>
+                      </label>
+                      <select
+                        id="tag-filter-sidebar"
+                        value={selectedTag}
+                        onChange={(e) => {
+                          setSelectedTag(e.target.value);
+                          setSelectedYear("all");
+                        }}
+                      >
+                        <option value="all">
+                          {translate({ id: "blog.archive.allTags", message: "All Tags" })}
+                        </option>
+                        {uniqueTags.map((tag) => (
+                          <option key={tag} value={tag}>
+                            {tag} ({tagCounts[tag] || 0})
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
 
-              {/* Timeline */}
-              <nav
-                className={styles.verticalTimeline}
-                aria-label={translate({
-                  id: "blog.archive.timelineAriaLabel",
-                  message: "Blog Archive Timeline Navigation",
-                })}
-              >
-                <h2 className={styles.jumpToHeading}>
-                  <Translate id="blog.archive.jumpTo">Jump to</Translate>
-                </h2>
-                <ul className={styles.timelineList}>
-                  {years.map((year) => (
-                    <li key={year} className={styles.timelineItem}>
-                      <a href={`#${year}`} className={styles.timelineYear}>
-                        {year}
-                      </a>
-                      <ul className={styles.timelineMonthList}>
-                        {Object.entries(postsByYearAndMonth[year]).map(
-                          ([month, group]) => (
-                            <li key={`${year}-${month}`} className={styles.timelineMonth}>
-                              <a
-                                href={`#${year}-${month}`}
-                                className={`${styles.timelineMonthLink} ${
-                                  activeYearMonth === `${year}-${month}`
-                                    ? styles.activeMonth
-                                    : ""
-                                }`}
-                              >
-                                {group.label}
-                              </a>
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+                  {/* Timeline */}
+                  <nav
+                    className={styles.verticalTimeline}
+                    aria-label={translate({
+                      id: "blog.archive.timelineAriaLabel",
+                      message: "Blog Archive Timeline Navigation",
+                    })}
+                  >
+                    <h2 className={styles.jumpToHeading}>
+                      <Translate id="blog.archive.jumpTo">Jump to</Translate>
+                    </h2>
+                    <ul className={styles.timelineList}>
+                      {years.map((year) => (
+                        <li key={year} className={styles.timelineItem}>
+                          <a href={`#${year}`} className={styles.timelineYear}>
+                            {year}
+                          </a>
+                          <ul className={styles.timelineMonthList}>
+                            {Object.entries(postsByYearAndMonth[year]).map(
+                              ([month, group]) => (
+                                <li
+                                  key={`${year}-${month}`}
+                                  className={styles.timelineMonth}
+                                >
+                                  <a
+                                    href={`#${year}-${month}`}
+                                    className={`${styles.timelineMonthLink} ${
+                                      activeYearMonth === `${year}-${month}`
+                                        ? styles.activeMonth
+                                        : ""
+                                    }`}
+                                  >
+                                    {group.label}
+                                  </a>
+                                </li>
+                              ),
+                            )}
+                          </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
+                </>
+              )}
             </aside>
 
             {/* Posts Content */}

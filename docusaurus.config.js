@@ -660,6 +660,11 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/social-card.jpg",
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       mermaid: {
         theme: { light: "neutral", dark: "dark" },
       },
@@ -679,36 +684,45 @@ const config = {
           height: 40,
         },
         items: [
+          // `to` rather than `href`: Docusaurus only marks an item active
+          // (.navbar__link--active) when it is declared with `to`.
+          //
+          // activeBaseRegex on Blog: the default match is a PREFIX match, so
+          // /blog would also light up on /blog/tags and /blog/archive — three
+          // entries active at once. This pins Blog to the listing, its pages
+          // and individual posts, while excluding the two sub-sections that
+          // have their own entry.
           {
-            href: "/blog",
+            to: "/blog",
             label: "Blog",
+            activeBaseRegex: "^/(fr/)?blog/(?!tags|archive)|^/(fr/)?blog/?$",
           },
           {
-            href: "/series",
+            to: "/series",
             label: "Series",
           },
           {
-            href: "/blog/tags",
+            to: "/blog/tags",
             label: "Tags",
           },
           {
-            href: "/map",
+            to: "/map",
             label: "Map",
           },
           {
-            href: "/faq",
+            to: "/faq",
             label: "FAQ",
           },
           {
-            href: "/repositories",
+            to: "/repositories",
             label: "Repositories",
           },
           {
-            href: "/blog/archive",
+            to: "/blog/archive",
             label: "Archive",
           },
           {
-            href: "/about",
+            to: "/about",
             label: "About me",
           },
           {

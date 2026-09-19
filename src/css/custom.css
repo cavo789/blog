@@ -113,14 +113,79 @@
 
 /* --- NAVBAR --- */
 
-/* Smooth slide animation for hideOnScroll + subtle shadow */
+/*
+ * Sand, not white.
+ *
+ * On a cream page (--mk-bg #fffdf7) a white navbar sits about 1% of luminance
+ * away from what it floats over: the bar does not read as an object at all,
+ * which is most of what made the site feel monotone. --mk-sunken puts a real
+ * step between page and chrome without spending the primary on it.
+ *
+ * Filling the bar with --mk-primary was tried and rejected: terracotta is the
+ * site-wide signal for "this matters / this is interactive" (h2 rails, active
+ * pills, links). Paint the largest permanent band with it and every accent
+ * below has to compete with a terracotta header — and the amber mascot needs a
+ * white plate to survive the ground, which is the colour telling you it does
+ * not belong there.
+ */
 .navbar {
-  background: var(--mk-surface);
-  border-bottom: 1px solid var(--mk-border);
-  box-shadow: var(--mk-shadow-1);
+  background: var(--mk-sunken);
+  border-bottom: 1px solid var(--mk-border-strong);
+  box-shadow: none;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
+}
+
+/* The shadow appears only once the page has scrolled under the bar, so the bar
+   is flat at rest and lifts when it actually overlaps content. `data-scroll-top`
+   is set on <body> by src/theme/Root.js — Docusaurus's own hideOnScroll hook
+   only tracks show/hide direction, not scroll position, so nothing else in the
+   framework exposes this. */
+.navbar.navbar--sidebar-show,
+body:not([data-scroll-top]) .navbar {
+  box-shadow: var(--mk-shadow-1);
+}
+
+/*
+ * The active-page indicator.
+ *
+ * Nothing in the navbar used to say which section the reader was in. This is
+ * the one place the primary earns its keep up here: a 3px terracotta rule under
+ * the current entry, drawn with inset box-shadow rather than border-bottom so
+ * it does not change the item box and shift its neighbours.
+ *
+ * REQUIRES the navbar items to use `to:` instead of `href:` in
+ * docusaurus.config.js. Docusaurus only applies .navbar__link--active to items
+ * declared with `to`.
+ */
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+  box-shadow: inset 0 -3px 0 var(--ifm-color-primary);
+}
+
+.navbar__link {
+  transition:
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* A quiet pre-echo of the active state on hover: same rule, half weight. */
+.navbar__link:not(.navbar__link--active):hover {
+  color: var(--ifm-color-primary);
+  box-shadow: inset 0 -3px 0 var(--mk-key-edge);
+}
+
+/* In the mobile drawer the items are stacked rows, where an underline reads as
+   a divider rather than as a marker. Use the rail vocabulary instead. */
+.navbar-sidebar .navbar__link--active {
+  box-shadow: inset 3px 0 0 var(--ifm-color-primary);
+  background: var(--mk-key-bg);
+}
+
+.navbar-sidebar .navbar__link:not(.navbar__link--active):hover {
+  box-shadow: none;
+  background: var(--ifm-hover-overlay);
 }
 
 /* A navbar label must never wrap mid-item. "À propos" broke onto two lines
@@ -146,6 +211,9 @@
 .navbar__items--right .clean-btn:hover {
   background: var(--mk-n-100);
 }
+
+/* The search button sits on sand now, so its own surface has to be the card
+   colour to stay legible as a field. Defined in SearchBar/styles.module.css. */
 
 /* --- MOBILE STICKY TOC LOGIC --- */
 .blog-toc-mobile {
@@ -187,53 +255,92 @@
   }
 }
 
-/* --- GRID ADJUSTMENTS (unchanged) --- */
+/* --- GRID ADJUSTMENTS --- */
 
-/* Left Sidebar */
-.col.col--3:first-child {
-  flex-basis: 16.6666%;
-  max-width: 16.6666%;
-  padding-right: 0.5rem;
-}
+/*
+ * Why these are flex ratios and not percentages any more.
+ *
+ * Docusaurus's BlogLayout renders three Infima columns inside one .row:
+ * col--3 (post list), col--7 (article), col--2 (table of contents).
+ * .row is display: flex; flex-wrap: wrap.
+ *
+ * The previous rules pinned all three by percentage -- 16.6666% + 66.6666% +
+ * 16.6666% = 99.9998%. That is 0.0002% of slack. A browser lays out in 1/64px
+ * units and rounds each column INDEPENDENTLY, so at some zoom levels the three
+ * rounded widths add up to more than the row, and flex-wrap does what it is
+ * told: it drops the last column -- the table of contents -- onto a second
+ * line, where it lands under the post list at bottom-left.
+ *
+ * That is why the bug showed at 110% and 150% zoom but not at 100%: nothing is
+ * conditional, the same arithmetic simply rounds differently at each step.
+ *
+ * The fix is to stop asking the browser to make three percentages add up. The
+ * two rails get a fixed basis; the article gets flex: 1 1 0 and absorbs
+ * whatever is left, to the sub-pixel. Wrapping becomes impossible.
+ *
+ * min-width: 0 on the article is NOT optional: a flex item defaults to
+ * min-width: auto and refuses to shrink below its content, so one long line in
+ * a <pre> would widen the row and re-trigger the wrap. This site is full of
+ * code blocks.
+ */
 
-/* Main Content */
-.col.col--6,
-.col.col--7,
-.col.col--9 {
-  flex-basis: 66.6666%;
-  max-width: 66.6666%;
-}
+@media screen and (min-width: 997px) {
+  /* Left sidebar -- the post list */
+  .col.col--3:first-child {
+    flex: 0 0 16.6666%;
+    max-width: 16.6666%;
+    padding-right: 0.5rem;
+  }
 
-/* Desktop Right TOC */
-.theme-doc-toc-desktop {
-  position: relative;
-  display: block;
-  flex-basis: 16.6666%;
-  max-width: 16.6666%;
-  padding-right: 0;
-  padding-left: 1rem;
-  margin-right: 0;
-  margin-left: auto;
-}
-
-/* Large screens override */
-@media screen and (min-width: 1600px) {
+  /* Main content -- takes the remainder, never a percentage */
   .col.col--6,
   .col.col--7,
   .col.col--9 {
-    flex-basis: 70%;
-    max-width: 70%;
+    flex: 1 1 0;
+    max-width: none;
+    min-width: 0;
   }
+
+  /* Right rail -- the table of contents.
+     .theme-doc-toc-desktop is the docs one; .col--2 is what BlogLayout uses on
+     a blog post. Both are the same object to a reader, so both are declared
+     here -- the blog one had never been given a width at all, it was simply
+     inheriting Infima's own col--2. */
   .theme-doc-toc-desktop,
-  .col.col--3:first-child {
-    flex-basis: 15%;
+  html.blog-post-page .col.col--2 {
+    position: relative;
+    display: block;
+    flex: 0 0 16.6666%;
+    max-width: 16.6666%;
+    padding-right: 0;
+    padding-left: 1rem;
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+/* Large screens: the rails narrow, the article keeps absorbing the rest. */
+@media screen and (min-width: 1600px) {
+  .col.col--3:first-child,
+  .theme-doc-toc-desktop,
+  html.blog-post-page .col.col--2 {
+    flex: 0 0 15%;
     max-width: 15%;
   }
 }
 
-/* Responsive override */
+/*
+ * Below 997px Docusaurus has already switched the navbar to its hamburger and
+ * in-page navigation is handled by the sticky .blog-toc-mobile defined further
+ * up this file.
+ *
+ * The post list is now HIDDEN here rather than stretched to 100%. Stretching it
+ * meant every article on a narrow viewport opened with the full 257-entry post
+ * list stacked above the title -- the reader had to scroll past the whole blog
+ * to reach the article they had just clicked. The list is one tap away from the
+ * navbar; it does not need to precede every post.
+ */
 @media screen and (max-width: 996px) {
-  .col.col--3,
   .col.col--6,
   .col.col--7,
   .col.col--9,
@@ -241,6 +348,7 @@
     flex-basis: 100% !important;
     max-width: 100% !important;
   }
+
   .theme-doc-toc-desktop {
     display: none !important;
   }
@@ -254,6 +362,12 @@
   html.blog-post-page .col.col--2 {
     display: none !important;
   }
+
+  /* The post list, same reasoning as the ToC above. */
+  html.blog-post-page .col.col--3:first-child {
+    display: none !important;
+  }
+
   article h1 {
     font-size: clamp(1.4rem, 5vw, 2.2rem);
   }

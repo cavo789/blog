@@ -13,7 +13,7 @@ import BlogPostItemHeaderAuthors from "@theme/BlogPostItem/Header/Authors";
 import Breadcrumb from "@site/src/components/Blog/Breadcrumb";
 import styles from "./styles.module.css";
 
-export default function BlogPostItemHeader({ aiIcon, actions }) {
+export default function BlogPostItemHeader({ actions }) {
   const { metadata, isBlogPostPage } = useBlogPost();
   const { frontMatter } = metadata;
 
@@ -33,13 +33,12 @@ export default function BlogPostItemHeader({ aiIcon, actions }) {
       <Breadcrumb />
       <BlogPostItemHeaderTitle />
       {standfirst && <p className={styles.standfirst}>{standfirst}</p>}
-      <BlogPostItemHeaderInfo aiIcon={aiIcon} />
+      <BlogPostItemHeaderInfo />
       {actions}
       <BlogPostItemHeaderAuthors />
     </header>
   );
 }
 BlogPostItemHeader.propTypes = {
-  aiIcon: PropTypes.node,
   actions: PropTypes.node,
 };

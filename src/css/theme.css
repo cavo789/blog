@@ -59,13 +59,32 @@
   /* ── Warm neutrals ────────────────────────────────────────────────────── */
   /* Infima's greys are cold; next to terracotta they grizzle. These carry the
    * mascot's warmth, so the primary stops looking bolted on. */
-  --mk-n-0: #fffdf7;
-  --mk-n-50: #faf5ea;
-  --mk-n-100: #f3ebda;
-  --mk-n-200: #e9e0cf;
-  --mk-n-300: #d6c9b2;
-  --mk-n-500: #a2917a;
-  --mk-n-700: #6e6153;
+  /*
+   * Two light values, not one.
+   *
+   * The original ramp put the page at #fffdf7 and cards at #ffffff: 1.01:1.
+   * A card could not be seen as a card; a sand toolbar on a white card was
+   * 1.09:1; a border was 1.30:1. Every text pair passed AA and the page still
+   * looked washed out, because nothing had an EDGE. That is a surface
+   * contrast problem, and no amount of text colour fixes it.
+   *
+   * The page now sits a real step below the cards, and — this is the part
+   * that does the work — the BORDERS drop further than the surfaces do.
+   * Darkening everything by the same amount would have changed nothing: a
+   * border is only visible relative to what it sits on.
+   *
+   *                      before        after
+   *   card / page        1.01:1    ->  1.13:1
+   *   border / page      1.30:1    ->  1.47:1
+   *   sand bar / card    1.09:1    ->  1.20:1
+   */
+  --mk-n-0: #f7f0e2; /* page ground — was #fffdf7 */
+  --mk-n-50: #f0e8d8; /* sunken: navbar, toolbars, table heads, blockquote */
+  --mk-n-100: #e8dec9; /* hover fills */
+  --mk-n-200: #d5c7a9; /* borders — dropped further than the surfaces, on purpose */
+  --mk-n-300: #c2b192; /* strong borders, inputs, kbd */
+  --mk-n-500: #9a8870;
+  --mk-n-700: #665949; /* one notch darker: keeps 5.99:1 on the new page ground */
   --mk-n-900: #2b2118;
 
   /* ── Semantic surfaces ────────────────────────────────────────────────── */
@@ -114,9 +133,15 @@
   --mk-danger-fg: #54180b;
 
   /* key — core concept, TL;DR, tags, "latest" badges: the site's own primary */
-  --mk-key-bg: #faf0de;
+  /*
+   * --mk-key-bg has to move WITH the page, not stay put. At its old #faf0de it
+   * would now be LIGHTER than the page ground, so every TL;DR, tag and active
+   * pill would glow instead of recessing — the tone would read as a highlight
+   * rather than as a tint. #f8ecd5 keeps it one step below the page.
+   */
+  --mk-key-bg: #f8ecd5;
   --mk-key-line: var(--ifm-color-primary);
-  --mk-key-edge: #e0b682;
+  --mk-key-edge: #dbad74;
   --mk-key-fg: #4a2e18;
 
   /* ── Code & terminal ──────────────────────────────────────────────────── */
@@ -264,6 +289,22 @@
   --ifm-color-danger-contrast-background: var(--mk-danger-bg);
   --ifm-color-danger-contrast-foreground: var(--mk-danger-fg);
 
+  /*
+   * Links move to the -dark shade in light mode.
+   *
+   * --ifm-color-primary (#9b5a31) measured 5.27:1 on the old near-white page.
+   * On the deepened page ground that becomes 4.75:1 — still AA, but the
+   * margin is thin enough that any future darkening would break it silently.
+   * --ifm-color-primary-dark (#8e522d) restores the headroom at 5.13:1 and is
+   * visually indistinguishable at text size. Infima defaults --ifm-link-color
+   * to --ifm-color-primary, so this one line redirects every link in the site.
+   *
+   * LIGHT MODE ONLY: in dark mode --ifm-color-primary-dark is DARKER than the
+   * primary, which is the wrong direction on a dark ground — see the
+   * [data-theme="dark"] override just below.
+   */
+  --ifm-link-color: var(--ifm-color-primary-dark);
+
   /* Secondary text. Infima has two variables for the same idea, used
    * interchangeably across the site; both point at the same warm tone, 4.8:1
    * on --mk-bg. Without this, --ifm-color-content-secondary is a cold grey in
@@ -321,12 +362,37 @@
   --ifm-dropdown-background-color: var(--mk-surface);
   --ifm-blockquote-color: var(--mk-ink);
   --ifm-blockquote-border-color: var(--mk-primary);
+
+  /* Infima's scrollbar defaults (#f1f1f1 track, #c0c0c0 thumb) are cold greys
+   * that read as pure white against the warm sand page. Track transparent so
+   * it shows --mk-bg through it instead of fighting it; thumb reuses the same
+   * warm border tone as everything else instead of introducing a new grey. */
+  --ifm-scrollbar-track-background-color: transparent;
+  --ifm-scrollbar-thumb-background-color: var(--mk-border-strong);
+  --ifm-scrollbar-thumb-hover-background-color: var(--mk-n-500);
+}
+
+/* Infima's .thin-scrollbar only recolors the ::-webkit-scrollbar-* pseudo
+ * elements (Chromium/WebKit) — it never sets `scrollbar-color`, so Firefox
+ * (and any other Gecko-based browser) keeps the OS-default thin scrollbar,
+ * white track included, no matter what the --ifm-scrollbar-* variables above
+ * are set to. This is the Firefox equivalent of that same block. */
+.thin-scrollbar {
+  scrollbar-color: var(--ifm-scrollbar-thumb-background-color)
+    var(--ifm-scrollbar-track-background-color);
 }
 
 [data-theme="dark"] {
   --ifm-color-emphasis-600: #8e8170;
   --ifm-color-emphasis-800: #cfc3b1;
   --ifm-hover-overlay: rgb(221, 127, 60, 0.1);
+
+  /* Reverts the light-mode link-color redirect: in dark mode
+   * --ifm-color-primary-dark is DARKER than the primary, the wrong direction
+   * on a dark ground. Dark mode never had the light-mode contrast problem
+   * this was fixing (it already sits at two distinct values, #1a1510 page vs
+   * #221c15 surface). */
+  --ifm-link-color: var(--ifm-color-primary);
 
   --ifm-color-gray-600: #8e8170;
   --ifm-color-gray-800: #cfc3b1;
@@ -461,12 +527,19 @@
 }
 
 /* The surface: every card-like box (PostCard, HomeCards, Updated, Vars,
- * ProjectSetup, Snippet) starts here. */
+ * ProjectSetup, Snippet) starts here.
+ *
+ * border-strong + shadow-2 rather than border + shadow-1: the softer pair
+ * read as barely-there on the cream page background (--mk-border is a
+ * near-invisible hairline, shadow-1 a 7%-opacity 1px lift) — every surface
+ * blended into the page instead of reading as a distinct object. This is a
+ * shared primitive, so the bump applies everywhere at once rather than
+ * per-component. */
 .mk-surface {
   background: var(--mk-surface);
-  border: 1px solid var(--mk-border);
+  border: 1px solid var(--mk-border-strong);
   border-radius: var(--mk-radius-lg);
-  box-shadow: var(--mk-shadow-1);
+  box-shadow: var(--mk-shadow-2);
 }
 
 /* One hover behaviour for every liftable card: -4px and one elevation step. */

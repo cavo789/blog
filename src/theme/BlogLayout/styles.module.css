@@ -1,0 +1,5 @@
+.mainWithSidebar {
+  /* Overrides Infima's `.col--7` (`flex: 0 0 58.33%`), so it must win the specificity tie. */
+  flex: 1 1 0 !important;
+  max-width: none !important;
+}

@@ -3,10 +3,9 @@
  * spacing. A margin here would stack with the row's and push the actions off
  * the date line they belong to.
  *
- * The gap is tighter than the row's (16px) on purpose: "View raw" has no border
- * of its own, so proximity is the only thing tying it to the button it belongs
- * to. At the row's spacing it floated between the two bordered actions and read
- * as a third one.
+ * The gap is tighter than the row's (16px): "Copy as Markdown" and "View raw"
+ * are two ways to get the same thing, so they read as a pair distinct from the
+ * other, unrelated actions in the row (e.g. "Follow").
  *
  * PAIRED FILE: .copyBtn below and Blog/Series's .markdownLink are deliberately
  * identical so the two "get this as plain Markdown" affordances read as one
@@ -16,7 +15,7 @@
 .wrapper {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .copyBtn {
@@ -40,11 +39,22 @@
   color: var(--mk-primary);
 }
 
+/*
+ * Bordered like .copyBtn, on purpose: as a bare link it sat closer to the button
+ * than to anything else and still read as an unstyled third action rather than
+ * as a button in its own right.
+ */
 .rawLink {
-  font-size: 0.82rem;
+  padding: 5px 12px;
   color: var(--mk-ink-soft);
+  text-decoration: none;
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+  font-size: 0.82rem;
 }
 
 .rawLink:hover {
   color: var(--mk-primary);
+  text-decoration: none;
+  border-color: var(--mk-primary);
 }

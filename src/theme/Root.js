@@ -56,6 +56,25 @@ export default function Root({ children }) {
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, [location, sleepingFaviconUrl]);
 
+  // Navbar shadow: flat at rest, lifted once the page has scrolled under it.
+  // custom.css's `body:not([data-scroll-top]) .navbar` rule reads this attribute;
+  // it is the one piece of state Docusaurus itself never exposes (the built-in
+  // hideOnScroll hook only tracks show/hide direction, not scroll position).
+  useEffect(() => {
+    const updateScrollTop = () => {
+      if (window.scrollY <= 0) {
+        document.body.setAttribute("data-scroll-top", "");
+      } else {
+        document.body.removeAttribute("data-scroll-top");
+      }
+    };
+
+    window.addEventListener("scroll", updateScrollTop, { passive: true });
+    updateScrollTop();
+
+    return () => window.removeEventListener("scroll", updateScrollTop);
+  }, [location]);
+
   useEffect(() => {
     // Variable to store the initial text of the button (e.g., "On this page")
     let defaultText = null;

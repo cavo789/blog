@@ -606,6 +606,14 @@ interface Props {
   title?: ReactNode;
   code?: string;
   children?: ReactNode;
+  /**
+   * Force the open/closed state. Leave undefined and the component decides:
+   * open, unless the snippet is longer than COLLAPSE_OVER_LINES.
+   *
+   * Pass `false` explicitly on file-index sections (ProjectSetup articles,
+   * "All Files at a Glance"): there the page is a LIST of files the reader
+   * scans and opens one of, not a narrative the code belongs to.
+   */
   defaultOpen?: boolean;
   variant?: string;
   lang?: string;
@@ -613,20 +621,32 @@ interface Props {
   eli5summary?: string;
 }
 
+/**
+ * Above this many lines a snippet opens PARTIALLY: the first lines are shown
+ * under a fade, with a "show the remaining N lines" control. Below it, the
+ * snippet simply opens.
+ *
+ * 30 is roughly one screenful of code at 0.85rem/1.6 on a laptop — the point
+ * where "I can take this in at a glance" stops being true.
+ */
+const COLLAPSE_OVER_LINES = 30;
+
+/** Height of the peek window, in lines. Deliberately less than
+ *  COLLAPSE_OVER_LINES so a truncated block always LOOKS truncated. */
+const PEEK_LINES = 18;
+
 export default function Snippet({
   filename,
   title,
   code,
   children,
-  defaultOpen = false,
+  defaultOpen,
   variant,
   lang: pluginLang,
   eli5json,
   eli5summary,
 }: Props): JSX.Element {
-  const [open, setOpen] = useState(defaultOpen);
   const contentRef = useRef<HTMLDivElement | null>(null);
-  const [height, setHeight] = useState("0px");
 
   // Parse eli5json string (injected by remark-snippet-loader) into an object
   const eli5 = useMemo((): Record<string, string> | null => {
@@ -638,19 +658,39 @@ export default function Snippet({
     }
   }, [eli5json]);
 
-  // Verbose narrative explanation (injected by remark-snippet-loader from the
-  // same .eli5.json sidecar). Absent on sidecar files generated before this
-  // field existed — degrades to simply not rendering the Show/Hide block.
   const eli5Summary =
     typeof eli5summary === "string" && eli5summary.trim() ? eli5summary.trim() : null;
 
-  useEffect(() => {
-    if (contentRef.current) {
-      setHeight(open ? `${contentRef.current.scrollHeight}px` : "0px");
-    }
-  }, [open, code, children]);
+  const lineCount = useMemo(
+    () => (typeof code === "string" ? code.replace(/\n$/, "").split("\n").length : 0),
+    [code],
+  );
+
+  const isLong = lineCount > COLLAPSE_OVER_LINES;
+
+  /*
+   * The default is OPEN. A reader who clicked "Install Docker under WSL2" came
+   * for the compose file; making them click again to see it is asking them to
+   * work for the thing they searched for.
+   *
+   * Three concrete costs of the old closed-by-default, beyond the extra click:
+   *   - find-in-page broke. The collapsed content sits in a max-height: 0 /
+   *     overflow: hidden box, which Ctrl+F cannot reach: a reader searching the
+   *     page for a variable name got "no results" while the word was right
+   *     there.
+   *   - printing produced empty boxes.
+   *   - the ELI5 "Explain this snippet" control is gated on `open`, so the
+   *     line-by-line explanations nobody had expanded were never discovered.
+   *
+   * Long files do not get the old all-or-nothing treatment either: they open
+   * truncated (see PEEK_LINES), so the reader sees WHAT it is immediately and
+   * the page is not eaten by 300 lines.
+   */
+  const [open, setOpen] = useState(defaultOpen ?? true);
+  const [expandedLong, setExpandedLong] = useState(false);
 
   const handleToggle = useCallback(() => setOpen((prev) => !prev), []);
+  const handleExpandLong = useCallback(() => setExpandedLong(true), []);
   const contentId = `snippet-content-${useId()}`;
 
   const lang = useMemo(() => {
@@ -738,11 +778,8 @@ export default function Snippet({
   );
 
   const variantClass = styles[`variant_${variantKey}`] || "";
-
-  // Get icon info if available
   const IconInfo = variantIcons[variantKey] || variantIcons.none;
-
-  const { iconClassName, iconify, ariaLabel } = IconInfo;
+  const { iconify, ariaLabel } = IconInfo;
 
   const displayTitle =
     title ||
@@ -751,38 +788,63 @@ export default function Snippet({
       ? lang.toUpperCase()
       : translate({ id: "snippet.defaultTitle", message: "Snippet" }));
 
+  // Peek mode: long, open, and the reader has not asked for the rest yet.
+  const peeking = open && isLong && !expandedLong;
+
   return (
     <div className={clsx(styles.snippet_block, variantClass)}>
       <button
+        type="button"
         className={styles.snippet_summary}
         onClick={handleToggle}
         aria-expanded={open}
         aria-controls={contentId}
       >
-        {IconInfo && (
+        <span className={styles.filename_wrapper}>
           <LogoIcon
             name={iconify}
-            className={clsx(iconClassName, styles.snippet_logo)}
+            className={styles.snippet_logo}
             aria-label={ariaLabel}
             size="32"
           />
-        )}
-        <span className={styles.snippet_filename}>{displayTitle}</span>
-        <span className={`${styles.chevron} ${open ? styles.rotate : ""}`}>&#9662;</span>
+          {displayTitle}
+        </span>
+        <span className={clsx(styles.chevron, open && styles.rotate)}>&#9662;</span>
       </button>
 
-      <div
-        ref={contentRef}
-        id={contentId}
-        className={styles.snippet_content}
-        style={{ maxHeight: height }}
-      >
-        <div className={styles.snippet_inner}>{codeBlock}</div>
-      </div>
+      {/*
+        Conditional render, not a max-height animation on a permanently mounted
+        div. With the old approach the collapsed code stayed in the DOM inside
+        an overflow: hidden box — invisible to Ctrl+F but still found by a
+        screen reader, which is the worst of both. Unmounting is honest: closed
+        means closed.
+      */}
+      {open && (
+        <div
+          ref={contentRef}
+          id={contentId}
+          className={clsx(styles.snippet_content, peeking && styles.snippet_peek)}
+          style={peeking ? { ["--peek-lines" as string]: String(PEEK_LINES) } : undefined}
+        >
+          <div className={styles.snippet_inner}>{codeBlock}</div>
+          {peeking && (
+            <button
+              type="button"
+              className={styles.snippet_expand}
+              onClick={handleExpandLong}
+            >
+              <Translate
+                id="snippet.showRemaining"
+                values={{ count: lineCount - PEEK_LINES }}
+                description="Control revealing the rest of a truncated snippet"
+              >
+                {"Show the remaining {count} lines"}
+              </Translate>
+            </button>
+          )}
+        </div>
+      )}
 
-      {/* Gated on `open`, not just on having a summary: showing this toggle
-          while the code itself is collapsed reads as a second, empty
-          accordion header stacked directly under the real one. */}
       {open && eli5Summary && <Eli5SummaryBlock summary={eli5Summary} />}
     </div>
   );

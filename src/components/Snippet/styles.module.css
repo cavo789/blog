@@ -173,6 +173,83 @@
   transition: max-height 0.35s ease;
 }
 
+/*
+ * Peek mode: a long snippet opens truncated rather than closed.
+ *
+ * The height is expressed in LINES, not pixels: --peek-lines is set inline by
+ * index.tsx and multiplied by the code block's own line-height here, so the
+ * window always cuts between two lines instead of through the middle of one.
+ */
+.snippet_peek {
+  position: relative;
+  overflow: hidden;
+  max-height: calc(var(--peek-lines, 18) * 1.6 * 0.85rem + 1.75rem);
+}
+
+/* The fade tells the reader the block continues. It sits above the content but
+   below the button, and must not intercept text selection. */
+.snippet_peek::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 5.5rem;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, var(--mk-code-bg) 85%);
+}
+
+.snippet_expand {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 0.55rem 1rem;
+  font-family: var(--ifm-font-family-base);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mk-code-fg);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.snippet_expand:hover {
+  color: var(--mk-term-prompt);
+}
+
+.snippet_expand:focus-visible {
+  outline: 2px solid var(--mk-term-prompt);
+  outline-offset: -2px;
+}
+
+/* A reader who asked for less motion gets the whole file rather than a
+   height that would otherwise animate open. */
+@media (prefers-reduced-motion: reduce) {
+  .snippet_content {
+    transition: none;
+  }
+}
+
+/*
+ * PRINT — the reason default-open matters most. A printed article must carry
+ * its code: no truncation window, no fade, no control.
+ */
+@media print {
+  .snippet_peek {
+    max-height: none;
+  }
+
+  .snippet_peek::after,
+  .snippet_expand,
+  .chevron {
+    display: none;
+  }
+}
+
 .snippet_toolbar {
   display: flex;
   justify-content: flex-end;
