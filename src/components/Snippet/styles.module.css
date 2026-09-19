@@ -7,9 +7,12 @@
  * things at once:
  *
  *   1. the 3px rule under the toolbar,
- *   2. the language logo itself (the LogoIcon icons are monochrome
- *      simple-icons rendered in currentColor — which is why they came out
- *      black),
+ *   2. the language logo — but only the MONOCHROME ones. Iconify sets
+ *      ph:*, bi:*, ix:*, file-icons:* etc. render in currentColor, which is
+ *      why they used to come out black; logos:*, devicon:* and
+ *      vscode-icons:* ship their own brand colours and ignore it. Both end
+ *      up correct. Practical consequence: if a logo ever renders grey, it
+ *      is a monochrome icon whose .variant_ class is missing.
  *   3. the focus ring of the disclosure button.
  *
  * So the logo stays, in its real brand colour, and is the only saturated thing
@@ -54,8 +57,10 @@
  *   3. raw children        — rendered MDX prose, no <pre> at all, no padding
  *
  * Paths 1 and 2 are code: one dark surface, owned by the <pre>. Path 3 is
- * prose (a .md snippet renders as text, not as source) and keeps the light
- * surface — it just needed the padding it never had.
+ * prose (a .md snippet renders as text, not as source) and had no padding at
+ * all. All three now share ONE dark surface, owned by .snippet_inner: keeping
+ * the prose path light was tried and rejected — a .md snippet sitting white
+ * between two dark ones read as a different component.
  */
 .snippet_inner {
   padding: 0.875rem 1.125rem;

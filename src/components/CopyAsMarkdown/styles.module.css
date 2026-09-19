@@ -7,6 +7,11 @@
  * of its own, so proximity is the only thing tying it to the button it belongs
  * to. At the row's spacing it floated between the two bordered actions and read
  * as a third one.
+ *
+ * PAIRED FILE: .copyBtn below and Blog/Series's .markdownLink are deliberately
+ * identical so the two "get this as plain Markdown" affordances read as one
+ * family. Both were tokenised together in the same pass — change one, change
+ * the other.
  */
 .wrapper {
   display: inline-flex;
@@ -16,10 +21,11 @@
 
 .copyBtn {
   padding: 5px 12px;
+  font-family: inherit;
   background: transparent;
-  color: var(--ifm-color-emphasis-700);
-  border: 1px solid var(--ifm-color-emphasis-400);
-  border-radius: 5px;
+  color: var(--mk-ink-soft);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
   font-size: 0.82rem;
   cursor: pointer;
 }
@@ -30,15 +36,15 @@
 }
 
 .copyBtn:hover:not(:disabled) {
-  border-color: var(--ifm-color-emphasis-600);
-  color: var(--ifm-color-emphasis-900);
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
 }
 
 .rawLink {
   font-size: 0.82rem;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--mk-ink-soft);
 }
 
 .rawLink:hover {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
 }

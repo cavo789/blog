@@ -1,20 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:59:29.025Z",
+  "generated": "2026-09-19T13:40:40.136Z",
   "source": "styles.module.css",
-  "sourceHash": "3f4e109a31cc3ac4a3ad152005ce50045346a629",
+  "sourceHash": "9740295b6ba2c913b2580bff1f143e971af9c1b5",
   "lang": "css",
-  "summary": "This CSS stylesheet styles a revision history component that displays a vertical timeline of events. It defines the container, title, timeline line, individual timeline items with icons, dates, and descriptions, with special styling for the most recent entry and support for dark mode.",
+  "textLang": "en",
+  "summary": "This stylesheet styles a revision history timeline component. It creates a vertical timeline with connected dots representing different revisions, where the latest revision gets special styling with a filled dot and a glowing halo. The layout uses flexbox to position content next to timeline nodes, and CSS custom properties to theme colors consistently.",
   "explanations": {
-    "2": "var(--ifm-color-emphasis-100) is a CSS variable that holds a color value defined elsewhere in your design system — think of it like a reusable color constant.",
-    "4": "The card-radius variable provides a default border-radius of 14px if --card-radius isn't defined, giving you a fallback value.",
-    "9": "This selector applies different styles specifically when dark mode is active (detected by the data-theme attribute), so the container adjusts its appearance for dark backgrounds.",
-    "31": "The ::before pseudo-element creates a fake element that doesn't exist in HTML — here it's used to draw the vertical line connecting timeline entries.",
-    "32": "content: \"\" creates an empty pseudo-element that can still be styled and positioned; it's necessary to make the ::before element appear.",
-    "36": "calc(100% - 8px) calculates the height dynamically by taking the full height and subtracting 8 pixels, so the line doesn't extend past the first and last icons.",
-    "70": "color-mix blends two colors together — here mixing the primary color at 15% intensity with transparent to create a subtle glow effect around the latest icon.",
-    "74": "padding-left: 44px pushes the text content to the right to make room for the 30px icon plus spacing.",
-    "97": "border-radius: 999px creates a pill-shaped badge by using an extremely large radius that exceeds the element's dimensions."
+    "9": "The 'composes' syntax pulls in styles from a global 'mk-surface' class, combining them with the styles defined here — it's like inheriting styles from another class.",
+    "14": "Same as line 9, but for the 'mk-eyebrow' global class, which provides base styling for this title.",
+    "27": "The '::before' pseudo-element creates a fake element that exists only in CSS — here it's the vertical line connecting all the timeline dots.",
+    "32": "This calculates the line height dynamically: it takes 100% of the container's height and subtracts 8px (4px from top and bottom) so the line doesn't extend past the first and last nodes.",
+    "49": "Pulling in the 'mk-dot' global class which probably provides the base circular dot styles.",
+    "53": "The 'z-index: 1' ensures the dot appears on top of the connecting line behind it.",
+    "62": "The 'box-shadow' with 0 offset creates a glowing ring around the dot without moving it — the 4px spread makes the halo visible.",
+    "66": "Setting 'flex: 1' makes the content area grow to fill remaining space in the flex container, pushing it to the right of the timeline dot.",
+    "80": "The 'tabular-nums' variant makes all numbers the same width so dates line up nicely when stacked."
   }
 }

@@ -14,6 +14,7 @@
 }
 
 .pageTitle {
+  font-family: var(--mk-font-display);
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 0;
@@ -22,14 +23,10 @@
   gap: 0.75rem;
 }
 
+/* Was a hand-rolled pill at 20px radius on emphasis-200. */
 .postCount {
-  display: inline-block;
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 2px 10px;
-  border-radius: 20px;
-  background: var(--ifm-color-emphasis-200);
-  color: var(--ifm-color-emphasis-700);
+  composes: mk-pill from global;
+  font-variant-numeric: tabular-nums;
 }
 
 .cardsGrid {
@@ -64,7 +61,7 @@
 .emptyPage {
   margin: 3rem 0;
   text-align: center;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--mk-ink-soft);
 }
 
 /* The thumbnail ships on an opaque cream background, so round it off and let it

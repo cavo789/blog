@@ -1,17 +1,25 @@
+/*
+ * File-tree renderer. Retokenised; the 3px container radius was the smallest
+ * in the site (nothing else used it) and the badge's 12px the odd one out.
+ */
+
 .treeContainer {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 3px;
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
   padding: 16px;
   margin: 20px 0;
-  background-color: var(--ifm-background-surface-color);
+  background-color: var(--mk-surface);
+  box-shadow: var(--mk-shadow-1);
 }
 
+/* Was a 1.2rem/600 heading with a 2px underline — a title competing with the
+   article's own. It is the shared eyebrow, over the same hairline as every
+   other section divider. */
 .treeTitle {
+  composes: mk-eyebrow from global;
   margin: 0 0 16px;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary);
-  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  color: var(--mk-primary);
+  border-bottom: 1px solid var(--mk-border);
   padding-bottom: 8px;
 }
 
@@ -28,8 +36,7 @@
   display: flex;
   align-items: center;
   padding: 6px 8px;
-  padding-left: 8px;
-  border-radius: 4px;
+  border-radius: var(--mk-radius-sm);
   transition: background-color 0.2s ease;
   cursor: default;
   position: relative;
@@ -40,7 +47,7 @@
 }
 
 .nodeContent:hover {
-  background-color: var(--ifm-color-emphasis-100);
+  background-color: var(--mk-n-50);
 }
 
 .expandIcon {
@@ -52,7 +59,7 @@
   height: 20px;
   margin-right: 4px;
   font-size: 10px;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-n-500);
   transition: transform 0.2s ease;
   user-select: none;
   flex-shrink: 0;
@@ -73,27 +80,31 @@
 
 .nodeLabel {
   font-size: 0.95rem;
-  color: var(--ifm-color-content);
+  color: var(--mk-ink);
   user-select: none;
   line-height: 1;
   white-space: nowrap;
 }
 
+/* Was solid primary + literal white. The key tone reads as a count, not as a
+   call to action, and survives the theme flip. */
 .nodeBadge {
   display: inline-flex;
   align-items: center;
   padding: 2px 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border-radius: 12px;
-  background-color: var(--ifm-color-primary);
-  color: white;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background-color: var(--mk-key-bg);
+  border: 1px solid var(--mk-key-edge);
+  color: var(--mk-primary);
+  font-variant-numeric: tabular-nums;
   user-select: none;
 }
 
 .nodeChildren {
   margin-left: 20px;
-  border-left: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 1px solid var(--mk-border);
   padding-left: 8px;
   animation: slideDown 0.2s ease-out;
 }
@@ -109,18 +120,19 @@
   }
 }
 
-/* Dark mode styles */
-[data-theme="dark"] .treeContainer {
-  border-color: var(--ifm-color-emphasis-300);
-  background-color: var(--ifm-background-surface-color);
+@media (prefers-reduced-motion: reduce) {
+  .nodeChildren {
+    animation: none;
+  }
 }
 
+/*
+ * The dark-mode block is gone: it re-stated --ifm-background-surface-color,
+ * --ifm-color-emphasis-300 and --ifm-color-content, all three of which already
+ * flip on their own. Only the hover tint genuinely differed.
+ */
 [data-theme="dark"] .nodeContent:hover {
-  background-color: var(--ifm-color-emphasis-200);
-}
-
-[data-theme="dark"] .nodeLabel {
-  color: var(--ifm-color-content);
+  background-color: var(--mk-n-100);
 }
 
 /* Responsive */

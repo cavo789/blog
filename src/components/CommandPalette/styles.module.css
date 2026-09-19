@@ -1,3 +1,20 @@
+/*
+ * Command palette (⌘K) — the most-seen surface of the site after the articles
+ * themselves, and the largest one still untokenised.
+ *
+ * Retokenised throughout. Substantive changes:
+ *   - .groupLabel was a hand-rolled eyebrow (0.75rem/600/0.04em) → .mk-eyebrow.
+ *   - .previewTag was a hand-rolled pill → .mk-pill.
+ *   - Four literal shadows → the three elevations. The dialog used
+ *     0 20px 60px rgb(0,0,0,.45), which is a cold black drop on a warm surface.
+ *   - .empty and .itemSubtitle used --ifm-color-emphasis-600, fine, but the
+ *     italic on .empty is dropped: it is a status line, and italics at this
+ *     size on a warm neutral read as an error rather than as "nothing yet".
+ *   - .itemActive gets the key tone plus a primary rail instead of a flat grey
+ *     fill: in a list of 20 results the selected row has to be unmistakable,
+ *     and emphasis-100 against the surface is a 2% difference.
+ */
+
 .backdrop {
   position: fixed;
   inset: 0;
@@ -6,7 +23,7 @@
   align-items: flex-start;
   justify-content: center;
   padding: 10vh 1rem 1rem;
-  background: rgb(0, 0, 0, 0.5);
+  background: rgb(26, 21, 16, 0.55);
 }
 
 .dialog {
@@ -16,26 +33,32 @@
   max-width: 720px;
   max-height: 70vh;
   overflow: hidden;
-  background: var(--ifm-background-surface-color);
-  border-top: 4px solid var(--ifm-color-primary);
-  border-radius: var(--ifm-card-border-radius, 12px);
-  box-shadow: 0 20px 60px rgb(0, 0, 0, 0.45);
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-top: var(--mk-rail) solid var(--mk-primary);
+  border-radius: var(--mk-radius-lg);
+  box-shadow: var(--mk-shadow-3);
 }
 
 .input {
   width: 100%;
   padding: 1.1rem 1.25rem;
-  color: var(--ifm-font-color-base);
+  font-family: inherit;
+  color: var(--mk-ink);
   font-size: 1.15rem;
   font-weight: 500;
   background: transparent;
   border: none;
-  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--mk-border);
   transition: border-color 0.15s ease;
 }
 
+.input::placeholder {
+  color: var(--mk-n-500);
+}
+
 .input:focus {
-  border-bottom-color: var(--ifm-color-primary);
+  border-bottom-color: var(--mk-primary);
   outline: none;
 }
 
@@ -57,12 +80,8 @@
 }
 
 .groupLabel {
+  composes: mk-eyebrow from global;
   padding: 0.35rem 1.25rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-600);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .groupList {
@@ -76,40 +95,43 @@
   flex-direction: column;
   padding: 0.5rem 1.25rem;
   cursor: pointer;
+  border-left: var(--mk-rail) solid transparent;
 }
 
+/* The selected row in a 20-item list must be unmistakable at a glance; the old
+   emphasis-100 fill was a ~2% step against the surface. */
 .itemActive {
-  background: var(--ifm-color-emphasis-100);
+  background: var(--mk-key-bg);
+  border-left-color: var(--mk-primary);
 }
 
 .itemTitle {
-  font-weight: 500;
-  color: var(--ifm-font-color-base);
+  font-weight: 600;
+  color: var(--mk-ink);
 }
 
 .itemSubtitle {
   overflow: hidden;
   font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .empty {
   padding: 1.5rem 1.25rem;
-  color: var(--ifm-color-emphasis-600);
-  font-style: italic;
+  color: var(--mk-ink-soft);
 }
 
 /* Reads as the second line of the "no results" block above, so it drops that block's generous
-   top padding and keeps only the breathing room underneath. Not `.empty`: the italic there is
+   top padding and keeps only the breathing room underneath. Not `.empty`: the emphasis there is
    meant for a status line, not for a link the reader is supposed to click. */
 .crossLocaleRow {
   padding: 0 1.25rem 1.5rem;
 }
 
 .crossLocale {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
   font-weight: 600;
 }
 
@@ -126,7 +148,8 @@
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
   padding: 0.75rem 1.25rem;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--mk-sunken);
+  border-top: 1px solid var(--mk-border);
 }
 
 .hint {
@@ -134,7 +157,7 @@
   align-items: center;
   gap: 0.35rem;
   font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--mk-ink-soft);
 }
 
 .hint kbd {
@@ -145,18 +168,22 @@
   overflow-y: auto;
   flex: 0 0 260px;
   padding: 1.25rem;
-  border-left: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--mk-sunken);
+  border-left: 1px solid var(--mk-border);
 }
 
 .previewTitle {
   margin: 0 0 0.5rem;
+  font-family: var(--mk-font-display);
   font-size: 1rem;
+  font-weight: 700;
 }
 
 .previewDescription {
   margin: 0 0 0.75rem;
   font-size: 0.85rem;
-  color: var(--ifm-color-emphasis-700);
+  line-height: 1.5;
+  color: var(--mk-ink-soft);
 }
 
 .previewMeta {
@@ -165,7 +192,8 @@
   gap: 0.2rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
+  font-variant-numeric: tabular-nums;
 }
 
 .previewTags {
@@ -174,12 +202,15 @@
   gap: 0.3rem;
 }
 
+/* Tag names are lowercase and must stay legible — same opt-out as the tag
+   cloud on the tags page. */
 .previewTag {
+  composes: mk-pill from global;
   padding: 0.1rem 0.5rem;
-  font-size: 0.75rem;
-  color: var(--ifm-color-emphasis-700);
-  background: var(--ifm-color-emphasis-100);
-  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .statusRow {
@@ -188,12 +219,12 @@
   justify-content: space-between;
   padding: 0.4rem 1.25rem;
   font-size: 0.75rem;
-  color: var(--ifm-color-emphasis-500);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  color: var(--mk-n-500);
+  border-top: 1px solid var(--mk-border);
 }
 
 .toast {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
 }
 
 .shortcutsPanel {
@@ -202,17 +233,27 @@
 
 .shortcutsTitle {
   margin: 0 0 0.75rem;
+  font-family: var(--mk-font-display);
   font-size: 1.05rem;
+  font-weight: 700;
 }
 
 .closeShortcuts {
   margin-top: 0.75rem;
   padding: 0.4rem 0.9rem;
-  color: var(--ifm-font-color-base);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--mk-ink);
   cursor: pointer;
-  background: var(--ifm-color-emphasis-100);
-  border: none;
-  border-radius: 6px;
+  background: var(--mk-n-100);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+}
+
+.closeShortcuts:hover {
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
 }
 
 @media (max-width: 768px) {
@@ -246,11 +287,17 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 0.6rem 0.65rem 1.1rem;
-  background: var(--ifm-color-primary);
+  background: var(--mk-primary);
   border: none;
   border-radius: 999px;
   animation: hintSlideIn 0.3s ease-out;
-  box-shadow: 0 8px 24px rgb(0, 0, 0, 0.3);
+  box-shadow: var(--mk-shadow-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hintPill {
+    animation: none;
+  }
 }
 
 .hintButton {
@@ -258,7 +305,8 @@
   align-items: center;
   gap: 0.4rem;
   padding: 0;
-  color: var(--ifm-color-primary-contrast-foreground);
+  font-family: inherit;
+  color: var(--mk-on-line);
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
@@ -267,14 +315,14 @@
 }
 
 .hintButton kbd {
-  color: var(--ifm-color-primary-contrast-foreground);
+  color: var(--mk-on-line);
   background: rgb(255, 255, 255, 0.2);
   border-color: rgb(255, 255, 255, 0.35);
 }
 
 .hintDismiss {
   padding: 0.2rem 0.5rem;
-  color: var(--ifm-color-primary-contrast-foreground);
+  color: var(--mk-on-line);
   font-size: 0.8rem;
   cursor: pointer;
   background: none;

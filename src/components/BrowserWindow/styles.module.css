@@ -3,18 +3,25 @@
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
+ *
+ * Retokenised. Note this is a MOCK of someone else's browser chrome, so its
+ * greys are representational rather than site UI — they are mapped to the warm
+ * neutrals anyway, because a cold-grey mock inside a warm article reads as a
+ * screenshot of a different site.
  */
 
 .browserWindow {
-  border: 3px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--ifm-global-radius);
-  box-shadow: var(--ifm-global-shadow-lw);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-1);
   margin-bottom: var(--ifm-leading);
+  overflow: hidden;
 }
 
 .browserWindowHeader {
   align-items: center;
-  background: var(--ifm-color-emphasis-200);
+  background: var(--mk-sunken);
+  border-bottom: 1px solid var(--mk-border);
   display: flex;
   padding: 0.5rem 1rem;
 }
@@ -34,39 +41,32 @@
   width: 10%;
 }
 
-[data-theme="light"] {
-  /* Infima's own default is "transparent" (relies on the page behind it), which
-     doesn't work as a background for this component's own chrome — pin an
-     explicit white, matching Docusaurus's official BrowserWindow snippet.
-     Legitimate color-no-hex exception, see AGENTS.md and
-     .todos/039-hardcoded-hex-colors-no-token-system.md. */
-  /* stylelint-disable-next-line color-no-hex */
-  --ifm-background-color: #fff;
-}
+/*
+ * The [data-theme="light"] { --ifm-background-color: #fff } override is gone.
+ * It re-pinned a variable the theme layer now owns (--mk-bg / --mk-surface),
+ * and doing it from a CSS module leaked a global custom property from a
+ * component — the same class of bug as PostCard's old --card-radius.
+ */
 
 .browserWindowAddressBar {
   flex: 1 0;
   margin: 0 1rem 0 0.5rem;
-  border-radius: 12.5px;
-  background-color: var(--ifm-background-color);
-  color: var(--ifm-color-gray-800);
-  padding: 5px 15px;
-  font:
-    400 13px Arial,
-    sans-serif;
+  border-radius: 999px;
+  background-color: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  color: var(--mk-ink-soft);
+  padding: 4px 14px;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.78rem;
   user-select: none;
-}
-
-[data-theme="dark"] .browserWindowAddressBar {
-  color: var(--ifm-color-gray-300);
 }
 
 .dot {
   margin-right: 6px;
   margin-top: 4px;
-  height: 12px;
-  width: 12px;
-  background-color: var(--ifm-color-emphasis-400);
+  height: 11px;
+  width: 11px;
+  background-color: var(--mk-border-strong);
   border-radius: 50%;
   display: inline-block;
 }
@@ -77,14 +77,14 @@
 
 .bar {
   width: 17px;
-  height: 3px;
-  background-color: var(--ifm-color-emphasis-400);
+  height: 2px;
+  background-color: var(--mk-border-strong);
   margin: 3px 0;
   display: block;
 }
 
 .browserWindowBody {
-  background-color: var(--ifm-background-color);
+  background-color: var(--mk-surface);
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
   padding: 1rem;

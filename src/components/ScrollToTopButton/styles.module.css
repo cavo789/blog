@@ -21,7 +21,7 @@
   height: 100%;
   object-fit: contain;
   border-radius: 50%;
-  box-shadow: 0 4px 10px rgb(0, 0, 0, 0.3);
+  box-shadow: var(--mk-shadow-3);
   transition: transform 0.3s;
 }
 
@@ -48,6 +48,21 @@
   100% {
     transform: translateY(-300px) scale(0.6);
     opacity: 0;
+  }
+}
+
+/* The meerkat flying off the top of the page is the site's signature gesture,
+   so it is kept — but it is pure decoration, and a reader who asked for less
+   motion should get the plain jump. */
+@media (prefers-reduced-motion: reduce) {
+  .scrollBtn.fly img {
+    animation: none;
+  }
+
+  .scrollBtn:hover img,
+  .scrollBtn img {
+    transition: none;
+    transform: none;
   }
 }
 

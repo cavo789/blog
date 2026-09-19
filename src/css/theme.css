@@ -240,18 +240,107 @@
   --ifm-table-border-color: var(--mk-border);
   --ifm-table-stripe-background: var(--mk-n-50);
 
-  /* Infima's own admonitions, so a plain :::tip in Markdown matches AlertBox */
+  /* Infima's own admonitions, so a plain :::tip in Markdown matches AlertBox.
+   * The base --ifm-color-* only feeds the border (.alert--success sets
+   * --ifm-alert-border-color from --ifm-color-success-dark) — the BACKGROUND
+   * comes from a separate --ifm-color-*-contrast-background/-foreground pair
+   * that Infima ships as static per-theme literals, unrelated to the base
+   * color. Without remapping those too, light mode looks right by accident
+   * (Infima's pale default green is close to --mk-tip-bg) and dark mode does
+   * not: Infima's dark contrast-background is a saturated rgb(0,49,0), miles
+   * from the warm dark card every other callout uses. */
   --ifm-color-info: var(--mk-info-line);
   --ifm-color-success: var(--mk-tip-line);
   --ifm-color-warning: var(--mk-warn-line);
   --ifm-color-danger: var(--mk-danger-line);
   --ifm-color-secondary: var(--mk-n-300);
+
+  --ifm-color-info-contrast-background: var(--mk-info-bg);
+  --ifm-color-info-contrast-foreground: var(--mk-info-fg);
+  --ifm-color-success-contrast-background: var(--mk-tip-bg);
+  --ifm-color-success-contrast-foreground: var(--mk-tip-fg);
+  --ifm-color-warning-contrast-background: var(--mk-warn-bg);
+  --ifm-color-warning-contrast-foreground: var(--mk-warn-fg);
+  --ifm-color-danger-contrast-background: var(--mk-danger-bg);
+  --ifm-color-danger-contrast-foreground: var(--mk-danger-fg);
+
+  /* Secondary text. Infima has two variables for the same idea, used
+   * interchangeably across the site; both point at the same warm tone, 4.8:1
+   * on --mk-bg. Without this, --ifm-color-content-secondary is a cold grey in
+   * light mode and PURE WHITE in dark — lighter than the text it's meant to
+   * second. */
+  --ifm-font-color-secondary: var(--mk-ink-soft);
+  --ifm-color-content-secondary: var(--mk-ink-soft);
+
+  /* Base body text, read directly by Reaction, TriedIt, Trees and
+   * OfflineNotice. Without this it falls back to Infima's own default. */
+  --ifm-color-content: var(--mk-ink);
+
+  /* Headings. Without this Infima renders them in --ifm-heading-color's
+   * default, which is "inherit" in light but an explicit cold grey in dark. */
+  --ifm-heading-color: var(--mk-ink);
+
+  /* Infima's own grey ramp, distinct from emphasis-* and just as cold. */
+  --ifm-color-gray-0: var(--mk-n-0);
+  --ifm-color-gray-100: var(--mk-n-50);
+  --ifm-color-gray-200: var(--mk-n-100);
+  --ifm-color-gray-300: var(--mk-n-200);
+  --ifm-color-gray-400: var(--mk-n-300);
+  --ifm-color-gray-500: var(--mk-n-500);
+  --ifm-color-gray-600: #7e6f5c;
+  --ifm-color-gray-700: var(--mk-n-700);
+  --ifm-color-gray-800: #453b30;
+  --ifm-color-gray-900: var(--mk-n-900);
+  --ifm-color-gray-1000: var(--mk-n-900);
+
+  /* Only --ifm-color-secondary itself was remapped; Infima does NOT recompute
+   * the seven derived shades from it, so they were still their original cold
+   * greys. */
+  --ifm-color-secondary-contrast-background: var(--mk-n-50);
+  --ifm-color-secondary-contrast-foreground: var(--mk-n-900);
+  --ifm-color-secondary-lightest: var(--mk-n-50);
+  --ifm-color-secondary-lighter: var(--mk-n-100);
+  --ifm-color-secondary-light: var(--mk-n-200);
+  --ifm-color-secondary-dark: var(--mk-n-500);
+  --ifm-color-secondary-darker: var(--mk-n-700);
+  --ifm-color-secondary-darkest: var(--mk-n-900);
+
+  /* Geometry: the last family of radii still outside the token system. */
+  --ifm-button-border-radius: var(--mk-radius-sm);
+  --ifm-alert-border-radius: var(--mk-radius-md);
+  --ifm-pagination-item-active-background: var(--mk-key-bg);
+  --ifm-breadcrumb-border-radius: var(--mk-radius-sm);
+  --ifm-breadcrumb-item-background-active: var(--mk-key-bg);
+
+  /* Docusaurus chrome surfaces, so navbar/menu/TOC follow the page. */
+  --ifm-navbar-background-color: var(--mk-surface);
+  --ifm-navbar-link-hover-color: var(--mk-primary);
+  --ifm-menu-color-background-active: var(--mk-key-bg);
+  --ifm-menu-color-background-hover: var(--ifm-hover-overlay);
+  --ifm-toc-link-color: var(--mk-ink-soft);
+  --ifm-dropdown-background-color: var(--mk-surface);
+  --ifm-blockquote-color: var(--mk-ink);
+  --ifm-blockquote-border-color: var(--mk-primary);
 }
 
 [data-theme="dark"] {
   --ifm-color-emphasis-600: #8e8170;
   --ifm-color-emphasis-800: #cfc3b1;
   --ifm-hover-overlay: rgb(221, 127, 60, 0.1);
+
+  --ifm-color-gray-600: #8e8170;
+  --ifm-color-gray-800: #cfc3b1;
+
+  /* In dark mode the secondary ramp must invert, or "secondary-lightest"
+   * would serve a light beige on a black background. */
+  --ifm-color-secondary-contrast-background: var(--mk-n-100);
+  --ifm-color-secondary-contrast-foreground: var(--mk-n-900);
+  --ifm-color-secondary-lightest: var(--mk-n-100);
+  --ifm-color-secondary-lighter: var(--mk-n-200);
+  --ifm-color-secondary-light: var(--mk-n-300);
+  --ifm-color-secondary-dark: var(--mk-n-500);
+  --ifm-color-secondary-darker: var(--mk-n-700);
+  --ifm-color-secondary-darkest: var(--mk-n-900);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

@@ -1,3 +1,15 @@
+/*
+ * ⚠️ THIRD COPY — .cardsSection / .cardsGrid / .cardItem / .seeMoreLink here,
+ * in HomeCards/styles.module.css and in Blog/LatestPosts/styles.module.css are
+ * three hand-maintained copies of the same homepage card grid. They had already
+ * drifted: three radii, three shadows, three hover curves (this one used a
+ * bouncy cubic-bezier and -5px, HomeCards -4px ease, LatestPosts none).
+ *
+ * All three now compose the same primitives, so they behave identically. The
+ * remaining duplication is structural and worth collapsing into one shared
+ * CardGrid component — flagged, not done: that is a refactor, not styling.
+ */
+
 .cardsSection {
   margin-bottom: 40px;
 }
@@ -5,6 +17,7 @@
 .cardsSection h2 {
   text-align: center;
   margin-bottom: 30px;
+  font-family: var(--mk-font-display);
   font-size: 2rem;
   font-weight: 800;
 }
@@ -37,25 +50,11 @@
 }
 
 .cardItem {
+  composes: mk-surface from global;
+  composes: mk-liftable from global;
   height: 100%;
-  padding: 20px;
-  background-color: var(--ifm-card-background-color);
-  border-radius: var(--ifm-border-radius);
-  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.05);
-  border: 1px solid var(--ifm-color-emphasis-200);
-
+  padding: 16px;
   overflow: hidden;
-
-  transition:
-    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.3s ease,
-    border-color 0.3s ease;
-}
-
-.cardItem:hover {
-  box-shadow: 0 8px 25px rgb(0, 0, 0, 0.1);
-  transform: translateY(-5px);
-  border-color: var(--ifm-color-primary);
 }
 
 .cardIcon {
@@ -65,17 +64,19 @@
 }
 
 .cardTitle {
-  font-size: 1.25rem;
+  font-family: var(--mk-font-display);
+  font-size: 1.15rem;
   margin-top: 0;
   margin-bottom: 5px;
   font-weight: 700;
-  color: var(--ifm-heading-color);
+  color: var(--mk-ink);
 }
 
 .cardDescription {
   font-size: 0.9rem;
+  line-height: 1.5;
   margin-bottom: 0;
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
 }
 
 .seeMoreContainer {
@@ -83,22 +84,25 @@
   margin-top: 30px;
 }
 
+/* Identical to LatestPosts' .seeMoreLink — the same "see all of these" link in
+   two places on one page. Keep them in step. */
 .seeMoreLink {
   display: inline-block;
   font-weight: 700;
-  font-size: 1.1rem;
-  padding: 8px 16px;
-  border: 1px solid var(--ifm-color-emphasis-400);
-  border-radius: var(--ifm-border-radius);
+  font-size: 1.05rem;
+  padding: 8px 18px;
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
   text-decoration: none;
-  color: var(--ifm-color-primary);
-  background-color: var(--ifm-card-background-color);
+  color: var(--mk-primary);
+  background-color: var(--mk-surface);
   transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .seeMoreLink:hover {
-  background-color: var(--ifm-hover-overlay);
-  border-color: var(--ifm-color-primary);
+  background-color: var(--mk-key-bg);
+  border-color: var(--mk-primary);
+  text-decoration: none;
 }

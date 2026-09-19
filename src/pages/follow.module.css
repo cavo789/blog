@@ -30,7 +30,7 @@
 
 .count {
   font-size: 0.8rem;
-  color: var(--ifm-color-content-secondary);
+  color: var(--mk-ink-soft);
 }
 
 .feedLink {
@@ -53,7 +53,5 @@
 .otherLocaleIntro {
   margin: 0 0 0.5rem;
   font-size: 0.85rem;
-
-  /* Not --ifm-color-content-secondary: it resolves to pure white in dark mode. */
-  color: var(--ifm-color-emphasis-700);
+  color: var(--mk-ink-soft);
 }

@@ -3,9 +3,6 @@
  * where its unexplained Docusaurus blue came from. The summary is the first
  * block of every article on the site: it should carry the site's own colour,
  * not a framework default.
- *
- * Remove "alert alert--info margin-bottom--md" from index.tsx (see the
- * migration notes) — those classes are what this file now replaces.
  */
 
 .tldrContainer {
@@ -13,9 +10,17 @@
   composes: mk-callout--key from global;
 }
 
+/*
+ * font-variant-emoji: text asks for the monochrome TEXT presentation of the
+ * lightning character, so it takes --mk-on-line from .mk-dot like every other
+ * dot glyph in the site. Without it the emoji keeps its own yellow-blue
+ * colours on the terracotta disc — the one bicolour pastille on the page.
+ * index.tsx needs no change.
+ */
 .tldrIcon {
   composes: mk-dot from global;
   font-size: 0.9rem;
+  font-variant-emoji: text;
 }
 
 .tldrBody {

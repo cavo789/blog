@@ -1,21 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:53:34.140Z",
+  "generated": "2026-09-19T14:22:37.542Z",
   "source": "styles.module.css",
-  "sourceHash": "4fb0270b4c7e7dc8542aa44a7632eea7edee0c12",
+  "sourceHash": "c0599810331565e48a64f83fcd5cc4d748e5ac35",
   "lang": "css",
-  "summary": "This CSS styles a blog post series component that displays a numbered list of related posts. The main container has a colored background, left border, and smooth transitions, while the list items use CSS counters to auto-number themselves instead of using bullet points. It includes styling for the current post highlight and a dark mode override.",
+  "textLang": "en",
+  "summary": "This CSS styles a 'series box' — a callout that lists other posts in a blog series. It uses CSS counters to automatically number the list items, applies a left border and background color to make it stand out, and includes hover effects for links. The code also fixes previous over-styling of the intro text and removes unnecessary dark-mode overrides.",
   "explanations": {
-    "2": "This uses a CSS variable (custom property) that's defined elsewhere in the design system, allowing the background color to change globally if needed.",
-    "8": "This makes the background, text color, and border smoothly animate over 200 milliseconds when they change, creating a polished visual effect.",
-    "12": "The paragraph inside the series box is styled as bold and italicized to make it stand out as a header or description.",
-    "19": "Removes the default bullet points from the list so we can create a custom numbered style with CSS counters instead.",
-    "21": "Resets the counter to zero so that the list numbering starts fresh from 1 for this particular list.",
-    "26": "Increments the counter by 1 for each list item, which will be used to generate the auto-incrementing numbers.",
-    "35": "The `::before` pseudo-element creates content that appears before each list item's text without being in the HTML.",
-    "36": "Displays the current counter value (the auto-incremented number) as the content before each item.",
-    "43": "Groups two selectors together to apply the same styling to both links and span elements inside list items.",
-    "63": "This targets the dark mode version of the page (Docusaurus adds a data-attribute to the HTML root) and applies different colors appropriate for dark backgrounds."
+    "13": "The border-left property creates a thick colored stripe on the left side; var(--mk-rail) is the width and var(--mk-primary) is the color, both defined elsewhere.",
+    "17": "The transition property makes background, text color, and border color smoothly animate over 200 milliseconds when they change — this creates a polished feel on hover or theme changes.",
+    "29": "The composes keyword (from CSS Modules) imports styles from the global mk-eyebrow class, letting this class inherit those styles without repeating them.",
+    "36": "counter-reset initializes a named counter called 'post-counter' to zero, which will track list item numbers throughout this unordered list.",
+    "41": "counter-increment bumps up the post-counter by 1 for each list item, so each one gets a unique incrementing number.",
+    "53": "content: counter(post-counter) displays the current value of the counter as generated text before each list item, creating the automatic numbering.",
+    "59": "font-variant-numeric: tabular-nums makes all numbers the same width so they align vertically in a column, preventing the text from jiggling when numbers change width (like 9 to 10).",
+    "64": "text-decoration: none removes the default underline from links so they blend with the series box styling until hovered.",
+    "75": "This marks the current post in the series with bold text so readers can see which post they're on."
   }
 }

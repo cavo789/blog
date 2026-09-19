@@ -123,10 +123,6 @@
     box-shadow 0.3s ease;
 }
 
-[data-theme="dark"] .navbar {
-  box-shadow: var(--mk-shadow-1);
-}
-
 /* A navbar label must never wrap mid-item. "À propos" broke onto two lines
    once the locale dropdown was added — two words stacked inside a menu entry
    read as two entries. Below Docusaurus's navbar breakpoint the hamburger
@@ -587,4 +583,53 @@ a.pagefindHit:has(.pagefindHit-breadcrumb) .pagefindHit-icon {
     text-align: center;
     content: "\1F9AB Printed from avonture.be \2014 mascot-approved reading material.";
   }
+}
+
+/* --- NATIVE MARKDOWN ADMONITIONS --- */
+
+/*
+ * A `:::tip` written in Markdown and an `<AlertBox variant="tip">` say the
+ * same thing and should look the same. The Infima remap in theme.css already
+ * gave them the same COLOURS (--ifm-color-info/success/warning/danger point at
+ * the tone lines), but Docusaurus's admonition keeps its own geometry: a full
+ * 1px border, --ifm-global-radius on all four corners, a heading-weight title
+ * and its own icon size. Side by side with a callout, the two read as two
+ * different components.
+ *
+ * This aligns the geometry only. The icon stays Docusaurus's own — swizzling
+ * Admonition to get the filled .mk-dot is a bigger change than this is worth,
+ * and the icon is not what makes the two look unrelated.
+ */
+.theme-admonition {
+  border: none;
+  border-left: var(--mk-rail) solid var(--ifm-alert-border-color);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  box-shadow: var(--mk-shadow-1);
+}
+
+/* The admonition heading is the eyebrow every other label in the site uses.
+   Docusaurus renders it uppercase already, at its own size and tracking. */
+.theme-admonition
+  .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module,
+.theme-admonition [class*="admonitionHeading"] {
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.theme-admonition [class*="admonitionIcon"] svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.theme-admonition [class*="admonitionContent"] {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.theme-admonition [class*="admonitionContent"] > :last-child {
+  margin-bottom: 0;
 }

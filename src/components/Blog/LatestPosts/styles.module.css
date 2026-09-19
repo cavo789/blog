@@ -1,12 +1,13 @@
 .cardsSection {
   margin: 0 calc(-1 * var(--page-gutter)) 40px;
   padding: 3rem var(--page-gutter);
-  background: var(--ifm-color-emphasis-100);
+  background: var(--mk-sunken);
 }
 
 .cardsSection h2 {
   text-align: center;
   margin-bottom: 30px;
+  font-family: var(--mk-font-display);
   font-size: 2rem;
   font-weight: 800;
 }
@@ -47,17 +48,20 @@
 .seeMoreLink {
   display: inline-block;
   font-weight: 700;
-  font-size: 1.1rem;
-  padding: 8px 16px;
-  border: 1px solid var(--ifm-color-emphasis-400);
-  border-radius: var(--ifm-border-radius);
+  font-size: 1.05rem;
+  padding: 8px 18px;
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
   text-decoration: none;
-  color: var(--ifm-color-primary);
-  background-color: var(--ifm-card-background-color);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  color: var(--mk-primary);
+  background-color: var(--mk-surface);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .seeMoreLink:hover {
-  background-color: var(--ifm-hover-overlay);
-  border-color: var(--ifm-color-primary);
+  background-color: var(--mk-key-bg);
+  border-color: var(--mk-primary);
+  text-decoration: none;
 }

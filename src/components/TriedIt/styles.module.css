@@ -1,3 +1,19 @@
+/*
+ * ⚠️ DUPLICATION — Reaction/styles.module.css and TriedIt/styles.module.css are
+ * the SAME FILE, byte for byte, except that Reaction adds .submitError. Two
+ * components, one widget: a question, a row of buttons, a thank-you state and
+ * a count. They were tokenised identically here so they stay in step, but the
+ * real fix is to have one of them import the other's stylesheet (CSS modules
+ * support `composes: … from "../Reaction/styles.module.css"`), or to extract a
+ * shared Feedback component. Flagged, not done: that is a refactor decision,
+ * not a styling one.
+ *
+ * Fixed while tokenising: the hover filled the button with solid primary and
+ * set `color: white` — a literal, and the only white text on terracotta in
+ * this part of the site. It now uses --mk-on-line, which flips with the theme
+ * (in dark mode the primary lightens, so white-on-it fails contrast).
+ */
+
 .container {
   display: flex;
   align-items: center;
@@ -5,14 +21,15 @@
   gap: 0.75rem;
   padding: 0.9rem 1.25rem;
   margin: 1.5rem 0 0.5rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
-  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
+  background: var(--mk-surface);
+  box-shadow: var(--mk-shadow-1);
 }
 
 .question {
-  font-weight: 500;
-  color: var(--ifm-color-content);
+  font-weight: 600;
+  color: var(--mk-ink);
   white-space: nowrap;
 }
 
@@ -27,10 +44,11 @@
   align-items: center;
   gap: 0.35rem;
   padding: 0.35rem 0.85rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 6px;
+  font-family: inherit;
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
   background: transparent;
-  color: var(--ifm-color-content);
+  color: var(--mk-ink);
   font-size: 0.875rem;
   cursor: pointer;
   transition:
@@ -40,15 +58,20 @@
 }
 
 .btn:hover {
-  background-color: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-  color: white;
+  background-color: var(--mk-primary);
+  border-color: var(--mk-primary);
+  color: var(--mk-on-line);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--mk-primary);
+  outline-offset: 2px;
 }
 
 .btnNeutral:hover {
-  background-color: var(--ifm-color-emphasis-400);
-  border-color: var(--ifm-color-emphasis-400);
-  color: white;
+  background-color: var(--mk-n-300);
+  border-color: var(--mk-n-300);
+  color: var(--mk-n-900);
 }
 
 .thanks {
@@ -59,13 +82,14 @@
 }
 
 .thanksMsg {
-  font-weight: 500;
-  color: var(--ifm-color-content);
+  font-weight: 600;
+  color: var(--mk-ink);
 }
 
 .counts {
   display: flex;
   gap: 0.75rem;
   font-size: 0.875rem;
-  color: var(--ifm-color-content-secondary);
+  color: var(--mk-ink-soft);
+  font-variant-numeric: tabular-nums;
 }

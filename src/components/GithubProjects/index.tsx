@@ -256,7 +256,7 @@ export default function GithubProjects({ username }: Props): JSX.Element {
   return (
     <div className={clsx(styles.github_projects_container, "container")}>
       <div className={styles.filters_panel}>
-        <label>
+        <label className={styles.filterLabel}>
           <Translate id="githubProjects.filters.search">Search:</Translate>
           <input
             type="text"
@@ -269,7 +269,7 @@ export default function GithubProjects({ username }: Props): JSX.Element {
           />
         </label>
 
-        <label>
+        <label className={styles.filterLabel}>
           <Translate id="githubProjects.filters.language">Language:</Translate>
           <select
             value={filters.language}
@@ -288,7 +288,7 @@ export default function GithubProjects({ username }: Props): JSX.Element {
           </select>
         </label>
 
-        <label>
+        <label className={styles.filterLabel}>
           <Translate id="githubProjects.filters.status">Status:</Translate>
           <select
             value={filters.archived}
@@ -314,7 +314,7 @@ export default function GithubProjects({ username }: Props): JSX.Element {
           </select>
         </label>
 
-        <label>
+        <label className={styles.filterLabel}>
           <Translate id="githubProjects.filters.minStars">Min Stars:</Translate>
           <input
             type="number"

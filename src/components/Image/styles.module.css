@@ -1,15 +1,31 @@
+/*
+ * The frosted-glass frame around an <Image>. This is the only glassmorphic
+ * surface left in the site — white-tinted, blurred, saturated — and it predates
+ * the palette. It is kept, because it is a deliberate presentation frame for
+ * screenshots rather than site chrome, but retoned: the tint is now the warm
+ * cream of the palette instead of pure white, so it stops reading as a cold
+ * pane laid over a warm page.
+ *
+ * If you would rather retire the effect entirely, replace .container's
+ * background/border/backdrop-filter with `composes: mk-surface from global`.
+ */
 .container {
   text-align: center;
   padding: 10px;
-  background: rgb(255, 255, 255, 0.15);
-  border: 1px solid rgb(255, 255, 255, 0.3);
-  border-radius: 16px;
+  background: rgb(251, 241, 220, 0.35);
+  border: 1px solid rgb(251, 241, 220, 0.55);
+  border-radius: var(--mk-radius-lg);
   backdrop-filter: blur(10px) saturate(180%);
 }
 
+[data-theme="dark"] .container {
+  background: rgb(43, 33, 24, 0.45);
+  border-color: rgb(75, 65, 52, 0.6);
+}
+
 .container img {
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgb(0, 0, 0, 0.15);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-2);
   transition:
     transform 0.4s ease,
     box-shadow 0.4s ease,
@@ -18,6 +34,14 @@
 
 .container img:hover {
   transform: scale(1.05) translateY(-4px);
-  box-shadow: 0 12px 25px rgb(0, 0, 0, 0.25);
+  box-shadow: var(--mk-shadow-3);
   filter: brightness(1.05) saturate(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container img,
+  .container img:hover {
+    transition: none;
+    transform: none;
+  }
 }

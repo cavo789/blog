@@ -55,6 +55,7 @@ export default function SeriesPosts({
   return (
     <div className={styles.seriesBlogPost}>
       <Details
+        summaryClassName={styles.seriesIntro}
         label={
           <Translate
             id="blog.seriesPosts.intro"

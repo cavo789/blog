@@ -3,6 +3,10 @@
  * colour system in the site. Both notices are callouts now, so a reader meets
  * the same object whether the message comes from an article's author or from
  * the site itself.
+ *
+ * index.tsx no longer adds "alert alert--warning" / "alert alert--success" on
+ * top of these classes: Infima's .alert sets its own background, full border
+ * and text colour, so the two systems were stacking and neither won cleanly.
  */
 
 .oldPostNotice {
@@ -23,16 +27,14 @@
 
 .body {
   min-width: 0;
+  margin: 0;
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-.oldPostNotice p,
-.reviewedPostNotice p {
-  margin: 0;
-}
-
-.oldPostNotice strong,
-.reviewedPostNotice strong {
-  margin-right: 0.25rem;
+/* The date inside the "reviewed" notice. The old rule added a right margin to
+ * every <strong>, which also indented the last word of a sentence ending on
+ * one — the flex row and the sentence's own spaces handle this. */
+.body strong {
+  font-weight: 600;
 }

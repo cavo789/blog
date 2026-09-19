@@ -8,7 +8,8 @@
  * Features:
  * - Uses `useBlogPost` to access the post's metadata and publication date.
  * - Calculates whether the post is older than one year.
- * - Renders a styled warning box using Docusaurus's alert classes and custom CSS.
+ * - Renders the shared .mk-callout primitive (see src/css/theme.css) through
+ *   styles.module.css — NOT Docusaurus's own alert classes.
  *
  * Usage:
  * Import and include this component inside your swizzled `BlogPostItem/Content/index.js`
@@ -22,7 +23,6 @@ import type { JSX } from "react";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
 import { useDateTimeFormat } from "@docusaurus/theme-common/internal";
 import Translate from "@docusaurus/Translate";
-import clsx from "clsx";
 import styles from "./styles.module.css";
 
 export default function OldPostNotice(): JSX.Element | null {
@@ -72,12 +72,11 @@ export default function OldPostNotice(): JSX.Element | null {
       const formattedDate = dateTimeFormat.format(reviewDateObj);
 
       return (
-        <div
-          className={clsx("alert alert--success", styles.reviewedPostNotice)}
-          role="alert"
-        >
-          <p>
-            <span aria-hidden="true">✅</span>{" "}
+        <div className={styles.reviewedPostNotice} role="status">
+          <span className={styles.icon} aria-hidden="true">
+            ✓
+          </span>
+          <p className={styles.body}>
             <Translate
               id="blog.oldPostNotice.reviewed"
               values={{ date: <strong>{formattedDate}</strong> }}
@@ -91,12 +90,11 @@ export default function OldPostNotice(): JSX.Element | null {
   }
 
   return (
-    <div
-      className={clsx("alert alert--warning", styles.oldPostNotice)}
-      role="alert"
-    >
-      <p>
-        <span aria-hidden="true">⚠️</span>{" "}
+    <div className={styles.oldPostNotice} role="status">
+      <span className={styles.icon} aria-hidden="true">
+        !
+      </span>
+      <p className={styles.body}>
         <Translate
           id="blog.oldPostNotice.message"
           description="The warning message displayed on old blog posts"

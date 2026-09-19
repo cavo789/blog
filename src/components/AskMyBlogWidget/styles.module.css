@@ -13,10 +13,10 @@
   height: 60px;
   padding: 0;
   cursor: pointer;
-  background: var(--ifm-color-primary);
+  background: var(--mk-primary);
   border: none;
   border-radius: 50%;
-  box-shadow: 0 4px 14px rgb(0, 0, 0, 0.25);
+  box-shadow: var(--mk-shadow-3);
   transition:
     transform 0.2s,
     background 0.2s;
@@ -27,16 +27,29 @@
   transform: scale(1.06);
 }
 
+.bubble:focus-visible {
+  outline: 2px solid var(--mk-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bubble,
+  .bubble:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
 .bubbleIcon {
   width: 30px;
   height: 30px;
-  color: var(--ifm-color-primary-contrast-foreground);
+  color: var(--mk-on-line);
 }
 
 .pulseRing {
   position: absolute;
   inset: -4px;
-  border: 2px solid var(--ifm-color-primary-light);
+  border: 2px solid var(--mk-primary);
   border-radius: 50%;
   animation: askPulse 2.2s ease-out 3;
   pointer-events: none;
@@ -87,10 +100,10 @@
   width: min(360px, calc(100vw - 2rem));
   max-height: min(480px, calc(100vh - 200px));
   overflow: hidden;
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  box-shadow: 0 16px 40px rgb(0, 0, 0, 0.28);
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-lg);
+  box-shadow: var(--mk-shadow-3);
   animation: panelIn 0.15s ease-out;
 }
 
@@ -118,9 +131,9 @@
   justify-content: space-between;
   padding: 0.55rem 1rem;
   font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary-contrast-foreground);
-  background: var(--ifm-color-primary);
+  font-weight: 700;
+  color: var(--mk-on-line);
+  background: var(--mk-primary);
 }
 
 .panelHeadTitle {
@@ -132,7 +145,7 @@
 .panelHeadMascot {
   flex-shrink: 0;
   object-fit: cover;
-  border: 2px solid var(--ifm-color-primary-contrast-background);
+  border: 2px solid var(--mk-on-line);
   border-radius: 50%;
 }
 
@@ -140,7 +153,7 @@
   padding: 0.1rem 0.3rem;
   font-size: 1.3rem;
   line-height: 1;
-  color: var(--ifm-color-primary-contrast-foreground);
+  color: var(--mk-on-line);
   opacity: 0.85;
   background: none;
   border: none;

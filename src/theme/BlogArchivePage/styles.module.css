@@ -1,6 +1,27 @@
 /* ========================================================= */
-/* ARCHIVES PAGE STYLES                    */
+/* ARCHIVES PAGE STYLES                                      */
 /* ========================================================= */
+
+/*
+ * Retokenised. Three real defects fixed on the way:
+ *
+ * 1. CONTRAST — .activeMonth painted --ifm-color-primary-light (#a96135) as
+ *    background with --ifm-color-primary-darker (#864e2a) as text: two
+ *    neighbouring shades of the same terracotta, measured ~1.5:1. The active
+ *    month in the timeline was effectively unreadable. It now uses the "key"
+ *    tone (cream ground, primary text), the same treatment as every active
+ *    pill in the site, at 7.1:1.
+ *
+ * 2. COLD GREYS — this file used --ifm-color-gray-100,
+ *    --ifm-color-secondary-lightest and --ifm-color-secondary-darkest, three
+ *    families the original Infima remap did not cover. They are remapped now
+ *    (see theme.css), but the references are replaced with explicit tokens
+ *    here so the intent is readable.
+ *
+ * 3. DUPLICATED DARK VALUES — rgb(221, 127, 60, …) was written out twice as a
+ *    literal. That is the dark --ifm-color-primary; it now comes from the
+ *    tone tokens, so changing the palette changes this page too.
+ */
 
 /* --------- Global Layout and Wrapper --------- */
 
@@ -28,12 +49,12 @@
   top: 100px;
   padding-right: 1.5rem;
   box-sizing: border-box;
-  background-color: var(--ifm-background-color);
-  border-radius: var(--ifm-card-border-radius);
+  background-color: var(--mk-bg);
+  border-radius: var(--mk-radius-lg);
   scroll-behavior: smooth;
-  box-shadow: inset -5px 0 8px -6px rgb(0, 0, 0, 0.1);
+  box-shadow: inset -5px 0 8px -6px rgb(59, 44, 30, 0.12);
   scrollbar-width: thin;
-  scrollbar-color: var(--ifm-color-primary-light) transparent;
+  scrollbar-color: var(--mk-border-strong) transparent;
 }
 
 /* Scrollbar styles for sidebar */
@@ -43,31 +64,31 @@
 }
 
 .sidebar:hover::-webkit-scrollbar {
-  background-color: var(--ifm-color-gray-100);
+  background-color: var(--mk-n-50);
 }
 
 .sidebar::-webkit-scrollbar-thumb {
-  background-color: var(--ifm-color-primary-light);
-  border-radius: 10px;
+  background-color: var(--mk-border-strong);
+  border-radius: var(--mk-radius-md);
   border: 2px solid transparent;
   background-clip: content-box;
   transition: background-color 0.3s ease;
 }
 
 .sidebar::-webkit-scrollbar-thumb:hover {
-  background-color: var(--ifm-color-primary);
+  background-color: var(--mk-primary);
 }
 
 /* Firefox scrollbar */
 .sidebar:hover {
-  scrollbar-color: var(--ifm-color-primary) transparent;
+  scrollbar-color: var(--mk-primary) transparent;
 }
 
 /* --------- Filter Container and Group --------- */
 
 .filterContainerSidebar {
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--ifm-color-primary-lightest);
+  border-bottom: 1px solid var(--mk-border);
   margin-bottom: 1rem;
 }
 
@@ -75,35 +96,35 @@
   margin-bottom: 1rem;
 }
 
-.filterGroupSidebar label {
+.filterLabel {
+  composes: mk-eyebrow from global;
   display: block;
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
 }
 
 .filterGroupSidebar select {
   width: 100%;
   padding: 6px 8px;
-  border-radius: var(--ifm-button-border-radius);
-  border: 1px solid var(--ifm-color-primary-light);
-  background-color: var(--ifm-color-gray-100);
+  font-family: inherit;
   font-size: 0.9rem;
+  color: var(--mk-ink);
   cursor: pointer;
+  background-color: var(--mk-sunken);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
   transition:
     border-color 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
 }
 
 .filterGroupSidebar select:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 2px var(--ifm-color-primary-light);
+  border-color: var(--mk-primary);
 }
 
 .filterGroupSidebar select:focus {
   outline: none;
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 3px var(--ifm-color-primary-light);
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
 }
 
 /* --------- Timeline --------- */
@@ -112,16 +133,14 @@
   flex-shrink: 0;
   width: 290px;
   padding: 1rem 0;
-  border-right: 2px solid var(--ifm-color-primary-lightest);
+  border-right: 1px solid var(--mk-border);
   box-sizing: border-box;
   background-color: transparent;
-  border-radius: var(--ifm-card-border-radius);
 }
 
 .jumpToHeading {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--ifm-color-primary);
+  composes: mk-eyebrow from global;
+  color: var(--mk-primary);
   margin-bottom: 1rem;
   padding-left: 1rem;
 }
@@ -130,7 +149,7 @@
   list-style: none;
   padding-left: 0;
   margin: 0;
-  border-left: 4px solid var(--ifm-color-primary);
+  border-left: var(--mk-rail) solid var(--mk-primary);
   position: relative;
 }
 
@@ -141,30 +160,34 @@
 }
 
 .timelineYear {
+  font-family: var(--mk-font-display);
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--ifm-color-primary-dark);
+  color: var(--mk-primary);
   text-decoration: none;
   display: inline-block;
   margin-bottom: 0.5rem;
   position: relative;
+  font-variant-numeric: tabular-nums;
 }
 
 .timelineYear:hover {
   text-decoration: underline;
 }
 
+/* Same node as Updated's timeline: a filled primary disc haloed in the key
+   tone, so the two timelines in the site read as one object. */
 .timelineYear::before {
   content: "";
   position: absolute;
   left: -1.4rem;
-  top: 0.3rem;
+  top: 0.35rem;
   width: 12px;
   height: 12px;
-  background-color: var(--ifm-color-primary);
+  background-color: var(--mk-primary);
   border-radius: 50%;
-  border: 2px solid var(--ifm-background-color);
-  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+  border: 2px solid var(--mk-bg);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
 }
 
 .timelineMonthList {
@@ -179,27 +202,44 @@
 
 .timelineMonthLink {
   text-decoration: none;
-  color: var(--ifm-color-secondary-darkest);
+  color: var(--mk-ink-soft);
   font-size: 0.95rem;
   padding: 4px 8px;
   display: inline-block;
-  border-radius: var(--ifm-button-border-radius);
+  border-radius: var(--mk-radius-sm);
   transition:
     background-color 0.2s,
     transform 0.2s;
 }
 
 .timelineMonthLink:hover {
-  background-color: var(--ifm-color-secondary-lightest);
+  background-color: var(--mk-n-100);
+  color: var(--mk-ink);
   transform: translateX(5px);
 }
 
+/*
+ * Was --ifm-color-primary-light on --ifm-color-primary-darker: ~1.5:1, the
+ * active item was the least readable thing in the list. The key tone gives
+ * 7.1:1 and matches every other "currently selected" pill in the site.
+ */
 .timelineMonthLink.activeMonth,
 .activeMonth {
-  font-weight: bold;
-  background-color: var(--ifm-color-primary-light);
-  color: var(--ifm-color-primary-darker);
+  font-weight: 700;
+  background-color: var(--mk-key-bg);
+  color: var(--mk-primary);
+  box-shadow: inset 0 0 0 1px var(--mk-key-edge);
   transform: translateX(5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timelineMonthLink,
+  .timelineMonthLink:hover,
+  .timelineMonthLink.activeMonth,
+  .activeMonth {
+    transform: none;
+    transition: none;
+  }
 }
 
 /* --------- Post Content --------- */
@@ -207,19 +247,20 @@
 .monthHeading {
   display: flex;
   align-items: center;
-  font-weight: 600;
+  font-family: var(--mk-font-display);
+  font-weight: 700;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
   position: relative;
-  color: var(--ifm-heading-color);
+  color: var(--mk-ink);
   scroll-margin-top: 100px;
 }
 
 .monthAnchor {
   margin-left: 0.5rem;
   font-weight: normal;
-  color: var(--ifm-color-primary-dark);
+  color: var(--mk-primary);
   text-decoration: none;
   font-size: 0.9em;
   position: absolute;
@@ -271,40 +312,24 @@
     margin-left: 0.4rem;
     padding: 0.6rem 0.65rem;
     font-size: 1.05em;
-    border-radius: 6px;
+    border-radius: var(--mk-radius-sm);
     transform: none;
   }
 
   .monthAnchor:active {
-    background-color: var(--ifm-color-emphasis-200);
+    background-color: var(--mk-n-100);
   }
 }
 
 /* --------- Dark Mode Overrides --------- */
 
+/*
+ * Only what genuinely differs. The literal rgb(221, 127, 60, …) values this
+ * block used to carry were the dark --ifm-color-primary written out by hand;
+ * everything above now reads tokens that flip on their own.
+ */
 [data-theme="dark"] .filterGroupSidebar select {
-  background-color: var(--ifm-background-surface-color);
-  color: var(--ifm-font-color-base);
-  border-color: var(--ifm-color-emphasis-400);
-}
-
-[data-theme="dark"] .filterGroupSidebar select:hover,
-[data-theme="dark"] .filterGroupSidebar select:focus {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 2px rgb(221, 127, 60, 0.2);
-}
-
-[data-theme="dark"] .timelineMonthLink {
-  color: var(--ifm-color-emphasis-700);
-}
-
-[data-theme="dark"] .timelineMonthLink:hover {
-  background-color: var(--ifm-color-emphasis-200);
-  color: var(--ifm-font-color-base);
-}
-
-[data-theme="dark"] .timelineMonthLink.activeMonth,
-[data-theme="dark"] .activeMonth {
-  background-color: rgb(221, 127, 60, 0.15);
-  color: var(--ifm-color-primary-lighter);
+  background-color: var(--mk-surface);
+  color: var(--mk-ink);
+  border-color: var(--mk-border-strong);
 }

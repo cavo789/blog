@@ -1,18 +1,33 @@
+/*
+ * The "this post is part of a series" box. It is a callout in everything but
+ * name, so it now uses the shared anatomy — but NOT .mk-callout itself: that
+ * primitive is a flex row built around a .mk-dot, and this box is a titled
+ * list with no icon. It borrows the tone, the rail and the radius instead.
+ *
+ * Fixed on the way: the intro line was bold AND italic AND 1.1rem — three
+ * emphases at once on a sentence that only introduces a list.
+ */
 .seriesBlogPost {
-  background-color: var(--ifm-color-secondary-lightest);
-  border-left: 4px solid var(--ifm-color-primary);
-  padding: 1.5rem;
+  background-color: var(--mk-key-bg);
+  color: var(--mk-key-fg);
+  border-left: var(--mk-rail) solid var(--mk-primary);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  padding: 1.25rem 1.5rem;
   margin-bottom: 2rem;
-  border-radius: 4px;
-  color: var(--ifm-font-color-base);
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, border-color 200ms ease-in-out;
+  transition:
+    background-color 200ms ease-in-out,
+    color 200ms ease-in-out,
+    border-color 200ms ease-in-out;
 }
 
-.seriesBlogPost p {
-  font-weight: bold;
-  font-style: italic;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
+/* Applied to Details's <summary> via its summaryClassName prop — not a
+   ".seriesBlogPost p" descendant selector, which composes can't use (single
+   local class only) and which never matched anyway: the intro text renders
+   inside <summary>, not a <p>, so the pre-harmonisation bold/italic/1.1rem
+   rule here was dead CSS. */
+.seriesIntro {
+  composes: mk-eyebrow from global;
+  color: inherit;
 }
 
 .seriesBlogPost ul {
@@ -25,7 +40,9 @@
 .seriesBlogPost li {
   counter-increment: post-counter;
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .seriesBlogPost li:not(:last-child) {
@@ -35,32 +52,36 @@
 .seriesBlogPost li::before {
   content: counter(post-counter);
   margin-right: 0.75rem;
-  font-weight: bold;
-  color: var(--ifm-color-content-secondary);
-  font-size: 1.1rem;
+  min-width: 1.1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--mk-primary);
+  font-variant-numeric: tabular-nums;
 }
 
 .seriesBlogPost li a,
 .seriesBlogPost li span {
   text-decoration: none;
-  color: var(--ifm-font-color-base);
+  color: inherit;
 }
 
 .seriesBlogPost li a:hover {
   text-decoration: underline;
-  color: var(--ifm-color-primary);
+  text-underline-offset: 2px;
+  color: var(--mk-primary);
 }
 
 .currentPost {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .currentPostDimmed {
   opacity: 0.6;
 }
 
-/* Dark Mode Override using Docusaurus data-attribute */
-:global(html[data-theme='dark']) .seriesBlogPost {
-  background-color: var(--ifm-background-surface-color);
-  border-left-color: var(--ifm-color-primary);
-}
+/*
+ * The dark-mode override is gone: --mk-key-bg / --mk-key-fg already flip on
+ * their own, which is the whole point of the tone sets. The old rule pointed
+ * at --ifm-background-surface-color, i.e. the card colour, which made this box
+ * indistinguishable from the article around it in dark mode.
+ */

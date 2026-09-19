@@ -180,7 +180,7 @@ function Archives() {
               {/* Filters */}
               <div className={styles.filterContainerSidebar}>
                 <div className={styles.filterGroupSidebar}>
-                  <label htmlFor="year-filter-sidebar">
+                  <label className={styles.filterLabel} htmlFor="year-filter-sidebar">
                     <Translate id="blog.archive.filterByYear">Filter by Year:</Translate>
                   </label>
                   <select
@@ -203,7 +203,7 @@ function Archives() {
                 </div>
 
                 <div className={styles.filterGroupSidebar}>
-                  <label htmlFor="tag-filter-sidebar">
+                  <label className={styles.filterLabel} htmlFor="tag-filter-sidebar">
                     <Translate id="blog.archive.filterByTag">Filter by Tag:</Translate>
                   </label>
                   <select

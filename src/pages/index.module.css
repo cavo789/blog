@@ -22,8 +22,8 @@
   justify-content: center;
 }
 
-/* Section titles (h2) reuse the article heading font, but the green
-   left border accent belongs to blog articles, not the homepage. */
+/* Section titles (h2) reuse the article heading font, but the terracotta
+   rail accent belongs to blog articles, not the homepage. */
 .homepageSections h2 {
   border-left: none;
   padding-left: 0;

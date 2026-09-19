@@ -1,11 +1,14 @@
 .relatedPosts {
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 1px solid var(--mk-border);
   margin-top: 2.5rem;
   padding-top: 1.5rem;
 }
 
+/* The 4px here happened to equal the site rail already — now it says so, and
+   it follows if --mk-rail ever changes. */
 .relatedPosts h3 {
-  border-left: 4px solid var(--ifm-color-primary);
+  font-family: var(--mk-font-display);
+  border-left: var(--mk-rail) solid var(--mk-primary);
   padding-left: 0.75rem;
   margin-top: 0;
   margin-bottom: 1rem;

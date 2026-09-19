@@ -1,14 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:07:45.598Z",
+  "generated": "2026-09-19T13:41:25.214Z",
   "source": "icon.svg",
-  "sourceHash": "0919edf1d9207b3155cc0d45a33f0feea0e9b44d",
+  "sourceHash": "e8184b0aa41900796697953821aab5300fc490d1",
   "lang": "svg",
-  "summary": "This creates a small square icon showing a classic terminal prompt symbol. It's a dark gray rounded square with a bright green greater-than sign in the center, styled to look like a retro command-line interface.",
+  "textLang": "en",
+  "summary": "This SVG creates a small icon showing a terminal prompt. It draws a rounded dark rectangle as the background and places a green greater-than symbol in the center to represent the command prompt character you'd see in a terminal.",
   "explanations": {
-    "1": "The viewBox sets up a 64×64 coordinate system, and the role and aria-label make this icon accessible to screen readers by describing what it represents.",
-    "2": "The rect element draws the background box; rx and ry round the corners to give it a modern, slightly softer appearance.",
-    "3": "text-anchor='middle' centers the text horizontally, and dominant-baseline='middle' centers it vertically within the 64×64 space."
+    "1": "The viewBox attribute defines the coordinate system as a 64x64 square, so all positions are measured within that space. The role and aria-label make this icon accessible to screen readers.",
+    "2": "rx and ry create rounded corners on the rectangle — they define the radius of the curve at each corner.",
+    "3": "text-anchor=\"middle\" centers the text horizontally at x=32, and dominant-baseline=\"middle\" centers it vertically at y=40. The font-family lists fallbacks in case JetBrains Mono isn't available."
   }
 }

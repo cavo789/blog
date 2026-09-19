@@ -18,7 +18,7 @@
 }
 
 .subtitle {
-  color: var(--ifm-color-content-secondary);
+  color: var(--mk-ink-soft);
   font-size: 0.9rem;
 }
 
@@ -32,6 +32,6 @@
 
 .source {
   display: block;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
   font-size: 0.8rem;
 }

@@ -14,7 +14,7 @@ src/components/Details/styles.module.css
 ## 🚀 Features
 
 - ✅ Native HTML semantics for accessibility
-- 🎨 Styled with CSS Modules and Docusaurus alert classes
+- 🎨 Styled with CSS Modules and the site's shared design tokens
 - 🧩 Accepts custom label and children content
 - 🛠️ PropTypes for type safety
 
@@ -40,7 +40,7 @@ import Details from "@site/src/components/Details";
 This component uses:
 
 - CSS Modules (`styles.module.css`)
-- Docusaurus alert classes (alert alert--info) for consistent theming
+- The site's shared `mk-*` design tokens (not Docusaurus's own alert classes) for consistent theming
 - You can customize the appearance by editing `styles.module.css` or overriding styles in your global CSS.
 
 ## 🧠 Notes

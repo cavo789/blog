@@ -6,6 +6,7 @@
 .github_projects_container h3 {
   text-align: center;
   margin-bottom: var(--ifm-spacing-md);
+  font-family: var(--mk-font-display);
   font-size: 1.5rem;
 }
 
@@ -26,42 +27,62 @@
   opacity: 0;
 }
 
-/* Card styling */
+/* A staggered fade-in that never completes leaves the whole page blank for a
+   reader who asked for less motion: .fadeIn starts at opacity 0 and only the
+   animation brings it back. */
+@media (prefers-reduced-motion: reduce) {
+  .fadeIn {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/*
+ * Card styling. The repositories.webp watermark is kept — it is this page's
+ * identity — but the veil over it moves to the palette: rgb(255,255,255,.82)
+ * was a cold white wash on a warm page, and rgb(20,24,28,.9) in dark mode was
+ * a BLUE-black that nothing else in the site uses.
+ */
 .github_projects_card {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  border-radius: 12px;
+  border-radius: var(--mk-radius-lg);
   overflow: hidden;
   background-image: url("/img/repositories.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-blend-mode: lighten;
-  background-color: rgb(255, 255, 255, 0.82);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  box-shadow: 0 8px 16px rgb(0, 0, 0, 0.08);
+  background-color: rgb(255, 253, 247, 0.86);
+  border: 1px solid var(--mk-border);
+  box-shadow: var(--mk-shadow-2);
   transition:
     transform 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 [data-theme="dark"] .github_projects_card {
   background-blend-mode: multiply;
-  background-color: rgb(20, 24, 28, 0.9);
-  border-color: var(--ifm-color-emphasis-400);
-  box-shadow: 0 8px 16px rgb(0, 0, 0, 0.35);
+  background-color: rgb(26, 21, 16, 0.92);
+  border-color: var(--mk-border-strong);
 }
 
 .github_projects_card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 24px rgb(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+  box-shadow: var(--mk-shadow-3);
+  border-color: var(--mk-primary);
 }
 
-[data-theme="dark"] .github_projects_card:hover {
-  box-shadow: 0 12px 24px rgb(0, 0, 0, 0.5);
+@media (prefers-reduced-motion: reduce) {
+  .github_projects_card,
+  .github_projects_card:hover {
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Hover icon overlay */
@@ -82,32 +103,29 @@
 /* Link styling */
 .repo_link {
   display: inline-block;
-  font-size: 1.2rem;
+  font-family: var(--mk-font-display);
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--ifm-font-color-base);
+  color: var(--mk-ink);
   text-decoration: none;
 }
 
 .repo_link:hover {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
 }
 
 /* Archived label */
 .archived_label {
-  color: var(--ifm-color-secondary-dark);
-  font-weight: normal;
-}
-
-[data-theme="dark"] .archived_label {
-  color: var(--ifm-color-secondary-light);
+  composes: mk-eyebrow from global;
+  display: inline;
+  margin-left: 0.4rem;
 }
 
 /* Text inside cards */
 .github_projects_card p,
 .github_projects_card span,
 .github_projects_card li {
-  color: var(--ifm-font-color-base);
+  color: var(--mk-ink);
   line-height: 1.6;
 }
 
@@ -119,16 +137,17 @@
   align-items: center;
   gap: 0.5rem;
   padding-top: 0.5rem;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 1px solid var(--mk-border);
   font-size: 0.85rem;
-  color: var(--ifm-color-content-secondary);
+  color: var(--mk-ink-soft);
 }
 
 .github_projects_card .card__footer svg {
   margin-right: 4px;
 }
 
-/* Language dot */
+/* Language dot — GitHub's own linguist colours, set inline per repo. External
+   identity, deliberately not themed. */
 .language_dot {
   width: 10px;
   height: 10px;
@@ -145,37 +164,38 @@
   flex-wrap: wrap;
   margin-bottom: 2rem;
   padding: 1rem;
-  background-color: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgb(0, 0, 0, 0.05);
+  background-color: var(--mk-sunken);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-1);
 }
 
-[data-theme="dark"] .filters_panel {
-  box-shadow: 0 2px 6px rgb(0, 0, 0, 0.25);
-}
-
-.filters_panel label {
+/* Applied directly to each <label> in the filters panel (composes needs a
+   single local class, not a ".filters_panel label" descendant selector). */
+.filterLabel {
+  composes: mk-eyebrow from global;
   display: flex;
   flex-direction: column;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ifm-font-color-base);
+  gap: 0.3rem;
 }
 
 .filters_panel select,
 .filters_panel input {
   margin-top: 0.25rem;
-  padding: 0.4rem;
-  border-radius: 4px;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  background-color: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
+  padding: 0.45rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  letter-spacing: 0;
+  text-transform: none;
+  border-radius: var(--mk-radius-sm);
+  border: 1px solid var(--mk-border-strong);
+  background-color: var(--mk-surface);
+  color: var(--mk-ink);
 }
 
 .filters_panel select:focus,
 .filters_panel input:focus {
   outline: none;
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
 }

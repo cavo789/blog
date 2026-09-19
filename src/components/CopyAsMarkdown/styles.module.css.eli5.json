@@ -1,15 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T19:32:49.978Z",
+  "generated": "2026-09-19T14:22:41.300Z",
   "source": "styles.module.css",
-  "sourceHash": "7af8e67de8ad15e47a62d713561260932b65f210",
+  "sourceHash": "8e99199ac296e0fd76741eb2a894a1f62f1ef13a",
   "lang": "css",
-  "summary": "This CSS styles a small action group containing a copy button and a raw link. The wrapper uses flexbox with tight spacing (6px gap) to keep the unborderd 'raw' link visually grouped with its associated button, rather than floating between two bordered actions. Both elements share a small font size and get darker on hover.",
+  "textLang": "en",
+  "summary": "This stylesheet styles a group of action buttons and links for a blog article, specifically a copy button and a raw markdown link. The wrapper uses flexbox to lay them out tightly together, and both elements respond to hover states by changing to a primary color. The comment explains why the spacing and styling choices were made to keep these elements visually grouped.",
   "explanations": {
-    "12": "inline-flex makes the wrapper sit inline with surrounding content while still using flexbox layout rules for its children.",
-    "14": "The 6px gap is deliberately smaller than the parent row's 16px spacing — this visual tightness helps the borderless 'raw' link feel attached to the copy button.",
-    "32": "The :not(:disabled) pseudo-class means the hover styles only apply when the button is clickable, preventing visual changes when it's disabled.",
-    "42": "This hover state changes the 'raw' link to the primary color to indicate interactivity, since the link has no border of its own to signal it's clickable."
+    "17": "inline-flex makes the wrapper sit in the text flow (inline) but gives its children the layout power of flexbox.",
+    "19": "gap: 6px creates space between child elements — this is smaller than normal row spacing to visually tie the items together.",
+    "26": "var(--mk-ink-soft) is a CSS custom property, like a named color variable that can be changed in one place.",
+    "38": ":not(:disabled) is a selector that means \"only apply this style if the button is NOT disabled\", so hover effects don't happen on disabled buttons.",
+    "43": ".rawLink styles a plain text link with no border, unlike the button above it."
   }
 }
