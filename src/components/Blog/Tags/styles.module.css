@@ -7,9 +7,13 @@
 }
 
 /* Force la largeur de la première carte à 25% (col--3 standard) pour contrer
-   la règle globale de custom.css (.col.col--3:first-child) qui cible la sidebar */
-.postRow > :global(.col.col--3):first-child {
-  flex-basis: 25%;
-  max-width: 25%;
-  padding-right: var(--ifm-spacing-horizontal);
+   la règle globale de custom.css (.col.col--3:first-child) qui cible la sidebar.
+   Bornée au même breakpoint que cette règle (custom.css) : en dessous de
+   997px, Infima remet déjà tous les .col à 100% et il n'y a rien à contrer. */
+@media screen and (min-width: 997px) {
+  .postRow > :global(.col.col--3):first-child {
+    flex-basis: 25%;
+    max-width: 25%;
+    padding-right: var(--ifm-spacing-horizontal);
+  }
 }
