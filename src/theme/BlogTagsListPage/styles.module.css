@@ -1,10 +1,24 @@
+/*
+ * Tags landing page. Retokenised, and three hand-rolled objects replaced by
+ * their shared primitive:
+ *   .sectionTitle  → .mk-eyebrow  (it was 0.8rem/700/0.08em — the eyebrow,
+ *                                  re-declared by hand within 0.08rem)
+ *   .featuredCard  → .mk-surface + .mk-liftable  (its own -4px lift with a
+ *                                  bouncy cubic-bezier nobody else used)
+ *   .tagPill       → .mk-pill
+ *
+ * Also replaced: --ifm-font-color-secondary, used five times here, which the
+ * original Infima remap did not cover and therefore served a cold grey.
+ */
+
 .pageHeader {
   margin-bottom: 2rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--mk-border);
 }
 
 .pageTitle {
+  font-family: var(--mk-font-display);
   font-size: 2rem;
   font-weight: 800;
   margin-bottom: 0.25rem;
@@ -12,23 +26,19 @@
 
 .pageSubtitle {
   font-size: 1rem;
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
   margin: 0;
 }
 
 .feedHint {
   margin: 0.5rem 0 0;
   font-size: 0.9rem;
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
 }
 
 /* ── Section titles ─────────────────────────────── */
 .sectionTitle {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--ifm-font-color-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  composes: mk-eyebrow from global;
   margin-bottom: 1rem;
 }
 
@@ -56,24 +66,16 @@
 }
 
 .featuredCard {
+  composes: mk-surface from global;
+  composes: mk-liftable from global;
   display: flex;
   flex-direction: column;
   padding: 1.25rem;
-  background-color: var(--ifm-card-background-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--ifm-border-radius);
   text-decoration: none;
   color: inherit;
-  transition:
-    transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
 }
 
 .featuredCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgb(0, 0, 0, 0.1);
-  border-color: var(--ifm-color-primary);
   text-decoration: none;
   color: inherit;
 }
@@ -86,24 +88,24 @@
 }
 
 .featuredTitle {
+  font-family: var(--mk-font-display);
   font-size: 1.1rem;
   font-weight: 700;
   margin: 0 0 0.35rem;
-  color: var(--ifm-heading-color);
+  color: var(--mk-ink);
 }
 
 .featuredDescription {
   font-size: 0.85rem;
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
   margin: 0 0 0.75rem;
   flex: 1;
   line-height: 1.45;
 }
 
 .featuredCount {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--ifm-color-primary);
+  composes: mk-eyebrow from global;
+  color: var(--mk-primary);
 }
 
 /* ── All tags ────────────────────────────────────── */
@@ -117,33 +119,27 @@
   gap: 0.5rem;
 }
 
+/*
+ * .mk-pill is uppercase/letter-spaced by design — right for a badge, wrong for
+ * a cloud of 140 tag names, where it would cost roughly a third more width and
+ * make lowercase tag names unrecognisable. So this keeps the pill's shape,
+ * colour and hover from the primitive and opts out of the type treatment only.
+ */
 .tagPill {
+  composes: mk-pill from global;
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   padding: 0.35rem 0.75rem;
-  border-radius: 999px;
-  background-color: var(--ifm-color-emphasis-100);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  text-decoration: none;
-  color: var(--ifm-font-color-base);
   font-size: 0.875rem;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
-}
-
-.tagPill:hover {
-  background-color: var(--ifm-color-primary);
-  border-color: var(--ifm-color-primary);
-  color: white;
-  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .tagPillFeatured {
-  border-color: var(--ifm-color-primary-light);
-  font-weight: 600;
+  border-color: var(--mk-primary);
+  font-weight: 700;
 }
 
 .tagCount {
@@ -153,17 +149,24 @@
   min-width: 1.2rem;
   height: 1.2rem;
   padding: 0 0.25rem;
-  background-color: var(--ifm-color-emphasis-200);
+  background-color: var(--mk-n-100);
   border-radius: 999px;
   font-size: 0.7rem;
   font-weight: 700;
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
+  font-variant-numeric: tabular-nums;
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
 }
 
+/*
+ * The old hover filled the pill with solid primary and set color: white. That
+ * made the tag cloud the loudest surface on the page on every mouse move, and
+ * "white" was the only literal colour left in the file. .mk-pill's own hover
+ * (warm tint, primary border) is enough to signal the target.
+ */
 .tagPill:hover .tagCount {
-  background-color: rgb(255, 255, 255, 0.25);
-  color: white;
+  background-color: var(--mk-key-bg);
+  color: var(--mk-primary);
 }

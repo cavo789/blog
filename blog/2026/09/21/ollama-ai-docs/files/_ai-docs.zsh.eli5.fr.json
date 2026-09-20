@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-20T16:34:54.554Z",
+  "source": "_ai-docs.zsh",
+  "sourceHash": "8119f03ff4162432de89e83fc5362af21a04d72d",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction extrait le texte brut de différents formats de fichiers. Pour les fichiers markdown et texte, elle les lit directement ; pour les documents complexes (PDF, Word, PowerPoint, Excel, HTML), elle utilise d'abord docling-convert pour les convertir en markdown, puis retourne le contenu textuel.",
+  "explanations": {
+    "10": "L'extension de fichier est extraite et convertie en minuscules — par exemple, un fichier nommé document.PDF devient pdf.",
+    "17": "On vérifie que docling-convert est installé et accessible dans le PATH ; sinon on arrête avec une erreur.",
+    "22": "On extrait le répertoire du fichier source — la partie avant le dernier slash.",
+    "23": "On extrait juste le nom du fichier sans le chemin.",
+    "24": "On supprime l'extension du nom de fichier pour garder seulement la base — par exemple document.pdf devient document.",
+    "25": "On construit le chemin complet du fichier markdown qui sera généré par docling-convert.",
+    "27": "On change de répertoire dans le dossier source, puis lance la conversion en silence (les outputs standards et erreurs sont jetés).",
+    "31": "Après conversion réussie, on affiche le contenu du fichier markdown généré."
+  }
+}

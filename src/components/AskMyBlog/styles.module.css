@@ -2,14 +2,11 @@
   margin: 1.5rem 0;
 }
 
+/* Was a hand-rolled eyebrow (0.85rem / 600 / 0.04em). */
 .label {
+  composes: mk-eyebrow from global;
   display: block;
   margin-bottom: 0.4rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ifm-color-emphasis-700);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 
 .srOnly {
@@ -27,23 +24,31 @@
 .input {
   width: 100%;
   padding: 0.75rem 1rem;
+  font-family: inherit;
   font-size: 1.05rem;
-  color: var(--ifm-font-color-base);
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-card-border-radius, 12px);
-  transition: border-color 0.15s ease;
+  color: var(--mk-ink);
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-md);
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.input::placeholder {
+  color: var(--mk-n-500);
 }
 
 .input:focus {
   outline: none;
-  border-color: var(--ifm-color-primary);
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
 }
 
 .status {
   margin-top: 0.4rem;
   font-size: 0.85rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
   min-height: 1.2em;
 }
 
@@ -60,9 +65,9 @@
   display: flex;
   flex-direction: column;
   padding: 0.6rem 0.9rem;
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 8px;
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
 }
 
 .resultLink {
@@ -72,16 +77,17 @@
 .resultSource {
   margin-top: 0.15rem;
   font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
 }
 
+/* The italic is dropped: it is a status line, and italics on a warm neutral at
+   this size read as an error rather than as "nothing found". */
 .empty {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   margin-top: 0.75rem;
-  color: var(--ifm-color-emphasis-600);
-  font-style: italic;
+  color: var(--mk-ink-soft);
 }
 
 /* The thumbnail ships on an opaque cream background, so round it off and let it

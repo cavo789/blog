@@ -4,16 +4,22 @@
  * text so it reads as a lead paragraph, but kept upright — italics at this length
  * hurt legibility and would make it look like a pull quote rather than a summary.
  *
- * Not --ifm-color-content-secondary, the obvious-looking token: Infima resolves it to
- * pure white in dark mode (#525860 in light), which would make the standfirst *brighter*
- * than the body text it introduces. --ifm-color-emphasis-700 is #606770 in light (5.7:1
- * on white, AA) and #dadde1 in dark — a shade below the body's #e3e3e3, so it reads as
- * secondary in both themes.
+ * Historical note, kept because the trap is still real: this deliberately avoided
+ * --ifm-color-content-secondary, which Infima resolves to PURE WHITE in dark mode —
+ * that would have made the standfirst brighter than the body text it introduces.
+ * The design harmonisation has since remapped that variable to --mk-ink-soft, so the
+ * trap is disarmed; --mk-ink-soft is used directly here anyway, since naming the token
+ * you want beats relying on a remap of a token you do not.
+ *
+ * --mk-ink-soft is #55483a in light (7.81:1 on the page background, AAA) and #a79987 in
+ * dark — a shade below the body ink in both, so it reads as secondary either way.
+ * (The old comment quoted #606770/#dadde1: those were Infima's cold greys, replaced
+ * by the harmonisation.)
  */
 .standfirst {
   margin-top: 0.5rem;
   margin-bottom: 0;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--mk-ink-soft);
   font-size: 1.1rem;
   line-height: 1.5;
 }

@@ -1,0 +1,28 @@
+$ ai-translate contract.docx Dutch
+
+→ Converting 'contract.docx' with docling-convert...
+
+## Kwartaal Leveringsnota
+
+*Reikwijdte, mijlpalen en beëindiging — uitsluitend voor intern gebruik*
+
+### Artikel 1
+
+Naar aanleiding van het kwartaaloverleg van 3 september houdt deze nota de overeengekomen reikwijdte, de leveringsmijlpalen en de voorwaarden vast onder welke elke partij kan opzeggen. Deze nota vervangt de in juli verspreide conceptversie. Indien een bepaling in deze nota strijdig is met de raamovereenkomst, heeft de raamovereenkomst voorrang, met uitzondering van de in afdeling drie genoemde betalingsregeling, die geheel ter vervanging daarvan is bedoeld.
+
+### Artikel 2
+
+De leverancier levert de eerste levering binnen zes weken na ondertekening, en elke daaropvolgende levering in intervallen van maximaal vier weken. Een levering wordt geacht geleverd te zijn wanneer deze is geïmplementeerd in de staging-omgeving en de acceptatietests in appendix B zijn geslaagd. Levering buiten werkuren verkort het acceptatievenster niet, dat vijf werkdagen duurt te rekenen vanaf de kennisgeving van levering.
+
+### Artikel 3
+
+Facturen zijn betaalbaar binnen dertig dagen na ontvangst. De opdrachtgever mag de betaling voor een levering die niet is geaccepteerd, inhouden, maar uitsluitend voor die specifieke levering en alleen totdat het gebrek is verholpen. Rentevergoeding bij late betaling loopt tegen het wettelijk rentepercentage. Geen van beide partijen mag vorderingen uit deze nota verrekenen met vorderingen uit enige andere overeenkomst zonder schriftelijke toestemming van de andere partij.
+
+### Artikel 4
+
+Elke partij kan opzeggen met een opzegtermijn van zestig dagen schriftelijk. Bij beëindiging draagt de leverancier alle werk in uitvoering, inclusief broncode, buildconfiguratie en documentatie, over in een vorm die door een kundige derde kan worden voortgezet. De opdrachtgever betaalt voor het tot de datum van beëindiging voltooide en geaccepteerde werk.
+
+| Levering    | Te leveren | Status      |
+| ------ | --- | --- |
+| Eerste      | 6 weken  | Geleverd   |
+| Tweede      | 10 weken | In uitvoering |

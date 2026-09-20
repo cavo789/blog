@@ -14,20 +14,27 @@
  */
 
 import type { JSX, ReactNode } from "react";
-import "./styles.module.css";
+import styles from "./styles.module.css";
 
 interface Props {
   /** The label */
   label: ReactNode;
   /** Content to render inside the hero container */
   children: ReactNode;
+  /** Optional extra class for the <summary>, for a caller that needs its own label styling
+   *  (e.g. SeriesPosts's eyebrow intro line) without affecting every other Details usage. */
+  summaryClassName?: string;
 }
 
-export default function Details({ label, children }: Props): JSX.Element {
+export default function Details({
+  label,
+  children,
+  summaryClassName,
+}: Props): JSX.Element {
   return (
-    <details className={`alert alert--info`}>
-      <summary>{label}</summary>
-      <div className="content">{children}</div>
+    <details className={styles.details}>
+      <summary className={summaryClassName}>{label}</summary>
+      <div className={styles.content}>{children}</div>
     </details>
   );
 }

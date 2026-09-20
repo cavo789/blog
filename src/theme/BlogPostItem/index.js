@@ -1,4 +1,3 @@
-import AIIcon from "@site/src/components/Blog/AIIcon";
 import ArticleActions from "@site/src/components/Blog/ArticleActions";
 import PropTypes from "prop-types";
 import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
@@ -30,15 +29,14 @@ export default function BlogPostItem({ children, className }) {
   const { metadata, isBlogPostPage } = useBlogPost();
   const { frontMatter } = metadata;
   const containerClassName = useContainerClassName();
-  const aiIcon = frontMatter.ai_assisted && isBlogPostPage ? <AIIcon /> : null;
-  // Same reasoning as aiIcon: these actions only make sense for the article the
-  // reader is actually on, never for a card in a list view.
+  // These actions only make sense for the article the reader is actually on,
+  // never for a card in a list view.
   const actions = isBlogPostPage ? <ArticleActions metadata={metadata} /> : null;
 
   return (
     <>
       <BlogPostItemContainer className={clsx(containerClassName, className)}>
-        <BlogPostItemHeader aiIcon={aiIcon} actions={actions} />
+        <BlogPostItemHeader actions={actions} />
         {/* Above the content, never inside the translated Markdown file: the banner must not be
             something the translator can mangle, and the flag must be reachable before the
             reader has scrolled through prose they may not want to read. */}

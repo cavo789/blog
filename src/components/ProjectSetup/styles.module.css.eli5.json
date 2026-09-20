@@ -1,19 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:02:09.376Z",
+  "generated": "2026-09-19T13:40:45.228Z",
   "source": "styles.module.css",
-  "sourceHash": "9a9956e2a34416960d97b7c277acdbb2d70023c7",
+  "sourceHash": "d42b7196e4f3e3e1547e1f3899c3f721bddc207e",
   "lang": "css",
-  "summary": "This stylesheet defines styling for a project setup container UI component. It creates a bordered box with a styled header, scrollable content area, and various helper classes for displaying tips, errors, and button groups.",
+  "textLang": "en",
+  "summary": "This CSS file styles a ProjectSetup component that reuses visual patterns from other parts of the design system. It defines the layout for a container with a toolbar header, content area with a scrollable script section, and action buttons that start subtle but highlight in the primary color on interaction.",
   "explanations": {
-    "2": "Uses a CSS variable for the border color, which gets its value from the design system's emphasis color palette.",
-    "5": "Hides any content that extends beyond the container's edges, preventing it from spilling out.",
-    "10": "Applies a light background color using a design system variable to visually distinguish the header from the content below.",
-    "11": "Enables flexbox layout, which allows the header to arrange its children in a row.",
-    "12": "Spreads child elements to opposite ends of the header (typically a title on the left and action buttons on the right).",
-    "21": "Limits the script container to 400 pixels tall and creates a scrollbar if the content is longer.",
-    "22": "When content exceeds the max-height, this enables scrolling within just that container instead of the whole page.",
-    "30": "Colors the error text using the design system's danger color (typically red) to signal a problem."
+    "8": "The 'composes' keyword pulls in all the styles from the 'mk-surface' global class, so this element inherits that base styling without repeating the code.",
+    "14": "Similarly, this composes the 'mk-toolbar' global class to get the header's foundational styles.",
+    "18": "The 'composes' keyword here brings in 'mk-eyebrow' styles for the title text — it's a way to reuse design tokens across components.",
+    "26": "Setting max-height to 400px makes the script area scrollable if its content gets too tall, preventing it from dominating the page.",
+    "37": "The 'var(--mk-danger-line)' is a CSS custom property (variable) that stores the danger color defined elsewhere in the design system.",
+    "41": "Again using 'composes' to inherit the 'mk-toolbar__actions' styles, which likely provides spacing and alignment for a group of buttons.",
+    "48": "This sets the buttons to use the monospace font family from the design system, which is typical for code or technical interfaces.",
+    "51": "The buttons use a soft ink color by default, making them less prominent until you interact with them.",
+    "63": "On hover, the background changes to a subtle overlay color (likely a semi-transparent layer) and the text shifts to the primary brand color."
   }
 }

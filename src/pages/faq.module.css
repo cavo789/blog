@@ -22,7 +22,7 @@
 .marginImage {
   width: 550px;
   flex-shrink: 0;
-  border-radius: 8px;
+  border-radius: var(--mk-radius-md);
   display: none;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .subtitle {
-  color: var(--ifm-color-content-secondary);
+  color: var(--mk-ink-soft);
   font-size: 0.9rem;
 }
 
@@ -69,8 +69,8 @@
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: 6px;
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-sm);
 }
 
 .tocCount {
@@ -81,6 +81,5 @@
 
 .empty {
   margin-top: 2rem;
-  color: var(--ifm-color-emphasis-600);
-  font-style: italic;
+  color: var(--mk-ink-soft);
 }

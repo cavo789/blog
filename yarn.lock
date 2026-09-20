@@ -3222,6 +3222,11 @@
     "@eslint/core" "^0.17.0"
     levn "^0.4.1"
 
+"@formkit/auto-animate@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@formkit/auto-animate/-/auto-animate-0.10.0.tgz#0eadd565f50e54e5dc6f29c41b32d32b53661eab"
+  integrity sha512-KGomRttjUfORuPUaR/ZGQw+6xfMrTM+sxnILv7JAd9AmabU9rg9i6gF/iC0Ih+QpKCubJpCA/1DX9UHKE8cX+A==
+
 "@hapi/hoek@^9.0.0", "@hapi/hoek@^9.3.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"

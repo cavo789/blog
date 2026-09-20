@@ -1,15 +1,26 @@
+/*
+ * ConnectionInfo — the last component still wearing Infima's card classes.
+ *
+ * The two !important declarations are gone with them: they existed only to
+ * out-rank "card" / "shadow--md", which index.tsx no longer applies. Same rail,
+ * same radius and same elevation as StepsCard and Prerequisite, which are the
+ * same kind of object (a short procedural aside).
+ */
+
 .wrapper {
   margin: 1.5rem 0;
-  background-color: var(--ifm-background-surface-color) !important;
-  border-left: 3px solid var(--ifm-color-primary) !important;
-  border-radius: var(--ifm-card-border-radius, 12px);
+  padding: 1.125rem 1.375rem;
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-left: var(--mk-rail) solid var(--mk-primary);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  box-shadow: var(--mk-shadow-1);
 }
 
 .title {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--ifm-heading-color);
+  composes: mk-eyebrow from global;
+  margin: 0 0 0.875rem;
+  color: var(--mk-primary);
 }
 
 .grid {
@@ -22,7 +33,8 @@
 
 .label {
   font-weight: 600;
-  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  color: var(--mk-ink-soft);
   white-space: nowrap;
 }
 

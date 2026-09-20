@@ -30,7 +30,7 @@
 
 .count {
   font-size: 0.8rem;
-  color: var(--ifm-color-content-secondary);
+  color: var(--mk-ink-soft);
 }
 
 .feedLink {
@@ -53,7 +53,23 @@
 .otherLocaleIntro {
   margin: 0 0 0.5rem;
   font-size: 0.85rem;
+  color: var(--mk-ink-soft);
+}
 
-  /* Not --ifm-color-content-secondary: it resolves to pure white in dark mode. */
-  color: var(--ifm-color-emphasis-700);
+/* ===========================
+   SECTION HEADINGS
+   =========================== */
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Decorative meerkat mascot next to a heading — purely illustrative, so its
+   img carries alt="" and the heading text alone still conveys the meaning. */
+.sectionHeadingIcon {
+  height: 1.8rem;
+  width: auto;
+  flex-shrink: 0;
 }

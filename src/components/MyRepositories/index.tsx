@@ -19,9 +19,9 @@
  */
 
 import type { JSX } from "react";
+import clsx from "clsx";
 import Translate from "@docusaurus/Translate";
 import GithubProjects from "@site/src/components/GithubProjects";
-import Hero from "@site/src/components/Hero";
 
 import styles from "./styles.module.css";
 
@@ -33,7 +33,10 @@ interface Props {
 export default function MyRepositories({ username }: Props): JSX.Element {
   return (
     <main className={styles.main}>
-      <Hero>
+      {/* Plain heading, no gradient banner — the Hero component (Infima hero--primary) was
+          used only here, the one page on the site with a colored banner. Every other listing
+          page (/blog, /series, /faq) uses a plain <h1> + description. */}
+      <div className={clsx("container", styles.pageHeader)}>
         <h1>
           <Translate id="myRepositories.title">My GitHub Projects</Translate>
         </h1>
@@ -47,7 +50,7 @@ export default function MyRepositories({ username }: Props): JSX.Element {
             Feel free to grab the code and reuse it in your project if it can help.
           </Translate>
         </p>
-      </Hero>
+      </div>
       <GithubProjects username={username} />
     </main>
   );

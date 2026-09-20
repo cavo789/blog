@@ -525,7 +525,7 @@ const config = {
       tagName: "meta",
       attributes: {
         name: "theme-color",
-        content: "#2e8555",
+        content: "#9b5a31",
       },
     },
     {
@@ -599,7 +599,7 @@ const config = {
       tagName: "link",
       attributes: {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap",
       },
     },
     {
@@ -660,6 +660,11 @@ const config = {
     ({
       // Replace with your project's social card
       image: "img/social-card.jpg",
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
+      },
       mermaid: {
         theme: { light: "neutral", dark: "dark" },
       },
@@ -679,36 +684,45 @@ const config = {
           height: 40,
         },
         items: [
+          // `to` rather than `href`: Docusaurus only marks an item active
+          // (.navbar__link--active) when it is declared with `to`.
+          //
+          // activeBaseRegex on Blog: the default match is a PREFIX match, so
+          // /blog would also light up on /blog/tags and /blog/archive — three
+          // entries active at once. This pins Blog to the listing, its pages
+          // and individual posts, while excluding the two sub-sections that
+          // have their own entry.
           {
-            href: "/blog",
+            to: "/blog",
             label: "Blog",
+            activeBaseRegex: "^/(fr/)?blog/(?!tags|archive)|^/(fr/)?blog/?$",
           },
           {
-            href: "/series",
+            to: "/series",
             label: "Series",
           },
           {
-            href: "/blog/tags",
+            to: "/blog/tags",
             label: "Tags",
           },
           {
-            href: "/map",
+            to: "/map",
             label: "Map",
           },
           {
-            href: "/faq",
+            to: "/faq",
             label: "FAQ",
           },
           {
-            href: "/repositories",
+            to: "/repositories",
             label: "Repositories",
           },
           {
-            href: "/blog/archive",
+            to: "/blog/archive",
             label: "Archive",
           },
           {
-            href: "/about",
+            to: "/about",
             label: "About me",
           },
           {
@@ -745,8 +759,13 @@ const config = {
         copyright: `<span class="footer-cmdk-hint">Press ⌘K to search · ? for shortcuts · <a href="/follow">follow by RSS</a></span><br />Copyright © {year} Christophe Avonture. Powered by Docusaurus.`,
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        // Both modes use a DARK token palette, because code is a dark surface
+        // everywhere on this site (Terminal, Snippet, ELI5) regardless of the
+        // site theme. prism-react-renderer applies token colours as inline
+        // styles, so this cannot be fixed from CSS — it has to be the theme.
+        // vsDark over dracula: dracula's purples fight the terracotta palette.
+        theme: prismThemes.vsDark,
+        darkTheme: prismThemes.vsDark,
         defaultLanguage: "php",
         // Every language `remark-snippet-loader`'s `extensionToLang` map (or
         // Snippet's own `mapLangToVariant` fallback) can hand to a `<Snippet>`

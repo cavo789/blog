@@ -117,7 +117,7 @@ function selectNonOverlappingLabels(
 function readThemeColors(): { edge: string; label: string } {
   const style = getComputedStyle(document.documentElement);
   return {
-    edge: style.getPropertyValue("--ifm-color-emphasis-500").trim() || "#999999",
+    edge: style.getPropertyValue("--ifm-color-emphasis-500").trim() || "#a2917a",
     label: style.getPropertyValue("--ifm-font-color-base").trim() || "#1c1e21",
   };
 }

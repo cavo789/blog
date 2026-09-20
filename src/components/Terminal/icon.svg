@@ -1,6 +1,4 @@
 <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Terminal Prompt">
-  <rect x="0" y="0" width="64" height="64" rx="8" ry="8" fill="#2d2d2d"/>
-  <text x="32" y="40" text-anchor="middle" font-family="Fira Code, monospace" font-size="32" fill="#00ff00" dominant-baseline="middle">
-    &gt;
-  </text>
+  <rect x="0" y="0" width="64" height="64" rx="10" ry="10" fill="#322a20" />
+  <text x="32" y="40" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, monospace" font-size="32" fill="#93b764" dominant-baseline="middle">&gt;</text>
 </svg>

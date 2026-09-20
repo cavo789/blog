@@ -1,10 +1,12 @@
 /* Coverage notice on the French homepage and blog listing. Informative, not a warning: it tells
    the reader how much of the blog they are seeing, and where the rest of it is.
 
-   It is built to read as one of the page's cards, not as a banner interrupting them — same
-   surface, border, radius and shadow as HomeCards' .cardItem. */
+   It is built to read as one of the page's cards, not as a banner interrupting them — it now
+   composes the same primitives as HomeCards' .cardItem instead of re-declaring the surface,
+   so "same as the cards" is enforced rather than maintained by hand. */
 
 .coverage {
+  composes: mk-surface from global;
   display: flex;
   align-items: center;
   gap: 1.25rem;
@@ -13,10 +15,6 @@
   max-width: 1100px;
   margin: 0 auto var(--ifm-spacing-vertical, 1rem);
   padding: 1.15rem 1.4rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--ifm-border-radius, 0.4rem);
-  background-color: var(--ifm-card-background-color);
-  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.05);
 }
 
 .listing {
@@ -29,7 +27,7 @@
   flex: 0 0 auto;
   width: 2.25rem;
   height: 2.25rem;
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
 }
 
 .body {
@@ -39,6 +37,7 @@
 
 .title {
   margin: 0 0 0.45rem;
+  font-family: var(--mk-font-display);
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.2;
@@ -48,7 +47,7 @@
   height: 5px;
   margin-bottom: 0.55rem;
   border-radius: 999px;
-  background-color: var(--ifm-color-emphasis-200);
+  background-color: var(--mk-n-200);
   overflow: hidden;
 }
 
@@ -61,21 +60,24 @@
   min-width: 6px;
   height: 100%;
   border-radius: inherit;
-  background-color: var(--ifm-color-primary);
+  background-color: var(--mk-primary);
 }
 
 .text {
   margin: 0;
-  /* NOT --ifm-color-content-secondary: Infima defines it as pure white in dark mode, which kills
-     the contrast against the card surface. */
-  color: var(--ifm-color-emphasis-700);
+  /* This used to say "NOT --ifm-color-content-secondary: Infima defines it as pure white in
+     dark mode". That trap is disarmed — the harmonisation remaps it — but naming the token you
+     want beats relying on a remap of one you do not. This is the THIRD file in the repo that
+     had hand-written the same workaround. */
+  color: var(--mk-ink-soft);
   font-size: 0.92rem;
   line-height: 1.5;
 }
 
 .count {
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
 .cta {

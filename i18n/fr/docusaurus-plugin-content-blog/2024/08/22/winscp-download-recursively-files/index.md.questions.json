@@ -1,50 +1,50 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-18T00:12:11.069Z",
-  "durationMs": 123525,
+  "generated": "2026-09-20T16:49:27.459Z",
+  "durationMs": 111947,
   "source": "index.md",
   "locale": "fr",
-  "sourceHash": "a28f0305bb35f8daf4b6b23c8535ae31046af0e1",
+  "sourceHash": "ed5f00180174d36232827f8ece5c2adb8ec6aeaf",
   "questions": [
     {
-      "question": "comment télécharger uniquement les fichiers .php d'un serveur FTP en local",
+      "question": "télécharger récursivement fichiers .php serveur FTP WinSCP",
       "anchor": ""
     },
     {
-      "question": "Script WinSCP pour récupérer récursivement une extension de fichier précise",
+      "question": "Script WinSCP pour récupérer automatiquement une extension précise sur SFTP",
       "anchor": ""
     },
     {
-      "question": "automatiser le téléchargement sélectif de fichiers depuis un host SFTP",
+      "question": "Automatiser le téléchargement de fichiers par type d'extension via WinSCP",
       "anchor": ""
     },
     {
-      "question": "structure du script WinSCP pour filtrer par extension",
+      "question": "Quelle est la syntaxe du script WinSCP pour filtrer par extension lors d'un téléchargement récursif ?",
       "anchor": "the-script"
     },
     {
-      "question": "comment est écrit le script de téléchargement récursif dans WinSCP ?",
+      "question": "Exemple de code WinSCP pour télécharger uniquement les fichiers .php d'un dossier distant",
       "anchor": "the-script"
     },
     {
-      "question": "quels paramètres modifier dans le script WinSCP pour le chemin local et distant",
+      "question": "Comment structurer un script WinSCP qui cible une extension spécifique ?",
       "anchor": "the-script"
     },
     {
-      "question": "lancer le script WinSCP depuis une session DOS",
+      "question": "exécuter script WinSCP depuis invite de commandes DOS",
       "anchor": "how-to-use"
     },
     {
-      "question": "configurer les identifiants FTP dans le script WinSCP",
+      "question": "Modifier les variables du script WinSCP : chemin local, identifiants et extension cible",
       "anchor": "how-to-use"
     },
     {
-      "question": "exécuter le script de téléchargement WinSCP en ligne de commande",
+      "question": "Lancer winscp.com en ligne de commande pour télécharger des fichiers récursivement",
       "anchor": "how-to-use"
     },
     {
-      "question": "modifier le script WinSCP pour changer l'extension et le dossier distant",
+      "question": "Configuration du script WinSCP : quels paramètres modifier pour FTP ou SFTP ?",
       "anchor": "how-to-use"
     }
   ]

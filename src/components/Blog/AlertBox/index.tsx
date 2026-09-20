@@ -57,8 +57,13 @@ interface Props {
 }
 
 /**
- * AlertBox component displays a styled alert message with an icon and title.
- * It supports multiple variants such as info, note, tip, caution, and important.
+ * AlertBox displays a styled alert with an icon and a title.
+ *
+ * Markup change from the previous version (design harmonisation): the icon is
+ * no longer a bare <svg> floated next to an <h4>. It sits in a filled .mk-dot —
+ * the same 26px disc used by StepsCard's step bullets and Updated's timeline
+ * nodes — and the title is an eyebrow label rather than a heading. Structure is
+ * otherwise unchanged, so no MDX file needs editing.
  *
  * @example
  * <AlertBox variant="tip" title="Helpful Tip">
@@ -74,11 +79,13 @@ export default function AlertBox({
 
   return (
     <div className={clsx(styles.alertBox, styles[variant])} role="note">
-      <div className={styles.header}>
-        <Icon className={styles.icon} aria-hidden="true" />
-        <h4>{title || label}</h4>
+      <span className={styles.icon} aria-hidden="true">
+        <Icon />
+      </span>
+      <div className={styles.body}>
+        <p className={styles.title}>{title || label}</p>
+        <div className={styles.content}>{children}</div>
       </div>
-      <div className={styles.content}>{children}</div>
     </div>
   );
 }

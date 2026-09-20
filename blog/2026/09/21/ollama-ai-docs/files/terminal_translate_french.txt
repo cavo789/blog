@@ -1,0 +1,28 @@
+$ ai-translate contract.docx French
+
+→ Converting 'contract.docx' with docling-convert...
+
+## Note de livraison trimestrielle
+
+*Périmètre, jalons et résiliation — diffusion interne uniquement*
+
+### Article 1
+
+À la suite de la revue trimestrielle tenue le 3 septembre, la présente note consacre le périmètre convenu, les jalons de livraison ainsi que les conditions de résiliation applicables à l'une ou l'autre des parties. Elle se substitue au projet diffusé en juillet. En cas de conflit entre une disposition des présentes et l'accord-cadre, c'est l'accord-cadre qui prévaut, sauf pour l'échéancier de paiement défini à l'article trois, qui est conçu pour le remplacer intégralement.
+
+### Article 2
+
+Le prestataire livrera la première tranche dans un délai de six semaines à compter de la signature, et chaque tranche subséquente à des intervalles n'excédant pas quatre semaines. Une tranche est réputée livrée dès qu'elle a été déployée dans l'environnement de staging et que les tests de réception consignés dans l'annexe B ont été validés. La livraison hors heures ouvrables ne réduit pas le délai de vérification, qui court pendant cinq jours ouvrables à compter de l'avis de livraison.
+
+### Article 3
+
+Les factures sont payables trente jours après réception. Le client peut retenir le paiement d'une tranche ayant échoué aux tests de réception, mais uniquement pour cette tranche et seulement jusqu'à la régularisation du défaut. Les intérêts de retard courent au taux légal. Aucune des parties ne peut compenser les sommes dues au titre des présentes avec celles dues au titre de tout autre accord sans le consentement écrit de l'autre partie.
+
+### Article 4
+
+Toute partie peut résilier le contrat sur préavis écrit de soixante jours. En cas de résiliation, le prestataire devra remettre tout avancement, y compris le code source, la configuration de build et la documentation, sous une forme permettant à un tiers compétent de poursuivre le travail. Le client devra payer les travaux achevés et acceptés jusqu'à la date de résiliation.
+
+| Tranche   | Échéance   | Statut      |
+| ------ | --- | --- |
+| Première  | 6 semaines | Livrée      |
+| Deuxième  | 10 semaines| En cours    |

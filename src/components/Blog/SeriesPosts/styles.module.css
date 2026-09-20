@@ -1,66 +1,93 @@
+/*
+ * The "this post is part of a series" box.
+ *
+ * NO BACKGROUND TINT. That was tried and removed on review, and the reason is
+ * worth keeping: the page ground is already cream (--mk-bg #fffdf7) and the
+ * "key" tone is cream too (--mk-key-bg #faf0de). A tinted block on a tinted
+ * page reads as a washed-out rectangle rather than as a distinct object — it
+ * costs a lot of visual weight to say very little. The rail alone says
+ * "this is an aside" perfectly well, and it is the same rail as the article's
+ * own h2, so the box sits in the page's existing grid of left marks instead of
+ * interrupting it.
+ *
+ * Keep this in mind for any future aside: on this site, tint is for callouts
+ * that carry a WARNING or a KEY IDEA. A navigation aid gets a rail and nothing
+ * more (see QuickJump, which made the same call).
+ */
 .seriesBlogPost {
-  background-color: var(--ifm-color-secondary-lightest);
-  border-left: 4px solid var(--ifm-color-primary);
-  padding: 1.5rem;
+  color: var(--mk-ink);
+  border-left: var(--mk-rail) solid var(--mk-primary);
+  padding: 0.25rem 0 0.25rem 1.25rem;
   margin-bottom: 2rem;
-  border-radius: 4px;
-  color: var(--ifm-font-color-base);
-  transition: background-color 200ms ease-in-out, color 200ms ease-in-out, border-color 200ms ease-in-out;
 }
 
-.seriesBlogPost p {
-  font-weight: bold;
-  font-style: italic;
-  font-size: 1.1rem;
-  margin-bottom: 1rem;
+/* Applied to Details's <summary> via its summaryClassName prop — not a
+   ".seriesBlogPost p" descendant selector, which composes can't use (single
+   local class only) and which never matched anyway: the intro text renders
+   inside <summary>, not a <p>, so the pre-harmonisation bold/italic/1.1rem
+   rule here was dead CSS. */
+.seriesIntro {
+  composes: mk-eyebrow from global;
+  cursor: pointer;
+}
+
+.seriesIntro:hover {
+  color: var(--mk-primary);
 }
 
 .seriesBlogPost ul {
   list-style-type: none;
   padding-left: 0;
   counter-reset: post-counter;
-  margin-bottom: 0;
+  margin: 0.625rem 0 0;
 }
 
 .seriesBlogPost li {
   counter-increment: post-counter;
   display: flex;
-  align-items: center;
+  align-items: baseline;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .seriesBlogPost li:not(:last-child) {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .seriesBlogPost li::before {
   content: counter(post-counter);
   margin-right: 0.75rem;
-  font-weight: bold;
-  color: var(--ifm-color-content-secondary);
-  font-size: 1.1rem;
+  min-width: 1.1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--mk-primary);
+  font-variant-numeric: tabular-nums;
 }
 
 .seriesBlogPost li a,
 .seriesBlogPost li span {
   text-decoration: none;
-  color: var(--ifm-font-color-base);
+  color: inherit;
 }
 
 .seriesBlogPost li a:hover {
   text-decoration: underline;
-  color: var(--ifm-color-primary);
+  text-underline-offset: 2px;
+  color: var(--mk-primary);
 }
 
 .currentPost {
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--mk-primary);
 }
 
 .currentPostDimmed {
   opacity: 0.6;
 }
 
-/* Dark Mode Override using Docusaurus data-attribute */
-:global(html[data-theme='dark']) .seriesBlogPost {
-  background-color: var(--ifm-background-surface-color);
-  border-left-color: var(--ifm-color-primary);
-}
+/*
+ * No dark-mode block: every value above is a token that flips on its own.
+ * (The pre-harmonisation override pointed at --ifm-background-surface-color,
+ * the CARD colour, which made this box indistinguishable from the article
+ * around it in dark mode.)
+ */

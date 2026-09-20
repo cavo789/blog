@@ -1,0 +1,64 @@
+.mainWithSidebar {
+  /* Overrides Infima's `.col--7` (`flex: 0 0 58.33%`), so it must win the specificity tie. */
+  flex: 1 1 0 !important;
+  max-width: none !important;
+}
+
+/*
+ * A dedicated left column, not an absolutely-positioned overlay: `align-items: stretch` (the flex
+ * default) makes `.expandGutter` exactly as tall as the article in `.mainContent`, which is what
+ * lets the button inside it be `position: sticky` for the article's whole length. An overlay
+ * confined to one fixed spot can't do that — sticky needs a containing block that actually spans
+ * the scrollable range. The gutter is empty space the article text never occupies, so a floating
+ * button in it — whether stuck mid-scroll or not — never overlaps a word.
+ */
+@media (min-width: 997px) {
+  .mainWithGutter {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .expandGutter {
+    flex: 0 0 2.5rem;
+  }
+
+  .mainContent {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+}
+
+/* The blog sidebar never renders below this breakpoint at all (its own Desktop component isn't
+   even mounted — a separate Mobile variant takes over) — a button to bring back something that
+   was never shown here has nothing to do. Below it, the gutter/content split above doesn't apply
+   either, so children render as a plain stack — same as when the sidebar isn't hidden. */
+.expandGutter {
+  display: none;
+}
+
+@media (min-width: 997px) {
+  .expandGutter {
+    display: block;
+  }
+
+  .expandButton {
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + 0.75rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--ifm-button-border-radius);
+    background: transparent;
+    color: var(--ifm-color-emphasis-600);
+    cursor: pointer;
+  }
+
+  .expandButton:hover,
+  .expandButton:focus-visible {
+    background: var(--ifm-color-emphasis-200);
+  }
+}

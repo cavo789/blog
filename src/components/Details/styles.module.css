@@ -1,39 +1,60 @@
-details {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  padding: 10px;
-  border-radius: 5px;
-  background-color: var(--ifm-color-emphasis-100);
-  margin-bottom: 0.5rem;
+/*
+ * Details — was styling the bare `details`/`summary` elements globally from a
+ * CSS module, so it leaked onto every <details> in the site, including
+ * Docusaurus's own. Scoped to the component's own class here.
+ *
+ * Also removed: max-height: 200px on the open state, which silently clipped
+ * any content taller than that.
+ */
+
+.details {
+  margin-bottom: 0.75rem;
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
 }
 
-summary {
-  font-weight: bold;
+.details summary {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  padding: 5px;
   list-style: none;
 }
 
-summary::-webkit-details-marker {
+.details summary::-webkit-details-marker {
   display: none;
 }
 
-summary::before {
-  content: "▶";
+.details summary::before {
   display: inline-block;
-  margin-right: 8px;
-  transition: transform 0.3s ease;
+  font-size: 0.75rem;
+  color: var(--mk-primary);
+  content: "▶";
+  transition: transform 0.25s ease;
 }
 
-details[open] summary::before {
+.details[open] summary::before {
   transform: rotate(90deg);
 }
 
-.content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
+.details summary:focus-visible {
+  outline: 2px solid var(--mk-primary);
+  outline-offset: -2px;
+  border-radius: var(--mk-radius-md);
 }
 
-details[open] .content {
-  max-height: 200px;
+.content {
+  padding: 0 1rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details summary::before {
+    transition: none;
+  }
 }

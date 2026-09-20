@@ -1,0 +1,23 @@
+/*
+ * No outer margin: this sits inside Blog/ArticleActions, which owns the row's
+ * spacing.
+ *
+ * Deliberately identical to CopyAsMarkdown's .copyBtn — same action-bar family,
+ * "take this article with you" — so the row reads as one set of buttons rather
+ * than several styles bolted together.
+ */
+.shareBtn {
+  padding: 5px 12px;
+  font-family: inherit;
+  background: transparent;
+  color: var(--mk-ink-soft);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.shareBtn:hover {
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
+}

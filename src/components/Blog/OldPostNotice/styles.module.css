@@ -1,29 +1,40 @@
+/*
+ * OldPostNotice — was using Infima's warning/success contrast pairs, a fifth
+ * colour system in the site. Both notices are callouts now, so a reader meets
+ * the same object whether the message comes from an article's author or from
+ * the site itself.
+ *
+ * index.tsx no longer adds "alert alert--warning" / "alert alert--success" on
+ * top of these classes: Infima's .alert sets its own background, full border
+ * and text colour, so the two systems were stacking and neither won cleanly.
+ */
+
 .oldPostNotice {
-  background-color: var(--ifm-color-warning-contrast-background);
-  color: var(--ifm-color-warning-contrast-foreground);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--ifm-color-warning-dark);
-  margin-bottom: 1.5rem;
-}
-
-.oldPostNotice p {
-  margin: 0;
-}
-
-.oldPostNotice strong {
-  margin-right: 0.25rem;
+  composes: mk-callout from global;
+  composes: mk-callout--warn from global;
+  margin: 0 0 1.5rem;
 }
 
 .reviewedPostNotice {
-  background-color: var(--ifm-color-success-contrast-background);
-  color: var(--ifm-color-success-contrast-foreground);
-  padding: 1rem;
-  border-radius: 6px;
-  border: 1px solid var(--ifm-color-success-dark);
-  margin-bottom: 1.5rem;
+  composes: mk-callout from global;
+  composes: mk-callout--tip from global;
+  margin: 0 0 1.5rem;
 }
 
-.reviewedPostNotice p {
+.icon {
+  composes: mk-dot from global;
+}
+
+.body {
+  min-width: 0;
   margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* The date inside the "reviewed" notice. The old rule added a right margin to
+ * every <strong>, which also indented the last word of a sentence ending on
+ * one — the flex row and the sentence's own spaces handle this. */
+.body strong {
+  font-weight: 600;
 }

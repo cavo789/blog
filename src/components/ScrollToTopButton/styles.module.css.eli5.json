@@ -1,21 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:54:34.289Z",
+  "generated": "2026-09-19T14:22:51.918Z",
   "source": "styles.module.css",
-  "sourceHash": "bdad0870335dd125dec30e1a819cf9f13e1938f9",
+  "sourceHash": "394d129dcc6727ef4d521571569051c4223aeb59",
   "lang": "css",
-  "summary": "This CSS defines a scroll-to-top button that's hidden by default, appears when the user scrolls down, and animates smoothly when clicked. The button scales up slightly on hover and flies upward with a shrinking effect when activated, with responsive sizing for mobile devices.",
+  "textLang": "en",
+  "summary": "This defines a scroll-to-top button that's hidden by default and appears when the user scrolls down. The button has a cute animation where it flies up and shrinks when clicked, but that animation is disabled for users who prefer less motion. On mobile devices, the button is made smaller and positioned closer to the corner.",
   "explanations": {
     "2": "position: fixed means the button stays in the same spot on screen even when you scroll, rather than moving with the page content.",
-    "8": "opacity: 0 makes the button completely transparent (invisible) from the start.",
-    "9": "visibility: hidden hides the button entirely so it doesn't take up space or respond to clicks, even though it's technically there.",
-    "10": "The transition lines tell the browser to smoothly animate changes to opacity and visibility over 0.4 seconds instead of switching instantly.",
-    "13": "z-index: 1000 stacks this button on top of almost everything else on the page so it's always clickable.",
-    "22": "object-fit: contain makes the image inside the button scale proportionally to fit without getting squished or cut off.",
-    "33": "When JavaScript adds the 'show' class to the button, these rules make it fade in and become clickable.",
-    "40": "This applies the flyUp animation to the image inside the button when the 'fly' class is added, making it play once over 0.8 seconds.",
-    "45": "translateY(0) means the image starts at its normal vertical position, and scale(1) means it's at full size.",
-    "49": "translateY(-300px) moves the image up 300 pixels, and scale(0.6) shrinks it to 60% of its original size during the animation."
+    "8": "opacity: 0 makes the button completely invisible (but still takes up space and can be interacted with).",
+    "9": "visibility: hidden also hides the button and prevents it from being clickable, giving us a second way to hide it.",
+    "10": "transition lists which CSS properties will smoothly animate when they change, and how long each animation takes.",
+    "13": "z-index: 1000 ensures this button appears on top of almost everything else on the page.",
+    "24": "var(--mk-shadow-3) is a custom variable — a reusable value defined elsewhere in your CSS that applies a shadow effect here.",
+    "33": "The .show class gets added by JavaScript when scrolling occurs, which overrides the hidden state and makes the button visible.",
+    "40": "animation applies a named animation sequence (defined below) that lasts 0.8 seconds and plays only once with forwards, meaning it stays at its final state.",
+    "57": "prefers-reduced-motion is a user accessibility setting; this media query detects when someone has asked their device to minimize animations.",
+    "59": "animation: none disables the flying animation for users who prefer reduced motion, giving them a simple instant scroll instead.",
+    "69": "This media query applies different styles when the screen width is 600px or smaller, typically for mobile phones."
   }
 }

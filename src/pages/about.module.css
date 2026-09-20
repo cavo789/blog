@@ -21,11 +21,16 @@
 }
 
 [data-theme="dark"] .profileHero {
-  /* Bespoke darker stops (not the dark-theme primary tokens) for a richer,
-     lower-key hero gradient in dark mode. Legitimate color-no-hex exception,
-     see AGENTS.md and .todos/039-hardcoded-hex-colors-no-token-system.md. */
+  /* Bespoke darker stops (not the dark-theme primary tokens, which are tuned
+     bright for small accents on a dark page and would wash out the badges
+     and white text over this large a fill) for a richer, lower-key hero
+     gradient in dark mode. Same terracotta hue (H23°) as the light-mode
+     ramp, just pushed dark instead of the green that used to live here.
+     Verified >= 5:1 white-text contrast at every stop. Legitimate
+     color-no-hex exception, see AGENTS.md and
+     .todos/039-hardcoded-hex-colors-no-token-system.md. */
   /* stylelint-disable-next-line color-no-hex */
-  background: linear-gradient(135deg, #0f2d1e 0%, #1a5c44 55%, #1fa588 100%);
+  background: linear-gradient(135deg, #2b1c12 0%, #6b3a1a 55%, #a85a26 100%);
 }
 
 .profileHeroInner {
@@ -109,6 +114,24 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+/* ===========================
+   PAGE CONTENT (shared width)
+   =========================== */
+
+/*
+ * Everything below the hero — bio, Achievements, Major Projects, At a Glance,
+ * Find Me Online — shares this width instead of each section picking its
+ * own. Before this, the bio sat in an 820px column while the grids stretched
+ * to the full page container (100% on wide screens): a jarring narrow-to-huge
+ * jump. Capping the whole block at 960px keeps the grids at a sane card width
+ * and turns the bio's own 820px into a modest, intentional-looking indent
+ * rather than an unrelated column.
+ */
+.pageContent {
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 /* ===========================
@@ -260,11 +283,22 @@
    =========================== */
 
 .sectionHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 1.5rem;
   font-weight: 700;
   padding: 0.15rem 0 0.15rem 1rem;
   border-left: 4px solid var(--ifm-color-primary);
   margin: 3rem 0 1.5rem;
+}
+
+/* Decorative meerkat mascot next to a heading — purely illustrative, so its
+   img carries alt="" and the heading text alone still conveys the meaning. */
+.sectionHeadingIcon {
+  height: 2.4rem;
+  width: auto;
+  flex-shrink: 0;
 }
 
 /* ===========================

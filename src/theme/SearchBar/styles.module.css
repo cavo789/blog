@@ -6,10 +6,10 @@
   padding: 0.5rem 0.85rem;
   color: var(--ifm-color-emphasis-800);
   cursor: pointer;
-  background: var(--ifm-background-surface-color);
-  border: 2px solid var(--ifm-color-primary);
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border-strong);
   border-radius: 999px;
-  box-shadow: 0 1px 4px rgb(0, 0, 0, 0.08);
+  box-shadow: none;
   transition:
     border-color 0.15s ease,
     box-shadow 0.15s ease,
@@ -17,8 +17,8 @@
 }
 
 .button:hover {
-  border-color: var(--ifm-color-primary-dark);
-  box-shadow: 0 4px 12px rgb(0, 0, 0, 0.15);
+  border-color: var(--mk-primary);
+  box-shadow: var(--mk-shadow-1);
   transform: translateY(-1px);
 }
 

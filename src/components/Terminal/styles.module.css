@@ -1,149 +1,158 @@
 /*
- * This component simulates a real terminal window (dark background, macOS
- * traffic-light controls, classic green prompt/cursor) — it's intentionally
- * theme-independent, same rationale as the ELI5 code block in Snippet. Legitimate
- * color-no-hex exception, see AGENTS.md and
- * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ * Terminal — stays a real terminal: dark in both themes, macOS traffic lights,
+ * prompt and cursor. That is deliberate and unchanged.
+ *
+ * What changed:
+ *   - Three hardcoded "Fira Code" declarations and one bare `monospace` →
+ *     var(--ifm-font-family-monospace). Changing the site's code face is now
+ *     one line, not five.
+ *   - #1e1e1e / #2d2d2d (neutral grey-black) → the warm --mk-term-* shell, so
+ *     the terminal belongs to the same world as the rest of the page.
+ *   - #00ff00 for the prompt and cursor → --mk-term-prompt, the savanna green.
+ *     Pure green on near-black is the single harshest colour pair on the site
+ *     and it appeared in every article.
+ *   - The macOS dots keep their meaning but are desaturated to the palette.
+ *   - The header title is an eyebrow, matching Snippet's toolbar exactly.
+ *
+ * Every colour below is a token: no stylelint-disable needed any more.
  */
-/* stylelint-disable color-no-hex */
 
-/* Terminal container */
 .terminal {
-  background: #1e1e1e; /* terminal background */
-  color: #d4d4d4; /* default text color */
-  border-radius: 6px;
-  font-family: "Fira Code", monospace;
-  overflow-x: auto; /* fallback for extremely long lines */
-  margin-bottom: 1rem;
-  position: relative; /* Essential for absolute positioning of the button */
+  position: relative;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--mk-code-fg);
+  background: var(--mk-term-bg);
+  border: 1px solid var(--mk-term-border);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-1);
 }
 
-/* Terminal header */
 .terminal_header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 0.6rem;
-  background-color: #2d2d2d; /* slightly darker header */
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  justify-content: space-between;
+  padding: 0.5rem 0.875rem;
+  background: var(--mk-term-head);
+  border-bottom: 1px solid var(--mk-term-border);
+  border-radius: var(--mk-radius-md) var(--mk-radius-md) 0 0;
 }
 
-/* Left part: icon + title */
 .terminal_left {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
-  white-space: nowrap; /* keep icon + title on same line */
-  overflow: hidden; /* truncate if too long */
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .terminal_icon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
+  color: var(--mk-n-500);
 }
 
 .terminal_title {
-  font-family: monospace;
-  font-size: 0.9rem;
-  color: #d4d4d4;
+  composes: mk-eyebrow from global;
   overflow: hidden;
+  color: var(--mk-n-500);
   text-overflow: ellipsis;
 }
 
-/* Right part: red/yellow/green control dots */
 .terminal_controls {
   display: flex;
-  gap: 4px;
+  gap: 5px;
 }
 
 .dot {
-  height: 10px;
-  width: 10px;
-  border-radius: 50%;
   display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
 }
 
 .red {
-  background: #ff5f56;
+  background: var(--mk-term-dot-red);
 }
+
 .yellow {
-  background: #ffbd2e;
+  background: var(--mk-term-dot-amber);
 }
+
 .green {
-  background: #27c93f;
+  background: var(--mk-term-dot-green);
 }
 
-/* Terminal body */
 .terminal_body {
+  position: relative;
   margin: 0;
-  padding: 0.75rem 1rem;
-  white-space: pre-wrap; /* wrap long lines */
-  word-break: break-all; /* wrap long words or paths */
-  font-family: "Fira Code", monospace;
-  background-color: #1e1e1e;
-  position: relative; /* contains the absolute animation overlay */
+  padding: 0.875rem 1rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: var(--mk-term-bg);
 }
 
-/* Each line inside terminal */
 .terminal_line {
   display: flex;
   gap: 0.5rem;
 }
 
-/* Extra margin below command line */
 .first_line {
   margin-bottom: 0.5rem;
 }
 
-/* Prompt for command line */
 .prompt {
-  user-select: none; /* not copyable */
-  pointer-events: none; /* cannot click */
-  color: #00ff00; /* green prompt */
   flex-shrink: 0;
+  color: var(--mk-term-prompt);
+  user-select: none;
+  pointer-events: none;
 }
 
-/* Wrap content properly inside lines */
 .terminal_line span {
   display: inline-block;
   min-width: 0;
 }
 
-/* Optional no-wrap mode */
 .no_wrap {
-  white-space: pre; /* don't wrap lines */
-  overflow-x: auto; /* show horizontal scrollbar if too long */
-  word-break: normal; /* no forced breaks */
+  overflow-x: auto;
+  white-space: pre;
+  word-break: normal;
 }
 
-/* ------------------ */
-/* Copy Button Styles */
-/* ------------------ */
-
+/* Copy button — unchanged behaviour (fades in on container hover), retokenised. */
 .copyButton {
   position: absolute;
-  top: 2.5rem;
+  top: 2.75rem;
   right: 0.5rem;
-  padding: 0.35rem;
-  border-radius: var(--ifm-border-radius);
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
   z-index: 10;
-  background-color: transparent;
-  border: none;
+  padding: 0.35rem;
+  color: var(--mk-n-500);
   cursor: pointer;
-  /* Use a Docusaurus variable for color to ensure visibility */
-  color: var(--docusaurus-color-primary-contrast-background);
+  background: transparent;
+  border: none;
+  border-radius: var(--mk-radius-sm);
+  opacity: 0;
+  transition:
+    opacity 0.2s ease-in-out,
+    color 0.2s ease-in-out;
 }
 
-/* Add a background hover effect using Docusaurus variables */
 .copyButton:hover {
-  background-color: var(--ifm-hover-overlay-bg);
+  color: var(--mk-code-fg);
+  background: rgb(255, 255, 255, 0.08);
 }
 
-/* Show the button only on hover of the terminal container */
+.copyButton:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--mk-term-prompt);
+  outline-offset: 2px;
+}
+
 .terminal:hover .copyButton {
   opacity: 1;
 }
@@ -155,30 +164,27 @@
 }
 
 .terminal a {
-  text-decoration: none;
-  color: var(--docusaurus-color-primary);
+  color: var(--mk-term-prompt);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-/* Ghost span: invisible clone that reserves the pre's final height during animation */
 .terminal_ghost {
   visibility: hidden;
   user-select: none;
   pointer-events: none;
 }
 
-/* Animation overlay: sits on top of the ghost, absolutely filling the pre's content area.
- * padding: inherit copies the pre's 0.75rem 1rem so text aligns exactly. */
 .terminal_overlay {
   position: absolute;
   inset: 0;
   padding: inherit;
+  font-family: inherit;
+  color: var(--mk-code-fg);
   white-space: inherit;
   word-break: inherit;
-  font-family: inherit;
-  color: #d4d4d4;
 }
 
-/* Typewriter blinking cursor */
 @keyframes blink {
   0%,
   100% {
@@ -191,22 +197,28 @@
 
 .cursor {
   display: inline-block;
-  color: #00ff00;
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--mk-term-prompt);
   animation: blink 1s step-end infinite;
-  font-family: "Fira Code", monospace;
 }
 
-/* MDX converts "# foo" inside Terminal to <h1>foo</h1>; reset heading styles
- * so they render as Bash comment lines instead of chapter headings. */
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+}
+
+/* MDX turns "# foo" inside <Terminal> into <h1>; reset so it reads as a shell
+ * comment rather than a chapter heading. */
 .terminal_body :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  padding: 0;
   font-size: inherit;
   font-weight: inherit;
   line-height: inherit;
   letter-spacing: inherit;
-  margin: 0;
-  padding: 0;
+  color: var(--mk-term-comment);
   border: none;
-  color: #6a9955;
 }
 
 .terminal_body h1::before {
@@ -228,10 +240,7 @@
   content: "###### ";
 }
 
-/* Paragraphs from MDX blank-line splitting must not add extra spacing */
 .terminal_body p {
   margin: 0;
   padding: 0;
 }
-
-/* stylelint-enable color-no-hex */

@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-10T19:32:49.978Z",
+  "generated": "2026-09-20T16:30:56.758Z",
   "source": "styles.module.css",
-  "sourceHash": "7af8e67de8ad15e47a62d713561260932b65f210",
+  "sourceHash": "220d07158030c1f735f53bda08d266d5f4a30ef3",
   "lang": "css",
-  "summary": "This CSS styles a small action group containing a copy button and a raw link. The wrapper uses flexbox with tight spacing (6px gap) to keep the unborderd 'raw' link visually grouped with its associated button, rather than floating between two bordered actions. Both elements share a small font size and get darker on hover.",
+  "textLang": "en",
+  "summary": "This stylesheet styles a row of article actions—specifically a copy button and a raw link—that sit together as a tightly-grouped pair. The wrapper uses flexbox to line them up with minimal spacing, while both the button and link are styled identically on purpose so they read as a cohesive family rather than unrelated controls.",
   "explanations": {
-    "12": "inline-flex makes the wrapper sit inline with surrounding content while still using flexbox layout rules for its children.",
-    "14": "The 6px gap is deliberately smaller than the parent row's 16px spacing — this visual tightness helps the borderless 'raw' link feel attached to the copy button.",
-    "32": "The :not(:disabled) pseudo-class means the hover styles only apply when the button is clickable, preventing visual changes when it's disabled.",
-    "42": "This hover state changes the 'raw' link to the primary color to indicate interactivity, since the link has no border of its own to signal it's clickable."
+    "16": "inline-flex makes the wrapper shrink to fit its children horizontally instead of taking the full width, so the action buttons sit snugly together.",
+    "18": "gap: 8px puts 8 pixels of space between the button and link—tighter than the surrounding row spacing—to visually signal they're a related pair.",
+    "25": "var(--mk-ink-soft) is a CSS variable (a named color value) that the project defines elsewhere; it's reused everywhere the same color is needed so changes apply everywhere at once.",
+    "37": ":not(:disabled) means 'apply this hover style only if the button is not disabled,' so disabled buttons stay visually muted even if you hover over them.",
+    "47": "This link is styled to look like a button on purpose—same padding, border, and font size as .copyBtn—so users see it as one control alongside the copy button, not as a regular link.",
+    "58": "text-decoration: none removes the underline that links normally have, keeping it looking button-like instead of like a traditional hyperlink."
   }
 }

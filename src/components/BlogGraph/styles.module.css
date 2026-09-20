@@ -3,7 +3,7 @@
 }
 
 .intro {
-  color: var(--ifm-color-content-secondary);
+  color: var(--mk-ink-soft);
   margin-bottom: 1rem;
 }
 
@@ -17,49 +17,64 @@
 }
 
 .selectLabel {
+  composes: mk-eyebrow from global;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--ifm-font-color-secondary);
+  gap: 0.3rem;
 }
 
 .select {
-  padding: 0.4rem 0.6rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-global-radius);
-  background-color: var(--ifm-background-surface-color);
-  color: var(--ifm-font-color-base);
+  padding: 0.45rem 0.6rem;
+  font-family: inherit;
   font-size: 0.95rem;
+  letter-spacing: 0;
+  text-transform: none;
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+  background-color: var(--mk-surface);
+  color: var(--mk-ink);
   min-width: 260px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
 }
 
 .counter {
   margin: 0;
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
   font-size: 0.9rem;
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
 }
 
+/*
+ * NOTE for whoever tokenises index.tsx: it reads
+ * --ifm-color-emphasis-500 from getComputedStyle for the canvas edge colour,
+ * with a "#999999" fallback. That variable is remapped now, so the edges
+ * follow the palette on their own — but the cold-grey fallback is still there
+ * and should become #a2917a (--mk-n-500) for the case where the read fails.
+ */
 .canvas {
   display: block;
   width: 100%;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-global-radius);
-  background-color: var(--ifm-background-surface-color);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
+  background-color: var(--mk-surface);
 }
 
 .listFallback {
   margin-top: 1rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--ifm-global-radius);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
   padding: 0.5rem 0.9rem;
 }
 
 .listFallback summary {
   cursor: pointer;
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
   font-weight: 600;
   padding: 0.4rem 0;
   transition: color 0.15s ease;
@@ -84,15 +99,17 @@
 }
 
 .groupTitle {
+  font-family: var(--mk-font-display);
   font-size: 1rem;
   margin: 0 0 0.4rem;
-  color: var(--ifm-color-primary);
+  color: var(--mk-primary);
 }
 
 .groupCount {
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
   font-weight: 400;
   font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .groupItems {

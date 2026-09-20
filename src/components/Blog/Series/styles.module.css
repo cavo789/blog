@@ -6,13 +6,17 @@
  * any contrast risk. --series-accent-* are set inline per series (see SeriesArticlesPage.js);
  * when a series has no color yet, everything falls back to transparent (identical to the plain
  * page from before this feature existed).
+ *
+ * The glow system is deliberately left alone by the harmonisation: it is per-series identity,
+ * the same reasoning as Snippet's per-language brand colours. Only the site-UI parts of this
+ * file (radii, the neutral banner ground, the markdown link) are tokenised.
  */
 .seriesHero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
   padding: 2rem 1.5rem 1rem;
-  border-radius: 20px;
+  border-radius: var(--mk-radius-lg);
   margin-bottom: 2rem;
 }
 
@@ -71,9 +75,9 @@
   width: 100%;
   aspect-ratio: 2 / 1;
   object-fit: contain;
-  background: var(--ifm-color-emphasis-100);
+  background: var(--mk-n-100);
   border: 2px solid var(--series-accent-solid, transparent);
-  border-radius: 8px;
+  border-radius: var(--mk-radius-md);
   display: block;
   margin-bottom: 1.5rem;
   box-shadow: 0 25px 60px -10px var(--series-accent-glow-light, transparent);
@@ -83,7 +87,7 @@
 }
 
 [data-theme="dark"] .seriesBanner {
-  background: var(--ifm-color-emphasis-900);
+  background: var(--mk-n-100);
   box-shadow: 0 25px 60px -10px var(--series-accent-glow-dark, transparent);
 }
 
@@ -112,7 +116,7 @@
   height: 6px;
   border-radius: 999px;
   margin: 0.75rem 0 1.25rem;
-  background: var(--series-accent-solid, var(--ifm-color-primary));
+  background: var(--series-accent-solid, var(--mk-primary));
   box-shadow: 0 4px 14px -2px var(--series-accent-glow-light, transparent);
 }
 
@@ -121,26 +125,28 @@
 }
 
 .seriesDescription {
-  color: var(--ifm-font-color-secondary);
+  color: var(--mk-ink-soft);
   font-size: 1.1rem;
+  line-height: 1.6;
   margin-bottom: 0.5rem;
 }
 
 /* Mirrors CopyAsMarkdown's .copyBtn (src/components/CopyAsMarkdown/styles.module.css)
-   so the two "get this as plain Markdown" affordances look like one family. */
+   so the two "get this as plain Markdown" affordances look like one family.
+   If you tokenise CopyAsMarkdown later, keep these two in step. */
 .markdownLink {
   display: inline-block;
   padding: 5px 12px;
   background: transparent;
-  color: var(--ifm-color-emphasis-700);
-  border: 1px solid var(--ifm-color-emphasis-400);
-  border-radius: 5px;
+  color: var(--mk-ink-soft);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
   font-size: 0.82rem;
 }
 
 .markdownLink:hover {
-  border-color: var(--ifm-color-emphasis-600);
-  color: var(--ifm-color-primary);
+  border-color: var(--mk-primary);
+  color: var(--mk-primary);
   text-decoration: none;
 }
 

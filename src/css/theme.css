@@ -1,0 +1,601 @@
+/**
+ * theme.css — "Suricate" design tokens for avonture.be
+ * ---------------------------------------------------------------------------
+ * The single source of truth for colour, radius, elevation, rails and the
+ * eyebrow label style. Every component stylesheet consumes these and declares
+ * no raw values of its own.
+ *
+ * Imported from custom.css (@import "./theme.css";) BEFORE any other rule so
+ * that Infima's own defaults can be remapped below.
+ *
+ * Palette provenance: sampled from static/img/meerkat/suricate.webp — amber
+ * fur, cream belly, cocoa mask, and the cyan ground-shadow the mascot stands
+ * on. The primary ramp is NOT redefined here: --ifm-color-primary already came
+ * from the mascot's fur and its AA contrast is verified (see custom.css).
+ *
+ * The hex values below ARE the token source-of-truth — legitimate
+ * color-no-hex exception, same rationale as the --ifm-color-primary block in
+ * custom.css. See AGENTS.md and
+ * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ */
+/* stylelint-disable color-no-hex */
+
+:root {
+  /* ── Typography ───────────────────────────────────────────────────────── */
+  /* Proposal A "Savane": Bricolage Grotesque for headings (an optical-size
+   * grotesque with real character), Source Sans 3 for prose (humanist, built
+   * for long technical reading), JetBrains Mono for code. Swapping the whole
+   * site's voice later means editing these three lines and the Google Fonts
+   * <link> in docusaurus.config.js — nothing else. */
+  --mk-font-display: "Bricolage Grotesque", system-ui, -apple-system, sans-serif;
+  --mk-font-text: "Source Sans 3", system-ui, -apple-system, sans-serif;
+  --mk-font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* ── Geometry ─────────────────────────────────────────────────────────── */
+  /* Three radii replace the nine in circulation (2/4/5/6/7/8/10/12/14px). */
+  --mk-radius-sm: 6px; /* inputs, kbd, inline chips, code blocks */
+  --mk-radius-md: 10px; /* callouts, toolbars, panels */
+  --mk-radius-lg: 16px; /* cards, large surfaces */
+
+  /* One rail thickness replaces the four in circulation (3/4/5/6px).
+   * Used by callouts, article h2, blockquote and the mobile TOC alike. */
+  --mk-rail: 4px;
+
+  /* ── Elevation ────────────────────────────────────────────────────────── */
+  /* Three steps replace eight ad-hoc formulas. Warm-tinted rather than neutral
+   * black: a pure-black shadow over a sand surface reads grey. */
+  --mk-shadow-1: 0 1px 2px rgb(59, 44, 30, 0.07); /* at rest */
+  --mk-shadow-2: 0 6px 16px rgb(59, 44, 30, 0.1); /* hover / raised */
+  --mk-shadow-3: 0 14px 32px rgb(59, 44, 30, 0.14); /* floating (FAB, tooltip) */
+
+  /* ── The eyebrow ──────────────────────────────────────────────────────── */
+  /* One small-caps label style replaces the four variants currently in the
+   * codebase (TLDR .05em, QuickJump .85rem/.05em, Vars .8rem+.72rem/.06em,
+   * PostCard badge .68rem/.05em). Applied via .mk-eyebrow (below). */
+  --mk-eyebrow-size: 0.72rem;
+  --mk-eyebrow-weight: 700;
+  --mk-eyebrow-tracking: 0.08em;
+
+  /* ── Warm neutrals ────────────────────────────────────────────────────── */
+  /* Infima's greys are cold; next to terracotta they grizzle. These carry the
+   * mascot's warmth, so the primary stops looking bolted on. */
+  /*
+   * Two light values, not one.
+   *
+   * The original ramp put the page at #fffdf7 and cards at #ffffff: 1.01:1.
+   * A card could not be seen as a card; a sand toolbar on a white card was
+   * 1.09:1; a border was 1.30:1. Every text pair passed AA and the page still
+   * looked washed out, because nothing had an EDGE. That is a surface
+   * contrast problem, and no amount of text colour fixes it.
+   *
+   * The page now sits a real step below the cards, and — this is the part
+   * that does the work — the BORDERS drop further than the surfaces do.
+   * Darkening everything by the same amount would have changed nothing: a
+   * border is only visible relative to what it sits on.
+   *
+   *                      before        after
+   *   card / page        1.01:1    ->  1.13:1
+   *   border / page      1.30:1    ->  1.47:1
+   *   sand bar / card    1.09:1    ->  1.20:1
+   */
+  --mk-n-0: #f7f0e2; /* page ground — was #fffdf7 */
+  --mk-n-50: #f0e8d8; /* sunken: navbar, toolbars, table heads, blockquote */
+  --mk-n-100: #e8dec9; /* hover fills */
+  --mk-n-200: #d5c7a9; /* borders — dropped further than the surfaces, on purpose */
+  --mk-n-300: #c2b192; /* strong borders, inputs, kbd */
+  --mk-n-500: #9a8870;
+  --mk-n-700: #55483a; /* darkened again 2026-09-20: #665949 was only 5.99:1 (AA) and
+    read as washed-out on calibrated monitors — this is 7.81:1 (AAA) on the page ground */
+  --mk-n-900: #2b2118;
+
+  /* ── Semantic surfaces ────────────────────────────────────────────────── */
+  --mk-bg: var(--mk-n-0);
+  --mk-surface: #ffffff;
+  --mk-sunken: var(--mk-n-50);
+  --mk-ink: var(--mk-n-900);
+  --mk-ink-soft: var(--mk-n-700);
+  --mk-border: var(--mk-n-200);
+  --mk-border-strong: var(--mk-n-300);
+
+  /* The primary is NOT redefined — it is already the mascot's fur. */
+  --mk-primary: var(--ifm-color-primary);
+
+  /* Foreground used on top of a filled --mk-*-line pill or dot. */
+  --mk-on-line: #fffdf7;
+
+  /* ── Tone sets ────────────────────────────────────────────────────────── */
+  /* Every callout in the site is one of these six. bg/line/fg are always used
+   * together; line doubles as the filled-dot background, so each one clears
+   * 4.5:1 against --mk-on-line. */
+
+  /* info — the cyan puddle the mascot stands on */
+  --mk-info-bg: #e6f4f7;
+  --mk-info-line: #27798a;
+  --mk-info-fg: #123f49;
+
+  /* tip / success — savanna green */
+  --mk-tip-bg: #eef4e3;
+  --mk-tip-line: #5b7b36;
+  --mk-tip-fg: #2b3c18;
+
+  /* note — the cocoa eye mask */
+  --mk-note-bg: #f5efe4;
+  --mk-note-line: #7d5f41;
+  --mk-note-fg: #3d3124;
+
+  /* caution / warning — saturated fur ochre */
+  --mk-warn-bg: #fbf0da;
+  --mk-warn-line: #94640f;
+  --mk-warn-fg: #4c3307;
+
+  /* danger / highly important — terracotta pushed to brick */
+  --mk-danger-bg: #fae9e2;
+  --mk-danger-line: #af3a1d;
+  --mk-danger-fg: #54180b;
+
+  /* key — core concept, TL;DR, tags, "latest" badges: the site's own primary */
+  /*
+   * --mk-key-bg has to move WITH the page, not stay put. At its old #faf0de it
+   * would now be LIGHTER than the page ground, so every TL;DR, tag and active
+   * pill would glow instead of recessing — the tone would read as a highlight
+   * rather than as a tint. #f8ecd5 keeps it one step below the page.
+   */
+  --mk-key-bg: #f8ecd5;
+  --mk-key-line: var(--ifm-color-primary);
+  --mk-key-edge: #dbad74;
+  --mk-key-fg: #4a2e18;
+
+  /* ── Code & terminal ──────────────────────────────────────────────────── */
+  /* Deliberately theme-independent: a terminal is a terminal in both themes.
+   * What changed is only that the shell is warm-black instead of neutral
+   * #1e1e1e, and the prompt is savanna green instead of #00ff00. */
+  --mk-code-bg: #2b2118;
+  --mk-code-fg: #e7ddcb;
+  --mk-term-bg: #241d16;
+  --mk-term-head: #322a20;
+  --mk-term-border: #3f352a;
+  --mk-term-prompt: #93b764;
+  --mk-term-comment: #8a9e6b;
+  --mk-term-dot-red: #c4614a;
+  --mk-term-dot-amber: #d69a3c;
+  --mk-term-dot-green: #7c9e51;
+}
+
+[data-theme="dark"] {
+  --mk-n-0: #1a1510;
+  --mk-n-50: #221c15;
+  --mk-n-100: #2b241b;
+  --mk-n-200: #372f25;
+  --mk-n-300: #4b4134;
+  --mk-n-500: #7d6f5d;
+  --mk-n-700: #a79987;
+  --mk-n-900: #f0e7d8;
+
+  --mk-bg: var(--mk-n-0);
+  --mk-surface: var(--mk-n-50);
+  --mk-sunken: var(--mk-n-100);
+  --mk-ink: var(--mk-n-900);
+  --mk-ink-soft: var(--mk-n-700);
+  --mk-border: var(--mk-n-200);
+  --mk-border-strong: var(--mk-n-300);
+
+  --mk-shadow-1: 0 1px 2px rgb(0, 0, 0, 0.35);
+  --mk-shadow-2: 0 6px 16px rgb(0, 0, 0, 0.45);
+  --mk-shadow-3: 0 14px 32px rgb(0, 0, 0, 0.55);
+
+  /* Lines lighten in dark mode, so the text ON them flips to the page black. */
+  --mk-on-line: #1a1510;
+
+  --mk-info-bg: #14282d;
+  --mk-info-line: #5fc3d4;
+  --mk-info-fg: #cbeaf1;
+
+  --mk-tip-bg: #1d2617;
+  --mk-tip-line: #93b764;
+  --mk-tip-fg: #ddebc9;
+
+  --mk-note-bg: #262019;
+  --mk-note-line: #be9a70;
+  --mk-note-fg: #eadcc6;
+
+  --mk-warn-bg: #2e2411;
+  --mk-warn-line: #e0a83c;
+  --mk-warn-fg: #f7e3b8;
+
+  --mk-danger-bg: #31170f;
+  --mk-danger-line: #e2724f;
+  --mk-danger-fg: #fbd8cb;
+
+  --mk-key-bg: #2c2013;
+  --mk-key-edge: #8a6134;
+  --mk-key-fg: #f5e3c8;
+
+  --mk-code-bg: #12100c;
+  --mk-term-bg: #151109;
+  --mk-term-head: #221c13;
+  --mk-term-border: #332b20;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   INFIMA REMAP
+   ---------------------------------------------------------------------------
+   This is the block that harmonises everything NOT individually restyled:
+   Docusaurus's own navbar, sidebar, pagination, admonitions, TOC and every
+   component still reading --ifm-color-emphasis-*. Remapping here is what makes
+   the migration incremental — a component keeps working untouched and simply
+   inherits warm neutrals instead of cold greys.
+
+   To roll back: delete this block. Nothing else depends on it.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --ifm-font-family-base: var(--mk-font-text);
+  --ifm-font-family-monospace: var(--mk-font-mono);
+  --ifm-heading-font-family: var(--mk-font-display);
+
+  --ifm-background-color: var(--mk-bg);
+  --ifm-background-surface-color: var(--mk-surface);
+  --ifm-card-background-color: var(--mk-surface);
+  --ifm-font-color-base: var(--mk-ink);
+
+  --ifm-global-radius: var(--mk-radius-md);
+  --ifm-card-border-radius: var(--mk-radius-lg);
+  --ifm-border-radius: var(--mk-radius-sm);
+
+  --ifm-global-shadow-lw: var(--mk-shadow-1);
+  --ifm-global-shadow-md: var(--mk-shadow-2);
+  --ifm-global-shadow-tl: var(--mk-shadow-3);
+
+  /* Warm equivalents of Infima's grey ramp. emphasis-600 is #7e6f5c rather
+   * than a lighter tan on purpose: it is used as body text in several places
+   * and needs 4.5:1 on the page background (measured 4.8:1). */
+  --ifm-color-emphasis-100: var(--mk-n-50);
+  --ifm-color-emphasis-200: var(--mk-n-100);
+  --ifm-color-emphasis-300: var(--mk-n-200);
+  --ifm-color-emphasis-400: var(--mk-n-300);
+  --ifm-color-emphasis-500: var(--mk-n-500);
+  --ifm-color-emphasis-600: #7e6f5c;
+  --ifm-color-emphasis-700: var(--mk-n-700);
+  --ifm-color-emphasis-800: #453b30;
+  --ifm-color-emphasis-900: var(--mk-n-900);
+
+  --ifm-code-background: var(--mk-key-bg);
+  --ifm-hover-overlay: rgb(155, 90, 49, 0.06);
+
+  --ifm-toc-border-color: var(--mk-border);
+  --ifm-table-border-color: var(--mk-border);
+  --ifm-table-stripe-background: var(--mk-n-50);
+
+  /* Infima's own admonitions, so a plain :::tip in Markdown matches AlertBox.
+   * The base --ifm-color-* only feeds the border (.alert--success sets
+   * --ifm-alert-border-color from --ifm-color-success-dark) — the BACKGROUND
+   * comes from a separate --ifm-color-*-contrast-background/-foreground pair
+   * that Infima ships as static per-theme literals, unrelated to the base
+   * color. Without remapping those too, light mode looks right by accident
+   * (Infima's pale default green is close to --mk-tip-bg) and dark mode does
+   * not: Infima's dark contrast-background is a saturated rgb(0,49,0), miles
+   * from the warm dark card every other callout uses. */
+  --ifm-color-info: var(--mk-info-line);
+  --ifm-color-success: var(--mk-tip-line);
+  --ifm-color-warning: var(--mk-warn-line);
+  --ifm-color-danger: var(--mk-danger-line);
+  --ifm-color-secondary: var(--mk-n-300);
+
+  --ifm-color-info-contrast-background: var(--mk-info-bg);
+  --ifm-color-info-contrast-foreground: var(--mk-info-fg);
+  --ifm-color-success-contrast-background: var(--mk-tip-bg);
+  --ifm-color-success-contrast-foreground: var(--mk-tip-fg);
+  --ifm-color-warning-contrast-background: var(--mk-warn-bg);
+  --ifm-color-warning-contrast-foreground: var(--mk-warn-fg);
+  --ifm-color-danger-contrast-background: var(--mk-danger-bg);
+  --ifm-color-danger-contrast-foreground: var(--mk-danger-fg);
+
+  /*
+   * Links move to the -dark shade in light mode.
+   *
+   * --ifm-color-primary (#9b5a31) measured 5.27:1 on the old near-white page.
+   * On the deepened page ground that becomes 4.75:1 — still AA, but the
+   * margin is thin enough that any future darkening would break it silently.
+   * --ifm-color-primary-dark (#8e522d) restores the headroom at 5.13:1 and is
+   * visually indistinguishable at text size. Infima defaults --ifm-link-color
+   * to --ifm-color-primary, so this one line redirects every link in the site.
+   *
+   * LIGHT MODE ONLY: in dark mode --ifm-color-primary-dark is DARKER than the
+   * primary, which is the wrong direction on a dark ground — see the
+   * [data-theme="dark"] override just below.
+   */
+  --ifm-link-color: var(--ifm-color-primary-dark);
+
+  /* Secondary text. Infima has two variables for the same idea, used
+   * interchangeably across the site; both point at the same warm tone, 4.8:1
+   * on --mk-bg. Without this, --ifm-color-content-secondary is a cold grey in
+   * light mode and PURE WHITE in dark — lighter than the text it's meant to
+   * second. */
+  --ifm-font-color-secondary: var(--mk-ink-soft);
+  --ifm-color-content-secondary: var(--mk-ink-soft);
+
+  /* Base body text, read directly by Reaction, TriedIt, Trees and
+   * OfflineNotice. Without this it falls back to Infima's own default. */
+  --ifm-color-content: var(--mk-ink);
+
+  /* Headings. Without this Infima renders them in --ifm-heading-color's
+   * default, which is "inherit" in light but an explicit cold grey in dark. */
+  --ifm-heading-color: var(--mk-ink);
+
+  /* Infima's own grey ramp, distinct from emphasis-* and just as cold. */
+  --ifm-color-gray-0: var(--mk-n-0);
+  --ifm-color-gray-100: var(--mk-n-50);
+  --ifm-color-gray-200: var(--mk-n-100);
+  --ifm-color-gray-300: var(--mk-n-200);
+  --ifm-color-gray-400: var(--mk-n-300);
+  --ifm-color-gray-500: var(--mk-n-500);
+  --ifm-color-gray-600: #7e6f5c;
+  --ifm-color-gray-700: var(--mk-n-700);
+  --ifm-color-gray-800: #453b30;
+  --ifm-color-gray-900: var(--mk-n-900);
+  --ifm-color-gray-1000: var(--mk-n-900);
+
+  /* Only --ifm-color-secondary itself was remapped; Infima does NOT recompute
+   * the seven derived shades from it, so they were still their original cold
+   * greys. */
+  --ifm-color-secondary-contrast-background: var(--mk-n-50);
+  --ifm-color-secondary-contrast-foreground: var(--mk-n-900);
+  --ifm-color-secondary-lightest: var(--mk-n-50);
+  --ifm-color-secondary-lighter: var(--mk-n-100);
+  --ifm-color-secondary-light: var(--mk-n-200);
+  --ifm-color-secondary-dark: var(--mk-n-500);
+  --ifm-color-secondary-darker: var(--mk-n-700);
+  --ifm-color-secondary-darkest: var(--mk-n-900);
+
+  /* Geometry: the last family of radii still outside the token system. */
+  --ifm-button-border-radius: var(--mk-radius-sm);
+  --ifm-alert-border-radius: var(--mk-radius-md);
+  --ifm-pagination-item-active-background: var(--mk-key-bg);
+  --ifm-breadcrumb-border-radius: var(--mk-radius-sm);
+  --ifm-breadcrumb-item-background-active: var(--mk-key-bg);
+
+  /* Docusaurus chrome surfaces, so navbar/menu/TOC follow the page. */
+  --ifm-navbar-background-color: var(--mk-surface);
+  --ifm-navbar-link-hover-color: var(--mk-primary);
+  --ifm-menu-color-background-active: var(--mk-key-bg);
+  --ifm-menu-color-background-hover: var(--ifm-hover-overlay);
+  --ifm-toc-link-color: var(--mk-ink-soft);
+  --ifm-dropdown-background-color: var(--mk-surface);
+  --ifm-blockquote-color: var(--mk-ink);
+  --ifm-blockquote-border-color: var(--mk-primary);
+
+  /* Infima's scrollbar defaults (#f1f1f1 track, #c0c0c0 thumb) are cold greys
+   * that read as pure white against the warm sand page. Track transparent so
+   * it shows --mk-bg through it instead of fighting it; thumb reuses the same
+   * warm border tone as everything else instead of introducing a new grey. */
+  --ifm-scrollbar-track-background-color: transparent;
+  --ifm-scrollbar-thumb-background-color: var(--mk-border-strong);
+  --ifm-scrollbar-thumb-hover-background-color: var(--mk-n-500);
+}
+
+/* Infima's .thin-scrollbar only recolors the ::-webkit-scrollbar-* pseudo
+ * elements (Chromium/WebKit) — it never sets `scrollbar-color`, so Firefox
+ * (and any other Gecko-based browser) keeps the OS-default thin scrollbar,
+ * white track included, no matter what the --ifm-scrollbar-* variables above
+ * are set to. This is the Firefox equivalent of that same block. */
+.thin-scrollbar {
+  scrollbar-color: var(--ifm-scrollbar-thumb-background-color)
+    var(--ifm-scrollbar-track-background-color);
+}
+
+[data-theme="dark"] {
+  --ifm-color-emphasis-600: #8e8170;
+  --ifm-color-emphasis-800: #cfc3b1;
+  --ifm-hover-overlay: rgb(221, 127, 60, 0.1);
+
+  /* Reverts the light-mode link-color redirect: in dark mode
+   * --ifm-color-primary-dark is DARKER than the primary, the wrong direction
+   * on a dark ground. Dark mode never had the light-mode contrast problem
+   * this was fixing (it already sits at two distinct values, #1a1510 page vs
+   * #221c15 surface). */
+  --ifm-link-color: var(--ifm-color-primary);
+
+  --ifm-color-gray-600: #8e8170;
+  --ifm-color-gray-800: #cfc3b1;
+
+  /* In dark mode the secondary ramp must invert, or "secondary-lightest"
+   * would serve a light beige on a black background. */
+  --ifm-color-secondary-contrast-background: var(--mk-n-100);
+  --ifm-color-secondary-contrast-foreground: var(--mk-n-900);
+  --ifm-color-secondary-lightest: var(--mk-n-100);
+  --ifm-color-secondary-lighter: var(--mk-n-200);
+  --ifm-color-secondary-light: var(--mk-n-300);
+  --ifm-color-secondary-dark: var(--mk-n-500);
+  --ifm-color-secondary-darker: var(--mk-n-700);
+  --ifm-color-secondary-darkest: var(--mk-n-900);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SHARED PRIMITIVES
+   ---------------------------------------------------------------------------
+   Global (non-module) classes, so any component — and any MDX file — can use
+   them without importing a stylesheet.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* The eyebrow: every small uppercase label in the site. */
+.mk-eyebrow {
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--mk-ink-soft);
+}
+
+/*
+ * The callout: ONE primitive replacing six independent implementations
+ * (AlertBox, TLDR, QuickJump, OldPostNotice, StepsCard, blockquote). A
+ * variant sets only the three tone variables; anatomy never changes.
+ */
+.mk-callout {
+  --tone-bg: var(--mk-note-bg);
+  --tone-line: var(--mk-note-line);
+  --tone-fg: var(--mk-note-fg);
+
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin: 2rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--tone-bg);
+  color: var(--tone-fg);
+  border-left: var(--mk-rail) solid var(--tone-line);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  box-shadow: var(--mk-shadow-1);
+}
+
+.mk-callout--info {
+  --tone-bg: var(--mk-info-bg);
+  --tone-line: var(--mk-info-line);
+  --tone-fg: var(--mk-info-fg);
+}
+.mk-callout--tip {
+  --tone-bg: var(--mk-tip-bg);
+  --tone-line: var(--mk-tip-line);
+  --tone-fg: var(--mk-tip-fg);
+}
+.mk-callout--note {
+  --tone-bg: var(--mk-note-bg);
+  --tone-line: var(--mk-note-line);
+  --tone-fg: var(--mk-note-fg);
+}
+.mk-callout--warn {
+  --tone-bg: var(--mk-warn-bg);
+  --tone-line: var(--mk-warn-line);
+  --tone-fg: var(--mk-warn-fg);
+}
+.mk-callout--danger {
+  --tone-bg: var(--mk-danger-bg);
+  --tone-line: var(--mk-danger-line);
+  --tone-fg: var(--mk-danger-fg);
+}
+.mk-callout--key {
+  --tone-bg: var(--mk-key-bg);
+  --tone-line: var(--mk-key-line);
+  --tone-fg: var(--mk-key-fg);
+}
+
+/* Elevated variant — how "highly important" is now told apart, instead of by
+ * a geometry of its own (it used to carry a full border and a 6px radius). */
+.mk-callout--loud {
+  box-shadow: var(--mk-shadow-2);
+}
+
+/* The filled dot: the callout icon slot, the StepsCard bullet and the Updated
+ * timeline node are all the same object at the same 26px. */
+.mk-dot {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--tone-line, var(--mk-primary));
+  color: var(--mk-on-line);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.mk-dot svg {
+  width: 0.95rem;
+  height: 0.95rem;
+}
+
+/* The toolbar: Snippet's file header and ProjectSetup's header are now one
+ * object — eyebrow left, actions right, sand ground. */
+.mk-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.625rem 1rem;
+  background: var(--mk-sunken);
+  border-bottom: 1px solid var(--mk-border);
+}
+
+.mk-toolbar__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+/* The surface: every card-like box (PostCard, HomeCards, Updated, Vars,
+ * ProjectSetup, Snippet) starts here.
+ *
+ * border-strong + shadow-2 rather than border + shadow-1: the softer pair
+ * read as barely-there on the cream page background (--mk-border is a
+ * near-invisible hairline, shadow-1 a 7%-opacity 1px lift) — every surface
+ * blended into the page instead of reading as a distinct object. This is a
+ * shared primitive, so the bump applies everywhere at once rather than
+ * per-component. */
+.mk-surface {
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-lg);
+  box-shadow: var(--mk-shadow-2);
+}
+
+/* One hover behaviour for every liftable card: -4px and one elevation step. */
+.mk-liftable {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.mk-liftable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mk-shadow-2);
+  border-color: var(--mk-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-liftable,
+  .mk-liftable:hover {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* The pill: tags, badges, "latest" markers, language chips. */
+.mk-pill {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--mk-primary);
+  background: var(--mk-key-bg);
+  border: 1px solid var(--mk-key-edge);
+  border-radius: 999px;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.mk-pill:hover {
+  color: var(--mk-primary);
+  text-decoration: none;
+  border-color: var(--mk-primary);
+  background: var(--mk-n-100);
+}
+
+/* One focus ring for the whole site. */
+.mk-focusable:focus-visible,
+.mk-callout a:focus-visible,
+.mk-pill:focus-visible {
+  outline: 2px solid var(--mk-primary);
+  outline-offset: 2px;
+  border-radius: var(--mk-radius-sm);
+}
+/* stylelint-enable color-no-hex */

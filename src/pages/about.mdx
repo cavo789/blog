@@ -12,7 +12,7 @@ import styles from "./about.module.css";
 <div className={styles.profileHero}>
   <div className={styles.profileHeroInner}>
     <img
-      src="/img/avatar.webp"
+      src="/img/meerkat/emojis/i_am_here.webp"
       alt="Christophe Avonture"
       className={styles.profileAvatar}
     />
@@ -39,6 +39,8 @@ import styles from "./about.module.css";
     </div>
   </div>
 </div>
+
+<div className={styles.pageContent}>
 
 <div className={styles.bioSection}>
 
@@ -78,7 +80,14 @@ This is, for me, the most important thing in being a developer: never stop striv
 
 </div>
 
-<h2 className={styles.sectionHeading}>Achievements</h2>
+<h2 className={styles.sectionHeading}>
+  <img
+    src="/img/meerkat/suricate_trophy.webp"
+    alt=""
+    className={styles.sectionHeadingIcon}
+  />
+  Achievements
+</h2>
 
 <div className={styles.achievementGrid}>
   <div className={styles.achievementCard}>
@@ -112,7 +121,14 @@ This is, for me, the most important thing in being a developer: never stop striv
   </div>
 </div>
 
-<h2 className={styles.sectionHeading}>Major Projects</h2>
+<h2 className={styles.sectionHeading}>
+  <img
+    src="/img/meerkat/suricate_superhero.webp"
+    alt=""
+    className={styles.sectionHeadingIcon}
+  />
+  Major Projects
+</h2>
 
 <div className={styles.achievementGrid}>
   <div className={styles.achievementCard}>
@@ -145,7 +161,14 @@ This is, for me, the most important thing in being a developer: never stop striv
   </div>
 </div>
 
-<h2 className={styles.sectionHeading}>At a Glance</h2>
+<h2 className={styles.sectionHeading}>
+  <img
+    src="/img/meerkat/emojis/activity_reading.webp"
+    alt=""
+    className={styles.sectionHeadingIcon}
+  />
+  At a Glance
+</h2>
 
 <div className={styles.highlightsGrid}>
   <div className={styles.highlightItem}>
@@ -198,7 +221,14 @@ This is, for me, the most important thing in being a developer: never stop striv
   </div>
 </div>
 
-<h2 className={styles.sectionHeading}>Find Me Online</h2>
+<h2 className={styles.sectionHeading}>
+  <img
+    src="/img/meerkat/emojis/activity_searching.webp"
+    alt=""
+    className={styles.sectionHeadingIcon}
+  />
+  Find Me Online
+</h2>
 
 <div className={styles.socialGrid}>
   <a href="https://bsky.app/profile/avonture.be" className={styles.socialCard}>
@@ -222,4 +252,6 @@ This is, for me, the most important thing in being a developer: never stop striv
   This site is powered by [Docusaurus](https://docusaurus.io/). · A few components were
   developed by [Docux](https://github.com/Juniors017) — visit [@DocuxLab
   Blog](https://docuxlab.com/).
+</div>
+
 </div>

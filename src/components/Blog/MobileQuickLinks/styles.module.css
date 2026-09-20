@@ -1,16 +1,14 @@
+/* Was a fourth rail thickness (3px) with a hand-rolled eyebrow
+   (0.8rem / 600 / 0.04em — the shared one within a hair). */
 .mobileQuickLinks {
-  border-left: 3px solid var(--ifm-color-emphasis-300);
+  border-left: var(--mk-rail) solid var(--mk-border-strong);
   margin: 0 0 1.5rem;
   padding-left: 0.75rem;
 }
 
 .title {
-  color: var(--ifm-color-emphasis-700);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  composes: mk-eyebrow from global;
   margin: 0;
-  text-transform: uppercase;
 }
 
 .list {

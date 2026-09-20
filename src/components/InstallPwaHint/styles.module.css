@@ -3,7 +3,10 @@
    independent because it lives in its own component directory, not because the
    design should ever diverge. Positioned bottom-left, mirrored from that hint's
    bottom-right placement, so the two (and the bottom-right AskMyBlogWidget bubble)
-   can never occupy the same corner at once. */
+   can never occupy the same corner at once.
+
+   Kept in step with CommandPalette in the tokenisation pass: same
+   --mk-shadow-3, same --mk-on-line. If you touch one, touch both. */
 
 @keyframes hintSlideIn {
   from {
@@ -26,16 +29,23 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.65rem 0.6rem 0.65rem 1.1rem;
-  background: var(--ifm-color-primary);
+  background: var(--mk-primary);
   border: none;
   border-radius: 999px;
   animation: hintSlideIn 0.3s ease-out;
-  box-shadow: 0 8px 24px rgb(0, 0, 0, 0.3);
+  box-shadow: var(--mk-shadow-3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hintPill {
+    animation: none;
+  }
 }
 
 .hintButton {
   padding: 0;
-  color: var(--ifm-color-primary-contrast-foreground);
+  font-family: inherit;
+  color: var(--mk-on-line);
   font-size: 0.95rem;
   font-weight: 700;
   cursor: pointer;
@@ -45,7 +55,7 @@
 
 .hintDismiss {
   padding: 0.2rem 0.5rem;
-  color: var(--ifm-color-primary-contrast-foreground);
+  color: var(--mk-on-line);
   font-size: 0.8rem;
   cursor: pointer;
   background: none;

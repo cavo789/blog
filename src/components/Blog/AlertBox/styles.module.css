@@ -1,246 +1,93 @@
-/* ---------- Base Container Styles ---------- */
+/*
+ * AlertBox — now a thin skin over the shared .mk-callout primitive in
+ * src/css/theme.css.
+ *
+ * What went away, and why:
+ *   - ~30 hardcoded hex values (generic blue/green/yellow/red, unrelated to the
+ *     site's palette) → the six tone sets in theme.css, all derived from the
+ *     mascot.
+ *   - font-family: 'Segoe UI', Roboto → inherited. This component was the only
+ *     place in the site setting its own text face.
+ *   - The two off-system treatments (.coreConcept's yellow glow card,
+ *     .highlyImportant's alarm card with its own border, radius and shadow) →
+ *     folded into the system: coreConcept is the "key" tone, highlyImportant is
+ *     the danger tone at elevation 2. Both keep a distinct READING, neither
+ *     keeps a distinct GEOMETRY.
+ *   - backdrop-filter: blur(2px) → dropped. It applied to an opaque background,
+ *     so it cost a compositing layer and changed nothing.
+ *
+ * No stylelint-disable is needed any more: there is not a single hex left.
+ */
 
 .alertBox {
-  position: relative;
-  padding: 1rem 1.25rem;
-  margin: 2rem 0;
-  border-left: 6px solid var(--alert-border);
-  border-radius: 10px;
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  backdrop-filter: blur(2px);
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-  box-shadow: 0 3px 6px rgb(0, 0, 0, 0.04);
-  background: var(--alert-bg);
-  color: var(--alert-fg);
+  composes: mk-callout from global;
 }
 
-.alertBox .header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.4rem;
+.info {
+  composes: mk-callout--info from global;
 }
 
-.alertBox .icon {
-  font-size: 1.3rem;
-  flex-shrink: 0;
-  opacity: 0.85;
-  color: var(--alert-icon);
+.note {
+  composes: mk-callout--note from global;
 }
 
-.alertBox h4 {
-  font-size: 1.05rem;
-  margin: 0;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+.tip {
+  composes: mk-callout--tip from global;
 }
 
-.alertBox .content {
+.caution,
+.warning {
+  composes: mk-callout--warn from global;
+}
+
+.important,
+.danger {
+  composes: mk-callout--danger from global;
+}
+
+/* Was a 1.5px full border + yellow glow + its own type scale. */
+.coreConcept {
+  composes: mk-callout--key from global;
+}
+
+/* Was a full red border, a 6px radius and a red h4 — three exceptions at once.
+ * Now: the danger tone, lifted one elevation step. That is the whole difference
+ * between "danger" and "highly important", and it is enough. */
+.highlyImportant {
+  composes: mk-callout--danger from global;
+  composes: mk-callout--loud from global;
+}
+
+.icon {
+  composes: mk-dot from global;
+}
+
+.body {
+  min-width: 0;
+}
+
+/* The title is an eyebrow, not a heading: it labels the box, it does not
+ * compete with the article's own h2/h3 (the old 1.05rem semi-bold h4 did). */
+.title {
+  composes: mk-eyebrow from global;
+  margin: 0 0 0.25rem;
+  color: inherit;
+}
+
+.content {
   font-size: 0.95rem;
   line-height: 1.65;
 }
 
-/*
- * ---------- VARIANT PALETTE ----------
- * Each variant defines its own --alert-bg / --alert-border / --alert-fg / --alert-icon
- * once for light mode and once for [data-theme="dark"]; the base .alertBox rule above
- * consumes them. Hex values here ARE the source-of-truth palette (same role as the
- * --ifm-color-primary definitions in src/css/custom.css) — not a case of "hardcoded
- * instead of token". See AGENTS.md and .todos/039-hardcoded-hex-colors-no-token-system.md.
- */
-/* stylelint-disable color-no-hex */
-
-.alertBox.info {
-  --alert-bg: #eef8ff;
-  --alert-border: #48a4ff;
-  --alert-fg: #11334c;
-  --alert-icon: #3182ce;
+.content > :last-child {
+  margin-bottom: 0;
 }
 
-.alertBox.note {
-  --alert-bg: #fffbe7;
-  --alert-border: #e0b800;
-  --alert-fg: #4d3b00;
-  --alert-icon: #d69e2e;
+/* Links inside a tinted surface must not fall back to the site's terracotta,
+ * which is unreadable on the danger and warn tones. They take the tone's own
+ * line colour, which is contrast-checked against the tone background. */
+.content a {
+  color: var(--tone-line);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
-
-.alertBox.tip {
-  --alert-bg: #e9fff3;
-  --alert-border: #2ecc71;
-  --alert-fg: #064f33;
-  --alert-icon: #27ae60;
-}
-
-.alertBox.caution {
-  --alert-bg: #fffbe5;
-  --alert-border: #f0ad4e;
-  --alert-fg: #5c4100;
-  --alert-icon: #e38b06;
-}
-
-.alertBox.important,
-.alertBox.danger {
-  --alert-bg: #ffeef0;
-  --alert-border: #e74c3c;
-  --alert-fg: #5e1111;
-  --alert-icon: #e74c3c;
-}
-
-.alertBox.warning {
-  --alert-bg: #fff3e6;
-  --alert-border: #f2994a;
-  --alert-fg: #5a2e00;
-  --alert-icon: #f2994a;
-}
-
-[data-theme='dark'] .alertBox.info {
-  --alert-bg: #1a2b3c;
-  --alert-border: #48a4ff;
-  --alert-fg: #cbe7ff;
-  --alert-icon: #63b3ed;
-}
-
-[data-theme='dark'] .alertBox.note {
-  --alert-bg: #2d2611;
-  --alert-border: #f6e05e;
-  --alert-fg: #fff5c2;
-  --alert-icon: #ecc94b;
-}
-
-[data-theme='dark'] .alertBox.tip {
-  --alert-bg: #1e352e;
-  --alert-border: #34d399;
-  --alert-fg: #e1fff4;
-  --alert-icon: #48bb78;
-}
-
-[data-theme='dark'] .alertBox.caution {
-  --alert-bg: #332c15;
-  --alert-border: #f6c177;
-  --alert-fg: #fef3c7;
-  --alert-icon: #f6c177;
-}
-
-[data-theme='dark'] .alertBox.important,
-[data-theme='dark'] .alertBox.danger {
-  --alert-bg: #3b1e20;
-  --alert-border: #fc8181;
-  --alert-fg: #ffe4e6;
-  --alert-icon: #f56565;
-}
-
-[data-theme='dark'] .alertBox.warning {
-  --alert-bg: #3c2a1a;
-  --alert-border: #f6ad55;
-  --alert-fg: #ffe2c2;
-  --alert-icon: #f6ad55;
-}
-
-/* stylelint-enable color-no-hex */
-
-/* ---------- coreConcept — distinct "glow card" treatment, not part of the shared palette system ---------- */
-
-/* stylelint-disable color-no-hex -- palette definition, see note above */
-
-.alertBox.coreConcept {
-  border: 1.5px solid #f9c846;   /* subtle full border */
-  border-left: 6px solid #f9c846; /* thicker left border */
-  border-radius: 10px;            /* match alertBox base */
-  background-color: #fffbe6;
-  padding: 1rem 1.5rem;
-  margin: 2rem 0;
-  box-shadow: 0 4px 12px rgb(249, 200, 70, 0.15); /* subtle yellow glow */
-  color: #333;
-  transition: box-shadow 0.3s ease;
-}
-
-.alertBox.coreConcept:hover {
-  box-shadow: 0 0 10px 3px rgb(249, 200, 70, 0.3); /* stronger glow on hover */
-}
-
-.alertBox.coreConcept .icon {
-  color: #f9c846;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.alertBox.coreConcept h4 {
-  margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  color: inherit;
-}
-
-.alertBox.coreConcept .content {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: inherit;
-}
-
-[data-theme='dark'] .alertBox.coreConcept {
-  background-color: #363636;
-  color: #e0e0e0;
-  border-left-color: #ffda79;
-  box-shadow: 0 2px 8px rgb(0, 0, 0, 0.3);
-}
-
-[data-theme='dark'] .alertBox.coreConcept .icon {
-  color: #ffda79;
-}
-
-/* ---------- highlyImportant — distinct "alarm card" treatment, not part of the shared palette system ---------- */
-
-.alertBox.highlyImportant {
-  border: 1px solid #f44336;       /* border all around */
-  border-left: 5px solid #e53935;  /* thicker left border */
-  background-color: #ffebee;
-  padding: 1rem 1.5rem;
-  margin: 2rem 0;
-  border-radius: 6px;
-  box-shadow: 0 4px 10px rgb(229, 57, 53, 0.05);
-  color: #3e2723;
-}
-
-.alertBox.highlyImportant:hover {
-  box-shadow: 0 0 0 3px rgb(229, 57, 53, 0.2);
-}
-
-/* stylelint-disable-next-line no-descending-specificity -- unrelated to [data-theme='dark'] .alertBox.coreConcept .icon above (mutually exclusive variants, never target the same element) */
-.alertBox.highlyImportant .icon {
-  color: #e53935;
-  font-size: 1.4rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.alertBox.highlyImportant h4 {
-  margin: 0;
-  font-size: 1.1rem;
-  line-height: 1.4;
-  color: #b71c1c;
-}
-
-.alertBox.highlyImportant .content {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-[data-theme='dark'] .alertBox.highlyImportant {
-  background-color: #4a1b1b;
-  border-color: #f44336;
-  border-left-color: #e53935;
-  color: #f9c5c5;
-}
-
-[data-theme='dark'] .alertBox.highlyImportant .icon {
-  color: #ef5350;
-}
-
-[data-theme='dark'] .alertBox.highlyImportant h4 {
-  color: #ff8a80;
-}
-
-/* stylelint-enable color-no-hex */

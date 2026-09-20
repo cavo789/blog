@@ -1,3 +1,11 @@
 .main {
   margin-top: 25px;
 }
+
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.pageHeader p {
+  color: var(--mk-ink-soft);
+}

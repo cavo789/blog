@@ -1,16 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-17T09:33:51.362Z",
+  "generated": "2026-09-19T13:41:18.649Z",
   "source": "index.tsx",
-  "sourceHash": "9f8e4f2c77760e86e090f719b78b1dc468d5e0a2",
+  "sourceHash": "108a8550edb676190bf6094492cf42fa353d3ee1",
   "lang": "typescript",
-  "summary": "This component creates a 'TL;DR' (Too Long; Didn't Read) summary box for blog posts. It takes the summary content as children, extracts plain text from it to create structured data for search engines, and renders both the visible summary box and the metadata that search engines need to understand the post's abstract.",
+  "textLang": "en",
+  "summary": "This React component creates a 'TL;DR' (summary) section for blog posts that displays user-provided content while also inserting JSON-LD structured data into the page head so search engines understand the summary is an abstract. It recursively extracts plain text from the React children to populate the structured data, and includes accessibility labels so screen readers know what the section is.",
   "explanations": {
-    "8": "This function recursively walks through React node structures (which can be nested objects, arrays, or text) and extracts all the plain text from them, which is needed because search engines want plain text, not React components.",
-    "13": "This line safely digs into a React node's props to find its children—it uses optional chaining (?.) so it won't crash if the node doesn't have a props object or if props doesn't have children.",
-    "25": "useMemo caches the structured data object so it only gets recalculated when `children` changes, avoiding unnecessary work on every render.",
-    "37": "This creates a JSON-LD script tag, which is a standard way to embed structured data that search engines can read to understand what the content is about.",
-    "42": "role='region' tells screen readers this is an important section, and aria-label provides a label so users with screen readers understand what this box is for."
+    "8": "This function takes any type of React content and converts it to plain text by checking each possible type: strings pass through, numbers get converted to strings, arrays get flattened by processing each item, and React element objects get their children extracted recursively.",
+    "13": "We're using optional chaining (?.) to safely access nested properties on an object that might be undefined or null without causing errors.",
+    "25": "useMemo caches the structured data object so it only recalculates when the children prop changes, avoiding unnecessary recreations.",
+    "37": "We're inserting a JSON-LD script tag (a format search engines recognize) into the document head via Docusaurus's Head component.",
+    "43": "The translate function pulls user-facing text from a localization system, allowing the aria-label to be translated to different languages."
   }
 }

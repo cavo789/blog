@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import {
   HtmlClassNameProvider,
   ThemeClassNames,
@@ -15,12 +16,34 @@ import Layout from "@theme/Layout";
 import PostCard from "@site/src/components/Blog/PostCard";
 import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";
 import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
+import { useTagLabel } from "@site/src/components/Blog/utils/tagsI18n";
 import {
   slugFromPermalink,
   useTranslationState,
 } from "@site/src/components/Blog/utils/translations";
 import styles from "./styles.module.css";
 import Translate, { translate } from "@docusaurus/Translate";
+
+/** How many `mainTag` pills to surface before the "all tags" link takes over. */
+const FILTER_BAR_TAG_COUNT = 10;
+
+/**
+ * The `mainTag`s to offer as quick filters, most-represented first.
+ *
+ * Computed from whatever corpus is already locale-filtered (`allPosts` — translated-only on
+ * `fr`), so a tag with zero translated articles never gets a pill nobody can click into.
+ */
+function topTagsOf(posts, limit) {
+  const counts = new Map();
+  for (const post of posts) {
+    if (!post.mainTag) continue;
+    counts.set(post.mainTag, (counts.get(post.mainTag) ?? 0) + 1);
+  }
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, limit)
+    .map(([tag]) => tag);
+}
 
 function resolveImageUrl(frontMatterImage, permalink) {
   if (!frontMatterImage) return null;
@@ -86,7 +109,15 @@ function BlogListPageContent({ metadata, items }) {
   // the day the corpus is fully translated — see TODO 0124.
   const { isDefaultLocale, readingTimeOf } = useTranslationState();
   const { withBaseUrl } = useBaseUrlUtils();
-  const translatedPosts = useBlogMetadata();
+  const tagLabel = useTagLabel();
+  const [activeTag, setActiveTag] = useState(null);
+  const [gridRef] = useAutoAnimate({ duration: 200 });
+
+  // Full corpus, already locale-filtered by the hook (translated-only on `fr`) — needed because
+  // the tag pills must filter across everything, not just the current page's `items`, which is
+  // all Docusaurus's own SSG pagination ever hands this component.
+  const allPosts = useBlogMetadata();
+  const topTags = topTagsOf(allPosts, FILTER_BAR_TAG_COUNT);
 
   const posts = items.map(({ content: { metadata: m } }) => ({
     id: m.permalink,
@@ -101,7 +132,7 @@ function BlogListPageContent({ metadata, items }) {
 
   const localePosts = isDefaultLocale
     ? posts
-    : [...translatedPosts]
+    : [...allPosts]
         .sort((a, b) => new Date(b.date) - new Date(a.date))
         .map((post) => ({
           id: post.permalink,
@@ -139,6 +170,41 @@ function BlogListPageContent({ metadata, items }) {
 
   const isSurplusPage = pagePosts.length === 0;
 
+  // A tag pill switches to a flat, unpaginated view of the whole corpus for that tag: even the
+  // most-used tag (~22 articles) reads fine as one grid, and it sidesteps re-deriving pagination
+  // URLs that don't match the routes Docusaurus actually generated for this page (see the long
+  // comment at the top of this function for why that's delicate on `fr`).
+  //
+  // `readingTime` for a filtered post: Docusaurus supplies it only for the current page's
+  // `items`, and `readingTimeOf` (translations-manifest-plugin) only covers `fr` — so an English
+  // post pulled in from outside the current page has no reading time available at all.
+  // `PostCard` already renders that line conditionally, so it's simply omitted rather than
+  // guessed at.
+  const readingTimeByPermalink = new Map(
+    items.map(({ content: { metadata: m } }) => [m.permalink, m.readingTime]),
+  );
+
+  const filteredPosts = activeTag
+    ? [...allPosts]
+        .filter((post) => post.mainTag === activeTag)
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .map((post) => ({
+          id: post.permalink,
+          permalink: post.permalink,
+          title: post.title,
+          description: post.description,
+          date: post.date,
+          image: post.image,
+          mainTag: post.mainTag,
+          readingTime: isDefaultLocale
+            ? readingTimeByPermalink.get(post.permalink)
+            : readingTimeOf(slugFromPermalink(post.permalink)),
+        }))
+    : [];
+
+  const displayPosts = activeTag ? filteredPosts : pagePosts;
+  const showPaginator = !activeTag;
+
   return (
     <Layout>
       <main className={clsx("container", styles.blogListPage)}>
@@ -164,8 +230,44 @@ function BlogListPageContent({ metadata, items }) {
             variant="inline"
           />
         </div>
+        {topTags.length > 0 && (
+          <div
+            className={styles.tagFilterBar}
+            role="group"
+            aria-label={translate({
+              id: "blog.listPage.filterBarLabel",
+              message: "Filter posts by tag",
+            })}
+          >
+            <button
+              type="button"
+              className={clsx(styles.tagPill, activeTag === null && styles.tagPillActive)}
+              aria-pressed={activeTag === null}
+              onClick={() => setActiveTag(null)}
+            >
+              <Translate id="blog.listPage.filterAll">all</Translate>
+            </button>
+            {topTags.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                className={clsx(
+                  styles.tagPill,
+                  activeTag === tag && styles.tagPillActive,
+                )}
+                aria-pressed={activeTag === tag}
+                onClick={() => setActiveTag(tag)}
+              >
+                {tagLabel(tag)}
+              </button>
+            ))}
+            <Link to="/blog/tags" className={styles.allTagsLink}>
+              <Translate id="blog.listPage.allTagsLink">all tags →</Translate>
+            </Link>
+          </div>
+        )}
         <TranslationCoverage variant="listing" />
-        {isSurplusPage ? (
+        {isSurplusPage && !activeTag ? (
           <p className={styles.emptyPage}>
             {/* Unlike the search widget's empty state, this one is a whole page
                 a reader landed on, so the illustration can carry it. */}
@@ -193,12 +295,12 @@ function BlogListPageContent({ metadata, items }) {
           </p>
         ) : (
           <>
-            <div className={styles.cardsGrid}>
-              {pagePosts.map((post) => (
+            <div ref={gridRef} className={styles.cardsGrid}>
+              {displayPosts.map((post) => (
                 <PostCard key={post.id} post={post} layout="big" />
               ))}
             </div>
-            <BlogListPaginator metadata={paginatorMetadata} />
+            {showPaginator && <BlogListPaginator metadata={paginatorMetadata} />}
           </>
         )}
       </main>

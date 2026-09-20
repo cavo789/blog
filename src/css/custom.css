@@ -2,13 +2,20 @@
  * custom.css for Docusaurus - Avonture.be
  * Optimized for Mobile Sticky TOC + Desktop Ghost TOC
  * American English Localization
+ *
+ * NOTE (design harmonisation): the design tokens now live in ./theme.css,
+ * imported on the first line below. This file keeps only what it was always
+ * about — layout, grid, navbar, prose — and consumes tokens instead of raw
+ * values. The @import must stay FIRST so that theme.css's Infima remap can be
+ * overridden here if ever needed.
  */
 
+@import "./theme.css";
+
 /*
- * The hex values below ARE the token source-of-truth (--ifm-color-primary* and
- * --hero-background-light are *defined* here, not consumed) — legitimate
- * color-no-hex exception, see AGENTS.md and
- * .todos/039-hardcoded-hex-colors-no-token-system.md.
+ * The hex values below ARE the token source-of-truth (--ifm-color-primary* is
+ * *defined* here, not consumed) — legitimate color-no-hex exception, see
+ * AGENTS.md and .todos/039-hardcoded-hex-colors-no-token-system.md.
  */
 /* stylelint-disable color-no-hex */
 :root {
@@ -21,24 +28,29 @@
    *
    * Full-bleed bands (the hero, the "Latest posts" and "Follow" sections, the
    * /about banner) escape by exactly this value rather than by `50vw - 50%`.
-   * That matters: `100vw` counts the vertical scrollbar's width while the
-   * usable page area does not, so a vw-based escape overshoots by ~15px in any
-   * browser with classic (non-overlay) scrollbars. Escaping the very padding
-   * that inset the content cancels exactly, whatever the scrollbar does.
    */
   --page-gutter: max(2vw, var(--ifm-spacing-horizontal));
 
-  --ifm-font-family-base: "Inter", sans-serif;
-  --ifm-font-family-monospace: "Fira Code", "JetBrains Mono", monospace;
+  /* Font families are no longer declared here — see theme.css
+   * (--mk-font-display / --mk-font-text / --mk-font-mono and the Infima
+   * remap that wires them to --ifm-font-family-*). */
 
-  /* Hero section background */
+  /* Hero section background — NOT a palette token on purpose. `welcome.mp4`
+   * (the meerkat animation) has this exact cream-yellow baked into its own
+   * frames; the wrapper around it is deliberately transparent (see
+   * HeroSection/styles.module.css) so the two blend with no visible seam.
+   * Tying this to --mk-key-bg (#faf0de) instead of its own value broke that
+   * seam the moment the harmonisation shifted the "key" tone's hue — the video
+   * can't be recolored to follow, so this has to stay a one-off. */
   --hero-background-light: #fcfcec;
 
-  /* Amber/terracotta palette — matches the meerkat mascot's fur (static/img/avatar.webp),
-   * replacing the Docusaurus-default green (see .todos/DONE/DONE_0101-*.md). Base hue
-   * H23° S52%, lightness varies per shade; verified >= 4.5:1 text contrast on white for
-   * primary/dark/darker/light (darkest/lighter/lightest are used for borders and decorative
-   * gradients only, not text, so AA text contrast doesn't apply to them). */
+  /* Amber/terracotta palette — matches the meerkat mascot's fur
+   * (static/img/avatar.webp), replacing the Docusaurus-default green (see
+   * .todos/DONE/DONE_0101-*.md). Base hue H23° S52%, lightness varies per
+   * shade; verified >= 4.5:1 text contrast on white for
+   * primary/dark/darker/light (darkest/lighter/lightest are used for borders
+   * and decorative gradients only). Left untouched by the harmonisation: this
+   * ramp was already mascot-derived and contrast-checked. */
   --ifm-color-primary: #9b5a31;
   --ifm-color-primary-dark: #8e522d;
   --ifm-color-primary-darker: #864e2a;
@@ -48,15 +60,14 @@
   --ifm-color-primary-lightest: #c37240;
 
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgb(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgb(155, 90, 49, 0.1);
   --ifm-container-width: 100%;
 }
 
 [data-theme="dark"] {
-  /* Same amber/terracotta hue as light mode, lifted in lightness+saturation for
-   * legibility on the dark card background (#1b1b1d) — mirrors how the previous
-   * green/teal ramp also shifted hue/saturation between themes. Verified >= 4.5:1 text
-   * contrast on #1b1b1d for primary/dark/darker (darkest is decorative-only, see above). */
+  /* Same amber/terracotta hue as light mode, lifted in lightness+saturation
+   * for legibility on the dark card background. Verified >= 4.5:1 text
+   * contrast for primary/dark/darker. */
   --ifm-color-primary: #dd7f3c;
   --ifm-color-primary-dark: #d97228;
   --ifm-color-primary-darker: #d16c25;
@@ -64,28 +75,23 @@
   --ifm-color-primary-light: #e08c4f;
   --ifm-color-primary-lighter: #e2925a;
   --ifm-color-primary-lightest: #e7a576;
-  --docusaurus-highlighted-code-line-bg: rgb(0, 0, 0, 0.3);
-  /* Pagefind search highlight — derived from dark --ifm-color-primary #dd7f3c */
-  --pagefind-mark-bg: rgb(221, 127, 60, 0.12);
+  --docusaurus-highlighted-code-line-bg: rgb(221, 127, 60, 0.14);
+  /* Pagefind search highlight — derived from dark --ifm-color-primary */
+  --pagefind-mark-bg: rgb(221, 127, 60, 0.16);
   --pagefind-section-icon-bg: rgb(221, 127, 60, 0.12);
+}
+
+[data-theme="light"] {
+  --pagefind-mark-bg: rgb(155, 90, 49, 0.15);
+  --pagefind-section-icon-bg: rgb(155, 90, 49, 0.12);
 }
 /* stylelint-enable color-no-hex */
 
 /* --- GENERAL STRUCTURE --- */
 
 /*
- * `2vw` gives the roomy gutters this site wants on a desktop (28.8px at 1440),
- * but Infima's `.row` escapes its container with a FIXED
- * `margin-inline: calc(-1 * var(--ifm-spacing-horizontal))` — 16px — on the
- * assumption that the container's padding cancels it exactly.
- *
- * Below roughly 800px wide, 2vw drops under 16px and every `.row` in a
- * container escapes further than there is room for: 8px too far at 390px. The
- * left escape is invisible, the right one put a horizontal scrollbar on every
- * blog page, tag page and article on a phone.
- *
  * `max()` keeps the wide-screen look untouched and never lets the gutter fall
- * below what the grid assumes.
+ * below what Infima's grid assumes — see the --page-gutter comment above.
  */
 .container {
   max-width: var(--ifm-container-width);
@@ -105,26 +111,88 @@
   width: auto;
 }
 
-/* --- NAVBAR PREMIUM --- */
+/* --- NAVBAR --- */
 
-/* Smooth slide animation for hideOnScroll + subtle shadow */
+/*
+ * Sand, not white.
+ *
+ * On a cream page (--mk-bg #fffdf7) a white navbar sits about 1% of luminance
+ * away from what it floats over: the bar does not read as an object at all,
+ * which is most of what made the site feel monotone. --mk-sunken puts a real
+ * step between page and chrome without spending the primary on it.
+ *
+ * Filling the bar with --mk-primary was tried and rejected: terracotta is the
+ * site-wide signal for "this matters / this is interactive" (h2 rails, active
+ * pills, links). Paint the largest permanent band with it and every accent
+ * below has to compete with a terracotta header — and the amber mascot needs a
+ * white plate to survive the ground, which is the colour telling you it does
+ * not belong there.
+ */
 .navbar {
+  background: var(--mk-sunken);
+  border-bottom: 1px solid var(--mk-border-strong);
+  box-shadow: none;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  box-shadow: 0 2px 12px rgb(0, 0, 0, 0.07);
 }
 
-[data-theme="dark"] .navbar {
-  box-shadow: 0 2px 12px rgb(0, 0, 0, 0.35);
+/* The shadow appears only once the page has scrolled under the bar, so the bar
+   is flat at rest and lifts when it actually overlaps content. `data-scroll-top`
+   is set on <body> by src/theme/Root.js — Docusaurus's own hideOnScroll hook
+   only tracks show/hide direction, not scroll position, so nothing else in the
+   framework exposes this. */
+.navbar.navbar--sidebar-show,
+body:not([data-scroll-top]) .navbar {
+  box-shadow: var(--mk-shadow-1);
 }
 
-/* Dark/light toggle button: ensure it's visible and styled */
+/*
+ * The active-page indicator.
+ *
+ * Nothing in the navbar used to say which section the reader was in. This is
+ * the one place the primary earns its keep up here: a 3px terracotta rule under
+ * the current entry, drawn with inset box-shadow rather than border-bottom so
+ * it does not change the item box and shift its neighbours.
+ *
+ * REQUIRES the navbar items to use `to:` instead of `href:` in
+ * docusaurus.config.js. Docusaurus only applies .navbar__link--active to items
+ * declared with `to`.
+ */
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+  box-shadow: inset 0 -3px 0 var(--ifm-color-primary);
+}
+
+.navbar__link {
+  transition:
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* A quiet pre-echo of the active state on hover: same rule, half weight. */
+.navbar__link:not(.navbar__link--active):hover {
+  color: var(--ifm-color-primary);
+  box-shadow: inset 0 -3px 0 var(--mk-key-edge);
+}
+
+/* In the mobile drawer the items are stacked rows, where an underline reads as
+   a divider rather than as a marker. Use the rail vocabulary instead. */
+.navbar-sidebar .navbar__link--active {
+  box-shadow: inset 3px 0 0 var(--ifm-color-primary);
+  background: var(--mk-key-bg);
+}
+
+.navbar-sidebar .navbar__link:not(.navbar__link--active):hover {
+  box-shadow: none;
+  background: var(--ifm-hover-overlay);
+}
+
+/* A navbar label must never wrap mid-item. "À propos" broke onto two lines
+   once the locale dropdown was added — two words stacked inside a menu entry
+   read as two entries. Below Docusaurus's navbar breakpoint the hamburger
+   takes over, so forbidding the wrap cannot push anything off-screen. */
 [class*="colorModeToggle"] button,
-/* A navbar label must never wrap mid-item. "À propos" broke onto two lines once the locale
-   dropdown was added and took horizontal space — two words stacked inside a menu entry read as
-   two entries. Below Docusaurus's own navbar breakpoint the hamburger menu takes over, so
-   forbidding the wrap cannot push anything off-screen. */
 .navbar__item,
 .navbar__link {
   white-space: nowrap;
@@ -134,15 +202,18 @@
   display: flex !important;
   align-items: center;
   justify-content: center;
-  border-radius: 6px;
   padding: 4px 6px;
+  border-radius: var(--mk-radius-sm);
   transition: background 0.2s ease;
 }
 
 [class*="colorModeToggle"] button:hover,
 .navbar__items--right .clean-btn:hover {
-  background: var(--ifm-color-emphasis-200);
+  background: var(--mk-n-100);
 }
+
+/* The search button sits on sand now, so its own surface has to be the card
+   colour to stay legible as a field. Defined in SearchBar/styles.module.css. */
 
 /* --- MOBILE STICKY TOC LOGIC --- */
 .blog-toc-mobile {
@@ -151,25 +222,20 @@
 
 @media (max-width: 996px) {
   .blog-toc-mobile {
-    display: block;
     position: sticky;
     top: var(--ifm-navbar-height);
     z-index: 100;
+    display: block;
 
-    /* VISUAL UPGRADE: Card Style with Brand Accent */
-    border: 1px solid var(--ifm-color-emphasis-200); /* Thin subtle border around */
-    border-left: 5px solid var(--ifm-color-primary); /* Strong brand accent on the left */
-    border-radius: 0 4px 4px 0; /* Rounded corners only on right */
-
+    /* Same rail and radius as every other left-accented block in the site —
+       this used to be the fourth 5px liseré. */
+    padding: 0.75rem 1rem;
     margin-bottom: 2rem;
-    padding: 0.75rem 1rem; /* More padding for "button" feel */
-
-    /* Stronger shadow to lift it above scrolling content */
-    box-shadow: 0 4px 15px rgb(0, 0, 0, 0.1);
-
-    backdrop-filter: blur(8px);
-    background: rgb(255, 255, 255, 0.85);
-
+    background: var(--mk-surface);
+    border: 1px solid var(--mk-border);
+    border-left: var(--mk-rail) solid var(--mk-primary);
+    border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+    box-shadow: var(--mk-shadow-2);
     transition:
       transform 0.3s ease,
       opacity 0.3s ease;
@@ -181,68 +247,100 @@
     pointer-events: none;
   }
 
-  [data-theme="dark"] .blog-toc-mobile {
-    background: rgb(30, 30, 30, 0.85);
-  }
-
   /* --- FIX: Anchor Scrolling Overlap ---
-   * Since the "On this page" button is sticky, we must increase the scroll margin
-   * of headings so they don't get hidden behind the button when clicked.
-   */
+   * The "On this page" button is sticky, so heading scroll margin must clear
+   * it when an anchor is clicked. */
   html {
-    /* Use scroll-padding-top on the container for better anchor positioning support */
     scroll-padding-top: calc(var(--ifm-navbar-height) + 1rem) !important;
   }
 }
 
-/* --- GRID ADJUSTMENTS (Original code kept) --- */
+/* --- GRID ADJUSTMENTS --- */
 
-/* Left Sidebar */
-.col.col--3:first-child {
-  flex-basis: 16.6666%;
-  max-width: 16.6666%;
-  padding-right: 0.5rem;
-}
+/*
+ * Why these are flex ratios and not percentages any more.
+ *
+ * Docusaurus's BlogLayout renders three Infima columns inside one .row:
+ * col--3 (post list), col--7 (article), col--2 (table of contents).
+ * .row is display: flex; flex-wrap: wrap.
+ *
+ * The previous rules pinned all three by percentage -- 16.6666% + 66.6666% +
+ * 16.6666% = 99.9998%. That is 0.0002% of slack. A browser lays out in 1/64px
+ * units and rounds each column INDEPENDENTLY, so at some zoom levels the three
+ * rounded widths add up to more than the row, and flex-wrap does what it is
+ * told: it drops the last column -- the table of contents -- onto a second
+ * line, where it lands under the post list at bottom-left.
+ *
+ * That is why the bug showed at 110% and 150% zoom but not at 100%: nothing is
+ * conditional, the same arithmetic simply rounds differently at each step.
+ *
+ * The fix is to stop asking the browser to make three percentages add up. The
+ * two rails get a fixed basis; the article gets flex: 1 1 0 and absorbs
+ * whatever is left, to the sub-pixel. Wrapping becomes impossible.
+ *
+ * min-width: 0 on the article is NOT optional: a flex item defaults to
+ * min-width: auto and refuses to shrink below its content, so one long line in
+ * a <pre> would widen the row and re-trigger the wrap. This site is full of
+ * code blocks.
+ */
 
-/* Main Content */
-.col.col--6,
-.col.col--7,
-.col.col--9 {
-  flex-basis: 66.6666%;
-  max-width: 66.6666%;
-}
+@media screen and (min-width: 997px) {
+  /* Left sidebar -- the post list */
+  .col.col--3:first-child {
+    flex: 0 0 16.6666%;
+    max-width: 16.6666%;
+    padding-right: 0.5rem;
+  }
 
-/* Desktop Right TOC */
-.theme-doc-toc-desktop {
-  position: relative;
-  margin-left: auto;
-  margin-right: 0;
-  max-width: 16.6666%;
-  flex-basis: 16.6666%;
-  padding-left: 1rem;
-  padding-right: 0;
-  display: block;
-}
-
-/* Large screens override */
-@media screen and (min-width: 1600px) {
+  /* Main content -- takes the remainder, never a percentage */
   .col.col--6,
   .col.col--7,
   .col.col--9 {
-    flex-basis: 70%;
-    max-width: 70%;
+    flex: 1 1 0;
+    max-width: none;
+    min-width: 0;
   }
+
+  /* Right rail -- the table of contents.
+     .theme-doc-toc-desktop is the docs one; .col--2 is what BlogLayout uses on
+     a blog post. Both are the same object to a reader, so both are declared
+     here -- the blog one had never been given a width at all, it was simply
+     inheriting Infima's own col--2. */
   .theme-doc-toc-desktop,
-  .col.col--3:first-child {
-    flex-basis: 15%;
+  html.blog-post-page .col.col--2 {
+    position: relative;
+    display: block;
+    flex: 0 0 16.6666%;
+    max-width: 16.6666%;
+    padding-right: 0;
+    padding-left: 1rem;
+    margin-right: 0;
+    margin-left: auto;
+  }
+}
+
+/* Large screens: the rails narrow, the article keeps absorbing the rest. */
+@media screen and (min-width: 1600px) {
+  .col.col--3:first-child,
+  .theme-doc-toc-desktop,
+  html.blog-post-page .col.col--2 {
+    flex: 0 0 15%;
     max-width: 15%;
   }
 }
 
-/* Responsive override */
+/*
+ * Below 997px Docusaurus has already switched the navbar to its hamburger and
+ * in-page navigation is handled by the sticky .blog-toc-mobile defined further
+ * up this file.
+ *
+ * The post list is now HIDDEN here rather than stretched to 100%. Stretching it
+ * meant every article on a narrow viewport opened with the full 257-entry post
+ * list stacked above the title -- the reader had to scroll past the whole blog
+ * to reach the article they had just clicked. The list is one tap away from the
+ * navbar; it does not need to precede every post.
+ */
 @media screen and (max-width: 996px) {
-  /* Standardized to 996px (Docusaurus default) instead of 768px */
-  .col.col--3,
   .col.col--6,
   .col.col--7,
   .col.col--9,
@@ -250,7 +348,7 @@
     flex-basis: 100% !important;
     max-width: 100% !important;
   }
-  /* Hides the desktop ToC on mobile */
+
   .theme-doc-toc-desktop {
     display: none !important;
   }
@@ -258,41 +356,71 @@
   /*
    * Blog posts render their desktop ToC in a plain ".col--2" div (Docusaurus's
    * unswizzled BlogLayout), not ".theme-doc-toc-desktop" (docs only). Without
-   * this it keeps its ~16.6% flex-basis while the sidebar/article above are
-   * forced to 100%, so it wraps onto its own row at the bottom-left of the
-   * page instead of being hidden in favor of the sticky ".blog-toc-mobile".
-   * Scoped to blog post pages so standalone MDX pages (no mobile ToC
-   * fallback) are unaffected.
+   * this it wraps onto its own row at the bottom-left instead of being hidden
+   * in favour of the sticky ".blog-toc-mobile".
    */
   html.blog-post-page .col.col--2 {
     display: none !important;
   }
-  /* Prevent oversized article titles on small screens */
+
+  /* The post list, same reasoning as the ToC above. */
+  html.blog-post-page .col.col--3:first-child {
+    display: none !important;
+  }
+
   article h1 {
     font-size: clamp(1.4rem, 5vw, 2.2rem);
   }
+
+  /* Docusaurus hides the navbar's color-mode toggle below this breakpoint
+     (Navbar/Content/styles.module.css) and relies on the copy duplicated
+     inside the hamburger drawer instead. On a phone that means an extra tap
+     just to switch theme — restore it next to the search icon, which is the
+     only other item this breakpoint leaves in the top bar.
+     Above this breakpoint the toggle sits BEFORE the search bar in the DOM
+     (Navbar/Content renders <NavbarColorModeToggle> then <SearchBar>), so it
+     reads to its left on desktop. Docusaurus's own Navbar/Search
+     styles.module.css pulls the search icon OUT of the flex row at this same
+     breakpoint (position: absolute; right: <navbar padding>) — a placement
+     computed for when it is the ONLY item left in the corner. Left alone, the
+     now-visible toggle stays a normal flex item and lands flush against that
+     same right edge, i.e. to the RIGHT of the search icon — the opposite
+     side from desktop. Pulling the toggle out of flow the same way and
+     anchoring it one search-icon-width further out reproduces the desktop
+     left-of-search order on mobile too. */
+  [class*="colorModeToggle"] {
+    display: inline-flex !important;
+    position: absolute;
+    right: calc(var(--ifm-navbar-padding-horizontal) + 2.75rem);
+    align-items: center;
+  }
 }
 
-/* --- MISC STYLES --- */
+/* --- CARDS --- */
 
+/* Infima's own .card, aligned with .mk-liftable so a stock card and a
+   component card behave identically. */
 .card {
-  transition:
-    transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
+  color: var(--mk-ink-soft);
   text-decoration: none !important;
-  color: var(--ifm-color-emphasis-800);
+  border-radius: var(--mk-radius-lg);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
+
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--ifm-shadow-lg);
-  color: var(--ifm-color-emphasis-900);
+  color: var(--mk-ink);
+  border-color: var(--mk-primary);
+  box-shadow: var(--mk-shadow-2);
+  transform: translateY(-4px);
 }
 
 /*
  * Selectors below mix two unrelated selector families (.card img and
- * article .markdown img) that never nest inside one another in the DOM —
- * ordered by ascending specificity purely to satisfy no-descending-specificity,
- * not because these rules interact.
+ * article .markdown img) that never nest inside one another — ordered by
+ * ascending specificity purely to satisfy no-descending-specificity.
  */
 .card img {
   max-width: 100%;
@@ -303,15 +431,15 @@
 /* --- ARTICLE IMAGES --- */
 
 article .markdown img {
-  border-radius: 10px;
-  box-shadow: 0 4px 24px rgb(0, 0, 0, 0.1);
+  display: block;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-2);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  max-width: 100%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .card:hover img {
@@ -319,22 +447,26 @@ article .markdown img {
 }
 
 article .markdown img:hover {
+  box-shadow: var(--mk-shadow-3);
   transform: scale(1.015);
-  box-shadow: 0 8px 36px rgb(0, 0, 0, 0.18);
 }
 
-[data-theme="dark"] article .markdown img {
-  box-shadow: 0 4px 24px rgb(0, 0, 0, 0.45);
-}
-
-[data-theme="dark"] article .markdown img:hover {
-  box-shadow: 0 8px 36px rgb(0, 0, 0, 0.65);
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card:hover,
+  .card img,
+  article .markdown img,
+  article .markdown img:hover {
+    transform: none;
+    transition: none;
+  }
 }
 
 .theme-edit-this-page {
   display: block;
   margin-bottom: 20px;
 }
+
 .about_images {
   max-width: 100%;
   height: auto;
@@ -348,16 +480,16 @@ article .markdown img:hover {
 }
 
 .screenshot {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: var(--ifm-global-radius);
-  box-shadow: var(--ifm-shadow-md);
-  margin: 1.5rem auto;
   display: block;
-  max-width: 80%; /* To avoid being too large */
+  max-width: 80%;
+  margin: 1.5rem auto;
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-md);
+  box-shadow: var(--mk-shadow-2);
 }
 
 [data-theme="dark"] .screenshot {
-  border-color: var(--ifm-color-emphasis-500);
+  border-color: var(--mk-border-strong);
 }
 
 /* --- KBD / KEYBOARD SHORTCUTS --- */
@@ -367,145 +499,158 @@ kbd {
   padding: 2px 8px;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.82em;
-  color: var(--ifm-font-color-base);
-  background: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-bottom-width: 3px;
-  border-radius: 5px;
-  box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-300);
-  white-space: nowrap;
   line-height: 1.4;
+  color: var(--mk-ink);
+  white-space: nowrap;
+  background: var(--mk-sunken);
+  border: 1px solid var(--mk-border-strong);
+  border-bottom-width: 3px;
+  border-radius: var(--mk-radius-sm);
 }
 
-[data-theme="dark"] kbd {
-  border-color: var(--ifm-color-emphasis-500);
-  box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-500);
-}
+/* --- ARTICLE HEADINGS --- */
 
-/* --- ARTICLE HEADING STYLES --- */
-
+/*
+ * h2 keeps its left accent — it is the site's signature and it now shares the
+ * exact rail thickness of every callout, so an article reads as one grid of
+ * left-aligned marks rather than three competing ones (4px here, 5px on the
+ * TL;DR, 6px on an AlertBox).
+ */
 article h2 {
-  border-left: 4px solid var(--ifm-color-primary);
   padding-left: 0.75rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+  font-family: var(--mk-font-display);
+  border-left: var(--mk-rail) solid var(--ifm-color-primary);
+}
+
+article h1,
+article h3,
+article h4,
+article h5 {
+  font-family: var(--mk-font-display);
 }
 
 article h3 {
-  color: var(--ifm-color-primary-dark);
   margin-top: 1.75rem;
+  color: var(--ifm-color-primary-dark);
 }
 
 [data-theme="dark"] article h3 {
   color: var(--ifm-color-primary-light);
 }
 
-/* h4 styles moved to bottom of file (theme-aware version) */
-
-/* --- CODE BLOCKS — word wrap --- */
-
-.prism-code {
-  white-space: pre-wrap;
-  overflow-wrap: break-word;
-}
-
-/* --- FOOTER THEME-AWARE --- */
-
-.footer {
-  --ifm-footer-padding-vertical: 0.5rem;
-  background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-font-color-base);
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-}
-
-.footer__copyright {
-  color: var(--ifm-color-emphasis-600);
-}
-
-/* The command-palette hint line (TODO 0084) needs to read as an invitation, not fine print —
-   the rest of .footer__copyright is deliberately muted, so this overrides just this span. */
-.footer-cmdk-hint {
-  display: inline-block;
-  margin-bottom: 0.3rem;
-  color: var(--ifm-color-primary);
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-[data-theme="dark"] .footer {
-  background: var(--ifm-background-color);
-  color: var(--ifm-font-color-base);
-  border-top: 1px solid var(--ifm-color-emphasis-300);
-}
-
-[data-theme="dark"] .footer__copyright {
-  color: var(--ifm-color-emphasis-500);
-}
-
-/* --- BLOCKQUOTES --- */
-
-blockquote {
-  border-left: 4px solid var(--ifm-color-primary);
-  background: var(--ifm-color-emphasis-100);
-  border-radius: 0 8px 8px 0;
-  padding: 0.75rem 1.25rem;
-  margin: 1.5rem 0;
-  color: var(--ifm-font-color-base);
-  font-style: italic;
-}
-
-blockquote p {
-  margin-bottom: 0;
-}
-
-[data-theme="dark"] blockquote {
-  background: rgb(255, 255, 255, 0.04);
-}
-
-/* --- ARTICLE H4 — lisibilité améliorée --- */
-
+/*
+ * h4 was rendered in small-caps at 0.95rem, i.e. SMALLER than body text while
+ * being a heading — it read as a caption. It is now the shared eyebrow, which
+ * is at least an intentional, system-wide choice, and it is the same object as
+ * every component label on the page.
+ */
 article h4 {
-  font-variant: small-caps;
-  letter-spacing: 0.04em;
-  font-size: 0.95rem;
+  margin-top: 1.5rem;
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
   color: var(--ifm-color-primary-dark);
-  margin-top: 1.25rem;
 }
 
 [data-theme="dark"] article h4 {
   color: var(--ifm-color-primary-light);
 }
 
+/* --- CODE BLOCKS — word wrap --- */
+
+.prism-code {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* --- FOOTER --- */
+
+.footer {
+  --ifm-footer-padding-vertical: 0.5rem;
+
+  color: var(--mk-ink);
+  background: var(--mk-sunken);
+  border-top: 1px solid var(--mk-border);
+}
+
+.footer__copyright {
+  color: var(--mk-ink-soft);
+}
+
+/* The command-palette hint line (TODO 0084) must read as an invitation, not
+   fine print — the rest of .footer__copyright is deliberately muted. */
+.footer-cmdk-hint {
+  display: inline-block;
+  margin-bottom: 0.3rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+}
+
+[data-theme="dark"] .footer {
+  background: var(--mk-surface);
+  border-top-color: var(--mk-border);
+}
+
+/* --- BLOCKQUOTES --- */
+
+/*
+ * The italic is gone. A blockquote can run several paragraphs; italic body
+ * text at length is measurably slower to read, and the block is already told
+ * apart by its rail and its ground. Emphasis is what <em> is for.
+ */
+blockquote {
+  padding: 0.75rem 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--mk-ink);
+  background: var(--mk-sunken);
+  border-left: var(--mk-rail) solid var(--ifm-color-primary);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+}
+
+blockquote p {
+  margin-bottom: 0;
+}
+
 /* --- TABLES --- */
 
+/*
+ * Header treatment: sand ground + a 2px terracotta rule, replacing the fully
+ * saturated terracotta band. Rationale: on an article carrying three tables,
+ * a full-bleed primary band is the loudest thing on the page and the primary
+ * stops meaning anything. The colour still marks the header row — as a rule
+ * rather than as a fill — and the header label is the shared eyebrow, so a
+ * table header, a Snippet toolbar and a callout title are recognisably the
+ * same object.
+ */
 .markdown table {
-  border-collapse: collapse;
   width: 100%;
   margin: 1.5rem 0;
-  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 1px 4px rgb(0, 0, 0, 0.08);
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-collapse: collapse;
+  border-radius: var(--mk-radius-md);
 }
 
 .markdown th {
-  background: var(--ifm-color-primary);
-  color: white;
-  font-weight: 600;
-  padding: 0.6rem 1rem;
+  padding: 0.625rem 1rem;
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
   text-align: left;
+  color: var(--mk-ink);
+  background: var(--mk-sunken);
+  border-bottom: 2px solid var(--ifm-color-primary);
 }
 
 .markdown td {
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
-}
-
-[data-theme="dark"] .markdown th {
-  background: var(--ifm-color-primary-dark);
-}
-
-[data-theme="dark"] .markdown td {
-  border-bottom-color: var(--ifm-color-emphasis-300);
+  padding: 0.5625rem 1rem;
+  border-bottom: 1px solid var(--mk-border);
 }
 
 .markdown tr:last-child td {
@@ -513,62 +658,49 @@ article h4 {
 }
 
 .markdown tr:hover td {
-  background: var(--ifm-color-emphasis-100);
+  background: var(--mk-n-50);
 }
 
-[data-theme="dark"] .markdown tr:hover td {
-  background: rgb(255, 255, 255, 0.05);
-}
-
-/* --- SEARCH VISUAL IMPROVEMENTS (Pagefind / DocSearch) --- */
-
-/* 1. Keyboard shortcut key badges (Ctrl + K) inside the navbar search button.
- *    The @docsearch/css base renders them with a near-invisible light gradient;
- *    override to match the existing <kbd> style defined above.
+/*
+ * A table's first column is, in this blog, almost always a command flag, a
+ * file name or a key — monospace makes it scannable and reinforces that these
+ * are literals. Opt out on a given table with class="prose-table" in MDX.
  */
+.markdown table:not(.prose-table) tbody td:first-child {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.85em;
+}
+
+/* --- SEARCH (Pagefind / DocSearch) --- */
+
+/* Keyboard shortcut badges (Ctrl + K) in the navbar search button. The
+ * @docsearch/css base renders them with a near-invisible gradient; override to
+ * match the <kbd> style above. */
 .DocSearch-Button-Key {
+  top: 0 !important;
   width: auto !important;
   height: auto !important;
   padding: 1px 5px !important;
   font-family: var(--ifm-font-family-monospace);
   font-size: 0.72em !important;
-  color: var(--ifm-font-color-base) !important;
-  background: var(--ifm-background-surface-color) !important;
-  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  color: var(--mk-ink) !important;
+  background: var(--mk-sunken) !important;
+  border: 1px solid var(--mk-border-strong) !important;
   border-bottom-width: 2px !important;
-  border-radius: 4px !important;
-  box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-300) !important;
-  top: 0 !important;
+  border-radius: var(--mk-radius-sm) !important;
 }
 
-[data-theme="dark"] .DocSearch-Button-Key {
-  border-color: var(--ifm-color-emphasis-500) !important;
-  box-shadow: inset 0 -1px 0 var(--ifm-color-emphasis-500) !important;
-}
-
-/* 2. Subtle tinted background on matched terms in results.
- *    The plugin forces background: transparent !important — we must
- *    also use !important. rgba values derived from --ifm-color-primary
- *    (#9b5a31 light / #dd7f3c dark). Dark values are in the main [data-theme="dark"]
- *    block above; light defaults are set here.
- */
-[data-theme="light"] {
-  --pagefind-mark-bg: rgb(155, 90, 49, 0.15);
-  --pagefind-section-icon-bg: rgb(155, 90, 49, 0.12);
-}
-
+/* The plugin forces background: transparent !important on marks — we must too. */
 .pagefindHit-title mark,
 .pagefindHit-excerpt mark,
 .pagefindHit-breadcrumb mark {
+  padding: 0 2px !important;
   background: var(--pagefind-mark-bg) !important;
   border-radius: 2px;
-  padding: 0 2px !important;
 }
 
-/* 3. Distinct icon color for section-heading (#) vs full-page (document) results.
- *    Section hits always have a .pagefindHit-breadcrumb; page hits do not.
- *    Uses :has() (supported in all evergreen browsers since 2023).
- */
+/* Distinct icon colour for section-heading (#) vs full-page results. Section
+ * hits always have a .pagefindHit-breadcrumb; page hits do not. */
 a.pagefindHit:has(.pagefindHit-breadcrumb) .pagefindHit-icon {
   color: var(--ifm-color-primary);
   background: var(--pagefind-section-icon-bg);
@@ -579,13 +711,62 @@ a.pagefindHit:has(.pagefindHit-breadcrumb) .pagefindHit-icon {
 
 @media print {
   body::after {
-    content: "\1F9AB Printed from avonture.be \2014 mascot-approved reading material.";
     position: fixed;
+    right: 0;
     bottom: 10px;
     left: 0;
-    right: 0;
-    text-align: center;
     font-size: 9px;
-    color: var(--ifm-color-emphasis-500);
+    color: var(--mk-n-500);
+    text-align: center;
+    content: "\1F9AB Printed from avonture.be \2014 mascot-approved reading material.";
   }
+}
+
+/* --- NATIVE MARKDOWN ADMONITIONS --- */
+
+/*
+ * A `:::tip` written in Markdown and an `<AlertBox variant="tip">` say the
+ * same thing and should look the same. The Infima remap in theme.css already
+ * gave them the same COLOURS (--ifm-color-info/success/warning/danger point at
+ * the tone lines), but Docusaurus's admonition keeps its own geometry: a full
+ * 1px border, --ifm-global-radius on all four corners, a heading-weight title
+ * and its own icon size. Side by side with a callout, the two read as two
+ * different components.
+ *
+ * This aligns the geometry only. The icon stays Docusaurus's own — swizzling
+ * Admonition to get the filled .mk-dot is a bigger change than this is worth,
+ * and the icon is not what makes the two look unrelated.
+ */
+.theme-admonition {
+  border: none;
+  border-left: var(--mk-rail) solid var(--ifm-alert-border-color);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  box-shadow: var(--mk-shadow-1);
+}
+
+/* The admonition heading is the eyebrow every other label in the site uses.
+   Docusaurus renders it uppercase already, at its own size and tracking. */
+.theme-admonition
+  .admonitionHeading_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module,
+.theme-admonition [class*="admonitionHeading"] {
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.theme-admonition [class*="admonitionIcon"] svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.theme-admonition [class*="admonitionContent"] {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.theme-admonition [class*="admonitionContent"] > :last-child {
+  margin-bottom: 0;
 }

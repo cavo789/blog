@@ -148,7 +148,12 @@ export default function FollowPage(): JSX.Element {
           })}
         />
 
-        <h2>
+        <h2 className={styles.sectionHeading}>
+          <img
+            src="/img/meerkat/emojis/emotion_confused.webp"
+            alt=""
+            className={styles.sectionHeadingIcon}
+          />
           <Translate id="follow.reader.heading">Never used a feed reader?</Translate>
         </h2>
         <p>
@@ -186,7 +191,12 @@ export default function FollowPage(): JSX.Element {
           </Translate>
         </p>
 
-        <h2>
+        <h2 className={styles.sectionHeading}>
+          <img
+            src="/img/meerkat/emojis/activity_reading.webp"
+            alt=""
+            className={styles.sectionHeadingIcon}
+          />
           <Translate id="follow.whole.heading">The whole blog</Translate>
         </h2>
         <p>
@@ -218,7 +228,12 @@ export default function FollowPage(): JSX.Element {
           </Translate>
         </p>
 
-        <h2>
+        <h2 className={styles.sectionHeading}>
+          <img
+            src="/img/meerkat/emojis/gesture_pointing.webp"
+            alt=""
+            className={styles.sectionHeadingIcon}
+          />
           <Translate id="follow.series.heading">One series at a time</Translate>
         </h2>
         <p>
@@ -242,7 +257,12 @@ export default function FollowPage(): JSX.Element {
           ))}
         </ul>
 
-        <h2>
+        <h2 className={styles.sectionHeading}>
+          <img
+            src="/img/meerkat/emojis/tech_ai_vision.webp"
+            alt=""
+            className={styles.sectionHeadingIcon}
+          />
           <Translate id="follow.topic.heading">One topic at a time</Translate>
         </h2>
         <p>

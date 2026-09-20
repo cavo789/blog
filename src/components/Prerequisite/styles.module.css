@@ -1,13 +1,33 @@
+/*
+ * Prerequisite — the label above each Terminal was plain bold text, visually
+ * unrelated to every other component label in the site. It becomes an eyebrow,
+ * and the whole block gets the same rail as StepsCard, since it is the same
+ * idea: a short procedural aside.
+ */
+
 .wrapper {
   margin: 1.5rem 0;
+  padding: 1.125rem 1.375rem;
+  background: var(--mk-surface);
+  border: 1px solid var(--mk-border);
+  border-left: var(--mk-rail) solid var(--mk-info-line);
+  border-radius: 0 var(--mk-radius-md) var(--mk-radius-md) 0;
+  box-shadow: var(--mk-shadow-1);
 }
 
 .name {
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  composes: mk-eyebrow from global;
+  margin: 0 0 0.75rem;
+  color: var(--mk-info-line);
+}
+
+.name code {
+  font-size: 0.95em;
+  text-transform: none;
+  letter-spacing: 0;
 }
 
 .verify {
-  margin: 0.75rem 0 0.5rem;
-  color: var(--ifm-color-emphasis-700);
+  composes: mk-eyebrow from global;
+  margin: 0.875rem 0 0.5rem;
 }

@@ -15,6 +15,14 @@
 
 .downloadButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgb(0, 0, 0, 0.15);
+  box-shadow: var(--mk-shadow-2);
   text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .downloadButton,
+  .downloadButton:hover {
+    transform: none;
+    transition: none;
+  }
 }

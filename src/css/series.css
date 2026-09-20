@@ -1,18 +1,38 @@
+/*
+ * Intro block above the series grid on /series.
+ *
+ * Retokenised. The dark-mode override is gone: it swapped
+ * --ifm-font-color-secondary for --ifm-color-emphasis-600 purely because the
+ * former resolved to pure white in dark mode — the FOURTH hand-written
+ * workaround for that same trap in this repo (the others were
+ * BlogPostItem/Header, follow.module.css and Blog/TranslationCoverage). The
+ * theme layer remaps it now, and --mk-ink-soft flips on its own.
+ *
+ * This file is loaded as plain global CSS (imported directly in series.mdx,
+ * not a .module.css read through a component), so `composes` — a CSS Modules
+ * feature — cannot be used here: it would compile to a literal, invalid
+ * `composes: ...` declaration that browsers silently ignore, leaving
+ * .seriesStats with none of the eyebrow's actual styling. The .mk-eyebrow
+ * declarations are inlined instead; keep them in sync with theme.css's
+ * .mk-eyebrow by hand if that primitive ever changes.
+ */
+
 .seriesStats {
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--mk-eyebrow-size);
+  font-weight: var(--mk-eyebrow-weight);
+  letter-spacing: var(--mk-eyebrow-tracking);
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--mk-ink-soft);
   text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
   margin-bottom: 0.5rem;
-  color: var(--ifm-color-emphasis-700);
 }
 
 .seriesIntro {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  line-height: 1.6;
   margin-bottom: 2rem;
-  color: var(--ifm-font-color-secondary);
-}
-
-html[data-theme="dark"] .seriesIntro {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--mk-ink-soft);
 }

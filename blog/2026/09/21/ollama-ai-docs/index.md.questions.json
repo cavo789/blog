@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "model": "task-tiny:latest",
+  "generated": "2026-09-20T16:36:07.948Z",
+  "durationMs": 9578,
+  "source": "index.md",
+  "sourceHash": "61d61b76cd15bc7f974fde622b19c9ee23c618cc",
+  "questions": [
+    {
+      "question": "How do I translate documents locally without leaving my machine?",
+      "anchor": ""
+    },
+    {
+      "question": "What are the benefits of using Docling to extract text before translating or summarizing documents?",
+      "anchor": "reusing-docling-for-extraction"
+    },
+    {
+      "question": "Can you explain how ai-translate handles different file types, including Word, PDF, PowerPoint, and Excel documents?",
+      "anchor": "ai-translate"
+    },
+    {
+      "question": "How does ai-summarize condense a document into bullet points instead of translating it?",
+      "anchor": "ai-summarize"
+    },
+    {
+      "question": "What is the purpose of the Ollama model used in both ai-translate and ai-summarize functions?",
+      "anchor": "registered-in-the-ai-menu"
+    },
+    {
+      "question": "How can I reuse Docling for extraction in my own files without calling it explicitly?",
+      "anchor": "key-takeaways"
+    },
+    {
+      "question": "What are the requirements for running ai-translate and ai-summarize functions locally?",
+      "anchor": "all-files-at-a-glance"
+    },
+    {
+      "question": "How do I register ai-translate and ai-summarize in my Ollama menu?",
+      "anchor": "conclusion"
+    }
+  ]
+}

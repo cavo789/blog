@@ -22,8 +22,35 @@
   justify-content: center;
 }
 
-/* Section titles (h2) reuse the article heading font, but the green
-   left border accent belongs to blog articles, not the homepage. */
+/*
+ * Docusaurus's own MDXPage theme component wraps every page under src/pages/
+ * in <main class="container container--fluid margin-vert--lg"> — not
+ * something this page controls, and margin-vert--lg is Infima's own
+ * `margin-top: 2rem !important`, shipped inside `@layer docusaurus.infima`.
+ * A CSS layer beats specificity: ANY rule in an earlier-established layer
+ * wins over an unlayered !important rule, so `main { margin-top: 0
+ * !important }` here — even maximally specific, even in its own @layer —
+ * cannot out-cascade it (verified: neither approach moved the computed
+ * value off 32px).
+ *
+ * HeroSection is meant to be full-bleed, flush under the navbar (see its own
+ * "Full-bleed" comment), but that 2rem ancestor margin left the page's base
+ * background (--mk-bg) showing as a pale band above it. Harmless when the
+ * navbar was near-white too; visible now that the navbar is a deeper sand
+ * tone (--mk-sunken). Fixed from the other side instead: a matching negative
+ * margin-top on the hero itself pulls its own box up by exactly the gap's
+ * height, which needs no cascade fight at all — it's the same technique as
+ * HeroSection's own negative side margins, just applied to the top edge too.
+ * This lives here (not in HeroSection's own stylesheet) because the -2rem
+ * compensation is specific to being the first thing under MDXPage's fixed
+ * wrapper — true on the homepage only.
+ */
+:global(header[class*="heroHeader"]) {
+  margin-top: -2rem;
+}
+
+/* Section titles (h2) reuse the article heading font, but the terracotta
+   rail accent belongs to blog articles, not the homepage. */
 .homepageSections h2 {
   border-left: none;
   padding-left: 0;

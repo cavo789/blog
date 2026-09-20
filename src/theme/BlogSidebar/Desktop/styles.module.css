@@ -1,0 +1,78 @@
+.sidebarContainer {
+  /* Overrides Infima's `.col` base rule (`flex: 1 0`), so it must win the specificity tie. */
+  flex: 0 0 25% !important;
+  max-width: 25% !important;
+  transition:
+    flex-basis var(--ifm-transition-fast) ease,
+    max-width var(--ifm-transition-fast) ease;
+}
+
+.sidebar {
+  max-height: calc(100vh - (var(--ifm-navbar-height) + 2rem));
+  overflow-y: auto;
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 2rem);
+}
+
+@media (max-width: 996px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebarItemTitle {
+  font-size: var(--ifm-h3-font-size);
+  font-weight: var(--ifm-font-weight-bold);
+}
+
+.toggleButton {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--ifm-button-border-radius);
+  background: transparent;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+}
+
+.toggleButton:hover,
+.toggleButton:focus-visible {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.sidebarItemList {
+  font-size: 0.9rem;
+}
+
+.sidebarItem {
+  margin-top: 0.7rem;
+}
+
+.sidebarItemLink {
+  color: var(--ifm-font-color-base);
+  display: block;
+}
+
+.sidebarItemLink:hover {
+  text-decoration: none;
+}
+
+.sidebarItemLinkActive {
+  color: var(--ifm-color-primary) !important;
+}
+
+.yearGroupHeading {
+  margin-top: 1.6rem;
+  margin-bottom: 0.4rem;
+}
