@@ -179,7 +179,12 @@
   gap: 0.3rem;
 }
 
-.filters_panel select,
+/*
+ * The only remaining <input> here is Search (Language/Status are pills now). Its border was
+ * --mk-border-strong — a neutral warm-grey, nearly invisible on --mk-surface in dark mode — while
+ * the pills right next to it are drawn from the warmer --mk-key-edge/--mk-primary family. Using
+ * that same edge tone ties the input into the same "filter toolbar" visual family as the pills.
+ */
 .filters_panel input {
   margin-top: 0.25rem;
   padding: 0.45rem 0.6rem;
@@ -188,14 +193,36 @@
   letter-spacing: 0;
   text-transform: none;
   border-radius: var(--mk-radius-sm);
-  border: 1px solid var(--mk-border-strong);
+  border: 1px solid var(--mk-key-edge);
   background-color: var(--mk-surface);
   color: var(--mk-ink);
 }
 
-.filters_panel select:focus,
 .filters_panel input:focus {
   outline: none;
   border-color: var(--mk-primary);
   box-shadow: 0 0 0 3px var(--mk-key-bg);
+}
+
+/* Language / Status filters: pills, not a <select> — same visual as the
+   /blog tag filter bar (src/theme/BlogListPage/styles.module.css). */
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.filterPill {
+  composes: mk-pill from global;
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.filterPillActive,
+.filterPillActive:hover {
+  color: var(--mk-on-line);
+  background: var(--mk-primary);
+  border-color: var(--mk-primary);
 }

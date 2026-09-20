@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, type JSX } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import Translate, { translate } from "@docusaurus/Translate";
 
@@ -19,6 +20,9 @@ export default function Reaction({ metadata }: Props): JSX.Element | null {
   const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/reactions.php`;
   const storageKey = `reaction_${slug}`;
+
+  const mascotYesUrl = useBaseUrl("/img/reaction-mascot-yes.webp");
+  const mascotNoUrl = useBaseUrl("/img/reaction-mascot-no.webp");
 
   const [counts, setCounts] = useState<Counts | null>(null);
   // null until the client-side effect runs — avoids SSR/hydration mismatch (#418).
@@ -89,7 +93,8 @@ export default function Reaction({ metadata }: Props): JSX.Element | null {
                 message: "Yes, this was helpful",
               })}
             >
-              👍 <Translate id="blog.reaction.yes">Helpful</Translate>
+              <img src={mascotYesUrl} alt="" className={styles.mascot} />
+              <Translate id="blog.reaction.yes">Helpful</Translate>
             </button>
             <button
               className={`${styles.btn} ${styles.btnNeutral}`}
@@ -99,7 +104,8 @@ export default function Reaction({ metadata }: Props): JSX.Element | null {
                 message: "No, this was not helpful",
               })}
             >
-              👎 <Translate id="blog.reaction.no">Not really</Translate>
+              <img src={mascotNoUrl} alt="" className={styles.mascot} />
+              <Translate id="blog.reaction.no">Not really</Translate>
             </button>
           </div>
           {submitError && (

@@ -57,6 +57,12 @@
     color 0.15s ease;
 }
 
+.mascot {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+
 .btn:hover {
   background-color: var(--mk-primary);
   border-color: var(--mk-primary);

@@ -5,7 +5,7 @@ A React component for displaying and filtering GitHub repositories for a given u
 ## 🚀 Features
 
 - 🔍 **Search** by repository name or description
-- 🎛️ **Filter** by language, archived status, and minimum stars
+- 🎛️ **Filter** by language and archived status, via clickable pills
 - 🎨 **Dynamic styling** based on language color
 - ⚡ **Fade-in animation** for smooth visual entry
 - 🧠 **Local caching** to reduce API calls
@@ -43,9 +43,8 @@ import GithubProjects from "@site/src/components/GithubProjects";
 ## 🧠 Filtering Options
 
 - Search: Type keywords to match repo name or description
-- Language: Dynamically generated from fetched data
-- Archived: Show active, archived, or all repos
-- Min Stars: Filter by minimum star count
+- Language: Dynamically generated from fetched data, shown as clickable pills
+- Archived: Show active, archived, or all repos, shown as clickable pills
 
 ## 🎨 Styling
 

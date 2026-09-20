@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-20T16:31:25.586Z",
+  "source": "ai-summarize.zsh",
+  "sourceHash": "c073bd9bbfbc07d0dee75527439209c386e3945c",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This bash function summarizes documents by extracting their text content and sending it to a local AI model with instructions to produce a specific number of bullet points. It supports various file formats through a conversion utility and defaults to 5 bullet points if none are specified.",
+  "explanations": {
+    "9": "The ${2:-5} syntax means 'use the second argument if provided, otherwise default to 5' — it's a way to set a fallback value.",
+    "11": "This checks that the file argument exists and is actually a file; -z tests if the string is empty, and ! -f tests if the path isn't a regular file.",
+    "17": "This calls a helper function to extract plain text from the file (handling PDFs, Word docs, etc.), and the || return 1 means 'if extraction fails, exit this function immediately with an error'.",
+    "19": "The variable is being built across multiple lines using a here-doc style — the prompt string contains the instruction text plus a placeholder for the point count, and will include the extracted text below it."
+  }
+}

@@ -75,10 +75,14 @@
   margin-left: auto;
 }
 
+/* Was --mk-border-strong: a border token, not a foreground one, so it sat at
+ * 1.4-1.5:1 against --mk-sunken in BOTH themes — the hamburger read as three
+ * near-invisible smudges, not a mock menu icon. --mk-ink-soft is meant to be
+ * read as foreground content and clears 5.5:1+ against the same background. */
 .bar {
   width: 17px;
   height: 2px;
-  background-color: var(--mk-border-strong);
+  background-color: var(--mk-ink-soft);
   margin: 3px 0;
   display: block;
 }

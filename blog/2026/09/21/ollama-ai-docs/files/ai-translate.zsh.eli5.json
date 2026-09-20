@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-20T16:31:22.241Z",
+  "source": "ai-translate.zsh",
+  "sourceHash": "02827796742233f16b41a6cecd8b09989eaee0b8",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script defines a function that translates documents into a specified language (French by default) using a local AI model. It extracts text from various file formats, constructs a prompt that asks the AI to preserve formatting while translating, and sends that to the AI for processing.",
+  "explanations": {
+    "9": "The syntax ${2:-French} means 'use the second argument if provided, otherwise default to French'. It's a way to set a default value.",
+    "11": "This checks two conditions: -z tests if the file argument is empty, and ! -f tests if it's not a regular file. If either is true, the function exits with an error.",
+    "17": "The function calls a helper function _ai_extract_text to get the text content from the file, and the || return 1 means 'if that fails, stop here and report failure'.",
+    "19": "This starts a multi-line string (the prompt). In bash, you can continue a string across multiple lines as long as the opening quote hasn't closed yet."
+  }
+}

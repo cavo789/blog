@@ -1,16 +1,17 @@
 {
   "version": 1,
   "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:14.455Z",
+  "generated": "2026-09-20T16:32:16.369Z",
+  "durationMs": 4793,
   "source": "index.md",
-  "sourceHash": "71fe4439082d0e50f6aca229374bb843d812f407",
+  "sourceHash": "03b90f562a605f3ab501653e4abb596724395ef3",
   "questions": [
     {
-      "question": "How to scan my Joomla website for viruses using aeSecure QuickScan?",
-      "anchor": "result"
+      "question": "What is aeSecure QuickScan?",
+      "anchor": ""
     },
     {
-      "question": "What is aeSecure QuickScan and how does it work?",
+      "question": "How does aeSecure QuickScan work for Joomla websites?",
       "anchor": "why-it-works"
     },
     {
@@ -18,32 +19,24 @@
       "anchor": "download-the-scanner"
     },
     {
-      "question": "How do I run the aeSecure QuickScan scanner on my Joomla website?",
+      "question": "What is the purpose of running the aeSecure QuickScan scanner?",
       "anchor": "run-the-scanner"
     },
     {
-      "question": "What are the benefits of using aeSecure QuickScan for Joomla security?",
-      "anchor": "under-the-hood"
-    },
-    {
-      "question": "What is the current status of the aeSecure QuickScan project and who maintains it now?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "How does aeSecure QuickScan detect viruses on my Joomla website?",
+      "question": "How does aeSecure QuickScan detect virus signatures in Joomla sites?",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are the whitelisted files in aeSecure QuickScan and how does it work with them?",
-      "anchor": "why-it-works"
+      "question": "What are the benefits of using aeSecure QuickScan for Joomla websites?",
+      "anchor": ""
     },
     {
-      "question": "How can I run aeSecure QuickScan on a local copy of my Joomla site using Docker?",
+      "question": "How can I run aeSecure QuickScan on a local copy of my Joomla site?",
       "anchor": "run-the-scanner"
     },
     {
-      "question": "What are the steps to scan files for viruses using aeSecure QuickScan?",
-      "anchor": "why-it-works"
+      "question": "What are some common issues when using aeSecure QuickScan on real sites?",
+      "anchor": ""
     }
   ]
 }

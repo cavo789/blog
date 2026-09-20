@@ -54,62 +54,71 @@
   box-shadow: inset -5px 0 8px -6px rgb(59, 44, 30, 0.12);
   scrollbar-width: thin;
   scrollbar-color: var(--mk-border-strong) transparent;
-  transition:
-    width 0.2s ease,
-    padding-right 0.2s ease;
 }
 
-.sidebarHidden {
-  width: 30px;
-  padding-right: 0;
-  box-shadow: none;
+.toggleButton {
+  display: none;
 }
 
-.collapseButton,
-.expandStrip {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  border-radius: var(--mk-radius-sm);
+@media (min-width: 769px) {
+  .toggleButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    margin-bottom: 0.75rem;
+    padding: 0;
+    border: none;
+    border-radius: var(--mk-radius-sm);
+    background: transparent;
+    color: var(--mk-ink-soft);
+    cursor: pointer;
+  }
+
+  .toggleButton:hover,
+  .toggleButton:focus-visible {
+    background-color: var(--mk-n-100);
+  }
 }
 
-.collapseButton {
-  width: 1.75rem;
-  height: 1.75rem;
-  margin-bottom: 0.75rem;
+/*
+ * The button that brings the sidebar back lives in a dedicated column next to the posts, not as
+ * an overlay: `align-items: stretch` (the flex default) makes `.expandGutter` as tall as
+ * `.mainContent`, which is what lets its button be `position: sticky` for the page's whole
+ * length — an overlay confined to one spot can't do that. The gutter is empty space the posts
+ * grid never occupies, so a floating button in it, stuck mid-scroll or not, never overlaps a card.
+ */
+@media (min-width: 769px) {
+  .postsWithGutter {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .expandGutter {
+    flex: 0 0 2.5rem;
+  }
+
+  .mainContent {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
 }
 
-.expandStrip {
-  width: 100%;
-  height: 3rem;
+.expandGutter {
+  display: none;
 }
 
-.collapseButton:hover,
-.collapseButton:focus-visible,
-.expandStrip:hover,
-.expandStrip:focus-visible {
-  background-color: var(--mk-n-100);
-}
+@media (min-width: 769px) {
+  .expandGutter {
+    display: block;
+  }
 
-.collapseButton::after,
-.expandStrip::after {
-  content: "";
-  display: block;
-  width: 1.2rem;
-  height: 1.2rem;
-  background: var(--ifm-menu-link-sublist-icon) 50% 50% / 1.2rem 1.2rem no-repeat;
-  filter: var(--ifm-menu-link-sublist-icon-filter);
-}
-
-.collapseButton::after {
-  transform: rotate(90deg);
-}
-
-.expandStrip::after {
-  transform: rotate(-90deg);
+  .expandGutter .toggleButton {
+    position: sticky;
+    top: 100px;
+    margin-bottom: 0;
+  }
 }
 
 /* Scrollbar styles for sidebar */
@@ -180,6 +189,28 @@
   outline: none;
   border-color: var(--mk-primary);
   box-shadow: 0 0 0 3px var(--mk-key-bg);
+}
+
+/* Years: a handful of values, same button-row treatment as the /repositories language filter.
+   Tags stay a <select> above — ~150 of them would be an unusable wall of pills. */
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filterPill {
+  composes: mk-pill from global;
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.filterPillActive,
+.filterPillActive:hover {
+  color: var(--mk-on-line);
+  background: var(--mk-primary);
+  border-color: var(--mk-primary);
 }
 
 /* --------- Timeline --------- */
@@ -339,8 +370,7 @@
     flex-direction: column;
     min-height: auto;
   }
-  .sidebar,
-  .sidebarHidden {
+  .sidebar {
     position: static;
     width: 100%;
     height: auto;
@@ -353,13 +383,6 @@
   .filterContainerSidebar {
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
-  }
-
-  /* Collapsing only reclaims horizontal space, which a stacked mobile layout doesn't have —
-     the toggle stays desktop-only, same as the article-page sidebar's own collapse button. */
-  .collapseButton,
-  .expandStrip {
-    display: none;
   }
 
   /* The desktop anchor is a hover-reveal permalink — meaningless on a touchscreen, which

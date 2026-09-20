@@ -1,49 +1,50 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-17T18:08:29.680Z",
+  "generated": "2026-09-20T16:38:05.517Z",
+  "durationMs": 112378,
   "source": "index.md",
   "locale": "fr",
-  "sourceHash": "aa7ba9cb5c5325c1d4e23c4e4fc1bea684ed4f6e",
+  "sourceHash": "82abfa4a4c1aecdc2f6aecfacbf72e6f1bea21ca",
   "questions": [
     {
-      "question": "comment faire joindre un container docker depuis un autre réseau",
+      "question": "`docker compose` extra_hosts pour résoudre un alias hôte dans un autre container",
       "anchor": ""
     },
     {
-      "question": "configurer extra_hosts dans docker compose pour mapper un alias hôte",
+      "question": "comment ajouter une entrée hosts dans un service `docker compose` ?",
       "anchor": "the-two-line-fix"
     },
     {
-      "question": "pourquoi le fichier /etc/hosts de l'hôte reste invisible depuis un container",
+      "question": "pourquoi un container docker ne voit pas le fichier hosts de la machine hôte ?",
       "anchor": "why-it-works"
     },
     {
-      "question": "créer un réseau docker isolé avec docker network create",
+      "question": "créer un réseau docker personnalisé et y attacher un container avec `docker run`",
       "anchor": "some-preparation-work"
     },
     {
-      "question": "lancer un container de test avec curl via docker compose run",
+      "question": "comment lancer un second container avec `docker compose` pour tester la connexion à un autre service ?",
       "anchor": "creating-our-second-container"
     },
     {
-      "question": "curl: (7) Failed to connect to 127.0.0.1 port 8080 depuis un container",
+      "question": "pourquoi `curl` échoue-t-il vers `127.0.0.1:8080` depuis un container docker ?",
       "anchor": "when-it-doesnt-work-and-why"
     },
     {
-      "question": "connecter un second container au même réseau docker que le premier",
+      "question": "connecter un container docker au même réseau qu'un autre service",
       "anchor": "we-need-to-run-the-second-container-on-the-same-network"
     },
     {
-      "question": "récupérer l'IP de la gateway d'un réseau docker personnalisé",
+      "question": "comment récupérer l'adresse IP de la gateway d'un réseau docker ?",
       "anchor": "we-need-to-find-the-ip-of-the-network"
     },
     {
-      "question": "vérifier la connectivité entre containers après avoir joint le réseau",
+      "question": "tester la connexion entre deux containers après les avoir mis sur le même réseau",
       "anchor": "try-again"
     },
     {
-      "question": "réutiliser un alias hosts de la machine physique dans un container docker",
+      "question": "comment réutiliser un alias défini dans le fichier hosts de l'hôte dans un container docker ?",
       "anchor": "extra-use-case---aliases"
     }
   ]

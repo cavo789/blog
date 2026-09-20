@@ -8,17 +8,19 @@ import {
 } from "@docusaurus/plugin-content-blog/client";
 import { useStorageSlot } from "@docusaurus/theme-common";
 import BlogSidebarContent from "@theme/BlogSidebar/Content";
+import PanelToggleIcon from "@site/src/components/PanelToggleIcon";
 
 import styles from "./styles.module.css";
 
 /**
  * Ejected from `@docusaurus/theme-classic` (rather than a wrapping swizzle) so the sidebar can be
- * collapsed down to a slim strip — like an editor's file-explorer toggle — freeing its width for
- * the article, instead of merely hiding the post titles inside an unchanged-width column. The
- * freed width is reclaimed by `main` in `@theme/BlogLayout` purely through flexbox (see its
- * `styles.mainWithSidebar`): this component only has to shrink its own flex-basis.
+ * collapsed away entirely — like an editor's file-explorer toggle — freeing its width for the
+ * article, instead of merely hiding the post titles inside an unchanged-width column. The freed
+ * width is reclaimed by `main` in `@theme/BlogLayout` purely through flexbox (see its
+ * `styles.mainWithSidebar`). `BlogLayout` also renders the matching "show it again" button once
+ * this component has nothing left to render — see its own comment for why that lives there.
  */
-const HIDDEN_STORAGE_KEY = "docusaurus.blog.sidebar.hidden";
+export const HIDDEN_STORAGE_KEY = "docusaurus.blog.sidebar.hidden";
 
 const ListComponent = ({ items }) => {
   return (
@@ -42,35 +44,10 @@ function BlogSidebarDesktop({ sidebar }) {
   // width from the start instead of only after the reader discovers the toggle.
   const hidden = hiddenValue === null ? true : hiddenValue === "true";
 
-  const navAriaLabel = translate({
-    id: "theme.blog.sidebar.navAriaLabel",
-    message: "Blog recent posts navigation",
-    description: "The ARIA label for recent posts in the blog sidebar",
-  });
-
+  // Nothing to render here once hidden: the toggle to bring it back lives in `BlogLayout`,
+  // over the article column it just widened — see that file's comment.
   if (hidden) {
-    const expandLabel = translate({
-      id: "theme.blog.sidebar.expandButtonTitle",
-      message: "Show the post list",
-      description: "The title of the button that expands the collapsed blog sidebar",
-    });
-
-    return (
-      <aside
-        className={clsx("col", styles.sidebarContainer, styles.sidebarContainerHidden)}
-      >
-        <nav className={clsx(styles.sidebar, "thin-scrollbar")} aria-label={navAriaLabel}>
-          <button
-            type="button"
-            onClick={() => storageSlot.set("false")}
-            className={styles.expandStrip}
-            aria-expanded={false}
-            aria-label={expandLabel}
-            title={expandLabel}
-          />
-        </nav>
-      </aside>
-    );
+    return null;
   }
 
   const collapseLabel = translate({
@@ -81,17 +58,26 @@ function BlogSidebarDesktop({ sidebar }) {
 
   return (
     <aside className={clsx("col", styles.sidebarContainer)}>
-      <nav className={clsx(styles.sidebar, "thin-scrollbar")} aria-label={navAriaLabel}>
+      <nav
+        className={clsx(styles.sidebar, "thin-scrollbar")}
+        aria-label={translate({
+          id: "theme.blog.sidebar.navAriaLabel",
+          message: "Blog recent posts navigation",
+          description: "The ARIA label for recent posts in the blog sidebar",
+        })}
+      >
         <div className={clsx(styles.sidebarHeader, "margin-bottom--md")}>
-          <div className={styles.sidebarItemTitle}>{sidebar.title}</div>
           <button
             type="button"
             onClick={() => storageSlot.set("true")}
-            className={styles.collapseButton}
+            className={styles.toggleButton}
             aria-expanded={true}
             aria-label={collapseLabel}
             title={collapseLabel}
-          />
+          >
+            <PanelToggleIcon />
+          </button>
+          <div className={styles.sidebarItemTitle}>{sidebar.title}</div>
         </div>
         <BlogSidebarContent
           items={items}

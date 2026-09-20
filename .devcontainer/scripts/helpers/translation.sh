@@ -45,9 +45,22 @@ function translate() {
         return 1
     fi
 
+    # `translate .` used to walk the whole repo tree — i18n/ (the French output itself), .unpublished/
+    # (drafts, never translated) and any stray index.md under src/ — and quoted a price for all of it.
+    # Only blog/ is a valid translation source, so anything else is rejected up front.
+    local target
+    for target in "${paths[@]}"; do
+        if [[ "${target}" != "blog" && "${target}" != blog/* ]]; then
+            printf "❌ Not a blog path: %s\n" "${target}" >&2
+            printf "   translate only accepts blog or blog/... — never '.', i18n/, .unpublished/ or\n" >&2
+            printf "   anything else, which would sweep up drafts and the French output itself.\n" >&2
+            return 1
+        fi
+    done
+
     # Collected before translating anything: a folder-wide run costs real money, so what the run
     # will do has to be known up front rather than discovered one API call at a time.
-    local files=() target found
+    local files=() found
     for target in "${paths[@]}"; do
         if [[ -f "${target}" ]]; then
             files+=("${target}")

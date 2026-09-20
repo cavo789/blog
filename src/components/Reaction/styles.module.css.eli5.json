@@ -1,20 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-19T14:22:46.051Z",
+  "generated": "2026-09-20T16:31:05.345Z",
   "source": "styles.module.css",
-  "sourceHash": "15a91aab1a1a1eb6c948e723435864d4616959d9",
+  "sourceHash": "d822f1ce50ef4b790f841a109b686e823151a7ac",
   "lang": "css",
   "textLang": "en",
-  "summary": "This stylesheet styles a feedback widget that displays a question, action buttons, a thank-you message, and response counts. The file notes that it's duplicated across two components and uses CSS custom properties (variables) for theming so colors adapt automatically between light and dark modes.",
+  "summary": "This stylesheet styles a feedback widget consisting of a container with a question, row of buttons, thank-you message, and vote counts. The comments note that this file is duplicated across two components and flag a fix applied to button hover states to use a theme-aware color variable instead of hardcoded white, which ensures proper contrast in both light and dark modes.",
   "explanations": {
-    "18": "flex makes the container lay out its children left-to-right (or wrapping), and align-items: center vertically centers them in the middle.",
-    "20": "flex-wrap: wrap lets items move to a new row if there isn't enough horizontal space instead of squishing together.",
-    "33": "white-space: nowrap prevents the question text from breaking into multiple lines.",
-    "43": "inline-flex makes the button behave like a flex container but only takes up as much width as its content needs, not the full line.",
-    "54": "transition defines which properties will animate smoothly when they change, and how long (0.15s) it takes.",
-    "63": "var(--mk-on-line) is a CSS variable that holds a color designed to have good contrast on top of the primary color, and it automatically adjusts for dark mode.",
-    "68": "outline-offset: 2px adds space between the focus outline and the button edge so the outline doesn't sit right on the border.",
-    "94": "font-variant-numeric: tabular-nums makes all numbers the same width so count values line up vertically when they change."
+    "43": "inline-flex makes the button shrink to fit its content while still allowing flexbox alignment of child elements inside it.",
+    "54": "This starts a multi-line transition declaration that animates three properties smoothly when the button state changes.",
+    "63": "object-fit: contain ensures the image scales proportionally to fit inside the 1.5rem box without cropping or distorting.",
+    "100": "tabular-nums makes all numbers the same width so vote counts line up vertically, like on a digital display."
   }
 }

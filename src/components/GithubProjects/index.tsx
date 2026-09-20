@@ -23,6 +23,7 @@
  */
 
 import { useEffect, useState, useMemo, useCallback, type JSX } from "react";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 import Card from "@site/src/components/Card";
 import CardHeader from "@site/src/components/Card/CardHeader";
 import CardFooter from "@site/src/components/Card/CardFooter";
@@ -46,7 +47,6 @@ interface Repo {
 interface Filters {
   language: string;
   archived: string;
-  minStars: number;
 }
 
 interface Props {
@@ -89,9 +89,9 @@ export default function GithubProjects({ username }: Props): JSX.Element {
   const [filters, setFilters] = useState<Filters>({
     language: "All",
     archived: "All",
-    minStars: 0,
   });
   const [searchTerm, setSearchTerm] = useState("");
+  const [gridRef] = useAutoAnimate({ duration: 200 });
 
   const cacheKey = `githubRepos_${username}`;
 
@@ -174,13 +174,12 @@ export default function GithubProjects({ username }: Props): JSX.Element {
         filters.language === "All" || repo.language === filters.language;
       const matchesArchived =
         filters.archived === "All" || String(repo.archived) === filters.archived;
-      const matchesStars = repo.stargazers_count >= filters.minStars;
       const matchesSearch =
         searchTerm.trim() === "" ||
         repo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         (repo.description &&
           repo.description.toLowerCase().includes(searchTerm.toLowerCase()));
-      return matchesLanguage && matchesArchived && matchesStars && matchesSearch;
+      return matchesLanguage && matchesArchived && matchesSearch;
     });
   }, [allRepos, filters, searchTerm]);
 
@@ -269,69 +268,96 @@ export default function GithubProjects({ username }: Props): JSX.Element {
           />
         </label>
 
-        <label className={styles.filterLabel}>
+        <div className={styles.filterLabel}>
           <Translate id="githubProjects.filters.language">Language:</Translate>
-          <select
-            value={filters.language}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, language: e.target.value }))
-            }
+          <div
+            className={styles.pillRow}
+            role="group"
+            aria-label={translate({
+              id: "githubProjects.filters.language",
+              message: "Language:",
+            })}
           >
-            <option value="All">
+            <button
+              type="button"
+              className={clsx(
+                styles.filterPill,
+                filters.language === "All" && styles.filterPillActive,
+              )}
+              aria-pressed={filters.language === "All"}
+              onClick={() => setFilters((prev) => ({ ...prev, language: "All" }))}
+            >
               {translate({ id: "githubProjects.filters.all", message: "All" })}
-            </option>
+            </button>
             {languageOptions.map((lang) => (
-              <option key={lang} value={lang}>
+              <button
+                key={lang}
+                type="button"
+                className={clsx(
+                  styles.filterPill,
+                  filters.language === lang && styles.filterPillActive,
+                )}
+                aria-pressed={filters.language === lang}
+                onClick={() => setFilters((prev) => ({ ...prev, language: lang }))}
+              >
                 {lang}
-              </option>
+              </button>
             ))}
-          </select>
-        </label>
+          </div>
+        </div>
 
-        <label className={styles.filterLabel}>
+        <div className={styles.filterLabel}>
           <Translate id="githubProjects.filters.status">Status:</Translate>
-          <select
-            value={filters.archived}
-            onChange={(e) =>
-              setFilters((prev) => ({ ...prev, archived: e.target.value }))
-            }
+          <div
+            className={styles.pillRow}
+            role="group"
+            aria-label={translate({
+              id: "githubProjects.filters.status",
+              message: "Status:",
+            })}
           >
-            <option value="All">
+            <button
+              type="button"
+              className={clsx(
+                styles.filterPill,
+                filters.archived === "All" && styles.filterPillActive,
+              )}
+              aria-pressed={filters.archived === "All"}
+              onClick={() => setFilters((prev) => ({ ...prev, archived: "All" }))}
+            >
               {translate({ id: "githubProjects.filters.all", message: "All" })}
-            </option>
-            <option value="false">
-              {translate({
-                id: "githubProjects.filters.active",
-                message: "Active",
-              })}
-            </option>
-            <option value="true">
+            </button>
+            <button
+              type="button"
+              className={clsx(
+                styles.filterPill,
+                filters.archived === "false" && styles.filterPillActive,
+              )}
+              aria-pressed={filters.archived === "false"}
+              onClick={() => setFilters((prev) => ({ ...prev, archived: "false" }))}
+            >
+              {translate({ id: "githubProjects.filters.active", message: "Active" })}
+            </button>
+            <button
+              type="button"
+              className={clsx(
+                styles.filterPill,
+                filters.archived === "true" && styles.filterPillActive,
+              )}
+              aria-pressed={filters.archived === "true"}
+              onClick={() => setFilters((prev) => ({ ...prev, archived: "true" }))}
+            >
               {translate({
                 id: "githubProjects.filters.archived",
                 message: "Archived",
               })}
-            </option>
-          </select>
-        </label>
-
-        <label className={styles.filterLabel}>
-          <Translate id="githubProjects.filters.minStars">Min Stars:</Translate>
-          <input
-            type="number"
-            value={filters.minStars}
-            min="0"
-            onChange={(e) =>
-              setFilters((prev) => ({
-                ...prev,
-                minStars: Number(e.target.value),
-              }))
-            }
-          />
-        </label>
+            </button>
+          </div>
+        </div>
       </div>
 
       {filteredRepos.length > 0 ? (
-        <div className="row">
+        <div ref={gridRef} className="row">
           {filteredRepos.map((repo) => renderRepoCard(repo, repo.archived))}
         </div>
       ) : (

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-20T16:35:11.051Z",
+  "source": "ai-summarize.zsh",
+  "sourceHash": "c073bd9bbfbc07d0dee75527439209c386e3945c",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction bash résume un document en un nombre de points à puces spécifié (5 par défaut). Elle extrait d'abord le texte du fichier fourni via une fonction utilitaire, puis envoie ce texte à un modèle local via ollama avec une instruction précise pour générer uniquement les points à puces, en privilégiant les décisions, chiffres et éléments concrets plutôt que les descriptions génériques.",
+  "explanations": {
+    "9": "La syntaxe ${2:-5} signifie : utilise le deuxième argument passé à la fonction si présent, sinon utilise 5 comme valeur par défaut.",
+    "11": "[[ -z \"$file\" || ! -f \"$file\" ]] vérifie que file n'est pas vide ET que le chemin désigne effectivement un fichier qui existe.",
+    "17": "L'assignation avec $(…) || return 1 exécute la fonction _ai_extract_text et stocke son résultat; si elle échoue (code non-zéro), toute la fonction s'arrête immédiatement.",
+    "19": "Les guillemets doubles permettent que $points soit interpolé dans la chaîne; la variable text sera interpolée plus tard lors de la concaténation à la ligne 21."
+  }
+}

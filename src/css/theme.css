@@ -84,7 +84,8 @@
   --mk-n-200: #d5c7a9; /* borders — dropped further than the surfaces, on purpose */
   --mk-n-300: #c2b192; /* strong borders, inputs, kbd */
   --mk-n-500: #9a8870;
-  --mk-n-700: #665949; /* one notch darker: keeps 5.99:1 on the new page ground */
+  --mk-n-700: #55483a; /* darkened again 2026-09-20: #665949 was only 5.99:1 (AA) and
+    read as washed-out on calibrated monitors — this is 7.81:1 (AAA) on the page ground */
   --mk-n-900: #2b2118;
 
   /* ── Semantic surfaces ────────────────────────────────────────────────── */

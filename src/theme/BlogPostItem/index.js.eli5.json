@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-17T09:34:12.217Z",
+  "generated": "2026-09-20T16:31:14.539Z",
   "source": "index.js",
-  "sourceHash": "e672e0883b2b793189aa3afd86cd8a7aade00ff6",
+  "sourceHash": "68e34ca133b615b647ca6cc6976ed8a5a03bf763",
   "lang": "javascript",
-  "summary": "This component renders a blog post item with different content depending on whether you're viewing a single post or a list of posts. When viewing a full post, it shows extra elements like related posts, social sharing, and user interaction widgets; when viewing a list, it only shows the basic post preview. The component uses Docusaurus's blog plugin to determine the viewing context.",
+  "textLang": "en",
+  "summary": "This component renders a blog post item that adapts based on whether you're viewing a single post or browsing a list. When viewing the full post, it shows additional elements like related posts, social sharing, and reader engagement tools. The component imports specialized sub-components to handle different sections of the post layout.",
   "explanations": {
-    "24": "This helper function checks whether we're on a full blog post page or a list view, and returns a CSS class name only for list view to add spacing between post cards.",
-    "25": "The useBlogPost hook is a Docusaurus function that gives us information about the current blog context, including whether we're viewing a single post or a list.",
-    "26": "The ternary returns a margin class name if we're NOT on a full post page (meaning we're in list view), otherwise returns undefined so no extra spacing is added.",
-    "33": "This renders the AI icon badge only if two conditions are both true: the post's front matter says it was AI-assisted AND we're viewing the full post page (not a list card).",
-    "36": "Similar logic to the AI icon: article action buttons only make sense on the full post page, so we only create this element if isBlogPostPage is true.",
-    "40": "The clsx function combines multiple CSS class names together, keeping any undefined or falsy values out of the final string.",
-    "48": "The TranslationNotice banner is deliberately placed outside the markdown content area so translators can't accidentally modify it, and it's only shown on the full post page.",
-    "53": "This entire section with RelatedPosts, Bluesky, TypoReport, and Reaction widgets only renders when viewing the full post page, not when browsing the list view.",
-    "66": "This renders the TriedIt component unless the front matter explicitly sets tried_it to false, allowing posts to opt out of this widget."
+    "23": "This helper hook checks if we're on the actual blog post page versus a list view, then returns a CSS class name to add bottom spacing only in list view where multiple posts appear together.",
+    "24": "The useBlogPost hook gives us context about whether we're viewing a full post page or just seeing a preview card in a list.",
+    "25": "The conditional returns a margin class name if we're NOT on the blog post page, otherwise returns undefined which means no extra margin is added.",
+    "29": "We're extracting metadata about the current post and a flag indicating if the reader is on the full post page or just browsing a list.",
+    "34": "The ArticleActions component (buttons, sharing options, etc.) only displays on the full post page itself—not when the post appears as a card in a blog list.",
+    "46": "The TranslationNotice banner only shows on the full post page, before the main content, so translators can't accidentally modify it and it doesn't clutter the post list.",
+    "51": "This entire block of engagement components—Bluesky, related posts, typo reporting, reactions—only renders when someone is reading the full post, not when browsing the blog list.",
+    "64": "This TriedIt component renders unless the front matter explicitly sets tried_it to false, giving you the ability to hide it on specific posts."
   }
 }

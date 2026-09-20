@@ -92,7 +92,7 @@ Both functions call `_ollama_query` and register into `AI_COMMANDS`, which live 
 flowchart TD
     subgraph C["💻 Your computer"]
         F["📄 .docx / .pdf / …"] --> D["🐳 docling-convert"]
-        D --> T["📝 plain text"]
+        D --> T["📝 plain text (.md)"]
     end
 
     subgraph S["🧠 Ollama server"]
@@ -106,10 +106,6 @@ flowchart TD
     style O fill:#27ae60,color:#fff
 ```
 
-</AlertBox>
-
-<AlertBox variant="important" title="Local doesn't mean automatically compliant">
-Everything here stays on your machine and never calls an external API — but "technically private" and "allowed by your employer's data policy" are two different questions. If these functions ever touch actual client or HR documents at work, that's worth a quick check with IT/compliance first — the same caution applies to any future function that reaches into corporate mailboxes or document stores, not just this one.
 </AlertBox>
 
 ## Key Takeaways

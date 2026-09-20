@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-20T16:31:18.927Z",
+  "source": "_ai-docs.zsh",
+  "sourceHash": "8119f03ff4162432de89e83fc5362af21a04d72d",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This function extracts text from various document formats by either reading them directly (for plain text files) or converting them first using a tool called docling-convert (for binary formats like PDF and Word documents). It's a shared utility used by other AI tools in this script collection to prepare documents for processing.",
+  "explanations": {
+    "10": "The :e:l syntax extracts the file extension and converts it to lowercase — so 'file.PDF' becomes 'pdf'. This makes the case statement work regardless of how the user capitalized the extension.",
+    "17": "This checks if the docling-convert command exists and is runnable; if not, the function fails early rather than trying to run a command that doesn't exist.",
+    "22": "The :h syntax gets the directory path of the file (everything before the last slash), like turning '/path/to/file.pdf' into '/path/to'.",
+    "23": "The :t syntax gets just the filename without the directory path, like turning '/path/to/file.pdf' into 'file.pdf'.",
+    "24": "The %.*  pattern removes the last dot and everything after it (the extension), so 'file.pdf' becomes 'file'.",
+    "27": "The ( cd \"$dir\" && ... ) runs the command in a subshell after changing to the file's directory, so docling-convert writes its output files in the right place. The || { ... } catches if the conversion fails."
+  }
+}

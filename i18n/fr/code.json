@@ -40,9 +40,6 @@
   "githubProjects.filters.archived": {
     "message": "Archivé"
   },
-  "githubProjects.filters.minStars": {
-    "message": "Étoiles min. :"
-  },
   "githubProjects.noMatches": {
     "message": "Aucun dépôt ne correspond à vos filtres."
   },

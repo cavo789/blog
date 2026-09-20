@@ -1,21 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-17T09:33:21.747Z",
+  "generated": "2026-09-20T16:31:01.962Z",
   "source": "index.tsx",
-  "sourceHash": "c3b5dc3706e1cd36763f7bd34a359ee0a14bcb9c",
+  "sourceHash": "779da4b0fc8f7d64cec2e60d90775b5769aba831",
   "lang": "typescript",
-  "summary": "This component displays a helpful/not helpful reaction system for blog articles. It fetches vote counts from an API, lets users vote, saves their choice to localStorage to prevent duplicate voting, and shows a thank-you message with updated totals after they vote.",
+  "textLang": "en",
+  "summary": "This component renders a feedback widget that lets users vote on whether a blog article was helpful. It fetches vote counts from an API, stores the user's vote in localStorage to prevent duplicate voting, and displays a thank-you message with updated counts after they vote.",
   "explanations": {
-    "19": "This removes leading and trailing slashes from the URL path to create a clean identifier for the article — for example, '/blog/my-post/' becomes 'blog/my-post'.",
-    "23": "The vote counts start as null instead of an empty object because the component only loads localStorage data after React hydrates on the client, preventing a mismatch between server-rendered HTML and the client version.",
-    "27": "Voted tracks whether the current user has already voted on this article by checking localStorage; it starts null to avoid SSR hydration mismatches, then gets populated during the effect on line 30.",
-    "30": "This effect runs once per unique storageKey and reads from the browser's localStorage to see if the user previously voted on this article, then updates the voted state.",
-    "35": "The empty catch block silently swallows any errors from localStorage access — this is intentional because localStorage might not be available in certain environments like private browsing mode.",
-    "38": "This effect fetches the current vote counts from the API whenever the slug changes, but only if a slug exists.",
-    "41": "If the response status is okay, parse it as JSON; otherwise return null so the next .then() knows the request failed.",
-    "48": "useCallback memoizes the handleVote function so it doesn't get recreated on every render, which matters because it's used in onClick handlers and might be passed to child components.",
-    "64": "Inside the try/catch, localStorage.setItem might fail in some browser modes, so this silently catches and ignores those failures without disrupting the vote submission.",
-    "74": "If there's no valid slug (page identifier), the component renders nothing because there's nowhere to send the vote data."
+    "20": "The permalink is cleaned by removing leading and trailing slashes, then converted to an empty string if it doesn't exist — this creates a unique identifier for each page.",
+    "28": "The voted state starts as null instead of reading from localStorage immediately, because server-side rendering (which runs without localStorage) would differ from the client, causing React to complain about a mismatch.",
+    "36": "This tries to read the user's previous vote from localStorage so we can show them they already voted; the try-catch prevents errors in private browsing modes where localStorage isn't available.",
+    "44": "The component fetches the current vote counts by passing the page identifier to the API, using encodeURIComponent to safely handle any special characters in the slug.",
+    "45": "This checks if the response was successful (r.ok) before trying to parse the JSON; if it failed, it returns null instead of throwing an error.",
+    "56": "This sends the user's vote to the API as a POST request with both the page slug and their vote choice in the body.",
+    "69": "After successfully voting, the vote is stored in localStorage so on the next visit we know this user already voted and can skip showing the buttons.",
+    "78": "If there's no valid page identifier, the component returns null so nothing renders — this prevents the widget from appearing on pages where it shouldn't."
   }
 }

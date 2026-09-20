@@ -1,50 +1,54 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-17T23:05:52.195Z",
-  "durationMs": 122938,
+  "generated": "2026-09-20T16:47:05.469Z",
+  "durationMs": 154166,
   "source": "index.md",
   "locale": "fr",
-  "sourceHash": "87a8c53f1c98aca0a815d8c71d8a89046d83f1b4",
+  "sourceHash": "230d5ac2e865dcb7d22763a67107cb843bd66917",
   "questions": [
     {
-      "question": "Comment automatiser la synchronisation d'un dossier local vers un NAS Synology via WinSCP ?",
+      "question": "winscp script synchro local distant ftp sftp",
       "anchor": ""
     },
     {
-      "question": "Script WinSCP backup FTP SFTP automatique",
+      "question": "comment automatiser la synchro vers un nas synology avec winscp",
       "anchor": ""
     },
     {
-      "question": "Quelle commande WinSCP faut-il utiliser dans un fichier de script pour lancer une synchro ?",
+      "question": "où récupérer le fichier de script winscp pour la synchronisation",
       "anchor": "the-script"
     },
     {
-      "question": "Syntaxe du verbe Synchronize dans WinSCP",
+      "question": "structure du script winscp pour synchronisation automatique",
       "anchor": "the-script"
     },
     {
-      "question": "Comment remplir les champs user password host port et chemins dans un script WinSCP ?",
+      "question": "exécuter winscp.com /script depuis l'invite de commandes",
       "anchor": "how-to-use"
     },
     {
-      "question": "Lancer winscp.com /script= depuis une session DOS",
+      "question": "configurer host port et identifiants ftp dans le script winscp",
       "anchor": "how-to-use"
     },
     {
-      "question": "Comportement de WinSCP face aux fichiers nouveaux ou supprimés lors d'une synchronisation",
+      "question": "lancer winscp en mode script sans interface graphique",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "synchronize winscp supprime-t-il les fichiers distants absents localement",
       "anchor": "more-info"
     },
     {
-      "question": "Quel répertoire sert de référence maître lors d'une synchro WinSCP ?",
+      "question": "comportement de la commande synchronize winscp local comme maître",
       "anchor": "more-info"
     },
     {
-      "question": "Différence entre /local /remote et /both pour la direction de synchro WinSCP",
+      "question": "différence entre local remote et both dans synchronize winscp",
       "anchor": "local--remote--both"
     },
     {
-      "question": "Configurer la synchronisation bidirectionnelle ou unidirectionnelle dans WinSCP",
+      "question": "synchronisation bidirectionnelle avec winscp synchronize both",
       "anchor": "local--remote--both"
     }
   ]

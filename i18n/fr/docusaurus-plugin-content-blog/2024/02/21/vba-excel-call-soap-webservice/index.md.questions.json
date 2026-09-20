@@ -1,53 +1,50 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-17T18:10:52.888Z",
+  "generated": "2026-09-20T16:40:11.726Z",
+  "durationMs": 96184,
   "source": "index.md",
   "locale": "fr",
-  "sourceHash": "3a389711c855bd9f20e77d9c86410f9cfb9d8798",
+  "sourceHash": "f1e56e58d619fabbb0b0df25b876e218988a9efa",
   "questions": [
     {
-      "question": "comment appeler un web service SOAP depuis Excel avec VBA",
+      "question": "appeler web service SOAP depuis Excel avec VBA",
       "anchor": ""
     },
     {
-      "question": "squelette vba excel requête soap validation tva vies",
+      "question": "Comment valider un numéro de TVA européen via le service VIES dans Excel ?",
       "anchor": ""
     },
     {
-      "question": "structure du fichier .xml pour le service VIES",
+      "question": "fichier xml requête SOAP VIES exemple",
       "anchor": "create-the-xml-message"
     },
     {
-      "question": "quel est le contenu exact du message SOAP pour valider un numéro de TVA ?",
+      "question": "Quel est le format XML attendu pour la validation TVA du service VIES ?",
       "anchor": "create-the-xml-message"
     },
     {
-      "question": "ouvrir l'éditeur VBA dans Excel et créer un module",
+      "question": "configurer classeur Excel et éditeur VBA pour appel SOAP",
       "anchor": "create-the-excel-workbook"
     },
     {
-      "question": "comment ajouter la référence Microsoft XML dans le classeur ?",
+      "question": "Comment ajouter la référence MSXML dans l'éditeur Visual Basic d'Excel ?",
       "anchor": "create-the-excel-workbook"
     },
     {
-      "question": "configurer le chemin du fichier xml dans la constante VBA",
-      "anchor": "create-the-excel-workbook"
-    },
-    {
-      "question": "remplacer les placeholders dans le fichier xml via VBA",
+      "question": "substitution des placeholders dans le fichier xml via VBA",
       "anchor": "about-placeholders"
     },
     {
-      "question": "comment injecter des valeurs dynamiques dans la requête SOAP Excel ?",
+      "question": "Où modifier le code VBA pour injecter le numéro de TVA dans la requête ?",
       "anchor": "about-placeholders"
     },
     {
-      "question": "exécuter la même requête SOAP sous Linux avec curl et xmlstarlet",
+      "question": "commande curl xmlstarlet requête SOAP VIES Linux",
       "anchor": "a-linux-command-line-version"
     },
     {
-      "question": "comment rediriger la sortie xmlstarlet vers un fichier sous Linux ?",
+      "question": "Comment utiliser curl et xmlstarlet pour tester le service VIES depuis un terminal ?",
       "anchor": "a-linux-command-line-version"
     }
   ]

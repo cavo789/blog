@@ -11,7 +11,7 @@
  * trap is disarmed; --mk-ink-soft is used directly here anyway, since naming the token
  * you want beats relying on a remap of a token you do not.
  *
- * --mk-ink-soft is #6e6153 in light (5.9:1 on the page background, AA) and #a79987 in
+ * --mk-ink-soft is #55483a in light (7.81:1 on the page background, AAA) and #a79987 in
  * dark — a shade below the body ink in both, so it reads as secondary either way.
  * (The old comment quoted #606770/#dadde1: those were Infima's cold greys, replaced
  * by the harmonisation.)

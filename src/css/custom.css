@@ -371,6 +371,29 @@ body:not([data-scroll-top]) .navbar {
   article h1 {
     font-size: clamp(1.4rem, 5vw, 2.2rem);
   }
+
+  /* Docusaurus hides the navbar's color-mode toggle below this breakpoint
+     (Navbar/Content/styles.module.css) and relies on the copy duplicated
+     inside the hamburger drawer instead. On a phone that means an extra tap
+     just to switch theme — restore it next to the search icon, which is the
+     only other item this breakpoint leaves in the top bar.
+     Above this breakpoint the toggle sits BEFORE the search bar in the DOM
+     (Navbar/Content renders <NavbarColorModeToggle> then <SearchBar>), so it
+     reads to its left on desktop. Docusaurus's own Navbar/Search
+     styles.module.css pulls the search icon OUT of the flex row at this same
+     breakpoint (position: absolute; right: <navbar padding>) — a placement
+     computed for when it is the ONLY item left in the corner. Left alone, the
+     now-visible toggle stays a normal flex item and lands flush against that
+     same right edge, i.e. to the RIGHT of the search icon — the opposite
+     side from desktop. Pulling the toggle out of flow the same way and
+     anchoring it one search-icon-width further out reproduces the desktop
+     left-of-search order on mobile too. */
+  [class*="colorModeToggle"] {
+    display: inline-flex !important;
+    position: absolute;
+    right: calc(var(--ifm-navbar-padding-horizontal) + 2.75rem);
+    align-items: center;
+  }
 }
 
 /* --- CARDS --- */

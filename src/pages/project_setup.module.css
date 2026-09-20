@@ -1,0 +1,8 @@
+/* Decorative meerkat mascot inlined in a markdown heading — purely illustrative,
+   so its img carries alt="" and the heading text alone still conveys the meaning. */
+.headingIcon {
+  height: 1.3em;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+}

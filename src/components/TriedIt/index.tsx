@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, type JSX } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.css";
 import Translate, { translate } from "@docusaurus/Translate";
 
@@ -19,6 +20,9 @@ export default function TriedIt({ metadata }: Props): JSX.Element | null {
   const slug = metadata?.permalink?.replace(/^\/|\/$/g, "") ?? "";
   const apiUrl = `${siteConfig.url}/api/tried-it.php`;
   const storageKey = `tried_it_${slug}`;
+
+  const mascotYesUrl = useBaseUrl("/img/like.webp");
+  const mascotNoUrl = useBaseUrl("/img/dislike.webp");
 
   const [counts, setCounts] = useState<Counts | null>(null);
   // null until the client-side effect runs — avoids SSR/hydration mismatch (#418).
@@ -82,7 +86,8 @@ export default function TriedIt({ metadata }: Props): JSX.Element | null {
                 message: "Yes, I tried this and it worked",
               })}
             >
-              ✅ <Translate id="blog.triedIt.yes">It worked!</Translate>
+              <img src={mascotYesUrl} alt="" className={styles.mascot} />
+              <Translate id="blog.triedIt.yes">It worked!</Translate>
             </button>
             <button
               className={`${styles.btn} ${styles.btnNeutral}`}
@@ -92,7 +97,8 @@ export default function TriedIt({ metadata }: Props): JSX.Element | null {
                 message: "No, it did not work for me",
               })}
             >
-              ❌ <Translate id="blog.triedIt.no">Didn't work for me</Translate>
+              <img src={mascotNoUrl} alt="" className={styles.mascot} />
+              <Translate id="blog.triedIt.no">Didn't work for me</Translate>
             </button>
           </div>
         </>

@@ -1,15 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-17T13:16:47.543Z",
+  "generated": "2026-09-20T16:31:09.347Z",
   "source": "project_setup.mdx",
-  "sourceHash": "f356702ad3f0d6dfe402517807cc177d99b77079",
+  "sourceHash": "a999c80a016389249e66a1e42c627264d94ca013",
   "lang": "markdown",
-  "summary": "This is a markdown documentation file that explains how to use a Project Setup component—a tool that helps developers quickly start new projects. It shows an example of the component in action and then walks through three different ways to get the project files: downloading a ZIP archive, running a generated installation script, or manually creating files yourself.",
+  "textLang": "en",
+  "summary": "This is a markdown documentation page explaining how to use a Project Setup component that helps developers quickly scaffold new projects. It demonstrates the component with a real Docker/PHP example and then walks through three different methods to get started: downloading a ZIP file, running a generated installation script, or manually creating files.",
   "explanations": {
-    "6": "This imports the ProjectSetup component and two helper components (EmptyFolder and Guideline) from the project's custom component library.",
-    "19": "This opens a ProjectSetup component with a folder name attribute, then nests multiple Snippet components inside it—each Snippet represents one file that will be included in the downloadable project.",
-    "72": "AlertBox is a custom UI component being used to highlight a tip; 'variant=\"tip\"' sets its styling to look like a helpful tip box.",
-    "93": "This is another AlertBox component with variant=\"tip\", used to draw attention to an important step in the generate-script workflow."
+    "6": "This imports the ProjectSetup component and two helper components (EmptyFolder and Guideline) from the site's component library so they can be used in this documentation.",
+    "12": "This imports CSS styles specifically for this page, which are referenced later (like the headingIcon class used in the section headers).",
+    "20": "The ProjectSetup component is being used here with a folderName prop that sets what the project directory will be called; this is a practical example showing how the component works.",
+    "42": "Guideline is a special component that displays instructional text to users after they've set up their files—in this case, telling them how to start the Docker containers."
   }
 }
