@@ -113,11 +113,9 @@ function BlogListPageContent({ metadata, items }) {
   const [activeTag, setActiveTag] = useState(null);
   const [gridRef] = useAutoAnimate({ duration: 200 });
 
-  // Full corpus, already locale-filtered by the hook (translated-only on `fr`) — needed because
-  // the tag pills must filter across everything, not just the current page's `items`, which is
-  // all Docusaurus's own SSG pagination ever hands this component.
-  const allPosts = useBlogMetadata();
-  const topTags = topTagsOf(allPosts, FILTER_BAR_TAG_COUNT);
+  // True when this BlogListPage instance renders the drafts plugin (routeBasePath:"drafts").
+  // In that case the tag filter must draw from the draft corpus, not from the main blog.
+  const isDraftPlugin = metadata.blogTitle === "Drafts";
 
   const posts = items.map(({ content: { metadata: m } }) => ({
     id: m.permalink,
@@ -129,6 +127,19 @@ function BlogListPageContent({ metadata, items }) {
     mainTag: m.frontMatter?.mainTag,
     readingTime: m.readingTime,
   }));
+
+  // For the main blog: the hook reads the full corpus across all pages (needed because `items`
+  // is only the current page's slice). For the drafts plugin: `items` already holds everything
+  // (postsPerPage:"ALL"), so we use it directly — useBlogMetadata() reads blog/ and would
+  // return main-blog posts, making the tag pills and filter useless on the drafts page.
+  const mainBlogPosts = useBlogMetadata();
+  const allPosts = isDraftPlugin ? posts : mainBlogPosts;
+  // Drafts: surface every tag alphabetically (no "all tags →" link available for the drafts
+  // plugin). Main blog: most-frequent first, capped at FILTER_BAR_TAG_COUNT.
+  const rawTopTags = topTagsOf(allPosts, isDraftPlugin ? Infinity : FILTER_BAR_TAG_COUNT);
+  const topTags = isDraftPlugin
+    ? [...rawTopTags].sort((a, b) => tagLabel(a).localeCompare(tagLabel(b)))
+    : rawTopTags;
 
   const localePosts = isDefaultLocale
     ? posts
@@ -261,9 +272,11 @@ function BlogListPageContent({ metadata, items }) {
                 {tagLabel(tag)}
               </button>
             ))}
-            <Link to="/blog/tags" className={styles.allTagsLink}>
-              <Translate id="blog.listPage.allTagsLink">all tags →</Translate>
-            </Link>
+            {!isDraftPlugin && (
+              <Link to="/blog/tags" className={styles.allTagsLink}>
+                <Translate id="blog.listPage.allTagsLink">all tags →</Translate>
+              </Link>
+            )}
           </div>
         )}
         <TranslationCoverage variant="listing" />

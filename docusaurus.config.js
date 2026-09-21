@@ -499,6 +499,39 @@ const config = {
         },
       },
     ],
+    // Dev-only: second blog instance that renders .unpublished/ drafts at /drafts/<slug>.
+    // The conditional ensures yarn build never sees this instance — no /drafts/ routes leak
+    // into the production sitemap, RSS feed, or deployment.
+    ...(isProd
+      ? []
+      : [
+          [
+            "@docusaurus/plugin-content-blog",
+            {
+              id: "drafts",
+              routeBasePath: "drafts",
+              path: ".unpublished",
+              blogTitle: "Drafts",
+              blogSidebarTitle: "All drafts",
+              blogSidebarCount: "ALL",
+              showReadingTime: true,
+              // Show all drafts on one page so the tag filter in BlogListPage has the full corpus.
+              postsPerPage: "ALL",
+              authorsMapPath: "../blog/authors.yml",
+              // plan.md is a private planning note, not an article.
+              exclude: ["plan.md", "**/.gitkeep"],
+              // Draft articles use tags freely; no need for strict validation here.
+              onInlineTags: "ignore",
+              onInlineAuthors: "warn",
+              onUntruncatedBlogPosts: "ignore",
+              beforeDefaultRemarkPlugins: [
+                remarkSnippetLoader,
+                remarkReplaceWords,
+                remarkTreeToComponent,
+              ],
+            },
+          ],
+        ]),
   ],
   headTags: [
     {
@@ -689,6 +722,9 @@ const config = {
           height: 40,
         },
         items: [
+          // Dev-only: visible only when NODE_ENV !== "production" (i.e. on yarn start).
+          // Never renders in the production build — no navbar entry, no /drafts/ route.
+          ...(isProd ? [] : [{ to: "/drafts", label: "Drafts", position: "left" }]),
           // `to` rather than `href`: Docusaurus only marks an item active
           // (.navbar__link--active) when it is declared with `to`.
           //

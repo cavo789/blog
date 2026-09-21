@@ -212,7 +212,7 @@ ps aux | grep "tunnel-db-staging"
 lsof -i :5433
 
 # Kill it
-kill <PID>
+kill `<PID>`
 </Terminal>
 
 <AlertBox type="tip" title="Foreground tunnels are easier to manage">

@@ -1,0 +1,5 @@
+$ ssh project_prod_app
+⚠  Production server — be careful!
+Tip: /opt/project_devcontainer for VSCode · /opt/project for the real app
+
+app-user@server-prod:/opt/project$

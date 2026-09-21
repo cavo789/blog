@@ -10,7 +10,7 @@ Jamais publié, écrit en français. Pour la logique détaillée derrière chaqu
 
 ## Ordre de publication recommandé
 
-49 brouillons ont un `index.md` (49e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
+50 brouillons ont un `index.md` (50e, `ollama-refactor-code`, pas encore rédigé — exclu du plan).
 
 Fondations de la série Ollama déjà publiées entretemps : `ollama-test-generator` (2026-08-03) et
 `ollama-git-precommit` (2026-08-10). `ollama-ai-standup` peut donc sortir dès maintenant, sans
@@ -65,6 +65,7 @@ attendre aucun autre brouillon.
 | 45 | `docusaurus-mobile-preview` | Aucune contrainte |
 | 46 | `docusaurus-follow-rss-feeds` | Aucune contrainte sur un brouillon — mais lien réciproque à poser dans `/blog/blog-post-feed` à la publication |
 | 47 | `docker-diff-read-only` | Aucune contrainte — `docker-volumes`, `docling` et `markitdown` sont publiés, les trois liens internes résolvent déjà |
+| 48 | `ssh-config-tips` (dossier `ssh-config-global-proxyjump`) | Aucune contrainte — lien réciproque à poser dans `vscode-remote-ssh-proxyjump-devcontainer` à la publication |
 
 `ollama-refactor-code` n'apparaît pas : ce ne sont que des fichiers `files/`, aucun `index.md`.
 

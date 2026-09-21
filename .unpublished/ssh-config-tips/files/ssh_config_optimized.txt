@@ -1,0 +1,28 @@
+# 1. Bastion — no ProxyJump, no IdentityFile
+Host %%vmIp=windows-vm-ip%%
+    User %%vmUser=vm-user%%
+
+# 2. Global rule — ProxyJump and key for every host except the bastion
+Host * !%%vmIp=windows-vm-ip%%
+    ProxyJump %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%%
+    IdentityFile ~/.ssh/%%sshKey=id_ed25519%%
+
+# 3. Domain defaults — in effect when connecting via full FQDN only
+Host *.cloud.project-a.internal
+    User %%userA=user-a%%
+
+Host *.cloud.corp.example
+    User %%userB=user-b%%
+
+Host *.office.corp.example
+    User %%userB=user-b%%
+
+# 4. Short aliases — HostName + User
+#    (domain defaults above do not apply to aliases — see article)
+Host project_test
+    HostName server-test.cloud.project-a.internal
+    User %%userA=user-a%%
+
+Host project_prod
+    HostName server-prod.office.corp.example
+    User %%userB=user-b%%

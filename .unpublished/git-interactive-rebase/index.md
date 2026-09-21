@@ -227,7 +227,7 @@ If two commits being merged touched the same lines, git pauses with a conflict:
 CONFLICT (content): Merge conflict in src/auth/user.php
 error: could not apply d4e5f6a... fix email validation
 hint: Resolve all conflicts manually, mark them as resolved with
-hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: "git add/rm {'<conflicted_files>'}", then run "git rebase --continue".
 </Terminal>
 
 The usual conflict resolution flow:
