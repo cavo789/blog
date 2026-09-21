@@ -893,7 +893,7 @@ $pageTitle = $currentRel !== '' ? basename($currentDir) . ' — Galerie' : 'Gale
     btn.disabled = true;
 
     var isSvg = src.toLowerCase().endsWith('.svg');
-    var blobPromise = isSvg ? svgToPng(src) : fetchBlob(src);
+    var blobPromise = isSvg ? svgToPng(src) : imgElToPng(modalImg);
 
     blobPromise.then(function (blob) {
       // Always write as image/png — widest app compatibility
@@ -908,30 +908,16 @@ $pageTitle = $currentRel !== '' ? basename($currentDir) . ' — Galerie' : 'Gale
     });
   });
 
-  function fetchBlob(url) {
-    return fetch(url).then(function (r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.blob();
-    }).then(function (blob) {
-      // Convert non-PNG blobs to PNG via canvas so ClipboardItem always gets image/png
-      if (blob.type === 'image/png') return blob;
-      return blobToPng(blob);
-    });
-  }
-
-  function blobToPng(blob) {
+  function imgElToPng(imgEl) {
     return new Promise(function (resolve, reject) {
-      var url = URL.createObjectURL(blob);
-      var img = new Image();
-      img.onload = function () {
-        var canvas = canvasFromImg(img);
-        URL.revokeObjectURL(url);
+      try {
+        var canvas = canvasFromImg(imgEl);
         canvas.toBlob(function (b) {
           b ? resolve(b) : reject(new Error('canvas.toBlob a échoué'));
         }, 'image/png');
-      };
-      img.onerror = function () { URL.revokeObjectURL(url); reject(new Error('Chargement image échoué')); };
-      img.src = url;
+      } catch (e) {
+        reject(e);
+      }
     });
   }
 
