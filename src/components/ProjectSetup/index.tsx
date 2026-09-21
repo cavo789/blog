@@ -153,13 +153,18 @@ export default function ProjectSetup({
 
   // Memoize the generated script so it isn't rebuilt on every UI state change
   const shellScript = useMemo(() => {
+    // ~ is not expanded inside double quotes in bash; replace with $HOME so
+    // paths like ~/.zsh/fns don't create a literal "~" directory.
+    const shellPath = (p: string) => p.replace(/^~/, "$HOME");
+    const shellFolder = shellPath(folderName);
+
     let script = "";
     if (createFolder) {
-      script += `mkdir -p "${folderName}" && cd "${folderName}"\n`;
+      script += `mkdir -p "${shellFolder}" && cd "${shellFolder}"\n`;
     }
 
     folders.forEach((f) => {
-      script += `\nmkdir -p "${f}"\n`;
+      script += `\nmkdir -p "${shellPath(f)}"\n`;
     });
 
     fileList.forEach(({ fileName, content }) => {
@@ -167,7 +172,7 @@ export default function ProjectSetup({
       script += `\nmkdir -p "$(dirname "${fileName}")" && cat <<'${delimiter}' > "${fileName}"\n${content.trim()}\n${delimiter}\n`;
     });
 
-    script += `\necho "✅ Setup completed in folder: ${folderName}"`;
+    script += `\necho "✅ Setup completed in folder: ${shellFolder}"`;
 
     guidelines.forEach((g) => {
       const text = getGuidelineText((g.props as ChildProps).children)
