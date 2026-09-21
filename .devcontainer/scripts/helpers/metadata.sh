@@ -20,6 +20,16 @@ function yaml() {
 }
 
 # @cat Metadata
+# @cmd spam
+# @desc Block a Bluesky spammer — prints the moderation list URL to open in the browser
+function spam() {
+    echo "Open the Bluesky moderation list and add the spammer's handle:"
+    echo "  https://bsky.app/profile/avonture.be/lists/3mvz3v7vaqg2r"
+    echo ""
+    echo "Changes take effect on the next page load (no deploy needed)."
+}
+
+# @cat Metadata
 # @cmd links
 # @desc Internal-link opportunities — 'links' for corpus stats, 'links <path>' for one article
 function links() {

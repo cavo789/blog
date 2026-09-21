@@ -42,3 +42,49 @@ function check() {
 function format() {
     yarn format
 }
+
+# @cat Maintenance
+# @cmd install_php
+# @desc Install PHP CLI + start a local web server on port 8080 — temporary, not persisted across rebuilds
+function install_php() {
+    local port=8080
+    local repo_root
+    repo_root="$(realpath "${INTERACTIVE_SCRIPTS_DIR}/../../")"
+    local static_dir="${repo_root}/static"
+    local logfile="/tmp/php-server-${port}.log"
+
+    # ── Step 1 : install PHP if missing ────────────────────────────────────
+    if command -v php &>/dev/null; then
+        printf "✅ PHP %s déjà installé.\n" "$(php -r 'echo PHP_VERSION;')"
+    else
+        printf "📦 Installation de PHP CLI (temporaire — perdu au prochain rebuild)...\n"
+        sudo apt-get update -qq || { printf "❌ apt-get update a échoué\n" >&2; return 1; }
+        sudo apt-get install -y php-cli || { printf "❌ Installation de php-cli a échoué\n" >&2; return 1; }
+        printf "✅ PHP %s installé.\n" "$(php -r 'echo PHP_VERSION;')"
+    fi
+
+    # ── Step 2 : start the built-in web server if not already running ───────
+    if lsof -i ":${port}" -sTCP:LISTEN &>/dev/null; then
+        printf "ℹ️  Serveur PHP déjà actif sur le port %s.\n" "${port}"
+    else
+        php -S "0.0.0.0:${port}" -t "${static_dir}" >"${logfile}" 2>&1 &
+        local pid=$!
+        sleep 0.4  # let the socket bind before checking
+        if ! lsof -i ":${port}" -sTCP:LISTEN &>/dev/null; then
+            printf "❌ Le serveur PHP n'a pas démarré (PID %s). Logs : %s\n" "${pid}" "${logfile}" >&2
+            return 1
+        fi
+        printf "🚀 Serveur PHP démarré (PID %s) — logs : %s\n" "${pid}" "${logfile}"
+    fi
+
+    # ── Step 3 : print where to go ──────────────────────────────────────────
+    printf "\n"
+    printf "  Ouvre dans le navigateur :\n"
+    printf "\n"
+    printf "    👉  http://localhost:%s/img/\n" "${port}"
+    printf "\n"
+    printf "  Pour arrêter le serveur :\n"
+    printf "\n"
+    printf "    pkill -f 'php -S'\n"
+    printf "\n"
+}

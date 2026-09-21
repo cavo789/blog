@@ -6,11 +6,22 @@ const MAX_ACTORS_PER_ENDPOINT = 20;
 const FEED_CACHE_PREFIX = "bluesky-feed-cache:";
 const FEED_CACHE_TTL_MS = 5 * 60 * 1000;
 const MAX_FEED_PAGES = 5;
+const BLOCKED_LIST_CACHE_PREFIX = "bluesky-blocked-list-cache:";
+const BLOCKED_LIST_CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour — list changes rarely
 
 /** `docusaurus.config.js`'s `customFields.bluesky` — a custom field, typed `unknown` by
  * Docusaurus itself, so every reader casts against this shape. */
 export interface BlueskySiteConfig {
   handle?: string;
+  /**
+   * AT URI of a Bluesky moderation list whose members are hidden from comments and the facepile.
+   * Fetched at runtime from the public API (no auth required) and cached 1 h in sessionStorage —
+   * adding a handle to the list takes effect on the next page load with no deploy needed.
+   * Create a list at bsky.app → Lists, then copy its URI (at://did:plc:…/app.bsky.graph.list/…).
+   */
+  blockedList?: string;
+  /** Compile-time override: handles blocked regardless of the Bluesky list (e.g. during deploy). */
+  blockedHandles?: string[];
 }
 
 /** The subset of a blog post's `useBlogPost().metadata` every Bluesky file actually reads. */
@@ -114,12 +125,15 @@ function mergeEngagement(
     commenters = [],
   }: { likers?: BlueskyActor[]; reposters?: BlueskyActor[]; commenters?: BlueskyActor[] },
   ownerHandle: string | undefined,
+  blockedHandles: Set<string> = new Set(),
 ): EngagedPerson[] {
   const byDid = new Map<string, EngagedPerson>();
 
   const record = (actor: BlueskyActor | undefined, action: EngagementAction) => {
     // Replying to your own readers isn't reader engagement — exclude the blog's own account.
-    if (!actor?.did || actor.handle === ownerHandle) return;
+    // Also exclude any handle explicitly blocked in the site config (e.g. spammers).
+    if (!actor?.did || actor.handle === ownerHandle || blockedHandles.has(actor.handle))
+      return;
     const entry = byDid.get(actor.did) || {
       did: actor.did,
       handle: actor.handle,
@@ -142,6 +156,56 @@ function mergeEngagement(
 function normalizeUrl(url: string | null | undefined): string | null {
   if (!url) return null;
   return url.split("?")[0].replace(/\/+$/, "");
+}
+
+interface BlockedListResponse {
+  items?: { subject?: { handle?: string } }[];
+  cursor?: string;
+}
+
+// Fetches every handle in a Bluesky moderation list (pagination-aware) and caches
+// the result in sessionStorage for 1 hour so browsing many articles doesn't re-fetch.
+// Exported so BlueskyComments can share the same cache without a duplicate request.
+export async function fetchBlockedList(listUri: string): Promise<Set<string>> {
+  const cacheKey = BLOCKED_LIST_CACHE_PREFIX + listUri;
+  try {
+    const raw = sessionStorage.getItem(cacheKey);
+    if (raw) {
+      const { timestamp, handles } = JSON.parse(raw) as {
+        timestamp: number;
+        handles: string[];
+      };
+      if (Date.now() - timestamp <= BLOCKED_LIST_CACHE_TTL_MS) return new Set(handles);
+    }
+  } catch {
+    /* private browsing or corrupt entry — just refetch */
+  }
+
+  const handles: string[] = [];
+  let cursor: string | undefined;
+
+  for (let page = 0; page < 10; page++) {
+    const params = new URLSearchParams({ list: listUri, limit: "100" });
+    if (cursor) params.set("cursor", cursor);
+    const res = await fetch(
+      `https://public.api.bsky.app/xrpc/app.bsky.graph.getList?${params}`,
+    );
+    if (!res.ok) break;
+    const data = (await res.json()) as BlockedListResponse;
+    for (const item of data.items ?? []) {
+      if (item.subject?.handle) handles.push(item.subject.handle);
+    }
+    cursor = data.cursor;
+    if (!cursor) break;
+  }
+
+  try {
+    sessionStorage.setItem(cacheKey, JSON.stringify({ timestamp: Date.now(), handles }));
+  } catch {
+    /* private browsing — cache miss next time, that's fine */
+  }
+
+  return new Set(handles);
 }
 
 type FeedIndex = Record<string, string>;
@@ -367,13 +431,26 @@ export default function useBlueskyEngagement(
     }
 
     const fetchData = async () => {
-      try {
-        const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
-        const threadUrl = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(
-          postUri,
-        )}&depth=5`;
+      const postUri = `at://${blueSkyConfig.handle}/app.bsky.feed.post/${blueskyRecordKey}`;
+      const threadUrl = `https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?uri=${encodeURIComponent(
+        postUri,
+      )}&depth=5`;
 
-        const res = await fetch(threadUrl);
+      // Fetch the thread and the moderation list in parallel — neither depends on the other.
+      // The list is cached 1 h in sessionStorage, so after the first load it resolves instantly.
+      try {
+        const [threadRes, listBlocked] = await Promise.all([
+          fetch(threadUrl),
+          blueSkyConfig.blockedList
+            ? fetchBlockedList(blueSkyConfig.blockedList).catch(() => new Set<string>())
+            : Promise.resolve(new Set<string>()),
+        ]);
+        const blockedHandles = new Set([
+          ...(blueSkyConfig.blockedHandles ?? []),
+          ...listBlocked,
+        ]);
+
+        const res = threadRes;
         if (!res.ok) throw new Error("Failed to fetch post data");
 
         const data = (await res.json()) as PostThreadResponse;
@@ -383,7 +460,7 @@ export default function useBlueskyEngagement(
         setStats({
           likes: likeCount,
           reposts: repostCount,
-          engaged: mergeEngagement({ commenters }, blueSkyConfig.handle),
+          engaged: mergeEngagement({ commenters }, blueSkyConfig.handle, blockedHandles),
           loading: false,
           unavailable: false,
         });
@@ -399,6 +476,7 @@ export default function useBlueskyEngagement(
           engaged: mergeEngagement(
             { likers, reposters, commenters },
             blueSkyConfig.handle,
+            blockedHandles,
           ),
         }));
       } catch (e) {

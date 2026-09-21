@@ -2,6 +2,7 @@ import { useState, useEffect, type ReactNode } from "react";
 import styles from "./styles.module.css";
 import Translate, { translate } from "@docusaurus/Translate";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { fetchBlockedList } from "./useBlueskyEngagement";
 import type {
   BlueskyEmbed,
   BlueskyMetadata,
@@ -205,15 +206,31 @@ export default function BlueskyComments({ metadata }: Props) {
           "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=5&uri=" +
           encodeURIComponent(postUri);
 
-        const res = await fetch(url);
+        // Fetch thread and moderation list in parallel — shares the sessionStorage cache
+        // with useBlueskyEngagement so the second caller resolves instantly.
+        const [res, listBlocked] = await Promise.all([
+          fetch(url),
+          blueSkyConfig?.blockedList
+            ? fetchBlockedList(blueSkyConfig.blockedList).catch(() => new Set<string>())
+            : Promise.resolve(new Set<string>()),
+        ]);
         if (!res.ok) throw new Error("Failed to fetch post thread");
         const data = (await res.json()) as PostThreadResponse;
 
+        const blocked = new Set([
+          ...(blueSkyConfig?.blockedHandles ?? []),
+          ...listBlocked,
+        ]);
         const allComments: FlattenedReply[] = [];
         const flattenReplies = (arr: BlueskyReplyNode[] | undefined, depth: number) => {
           if (!arr) return;
           for (const r of arr) {
-            allComments.push({ ...r, depth });
+            // Skip blocked handles (e.g. spammers hidden on bsky.app but still
+            // returned by the public API). Sub-replies are still walked so that
+            // legitimate replies to a spam comment remain visible.
+            if (!blocked.has(r.post.author.handle)) {
+              allComments.push({ ...r, depth });
+            }
             if (r.replies) flattenReplies(r.replies, depth + 1);
           }
         };

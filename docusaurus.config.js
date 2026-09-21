@@ -171,6 +171,11 @@ const config = {
     bluesky: {
       // This is the Bluesky handle as displayed in your Bluesky profile page
       handle: "avonture.be",
+      // Bluesky moderation list — fetched at runtime, cached 1 h. Adding a handle on bsky.app
+      // takes effect on the next page load with no deploy needed.
+      // To block a spammer: https://bsky.app/profile/avonture.be/lists/3mvz3v7vaqg2r
+      blockedList:
+        "at://did:plc:xkx3swzhv33rbjrzps5r5brw/app.bsky.graph.list/3mvz3v7vaqg2r",
     },
   },
 

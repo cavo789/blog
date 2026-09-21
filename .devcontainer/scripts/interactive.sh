@@ -46,8 +46,10 @@ export -f build
 export -f upgrade
 export -f check
 export -f format
+export -f install_php
 export -f tags
 export -f yaml
+export -f spam
 export -f links
 export -f translate
 export -f eli5
