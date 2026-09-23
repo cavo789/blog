@@ -13,7 +13,7 @@ import type {
 
 // Bluesky facet indices are UTF-8 byte offsets, not JS string indices.
 // TextEncoder/TextDecoder ensures correct slicing for non-ASCII text (emoji, accents…).
-function renderPostText(record: BlueskyPostRecord): ReactNode {
+function renderPostText(record: BlueskyPostRecord, isOwner: boolean): ReactNode {
   const text = record.text;
   const facets = record.facets || [];
   if (facets.length === 0) return text;
@@ -35,18 +35,21 @@ function renderPostText(record: BlueskyPostRecord): ReactNode {
     const linkFeature = facet.features.find(
       (f) => f.$type === "app.bsky.richtext.facet#link",
     );
-    if (linkFeature) {
+    if (linkFeature && isOwner) {
+      // Site owner's links are trusted — render as a clickable anchor.
       parts.push(
         <a
           key={`link-${idx}`}
           href={linkFeature.uri}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
         >
           {decoder.decode(bytes.slice(start, end))}
         </a>,
       );
     } else {
+      // Other authors' links are unvetted (spam risk).
+      // Render the anchor text only — the original is reachable via "View comment".
       parts.push(decoder.decode(bytes.slice(start, end)));
     }
 
@@ -74,7 +77,7 @@ function renderEmbed(embed: BlueskyEmbed | null | undefined): ReactNode {
       <a
         href={uri}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         className={styles.blueskyCommentEmbed}
       >
         {thumb && <img src={thumb} alt="" className={styles.blueskyCommentEmbedThumb} />}
@@ -110,7 +113,8 @@ interface FlattenedReply extends BlueskyReplyNode {
   depth: number;
 }
 
-function BlueskyComment({ reply }: { reply: FlattenedReply }) {
+function BlueskyComment({ reply, ownerHandle }: { reply: FlattenedReply; ownerHandle?: string }) {
+  const isOwner = !!ownerHandle && reply.post.author.handle === ownerHandle;
   const recordKey = reply.post.uri.split("/").pop();
   const profileUrl = `https://bsky.app/profile/${reply.post.author.handle}`;
   const commentUrl = `https://bsky.app/profile/${reply.post.author.handle}/post/${recordKey}`;
@@ -128,7 +132,7 @@ function BlueskyComment({ reply }: { reply: FlattenedReply }) {
       style={{ paddingLeft: `${1.5 + reply.depth * 1.5}rem` }}
     >
       <div className={`${styles.blueskyCommentHeader} mb-2 flex items-center`}>
-        <a href={profileUrl} target="_blank" rel="noopener noreferrer">
+        <a href={profileUrl} target="_blank" rel="noopener noreferrer nofollow">
           <img
             src={reply.post.author.avatar}
             alt={translate(
@@ -142,7 +146,7 @@ function BlueskyComment({ reply }: { reply: FlattenedReply }) {
           <a
             href={profileUrl}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className={styles.blueskyCommentAuthorDisplayName}
           >
             {reply.post.author.displayName}
@@ -155,7 +159,7 @@ function BlueskyComment({ reply }: { reply: FlattenedReply }) {
 
       <span className={styles.blueskyCommentDate}>{date}</span>
 
-      <p className={styles.blueskyCommentText}>{renderPostText(reply.post.record)}</p>
+      <p className={styles.blueskyCommentText}>{renderPostText(reply.post.record, isOwner)}</p>
 
       {renderEmbed(reply.post.embed)}
 
@@ -168,7 +172,7 @@ function BlueskyComment({ reply }: { reply: FlattenedReply }) {
           className={styles.blueskyCommentLink}
           href={commentUrl}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
         >
           <Translate id="bluesky.comments.view">View comment</Translate>
         </a>
@@ -272,7 +276,7 @@ export default function BlueskyComments({ metadata }: Props) {
           className={styles.blueskyNoCommentYetCTA}
           href={postUrl}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer nofollow"
         >
           <Translate id="bluesky.comments.cta">Share your thoughts!</Translate>
         </a>
@@ -287,7 +291,7 @@ export default function BlueskyComments({ metadata }: Props) {
         </Translate>
       </h3>
       {comments.map((reply) => (
-        <BlueskyComment key={reply.post.uri} reply={reply} />
+        <BlueskyComment key={reply.post.uri} reply={reply} ownerHandle={blueSkyConfig?.handle} />
       ))}
     </div>
   );
