@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:59:57.917Z",
+  "source": "app.py",
+  "sourceHash": "65a312fde1c51d22173d8225d40868222aac4dc6",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce script crée une application web Flask avec deux endpoints simples : un endpoint racine qui retourne un message texte, et un endpoint /health qui retourne un statut JSON. Quand on exécute le script directement, l'application démarre sur le port 5000 accessible depuis n'importe quelle interface réseau.",
+  "explanations": {
+    "3": "Flask(__name__) initialise une nouvelle application Flask en utilisant le nom du module courant comme identifiant pour l'application.",
+    "5": "@app.route('/') est un décorateur qui enregistre la fonction qui suit comme gestionnaire pour les requêtes HTTP vers l'URL racine '/'.",
+    "9": "@app.route('/health') fonctionne de la même manière mais enregistre le gestionnaire pour l'URL '/health'.",
+    "11": "jsonify() convertit un dictionnaire Python en réponse HTTP au format JSON avec les en-têtes appropriés.",
+    "13": "La condition if __name__ == '__main__' vérifie que ce fichier est exécuté directement (pas importé comme module), et lance l'application seulement dans ce cas.",
+    "14": "host='0.0.0.0' signifie que le serveur écoute sur toutes les interfaces réseau disponibles, ce qui est utile pour Docker ou le déploiement en réseau."
+  }
+}

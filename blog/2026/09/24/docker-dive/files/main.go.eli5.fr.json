@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T07:00:03.583Z",
+  "source": "main.go",
+  "sourceHash": "4ae3c3cd2efacdbc979270e8b8dba1a41332750c",
+  "lang": "go",
+  "textLang": "fr",
+  "summary": "Ce programme crée un serveur HTTP minimaliste qui écoute sur le port 8080. Quand quelqu'un accède à la racine (/), il répond avec un message de salutation simple. C'est typiquement utilisé comme exemple de base pour démontrer Go dans des conteneurs Docker légers.",
+  "explanations": {
+    "10": "http.HandleFunc enregistre une fonction qui sera appelée chaque fois qu'une requête HTTP arrive sur la route /. La fonction reçoit w pour écrire la réponse et r qui contient les infos de la requête.",
+    "11": "fmt.Fprintln écrit du texte suivi d'une nouvelle ligne directement dans la réponse HTTP (w), ce qui sera envoyé au client.",
+    "15": "http.ListenAndServe démarre le serveur sur le port 8080 et bloque indéfiniment pour accepter les connexions. log.Fatal affiche un message d'erreur et arrête le programme si le serveur échoue à démarrer."
+  }
+}

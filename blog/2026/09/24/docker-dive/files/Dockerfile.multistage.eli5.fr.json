@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:59:40.792Z",
+  "source": "Dockerfile.multistage",
+  "sourceHash": "e32a911321cd12ed663bbfd4518c6e0143864b65",
+  "lang": "multistage",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile utilise une construction multi-étapes pour réduire la taille de l'image finale. D'abord, une étape builder installe toutes les dépendances Python dans un répertoire isolé, puis une étape production plus légère (basée sur python:3.12-slim) copie uniquement les packages compilés et le code applicatif, sans conserver les outils de compilation inutiles.",
+  "explanations": {
+    "1": "Cette directive active la syntaxe Dockerfile moderne qui permet les fonctionnalités avancées comme les builds multi-étages.",
+    "3": "AS builder nomme cette première étape pour pouvoir y référencer plus tard — cela permet de construire et de jeter une étape intermédiaire.",
+    "9": "Le flag --target ./packages installe les dépendances dans le répertoire ./packages au lieu de l'emplacement système, rendant facile leur copie ultérieure ; --no-cache-dir économise de l'espace en ne conservant pas le cache pip.",
+    "11": "python:3.12-slim est une version réduite de Python qui exclut les compilateurs et les outils de développement, rendant l'image finale beaucoup plus petite.",
+    "15": "COPY --from=builder copie les fichiers spécifiquement depuis l'étape builder précédente au lieu du contexte de build — c'est le cœur du multi-stage qui laisse derrière tous les fichiers temporaires.",
+    "17": "PYTHONPATH indique à Python où chercher les modules importés, pointant vers le répertoire packages que tu viens de copier."
+  }
+}

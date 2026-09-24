@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:59:49.079Z",
+  "source": "Dockerfile.v2",
+  "sourceHash": "30c06ea6f91267ca571d87bfef3fee4f005dcbb8",
+  "lang": "v2",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Ubuntu 24.04 qui installe les dépendances système et Python nécessaires, puis configure un répertoire applicatif pour exécuter un script Python. L'image nettoie les fichiers temporaires après l'installation pour réduire sa taille, installe plusieurs bibliothèques Python populaires, et définit le point d'entrée pour lancer app.py au démarrage du conteneur.",
+  "explanations": {
+    "1": "Cette directive indique au builder Docker d'utiliser la syntaxe moderne du Dockerfile, ce qui active des fonctionnalités avancées comme les commentaires et les directives.",
+    "4": "apt-get update rafraîchit la liste des paquets disponibles, et on le combine avec install -y sur les lignes suivantes pour installer tous les outils en une seule couche de build.",
+    "15": "apt-get clean supprime les fichiers de cache du gestionnaire de paquets pour réduire la taille de l'image Docker.",
+    "16": "rm -rf supprime les répertoires temporaires du conteneur pour diminuer davantage l'espace utilisé.",
+    "18": "pip3 install installe les bibliothèques Python mentionnées, et --break-system-packages permet d'ignorer l'avertissement de PEP 668 qui refuse normalement d'installer des paquets pip dans l'environnement système.",
+    "20": "mkdir /app crée le répertoire où l'application sera stockée à l'intérieur du conteneur.",
+    "22": "COPY app.py /app/ copie le fichier app.py de ta machine locale dans le répertoire /app/ du conteneur.",
+    "24": "WORKDIR /app définit /app comme répertoire courant pour les commandes suivantes et pour quand le conteneur démarre.",
+    "26": "CMD spécifie la commande par défaut à exécuter quand le conteneur démarre — ici, lancer Python avec app.py."
+  }
+}

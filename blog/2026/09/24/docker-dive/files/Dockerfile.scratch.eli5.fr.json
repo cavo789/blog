@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:59:44.105Z",
+  "source": "Dockerfile.scratch",
+  "sourceHash": "05eeb6bd48f6f240320405bffd7b652d8be89942",
+  "lang": "scratch",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une application Go minimale en deux étapes. D'abord, il compile le code Go dans un conteneur Alpine complet, puis il crée une image finale ultra-légère en copiant seulement l'exécutable compilé, sans inclure le système d'exploitation ou les outils inutiles.",
+  "explanations": {
+    "3": "FROM golang:1.22-alpine AS builder crée la première étape de construction en utilisant l'image officielle Go avec Alpine Linux, une distribution très légère.",
+    "9": "CGO_ENABLED=0 désactive le langage C pour garantir que le binaire fonctionne partout, GOOS=linux cible spécifiquement Linux, et les flags ldflags '-w -s' réduisent la taille du fichier exécutable en supprimant les symboles de débogage.",
+    "11": "FROM scratch utilise une image vide complètement dépourvue de système d'exploitation ou de shell — seul l'exécutable sera présent.",
+    "13": "COPY --from=builder récupère le fichier compilé depuis l'étape de construction précédente et le place dans l'image finale."
+  }
+}

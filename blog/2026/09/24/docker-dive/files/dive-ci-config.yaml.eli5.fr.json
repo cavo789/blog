@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T07:00:00.723Z",
+  "source": "dive-ci-config.yaml",
+  "sourceHash": "b49da73d6e163d7d868991307702265c3d0071c9",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration définit des règles de seuils pour l'analyse d'efficacité et de gaspillage de ressources. Les paramètres établissent qu'une efficacité minimale de 95% est acceptable, qu'au maximum 20 mégaoctets peuvent être gaspillés, et que le gaspillage ne doit pas dépasser 5% de l'utilisation totale de l'utilisateur.",
+  "explanations": {
+    "3": "La valeur est une chaîne de caractères contenant une unité (mb) plutôt qu'un simple nombre, ce qui permet au système de parser et convertir cette valeur en octets selon le contexte.",
+    "4": "Ce seuil est exprimé en décimal (0.05) qui représente 5% — c'est une proportion plutôt qu'une valeur en octets comme la ligne précédente."
+  }
+}

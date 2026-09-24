@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:59:53.955Z",
+  "source": "Dockerfile.v3",
+  "sourceHash": "d2374160e0bdcf69c757ef6c290ae2e8a03ef81f",
+  "lang": "v3",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Ubuntu 24.04, installe les dépendances système et Python nécessaires pour exécuter une application Flask, nettoie les artefacts inutiles pour réduire la taille de l'image, puis configure le répertoire de travail et lance l'application Python.",
+  "explanations": {
+    "1": "Le pragma en début de fichier active la syntaxe Dockerfile v1 qui permet d'utiliser des fonctionnalités modernes du builder Docker.",
+    "4": "La commande RUN exécute plusieurs opérations en chaîne (avec &&) — cela les groupe en une seule couche d'image pour minimiser la taille finale.",
+    "15": "Le flag --break-system-packages permet à pip3 d'installer les paquets Python même si le système utilise une gestion de paquets externe (dpkg), ce qui normallement serait bloqué.",
+    "18": "Cette ligne supprime tous les fichiers .pyc (bytecode Python compilé) qui prennent de la place sans être nécessaires en production.",
+    "19": "Cette ligne efface les répertoires __pycache__ (caches Python) et le 'true' final garantit que la commande réussit même si aucun répertoire n'est trouvé.",
+    "21": "Crée le répertoire /app qui servira de base pour l'application.",
+    "23": "Copie le fichier app.py depuis la machine hôte vers le répertoire /app de l'image.",
+    "25": "Définit /app comme répertoire courant pour toutes les commandes ultérieures dans le conteneur.",
+    "27": "Spécifie la commande par défaut à exécuter quand le conteneur démarre — ici lancer app.py avec Python 3."
+  }
+}

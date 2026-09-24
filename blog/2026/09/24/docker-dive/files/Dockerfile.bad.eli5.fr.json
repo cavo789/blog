@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:59:35.636Z",
+  "source": "Dockerfile.bad",
+  "sourceHash": "3fa0513022c7e26d1418821083685f2f56e4357d",
+  "lang": "bad",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Ubuntu 24.04 en installant les outils de développement essentiels (curl, wget, git), Python avec ses dépendances de compilation, puis les bibliothèques Python courantes (flask, requests, numpy, pandas, scikit-learn). Il copie ensuite le fichier app.py dans le conteneur et le lance au démarrage.",
+  "explanations": {
+    "1": "Cette directive spécifie la syntaxe du parser Docker à utiliser — c'est une optimisation pour accéder aux fonctionnalités les plus récentes du Dockerfile.",
+    "4": "apt-get update rafraîchit la liste des paquets disponibles depuis les dépôts Ubuntu, nécessaire avant d'installer quoi que ce soit.",
+    "5": "Le backslash à la fin de la ligne permet de continuer la commande sur les lignes suivantes, ce qui rend la liste de paquets plus lisible.",
+    "16": "Le flag --break-system-packages force pip à ignorer les avertissements de pip concernant la modification des paquets système Python, une pratique généralement acceptable dans les conteneurs.",
+    "18": "mkdir /app crée le répertoire /app qui servira de dossier de travail pour l'application.",
+    "20": "COPY app.py /app/ copie le fichier app.py de la machine hôte vers le répertoire /app du conteneur.",
+    "22": "WORKDIR /app établit /app comme répertoire courant par défaut pour toutes les commandes RUN et CMD suivantes.",
+    "24": "CMD spécifie la commande à exécuter au démarrage du conteneur — ici, lancer l'application Python."
+  }
+}
