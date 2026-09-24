@@ -66,6 +66,9 @@ export default function KonamiEasterEgg(): JSX.Element | null {
       // slightly-too-long "ArrowUp" press would otherwise inject extra
       // events and break a sequence that has two of the same key in a row.
       if (event.repeat) return;
+      // event.key can be undefined at runtime (IME composition, synthetic events,
+      // older browser bugs) despite TypeScript's DOM types declaring it string.
+      if (!event.key) return;
       if (MODIFIER_KEYS.has(event.key)) return;
 
       const key = normalizeKey(event.key);

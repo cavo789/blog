@@ -1,0 +1,420 @@
+/* ConfigGenerator — form + live output panel.
+ * Follows the same mk-* token vocabulary as Vars/styles.module.css.
+ */
+
+.root {
+  composes: mk-surface from global;
+  padding: 1rem 1.15rem 1.05rem;
+  margin: 1.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.85rem;
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .root {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .header {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Left column wrapper — stacks common settings + all list fields */
+.formColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.headerTitle {
+  composes: mk-eyebrow from global;
+}
+
+/* Collapsible "Common settings" group */
+
+.group {
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-sm);
+  overflow: hidden;
+}
+
+.groupToggle,
+.groupHeader {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--mk-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: var(--mk-n-100);
+  border: none;
+}
+
+.groupToggle {
+  cursor: pointer;
+}
+
+.groupToggle:hover {
+  color: var(--mk-ink);
+  background: var(--mk-n-200);
+}
+
+.chevron {
+  font-size: 0.7rem;
+  transition: transform 0.18s;
+  transform: rotate(-90deg);
+}
+
+.chevronOpen {
+  transform: rotate(0deg);
+}
+
+.groupFields {
+  padding: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 0.85rem;
+  border-top: 1px solid var(--mk-border);
+}
+
+/* Slot wrapping one globalField + optional section divider */
+.globalFieldSlot {
+  display: contents; /* participates in parent flex without adding a box */
+}
+
+.sectionDivider {
+  flex: 0 0 100%;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--mk-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--mk-border);
+  margin-top: 0.2rem;
+}
+
+/* Inner padding for collapsible list fields */
+.listFieldInner {
+  padding: 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--mk-border);
+}
+
+/* Local fields (non-list) */
+
+.localFields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Single field row */
+
+.fieldRow {
+  flex: 1 1 140px;
+  min-width: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.fieldLabel {
+  font-size: 0.74rem;
+  color: var(--mk-ink-soft);
+}
+
+.inputWrap {
+  display: flex;
+  align-items: center;
+  padding: 0.1rem 0.65rem;
+  background: var(--mk-sunken);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.inputWrap:focus-within {
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
+}
+
+.fieldInput {
+  width: 100%;
+  padding: 0.45rem 0.5rem;
+  font-size: 0.88rem;
+  color: var(--mk-ink);
+  background: transparent;
+  border: none;
+  outline: none;
+  /* Truncate with ellipsis at rest; browser restores scrollable view on focus */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.fieldInput:focus {
+  text-overflow: clip;
+}
+
+.fieldSelect {
+  padding: 0.45rem 0.5rem;
+  background: var(--mk-sunken);
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+  cursor: pointer;
+}
+
+.fieldSelect:focus {
+  border-color: var(--mk-primary);
+  box-shadow: 0 0 0 3px var(--mk-key-bg);
+  outline: none;
+}
+
+.mono {
+  font-family: var(--ifm-font-family-monospace);
+}
+
+/* List field */
+
+.listField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.listLabel {
+  composes: mk-eyebrow from global;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.listRow {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding: 0.75rem;
+  background: var(--ifm-background-color);
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-sm);
+}
+
+.listRowFields {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.removeRow {
+  flex-shrink: 0;
+  align-self: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--mk-ink-soft);
+  background: none;
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-sm);
+  cursor: pointer;
+  transition:
+    color 0.12s,
+    border-color 0.12s;
+}
+
+.removeRow:hover {
+  color: var(--ifm-color-danger);
+  border-color: var(--ifm-color-danger);
+}
+
+.addRow {
+  align-self: flex-start;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.82rem;
+  color: var(--mk-primary);
+  background: none;
+  border: 1px dashed var(--mk-primary);
+  border-radius: var(--mk-radius-sm);
+  cursor: pointer;
+  transition: background 0.12s;
+}
+
+.addRow:hover {
+  background: var(--mk-key-bg);
+}
+
+/* Output panel */
+
+.output {
+  border: 1px solid var(--mk-border);
+  border-radius: var(--mk-radius-sm);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .output {
+    position: sticky;
+    top: calc(var(--ifm-navbar-height) + 1rem);
+    max-height: calc(100vh - var(--ifm-navbar-height) - 2rem);
+    overflow-y: auto;
+  }
+}
+
+.outputHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.85rem;
+  background: var(--mk-n-100);
+  border-bottom: 1px solid var(--mk-border);
+}
+
+.outputActions {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.outputLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--mk-ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  font-size: 0.9rem;
+  color: var(--mk-ink-soft);
+  background: none;
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+  cursor: pointer;
+  transition:
+    color 0.12s,
+    border-color 0.12s,
+    background 0.12s;
+}
+
+.actionBtn:hover {
+  color: var(--mk-primary);
+  border-color: var(--mk-primary);
+  background: var(--mk-key-bg);
+}
+
+.actionBtnActive {
+  color: var(--mk-primary);
+  border-color: var(--mk-primary);
+  background: var(--mk-key-bg);
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.78rem;
+  color: var(--mk-ink-soft);
+  background: none;
+  border: 1px solid var(--mk-border-strong);
+  border-radius: var(--mk-radius-sm);
+  cursor: pointer;
+  transition:
+    color 0.12s,
+    border-color 0.12s,
+    background 0.12s;
+}
+
+.copyBtn:hover {
+  color: var(--mk-primary);
+  border-color: var(--mk-primary);
+  background: var(--mk-key-bg);
+}
+
+.copyIcon {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.outputPre {
+  margin: 0;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  white-space: pre;
+  background: var(--mk-sunken);
+}
+
+.outputPre code {
+  font: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.outputPreWrapped {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  overflow-x: hidden;
+}
+
+/* Footer — disclaimer + clear button, inside formColumn */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--mk-border);
+}
+
+.footerNote {
+  font-size: 0.73rem;
+  color: var(--mk-ink-soft);
+}
+
+.clearBtn {
+  flex-shrink: 0;
+  font-size: 0.73rem;
+  color: var(--mk-ink-soft);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 2px;
+}
+
+.clearBtn:hover {
+  color: var(--ifm-color-danger);
+}

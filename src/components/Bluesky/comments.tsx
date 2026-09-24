@@ -113,7 +113,13 @@ interface FlattenedReply extends BlueskyReplyNode {
   depth: number;
 }
 
-function BlueskyComment({ reply, ownerHandle }: { reply: FlattenedReply; ownerHandle?: string }) {
+function BlueskyComment({
+  reply,
+  ownerHandle,
+}: {
+  reply: FlattenedReply;
+  ownerHandle?: string;
+}) {
   const isOwner = !!ownerHandle && reply.post.author.handle === ownerHandle;
   const recordKey = reply.post.uri.split("/").pop();
   const profileUrl = `https://bsky.app/profile/${reply.post.author.handle}`;
@@ -159,7 +165,9 @@ function BlueskyComment({ reply, ownerHandle }: { reply: FlattenedReply; ownerHa
 
       <span className={styles.blueskyCommentDate}>{date}</span>
 
-      <p className={styles.blueskyCommentText}>{renderPostText(reply.post.record, isOwner)}</p>
+      <p className={styles.blueskyCommentText}>
+        {renderPostText(reply.post.record, isOwner)}
+      </p>
 
       {renderEmbed(reply.post.embed)}
 
@@ -252,7 +260,12 @@ export default function BlueskyComments({ metadata }: Props) {
       }
     };
     fetchComments();
-  }, [blueskyRecordKey, blueSkyConfig?.handle]);
+  }, [
+    blueskyRecordKey,
+    blueSkyConfig?.handle,
+    blueSkyConfig?.blockedHandles,
+    blueSkyConfig?.blockedList,
+  ]);
 
   if (!blueskyRecordKey || error) return null;
   if (comments === null) {
@@ -291,7 +304,11 @@ export default function BlueskyComments({ metadata }: Props) {
         </Translate>
       </h3>
       {comments.map((reply) => (
-        <BlueskyComment key={reply.post.uri} reply={reply} ownerHandle={blueSkyConfig?.handle} />
+        <BlueskyComment
+          key={reply.post.uri}
+          reply={reply}
+          ownerHandle={blueSkyConfig?.handle}
+        />
       ))}
     </div>
   );

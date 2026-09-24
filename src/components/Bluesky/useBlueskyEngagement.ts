@@ -495,7 +495,12 @@ export default function useBlueskyEngagement(
     };
 
     fetchData();
-  }, [blueskyRecordKey, blueSkyConfig?.handle]);
+  }, [
+    blueskyRecordKey,
+    blueSkyConfig?.handle,
+    blueSkyConfig?.blockedHandles,
+    blueSkyConfig?.blockedList,
+  ]);
 
   return stats;
 }

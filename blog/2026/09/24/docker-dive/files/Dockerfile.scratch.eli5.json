@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:36:01.461Z",
+  "source": "Dockerfile.scratch",
+  "sourceHash": "05eeb6bd48f6f240320405bffd7b652d8be89942",
+  "lang": "scratch",
+  "textLang": "en",
+  "summary": "This Dockerfile builds a Go application in two stages to create a tiny, efficient container. First, it compiles the Go code into a standalone binary with no external dependencies, then it copies just that binary into an almost-empty container, resulting in a final image that's just a few megabytes instead of hundreds.",
+  "explanations": {
+    "3": "This pulls the official Go 1.22 image based on Alpine Linux (a tiny Linux distribution) and labels it 'builder' so we can reference it later.",
+    "9": "CGO_ENABLED=0 disables C bindings so the binary has zero external dependencies; GOOS=linux ensures it runs on Linux; the -ldflags strip debug symbols to make the binary smaller; -o server names the compiled output file.",
+    "11": "This starts a new stage with 'scratch', which is literally an empty container—just enough to run a binary with no OS or libraries.",
+    "13": "This copies the compiled 'server' binary from the first stage (builder) into the final empty container so it has something to run."
+  }
+}

@@ -1,5 +1,2 @@
-$ ssh project_test_app
-This is the test server
-Tip: /opt/folder_devcontainer for VSCode
-
-mass_upload@server-test:/opt/folder_devcontainer$
+$ ssh %%projectName=project%%_test_app
+%%test_appUser=mass_upload%%@%%test_hostname=server-test%%:%%test_appDir=/opt/folder_devcontainer%%$

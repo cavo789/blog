@@ -1,0 +1,10 @@
+{{#each servers}}
+Host {{name}}_app
+    RequestTTY yes
+    RemoteCommand sudo -u {{appUser}} bash -c "cd {{appDir}} && exec bash -l"
+
+Host {{name}} {{name}}_app
+    HostName {{hostname}}
+    User {{../userB}}
+
+{{/each}}

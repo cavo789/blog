@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:35:46.643Z",
+  "source": "Dockerfile.bad",
+  "sourceHash": "3fa0513022c7e26d1418821083685f2f56e4357d",
+  "lang": "bad",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Docker image based on Ubuntu 24.04 and installs a Python development environment with common tools like curl, git, and several Python packages including Flask and data science libraries. It then copies an app.py file into the container, sets the working directory, and configures the container to run that Python application when started.",
+  "explanations": {
+    "1": "This line tells Docker to use a newer syntax parser that supports better features; it's not essential but is a modern best practice.",
+    "5": "The backslash at the end of the line allows you to continue a command across multiple lines for readability instead of cramming everything on one line.",
+    "16": "The --break-system-packages flag tells pip to ignore Python's normal safety restrictions that prevent installing packages system-wide; this is generally discouraged in production but is sometimes necessary in containers.",
+    "20": "This copies the app.py file from your local machine (where you're building the image) into the /app folder inside the container."
+  }
+}

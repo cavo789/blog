@@ -1,0 +1,2 @@
+$ ssh %%vmUser=vm-user%%@%%vmIp=windows-vm-ip%% "echo bastion-ok"
+bastion-ok

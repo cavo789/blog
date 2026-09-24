@@ -75,6 +75,7 @@
     "feed": "^5.1.0",
     "front-matter": "^4.0.2",
     "glob": "^13.0.0",
+    "handlebars": "^4.7.9",
     "js-yaml": "^4.1.1",
     "jszip": "^3.10.1",
     "lucide-react": "^0.562.0",

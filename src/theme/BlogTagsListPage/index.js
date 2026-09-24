@@ -11,7 +11,7 @@ import SearchMetadata from "@theme/SearchMetadata";
 import Link from "@docusaurus/Link";
 import MAIN_CARDS from "@site/src/data/main_tags.js";
 import styles from "./styles.module.css";
-import Translate, { translate } from "@docusaurus/Translate";
+import Translate from "@docusaurus/Translate";
 import { useBlogMetadata } from "@site/src/components/Blog/utils/posts";
 import { useTranslationState } from "@site/src/components/Blog/utils/translations";
 import TranslationCoverage from "@site/src/components/Blog/TranslationCoverage";

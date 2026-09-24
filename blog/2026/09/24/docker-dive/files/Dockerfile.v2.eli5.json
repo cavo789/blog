@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:35:49.952Z",
+  "source": "Dockerfile.v2",
+  "sourceHash": "30c06ea6f91267ca571d87bfef3fee4f005dcbb8",
+  "lang": "v2",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Docker image based on Ubuntu 24.04 and installs a collection of development tools and Python libraries needed to run a Python application. It then copies an app.py file into the container and sets up the environment to run that Python script when the container starts.",
+  "explanations": {
+    "1": "This special comment tells Docker to use an advanced syntax version that supports newer Dockerfile features.",
+    "4": "The && chains multiple commands together so they all run as one layer; if any command fails, the whole RUN stops instead of continuing.",
+    "15": "After installing packages, we clean up the package manager cache and delete temporary files to make the final image smaller.",
+    "18": "The --break-system-packages flag tells pip to install packages even though Ubuntu normally discourages installing packages this way in its system Python.",
+    "26": "CMD specifies the default command that runs when the container starts — in this case, it will execute 'python3 app.py'."
+  }
+}

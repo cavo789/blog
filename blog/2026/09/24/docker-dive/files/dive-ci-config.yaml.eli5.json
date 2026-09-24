@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:36:06.802Z",
+  "source": "dive-ci-config.yaml",
+  "sourceHash": "b49da73d6e163d7d868991307702265c3d0071c9",
+  "lang": "yaml",
+  "textLang": "en",
+  "summary": "This is a configuration section that defines performance rules or thresholds for some kind of efficiency monitoring system. It sets limits on how inefficient something can be, how much data can be wasted, and what percentage of user resources can be lost before triggering an alert or failure.",
+  "explanations": {
+    "3": "The quotes around '20mb' make this a string rather than a number, likely because the system needs to parse it later to understand both the value (20) and the unit (mb).",
+    "4": "This decimal number represents 5% (0.05 = 5/100), which is the maximum acceptable percentage of user resources that can be wasted."
+  }
+}

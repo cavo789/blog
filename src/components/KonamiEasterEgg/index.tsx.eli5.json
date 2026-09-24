@@ -1,17 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-17T09:32:58.065Z",
+  "generated": "2026-09-24T06:35:37.939Z",
   "source": "index.tsx",
-  "sourceHash": "53575670b4b0d31eb140f39d8a4abf30c5825e61",
+  "sourceHash": "6c17bdb0c00b98516bfc894af110ef7da2a717ab",
   "lang": "typescript",
-  "summary": "This component detects when a user types the famous Konami code (up-up-down-down-left-right-left-right-b-a) on their keyboard and triggers a fun animation of a meerkat running across the screen for 3 seconds. It listens for keydown events, tracks progress through the sequence while ignoring modifier keys and repeated key presses, and resets if the wrong key is pressed—unless that key happens to be the first key of the sequence, in which case it keeps momentum.",
+  "textLang": "en",
+  "summary": "This component detects when a user types the famous Konami code (up, up, down, down, left, right, left, right, B, A) and triggers a fun animation of a meerkat running across the screen for three seconds. It handles keyboard input carefully to ignore key repeats and modifier keys that could interrupt the sequence, normalizing key values to work across different keyboard layouts.",
   "explanations": {
-    "19": "This creates a Set of arrow key names for quick lookup later, because checking if something is in a Set is faster than checking an array.",
-    "46": "If the key is a single character (like 'b' or 'a'), convert it to lowercase so 'B' becomes 'b'; otherwise return it as-is (like 'ArrowUp' stays 'ArrowUp'). This normalizes user input to match our KONAMI_CODE expectations.",
-    "52": "progressRef is a reference that persists across renders and holds our current position in the Konami code sequence—we use ref instead of state because we don't need a re-render when it changes.",
-    "68": "The repeat flag is true when a key is held down and fires multiple events automatically; we ignore these to prevent a held arrow key from accidentally advancing multiple steps.",
-    "78": "We increment our progress tracker by 1, moving forward one step in the Konami code sequence.",
-    "84": "If the pressed key doesn't match what we expect, reset progress to 0—unless it's the first key of the Konami code, then set it to 1 since they might be starting fresh."
+    "19": "This creates a Set of arrow key names for quick lookup — we'll use it later to decide which keys need special handling to prevent page scrolling.",
+    "27": "Modifier keys like Shift and Alt fire their own keydown events before the actual letter keys they modify, so we need to skip them or they'd break our sequence detection.",
+    "46": "Single-character keys (letters) get converted to lowercase so 'B' and 'A' match whether the user types them normally or with Shift held down, but multi-character keys like 'ArrowUp' stay as-is.",
+    "52": "We use a ref instead of state to track progress through the code sequence because refs don't cause re-renders and we don't need to update the display based on progress.",
+    "68": "When you hold down a key, the OS sends repeated keydown events; we ignore these to prevent someone holding an arrow key from accidentally injecting extra key presses.",
+    "71": "In rare cases (old browsers, event composition systems), event.key might be missing entirely, so we bail out rather than crash.",
+    "77": "Arrow keys would normally scroll the page, so we call preventDefault() to stop that behavior while the user is typing the code sequence.",
+    "87": "If the key doesn't match what we expected, we reset progress to 0 — but if it matches the first key of the code, we stay at progress 1 in case that key starts a new attempt."
   }
 }

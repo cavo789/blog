@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:35:43.383Z",
+  "source": "app.py",
+  "sourceHash": "65a312fde1c51d22173d8225d40868222aac4dc6",
+  "lang": "python",
+  "textLang": "en",
+  "summary": "This is a minimal Flask web application that creates two endpoints: a root endpoint that returns a simple text greeting, and a health check endpoint that returns JSON. When run directly, the app starts a web server listening on all network interfaces at port 5000, making it accessible from outside the container.",
+  "explanations": {
+    "3": "Flask(__name__) creates a new Flask application instance; __name__ tells Flask where to look for resources like templates and static files relative to this file.",
+    "5": "The @app.route decorator wires up the function below it to respond when someone visits that URL path.",
+    "11": "jsonify() wraps a Python dictionary in Flask's JSON response formatter, so it gets sent to the client with the correct content-type header.",
+    "13": "This condition checks if the script is being run directly (not imported as a module), so the app only starts if you explicitly execute this file.",
+    "14": "host='0.0.0.0' makes the server listen on all available network interfaces instead of just localhost; port=5000 is the network port where requests arrive."
+  }
+}

@@ -9,8 +9,7 @@ tags:
   - docker
   - linux
   - code-quality
-date: 2026-07-30
-draft: true
+date: 2026-09-24
 ---
 
 <!-- cspell:ignore wagoodman pyc scikit -->
@@ -46,9 +45,7 @@ Press `Tab` to switch between the layer list and the file tree. Use arrow keys t
 You know me very well now; I like to containerize things. And `dive` has an official Docker image, so there's no reason to install anything on your host:
 
 <Terminal title="user@machine: ~/myapp" wrap={true}>
-$ docker run --rm -it \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    wagoodman/dive:latest myapp:latest
+$ docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest myapp:latest
 </Terminal>
 
 The `-v /var/run/docker.sock:/var/run/docker.sock` mount is required: it's how the `dive` container reaches back into your host Docker daemon to inspect images. If you're not comfortable with that — and it's a legitimate concern — refer to the <Link to="/blog/docker-out-of-docker-dood">Docker-out-of-Docker article</Link> for the security context around socket mounting.
@@ -56,8 +53,7 @@ The `-v /var/run/docker.sock:/var/run/docker.sock` mount is required: it's how t
 If you do prefer a local binary, `dive` is available on Linux, macOS, and Windows:
 
 <Terminal title="user@machine: ~" wrap={true}>
-$ wget -q https://github.com/wagoodman/dive/releases/latest/download/dive_linux_amd64.tar.gz \
-    -O - | tar xz dive && sudo mv dive /usr/local/bin/
+$ wget -q https://github.com/wagoodman/dive/releases/latest/download/dive_linux_amd64.tar.gz -O - | tar xz dive && sudo mv dive /usr/local/bin/
 </Terminal>
 
 Either way, the usage is identical: `dive <image-name>`.
@@ -69,7 +65,7 @@ Let's build something genuinely bad so we have something to analyze. Our app is 
 <Snippet
   filename="app.py"
   source="./files/app.py"
-  defaultOpen={false}
+  defaultOpen={true}
 />
 
 And the Dockerfile — written with zero regard for image size:
@@ -98,14 +94,12 @@ myapp        bad    3f8c1a9e2b71   1.19GB
 ## The Diagnosis: What Dive Reveals
 
 <Terminal title="user@machine: ~/myapp" wrap={true}>
-$ docker run --rm -it \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    wagoodman/dive:latest myapp:bad
+$ docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest myapp:bad
 </Terminal>
 
 What you'll see in the interactive TUI is something like this in the right panel (the layer list):
 
-```
+```plaintext
 Cmp   Size  Command
      212 MB  FROM ubuntu:24.04
       38 MB  RUN apt-get update

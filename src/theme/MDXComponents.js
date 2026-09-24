@@ -1,5 +1,6 @@
 import AlertBox from "@site/src/components/Blog/AlertBox";
 import BrowserWindow from "@site/src/components/BrowserWindow";
+import ConfigGenerator from "@site/src/components/ConfigGenerator";
 import Card from "@site/src/components/Card";
 import CardBody from "@site/src/components/Card/CardBody";
 import CardFooter from "@site/src/components/Card/CardFooter";
@@ -41,6 +42,7 @@ export default {
   ...MDXComponents,
   AlertBox,
   BrowserWindow,
+  ConfigGenerator,
   Card,
   CardBody,
   CardFooter,

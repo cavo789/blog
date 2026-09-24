@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:35:57.903Z",
+  "source": "Dockerfile.multistage",
+  "sourceHash": "e32a911321cd12ed663bbfd4518c6e0143864b65",
+  "lang": "multistage",
+  "textLang": "en",
+  "summary": "This is a multi-stage Docker build that creates a lean production image by separating the build process from the runtime. The first stage installs Python dependencies into a folder, and the second stage copies only those dependencies into a slim Python image along with the application code, reducing the final image size.",
+  "explanations": {
+    "3": "AS builder names this first stage so we can reference it later; we're using the full Python image here because we need build tools to compile packages.",
+    "9": "The --target ./packages flag tells pip to install all dependencies into a packages folder instead of the default system location, making them easy to copy later.",
+    "11": "We switch to a new, smaller base image (python:3.12-slim) for production, which doesn't include build tools we don't need at runtime.",
+    "15": "This copies the pre-built packages folder from the builder stage into the production image, avoiding the need to rebuild everything.",
+    "17": "We tell Python where to find the installed packages by adding that packages folder to its search path."
+  }
+}

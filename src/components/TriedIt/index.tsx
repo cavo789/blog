@@ -98,7 +98,7 @@ export default function TriedIt({ metadata }: Props): JSX.Element | null {
               })}
             >
               <img src={mascotNoUrl} alt="" className={styles.mascot} />
-              <Translate id="blog.triedIt.no">Didn't work for me</Translate>
+              <Translate id="blog.triedIt.no">Didn&apos;t work for me</Translate>
             </button>
           </div>
         </>

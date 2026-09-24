@@ -62,7 +62,7 @@ function Archives() {
       filteredPosts = filteredPosts.filter((post) => post.tags.includes(selectedTag));
     }
     return filteredPosts;
-  }, [selectedYear, selectedTag]);
+  }, [selectedYear, selectedTag, allPosts]);
 
   const monthLabelFormat = useDateTimeFormat({ month: "long", timeZone: "UTC" });
 

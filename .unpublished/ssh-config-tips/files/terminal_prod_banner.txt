@@ -1,0 +1,4 @@
+$ ssh project_prod_app
+  ⚠  Production server — be careful!
+
+app-user@server-prod:/opt/project$

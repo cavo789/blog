@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-24T06:35:54.424Z",
+  "source": "Dockerfile.v3",
+  "sourceHash": "d2374160e0bdcf69c757ef6c290ae2e8a03ef81f",
+  "lang": "v3",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Docker image based on Ubuntu 24.04 with Python and several development tools installed. It cleans up unnecessary files to keep the image small, then sets up an /app directory, copies in an application file, and configures the container to run that Python application when started.",
+  "explanations": {
+    "4": "The && chains multiple commands together so they all run as one layer; if any command fails, the whole thing stops.",
+    "15": "The --break-system-packages flag allows pip to install Python packages even though Ubuntu discourages it for system Python; this is common in Docker since we control the environment.",
+    "16": "apt-get clean removes cached package data that apt downloaded, which we no longer need and just wastes space.",
+    "17": "This deletes temporary files and apt's package lists to further reduce the image size.",
+    "18": "The find commands delete .pyc compiled Python files and __pycache__ folders which Python creates but doesn't need; 2>/dev/null silently ignores any errors.",
+    "19": "The final 'true' command ensures this line succeeds even if the find commands found nothing, so the build doesn't fail."
+  }
+}
