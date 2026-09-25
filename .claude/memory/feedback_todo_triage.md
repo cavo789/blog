@@ -49,3 +49,40 @@ lecteur »). Chiffres relevés, à réutiliser plutôt qu'à recalculer :
 seule forme qui resterait défendable est un **scope opt-in par variable**
 (`<Vars scope="global" …>` → clé `docusaurus:vars:@<name>`), jamais une page Profil, et son
 déclencheur est **un troisième article partageant les variables SSH**. Voir [[project_components]].
+
+## Lot du 2026-09-25 — 3 refus (0136, 0122, 0134)
+
+**Le fait de workflow qui a tranché deux d'entre eux, à retenir en priorité :** l'auteur écrit un
+article, le fait traduire, puis **ne le modifie plus**. Toute classe de bug qui suppose une
+réédition de l'anglais *après* sa traduction est donc hypothétique chez lui.
+
+- **0136 — badge de niveau (débutant/intermédiaire/avancé), classé par Ollama.** Refusé sur deux
+  motifs : le **bounce rate d'environ 90 %** (les lecteurs arrivent par recherche sur un sujet
+  précis et repartent — ils ne comparent jamais plusieurs articles, donc une facette de tri ne
+  sert personne, et le badge en en-tête arrive trop tard), et surtout la **charge récurrente** :
+  chaque nouvel article devrait porter son badge. Le TODO vendait « le classifieur tourne une
+  fois », ce qui est vrai du corpus et faux du régime permanent. Note : `WONT_DO_009` refusait
+  déjà l'étiquetage de difficulté (variante avec vote lecteur) — **deuxième refus du même sujet**.
+- **0122 — props identifiantes non propagées aux traductions.** Bug réel et bien analysé, mais son
+  unique déclencheur est la réédition post-traduction → éliminé par le workflow ci-dessus.
+- **0134 — vérifier que les traductions disent la même chose que l'original.** Refusé d'abord par
+  **confiance dans le traducteur** : les traductions viennent de Claude via l'API, l'auteur ne
+  s'attend pas à ce qu'un juge trouve quoi que ce soit. Le coût n'a fait que confirmer.
+
+**Why:** deux règles durables en sortent. (1) Ne pas proposer d'outillage dont le rôle est de
+**confirmer que l'outil Claude a bien travaillé** — l'auteur lui fait confiance ; le déclencheur
+légitime serait une erreur réellement constatée à la lecture, jamais une inquiétude théorique.
+(2) Une fonctionnalité qui impose **une étape de plus à chaque publication** part avec un lourd
+handicap, même si sa génération est gratuite — voir [[feedback_article_weight]].
+
+**How to apply:** avant de chiffrer un TODO en « coût nul car modèle local », **mesurer l'unité de
+travail réelle**. 0134 annonçait « 258 paires, coût nul » ; l'unité était le paragraphe, pas
+l'article — **9 516 paires**, et **11,6 h de GPU mesurées** (`code-quality`, lot de 8, 35 s/lot,
+4,37 s/paire). « Gratuit » ne vaut que pour la facture API ; le temps GPU est un coût. Et vérifier
+un chiffre avant de laisser l'auteur décider dessus : mon estimation intermédiaire de 2,6 h était
+fausse d'un facteur 4,5, il a fallu un vrai appel pour le voir — voir
+[[feedback_verification_discipline]].
+
+Acquis gratuit conservé dans `WONT_DO_0134`, à ne pas recalculer : les **258 paires EN/FR
+s'apparient exactement bloc à bloc** (0 divergence de structure sur tout le corpus), 13 376 blocs
+dont 2 569 identiques et 1 291 de markup pur.

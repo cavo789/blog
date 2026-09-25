@@ -47,12 +47,20 @@ export -f upgrade
 export -f check
 export -f format
 export -f install_php
+export -f snippets
+# Private helper of snippets — not a cheatsheet command (no @cmd).
+export -f _snippets_help
 export -f tags
 export -f yaml
 export -f spam
 export -f links
 export -f translate
+export -f terms
 export -f eli5
+# Private helpers of eli5 — not cheatsheet commands (no @cmd), but an exported
+# function that calls them needs them present in the same subshell.
+export -f _eli5_help
+export -f _eli5_ollama_up
 export -f faq
 export -f questions
 export -f ai-index

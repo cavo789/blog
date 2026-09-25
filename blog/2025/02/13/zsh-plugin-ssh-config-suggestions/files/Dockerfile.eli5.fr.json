@@ -1,23 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:50:47.903Z",
+  "generated": "2026-09-25T12:17:50.032Z",
   "source": "Dockerfile",
-  "sourceHash": "54afe46a1bacd9ef4386e628875a66470321d564",
+  "sourceHash": "5aa470afab5a51bed3563369fb744bddb19be071",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile construit une image Ubuntu avec zsh, git et curl, puis configure un environnement shell interactif complet. Il installe Oh-My-Zsh avec un plugin de suggestions SSH, ajoute un fichier de configuration SSH fictif pour la complétion, personnalise le prompt pour identifier visuellement les conteneurs, et démarre un shell zsh interactif au lancement.",
+  "summary": "Ce Dockerfile crée une image Ubuntu configurée avec le shell zsh, Oh-My-Zsh et ses plugins. Il installe les outils nécessaires (git, curl), configure les autocomplétion SSH via un plugin personnalisé, puis ajoute un fichier SSH config d'exemple et personnalise le prompt pour indiquer visiblement qu'on est dans un conteneur.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive supprime les dialogues interactifs lors de l'installation des paquets, ce qui permet à apt-get de fonctionner sans intervention humaine dans un conteneur.",
-    "5": "Le && enchaîne plusieurs commandes pour qu'elles s'exécutent successivement, et la ligne se termine par un antislash pour continuer la commande sur la ligne suivante.",
-    "11": "rm -rf /var/lib/apt/lists/* supprime les fichiers temporaires du cache apt, ce qui réduit la taille de l'image Docker.",
-    "14": "curl -fsSL télécharge le script d'installation : -f échoue silencieusement sur erreur HTTP, -s masque la barre de progression, -S montre les erreurs, -L suit les redirections.",
-    "15": "Les guillemets vides \"\" passent une chaîne vide comme premier argument au script d'installation, tandis que --unattended et --keep-zshrc sont des drapeaux spécifiques au script.",
-    "18": "--depth=1 clone seulement la dernière version, au lieu de l'historique complet, pour réduire le temps de téléchargement.",
-    "20": "sed -i remplace le pattern 'plugins=(git)' par 'plugins=(git zsh-ssh-config-suggestions)' directement dans le fichier /root/.zshrc pour activer le plugin.",
-    "25": "printf '%s\\n' affiche chaque argument suivi d'une nouvelle ligne, ce qui est plus lisible que echo pour créer un fichier multilignes.",
-    "42": "chmod 600 définit les permissions du fichier à lecture-écriture pour le propriétaire uniquement, ce qui est la norme de sécurité pour ~/.ssh/config.",
-    "45": ">> ajoute la ligne au fichier existant au lieu de le remplacer, ce qui préserve la configuration précédente de zsh.",
-    "47": "-i lance zsh en mode interactif et -l le configure comme shell de connexion, ce qui charge les fichiers de configuration complets."
+    "3": "Cette variable empêche apt-get de poser des questions interactives pendant l'installation, ce qui est nécessaire dans les conteneurs Docker qui n'ont pas de terminal interactif.",
+    "6": "Le flag --no-install-recommends réduit la taille de l'image en installant uniquement les paquets demandés sans les dépendances optionnelles supplémentaires.",
+    "11": "On supprime le cache apt après installation pour réduire significativement la taille finale de l'image Docker.",
+    "14": "Cette commande télécharge et exécute le script d'installation officiel d'Oh-My-Zsh directement depuis GitHub, avec le flag --unattended pour une installation automatisée.",
+    "18": "L'option --depth=1 clone seulement le dernier commit du dépôt git pour économiser de l'espace et du temps de téléchargement.",
+    "20": "La commande sed modifie le fichier de configuration zsh pour ajouter le nouveau plugin zsh-ssh-config-suggestions à la liste des plugins activés.",
+    "25": "printf '%s\\n' permet d'écrire plusieurs lignes dans le fichier SSH config de manière plus lisible qu'avec echo.",
+    "42": "chmod 600 restreint les permissions du fichier SSH config pour que seul l'utilisateur root puisse le lire, ce qui est requis par les clients SSH pour des raisons de sécurité.",
+    "45": "On ajoute cette ligne au fichier zshrc pour personnaliser le prompt avec une emoji bateau et des couleurs, rendant visible que le shell exécute dans un conteneur.",
+    "47": "Le flag -i lance zsh en mode interactif et -l le lance comme shell de connexion, préservant l'environnement complet configuré dans les fichiers de démarrage."
   }
 }

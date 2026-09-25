@@ -10,7 +10,7 @@ RUN npx create-docusaurus@latest /opt/docusaurus/ classic --javascript \
 WORKDIR /opt/docusaurus
 
 # We need our package.json / yarn.lock file before running yarn install
-COPY package.json yarn.lock .
+COPY package.json yarn.lock ./
 
 # Install dependencies with `--immutable` to ensure reproducibility.
 RUN yarn install --immutable

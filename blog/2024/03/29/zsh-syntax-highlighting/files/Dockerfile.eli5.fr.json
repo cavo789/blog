@@ -1,19 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:35:19.797Z",
+  "generated": "2026-09-25T12:16:04.732Z",
   "source": "Dockerfile",
-  "sourceHash": "dc898aaf5f8a685d6aab21e78e5bb07b93060fff",
+  "sourceHash": "ce43341c3ccbb4450557542060c3aa5d688c2057",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Ubuntu préconfigurée avec le shell zsh enrichi par Oh-My-Zsh et le plugin zsh-syntax-highlighting. Le conteneur démarre directement dans un shell zsh interactif avec un prompt personnalisé qui affiche une baleine pour indiquer visuellement qu'on est dans un conteneur.",
+  "summary": "Cette image Docker construit un conteneur Ubuntu avec un shell zsh complètement configuré, incluant Oh-My-Zsh et la coloration syntaxique. Elle installe les dépendances nécessaires, télécharge et configure le framework zsh, puis ajoute un plugin pour la mise en évidence du code et personnalise l'invite de commande avec un emoji de conteneur.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives lors de l'installation de paquets, ce qui est nécessaire dans un Dockerfile car il n'y a pas d'utilisateur pour répondre.",
-    "5": "Le && permet de chaîner les commandes pour qu'elles s'exécutent successivement dans un seul calque Docker, réduisant la taille de l'image.",
-    "11": "rm -rf /var/lib/apt/lists/* supprime le cache des listes de paquets APT pour réduire la taille de l'image Docker puisque ces fichiers ne sont plus nécessaires après l'installation.",
-    "14": "curl -fsSL télécharge le script d'installation d'Oh-My-Zsh : -f échoue silencieusement si le serveur répond par une erreur, -s masque la barre de progression, -S réaffiche les erreurs, -L suit les redirections.",
-    "15": "Les arguments --unattended --keep-zshrc passent au script : --unattended installe sans poser de questions, --keep-zshrc conserve les fichiers de configuration existants.",
-    "20": "sed -i modifie le fichier .zshrc en place : la substitution s/^plugins=(git)/plugins=(git zsh-syntax-highlighting)/ remplace la ligne plugins=(git) par la même ligne avec le plugin zsh-syntax-highlighting ajouté.",
-    "25": "CMD spécifie la commande par défaut au démarrage du conteneur : /bin/zsh -i lance zsh en mode interactif et -l le lance comme shell de connexion pour charger tous les fichiers de configuration."
+    "3": "ENV DEBIAN_FRONTEND=noninteractive indique au système que les packages ne doivent pas poser de questions interactives pendant l'installation, ce qui permet à Docker de progresser sans intervention.",
+    "6": "Le drapeau --no-install-recommends réduit la taille de l'image en installant uniquement les packages demandés sans leurs suggestions optionnelles.",
+    "11": "On supprime le cache apt après l'installation pour réduire significativement la taille finale de l'image, car ces fichiers de cache ne sont plus nécessaires une fois les packages installés.",
+    "14": "La commande télécharge et exécute le script d'installation officiel d'Oh-My-Zsh en mode non interactif (--unattended) et conserve le fichier .zshrc existant (--keep-zshrc).",
+    "18": "git clone --depth=1 récupère uniquement l'historique de commit le plus récent du dépôt, ce qui accélère le téléchargement et réduit la bande passante utilisée.",
+    "20": "sed -i modifie le fichier .zshrc directement en remplaçant la liste des plugins pour ajouter zsh-syntax-highlighting à côté de git.",
+    "25": "CMD définit la commande par défaut lancée au démarrage du conteneur ; les drapeaux -i et -l lancent zsh en mode interactif avec des options de login."
   }
 }

@@ -19,7 +19,7 @@ mkdir -p dist/assets
 # Iterate through bundles - Added -r flag to all yq calls
 bundle_count=$(yq -r '.bundles | length' "$CONFIG_FILE")
 
-for ((i=0; i<$bundle_count; i++)); do
+for ((i=0; i<bundle_count; i++)); do
     # Using -r to get raw strings without quotes
     NAME=$(yq -r ".bundles[$i].name" "$CONFIG_FILE")
     TYPE=$(yq -r ".bundles[$i].type" "$CONFIG_FILE")
@@ -31,7 +31,7 @@ for ((i=0; i<$bundle_count; i++)); do
     rm -f "$TEMP_FILE"
 
     input_count=$(yq -r ".bundles[$i].inputs | length" "$CONFIG_FILE")
-    for ((j=0; j<$input_count; j++)); do
+    for ((j=0; j<input_count; j++)); do
         INPUT_PATH=$(yq -r ".bundles[$i].inputs[$j]" "$CONFIG_FILE")
 
         # Now INPUT_PATH is "public/assets/css/reset.css" (no literal quotes)

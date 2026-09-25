@@ -31,7 +31,8 @@ yarn links:check <path> # internal-link check for one article
 yarn translate <path>   # translate ONE article (low-level; prefer the `translate` function below)
 yarn translate:check    # translation freshness: fresh / minor / stale, per article
 yarn translate:plan <p> # what a `translate <p>` run would do and cost — offline, spends nothing
-yarn eli5               # generate ELI5 summaries (requires Ollama)
+yarn translate:terms    # cross-article terminology audit of the FR corpus — lexical, no API
+yarn eli5               # generate ELI5 summaries (prefer the `eli5` cheatsheet function)
 ```
 
 ### Translating articles — use `translate`, not `yarn translate`
@@ -192,13 +193,37 @@ Governance rules in `AGENTS.md` — treat as binding.
 
 - `internal-link-opportunities.mjs` — powers `yarn links:audit` / `yarn links:check`.
 - `generate-eli5.mjs` / `bulk-eli5.mjs` / `check-eli5-freshness.mjs` — ELI5 snippet annotations,
-  generated through the **Anthropic API** (`ANTHROPIC_API_KEY`), not Ollama. The checker answers
+  generated through the **Anthropic API** (`ANTHROPIC_API_KEY`) by default. `--backend ollama`
+  swaps in the local model (`lib/eli5-backend.mjs`, the only place that differs between the two):
+  free, no key, grammar-constrained, and — measured on 30 snippets × 2 locales — factually
+  accurate, at the same volume and coverage. What it does not do is obey the prompt's *skip*
+  list: it annotates self-evident imports, explains to a peer rather than to a junior, and its
+  coverage swings run to run (4 runs on one 22-line file: 2, 2, 3 and 5 annotations). So it is
+  for iterating on the prompt, never for publishing (bench in TODO 0131). It writes the real
+  sidecar, exactly like the paid backend — the safety net is **provenance, not refusal**:
+  `check-eli5-freshness.mjs` has a third pass that lists every published sidecar whose `model` is
+  not a `claude-*` one, and fails `--strict` on it. That pass is what makes the local backend safe
+  to use, because `sourceHash` cannot see the problem: the source never changed, so a locally
+  regenerated sidecar reads as perfectly fresh. Regenerating one properly is `eli5 <file> --force`,
+  the command the checker prints.
+  `hashSource()` is backend-independent, so switching never invalidates an existing sidecar.
+  Bare `eli5` prints its help — the corpus-wide run is `eli5 --all`. The checker answers
   two questions: **freshness** (walk the sidecars, compare each recorded hash to its source) and
   **coverage** (walk the published `<Snippet source>` and report the ones with no sidecar at all).
   Only the first half existed until 2026-09-18, which is why two articles shipped un-annotated
   through every pre-commit run — a sidecar that does not exist appears in no `git ls-files`
   listing. A snippet deliberately left unannotated carries `{"excluded": true}` as its sidecar;
   `lib/i18n-eligibility.mjs` honours that marker too, so the refusal is never resurrected in `fr`.
+- `lint-snippets.mjs` + `lib/snippet-lint-{normalize,dispatch,judge}.mjs` — the two-pass lint of
+  the ~1000 published `blog/**/files/`. **Pass 1** (`snippets`) runs 6 linters in containers fed by
+  stdin — never a bind mount, because of the DooD trap — and is blocking on `error`. **Pass 2**
+  (`snippets judge`, TODO 0137) is an Ollama judge for the class no linter sees: a file that is
+  perfectly valid and simply obsolete (`docker-compose` v1, `apt-key add`, `MAINTAINER`). It is
+  opt-in, ~1.4 h over the corpus, `severity: "suggestion"`, and **never affects the exit code** —
+  a verdict is a proposal to read. The two passes are independent: each carries its own hash in
+  `.snippet-lint.json`, and pass 2 additionally re-runs on a `JUDGE_PROMPT_VERSION` bump, so
+  editing the prompt costs a judge sweep and never a 447-container one. Absent Ollama, `CI` or
+  `OLLAMA_DISABLE=1` → pass 2 skips and pass 1 continues.
 - `lib/snippet-scan.mjs` — the single implementation of "find every `<Snippet>`/`<Terminal>`
   `source=` in the corpus", shared by `check-snippet-sources.mjs` and the coverage pass above.
   The part that must not be re-hand-rolled is `blankOutCodeSpans`: several articles **document**

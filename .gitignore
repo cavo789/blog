@@ -50,3 +50,6 @@ build-verify
 
 # Rejected translations kept for inspection by scripts/translate-post.mjs (TODO 0119)
 .translation-rejected/
+
+# Atomic-write scratch file of the snippet lint state — never a real artefact
+.snippet-lint.json.tmp

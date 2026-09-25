@@ -1,17 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:35:06.254Z",
+  "generated": "2026-09-25T12:15:52.032Z",
   "source": "Dockerfile",
-  "sourceHash": "3b624dd33ffaa994463545381549a0f9cb26a8f9",
+  "sourceHash": "8d61a5195591ceb5a56e794b00dff395621464b6",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Ubuntu avec zsh, git et curl, installe Oh-My-Zsh en mode silencieux, puis prépare un dépôt git de démonstration avec une arborescence profonde et un fichier non commité pour tester les fonctionnalités quotidiennes. Au démarrage, le conteneur lance un shell zsh interactif avec un prompt personnalisé affichant une baleine emoji.",
+  "summary": "Ce Dockerfile construit une image Ubuntu avec zsh, git et curl, installe Oh-My-Zsh, puis prépare un environnement de démonstration contenant un dépôt git imbriqué dans une arborescence profonde. Au lancement, le conteneur ouvre un shell zsh interactif avec un prompt personnalisé affichant une baleine pour indiquer qu'on est dans un conteneur.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive supprime les invites interactives pendant l'installation des paquets, ce qui est nécessaire dans un conteneur où il n'y a pas d'interaction utilisateur possible.",
-    "5": "Les trois commandes (apt-get update, apt-get install, rm) sont chaînées avec && sur plusieurs lignes pour réduire le nombre de couches Docker et nettoyer le cache apt en une seule étape.",
-    "15": "Le script d'installation d'Oh-My-Zsh est téléchargé et exécuté directement depuis GitHub avec les options --unattended (pas de prompt) et --keep-zshrc (conservation du fichier de config existant).",
-    "25": "git init -q -b main crée un dépôt git silencieusement (-q) avec main comme branche par défaut, au lieu de la branche par défaut du système.",
-    "37": "CMD avec -i rend le shell interactif et -l charge les fichiers de profil, assurant que zsh se comporte comme un shell de login avec tous les alias et configurations disponibles."
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives lors de l'installation de paquets, ce qui est nécessaire pour que le Dockerfile s'exécute sans interruption.",
+    "5": "La syntaxe && \\ chaîne les commandes ensemble et les exécute dans une seule couche Docker, ce qui réduit la taille de l'image finale.",
+    "11": "rm -rf /var/lib/apt/lists/* supprime le cache des paquets téléchargés par apt pour économiser de l'espace disque dans l'image.",
+    "15": "La commande sh -c exécute le script d'installation d'Oh-My-Zsh en le téléchargeant directement depuis GitHub et en le piping dans le shell.",
+    "16": "Les deux arguments vides et --unattended --keep-zshrc sont passés au script pour qu'il s'installe sans interaction et conserve le fichier de configuration par défaut.",
+    "25": "git init -q -b main crée un nouveau dépôt git silencieusement (-q) en utilisant 'main' comme branche par défaut au lieu de 'master'.",
+    "37": "Les drapeaux -i et -l lancent zsh en mode interactif (-i) et en shell de connexion (-l), ce qui charge les fichiers de configuration."
   }
 }

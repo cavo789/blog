@@ -1,18 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:29:33.559Z",
+  "generated": "2026-09-25T12:15:39.502Z",
   "source": "Dockerfile",
-  "sourceHash": "090c30382b3cb557df8a95af81fdaea3ad274506",
+  "sourceHash": "fb784e965204cf030cbfe0789fd30c1648421e4a",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile construit une image Ubuntu 24.04 légère en installant quelques outils utiles (jq, curl, ca-certificates), en créant un répertoire de démonstration avec un fichier JSON statique simulant une réponse API, et en configurant un shell interactif avec un prompt personnalisé pour signaler visuellement qu'on est dans un conteneur.",
+  "summary": "Ce Dockerfile crée une image Ubuntu minimaliste avec les outils essentiels (jq, curl, certificats) pour traiter du JSON. Il prépare un répertoire de démonstration contenant un fichier JSON statique, configure un shell interactif avec une invite personnalisée, et lance bash en mode interactif au démarrage du conteneur.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive supprime les invites interactives pendant l'installation des paquets, permettant au build de s'exécuter sans attendre de réponse utilisateur.",
-    "5": "Le && enchaîne les commandes afin que si apt-get update échoue, les commandes suivantes ne s'exécutent pas, garantissant un état cohérent.",
-    "9": "rm -rf /var/lib/apt/lists/* supprime les caches de paquets après l'installation pour réduire la taille finale de l'image.",
-    "16": "printf '%s' écrit le JSON sur une seule ligne sans retour à la ligne final (contrairement à echo), puis > redirige la sortie dans le fichier sample.json.",
-    "22": ">> ajoute la nouvelle ligne PS1 au fichier .bashrc existant plutôt que de le remplacer, préservant les configurations antérieures.",
-    "24": "CMD avec la forme JSON et -i lance bash en mode interactif par défaut quand le conteneur démarre, permettant une utilisation immédiate du shell."
+    "3": "DEBIAN_FRONTEND=noninteractive supprime les boîtes de dialogue interactives durant les installations, ce qui est nécessaire dans un conteneur où aucun utilisateur ne peut répondre aux questions.",
+    "6": "L'option --no-install-recommends réduit la taille de l'image en installant uniquement les paquets strictement demandés, sans leurs dépendances optionnelles.",
+    "10": "Supprimer /var/lib/apt/lists/* après l'installation libère de l'espace disque en effaçant les caches de paquets, qui ne sont plus nécessaires à l'exécution.",
+    "16": "printf '%s' suivi d'un redirection > crée le fichier sample.json avec les données JSON exactes à l'intérieur du conteneur, fournissant des données de test sans dépendre d'une connexion réseau.",
+    "22": "Cette commande modifie le fichier .bashrc pour ajouter une invite shell personnalisée (PS1) qui affiche une ancre emoji et le nom d'utilisateur, utile pour rappeler visuellement qu'on est dans un conteneur.",
+    "24": "CMD avec -i lance bash en mode interactif, permettant à l'utilisateur d'entrer des commandes directement au démarrage du conteneur au lieu de terminer simplement l'exécution."
   }
 }

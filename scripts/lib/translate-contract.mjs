@@ -37,7 +37,14 @@ export const GLOSSARY = [
     "le path (m.) — ou « le chemin » quand il s'agit d'un chemin de fichier en prose",
   ],
   ["package", "le package (m.)"],
-  ["runtime", "le runtime (m.)"],
+  // Scoped on 2026-09-25 by the cross-article audit (scripts/translate-terminology.mjs): the
+  // term is kept in 7 blocks of 11, and all 4 exceptions render the adverbial "at runtime" as
+  // « à l'exécution », which is good French. Only the noun is pinned — same shape as `path`,
+  // `layer` and `image` below, which already carry their scope.
+  [
+    "runtime",
+    "le runtime (m.) — le composant ; « à l'exécution » reste correct pour *at runtime*",
+  ],
   ["backend / frontend", "le backend, le frontend (m.)"],
   ["framework", "le framework (m.)"],
   ["plugin", "le plugin (m.)"],
@@ -63,7 +70,6 @@ export const GLOSSARY = [
   // wrong words — which is why CONSISTENCY_PAIRS below exists.
   ["folding", "le folding (m.)"],
   ["sticky scroll", "le sticky scroll (m.)"],
-  ["snippet", "le snippet (m.)"],
   ["tooltip", "le tooltip (m.)"],
   ["endpoint", "l'endpoint (m.)"],
   ["query", "la query (f.)"],

@@ -5,7 +5,7 @@ FROM python:slim
 WORKDIR /app
 
 # The only dependency we need is fastapi
-RUN pip install --no-cache-dir fastapi[standard]
+RUN pip install --no-cache-dir 'fastapi[standard]'
 
 # We need to copy our Python script in the image
 COPY main.py main.py

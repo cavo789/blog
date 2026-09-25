@@ -121,3 +121,67 @@ jamais analysé ne peut pas se cacher.
   cassé.
 - Brancher sur CI seulement après que la baseline soit verte, sinon `quality.yml` échoue dès le
   premier push.
+
+## Status — PARTIAL (2026-09-25)
+
+Périmètre volontairement réduit à la **passe 1** en début de session : la passe 2 (juge Ollama)
+représentait ~9 h de GPU sur le corpus complet et part dans le **0137**. La finition de la baseline
+et le branchement CI partent dans le **0138**.
+
+### Done
+
+- `scripts/lint-snippets.mjs` — le lint complet : prétraitement volatil, dispatch, 6 linters,
+  état incrémental, rapport trié par sévérité, sous-commandes de tri (`--exclude`/`--unexclude`).
+- `scripts/lib/snippet-lint-normalize.mjs` — neutralisation des directives de highlight, des
+  placeholders `%%nom=valeur%%` **et** des marqueurs d'élision (voir « écarts » ci-dessous).
+- `scripts/lib/snippet-lint-dispatch.mjs` — la langue de chaque fichier, ou `UNSUPPORTED` assumé.
+- `.snippet-lint.json` — fichier d'état unique, **1098 clés** (tout fichier référencé, supporté ou
+  non) + 10 exclusions triées. La couverture se calcule par différence : un fichier jamais analysé
+  ne peut pas se cacher.
+- Câblage : `yarn snippets:lint` / `yarn snippets:stats`, fonction `snippets` dans
+  `helpers/maintenance.sh` (+ `export -f`), équivalences dans `lib/cheatsheet-hint.mjs`.
+  `welcome` liste 23 commandes.
+- Les 5 linters tournent **en conteneur, alimentés par stdin** — aucun bind-mount, donc le piège
+  DooD est contourné, et rien n'est installé dans l'image du devcontainer. Mesuré : 0,31 s par
+  invocation, 447 fichiers en ~27 s.
+
+### Critères d'acceptation
+
+| # | Critère | État |
+| --- | --- | --- |
+| 1 | Premier run → rapport trié + `.snippet-lint.json` | ✅ |
+| 2 | Second run → 0 analysé, < 5 s | ✅ 0 analysé en 0,1 s |
+| 3 | Un fichier touché → exactement 1 réanalysé | ✅ vérifié |
+| 4 | `populate_db.part2.sh` et `Dockerfile.part2` → 0 diagnostic | ✅ 0 erreur, 0 warning |
+| 5 | Baseline figée, 0 problème non trié | ❌ → **0138** |
+| 6 | Aucun fichier de `blog/**/files/` modifié | ✅ `git status` propre |
+
+### Écarts par rapport aux prémisses du TODO
+
+- **Le marqueur d'élision `[...]` n'était pas identifié.** Troisième convention d'écriture après
+  les directives et les placeholders : 33 fichiers, 3 orthographes (`[...]`, `// [...]`, `# ...`).
+  C'est elle qui produisait 12 faux « syntax error » sur des `compose.yaml` parfaitement valides.
+- **Les `.partN` vont jusqu'à `.part45`**, pas `.part4` — 81 fichiers. La langue reste dérivable du
+  radical (50 `makefile`, 18 `Dockerfile`, 8 `.gitconfig`, 5 yaml).
+- **Les placeholders ne portent pas tous leur valeur par défaut.** 4 existent en forme nue
+  (`%%port%%`, `%%cdb%%`, `%%pdb%%`, `%%variable%%`) ; le nom est substitué à lui-même.
+- **Le marqueur `excluded` des sidecars ELI5 n'a pas été réutilisé** (décision de l'auteur en début
+  de session, contre la consigne écrite du TODO) : il signifie « pas d'annotation ELI5 », un refus
+  indépendant de « pas lintable ». Les exclusions vivent sous la clé `excluded` du fichier d'état.
+- **La couverture plafonne à 41 %** (447 fichiers lintables sur 1098 référencés) et c'est assumé :
+  280 `.txt` sont des transcriptions de terminal, 63 `makefile` et 29 `.htaccess` n'ont pas de
+  linter câblé, 58 fichiers sans extension ni shebang sont des fonctions zsh à sourcer, 29 `.zsh`
+  n'ont pas de dialecte shellcheck. Chaque catégorie est comptée dans `snippets stats` plutôt que
+  silencieusement absente.
+
+### Not done
+
+- **Critère 5 — baseline figée.** 6 erreurs réelles et 330 warnings non triés subsistent.
+  **Reason:** les 6 erreurs sont de vrais défauts (virgules traînantes, `COPY` sans `/` final),
+  mais les corriger périme 12 sidecars ELI5 pour un contenu inchangé — un arbitrage de coût qui
+  appartient à l'auteur. Les 330 warnings opposent les règles hadolint au caractère pédagogique
+  des Dockerfiles publiés. Détail et options : **0138**.
+- **Branchement `quality.yml`.** **Reason:** le TODO lui-même le conditionne à une baseline verte.
+  Reporté au **0138** avec le reste.
+- **Passe 2 — juge Ollama.** **Reason:** hors périmètre décidé en début de session (~9 h de GPU).
+  Repris intégralement par le **0137**, qui hérite du squelette incrémental déjà en place.

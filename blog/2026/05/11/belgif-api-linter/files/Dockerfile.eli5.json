@@ -1,17 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:06:40.134Z",
+  "generated": "2026-09-25T12:14:49.416Z",
   "source": "Dockerfile",
-  "sourceHash": "fac4c3607e3e6859108d9bfce571268e5d230365",
+  "sourceHash": "3277cf8cfa42282a4e45e6fa17ad6fd4e08ed233",
   "lang": "docker",
-  "summary": "This Dockerfile builds a container that runs a FastAPI web application. It starts with Python 3.11, installs FastAPI and its dependencies, copies your application code in, and configures it to run on port 80 using the Uvicorn server.",
+  "textLang": "en",
+  "summary": "This Dockerfile builds a container for a FastAPI web application. It starts with Python 3.11, installs FastAPI and its dependencies, copies your application code in, and configures the container to run the app on port 80 when started.",
   "explanations": {
-    "2": "python:3.11-slim is a minimal Python image—it has Python 3.11 installed but strips out extra stuff you don't need, making the container smaller.",
-    "5": "WORKDIR sets /code as the default folder inside the container where all commands will run and files will be placed.",
-    "9": "pip install fastapi[all] installs FastAPI plus all its optional dependencies (like uvicorn); --no-cache-dir saves disk space by not keeping the download cache.",
-    "12": "COPY takes main.py from your computer and puts it into the container at /code/main.py so the app can run inside.",
-    "15": "EXPOSE 80 is documentation that tells Docker and other tools that this container will listen on port 80, though it doesn't actually open the port by itself.",
-    "18": "CMD specifies what command runs when the container starts—it launches uvicorn to serve your FastAPI app (main:app means the app object in main.py) on all network interfaces (0.0.0.0) at port 80."
+    "2": "python:3.11-slim is a pre-built image with Python 3.11 already installed; the 'slim' version is smaller because it excludes unnecessary packages.",
+    "5": "WORKDIR sets /code as the default directory inside the container, so future commands run from there.",
+    "9": "The --no-cache-dir flag tells pip not to save downloaded packages locally, which saves space in the final image; 'fastapi[all]' installs FastAPI plus optional extras like uvicorn.",
+    "12": "COPY takes the main.py file from your computer and places it into the /code directory inside the container.",
+    "15": "EXPOSE tells Docker (and whoever uses this image) that the app listens on port 80, though it doesn't actually open the port—you do that when running the container.",
+    "18": "CMD sets the default command to run when the container starts; it launches uvicorn (the web server) pointing to the 'app' object in main.py, listening on all network interfaces (0.0.0.0) at port 80."
   }
 }

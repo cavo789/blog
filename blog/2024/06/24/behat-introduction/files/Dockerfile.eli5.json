@@ -1,21 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:31:19.774Z",
+  "generated": "2026-09-25T12:12:38.474Z",
   "source": "Dockerfile",
-  "sourceHash": "8a0adbb85cc2929e631a50e36e67d06908e9ab09",
+  "sourceHash": "0bb6aad79b050c08f18e82a29656766ef81d0ee9",
   "lang": "docker",
-  "summary": "This Dockerfile creates a PHP 8.2 container with Chrome browser and ChromeDriver installed for testing purposes. It sets up a non-root user with matching host machine permissions, installs system dependencies and Chrome from Google's repositories, downloads a specific Chrome version and its driver, and prepares a working directory for Behat tests.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a PHP 8.2 container with Chrome browser and driver installed for testing purposes. It sets up a non-root user with matching host machine permissions, installs system dependencies and Chrome from Google's repository, downloads the Chrome browser and chromedriver from a specific version, and prepares a working directory for Behat tests.",
   "explanations": {
-    "3": "ARG declares a build-time variable that can be passed when building the image; DOCKER_UID will default to 1000 if not specified.",
-    "19": "These ARG lines re-declare the variables so they're available in this build stage; Docker requires you to redeclare ARG variables after certain commands if you want to use them later.",
-    "23": "This creates a system group with the specified group ID, using the username as the group name.",
-    "24": "This creates a new user account with a home directory, matching the host machine's user ID and group ID so file permissions stay consistent between container and host.",
-    "29": "This ARG sets the URL to Google's JSON file that lists all available Chrome versions and their download locations.",
-    "32": "This downloads Google's public key and adds it to the system's trusted keys so the system can verify Chrome packages are legitimate.",
-    "45": "This runs curl to fetch the JSON file, then uses jq to parse it and find the download URL for the exact Chrome version specified, filtering for the linux64 platform.",
-    "49": "The -j flag tells unzip to extract files directly into the destination folder without creating a subfolder, keeping the directory structure flat.",
-    "54": "Similar to line 45, this fetches and extracts the ChromeDriver URL from the same JSON file, but this time for the driver instead of the browser.",
-    "65": "COPY --from pulls the composer executable from the official composer Docker image and adds it to this image, avoiding the need to download and install it ourselves."
+    "3": "ARG defines a build-time variable that can be passed when building the image; this one sets a default user ID of 1000 to match typical Linux host machine users.",
+    "14": "This runs three shell commands in sequence: apt-get update refreshes the package list, then installs several tools, and finally cleans up to reduce image size.",
+    "19": "These lines repeat the ARG declarations to make the variables available for use in the RUN command that follows, since ARG scope resets after each FROM statement.",
+    "23": "groupadd creates a new group with the specified ID, and then useradd creates a user with matching home directory, UID, and GID so files created in the container will have the same ownership as the host machine.",
+    "29": "This ARG stores a URL to Google's Chrome release information JSON file that we'll query to find the download link for a specific Chrome version.",
+    "32": "This wget command downloads Google's public key and pipes it to apt-key to authenticate future Chrome package installations from Google's repository.",
+    "45": "curl fetches the JSON from DOWNLOAD_URL, and jq parses it to extract the download URL for the specific Chrome version and linux64 platform.",
+    "49": "unzip with the -j flag extracts files directly into the destination folder without creating a subfolder, so the Chrome executable lands directly in /usr/local/bin/chrome.",
+    "54": "Similar to line 45, this queries the same JSON file but this time extracts the chromedriver download URL instead of the browser.",
+    "65": "COPY --from copies the composer executable from the official composer image into this image, a technique called multi-stage building that lets us get pre-built binaries without bloating our image."
   }
 }

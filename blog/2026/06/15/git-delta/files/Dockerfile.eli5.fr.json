@@ -1,20 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T13:05:53.564Z",
+  "generated": "2026-09-25T12:18:58.539Z",
   "source": "Dockerfile",
-  "sourceHash": "af66d47fc0113cbeedc130bf27c09fac57f14a10",
+  "sourceHash": "d03c21db037137c89bbc75da7e7d753a4f175688",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Ubuntu avec git et git-delta installés, configure git pour utiliser delta comme pager avec un thème Dracula et des options de diff améliorées, puis pré-crée un dépôt de démonstration contenant un fichier JavaScript modifié pour pouvoir montrer immédiatement les capacités de diff.",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec git et git-delta installés, configure git pour utiliser delta comme outil de diff avec un thème Dracula, et prépare un répertoire de démonstration contenant un fichier JavaScript avec une modification non staged pour que les utilisateurs voient immédiatement les capacités de diff améliorées de delta.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive évite que le système pospose des questions interactives pendant l'installation des paquets, ce qui est crucial en Docker où il n'y a pas d'utilisateur pour répondre.",
-    "7": "sed -i modifie directement le fichier sources.list.d/ubuntu.sources pour ajouter les dépôts 'universe' et 'multiverse' car git-delta ne se trouve que là.",
-    "13": "rm -rf /var/lib/apt/lists/* supprime le cache des paquets téléchargés pour réduire la taille de l'image Docker.",
-    "29": "mkdir -p crée le répertoire /root/demo et tous les parents nécessaires s'ils n'existent pas, puis cd le définit comme répertoire courant pour les commandes suivantes.",
-    "31": "printf écrit le contenu du fichier JavaScript directement avec des échappements de newline ; la multiplication est échappée \\* pour être littérale au lieu d'être interprétée par le shell.",
-    "34": "sed -i effectue une substitution dans auth.js pour ajouter + TOKEN_GRACE_MS à l'expression, créant ainsi une modification déjà présente mais non indexée (unstaged) que git diff peut afficher.",
-    "39": "echo ajoute une variable PS1 au bashrc qui affiche un emoji de conteneur, le nom d'utilisateur, et le répertoire courant, rendant évident qu'on exécute dans un conteneur.",
-    "41": "CMD définit la commande par défaut que le conteneur exécutera : /bin/bash -i lance un shell interactif permettant à l'utilisateur d'interagir directement avec le conteneur."
+    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives pendant l'installation des paquets, ce qui est nécessaire en mode non-interactif dans Docker.",
+    "7": "sed modifie le fichier de configuration des sources APT pour activer les dépôts « universe » et « multiverse » en plus des dépôts par défaut « main » et « restricted », car git-delta se trouve dans « universe ».",
+    "13": "rm -rf /var/lib/apt/lists/* supprime le cache des listes de paquets APT pour réduire la taille de l'image Docker, car ces fichiers ne sont plus nécessaires après l'installation.",
+    "29": "mkdir -p /root/demo && cd /root/demo crée le répertoire /root/demo (sans erreur si existant) et se déplace dedans pour toutes les commandes suivantes.",
+    "31": "printf écrit du contenu JavaScript multi-lignes dans le fichier auth.js ; les caractères \n représentent les sauts de ligne.",
+    "34": "sed modifie la ligne de code auth.js après le commit, ce qui crée une différence non staged que git diff affichera avec les capacités d'affichage améliorées de delta.",
+    "39": "echo ajoute une variable PS1 customisée au fichier .bashrc pour afficher une invite de commande avec un emoji bateau (🐳), le nom d'utilisateur en couleur cyan et le répertoire courant."
   }
 }

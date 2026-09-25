@@ -1,14 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:42:41.157Z",
+  "generated": "2026-09-25T12:17:00.536Z",
   "source": "Dockerfile",
-  "sourceHash": "b6c33ab4f33cb2750b4e8967d15d86127b95b7a5",
+  "sourceHash": "4b1cbfcecf9010a938532ac1e02ac36420f8af0b",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu qui installe les applications X11 (un système graphique), puis démarre automatiquement l'application xeyes quand le conteneur s'exécute. C'est un exemple simple de conteneur pour afficher une interface graphique.",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu qui installe les applications X11, en particulier le paquet x11-apps. Il nettoie ensuite le cache apt pour réduire la taille de l'image, et configure le conteneur pour exécuter xeyes par défaut.",
   "explanations": {
-    "3": "apt-get update actualise la liste des paquets disponibles, et apt-get install -y installe x11-apps sans demander de confirmation. Le && enchaîne les deux commandes pour qu'elles s'exécutent l'une après l'autre.",
-    "5": "CMD spécifie la commande par défaut qui s'exécutera au démarrage du conteneur — ici xeyes, une petite application graphique qui dessine deux yeux qui suivent le curseur."
+    "3": "apt-get update rafraîchit la liste des paquets disponibles, et apt-get install -y installe x11-apps en mode non-interactif (le -y répond « oui » automatiquement). Le flag --no-install-recommends limite l'installation aux dépendances essentielles.",
+    "4": "rm -rf /var/lib/apt/lists/* supprime les fichiers de liste de paquets téléchargés, ce qui réduit significativement la taille finale de l'image Docker."
   }
 }

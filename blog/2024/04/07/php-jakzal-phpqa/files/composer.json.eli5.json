@@ -1,12 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:29:42.084Z",
+  "generated": "2026-09-25T10:11:17.506Z",
   "source": "composer.json",
-  "sourceHash": "97439140064532fab4565fb58f35a08fca94d7d3",
+  "sourceHash": "b0c670186dfa1894569a1c76c5b8cb05fa065011",
   "lang": "json",
-  "summary": "This is a metadata file that describes a Composer plugin package. It declares the package name, its purpose (normalizing composer.json files), licensing, and type so that Composer knows how to install and use it.",
+  "textLang": "en",
+  "summary": "This is a package definition file (composer.json) that describes a plugin for Composer, which is PHP's package manager. The plugin's job is to automatically organize and standardize the formatting of composer.json files. It's licensed under MIT, meaning it's free to use and modify.",
   "explanations": {
-    "5": "The \"type\" field tells Composer that this isn't a normal library—it's a special plugin that hooks into Composer's behavior during installation and operations."
+    "5": "The \"type\" field tells Composer that this isn't just a regular library—it's a plugin that extends Composer's own functionality, so Composer will install and activate it specially."
   }
 }

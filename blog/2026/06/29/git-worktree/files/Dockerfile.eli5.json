@@ -1,19 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:08:04.761Z",
+  "generated": "2026-09-25T12:15:15.501Z",
   "source": "Dockerfile",
-  "sourceHash": "4a663c1f4ef079f4cb543523fe0b47e19f8f5a91",
+  "sourceHash": "ff578ed60b2d0c0924876b9a707cae74444f9f13",
   "lang": "docker",
-  "summary": "This Dockerfile creates an Ubuntu container with git, zsh, and fzf installed, then sets up a demo git repository scenario with a feature branch in progress and uncommitted changes. It also installs a custom zsh function called `gwt` that uses fzf to interactively navigate between git worktrees, and configures the shell prompt to indicate we're in a container.",
+  "textLang": "en",
+  "summary": "This Dockerfile builds a Ubuntu container pre-configured for demonstrating git worktree workflows. It installs development tools (git, zsh, vim, fzf), sets up a sample git repository with a feature branch mid-refactor, creates a bare remote repository to simulate GitHub, and installs a custom zsh function called `gwt` that lets you interactively navigate between git worktrees using fuzzy search.",
   "explanations": {
-    "3": "This tells the installer to skip interactive prompts during package installation, letting commands run without waiting for user input.",
-    "7": "The ubuntu docker image doesn't enable all software repositories by default; this command adds the 'universe' and 'multiverse' repositories so packages like fzf become available to install.",
-    "15": "After installing packages, we delete apt's cache files to reduce the final image size, since we won't need to install anything else.",
-    "29": "This creates nested directories in one go (with -p flag) so we can organize our demo project structure before initializing git.",
-    "71": "This uses awk to extract the first field (the directory path) from the selected worktree line; the funky quoting escapes the single quotes so they survive being written to a file.",
-    "75": "This constructs the worktree directory path by taking the repository root and appending the branch name with slashes converted to dashes (so feature/user-notifications becomes feature-user-notifications).",
-    "87": "The >> operator appends these lines to the existing .zshrc file instead of overwriting it, so previous configuration isn't lost.",
-    "94": "This makes the container start an interactive login shell by default when it runs, so you get a prompt to type commands into."
+    "3": "This tells Docker to run installation commands without prompting for user input, since there's no interactive terminal in a container.",
+    "7": "The sed command modifies Ubuntu's package source configuration to unlock additional repositories (universe and multiverse) where less common packages like fzf live.",
+    "15": "After installing packages, we delete the cached package lists to reduce the final image size since we won't need to install anything else.",
+    "24": "This creates a bare git repository (one without a working directory) that acts like a remote server on GitHub, so the later `git push` commands have a real destination.",
+    "29": "We're creating the directory structure and files that will exist in the demo repository — three source files that represent a partially-refactored project.",
+    "33": "The `printf` command writes multi-line text into files; the `\n` creates newlines so each file contains valid JavaScript/TypeScript code.",
+    "42": "After committing the initial code to main, we create and switch to a new branch called feature/user-notifications where we'll simulate in-progress work.",
+    "43": "These lines rewrite two of the files on the feature branch to show what a refactor in progress looks like (the code is changed but not yet committed).",
+    "52": "The printf with multiple '%s\n' arguments is a way to write many lines of text at once; each quoted string becomes one line in the output.",
+    "71": "The `awk '{print $1}'` extracts just the first column (the path) from the git worktree list output, ignoring the branch name and other info.",
+    "75": "This constructs a directory name by taking the top-level git repository path and appending the branch name with slashes converted to hyphens.",
+    "87": "The `>>` appends these lines to the zshrc file (instead of `>` which would overwrite), adding the function to the shell's autoload path so it's available as a command.",
+    "94": "The `-i` flag makes the shell interactive (so you can type commands), and `-l` makes it a login shell (so it loads all configuration files)."
   }
 }

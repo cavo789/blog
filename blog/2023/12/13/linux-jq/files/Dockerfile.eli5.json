@@ -1,16 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:22:48.725Z",
+  "generated": "2026-09-25T12:12:00.577Z",
   "source": "Dockerfile",
-  "sourceHash": "090c30382b3cb557df8a95af81fdaea3ad274506",
+  "sourceHash": "fb784e965204cf030cbfe0789fd30c1648421e4a",
   "lang": "docker",
-  "summary": "This Dockerfile creates a Ubuntu container with essential networking tools (jq, curl, certificates) pre-installed. It then seeds the container with a sample JSON file so demonstrations can run without needing to fetch data from the internet, and customizes the shell prompt to show a whale emoji indicating you're inside a container.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Ubuntu container with a few lightweight tools (jq, curl, certificates) installed for working with JSON data and making web requests. It sets up a demo directory with a pre-baked sample JSON file so examples can run without needing network access, customizes the shell prompt to show a whale emoji, and starts an interactive bash shell when the container runs.",
   "explanations": {
-    "3": "This tells Ubuntu's package manager to skip interactive prompts during installation, so the build doesn't hang waiting for user input.",
-    "5": "The && chains commands together so if apt-get update fails, the install won't run; rm -rf at the end deletes the package cache to reduce the final image size.",
-    "16": "This writes a large JSON string (a fake API response) into a file; the '%s' format tells printf to treat the entire quoted block as a single string without interpreting special characters.",
-    "22": "This appends a custom prompt to the bash configuration file; the \\e sequences are escape codes that add colors and the whale emoji, and $(whoami) will show the current user name.",
-    "24": "This sets the default command to start an interactive bash shell when the container runs, the -i flag makes it behave as if you're logging in interactively."
+    "3": "This tells the installer to skip interactive prompts during setup—useful in Docker since there's no human at the keyboard to answer questions.",
+    "6": "The --no-install-recommends flag tells apt to skip optional packages it would normally suggest, keeping the image smaller.",
+    "10": "After installing packages, this deletes the apt cache files to reduce the final image size, since we won't need to install anything else.",
+    "16": "This writes a hardcoded JSON response (formatted as a single line with printf) to a file, simulating what the randomuser.me API would return, so demos work offline.",
+    "22": "This appends a custom shell prompt string to the bashrc file; the \\e sequences are color codes, and the whale emoji 🐳 visually signals you're inside a container.",
+    "24": "This sets bash to run in interactive mode (-i) by default when someone starts the container, so they get a live shell prompt they can type into."
   }
 }

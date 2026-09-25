@@ -7,9 +7,10 @@
  * Already-existing .eli5.json files are skipped unless --force is passed.
  *
  * Usage:
- *   node scripts/bulk-eli5.mjs [--force] [--dir blog/] [--dry-run]
+ *   node scripts/bulk-eli5.mjs [--force] [--dir blog/] [--dry-run] [--backend ollama]
  *
- * Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project root.
+ * Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project root —
+ * unless --backend ollama is passed, which calls the local model instead and needs no key.
  */
 
 import fs from "fs";
@@ -17,6 +18,14 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { createRequire } from "module";
 import { hashSource } from "./lib/eli5-hash.mjs";
+import {
+  DEFAULT_BACKEND,
+  ELI5_BACKENDS,
+  callEli5Backend,
+  modelFor,
+  printCostNotice,
+  resolveBackend,
+} from "./lib/eli5-backend.mjs";
 
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -95,7 +104,10 @@ Return ONLY a valid JSON object shaped exactly like:
 Keys in "explanations" are line numbers as strings. Omit lines that need no
 explanation. No markdown, no code fences.`;
 
-async function generateForFile(absSource, { force = false } = {}) {
+async function generateForFile(
+  absSource,
+  { force = false, backend = DEFAULT_BACKEND } = {},
+) {
   const destPath = absSource + ".eli5.json";
 
   if (!force && fs.existsSync(destPath)) {
@@ -107,20 +119,14 @@ async function generateForFile(absSource, { force = false } = {}) {
   const lines = code.split("\n");
   const numberedCode = lines.map((l, i) => `${i + 1}: ${l}`).join("\n");
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not set");
-
-  const { default: Anthropic } = await import("@anthropic-ai/sdk");
-  const client = new Anthropic({ apiKey });
-
-  const message = await client.messages.create({
-    model: "claude-haiku-4-5-20251001",
-    max_tokens: lines.length > 50 ? 2048 : 1024,
-    system: SYSTEM_PROMPT,
-    messages: [{ role: "user", content: `Language: ${lang}\n\n${numberedCode}` }],
+  const model = modelFor(backend);
+  const raw = await callEli5Backend({
+    backend,
+    systemPrompt: SYSTEM_PROMPT,
+    userContent: `Language: ${lang}\n\n${numberedCode}`,
+    maxTokens: lines.length > 50 ? 2048 : 1024,
   });
 
-  const raw = message.content[0].text.trim();
   let parsed;
 
   try {
@@ -128,7 +134,7 @@ async function generateForFile(absSource, { force = false } = {}) {
   } catch {
     const match = raw.match(/\{[\s\S]*\}/);
     if (match) parsed = JSON.parse(match[0]);
-    else throw new Error(`Invalid JSON from Claude for ${path.basename(absSource)}`);
+    else throw new Error(`Invalid JSON from ${model} for ${path.basename(absSource)}`);
   }
 
   const summary =
@@ -151,7 +157,8 @@ async function generateForFile(absSource, { force = false } = {}) {
 
   const result = {
     version: 1,
-    model: "claude-haiku-4-5-20251001",
+    // The model that actually wrote this file — see scripts/lib/eli5-backend.mjs.
+    model,
     generated: new Date().toISOString(),
     source: path.basename(absSource),
     sourceHash: hashSource(code),
@@ -208,6 +215,8 @@ Usage: node scripts/bulk-eli5.mjs [options]
 
 Options:
   --force          Regenerate even if .eli5.json already exists
+  --backend <name> Who writes the annotations: claude (default, paid, ~$0.01 per
+                   file) or ollama (local, free, no API key) — known: ${ELI5_BACKENDS.join(", ")}
   --dir <path>     Directory to scan (default: blog/)
   --dry-run        Show what would be generated without calling the API
   --help, -h       Show this help
@@ -216,14 +225,28 @@ Examples:
   node scripts/bulk-eli5.mjs
   node scripts/bulk-eli5.mjs --force
   node scripts/bulk-eli5.mjs --dir blog/2026 --dry-run
+  node scripts/bulk-eli5.mjs --dir blog/2026 --backend ollama --force
 
-Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project root.
+Iterate locally, publish with Claude: --backend ollama is there to try a prompt change on
+a slice of the corpus without spending anything; the published sidecars stay Haiku-generated.
+
+Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project root
+(except for --dry-run and --backend ollama, which never call the API).
 `);
   process.exit(0);
 }
 
 const force = args.includes("--force");
 const dryRun = args.includes("--dry-run");
+
+let backend;
+try {
+  backend = resolveBackend(args);
+} catch (err) {
+  console.error(`Error: ${err.message}`);
+  process.exit(1);
+}
+
 const dirIdx = args.indexOf("--dir");
 const scanDir =
   dirIdx !== -1
@@ -268,6 +291,13 @@ if (dryRun) {
   process.exit(0);
 }
 
+// What this run will really call for: the sources that exist and are not being skipped.
+// Counting the map would quote a price for the ⏭ files too.
+const toGenerate = [...sourceMap.keys()].filter(
+  (src) => fs.existsSync(src) && (force || !fs.existsSync(src + ".eli5.json")),
+).length;
+printCostNotice(backend, toGenerate);
+
 let generated = 0,
   skipped = 0,
   errors = 0;
@@ -284,7 +314,7 @@ for (const [src] of sourceMap) {
   process.stdout.write(`  📄 ${relSrc} ... `);
 
   try {
-    const result = await generateForFile(src, { force });
+    const result = await generateForFile(src, { force, backend });
     if (result.status === "skipped") {
       console.log("⏭  skipped");
       skipped++;

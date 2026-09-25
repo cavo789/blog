@@ -1,19 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:22:44.905Z",
+  "generated": "2026-09-25T12:11:55.569Z",
   "source": "health.sh",
-  "sourceHash": "aa9bf755476ddc71249cd98091a175b997dfad93",
+  "sourceHash": "3b221f60c4a1208e3550487a7e068ea9940dc58b",
   "lang": "bash",
-  "summary": "This script displays the health status of all Docker containers in a color-coded format. It loops through each container, checks its health status, assigns a color based on that status (green for healthy, red for unhealthy, gray for unknown), and prints the container name alongside its status.",
+  "textLang": "en",
+  "summary": "This script displays the health status of all Docker containers in a colored list. It loops through each container, checks its health status, and prints the name alongside the status in gray (no health check configured), green (healthy), or red (unhealthy or failed).",
   "explanations": {
-    "4": "This line sets two safety options: 'nounset' makes the script error if you reference a variable that doesn't exist, and 'pipefail' makes the script error if any command in a pipeline fails.",
-    "6": "These lines define ANSI color codes as variables — 30 is gray, 32 is green, 31 is red — so we can easily reuse them later when printing colored text.",
-    "12": "This uses printf with escape codes to print a yellow bold header; '\\e[1;33m' starts yellow bold, and '\\e[0m' resets the formatting back to normal.",
-    "14": "This pipes the list of all container names from Docker into a while loop so we can process each one, line by line.",
-    "15": "This runs 'docker inspect' to get the container's health data as JSON, then pipes it to 'jq' to extract just the '.Status' field (like 'healthy' or 'null').",
-    "22": "This line appears to just reassign the variable to itself, which is redundant — it's likely left over from earlier code and can be removed.",
-    "23": "This checks if the health status is not 'null', meaning the container has a healthcheck configured but something went wrong, so we color it red.",
-    "27": "This prints the container name left-aligned in a 40-character field, then the health status in the chosen color; the escape codes apply the color and then reset it back to normal."
+    "4": "These flags make the script safer: nounset catches typos in variable names, and pipefail ensures that if any command in a pipeline fails, the whole pipeline fails.",
+    "6": "These are ANSI color codes that will be used later to colorize the output text: 30 is gray, 32 is green, 31 is red.",
+    "12": "This prints a yellow header with the title; \\e starts an escape sequence, 1;33m makes it bold yellow, and \\e[0m resets the formatting back to normal.",
+    "14": "This gets a list of all container names and pipes them one-by-one into the loop; read -r safely captures each name without interpreting special characters.",
+    "15": "This runs docker inspect to get the container's health information as JSON, then jq extracts just the Status field (like 'healthy' or 'unhealthy').",
+    "18": "We start by assuming the container has no health check configured, so we use gray as the default color.",
+    "22": "If the status isn't 'null' (meaning a health check exists) but also isn't 'healthy', it must be unhealthy, so we use red.",
+    "26": "This prints the container name padded to 40 characters, then the status in the chosen color; the escape sequences apply and remove the coloring."
   }
 }

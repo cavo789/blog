@@ -197,3 +197,10 @@ function translate() {
     fi
     printf "   Next: 'start_fr' to read it on http://localhost:3000/fr/, or 'build' to check the locale.\n"
 }
+
+# @cat Translation
+# @cmd terms
+# @desc Cross-article terminology audit of the FR corpus — leaks and glossary candidates, no API
+function terms() {
+    (cd /opt/docusaurus && node scripts/translate-terminology.mjs "$@")
+}

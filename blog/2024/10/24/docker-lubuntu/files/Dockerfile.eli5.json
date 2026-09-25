@@ -1,16 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:40:10.408Z",
+  "generated": "2026-09-25T12:13:32.490Z",
   "source": "Dockerfile",
-  "sourceHash": "9a375eb19277e5706444c7aa46d476c421c0d343",
+  "sourceHash": "92622793726b476b4ff60bbc6ff03e23cc1c2632",
   "lang": "docker",
-  "summary": "This Dockerfile creates a Docker image based on Ubuntu with a lightweight graphical desktop environment (Lubuntu) and LightDM display manager installed. It configures LightDM to connect to an X server running on the host machine rather than inside the container, sets up automatic login as root, and starts the necessary services when the container runs.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a container that runs a lightweight desktop environment (Lubuntu) with a display manager (LightDM). It configures LightDM to connect to an X server running on the host machine rather than creating one inside the container, and sets everything up to auto-login and display graphically on the host.",
   "explanations": {
-    "3": "The && chains two commands together so the second only runs if the first succeeds; DEBIAN_FRONTEND=noninteractive prevents the installer from prompting for user input (important in Docker), and -y auto-answers 'yes' to all prompts.",
-    "5": "This removes temporary reboot-required files that Ubuntu creates during package installation, since rebooting doesn't apply in a container.",
-    "6": "This tells the system that lightdm (the display manager) should be the default program for starting the graphical interface.",
-    "18": "This environment variable tells graphical applications where to send their display output—in this case, to the host machine's X server instead of trying to display inside the container.",
-    "20": "The semicolon chains two commands so both execute; this starts the system message bus (dbus) and then the display manager when the container starts."
+    "3": "The && operator chains commands so that apt-get install only runs if apt-get update succeeds. DEBIAN_FRONTEND=noninteractive tells the installer not to prompt for user input, which is necessary in unattended Docker builds.",
+    "4": "After installing packages, we delete the cached package lists (in /var/lib/apt/lists) to reduce the Docker image size, since those files aren't needed once installation is done.",
+    "6": "This removes any lingering reboot-required marker files that the package installer might have created, since containers can't actually reboot.",
+    "7": "This tells LightDM which display manager executable to use; the file /etc/X11/default-display-manager is where the system looks for this configuration.",
+    "19": "This environment variable tells GUI applications where to find the X display server; host.docker.internal is Docker's way of referring to the host machine's network address.",
+    "21": "CMD specifies what runs when the container starts: it launches the dbus message bus (needed for system services) and then starts the LightDM display manager."
   }
 }

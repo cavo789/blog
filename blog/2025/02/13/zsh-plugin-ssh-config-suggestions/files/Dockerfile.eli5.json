@@ -1,20 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:45:34.738Z",
+  "generated": "2026-09-25T12:13:57.402Z",
   "source": "Dockerfile",
-  "sourceHash": "54afe46a1bacd9ef4386e628875a66470321d564",
+  "sourceHash": "5aa470afab5a51bed3563369fb744bddb19be071",
   "lang": "docker",
-  "summary": "This Dockerfile builds an Ubuntu container with an enhanced Zsh shell environment. It installs Zsh and essential tools, sets up Oh-My-Zsh with a plugin for SSH config auto-completion, creates a sample SSH config file with predefined hosts, customizes the shell prompt to show a container indicator, and starts the shell in interactive login mode.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Ubuntu container with Zsh shell, Git, and curl installed. It then sets up Oh-My-Zsh with a plugin for SSH config suggestions, adds a sample SSH config file, customizes the shell prompt to show a whale emoji, and starts an interactive login shell when the container runs.",
   "explanations": {
-    "3": "This tells Ubuntu's package manager to skip interactive prompts during installation—otherwise the build would hang waiting for user input.",
-    "5": "The && chains commands together so if any step fails, the whole RUN stops. After installing packages, we delete the cached package lists to reduce the image size.",
-    "11": "Removing /var/lib/apt/lists/* cleans up the package manager's download cache, which saves disk space in the final image since we won't need it again.",
-    "14": "This downloads and runs Oh-My-Zsh's installer script directly from GitHub using curl, with --unattended to run non-interactively.",
-    "18": "The --depth=1 flag clones only the latest commit of the plugin repo instead of the entire history, which is faster and uses less disk space.",
-    "20": "This uses sed to find the line starting with 'plugins=(git)' and replaces it with the same line but adding the new plugin name to the list.",
-    "25": "The printf command with '%s\\n' outputs each argument as a separate line, which is a clean way to build a multi-line file inside the RUN command.",
-    "42": "chmod 600 sets permissions so only the owner can read/write the SSH config file, which is a security requirement for SSH.",
-    "47": "The -i flag makes the shell interactive and -l makes it a login shell, so it reads startup configuration files and behaves like a normal user shell."
+    "3": "This tells the Ubuntu package installer to skip interactive prompts during installation — useful in containers where we can't answer questions.",
+    "6": "The --no-install-recommends flag tells apt to only install the packages we explicitly listed, skipping optional dependencies to keep the image smaller.",
+    "11": "After installing packages, we delete the package cache files to reduce the final image size — once installed, we don't need those cache files anymore.",
+    "14": "We're piping a script downloaded from the internet directly into the shell to install Oh-My-Zsh, with --unattended to skip interactive prompts and --keep-zshrc to preserve our existing config.",
+    "18": "The --depth=1 flag clones only the latest commit history instead of the entire repository history, making the download much faster and smaller.",
+    "20": "This sed command finds the line that says plugins=(git) and replaces it with plugins=(git zsh-ssh-config-suggestions) to enable the newly installed plugin.",
+    "25": "The printf command outputs multiple lines that will be written to the SSH config file — each argument becomes a line, including the empty strings for blank lines.",
+    "42": "chmod 600 sets strict permissions on the SSH config file so only the owner can read it — SSH requires this for security.",
+    "45": "We're appending a custom prompt to the Zsh config that includes a whale emoji and color formatting to make it obvious when we're inside a container.",
+    "47": "The -i flag starts an interactive shell, and -l makes it a login shell so it loads all the profile and config files we set up."
   }
 }

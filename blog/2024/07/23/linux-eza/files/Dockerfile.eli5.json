@@ -1,20 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:34:36.451Z",
+  "generated": "2026-09-25T12:12:50.670Z",
   "source": "Dockerfile",
-  "sourceHash": "9d3615007979801f323b1649114dadc837c36922",
+  "sourceHash": "2d8a66f3dfbff8eb181f8d86aef7f383ed0ac414",
   "lang": "docker",
-  "summary": "This Dockerfile creates a Ubuntu container with the eza file-listing tool installed and configured with a custom alias. It sets up a demo directory with various file types to showcase eza's output, customizes the bash prompt to show a container indicator, and starts an interactive bash shell.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates an Ubuntu container with the eza file listing tool pre-installed and configured. It sets up a demo directory with various file types, customizes the bash prompt to show a container indicator, and launches an interactive shell so you can see eza in action.",
   "explanations": {
-    "3": "This tells apt-get to skip interactive prompts during installation, preventing the build from hanging if a package asks for user input.",
-    "5": "The && chains commands together so they run sequentially, and the backslash lets us continue the command on the next line for readability.",
-    "9": "After installing packages, we delete the apt cache files to reduce the final image size—we won't need them again after installation.",
-    "14": "The curl flags -fsSL mean: fail on errors, silent mode, show errors, and follow redirects—standard for reliable downloads in Docker.",
-    "16": "We pipe the downloaded tar.gz file directly to tar to extract it, and -C /usr/local/bin tells tar to extract into the system binary directory so eza is available everywhere.",
-    "19": "We're appending to /root/.bashrc so that every time bash starts, it redefines the 'ls' command to actually run 'eza' with those specific formatting options.",
-    "24": "We create the directory structure with -p, which means 'create parent directories too' so the whole path /root/demo/src and /root/demo/docs gets built in one command.",
-    "33": "The PS1 variable controls the bash prompt appearance; this one adds a whale emoji, colors the username in cyan, and makes it clear you're inside a container.",
-    "35": "The -i flag makes bash interactive (accepting user input) rather than just executing a script and exiting."
+    "3": "This tells the installer to run in non-interactive mode, so it won't pause asking for user input during setup.",
+    "5": "The && chains commands together — if any step fails, the whole thing stops, which keeps the image clean and prevents partial installations.",
+    "6": "The --no-install-recommends flag installs only essential packages, not optional extras, keeping the image smaller.",
+    "9": "After installation, we delete the apt package cache to reduce the final image size since we won't need it again.",
+    "14": "curl downloads the file, -fsSL means silent mode with error reporting, and the pipe | sends it directly to tar without saving it to disk first.",
+    "16": "tar -xz extracts the compressed file (-z for gzip) and -C /usr/local/bin puts it where the system PATH can find it.",
+    "19": "We're adding a bash alias that replaces the default ls command with eza, configured with several formatting flags.",
+    "24": "mkdir -p creates parent directories if they don't exist, so /root/demo/src and /root/demo/docs can be created in one command.",
+    "28": "dd copies 200 kilobytes of zeros to create a fake PDF file for demo purposes without wasting time.",
+    "35": "The -i flag starts bash in interactive mode so you get a prompt instead of the container just exiting immediately."
   }
 }

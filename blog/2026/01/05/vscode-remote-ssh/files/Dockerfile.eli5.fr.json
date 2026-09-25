@@ -1,20 +1,19 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T13:00:47.627Z",
+  "generated": "2026-09-25T12:18:06.979Z",
   "source": "Dockerfile",
-  "sourceHash": "059f3b95da68d5fb14476e8dfa9cbc1e89f2532a",
+  "sourceHash": "1f9573ce0850e548f7e8688232c12e8269879bf4",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu avec un serveur SSH configuré et prêt à accepter des connexions. On installe openssh-server, crée un utilisateur de test nommé christophe avec un mot de passe, puis on configure le serveur SSH pour autoriser l'authentification par mot de passe tout en désactivant l'accès root. Finalement, on expose le port 22 et lance le serveur SSH au démarrage du conteneur.",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Ubuntu avec un serveur SSH préconfiguré. Il installe openssh-server, crée un utilisateur nommé christophe avec un mot de passe, modifie la configuration SSH pour autoriser les connexions par mot de passe (tout en désactivant l'accès root), puis démarre le serveur SSH en mode foreground quand le conteneur lance.",
   "explanations": {
-    "5": "apt-get update met à jour la liste des paquets disponibles, indispensable avant d'installer de nouveaux paquets.",
-    "7": "apt-get clean supprime les fichiers de cache téléchargés pendant l'installation pour réduire la taille de l'image.",
-    "8": "rm -rf /var/lib/apt/lists/* efface les listes de paquets stockées localement, une autre façon de minimiser la taille de l'image.",
-    "12": "useradd -rm -d /home/christophe -s /bin/bash christophe crée un nouvel utilisateur christophe avec un répertoire personnel /home/christophe et le shell bash.",
-    "13": "echo 'christophe:p@ssword' | chpasswd définit le mot de passe p@ssword pour l'utilisateur christophe en le passant à travers chpasswd.",
-    "16": "sed -i remplace la configuration PermitRootLogin (commencée par # ou non) par PermitRootLogin no, ce qui empêche la connexion SSH directe du compte root.",
-    "20": "ListenAddress 0.0.0.0 configure le serveur SSH pour écouter sur toutes les interfaces réseau du conteneur, pas seulement localhost.",
-    "25": "CMD ['/usr/sbin/sshd', '-D'] lance le serveur SSH en mode foreground (-D) au démarrage, ce qui le maintient actif."
+    "5": "La commande apt-get update actualise la liste des paquets disponibles; les antislashes à la fin des lignes permettent de continuer la commande sur la ligne suivante.",
+    "6": "Le flag --no-install-recommends réduit la taille de l'image en n'installant que openssh-server sans ses dépendances optionnelles.",
+    "8": "Cette ligne supprime le cache apt pour réduire la taille finale de l'image Docker.",
+    "12": "useradd crée un nouvel utilisateur christophe avec un répertoire home (/home/christophe) et un shell bash; le flag -rm signifie respectivement remove existing user si présent et créer le répertoire home.",
+    "16": "sed est un outil de remplacement de texte; cette ligne change la configuration SSH pour interdire la connexion root en remplaçant (ou créant) la ligne PermitRootLogin par PermitRootLogin no.",
+    "23": "EXPOSE indique que le conteneur écoute sur le port 22 (le port SSH standard), mais cela n'ouvre pas réellement le port—il faut le mapper lors du lancement.",
+    "25": "CMD démarre le serveur SSH avec le flag -D qui le lance en mode daemon au premier plan, nécessaire pour que le conteneur reste actif."
   }
 }

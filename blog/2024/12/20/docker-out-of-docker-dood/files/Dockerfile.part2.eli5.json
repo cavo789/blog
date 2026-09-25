@@ -1,22 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:42:44.574Z",
+  "generated": "2026-09-25T12:13:40.385Z",
   "source": "Dockerfile.part2",
-  "sourceHash": "792365bbd1b0938c75842c02be0914af46c0e8d5",
+  "sourceHash": "002d5fdfd72b53dc6c1c8053884d9cc63133dbc6",
   "lang": "part2",
-  "summary": "This Dockerfile creates a Docker image based on Alpine Linux, installs Docker inside it, and then sets up a non-root user account with a home directory and proper permissions. The user's ID, group ID, and username are configurable at build time through ARG variables, with defaults provided.",
+  "textLang": "en",
+  "summary": "This Dockerfile builds a lightweight Alpine Linux image with Docker installed, then creates a non-root user account with a home directory and proper permissions. The user ID, group ID, and username are configurable through build arguments so the image can be customized at build time.",
   "explanations": {
-    "1": "This special syntax declaration tells Docker to use the BuildKit parser, which supports more advanced Dockerfile features.",
-    "5": "ARG defines a variable that can be passed when building the image with --build-arg; this one sets the default group ID to 1000.",
-    "9": "FROM specifies the base image we're starting from — Alpine is a very small Linux distribution, useful for keeping container size down.",
-    "11": "hadolint is a linter for Dockerfiles; this comment tells it to ignore a specific warning about the next line.",
-    "12": "This comment explains that docker.io should be used instead of docker for non-Alpine images that use apt-get instead of apk.",
-    "15": "These ARG lines re-declare the variables so they're available in later build stages; they're needed again because ARG scope resets after FROM.",
-    "19": "set -e -x makes the shell exit immediately if any command fails (-e) and print each command before running it (-x), useful for debugging.",
-    "21": "addgroup creates a user group with the specified group ID and name.",
-    "23": "adduser creates a non-root user account with the flags -S (system user) -D (no password) -u (user ID) -G (group) -h (home directory).",
-    "25": "chown recursively changes ownership of the home directory so the new user owns their own files.",
-    "27": "USER switches the container to run as this non-root user for all subsequent commands and when the container runs."
+    "5": "ARG lets you pass values when building the image (docker build --build-arg DOCKER_OS_GROUPID=1000), providing defaults here if not specified.",
+    "15": "These ARG lines re-declare the same variables after the FROM statement so they're available in this stage; Docker build arguments don't automatically carry through FROM unless redeclared.",
+    "19": "set -e -x makes the RUN command exit on any error (e) and print each command before running (x), so you see exactly what failed if something goes wrong.",
+    "21": "addgroup creates a Linux group (like a team) with a specific numeric ID that users can belong to; this one is for our application user.",
+    "23": "adduser creates the actual user account; the flags mean: -S (system user), -D (no password), -u (user ID), -G (primary group), -h (home directory path), and the last argument is the username.",
+    "27": "USER switches the container to run as this non-root user instead of root, which is a security best practice—containers run as this account by default now."
   }
 }

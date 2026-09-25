@@ -7,21 +7,34 @@
 
 # @cat Ollama
 # @cmd eli5
-# @desc Generate ELI5 tips — whole blog, a folder (eli5 blog/2026/07) or one source file
+# @desc ELI5 tips for a file or a folder — 'eli5' alone lists the actions, --backend ollama is free
 function eli5() {
-    local target="" extra=()
+    local target="" all=0 backend="claude" extra=()
 
-    # `--output` and `--locale` carry a value and belong to the single-file script; `--dir` is
-    # the bulk script's own spelling of the positional target, accepted so a command copy/pasted
-    # from bulk-eli5.mjs's help still works here.
-    #
-    # `--locale` must be listed here, not left to the bare-flag branch: its value would then be
-    # read as the positional target, and `eli5 <file> --locale fr --force` would silently run
-    # against a folder named "fr". That exact line is what check-eli5-freshness.mjs prints for a
-    # stale French annotation.
+    # Bare `eli5` used to generate the WHOLE blog through the paid API — 806 files, ~8 $, one
+    # typo away. `questions` alone has always printed its own help instead; the asymmetry was
+    # the trap. The corpus-wide run is still one command, it is just spelled out: `eli5 --all`.
+    if [[ $# -eq 0 ]]; then
+        _eli5_help
+        return 0
+    fi
+
+    # `--output`, `--locale` and `--backend` carry a value and must be listed here, not left to
+    # the bare-flag branch: their value would then be read as the positional target, and
+    # `eli5 <file> --backend ollama` would silently run against a folder named "ollama".
+    # `--dir` is the bulk script's own spelling of that target, accepted so a command
+    # copy/pasted from bulk-eli5.mjs's help still works here.
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            --dir | --output | --locale)
+            help | --help | -h)
+                _eli5_help
+                return 0
+                ;;
+            --all)
+                all=1
+                shift
+                ;;
+            --dir | --output | --locale | --backend)
                 if [[ -z "${2:-}" ]]; then
                     printf "❌ %s needs a value.\n" "$1" >&2
                     return 1
@@ -29,6 +42,9 @@ function eli5() {
                 if [[ "$1" == "--dir" ]]; then
                     target="$2"
                 else
+                    if [[ "$1" == "--backend" ]]; then
+                        backend="$2"
+                    fi
                     extra+=("$1" "$2")
                 fi
                 shift 2
@@ -44,7 +60,19 @@ function eli5() {
         esac
     done
 
-    [[ -n "${target}" ]] || target="blog"
+    if [[ -z "${target}" ]]; then
+        if [[ "${all}" -eq 1 ]]; then
+            target="blog"
+        else
+            printf "❌ eli5 needs a file, a folder, or --all for the whole blog.\n" >&2
+            printf "   Run 'eli5' with no argument for the full list.\n" >&2
+            return 1
+        fi
+    fi
+
+    if [[ "${backend}" == "ollama" ]] && ! _eli5_ollama_up; then
+        return 1
+    fi
 
     # A file and a folder are two different scripts, and picking the wrong one is not a soft
     # failure: bulk-eli5.mjs readdir()s its --dir and dies with ENOTDIR on a file path. Routing
@@ -55,6 +83,54 @@ function eli5() {
     else
         node scripts/bulk-eli5.mjs --dir "${target}" "${extra[@]+"${extra[@]}"}"
     fi
+}
+
+# Fail on the missing daemon rather than on a fetch error 40 lines into a batch: --backend
+# ollama is the flag you reach for to spend nothing, and finding out it was unreachable after
+# the run is the one way it can still waste your time.
+function _eli5_ollama_up() {
+    local url="${OLLAMA_URL:-http://172.17.0.1:11434}"
+    if curl -fsS --max-time 3 "${url}/api/tags" >/dev/null 2>&1; then
+        return 0
+    fi
+    printf "❌ Ollama is not answering at %s.\n" "${url}" >&2
+    printf "   Start it on the host, or set OLLAMA_URL to point elsewhere.\n" >&2
+    return 1
+}
+
+function _eli5_help() {
+    # A literal format string we own, reused for every row (shellcheck's SC2059 warns about
+    # variables here — it is safe precisely because no caller input ever reaches it).
+    local fmt="  \033[1;32m%-34s\033[0m %s\n"
+    printf "\n\033[1;34m🧠  ELI5 annotations\033[0m — the line-by-line explanations under a <Snippet>.\n"
+    printf "\033[2mOne sidecar per source file and per locale, written next to the code it explains.\033[0m\n"
+
+    printf "\n\033[1;33m── Generate ──────────────────────────────\033[0m\n"
+    printf "${fmt}" "eli5 <file>" "one source file"
+    printf "${fmt}" "eli5 <folder>" "every snippet under it — f.i. eli5 blog/2026/07"
+    printf "${fmt}" "eli5 --all" "the whole blog (806 files — quotes its price first)"
+    printf "${fmt}" "eli5 <file> --locale fr" "the French sidecar of that file"
+    printf "  \033[2mAn existing sidecar is skipped unless you pass --force.\033[0m\n"
+
+    printf "\n\033[1;33m── Who writes it ─────────────────────────\033[0m\n"
+    printf "${fmt}" "--backend claude" "default — Haiku, ~\$0.01 per file, known quality"
+    printf "${fmt}" "--backend ollama" "local model, free, no API key needed"
+    printf "  \033[2mBoth write the real sidecar. The local one is measurably thinner: it drops the\033[0m\n"
+    printf "  \033[2mlanguage idioms a junior trips on, and its coverage swings from run to run.\033[0m\n"
+    printf "  \033[2mUse it to iterate on the prompt for free; regenerate with Claude before publishing.\033[0m\n"
+    printf "  \033[2mThe sidecar records which model wrote it, and \033[0m\033[4myarn eli5:check\033[0m\033[2m lists every published\033[0m\n"
+    printf "  \033[2mone a local model produced — so a local pass can never be forgotten in the corpus.\033[0m\n"
+
+    printf "\n\033[1;33m── Filters ───────────────────────────────\033[0m\n"
+    printf "${fmt}" "--force" "redo a sidecar that already exists"
+    printf "${fmt}" "--dry-run" "list what would be generated, call nothing"
+    printf "${fmt}" "--locale <code>" "which language the prose is written in (default: en)"
+    printf "${fmt}" "--output <path>" "write elsewhere than the default sidecar name"
+
+    printf "\n\033[1;33m── Check ─────────────────────────────────\033[0m\n"
+    printf "${fmt}" "yarn eli5:check" "which sidecars are stale, and which snippets have none"
+
+    printf "\n💡 \033[1;36mTip:\033[0m reworking the prompt? \033[4meli5 blog/2026/07 --backend ollama --force\033[0m costs nothing.\n\n"
 }
 
 # @cat Ollama

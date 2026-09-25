@@ -1,17 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:50:11.462Z",
+  "generated": "2026-09-25T12:17:36.726Z",
   "source": "Dockerfile",
-  "sourceHash": "b84987780153313f456b9e5a2f0b022c32a772d2",
+  "sourceHash": "b6e7f5e7c0c0b146c6d564a26fb0b6ca915f377e",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Docker basée sur Alpine Linux, installe Git et SSH pour pouvoir utiliser des credentials SSH, configure un répertoire de travail et un point d'entrée qui maintient le conteneur actif indéfiniment. C'est utile pour un conteneur de développement ou de build qui doit rester vivant.",
+  "summary": "Ce Dockerfile crée une image Docker minimaliste basée sur Alpine Linux avec git et SSH pré-installés, prête à cloner des dépôts via SSH. Il configure un répertoire .ssh sécurisé et lance un processus tail pour maintenir le conteneur actif indéfiniment.",
   "explanations": {
-    "1": "Cette directive indique à Docker d'utiliser la syntaxe de buildkit moderne, qui active des fonctionnalités avancées du Dockerfile.",
-    "3": "FROM alpine:latest télécharge et utilise l'image de base Alpine Linux, une distribution minimaliste idéale pour les conteneurs.",
-    "10": "set -e -x fait échouer le script si une commande échoue (set -e) et affiche chaque commande avant l'exécution pour le débogage (set -x).",
-    "11": "mkdir -p -m 0700 ~/.ssh crée le répertoire .ssh avec les permissions 0700 (rwx pour le propriétaire uniquement), nécessaire pour stocker les clés SSH.",
-    "14": "tail -f /dev/null crée une boucle infinie sans consommer de ressources, gardant le conteneur en vie au lieu de terminer immédiatement."
+    "3": "FROM alpine:latest charge la dernière version d'Alpine Linux, une distribution minimale (~5 MB) idéale pour les conteneurs.",
+    "6": "apk add --no-cache installe git et openssh-client sans mettre en cache les fichiers de package, ce qui réduit la taille finale de l'image.",
+    "10": "set -e -x active le mode strict : -e arrête le script à la première erreur, et -x affiche chaque commande exécutée pour le débogage.",
+    "11": "mkdir -p -m 0700 ~/.ssh crée le répertoire .ssh avec les permissions 0700 (lecture/écriture/exécution seulement pour le propriétaire), comme exigé par SSH pour la sécurité.",
+    "14": "ENTRYPOINT avec tail -f /dev/null garde le conteneur en vie en lisant indéfiniment un fichier vide, au lieu de s'arrêter immédiatement après le démarrage."
   }
 }

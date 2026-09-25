@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i 's/^Components: main restricted$/Components: main restricted universe multiverse/' \
         /etc/apt/sources.list.d/ubuntu.sources && \
     apt-get update && \
-    apt-get install -y \
+    apt-get install -y --no-install-recommends \
         git \
         git-delta && \
     rm -rf /var/lib/apt/lists/*

@@ -25,13 +25,13 @@ ENV NPM_CONFIG_CACHE=/var/www/html/.npm-cache \
 # Install system dependencies, PHP extensions, and Node.js with browser dependencies
 RUN --mount=type=cache,target=/var/cache/apt,id=apt-cache,sharing=private \
     set -eux && \
-    apt-get update && apt-get install -y \
+    apt-get update && apt-get install -y --no-install-recommends \
         unzip zip git curl libzip-dev gnupg2 wget ca-certificates \
         libgtk-3-0 libxshmfence-dev libxkbcommon-x11-dev \
         libnspr4 libnss3 libgbm1 libasound2t64 \
     && docker-php-ext-install zip sockets \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get install -y --no-install-recommends nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install Composer
@@ -61,13 +61,13 @@ WORKDIR /var/www/html
 # Install PHP and Node.js dependencies
 RUN --mount=type=cache,target=/var/cache/apt,id=apt-cache,sharing=private \
     set -eux && \
-    apt-get update && apt-get install -y \
+    apt-get update && apt-get install -y --no-install-recommends \
         unzip zip libzip-dev curl gnupg2 wget ca-certificates \
         libgtk-3-0 libxshmfence-dev libxkbcommon-x11-dev \
         libnspr4 libnss3 libgbm1 libasound2t64 \
     && docker-php-ext-install pcntl zip sockets \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get install -y --no-install-recommends nodejs \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ARG OS_USERID

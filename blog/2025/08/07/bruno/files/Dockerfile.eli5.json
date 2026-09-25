@@ -1,16 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:50:03.347Z",
+  "generated": "2026-09-25T12:14:01.482Z",
   "source": "Dockerfile",
-  "sourceHash": "e57a86d84cec3f92a463d810d198fccaf31ae9de",
+  "sourceHash": "5a3f6cc9c6495e68ed3ca9129cc5e05e04cc138a",
   "lang": "docker",
-  "summary": "This Dockerfile creates a lightweight Python container for running a FastAPI web application. It starts with a slim Python image, installs the FastAPI framework, copies in the application code, and configures the container to run a Uvicorn web server on port 82 with hot-reload enabled so changes take effect immediately.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a lightweight Python container optimized for running a FastAPI web application. It starts with a slim Python image, installs FastAPI, copies your application code into the container, and configures it to run a Uvicorn web server with auto-reload enabled so changes take effect immediately.",
   "explanations": {
-    "2": "The `slim` variant is a smaller, stripped-down version of Python that includes only essential packages, saving disk space compared to the standard Python image.",
-    "5": "WORKDIR sets the default directory inside the container where all subsequent commands will run — think of it like `cd /app` happening automatically when the container starts.",
-    "8": "The `--no-cache-dir` flag tells pip not to store the downloaded packages locally in the image, which saves space since we won't need to reinstall them.",
-    "11": "COPY takes a file from your computer (the left `main.py`) and places it into the container (the right `main.py`).",
-    "15": "CMD specifies what command runs when the container starts; `--reload` watches for file changes and restarts the server automatically, and `--host 0.0.0.0` makes the server accessible from outside the container."
+    "2": "The 'slim' variant is a smaller version of the official Python image that includes just enough to run Python—it cuts out extra tools and libraries you probably won't need, making your final container smaller.",
+    "8": "The --no-cache-dir flag tells pip not to store downloaded package files locally in the container, which saves space since we don't need them after installation is complete.",
+    "15": "The --reload flag makes Uvicorn automatically restart whenever main.py changes, which is helpful during development; --host 0.0.0.0 makes the server accessible from outside the container, and --port 82 runs it on port 82 instead of the default 8000."
   }
 }

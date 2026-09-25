@@ -1,21 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:47:34.384Z",
+  "generated": "2026-09-25T12:17:31.750Z",
   "source": "Dockerfile.part2",
-  "sourceHash": "792365bbd1b0938c75842c02be0914af46c0e8d5",
+  "sourceHash": "002d5fdfd72b53dc6c1c8053884d9cc63133dbc6",
   "lang": "part2",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Alpine avec Docker installé, puis configure un utilisateur non-root nommé johndoe avec des identifiants de groupe et d'utilisateur personnalisables, en créant son répertoire personnel et en lui accordant les permissions appropriées.",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Alpine Linux qui installe Docker et configure un utilisateur non-root avec des paramètres personnalisables. L'image prépare un environnement sécurisé où les processus s'exécutent sous l'identité de cet utilisateur applicatif plutôt que sous root.",
   "explanations": {
-    "1": "La directive syntax indique à Docker quel parser de Dockerfile utiliser; ici, on demande la version 1 du parser Docker officiel pour accéder à des fonctionnalités modernes.",
-    "5": "ARG définit une variable de build que tu peux passer au moment de la construction avec --build-arg; ici on fixe un identifiant de groupe par défaut à 1000.",
-    "9": "FROM alpine:latest charge l'image de base Alpine Linux, une distribution ultra-minimale, comme point de départ pour notre conteneur.",
-    "13": "RUN exécute les commandes apk update (mettre à jour les paquets disponibles) et apk add docker (installer le paquet docker) à l'intérieur du conteneur.",
-    "19": "set -e -x active deux options bash: -e quitte si une commande échoue, et -x affiche chaque commande exécutée (utile pour déboguer).",
-    "21": "addgroup crée un groupe système avec l'ID spécifié par DOCKER_OS_GROUPID et le nom DOCKER_OS_USERNAME.",
-    "23": "adduser crée un utilisateur système (-S) sans mot de passe (-D), avec l'ID DOCKER_OS_USERID, le groupe DOCKER_OS_USERNAME, et le répertoire personnel défini.",
-    "25": "chown -R change récursivement le propriétaire et le groupe du répertoire /home/${DOCKER_OS_USERNAME} pour que l'utilisateur johndoe en soit le propriétaire.",
-    "27": "USER bascule l'utilisateur courant du conteneur en johndoe, de sorte que les commandes suivantes s'exécutent avec les permissions de cet utilisateur non-root."
+    "5": "ARG déclare une variable de build que tu peux passer en ligne de commande avec --build-arg ; ici elle fixe le groupe d'ID du nouvel utilisateur à 1000 par défaut.",
+    "6": "Pareil pour l'ID numérique de l'utilisateur : 1000 est une valeur conventionnelle pour le premier utilisateur non-root.",
+    "7": "Variable de build qui contient le nom d'utilisateur qu'on va créer dans le conteneur, johndoe par défaut.",
+    "15": "Ces ARG redéclarent les mêmes variables après le FROM ; c'est nécessaire car les ARG avant FROM ne sont accessibles que dans les FROM suivants, il faut les redéclarer pour les utiliser dans les RUN après.",
+    "19": "set -e -x signifie : arrête au premier erreur (-e) et affiche chaque commande avant l'exécuter (-x), ça aide au débogage.",
+    "21": "addgroup crée un groupe système avec l'ID spécifié ; -g fixe l'ID numérique.",
+    "23": "adduser crée l'utilisateur applicatif avec -S (système), -D (pas de mot de passe), -u pour l'UID, -G pour le groupe principal, et -h pour le répertoire home.",
+    "27": "USER change l'utilisateur par défaut du conteneur : toutes les commandes suivantes (et celles lancées avec docker run) s'exécuteront sous johndoe au lieu de root."
   }
 }

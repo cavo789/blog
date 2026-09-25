@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T16:39:10.448Z",
+  "generated": "2026-09-25T12:19:20.978Z",
   "source": "Dockerfile",
-  "sourceHash": "3d559277a519453e81713faa88946eccde2f71a5",
+  "sourceHash": "5f4a3ebfd10fbe8340f55e5e1af1c53cb0aabe2b",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Ubuntu avec Atuin, un gestionnaire d'historique de commandes shell. Il installe les dépendances système nécessaires, télécharge et configure Atuin avec bash-preexec pour intercepter les commandes, puis pré-remplit la base de données avec un historique de démonstration afin que les utilisateurs aient immédiatement des commandes à rechercher.",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec Atuin, un outil de gestion d'historique shell avancé. Il installe les dépendances système nécessaires, télécharge Atuin et son système de hooks bash-preexec, puis configure le shell interactif pour initialiser automatiquement Atuin avec un historique pré-rempli à des fins de démonstration.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives pendant l'installation, ce qui est essentiel dans un conteneur où on ne peut pas répondre aux invites.",
-    "5": "Le double ampersand && enchaîne les commandes pour qu'elles s'exécutent séquentiellement, et si l'une échoue, les suivantes ne s'exécutent pas.",
-    "13": "Supprimer /var/lib/apt/lists/* après l'installation réduit la taille de l'image en nettoyant les métadonnées de cache que apt n'a plus besoin de conserver.",
-    "16": "curl -fsSL télécharge silencieusement le fichier (-s), échoue rapidement en cas d'erreur (-f), et suit les redirections (-L).",
-    "18": "Le pipe | envoie la sortie de curl directement à tar pour extraire l'archive sans la sauvegarder d'abord sur le disque.",
-    "19": "atuin-*/atuin utilise un pattern glob pour trouver le binaire atuin où qu'il se trouve dans le répertoire extrait.",
-    "33": "printf '%s\\n' avec >> ajoute chaque ligne à /root/.bashrc en insérant des sauts de ligne entre elles pour un formatage lisible.",
-    "39": "L'option -i lance un shell bash interactif, ce qui permet à l'utilisateur d'interagir avec le conteneur en ligne de commande au démarrage."
+    "3": "DEBIAN_FRONTEND=noninteractive supprime les invites interactives pendant l'installation des paquets, ce qui est essentiel dans un conteneur où on ne peut pas répondre aux questions.",
+    "6": "Le flag --no-install-recommends réduit la taille de l'image en installant uniquement les paquets explicitement demandés, sans leurs dépendances recommandées mais optionnelles.",
+    "13": "rm -rf /var/lib/apt/lists/* supprime les caches du gestionnaire de paquets après l'installation, ce qui économise plusieurs mégaoctets dans la couche d'image.",
+    "16": "curl -fsSL télécharge le fichier en silence (-s), en échouant complètement sur erreur (-f), et sans afficher la barre de progression (-S désactive la barre simple, mais -s la désactive aussi).",
+    "18": "Le pipe | envoie directement le contenu téléchargé à tar pour l'extraction, sans passer par le disque intermédiaire.",
+    "19": "atuin-*/atuin utilise un glob pour trouver le binaire peu importe le répertoire exact du dossier extrait (par exemple atuin-18.22.0/atuin).",
+    "33": "printf '%s\\n' crée une liste de lignes qui sont redirigées avec >> pour ajouter du texte au fichier .bashrc existant, ligne par ligne.",
+    "39": "CMD avec -i lance bash en mode interactif, ce qui active les invites et la coloration syntaxique même si le conteneur n'a pas de terminal TTY alloué."
   }
 }

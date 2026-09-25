@@ -1,22 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:29:24.671Z",
+  "generated": "2026-09-25T12:12:31.456Z",
   "source": "Dockerfile",
-  "sourceHash": "485e6f8c674d268573291d24f1a8086605dfae0e",
+  "sourceHash": "d24a43e4fc924d94f9b3b36d767aa55ab378ee6b",
   "lang": "docker",
-  "summary": "This Dockerfile creates an Ubuntu container with bash, git, and curl, then installs fzf (a fuzzy finder tool) and configures it to work with bash. It sets up a demo directory with sample log files and scripts, pre-populates bash history with realistic commands, and customizes the shell prompt to show a whale emoji indicating you're in a container.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates an Ubuntu container with bash, git, and curl, then installs fzf (a fuzzy finder tool) to make searching through files and command history interactive. It sets up a demo directory structure with sample log files and pre-populates bash history so users can immediately practice fuzzy searching when the container starts.",
   "explanations": {
-    "3": "This prevents apt from prompting for user input during package installation, which would hang the build process.",
-    "5": "The && chains commands together, and apt-get update refreshes the package list before installing packages.",
-    "11": "Deleting the apt cache files saves space in the final image since we won't need them again after installation.",
-    "14": "The --depth 1 flag clones only the most recent commit history, making it much faster and smaller than a full clone.",
-    "15": "The install script wires fzf's keyboard shortcuts and autocomplete features into bash so they work automatically when the shell starts.",
-    "16": "This line sources (loads) the fzf bash configuration file if it exists, ensuring fzf features are available in interactive shells.",
-    "20": "This creates the directory structure needed for the demo, using -p so it doesn't fail if parent directories already exist.",
-    "22": "The printf command creates log file content with a format string, where $i gets replaced with the loop variable (1, 2, 3, or 4).",
-    "30": "The printf command writes multiple lines to bash history; this simulates commands a user has previously run so Ctrl+R search has realistic examples.",
-    "41": "This appends a custom prompt to .bashrc that shows a whale emoji, the username, and current directory — making it visually clear you're inside a container.",
-    "43": "The -i flag runs bash in interactive mode so you get a login shell with all the customizations loaded when you start the container."
+    "3": "This tells Docker to skip interactive prompts during package installation, since a container can't respond to user input.",
+    "6": "The --no-install-recommends flag installs only the packages you explicitly ask for, skipping optional dependencies to keep the image smaller.",
+    "11": "After installing packages, this deletes the package cache that apt-get downloads, freeing up disk space since we won't need to reinstall those same packages.",
+    "15": "The install script wires fzf's keyboard shortcuts (like Ctrl+T) directly into bash, but --no-update-rc prevents it from modifying .bashrc automatically since we'll do that manually in the next line.",
+    "16": "This manually adds fzf's bash initialization to .bashrc so the fuzzy-finder features are available every time the shell starts.",
+    "22": "The printf command creates a multi-line log file for each iteration; $i is replaced with the loop counter (1, 2, 3, 4) to create four different log files.",
+    "30": "printf with %s prints each line followed by a newline, building a fake command history that looks like real commands a user typed.",
+    "41": "This adds a custom shell prompt that shows a whale emoji and username in yellow/cyan colors, making it visually obvious you're inside a container.",
+    "43": "The -i flag runs bash in interactive mode even though there's no terminal attached, so you get a working shell prompt when you run the container."
   }
 }

@@ -1,15 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:38:54.996Z",
+  "generated": "2026-09-25T12:13:26.025Z",
   "source": "demo.sh",
-  "sourceHash": "728363dee7be9099faff64fb18649f67c98a114a",
+  "sourceHash": "0683333df49720ce00ce2b2af9fa0e0f5c320152",
   "lang": "bash",
-  "summary": "This script runs a main function that calls a demo function 50 times, with each call passing an incrementing number. The output from main is piped into a progress bar processor that displays how many of the 50 tasks have completed.",
+  "textLang": "en",
+  "summary": "This script defines a demo function that outputs progress messages, then runs it 50 times in a loop. The output gets piped through a progress bar handler from another script, which displays a nice formatted progress indicator while the work happens.",
   "explanations": {
-    "2": "This line makes the script exit immediately if any command fails, treats undefined variables as errors, and prevents pipe failures from being hidden—basically making the script fail fast and loudly.",
-    "11": "This creates a loop where the variable i takes each value from 1 to 50 in sequence, and the code inside the loop runs once for each value.",
-    "16": "This loads in code from another file called progress_bar.sh so we can use functions defined in that file.",
-    "18": "The >() syntax is a process substitution that runs the progress_bar::process function in a separate process and feeds main's output into it, allowing the progress bar to monitor completion in real-time."
+    "2": "This line makes bash exit immediately if any command fails, treat undefined variables as errors, and properly handle pipe failures — it's a safety setting to catch mistakes early.",
+    "16": "This loads functions and code from another script file called progress_bar.sh, making those functions available to use in this script.",
+    "18": "The `> >()` syntax redirects the output to a process substitution, meaning instead of printing to the screen directly, main's output goes into a progress bar handler function that formats and displays it nicely."
   }
 }

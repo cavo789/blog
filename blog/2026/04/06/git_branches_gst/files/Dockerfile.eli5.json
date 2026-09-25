@@ -1,20 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:04:32.315Z",
+  "generated": "2026-09-25T12:14:28.172Z",
   "source": "Dockerfile",
-  "sourceHash": "66a9c7016671d0cdbdd1ca30224ce40d2f71ac72",
+  "sourceHash": "1049c95c662baa2c8cb2f86d41773819c450d2fc",
   "lang": "docker",
-  "summary": "This Dockerfile creates an Ubuntu container with zsh and git installed, then configures a shell function that displays the three most recently modified git branches whenever you change directories or run a git status command. It also sets up a demo git repository with multiple branches at different commit dates to showcase the feature in action.",
+  "textLang": "en",
+  "summary": "This Dockerfile builds a Ubuntu container with Zsh and Git pre-installed, then configures a shell function that displays the three most recently modified Git branches whenever you change directories or run git status. It also creates a demo Git repository with three branches at different ages to showcase the feature in action.",
   "explanations": {
-    "3": "This tells Ubuntu's package manager to skip interactive prompts during installation, which is necessary in containers since there's no user to answer questions.",
-    "12": "The printf command with '%s\\n' is being used to write multiple lines of shell script into the zshrc file; each quoted string in the list becomes one line.",
-    "19": "This checks whether we're inside a git repository by trying to run a git command that only succeeds in a repo; the redirects send output to nowhere so we just care about success or failure.",
-    "29": "This captures the name of the current git branch into a variable so the script can later highlight which branch you're currently on.",
-    "31": "The $'...' syntax allows escape sequences like \\e[1;36m (which are ANSI color codes) to be interpreted as actual color commands in the output.",
-    "34": "This git command lists all local branches sorted by how recently they were modified, and we'll trim it down to just the top 3 with the head command on the next line.",
-    "42": "This removes any existing alias named 'gst' so our custom function can take over that name without conflicts.",
-    "63": "We're setting the author and committer dates to specific times in the past so the demo repository has commits spread across different dates for testing.",
-    "88": "The -i flag makes the shell interactive (so it shows prompts), and -l makes it a login shell (so it loads your profile files like .zshrc)."
+    "3": "This tells the installer to skip interactive prompts during setup, so the build won't hang waiting for user input.",
+    "6": "The --no-install-recommends flag skips optional packages, keeping the image smaller and faster to build.",
+    "9": "After installing packages, we delete the cached package lists to reduce the final image size.",
+    "12": "The printf command with '%s\\n' takes multiple string arguments and prints each one on a new line, effectively building a multi-line shell script.",
+    "31": "The $'...' syntax in Bash/Zsh allows escape sequences like \\e for color codes; the \\e[1;36m makes cyan bold text.",
+    "53": "The >> appends all those printf lines to the .zshrc file (the shell config file), rather than overwriting it.",
+    "63": "We're setting the commit date to 100 days ago so the main branch appears old compared to the other branches.",
+    "68": "The -b flag creates and switches to a new branch in one command.",
+    "88": "The -i flag runs Zsh interactively (with a prompt) and -l runs it as a login shell (sources config files like .zshrc)."
   }
 }

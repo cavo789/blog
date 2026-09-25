@@ -85,6 +85,66 @@ jobs:
       - name: Run lint (ESLint + stylelint)
         run: yarn lint
 
+  snippet-lint:
+    name: Lint the code files articles ship (blog/**/files/)
+    runs-on: ubuntu-latest
+    # Same escape hatch as deploy.yml. GitHub natively suppresses a run only
+    # for the exact string
+    # `[skip ci]` (and `[ci skip]`, `[no ci]`, `[skip actions]`, `[actions skip]`)
+    # — that list cannot be extended. The other spellings below are honoured here
+    # instead: the run still appears in the Actions tab, but every job is skipped
+    # in ~1s and no minutes are billed. String comparisons in GitHub expressions
+    # are case-insensitive, so `WIP:` and `[SKIP-CI]` match too.
+    if: >-
+      github.event_name != 'push' ||
+      (
+        !startsWith(github.event.head_commit.message, 'wip') &&
+        !contains(github.event.head_commit.message, '[skip ci]') &&
+        !contains(github.event.head_commit.message, '[skip-ci]') &&
+        !contains(github.event.head_commit.message, '[skip_ci]')
+      )
+    timeout-minutes: 15
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 24
+          cache: "yarn"
+
+      # Needed despite the script having no direct dependency: it resolves a
+      # `<Snippet source>` through plugins/remark-snippet-loader, which requires
+      # unist-util-visit.
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile --prefer-offline
+
+      # NOT informational, unlike internal-links and e2e below: this one blocks.
+      # A trailing comma in a published composer.json or a `COPY a b .` breaks for
+      # every reader who copies the file, which is not a writing remark — it is a
+      # bug shipped to the reader. Wired only now that the baseline is green (0
+      # errors, TODO 0138 criterion 3); wiring it earlier would have failed the
+      # first push, which is exactly what TODO 0132 warned against.
+      #
+      # `--ci` scopes the scan to blog/ and leaves .unpublished/ out: a draft is
+      # allowed to be broken, and its snippets are still linted by a bare local
+      # `yarn snippets:lint`.
+      #
+      # Exits on `error` severity only. The ~276 warnings are a tracked content
+      # debt, deliberately non-blocking — the header of scripts/lint-snippets.mjs
+      # documents that policy class by class, including the two classes that will
+      # never be fixed (version pinning rots in a tutorial; DL3064 is a false
+      # positive on `ARG USERNAME`). They stay readable in this job's log.
+      #
+      # Docker is only reached for files whose hash moved since the committed
+      # .snippet-lint.json — the linters run as containers (shellcheck, hadolint,
+      # yamllint, php, ruff) rather than being installed here. On a push that
+      # touches no snippet, nothing is pulled and the job re-reports the stored
+      # verdicts in under a second.
+      - name: Lint published snippets (same script as `yarn snippets:lint`)
+        run: yarn snippets:lint --ci
+
   internal-links:
     name: Internal links on new/changed articles
     runs-on: ubuntu-latest

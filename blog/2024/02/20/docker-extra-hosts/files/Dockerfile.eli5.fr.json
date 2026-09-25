@@ -1,13 +1,13 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T14:04:23.372Z",
+  "generated": "2026-09-25T12:15:46.067Z",
   "source": "Dockerfile",
-  "sourceHash": "06f03eb45635b584bf3a7b2b1d9641f55edf342b",
+  "sourceHash": "716d7a05df035e770de6a680ba2c82e13bdb1603",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile construit une image Docker basée sur Alpine Linux 3.14, une distribution très légère. Il met à jour les paquets disponibles et installe curl, un outil pour télécharger des fichiers depuis Internet via des commandes.",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Alpine Linux 3.14 et installe l'outil curl dedans. Alpine est choisi comme image de base car c'est une distribution très légère, et on ajoute curl pour permettre à des scripts ou applications dans le conteneur de faire des requêtes HTTP.",
   "explanations": {
-    "3": "apk update récupère la liste actuelle des paquets disponibles, puis apk add curl installe l'outil curl. Le && enchaîne les deux commandes pour qu'elles s'exécutent successivement."
+    "3": "apk est le gestionnaire de paquets d'Alpine ; --no-cache évite de stocker les caches d'installation dans l'image finale, ce qui réduit sa taille."
   }
 }

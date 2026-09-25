@@ -13,7 +13,7 @@ compareWithFolder="$2"
 [[ ! -d "${sourceFolder}" ]]      && echo "Error: Source folder ${sourceFolder} not found." &&  exit 1
 [[ ! -d "${compareWithFolder}" ]] && echo "Error: CompareWith folder ${compareWithFolder} not found." &&  exit 1
 
-pushd "${sourceFolder}" >/dev/null
+pushd "${sourceFolder}" >/dev/null || exit 1
 
 printf "\e[37;1m%s\e[0;1m\n\n" "Compare .sh scripts and detects functions that are in one of the files but not in the other between these two folders:"
 printf "\e[37;1m%s\e[0;1m\n" "LEFT SIDE  = ${sourceFolder}"
@@ -46,4 +46,4 @@ for bashScript in *.sh; do
     fi
 done
 
-popd >/dev/null
+popd >/dev/null || exit 1

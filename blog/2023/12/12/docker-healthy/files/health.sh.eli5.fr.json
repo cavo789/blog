@@ -1,19 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:29:29.487Z",
+  "generated": "2026-09-25T12:15:34.092Z",
   "source": "health.sh",
-  "sourceHash": "aa9bf755476ddc71249cd98091a175b997dfad93",
+  "sourceHash": "3b221f60c4a1208e3550487a7e068ea9940dc58b",
   "lang": "bash",
   "textLang": "fr",
-  "summary": "Ce script affiche l'état de santé de tous les conteneurs Docker avec un code couleur : vert pour sain, rouge pour défaillant, gris pour pas de vérification configurée. Il utilise des codes ANSI pour colorer la sortie et traite chaque conteneur indépendamment sans arrêter si l'un d'eux échoue.",
+  "summary": "Ce script affiche la liste de tous les conteneurs Docker avec leur statut de santé respectif, colorisé selon que le conteneur est sain (vert), défaillant (rouge) ou sans vérification de santé configurée (gris). Il utilise des codes de couleur ANSI pour rendre l'output lisible et intentionnellement ne s'arrête pas si un conteneur échoue à l'inspection.",
   "explanations": {
-    "4": "set -o nounset arrête si une variable non définie est utilisée, et set -o pipefail fait échouer le pipeline entier si une commande intermédiaire échoue (mais pas errexit comme dit le commentaire, donc un conteneur défaillant ne bloque pas la boucle).",
-    "6": "GRAY, GREEN et RED stockent les codes numériques ANSI pour les couleurs de terminal.",
-    "14": "Cette boucle lit chaque ligne (nom de conteneur) produite par docker container list et la traite une par une dans le bloc qui suit.",
-    "15": "docker inspect récupère les données JSON du conteneur, jq -r '.Status' extrait juste la chaîne de caractères du statut de santé (sans guillemets JSON).",
-    "18": "La couleur par défaut (gris) est assignée à tous les conteneurs, puis elle sera changée ci-dessous si le statut est autre chose.",
-    "23": "[[ ! \"$healthcheckStatus\" == \"null\" ]] vérifie que le statut n'est pas \"null\" (c'est-à-dire qu'il y a une vérification de santé configurée mais le conteneur n'est pas sain), ce qui déclenche la couleur rouge.",
-    "27": "printf formate et affiche chaque ligne : le nom sur 40 caractères, puis le statut en couleur avec codes ANSI pour activer la couleur et réinitialiser après."
+    "4": "set -o nounset provoque une erreur si on référence une variable non définie, et set -o pipefail fait échouer la pipeline entière si n'importe quelle commande échoue, plutôt que seulement la dernière.",
+    "6": "GRAY, GREEN et RED sont des codes numériques ANSI qui représentent les couleurs à afficher dans le terminal.",
+    "12": "printf avec les séquences \\e[1;33m et \\e[0m applique le formatage gras et jaune au texte, puis le réinitialise.",
+    "14": "La boucle while read -r name itère sur chaque nom de conteneur retourné par docker container list, en lisant une ligne à la fois.",
+    "15": "docker inspect extrait les métadonnées du conteneur, jq -r '.Status' récupère et affiche le statut de santé en texte brut (pas JSON).",
+    "18": "COLOR reçoit la valeur GRAY par défaut, puis peut être modifiée selon le statut réel trouvé.",
+    "22": "Cette condition vérifie que le statut n'est pas \"null\" (c'est-à-dire qu'une vérification de santé existe réellement) ; si oui et qu'il n'est pas \"healthy\", on le colore en rouge.",
+    "26": "printf avec %-40s formate le nom du conteneur sur 40 caractères alignés à gauche, puis applique la couleur et le statut avant de réinitialiser le formatage."
   }
 }

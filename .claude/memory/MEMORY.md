@@ -15,12 +15,13 @@
 - [Post Creation Feedback](feedback_post_creation.md) — draft:true for .unpublished, image selection, frontmatter ordering
 - [Challenge Me](feedback_challenge_me.md) — challenger ses affirmations, contredire à voix haute plutôt qu'exécuter ; se corriger soi-même aussi
 - [Verification Discipline](feedback_verification_discipline.md) — vérifier l'artefact pas le exit code ; compter trouve le faux, relire trouve l'absence ; mécanisme > discipline
+- [Overcorrection](feedback_overcorrection.md) — un incident unique ne justifie pas une règle d'architecture ; « rendre visible » avant « empêcher » ; relire la correction contre l'exigence d'origine
 - [Quality Over Speed](feedback_quality_over_speed.md) — arbitre pour la fidélité de sortie, pas la vitesse ; proposer le réglage le plus fidèle par défaut
 - [Continuous Improvement](feedback_continuous_improvement.md) — carte blanche permanente : enrichir mémoire/rules/skills/agents à tout moment, sans demander
 - [Article Weight](feedback_article_weight.md) — pas d'empilement de post-mortems ni de setup non-standard ; un article doit donner envie de tester
 - [YAML Date Parsing](feedback_yaml_date_parsing.md) — frontmatter dates arrive as ISO strings after SSR; always use new Date(value), never concatenate
 - [TODO Folder Convention](project_todos_convention.md) — .todos/ est privé : écrire en français, format NNN-slug.md, sections Problème/Risque/Solution
-- [TODO Triage Feedback](feedback_todo_triage.md) — rejects reader-engagement TODOs (polls/Q&A/share/bookmarks/counters, page « Profil » + localStorage global) as WONT_DO, low traffic ; chiffres du refus 2026-09-23 inclus
+- [TODO Triage Feedback](feedback_todo_triage.md) — rejects reader-engagement TODOs (polls/Q&A/share/bookmarks/counters, page « Profil » + localStorage global) as WONT_DO, low traffic ; chiffres des refus 2026-09-23 et 2026-09-25 (0136/0122/0134) ; **workflow clé : écrire → traduire → ne plus modifier** ; ne pas outiller la défiance envers le traducteur Claude
 - [Unpublished Plan Maintenance](feedback_unpublished_plan.md) — always keep .unpublished/plan.md in sync with drafts, written in French, never published
 - [Internal Linking Rule (new posts)](feedback_internal_linking.md) — tout nouveau post embarque 2-4 `<Link>` inline + lien réciproque ; jamais d'orphelin
 - [Internal Links Audit](project_internal_links.md) — run `internal-link-opportunities.mjs --stats`; verified baseline + the 4 traps that break naive greps

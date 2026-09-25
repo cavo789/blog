@@ -1,15 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:42:33.494Z",
+  "generated": "2026-09-25T12:13:35.924Z",
   "source": "Dockerfile",
-  "sourceHash": "a6914eccdf70047537970c301fb61f15a0417d60",
+  "sourceHash": "e4deb630425fa4762769410e366eea57190d86b0",
   "lang": "docker",
-  "summary": "This Dockerfile creates a Docker image based on Alpine Linux and installs the Docker client inside it. Alpine is a lightweight Linux distribution, and by adding Docker, this image can run Docker commands from within a container — a pattern called Docker-in-Docker.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Docker image based on Alpine Linux and installs the Docker client tool inside it. The result is a lightweight container that can run Docker commands, which is useful for CI/CD pipelines or tools that need to interact with Docker from within a container.",
   "explanations": {
-    "1": "This special comment tells Docker to use a specific version of the Dockerfile syntax parser, ensuring consistent behavior across different Docker versions.",
-    "5": "Hadolint is a linter that checks Dockerfile best practices; this comment tells it to ignore a specific warning (DL3008) on the next line.",
-    "6": "This note explains that apk (Alpine's package manager) is being used here, but if you swap to a different base image like Ubuntu, you'd need to use apt-get instead and change the docker.io reference.",
-    "9": "Another hadolint ignore comment, this time suppressing warning DL3002 which would otherwise complain about running as root."
+    "1": "This special comment tells Docker which version of the Dockerfile syntax parser to use, ensuring consistent behavior across different Docker versions.",
+    "5": "This comment tells hadolint (a Dockerfile linter) to ignore a specific warning about pinning package versions, because we're intentionally using the latest version here.",
+    "6": "The comment explains that if you switch from Alpine to a different base image like Ubuntu, you'd need to use 'apt-get' instead of 'apk' to install packages.",
+    "7": "The '--no-cache' flag tells apk to skip caching downloaded packages, which keeps the final image smaller since we won't need those files again.",
+    "9": "This tells hadolint to ignore a warning about running as the root user, which is being explicitly set in the next line despite security best practices.",
+    "10": "This explicitly sets the container to run as the root user, overriding any previous USER instruction."
   }
 }

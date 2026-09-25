@@ -1,18 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T13:04:36.663Z",
+  "generated": "2026-09-25T12:18:45.133Z",
   "source": "Dockerfile",
-  "sourceHash": "fac4c3607e3e6859108d9bfce571268e5d230365",
+  "sourceHash": "3277cf8cfa42282a4e45e6fa17ad6fd4e08ed233",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Docker pour une application FastAPI. Il part d'une image Python 3.11 allégée, installe les dépendances FastAPI et uvicorn, copie le code applicatif, expose le port 80, et configure le démarrage automatique du serveur uvicorn.",
+  "summary": "Ce Dockerfile construit une image Docker pour une application FastAPI. Il part d'une image Python légère, installe FastAPI et ses dépendances, copie le code de l'application, expose le port 80, et configure la commande pour démarrer le serveur uvicorn.",
   "explanations": {
-    "2": "FROM python:3.11-slim utilise une version compacte de Python 3.11 plutôt que l'image complète, ce qui réduit la taille finale de l'image Docker.",
-    "5": "WORKDIR /code définit le répertoire courant du conteneur à /code, donc toutes les commandes suivantes s'exécutent depuis cet endroit.",
-    "9": "Le drapeau --no-cache-dir demande à pip de ne pas stocker les fichiers d'installation en cache, ce qui réduit la taille de l'image finale.",
-    "12": "COPY ./main.py /code/main.py prend le fichier main.py depuis ta machine locale et le place dans le conteneur au chemin /code/main.py.",
-    "15": "EXPOSE 80 déclare que le conteneur écoute sur le port 80, mais ce n'est qu'informatif — il faut passer -p au docker run pour vraiment rediriger le trafic.",
-    "18": "CMD lance uvicorn avec main:app (l'application FastAPI dans le module main), en écoutant sur 0.0.0.0 (toutes les interfaces réseau) sur le port 80."
+    "2": "python:3.11-slim est une image de base officielle contenant Python 3.11 avec un système d'exploitation minimal, ce qui rend l'image finale plus petite qu'une image Python standard.",
+    "5": "WORKDIR définit le répertoire courant dans le conteneur où tous les fichiers seront copiés et où les commandes s'exécuteront.",
+    "9": "L'option --no-cache-dir demande à pip de ne pas stocker les fichiers téléchargés en cache, ce qui réduit la taille de l'image finale ; 'fastapi[all]' installe FastAPI avec toutes ses dépendances optionnelles.",
+    "12": "COPY transfère le fichier main.py depuis ta machine locale vers le chemin /code/main.py à l'intérieur du conteneur.",
+    "15": "EXPOSE informe Docker que le conteneur écoute sur le port 80, mais cela ne publie pas automatiquement le port — tu dois le faire lors du lancement du conteneur.",
+    "18": "CMD spécifie la commande par défaut qui s'exécute au démarrage du conteneur : uvicorn lance le serveur avec l'application FastAPI stockée dans la variable 'app' du module main, accessible sur toutes les interfaces réseau (0.0.0.0) au port 80."
   }
 }

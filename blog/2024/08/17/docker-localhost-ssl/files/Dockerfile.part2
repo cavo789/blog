@@ -5,7 +5,7 @@ FROM httpd:2.4
 # highlight-next-line
 RUN apt-get update \
     # highlight-next-line
-    && apt-get install -y apache2-utils libapache2-mod-php openssl \
+    && apt-get install -y --no-install-recommends apache2-utils libapache2-mod-php openssl \
     # highlight-next-line
     && rm -rf /var/lib/apt/lists/*
 # highlight-next-line

@@ -1,23 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:40:37.332Z",
+  "generated": "2026-09-25T12:16:48.489Z",
   "source": "compare.sh",
-  "sourceHash": "6a4c89fede286d349a84a7efc038be299cbdfc09",
+  "sourceHash": "e995f951387b1f1f9c2dee7ecafdecc82938b4c1",
   "lang": "bash",
   "textLang": "fr",
-  "summary": "Ce script compare les fonctions bash définies dans deux dossiers et affiche les différences — quelles fonctions existent dans un fichier mais pas dans l'autre. Il utilise diff pour comparer côte à côte les listes de fonctions extraites de fichiers .sh correspondants dans chaque dossier.",
+  "summary": "Ce script compare deux dossiers contenant des fichiers bash et détecte les fonctions présentes dans un fichier mais pas dans l'autre. Il affiche les différences de manière visuelle avec des légendes explicatives, en utilisant diff pour comparer les listes de fonctions extraites de chaque fichier correspondant.",
   "explanations": {
-    "5": "Le test $# -eq 2 vérifie que exactement 2 arguments ont été passés au script; sinon il affiche l'usage et quitte.",
-    "13": "[[ ! -d \"...\" ]] teste si le chemin n'est pas un répertoire; si c'est le cas, affiche une erreur et quitte immédiatement.",
-    "16": "pushd change le répertoire courant vers sourceFolder tout en sauvegardant le chemin précédent dans la pile; >/dev/null supprime le message d'affichage du changement de répertoire.",
-    "18": "printf avec \\e[...m utilise les codes ANSI pour colorer le texte — ici blanc et gras pour l'en-tête du script.",
-    "35": "La boucle itère sur chaque fichier .sh du répertoire sourceFolder (celui où nous sommes avec pushd).",
-    "36": "Cette condition vérifie que le même nom de fichier existe aussi dans compareWithFolder avant de le traiter.",
-    "37": "Les parenthèses créent une sous-shell, ce qui isole les variables FILE1 et FILE2 pour qu'elles n'affectent pas le reste du script.",
-    "41": "diff --suppress-common-lines affiche uniquement les lignes qui différent; --side-by-side affiche les deux versions côte à côte sur une largeur de 83 caractères.",
-    "42": "grep -P \"^(function\\s+.*)\\(\\)\" extrait les lignes qui définissent une fonction bash; awk '{print $2}' récupère le nom de la fonction; sort trie les noms.",
-    "43": "Les deux <(...) créent des fichiers virtuels contenant les listes de fonctions triées pour que diff puisse les comparer.",
-    "49": "popd restaure le répertoire courant au chemin sauvegardé par pushd plus tôt."
+    "5": "Le test $# -eq 2 vérifie que le script a reçu exactement 2 arguments (les deux dossiers à comparer).",
+    "13": "[[ ! -d \"${sourceFolder}\" ]] teste si le chemin n'est pas un dossier; si c'est le cas, affiche une erreur et quitte le script.",
+    "16": "pushd change le répertoire courant vers sourceFolder et redirige la sortie vers /dev/null pour ne pas l'afficher.",
+    "18": "\\e[37;1m et \\e[0;1m sont des codes ANSI pour colorer et formater le texte affiché (blanc gras, puis réinitialisation).",
+    "35": "Cette boucle itère sur tous les fichiers .sh du dossier courant (sourceFolder, où on s'est placé avec pushd).",
+    "36": "Le test [[ -f \"${compareWithFolder}/${bashScript}\" ]] vérifie que le même fichier existe aussi dans le second dossier avant de le comparer.",
+    "37": "Les parenthèses créent un sous-shell pour isoler les variables locales FILE1 et FILE2.",
+    "42": "<(grep -P ...) utilise la substitution de processus pour transformer la sortie de grep en un flux que diff peut lire; grep -P utilise les expressions régulières Perl pour extraire les lignes commençant par \"function\".",
+    "43": "Le &&  après le diff signifie que le printf suivant ne s'exécute que si diff ne trouve aucune différence (exit code 0)."
   }
 }

@@ -91,3 +91,63 @@ pour recopier `level` dans les 258 fichiers français.
   n'apporte rien au lecteur.
 - Le classifieur tourne **une fois**. Un article réédité ne change pas de niveau : prévoir le
   `--force` mais pas de relance automatique.
+
+## Status — WONT_DO (2026-09-25)
+
+### Rien n'a été implémenté
+
+`scripts/classify-level.mjs` n'a jamais été écrit, aucun `level:` n'a été ajouté au front matter,
+aucun fichier de `i18n/fr/**` n'a été touché. Le TODO est refusé au stade de l'analyse, avant
+toute écriture.
+
+### Pourquoi on ne le fait pas
+
+Décision de l'auteur, sur deux arguments qui portent chacun seuls.
+
+**1. Le lectorat ne parcourt pas le catalogue.** Le bounce rate tourne autour de **90 %** : les
+lecteurs arrivent par une recherche sur un sujet précis, lisent la page qui répond à leur
+question, et repartent. Ils ne naviguent pas d'un article à l'autre. Or tout l'intérêt d'un badge
+de niveau est de **trier avant d'ouvrir** — arbitrer entre plusieurs articles d'un même catalogue.
+Sur un trafic qui n'ouvre qu'une page et ne compare rien, la facette de filtrage ne sert
+quasiment personne, et le badge en en-tête arrive de toute façon trop tard : le lecteur est déjà
+sur la page qu'il cherchait. Même raisonnement que le refus groupé du 2026-09-23 sur les
+fonctionnalités d'engagement lecteur (voir [[feedback_todo_triage]]) : la valeur supposée
+suppose un usage de navigation que le trafic réel ne montre pas.
+
+**2. C'est une charge récurrente, pas un run unique.** Le TODO présente le coût comme « une passe
+GPU » et précise que « le classifieur tourne **une fois** ». C'est vrai du corpus existant, et
+faux du régime permanent : **chaque nouvel article devra porter son badge**. Soit l'auteur le
+choisit à la main à chaque publication, soit il pense à relancer le classifieur et à en relire la
+proposition — dans les deux cas c'est une étape de plus dans le rituel de publication, pour une
+clé de front matter que rien d'autre ne consomme. Un surcoût permanent en échange d'un bénéfice
+que le point 1 rend marginal.
+
+### Ce n'est pas la première fois
+
+`WONT_DO_009-difficulty-rating.md` refusait déjà l'étiquetage de difficulté, dans sa variante
+« l'auteur annonce un niveau, le lecteur vote ». 0136 en était la version sans vote, classée par
+un modèle local. Deux angles différents, même fonctionnalité de fond, deux refus. **Si l'idée
+revient une troisième fois, c'est ce paragraphe qu'il faut lire en premier** : le blocage n'est
+ni technique ni un problème de coût de génération, c'est que le trafic ne s'en sert pas.
+
+### À garder si quelqu'un rouvre quand même
+
+Deux constats vérifiés le 2026-09-24, qui resteraient vrais :
+
+- **L'ajout d'une clé de front matter ne refacture aucune traduction.** `TRANSLATABLE_KEYS` vaut
+  bien `{title, description}` dans `scripts/lib/translate-hash.mjs:15` ; une clé `level:` ne
+  bouge pas le hash de fraîcheur. Et `scripts/lib/translate-validate.mjs:176` émet bien
+  *key was modified (must be copied verbatim)* sur toute clé non exemptée, donc le français ne
+  peut pas porter une autre valeur que l'anglais. Les deux garde-fous que le TODO décrivait
+  existent réellement.
+- **La dépendance `Depends: 0122` était surévaluée.** La difficulté de 0122 est l'appariement des
+  balises MDX dans le *corps* du texte, par ordre d'apparition, avec un cas non tranché quand les
+  comptes divergent. Une clé de front matter est une map plate adressée par nom : ni ordre, ni
+  ambiguïté, ni divergence possible. La propagation de `level:` vers les 258 fichiers français
+  n'aurait réutilisé aucune machinerie de 0122. 0136 n'était pas réellement bloqué par 0122.
+
+Le vrai manque, lui, n'était pas côté données mais côté UI : les trois libellés (EN + FR) n'ont
+jamais été arbitrés, et surtout **il n'existe aucune UI de facette générique** à étendre — les
+listings sont des pages par tag et par série (`Tags/TagArticlesPage.tsx`,
+`Series/SeriesArticlesPage.tsx`). La facette de filtrage était un composant à concevoir, pas un
+branchement, ce que le TODO sous-estimait.

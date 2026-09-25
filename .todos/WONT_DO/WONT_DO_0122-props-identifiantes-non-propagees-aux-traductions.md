@@ -92,3 +92,50 @@ liste de globs ne contient pas `i18n/`. L'étendre au corpus traduit donnerait u
 **gratuit** et immédiat contre la forme la plus grave de ce bug (un `source=` pointant vers un
 fichier disparu), indépendamment de la solution retenue ci-dessus. À faire en premier : c'est
 quelques lignes et ça transforme un bug silencieux en échec de `yarn lint`.
+
+## Status — WONT_DO (2026-09-25)
+
+### Rien n'a été implémenté
+
+`scripts/lib/translate-hash.mjs` est inchangé, aucune passe de synchronisation n'a été écrite,
+`check-snippet-sources.mjs` n'a pas été étendu à `i18n/`.
+
+### Pourquoi on ne le fait pas
+
+Le bug décrit est **réel et correctement analysé** — ce n'est pas une erreur du TODO. Mais il a un
+**déclencheur unique**, et ce déclencheur n'existe pas dans le workflow de l'auteur.
+
+Toute la chaîne de défaillance part d'une modification de l'article **anglais après sa
+traduction** : on renomme `source="./files/Dockerfile"` en `./files/Containerfile`, le hash ne
+bouge pas parce que les props identifiantes en sont retirées, et le français garde l'ancien
+chemin. Sans cette modification post-traduction, il n'y a pas de divergence à rattraper : le
+fichier français a été produit à partir de l'anglais tel qu'il est encore aujourd'hui, et les deux
+portent la même valeur par construction.
+
+Or le workflow réel est : **écrire l'article, le faire traduire, ne plus y toucher.** Le cas
+vérifié le 2026-09-17 sur `blog/2026/09/17/docling/` le montre d'ailleurs à l'endroit :
+les deux fichiers portaient bien la *même* ligne `<Snippet source="./files/Dockerfile" />`. La
+divergence était hypothétique, conditionnée à une réédition qui n'a pas lieu.
+
+C'est une décision de **périmètre d'usage**, pas un désaccord technique : on accepte que le jour
+où un article anglais serait réédité après traduction, cette classe de dérive redeviendrait
+possible et silencieuse.
+
+### Le filet gratuit, si l'idée revient
+
+La section « À ne pas oublier » ci-dessus garde sa valeur **indépendamment** de tout ce qui
+précède, et c'est le premier endroit où regarder en cas de réouverture :
+
+`scripts/check-snippet-sources.mjs` (lancé par `yarn lint`) ne balaie que `blog/**` et
+`.unpublished/**` — sa liste de globs ignore `i18n/`. L'étendre au corpus traduit coûte quelques
+lignes, aucun appel API, et transforme la forme la plus grave du bug (un `source=` pointant vers
+un fichier disparu) en échec de `yarn lint`. Ça ne dépend d'aucune passe de synchronisation et ça
+resterait utile même dans le workflow actuel, comme garde-fou contre une réédition distraite.
+
+### Distinction à ne pas perdre
+
+Ne pas confondre ce TODO avec **0134**. 0122 traite d'une dérive **postérieure** à la traduction
+(l'anglais bouge, le français reste) — c'est bien ce que le workflow élimine. 0134 traite d'une
+infidélité **contemporaine** de la traduction (une négation inversée par le modèle au moment même
+de traduire), qui est figée dès la première passe et qu'aucun workflow d'édition ne peut éviter.
+Les deux se ressemblent de loin et n'ont pas du tout le même déclencheur. 0134 reste ouvert.

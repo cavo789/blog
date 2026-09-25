@@ -1,22 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:37:01.919Z",
+  "generated": "2026-09-25T12:13:19.679Z",
   "source": "Dockerfile.part2",
-  "sourceHash": "9d7a63655083597ef447cc7a8ba61209039749ef",
+  "sourceHash": "88a12e98d723e24b24330fe32446af3436f86adf",
   "lang": "part2",
-  "summary": "This Dockerfile creates a Docker image based on Ubuntu that installs Firefox from Mozilla's official APT repository. It sets up the necessary repository keys and configurations, then installs Firefox as the default command to run when the container starts.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Ubuntu container with Firefox installed from Mozilla's official APT repository. It sets up the necessary keys and repository configuration to get Firefox directly from Mozilla, then installs it cleanly with caching optimizations to keep the image size down.",
   "explanations": {
-    "1": "This comment tells spell-checkers to ignore this file, since Docker syntax might contain words they don't recognize.",
-    "5": "This environment variable tells the system to run in non-interactive mode, so it won't prompt for user input during installation.",
-    "7": "The double ampersand (&&) chains commands together — if one fails, the rest won't run — and the backslash at the end continues the command on the next line for readability.",
-    "9": "This removes the cached package lists after installation to make the Docker image smaller, since we won't need them again.",
-    "12": "The --mount directives create temporary storage areas during this build step: the first two cache package data so reinstalls are faster, and the third redirects logs to RAM so they don't bloat the image.",
-    "16": "The 'install -d' command creates directories if they don't exist; '-m 0755' sets permissions; this prepares the system to accept the Mozilla repository key.",
-    "18": "This downloads Mozilla's signing key and pipes it to gpg, which decodes it (dearmor) and saves it to a file that APT will use to verify Firefox packages are legitimate.",
-    "21": "This echo command creates the actual repository configuration line and pipes it to 'tee', which writes it to a file while also suppressing output.",
-    "24": "This sets APT to prefer Firefox packages from Mozilla's repository (priority 1000 is very high) rather than from Ubuntu's default repositories.",
-    "26": "The '-qq' flag makes apt-get extra quiet (only show errors), and '> /dev/null' discards any output, keeping the build logs clean.",
-    "30": "This sets Firefox as the default command — when someone runs this Docker image, it will automatically launch Firefox."
+    "5": "This tells the system not to prompt for user input during package installation, which is necessary in containers where there's no interactive terminal.",
+    "12": "These special mount directives tell Docker to cache package lists and temporary files across builds, so if you rebuild the image, it doesn't re-download everything—it reuses what it cached before.",
+    "16": "The install command creates the directory structure needed to store APT keys and configuration. The -d flag means 'create directories', -m 0755 sets permissions, and > /dev/null hides the output.",
+    "18": "This downloads Mozilla's GPT signing key from their server so the system can verify that Firefox packages actually came from Mozilla and haven't been tampered with.",
+    "19": "The gpg --dearmor command converts the key from a text format into a binary format that APT understands, then saves it to a file.",
+    "21": "This creates a new APT source that tells the system 'Firefox packages come from this Mozilla URL, and trust them because they're signed with this specific key'.",
+    "24": "This tells APT to prefer Firefox packages from Mozilla's repository over any other source, giving them highest priority (1000).",
+    "27": "The -qq flag makes apt-get extra quiet (only errors shown), and --no-install-recommends skips optional extra packages to keep the image smaller."
   }
 }

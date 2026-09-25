@@ -1,18 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:35:12.751Z",
+  "generated": "2026-09-25T12:15:58.419Z",
   "source": "Dockerfile",
-  "sourceHash": "85865284beb47596cc64645ec526cd81ce56cff1",
+  "sourceHash": "7a666aa500f45819ded25cee556e6a20f5a55d81",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Ubuntu avec un shell Zsh configuré et amélioré. Il installe les dépendances nécessaires, puis ajoute Oh-My-Zsh avec le plugin zsh-autosuggestions pour améliorer l'expérience de ligne de commande. Finalement, il pré-remplit l'historique shell avec des commandes Docker courantes et personnalise le prompt pour indiquer clairement qu'on est dans un conteneur.",
+  "summary": "Ce Dockerfile crée une image Ubuntu avec zsh et Oh-My-Zsh pré-configuré pour une expérience shell interactive enrichie. On installe les dépendances nécessaires, on clone le plugin zsh-autosuggestions, on pré-remplit l'historique avec des commandes courantes, et on personnalise le prompt pour rappeler qu'on est dans un conteneur.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive évite que apt-get pose des questions interactives durant l'installation, ce qui sinon bloquerait la construction de l'image.",
-    "11": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache d'apt après l'installation pour réduire la taille de l'image Docker.",
-    "14": "Le script d'installation Oh-My-Zsh est téléchargé et exécuté directement via curl ; les arguments --unattended et --keep-zshrc assurent une installation sans interaction et préservent la configuration existante.",
-    "20": "sed -i remplace la ligne de la configuration des plugins dans .zshrc pour ajouter zsh-autosuggestions à côté du plugin git existant.",
-    "24": "printf '%s\\n' écrit plusieurs lignes formatées ; chaque ligne préfixée par ':' et un timestamp est reconnue comme une entrée d'historique Zsh.",
-    "31": "echo ajoute une variable PROMPT personnalisée au fichier .zshrc ; %B rend le texte gras, %F{color} change la couleur, et 🐳 affiche une emoji de baleine."
+    "3": "DEBIAN_FRONTEND=noninteractive supprime les dialogues interactifs pendant l'installation des paquets, ce qui est nécessaire car on n'a pas de terminal humain pour répondre.",
+    "6": "--no-install-recommends réduit la taille de l'image en installant uniquement les paquets demandés, sans leurs dépendances optionnelles.",
+    "11": "rm -rf /var/lib/apt/lists/* nettoie le cache du gestionnaire de paquets pour réduire la taille de la couche Docker.",
+    "14": "sh -c exécute le script d'installation d'Oh-My-Zsh en le lisant depuis une URL, les guillemets vides et --unattended évitent les invites interactives.",
+    "18": "--depth=1 clone seulement le dernier commit du dépôt au lieu de tout l'historique, ce qui accélère le téléchargement.",
+    "20": "sed -i modifie le fichier .zshrc sur place pour ajouter zsh-autosuggestions à la liste des plugins activés.",
+    "24": "printf '%s\\n' écrit plusieurs lignes directement dans le fichier d'historique zsh en format pré-formaté.",
+    "25": "Les lignes 25-27 sont des entrées d'historique zsh au format interne : timestamp, durée, et la commande tapée.",
+    "31": "PROMPT définit le format du prompt shell avec des codes couleur et des symboles — %B gras, %F{couleur} couleur, %n nom utilisateur, %~ répertoire courant.",
+    "33": "CMD définit la commande par défaut : /bin/zsh avec -i pour mode interactif et -l pour profil de connexion."
   }
 }

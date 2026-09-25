@@ -11,7 +11,7 @@ ARG CHROME_VERSION=115.0.5763.0
 FROM php:8.2-fpm
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y git jq zip unzip wget gnupg \
+RUN apt-get update && apt-get install -y --no-install-recommends git jq zip unzip wget gnupg \
     && apt-get clean \
     && rm -rf /tmp/* /var/lib/apt/lists/*
 

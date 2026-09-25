@@ -1,19 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:00:43.509Z",
+  "generated": "2026-09-25T12:14:18.344Z",
   "source": "Dockerfile",
-  "sourceHash": "059f3b95da68d5fb14476e8dfa9cbc1e89f2532a",
+  "sourceHash": "1f9573ce0850e548f7e8688232c12e8269879bf4",
   "lang": "docker",
-  "summary": "This Dockerfile creates a container based on Ubuntu that runs an SSH server, allowing you to connect to it remotely. It installs SSH, creates a test user named christophe with a password, configures SSH settings to allow password-based login, and starts the SSH daemon when the container runs.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Docker image based on Ubuntu that runs an SSH server. It installs OpenSSH, creates a test user account with a password, configures SSH settings to allow password-based login while blocking root access, and then starts the SSH server when the container runs.",
   "explanations": {
-    "5": "The backslash at the end of this line tells Docker to continue this command on the next line, so all these apt commands run as one logical operation rather than three separate layers.",
-    "7": "This removes the package manager's cache files to shrink the image size, since we don't need them after installation is complete.",
-    "8": "This deletes the package lists that apt downloaded, further reducing the image size since these files aren't needed once packages are installed.",
-    "12": "The `-rm` flag removes the user's login shell entry after creation (a security thing), `-d` sets their home directory, and `-s` sets their default shell to bash.",
-    "13": "This pipes the username and password through the `chpasswd` command, which is a safe way to set passwords in scripts without exposing them in the command history.",
-    "16": "The `sed` command finds lines starting with '#PermitRootLogin' and replaces them to disable root login; the `^` means 'start of line' and the `.*` means 'anything after that'.",
-    "23": "This tells Docker that the container will listen on port 22 (the standard SSH port), though it doesn't actually open it—you need to map it when running the container.",
-    "25": "The `-D` flag runs sshd in the foreground (not as a background daemon), which is important for Docker containers so the process stays active and the container keeps running."
+    "5": "The backslash at the end of the line allows the RUN command to continue on the next line, keeping related commands grouped together logically.",
+    "7": "apt-get clean removes package cache files to reduce the image size, since once packages are installed, the cached downloads aren't needed anymore.",
+    "8": "This removes the apt package lists to further shrink the image; since packages are already installed, these lists would just waste disk space.",
+    "12": "useradd creates a new user account; the flags set the home directory to /home/christophe and the shell to /bin/bash so the user can log in and use the terminal.",
+    "13": "This pipes the username and password through chpasswd, which is a tool designed specifically to set passwords for user accounts in a script.",
+    "16": "sed is a text editor that finds and replaces patterns in files; here it's disabling root login by uncommenting and setting PermitRootLogin to 'no' in the SSH config file.",
+    "23": "EXPOSE tells Docker which port this container listens on, though it doesn't actually open the port—that happens when you run the container with the right flags.",
+    "25": "CMD specifies what command runs when the container starts; the -D flag tells sshd to run in the foreground so Docker can see it running and keep the container alive."
   }
 }

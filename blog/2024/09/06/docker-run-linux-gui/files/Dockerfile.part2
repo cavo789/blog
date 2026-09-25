@@ -24,7 +24,7 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
     echo "Package: *\nPin: origin packages.mozilla.org\nPin-Priority: 1000\n\n" | tee /etc/apt/preferences.d/mozilla > /dev/null && \
     # Update your package list and install the Firefox .deb package
     apt-get update -qq > /dev/null && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -qq firefox > /dev/null && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -qq --no-install-recommends firefox > /dev/null && \
     rm -rf /var/lib/apt/lists/*
 
 CMD [ "firefox" ]

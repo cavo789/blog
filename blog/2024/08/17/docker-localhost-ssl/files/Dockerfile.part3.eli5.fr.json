@@ -1,14 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:41:50.423Z",
+  "generated": "2026-09-25T12:16:57.630Z",
   "source": "Dockerfile.part3",
-  "sourceHash": "d901179a3693660bcb846cbd4f0aed0eec6114d7",
+  "sourceHash": "2dd0f9d11b3929b072748d9c977bfd7eadbc3621",
   "lang": "part3",
   "textLang": "fr",
-  "summary": "Ce Dockerfile construit une image nginx en installant openssl pour le support SSL, puis copie les certificats SSL et le fichier de configuration nginx dans l'image. Le nettoyage des caches apt réduit la taille finale de l'image.",
+  "summary": "Ce Dockerfile construit une image nginx en installant openssl pour la gestion SSL, puis copie les certificats SSL et le fichier de configuration nginx dans l'image. Le nettoyage du cache apt à la fin réduit la taille de l'image finale.",
   "explanations": {
-    "3": "apt-get update rafraîchit la liste des paquets disponibles ; les backslashes permettent de continuer la commande sur plusieurs lignes pour la lisibilité.",
-    "5": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache téléchargés, ce qui diminue significativement la taille de l'image Docker."
+    "3": "apt-get update rafraîchit la liste des paquets disponibles; le backslash permet de continuer la commande sur la ligne suivante pour la lisibilité.",
+    "4": "L'option --no-install-recommends installe openssl sans ses dépendances optionnelles, ce qui économise de l'espace disque.",
+    "5": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache du gestionnaire de paquets pour réduire la taille de l'image Docker.",
+    "7": "COPY copie le certificat SSL du répertoire ssl local vers l'emplacement /etc/nginx/ssl/ à l'intérieur du conteneur.",
+    "8": "COPY copie la clé privée SSL du répertoire ssl local vers le répertoire ssl du conteneur nginx."
   }
 }

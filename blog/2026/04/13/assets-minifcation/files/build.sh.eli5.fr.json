@@ -1,23 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T14:06:22.512Z",
+  "generated": "2026-09-25T12:18:27.944Z",
   "source": "build.sh",
-  "sourceHash": "32cfbc622ee8bc9fcdeb6fcc6777d5b35da8b571",
+  "sourceHash": "607f1953034607873117dbd2670ad80ad67f9203",
   "lang": "bash",
   "textLang": "fr",
-  "summary": "Ce script construit et minifie des bundles de ressources (CSS, JavaScript, etc.) en lisant une configuration YAML, en concaténant les fichiers d'entrée, puis en les minifiant via Docker. Il valide chaque étape et signale les erreurs pour échouer le processus de build si quelque chose se passe mal.",
+  "summary": "Ce script bash automatise un processus de construction qui lit une configuration YAML décrivant des bundles de fichiers, concatène les fichiers d'entrée de chaque bundle, les minifie avec Docker en utilisant l'image tdewolff/minify, et place les résultats minifiés dans un répertoire de sortie. Le script gère les erreurs à chaque étape et signale l'échec du build si quelque chose s'est mal passé.",
   "explanations": {
-    "4": "La commande `command -v yq` vérifie si l'outil yq est disponible dans le PATH ; `&> /dev/null` supprime toute sortie pour ne garder que le code de retour.",
-    "14": "Cette variable suit si une erreur s'est produite pendant le build ; on l'initialise à 0 (succès) et on la changera à 1 si quelque chose échoue.",
-    "20": "Le flag `-r` dit à yq de retourner du texte brut sans guillemets ; `.bundles | length` compte le nombre de bundles dans le fichier YAML.",
-    "22": "Cette boucle itère sur chaque bundle en utilisant son index numérique.",
-    "33": "De la même façon, on compte le nombre de fichiers d'entrée à combiner pour ce bundle.",
-    "35": "On récupère le chemin de chaque fichier d'entrée ; le flag `-r` garantit qu'on n'obtient pas de guillemets littéraux autour du chemin.",
-    "38": "On vérifie que le fichier existe réellement sur le disque avant de l'utiliser.",
-    "49": "On crée tous les répertoires parent nécessaires pour le fichier de sortie ; `dirname` extrait le chemin du répertoire.",
-    "51": "Docker monte le répertoire courant à `/src` pour que le conteneur accède aux fichiers ; on exécute l'outil de minification dessus.",
-    "58": "Si la minification échoue, on met le flag `build_failed` à 1 pour indiquer que le build entier doit échouer.",
-    "66": "A la fin, on vérifie si `build_failed` vaut 1 ; si oui, le script se termine avec un code d'erreur pour signaler l'échec au système."
+    "4": "La commande command -v vérifie si yq existe dans le PATH système, et &> /dev/null supprime à la fois la sortie standard et les erreurs pour voir discrètement si la commande est trouvée.",
+    "9": "Ces variables stockent le chemin du fichier de configuration YAML et le nom de l'image Docker à utiliser pour la minification.",
+    "14": "La variable build_failed agit comme un drapeau pour suivre si une erreur s'est produite pendant le processus de build, permettant un rapport d'erreur final.",
+    "20": "yq -r '.bundles | length' extrait le nombre de bundles du fichier YAML en tant que valeur brute (sans guillemets), permettant l'utilisation de ce nombre dans une boucle.",
+    "24": "Le drapeau -r indique à yq de renvoyer la valeur en tant que chaîne brute sans guillemets littéraux, afin que le nom du bundle soit utilisable directement comme variable.",
+    "31": "rm -f supprime silencieusement le fichier temporaire s'il existe déjà, évitant les erreurs si le fichier est présent depuis une exécution précédente.",
+    "49": "mkdir -p \"$(dirname \"$OUTPUT\")\" crée tous les répertoires parents manquants pour le chemin de sortie, garantissant que le fichier minifié peut être écrit sans erreur.",
+    "51": "docker run --rm lance un conteneur Docker qui sera automatiquement supprimé après son exécution, avec -v montant le répertoire courant à /src pour permettre au conteneur d'accéder aux fichiers.",
+    "66": "La condition vérifie si build_failed a été défini à 1, indiquant qu'au moins une erreur s'est produite, et sort le script avec un code d'erreur."
   }
 }

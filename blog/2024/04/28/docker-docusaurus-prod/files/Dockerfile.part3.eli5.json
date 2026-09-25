@@ -1,18 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:30:19.101Z",
+  "generated": "2026-09-25T10:11:36.211Z",
   "source": "Dockerfile.part3",
-  "sourceHash": "1186518687a366ae24fffd5399790270ca8dae0a",
+  "sourceHash": "5b1d5d7fee5e0d2594bf84a4087afcec4af986b9",
   "lang": "part3",
-  "summary": "This Docker stage sets up a production build of Docusaurus, a documentation site generator. It installs Docusaurus from scratch, copies in the project's dependencies and source code, then builds the final static website files.",
+  "textLang": "en",
+  "summary": "This Docker stage sets up a Docusaurus documentation site from scratch. It installs Docusaurus, copies the project files, installs dependencies, and builds the final static HTML output that will be served.",
   "explanations": {
-    "1": "This starts a new Docker build stage called 'building_production' that builds on top of a 'base' image defined elsewhere.",
-    "4": "This runs the Docusaurus setup wizard non-interactively to create a new Docusaurus project in the /opt/docusaurus folder with the classic template and JavaScript (not TypeScript).",
-    "7": "After installing Docusaurus, this changes the owner of all files in the directory to the 'node' user so that the non-root node user can work with those files later.",
-    "13": "This copies the package.json and yarn.lock files from your local machine into the Docker container before installing dependencies, so Docker can cache the dependency installation if these files haven't changed.",
-    "16": "The --immutable flag tells yarn to fail if it would change the lock file, ensuring everyone gets exactly the same dependency versions.",
-    "19": "This copies all your actual documentation source code (markdown files, custom components, config, etc.) into the container.",
-    "22": "This runs the build command, which compiles all the markdown and React components into static HTML/CSS/JavaScript files ready to be served."
+    "1": "This starts a new Docker build stage named 'building_production' based on the 'base' image defined earlier in the Dockerfile.",
+    "4": "The backslash at the end of line 4 allows the RUN command to continue on the next line, making long commands more readable.",
+    "7": "After Docusaurus is installed, we change ownership of the files from root (the default) to the 'node' user so the node user can work with them safely.",
+    "13": "We copy just the package.json and yarn.lock files first (before copying all source code) because Docker caches layers—if source code hasn't changed, we can skip reinstalling dependencies.",
+    "16": "The '--immutable' flag tells yarn to use exact versions from yarn.lock, preventing different versions from being installed on different builds."
   }
 }

@@ -1,17 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:36:18.358Z",
+  "generated": "2026-09-25T10:12:09.272Z",
   "source": "Dockerfile.part3",
-  "sourceHash": "1186518687a366ae24fffd5399790270ca8dae0a",
+  "sourceHash": "5b1d5d7fee5e0d2594bf84a4087afcec4af986b9",
   "lang": "part3",
   "textLang": "fr",
-  "summary": "Ce stage Docker installe Docusaurus, configure les permissions et dépendances, puis construit le site statique. Il crée une image de production en téléchargeant la dernière version de Docusaurus, en copiant les fichiers du projet et en exécutant le build pour générer les fichiers finaux.",
+  "summary": "Cette étape Docker construit une application Docusaurus en production. Elle installe d'abord Docusaurus avec create-docusaurus, puis copie les fichiers de configuration du projet (package.json et yarn.lock), installe les dépendances, copie le code source complet, et enfin lance la construction pour générer les fichiers statiques.",
   "explanations": {
-    "1": "FROM base AS building_production crée un nouveau stage nommé building_production qui hérite de l'image de base précédente, permettant un build multi-stage où seuls les artefacts nécessaires seront copiés plus tard.",
-    "4": "create-docusaurus@latest crée une nouvelle application Docusaurus avec le template classic en JavaScript dans le répertoire /opt/docusaurus/.",
-    "7": "chown -R node:node change récursivement le propriétaire de tous les fichiers dans /opt/docusaurus/ à l'utilisateur et groupe node, ce qui est généralement nécessaire pour que les processus s'exécutant en tant que node puissent y accéder.",
-    "13": "COPY package.json yarn.lock . copie ces deux fichiers de gestion de dépendances du contexte de build vers le répertoire courant du conteneur (/opt/docusaurus), avant de copier le reste du code pour que Docker puisse mettre en cache cette couche indépendamment.",
-    "16": "Le flag --immutable force yarn à respecter exactement les versions verrouillées dans yarn.lock, garantissant que chaque build installe les mêmes dépendances et évitant les surprises dues à des mises à jour inattendues."
+    "1": "base est une image Docker définie ailleurs (probablement une image Node.js de base) ; on la nomme 'building_production' pour pouvoir la réutiliser comme source dans une autre étape.",
+    "4": "npx permet d'exécuter des packages npm sans les installer globalement ; create-docusaurus@latest génère un nouveau projet Docusaurus dans /opt/docusaurus/ avec le template 'classic' et JavaScript comme langage.",
+    "7": "chown -R node:node change récursivement le propriétaire et le groupe de tous les fichiers dans /opt/docusaurus/ pour que l'utilisateur 'node' en soit responsable (c'est une bonne pratique de sécurité).",
+    "13": "COPY copie les fichiers package.json et yarn.lock depuis la machine hôte vers le répertoire courant de l'image (qui sera /opt/docusaurus après la directive WORKDIR).",
+    "16": "yarn install --immutable installe les dépendances exactes listées dans yarn.lock sans les mettre à jour, garantissant que chaque build produit le même résultat.",
+    "19": "Cette commande COPY copie tout le code source du projet (.) vers /opt/docusaurus/, y compris les fichiers de contenu et de configuration."
   }
 }

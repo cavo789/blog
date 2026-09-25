@@ -1,25 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:37:20.228Z",
+  "generated": "2026-09-25T12:16:29.748Z",
   "source": "Dockerfile.part2",
-  "sourceHash": "2dea0743a0003d95ccca82646659dfc328645933",
+  "sourceHash": "ea74f8a6fe912b486b68c59d4723e68a42305841",
   "lang": "part2",
   "textLang": "fr",
-  "summary": "Ce Dockerfile construit une image Docker basée sur PHP 8.2 pour exécuter des tests Behat avec Chrome. Il configure un utilisateur non-root avec les mêmes identifiants que la machine hôte, installe Chrome et son driver, puis ajoute Composer et prépare le répertoire de travail.",
+  "summary": "Ce Dockerfile construit une image Docker basée sur PHP 8.2-FPM pour exécuter des tests avec Behat et Chrome. Il crée un utilisateur non-root avec des identifiants spécifiques, installe les dépendances système, télécharge et configure Chrome (navigateur et driver) depuis Google, ajoute Composer, puis prépare le répertoire de travail.",
   "explanations": {
-    "4": "ARG définit une variable de build que Docker peut utiliser lors de la construction de l'image ; DOCKER_UID=1000 est la valeur par défaut si elle n'est pas fournie lors du build.",
-    "12": "FROM spécifie l'image de base sur laquelle construire : php:8.2-fpm fournit PHP 8.2 avec FastCGI Process Manager préinstallé.",
-    "15": "Cette commande RUN met à jour les listes de paquets apt, puis installe plusieurs outils système en une seule couche Docker (plus efficace qu'exécuter plusieurs RUN).",
-    "16": "apt-get clean supprime les fichiers cache d'apt pour réduire la taille de l'image finale.",
-    "20": "Ces ARG répètent les variables déclarées plus haut pour les rendre disponibles dans cette étape du build (chaque section peut avoir besoin de sa propre déclaration ARG).",
-    "24": "groupadd crée un groupe système avec l'identifiant GID spécifié, ce qui permet au conteneur d'avoir les mêmes permissions de groupe que sur l'hôte.",
-    "25": "useradd crée un utilisateur non-root avec --create-home pour créer automatiquement son répertoire personnel et les mêmes uid/gid que la machine hôte.",
-    "30": "Cette variable stocke l'URL d'une API Google qui contient la liste des versions disponibles de Chrome et leurs URLs de téléchargement.",
-    "33": "wget télécharge la clé GPG publique de Google et apt-key add - l'ajoute pour pouvoir vérifier les signatures des paquets Chrome.",
-    "46": "curl récupère le fichier JSON, puis jq parse et filtre pour extraire l'URL de téléchargement du Chrome browser spécifique à linux64 et à la version demandée.",
-    "50": "unzip -j extrait les fichiers sans créer de sous-dossier (le -j signifie « jettez les noms de chemin »), directement dans /usr/local/bin/chrome.",
-    "55": "Même opération que la ligne 46, mais cette fois-ci pour extraire l'URL du chromedriver au lieu du navigateur lui-même.",
-    "66": "COPY --from copie le binaire composer depuis l'image composer:latest sans inclure toute cette image dans l'image finale (on ne copie que ce qu'on utilise)."
+    "4": "ARG définit une variable de build que tu peux passer au moment de construire l'image avec docker build --build-arg DOCKER_UID=1000. Ici on fixe par défaut l'ID utilisateur à 1000.",
+    "15": "apt-get install -y accepte automatiquement les confirmations, et --no-install-recommends installe seulement les paquets demandés sans leurs dépendances optionnelles pour réduire la taille de l'image.",
+    "20": "On redéclare ARG après un FROM car les variables de build définies avant un FROM ne sont pas disponibles après.",
+    "24": "groupadd crée un groupe système, et --gid ${DOCKER_GID} définit son ID numérique en utilisant la valeur passée à la variable ARG.",
+    "25": "useradd --home-dir crée le répertoire home de l'utilisateur, --create-home le crée s'il n'existe pas, et --skel /dev/null évite de copier les fichiers de squelette par défaut.",
+    "33": "wget récupère la clé publique de signature Google et la pipe (|) vers apt-key add pour que apt fasse confiance aux paquets Google Chrome signés avec cette clé.",
+    "46": "curl $DOWNLOAD_URL récupère un fichier JSON, et jq -r le parse pour extraire l'URL de téléchargement du Chrome correspondant à la version et la plateforme (linux64) spécifiées.",
+    "50": "unzip -j extrait les fichiers sans créer de sous-dossier portant le nom de l'archive, donc tous les fichiers vont directement dans /usr/local/bin/chrome.",
+    "66": "COPY --from=composer:latest copie un fichier depuis une image Docker complètement différente (l'image composer) dans l'image en cours de construction, pratique pour récupérer des binaires sans installer tout le reste."
   }
 }

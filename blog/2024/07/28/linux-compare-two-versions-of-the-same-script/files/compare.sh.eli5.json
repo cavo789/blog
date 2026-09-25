@@ -1,20 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:34:53.758Z",
+  "generated": "2026-09-25T12:13:02.201Z",
   "source": "compare.sh",
-  "sourceHash": "6a4c89fede286d349a84a7efc038be299cbdfc09",
+  "sourceHash": "e995f951387b1f1f9c2dee7ecafdecc82938b4c1",
   "lang": "bash",
-  "summary": "This script compares two folders containing bash scripts and shows which functions exist in one folder's scripts but not in the other. It extracts function names from .sh files using pattern matching, sorts them, and displays the differences side-by-side with a color-coded format so developers can quickly spot missing or extra functions between corresponding files in the two folders.",
+  "textLang": "en",
+  "summary": "This script compares two folders containing bash scripts and shows which functions exist in one folder but not the other. It validates that exactly two folder arguments are provided, confirms both folders exist, then loops through shell scripts in the first folder to extract and compare function names side-by-side.",
   "explanations": {
-    "5": "$# is the count of command-line arguments passed to the script; this checks that exactly 2 arguments were provided (the two folders to compare).",
-    "13": "The [[ ]] syntax tests conditions; ! -d checks if the path is NOT a directory, and && chains commands so the echo and exit only run if the directory doesn't exist.",
-    "16": "pushd changes into the sourceFolder and >/dev/null hides the directory stack output that would normally print to the console.",
-    "18": "The \\e[ sequences are ANSI escape codes that set text color and style (37;1m is bright white); %s is a placeholder for the string that follows.",
-    "35": "This loop iterates over every .sh file in the current directory (sourceFolder, since we pushd'd into it earlier).",
-    "37": "The parentheses create a subshell, which is a separate environment so variable assignments inside don't affect the parent shell.",
-    "41": "Process substitution with <() lets diff compare two streams as if they were files; the streams contain function names extracted from each script.",
-    "42": "grep -P uses Perl regex to find lines starting with 'function' followed by a name and (); awk '{print $2}' extracts the second field (the function name); sort orders them alphabetically.",
-    "43": "The && after the diff command means the 'identical' message only prints if diff finds no differences (exit code 0)."
+    "5": "The $# variable holds the number of arguments passed to the script, so this checks that exactly 2 arguments were provided.",
+    "13": "The [[ ! -d ... ]] syntax tests whether something is NOT a directory; the && chains commands so the error only prints if the test fails.",
+    "16": "pushd changes into the source folder and saves the current location on a stack; the >/dev/null silences its normal output, and || exit 1 exits if the change fails.",
+    "18": "The \\e[37;1m and \\e[0;1m sequences are ANSI color codes that make the text bright white; printf is used instead of echo for better formatting control.",
+    "35": "This loops through every .sh file in the current directory (which is the sourceFolder due to the pushd earlier).",
+    "41": "The < syntax here is process substitution—it treats the output of the grep/awk pipeline as if it were a file, allowing diff to compare two command outputs directly.",
+    "42": "The grep extracts lines that start with 'function' followed by a space and parentheses; awk then pulls out just the function name (the second field); sort arranges them alphabetically.",
+    "43": "This runs the same extraction on the second folder's file, so diff can compare the sorted function names from both files side-by-side."
   }
 }

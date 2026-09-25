@@ -3,7 +3,7 @@
 FROM alpine:latest
 
 # Install git and ssh so we can use our SSH credentials
-RUN apk update && apk add git openssh-client
+RUN apk add --no-cache git openssh-client
 
 WORKDIR /root
 

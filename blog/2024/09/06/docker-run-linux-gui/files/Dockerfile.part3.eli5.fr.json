@@ -1,16 +1,17 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:42:49.795Z",
+  "generated": "2026-09-25T12:17:12.135Z",
   "source": "Dockerfile.part3",
-  "sourceHash": "6130918e3a6b539f6086ca9ed5c6c44b5bc873f2",
+  "sourceHash": "883b5be67f537a5c685ca688ea8c9fde23d0b100",
   "lang": "part3",
   "textLang": "fr",
-  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu et y installe Google Chrome. Il configure l'environnement pour éviter les dialogues interactifs durant l'installation, puis télécharge et installe Chrome avant de nettoyer les caches. Enfin, il définit Chrome comme commande par défaut avec des drapeaux de désactivation pour la mémoire partagée et l'accélération GPU.",
+  "summary": "Ce Dockerfile construit une image Docker basée sur Ubuntu et installe Google Chrome avec des options de désactivation pour les ressources système partagées. La variable DEBIAN_FRONTEND évite les invites interactives lors de l'installation, et la commande par défaut lance Chrome avec des drapeaux de configuration spécifiques.",
   "explanations": {
-    "3": "DEBIAN_FRONTEND=noninteractive empêche apt-get de poser des questions interactives durant l'installation, ce qui est nécessaire dans un conteneur automatisé.",
-    "5": "apt-get update récupère les listes des paquets disponibles depuis les dépôts Ubuntu; le backslash à la fin permet de continuer la commande sur la ligne suivante.",
-    "9": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache d'apt après l'installation pour réduire la taille de l'image Docker.",
-    "11": "CMD définit la commande par défaut exécutée au démarrage du conteneur; les drapeaux --disable-dev-shm-usage et --disable-gpu sont souvent nécessaires pour Chrome en environnement conteneurisé pour éviter des problèmes de mémoire et de rendu."
+    "3": "DEBIAN_FRONTEND=noninteractive dit à apt-get de ne pas poser de questions pendant l'installation — tout se fait automatiquement sans intervention utilisateur.",
+    "5": "La barre oblique inversée à la fin d'une ligne permet de continuer la commande sur la ligne suivante ; cela rend le Dockerfile plus lisible.",
+    "6": "apt-get install -y dit oui automatiquement à toutes les demandes de confirmation, et --no-install-recommends installe uniquement les paquets strictement nécessaires sans les extras.",
+    "9": "rm -rf /var/lib/apt/lists/* supprime le cache des listes de paquets APT pour réduire la taille finale de l'image Docker.",
+    "11": "CMD définit la commande par défaut qui s'exécutera quand le conteneur démarre ; --disable-dev-shm-usage et --disable-gpu sont des drapeaux qui désactivent certaines fonctionnalités de Chrome gourmandes en ressources."
   }
 }

@@ -53,11 +53,39 @@ const EQUIVALENTS = new Map([
   ["questions:status", { fn: "questions", args: (a) => ["status", ...a] }],
   ["questions:triage", { fn: "questions", args: (a) => ["triage", ...a] }],
   ["questions:edit", { fn: "faq" }],
-  ["eli5:bulk", { fn: "eli5", args: dropOption("--dir") }],
+  // `eli5` with no target prints its help (TODO 0131) — a corpus-wide run must be spelled
+  // `eli5 --all`. Without this, `cmd("eli5:bulk", "--force")` would advertise `eli5 --force`,
+  // which now refuses instead of running.
+  [
+    "eli5:bulk",
+    {
+      fn: "eli5",
+      args: (a) => {
+        const mapped = dropOption("--dir")(a);
+        return mapped.some((arg) => !arg.startsWith("--"))
+          ? mapped
+          : ["--all", ...mapped];
+      },
+    },
+  ],
   ["translate", { fn: "translate" }],
+  // `terms` forwards every flag untouched, so the equivalence is exact for any invocation.
+  ["translate:terms", { fn: "terms" }],
   // `links` with no argument is --stats; with one, it is --post. Anything else stays yarn.
   ["links:audit", { fn: "links", args: (a) => (a.length === 0 ? [] : null) }],
   ["links:check", { fn: "links", args: dropOption("--post") }],
+  // `snippets` with no argument is a full incremental run; with a path it is --only, and
+  // `stats` is the coverage table. Anything else has no faithful function form.
+  ["snippets:lint", { fn: "snippets", args: (a) => (a.length === 0 ? [] : null) }],
+  [
+    "snippets:stats",
+    { fn: "snippets", args: (a) => (a.length === 0 ? ["stats"] : null) },
+  ],
+  // `snippets judge` is `--judge-only`; any other judge invocation has no function form.
+  [
+    "snippets:judge",
+    { fn: "snippets", args: (a) => (a.length === 0 ? ["judge"] : ["judge", ...a]) },
+  ],
   ["build", { fn: "build" }],
   ["format", { fn: "format" }],
 ]);

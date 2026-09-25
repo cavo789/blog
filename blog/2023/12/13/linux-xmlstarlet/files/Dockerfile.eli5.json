@@ -1,18 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:22:58.758Z",
+  "generated": "2026-09-25T12:12:04.532Z",
   "source": "Dockerfile",
-  "sourceHash": "22332d6752fe0a49fb5a963212528de312865585",
+  "sourceHash": "42900c2f18562d248d818559f8536fc27e223317",
   "lang": "docker",
-  "summary": "This Dockerfile builds a Ubuntu container with the xmlstarlet tool installed for XML processing. It creates a demo directory with a sample XML file of book data, customizes the shell prompt to show a whale emoji and username, then starts an interactive bash shell when the container runs.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a Ubuntu container with xmlstarlet (a tool for parsing XML) pre-installed, sets up a demo directory containing sample XML data, customizes the shell prompt to show a whale emoji, and starts an interactive bash shell when the container runs.",
   "explanations": {
-    "3": "This tells Ubuntu's package manager to skip interactive prompts during installation, so the build doesn't hang waiting for user input.",
-    "5": "The && chains commands together so they all run as one step—this keeps the Docker layer count down and makes the build more efficient.",
-    "8": "After installing packages, we delete the package manager cache to shrink the final image size, since we won't need to install anything else.",
-    "11": "mkdir -p creates the /root/demo directory; the -p flag means 'create parent directories if needed and don't error if it already exists'.",
-    "12": "printf '%s' outputs the XML string exactly as-is without adding a newline at the end, then > redirects it into the data.xml file.",
-    "18": "This appends a fancy bash prompt configuration to the user's .bashrc file so every new shell session shows a whale emoji and the current username.",
-    "20": "The -i flag runs bash in interactive mode, which means you can type commands when you enter the container instead of it just exiting."
+    "3": "This tells the installer not to prompt for user input during installation, which is necessary in Docker since there's no human to answer questions.",
+    "6": "The --no-install-recommends flag tells the package manager to skip optional packages that aren't strictly required, keeping the container smaller.",
+    "8": "After installing packages, we delete the cached package lists to reduce the image size since we won't need to install anything else later.",
+    "12": "The printf command writes the XML content directly to a file; using printf instead of echo ensures we don't accidentally add a newline at the end.",
+    "18": "This customizes the bash prompt so when you connect to the container, you see a whale emoji and other helpful information instead of the default prompt.",
+    "20": "The -i flag tells bash to run in interactive mode, meaning it will accept commands you type in rather than just running a script and exiting."
   }
 }

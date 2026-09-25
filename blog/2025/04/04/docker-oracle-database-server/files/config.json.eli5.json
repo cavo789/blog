@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:46:32.757Z",
+  "generated": "2026-09-25T10:11:22.015Z",
   "source": "config.json",
-  "sourceHash": "94e9394b17f0a8461e821b36e91412f478b5824c",
+  "sourceHash": "e1896533abf7a737f89c061a7f8bab184d18fb9f",
   "lang": "json",
-  "summary": "This is a Docker configuration file (typically in ~/.docker/config.json) that lists two container registries where Docker can authenticate. The empty objects mean these registries are configured but don't have credentials stored inline in this file—the actual auth tokens are stored elsewhere for security.",
+  "textLang": "en",
+  "summary": "This is a Docker authentication configuration file that specifies two container registries where Docker can pull images from. It lists Oracle's container registry and Docker Hub, with empty credential objects that would normally contain authentication tokens or credentials.",
   "explanations": {
-    "3": "Oracle's container registry is being registered as an authentication endpoint that Docker knows about.",
-    "4": "Docker Hub's official registry is being registered; the full URL format is used to explicitly identify the default Docker registry."
+    "3": "This is Oracle's official container registry. The empty curly braces would normally contain login credentials like a username and password token.",
+    "4": "This is Docker Hub, the default public registry where most Docker images live. Like the Oracle registry above, it has empty braces waiting for authentication credentials."
   }
 }

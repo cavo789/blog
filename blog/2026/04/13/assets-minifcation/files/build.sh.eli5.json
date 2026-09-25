@@ -1,23 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:04:51.587Z",
+  "generated": "2026-09-25T12:14:35.408Z",
   "source": "build.sh",
-  "sourceHash": "32cfbc622ee8bc9fcdeb6fcc6777d5b35da8b571",
+  "sourceHash": "607f1953034607873117dbd2670ad80ad67f9203",
   "lang": "bash",
-  "summary": "This script automates a build process that bundles and minifies web assets (CSS, JavaScript, etc.) defined in a YAML configuration file. It reads bundle definitions from manifest.yaml, concatenates input files for each bundle, minifies them using a Docker container, and writes the results to output files while tracking whether any errors occurred.",
+  "textLang": "en",
+  "summary": "This script reads a YAML configuration file describing bundles of assets (like CSS or JavaScript files), concatenates the input files for each bundle, minifies them using a Docker container, and saves the output. If any step fails, the script exits with an error status. The script uses the yq tool to parse the YAML configuration and tracks whether any errors occurred during the build process.",
   "explanations": {
-    "4": "The `command -v yq` checks if the yq program exists and is accessible; the `&> /dev/null` redirects both standard output and errors to nowhere (silencing any output), so we only care about the exit code.",
-    "9": "This sets a variable to the filename where bundle definitions are stored—similar to how you'd store config data.",
-    "14": "This flag variable starts at 0 and will be set to 1 if any bundle fails, so we can report the final status at the end.",
-    "20": "The `-r` flag tells yq to return raw output (plain text) instead of JSON-formatted output with quotes; `| length` counts how many bundles exist in the config file.",
-    "22": "This is a C-style for loop; it runs from i=0 up to (but not including) bundle_count, incrementing i by 1 each iteration.",
-    "24": "We're extracting the name of the bundle at index i from the YAML file; the `-r` flag ensures we get plain text without surrounding quotes.",
-    "30": "We create a temporary filename that includes the file type (like css or js) so we know what kind of file we're building.",
-    "38": "The `-f` test checks if the file exists and is a regular file (not a directory); if true, we append its contents to our temporary bundle file.",
-    "49": "This ensures the directory path for the output file exists before we try to write to it; `dirname` extracts just the folder part of a file path.",
-    "51": "We run a Docker container with the current directory mounted as `/src` inside the container, passing our temp file to the minifier tool inside that container.",
-    "58": "When minification fails, we set the flag to 1 but continue processing other bundles instead of stopping immediately.",
-    "66": "We check if the flag is still 1, meaning at least one bundle failed; if so, we print an error message to standard error (that's what `>&2` does) and exit with code 1."
+    "4": "The command -v yq checks if yq is installed, and &> /dev/null silently discards any output. The ! negates the result, so this line runs the error block if yq is NOT found.",
+    "20": "yq -r means 'extract and return raw output without quotes' — the -r flag is important because without it, string values would be wrapped in literal quote characters that would break your code.",
+    "30": "A temporary file is created with the bundle type (like .css or .js) as the extension so we know what kind of file we're dealing with.",
+    "31": "rm -f removes the temp file if it exists from a previous run; -f means 'force' so it won't complain if the file doesn't exist.",
+    "38": "The double brackets [[ ]] are bash's modern conditional syntax, and -f tests whether the path is a regular file (not a directory or missing).",
+    "49": "dirname extracts just the directory part of a path (for example, from 'dist/assets/bundle.css' it returns 'dist/assets'), so we create the directory structure if it doesn't exist yet.",
+    "51": "docker run --rm means run a container and delete it when done; -v mounts the current directory into the container so the minify tool can access your files.",
+    "57": ">&2 redirects the error message to stderr (the error stream) instead of stdout, which is the standard way to output errors in scripts.",
+    "66": "This checks if the build_failed variable is 1, and if so, exits with status 1 to signal to the operating system that something went wrong."
   }
 }

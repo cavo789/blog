@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:28:14.532Z",
+  "generated": "2026-09-25T12:12:07.842Z",
   "source": "Dockerfile",
-  "sourceHash": "06f03eb45635b584bf3a7b2b1d9641f55edf342b",
+  "sourceHash": "716d7a05df035e770de6a680ba2c82e13bdb1603",
   "lang": "docker",
-  "summary": "This Dockerfile creates a lightweight container image based on Alpine Linux and installs the curl command-line tool. Alpine is a minimal Linux distribution, so this results in a small, efficient image suitable for simple applications that need basic network capabilities.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a minimal Docker image based on Alpine Linux 3.14 and installs the curl command-line tool for making HTTP requests. Alpine is chosen because it's very small, and the --no-cache flag keeps the image size down by not storing package manager metadata.",
   "explanations": {
-    "1": "This starts with Alpine Linux version 3.14 as the base image — the foundation that everything else runs on top of.",
-    "3": "This updates the package manager's list of available software and then installs curl, which is a tool for downloading files and making web requests from the command line."
+    "1": "FROM sets the base image we're building on top of — think of it like inheriting from a parent class, but for the entire operating system.",
+    "3": "The --no-cache flag tells the package manager to skip saving its cache after installing, which saves disk space in the final image."
   }
 }

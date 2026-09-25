@@ -1,20 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:36:11.835Z",
+  "generated": "2026-09-25T10:12:03.877Z",
   "source": "Dockerfile",
-  "sourceHash": "877cdf7d5ded63ec22441610a901f00be71d48d0",
+  "sourceHash": "6a8c428ec7e3a8c4148b94433a2059ced9637c2b",
   "lang": "docker",
   "textLang": "fr",
-  "summary": "Ce Dockerfile construit une application Docusaurus en trois étapes : d'abord une image de base Node.js avec yarn configuré, puis une étape intermédiaire qui installe Docusaurus, ses dépendances, et génère le site statique, enfin une image nginx légère qui sert les fichiers générés. Cette approche réduit la taille de l'image finale en ne gardant que ce qui est nécessaire pour servir le site.",
+  "summary": "Ce Dockerfile construit une application Docusaurus en trois étapes : d'abord une image de base Node.js avec yarn activé, ensuite une étape de compilation qui installe Docusaurus, ses dépendances et génère le site statique, finalement une étape de production qui copie uniquement les fichiers compilés dans nginx pour les servir.",
   "explanations": {
-    "1": "Cette directive indique au moteur Docker d'utiliser la syntaxe Dockerfile moderne avec support des fonctionnalités avancées.",
-    "10": "Cette variable d'environnement désactive la coloration des messages yarn pour que les logs conteneurisés soient plus lisibles.",
-    "13": "Corepack est un gestionnaire de version pour yarn, npm et pnpm ; cette commande l'active pour utiliser la version de yarn spécifiée dans le projet.",
-    "22": "npx crée une nouvelle application Docusaurus avec le template classic en JavaScript dans le répertoire /opt/docusaurus/.",
-    "25": "chown modifie le propriétaire du répertoire pour que l'utilisateur node (moins privilégié) puisse y accéder, au lieu que ce soit root.",
-    "31": "COPY copie package.json et yarn.lock du contexte de build (ta machine) vers l'image, avant de copier le reste du code.",
-    "34": "Le flag --immutable gèle les versions exactes des dépendances, garantissant que chaque build installe exactement les mêmes versions.",
-    "49": "COPY --from=building_production récupère le répertoire build/ de l'étape précédente et le place là où nginx le servira."
+    "1": "Cette ligne spécifie la syntaxe Docker à utiliser ; elle demande une version récente du parseur Dockerfile pour activer les fonctionnalités modernes.",
+    "7": "FROM base récupère l'image de base définie précédemment ; AS base lui donne un nom pour pouvoir la réutiliser dans les étapes suivantes.",
+    "10": "FORCE_COLOR=0 désactive les codes couleur dans la sortie yarn pour que les logs soient plus lisibles dans les outils d'agrégation.",
+    "13": "corepack enable active le gestionnaire de packages intégré à Node (yarn, pnpm, npm) pour utiliser les versions spécifiées dans le projet.",
+    "19": "FROM base AS building_production crée une nouvelle étape basée sur l'image base précédente et la nomme building_production pour la référencer plus tard.",
+    "22": "npx create-docusaurus@latest crée une nouvelle application Docusaurus pré-configurée ; le @latest récupère la dernière version disponible.",
+    "25": "chown -R node:node change le propriétaire des fichiers au user node pour des raisons de sécurité au lieu de les laisser en root.",
+    "31": "COPY package.json yarn.lock ./ copie ces fichiers de dépendances avant le reste du code pour bénéficier du cache Docker (les dépendances ne changent pas aussi souvent que le code).",
+    "34": "RUN yarn install --immutable installe exactement les versions verrouillées dans yarn.lock pour garantir la reproductibilité des builds.",
+    "37": "COPY . /opt/docusaurus/ copie maintenant tous les fichiers du projet localement dans le conteneur.",
+    "40": "RUN yarn build compile Docusaurus et génère les fichiers HTML statiques finaux dans le dossier build.",
+    "46": "FROM nginx:stable-alpine3.19-perl crée une étape finale complètement nouvelle basée sur nginx (pas sur les étapes précédentes) pour réduire la taille finale.",
+    "49": "COPY --from=building_production copie uniquement les fichiers compilés (build/) depuis l'étape building_production vers nginx, laissant tous les outils de build derrière."
   }
 }

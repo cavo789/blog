@@ -15,6 +15,38 @@ import yaml from "js-yaml";
 import { BANNED_FRENCH, CONSISTENCY_PAIRS } from "./translate-contract.mjs";
 
 const FRONT_MATTER_RE = /^---\r?\n([\s\S]*?)\r?\n---/;
+
+// The default banned-word matcher is a PREFIX test (`\bword`, no trailing boundary) on purpose:
+// it is what makes "conteneur" catch "conteneurs" without listing every plural. Two entries
+// cannot live with that, because their prefix is also a conjugated form of an unrelated verb —
+// hence this override map, which replaces the matcher for those terms only.
+//
+// "jetons" is both the plural of "token" (banned) and *jeter* in the first person plural
+// ("jetons un œil au fichier", "nous jetons"), which is ordinary French prose. The noun is what
+// we are after, and the noun always carries a determiner or a count in front of it; the verb
+// never does. "jeton" gets a trailing boundary so it stops matching "jetons" itself.
+const BANNED_OVERRIDES = new Map([
+  ["jeton", /\bjeton\b/i],
+  [
+    "jetons",
+    /(?:\b(?:les|des|ces|ses|vos|nos|leurs|mes|tes|quelques|plusieurs|certains|aux|en|de)\s+|\bd'|\d\s*)jetons\b/i,
+  ],
+]);
+
+/**
+ * Whether `haystack` (lowercased prose) uses a banned French over-translation.
+ *
+ * Exported because two callers must agree by construction: check 7 below, and the cross-article
+ * audit in `scripts/translate-terminology.mjs`. Re-deriving the rule in the second one produced
+ * exactly the false positive the override map above was written to kill.
+ */
+export function hasBannedWord(haystack, word) {
+  const override = BANNED_OVERRIDES.get(word);
+  if (override) return override.test(haystack);
+  return new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i").test(
+    haystack,
+  );
+}
 // `title` and `description` are translated; `language` is rewritten (en -> fr). All three are
 // exempt from the byte-for-byte front matter comparison — see translate-contract.mjs rule 4.
 const TRANSLATABLE_KEYS = new Set(["title", "description", "language"]);
@@ -222,36 +254,14 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
     );
   }
 
-  // 7. Banned over-translations, in prose only.
-  //
-  // The default matcher is a PREFIX test (`\bword`, no trailing boundary) on purpose: it is what
-  // makes "conteneur" catch "conteneurs" without listing every plural. Two entries cannot live
-  // with that, because their prefix is also a conjugated form of an unrelated verb — hence the
-  // override map below, which replaces the matcher for those terms only.
+  // 7. Banned over-translations, in prose only. The matcher lives at module scope so the
+  // cross-article audit (scripts/translate-terminology.mjs) can apply the exact same rule —
+  // a second, naive copy reports "Jetons un œil" as a banned "jetons", which is the kind of
+  // false positive this override map exists to prevent.
   const prose = stripCode(translation).toLowerCase();
 
-  // "jetons" is both the plural of "token" (banned) and *jeter* in the first person plural
-  // ("jetons un œil au fichier", "nous jetons"), which is ordinary French prose. The noun is
-  // what we are after, and the noun always carries a determiner or a count in front of it;
-  // the verb never does. "jeton" gets a trailing boundary so it stops matching "jetons" itself.
-  const BANNED_OVERRIDES = new Map([
-    ["jeton", /\bjeton\b/i],
-    [
-      "jetons",
-      /(?:\b(?:les|des|ces|ses|vos|nos|leurs|mes|tes|quelques|plusieurs|certains|aux|en|de)\s+|\bd'|\d\s*)jetons\b/i,
-    ],
-  ]);
-
-  const hasWord = (haystack, word) => {
-    const override = BANNED_OVERRIDES.get(word);
-    if (override) return override.test(haystack);
-    return new RegExp(`\\b${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i").test(
-      haystack,
-    );
-  };
-
   for (const word of BANNED_FRENCH) {
-    if (hasWord(prose, word)) problems.push(`banned over-translation: "${word}"`);
+    if (hasBannedWord(prose, word)) problems.push(`banned over-translation: "${word}"`);
   }
 
   // 8. Terminology consistency: neither word of a pair is wrong on its own, but using both in
@@ -259,7 +269,7 @@ export function validateTranslation(source, translation, { sourceTitles } = {}) 
   // banned-word list structurally cannot do — found by the first real run, where "folding" and
   // "pliage" sat ten lines apart.
   for (const [english, french] of CONSISTENCY_PAIRS) {
-    if (hasWord(prose, english) && hasWord(prose, french)) {
+    if (hasBannedWord(prose, english) && hasBannedWord(prose, french)) {
       problems.push(`terminology inconsistency: both "${english}" and "${french}" used`);
     }
   }

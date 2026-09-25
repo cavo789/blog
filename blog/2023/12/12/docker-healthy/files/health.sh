@@ -19,7 +19,6 @@ docker container list --all --format "{{.Names}}" | while read -r name; do
 
     if [[ "$healthcheckStatus" == "healthy" ]]; then
         COLOR=${GREEN}
-        healthcheckStatus="${healthcheckStatus}"
     elif [[ ! "$healthcheckStatus" == "null" ]]; then
         COLOR=${RED}
     fi

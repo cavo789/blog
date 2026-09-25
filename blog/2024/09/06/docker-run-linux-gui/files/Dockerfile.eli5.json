@@ -1,13 +1,14 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:36:55.982Z",
+  "generated": "2026-09-25T12:13:14.676Z",
   "source": "Dockerfile",
-  "sourceHash": "b6c33ab4f33cb2750b4e8967d15d86127b95b7a5",
+  "sourceHash": "4b1cbfcecf9010a938532ac1e02ac36420f8af0b",
   "lang": "docker",
-  "summary": "This Dockerfile creates a Docker image based on Ubuntu that installs X11 graphical applications and runs the 'xeyes' program by default. It's setting up a minimal environment to run a GUI application inside a container.",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a container based on Ubuntu that installs X11 graphical applications, then cleans up the package manager cache to keep the image small. When you run this container, it launches the xeyes program, which is a simple graphical tool that displays a pair of eyes following your mouse cursor.",
   "explanations": {
-    "3": "The '&&' chains two commands together so they run in sequence — first we update the package manager's list of available software, then we install x11-apps (which includes graphical display tools). The '-y' flag automatically answers 'yes' to any prompts.",
-    "5": "CMD sets the default command that runs when the container starts up — in this case, it will launch 'xeyes', a simple program that displays eyes that follow your mouse cursor."
+    "3": "The && operator chains commands together so they run one after another, and apt-get install -y automatically answers 'yes' to prompts. The --no-install-recommends flag tells it to skip extra packages that aren't strictly necessary.",
+    "4": "After installing packages, we delete the apt cache directory (/var/lib/apt/lists) because those files aren't needed in the running container and just waste disk space in the final image."
   }
 }

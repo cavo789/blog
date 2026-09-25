@@ -1,21 +1,20 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T18:35:00.135Z",
+  "generated": "2026-09-25T12:12:55.954Z",
   "source": "compare.part2.sh",
-  "sourceHash": "bac6fc207d37d89011020e43c18996759faaeeae",
+  "sourceHash": "8ada66066b6555437b0c7129c771fd6aa0f3c739",
   "lang": "bash",
-  "summary": "This script compares two folders containing bash scripts and finds functions that exist in one folder but not the other. It extracts function names from .sh files in the first folder, compares them side-by-side with the same files in the second folder, and displays the differences in a formatted way with a legend explaining what each type of difference means.",
+  "textLang": "en",
+  "summary": "This script compares two folders containing bash scripts and displays which functions exist in one folder's scripts but not in the other. It validates that both folders exist, then loops through each .sh file in the first folder, extracting function names from both versions and showing the differences in a formatted, easy-to-read side-by-side comparison.",
   "explanations": {
-    "5": "The -eq operator checks if the number of arguments equals 2; the ! negates it, so this line exits if you didn't provide exactly two arguments.",
-    "13": "This checks if the sourceFolder doesn't exist as a directory (! -d means 'not a directory'), and if so, prints an error and exits. The && chains commands so they only run if the previous one succeeds.",
-    "16": "pushd changes into the sourceFolder and >/dev/null silently discards the directory stack output that would normally print.",
-    "18": "printf with escape codes like \\e[37;1m sets text color and formatting (white, bold); \\e[0;1m resets it. This prints a formatted heading.",
-    "35": "This loops through every .sh file in the current directory (which is sourceFolder after pushd).",
-    "36": "This checks if the same bash script filename exists in compareWithFolder before trying to compare them.",
-    "37": "The parentheses create a subshell, which isolates variable assignments so they don't leak into the main script.",
-    "41": "diff compares two inputs side-by-side with a width of 83 characters; --suppress-common-lines hides matching lines.",
-    "42": "The <(...) syntax is process substitution — it runs the grep command and feeds its output to diff as if it were a file. grep finds lines starting with 'function', awk extracts just the function name (second field), and sort alphabetizes them.",
-    "43": "This pipes the diff output through grep to filter out lines ending with '<' (functions only in the first file), keeping only the differences you want to see."
+    "5": "The $# variable holds the count of arguments passed to the script; this checks that exactly 2 arguments were provided (the two folders to compare).",
+    "13": "The [[ ! -d ... ]] syntax checks if the folder does NOT exist; if it doesn't, the script prints an error and exits. The && chains commands to run only if the previous one succeeds.",
+    "16": "pushd changes the current directory to the source folder and silently discards the usual output (>/dev/null); if the directory change fails, the script exits.",
+    "18": "The \\e[ sequences are ANSI color codes that style the terminal text; this prints the header text in bold white.",
+    "35": "This loop iterates through every file matching the *.sh pattern in the current directory (which is sourceFolder due to the earlier pushd).",
+    "41": "The <(...) syntax is process substitution, which treats the output of a command as if it were a file; here it's extracting function names from both files and comparing them with diff.",
+    "42": "grep -P uses Perl regex to find lines starting with 'function' followed by a name and (), then awk extracts just the function name (the second field), and sort orders them.",
+    "43": "This diff command shows lines that differ between the two files; the grep -E -v \"<$\" at the end filters out functions that only exist in the first file (to show only mismatches)."
   }
 }

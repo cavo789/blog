@@ -1,20 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T12:42:46.432Z",
+  "generated": "2026-09-25T12:17:07.949Z",
   "source": "Dockerfile.part2",
-  "sourceHash": "9d7a63655083597ef447cc7a8ba61209039749ef",
+  "sourceHash": "88a12e98d723e24b24330fe32446af3436f86adf",
   "lang": "part2",
   "textLang": "fr",
-  "summary": "Ce Dockerfile construit une image Docker basée sur Ubuntu qui installe Firefox depuis le dépôt officiel de Mozilla. Il configure d'abord l'environnement de base avec les outils nécessaires, puis ajoute le dépôt Mozilla, configure les préférences APT pour prioritiser les paquets Mozilla, et installe Firefox en tant que commande par défaut du conteneur.",
+  "summary": "Ce Dockerfile crée une image Docker basée sur Ubuntu qui installe Firefox à partir du dépôt officiel Mozilla. Il configure les clés GPG et les sources APT pour accéder au dépôt Mozilla, puis installe Firefox en utilisant des montages en cache pour optimiser les performances de construction.",
   "explanations": {
-    "1": "La directive cspell:disable désactive le vérificateur d'orthographe pour ce fichier, probablement parce qu'il contient des URLs ou des termes techniques que l'outil ne reconnaîtrait pas.",
-    "5": "DEBIAN_FRONTEND=noninteractive configure Debian pour fonctionner sans interaction utilisateur, ce qui est essentiel dans Docker pour éviter que les commandes d'installation se bloquent en attendant une saisie.",
-    "7": "Les trois commandes apt-get sont chaînées avec && pour exécuter en séquence, et le nettoyage final des listes de paquets réduit la taille de l'image en supprimant les fichiers temporaires.",
-    "12": "RUN --mount=type=cache utilise des montages en cache Docker pour accélérer les builds successifs en conservant le cache APT entre exécutions.",
-    "14": "Le montage tmpfs crée un répertoire temporaire en mémoire pour les logs, ce qui évite d'écrire sur le disque et réduit la taille finale de l'image.",
-    "18": "curl -fsSL télécharge silencieusement (-s) la clé de signature Mozilla, et le tuyau vers gpg --dearmor la convertit du format texte ASCII au format binaire attendu par APT.",
-    "21": "dpkg --print-architecture détecte automatiquement l'architecture du système (amd64, arm64, etc.) pour configurer le bon dépôt.",
-    "24": "Pin-Priority: 1000 assigne une très haute priorité aux paquets Firefox du dépôt Mozilla, assurant qu'APT les choisit plutôt que d'autres sources."
+    "1": "Cette directive désactive la vérification orthographique pour ce fichier, ce qui évite que l'outil de lint signale des mots non reconnus.",
+    "5": "DEBIAN_FRONTEND=noninteractive configure le système pour fonctionner en mode non-interactif, évitant les invites utilisateur pendant l'installation.",
+    "7": "Les trois commandes sont enchaînées avec && pour s'exécuter en séquence : mettre à jour les listes de paquets, installer des outils essentiels, puis nettoyer les fichiers temporaires pour réduire la taille de l'image.",
+    "12": "RUN --mount crée des montages temporaires : deux caches pour accélérer apt-get, et un tmpfs pour les logs, réutilisables entre les constructions Docker.",
+    "16": "install -d crée des répertoires système avec des permissions spécifiques (0755) s'ils n'existent pas.",
+    "18": "curl récupère la clé de signature GPG depuis le serveur Mozilla, le pipe la transmet à gpg.",
+    "19": "gpg --dearmor convertit la clé GPG du format texte armored en format binaire, puis la sauvegarde pour que APT puisse vérifier les signatures des paquets.",
+    "21": "Le deb [...] déclare le dépôt APT avec architecture adaptée et clé de signature, permettant à apt-get de télécharger les paquets de Mozilla.",
+    "24": "Cette configuration APT (preferences) force les paquets du dépôt Mozilla à avoir la priorité maximale (1000) pour être installés en priorité.",
+    "27": "DEBIAN_FRONTEND=noninteractive est défini à nouveau ici pour garantir qu'aucune invite n'apparaît durant l'installation de Firefox."
   }
 }

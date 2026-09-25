@@ -3,7 +3,7 @@ FROM ubuntu:latest
 # Install the SSH server so we can use the `ssh` command to connect to the container
 # Also create the required `/var/run/sshd` directory
 RUN apt-get update \
-    && apt-get install -y openssh-server \
+    && apt-get install -y --no-install-recommends openssh-server \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && mkdir -p /var/run/sshd

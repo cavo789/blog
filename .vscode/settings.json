@@ -21,6 +21,7 @@
     ".docusaurus-dev/**": true,
     ".docusaurus-verify/**": true,
     ".docusaurus/**": true,
+    ".eli5-local/**": true,
     ".translation-rejected/**": true,
     "**/node_modules/**": true,
     "build-verify/**": true,

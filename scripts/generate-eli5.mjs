@@ -6,7 +6,8 @@
  *   node scripts/generate-eli5.mjs <source-file> [--force] [--output <path>] [--locale <code>]
  *   node scripts/generate-eli5.mjs --locale fr --articles <article-path>... [--dry-run]
  *
- * Reads ANTHROPIC_API_KEY from process.env or a .env file at the project root.
+ * Reads ANTHROPIC_API_KEY from process.env or a .env file at the project root — unless
+ * --backend ollama is passed, which calls the local model instead and needs no key.
  * Writes <source-file>.eli5.json alongside the source file (or to --output path).
  *
  * With --locale (TODO 0121), the output language changes but THE INPUT DOES NOT: an ELI5
@@ -28,6 +29,14 @@ import { fileURLToPath } from "url";
 import { createRequire } from "module";
 import { hashSource } from "./lib/eli5-hash.mjs";
 import { cmd } from "./lib/cheatsheet-hint.mjs";
+import {
+  DEFAULT_BACKEND,
+  ELI5_BACKENDS,
+  callEli5Backend,
+  modelFor,
+  printCostNotice,
+  resolveBackend,
+} from "./lib/eli5-backend.mjs";
 import {
   ELI5_COST_PER_FILE,
   articleKeyOf,
@@ -157,7 +166,13 @@ function sidecarPath(absSource, locale) {
 
 async function generateEli5(
   sourceFile,
-  { force = false, outputPath = null, locale = "en" } = {},
+  {
+    force = false,
+    outputPath = null,
+    locale = "en",
+    backend = DEFAULT_BACKEND,
+    quoteCost = true,
+  } = {},
 ) {
   if (!LANGUAGES[locale]) {
     throw new Error(
@@ -182,7 +197,7 @@ async function generateEli5(
   const destPath = outputPath || sidecarPath(absSource, locale);
 
   if (!force && fs.existsSync(destPath)) {
-    console.log(`⏭  Skipped (already exists): ${path.basename(destPath)}`);
+    console.log(`⏭  Skipped (already exists): ${path.relative(projectRoot, destPath)}`);
     console.log(`   Use --force to regenerate.`);
     return { skipped: true };
   }
@@ -194,43 +209,28 @@ async function generateEli5(
   // Number the lines for the prompt
   const numberedCode = lines.map((line, i) => `${i + 1}: ${line}`).join("\n");
 
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    throw new Error(
-      "ANTHROPIC_API_KEY is not set. Add it to your .env file or export it before running this script.",
-    );
-  }
-
-  const { default: Anthropic } = await import("@anthropic-ai/sdk");
-  const client = new Anthropic({ apiKey });
-
   const maxTokens = lines.length > 50 ? 2048 : 1024;
+  const model = modelFor(backend);
+
+  // `quoteCost`: the batch modes below announce the whole run's price once, before the first
+  // call — repeating "1 file × $0.01" on every iteration would bury it.
+  if (quoteCost) printCostNotice(backend, 1);
 
   console.log(
-    `🤖 Calling Claude for ${path.basename(absSource)} (${lines.length} lines, lang: ${lang}` +
+    `🤖 Calling ${model} for ${path.basename(absSource)} (${lines.length} lines, lang: ${lang}` +
       `${locale === "en" ? "" : `, text: ${locale}`})...`,
   );
 
-  let raw;
-  try {
-    const message = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: maxTokens,
-      system: systemPromptFor(locale),
-      messages: [
-        {
-          role: "user",
-          content: `Language: ${lang}\n\n${numberedCode}`,
-        },
-      ],
-    });
-    raw = message.content[0].text.trim();
-  } catch (err) {
-    throw new Error(`Claude API error: ${err.message}`, { cause: err });
-  }
+  const raw = await callEli5Backend({
+    backend,
+    systemPrompt: systemPromptFor(locale),
+    userContent: `Language: ${lang}\n\n${numberedCode}`,
+    maxTokens,
+  });
 
-  // Parse JSON — strip markdown fences if Claude wrapped it anyway, then repair the one
-  // malformation the model produces on its own (see repairLoneBackslashes).
+  // Parse JSON — strip markdown fences if the model wrapped it anyway, then repair the one
+  // malformation it produces on its own (see repairLoneBackslashes). Both backends go through
+  // this: a grammar-constrained local answer is not trusted any more than a paid one.
   const candidates = [raw];
   const fenced = raw.match(/\{[\s\S]*\}/);
   if (fenced) candidates.push(fenced[0]);
@@ -247,7 +247,7 @@ async function generateEli5(
   }
 
   if (!parsed) {
-    throw new Error(`Could not parse Claude's response as JSON:\n${raw}`);
+    throw new Error(`Could not parse the ${model} response as JSON:\n${raw}`);
   }
 
   const summary =
@@ -272,7 +272,9 @@ async function generateEli5(
 
   const result = {
     version: 1,
-    model: "claude-haiku-4-5-20251001",
+    // The model that actually wrote this file — not a constant. Reading a sidecar is how you
+    // tell an Haiku annotation from one produced locally while iterating on the prompt.
+    model,
     generated: new Date().toISOString(),
     source: path.basename(absSource),
     sourceHash: hashSource(code),
@@ -286,7 +288,7 @@ async function generateEli5(
 
   fs.writeFileSync(destPath, JSON.stringify(result, null, 2) + "\n");
   console.log(
-    `✅ Written: ${destPath}\n   ${Object.keys(cleaned).length} annotations on ${lines.length} lines, summary: ${summary ? "yes" : "no"}.`,
+    `✅ Written: ${path.relative(projectRoot, destPath)}\n   ${Object.keys(cleaned).length} annotations on ${lines.length} lines, summary: ${summary ? "yes" : "no"}.`,
   );
 
   return { skipped: false, destPath, count: Object.keys(cleaned).length };
@@ -307,6 +309,7 @@ async function runArticleBatch({
   dryRun,
   porcelain,
   assumeTranslated,
+  backend = DEFAULT_BACKEND,
 }) {
   if (articlePaths.length === 0) {
     throw new Error("--articles needs at least one article path.");
@@ -352,6 +355,9 @@ async function runArticleBatch({
     return;
   }
 
+  // Announced once, for the whole run, before the first call — not per file.
+  printCostNotice(backend, eligible.length);
+
   let ok = 0;
   let failed = 0;
   for (const [index, source] of eligible.entries()) {
@@ -362,7 +368,7 @@ async function runArticleBatch({
     try {
       // force: the eligibility module already decided; a stale localized sidecar must be
       // overwritten, and generateEli5's own "file exists" guard would otherwise skip it.
-      await generateEli5(source, { locale, force: true });
+      await generateEli5(source, { locale, force: true, backend, quoteCost: false });
       ok++;
     } catch (err) {
       // Soft-fail, like the plugin's own ELI5 handling: a missing annotation degrades to the
@@ -397,6 +403,8 @@ Usage: node scripts/generate-eli5.mjs <source-file> [options]
 
 Options:
   --force          Regenerate even if the sidecar already exists
+  --backend <name> Who writes the annotation: claude (default, paid, ~$0.01 per
+                   file) or ollama (local, free, no API key) — known: ${ELI5_BACKENDS.join(", ")}
   --locale <code>  Write the explanations in that language, to
                    <source-file>.eli5.<code>.json (known: ${Object.keys(LANGUAGES).join(", ")})
   --articles       Treat the positional arguments as ARTICLES, and generate every
@@ -417,13 +425,22 @@ Examples:
   node scripts/generate-eli5.mjs --locale fr --articles blog/2026/09/17/docling --dry-run
 
 Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project root
-(except for --dry-run, which never calls the API).
+(except for --dry-run and --backend ollama, which never call the API).
 `);
     process.exit(0);
   }
 
   const force = args.includes("--force");
   const dryRun = args.includes("--dry-run");
+
+  let backend;
+  try {
+    backend = resolveBackend(args);
+  } catch (err) {
+    console.error(`Error: ${err.message}`);
+    process.exit(1);
+  }
+
   const porcelain = args.includes("--porcelain");
   const outputIdx = args.indexOf("--output");
   const outputPath = outputIdx !== -1 ? args[outputIdx + 1] : null;
@@ -437,9 +454,12 @@ Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project 
     process.exit(1);
   }
 
-  // Values consumed by a preceding flag are not positional arguments.
+  // Values consumed by a preceding flag are not positional arguments. Miss one here and
+  // `eli5 <file> --backend ollama` runs against a source file named "ollama".
   const valueIndexes = new Set(
-    [outputIdx, localeIdx].filter((i) => i !== -1).map((i) => i + 1),
+    [outputIdx, localeIdx, args.indexOf("--backend")]
+      .filter((i) => i !== -1)
+      .map((i) => i + 1),
   );
   const positionals = args.filter((a, i) => !a.startsWith("--") && !valueIndexes.has(i));
 
@@ -456,6 +476,7 @@ Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project 
       dryRun,
       porcelain,
       assumeTranslated: args.includes("--assume-translated"),
+      backend,
     }).catch((err) => {
       console.error("❌ Error:", err.message);
       process.exit(1);
@@ -469,7 +490,7 @@ Requires ANTHROPIC_API_KEY in your environment or in a .env file at the project 
       process.exit(1);
     }
 
-    generateEli5(sourceFile, { force, outputPath, locale }).catch((err) => {
+    generateEli5(sourceFile, { force, outputPath, locale, backend }).catch((err) => {
       console.error("❌ Error:", err.message);
       process.exit(1);
     });
