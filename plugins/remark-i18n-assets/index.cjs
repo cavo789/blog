@@ -27,12 +27,20 @@
  * `beforeDefaultRemarkPlugins`, all three consumers above see an already-corrected path and none
  * needs to know that translations exist. One place, no duplicated bytes, no symlink to maintain.
  *
+ * # Locale-specific asset overrides
+ *
+ * When a `./`-relative file actually exists next to the translated article (e.g.
+ * `i18n/fr/.../images/faq-hub.png`), the rewrite is skipped and the path is left as-is. This
+ * lets individual screenshots or diagrams be locale-specific without duplicating the whole
+ * `images/` tree: only the files that differ per locale need a copy under `i18n/`.
+ *
  * English articles are left completely untouched — the plugin returns immediately for any file
  * that is not under an `i18n/<locale>/docusaurus-plugin-content-blog/` tree.
  *
  * See TODO 0119.
  */
 
+const fs = require("fs");
 const path = require("path");
 const { visit } = require("unist-util-visit");
 
@@ -69,10 +77,18 @@ function englishSourceDir(currentFileDir, projectRoot) {
   return path.join(projectRoot, root, rest ?? "");
 }
 
-/** Turns `./images/x.webp` into a relative path reaching the English article's folder. */
+/**
+ * Turns `./images/x.webp` into a relative path reaching the English article's folder,
+ * unless a locale-specific override exists next to the translated article — in which case
+ * the path is left unchanged and the locale file is used as-is.
+ */
 function rewrite(value, currentFileDir, englishDir) {
   if (typeof value !== "string") return value;
   if (!value.startsWith("./") && !value.startsWith("../")) return value;
+
+  // Locale-specific override: if the file actually exists next to the translated article,
+  // keep the path as-is so this locale's copy is used instead of the English one.
+  if (fs.existsSync(path.resolve(currentFileDir, value))) return value;
 
   const target = path.resolve(englishDir, value);
   const relative = path.relative(currentFileDir, target);

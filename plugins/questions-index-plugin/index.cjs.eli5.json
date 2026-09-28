@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-28T05:42:11.484Z",
+  "source": "index.cjs",
+  "sourceHash": "f44a6c166d86ef8445a42f5a388dbff68f0d2394",
+  "lang": "javascript",
+  "textLang": "en",
+  "summary": "This Docusaurus plugin builds a searchable index of questions extracted from blog articles. It reads question sidecars (pre-generated JSON files paired with each article), deduplicates them across the corpus, and outputs the index in three different formats optimized for different consumers: a small summary for the FAQ hub, individual theme-specific routes for code-splitting, and a full JSON file for client-side search.",
+  "explanations": {
+    "58": "fs.readdirSync() reads directory contents synchronously; the withFileTypes option returns objects with metadata (like isDirectory()) instead of just filenames.",
+    "61": "The spread operator (...) unpacks the nested array from the recursive call into the parent array, flattening all results into one list.",
+    "74": "This checks if the article's front-matter has an explicit slug field; if it does, use that as the URL path; otherwise fall back to a directory-based URL.",
+    "86": "normalize('NFD') decomposes accented characters into base letters plus separate accent marks — so 'é' becomes 'e' plus an accent mark.",
+    "87": "The \\p{M} regex matches combining marks (accents, diacritics); removing them leaves just the base letters, which is how 'café' becomes 'cafe'.",
+    "101": "A Map is created to count how many times each normalized question text appears across all articles.",
+    "104": "For each entry, we look up its normalized question text in the counts map, get the current count (or 0 if new), and increment it.",
+    "107": "filter() keeps only entries where the normalized question appears exactly once; if a question appears twice, both instances are removed.",
+    "119": "This ternary returns the blog directory path — either the main blog folder for the default locale, or the translated copy nested under i18n.",
+    "125": "If the blog directory doesn't exist yet (no articles), return early with empty results rather than crashing.",
+    "132": "frontMatter() parses the YAML header at the top of a markdown file and returns an object with an attributes field containing the key-value pairs.",
+    "137": "A sidecar file is expected to live alongside the article with the same path plus .questions.json appended.",
+    "142": "JSON.parse() converts the file's text content into a JavaScript object; the try-catch silently skips any sidecar that's invalid JSON.",
+    "152": "path.relative() computes the folder path from the blog root to the article; split/join converts Windows backslashes to forward slashes for URLs.",
+    "180": "yaml.load() converts YAML text into a JavaScript object; the ?? operator returns an empty object if the result is null or undefined.",
+    "203": "new Map() creates a key-value store where the key is the article's mainTag and the value is an array of all questions with that tag.",
+    "216": "If the key is 'other' (articles with no mainTag), look up the localized label; otherwise use the label from the tags.yml file.",
+    "260": "mkdirSync with recursive: true creates the directory and any missing parent directories without throwing an error if they already exist.",
+    "263": "JSON.stringify(entries) converts the array of question objects to JSON text; this plain file is served as an HTTP asset, not bundled into JavaScript.",
+    "269": "actions.createData() registers a data file that Docusaurus will bundle; await ensures the file is written before we reference it in the next step.",
+    "276": "normalizeUrl() concatenates URL segments into a single route path, handling leading/trailing slashes; baseUrl ensures the route works under non-English locales."
+  }
+}

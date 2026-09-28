@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-28T05:42:40.592Z",
+  "source": "styles.module.css",
+  "sourceHash": "c221c1da5b1566a01bf942e7dc69aa3a5e1f65e7",
+  "lang": "css",
+  "textLang": "en",
+  "summary": "This stylesheet defines styles for a search input component with labels, helper text, and a results list. It uses CSS variables for theming and includes special accessibility handling for screen-reader-only text, focus states with smooth transitions, and a styled empty state with an image.",
+  "explanations": {
+    "7": "The `composes` keyword is a CSS Modules feature that lets this class inherit all styles from the `mk-eyebrow` class defined globally, then add its own styles on top.",
+    "12": "This class hides content visually but keeps it accessible to screen readers by shrinking it to 1 pixel, hiding overflow, and using `clip-path` to ensure it's completely invisible.",
+    "19": "The `clip-path: inset(50%)` crops away 50% from all sides, ensuring the already-tiny element is truly hidden rather than just off-screen where it might be found.",
+    "27": "The `font-family: inherit` makes the input use whatever font its parent container uses, instead of falling back to the browser's default form font.",
+    "33": "The `transition` property creates smooth animations for two properties—the border color and shadow—over 0.15 seconds when the input gains focus.",
+    "38": "The `::placeholder` pseudo-element targets the placeholder text (the hint text shown before you type), letting you style it separately from the actual input text.",
+    "42": "The `:focus` pseudo-class targets the input when it's actively selected, removing the browser's default outline and replacing it with custom border and shadow styling.",
+    "56": "The `list-style: none` removes the default bullet points from a list, and the flex layout with `column` direction stacks the items vertically.",
+    "96": "The `flex: 0 0 auto` tells the flexbox not to shrink or grow this image, keeping it at exactly 56x56 pixels even if there's space pressure."
+  }
+}

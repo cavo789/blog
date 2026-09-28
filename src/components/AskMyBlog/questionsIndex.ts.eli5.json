@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-28T05:42:16.899Z",
+  "source": "questionsIndex.ts",
+  "sourceHash": "638dfc1ebabd4c845ae46bb9c85ad7403156f466",
+  "lang": "typescript",
+  "textLang": "en",
+  "summary": "This module provides a function that fetches a large JSON file of blog questions from a static asset, but only once — it caches the fetch promise at the module level so that multiple callers (like the search command palette and the ask-my-blog feature) share the same network request instead of each downloading the file separately. If the fetch fails, it clears the cache so the next caller can retry, which handles cases where the file isn't ready yet.",
+  "explanations": {
+    "17": "This variable lives outside the function and persists across multiple calls — it holds either null (nothing fetched yet) or a Promise (fetch in progress or already completed). This is how we cache the result.",
+    "22": "We check if inFlight is null because if it already holds a Promise, that means we've already started fetching and should just return that existing Promise instead of fetching again.",
+    "26": "The `.json()` method returns a Promise, so we cast it with `as Promise<QuestionEntry[]>` to tell TypeScript what shape of data we expect back from the server.",
+    "28": "We wrap the catch handler to detect failures — if the fetch fails, we reset inFlight back to null so that when someone calls this function again, they'll trigger a fresh fetch attempt rather than getting stuck with a failed Promise forever.",
+    "31": "Clearing inFlight to null here is key: it means 'forget we tried to fetch this' so the next caller will attempt the network request again instead of getting the same error."
+  }
+}

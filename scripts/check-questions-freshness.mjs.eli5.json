@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-28T05:42:51.947Z",
+  "source": "check-questions-freshness.mjs",
+  "sourceHash": "d70e5053ccf129fb1c951915769b6b24be63d83f",
+  "lang": "javascript",
+  "textLang": "en",
+  "summary": "This script checks whether question sidecar files (*.questions.json) stay in sync with their source articles as content changes. It detects three problems: stale sidecars (article edited but questions not regenerated), orphaned sidecars (source file deleted), and missing sidecars (new published articles with no questions yet). In strict mode it fails the script if stale or orphaned sidecars exist, helping catch forgotten regenerations in CI or pre-commit hooks.",
+  "explanations": {
+    "35": "This reconstructs the directory containing this script file, since ES modules don't have __dirname by default — import.meta.url gives us the file path, fileURLToPath converts it to a real path, and dirname gets the folder.",
+    "38": "These check whether the script was run with --strict or --quiet by looking at command-line arguments passed when you typed the command.",
+    "43": "This array configures git to list all question sidecars tracked in the repository, using null bytes as separators (the -z flag) to safely handle filenames with spaces or special characters.",
+    "58": "This runs the git command with the arguments above to get a list of all sidecar files, then splits on null bytes and filters out empty strings to create a clean array of file paths.",
+    "61": "Each relative path from git is converted to an absolute path by joining it with the project root directory.",
+    "77": "This removes the '.questions.json' suffix from the sidecar filename to get the corresponding source article path — if the sidecar is article.questions.json, this gives us article.",
+    "89": "Try to parse the sidecar file as JSON; if it fails (corrupt file), jump to the catch block.",
+    "100": "Articles manually marked as excluded during review carry a flag in their sidecar, so we skip them — editing shouldn't force regeneration for deliberately skipped articles.",
+    "105": "Compute a hash of the current source file content, then compare it to the hash stored in the sidecar when questions were last generated.",
+    "109": "This regex checks whether the source path is in a localized folder (like i18n/fr/...), capturing the locale name if it matches.",
+    "121": "Load all published articles from the blog (loadPosts filters out drafts), then keep only those that don't have a corresponding sidecar file yet.",
+    "128": "Check if the i18n folder exists, and if so, read its subdirectories (each one is a language locale); otherwise use an empty list.",
+    "134": "For each locale folder, find eligible articles that should have questions but don't yet, creating a list pairing each missing article with its locale.",
+    "142": "Decide whether we found anything actionable worth reporting: at least one stale sidecar, orphaned file, or missing coverage.",
+    "150": "Build a space-separated list of quoted filenames so you can paste the batch command directly into your terminal.",
+    "162": "Group missing localized sidecars by locale so we can print one summary per language instead of many redundant warnings.",
+    "195": "Count how many sidecars have been marked as reviewed by a human — this tracks progress through the manual review process.",
+    "210": "In strict mode, exit with code 1 if we found any stale or orphaned sidecars, which signals failure to CI systems and commit hooks."
+  }
+}

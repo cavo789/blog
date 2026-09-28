@@ -1,23 +1,22 @@
 ---
 slug: docusaurus-ask-my-blog
-title: 'Ask My Blog: Turning 247 Articles Into 2,050 Searchable Questions'
+title: 'Ask My Blog: Turning 259 Articles Into 2,160 Searchable Questions'
 authors: [christophe, claude]
 image: /img/v2/ask-my-blog.webp
 series: Creating Docusaurus components
 mainTag: ai
 tags: [docusaurus, ai, ollama, react, component, nodejs]
-date: 2026-10-20
+date: 2026-09-28
 description: A local LLM reads every article on your blog and writes the questions a developer would actually type into a search bar, each one mapped to the exact heading that answers it. The result is a build-time question index searched with plain BM25 in the browser — no embeddings, no API key, no vector database. Full pipeline, plugin and component included.
 language: en
 ai_assisted: true
-draft: true
 ---
 <!-- cspell:ignore BM25 Okapi tokenize tokenizes docfreq sidecar sidecars maintag -->
 
-![Ask My Blog: Turning 247 Articles Into 2,050 Searchable Questions](/img/v2/ask-my-blog.webp)
+![Ask My Blog: Turning 259 Articles Into 2,160 Searchable Questions](/img/v2/ask-my-blog.webp)
 
 <TLDR>
-A site search only finds the words *you* wrote. A reader whose Docker image is too big types "my docker image is huge", not "optimizing layer caching" — and finds nothing. So I had a local Ollama model read all 247 of my articles and write, for each one, the 8 to 12 questions a developer would really type, each mapped to the heading that answers it. That produced 2,050 questions, served as a build-time index and searched in the browser with plain BM25. No embeddings, no vector database, no API key.
+A site search only finds the words *you* wrote. A reader whose Docker image is too big types "my docker image is huge", not "optimizing layer caching" — and finds nothing. So I had a local Ollama model read all 259 of my articles and write, for each one, the 8 to 12 questions a developer would really type, each mapped to the heading that answers it. That produced 2,160 questions, served as a build-time index and searched in the browser with plain BM25. No embeddings, no vector database, no API key.
 </TLDR>
 
 Search on a personal blog is almost always a disappointment, and it took me a while to understand why. It is not the search engine's fault — mine indexes every word of every page perfectly well. The problem is that it can only find the words *I* wrote.
@@ -30,20 +29,30 @@ The usual answer to that is embeddings: turn everything into vectors, compare me
 
 <QuickJump
   links={[
-    { label: "What It Looks Like", to: "#what-it-looks-like" },
-    { label: "Serving 2,050 Questions Three Different Ways", to: "#serving-2050-questions-three-different-ways" },
+    { label: "What You Get", to: "#what-you-get" },
+    { label: "How the Questions Are Generated", to: "#generating-the-questions" },
   ]}
 />
 
-## What It Looks Like
+## What You Get
 
-Type a problem in your own words on the `/faq` page and you get questions, not page titles — each one pointing at the exact heading that answers it:
+The <Link to="/faq">`/faq` page</Link> opens on a hub: topic cards, one per main tag — *Docker*, *AI*, *Bash*, *WSL*, and more. Each card shows how many questions are filed under it. Click one and you land on a page listing every question for that topic, each pointing at the exact article heading that answers it:
 
-<Terminal source="./files/search_demo.txt" />
+<BrowserWindow url="https://www.avonture.be/faq">
 
-Those are real results from the real index, ranked in the browser in a couple of milliseconds. Note the second query: nothing in my `fzf` article contains the phrase "fuzzy find a file in the terminal". It matches because a model, at build time, already wrote down that this is how someone would ask for it.
+![FAQ hub — topic cards with question counts per tag](./images/faq-hub.png)
 
-The same index also powers a browsable table of contents — 40 topics, each its own server-rendered page listing its questions.
+</BrowserWindow>
+
+The same index also powers a search box on that page. Type a problem in your own words — "my docker image is huge", "fuzzy find a file in the terminal" — and you get questions back, not page titles. Each result points at the exact heading that answers it:
+
+<BrowserWindow url="https://www.avonture.be/faq">
+
+![Search results — questions matching the query, each linked to the heading that answers it](./images/faq-search.png)
+
+</BrowserWindow>
+
+That is the whole idea, and the rest of this article is how it is built.
 
 ## Why This Works Without a Model in the Browser
 
@@ -88,12 +97,12 @@ Here is the whole generator:
 <Snippet filename="scripts/generate-questions.mjs" source="scripts/generate-questions.mjs" defaultOpen={false} />
 
 <AlertBox variant="tip" title="Pick a small model on purpose">
-This runs on `task-tiny`, a 3B instruct model. Bigger local models produced no better questions in side-by-side comparison and ran roughly ten times slower. Writing search questions from a title, a description and a heading list is an *extraction* task, not a reasoning one — and 247 articles at 11 seconds each is a coffee break, while 247 at two minutes each is an afternoon.
+This runs on `task-tiny`, a 3B instruct model. Bigger local models produced no better questions in side-by-side comparison and ran roughly ten times slower. Writing search questions from a title, a description and a heading list is an *extraction* task, not a reasoning one — and 259 articles at 11 seconds each is a coffee break, while 259 at two minutes each is an afternoon.
 </AlertBox>
 
-## Serving 2,050 Questions Three Different Ways
+## Serving 2,160 Questions Three Different Ways
 
-A Docusaurus plugin aggregates all 247 sidecars into one index. The interesting part is that it does **not** ship that index once — it ships it three times, in three different shapes, because it has three consumers with incompatible needs:
+A Docusaurus plugin aggregates all 259 sidecars into one index. The interesting part is that it does **not** ship that index once — it ships it three times, in three different shapes, because it has three consumers with incompatible needs:
 
 | Consumer | What it needs | How it gets it |
 | --- | --- | --- |
@@ -120,6 +129,12 @@ And the search box itself:
 </ProjectSetup>
 
 ## Under the Hood (skip this if you just want the questions)
+
+### Querying the index from the command line
+
+The JSON file is a plain array, so you can probe it outside the browser with a handful of lines. This is useful for debugging the index before shipping, or for checking whether a particular phrasing matches:
+
+<Terminal source="./files/search_demo.txt" />
 
 ### BM25 in forty lines
 
@@ -173,7 +188,7 @@ Each `/faq/<topic>` page emits `FAQPage` JSON-LD. Worth being honest about the p
 
 ## Conclusion
 
-I started this wanting semantic search and ended up not needing any semantics at runtime. The model did the hard part once, offline, on my own machine, for free — and what it left behind was 2,050 plain English sentences that ordinary lexical ranking handles beautifully.
+I started this wanting semantic search and ended up not needing any semantics at runtime. The model did the hard part once, offline, on my own machine, for free — and what it left behind was 2,160 plain English sentences that ordinary lexical ranking handles beautifully.
 
 That reframing is worth carrying elsewhere. "This needs a model" is very often "this needed a model, once, and now it needs a file". The version of your feature that runs a language model in every visitor's browser and the version that ships a JSON file computed at build time can produce the same answer — and only one of them still works when the API key expires.
 

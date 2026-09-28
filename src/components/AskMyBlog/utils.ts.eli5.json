@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-28T05:42:34.336Z",
+  "source": "utils.ts",
+  "sourceHash": "0db10005525cee23d0862c90fb2da397266bf55e",
+  "lang": "typescript",
+  "textLang": "en",
+  "summary": "This code implements BM25, a standard search algorithm, to find the most relevant pre-written questions matching a user's query. It tokenizes text into words, builds an index of those tokens across all questions at startup, then scores each question against incoming search queries using word frequency and inverse document frequency to rank the best matches.",
+  "explanations": {
+    "43": "This line removes accents from letters — it decomposes accented characters like 'é' into 'e' plus a combining accent mark, then strips away the accent marks, so 'déployer' becomes 'deployer'.",
+    "44": "This inserts a space before uppercase letters that follow lowercase ones or numbers, turning 'CamelCase' into 'Camel Case' so we can split it into separate words later.",
+    "45": "After adding spaces at case boundaries, this extracts all sequences of letters and numbers as separate words (the 'split' form), converting to lowercase.",
+    "46": "This extracts words from the original accented text without the artificial spaces added in line 44, keeping the full original compound forms like 'wordpress' as one piece.",
+    "47": "We return all unique tokens by combining both the split-apart version and the whole compound version, so a reader's query matches whether they type partial names or full compound words.",
+    "60": "We wrap `tokens` in a `Set` to count each unique word in the document only once when calculating how many documents contain it, even if that word appears multiple times.",
+    "66": "This computes the average number of words per question, which we use later to penalize shorter documents that happen to match — longer documents get a slight handicap so a short perfect match doesn't always beat a longer mediocre one.",
+    "73": "This is the inverse document frequency formula: it gives high scores to rare terms (appearing in few documents) and low scores to common ones, so a match on 'PostgreSQL' matters more than a match on 'the'.",
+    "81": "If the query term exactly exists in our indexed vocabulary, we just use it as-is rather than trying prefix matching.",
+    "82": "For very short queries (under 3 characters), we skip prefix matching because almost every word in the vocabulary would match something like 'a' or 'is', making results useless.",
+    "98": "We expand all query terms to their matching indexed terms once before the loop, rather than re-expanding for each document, since the result is the same every time and this saves computation.",
+    "109": "We count how many times this particular term appears in the current document's token list — a simple frequency count for that one word in that one question."
+  }
+}

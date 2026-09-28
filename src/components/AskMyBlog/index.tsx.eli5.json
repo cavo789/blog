@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-28T05:42:25.421Z",
+  "source": "index.tsx",
+  "sourceHash": "57ae8ee868f9cf9a7817d575ad3f776a800042d2",
+  "lang": "typescript",
+  "textLang": "en",
+  "summary": "This component implements a search box that lets readers find blog articles by typing questions. It loads a pre-built question index on mount, ranks matches using BM25 algorithm entirely in the browser, and displays results with loading and error states. The heavy semantic work of understanding questions happens once at build time using an AI model, so the runtime search is fast and client-side only.",
+  "explanations": {
+    "32": "The state uses null to mean 'not fetched yet' and an empty array to mean 'finished loading' — this distinction lets us show a loading spinner only while actually fetching, not after it completes.",
+    "38": "This cancelled flag prevents state updates if the component unmounts before the fetch completes, which would cause a memory leak warning in React.",
+    "51": "We build the search index only when the questions data changes, not on every render — useMemo prevents expensive rebuilding and passes an empty array as fallback if questions is still null.",
+    "55": "The search only runs if there's trimmed text AND questions are loaded; otherwise return empty results to avoid searching against null or incomplete data.",
+    "59": "This nested ternary builds a status message that changes based on three conditions: empty query (no message), still loading (show loading text), failed load (show error), or show result count.",
+    "79": "Resolving the placeholder inside the component rather than as a default parameter ensures translations work correctly — if we translated at module load time, the language would be locked to whatever the first user selected.",
+    "91": "The label switches between a visible CSS class and srOnly (screen-reader-only) class depending on showLabel, so sighted users can hide it while keeping the form accessible to assistive tech.",
+    "109": "aria-live='polite' tells screen readers to announce the status text when it changes, so users hear result counts or loading states without refocusing.",
+    "117": "The key combines permalink, anchor, and index because the same question might appear multiple times in results (index makes them unique), preventing React key warnings.",
+    "131": "This condition shows the meerkat image only when the user typed something, questions loaded successfully, nothing failed, but no matches exist — a very specific 'no results' state."
+  }
+}

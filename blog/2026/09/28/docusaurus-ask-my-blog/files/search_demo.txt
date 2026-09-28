@@ -1,7 +1,10 @@
-$ node --input-type=module -e "
+$ npx tsx --eval "
 import { buildSearchIndex, search } from './src/components/AskMyBlog/utils.ts';
 import fs from 'fs';
-const corpus = JSON.parse(fs.readFileSync('.docusaurus/questions-index-plugin/static/questions-index.json', 'utf8'));
+const rel = 'questions-index-plugin/static/questions-index.json';
+const p = ['.docusaurus', '.docusaurus-dev'].map(d => d + '/' + rel).find(fs.existsSync);
+if (p === undefined) throw new Error('Run yarn build or start the dev server first');
+const corpus = JSON.parse(fs.readFileSync(p, 'utf8'));
 const index = buildSearchIndex(corpus);
 for (const r of search(index, process.argv[1], 4)) {
   console.log(r.question);

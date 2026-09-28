@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-09-28T05:41:42.902Z",
+  "source": "demo.questions.json",
+  "sourceHash": "d9a21e2a76fa8f662568c13432e275ba50b5f75f",
+  "lang": "json",
+  "textLang": "en",
+  "summary": "This is a metadata file that describes a documentation page about adding a 'go to the top' button to Docusaurus blog posts. It contains version information, a timestamp, and a list of eight question-and-anchor pairs that represent different ways someone might ask about or search for information on this topic. The anchors point to specific sections in the source document where answers can be found.",
+  "explanations": {
+    "2": "This tracks the format version of the metadata file itself, so if the structure changes in the future, the system knows how to handle old versions.",
+    "3": "This specifies which Docusaurus or documentation model generated this file — think of it like saying 'this was built using the tiny version of the task processor'.",
+    "4": "The ISO 8601 timestamp records exactly when this metadata was created, useful for knowing if the information is fresh.",
+    "6": "This is the hash (a digital fingerprint) of the source file, used to detect if the original document has changed since this metadata was generated.",
+    "10": "An anchor is like a bookmark within a webpage — it points to a specific heading or section so you can link directly to that part of the article."
+  }
+}
