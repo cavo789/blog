@@ -46,3 +46,4 @@
 - [Build vs Dev Server Clear](project_build_devserver_clear_clash.md) — safe_build.sh et `start` font tous deux `yarn clear` : chacun détruit le codegen de l'autre
 - [Webpack Inline Image Trap](project_webpack_inline_image_trap.md) — importer une petite image de static/ l'inline en base64 (502 KB de chunk) ; withBaseUrl + require.context "weak"
 - [Webpack Prod Cache Isolation](project_webpack_prod_cache_isolation.md) — purger `node_modules/.cache/webpack/*-production-*` pour un build froid sans tuer le cache du serveur de dev ; un sidecar lu par un plugin remark n'invalide jamais le cache
+- [SSH Config Tips Publication](project_ssh_config_tips_publication.md) — article ssh-config-tips prévu 2026-10-02, 5 sections après fix devcontainer ProxyJump (`code.bosa.fgov.be` manquait des exceptions)

@@ -61,7 +61,8 @@
     "statusBar.debuggingBackground": "#6ce32c",
     "statusBar.debuggingForeground": "#15202b",
     "activityBar.activeBorder": "#15202b",
-    "activityBarTop.activeBorder": "#15202b"
+    "activityBarTop.activeBorder": "#15202b",
+    "statusBar.inactiveBackground": "#6ce32c"
   },
   "peacock.remoteColor": "#6ce32c",
   "markdownlint.ignore": ["**/.htaccess", "**/.dockerignore"],

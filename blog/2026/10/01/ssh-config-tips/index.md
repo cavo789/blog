@@ -1,13 +1,12 @@
 ---
 slug: ssh-config-tips
-title: "SSH Config Tips: Global Rules, Aliases, and Automated Logins"
+title: "SSH Config Generator: Wildcard Stanzas, Aliases, and Automated Logins"
 authors: [christophe]
 image: /img/v2/ssh.webp
 mainTag: ssh
 tags: [ssh, linux, windows]
-date: 2026-12-21
-description: "How SSH reads a config file — multiple stanzas, first-value-wins, CLI-argument matching — and what that model unlocks: one wildcard stanza that eliminates repeated ProxyJump lines, domain defaults for FQDN usernames, hardening options for idle sessions, and RemoteCommand aliases that land you straight in the right user and directory."
-draft: true
+date: 2026-10-01
+description: "Generate your SSH config in seconds — then understand how it works: one wildcard eliminates every repeated ProxyJump and IdentityFile, domain stanzas set usernames for FQDNs, short aliases need their own User line, and RemoteCommand lands you directly as the application user."
 series: SSH - From your first key to remote development
 language: en
 ai_assisted: true
@@ -15,7 +14,7 @@ ai_assisted: true
 
 import { sshConfigTemplate } from './files/ssh_config_template.js';
 
-![SSH Config Tips: Global Rules, Aliases, and Automated Logins](/img/v2/ssh.webp)
+![SSH Config Generator: Wildcard Stanzas, Aliases, and Automated Logins](/img/v2/ssh.webp)
 
 <TLDR>
 SSH reads every matching stanza top-to-bottom, first value wins per directive — that's what makes `Host * !bastion` powerful: one stanza covers every server at once, no more repeating `ProxyJump` and `IdentityFile`. Domain stanzas layer in the right `User` for FQDN connections; short aliases must repeat it explicitly, because SSH matches on what you type, not the resolved hostname. Three directives — `ServerAliveInterval`, `ControlMaster`, `ConnectTimeout` — harden the global defaults without changing their logic. For machines mixing corporate and personal SSH, `Include` splits the two cleanly. `RemoteCommand` turns a `sudo su` + `cd` sequence into a single alias.
@@ -44,11 +43,7 @@ The config below covers any number of servers with no repetition.
 
 ## The Config
 
-Create the `C:\Users\your_laptop_user\.ssh\config` (Windows; included WSL) or `~/.ssh/config` (if you're under Linux/macOS) file to your laptop's:
-
-<Snippet title={<>C:\Users\your_laptop_user\.ssh\config · ~/.ssh/config</>} source="./files/ssh_config_optimized.txt" />
-
-Both connection paths work — a short alias and a full FQDN:
+Both connection paths work out of the box — a short alias and a full FQDN, no flags needed:
 
 <Terminal title="laptop: ~" typewriter>
 $ ssh %%alias=project_prod%% "whoami && hostname"
@@ -59,7 +54,9 @@ $ ssh server-test.cloud.project-a.internal "whoami && hostname"
 server-test
 </Terminal>
 
-No `ProxyJump` flag, no explicit key — the config handles both transparently.
+No `ProxyJump` flag, no explicit key — the config handles both transparently. Create `C:\Users\your_laptop_user\.ssh\config` (Windows; WSL included) or `~/.ssh/config` (Linux/macOS) with the following:
+
+<Snippet title={<>C:\Users\your_laptop_user\.ssh\config · ~/.ssh/config</>} source="./files/ssh_config_optimized.txt" />
 
 ## How SSH Reads a Config File
 
@@ -69,9 +66,9 @@ Three rules explain why the <abbr title="each Host block and its directives in a
 - **First value wins per setting — the opposite of what most tools do.** In CSS, `.env` files, or most config systems, the last declaration overrides earlier ones. SSH does the reverse: the first value encountered is kept, and later stanzas can only fill in settings not yet defined. Put the most specific stanza first; the wildcard fallback last.
 - **Patterns match on the command-line argument, not on the resolved hostname.** `Host *.office.corp.example` matches `ssh server-prod.office.corp.example`. It does **not** match `ssh project_prod`, even though `project_prod`'s `HostName` resolves to `server-prod.office.corp.example`.
 
-## The Four Sections
+## The Five Sections
 
-The config snippet above is split into four numbered sections — here is what each one does and why it is placed in that order.
+The config snippet above is split into five numbered sections — here is what each one does and why it is placed in that order.
 
 **Section 1 — Bastion definition.** Declares the jump host with its username. No `ProxyJump` here (it would loop back to itself) and no `IdentityFile` (the VM uses whatever auth you have configured for it separately).
 
@@ -79,9 +76,11 @@ The config snippet above is split into four numbered sections — here is what e
 
 **Section 3 — Short aliases.** Each alias declares `HostName` (the real FQDN) and `User`. Adding a new server alias is exactly two lines.
 
-**Section 4 — Global defaults.** The `!` prefix in `Host * !`<Var name="vmIp">windows-vm-ip</Var> means "all hosts *except* the bastion". Placed last, this stanza provides `ProxyJump` and `IdentityFile` as fallbacks for every preceding stanza that did not set them — which is all of them. Any stanza in sections 2 or 3 can override these defaults simply by declaring the directive first, without touching section 4.
+**Section 4 — Explicit exceptions.** Any host that must not go through the bastion — a Git hosting service, a CI runner, a SaaS API — gets `ProxyJump none` here. Position is load-bearing: this stanza must come *before* `Host *`.
 
-## Hardening Section 4 (optional)
+**Section 5 — Global defaults.** The `!` prefix in `Host * !`<Var name="vmIp">windows-vm-ip</Var> means "all hosts *except* the bastion". Placed last, this stanza provides `ProxyJump` and `IdentityFile` as fallbacks for every preceding stanza that did not set them — which is all of them. Any stanza in sections 2, 3, or 4 can override these defaults simply by declaring the directive first, without touching section 5.
+
+## Hardening Section 5 (optional)
 
 Four directives extend the global defaults without changing their logic. Add whichever ones fit your environment — none are required for the config to work.
 
@@ -108,7 +107,7 @@ Leave them out on Windows. If you connect from Linux or macOS, add them:
 
 </AlertBox>
 
-## Why Each Alias Needs Its Own `User` Line
+## Why Each Alias Needs Its Own `User` Line (skip if the config just works for you)
 
 The domain stanzas in section 2 set `User` only when SSH matches them — and as noted above, SSH matches patterns on the command-line argument, not on the resolved hostname.
 
@@ -116,14 +115,16 @@ Running `ssh project_prod`:
 
 1. Does **not** match `Host *.office.corp.example` (section 2) — `project_prod` is not a FQDN.
 2. Matches `Host project_prod` (section 3) → applies `HostName server-prod.office.corp.example` and `User `<Var name="userB">user-b</Var>.
-3. Matches `Host * !`<Var name="vmIp">windows-vm-ip</Var> (section 4) → applies `ProxyJump` and `IdentityFile`.
+3. Does **not** match `Host github.com` (section 4) — `project_prod` is not in that list.
+4. Matches `Host * !`<Var name="vmIp">windows-vm-ip</Var> (section 5) → applies `ProxyJump` and `IdentityFile`.
 
 Without the `User` line in the alias stanza, SSH falls back to your local Windows username for that connection — which is almost certainly wrong.
 
 Running `ssh server-prod.office.corp.example` directly:
 
 1. Matches `Host *.office.corp.example` (section 2) → `User `<Var name="userB">user-b</Var>.
-2. Matches `Host * !`<Var name="vmIp">windows-vm-ip</Var> (section 4) → `ProxyJump`, `IdentityFile`.
+2. Does **not** match `Host github.com` (section 4) — not in that list.
+3. Matches `Host * !`<Var name="vmIp">windows-vm-ip</Var> (section 5) → `ProxyJump`, `IdentityFile`.
 
 Both paths land on the right user. They just need different stanzas to get there.
 
@@ -133,9 +134,21 @@ The <Link to="/blog/zsh-plugin-ssh-config-suggestions">zsh-ssh-config-suggestion
 
 </AlertBox>
 
-## One Caveat: The Wildcard Is Truly Universal
+## One Caveat: The Wildcard Is Truly Universal (skip if this machine is corporate-only)
 
 `Host * !`<Var name="vmIp">windows-vm-ip</Var> applies to **every** SSH connection from this machine — including `ssh github.com` or `ssh localhost`. Connections to external hosts will attempt a `ProxyJump` through the VM and fail if the VM is not reachable.
+
+<AlertBox variant="warning" title="Devcontainers: declare exceptions before Host *">
+
+When the SSH config is bind-mounted into a devcontainer, the bastion hostname may not resolve inside the container network. Any SSH connection from the container — `git push`, `scp`, `rsync` — hits `Host *`, attempts a `ProxyJump` through the bastion, fails to resolve it, and exits with:
+
+```text
+ssh: Could not resolve hostname your-bastion: Name or service not known
+```
+
+Hosts that must bypass the bastion need an explicit `ProxyJump none` stanza **before** `Host *`. SSH applies first-value-wins per directive: a `ProxyJump none` placed after `Host *` is silently ignored. Section 4 in the config above exists precisely for this — add any host that connects directly (Git hosting, CI runners, third-party APIs) to that stanza.
+
+</AlertBox>
 
 Three options if that matters:
 
