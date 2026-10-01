@@ -99,6 +99,36 @@ function rewrite(value, currentFileDir, englishDir) {
 }
 
 /**
+ * Walks an ESTree, rewriting every relative string Literal through `apply`.
+ * Updates both `.value` and `.raw` so `@mdx-js` compiles the rewritten path.
+ * `parent` back-references are skipped to avoid infinite loops.
+ */
+function rewriteEstreeStrings(node, apply) {
+  if (node === null || typeof node !== "object") return;
+  if (Array.isArray(node)) {
+    node.forEach((n) => rewriteEstreeStrings(n, apply));
+    return;
+  }
+
+  if (node.type === "Literal" && typeof node.value === "string") {
+    const rewritten = apply(node.value);
+    if (rewritten !== node.value) {
+      node.value = rewritten;
+      if (typeof node.raw === "string") {
+        const quote = node.raw[0];
+        node.raw = `${quote}${rewritten}${quote}`;
+      }
+    }
+    return;
+  }
+
+  for (const key of Object.keys(node)) {
+    if (key === "parent") continue;
+    rewriteEstreeStrings(node[key], apply);
+  }
+}
+
+/**
  * Rewrites every relative string literal inside a JSX expression attribute — the
  * `<img src={require("./images/x.webp").default} />` shape, which the string branch above never
  * sees because the attribute's value is an `mdxJsxAttributeValueExpression` node, not a string.
@@ -122,34 +152,7 @@ function rewriteExpressionAttribute(expression, currentFileDir, englishDir) {
     );
   }
 
-  // Parsed program: every string Literal, wherever it sits in the tree.
-  const walk = (node) => {
-    if (node === null || typeof node !== "object") return;
-    if (Array.isArray(node)) {
-      node.forEach(walk);
-      return;
-    }
-
-    if (node.type === "Literal" && typeof node.value === "string") {
-      const rewritten = apply(node.value);
-      if (rewritten !== node.value) {
-        node.value = rewritten;
-        if (typeof node.raw === "string") {
-          const quote = node.raw[0];
-          node.raw = `${quote}${rewritten}${quote}`;
-        }
-      }
-      return;
-    }
-
-    for (const key of Object.keys(node)) {
-      // `parent` back-references would send the walk into an infinite loop.
-      if (key === "parent") continue;
-      walk(node[key]);
-    }
-  };
-
-  walk(expression.data?.estree);
+  rewriteEstreeStrings(expression.data?.estree, apply);
 }
 
 function remarkI18nAssets() {
@@ -186,6 +189,22 @@ function remarkI18nAssets() {
         }
       });
     }
+
+    // ESM import/export statements at the top of the MDX file:
+    //   import { x } from './files/x.js'
+    // These are `mdxjsEsm` nodes — Webpack resolves them directly against the translated file's
+    // directory, so they fail the same way as `source=` props. Both the raw source text and the
+    // ESTree must be updated so the compiler sees the corrected path.
+    visit(tree, "mdxjsEsm", (node) => {
+      const apply = (value) => rewrite(value, currentFileDir, englishDir);
+      if (typeof node.value === "string") {
+        node.value = node.value.replace(
+          /(["'])(\.{1,2}\/[^"']*)\1/g,
+          (match, quote, target) => `${quote}${apply(target)}${quote}`,
+        );
+      }
+      rewriteEstreeStrings(node.data?.estree, apply);
+    });
   };
 }
 
