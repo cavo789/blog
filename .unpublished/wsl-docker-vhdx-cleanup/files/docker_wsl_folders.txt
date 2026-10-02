@@ -1,0 +1,16 @@
+PS> dir $env:LOCALAPPDATA\Docker\wsl
+
+    Directory: %%vhdxDir=C:\Users\your-name\AppData\Local\Docker\wsl%%
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         03-Feb-26     13:31                disk
+d-----         25-Aug-26      8:43                main
+
+PS> dir $env:LOCALAPPDATA\Docker\wsl\disk
+
+    Directory: %%vhdxDir=C:\Users\your-name\AppData\Local\Docker\wsl%%\disk
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         01-Oct-26     15:26   309960114176 %%vhdxFile=docker_data.vhdx%%

@@ -1,0 +1,10 @@
+ID                                              RECLAIMABLE     SIZE            LAST ACCESSED
+9v69gh88n3lsd778zxygzi6oj*                      true            11.6MB          2 months ago
+ckqqh9pmzysj5bba2598kw58o*                      true            54.49MB         7 weeks ago
+mrriwuzhxnbf09fvs6ezamzi6*                      true            15.51MB         2 months ago
+[... 2839 more entries ...]
+oneg7c4vr96xkpwb28nqgqwa6                       true            435.5MB         Less than a second ago
+08or6idagqqm3fi66y48c3aft                       true            104.3MB         Less than a second ago
+hq7jnob1j3bnb0n6nylra53a9                       true            113.5MB         Less than a second ago
+cilxc42q905svkob16oiapvfd                       true            28.23MB         Less than a second ago
+Total:  180.4GB

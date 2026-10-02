@@ -109,8 +109,13 @@ export type ListField = {
 export type FieldDef = SimpleField | ListField;
 
 export interface ConfigGeneratorProps {
-  /** Handlebars template string — inline or imported from a .js file. */
-  template: string;
+  /**
+   * Handlebars template. Pass a **precompiled spec** (from `Handlebars.precompile()`,
+   * exported as a JS module) to avoid `new Function()` and satisfy strict CSP headers
+   * that forbid `unsafe-eval`. A raw string is accepted for local development but will
+   * violate CSP in production — prefer the precompiled form.
+   */
+  template: string | Parameters<typeof Handlebars.template>[0];
   /**
    * Page-scoped variables from the Vars store. Reading them from this component
    * avoids the reader having to scroll back to the <Vars> bar to change them.
@@ -371,10 +376,14 @@ export default function ConfigGenerator({
   // Collapse state for the "Common settings" group (collapsed by default)
   const [commonOpen, setCommonOpen] = useState(false);
 
-  // Compile template once — recompile only when template string changes.
+  // Compile template once. Precompiled specs (TemplateSpecification objects) use
+  // Handlebars.template() — no new Function(), CSP-safe. Raw strings fall back to
+  // Handlebars.compile() which uses new Function() and violates strict CSP in production.
   const compiled = useMemo(() => {
     try {
-      return Handlebars.compile(template, { noEscape: true });
+      return typeof template === "string"
+        ? Handlebars.compile(template, { noEscape: true })
+        : Handlebars.template(template);
     } catch {
       return null;
     }

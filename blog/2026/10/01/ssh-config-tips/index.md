@@ -12,7 +12,7 @@ language: en
 ai_assisted: true
 ---
 
-import { sshConfigTemplate } from './files/ssh_config_template.js';
+import { sshConfigTemplate } from './files/ssh_config_template_compiled.js';
 
 ![SSH Config Generator: Wildcard Stanzas, Aliases, and Automated Logins](/img/v2/ssh.webp)
 

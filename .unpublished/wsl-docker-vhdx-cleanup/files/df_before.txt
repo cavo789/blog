@@ -1,0 +1,5 @@
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          149       15        94.53GB   61.71GB (65%)
+Containers      15        2         5.092GB   3.765GB (73%)
+Local Volumes   67        41        26.76GB   4.667GB (17%)
+Build Cache     2842      0         180.4GB   109.3GB (60%)

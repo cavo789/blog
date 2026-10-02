@@ -43,12 +43,44 @@ permanent "this value is yours" affordance) shows it's adjustable.
 Without `labels`, a field label is derived from the prop name (`port` → "Port",
 `phpVersion` → "Php version").
 
+### Derived variables from a full path
+
+When an article uses a file path that the reader will change — a VHDX location, an SSL
+certificate path, a project folder — the reader should fill in **one field**, not three.
+Use `derive` to compute `basename` and `dirname` variants automatically:
+
+```jsx
+<Vars
+  vhdxPath="C:\\Users\\your-name\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx"
+  labels={{ vhdxPath: "Full VHDX path" }}
+  derive={{ vhdxFile: "basename(vhdxPath)", vhdxDir: "dirname2(vhdxPath)" }}
+/>
+```
+
+The reader sees one editable field (`vhdxPath`). As they type, `vhdxFile` and `vhdxDir`
+update silently in the store. All three are usable as `%%name=default%%` markers in
+`<Terminal>`/`<Snippet>` blocks and as `<Var name="…">default</Var>` in prose — but only
+`vhdxPath` appears in the input bar and the pinned FAB.
+
+Supported transforms:
+
+| Transform | Result for `C:\Users\you\wsl\disk\file.vhdx` |
+| --- | --- |
+| `basename(x)` | `file.vhdx` — last path segment |
+| `dirname(x)` | `C:\Users\you\wsl\disk` — path without last segment |
+| `dirname2(x)` | `C:\Users\you\wsl` — path without last two segments |
+
+The separator is detected automatically (`\` for Windows paths, `/` for POSIX). Derived
+variables are never saved to `localStorage` — they are recomputed from the stored source
+value on every page load, so they are always consistent.
+
 ## 🛠 Props
 
-| Prop     | Type                 | Required     | Description                                                                                          |
-| -------- | -------------------- | ------------ | ---------------------------------------------------------------------------------------------------- |
-| `[name]` | string               | at least one | Any other prop is treated as a declared variable: its name is the marker key, its value the default. |
-| `labels` | `{ [name]: string }` | ❌           | Friendlier input label per variable, keyed by variable name.                                         |
+| Prop | Type | Required | Description |
+| --- | --- | --- | --- |
+| `[name]` | string | at least one | Any other prop is treated as a declared variable: its name is the marker key, its value the default. |
+| `labels` | `{ [name]: string }` | ❌ | Friendlier input label per variable, keyed by variable name. |
+| `derive` | `{ [name]: string }` | ❌ | Derived variables not shown as inputs. Values are transform specs: `basename(source)`, `dirname(source)`, `dirname2(source)`. |
 
 ## Why `%%name=default%%`
 

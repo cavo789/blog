@@ -28,6 +28,30 @@ function humanize(name: string): string {
   return spaced.charAt(0).toUpperCase() + spaced.slice(1);
 }
 
+// Supported transforms for derive={}. Windows paths use backslash, POSIX use
+// forward slash — detect by presence of backslash. dirname2 removes two
+// trailing segments (covers the common "wsl\disk\file.vhdx → wsl" case).
+type TransformFn = "basename" | "dirname" | "dirname2";
+
+function parseDeriveSpec(spec: string): { fn: TransformFn; source: string } | null {
+  const match = /^(basename|dirname|dirname2)\((\w+)\)$/.exec(spec);
+  if (!match) return null;
+  return { fn: match[1] as TransformFn, source: match[2] };
+}
+
+function applyTransform(fn: TransformFn, value: string): string {
+  const sep = value.includes("\\") ? "\\" : "/";
+  const parts = value.split(sep);
+  switch (fn) {
+    case "basename":
+      return parts[parts.length - 1] ?? value;
+    case "dirname":
+      return parts.length > 1 ? parts.slice(0, -1).join(sep) : value;
+    case "dirname2":
+      return parts.length > 2 ? parts.slice(0, -2).join(sep) : value;
+  }
+}
+
 const CheckIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg viewBox="0 0 24 24" {...props}>
     <path
@@ -97,14 +121,33 @@ function VarField({
 interface Props {
   /** Human-friendly override for a var's input label, keyed by var name. */
   labels?: Record<string, string>;
+  /**
+   * Derived variables computed from declared vars — not shown as input fields.
+   * Keys are new variable names; values are transform specs:
+   *   `"basename(sourceName)"` — last path segment
+   *   `"dirname(sourceName)"` — path without last segment
+   *   `"dirname2(sourceName)"` — path without last two segments
+   * Example: `derive={{ vhdxFile: "basename(vhdxPath)", vhdxDir: "dirname2(vhdxPath)" }}`
+   */
+  derive?: Record<string, string>;
   /** Any other prop is a `name="defaultValue"` var declaration. */
   [key: string]: unknown;
 }
 
-export default function Vars({ labels, ...rest }: Props): JSX.Element | null {
+export default function Vars({ labels, derive, ...rest }: Props): JSX.Element | null {
   const defaults = rest as Record<string, string>;
   const varNames = useMemo(() => Object.keys(defaults), [defaults]);
   const overrides = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+
+  const parsedDerive = useMemo(() => {
+    if (!derive) return {} as Record<string, { fn: TransformFn; source: string }>;
+    const result: Record<string, { fn: TransformFn; source: string }> = {};
+    for (const [name, spec] of Object.entries(derive)) {
+      const parsed = parseDeriveSpec(spec);
+      if (parsed) result[name] = parsed;
+    }
+    return result;
+  }, [derive]);
   const { pathname } = useLocation();
   const inlineRef = useRef<HTMLDivElement | null>(null);
   const [fabOpen, setFabOpen] = useState(false);
@@ -126,6 +169,20 @@ export default function Vars({ labels, ...rest }: Props): JSX.Element | null {
     setMounted(true);
     return () => resetOverrides();
   }, []);
+
+  // Compute and push derived variables whenever a source variable changes.
+  // The `overrides[name] !== computed` guard prevents infinite loops: once the
+  // derived value equals what the store already holds, no further setOverride
+  // calls are made and the effect stabilises.
+  useEffect(() => {
+    const entries = Object.entries(parsedDerive);
+    if (entries.length === 0) return;
+    for (const [name, { fn, source }] of entries) {
+      const sourceValue = overrides[source] ?? defaults[source] ?? "";
+      const computed = applyTransform(fn, sourceValue);
+      if (overrides[name] !== computed) setOverride(name, computed);
+    }
+  }, [overrides, parsedDerive, defaults]);
 
   // Apply a reader's saved values *after* mount, never during render — this
   // is what keeps the first paint identical to SSR (see store.ts).
