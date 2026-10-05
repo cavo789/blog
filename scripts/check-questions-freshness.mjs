@@ -47,9 +47,6 @@ const gitListArgs = [
   "--exclude-standard",
   "-z",
   "--",
-  // Scoped to blog/ on purpose: an article can *show* a sample sidecar in its own files/
-  // folder (.unpublished/docusaurus-ask-my-blog/files/demo.questions.json), which is
-  // documentation, not a corpus sidecar — repo-wide, it was reported as ORPHANED forever.
   "blog/*.questions.json",
   // Localized sidecars (TODO 0120) sit next to the translated article, so the same
   // "strip the suffix, hash the source" check applies: a retranslation makes them stale.
@@ -57,7 +54,13 @@ const gitListArgs = [
 ];
 const relFiles = execFileSync("git", gitListArgs, { cwd: projectRoot, encoding: "utf-8" })
   .split("\0")
-  .filter(Boolean);
+  .filter(Boolean)
+  // An article can *show* a sample sidecar in its own files/ folder
+  // (blog/2026/09/28/docusaurus-ask-my-blog/files/demo.questions.json): documentation, not a
+  // corpus sidecar, which always sits next to index.md. Scoping to blog/ was not enough — once
+  // the draft was published it was reported ORPHANED again, and the printed `rm` hint got the
+  // file deleted, breaking the build on a dangling <Snippet source>.
+  .filter((f) => !f.split("/").includes("files"));
 const files = relFiles.map((f) => path.resolve(projectRoot, f));
 
 let fresh = 0,
