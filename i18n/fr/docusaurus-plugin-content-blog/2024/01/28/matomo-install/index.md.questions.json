@@ -3,8 +3,17 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:44:06.115Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c31bdd557c07a85a6ed5dce59cbd12e5684ac02f",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:49:03.628Z",
+    "articleHash": "2f88b973eae0a18df07cefba4e2547d40c7bffbf",
+    "questionsHash": "74b628128a7fafdc",
+    "status": "held",
+    "wouldReject": 7
+  },
   "questions": [
     {
       "question": "auto-héberger Matomo gratuitement sur un sous-domaine",

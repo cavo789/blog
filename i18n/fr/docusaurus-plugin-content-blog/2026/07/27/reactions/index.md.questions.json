@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:30:06.354Z",
-  "durationMs": 171344,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b722fd1482bd566d962923d5a7b60ac5b40b35c2",
+  "durationMs": 171344,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:32:31.748Z",
+    "articleHash": "9e8c4b0b00deb07880ca451fe871494e090228cc",
+    "questionsHash": "4927e8b4d9e2335d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "widget réactions Docusaurus sans service tiers ni cookies",

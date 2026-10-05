@@ -1,42 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-20T16:32:16.369Z",
-  "durationMs": 4793,
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:49:09.231Z",
   "source": "index.md",
   "sourceHash": "03b90f562a605f3ab501653e4abb596724395ef3",
+  "durationMs": 29057,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:09:25.873Z",
+    "articleHash": "fb8a6c06a5286e53bae02aaa60bfb8c7723e2c83",
+    "questionsHash": "3457ba2faf17ce06",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "What is aeSecure QuickScan?",
+      "question": "free Joomla malware scanner single PHP file no install",
       "anchor": ""
     },
     {
-      "question": "How does aeSecure QuickScan work for Joomla websites?",
+      "question": "Christophe Avonture Joomla virus scanner now maintained by AFUJ",
+      "anchor": ""
+    },
+    {
+      "question": "Joomla virus scanner browser-based report suspicious files",
+      "anchor": "result"
+    },
+    {
+      "question": "Joomla scanner hash whitelist core files only scan modified",
       "anchor": "why-it-works"
     },
     {
-      "question": "Where can I download the aeSecure QuickScan scanner file?",
+      "question": "aeSecure QuickScan auto-detect Joomla version matching whitelist",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "aeSecure QuickScan download PHP file AFUJ repository",
       "anchor": "download-the-scanner"
     },
     {
-      "question": "What is the purpose of running the aeSecure QuickScan scanner?",
+      "question": "run aeSecure QuickScan locally Docker Joomla avoid PHP timeout",
+      "anchor": "download-the-scanner"
+    },
+    {
+      "question": "Joomla scanner clean cache temp folders before scanning",
       "anchor": "run-the-scanner"
     },
     {
-      "question": "How does aeSecure QuickScan detect virus signatures in Joomla sites?",
+      "question": "aeSecure QuickScan 45000 signatures detection mechanism",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are the benefits of using aeSecure QuickScan for Joomla websites?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I run aeSecure QuickScan on a local copy of my Joomla site?",
-      "anchor": "run-the-scanner"
-    },
-    {
-      "question": "What are some common issues when using aeSecure QuickScan on real sites?",
-      "anchor": ""
+      "question": "safe to run aeSecure QuickScan on live production Joomla site",
+      "anchor": "download-the-scanner"
     }
   ]
 }

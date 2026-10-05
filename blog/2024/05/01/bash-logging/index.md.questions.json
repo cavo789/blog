@@ -1,41 +1,70 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:36.000Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:30:56.455Z",
   "source": "index.md",
   "sourceHash": "a67b3c98db51a060f3096ec5ed937f6e381b81fc",
+  "durationMs": 37225,
+  "rejected": [
+    {
+      "question": "bash log to both console and file with timestamps",
+      "anchor": "the-result",
+      "reason": "not answered: Article links to another page for console+file logging; not answered here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "bash script logging output example parallel jobs",
+      "anchor": "the-result",
+      "reason": "not answered: Only mentions parallel jobs in passing; links to another article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:52:50.320Z",
+    "articleHash": "10812850d9bae96f8be2e4cbcddcfe6783ca6dfd",
+    "questionsHash": "89e4e99fa34cfb6a",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What are the benefits of using logging features in Bash scripts?",
+      "question": "bash script add logging library source",
       "anchor": ""
     },
     {
-      "question": "How can I add logging to my Bash script?",
-      "anchor": "the-result"
+      "question": "how to add timestamped logfile to bash cron job",
+      "anchor": ""
     },
     {
-      "question": "What is a full function call trace in Bash logging?",
+      "question": "bash log entry show caller function and line number",
       "anchor": "trace"
     },
     {
-      "question": "Where should I include the log helper file in my script?",
+      "question": "how to debug bash script call chain multiple nested functions in log",
+      "anchor": "trace"
+    },
+    {
+      "question": "bash log multiple parent functions call chain trace",
+      "anchor": "trace"
+    },
+    {
+      "question": "how to add logging to existing bash script without rewriting",
       "anchor": "your-script"
     },
     {
-      "question": "How can I choose not to display the log automatically?",
+      "question": "bash source log helper file into script",
+      "anchor": "your-script"
+    },
+    {
+      "question": "bash log helper file implementation trace and logfile",
       "anchor": "the-log-helper"
     },
     {
-      "question": "What is a reusable Bash library for adding logging features?",
-      "anchor": "the-result"
-    },
-    {
-      "question": "How does the log helper file produce trace and log files?",
-      "anchor": ""
-    },
-    {
-      "question": "When should I implement logging in my Bash script?",
-      "anchor": ""
+      "question": "create bash reusable log function that writes to file with call trace",
+      "anchor": "the-log-helper"
     }
   ]
 }

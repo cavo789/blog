@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:18.363Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:50:13.316Z",
   "source": "index.md",
   "sourceHash": "b12db9d86fb2717f2cfdea390174830619f602e0",
+  "durationMs": 35182,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:10:10.547Z",
+    "articleHash": "42ac622d4e9ed0c72cf14f7305ee166d1d3d25d1",
+    "questionsHash": "b60b309ee1be7b74",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What are VSCode regions?",
-      "anchor": "regions-in-action"
-    },
-    {
-      "question": "How do I use regions in PHP code?",
-      "anchor": "code-folding-in-php"
-    },
-    {
-      "question": "Why can't VSCode fold Dockerfiles by default?",
-      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
-    },
-    {
-      "question": "What is the purpose of the Auto Fold extension?",
-      "anchor": "auto-fold-extension"
-    },
-    {
-      "question": "How do I install and configure the Auto Fold extension for Dockerfiles?",
-      "anchor": "auto-fold-extension"
-    },
-    {
-      "question": "When should I use regions in my code?",
-      "anchor": "code-folding-in-php"
-    },
-    {
-      "question": "What are some examples of well-organized Bash scripts?",
+      "question": "VSCode region tags code folding",
       "anchor": ""
     },
     {
-      "question": "How do I fold and unfold code blocks using regions in VSCode?",
+      "question": "how to collapse a block of code to one line in VSCode",
+      "anchor": "regions-in-action"
+    },
+    {
+      "question": "PHP #region #endregion VSCode fold",
+      "anchor": "code-folding-in-php"
+    },
+    {
+      "question": "VSCode code folding PHP should I split long functions",
+      "anchor": "code-folding-in-php"
+    },
+    {
+      "question": "Dockerfile region tags not working VSCode",
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
+    },
+    {
+      "question": "enable code folding in Dockerfile VSCode extension",
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
+    },
+    {
+      "question": "VSCode collapse expand multistage Dockerfile stages",
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
+    },
+    {
+      "question": "VSCode auto fold regions on file open",
+      "anchor": "auto-fold-extension"
+    },
+    {
+      "question": "auto-fold extension VSCode settings.json",
+      "anchor": "auto-fold-extension"
+    },
+    {
+      "question": "add region folding to file type VSCode doesn't support natively",
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
+    },
+    {
+      "question": "collapse code sections without scrolling VSCode",
       "anchor": "regions-in-action"
     }
   ]

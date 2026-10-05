@@ -1,33 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-31T13:09:21.338Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:47:35.755Z",
   "source": "index.md",
   "sourceHash": "9bb90100cdac2e305833b20460181fd5e629292c",
+  "durationMs": 26596,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:42:16.586Z",
+    "articleHash": "275fd80ae3439c948df540f91ef85320437daf74",
+    "questionsHash": "c5aff8305e340441",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I build a self-documenting ecosystem for multiple projects using Quarto and Docker?",
+      "question": "auto-generate documentation from live codebase quarto docker pipeline",
+      "anchor": ""
+    },
+    {
+      "question": "quarto render real-time mermaid diagram update when I add a new file",
       "anchor": "the-full-project"
     },
     {
-      "question": "What is the difference between static Markdown and runtime execution in Doc-as-Code with Quarto?",
+      "question": "quarto code block format raw python function output mermaid",
       "anchor": "why-it-works"
     },
     {
-      "question": "How can I generate a Mermaid diagram based on live Python scripts in my Quarto document?",
-      "anchor": "the-invisible-assistant-background-daemons--snippets"
+      "question": "quarto docker devcontainer 5 minute setup vs code",
+      "anchor": "installation--the-wow-lab-build-your-first-doc-engine-in-5-minutes"
     },
     {
-      "question": "What is the purpose of the Secrets Resolver in the context of generating documentation with Quarto and Docker?",
-      "anchor": "the-invisible-assistant-background-daemons--snippets"
+      "question": "docker compose quarto render service orchestration",
+      "anchor": "1-the-orchestrator-composeyaml"
     },
     {
-      "question": "How can I automate the documentation process for multiple projects using Quarto and Docker?",
+      "question": "quarto dockerfile install configure PYTHONPATH custom library",
+      "anchor": "2-the-engine-dockerfile"
+    },
+    {
+      "question": "python script scan project files generate mermaid architecture diagram",
       "anchor": "the-full-project"
     },
     {
-      "question": "What are the benefits of using runtime execution in Doc-as-Code with Quarto?",
-      "anchor": "why-it-works"
+      "question": "python ast introspect source code auto-generate api docs",
+      "anchor": "doc-as-code-the-python-ast-magic"
+    },
+    {
+      "question": "quarto render authenticated api call secrets resolver",
+      "anchor": "the-living-documentation-authenticated-api-calls"
+    },
+    {
+      "question": "quarto render background daemon snippet injection",
+      "anchor": "the-invisible-assistant-background-daemons--snippets"
+    },
+    {
+      "question": "manage documentation 50+ projects single quarto pipeline",
+      "anchor": "centralization-at-scale"
     }
   ]
 }

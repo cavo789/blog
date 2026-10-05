@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:12:29.378Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "9d3408ffd2998780fe6ca450f7e94f97b4d15a2a",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:22:32.205Z",
+    "articleHash": "643a51615e9e688e6c9ead4fed08617a65b0cbb3",
+    "questionsHash": "6aec83c58229b89a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment valider le schéma openapi de fastapi avec les standards belgif sous docker",
-      "anchor": ""
+      "anchor": "seeing-the-linter-run"
     },
     {
       "question": "docker compose run belgif-lint masquer les warnings inutiles",

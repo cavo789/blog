@@ -2,14 +2,32 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:05:59.912Z",
-  "durationMs": 167214,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "fc084012d9c415b64a3a74277eedee365de219e7",
+  "durationMs": 167214,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "comment éviter que le fichier .zshrc devienne un monstre",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no actual method given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:07:45.139Z",
+    "articleHash": "1ec40250c805ccdccf5897cf79209b11eb8e3609",
+    "questionsHash": "7b88cb2ffea03a6d",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment installer Zsh et Oh-My-ZSH sur Linux",
-      "anchor": ""
+      "anchor": "installation"
     },
     {
       "question": "afficher branche Git et fichiers non commit dans le prompt",
@@ -34,10 +52,6 @@
     {
       "question": "utiliser take, ...... et les alias Git comme gst au quotidien",
       "anchor": "some-features-i-use-daily"
-    },
-    {
-      "question": "comment éviter que le fichier .zshrc devienne un monstre",
-      "anchor": "conclusion"
     }
   ]
 }

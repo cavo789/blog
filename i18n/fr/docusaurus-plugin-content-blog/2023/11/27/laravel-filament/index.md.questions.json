@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:20:57.155Z",
-  "durationMs": 141711,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "58d12646a211aa188a46a704314a4363c5ac3bce",
+  "durationMs": 141711,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "comment installer et configurer Filament rapidement sur un projet Laravel",
+      "anchor": "",
+      "reason": "not answered: No installation steps or commands provided in the article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:10:30.509Z",
+    "articleHash": "299d6164b066897d3d061674255ffbef6f4b40f3",
+    "questionsHash": "38d0da57ababefc2",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "stack TALL (Tailwind, Alpine, Laravel, Livewire) pour construire des panneaux d'administration",
@@ -13,10 +31,6 @@
     },
     {
       "question": "alternative gratuite à Laravel Nova pour les back-office Laravel",
-      "anchor": ""
-    },
-    {
-      "question": "comment installer et configurer Filament rapidement sur un projet Laravel",
       "anchor": ""
     },
     {

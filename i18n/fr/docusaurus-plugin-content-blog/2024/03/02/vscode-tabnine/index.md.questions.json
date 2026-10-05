@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:19:58.689Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e30a7a4a146e65902961d296a64e9ef5b354290a",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:01:49.838Z",
+    "articleHash": "c5534e627b223f6f40519e4d4eaad798fbc1c085",
+    "questionsHash": "8d293c287b1da737",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "extension VS Code autocomplétion IA gratuite hors ligne",

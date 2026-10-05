@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:18:14.379Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "29b8df7307f4bb39f655fa31bf8f9a88ffadd86f",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "tester un port spécifique à l'intérieur d'un container avec nc",
+      "anchor": "testing-the-port",
+      "reason": "not answered: Article uses telnet, never mentions nc (netcat)",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:04:38.991Z",
+    "articleHash": "54167893189124ce9e9b47a240e41c6b4b40f8e0",
+    "questionsHash": "39d2e9fcc7b241eb",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "pourquoi mes containers docker ne parviennent pas à communiquer",
@@ -25,10 +43,6 @@
     {
       "question": "vérifier la résolution dns entre containers avec ping",
       "anchor": "fourthly-testing-connectivity-between-the-two-containers"
-    },
-    {
-      "question": "tester un port spécifique à l'intérieur d'un container avec nc",
-      "anchor": "testing-the-port"
     },
     {
       "question": "comment vérifier la réponse de l'api docker avec curl ?",

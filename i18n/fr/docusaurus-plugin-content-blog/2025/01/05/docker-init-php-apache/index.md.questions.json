@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T13:40:23.651Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "a75edc9daf4abd6cb169e5e9674dc7e883b756fd",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:11:52.594Z",
+    "articleHash": "954c98bc01d748e40c800b1615e0a1fcc545e772",
+    "questionsHash": "d28c5b31649665a1",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment dockeriser rapidement une application PHP existante sans écrire de fichiers à la main",

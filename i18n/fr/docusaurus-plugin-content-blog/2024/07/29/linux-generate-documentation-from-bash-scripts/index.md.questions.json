@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:53:09.590Z",
-  "durationMs": 128943,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "127504d3bfa3497a4a842dc489f727f16ebe12e1",
+  "durationMs": 128943,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "réordonner les fonctions par ordre alphabétique dans un script bash",
+      "anchor": "going-further",
+      "reason": "not answered: Only a link to another article; no script or method provided here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "transformer un dossier de fichiers markdown en site de documentation avec quarto",
+      "anchor": "going-further",
+      "reason": "not answered: Only a link to another article; no Quarto instructions given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:37:12.792Z",
+    "articleHash": "4e591bff38210c7b8ea63274d78bb45c0b4708c4",
+    "questionsHash": "c2f5e9f27a4c6b09",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment générer automatiquement la documentation de scripts bash sous linux",
@@ -17,7 +41,7 @@
     },
     {
       "question": "script maison pour parser les commentaires php docblock dans les fichiers sh",
-      "anchor": ""
+      "anchor": "how-to-reproduce-it"
     },
     {
       "question": "quel est le format du readme.md créé avec la table des matières ?",
@@ -38,14 +62,6 @@
     {
       "question": "commande exacte pour exécuter le générateur de documentation bash",
       "anchor": "how-to-reproduce-it"
-    },
-    {
-      "question": "réordonner les fonctions par ordre alphabétique dans un script bash",
-      "anchor": "going-further"
-    },
-    {
-      "question": "transformer un dossier de fichiers markdown en site de documentation avec quarto",
-      "anchor": "going-further"
     }
   ]
 }

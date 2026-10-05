@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:45:49.632Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:27:07.348Z",
   "source": "index.md",
   "sourceHash": "b280b9072a97cb29096d237e557de196f58bf28a",
+  "durationMs": 15375,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:55:05.548Z",
+    "articleHash": "7f70b7f0d1b206b23c30ed3a9dd609efee0b9627",
+    "questionsHash": "0bcb59381e2d2ebd",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do you add ASCII art to Bash scripts?",
+      "question": "ascii art banner in bash script",
       "anchor": ""
     },
     {
-      "question": "What is patorjk.com/software/taag and how does it help create ASCII art banners?",
+      "question": "how to add a text art header to a shell script",
       "anchor": ""
     },
     {
-      "question": "How can I use the patorjk.com software to create ASCII art banners in Bash scripts?",
+      "question": "patorjk taag bash banner",
       "anchor": ""
     },
     {
-      "question": "What is a good old-fashioned ASCII Art banner and why do you use it?",
+      "question": "make bash script look cool with ascii",
       "anchor": ""
     },
     {
-      "question": "How can I apply the same approach to creating an ASCII Art banner for a website using Docusaurus?",
+      "question": "echo ascii art at top of bash script",
       "anchor": ""
     },
     {
-      "question": "What is the syntax for adding an ASCII art banner to a Bash script?",
+      "question": "bash script visual banner terminal",
       "anchor": ""
     },
     {
-      "question": "How can I use the patorjk.com software to create ASCII art banners in HTML pages rendered by Docusaurus?",
+      "question": "how to generate ascii art for linux shell scripts",
       "anchor": ""
     },
     {
-      "question": "What are some examples of how to add a banner and logging function to Bash scripts?",
+      "question": "taag ascii art generator bash implementation",
+      "anchor": ""
+    },
+    {
+      "question": "add geeky banner to bash script",
+      "anchor": ""
+    },
+    {
+      "question": "bash script ascii art header echo",
       "anchor": ""
     }
   ]

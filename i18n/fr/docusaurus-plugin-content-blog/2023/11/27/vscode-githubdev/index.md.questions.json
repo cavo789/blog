@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:23:24.120Z",
-  "durationMs": 113780,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "7f599f81de58c41b22659756549df4ee456802d3",
+  "durationMs": 113780,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:11:16.311Z",
+    "articleHash": "4deadb75841602e12c8fbdeb7d61175803a13b73",
+    "questionsHash": "201ff9745ad6b46c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "github.com remplacer par github.dev url",
@@ -21,7 +31,7 @@
     },
     {
       "question": "éditer du code sur github sans cloner le projet localement",
-      "anchor": ""
+      "anchor": "but-whats-the-point-why-would-i-need-it"
     },
     {
       "question": "modifier l'url github pour accéder à vscode web",

@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:14:23.316Z",
-  "durationMs": 113165,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "9ed50ed23766957eacc04ef24237926473a3350e",
+  "durationMs": 113165,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "implémenter le pattern event listener en PHP pur sans framework",
+      "anchor": "the-same-idea-outside-laravel",
+      "reason": "not answered: Only mentions League\\Event with a link; no implementation shown.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:08:29.925Z",
+    "articleHash": "7068f9eb0d8c06e7fbcac5b9cfac1b2175639858",
+    "questionsHash": "51a475ba2114c0e3",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment découpler son code avec les events et listeners de Laravel",
@@ -17,7 +35,7 @@
     },
     {
       "question": "comment le listener reçoit et modifie l'objet transporté par un event Laravel ?",
-      "anchor": "why-it-works"
+      "anchor": "building-it"
     },
     {
       "question": "créer et brancher un event listener dans Laravel étape par étape",
@@ -32,12 +50,8 @@
       "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "implémenter le pattern event listener en PHP pur sans framework",
-      "anchor": "the-same-idea-outside-laravel"
-    },
-    {
       "question": "comment les events facilitent l'ajout de fonctionnalités futures ?",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     }
   ]
 }

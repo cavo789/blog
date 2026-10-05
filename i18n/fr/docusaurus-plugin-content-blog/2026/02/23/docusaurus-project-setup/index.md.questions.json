@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:42:44.279Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3528ab13b1d0d99ff877114a39b5f860e2f06bd3",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:12:38.393Z",
+    "articleHash": "706cb671c912e8bf5c8626ea02812afd85402841",
+    "questionsHash": "84a1ac4b3b712f66",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "docusaurus partager arborescence projet interactive",
@@ -12,7 +22,7 @@
     },
     {
       "question": "comment installer ProjectSetup dans un projet Docusaurus ?",
-      "anchor": "seeing-it-work"
+      "anchor": "2-installing-projectsetup"
     },
     {
       "question": "composant React Docusaurus affichage arborescence fichiers",

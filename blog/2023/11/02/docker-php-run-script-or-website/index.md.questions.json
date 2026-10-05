@@ -1,40 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:47:12.398Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T17:58:20.295Z",
   "source": "index.md",
   "sourceHash": "ca8c4436948bb05ea44857f0efb81093279e7ea5",
+  "durationMs": 28745,
+  "rejected": [
+    {
+      "question": "quickest way to run php code in docker without apache",
+      "anchor": "",
+      "reason": "not answered: Article uses php:apache image; no non-apache alternative shown.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "php docker container php.ini default settings too strict",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no fix given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:29:22.435Z",
+    "articleHash": "11ccd29c90b4c29abcd614beada0e9309b643010",
+    "questionsHash": "5e00c2551de68d8c",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I run a standard PHP script or website locally?",
+      "question": "docker run php script locally without installing php",
       "anchor": ""
     },
     {
-      "question": "What is the easiest way to run a PHP script using Docker?",
+      "question": "how to test a single php file in a docker container",
       "anchor": ""
     },
     {
-      "question": "How can I quickly test my PHP code without installing local PHP or Apache?",
+      "question": "php:apache docker image mount local folder port 8080",
       "anchor": ""
     },
     {
-      "question": "What are the steps to create and run a PHP script using Docker?",
+      "question": "docker php one-liner wsl no dependencies",
       "anchor": ""
     },
     {
-      "question": "How do I access my local PHP website on port 8080?",
+      "question": "mount current directory into php docker container so edits reflect instantly",
       "anchor": ""
     },
     {
-      "question": "What is the command to synchronize the current folder with the Docker container?",
+      "question": "switch php version by changing docker image tag",
       "anchor": ""
     },
     {
-      "question": "How can I switch between PHP versions using a Docker image?",
+      "question": "docker run php:apache -v .:/var/www/html -p 8080:80",
       "anchor": ""
     },
     {
-      "question": "What are some useful extensions and tools to enhance my PHP development with Docker?",
+      "question": "serve php files from a local folder via docker container",
       "anchor": ""
     }
   ]

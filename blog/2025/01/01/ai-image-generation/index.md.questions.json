@@ -1,40 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:16.849Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:29:25.561Z",
   "source": "index.md",
   "sourceHash": "9a3128f66aed6e95ceefe6892b8ad192607344bb",
+  "durationMs": 44992,
+  "rejected": [
+    {
+      "question": "how to fine-tune AI generated image details without full regeneration",
+      "anchor": "",
+      "reason": "not answered: Mentions the feature name but gives no steps or how-to.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "AI generated image too heavy for webpage convert to webp",
+      "anchor": "",
+      "reason": "not answered: Names CaesiumCLT but links to another article for the actual command.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:40:52.013Z",
+    "articleHash": "8a26984e0496ff88665ddf63ce6592a76fd75153",
+    "questionsHash": "832486daab86abd5",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How does Recraft.ai differ from other AI image generation tools?",
+      "question": "recraft.ai generate variations from same prompt",
       "anchor": ""
     },
     {
-      "question": "What are some advanced features of Recraft.ai's image generation tool?",
+      "question": "AI image generator specify exact pixel dimensions landscape portrait",
       "anchor": ""
     },
     {
-      "question": "Can Recraft.ai produce multiple variations of an image from a single prompt?",
+      "question": "recraft.ai text in image no typos",
       "anchor": ""
     },
     {
-      "question": "How can I specify custom image dimensions using Recraft.ai?",
+      "question": "recraft.ai editor rotate add text resize",
       "anchor": ""
     },
     {
-      "question": "What is the process for adding text to images in Recraft.ai?",
+      "question": "AI image generator realistic photo prompt trick",
       "anchor": ""
     },
     {
-      "question": "Can Recraft.ai generate realistic-looking images?",
+      "question": "recraft.ai vs bing image generation text spelling accuracy",
       "anchor": ""
     },
     {
-      "question": "How does Recraft.ai compare to Bing in terms of image generation capabilities?",
+      "question": "recraft.ai custom size square horizontal vertical",
       "anchor": ""
     },
     {
-      "question": "What are some common issues I might encounter when using Recraft.ai's image generation tool?",
+      "question": "AI image tool fine-tune variations custom dimensions",
       "anchor": ""
     }
   ]

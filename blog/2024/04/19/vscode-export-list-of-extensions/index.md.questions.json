@@ -1,56 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:22.459Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:28:07.145Z",
   "source": "index.md",
   "sourceHash": "216a27f4d3f11c78f90ad17c5da3d1d27072c39a",
+  "durationMs": 21679,
+  "rejected": [
+    {
+      "question": "share vscode extension setup with team",
+      "anchor": "",
+      "reason": "not answered: Only mentions devcontainer.json, details are in a linked article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "devcontainer preinstall vscode extensions from list",
+      "anchor": "",
+      "reason": "not answered: Points to another article for devcontainer details; no instructions here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:49:54.119Z",
+    "articleHash": "7e24d5003a8e2943943a63ae69f79110af1a5898",
+    "questionsHash": "08fc45e588f4c950",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I export my installed VSCode extensions?",
+      "question": "code --list-extensions",
       "anchor": ""
     },
     {
-      "question": "What is the command to list installed VSCode extensions?",
+      "question": "how to export vscode extensions list to a file",
       "anchor": ""
     },
     {
-      "question": "How can I generate direct installation commands for VSCode extensions?",
+      "question": "vscode extensions install commands from list",
       "anchor": ""
     },
     {
-      "question": "What are some useful tips for exporting and sharing VSCode extensions?",
+      "question": "generate code install commands from extension list powershell",
       "anchor": ""
     },
     {
-      "question": "How do I share my setup with a friend using the list of installed VSCode extensions?",
+      "question": "copy all vscode extensions to another machine",
       "anchor": ""
     },
     {
-      "question": "What is Todo Tree and how does it help manage code tasks in VSCode?",
+      "question": "vscode list extensions linux command",
       "anchor": ""
     },
     {
-      "question": "What are some error management tools recommended for VSCode?",
+      "question": "convert code --list-extensions output to install script",
       "anchor": ""
     },
     {
-      "question": "How can I export my installed VSCode extensions to a file?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the command to list all installed extensions in VSCode?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I generate direct installation commands for VSCode extensions using PowerShell?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some useful tips for sharing VSCode extensions with others?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I share my setup with a friend using the list of installed VSCode extensions?",
+      "question": "vscode extensions backup and restore command line",
       "anchor": ""
     }
   ]

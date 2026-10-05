@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:59:31.654Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "bdfc252fe6d7c1af6f2b4221909368b3e93a122f",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:58:15.076Z",
+    "articleHash": "2aa9bf730c9e6789ec4961c3aec08a0017194680",
+    "questionsHash": "fcae44150558e8d2",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "configurer un devcontainer Quarto portable avec VSCode",
@@ -32,7 +42,7 @@
     },
     {
       "question": "configurer les pre-commit-hooks pour un projet Quarto dans VSCode",
-      "anchor": "installation-of-pre-commit-hooks"
+      "anchor": "what-is-pre-commit"
     },
     {
       "question": "ouvrir un dossier local comme devcontainer dans VSCode",

@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:03:02.843Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:56:45.920Z",
   "source": "index.md",
   "sourceHash": "b667323bdcf22a73fb7e6537d7ddadfa09161fa3",
+  "durationMs": 30364,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:49:51.947Z",
+    "articleHash": "7aa06440c2d687b6dbc01847d888a02b96e7ba3f",
+    "questionsHash": "7b44aa84d6cc45d9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I set up a dedicated Ollama server on my local network?",
+      "question": "ollama server local network private ai coding assistant",
       "anchor": ""
     },
     {
-      "question": "What is the process for finding your server's IP address?",
+      "question": "how to access ollama from laptop while server runs on desktop",
+      "anchor": ""
+    },
+    {
+      "question": "wired lan vs wifi for ollama server latency",
       "anchor": "using-a-local-network"
     },
     {
-      "question": "How do I connect to my server from another computer using a local network?",
+      "question": "find ip address of ollama server windows powershell",
       "anchor": "finding-your-servers-ip-address"
     },
     {
-      "question": "What are the steps to set up the client computer for accessing Ollama across your network?",
+      "question": "ping ollama server from client computer",
       "anchor": "setting-up-the-client-computer"
     },
     {
-      "question": "How do I run Open WebUI on my server?",
+      "question": "open webui login screen from another computer on same network",
       "anchor": "running-open-webui"
     },
     {
-      "question": "What is the troubleshooting method for Docker containers when they can't access each other?",
+      "question": "curl ollama /api/tags remote server test",
       "anchor": "double-checking-the-connection"
     },
     {
-      "question": "How do I verify connectivity between your client and server using a networking command?",
+      "question": "vscode extension connect to remote ollama backend",
       "anchor": "configure-your-code-editor-vscode"
     },
     {
-      "question": "What are the steps to configure your code editor (VSCode) for accessing Ollama as a backend?",
+      "question": "configure vscode ai assistant ollama as backend not cloud",
+      "anchor": "configure-your-code-editor-vscode"
+    },
+    {
+      "question": "replace github copilot with local ollama network setup",
       "anchor": "conclusion"
     }
   ]

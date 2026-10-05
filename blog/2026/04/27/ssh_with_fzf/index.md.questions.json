@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:55:31.991Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:53:51.033Z",
   "source": "index.md",
   "sourceHash": "df93809865dd7a38ba069ee82a6f77401c8abcda",
+  "durationMs": 51591,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:47:14.283Z",
+    "articleHash": "0915f1e23847f60525012454ba529a38d89108e8",
+    "questionsHash": "79fefe2a2be37885",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I install FZF on my machine?",
+      "question": "searchable TUI to pick SSH host without memorizing 50 servers",
+      "anchor": ""
+    },
+    {
+      "question": "docker build sshf-demo container test fzf ssh selector",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What is the purpose of creating an SSHf function in this article?",
+      "question": "fzf install git clone depth 1",
       "anchor": "install-fzf"
     },
     {
-      "question": "How can I view a list of all hosts using the TUI?",
+      "question": "split monolithic ssh_config into per-project files",
       "anchor": "ssh-configuration"
     },
     {
-      "question": "What are some contextual information that can be displayed about selected hosts?",
+      "question": "amazing.conf ssh host documentation block",
       "anchor": "look-at-the-amazingconf-file"
     },
     {
-      "question": "How does the SSHf function work with FZF to create a fast, searchable TUI for SSH connections?",
+      "question": "add sshf function bash fzf interactive menu",
       "anchor": "add-the-sshf-function"
     },
     {
-      "question": "What is the difference between using the 'sshf' function and directly typing an SSH command?",
+      "question": "fzf filter ssh hosts by name project metadata",
       "anchor": "using-filtering-options"
     },
     {
-      "question": "How can I add rich documentation to my SSH configurations?",
+      "question": "trigger ping or generate system inventory from fzf ssh menu",
       "anchor": "my-real-use-case"
     },
     {
-      "question": "What are some advanced custom actions that can be triggered from the search menu in the TUI?",
+      "question": "how to build a searchable terminal UI for picking which SSH server to connect to",
       "anchor": ""
+    },
+    {
+      "question": "real use case sshf custom actions context info per host",
+      "anchor": "my-real-use-case"
     }
   ]
 }

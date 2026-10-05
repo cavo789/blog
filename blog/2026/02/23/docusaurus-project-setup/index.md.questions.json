@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:52:32.231Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:44:34.617Z",
   "source": "index.md",
   "sourceHash": "b2c439c297007b5263f02ae9c11aba55b7d89408",
+  "durationMs": 18902,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:39:30.765Z",
+    "articleHash": "beb74cbd53d0e57e8355233ace13e2474ca63ec2",
+    "questionsHash": "711963b6bcc76b47",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I use the ProjectSetup component in my Docusaurus blog posts?",
+      "question": "docusaurus component share project file structure blog post",
+      "anchor": ""
+    },
+    {
+      "question": "ProjectSetup component markdown code example docusaurus",
       "anchor": "seeing-it-work"
     },
     {
-      "question": "What is the killer feature of the ProjectSetup component?",
+      "question": "react component display file tree with collapsible code snippets docusaurus",
       "anchor": "what-is-projectsetup"
     },
     {
-      "question": "Can you explain how to generate an install script using the ProjectSetup component?",
+      "question": "docusaurus auto generate bash install script from project files",
       "anchor": "core-features"
     },
     {
-      "question": "How can I download the project as a ZIP file using the ProjectSetup component?",
+      "question": "ProjectSetup docusaurus dependencies Snippet LogoIcon components",
       "anchor": "dependencies"
     },
     {
-      "question": "What are the core features of the ProjectSetup component?",
+      "question": "install ProjectSetup Snippet LogoIcon docusaurus setup",
       "anchor": "installing-the-rest"
     },
     {
-      "question": "What is LogoIcon and how can I use it with the ProjectSetup component?",
-      "anchor": "1-installing-snippet"
+      "question": "docusaurus Snippet component install file type icon",
+      "anchor": "installing-the-rest"
     },
     {
-      "question": "How can I integrate the ProjectSetup component into my Docusaurus blog posts?",
-      "anchor": "2-installing-projectsetup"
+      "question": "how to add ProjectSetup component docusaurus",
+      "anchor": "seeing-it-work"
     },
     {
-      "question": "What are the dependencies of the ProjectSetup component and how do they work together?",
+      "question": "docusaurus project_setup help page",
       "anchor": "3-the-project_setup-help-page"
+    },
+    {
+      "question": "docusaurus blog download project as zip share code",
+      "anchor": "core-features"
     }
   ]
 }

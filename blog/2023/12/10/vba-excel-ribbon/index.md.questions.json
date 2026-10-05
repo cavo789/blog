@@ -1,53 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:45:18.940Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:21:51.735Z",
   "source": "index.md",
   "sourceHash": "5f0dd7ba3fe7a93b659d945366c4cab4ccff1219",
+  "durationMs": 27891,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:50:11.714Z",
+    "articleHash": "6381ed79df59c939afb43d66228cc9141e7702a9",
+    "questionsHash": "fead2f2e0732c9fe",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I create a custom VBA Excel Ribbon using XML and VBA?",
+      "question": "how to add custom ribbon tab in Excel without installing an add-in",
       "anchor": "what-were-going-to-build"
     },
     {
-      "question": "What is the purpose of adding a ribbon to an Excel workbook?",
+      "question": "Excel ribbon with a button and text input field saved inside the workbook",
+      "anchor": "what-were-going-to-build"
+    },
+    {
+      "question": "why does customUI1.xml work when placed inside the xlsm zip archive",
       "anchor": "why-it-works"
     },
     {
-      "question": "Where can I download the free tool for creating a custom Excel Ribbon?",
+      "question": "free tool to edit Excel ribbon XML manifest",
       "anchor": "download-the-editor-for-free"
     },
     {
-      "question": "How do I create a new, empty Excel Macro-Enabled Workbook file?",
+      "question": "create empty macro-enabled workbook as starting point for custom ribbon",
       "anchor": "create-an-empty-file"
     },
     {
-      "question": "What is the XML file that describes the tabs, groups and controls in an Excel ribbon?",
+      "question": "RibbonX Editor add new ribbon to existing Excel file step by step",
       "anchor": "add-a-ribbon-in-ms-office"
     },
     {
-      "question": "How do I add a new ribbon to an Excel workbook using the free tool?",
-      "anchor": "under-the-hood--the-manifest-tag-by-tag-skip-this-if-you-just-want-a-ribbon"
-    },
-    {
-      "question": "What is the XML code that defines the tabs, groups and controls in an Excel ribbon?",
+      "question": "customUI root element and namespace declaration in Excel ribbon XML",
       "anchor": "the-root-customui-node-and-the-namespace"
     },
     {
-      "question": "How do I define a tab in an Excel ribbon using XML?",
-      "anchor": "define-the-ribbon"
-    },
-    {
-      "question": "What is the XML code that defines a button in an Excel ribbon?",
+      "question": "define tab element in Excel custom ribbon XML",
       "anchor": "define-the-tab"
     },
     {
-      "question": "How do I assign a callback subroutine to a button in an Excel ribbon?",
-      "anchor": "implement-our-ribbon"
+      "question": "add button and edit box controls to Excel custom ribbon",
+      "anchor": "add-features"
     },
     {
-      "question": "What is the purpose of the manifest file in an Excel workbook?",
-      "anchor": "add-features"
+      "question": "standard icon IDs for Excel ribbon buttons",
+      "anchor": "find-images"
+    },
+    {
+      "question": "onAction callback VBA subroutine for Excel ribbon button click",
+      "anchor": "assign-callbacks"
+    },
+    {
+      "question": "Excel customUI manifest XML tag by tag breakdown",
+      "anchor": "under-the-hood--the-manifest-tag-by-tag-skip-this-if-you-just-want-a-ribbon"
     }
   ]
 }

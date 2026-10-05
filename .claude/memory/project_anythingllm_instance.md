@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 90614b9a-a9c5-4fab-8215-58074b589b67
-  modified: 2026-09-17T13:40:00.000Z
+  modified: 2026-09-23T17:00:00.000Z
 ---
 
 Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the host.
@@ -41,6 +41,18 @@ Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the ho
   script reports success — **compare the state file's line count against the workspace's document
   count** to catch it. Fixing it means a global chunk-length change, which also affects `blog`.
 
-The API key is not stored here — ask for it when needed.
+**Consumers since 2026-09-23 (vector search only, `scripts/lib/anythingllm.mjs`):**
+`questions review` specificity marks (rank of the article for each question: 1 ●, 2-3 ◐, >3 ○;
+EN corpus: 147/2140 questions ○ on 88 articles, full `--generic` scan ≈ 2 min), `links:check`
+meaning signal (mean over title + per-section queries, ≥ 0.65 = neighbour), `ai-related`
+(free text: ≥ 0.78 covered, ≥ 0.70 overlap) used by `/suggestions-add`. `vector-search` is
+≈ 0.1 s warm, ≈ 14 s cold (embedder load). Traps: 2 EN docs (`bash-parallel-tasks`,
+`gemini-tldr`) have no `docSource` in chunk metadata → resolved via the state file's
+`custom-documents/<slug>.md-…` location; FR marks ≈ 2.5× noisier (English embedder).
+
+Memory footprint measured 2026-09-23 (`docker stats`): anythingllm ≈ 0.5 GB, open-webui ≈ 0.65 GB,
+ollama ≈ 28 GB with a model loaded — the WSL VM sees 47 GB, not the host's 64.
+
+The API key is not stored here — ask for it when needed (it is in the gitignored `.env`).
 
 Related: [[project_overview]], [[project_blog_map]].

@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:23.120Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:51:04.359Z",
   "source": "index.md",
   "sourceHash": "42372e27fc6895cdc5a7e83618bb7210a4ee53ab",
+  "durationMs": 22137,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:10:59.852Z",
+    "articleHash": "b57c63e34614821474ac848206d6e013282028d6",
+    "questionsHash": "b80a98ffeab95947",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I run a static HTML site locally using Docker?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the benefits of running a static HTML site with Docker in seconds?",
+      "question": "serve static html site locally docker one command no apache install",
       "anchor": "result"
     },
     {
-      "question": "How does Docker help me serve a static HTML website quickly without installing Apache or Nginx?",
+      "question": "run html website from a folder without wamp or easyphp",
+      "anchor": "result"
+    },
+    {
+      "question": "docker run -v current folder localhost:80",
+      "anchor": "result"
+    },
+    {
+      "question": "how to browse to the local docker-served site after running the command",
+      "anchor": "result"
+    },
+    {
+      "question": "docker httpd image mount current directory as docroot",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the command to run a static HTML site locally using Docker?",
+      "question": "does docker apache container respect .htaccess directives",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "why does docker apache serve files from a mounted folder immediately without config",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "download sample static website with curl in powershell",
       "anchor": "dont-have-a-site-to-try-this-on-yet"
     },
     {
-      "question": "How can I install and configure Docker on my Windows machine?",
+      "question": "unzip file from command line powershell",
+      "anchor": "dont-have-a-site-to-try-this-on-yet"
+    },
+    {
+      "question": "docker remove container after serving static site cleanup",
       "anchor": "conclusion"
     },
     {
-      "question": "Can I serve PHP sites with Docker and what is the easiest way to do it?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What are some free static websites available for demonstration using Docker?",
-      "anchor": "dont-have-a-site-to-try-this-on-yet"
-    },
-    {
-      "question": "How can I download a static website from the internet and run it locally using Docker?",
+      "question": "docker serve html folder no config no install throw away when done",
       "anchor": "conclusion"
     }
   ]

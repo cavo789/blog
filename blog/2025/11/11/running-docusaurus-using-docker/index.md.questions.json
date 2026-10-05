@@ -1,45 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:52:11.158Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:29:37.639Z",
   "source": "index.md",
   "sourceHash": "1ff724fcdc7f8f886b76786402d1ad0a6a38da69",
+  "durationMs": 23819,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:26:13.805Z",
+    "articleHash": "a310aaee9b3a0f086fd6d9ff2620ab4b3c0e5176",
+    "questionsHash": "8fcb0253a4b0aa82",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I create a single Docker image for production builds using Docusaurus?",
+      "question": "docusaurus docker devcontainer single image workflow",
+      "anchor": ""
+    },
+    {
+      "question": "clone existing docusaurus blog repo to set up docker locally",
+      "anchor": "retrieve-a-docusaurus-blog"
+    },
+    {
+      "question": "how to create a base docker image for a docusaurus nodejs site",
       "anchor": "create-the-base-docker-image"
     },
     {
-      "question": "What is DevContainer and how does it help in developing Docusaurus blogs?",
+      "question": "what files do I need in the docusaurus project root for a docker build (makefile, dockerfile)",
+      "anchor": "create-required-files"
+    },
+    {
+      "question": "make build TARGET=production docusaurus docker up",
+      "anchor": "build-and-run-the-production-image"
+    },
+    {
+      "question": "vscode devcontainer for docusaurus isolated development environment",
       "anchor": "using-devcontainers-for-development"
     },
     {
-      "question": "How do I use VS Code to run a development environment with Docker for my Docusaurus blog?",
+      "question": "devcontainer.json setup docusaurus yarn project",
+      "anchor": "create-the-devcontainer-folder"
+    },
+    {
+      "question": "run yarn dev commands inside the devcontainer terminal for docusaurus",
       "anchor": "running-the-terminal-from-the-devcontainer"
     },
     {
-      "question": "What are the advantages of using DevContainers for Docusaurus development?",
+      "question": "why use docker devcontainer instead of local node install for static blog dev",
       "anchor": "what-are-the-advantages-of-such-approach"
     },
     {
-      "question": "How can I integrate LanguageTool into VSCode to check grammar and style in my Docusaurus blog posts?",
+      "question": "languagetool extension vscode markdown blog writing",
       "anchor": "using-languagetool-in-vscode"
     },
     {
-      "question": "What is Code Spell Checker and how does it help me with spelling errors in my Docusaurus blog posts?",
+      "question": "code spell checker extension docusaurus markdown posts",
       "anchor": "code-spell-checker"
     },
     {
-      "question": "How can I use Markdown lint to ensure proper formatting of my Docusaurus blog posts?",
+      "question": "markdownlint config vscode docusaurus blog",
       "anchor": "markdown-lint"
-    },
-    {
-      "question": "What are some best practices for maintaining a clean, reproducible setup when using Docker and DevContainers with Docusaurus?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I deploy my Docusaurus blog to GitHub Pages using Actions?",
-      "anchor": ""
     }
   ]
 }

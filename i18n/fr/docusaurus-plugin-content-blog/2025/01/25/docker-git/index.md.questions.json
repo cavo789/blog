@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T13:49:48.925Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "9116bda3d3ec4b5e5a20aa658fc110ad931966a3",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:14:30.606Z",
+    "articleHash": "ae05bfe5ec5e2b337756cbffb31ccacbeb67b72f",
+    "questionsHash": "72c575c6f0c164c3",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment exécuter des commandes git directement depuis un container sans revenir sur l'hôte",
@@ -40,7 +50,7 @@
     },
     {
       "question": "configurer docker-compose.yml pour lier les répertoires locaux aux chemins root du container",
-      "anchor": "sharing-your-configuration"
+      "anchor": "creating-a-demo-container"
     }
   ]
 }

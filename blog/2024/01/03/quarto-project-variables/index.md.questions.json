@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:16.175Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:41:49.786Z",
   "source": "index.md",
   "sourceHash": "0cba5eb406d5651c081ce39da4037d0d84b2fad5",
+  "durationMs": 20995,
+  "rejected": [
+    {
+      "question": "quarto variables not enough when repeating whole page structure",
+      "anchor": "conclusion",
+      "reason": "not answered: Mustache solution is in a linked article, not here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:07:34.740Z",
+    "articleHash": "cdda9f0c85f77258e98e5ca7f04e9a49ecc5422c",
+    "questionsHash": "ec22bf8d696f842e",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What are Quarto variables and how do they work?",
+      "question": "quarto avoid hardcoding IP addresses and paths in documentation",
       "anchor": ""
     },
     {
-      "question": "How can I set up external YAML files for managing variables in my Quarto project?",
+      "question": "how to reference the same server config value across multiple quarto markdown pages",
       "anchor": "what-quarto-variables-do-for-you"
     },
     {
-      "question": "What is the purpose of using environment variables with Quarto?",
+      "question": "quarto variables short code syntax {{< >}}",
+      "anchor": "what-quarto-variables-do-for-you"
+    },
+    {
+      "question": "quarto replace hardcoded email address with a variable in rendered output",
+      "anchor": "what-quarto-variables-do-for-you"
+    },
+    {
+      "question": "quarto.yml _variables.yml external yaml file setup",
       "anchor": "setting-it-up"
     },
     {
-      "question": "How do I load environment variables into a Docker container for use with Quarto?",
+      "question": "how to configure a quarto project to load key-value variables from a separate yaml file",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "quarto read environment variables docker --env-file",
       "anchor": "environment-variables"
     },
     {
-      "question": "What are some best practices for managing variables in Quarto documentation?",
-      "anchor": ""
+      "question": "pass .env file into quarto container so docs can use the same values as my app",
+      "anchor": "environment-variables"
     },
     {
-      "question": "How can I reuse the same values for both my application and documentation using environment variables?",
-      "anchor": "setting-it-up"
-    },
-    {
-      "question": "What is the difference between using variables and Mustache templating in Quarto?",
+      "question": "quarto variables vs mustache templating which one to use",
       "anchor": "conclusion"
-    },
-    {
-      "question": "How can I update multiple occurrences of a value in my Quarto documentation without manually editing each page?",
-      "anchor": ""
     }
   ]
 }

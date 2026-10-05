@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:45:38.224Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:25:34.289Z",
   "source": "index.md",
   "sourceHash": "a1dc5a08df4f9e50d1baa31e1f0a2076194ed43e",
+  "durationMs": 20859,
+  "rejected": [
+    {
+      "question": "winget upgrade all --accept-source-agreements --accept-package-agreements",
+      "anchor": "",
+      "reason": "not answered: Article never mentions --accept-source-agreements or --accept-package-agreements flags.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:53:29.569Z",
+    "articleHash": "bfc7610bee44165f98ab89f0ab3da1a640746b78",
+    "questionsHash": "09c908fbc993f7ab",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "winget update all outdated windows programs",
+      "question": "batch update all windows programs command line",
       "anchor": ""
     },
     {
-      "question": "how to use winget to update all installed software on windows",
+      "question": "windows equivalent of apt-get upgrade",
       "anchor": ""
     },
     {
-      "question": "list of out-of-date windows applications using winget",
+      "question": "winget --include-unknown find more updates",
       "anchor": ""
     },
     {
-      "question": "winget command to check for updates and install them",
-      "anchor": ""
-    },
-    {
-      "question": "how to use winget to update specific windows application",
-      "anchor": "upgrade-just-one-application"
-    },
-    {
-      "question": "winget command to list all installed software on windows",
+      "question": "winget list installed software",
       "anchor": "getting-the-list-of-software"
     },
     {
-      "question": "how to use winget to upgrade multiple windows applications at once",
-      "anchor": ""
+      "question": "how to see which windows apps have updates available",
+      "anchor": "getting-the-list-of-software"
     },
     {
-      "question": "winget update command examples for windows",
-      "anchor": ""
+      "question": "winget list sorted powershell",
+      "anchor": "getting-the-list-of-software"
+    },
+    {
+      "question": "list all installed programs windows command line",
+      "anchor": "getting-the-list-of-software"
+    },
+    {
+      "question": "winget upgrade single application by name",
+      "anchor": "upgrade-just-one-application"
+    },
+    {
+      "question": "how to update just one program with winget",
+      "anchor": "upgrade-just-one-application"
     }
   ]
 }

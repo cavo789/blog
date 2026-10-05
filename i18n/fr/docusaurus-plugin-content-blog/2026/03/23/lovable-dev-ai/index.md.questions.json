@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:53:32.722Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "a4d9941dcfbd5e7be3de8ebcd564854a9b5187e4",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:16:15.401Z",
+    "articleHash": "e3ca70a57855f99cef9e74568f484eeaaaad8a02",
+    "questionsHash": "e1279f28a994b3eb",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Lovable.dev reconstructeur app full-stack Docker-first prompt unique",
@@ -12,7 +22,7 @@
     },
     {
       "question": "Comment utiliser Lovable.dev pour cloner une application de prise de notes existante ?",
-      "anchor": ""
+      "anchor": "the-actual-path-there-successive-versions-and-errors"
     },
     {
       "question": "Mise en cache Redis du rendu HTML Markdown dans l'app générée par Lovable",
@@ -44,7 +54,7 @@
     },
     {
       "question": "Fonctionnalités finales de l'app : navigation récursive, rendu Markdown et recherche Meilisearch",
-      "anchor": "conclusion"
+      "anchor": "the-result-after-one-hour-and-a-half"
     }
   ]
 }

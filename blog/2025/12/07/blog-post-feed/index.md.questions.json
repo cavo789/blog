@@ -1,53 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:09.266Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:33:36.027Z",
   "source": "index.md",
   "sourceHash": "6771825ffba05ae9cc9add3e190179d567ce15c3",
+  "durationMs": 27538,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:29:49.385Z",
+    "articleHash": "151e743f599dc1e615ddc97d00e153744d399197",
+    "questionsHash": "e357c24766230c51",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is the rss.xml file used for?",
+      "question": "docusaurus rss feed missing full article content and hero image",
+      "anchor": ""
+    },
+    {
+      "question": "where is rss.xml located in a docusaurus site",
       "anchor": "what-is-the-rssxml-file"
     },
     {
-      "question": "How do I view the RSS using Inoreader?",
+      "question": "preview docusaurus rss feed in inoreader",
       "anchor": "viewing-the-rss-using-inoreader"
     },
     {
-      "question": "How does Docusaurus manage feeds?",
+      "question": "docusaurus feed config element not working documentation",
       "anchor": "how-docusaurus-is-managing-feeds"
     },
     {
-      "question": "What is the purpose of creating a custom plugin to enhance the rss.xml file?",
-      "anchor": "lets-optimize-it"
-    },
-    {
-      "question": "What are the steps to prepare my system for creating the custom plugin?",
+      "question": "cheerio feed front-matter docusaurus rss plugin dependencies",
       "anchor": "prepare-your-system"
     },
     {
-      "question": "How do I create the custom plugin to enhance the rss.xml file?",
+      "question": "docusaurus plugin hook onPostBuild custom rss xml",
       "anchor": "create-the-plugin"
     },
     {
-      "question": "How do I update my Docusaurus configuration to use the custom plugin for generating the rss.xml file?",
+      "question": "docusaurus.config.js disable default rss feed custom plugin",
       "anchor": "update-your-configuration"
     },
     {
-      "question": "What are the steps to run the custom plugin and generate the static version of my site?",
+      "question": "how to preview rss xml output in browser",
       "anchor": "run-the-plugin"
     },
     {
-      "question": "How can I visualize the new look&feel of the rss.xml file using an online tool?",
-      "anchor": "visualize-the-new-lookfeel"
+      "question": "why docusaurus rss only shows summary not full html",
+      "anchor": "how-docusaurus-is-managing-feeds"
     },
     {
-      "question": "What are some reasons why this custom plugin is better than Docusaurus's default RSS feed?",
-      "anchor": "why-is-this-better"
+      "question": "rss feed visualization tool online",
+      "anchor": "visualization-tools"
     },
     {
-      "question": "How can I update my Docusaurus configuration to use the custom plugin for generating both rss and atom feeds?",
-      "anchor": "some-tools"
+      "question": "validate rss xml feed online",
+      "anchor": "validation-tools"
     }
   ]
 }

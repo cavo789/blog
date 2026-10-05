@@ -1,41 +1,72 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:53:04.407Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:16:15.993Z",
   "source": "index.md",
   "sourceHash": "9a87501c7bbfe531b5bcf3c334593a99cbe92bb5",
+  "durationMs": 34094,
+  "rejected": [
+    {
+      "question": "oh my zsh zshrc getting too long what next",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to another article; no in-article guidance given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:38:45.353Z",
+    "articleHash": "754d598886b1d91f4e75ea955861968180c6c9fb",
+    "questionsHash": "489c07e8bdb28451",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I install Zsh and Oh-My-ZSH on Linux?",
-      "anchor": "installation"
+      "question": "zsh oh my zsh powerlevel10k linux setup",
+      "anchor": ""
     },
     {
-      "question": "What is Powerlevel10k theme in Oh-My-ZSH?",
-      "anchor": "powerlevel10k"
+      "question": "zsh prompt show git branch and untracked files count at a glance",
+      "anchor": "where-were-going"
     },
     {
-      "question": "What are some daily-use features of Zsh and Oh-My-ZSH?",
-      "anchor": "some-features-i-use-daily"
+      "question": "oh my zsh what do you actually get before configuring anything",
+      "anchor": "why-its-worth-the-ten-minutes"
     },
     {
-      "question": "How do I create a folder in one step using the take function in Zsh?",
-      "anchor": "some-features-i-use-daily"
-    },
-    {
-      "question": "What are some Git aliases like gst and git-branch in Zsh?",
-      "anchor": "some-features-i-use-daily"
-    },
-    {
-      "question": "How do I jump up multiple parent directories using the ..driven autocompletion in Zsh?",
-      "anchor": "some-features-i-use-daily"
-    },
-    {
-      "question": "What is Docker and how can it be used to test Oh-My-ZSH features?",
+      "question": "test oh my zsh in docker container without changing default shell",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How do I install Oh-My-ZSH on a Windows Subsystem for Linux (WSL)?",
+      "question": "install zsh oh my zsh ubuntu apt chsh",
       "anchor": "installation"
+    },
+    {
+      "question": "powerlevel10k zsh theme install",
+      "anchor": "powerlevel10k"
+    },
+    {
+      "question": "zsh take function create folder and cd into it",
+      "anchor": "some-features-i-use-daily"
+    },
+    {
+      "question": "cd ...... zsh jump up multiple parent directories",
+      "anchor": "some-features-i-use-daily"
+    },
+    {
+      "question": "zsh tab completion git branches command flags",
+      "anchor": "why-its-worth-the-ten-minutes"
+    },
+    {
+      "question": "zsh autocompletion list subfolders and flags not just filenames",
+      "anchor": "some-features-i-use-daily"
+    },
+    {
+      "question": "dockerfile oh my zsh unattended install",
+      "anchor": "seeing-it-in-action-with-docker"
     }
   ]
 }

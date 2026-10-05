@@ -6,7 +6,7 @@ image: /img/v2/ask-my-blog-chatbox.webp
 series: Creating Docusaurus components
 mainTag: component
 tags: [docusaurus, react, component]
-date: 2026-11-03
+date: 2026-10-05
 description: A feature your visitors cannot find does not exist. This article adds a floating "Ask my blog" bubble to a Docusaurus site — a third entry point into the same question index, and the first one that needs no prior knowledge. Includes the overlay mutual-exclusion trick that keeps two independent floating dialogs from ever opening at once.
 language: en
 ai_assisted: true

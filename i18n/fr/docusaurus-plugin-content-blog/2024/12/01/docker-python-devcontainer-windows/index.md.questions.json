@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:22:30.250Z",
-  "durationMs": 168228,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e5c671a77f96d89a43a420df8d58eda82fb803eb",
+  "durationMs": 168228,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:02:22.740Z",
+    "articleHash": "22e7b40187f6c08f50c7752791f6781b25fa2b32",
+    "questionsHash": "c272c4ffc8e9abf5",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment configurer un devcontainer python sous windows sans installer python localement",

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:51:30.068Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:04:30.167Z",
   "source": "index.md",
   "sourceHash": "f768772870abec4559dd389c83c99594f7207c54",
+  "durationMs": 26011,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:34:29.096Z",
+    "articleHash": "693dbdf1dd634ffb13c090c8da6f15fee64df3f8",
+    "questionsHash": "1cc6900fbf8263b4",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "What are Docker images and why do they matter?",
+      "question": "run php apache server without installing anything locally",
+      "anchor": "one-command-a-working-php-server"
+    },
+    {
+      "question": "docker run php:8.3-apache single command start server",
+      "anchor": "one-command-a-working-php-server"
+    },
+    {
+      "question": "why use a docker image for php instead of installing apache and php locally",
       "anchor": "why-docker-images"
     },
     {
-      "question": "How can I install Docker on Windows using Docker Desktop?",
+      "question": "docker desktop windows install then run php container port 80 mapping",
       "anchor": "setting-it-up"
     },
     {
-      "question": "What is the command to start a PHP+Apache server with Docker?",
-      "anchor": "one-command-a-working-php-server"
-    },
-    {
-      "question": "How do I switch between PHP versions in Docker without conflicts?",
-      "anchor": "changing-the-php-version-in-one-word"
-    },
-    {
-      "question": "What are some of the benefits of using Docker images for web development?",
-      "anchor": "why-docker-images"
-    },
-    {
-      "question": "How can I create a PHP script inside a Docker container?",
+      "question": "docker exec -it bash write index.php inside a running container",
       "anchor": "creating-our-php-script"
     },
     {
-      "question": "What is the command to run a Docker container in detached mode and assign it a name?",
-      "anchor": "one-command-a-working-php-server"
+      "question": "switch php version in docker just by changing the tag in the command",
+      "anchor": "changing-the-php-version-in-one-word"
     },
     {
-      "question": "How can I access the running PHP+Apache server from my browser?",
-      "anchor": "one-command-a-working-php-server"
+      "question": "run php 7.4 and 8.1 side by side docker different ports",
+      "anchor": "changing-the-php-version-in-one-word"
+    },
+    {
+      "question": "how does the php apache docker container actually work under the hood",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "docker php apache as a replacement for wamp or easyphp",
+      "anchor": "why-docker-images"
+    },
+    {
+      "question": "php container zero local dependencies docker desktop",
+      "anchor": "setting-it-up"
     }
   ]
 }

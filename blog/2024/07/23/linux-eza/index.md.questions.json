@@ -1,40 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:53:36.414Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:45:13.093Z",
   "source": "index.md",
   "sourceHash": "87fbf268e85a785f1993bcb7fda3e70d4173ec82",
+  "durationMs": 17894,
+  "rejected": [
+    {
+      "question": "exa renamed to eza what changed",
+      "anchor": "",
+      "reason": "not answered: Only confirms the rename; does not explain what changed.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "set up eza as ls in zsh .zshrc separate alias file",
+      "anchor": "install-eza",
+      "reason": "not answered: Only links to another blog post for the zsh setup.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:05:50.990Z",
+    "articleHash": "665948ed01a2c00aff518e24c583648a47943918",
+    "questionsHash": "88440a81b8fa23e4",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is eza and how does it replace ls?",
+      "question": "modern ls replacement linux with icons and colors",
       "anchor": ""
     },
     {
-      "question": "How do I install eza on my Linux machine?",
-      "anchor": "seeing-it-in-action-with-docker"
-    },
-    {
-      "question": "What are the benefits of using eza over the standard ls command?",
+      "question": "what does ls output look like after aliasing to eza with all flags",
       "anchor": "result"
     },
     {
-      "question": "Can you provide an example of how to use eza with Docker?",
-      "anchor": "install-eza"
+      "question": "eza listing grouped folders first human-readable dates",
+      "anchor": "result"
     },
     {
-      "question": "What are some useful flags for using eza in the command line?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I customize my Linux prompt to use Powerlevel10k?",
+      "question": "try eza in docker container without installing on host machine",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What are some alternative replacements for ls that offer similar functionality to eza?",
-      "anchor": ""
+      "question": "dockerfile demo eza ls alias throwaway",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How can I set up a custom alias for ls using eza?",
+      "question": "install eza and replace ls with alias",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "eza alias --all --long --group --group-directories-first --icons --header --time-style long-iso",
+      "anchor": "install-eza"
+    },
+    {
+      "question": "how to make plain ls show icons header and permissions by default",
       "anchor": "install-eza"
     }
   ]

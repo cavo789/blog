@@ -1,41 +1,62 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:11.939Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:38:01.488Z",
   "source": "index.md",
   "sourceHash": "884855311afcf0e05ef76b37f31e1240803244d7",
+  "durationMs": 29539,
+  "rejected": [
+    {
+      "question": "fastapi query parameter to fetch a specific item by index from a list",
+      "anchor": "our-joke-generator",
+      "reason": "not answered: Article shows path parameter, not query parameter",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "what can fastapi do beyond basic route definitions openapi linting validation",
+      "anchor": "discover-fastapi",
+      "reason": "not answered: Only mentions linting with a link to another page",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:45:59.714Z",
+    "articleHash": "aaf4687cf370005618f65a8707941dd083ff9225",
+    "questionsHash": "6f7df7adafdc110c",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I create a Python JSON API using FastAPI in one minute?",
+      "question": "python json api docker no install fastapi one minute",
       "anchor": ""
     },
     {
-      "question": "What is Docker setup required for building my first Python JSON API with FastAPI?",
-      "anchor": ""
+      "question": "how does fastapi turn a plain python function into an http endpoint without flask or django boilerplate",
+      "anchor": "why-it-works"
     },
     {
-      "question": "How does the Swagger/ReDoc documentation work in FastAPI?",
-      "anchor": "automated-documentation-of-your-api"
+      "question": "fastapi dockerfile main.py two files minimal setup",
+      "anchor": "creating-our-first-api"
     },
     {
-      "question": "What is hot-reload for rapid development in FastAPI?",
-      "anchor": "automated-documentation-of-your-api"
-    },
-    {
-      "question": "Why is it possible to create a Python JSON API with FastAPI in just one minute?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the key features of FastAPI that make it easy to build APIs quickly?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I run my Python JSON API with FastAPI using Docker?",
+      "question": "docker build and run fastapi container expose port 82 locally",
       "anchor": "running-our-api"
     },
     {
-      "question": "What is the OpenAPI schema and how can it be validated against Belgian REST standards?",
+      "question": "fastapi automatic swagger /docs and /redoc endpoints no manual openapi spec",
       "anchor": "automated-documentation-of-your-api"
+    },
+    {
+      "question": "build a random joke generator api endpoint with fastapi",
+      "anchor": "our-joke-generator"
+    },
+    {
+      "question": "uvicorn not picking up file changes in docker volume mount hot reload stuck on old code",
+      "anchor": "recreating-the-docker-image-for-hot-reload-skip-this-if-docker-run--v-app-already-refreshed-for-you"
     }
   ]
 }

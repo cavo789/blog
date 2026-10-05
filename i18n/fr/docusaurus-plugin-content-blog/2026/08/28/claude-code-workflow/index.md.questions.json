@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:47:48.641Z",
-  "durationMs": 150790,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "31b538bdc3acaf81398156fd2d9429c97673c463",
+  "durationMs": 150790,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:39:02.471Z",
+    "articleHash": "3a2e6aa05f7b96b02b1f9f96e2df249c32b58aa1",
+    "questionsHash": "213e45a4aad2ca2a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": ".claude/ de slash commands isolées à workflow en couches",

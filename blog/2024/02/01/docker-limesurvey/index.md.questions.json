@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:48.585Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:57:15.918Z",
   "source": "index.md",
   "sourceHash": "a5e22b15daf601387d245e6be4dd393fdc46c0d6",
+  "durationMs": 30795,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:21:23.690Z",
+    "articleHash": "4574b6452f953423467356b60ccbfea9c69466ef",
+    "questionsHash": "b55f1abcc2622c61",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I install LimeSurvey using Docker Compose?",
-      "anchor": ""
-    },
-    {
-      "question": "What is a complete guide on setting up and running LimeSurvey with Docker Compose?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create a sandbox site to explore all features of LimeSurvey using Docker?",
+      "question": "self-hosted survey tool docker quick start",
       "anchor": "limesurvey-running-in-two-minutes"
     },
     {
-      "question": "What are the steps to download and run required images for LimeSurvey and MySQL using Docker Compose?",
+      "question": "LimeSurvey docker compose minimal setup port 8080",
       "anchor": "lets-play"
     },
     {
-      "question": "How do I check if LimeSurvey is ready after running Docker Compose commands?",
+      "question": "why does LimeSurvey container fail to connect to MySQL in docker compose",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "LimeSurvey default admin credentials docker",
       "anchor": "first-login"
     },
     {
-      "question": "What are the credentials to use for accessing the administration interface of LimeSurvey?",
+      "question": "LimeSurvey docker volumes persist surveys across restarts",
       "anchor": "using-volumes"
     },
     {
-      "question": "How do I keep my work and configuration items when using volumes with Docker Compose?",
+      "question": "pin LimeSurvey old version MySQL 5.7 docker compose",
       "anchor": "download-an-old-version"
     },
     {
-      "question": "What is the end of life date for MySQL 5.7, and why is it important to pin it in this article?",
-      "anchor": "conclusion"
+      "question": "LimeSurvey docker compose complete guide setup persistence versions",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose limesurvey mysql condition service_healthy",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "how to keep LimeSurvey surveys from being wiped when I stop docker containers",
+      "anchor": "using-volumes"
+    },
+    {
+      "question": "how to reproduce an old LimeSurvey production setup locally with docker",
+      "anchor": "download-an-old-version"
     }
   ]
 }

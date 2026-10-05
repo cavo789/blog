@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:46:19.537Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:32:40.842Z",
   "source": "index.md",
   "sourceHash": "23e85d5de3e5f2d985b84cd50ad30912fab64ee7",
+  "durationMs": 21664,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:00:11.484Z",
+    "articleHash": "83658f48b38551fcc193b0ca5812399fa40afea2",
+    "questionsHash": "edf704c67c22f1d8",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
-      "question": "How do I use conditional display in Quarto?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the different output formats supported by Quarto's conditional display features?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I control what content appears in different output formats using Quarto's conditional display?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the syntax for creating a conditional block in Quarto?",
+      "question": "quarto show different content for pdf vs html output",
       "anchor": "content-visible-when"
     },
     {
-      "question": "How do I use the content-visible filter in Quarto?",
+      "question": "hide wide table quarto pdf",
       "anchor": "content-visible-when"
     },
     {
-      "question": "How can I use the content-hidden filter in Quarto?",
+      "question": "one markdown file quarto html pdf word slides conditional",
+      "anchor": ""
+    },
+    {
+      "question": "quarto reveal.js only closing slide",
       "anchor": "content-visible-when"
     },
     {
-      "question": "What are some examples of how to use conditional display in different output formats?",
-      "anchor": ""
+      "question": "quarto hide code listing in slideshow",
+      "anchor": "content-visible-when"
     },
     {
-      "question": "What is the purpose of the Docker image with Quarto mentioned in this article?",
-      "anchor": ""
+      "question": "quarto content-visible when syntax",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "quarto conditional block output-format filter",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "quarto show paragraph only in word not pdf",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "quarto content-visible when pdf",
+      "anchor": "content-visible-when"
+    },
+    {
+      "question": "quarto conditional display markdown",
+      "anchor": "content-visible-when"
     }
   ]
 }

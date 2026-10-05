@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-20T16:40:11.726Z",
-  "durationMs": 96184,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f1e56e58d619fabbb0b0df25b876e218988a9efa",
+  "durationMs": 96184,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:58:24.629Z",
+    "articleHash": "0980307cdb1df2b58cb89bcb0040f0ec59fac862",
+    "questionsHash": "f6e6443c740f7bdb",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "appeler web service SOAP depuis Excel avec VBA",

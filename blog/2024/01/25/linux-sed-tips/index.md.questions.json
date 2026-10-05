@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:06.086Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:51:14.086Z",
   "source": "index.md",
   "sourceHash": "2b89a5c1fcb1d2e6db96bb8dd26903f2f9f4a821",
+  "durationMs": 61905,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:16:07.974Z",
+    "articleHash": "0be89c75c23454222eb08d60a4c609fda0281939",
+    "questionsHash": "04b9885f38897b52",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I use sed to update a variable in a config file if it already exists or append it if it doesn't?",
+      "question": "how to make sed idempotent update or insert config variable",
       "anchor": "the-one-liner"
     },
     {
-      "question": "What is the purpose of using the -i flag with sed for updating files in place?",
+      "question": "sed one-liner replace or append line if key missing",
+      "anchor": "the-one-liner"
+    },
+    {
+      "question": "grep -q && sed -i || sed -i how does the conditional work",
       "anchor": "why-it-works"
     },
     {
-      "question": "How does the grep command work in conjunction with sed to check if a variable exists in a file before performing an update or append operation?",
+      "question": "sed -i s/KEY =.*/KEY = newvalue/ in place edit",
       "anchor": "search-and-replace"
     },
     {
-      "question": "What is the difference between using sed -i and sed -i -e '$aAPP_ENV = production' for appending a new line to a file?",
+      "question": "sed -i '$a' append new line to file bash",
       "anchor": "dont-replace-but-add-if-not-found"
     },
     {
-      "question": "How can I read back the contents of a file after performing an update or append operation using sed?",
+      "question": "bash script sed replace if exists else append both in one",
       "anchor": "combine-both"
     },
     {
-      "question": "What is the purpose of using the -q flag with grep to check if a variable exists in a file without printing any output?",
-      "anchor": "conclusion"
+      "question": "sed idempotent command docker compose env file",
+      "anchor": "the-one-liner"
     },
     {
-      "question": "How can I combine both the search and replace operation and the insert new line operation into a single sed command?",
-      "anchor": ""
+      "question": "sed replace only the value after equals sign keep key",
+      "anchor": "search-and-replace"
     },
     {
-      "question": "What are some other ways to automate file edits using sed besides searching and replacing variables?",
-      "anchor": ""
+      "question": "how to check if variable exists before sed replace or append",
+      "anchor": "dont-replace-but-add-if-not-found"
+    },
+    {
+      "question": "sed update .env file before docker compose up",
+      "anchor": "the-one-liner"
     }
   ]
 }

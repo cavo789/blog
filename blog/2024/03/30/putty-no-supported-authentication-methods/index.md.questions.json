@@ -1,36 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:40.327Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:19:58.518Z",
   "source": "index.md",
   "sourceHash": "7d64f257a4f1f3040ea36aec87ac5113453bd9bb",
+  "durationMs": 17071,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:42:04.460Z",
+    "articleHash": "ce7be1ae92cd727b1810815cb9823e529136c7ae",
+    "questionsHash": "879057cb9b689ee7",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I reset PuTTY settings after saving them?",
+      "question": "putty no supported authentication methods available",
       "anchor": ""
     },
     {
-      "question": "What is the entry in the Windows registry to delete for resetting PuTTY defaults?",
+      "question": "putty fatal error after saving font size settings",
       "anchor": ""
     },
     {
-      "question": "How can I connect to a different server than the one I intended after modifying Putty settings?",
+      "question": "putty registry delete entry fix authentication methods",
       "anchor": ""
     },
     {
-      "question": "What is the solution for fixing the 'No supported authentication methods available' error in PuTTY?",
+      "question": "putty connecting to wrong server after config change",
       "anchor": ""
     },
     {
-      "question": "How can I override the URL field in KeePass to launch a PuTTY session?",
+      "question": "putty no supported authentication methods publickey gssapi-keyex keyboard-interactive",
       "anchor": ""
     },
     {
-      "question": "What is the solution for retrieving a stored password using WinSCP?",
+      "question": "how to reset putty default settings via regedit",
       "anchor": ""
     },
     {
-      "question": "How can I switch to key-based authentication in SSH sessions without having to authenticate yourself?",
+      "question": "putty saved settings broke ssh can't connect any host anymore",
+      "anchor": ""
+    },
+    {
+      "question": "putty gssapi-with-mic keyboard-interactive fatal error fix",
+      "anchor": ""
+    },
+    {
+      "question": "putty settings changed now authentication fails all servers",
+      "anchor": ""
+    },
+    {
+      "question": "regedit putty authentication methods fix",
       "anchor": ""
     }
   ]

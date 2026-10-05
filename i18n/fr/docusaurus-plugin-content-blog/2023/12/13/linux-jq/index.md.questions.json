@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:59:34.611Z",
-  "durationMs": 196951,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "0ca306224c86c4ae6112f8a17a9a71e29195cd73",
+  "durationMs": 196951,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "cas d utilisation de jq pour le debugging de containers et le parsing de réponses api",
+      "anchor": "conclusion",
+      "reason": "not answered: Docker debugging use case is only a link to another article",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:20:47.120Z",
+    "articleHash": "e0bba42b610d16e899957e0ac769505f1b91172a",
+    "questionsHash": "36ba945a4bd1c29f",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment formater et parser du json en ligne de commande avec jq",
@@ -30,10 +48,6 @@
     {
       "question": "formater du json brut sans expression de filtre avec jq",
       "anchor": "lets-play"
-    },
-    {
-      "question": "cas d utilisation de jq pour le debugging de containers et le parsing de réponses api",
-      "anchor": "conclusion"
     },
     {
       "question": "syntaxe jq pour récupérer le premier élément d un tableau json",

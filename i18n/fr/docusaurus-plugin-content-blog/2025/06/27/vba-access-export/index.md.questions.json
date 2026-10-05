@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:54:59.790Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "32901178f744a21c5eeebb81a04d6c67ee1a0ad6",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:35:32.109Z",
+    "articleHash": "4a6dfe3abcdd1f09ffd08eb11f26982f27662a0b",
+    "questionsHash": "fdaa4a808e129aa9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "comment versionner le code VBA et les formulaires MS Access avec Git",
@@ -12,7 +22,7 @@
     },
     {
       "question": "exporter les objets d'une base Access vers des fichiers plats pour GitHub",
-      "anchor": ""
+      "anchor": "description"
     },
     {
       "question": "structure du dossier et des fichiers générés après l'export",
@@ -28,7 +38,7 @@
     },
     {
       "question": "commande DOS pour lancer l'export en spécifiant le nom de la base",
-      "anchor": "usage"
+      "anchor": "sample"
     },
     {
       "question": "quel paramètre unique le script VBS attend-il au lancement",
@@ -40,7 +50,7 @@
     },
     {
       "question": "transformer les formulaires et modules Access en fichiers texte pour le versioning",
-      "anchor": "conclusion"
+      "anchor": "description"
     }
   ]
 }

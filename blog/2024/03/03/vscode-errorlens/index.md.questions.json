@@ -1,40 +1,67 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:50.739Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:10:34.596Z",
   "source": "index.md",
   "sourceHash": "7e912e276841ec58ce0e46f05572fdf9cfa96dce",
+  "durationMs": 21469,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:33:40.384Z",
+    "articleHash": "ffd0dd53894a8b26aa8997d94417a080726144bb",
+    "questionsHash": "fccb68276921da13",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is Error Lens for VSCode?",
+      "question": "vscode show warnings inline in editor",
       "anchor": ""
     },
     {
-      "question": "How can I install and use Error Lens for VSCode?",
+      "question": "how to catch CSS class typos while coding in VSCode",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using Error Lens for VSCode?",
+      "question": "Error Lens extension what does it do",
       "anchor": ""
     },
     {
-      "question": "Where is the Problems area in VSCode?",
+      "question": "vscode problems panel too easy to miss alternative",
       "anchor": ""
     },
     {
-      "question": "How does Error Lens show errors, notices, and warnings directly in the editor?",
+      "question": "show linter errors directly in code area not status bar vscode",
       "anchor": ""
     },
     {
-      "question": "What are some examples of silent bugs that have been caught by using Error Lens for VSCode?",
+      "question": "catch misspelled PHP variable names in editor",
       "anchor": ""
     },
     {
-      "question": "How can I install and use Todo Tree in VSCode?",
+      "question": "vscode extension highlight entire line background for diagnostics",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using Todo Tree in VSCode?",
+      "question": "why do I keep missing warnings in vscode",
+      "anchor": ""
+    },
+    {
+      "question": "inline diagnostics vscode extension",
+      "anchor": ""
+    },
+    {
+      "question": "vscode show notices in minimap",
+      "anchor": ""
+    },
+    {
+      "question": "error lens php devcontainer default",
+      "anchor": ""
+    },
+    {
+      "question": "silent bugs from forgotten css classes vscode",
       "anchor": ""
     }
   ]

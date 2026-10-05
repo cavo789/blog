@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:51:22.008Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8c236f5edfeb0366061eecedfcabaeaf27fc6152",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:52:24.564Z",
+    "articleHash": "62c3c537874590a0957fd8edc90f75f385d49312",
+    "questionsHash": "e2f2fdbe64eb5f1b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "lancer docusaurus avec docker sans nodejs local",

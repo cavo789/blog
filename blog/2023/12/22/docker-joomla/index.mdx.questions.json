@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:51:22.122Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:30:00.003Z",
   "source": "index.mdx",
   "sourceHash": "a6815caf07ca55ffce8feb05d6ce18b8ee75de31",
+  "durationMs": 25400,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:57:45.541Z",
+    "articleHash": "fcf37c5954ff3184f352f5147c38796c2941d11a",
+    "questionsHash": "048fd0c482155199",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I install Joomla using Docker on my local machine?",
+      "question": "joomla docker local development setup",
       "anchor": ""
     },
     {
-      "question": "What is a Docker Compose file and how does it work in this article?",
-      "anchor": "what-just-happened"
-    },
-    {
-      "question": "Why is the database service named 'db' in the Docker Compose file?",
-      "anchor": "why-joomla-joomlaxxx-names"
-    },
-    {
-      "question": "How can I change the port that Joomla listens on?",
-      "anchor": "start-a-cli-command"
-    },
-    {
-      "question": "What are some alternative databases I can use with this setup (PostgreSQL or MariaDB)?",
-      "anchor": "did-you-prefer-postgresql-or-mariadb"
-    },
-    {
-      "question": "How do I install Joomla using a CLI one-liner command?",
-      "anchor": "bonus---install-joomla-with-a-cli-one-liner"
-    },
-    {
-      "question": "What is the purpose of the 'network' created by Docker Compose?",
+      "question": "docker compose up -d joomla running in two minutes",
       "anchor": "two-minutes-one-file-your-joomla-is-running"
     },
     {
-      "question": "How can I use an alias to run Docker commands more efficiently?",
-      "anchor": "using-alias"
+      "question": "docker-compose.yml joomla mysql apache three services",
+      "anchor": "docker-compose"
+    },
+    {
+      "question": "joomla docker data only in RAM lost on stop",
+      "anchor": "everything-is-done-in-ram"
+    },
+    {
+      "question": "sync joomla container files to host machine volume mount",
+      "anchor": "synchronize-with-your-computer"
+    },
+    {
+      "question": "docker exec joomla CLI command",
+      "anchor": "start-a-cli-command"
+    },
+    {
+      "question": "joomla docker use port 80 instead of 8080",
+      "anchor": "using-another-port"
+    },
+    {
+      "question": "switch joomla docker from mysql to postgresql",
+      "anchor": "did-you-prefer-postgresql-or-mariadb"
+    },
+    {
+      "question": "joomla docker container auto restart windows",
+      "anchor": "the-container-will-be-restarted-by-windows"
+    },
+    {
+      "question": "joomla docker install one-liner CLI",
+      "anchor": "bonus---install-joomla-with-a-cli-one-liner"
+    },
+    {
+      "question": "joomla-joomlaxxx container name meaning",
+      "anchor": "why-joomla-joomlaxxx-names"
+    },
+    {
+      "question": "docker compose pull joomla mysql images",
+      "anchor": "download-images"
     }
   ]
 }

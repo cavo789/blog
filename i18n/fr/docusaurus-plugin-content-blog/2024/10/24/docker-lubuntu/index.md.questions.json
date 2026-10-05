@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:56:29.690Z",
-  "durationMs": 134922,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "0ceed04969c7619a684322b07c9e095bd970322f",
+  "durationMs": 134922,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "volumes Docker pour rendre les données persistantes",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no volume configuration given.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "alternative navigateur pour les GUI Docker sans serveur X",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no browser method explained.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:55:03.120Z",
+    "articleHash": "af63af1ecabc785bb24028f983189d3e6a36a724",
+    "questionsHash": "e4a6b0de2047adff",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment lancer un bureau Lubuntu complet dans Docker sur Windows",
@@ -32,16 +56,8 @@
       "anchor": "step-3---start-the-container"
     },
     {
-      "question": "volumes Docker pour rendre les données persistantes",
-      "anchor": "conclusion"
-    },
-    {
       "question": "bug d'affichage avec un deuxième écran sous VcXsrv",
       "anchor": "step-3---start-the-container"
-    },
-    {
-      "question": "alternative navigateur pour les GUI Docker sans serveur X",
-      "anchor": ""
     }
   ]
 }

@@ -2,10 +2,40 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:18:35.274Z",
-  "durationMs": 162538,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "32ce58e96315b979f188ead5167292de7911cbad",
+  "durationMs": 162538,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Comment configurer le YAML frontmatter d'un fichier source Quarto ?",
+      "anchor": "the-source-file",
+      "reason": "not answered: Article ne montre aucun frontmatter YAML ni sa configuration.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Comment masquer les logs inutiles avec l'option --quiet de Quarto ?",
+      "anchor": "going-further",
+      "reason": "not answered: Article mentionne --log-level warning, jamais l'option --quiet.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "quarto render --quiet output suppression",
+      "anchor": "going-further",
+      "reason": "not answered: L'option --quiet n'est jamais mentionnée dans l'article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:25:44.853Z",
+    "articleHash": "5de4538b828357291a113e509c852228fd8ca24d",
+    "questionsHash": "6124ffa8606667d8",
+    "status": "applied",
+    "rejected": 3,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment exécuter Quarto dans Docker pour faire du doc-as-code sans installation locale ?",
@@ -24,10 +54,6 @@
       "anchor": "render-your-first-pdf-without-installing-anything"
     },
     {
-      "question": "Comment configurer le YAML frontmatter d'un fichier source Quarto ?",
-      "anchor": "the-source-file"
-    },
-    {
       "question": "Comment passer de --to pdf à --to html ou --to slides avec Quarto ?",
       "anchor": "the-same-file-as-html-and-as-a-slideshow"
     },
@@ -38,14 +64,6 @@
     {
       "question": "Quand build sa propre image Docker pour Quarto au lieu de ghcr.io/quarto-dev/quarto:latest ?",
       "anchor": "build-your-own-image-optional--skip-it-if-the-official-one-is-enough"
-    },
-    {
-      "question": "Comment masquer les logs inutiles avec l'option --quiet de Quarto ?",
-      "anchor": "going-further"
-    },
-    {
-      "question": "quarto render --quiet output suppression",
-      "anchor": "going-further"
     }
   ]
 }

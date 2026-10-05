@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:13:17.641Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b0f6618f1f9283c5a21a0d5677ece3eb96ad8473",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:02:49.359Z",
+    "articleHash": "bd5c1f5da0a99b63b15f96e455143dc5ab8cee67",
+    "questionsHash": "67b7ba82f49e65e8",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment personnaliser le flux rss de docusaurus pour un contenu complet et des images ?",
@@ -16,7 +26,7 @@
     },
     {
       "question": "pourquoi le flux rss par défaut de docusaurus manque-t-il de contenu html et d'images ?",
-      "anchor": "how-docusaurus-is-managing-feeds"
+      "anchor": "what-is-the-rssxml-file"
     },
     {
       "question": "dépendances yarn pour plugin rss personnalisé docusaurus cheerio feed front-matter",
@@ -36,7 +46,7 @@
     },
     {
       "question": "comment vérifier le rendu du flux rss enrichi localement après le build ?",
-      "anchor": "visualize-the-new-lookfeel"
+      "anchor": "run-the-plugin"
     },
     {
       "question": "avantages plugin rss personnalisé vs flux natif docusaurus",

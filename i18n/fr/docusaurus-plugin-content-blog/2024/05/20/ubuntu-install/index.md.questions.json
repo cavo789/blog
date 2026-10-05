@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:08:28.976Z",
-  "durationMs": 123432,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f58edfee4db05efc9f29837b3ed865d663d601e9",
+  "durationMs": 123432,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:24:53.872Z",
+    "articleHash": "8dabe7c6042efe735cc4baaaf416b360402a378e",
+    "questionsHash": "e6b9a4b180f5b531",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment installer ubuntu 24.04 desktop proprement depuis zéro",

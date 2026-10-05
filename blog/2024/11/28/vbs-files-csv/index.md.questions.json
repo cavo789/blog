@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:23.670Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:14:36.089Z",
   "source": "index.md",
   "sourceHash": "841d3e2b93c23303a1f22429111020fb31c5fe41",
+  "durationMs": 32342,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:31:22.891Z",
+    "articleHash": "5ef1cdf38ec403300c47fedc6662dc14199ac126",
+    "questionsHash": "12ee9c26d44021d9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I use VBScript to generate a CSV file of files in a folder?",
+      "question": "vbscript list all files in folder with subfolders to csv",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of this VBScript script for generating a CSV file of files in a folder?",
+      "question": "how to get file size, date, and owner in a csv using vbscript",
       "anchor": ""
     },
     {
-      "question": "How can I modify the VBScript to include additional file details like owner and type?",
+      "question": "vbscript file inventory with creation and modified dates",
       "anchor": ""
     },
     {
-      "question": "What are the key outputs of this VBScript script when generating a CSV file of files in a folder?",
+      "question": "dos console run vbscript generate file listing csv",
       "anchor": ""
     },
     {
-      "question": "How can I use this VBScript to generate a CSV file of files in a sub-folder as well?",
+      "question": "vbscript export folder contents to csv for excel analysis",
       "anchor": ""
     },
     {
-      "question": "What are the differences between this VBScript script and a DOS script for generating a file list?",
+      "question": "simple vbscript get all files path name size type owner csv",
       "anchor": ""
     },
     {
-      "question": "How can I modify the VBScript to exclude certain file types or extensions when generating the CSV file?",
+      "question": "vbscript get file owner and type in csv output",
       "anchor": ""
     },
     {
-      "question": "What are some potential applications for this VBScript script in analyzing files and folders?",
+      "question": "generate csv file list for pandas vbscript windows",
+      "anchor": ""
+    },
+    {
+      "question": "vbscript file listing script windows cmd",
+      "anchor": ""
+    },
+    {
+      "question": "how to recursively get file metadata into a spreadsheet with a vbscript",
       "anchor": ""
     }
   ]

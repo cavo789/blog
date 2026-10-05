@@ -1,41 +1,66 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:38.136Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:39:06.848Z",
   "source": "index.md",
   "sourceHash": "80db19d0ac926d8278dbf0c7d720ba982d91fdaf",
-  "questions": [
+  "durationMs": 19934,
+  "rejected": [
     {
-      "question": "How do I create an SSH profile in Windows Terminal?",
-      "anchor": "installation"
+      "question": "open windows terminal settings json file",
+      "anchor": "installation",
+      "reason": "not answered: Article covers GUI settings only, never mentions the JSON file.",
+      "date": "2026-09-24"
     },
     {
-      "question": "What is the process for adding a new SSH profile to Windows Terminal?",
+      "question": "windows terminal split panes monitor multiple ssh servers side by side",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no split-pane steps given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:35:19.047Z",
+    "articleHash": "157382c71931574b9ca32ac92083e9c54eac1d3a",
+    "questionsHash": "9eacbaf5f49c55e0",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 5
+  },
+  "questions": [
+    {
+      "question": "windows terminal ssh profile one click connect server",
+      "anchor": "the-result"
+    },
+    {
+      "question": "how to make an ssh server show up in the windows terminal dropdown menu",
       "anchor": "add-a-profile-for-any-ssh-connection"
     },
     {
-      "question": "Why is it beneficial to add a SSH profile to Windows Terminal?",
-      "anchor": "why-it-works"
+      "question": "customize ssh profile icon and color scheme in windows terminal",
+      "anchor": "add-a-profile-for-any-ssh-connection"
     },
     {
-      "question": "How can I connect to my hosting server using Windows Terminal after adding an SSH profile?",
+      "question": "windows terminal settings shortcut ctrl+shift+comma",
       "anchor": "open-windows-terminal-settings"
     },
     {
-      "question": "What are the steps to create a new SSH profile in Windows Terminal?",
+      "question": "add new ssh profile windows terminal command line configuration",
       "anchor": "add-a-profile-for-any-ssh-connection"
     },
     {
-      "question": "How can I customize the appearance of my SSH profile in Windows Terminal?",
+      "question": "windows terminal ssh profile with background image demo",
       "anchor": "adding-a-background-image-optional"
     },
     {
-      "question": "What is the difference between adding a background image and an icon to my SSH profile in Windows Terminal?",
+      "question": "set background image opacity in windows terminal profile appearance section",
       "anchor": "adding-a-background-image-optional"
     },
     {
-      "question": "How can I create a new SSH profile in Windows Terminal for connecting to any server?",
-      "anchor": "add-a-profile-for-any-ssh-connection"
+      "question": "stop retyping ssh user@host command every time windows terminal",
+      "anchor": "why-it-works"
     }
   ]
 }

@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:03:00.588Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "1fd5d974a93c23906a9657d8d3de35b3671ee929",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:55:43.755Z",
+    "articleHash": "9c0a0877750202e76a0e13934da991553c63cb56",
+    "questionsHash": "249d63e9738a6580",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "moderniser automatiquement son code PHP avec un outil gratuit",
@@ -12,7 +22,7 @@
     },
     {
       "question": "comment visualiser le diff de Rector sans écraser mes fichiers",
-      "anchor": "here-is-what-rector-says-about-it"
+      "anchor": "why-it-works"
     },
     {
       "question": "Rector utilise-t-il l'arbre syntaxique ou le grep pour analyser le code",
@@ -24,7 +34,7 @@
     },
     {
       "question": "comment créer le fichier rector.php et lancer l'analyse",
-      "anchor": "run-rector"
+      "anchor": "install-rector"
     },
     {
       "question": "SimplifyIfElseToTernaryRector transformer un bloc if en expression ternaire",

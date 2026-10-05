@@ -1,45 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:37.514Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:35:44.736Z",
   "source": "index.md",
   "sourceHash": "91d108f11f0f3bc41a3998eafa97254f0984bd72",
+  "durationMs": 84708,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:44:19.034Z",
+    "articleHash": "e578e90f100f1a9fcb7019f7860ee213f87e5e47",
+    "questionsHash": "876f999573046884",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I install Git in a Docker container?",
+      "question": "run git push from inside docker container without exiting to host",
+      "anchor": ""
+    },
+    {
+      "question": "why does mounting ssh key into container work for git auth instead of baking into image",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of mounting my host's SSH key into a Docker container?",
+      "question": "docker compose yaml git container ssh key mount example",
+      "anchor": "creating-a-demo-container"
+    },
+    {
+      "question": "docker exec into container verify git installed",
       "anchor": "running-it"
     },
     {
-      "question": "Can I run Git commands directly inside a Docker container without exiting it?",
+      "question": "mount .gitconfig into docker container running as root path",
       "anchor": "sharing-your-configuration"
     },
     {
-      "question": "How do I share my host's Git configuration with a running Docker container?",
+      "question": "share host git user.name and user.email with devcontainer",
+      "anchor": "sharing-your-configuration"
+    },
+    {
+      "question": "mount ssh private key read-only into running docker container",
       "anchor": "share-your-credentials"
     },
     {
-      "question": "What is the difference between mounting SSH keys during build and runtime in Docker containers?",
+      "question": "git push from container using host ssh key github",
       "anchor": "conclusion"
     },
     {
-      "question": "How do I configure Git to use my host's SSH key inside a Docker container?",
+      "question": "devcontainer git workflow stay inside container",
       "anchor": ""
     },
     {
-      "question": "Can I run Git commands from within a Docker container without exiting it?",
-      "anchor": ""
+      "question": "docker container git pull push commit without host terminal",
+      "anchor": "conclusion"
     },
     {
-      "question": "What is the purpose of sharing my host's configuration file with a running Docker container?",
-      "anchor": ""
+      "question": "alpine dockerfile install git apk",
+      "anchor": "creating-a-demo-container"
     },
     {
-      "question": "How do I share my host's SSH key with a running Docker container?",
-      "anchor": ""
+      "question": "no need to sync git config between host and container",
+      "anchor": "why-it-works"
     }
   ]
 }

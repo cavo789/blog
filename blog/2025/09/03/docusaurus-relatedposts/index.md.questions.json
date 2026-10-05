@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:08:51.991Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:16:39.829Z",
   "source": "index.md",
   "sourceHash": "837d0fd5fe2540b2b3aa62fc7fa0e5c81f64a766",
+  "durationMs": 66449,
+  "rejected": [
+    {
+      "question": "reusable blog post card component docusaurus react",
+      "anchor": "we-need-a-card-component",
+      "reason": "not answered: Card component instructions are in a linked external article, not here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:14:23.257Z",
+    "articleHash": "eb31a929ed0c0aa675f0bb9e233656848a768512",
+    "questionsHash": "7b828031448f16af",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I add related posts to my Docusaurus blog?",
+      "question": "docusaurus blog show related posts below article",
       "anchor": ""
     },
     {
-      "question": "What is a Card component in Docusaurus for displaying related posts?",
+      "question": "why match related posts by one front matter field instead of keyword weighting",
       "anchor": "why-it-works"
     },
     {
-      "question": "How can I extract information from blog posts to display related posts in Docusaurus?",
-      "anchor": "we-need-a-card-component"
-    },
-    {
-      "question": "What is the purpose of the RelatedPosts component in Docusaurus for displaying related posts?",
+      "question": "parse yaml front matter from markdown files in docusaurus blog folder",
       "anchor": "we-need-a-way-to-extract-information-from-blog-posts"
     },
     {
-      "question": "How can I override the BlogPostItem template in Docusaurus to display related posts?",
+      "question": "helper script extract blog post title slug image from front matter",
+      "anchor": "we-need-a-way-to-extract-information-from-blog-posts"
+    },
+    {
+      "question": "react component filter posts by shared tag docusaurus",
       "anchor": "our-relatedposts-component"
     },
     {
-      "question": "What are the steps to configure and edit blog posts to display related posts in Docusaurus?",
+      "question": "override BlogPostItem template docusaurus inject component at bottom",
       "anchor": "overriding-the-blogpostitem-template"
     },
     {
-      "question": "Why do I not see Related Posts on my Docusaurus blog?",
+      "question": "docusaurus theme override keep only BlogPostItem file remove rest",
+      "anchor": "overriding-the-blogpostitem-template"
+    },
+    {
+      "question": "docusaurus blog post front matter primary tag field related posts",
       "anchor": "editing-our-blog-posts"
     },
     {
-      "question": "How can I ensure that the RelatedPosts component correctly displays related posts based on tags in Docusaurus?",
-      "anchor": "conclusion"
+      "question": "related posts cards not showing after docusaurus theme override restart",
+      "anchor": "editing-our-blog-posts"
     }
   ]
 }

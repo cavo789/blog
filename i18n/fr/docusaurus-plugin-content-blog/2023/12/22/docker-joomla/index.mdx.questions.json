@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:21:08.715Z",
-  "durationMs": 120159,
   "source": "index.mdx",
-  "locale": "fr",
   "sourceHash": "73ece2e9c82869ad44d774ba79904f5f9ccbce0b",
+  "durationMs": 120159,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:26:44.369Z",
+    "articleHash": "e12dcdd8d55a7651bb89e4e6f036a9e44cdb89ee",
+    "questionsHash": "0637efe13725b11e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment déployer un site Joomla en local avec Docker en quelques secondes ?",
-      "anchor": ""
+      "anchor": "two-minutes-one-file-your-joomla-is-running"
     },
     {
       "question": "Lancer Joomla en deux minutes avec un seul fichier docker compose",

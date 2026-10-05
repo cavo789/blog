@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T16:46:28.939Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:30:56.651Z",
   "source": "index.md",
   "sourceHash": "e34c7969985a7044cba01957188dc9ce9d7ca3d5",
+  "durationMs": 49859,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:27:12.524Z",
+    "articleHash": "2ded42e6530676e9925bf765966f5f4640298e64",
+    "questionsHash": "4323832503fbdbcb",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
-      "question": "How to add and display a detailed changelog in Docusaurus blog posts?",
+      "question": "docusaurus blog post changelog multiple updates",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of using multiple dated notes in a changelog for Docusaurus blog posts?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "How do I create a custom React component to parse an array from the post's YAML frontmatter?",
-      "anchor": "installation"
-    },
-    {
-      "question": "What is the difference between Docusaurus's native date entry and the multi-entry changelog solution presented in this article?",
-      "anchor": "create-the-updated-component"
-    },
-    {
-      "question": "How do I swizzle the BlogPostPage to automatically display the update history of a post with multiple dated notes?",
-      "anchor": "override-the-blogpostpage-template"
-    },
-    {
-      "question": "What are the minimum lines to add at the right place in the BlogPostPage template file to inject the new component?",
-      "anchor": "more-demos"
-    },
-    {
-      "question": "How do I use the custom changelog component in my Docusaurus blog posts?",
+      "question": "show edit history with dates and descriptions on docusaurus blog post",
       "anchor": "use-the-component"
     },
     {
-      "question": "What is the purpose of using a detailed changelog for Docusaurus blog posts and how does it benefit readers?",
-      "anchor": "conclusion"
+      "question": "docusaurus updated field only allows one date how to extend",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "how to install custom component docusaurus blog swizzle",
+      "anchor": "override-the-blogpostpage-template"
+    },
+    {
+      "question": "react component parse frontmatter array docusaurus blog",
+      "anchor": "create-the-updated-component"
+    },
+    {
+      "question": "BlogPostPage.js override docusaurus theme inject code",
+      "anchor": "override-the-blogpostpage-template"
+    },
+    {
+      "question": "docusaurus blog post update history custom styling",
+      "anchor": "create-the-updated-component"
+    },
+    {
+      "question": "add updates array to blog post frontmatter docusaurus",
+      "anchor": "use-the-component"
+    },
+    {
+      "question": "docusaurus blog changelog frontmatter only no extra file",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docusaurus updated vs updates frontmatter difference",
+      "anchor": "why-it-works"
     }
   ]
 }

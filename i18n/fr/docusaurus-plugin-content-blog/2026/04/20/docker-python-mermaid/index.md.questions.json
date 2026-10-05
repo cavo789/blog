@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:04:26.789Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "a16beb9e456ec0df3e0fa6f849ff4931ecba7a69",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:19:54.785Z",
+    "articleHash": "80f11904e434a780e2674c0cc3147b31def65ccc",
+    "questionsHash": "0e23ea3f2d7bbb23",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment automatiser la documentation d'infrastructure avec docker et mermaid",
@@ -44,7 +54,7 @@
     },
     {
       "question": "garder la documentation à jour sans dessin manuel avec docker",
-      "anchor": "conclusion"
+      "anchor": "the-result"
     }
   ]
 }

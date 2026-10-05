@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:48.607Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:16:18.705Z",
   "source": "index.md",
   "sourceHash": "0b6db78709900fcc40cc8812cc6631773e539500",
+  "durationMs": 35366,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:45:00.511Z",
+    "articleHash": "053d49f19c62202089b60ca0148a953c3a5104d1",
+    "questionsHash": "7c85328bec78fbaa",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do you run Python scripts using Docker containers?",
-      "anchor": ""
-    },
-    {
-      "question": "What is a container in Docker?",
-      "anchor": ""
-    },
-    {
-      "question": "Why use Docker for running Python scripts?",
-      "anchor": ""
-    },
-    {
-      "question": "How do you create and run a simple 'Hello World' script with Docker?",
+      "question": "run python script docker without installing python locally",
       "anchor": "welcome-to-the-world"
     },
     {
-      "question": "What is the difference between `docker run` and `docker exec`?",
-      "anchor": ""
-    },
-    {
-      "question": "How do you share files between your host machine and a Docker container?",
+      "question": "how to skip python environment setup and just run a .py file in a container",
       "anchor": "welcome-to-the-world"
     },
     {
-      "question": "What is the purpose of using a volume in Docker?",
+      "question": "docker run python .py file volume mount -v -w flags",
       "anchor": "welcome-to-the-world"
     },
     {
-      "question": "What are some real-world applications of running Python scripts with Docker?",
-      "anchor": ""
+      "question": "how to share a local folder into a python docker container and execute a script",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "python:3.11 docker image run script from current directory",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "run hello world python in docker one command no pip install",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "docker run --rm python container cleanup exited containers",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "run interactive python game in docker container user prompts",
+      "anchor": "playing-the-hangman"
+    },
+    {
+      "question": "docker run python script that asks for input -it flag",
+      "anchor": "welcome-to-the-world"
+    },
+    {
+      "question": "play hangman python script in docker container",
+      "anchor": "playing-the-hangman"
     }
   ]
 }

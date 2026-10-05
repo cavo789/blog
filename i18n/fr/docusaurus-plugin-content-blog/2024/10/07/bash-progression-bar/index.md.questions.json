@@ -2,17 +2,43 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:40:28.736Z",
-  "durationMs": 168738,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "2cf5b3ac56761bec7505c82bb5eacb73a900288b",
+  "durationMs": 168738,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "comment suivre l'avancement de jobs concurrents dans le terminal",
+      "anchor": "",
+      "reason": "not answered: Article covers sequential loop progress, not concurrent job tracking.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "lancer demo.sh pour uploader des pdf via une API RESTful POST",
+      "anchor": "time-to-run-the-code",
+      "reason": "not answered: Mentioned as a use case but no actual upload code provided.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "comment gérer le logging et traiter un fichier CSV avec cette barre de progression",
+      "anchor": "time-to-run-the-code",
+      "reason": "not answered: Logging and CSV handling only mentioned, not explained in article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:50:26.923Z",
+    "articleHash": "de9041b37e5dd3b76a6fe757efe1bf41b717c1f4",
+    "questionsHash": "d8ce6687075047f5",
+    "status": "applied",
+    "rejected": 3,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "ajouter une barre de progression visuelle à un script bash",
-      "anchor": ""
-    },
-    {
-      "question": "comment suivre l'avancement de jobs concurrents dans le terminal",
       "anchor": ""
     },
     {
@@ -46,14 +72,6 @@
     {
       "question": "où copier le code du helper progress_bar.sh",
       "anchor": "create-progress_barsh"
-    },
-    {
-      "question": "lancer demo.sh pour uploader des pdf via une API RESTful POST",
-      "anchor": "time-to-run-the-code"
-    },
-    {
-      "question": "comment gérer le logging et traiter un fichier CSV avec cette barre de progression",
-      "anchor": "time-to-run-the-code"
     }
   ]
 }

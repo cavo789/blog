@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:15:47.036Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f3d1750654bc40ab4e58c6cedf16c81172f535a0",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "enrichir le deck avec de nouvelles démos et sections",
+      "anchor": "more-demos",
+      "reason": "not answered: Article shows editing existing content, not adding new demos or sections.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "quelles sont les étapes finales pour automatiser le cycle de vie des slides ?",
+      "anchor": "conclusion",
+      "reason": "not answered: No automation, CI/CD, or lifecycle steps are described.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:03:46.841Z",
+    "articleHash": "6dd98c6e1218e3d63246265fe2002a2e8303d7a6",
+    "questionsHash": "14091e90d5a7e6bd",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "workflow pour créer des slides reveal.js en Markdown avec Quarto et les DevContainers",
@@ -12,7 +36,7 @@
     },
     {
       "question": "comment prévisualiser le rendu des slides en temps réel dans le navigateur",
-      "anchor": "the-result"
+      "anchor": "preview-the-slideshow"
     },
     {
       "question": "Pourquoi utiliser Quarto et Decktape plutôt que PowerPoint pour des exports multiples ?",
@@ -31,10 +55,6 @@
       "anchor": "open-the-devcontainer"
     },
     {
-      "question": "enrichir le deck avec de nouvelles démos et sections",
-      "anchor": "more-demos"
-    },
-    {
       "question": "lancer le preview server et suivre les changements Markdown",
       "anchor": "preview-the-slideshow"
     },
@@ -45,10 +65,6 @@
     {
       "question": "compiler le projet Quarto en site HTML statique pour un déploiement SFTP",
       "anchor": "export-as-static-html-site"
-    },
-    {
-      "question": "quelles sont les étapes finales pour automatiser le cycle de vie des slides ?",
-      "anchor": "conclusion"
     }
   ]
 }

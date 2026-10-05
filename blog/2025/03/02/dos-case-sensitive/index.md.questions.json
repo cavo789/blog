@@ -1,36 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:02.771Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:42:07.604Z",
   "source": "index.md",
   "sourceHash": "2659e639e1995b619b56953fb58f6c0d2ab226d4",
+  "durationMs": 45588,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:48:16.042Z",
+    "articleHash": "79f81313ad1f49ddb67ff21f0de4b6e613ca6645",
+    "questionsHash": "996ad72e7dd9022f",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I enable case sensitivity for filenames in a specific folder on Windows?",
+      "question": "fsutil.exe case sensitivity windows folder",
       "anchor": ""
     },
     {
-      "question": "What is the PowerShell command to enable case sensitivity for filenames in a specific folder on Windows?",
+      "question": "how to make a specific Windows directory case sensitive like Linux",
       "anchor": ""
     },
     {
-      "question": "How do I revert the change of enabling case sensitivity for filenames in a specific folder on Windows?",
+      "question": "can I have file.txt and File.txt in the same folder on Windows",
       "anchor": ""
     },
     {
-      "question": "What are some other Windows/Linux mismatches that can bite you when using the same repository on both systems?",
+      "question": "powershell admin enable case sensitivity per folder",
       "anchor": ""
     },
     {
-      "question": "How do I prevent Git from silently rewriting line endings in a repository used on both Windows and Linux?",
+      "question": "windows dos case insensitive filenames workaround",
       "anchor": ""
     },
     {
-      "question": "What is the PowerShell command to revert the change of enabling case sensitivity for filenames in a specific folder on Windows?",
+      "question": "fsutil.exe case sensitivity command syntax",
       "anchor": ""
     },
     {
-      "question": "How do I enable case sensitivity for filenames in a specific folder on Windows using PowerShell?",
+      "question": "how to revert case sensitivity on a windows folder",
+      "anchor": ""
+    },
+    {
+      "question": "windows per-directory case sensitivity",
+      "anchor": ""
+    },
+    {
+      "question": "fsutil case sensitivity requires removing conflicting files to disable",
+      "anchor": ""
+    },
+    {
+      "question": "make windows stop overwriting differently-cased filenames",
       "anchor": ""
     }
   ]

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:57.987Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:34:53.236Z",
   "source": "index.md",
   "sourceHash": "2f723a1419095c674f8b5601783833fc03e59d34",
+  "durationMs": 32849,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:56:17.506Z",
+    "articleHash": "6a22a29a55a6df8628b7562fb1452e4b94629896",
+    "questionsHash": "ed52883fd9719bf0",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do you turn off Bitlocker before installing Ubuntu?",
+      "question": "install ubuntu 24.04 desktop from scratch replace windows",
+      "anchor": ""
+    },
+    {
+      "question": "ubuntu 24.04 secure boot key not valid nvidia driver",
       "anchor": "result"
     },
     {
-      "question": "What is the bug related to Secure Boot key and how can I avoid it during installation?",
+      "question": "skip install recommended proprietary software ubuntu 24.04",
+      "anchor": "result"
+    },
+    {
+      "question": "how to disable bitlocker before installing linux on same disk",
       "anchor": "turn-off-bitlocker-first"
     },
     {
-      "question": "How do you create a bootable USB stick for Ubuntu using balenaEtcher?",
+      "question": "bitlocker decryption stuck no progress tray icon",
+      "anchor": "turn-off-bitlocker-first"
+    },
+    {
+      "question": "balenaetcher ubuntu 24.04 iso to usb",
       "anchor": "download-ubuntu-and-create-your-bootable-usb-stick"
     },
     {
-      "question": "What are the steps to install Ubuntu from scratch on an old PC?",
-      "anchor": ""
+      "question": "why do i need ethernet cable during ubuntu installation",
+      "anchor": "think-to-plug-an-ethernet-cable-before-installing-ubuntu"
     },
     {
-      "question": "How do I avoid installing recommended proprietary software during Ubuntu installation?",
+      "question": "ubuntu 24.04 erase disk lvm encryption interactive mode",
       "anchor": "start-the-installation-wizard"
     },
     {
-      "question": "What is the purpose of using LVM and encryption when installing Ubuntu from scratch?",
+      "question": "enable ubuntu pro after fresh install 24.04",
       "anchor": "reboot-and-enable-ubuntu-pro"
     },
     {
-      "question": "How do I install Ubuntu on an old PC without dual booting with Windows?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the steps to download and create a bootable USB stick for Ubuntu using balenaEtcher?",
-      "anchor": "download-ubuntu-and-create-your-bootable-usb-stick"
+      "question": "ubuntu 24.04 snap install firefox thunderbird libreoffice vscode docker",
+      "anchor": "time-to-add-software"
     }
   ]
 }

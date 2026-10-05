@@ -1,40 +1,71 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:32.894Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:16:41.184Z",
   "source": "index.md",
   "sourceHash": "1682e45b4688c9c0a35e2867f9e862872df72366",
+  "durationMs": 42059,
+  "rejected": [
+    {
+      "question": "PHP CS Fixer pre-commit hook git",
+      "anchor": "if-youre-a-php-developer",
+      "reason": "not answered: Only links to another article; no setup instructions given.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "VSCode extension auto-format PHP on save",
+      "anchor": "if-youre-a-php-developer",
+      "reason": "not answered: Mentions VSCode extensions exist but names none or gives no setup.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "PHP_CodeSniffer CI pipeline setup",
+      "anchor": "if-youre-a-php-developer",
+      "reason": "not answered: Only says 'add these steps to a remote pipeline'; no setup.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "jakzal/phpqa docker",
+      "anchor": "if-youre-a-php-developer",
+      "reason": "not answered: Links to another article for Docker details; no command given.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "GitHub Actions PHP formatting workflow",
+      "anchor": "if-youre-a-php-developer",
+      "reason": "not answered: No GitHub Actions workflow or YAML provided in article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:33:06.356Z",
+    "articleHash": "d25b9708a0cbb3d87568cdfbbdbfcfb9714f2fc1",
+    "questionsHash": "0ac43d964bdda19c",
+    "status": "applied",
+    "rejected": 5,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I format poorly formatted PHP code quickly?",
+      "question": "format messy PHP code online no install",
       "anchor": ""
     },
     {
-      "question": "What is Pint-express and how does it help with PHP code formatting?",
-      "anchor": "if-youre-a-php-developer"
-    },
-    {
-      "question": "Can you recommend a tool for automatically fixing PHP code syntax errors?",
-      "anchor": "if-youre-a-php-developer"
-    },
-    {
-      "question": "How can I integrate Pint-express into my project workflow?",
+      "question": "pint-express laravel pint browser",
       "anchor": ""
     },
     {
-      "question": "What are some alternative tools to Pint-express for formatting PHP code?",
+      "question": "PHP code formatter no CLI needed",
       "anchor": ""
     },
     {
-      "question": "Is there a Docker image that provides static analysis tools for PHP?",
+      "question": "paste ugly PHP and get clean output instantly",
       "anchor": ""
     },
     {
-      "question": "How can I add PHP linting tools to my VSCode editor?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some best practices for maintaining clean and well-formatted PHP code?",
+      "question": "online PHP linter for one-off code cleanup",
       "anchor": ""
     }
   ]

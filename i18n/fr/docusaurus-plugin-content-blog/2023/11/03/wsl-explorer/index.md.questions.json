@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:05:26.931Z",
-  "durationMs": 152477,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3b6191804b8a48a74a29fcdd529ddaa0633667f3",
+  "durationMs": 152477,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "[1] regedit AllowUnsafeRemotes wsl localhost",
+      "anchor": "wsl-localhost-is-not-accessible",
+      "reason": "not answered: article covers ProviderOrder/HwOrder, not AllowUnsafeRemotes",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "[1] comment ajouter wsl.localhost à AllowUnsafeRemotes ?",
+      "anchor": "wsl-localhost-is-not-accessible",
+      "reason": "not answered: article covers ProviderOrder/HwOrder, not AllowUnsafeRemotes",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:05:49.414Z",
+    "articleHash": "1efe13829fb400c49b5ded8c3f1687d992548f3a",
+    "questionsHash": "71a7b60ee237c610",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "[0] `explorer.exe .` wsl explorateur windows",
@@ -29,14 +53,6 @@
     },
     {
       "question": "[1] corriger wsl.localhost is not accessible registry",
-      "anchor": "wsl-localhost-is-not-accessible"
-    },
-    {
-      "question": "[1] regedit AllowUnsafeRemotes wsl localhost",
-      "anchor": "wsl-localhost-is-not-accessible"
-    },
-    {
-      "question": "[1] comment ajouter wsl.localhost à AllowUnsafeRemotes ?",
       "anchor": "wsl-localhost-is-not-accessible"
     },
     {

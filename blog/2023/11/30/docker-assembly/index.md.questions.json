@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:53.763Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:17:26.209Z",
   "source": "index.md",
   "sourceHash": "7f8bdf8fae8a634ccf39b2b5c3e09e3226530c76",
+  "durationMs": 38791,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:45:50.014Z",
+    "articleHash": "cd2332cc4d9fc99a2b74cf55ef887dabdd355afa",
+    "questionsHash": "6c34eece1a669d92",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
-      "question": "How do I run a 'Hello, World!' program in MS-DOS using Docker?",
-      "anchor": "lets-play-in-ms-dos"
-    },
-    {
-      "question": "What is a TSR (Terminate and Stay Resident) program and how does it work?",
+      "question": "docker image x86 assembly nasm",
       "anchor": ""
     },
     {
-      "question": "Can I still run legacy programs like TSRs on modern computers using Docker?",
+      "question": "how to run .asm file without installing NASM locally",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "x86 assembly hello world docker container",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "esolang/x86asm-nasm how to use",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "docker container for x86 assembly language programming",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the 'zero local install' approach when using Docker with Assembly programming languages?",
+      "question": "docker x86 assembly from DOS console",
       "anchor": "lets-play-in-ms-dos"
     },
     {
-      "question": "How can I compile Turbo Pascal sources from thirty years ago using Docker?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some other programming languages I've played with using this zero local install approach with Docker?",
+      "question": "docker run .asm windows cmd volume mount %CD%",
       "anchor": "lets-play-in-ms-dos"
     },
     {
-      "question": "How do I run a 'Hello, World!' program in Linux using Docker?",
+      "question": "docker hello.asm powershell x86 nasm",
       "anchor": "lets-play-in-ms-dos"
     },
     {
-      "question": "What is the Docker image used for running Assembly programs in MS-DOS and Linux?",
+      "question": "x86asm-nasm docker dos mkdir code folder",
+      "anchor": "lets-play-in-ms-dos"
+    },
+    {
+      "question": "nasm docker run --rm -v /code assembly",
       "anchor": "lets-play-in-ms-dos"
     }
   ]

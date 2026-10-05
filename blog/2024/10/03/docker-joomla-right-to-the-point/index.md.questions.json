@@ -1,40 +1,69 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:12.142Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:01:26.285Z",
   "source": "index.md",
   "sourceHash": "3f76e0f68fa418211cdbb2dc0df802c53578a47c",
+  "durationMs": 19111,
+  "rejected": [
+    {
+      "question": "joomla docker volume persistence after container restart",
+      "anchor": "",
+      "reason": "not answered: Only a passing mention with a link to another article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "joomla docker file upload too large php.ini fix",
+      "anchor": "",
+      "reason": "not answered: Only a passing mention with a link to another article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "adminer joomla docker database access",
+      "anchor": "",
+      "reason": "not answered: Only a passing mention with a link to another article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "joomla docker makefile",
+      "anchor": "",
+      "reason": "not answered: No Makefile content or instructions appear anywhere in the article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:19:10.692Z",
+    "articleHash": "b393df4f571787416fa92cd79bab96578f0404db",
+    "questionsHash": "83b136892c614413",
+    "status": "applied",
+    "rejected": 4,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I start a Joomla project with Docker?",
+      "question": "joomla docker compose quick start",
       "anchor": ""
     },
     {
-      "question": "What is the easiest way to start a Joomla project with Docker?",
+      "question": "how to launch joomla with docker in a couple of minutes",
       "anchor": ""
     },
     {
-      "question": "How can I quickly launch my Joomla website using Docker?",
+      "question": "docker compose joomla default admin credentials",
       "anchor": ""
     },
     {
-      "question": "What are the steps to set up a Joomla project with Docker?",
+      "question": "docker compose joomla localhost 8080",
       "anchor": ""
     },
     {
-      "question": "How do I use Docker to start a Joomla site?",
+      "question": "joomla docker hub compose snippet copy paste",
       "anchor": ""
     },
     {
-      "question": "What is the Docker Compose setup for Joomla?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I launch a Joomla project with Docker in just a few clicks?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the essential steps to start a Joomla project using Docker?",
+      "question": "joomla docker mysql php apache containers stack",
       "anchor": ""
     }
   ]

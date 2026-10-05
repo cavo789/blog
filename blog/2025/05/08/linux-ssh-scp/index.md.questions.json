@@ -1,52 +1,67 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:56.486Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:52:06.262Z",
   "source": "index.md",
   "sourceHash": "177476ed1e5ecd20dcabac21ee6598eb8940169f",
+  "durationMs": 21300,
+  "rejected": [
+    {
+      "question": "ssh config multiple servers list select host",
+      "anchor": "going-further",
+      "reason": "not answered: Only links to another article; no in-article explanation of host selection.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:57:08.736Z",
+    "articleHash": "9b13b8a878d1142b755d81553c904490118373e4",
+    "questionsHash": "a3efa85808b1b6e0",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I create an SSH key on my host for the remote server?",
+      "question": "stop typing ssh password every time linux server",
+      "anchor": ""
+    },
+    {
+      "question": "passwordless ssh setup in 3 steps",
       "anchor": "tldr"
     },
     {
-      "question": "What is the purpose of copying the public SSH key to the remote server?",
-      "anchor": "in-depth"
-    },
-    {
-      "question": "How can I connect to the server without entering a password using SSH keys?",
+      "question": "generate ed25519 ssh key pair named for a specific host",
       "anchor": "1-creating-the-ssh-key"
     },
     {
-      "question": "What are the steps involved in creating an SSH key pair for passwordless login?",
+      "question": "ssh-copy-id appends public key to authorized_keys",
       "anchor": "2-copying-the-key"
     },
     {
-      "question": "How do I copy my local SSH public key to the remote server?",
+      "question": "ssh connect without password after copying key to server",
       "anchor": "3-connect-to-the-server"
     },
     {
-      "question": "What is the command used to append a public key to the authorized_keys file on the remote server?",
+      "question": "scp -i upload local file to remote server path",
       "anchor": "copying-files-from-your-host-to-the-server"
     },
     {
-      "question": "How can I copy files from my host to the server using SSH?",
+      "question": "scp pull file from remote linux server to local directory",
       "anchor": "copy-files-from-the-server-to-your-host"
     },
     {
-      "question": "What is the command used to copy files from the server to your host using SSH?",
+      "question": "scp -r recursive copy folder from server to current directory",
       "anchor": "copying-folders"
     },
     {
-      "question": "How can I copy folders using SSH?",
-      "anchor": "tips"
-    },
-    {
-      "question": "What are some tips for running SSH commands in Microsoft Terminal?",
+      "question": "microsoft terminal ssh better than putty background image tabs",
       "anchor": "running-ssh-from-microsoft-terminal"
     },
     {
-      "question": "What is the purpose of the config file when working with SSH?",
+      "question": "ssh config file Host alias avoid typing username server key path",
       "anchor": "using-the-config-file"
     }
   ]

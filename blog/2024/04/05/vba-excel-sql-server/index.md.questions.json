@@ -1,40 +1,58 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:52.455Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:21:51.655Z",
   "source": "index.md",
   "sourceHash": "a55c3432dffee09aeb12d5ee1fbb1efd95d08f7d",
+  "durationMs": 19426,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:44:10.165Z",
+    "articleHash": "e1d27a69dc11f4f6ad2524658a621ddf27d157f0",
+    "questionsHash": "2ad450c9beb928cb",
+    "status": "held",
+    "wouldReject": 8
+  },
   "questions": [
     {
-      "question": "How do I connect MS Excel to a SQL Server database using VBA and run queries?",
+      "question": "excel vba run sql server query insert results into sheet",
       "anchor": ""
     },
     {
-      "question": "What are the two methods for injecting query results into an Excel sheet from a SQL Server database?",
+      "question": "how to connect excel to sql server and pull query results without losing existing formatting",
       "anchor": ""
     },
     {
-      "question": "How can I preserve formatting when running SQL queries in MS Excel and injecting results?",
+      "question": "vba code sql server requery refresh excel sheet",
       "anchor": ""
     },
     {
-      "question": "What are the advantages of using the 'query table' method for data injection in Excel?",
+      "question": "excel query table sql server one click refresh data",
       "anchor": ""
     },
     {
-      "question": "How can I safely share an Excel sheet that connects to a SQL Server database without exposing credentials?",
+      "question": "how to share an excel sheet with sql server data without exposing database credentials",
       "anchor": ""
     },
     {
-      "question": "What is the difference between the 'query table' method and the 'drop connection/credentials' method for data injection in Excel?",
+      "question": "vba inject sql query results into existing excel layout keep colors and filters",
       "anchor": ""
     },
     {
-      "question": "How can I retrieve all explanations to connect MS Excel to a SQL Server database using VBA from my GitHub repository?",
+      "question": "vba excel sql server drop connection after query safe to send to colleague",
       "anchor": ""
     },
     {
-      "question": "What are the steps to follow to execute a query in MS Excel and get results directly into a sheet while preserving formatting?",
+      "question": "run t-sql from excel sheet get results in table format",
+      "anchor": ""
+    },
+    {
+      "question": "how to set up excel so right-click requery pulls fresh data from sql server",
+      "anchor": ""
+    },
+    {
+      "question": "excel vba sql server named range extend with new rows preserve name",
       "anchor": ""
     }
   ]

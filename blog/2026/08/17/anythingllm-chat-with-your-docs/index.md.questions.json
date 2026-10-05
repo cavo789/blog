@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-13T18:03:28.714Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:09:49.722Z",
   "source": "index.md",
   "sourceHash": "b4efcee7292728c10bfc5f5ec5890f88a9b22301",
+  "durationMs": 30292,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:02:15.111Z",
+    "articleHash": "1780488d5195dd3369b704d96027867c38dfa791",
+    "questionsHash": "fe2dd26813f82809",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is AnythingLLM and how does it work?",
+      "question": "self-hosted chat with my own PDFs and markdown files",
       "anchor": ""
     },
     {
-      "question": "Why is it important to have a searchable, chattable knowledge base for your documents?",
+      "question": "ask a vague question about my blog and get the exact article back",
       "anchor": "seeing-it-work"
     },
     {
-      "question": "How do I set up AnythingLLM on one machine?",
+      "question": "RAG that can read Excel and PowerPoint not just text",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker compose AnythingLLM Ollama single machine",
       "anchor": "install"
     },
     {
-      "question": "What is the purpose of the workspace system prompt in AnythingLLM?",
+      "question": "AnythingLLM embedder returning nonsense results how to test",
+      "anchor": "check-that-your-embedder-actually-discriminates"
+    },
+    {
+      "question": "AnythingLLM no option to point at a folder why",
+      "anchor": "you-dont-give-it-a-path--and-that-surprises-everyone"
+    },
+    {
+      "question": "batch index entire directory tree into AnythingLLM workspace script",
+      "anchor": "indexing-a-whole-folder-tree-with-one-command"
+    },
+    {
+      "question": "set custom system prompt per workspace AnythingLLM",
       "anchor": "one-manual-step-the-workspace-system-prompt"
     },
     {
-      "question": "How can I keep my documents indexed up to date?",
-      "anchor": "ingest"
+      "question": "reindex updated documents in AnythingLLM without rebuilding",
+      "anchor": "keeping-the-index-up-to-date"
     },
     {
-      "question": "How does AnythingLLM search from the terminal?",
+      "question": "curl AnythingLLM chat API from terminal",
       "anchor": "search"
     },
     {
-      "question": "What is the ai-blog-search script in AnythingLLM?",
-      "anchor": "ai-blog-search-the-portable-script"
+      "question": "documents on work laptop GPU inference on home PC RAG setup",
+      "anchor": "two-machines"
     },
     {
-      "question": "How can I use AnythingLLM with Open WebUI?",
-      "anchor": "the-same-thing-as-a-zsh-function"
+      "question": "AnythingLLM compose file point Ollama to different host",
+      "anchor": "what-actually-changes-in-the-compose-file"
     }
   ]
 }

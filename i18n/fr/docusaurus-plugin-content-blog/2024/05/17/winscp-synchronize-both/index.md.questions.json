@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-20T16:47:05.469Z",
-  "durationMs": 154166,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "230d5ac2e865dcb7d22763a67107cb843bd66917",
+  "durationMs": 154166,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:24:10.556Z",
+    "articleHash": "1b2abd87b3c9c4acc712e34fcd7e45594a9c49c3",
+    "questionsHash": "aeafb440d16170e8",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "winscp script synchro local distant ftp sftp",

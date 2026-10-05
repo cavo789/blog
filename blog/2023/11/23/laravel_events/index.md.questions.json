@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:17.331Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:10:18.861Z",
   "source": "index.md",
   "sourceHash": "9fd26e52d4ac9ad0872352e2128a164ab190f4a7",
+  "durationMs": 21996,
+  "rejected": [
+    {
+      "question": "symfony event-dispatcher plain php without a framework",
+      "anchor": "the-same-idea-outside-laravel",
+      "reason": "not answered: Article mentions League\\Event, not Symfony event-dispatcher.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:40:15.579Z",
+    "articleHash": "669cbffa830efe6fe4f4a8a77142c829dc8dae12",
+    "questionsHash": "e5fc85319eae498d",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What is an event in Laravel?",
-      "anchor": ""
-    },
-    {
-      "question": "Why use events in Laravel?",
+      "question": "laravel events listener decouple code",
       "anchor": "what-an-event-actually-buys-you"
     },
     {
-      "question": "How do you create and dispatch an event with a listener in Laravel?",
+      "question": "how to add a feature to a Laravel route without touching the controller",
+      "anchor": "what-an-event-actually-buys-you"
+    },
+    {
+      "question": "laravel comment out listener and route still works",
+      "anchor": "what-an-event-actually-buys-you"
+    },
+    {
+      "question": "laravel event listener receives same object instance as the dispatcher",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of events in Laravel?",
+      "question": "laravel event listener step by step with EventServiceProvider",
       "anchor": "building-it"
     },
     {
-      "question": "How can I add new functionality without modifying existing code using Laravel events?",
+      "question": "laravel listener update model property from event object",
+      "anchor": "building-it"
+    },
+    {
+      "question": "why are event setters public in a laravel event class",
       "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "Can you explain how to use the event listener system in Laravel with an example?",
-      "anchor": "the-same-idea-outside-laravel"
-    },
-    {
-      "question": "How do events work under the hood in Laravel?",
+      "question": "should i write laravel events when i only have one listener right now",
       "anchor": "conclusion"
     },
     {
-      "question": "What are some real-world examples of using events in Laravel?",
-      "anchor": ""
+      "question": "laravel event class design what can listener modify vs what stays private",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     }
   ]
 }

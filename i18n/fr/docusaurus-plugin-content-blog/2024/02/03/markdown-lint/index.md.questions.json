@@ -3,16 +3,52 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:49:37.939Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "413d400dbff2d44c49bf9d5f42cfd9cca25f493d",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Quelle syntaxe utiliser dans .markdownlint.json pour désactiver des règles précises ?",
+      "anchor": "ignore-some-errors",
+      "reason": "not answered: Article links to external docs for syntax, doesn't show it.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": ".markdownlint.json configuration désactiver règles markdownlint",
+      "anchor": "ignore-some-errors",
+      "reason": "not answered: Article links to external docs for syntax, doesn't show it.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Comment ajouter une cible dans un Makefile pour exécuter le linting markdown sans retenir la commande complète ?",
+      "anchor": "make-it-easy",
+      "reason": "not answered: Article links to external Makefile, doesn't show the target syntax.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Makefile cible linting markdown docker",
+      "anchor": "make-it-easy",
+      "reason": "not answered: Article links to external Makefile, doesn't show the target syntax.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:51:37.773Z",
+    "articleHash": "c85f2df3d76516ae6ffb1a3cb61ebe4d0ec69044",
+    "questionsHash": "a38d366fde62983b",
+    "status": "applied",
+    "rejected": 4,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment utiliser l'image Docker de markdownlint pour scanner et nettoyer automatiquement mes fichiers .md ?",
-      "anchor": ""
+      "anchor": "put-all-together"
     },
     {
       "question": "docker markdownlint auto-formatage fichiers markdown",
-      "anchor": ""
+      "anchor": "some-errors-can-be-fixed-automagically"
     },
     {
       "question": "Comment créer un .markdownlintignore pour exclure node_modules et vendor du parcours ?",
@@ -21,14 +57,6 @@
     {
       "question": ".markdownlintignore ignorer dossiers markdownlint docker",
       "anchor": "ignore-some-filesfolders"
-    },
-    {
-      "question": "Quelle syntaxe utiliser dans .markdownlint.json pour désactiver des règles précises ?",
-      "anchor": "ignore-some-errors"
-    },
-    {
-      "question": ".markdownlint.json configuration désactiver règles markdownlint",
-      "anchor": "ignore-some-errors"
     },
     {
       "question": "Comment utiliser le flag --fix de markdownlint pour corriger les fichiers .md tout en conservant la propriété ?",
@@ -45,14 +73,6 @@
     {
       "question": "commande docker markdownlint pour publication blog avec --fix et exclusions",
       "anchor": "put-all-together"
-    },
-    {
-      "question": "Comment ajouter une cible dans un Makefile pour exécuter le linting markdown sans retenir la commande complète ?",
-      "anchor": "make-it-easy"
-    },
-    {
-      "question": "Makefile cible linting markdown docker",
-      "anchor": "make-it-easy"
     }
   ]
 }

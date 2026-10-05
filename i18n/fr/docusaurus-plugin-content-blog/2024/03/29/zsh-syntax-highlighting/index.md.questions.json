@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:12:15.267Z",
-  "durationMs": 159382,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "63ba797a90e70d0309fc39ba8fcb2bf343d9c900",
+  "durationMs": 159382,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:09:28.759Z",
+    "articleHash": "8b0dc82ad57a67928876bf069ace0b4a47ab65f7",
+    "questionsHash": "f944e92cf15e4674",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "zsh coloration commandes vert rouge pendant frappe",
-      "anchor": ""
+      "anchor": "what-syntax-highlighting-looks-like"
     },
     {
       "question": "pourquoi ma commande zsh passe-t-elle au rouge avant que j'appuie sur enter ?",
@@ -25,7 +35,7 @@
     },
     {
       "question": "recharger zsh après ajout plugin syntax highlighting",
-      "anchor": "how-to-use-it"
+      "anchor": "installation"
     },
     {
       "question": "docker build syntax-demo tester coloration zsh sans config",

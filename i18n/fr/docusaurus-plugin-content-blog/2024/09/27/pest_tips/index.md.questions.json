@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:30:11.459Z",
-  "durationMs": 146737,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "74e37eede3f2d1acf9e94e312cf4cfebe7efb644",
+  "durationMs": 146737,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:47:55.108Z",
+    "articleHash": "3063821424d28b324722e912ac164f66ef089918",
+    "questionsHash": "c821e7cff6716a8d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "Pest remplace-t-il PHPUnit ou s'agit-il d'un wrapper et quels sont les avantages ?",
-      "anchor": ""
+      "anchor": "why-pest"
     },
     {
       "question": "composer require pestphp/pest --dev",
@@ -21,7 +31,7 @@
     },
     {
       "question": "différence entre toBe et toEqual avec expect dans Pest",
-      "anchor": "expectations"
+      "anchor": "our-first-tests"
     },
     {
       "question": "passer des datasets inline et partagés à la fonction it",
@@ -45,7 +55,7 @@
     },
     {
       "question": "réutiliser un cas de test PHPUnit existant sans modification dans Pest",
-      "anchor": "convert-from-phpunit-to-pest"
+      "anchor": "reuse-phpunit-tests-cases-without-changes"
     }
   ]
 }

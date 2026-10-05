@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:13:06.992Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "2e603d16b457be76f7aa670f1973629ccf2db8d9",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Comment passer à docker compose avec apache et postgresql après le devcontainer ?",
+      "anchor": "conclusion",
+      "reason": "not answered: Article only links to other posts; no docker-compose/Apache/PostgreSQL instructions given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:59:07.801Z",
+    "articleHash": "edc5258ea446342f3c1eaf8ff86b25e5dbcd08a6",
+    "questionsHash": "4aca7308b5aadc42",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "devcontainer php vscode docker setup rapide",
@@ -37,10 +55,6 @@
     {
       "question": "intégrer le devcontainer php à une base de code existante",
       "anchor": "you-already-have-an-existing-project"
-    },
-    {
-      "question": "Comment passer à docker compose avec apache et postgresql après le devcontainer ?",
-      "anchor": "conclusion"
     }
   ]
 }

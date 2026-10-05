@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-16T17:08:54.034Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:54:58.880Z",
   "source": "index.md",
   "sourceHash": "94a5c455cc733b12e9781ec4bb8d8e8513fb671a",
+  "durationMs": 38209,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:47:59.962Z",
+    "articleHash": "1ceee04a3f15102275e23eb2267264fe3fcf0a11",
+    "questionsHash": "b5877589371831c8",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How does Markitdown convert files to Markdown?",
+      "question": "markitdown convert word excel pdf to markdown docker",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using a Docker container for converting documents with Markitdown?",
-      "anchor": "using-a-binary"
-    },
-    {
-      "question": "Can you explain why Docker is used in this process?",
+      "question": "convert colleague's xlsx to markdown without installing python locally",
       "anchor": "why-this-approach"
     },
     {
-      "question": "How do I install Markitdown and its dependencies using Docker?",
-      "anchor": "installation"
-    },
-    {
-      "question": "What are the steps to create a Docker image for converting documents with Markitdown?",
-      "anchor": "create-our-docker-image"
-    },
-    {
-      "question": "How can I convert PDFs, Word documents, and Excel spreadsheets using Markitdown?",
+      "question": "how to run the markitdown conversion command on a .docx file",
       "anchor": "first-conversion"
     },
     {
-      "question": "What are the supported file formats for converting with Markitdown?",
-      "anchor": "conclusion"
+      "question": "create md-convert executable wrapper script chmod +x",
+      "anchor": "using-a-binary"
     },
     {
-      "question": "How can I create a custom Docker image for converting documents with Markitdown?",
+      "question": "call markitdown conversion from any directory without cd into project folder",
+      "anchor": "using-a-binary"
+    },
+    {
+      "question": "why run markitdown in a docker container instead of pip install globally",
+      "anchor": "why-this-approach"
+    },
+    {
+      "question": "markitdown docker installation step by step",
+      "anchor": "installation"
+    },
+    {
+      "question": "Dockerfile markitdown python slim base image file extensions",
       "anchor": "create-our-docker-image"
+    },
+    {
+      "question": "docker-compose.yml markitdown read-only security options",
+      "anchor": "create-an-orchestration-file"
+    },
+    {
+      "question": "docker build markitdown image and test conversion command",
+      "anchor": "build-the-image"
+    },
+    {
+      "question": "markitdown supported formats pdf powerpoint audio html csv json",
+      "anchor": "conclusion"
     }
   ]
 }

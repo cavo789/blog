@@ -1,53 +1,72 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:41.181Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:42:30.927Z",
   "source": "index.md",
   "sourceHash": "11427762421c417d63806f237419f5900793f855",
+  "durationMs": 23135,
+  "rejected": [
+    {
+      "question": "makefile help target self documenting",
+      "anchor": "self-documenting-makefile",
+      "reason": "not answered: Article links to another post for the actual implementation code.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:03:22.160Z",
+    "articleHash": "546f904916f674b42a4e60bf8d5be010165345ab",
+    "questionsHash": "5c91df061a579a72",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I check if a file exists or not using Makefile?",
+      "question": "makefile check if file exists before running command",
       "anchor": "how-to-check-if-a-file-exists-or-not"
     },
     {
-      "question": "What is the syntax for checking if a folder exists in a Makefile?",
-      "anchor": "how-to-check-if-a-folder-exists-or-not"
-    },
-    {
-      "question": "How can I run dependent targets in a Makefile?",
+      "question": "make run target A then target B then target C in order",
       "anchor": "running-dependent-targets"
     },
     {
-      "question": "What is the command to stop the job if a target fails in a Makefile?",
-      "anchor": "stop-the-job-if-a-target-fails"
-    },
-    {
-      "question": "How do I use shell find option to get all dependencies in a Makefile?",
-      "anchor": "using-shell-find-option-to-get-all-dependencies"
-    },
-    {
-      "question": "How can I avoid echoing the command in a Makefile?",
+      "question": "makefile @ prefix suppress echoed command output",
       "anchor": "dont-echo-the-command"
     },
     {
-      "question": "What is the syntax for conditional statements in a Makefile?",
+      "question": "makefile if else conditional statement",
       "anchor": "using-conditional-statements"
     },
     {
-      "question": "How do I ignore errors in a Makefile?",
+      "question": "makefile - prefix ignore error and continue",
       "anchor": "ignore-error"
     },
     {
-      "question": "How can I ensure that I'm using Bash in a Makefile?",
+      "question": "makefile SHELL bash instead of default sh",
       "anchor": "make-sure-youre-using-bash"
     },
     {
-      "question": "What is the default target in a Makefile and how do I set it?",
-      "anchor": "set-the-default-target"
+      "question": "makefile docker compose up as a target",
+      "anchor": "working-with-docker"
     },
     {
-      "question": "How can I perform substitution in a Makefile?",
-      "anchor": "substitution"
+      "question": "makefile missing separator error tab vs space",
+      "anchor": "tab-not-space"
+    },
+    {
+      "question": "makefile read variable from .env file",
+      "anchor": "getting-information-from-the-env-file"
+    },
+    {
+      "question": "makefile check if variable starts with a given string",
+      "anchor": "how-to-check-if-a-variable-starts-with-a-given-value"
+    },
+    {
+      "question": "how to set default target in makefile so bare make runs it",
+      "anchor": "set-the-default-target"
     }
   ]
 }

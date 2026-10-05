@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:29:22.661Z",
-  "durationMs": 142908,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "325623a872e25f17a1bff6f21ecda81acae33958",
+  "durationMs": 142908,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:03:54.813Z",
+    "articleHash": "a7bb4d071f413e7134251148134f44459d48dd5d",
+    "questionsHash": "ddc0501ccbb88871",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "0: vscode dev containers python assistant automatique",

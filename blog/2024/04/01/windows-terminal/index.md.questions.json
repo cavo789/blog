@@ -1,42 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-20T16:32:11.500Z",
-  "durationMs": 6209,
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:21:03.402Z",
   "source": "index.md",
   "sourceHash": "7416c63ac303de853b4415edddffda5d5fa8e8cc",
+  "durationMs": 36053,
+  "rejected": [
+    {
+      "question": "windows terminal split panes side by side",
+      "anchor": "going-further",
+      "reason": "not answered: Only links to another article; no split pane instructions given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:42:54.103Z",
+    "articleHash": "9159f257708d52a4085e1d2bb4161665d0b5d91a",
+    "questionsHash": "31b9e18afd6c47f0",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do you customize your Windows Terminal profile?",
+      "question": "windows terminal multi-tab replace old cmd console",
+      "anchor": ""
+    },
+    {
+      "question": "windows terminal profile background image json",
       "anchor": "customize-your-profile"
     },
     {
-      "question": "What is the process for installing Windows Terminal?",
+      "question": "install windows terminal windows 10",
       "anchor": "installation"
     },
     {
-      "question": "How can I add a new profile to open a shell inside a specific WSL distribution or Docker container?",
+      "question": "windows terminal add profile docker container",
       "anchor": "add-a-new-profile"
     },
     {
-      "question": "How do you set the default profile and starting directory in Windows Terminal?",
+      "question": "windows terminal set default profile guid",
       "anchor": "set-the-default-profile"
     },
     {
-      "question": "What is the purpose of the 'background' property in a Windows Terminal profile?",
+      "question": "windows terminal ubuntu start in home directory",
       "anchor": "set-the-default-folder-for-ubuntu"
     },
     {
-      "question": "How can I open multiple tabs during the startup process in Windows Terminal?",
+      "question": "windows terminal auto open tabs on launch",
       "anchor": "open-multiple-tabs-during-the-startup-process"
     },
     {
-      "question": "What are some useful settings for customizing your Windows Terminal profile?",
-      "anchor": "customize-your-profile"
+      "question": "windows terminal new profile wsl distro command",
+      "anchor": "add-a-new-profile"
     },
     {
-      "question": "How do you add a new profile to open a shell inside a specific WSL distribution or Docker container?",
-      "anchor": "add-a-new-profile"
+      "question": "windows terminal set starting directory wsl profile",
+      "anchor": "set-the-default-folder-for-ubuntu"
     }
   ]
 }

@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:15.843Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:27:16.607Z",
   "source": "index.md",
   "sourceHash": "08babe8659185e46088ebc451cfa2e4aca60cc32",
+  "durationMs": 19737,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:48:57.354Z",
+    "articleHash": "1ceddd84f7a234d6ac0c6f6d8c281777e8b4440c",
+    "questionsHash": "3ede1a21e6d8b55f",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I take screenshots of code snippets in VS Code?",
+      "question": "take screenshot of code in vscode",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the CodeSnap extension for VSCode?",
+      "question": "codesnap extension step by step guide",
       "anchor": ""
     },
     {
-      "question": "Can CodeSnap be used for sharing code snippets on social media?",
+      "question": "code snippet to shareable image for twitter from editor",
+      "anchor": ""
+    },
+    {
+      "question": "select lines save as styled png in vscode",
       "anchor": "result"
     },
     {
-      "question": "How do I use the CodeSnap extension to capture code in VS Code?",
+      "question": "vscode code to image not a code block",
       "anchor": ""
     },
     {
-      "question": "What is the difference between using CodeSnap and a real code block for sharing code snippets on a blog?",
+      "question": "vscode command palette run codesnap",
+      "anchor": ""
+    },
+    {
+      "question": "codesnap vertical preview window how it works",
       "anchor": "result"
     },
     {
-      "question": "How do I customize the font used in CodeSnap screenshots?",
-      "anchor": ""
+      "question": "codesnap output font jetbrains mono",
+      "anchor": "result"
     },
     {
-      "question": "What are some tips for using CodeSnap to capture code snippets in VS Code?",
-      "anchor": ""
+      "question": "php source code screenshot codesnap result",
+      "anchor": "result"
     },
     {
-      "question": "How do I save the screenshot captured by CodeSnap?",
+      "question": "codesnap save button location above preview",
       "anchor": "result"
     }
   ]

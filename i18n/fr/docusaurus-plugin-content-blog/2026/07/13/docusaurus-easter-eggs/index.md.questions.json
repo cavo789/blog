@@ -2,18 +2,38 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:23:35.865Z",
-  "durationMs": 191536,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "6d52a7b04fa890bd76a75389d00fa650c59d3a42",
+  "durationMs": 191536,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Plugin Docusaurus pour injecter un commentaire HTML avec ASCII art après le doctype",
+      "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source",
+      "reason": "not answered: Full plugin source is in a linked article, not shown here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Résoudre un favicon flou en redessinant le cadrage du fichier image",
+      "anchor": "what-we-ended-up-with",
+      "reason": "not answered: Only mentioned in passing in the TLDR; no fix or explanation given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:30:20.492Z",
+    "articleHash": "2091c9ee20b8d90d8e6bd220ba785e5c3632efe5",
+    "questionsHash": "437256afae1a8ed7",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment semer des easter eggs discrets sur un blog Docusaurus sans gêner la lecture ?",
       "anchor": ""
-    },
-    {
-      "question": "Plugin Docusaurus pour injecter un commentaire HTML avec ASCII art après le doctype",
-      "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source"
     },
     {
       "question": "Comment utiliser console.log avec une directive console pour afficher un message stylé dans les DevTools ?",
@@ -42,10 +62,6 @@
     {
       "question": "Cacher un message dans la feuille de style d'impression CSS",
       "anchor": "7-print-stylesheet-easter-egg"
-    },
-    {
-      "question": "Résoudre un favicon flou en redessinant le cadrage du fichier image",
-      "anchor": "what-we-ended-up-with"
     }
   ]
 }

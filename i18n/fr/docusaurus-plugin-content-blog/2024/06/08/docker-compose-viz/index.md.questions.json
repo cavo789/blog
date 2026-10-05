@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:17:30.763Z",
-  "durationMs": 139610,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "95aa9146d0d7cb9aeca378ea503e5288bc710492",
+  "durationMs": 139610,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "outils similaires à compose-viz pour les schémas d'infrastructure",
+      "anchor": "a-more-complex-example",
+      "reason": "not answered: Only links to other articles; no tool details provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:27:21.993Z",
+    "articleHash": "f3636e93784c87fa6e770ec8cbdfb2cfa8a4a835",
+    "questionsHash": "67e9a5a821302d7a",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "visualiser architecture docker compose graphe dépendances",
@@ -13,7 +31,7 @@
     },
     {
       "question": "comment générer un diagramme des services et ports depuis compose.yaml",
-      "anchor": ""
+      "anchor": "reproduce-it-yourself"
     },
     {
       "question": "lancer compose-viz pour avoir un png",
@@ -33,10 +51,6 @@
     },
     {
       "question": "mapper les dépendances et les ports exposés dans un schéma docker",
-      "anchor": "a-more-complex-example"
-    },
-    {
-      "question": "outils similaires à compose-viz pour les schémas d'infrastructure",
       "anchor": "a-more-complex-example"
     },
     {

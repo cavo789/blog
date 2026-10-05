@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:51:25.483Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:02:47.418Z",
   "source": "index.md",
   "sourceHash": "cc2cb928639614b3cccfb1614b726542e9aa7c36",
+  "durationMs": 44428,
+  "rejected": [
+    {
+      "question": "docker bind mount vs managed volume when to use which",
+      "anchor": "the-same-container-before-the-file-existed",
+      "reason": "not answered: Detailed comparison deferred to a linked article, not answered here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:32:45.873Z",
+    "articleHash": "b1b4db31c010288090fcf80d60f215dc135f20b3",
+    "questionsHash": "40204d1d7403a206",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What does -v do for you?",
-      "anchor": "what--v-does-for-you"
-    },
-    {
-      "question": "Why does it work?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "How do I share files between my computer and Docker container using volumes?",
-      "anchor": "doing-it-yourself"
-    },
-    {
-      "question": "What is a bind mount in Docker?",
-      "anchor": "the-same-container-before-the-file-existed"
-    },
-    {
-      "question": "What are the differences between managed and bind mounts in Docker?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How can I safely run untrusted scripts using Docker volumes?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "What is the default behavior of Docker without a volume?",
+      "question": "docker share files between host and running container",
       "anchor": ""
     },
     {
-      "question": "How do I create and manage files in a Docker container using volumes?",
+      "question": "docker -v live sync no rebuild no copy",
+      "anchor": "what--v-does-for-you"
+    },
+    {
+      "question": "docker volume bi-directional host save container sees it immediately",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker run php:8.3-apache -v $(pwd):/var/www/html -p 81:80",
+      "anchor": "what--v-does-for-you"
+    },
+    {
+      "question": "apache 403 forbidden in docker before index.php exists",
+      "anchor": "the-same-container-before-the-file-existed"
+    },
+    {
+      "question": "docker container creates root-owned files on host volume",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "docker no volume run untrusted script safely in memory",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "docker volume windows path syntax vs linux",
       "anchor": "doing-it-yourself"
+    },
+    {
+      "question": "docker container writes stay in RAM gone after removal",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     }
   ]
 }

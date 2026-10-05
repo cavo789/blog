@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:02.794Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:30:33.600Z",
   "source": "index.md",
   "sourceHash": "ed8dae029015882d2398fb65c05a4ca25b12a33c",
+  "durationMs": 39032,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:41:38.819Z",
+    "articleHash": "897fe780ede849e21fd25572d863e3aeb929e66b",
+    "questionsHash": "3c048e6117018597",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I quickly dockerize my PHP application with Apache using Docker init?",
+      "question": "docker init PHP Apache quick dockerize existing app",
       "anchor": ""
     },
     {
-      "question": "What are the steps to use Docker init for quick PHP dockerization?",
-      "anchor": "get-some-scripts"
+      "question": "dockerize existing PHP Apache app without writing Dockerfile by hand",
+      "anchor": ""
     },
     {
-      "question": "Can you explain how Docker init automatically generates necessary Docker files and shows secure database integration?",
+      "question": "how to test docker init with a single PHP script locally",
       "anchor": "docker-init"
     },
     {
-      "question": "How does Docker init detect the presence of a PHP file when creating a container?",
+      "question": "docker init wizard PHP version port path interactive questions",
+      "anchor": "docker-init"
+    },
+    {
+      "question": "what files does docker init generate for a PHP project",
       "anchor": "lets-take-a-look-on-created-files"
     },
     {
-      "question": "What are the questions asked by Docker init during the wizard-based process for quick PHP dockerization?",
+      "question": ".dockerignore docker init PHP what gets excluded from image build",
       "anchor": "dockerignore"
     },
     {
-      "question": "How do I specify which port to use for the application when creating a container using Docker init?",
-      "anchor": "composeyaml"
+      "question": "docker init compose.yaml add database service with Docker Secrets",
+      "anchor": "generated-files-are-yours"
     },
     {
-      "question": "What is the purpose of the .dockerignore file in a Docker project?",
+      "question": "docker init Dockerfile PHP 8.2 Apache single base image copy files",
       "anchor": "dockerfile"
     },
     {
-      "question": "How does the compose.yaml file teach Docker how to make more than one container work together?",
+      "question": "docker init README.Docker.md what does it contain",
       "anchor": "readmedockermd"
+    },
+    {
+      "question": "can I modify docker init generated files after the wizard finishes",
+      "anchor": "generated-files-are-yours"
     }
   ]
 }

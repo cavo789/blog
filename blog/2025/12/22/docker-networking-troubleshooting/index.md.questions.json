@@ -1,45 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:19.162Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:35:24.207Z",
   "source": "index.md",
   "sourceHash": "08653fcebb18064ea2f4683b101b8ba49b8a83ff",
+  "durationMs": 23920,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:31:45.358Z",
+    "articleHash": "9512aae2b581d0f7bc623c6d6bfac92897fd7e22",
+    "questionsHash": "a0ad8ca9c802a238",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I verify that my Docker containers are on the same network?",
+      "question": "docker container can't reach another container api same network",
+      "anchor": ""
+    },
+    {
+      "question": "how to debug docker container-to-container connection refused",
+      "anchor": ""
+    },
+    {
+      "question": "verify two docker containers are on the same network",
       "anchor": "first-they-should-be-on-the-same-network"
     },
     {
-      "question": "What command should I use to list running containers and their ports?",
+      "question": "docker ps show internal port vs exposed port",
       "anchor": "then-testing-the-internal-port-for-both-containers"
     },
     {
-      "question": "How can I check if a specific process is running on a container's internal port?",
+      "question": "test docker exposed port from host with curl localhost",
       "anchor": "third-testing-the-external-port-for-both-containers"
     },
     {
-      "question": "What are the steps to test connectivity between two containers using their exposed ports?",
+      "question": "docker exec ping container name dns resolution failing",
       "anchor": "fourthly-testing-connectivity-between-the-two-containers"
     },
     {
-      "question": "How do I verify DNS resolution within my Docker network?",
+      "question": "telnet docker container name internal port not connecting",
       "anchor": "testing-the-port"
     },
     {
-      "question": "What is the correct command to run telnet in a container to test the transport layer?",
+      "question": "docker container api works on telnet but application returns error",
       "anchor": "testing-the-application"
     },
     {
-      "question": "How can I install necessary packages inside a container to perform network tests?",
+      "question": "docker NO_PROXY fix proxy blocking internal container requests",
       "anchor": "fifthly-finding-the-solution"
     },
     {
-      "question": "What steps should I follow to troubleshoot connectivity issues between two Docker containers?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I configure environment variables within a container to bypass proxy issues?",
-      "anchor": ""
+      "question": "http_proxy env var preventing docker container from calling sibling service",
+      "anchor": "testing-the-application"
     }
   ]
 }

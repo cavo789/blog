@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:29.030Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:48:04.932Z",
   "source": "index.md",
   "sourceHash": "e9afd986a4ff27a082e849b0d23c69dc5cd14153",
+  "durationMs": 24373,
+  "rejected": [
+    {
+      "question": "Oracle REST Data Services vs PostgREST",
+      "anchor": "further-reading",
+      "reason": "not answered: Only a passing mention linking to a separate PostgREST article; no comparison provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:53:45.187Z",
+    "articleHash": "ad399efbc29bd9571a2823a5f74fdcabbf99e74f",
+    "questionsHash": "522556dd337d704a",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I set up Oracle REST Data Services (ORDS) in Docker to transform my Oracle DB into OpenData?",
+      "question": "expose Oracle database tables as REST JSON API",
       "anchor": ""
     },
     {
-      "question": "What prerequisites are needed to run ORDS on an Oracle database using Docker?",
+      "question": "what prerequisites before deploying ORDS Docker container",
       "anchor": "some-prerequisites"
     },
     {
-      "question": "How do I create a volume for the ORDS configuration in Docker?",
+      "question": "docker pull container-registry.oracle.com ords-developer",
       "anchor": "download-a-docker-image-for-oracle-rest-data-services"
     },
     {
-      "question": "What is the connection string required to start ORDS and how do I configure it?",
-      "anchor": "configure-the-connection-string"
-    },
-    {
-      "question": "How do I create an Oracle ORDS container using Docker?",
+      "question": "ORDS container setup step by step",
       "anchor": "create-an-oracle-ords-container"
     },
     {
-      "question": "What are the steps to run a SQL*Plus console and retrieve the connection string for ORDS?",
+      "question": "ORDS docker volume secrets configuration",
+      "anchor": "create-a-volume-for-the-ords-configuration"
+    },
+    {
+      "question": "ORDS CONN_STRING connection string PDB format",
+      "anchor": "configure-the-connection-string"
+    },
+    {
+      "question": "docker run ORDS without APEX port 8181",
       "anchor": "create-the-container"
     },
     {
-      "question": "How do I create an ORDS container without installing APEX using Docker?",
+      "question": "create Oracle user for ORDS REST schema access",
       "anchor": "we-need-to-create-our-user-in-our-database"
     },
     {
-      "question": "What is the purpose of the `conn_string.txt` file in the ORDS configuration directory?",
-      "anchor": "configure-the-connection-string"
+      "question": "ORDS REST API filter sort paginate query parameters",
+      "anchor": "using-paging-filtering-and-ordering-options-on-the-querystring-optional--skip-if-the-default-endpoint-is-enough"
+    },
+    {
+      "question": "ORDS Swagger OpenAPI documentation endpoint",
+      "anchor": "swagger"
     }
   ]
 }

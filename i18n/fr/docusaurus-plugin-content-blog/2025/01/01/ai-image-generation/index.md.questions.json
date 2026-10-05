@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T13:38:17.973Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "812b91aff73cc6b6e669396b9219e7e1562f1b66",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Convertir une image IA lourde en WebP avec CaesiumCLT",
+      "anchor": "",
+      "reason": "not answered: Actual command is in a linked article, not provided here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:11:05.772Z",
+    "articleHash": "bd2f959d52aa5aa64601a1b85a04b59a8f019a96",
+    "questionsHash": "2113f3aa3327d9a9",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "recraft.ai fine-tuning et variations depuis un seul prompt",
@@ -32,10 +50,6 @@
     },
     {
       "question": "recraft.ai ajouter du texte directement dans l'interface de création",
-      "anchor": ""
-    },
-    {
-      "question": "Convertir une image IA lourde en WebP avec CaesiumCLT",
       "anchor": ""
     },
     {

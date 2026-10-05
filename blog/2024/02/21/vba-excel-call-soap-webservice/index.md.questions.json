@@ -1,58 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-18T15:45:46.194Z",
-  "durationMs": 7634,
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:05:54.298Z",
   "source": "index.md",
   "sourceHash": "521aa2abb1e701d9bd610fd08a992770c0b2d1d6",
+  "durationMs": 23029,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:29:40.846Z",
+    "articleHash": "7af4774c922c035eed2e3a2cbb1ac0571c9eccfc",
+    "questionsHash": "c6df8a7bfbff6627",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I call a SOAP web service from Excel using VBA?",
+      "question": "call SOAP web service from Excel VBA",
       "anchor": ""
     },
     {
-      "question": "What is the VIES VAT number validation service and how does it work?",
-      "anchor": "about-placeholders"
+      "question": "validate EU VAT number in Excel using VIES API",
+      "anchor": ""
     },
     {
-      "question": "How can I use the EU's VIES SOAP web service to validate a VAT number in Excel?",
-      "anchor": "about-placeholders"
-    },
-    {
-      "question": "What is the structure of an XML message when calling a SOAP web service from Excel?",
+      "question": "build SOAP XML request file VBA",
       "anchor": "create-the-xml-message"
     },
     {
-      "question": "How do I create and save an .xml file for use in a SOAP web service call in Excel?",
+      "question": "how to write SOAP envelope for VAT validation service",
       "anchor": "create-the-xml-message"
     },
     {
-      "question": "What are placeholders used for in the XML message when calling a SOAP web service from Excel?",
+      "question": "VBA MSXML2 HTTP request Excel new workbook response",
       "anchor": "create-the-excel-workbook"
     },
     {
-      "question": "How do I add references to necessary libraries and modules in Excel VBA for SOAP web service calls?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the process of creating an empty Excel workbook, adding a module, copying VBA code, setting paths, and running it?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I modify the VBA code to replace placeholders with actual values for VAT number validation?",
+      "question": "how to send POST request from VBA and open XML answer in Excel",
       "anchor": "create-the-excel-workbook"
     },
     {
-      "question": "What is a Linux command-line version of calling a SOAP web service from Excel using VBA?",
+      "question": "replace XML placeholders with VBA variables",
+      "anchor": "about-placeholders"
+    },
+    {
+      "question": "how to inject dynamic values into SOAP XML template in VBA",
+      "anchor": "about-placeholders"
+    },
+    {
+      "question": "curl SOAP web service Linux terminal",
+      "anchor": "a-linux-command-line-version"
+    },
+    {
+      "question": "xmlstarlet parse SOAP response command line",
+      "anchor": "a-linux-command-line-version"
+    },
+    {
+      "question": "VBA skeleton SOAP API call Excel tutorial",
       "anchor": ""
     },
     {
-      "question": "How can I use the xmlstarlet utility for Linux to achieve the same result as in the VBA code?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some general API design considerations when designing an API side of things rather than just consuming it?",
-      "anchor": ""
+      "question": "add MSXML2 reference VBA module Excel",
+      "anchor": "create-the-excel-workbook"
     }
   ]
 }

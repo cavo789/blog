@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:06:54.020Z",
-  "durationMs": 240300,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f5fd9814c04ee09d329a659f997c470821814899",
+  "durationMs": 240300,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:25:52.793Z",
+    "articleHash": "e7ac2c4d5ca6507275ef508ad007e1bbd6358d6f",
+    "questionsHash": "0dd7530882f29d5b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment configurer une recherche de code interactive dans le terminal avec fzf et ripgrep",

@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:29:51.163Z",
-  "durationMs": 175842,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "46e0058a16b0b059b794cb37f61db20855ad0642",
+  "durationMs": 175842,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:12:59.745Z",
+    "articleHash": "856ca03370d5e3db3c5b32f6d751f87d6c834f89",
+    "questionsHash": "951e1eda9239251c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "lancer java avec docker sans installer jdk localement",
-      "anchor": ""
+      "anchor": "two-commands-and-java-runs"
     },
     {
       "question": "Quelle commande docker run utiliser pour compiler Main.java ?",
@@ -41,7 +51,7 @@
     },
     {
       "question": "configurer zero dockerfile pour compiler et executer java avec eclipse-temurin:21",
-      "anchor": "conclusion"
+      "anchor": "two-commands-and-java-runs"
     }
   ]
 }

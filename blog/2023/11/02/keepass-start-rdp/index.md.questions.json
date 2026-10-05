@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:47:17.002Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T17:59:07.534Z",
   "source": "index.md",
   "sourceHash": "1f2c363ebe76c44331c43c1682e2dea97d34acf8",
+  "durationMs": 18546,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:30:07.002Z",
+    "articleHash": "706556102381640c5924a2e1a23dc5c634afda58",
+    "questionsHash": "19fd750dfa58835c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I use the KeePass URL field to launch PuTTY?",
+      "question": "KeePass URL field launch program instead of browser",
+      "anchor": ""
+    },
+    {
+      "question": "how to use KeePass entry to start an external application with cmd://",
+      "anchor": ""
+    },
+    {
+      "question": "KeePass PuTTY auto-fill credentials cmd://",
       "anchor": "start-putty-from-keepass"
     },
     {
-      "question": "What is the purpose of the advanced property in a KeePass entry?",
-      "anchor": ""
+      "question": "start putty session from keepass with saved username and password",
+      "anchor": "start-putty-from-keepass"
     },
     {
-      "question": "Can I set multiple properties for an entry in KeePass?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I configure WinSCP to open files from a KeePass entry?",
+      "question": "KeePass WinSCP SFTP connection from entry",
       "anchor": "start-winscp-from-keepass"
     },
     {
-      "question": "What is the correct format for setting the URL field in a KeePass entry for RDP/TS connections?",
+      "question": "how to open winscp directly from a keepass entry with sftp path",
+      "anchor": "start-winscp-from-keepass"
+    },
+    {
+      "question": "KeePass RDP mstsc from entry",
       "anchor": "start-an-rdpts-connection-from-keepass"
     },
     {
-      "question": "How do I troubleshoot authentication errors when starting PuTTY from KeePass?",
-      "anchor": "start-putty-from-keepass"
+      "question": "launch remote desktop connection from keepass saved host",
+      "anchor": "start-an-rdpts-connection-from-keepass"
     },
     {
-      "question": "What is the official documentation URL for setting up external program launching in KeePass?",
+      "question": "KeePass cmd:// entry placeholders {USERNAME} {PASSWORD} windows",
       "anchor": ""
     },
     {
-      "question": "How do I copy a file to my PATH directory using MS-DOS console?",
-      "anchor": "start-putty-from-keepass"
+      "question": "KeePass terminal server connection URL field",
+      "anchor": "start-an-rdpts-connection-from-keepass"
     }
   ]
 }

@@ -1,57 +1,72 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-16T17:09:00.097Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:19:07.630Z",
   "source": "index.md",
   "sourceHash": "1ae004e981731e67f2e94b23a2474146f09cd73e",
+  "durationMs": 25452,
+  "rejected": [
+    {
+      "question": "docling table not rendering in markdown output",
+      "anchor": "if-that-table-doesnt-show-up",
+      "reason": "not answered: Section covers GPU diagnostics, not docling table rendering in output",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:10:42.083Z",
+    "articleHash": "4913ef3668cc7398e1eac8a2438ac84806e9c90a",
+    "questionsHash": "3bfa976ba7bbc481",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What does Docling do differently from other converters?",
-      "anchor": "what-docling-does-differently"
-    },
-    {
-      "question": "How is PDF handled in Docling?",
-      "anchor": "converting-five-formats"
-    },
-    {
-      "question": "What are the five formats that can be converted by Docling?",
-      "anchor": "converting-five-formats"
-    },
-    {
-      "question": "Why does Docling use GPU acceleration for PDF conversions?",
-      "anchor": "what-docling-does-differently"
-    },
-    {
-      "question": "How is the image created in Docling?",
+      "question": "docling docker setup local document to markdown",
       "anchor": "installation"
     },
     {
-      "question": "What are the steps to build the Docker image for Docling?",
+      "question": "convert PDF Word PowerPoint Excel HTML to markdown one command",
+      "anchor": "converting-five-formats"
+    },
+    {
+      "question": "why does docling use layout models for PDF but just parsers for DOCX",
+      "anchor": "what-docling-does-differently"
+    },
+    {
+      "question": "docling dockerfile pin version metapackage extras",
       "anchor": "create-our-docker-image"
     },
     {
-      "question": "What is the purpose of the global wrapper script in Docling?",
+      "question": "docling docker image 8gb pytorch cuda models baked in at build time",
       "anchor": "build-the-image"
     },
     {
-      "question": "How does the global wrapper script work?",
-      "anchor": "build-the-image"
+      "question": "docling wrapper script convert from any folder no compose",
+      "anchor": "create-the-global-wrapper"
     },
     {
-      "question": "What are the key takeaways from this article about Docling?",
-      "anchor": "key-takeaways"
+      "question": "docling slow pipeline default model-based vs fast",
+      "anchor": "why-the-slow-pipeline-is-the-default"
     },
     {
-      "question": "Why is it worth testing the Docker image before using it?",
-      "anchor": "installation"
+      "question": "docling GPU PDF conversion spare VRAM",
+      "anchor": "optional--putting-a-gpu-behind-the-pdf-pipeline"
     },
     {
-      "question": "How does the global wrapper script handle different directories?",
-      "anchor": "build-the-image"
+      "question": "convert sensitive documents to markdown locally no cloud upload",
+      "anchor": "why-a-toolkit-is-needed-at-all"
     },
     {
-      "question": "What are the benefits of using Docling for converting office documents to Markdown?",
-      "anchor": ""
+      "question": "docling conversion time five office documents",
+      "anchor": "what-the-five-files-cost"
+    },
+    {
+      "question": "docling handle images in PDF markdown conversion",
+      "anchor": "a-word-on-images"
     }
   ]
 }

@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:34:41.723Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ab68e97b2a8fcf744ceafcaedc073d4eb2daee41",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:43:32.634Z",
+    "articleHash": "8a449a34c180acb9ebe304a4e7cfe89d1c40a5bc",
+    "questionsHash": "5d0969965d219af9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment afficher un mot de passe WinSCP en clair dans le fichier de log de session",

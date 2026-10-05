@@ -205,6 +205,18 @@ Governance rules in `AGENTS.md` — treat as binding.
   the component inside backticks, and a scan that counts those reports 15 dangling references on
   a corpus that has zero.
 - `generate-icon-bundle.mjs` — icon bundle.
+- `lib/anythingllm.mjs` — vector search against the local AnythingLLM workspaces (`blog`,
+  `blog-fr`), **no chat model involved**. Three optional consumers: the specificity marks of
+  `questions review` (●/◐/○, `g`, `--generic`), the *meaning* signal of `links:check`, and
+  `ai-related.mjs` (used by `/suggestions-add`). `connect()` returns null under `CI`, with the
+  container stopped or with `ANYTHINGLLM_DISABLE=1` — every consumer must then behave exactly as
+  without it. The indexer's state file is not proof an article is searchable (a failed
+  vectorization is still recorded): check that it comes up for its own title. The embedder
+  (`mxbai-embed-large`) is English-trained — French marks run about 2.5× noisier.
+- `generate-questions.mjs` — "Ask my blog" questions through **Ollama directly**, not AnythingLLM:
+  `code-quality` (qwen3.8:27b, thinking, ≈ 30-36 s/article) for both locales — chosen by a blind
+  bench on 2026-09-23 over `code-fast`, `think: false` and `task-tiny` (which collapses on long
+  articles).
 - `lib/cheatsheet-hint.mjs` — every "fix it with…" line a script prints goes through its `cmd()`,
   so the hint names the cheatsheet function (`questions --force <file>`) rather than the yarn
   script underneath it. It falls back to `yarn <script>` when no **exactly equivalent** function
@@ -214,7 +226,7 @@ Governance rules in `AGENTS.md` — treat as binding.
 
 ### Devcontainer shell commands (`interactive.sh`)
 
-The 19 shell commands of the startup cheatsheet (`start`, `translate`, `run_ci`, …) are **not** in
+The 21 shell commands of the startup cheatsheet (`start`, `translate`, `run_ci`, …) are **not** in
 `interactive.sh` itself — that file is only a launcher. One module per cheatsheet category:
 
 ```text
@@ -226,7 +238,7 @@ The 19 shell commands of the startup cheatsheet (`start`, `translate`, `run_ci`,
     maintenance.sh        # build, upgrade, check, format
     metadata.sh           # tags, yaml, links
     ollama.sh             # eli5, faq, questions
-    anythingllm.sh        # ai-index, ai-search, ai-index-fr, ai-search-fr
+    anythingllm.sh        # ai-index, ai-search, ai-related, ai-index-fr, ai-search-fr
     ci.sh                 # run_ci, _run_ci_links
     translation.sh        # translate
 ```
@@ -247,7 +259,7 @@ bind-mounted `.devcontainer/scripts/interactive.sh`, sourced from `.bashrc` by `
 - `.dockerignore` excludes `.devcontainer/`, so `helpers/` needs its own `!` re-inclusion line.
 
 Get either wrong and the image ships a launcher with no modules — every shell in it starts on an
-empty cheatsheet. `welcome` listing 19 commands in 7 categories is the fastest check.
+empty cheatsheet. `welcome` listing 21 commands in 7 categories is the fastest check.
 
 ### TODO backlog
 

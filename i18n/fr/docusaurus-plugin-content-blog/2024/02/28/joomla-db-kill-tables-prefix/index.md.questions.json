@@ -3,20 +3,38 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:17:46.101Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "fef09faeeadaba95d510d2dbbf5e564d78edf505",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "vérifier le contenu des tables Joomla avant de les supprimer",
+      "anchor": "conclusion",
+      "reason": "not answered: Article only links to another page for viewing table contents.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:00:59.545Z",
+    "articleHash": "fbf391b98b9a7f2133abdaf941ad3bbb47cc4571",
+    "questionsHash": "35af17c5a22743bd",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "comment supprimer les tables Joomla correspondant à un préfixe donné",
-      "anchor": ""
+      "anchor": "how-to-use-it"
     },
     {
       "question": "outil PHP pour nettoyer la base de données Joomla par préfixe",
-      "anchor": ""
+      "anchor": "what-the-utility-looks-like"
     },
     {
       "question": "vider les tables orphelines Joomla après désinstallation d'un composant",
-      "anchor": ""
+      "anchor": "how-to-use-it"
     },
     {
       "question": "interface de suppression de tables Joomla sans fichier de configuration",
@@ -41,10 +59,6 @@
     {
       "question": "comment renommer et supprimer le script PHP Joomla après usage",
       "anchor": "how-to-use-it"
-    },
-    {
-      "question": "vérifier le contenu des tables Joomla avant de les supprimer",
-      "anchor": "conclusion"
     },
     {
       "question": "alternative à phpMyAdmin pour vider les tables orphelines Joomla",

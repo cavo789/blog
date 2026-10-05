@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:00:17.144Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8b5303375e07f4a406963f1e4afaafebc85d3d9f",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:54:50.205Z",
+    "articleHash": "e15023ee45c2e515925a0170a76b9ec2ed784593",
+    "questionsHash": "a49cd78c9d569911",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment forcer un formatage php identique sur toute l'équipe avec un devcontainer",

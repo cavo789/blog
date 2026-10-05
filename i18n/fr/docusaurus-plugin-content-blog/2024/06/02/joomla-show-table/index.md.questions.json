@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:14:37.810Z",
-  "durationMs": 188280,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "cbb0a5cb6e83fd8dc810fd16e116c9f4515c57a7",
+  "durationMs": 188280,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:26:31.492Z",
+    "articleHash": "c6bbdc76f20f44c0fd7865ec1f8896b38386ae6d",
+    "questionsHash": "1087a86bfbc23dde",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment lier une feuille Excel aux données de ma base Joomla sans passer par le CMS",
-      "anchor": ""
+      "anchor": "from-within-excel-retrieve-our-joomla-data"
     },
     {
       "question": "requête SQL Joomla affichage tableau HTML lien Excel",

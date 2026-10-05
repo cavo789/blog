@@ -2,15 +2,29 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:37:11.279Z",
-  "durationMs": 165176,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "558c7d3b6cbe17ba895ce3a14550d8072ce277b9",
-  "questions": [
+  "durationMs": 165176,
+  "locale": "fr",
+  "rejected": [
     {
       "question": "pourquoi il n'y a pas de formateur sql comme pour json ou php",
-      "anchor": ""
-    },
+      "anchor": "",
+      "reason": "not answered: Article states the gap but gives no reason why",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:32:54.140Z",
+    "articleHash": "3edecefa84415cacad9e6d8ae5506691d23851a0",
+    "questionsHash": "859a5ec3cceba326",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
+  "questions": [
     {
       "question": "coller du sql sur une seule ligne pour le rendre lisible",
       "anchor": ""

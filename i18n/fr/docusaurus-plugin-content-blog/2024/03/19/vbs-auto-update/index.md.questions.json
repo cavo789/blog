@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:59:29.714Z",
-  "durationMs": 152698,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "289a44ded7bb37499bd7f1137e5f0de48b814a24",
+  "durationMs": 152698,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:06:02.124Z",
+    "articleHash": "51fe8f619a7125d1a6859230734bbd4053c02c5a",
+    "questionsHash": "5f2e1370e72b8984",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "script vbs auto-mise à jour github",

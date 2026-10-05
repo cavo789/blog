@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:16.946Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:02:20.692Z",
   "source": "index.md",
   "sourceHash": "0986d92b943b95b535a688d28fa7be7d7f6dcd0a",
+  "durationMs": 25480,
+  "rejected": [
+    {
+      "question": "how long will 1000 parallel bash jobs take with 32 cores",
+      "anchor": "how-many-seconds-would-i-have-waited",
+      "reason": "not answered: Article shows 10 and 50 jobs only; no 1000-job calculation given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:20:02.722Z",
+    "articleHash": "c021acd9b131ffd2aa5cb3a82f03c4619a13081d",
+    "questionsHash": "b82db89c1d8af78a",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 6
+  },
   "questions": [
     {
-      "question": "What is Bash scripting and how can it be used for concurrent tasks?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I optimize Bash scripts to run concurrent jobs using process IDs and wait commands?",
+      "question": "bash run multiple functions concurrently in a loop",
       "anchor": "now-the-optimized-version"
     },
     {
-      "question": "What is the difference between sequential and parallel execution in Bash scripting?",
-      "anchor": "in-depth"
+      "question": "parallelize sequential API calls in bash script",
+      "anchor": "now-the-optimized-version"
     },
     {
-      "question": "How can I use the nproc command to determine the number of CPU cores available on a Linux system?",
-      "anchor": "in-depth"
+      "question": "reduce execution time bash loop calling external API",
+      "anchor": "now-the-optimized-version"
     },
     {
-      "question": "What is the purpose of using process IDs in Bash scripting for concurrent tasks?",
-      "anchor": "how-many-seconds-would-i-have-waited"
+      "question": "how to limit concurrent jobs in bash using nproc",
+      "anchor": "now-the-optimized-version"
     },
     {
-      "question": "How can I check how many jobs are currently running and compare it with the number of threads we can start?",
-      "anchor": "how-many-seconds-would-i-have-waited"
+      "question": "bash background process with & and cap at CPU core count",
+      "anchor": "now-the-optimized-version"
     },
     {
-      "question": "What is the role of the wait command in Bash scripting for concurrent tasks?",
-      "anchor": "how-many-seconds-would-i-have-waited"
+      "question": "bash store $! in array and wait on all pids",
+      "anchor": "now-the-optimized-version"
     },
     {
-      "question": "How can I use process IDs to manage multiple concurrent jobs in a Bash script?",
+      "question": "how to throttle concurrent bash processes with pid array",
+      "anchor": "now-the-optimized-version"
+    },
+    {
+      "question": "bash check how many background jobs still running before starting next",
+      "anchor": "now-the-optimized-version"
+    },
+    {
+      "question": "calculate expected time savings running N jobs in parallel bash",
       "anchor": "how-many-seconds-would-i-have-waited"
     }
   ]

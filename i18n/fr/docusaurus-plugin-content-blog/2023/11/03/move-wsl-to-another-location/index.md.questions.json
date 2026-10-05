@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T19:59:07.946Z",
-  "durationMs": 128636,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "9651c94b44be0b702acf1b3e2ee4c199d4e6f4eb",
+  "durationMs": 128636,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "comment changer l'emplacement par défaut de WSL sur Windows",
+      "anchor": "",
+      "reason": "not answered: Article déplace une distro existante, ne définit pas un emplacement par défaut.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:03:19.414Z",
+    "articleHash": "3b545916c419f2fc25903dcc06f5cd4f9170e780",
+    "questionsHash": "8ce76ef78678dfd6",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment déplacer sa distro WSL2 du disque C: vers D:",
@@ -41,10 +59,6 @@
     },
     {
       "question": "commande PowerShell pour arrêter WSL avant le déplacement",
-      "anchor": ""
-    },
-    {
-      "question": "comment changer l'emplacement par défaut de WSL sur Windows",
       "anchor": ""
     }
   ]

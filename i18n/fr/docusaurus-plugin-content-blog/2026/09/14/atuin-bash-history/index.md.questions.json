@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T10:58:52.425Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "acecc34747410c9448ba283f97b6498931f78a9d",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:44:14.936Z",
+    "articleHash": "80a149969476e6b317b5d023b7578bc281bc19a9",
+    "questionsHash": "4a464c8fce47723e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "historique shell horodaté et consultable sqlite",
-      "anchor": ""
+      "anchor": "what-is-atuin"
     },
     {
       "question": "comment atuin remplace le ctrl+r classique",

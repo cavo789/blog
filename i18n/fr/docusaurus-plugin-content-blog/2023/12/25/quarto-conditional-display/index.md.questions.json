@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:31:59.312Z",
-  "durationMs": 123681,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "74a930aee9507a3198b510cb55ef2f689faaca53",
+  "durationMs": 123681,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:29:17.953Z",
+    "articleHash": "5a512a29dfdf8607e7c480df6fd73c4f04779fbe",
+    "questionsHash": "eb9a929c30c128e5",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment générer un seul fichier markdown pour pdf html et slides avec quarto",

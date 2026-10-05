@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:20.993Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:34:50.874Z",
   "source": "index.md",
   "sourceHash": "777be12492ee8a0ee9c5beafcc85f6148f0e3716",
+  "durationMs": 38123,
+  "rejected": [
+    {
+      "question": "docker run pgadmin link to existing postgres container",
+      "anchor": "run-pgadmin",
+      "reason": "not answered: No pgadmin docker run command is provided in the article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:01:40.549Z",
+    "articleHash": "267bf72dbe8443eed53168d8efb5312d861c19ad",
+    "questionsHash": "556213d39e94cafb",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 5
+  },
   "questions": [
     {
-      "question": "How do I access my Docker database container using Adminer?",
-      "anchor": "find-your-container-and-its-network"
-    },
-    {
-      "question": "What are the simple command-line instructions for MySQL, MariaDB, and PostgreSQL to access a Docker database container?",
+      "question": "docker database container browse tables records without installing client",
       "anchor": "one-command-your-database-in-a-browser"
     },
     {
-      "question": "How do I find the name of my container and its network when using Adminer with Docker?",
+      "question": "docker run adminer --network --link existing container",
       "anchor": "run-adminer"
     },
     {
-      "question": "What is the command to run Adminer in a Docker container, including linking it to my database container and specifying the port?",
-      "anchor": "run-pgadmin"
+      "question": "docker inspect jq extract network name from container",
+      "anchor": "find-your-container-and-its-network"
     },
     {
-      "question": "How do I use Adminer to connect to a MySQL or MariaDB database running inside a Docker container?",
+      "question": "adminer docker login server field what to put",
+      "anchor": "run-adminer"
+    },
+    {
+      "question": "phpmyadmin docker connect to running mysql container",
       "anchor": "run-phpmyadmin"
     },
     {
-      "question": "What is the command to run phpmyadmin in a Docker container, including linking it to my database container and specifying the port?",
-      "anchor": "conclusion"
+      "question": "docker database GUI temporary --rm no compose change needed",
+      "anchor": "one-command-your-database-in-a-browser"
     },
     {
-      "question": "How do I use phpmyadmin to connect to a PostgreSQL database running inside a Docker container?",
-      "anchor": ""
+      "question": "docker compose joomla database container access tables",
+      "anchor": "one-command-your-database-in-a-browser"
     },
     {
-      "question": "What is the command to run Adminer in a Docker container, including specifying the network name and linking it to my database container?",
+      "question": "adminer docker port 8088 map to host",
+      "anchor": "run-adminer"
+    },
+    {
+      "question": "docker --link alias db for database container",
       "anchor": "run-adminer"
     }
   ]

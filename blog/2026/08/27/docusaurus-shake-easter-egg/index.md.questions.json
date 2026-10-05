@@ -1,57 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T16:47:18.917Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:11:54.532Z",
   "source": "index.md",
   "sourceHash": "ac30b2b0ed6975ca409a7bc4cd1f4a1ef49bf48f",
+  "durationMs": 35292,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:04:09.036Z",
+    "articleHash": "f4c46bf284db515c8d75cb6b64f1ae9b22e07bf6",
+    "questionsHash": "cfdedd3e7b92ec75",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I trigger the shake effect on my phone?",
-      "anchor": "shake-your-phone-see-what-happens"
+      "question": "phone shake easter egg docusaurus react devicemotion",
+      "anchor": ""
     },
     {
-      "question": "What is the jerk threshold used for detecting shakes in this blog's shake detection algorithm?",
+      "question": "how to make phone shake trigger a full-screen overlay in android chrome",
+      "anchor": "installation"
+    },
+    {
+      "question": "devicemotion jerk calculation between consecutive acceleration samples",
       "anchor": "why-it-works"
     },
     {
-      "question": "Why does Android not require an explicit permission prompt for motion sensors like iOS?",
+      "question": "why devicemotion requires a user gesture on ios safari before any reading",
       "anchor": "why-ios-is-left-out-on-purpose"
     },
     {
-      "question": "How does the cooldown mechanism work to prevent retriggering of the shake effect?",
+      "question": "add global shake detection component to docusaurus one line",
       "anchor": "installation"
     },
     {
-      "question": "What is the purpose of the haptic buzz in the shake detection feature?",
+      "question": "simulate devicemotion event from devtools console desktop no accelerometer",
       "anchor": "testing-it-without-shaking-anything"
     },
     {
-      "question": "Why does iOS Safari require an explicit tap to trigger motion sensor readings, and what are the two options available?",
-      "anchor": "how-to-debug-if-the-shake-does-nothing"
-    },
-    {
-      "question": "How does this blog's shake detection algorithm handle acceleration on multiple axes?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What is the difference between a jerk threshold and a boolean flag in detecting shakes?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "Why is it important to allow motion sensors for this blog's shake detection feature?",
+      "question": "devicemotion handler not triggering on android what to check first",
       "anchor": "1-allow-motion-sensors-for-the-site"
     },
     {
-      "question": "How can I test the shake detection feature from a desktop DevTools console without an accelerometer?",
+      "question": "chrome android motion sensor permission blocked per site how to re-enable",
+      "anchor": "1-allow-motion-sensors-for-the-site"
+    },
+    {
+      "question": "watch raw devicemotion acceleration values in browser console",
       "anchor": "2-watch-the-raw-sensor-data"
     },
     {
-      "question": "What is the purpose of the real bug caught in this blog's shake detection implementation, and how did it occur?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+      "question": "ai image generator transparent background rendered as opaque pixels png",
+      "anchor": "the-image-was-the-hard-part-not-the-code"
     },
     {
-      "question": "How does the three-phase overlay animation work in the shake detection feature?",
-      "anchor": "installation"
+      "question": "tune jerk threshold for shake detection on a real phone",
+      "anchor": "tuning-the-jerk-threshold-on-a-real-phone"
     }
   ]
 }

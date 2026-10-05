@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:37:51.515Z",
   "source": "index.mdx",
-  "locale": "fr",
   "sourceHash": "f70c8880c5d703b7669c49c50f08f4e0e9e131a9",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:29:53.805Z",
+    "articleHash": "86454ea83bee184de729f9b9704880ef3cae3f49",
+    "questionsHash": "32d47aeaf9b1b0b1",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "bonnes pratiques pour concevoir une api rest propre et évolutive",
@@ -12,7 +22,7 @@
     },
     {
       "question": "principes de notation et de hiérarchie dans le design rest",
-      "anchor": "main-concepts"
+      "anchor": "uniform-resource-identifier"
     },
     {
       "question": "notation des uri en lowerCamelCase et suppression des slashes finaux",
@@ -28,7 +38,7 @@
     },
     {
       "question": "exemples d endpoints rest pour une ressource employé",
-      "anchor": "expected-endpoints"
+      "anchor": "verbs"
     },
     {
       "question": "documentation et rfc recommandées pour valider son api",
@@ -40,7 +50,7 @@
     },
     {
       "question": "éviter les verbes dans les urls et passer par les en têtes http",
-      "anchor": "verbs"
+      "anchor": "uniform-resource-identifier"
     },
     {
       "question": "gérer les erreurs et la pagination dans les réponses rest",

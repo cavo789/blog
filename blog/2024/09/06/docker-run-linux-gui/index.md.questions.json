@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:52.517Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:57:33.265Z",
   "source": "index.md",
   "sourceHash": "431baffa04765a49095082b2e46ef4fdd6ca829b",
+  "durationMs": 34339,
+  "rejected": [
+    {
+      "question": "docker full desktop environment lubuntu",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to another blog post; no lubuntu instructions here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:16:00.674Z",
+    "articleHash": "3337e8abde1abc71356725d4d175c8a72bc355ca",
+    "questionsHash": "8ad2345d7871b9d3",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I run Firefox in a Docker container?",
-      "anchor": "creating-our-own-chrome-docker-image"
+      "question": "docker run GUI app as native window on host",
+      "anchor": ""
     },
     {
-      "question": "What are the steps to install GIMP using Docker on Linux?",
-      "anchor": "creating-our-own-gimp-docker-image"
+      "question": "xeyes docker container demo",
+      "anchor": "creating-our-own-xeyes-docker-image"
     },
     {
-      "question": "How can I share environment variables and sockets between Docker containers and the host system?",
+      "question": "xhost +local:docker X11 socket mount",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of the X server in Docker container applications?",
-      "anchor": "why-it-works"
+      "question": "dockerfile xeyes build DISPLAY environment variable",
+      "anchor": "creating-our-own-xeyes-docker-image"
     },
     {
-      "question": "How do I create a custom Firefox Docker image for Linux GUI applications?",
+      "question": "docker firefox debian windowed application",
       "anchor": "creating-our-own-firefox-docker-image"
     },
     {
-      "question": "What are some examples of Linux GUI apps that can be run in Docker containers?",
-      "anchor": "a-first-look"
+      "question": "run google chrome in docker container gui",
+      "anchor": "creating-our-own-chrome-docker-image"
     },
     {
-      "question": "How do I start lubuntu Desktop in a Docker container on Windows 11 using WSL2?",
-      "anchor": "conclusion"
+      "question": "docker gimp linux build image run",
+      "anchor": "creating-our-own-gimp-docker-image"
     },
     {
-      "question": "What are the differences between running GUI applications in Docker containers and traditional desktop environments?",
-      "anchor": ""
+      "question": "docker container X server connection refused fix",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker gui app windows host WSL2",
+      "anchor": "creating-our-own-firefox-docker-image"
     }
   ]
 }

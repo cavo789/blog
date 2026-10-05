@@ -2,29 +2,57 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:55:44.416Z",
-  "durationMs": 157099,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8e7948d67a337fae08f8416f2b63b4cac5a25ebb",
-  "questions": [
-    {
-      "question": "Comment vérifier l'état de santé de tous mes containers Docker en une seule commande ?",
-      "anchor": ""
-    },
-    {
-      "question": "script bash afficher statut santé containers docker",
-      "anchor": ""
-    },
-    {
-      "question": "docker ps colonne Health comment l'interpréter ?",
-      "anchor": "the-one-glance-overview"
-    },
+  "durationMs": 157099,
+  "locale": "fr",
+  "rejected": [
     {
       "question": "Que signifient les états healthy, unhealthy et sleeping dans docker ps ?",
-      "anchor": "the-one-glance-overview"
+      "anchor": "the-one-glance-overview",
+      "reason": "not answered: unhealthy et sleeping non explicitement définis comme états docker ps",
+      "date": "2026-09-24"
     },
     {
       "question": "Comment afficher uniquement la colonne de santé des containers avec docker ?",
+      "anchor": "the-one-glance-overview",
+      "reason": "not answered: aucune commande docker ps --format pour isoler la colonne Health",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "outil monitoring notification quand service tombe docker",
+      "anchor": "conclusion",
+      "reason": "not answered: seul un lien vers un autre article, pas d'explication ici",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "troubleshooting container docker injoignable depuis un autre",
+      "anchor": "conclusion",
+      "reason": "not answered: seul un lien vers un autre article, pas de diagnostic fourni",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:19:49.290Z",
+    "articleHash": "cd39d6381c227bb1c21be13a2b23962452e8f934",
+    "questionsHash": "ca3b23e9d6afde72",
+    "status": "applied",
+    "rejected": 4,
+    "anchorsMoved": 2
+  },
+  "questions": [
+    {
+      "question": "Comment vérifier l'état de santé de tous mes containers Docker en une seule commande ?",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "script bash afficher statut santé containers docker",
+      "anchor": "the-script-that-produces-it"
+    },
+    {
+      "question": "docker ps colonne Health comment l'interpréter ?",
       "anchor": "the-one-glance-overview"
     },
     {
@@ -40,15 +68,7 @@
       "anchor": "the-script-that-produces-it"
     },
     {
-      "question": "outil monitoring notification quand service tombe docker",
-      "anchor": "conclusion"
-    },
-    {
       "question": "gagner du temps sur vérification santé containers bash",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "troubleshooting container docker injoignable depuis un autre",
       "anchor": "conclusion"
     }
   ]

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T16:46:12.412Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:19:45.680Z",
   "source": "index.md",
   "sourceHash": "713fa9c8c327203ffea9f14ea84b9335d9a856a9",
+  "durationMs": 50626,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:17:03.437Z",
+    "articleHash": "5ac9fd3f070dc4bf9a1593b6922179404caa6d06",
+    "questionsHash": "d8e720b9daabc954",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is a 'go to the top' button in Docusaurus blog posts?",
+      "question": "docusaurus add scroll to top button blog posts",
       "anchor": ""
     },
     {
-      "question": "How do I add a 'scroll to top' button to my Docusaurus blog post?",
-      "anchor": "what-it-looks-like"
-    },
-    {
-      "question": "What is the purpose of the 'go to the top' button in Docusaurus blog posts?",
+      "question": "docusaurus floating button bottom right hidden until 300px scroll",
       "anchor": "how-it-works"
     },
     {
-      "question": "How do I override the BlogPostItem page in Docusaurus to add a 'scroll to top' button?",
+      "question": "how to create scroll to top react component docusaurus custom icon",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "docusaurus swizzle BlogPostItem theme override",
       "anchor": "overriding-the-blogpostitem-page"
     },
     {
-      "question": "Can I use this 'go to the top' button on other pages besides blog posts?",
+      "question": "docusaurus add back to top button blog archive page",
       "anchor": "you-can-do-this-for-other-pages-for-sure"
     },
     {
-      "question": "What is the benefit of adding a 'scroll to top' button to my Docusaurus blog post?",
-      "anchor": "conclusion"
+      "question": "docusaurus restart server after theme override docker",
+      "anchor": "overriding-the-blogpostitem-page"
     },
     {
-      "question": "How do I create the two files needed for adding a 'scroll to top' button to my Docusaurus blog post?",
+      "question": "docusaurus scroll to top button import icon static folder",
       "anchor": "how-it-works"
     },
     {
-      "question": "What is the purpose of swizzling in Docusaurus and how can I use it to add a 'scroll to top' button?",
+      "question": "docusaurus blog post page override inject custom component code",
       "anchor": "overriding-the-blogpostitem-page"
+    },
+    {
+      "question": "docusaurus src/pages add scroll to top without swizzling",
+      "anchor": "you-can-do-this-for-other-pages-for-sure"
+    },
+    {
+      "question": "docusaurus back to top button same override file related posts",
+      "anchor": "conclusion"
     }
   ]
 }

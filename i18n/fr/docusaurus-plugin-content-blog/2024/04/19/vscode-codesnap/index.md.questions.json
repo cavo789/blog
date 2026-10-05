@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:44:27.700Z",
-  "durationMs": 249051,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "d135b1739ee85a23aea8be9f50f7ac2989cc73ce",
+  "durationMs": 249051,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "alternative aux images pour partager du code dans un article",
+      "anchor": "",
+      "reason": "not answered: Article only links to another page for the alternative.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:18:31.532Z",
+    "articleHash": "ab0e82fda0cc2278b7f56ffd806f1dd341ebd43d",
+    "questionsHash": "9b653428da4cc4ef",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment prendre une belle capture de code dans VS Code",
@@ -25,11 +43,7 @@
     },
     {
       "question": "sélectionner des lignes dans l'aperçu en direct",
-      "anchor": ""
-    },
-    {
-      "question": "alternative aux images pour partager du code dans un article",
-      "anchor": ""
+      "anchor": "result"
     },
     {
       "question": "à quoi ressemble le rendu final de CodeSnap",

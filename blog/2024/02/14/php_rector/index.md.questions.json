@@ -1,56 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:10.700Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:03:10.381Z",
   "source": "index.md",
   "sourceHash": "8af7672c222f877ee61cab8e02e91a39b67351b0",
+  "durationMs": 28199,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:27:03.363Z",
+    "articleHash": "185a47e2567d4d50b405ce75fc4c2a445dfd8e43",
+    "questionsHash": "debcb070dadaf770",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What are the benefits of using Rector?",
+      "question": "free PHP codebase upgrade tool automatic refactoring",
       "anchor": ""
     },
     {
-      "question": "How does Rector work with PHP codebases?",
+      "question": "Rector show colored diff of suggested changes before and after",
       "anchor": "here-is-what-rector-says-about-it"
     },
     {
-      "question": "Why is Rector considered a powerful tool for developers?",
+      "question": "Rector AST parsing how it detects a variable is only there to be returned",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are the key features of Rector that make it unique?",
+      "question": "Rector install composer require as dev dependency",
       "anchor": "install-rector"
     },
     {
-      "question": "How does Rector help improve code quality in PHP projects?",
+      "question": "Rector dry-run command scan single file with config",
       "anchor": "run-rector"
     },
     {
-      "question": "Can you explain how Rector detects and suggests improvements to my code?",
-      "anchor": "applied-rules"
-    },
-    {
-      "question": "What are some examples of the rules Rector can apply to improve my PHP code?",
+      "question": "Rector simplify if else to ternary expression",
       "anchor": "simplifyifelsetoternaryrector"
     },
     {
-      "question": "How does Rector handle different versions of PHP when upgrading my codebase?",
+      "question": "Rector remove useless intermediate variable that just holds a return value",
       "anchor": "simplifyuselessvariablerector"
     },
     {
-      "question": "What are the steps to install and configure Rector for my project?",
+      "question": "Rector add strict return type hint to function prototype",
       "anchor": "returntypefromstrictscalarreturnexprrector"
     },
     {
-      "question": "How do I run Rector on a specific file or directory in my PHP project?",
+      "question": "Rector StrictStringParamConcatRector what does it do",
       "anchor": "strictstringparamconcatrector"
     },
     {
-      "question": "What are some common issues that Rector can help me resolve in my codebase?",
-      "anchor": "final-code"
-    },
-    {
-      "question": "How does Rector provide detailed explanations for the changes it suggests?",
+      "question": "Rector actually apply changes to file instead of just showing diff",
       "anchor": "last-thing-make-the-change"
     }
   ]

@@ -1,41 +1,66 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:45.800Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:06:52.576Z",
   "source": "index.md",
   "sourceHash": "2146c041c92549f4dc205438cb8fea9fe2ba6981",
+  "durationMs": 33752,
+  "rejected": [
+    {
+      "question": "memos shortcut filter show only tasks with unchecked boxes",
+      "anchor": "creating-shortcuts",
+      "reason": "not answered: Shows has_task_list filter, not specifically unchecked-only boxes",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "memos official documentation and source code",
+      "anchor": "more-info",
+      "reason": "not answered: Links to official site but never mentions source code",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:08:16.583Z",
+    "articleHash": "bf6c799cc4eb085c9be4e96f392455ab90e1f184",
+    "questionsHash": "ba5ad7c4481536be",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I install memos on my local machine?",
+      "question": "lightweight self-hosted todo app with markdown checklists and image paste",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose memos keep notes after container destroy volume",
       "anchor": "lets-install-memos"
     },
     {
-      "question": "What are the steps to create a new note using Markdown and checklists in memos?",
+      "question": "how to set correct user group ID in memos docker compose file",
+      "anchor": "lets-install-memos"
+    },
+    {
+      "question": "memos create checklist task hash tag syntax",
       "anchor": "lets-create-a-few-more-tasks"
     },
     {
-      "question": "How can I filter notes by tags in memos?",
+      "question": "filter memos notes by clicking multiple tags bottom left",
       "anchor": "filtering-using-tags"
     },
     {
-      "question": "What is the purpose of shortcuts in memos?",
-      "anchor": "creating-shortcuts"
-    },
-    {
-      "question": "How do I paste images into my notes using memos?",
+      "question": "paste screenshot image directly into memos note",
       "anchor": "pasting-images"
     },
     {
-      "question": "What are some customization options available for memos?",
+      "question": "memos self-hosted app customization options",
       "anchor": "customization"
     },
     {
-      "question": "What is the conclusion of this article on memos?",
+      "question": "is memos better than using email inbox as daily reminder",
       "anchor": "conclusions"
-    },
-    {
-      "question": "Where can I find more information about memos?",
-      "anchor": "more-info"
     }
   ]
 }

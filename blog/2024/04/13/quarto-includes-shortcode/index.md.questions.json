@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:06.265Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:25:41.692Z",
   "source": "index.md",
   "sourceHash": "cf516593fe09ff30e7414f979ce0db120e315ca2",
+  "durationMs": 28043,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:47:19.946Z",
+    "articleHash": "edc156fdf9c9422b2b9cbffa8451b75bfead43af",
+    "questionsHash": "b4e11ac10a690c7d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How does Quarto split long documents into smaller files?",
-      "anchor": "includes-tag"
-    },
-    {
-      "question": "What are some tools for using Mustache templating with Quarto?",
-      "anchor": "includes-tag"
-    },
-    {
-      "question": "How can I include multiple Markdown files in a Quarto document?",
-      "anchor": "result"
-    },
-    {
-      "question": "What is the syntax for including a file in a Quarto document?",
-      "anchor": "includes-tag"
-    },
-    {
-      "question": "How can I merge included files into a single document using Quarto?",
-      "anchor": "result"
-    },
-    {
-      "question": "What are some examples of how to use the includes short code in Quarto?",
+      "question": "quarto split long document into multiple files",
       "anchor": ""
     },
     {
-      "question": "How can I run a Quarto Markdown document using Docker?",
+      "question": "quarto includes short code",
       "anchor": ""
     },
     {
-      "question": "What are some best practices for using the includes short code in Quarto documents?",
+      "question": "quarto includes vs mustache templating when to use which",
+      "anchor": ""
+    },
+    {
+      "question": "quarto includes tag syntax",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "how to reference another markdown file by relative path in quarto",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "quarto how to include another file in document",
+      "anchor": "includes-tag"
+    },
+    {
+      "question": "quarto render merge included files into one document",
+      "anchor": "result"
+    },
+    {
+      "question": "does quarto treat .md and .qmd differently in includes",
+      "anchor": "result"
+    },
+    {
+      "question": "quarto render combine multiple markdown files into single page",
+      "anchor": "result"
+    },
+    {
+      "question": "quarto writing workflow break document into smaller chunks",
       "anchor": ""
     }
   ]

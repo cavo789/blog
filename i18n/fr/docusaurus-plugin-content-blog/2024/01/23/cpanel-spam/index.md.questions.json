@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:36:08.466Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b8bff82d9dd96bed5f83b69075b5366070ea4936",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:44:19.737Z",
+    "articleHash": "4ff5cf57ab9204ad60d45fc273124b4952fdfd9e",
+    "questionsHash": "0b4094b5b8657e0b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "0: bloquer le spam directement chez l'hébergeur avec cPanel et SpamAssassin",

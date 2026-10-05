@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:03:15.905Z",
-  "durationMs": 153307,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "0c6625a02dc7437b730029a836bd13e15d88d0f5",
+  "durationMs": 153307,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:23:24.560Z",
+    "articleHash": "b82bd7fce78550eda17e8c6749209a50a9400822",
+    "questionsHash": "58981acec8928d6f",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment utiliser Postman comme outil de tests unitaires pour ses API ?",

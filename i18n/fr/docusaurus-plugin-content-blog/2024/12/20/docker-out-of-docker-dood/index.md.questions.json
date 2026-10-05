@@ -2,15 +2,29 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:48:51.533Z",
-  "durationMs": 191218,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "06a518450fb5bd3cd68b1028efe8178919d0420c",
-  "questions": [
+  "durationMs": 191218,
+  "locale": "fr",
+  "rejected": [
     {
       "question": "docker-out-of-docker mounting socket host pour pipeline CI",
-      "anchor": ""
-    },
+      "anchor": "",
+      "reason": "not answered: CI pipeline setup deferred to a linked article",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:08:17.417Z",
+    "articleHash": "7b1ee16fc999282ea966c9265231d394f4812dd3",
+    "questionsHash": "80e5c219e19091e0",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
+  "questions": [
     {
       "question": "executer docker ps et docker images depuis l'intérieur d'un container",
       "anchor": "the-result-docker-commands-run-from-inside-a-container"

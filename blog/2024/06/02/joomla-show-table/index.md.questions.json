@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:08.055Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:36:52.293Z",
   "source": "index.md",
   "sourceHash": "a81a2a3b42d8e6a2381e8479b4546ebc7bd4b503",
+  "durationMs": 37243,
+  "rejected": [
+    {
+      "question": "joomla docker setup add php script root folder query database",
+      "anchor": "lets-create-an-example",
+      "reason": "not answered: Docker setup is only a link to another article, not explained here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:57:56.257Z",
+    "articleHash": "8ccb64a0aeae42c12c665ced1fa35ba6c7ed33ea",
+    "questionsHash": "786a0464675d9bee",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I connect to a Joomla site's database outside of Joomla?",
+      "question": "export live joomla data to excel refreshable html table",
       "anchor": ""
     },
     {
-      "question": "What is an example script for running a custom SQL query on a Joomla site and displaying the results as an HTML table?",
+      "question": "standalone php script query joomla database outside admin panel",
       "anchor": "lets-create-an-example"
     },
     {
-      "question": "How do I modify the script to show the list of articles instead of users?",
+      "question": "joomla list all articles sql query html output",
       "anchor": "show-the-list-of-articles"
     },
     {
-      "question": "What is the URL format for accessing the script from within Excel?",
+      "question": "how to link excel to a php script that queries joomla database",
       "anchor": "from-within-excel-retrieve-our-joomla-data"
     },
     {
-      "question": "How can I export the list of articles to an Excel spreadsheet using the script?",
+      "question": "change md5 password on joomla db export script",
       "anchor": "using-another-password"
     },
     {
-      "question": "What are some alternative tools for browsing a Joomla database interactively besides Adminer, pgadmin, and phpmyadmin?",
+      "question": "write custom select against joomla db render results as html",
       "anchor": "creating-your-own-sql"
     },
     {
-      "question": "How can I modify the script to use a different password for accessing the table in Excel?",
+      "question": "joomla mail merge data source excel refresh",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the script and how does it work?",
-      "anchor": ""
+      "question": "excel get data from web raw html table joomla refresh",
+      "anchor": "from-within-excel-retrieve-our-joomla-data"
+    },
+    {
+      "question": "modify sql query in joomla export script show different tables",
+      "anchor": "creating-your-own-sql"
     }
   ]
 }

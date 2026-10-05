@@ -1,49 +1,72 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:12.441Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:28:11.584Z",
   "source": "index.md",
   "sourceHash": "b503437fc614e68db2ef53119faae7f20e4b83f2",
+  "durationMs": 61370,
+  "rejected": [
+    {
+      "question": "python linting pre-commit hook CI workflow",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to other articles; no actual hook or CI config provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:39:59.734Z",
+    "articleHash": "e6d764203fceb8b06f2d8b459001924dcc8f2d38",
+    "questionsHash": "f1704382e717d41a",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What are the 9 static analysis tools mentioned in this article?",
+      "question": "python static analysis tools code quality",
       "anchor": ""
     },
     {
-      "question": "Why is it important to use code analysis tools like Pylint, Autoflake, and mypy?",
+      "question": "python lint chain stop at first failure single command",
       "anchor": "the-result-one-command-nine-checks-one-clear-failure-point"
     },
     {
-      "question": "How do I install the static code quality tools mentioned in this article?",
+      "question": "why run pylint before mypy in python pipeline",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the fastest/most fundamental tool to run first when using the static code quality tools mentioned in this article?",
-      "anchor": "the-result-one-command-nine-checks-one-clear-failure-point"
-    },
-    {
-      "question": "How do I use Pylint to check for errors and enforce a coding standard in my Python code?",
+      "question": "python code quality makefile setup install",
       "anchor": "installation"
     },
     {
-      "question": "What is the purpose of Autoflake, and how can I remove unused imports from my Python code?",
-      "anchor": "more-demos-the-nine-tools-one-by-one"
-    },
-    {
-      "question": "How do I use isort to sort my Python import statements alphabetically?",
+      "question": "pylint check python syntax errors without executing",
       "anchor": "1-pylint"
     },
     {
-      "question": "What is the purpose of Vulture, and how can I find unused code in my Python project?",
+      "question": "autoflake remove unused imports and variables python",
       "anchor": "2-autoflake"
     },
     {
-      "question": "How do I use mypy to check for type errors in my Python code?",
+      "question": "isort sort python imports alphabetically command line",
       "anchor": "3-isort"
     },
     {
-      "question": "What is the purpose of Pyright, and how can I use it as an alternative to TypeScript for static analysis?",
+      "question": "find dead unused code in python project",
       "anchor": "4-vulture"
+    },
+    {
+      "question": "mypy static type checking python",
+      "anchor": "6-mypy"
+    },
+    {
+      "question": "black auto format python code",
+      "anchor": "8-black"
+    },
+    {
+      "question": "ruff replace pylint isort black one tool",
+      "anchor": "extra---ruff-a-potential-replacement-for-several-tools"
     }
   ]
 }

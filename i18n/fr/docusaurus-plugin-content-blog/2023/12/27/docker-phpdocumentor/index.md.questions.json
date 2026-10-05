@@ -2,18 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:43:05.073Z",
-  "durationMs": 117331,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c547876673dd5adf92f2ceb5b8ae979ca7579df8",
+  "durationMs": 117331,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:32:39.516Z",
+    "articleHash": "3bf6af4af7052faf58ee38b35426f19fffa7a84c",
+    "questionsHash": "c42f5e7ad6812e64",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment générer la documentation d'un projet PHP avec Docker sans rien installer ?",
-      "anchor": ""
+      "anchor": "one-command-a-full-documentation-website"
     },
     {
       "question": "phpDocumentor docker image pour créer un site de doc PHP",
-      "anchor": ""
+      "anchor": "one-command-a-full-documentation-website"
     },
     {
       "question": "docker run phpdoc/phpdoc:3 commande exacte pour analyser le code",

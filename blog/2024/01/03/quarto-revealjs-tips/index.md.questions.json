@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:19.963Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:42:35.589Z",
   "source": "index.md",
   "sourceHash": "8d4bca9c952c25df31b09e76e335329d8accac1e",
+  "durationMs": 17029,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:08:23.903Z",
+    "articleHash": "c56633857a7ad380174058812b75c25ff86d8ca8",
+    "questionsHash": "f0f035d9161b57a1",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "Quarto reveal.js title slide",
-      "anchor": "working-with-slides"
+      "question": "quarto reveal.js presentation tips tricks",
+      "anchor": ""
     },
     {
-      "question": "Custom logo positioning with CSS/JS",
+      "question": "quarto yaml front matter title slide reveal.js",
       "anchor": "create-a-title-slide"
     },
     {
-      "question": "Adding background image to a slide",
+      "question": "how to reposition logo top-left on first slide then bottom-right in quarto reveal.js",
       "anchor": "display-a-logo-top-left-on-the-first-slide-then-bottom-right"
     },
     {
-      "question": "Slide-level configuration",
+      "question": "quarto reveal.js background image contain vs cover sizing",
       "anchor": "adding-a-background-image-to-a-slide"
     },
     {
-      "question": "Using emoji in Quarto reveal.js presentations",
+      "question": "quarto slide-level heading 3 not creating separate slide",
       "anchor": "slide-level"
     },
     {
-      "question": "Big text class in Quarto reveal.js",
+      "question": "enable emoji quarto markdown reveal.js yaml",
       "anchor": "using-emoji"
     },
     {
-      "question": "Stretch class for Quarto reveal.js slides",
-      "anchor": "big-text"
+      "question": "quarto reveal.js stretch class auto-resize image height",
+      "anchor": "stretch"
     },
     {
-      "question": "Show image on key press in Quarto reveal.js",
-      "anchor": "stretch"
+      "question": "two column layout quarto reveal.js slide",
+      "anchor": "creating-columns"
+    },
+    {
+      "question": "quarto vertical slides grid navigation reveal.js",
+      "anchor": "vertical-slides"
+    },
+    {
+      "question": "how to add external custom css file to quarto reveal.js deck",
+      "anchor": "use-a-custom-css"
+    },
+    {
+      "question": "hide image caption quarto reveal.js",
+      "anchor": "hide-image-caption"
+    },
+    {
+      "question": "speaker notes quarto reveal.js presentation",
+      "anchor": "using-speaker-notes"
     }
   ]
 }

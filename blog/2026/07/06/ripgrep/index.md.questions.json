@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:56:06.619Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:03:45.581Z",
   "source": "index.md",
   "sourceHash": "7e8fe9e036c9d2fc6ce998515b2943dba2e8154a",
+  "durationMs": 22543,
+  "rejected": [
+    {
+      "question": "rg fzf interactive search zsh function",
+      "anchor": "rgf--interactive-search-with-fzf",
+      "reason": "not answered: Function code not shown; links to another article for full setup.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:56:16.578Z",
+    "articleHash": "488c93ec6371f65e4b5e05ae50f7c5a79a1a0bf8",
+    "questionsHash": "8a112096e41b667d",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What are some of the key features of ripgrep?",
+      "question": "ripgrep vs grep speed comparison large codebase",
       "anchor": "what-is-ripgrep"
     },
     {
-      "question": "How does ripgrep differ from grep in terms of performance?",
-      "anchor": ""
-    },
-    {
-      "question": "Can you explain the smart defaults that make ripgrep better for day-to-day use?",
+      "question": "why does ripgrep skip node_modules by default",
       "anchor": "what-is-ripgrep"
     },
     {
-      "question": "How do I install ripgrep on Ubuntu/WSL2?",
+      "question": "install ripgrep WSL2 Ubuntu",
       "anchor": "installation-on-ubuntu--wsl2"
     },
     {
-      "question": "What is the Dockerfile used to demonstrate ripgrep's smart defaults?",
-      "anchor": "seeing-it-in-action-with-docker"
-    },
-    {
-      "question": "How do I configure ripgrep with a custom ~/.ripgreprc file?",
+      "question": "ripgreprc file where to put default flags",
       "anchor": "configuration--ripgreprc"
     },
     {
-      "question": "What are some of the ZSH functions provided by ripgrep for searching code?",
+      "question": "zsh functions directory ripgrep aliases",
       "anchor": "zsh-setup--zshrc"
     },
     {
-      "question": "How can I use rgf to perform interactive search with fzf?",
-      "anchor": "zsh-functions--zshfns"
+      "question": "ripgrep find all TODO FIXME across project",
+      "anchor": "rgtodo--surface-all-technical-debt-at-once"
+    },
+    {
+      "question": "search env var usage ripgrep",
+      "anchor": "rgenv--track-down-environment-variable-usage"
+    },
+    {
+      "question": "find function definition PHP codebase rg",
+      "anchor": "finding-a-function-definition-across-a-php-project"
+    },
+    {
+      "question": "bulk rename with rg sed",
+      "anchor": "bulk-rename-with-rg--sed"
+    },
+    {
+      "question": "ripgrep max depth limit subdirectories",
+      "anchor": "limiting-search-depth"
     }
   ]
 }

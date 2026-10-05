@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:37.336Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:02:16.266Z",
   "source": "index.md",
   "sourceHash": "fe0f546099ed09a551bcc0ab96ff7f8dc393de69",
+  "durationMs": 40811,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:04:46.268Z",
+    "articleHash": "2234f7d03a7cc6378a427036bb5e523f04be6518",
+    "questionsHash": "a94193eba9cd28e8",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I run VSCode in my browser using Docker?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What are the benefits of running VSCode in a browser?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "Is it possible to use VSCode on a machine without installing it?",
+      "question": "run vscode in browser without installing",
       "anchor": ""
     },
     {
-      "question": "How does Docker help with running VSCode in the browser?",
+      "question": "use vscode on a machine without installing it",
+      "anchor": ""
+    },
+    {
+      "question": "code-server docker why no permission issues with mounted files",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are the configuration options for code-server?",
+      "question": "code-server config persistence docker volume home directory",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker run code-server mount current directory port 8080",
       "anchor": "installation"
     },
     {
-      "question": "How do I find and use the password for code-server?",
+      "question": "code-server docker user mapping avoid root owned files",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "code-server docker run flags explained",
+      "anchor": "installation"
+    },
+    {
+      "question": "code-server auto generated password where to find",
       "anchor": "getting-the-password"
     },
     {
-      "question": "Can I run VSCode in a browser on any machine without installing it?",
-      "anchor": ""
+      "question": "code-server first login password docker container",
+      "anchor": "getting-the-password"
     },
     {
-      "question": "What is the purpose of using Docker with VSCode?",
-      "anchor": "why-it-works"
+      "question": "single docker command full vscode browser setup",
+      "anchor": "installation"
     }
   ]
 }

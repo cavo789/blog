@@ -1,53 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:23.836Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:47:11.521Z",
   "source": "index.md",
   "sourceHash": "23746926ce563f6c9dc7d4077006d9b2a9a48b79",
+  "durationMs": 27783,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:52:43.357Z",
+    "articleHash": "0001d69b7a8b77d2254befddbee8b13a065c5912",
+    "questionsHash": "accf52dd23e7f8ed",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I download and configure Docker for Oracle Database?",
+      "question": "docker oracle enterprise database container step by step",
       "anchor": ""
     },
     {
-      "question": "What is the difference between Container Database (CDB) and Pluggable Database (PDB)?",
+      "question": "docker pull oracle enterprise image unauthorized auth failed",
+      "anchor": "download-a-docker-image-for-oracledb"
+    },
+    {
+      "question": "oracle.com SSO username secret key token for docker registry",
+      "anchor": "generate-a-token"
+    },
+    {
+      "question": "accept oracle database license terms before docker pull",
       "anchor": "accept-license-terms"
     },
     {
-      "question": "How do I create a database container using Oracle Enterprise Database?",
-      "anchor": "finally-you-can-pull-the-image"
+      "question": "docker login container-registry.oracle.com",
+      "anchor": "configure-your-local-docker-environment"
     },
     {
-      "question": "What are some common configuration files created for Oracle database containers?",
-      "anchor": "important-concepts-to-consider-when-working-with-oracle-v12-and-after-skip-this-if-you-just-want-to-run-it"
-    },
-    {
-      "question": "How do I set up persistent storage for an Oracle database container?",
+      "question": "oracle CDB vs PDB difference multi-tenant",
       "anchor": "container-database-cdb-versus-pluggable-database-pdb"
     },
     {
-      "question": "How do I create a network for Oracle database containers?",
-      "anchor": "create-an-oracle-database-container"
-    },
-    {
-      "question": "What are some important constants to remember when working with Oracle databases in Docker?",
-      "anchor": "creation-of-some-configuration-files"
-    },
-    {
-      "question": "How can I run an interactive console inside the Oracle DB container?",
-      "anchor": "create-the-oracle-network"
-    },
-    {
-      "question": "What are some ways to connect to and manage an Oracle database using tools like SQL Developer or Enterprise Manager Database Express?",
+      "question": "docker run oracle database enterprise with persistent volume",
       "anchor": "ready-to-create-the-container"
     },
     {
-      "question": "How can I access fake data within the Oracle database container?",
-      "anchor": "important-constants-to-remember"
+      "question": "oracle docker named volume OracleDBData",
+      "anchor": "create-the-oracledbdata-volume"
     },
     {
-      "question": "What are some ways to go further after running an Oracle database container?",
-      "anchor": "running-an-interactive-console-in-the-db-container"
+      "question": "docker exec oracle container sqlplus interactive",
+      "anchor": "working-with-the-oracle-db-container"
+    },
+    {
+      "question": "oracle enterprise manager database express web interface docker",
+      "anchor": "accessing-the-oracle-enterprise-manager-database-express"
+    },
+    {
+      "question": "oracle docker container default password ORACLE_PWD",
+      "anchor": "ready-to-create-the-container"
+    },
+    {
+      "question": "connect to oracle docker container from sql developer",
+      "anchor": "accessing-our-database-using-oracle-tools"
     }
   ]
 }

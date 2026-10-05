@@ -1,7 +1,7 @@
 ---
 description: Capture a new article idea into the .todos/0000-suggestions-articles-a-publier.md backlog
 argument-hint: <topic description>
-allowed-tools: Bash(grep*), Bash(find*), Read, Edit, Write
+allowed-tools: Bash(grep*), Bash(find*), Bash(node scripts/ai-related.mjs*), Read, Edit, Write
 ---
 
 # Add an article suggestion
@@ -26,6 +26,19 @@ Capture the idea described in **$ARGUMENTS** as one new entry in
      known false-positive traps documented in the blog-map memory (e.g. the Bluesky share-widget
      footer matching on "bluesky" everywhere) — a keyword hit inside unrelated boilerplate is not a
      duplicate.
+   - Search by **meaning** too — a grep only finds the words the idea happens to use, not an
+     article that covers the same need under another name. Run it with a short English
+     description of the idea (the workspace is English):
+
+     ```bash
+     node scripts/ai-related.mjs --top 5 "<one-line English description of the idea>"
+     ```
+
+     `COVERED?` (≥ 0.78) means an article very probably already answers it — read it before
+     going on. `related` (≥ 0.70) is an overlap worth citing in the entry (the article this one
+     would complement or link to). Exit code 2 means AnythingLLM is off: say so in the report
+     and rely on the grep alone. It only knows published articles, so drafts and existing
+     suggestions still come from the grep and the backlog file.
    - If it clearly duplicates an existing suggestion, a published post, or a draft: STOP and tell
      the user what already covers it — don't add a second entry.
    - If it's a genuine but partial overlap (e.g. same tool, different angle), say so explicitly in
@@ -42,7 +55,8 @@ Capture the idea described in **$ARGUMENTS** as one new entry in
    ```
 
    Match the tone and depth of the existing entries in the file — concrete, verified claims, not a
-   vague one-liner. Preserve the file's existing entries exactly; only append.
+   vague one-liner. Cite the closest articles `ai-related` returned when they overlap. Preserve
+   the file's existing entries exactly; only append.
 
 4. **Report** the heading added and its position in the file. Remind the user that nothing was
    drafted — `/suggestions-write` picks from this list when they're ready to actually write one.

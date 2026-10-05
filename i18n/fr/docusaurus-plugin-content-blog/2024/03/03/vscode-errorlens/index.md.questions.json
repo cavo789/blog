@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:22:32.440Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "311e6c30c04c706e2feff45c87783ad07f243cb8",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "extension VSCode pour gérer les TODO et FIXME avec Todo Tree",
+      "anchor": "",
+      "reason": "not answered: Only a passing mention with a link to another article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "installer error lens par défaut dans un devcontainer PHP",
+      "anchor": "",
+      "reason": "not answered: States it is installed; actual steps are in a linked article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:02:40.304Z",
+    "articleHash": "0edbd3609467c26a8e7ec3b713a1ad823a39fdb0",
+    "questionsHash": "efecd6062fe611e5",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "error lens vscode",
@@ -32,14 +56,6 @@
     },
     {
       "question": "error lens minimap blocs bleus",
-      "anchor": ""
-    },
-    {
-      "question": "extension VSCode pour gérer les TODO et FIXME avec Todo Tree",
-      "anchor": ""
-    },
-    {
-      "question": "installer error lens par défaut dans un devcontainer PHP",
       "anchor": ""
     },
     {

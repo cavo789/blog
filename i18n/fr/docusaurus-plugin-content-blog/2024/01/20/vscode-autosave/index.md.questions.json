@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:33:00.410Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f0a1945b05800ca24c61b933b29be06d9080ea81",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "alternative Sticky scroll in vscode pour la navigation",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no explanation of sticky scroll.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:42:48.048Z",
+    "articleHash": "9a3d52a09b34fe302329f5fa785fb1e7d1d5fea4",
+    "questionsHash": "0146ec53c039d272",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment activer l'autosave dans VSCode",
@@ -32,10 +50,6 @@
     },
     {
       "question": "raccourci CTRL + , VSCode paramètres autosave",
-      "anchor": ""
-    },
-    {
-      "question": "alternative Sticky scroll in vscode pour la navigation",
       "anchor": ""
     },
     {

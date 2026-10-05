@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:41.530Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:58:09.356Z",
   "source": "index.md",
   "sourceHash": "6fea303677f69ba3541a82944eb1cf474afbf5a0",
+  "durationMs": 24639,
+  "rejected": [
+    {
+      "question": "disable markdownlint rule for inline html",
+      "anchor": "ignore-some-errors",
+      "reason": "not answered: Specific rule to disable inline HTML is only in linked external page.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:22:44.005Z",
+    "articleHash": "dc9d7e222a2ff8e75bf2bb108e40e2835f626926",
+    "questionsHash": "00fff58b79983fc6",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I use Markdown lint with Docker to fix formatting issues?",
+      "question": "markdownlint docker image scan project .md files",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the --fix flag in markdownlint for fixing Markdown files?",
-      "anchor": "some-errors-can-be-fixed-automagically"
+      "question": "how to check and auto-fix markdown formatting with docker",
+      "anchor": "put-all-together"
     },
     {
-      "question": "How do I ignore specific folders and files when using markdownlint with Docker?",
+      "question": "markdownlint ignore node_modules vendor folder",
       "anchor": "ignore-some-filesfolders"
     },
     {
-      "question": "Can you provide an example of a configuration file for ignoring errors in markdownlint?",
+      "question": "how to stop markdownlint from scanning dependency folders",
+      "anchor": "ignore-some-filesfolders"
+    },
+    {
+      "question": "how to turn off specific markdownlint errors in config",
       "anchor": "ignore-some-errors"
     },
     {
-      "question": "What are some common issues that can be fixed automatically with markdownlint?",
+      "question": "markdownlint --fix auto correct trailing spaces blank lines",
       "anchor": "some-errors-can-be-fixed-automagically"
     },
     {
-      "question": "How do I integrate markdownlint into my Git pre-commit hooks to ensure consistent formatting?",
-      "anchor": ""
+      "question": "automatically fix mixed bullet types in markdown",
+      "anchor": "some-errors-can-be-fixed-automagically"
     },
     {
-      "question": "What is the command to run markdownlint on a project and what flags can be used?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create a Makefile in my project to automate running markdownlint with Docker?",
+      "question": "markdownlint docker --fix --user combined command",
       "anchor": "put-all-together"
+    },
+    {
+      "question": "makefile target run markdownlint",
+      "anchor": "make-it-easy"
+    },
+    {
+      "question": "add markdown lint step to make deploy process",
+      "anchor": "make-it-easy"
     }
   ]
 }

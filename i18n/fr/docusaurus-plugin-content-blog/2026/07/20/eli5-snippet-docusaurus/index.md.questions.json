@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:26:41.651Z",
-  "durationMs": 152427,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "4d1d0e72b7f539e818da85cffb09b97f3f6b4283",
+  "durationMs": 152427,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:31:25.545Z",
+    "articleHash": "1447698cbd11c8b86ad1f694261d9918931c52bb",
+    "questionsHash": "6db95476272649ef",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "0: Comment ajouter des tooltips explicatifs sur les lignes de code dans Docusaurus sans latence côté client ?",
@@ -21,7 +31,7 @@
     },
     {
       "question": "6: Lancer la génération d'annotations sur tous les fichiers markdown du dossier docs en une seule commande",
-      "anchor": "step-2--the-batch-script"
+      "anchor": "phase-3--generate-by-scope"
     },
     {
       "question": "10: Pourquoi le script d'annotation ignore les fichiers déjà traités et comment forcer la régénération",
@@ -41,7 +51,7 @@
     },
     {
       "question": "26: Configurer la clé API Anthropic dans un projet Docusaurus",
-      "anchor": "step-1--create-an-anthropic-account-and-get-an-api-key"
+      "anchor": "step-2--add-the-key-to-your-project"
     },
     {
       "question": "30: Quel modèle Claude choisir pour générer des explications de code simples et rapides",

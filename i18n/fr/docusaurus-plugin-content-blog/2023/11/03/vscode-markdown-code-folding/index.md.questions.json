@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T10:50:03.887Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b62ac668acbe6d586454d0ad1929e97bf1b6905d",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "créer des zones repliables personnalisées vscode markdown",
+      "anchor": "",
+      "reason": "not answered: Only links to another article; no instructions given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:05:04.388Z",
+    "articleHash": "65fa4c8cd42144e664eff7ceb3610519b22eef91",
+    "questionsHash": "027e4d00c31a3840",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "folding markdown vscode ne marche pas",
@@ -32,10 +50,6 @@
     },
     {
       "question": "activer l'extension native markdown vscode",
-      "anchor": ""
-    },
-    {
-      "question": "créer des zones repliables personnalisées vscode markdown",
       "anchor": ""
     },
     {

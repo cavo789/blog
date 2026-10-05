@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:52:16.714Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:34:31.123Z",
   "source": "index.md",
   "sourceHash": "d19f9b3a6c0df9579a02cb56020503691f5e997b",
+  "durationMs": 25946,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:30:45.466Z",
+    "articleHash": "ad14afc1a2cbad3c374a3e3e77470da4d001ccd4",
+    "questionsHash": "0704315c1ad922dd",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How can I create a reveal.js presentation using Quarto within a DevContainer?",
+      "question": "markdown to reveal.js slides quarto docker devcontainer",
       "anchor": ""
     },
     {
-      "question": "What are some benefits of using Quarto for creating presentations with reveal.js?",
-      "anchor": "the-result"
+      "question": "quarto slideshow live in browser after editing markdown",
+      "anchor": "preview-the-slideshow"
     },
     {
-      "question": "How do I install and set up the necessary tools to create a reveal.js presentation using Quarto within a DevContainer?",
+      "question": "quarto one source multiple outputs reveal.js pdf docx powerpoint",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are some common use cases for creating reveal.js presentations with Quarto within a DevContainer?",
+      "question": "vscode docker devcontainer quarto prerequisites install",
       "anchor": "installation"
     },
     {
-      "question": "How can I preview and edit my reveal.js presentation using Quarto within a DevContainer?",
+      "question": "add devcontainer config to existing quarto project",
       "anchor": "we-need-a-quarto-project"
     },
     {
-      "question": "What are some ways to export my reveal.js presentation as a static HTML site or PDF?",
+      "question": "dev containers rebuild and reopen in devcontainer command not showing",
       "anchor": "open-the-devcontainer"
     },
     {
-      "question": "How can I deploy my reveal.js presentation on an SFTP server using Quarto within a DevContainer?",
-      "anchor": "more-demos"
+      "question": "quarto reveal.js live preview hot reload browser",
+      "anchor": "preview-the-slideshow"
     },
     {
-      "question": "What are some best practices for creating and managing reveal.js presentations with Quarto within a DevContainer?",
-      "anchor": "preview-the-slideshow"
+      "question": "decktape quarto export pdf landscape each slide one page",
+      "anchor": "export-a-pdf"
+    },
+    {
+      "question": "quarto reveal.js export static html site deploy",
+      "anchor": "export-as-static-html-site"
+    },
+    {
+      "question": "alternative to powerpoint write presentations in markdown",
+      "anchor": ""
+    },
+    {
+      "question": "quarto reveal.js devcontainer demo examples",
+      "anchor": "more-demos"
     }
   ]
 }

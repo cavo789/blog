@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:18.617Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:13:34.776Z",
   "source": "index.md",
   "sourceHash": "3b0a71aa23154913aebfca066317354f1c85c5a4",
+  "durationMs": 30588,
+  "rejected": [
+    {
+      "question": "inotifywait as progress gauge for file generation",
+      "anchor": "conclusion",
+      "reason": "not answered: Article only links to another post for the gauge.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:30:41.135Z",
+    "articleHash": "b8a5b2f2d65a89e54aa7355d5d12b98721cf0e78",
+    "questionsHash": "beb646e578cdaf2f",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I use inotifywait to monitor a directory for newly created files and get a running count?",
-      "anchor": "running-the-scripts"
-    },
-    {
-      "question": "What is the purpose of using inotifywait in this article, and how does it differ from other monitoring tools?",
+      "question": "inotifywait real-time file counter bash",
       "anchor": ""
     },
     {
-      "question": "How can I set up a demo environment for running the file-generator script and monitor.sh script?",
-      "anchor": "setting-up-the-demo-environment-optional--skip-if-you-already-have-python-and-a-folder-to-watch"
-    },
-    {
-      "question": "What is the Python script used in this article, and how does it generate PDF files?",
-      "anchor": "create-a-sample-python-script"
-    },
-    {
-      "question": "How do I create a monitor.sh script that uses inotifywait to count newly created files in a directory?",
+      "question": "how to continuously count files being created in a folder on linux",
       "anchor": "creating-the-monitorsh-script"
     },
     {
-      "question": "What is the difference between using inotifywait and other monitoring tools for tracking file creation?",
+      "question": "alternative to ls wc -l for live file counting",
       "anchor": ""
     },
     {
-      "question": "How can I install inotify on my system if it's not already installed?",
-      "anchor": "conclusion"
+      "question": "run monitor.sh and python pdf generator in separate terminals",
+      "anchor": "running-the-scripts"
     },
     {
-      "question": "What are some alternative methods to track file creation besides using inotifywait?",
-      "anchor": ""
+      "question": "docker container mount host folder python file generation",
+      "anchor": "setting-up-the-demo-environment-optional--skip-if-you-already-have-python-and-a-folder-to-watch"
+    },
+    {
+      "question": "python script generate 70000 pdf files in a loop",
+      "anchor": "create-a-sample-python-script"
+    },
+    {
+      "question": "inotifywait while loop increment counter new files",
+      "anchor": "creating-the-monitorsh-script"
+    },
+    {
+      "question": "check if inotifywait is installed on linux",
+      "anchor": "creating-the-monitorsh-script"
     }
   ]
 }

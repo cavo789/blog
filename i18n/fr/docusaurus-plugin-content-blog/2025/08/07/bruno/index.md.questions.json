@@ -3,8 +3,38 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:12:37.665Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "5b0eac9f98276e6c4030247de10ec5a49a2a8404",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "fonctionnement interne du parsing des collections Bruno",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it",
+      "reason": "not answered: Explains network namespace issue, not internal collection parsing mechanism.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "ajouter des assertions pour vérifier le schéma OpenAPI dans Bruno",
+      "anchor": "adding-some-assertions",
+      "reason": "not answered: Shows basic assertions only; OpenAPI schema validation is a linked external article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "intégrer les tests Bruno dans un pipeline CI GitLab avec Docker-out-of-Docker",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no CI integration steps given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:40:59.790Z",
+    "articleHash": "b552d1f214f39db8cbb18744ab0431bea67430b9",
+    "questionsHash": "f8ade84e7cfd9e5d",
+    "status": "applied",
+    "rejected": 3,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Bruno alternative libre à Postman : stockage local et fichiers texte",
@@ -33,18 +63,6 @@
     {
       "question": "comment créer un Dockerfile personnalisé pour Bruno CLI 2.8",
       "anchor": "create-our-own-bruno-cli-image"
-    },
-    {
-      "question": "fonctionnement interne du parsing des collections Bruno",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "ajouter des assertions pour vérifier le schéma OpenAPI dans Bruno",
-      "anchor": "adding-some-assertions"
-    },
-    {
-      "question": "intégrer les tests Bruno dans un pipeline CI GitLab avec Docker-out-of-Docker",
-      "anchor": "conclusion"
     }
   ]
 }

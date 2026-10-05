@@ -2,17 +2,31 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:11:35.522Z",
-  "durationMs": 182825,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "2221afe3f5d1fdf00576d7fa49de4ec69911b110",
+  "durationMs": 182825,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "quel outil cli utiliser pour inspecter et mapper la structure d'un json inconnu",
+      "anchor": "",
+      "reason": "not answered: Only a passing mention; details are in linked articles.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:59:33.484Z",
+    "articleHash": "ceba70c17336982588c520cf940816d6e9537d3f",
+    "questionsHash": "c9ed852f2d3f2b6b",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment générer et valider des données json factices pour des tests ETL en python",
-      "anchor": ""
-    },
-    {
-      "question": "quel outil cli utiliser pour inspecter et mapper la structure d'un json inconnu",
       "anchor": ""
     },
     {
@@ -25,11 +39,11 @@
     },
     {
       "question": "Mockaroo.com créer un schéma et exporter des données json de test gratuitement",
-      "anchor": "using-mockaroocom"
+      "anchor": "creating-a-fake-data-using-a-schema"
     },
     {
       "question": "comment générer plus de 1 000 enregistrements json depuis Mockaroo sans écrire de code",
-      "anchor": "using-mockaroocom"
+      "anchor": "creating-a-fake-data-using-a-schema"
     },
     {
       "question": "transformer une chaîne json existante en schéma Mockaroo pour batcher des données",

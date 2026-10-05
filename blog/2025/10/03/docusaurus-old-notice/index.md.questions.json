@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T16:46:23.210Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:24:00.637Z",
   "source": "index.md",
   "sourceHash": "0e3f8771785b71d4d401138ba983921f58c54ecd",
+  "durationMs": 39492,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:20:32.430Z",
+    "articleHash": "6dc4fa41165367b90bf03cbaf50d11eee68ce3fb",
+    "questionsHash": "ae0f4237744dc622",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I use this component to alert readers when an article is over a year old?",
+      "question": "docusaurus blog post age warning banner",
       "anchor": ""
     },
     {
-      "question": "What Docusaurus template should I swizzle to inject the warning banner in my blog post page?",
+      "question": "how to build a react component in docusaurus that checks the front matter date",
       "anchor": "create-the-component"
     },
     {
-      "question": "How can I customize the warning banner's color based on whether an article is reviewed or not?",
+      "question": "swizzle BlogPostPage docusaurus inject custom component",
       "anchor": "override-blogpostpage-template"
     },
     {
-      "question": "What YAML field should I include in my blog post front matter to use this component?",
+      "question": "docusaurus 3.8 BlogPostPage file location after swizzle",
+      "anchor": "override-blogpostpage-template"
+    },
+    {
+      "question": "mark docusaurus blog post as reviewed front matter",
       "anchor": "marking-a-reviewed-post"
     },
     {
-      "question": "How can I display the warning banner before the post content on my Docusaurus site?",
+      "question": "how to show a green confirmation banner when an old article was recently updated in docusaurus",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "docusaurus warning banner position before content",
       "anchor": "position-of-the-warning"
     },
     {
-      "question": "What is the purpose of the 'reviewed' field in this component?",
-      "anchor": "override-blogpostpage-template"
-    },
-    {
-      "question": "How can I extract and display the first image as a banner on my blog post?",
-      "anchor": "position-of-the-warning"
-    },
-    {
-      "question": "What is the special treatment given to the first image in Docusaurus?",
+      "question": "docusaurus alert reader that article is outdated",
       "anchor": ""
+    },
+    {
+      "question": "docusaurus component check lastReviewed date yaml",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "stale review docusaurus blog show warning again",
+      "anchor": "marking-a-reviewed-post"
+    },
+    {
+      "question": "where does the old article warning appear in a docusaurus post",
+      "anchor": "position-of-the-warning"
     }
   ]
 }

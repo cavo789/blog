@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:54:28.630Z",
-  "durationMs": 172785,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "5e5dbd6f175bd18b69d92b6c46976f41bc895b95",
+  "durationMs": 172785,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Docker Desktop mérite t il encore sa place sur linux",
+      "anchor": "does-docker-desktop-still-earn-its-place",
+      "reason": "not answered: Article framed around Windows/WSL2, not Linux specifically",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:41:29.581Z",
+    "articleHash": "f7df9baf13604f8034593e0c0980b638c2666529",
+    "questionsHash": "555081f6ff601f6d",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "lazydocker dashboard terminal containerisé wrapper compose",
@@ -34,10 +52,6 @@
     {
       "question": "lazydocker ou fonctions ZSH dex pour administrer les containers",
       "anchor": "my-dex-function-vs-lazydocker"
-    },
-    {
-      "question": "Docker Desktop mérite t il encore sa place sur linux",
-      "anchor": "does-docker-desktop-still-earn-its-place"
     },
     {
       "question": "points clés du container et du wrapper lazydocker",

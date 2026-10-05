@@ -1,41 +1,76 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:15.184Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:15:13.066Z",
   "source": "index.md",
   "sourceHash": "a4f2efc7c4c7c80d389e8d48568432f6b5564e3f",
+  "durationMs": 28670,
+  "rejected": [
+    {
+      "question": "docker compose healthcheck postgresql ready check command",
+      "anchor": "the-healthcheck-property",
+      "reason": "not answered: Only MySQL command shown; PostgreSQL mentioned as search suggestion, no command given.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "docker compose depends_on service_healthy vs service_started difference",
+      "anchor": "the-depends_on-property",
+      "reason": "not answered: service_started never mentioned; no comparison with service_healthy provided.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "docker healthcheck start_period test cmd configuration",
+      "anchor": "the-healthcheck-property",
+      "reason": "not answered: start_period is never mentioned in the article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:37:49.235Z",
+    "articleHash": "b658edcc611dfa0a86699e5e0335ba2ea1198a92",
+    "questionsHash": "299b898655029c5b",
+    "status": "applied",
+    "rejected": 3,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is Docker's healthcheck property used for?",
-      "anchor": "the-healthcheck-property"
-    },
-    {
-      "question": "How does Docker determine if a service is ready based on its healthcheck?",
-      "anchor": "the-healthcheck-property"
-    },
-    {
-      "question": "Why might an application fail to start correctly when using the depends_on property with Docker Compose?",
-      "anchor": "the-depends_on-property"
-    },
-    {
-      "question": "What is the purpose of the depends_on property in Docker Compose?",
-      "anchor": "the-depends_on-property"
-    },
-    {
-      "question": "How can I ensure that my application waits for a database to be fully ready before starting using Docker and Compose?",
+      "question": "docker compose app crashes because database not ready yet",
       "anchor": ""
     },
     {
-      "question": "What is the difference between the healthcheck property and the depends_on property in Docker Compose?",
+      "question": "docker compose wait for mysql before starting application container",
+      "anchor": "the-depends_on-property"
+    },
+    {
+      "question": "docker compose healthcheck mysql test interval retries",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "how does docker healthcheck determine service healthy exit code",
+      "anchor": "the-healthcheck-property"
+    },
+    {
+      "question": "docker compose depends_on condition service_healthy syntax",
+      "anchor": "the-depends_on-property"
+    },
+    {
+      "question": "docker compose pause container creation until dependency is healthy",
+      "anchor": "the-depends_on-property"
+    },
+    {
+      "question": "docker compose wordpress joomla database connection refused on startup",
       "anchor": ""
     },
     {
-      "question": "How can I configure a healthcheck for a service in a Docker Compose file?",
-      "anchor": "the-healthcheck-property"
+      "question": "docker compose replace sleep retry loop with proper service dependency",
+      "anchor": "the-depends_on-property"
     },
     {
-      "question": "What are some common commands used in the healthcheck property of a Docker Compose file?",
-      "anchor": "the-healthcheck-property"
+      "question": "docker compose depends_on condition only pauses container creation not image pull",
+      "anchor": "the-depends_on-property"
     }
   ]
 }

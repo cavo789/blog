@@ -1,49 +1,66 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-10T07:08:29.629Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:37:21.053Z",
   "source": "index.md",
   "sourceHash": "a10821594cce0a338ca90d83a42c1fe7cc24fb4c",
+  "durationMs": 28097,
+  "rejected": [
+    {
+      "question": "how does vscode remote ssh extension work under the hood",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it",
+      "reason": "not answered: Section only covers SSH key pairs, not extension internals.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "vscode remote ssh vs devcontainer which approach for network-restricted services",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to other articles, no comparison provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:33:28.393Z",
+    "articleHash": "751803f9139be3640fa37125717bc630a9e85deb",
+    "questionsHash": "a6f3bce35583d0ea",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I connect to a remote server using VSCode Remote - SSH?",
+      "question": "vscode remote ssh edit files on server without local copy",
+      "anchor": "the-result"
+    },
+    {
+      "question": "vscode remote ssh execute python script directly on remote host",
+      "anchor": "the-result"
+    },
+    {
+      "question": "does vscode integrated terminal run commands on the remote machine or locally",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are some common pitfalls when using VSCode Remote - SSH for development?",
+      "question": "docker simulate ssh server locally practice vscode remote connection",
       "anchor": "installation--simulate-a-server-locally-with-docker"
     },
     {
-      "question": "How can I simulate a server locally with Docker before connecting to a real production server?",
+      "question": "docker build ssh-server container port 2222 for testing",
       "anchor": "create-the-docker-container-that-will-act-as-our-ssh-server"
     },
     {
-      "question": "What is the purpose of the Remote - SSH extension in VSCode?",
+      "question": "vscode remote ssh extension install and connect step by step",
       "anchor": "the-remote---ssh-extension"
     },
     {
-      "question": "How do I install and configure the Remote - SSH extension in VSCode?",
+      "question": "remote explorer vscode ssh user@localhost -p 2222",
+      "anchor": "the-remote---ssh-extension"
+    },
+    {
+      "question": "vscode remote ssh production server can't reach oracle database from local machine",
       "anchor": "repeat-on-a-real-production-server"
-    },
-    {
-      "question": "What are some best practices for using VSCode Remote - SSH for development?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How can I test the connection to a remote server using VSCode Remote - SSH?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "What are some common scenarios where VSCode Remote - SSH is useful for development?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I open a DevContainer on a remote server using VSCode Remote SSH?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some alternative approaches to using VSCode Remote - SSH for development?",
-      "anchor": ""
     }
   ]
 }

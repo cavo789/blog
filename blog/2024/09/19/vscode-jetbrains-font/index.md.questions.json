@@ -1,41 +1,66 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:02.851Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:59:33.780Z",
   "source": "index.md",
   "sourceHash": "d2ef21e181617c8afd648241512c20f36874dc25",
+  "durationMs": 23071,
+  "rejected": [
+    {
+      "question": "jetbrains mono nerd font variant powerlevel10k eza terminal icons",
+      "anchor": "",
+      "reason": "not answered: Only mentions Nerd Font variant in passing; links to other articles for details.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "code font screenshot sharing after setup",
+      "anchor": "conclusion",
+      "reason": "not answered: Only mentions CodeSnap with a link to another article; no instructions given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:17:33.020Z",
+    "articleHash": "582182b6b384392b812bc6f4e6214030aa6d7d7b",
+    "questionsHash": "4c8ec89949313e87",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How to install JetBrains Mono font in VSCode?",
+      "question": "jetbrains mono vscode setup guide",
+      "anchor": ""
+    },
+    {
+      "question": "monospace font that clearly distinguishes O from 0 and I from l",
       "anchor": "why-this-font"
     },
     {
-      "question": "What are the benefits of using JetBrains Mono font?",
-      "anchor": ""
+      "question": "free coding font with ligatures",
+      "anchor": "why-this-font"
     },
     {
-      "question": "Why is JetBrains Mono font legible?",
-      "anchor": ""
-    },
-    {
-      "question": "How to configure VSCode to use JetBrains Mono font?",
+      "question": "install jetbrains mono font windows right-click install from zip",
       "anchor": "install-jetbrains-mono-font"
     },
     {
-      "question": "What are some uses of the JetBrains Mono font?",
+      "question": "vscode settings.json fontFamily fontLigatures",
       "anchor": "configure-vscode-to-use-jetbrains-mono-font"
     },
     {
-      "question": "Is JetBrains Mono font free for commercial use?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I install a Nerd Font variant of JetBrains Mono font?",
-      "anchor": "install-jetbrains-mono-font"
-    },
-    {
-      "question": "What are the advantages of using the JetBrains Mono font in VSCode?",
+      "question": "how to enable font ligatures in vscode",
       "anchor": "configure-vscode-to-use-jetbrains-mono-font"
+    },
+    {
+      "question": "change default font to jetbrains mono in vscode",
+      "anchor": "configure-vscode-to-use-jetbrains-mono-font"
+    },
+    {
+      "question": "install font once at OS level so every editor tab benefits",
+      "anchor": "conclusion"
     }
   ]
 }

@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:55:27.389Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:50:19.945Z",
   "source": "index.md",
   "sourceHash": "641f933a26e61908bec664d06130ac3ff0320bbf",
+  "durationMs": 25793,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:44:39.955Z",
+    "articleHash": "654564d9e96eca98fca9239d83a64b8e2a19076b",
+    "questionsHash": "3f181de7dffadf1a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I configure ZSH to automatically display my most recently updated Git branches?",
-      "anchor": "a-real-world-example"
-    },
-    {
-      "question": "What is a real-world example of how to use this script with ZSH?",
-      "anchor": "seeing-it-in-action-with-docker"
-    },
-    {
-      "question": "How does the Dockerfile build and run a repository with three branches committed at different dates?",
+      "question": "zsh show last 3 git branches when cd into repo",
       "anchor": "installation"
     },
     {
-      "question": "What is the purpose of the gst-demo container in the Dockerfile example?",
+      "question": "forgetting which git branch I was working on after months",
+      "anchor": ""
+    },
+    {
+      "question": "zsh automatically display recent branches on directory change",
+      "anchor": "installation"
+    },
+    {
+      "question": "git status alias show last modified branches",
+      "anchor": "installation"
+    },
+    {
+      "question": "docker container test zsh git branch hook",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "risk-free way to try zsh chpwd git branch script",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "add git branch reminder block to .zshrc",
+      "anchor": "installation"
+    },
+    {
+      "question": "zsh chpwd hook git for-each-ref sort commit date descending",
       "anchor": "how-it-works"
     },
     {
-      "question": "How does the custom function check if you are inside a Git repository before displaying branches?",
+      "question": "how zsh triggers function on directory change to show git info",
+      "anchor": "how-it-works"
+    },
+    {
+      "question": "zsh git branch display local only no network fetch",
       "anchor": "local-branches-only"
     },
     {
-      "question": "What is the purpose of the ZSH alias defined in the script?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "How does the script retrieve and display the local branches sorted by their last commit date in descending order?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the purpose of the ZSH hook that triggers when changing directories?",
-      "anchor": ""
+      "question": "why zsh git branch script skips git fetch for performance",
+      "anchor": "local-branches-only"
     }
   ]
 }

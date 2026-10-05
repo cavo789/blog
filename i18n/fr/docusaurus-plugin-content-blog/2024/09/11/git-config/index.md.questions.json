@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:24:22.769Z",
-  "durationMs": 140846,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "657808180ef8670a1a98eea363a4b26f30624986",
+  "durationMs": 140846,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:46:03.913Z",
+    "articleHash": "e03fb46dc12711effe5ce41bc51881bb544ec275",
+    "questionsHash": "dd39530fe3b51242",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "personnalisation .gitconfig workflow git wsl",

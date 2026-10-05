@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:51:49.436Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:12:33.835Z",
   "source": "index.md",
   "sourceHash": "2c208c451835294f8eaf43c182f4c385334d40cc",
+  "durationMs": 91462,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:11:59.666Z",
+    "articleHash": "a823a46db827b8d9322df32f5d620a8db7cbd57b",
+    "questionsHash": "7da615942a846449",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I customize how Docusaurus generates <img> tags?",
+      "question": "docusaurus customize img tag generation markdown",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of creating a custom React component for image rendering in Docusaurus?",
+      "question": "create docusaurus Image component lazy loading CSS",
       "anchor": "1-creation-of-our-image-component"
     },
     {
-      "question": "How do I style the Image component with CSS and force lazy loading?",
+      "question": "how to tell docusaurus to use a custom component in markdown posts",
       "anchor": "2-tell-docusaurus-about-our-component"
     },
     {
-      "question": "What is the difference between using the standard Markdown <img> tag and my custom Image component in Docusaurus?",
+      "question": "docusaurus Image component relative path subfolder syntax",
       "anchor": "3-using-the-image-component"
     },
     {
-      "question": "How can I skip the first image in a blog post when converting it to my custom Image component?",
+      "question": "docusaurus remark plugin intercept markdown image to img conversion",
       "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
     },
     {
-      "question": "What is the purpose of writing and registering a plugin for Docusaurus to replace standard Markdown images with my custom Image component?",
+      "question": "docusaurus plugin skip first image keep intro unchanged",
+      "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
+    },
+    {
+      "question": "docusaurus image hover effect rounded corners custom component",
+      "anchor": "1-creation-of-our-image-component"
+    },
+    {
+      "question": "use custom Image tag instead of standard image in docusaurus blog post",
+      "anchor": "3-using-the-image-component"
+    },
+    {
+      "question": "docusaurus remark plugin handle relative absolute external image paths",
+      "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
+    },
+    {
+      "question": "docusaurus react component replace default image rendering",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus writing components series image",
       "anchor": "conclusion"
-    },
-    {
-      "question": "How can I handle relative paths, absolute paths, or external image URLs when using Docusaurus's built-in image conversion functionality?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the difference between editing blog posts manually and using a plugin to automate the replacement of standard Markdown images with custom Image components in Docusaurus?",
-      "anchor": ""
     }
   ]
 }

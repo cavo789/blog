@@ -1,53 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:58.947Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:58:41.779Z",
   "source": "index.md",
   "sourceHash": "bf0d646716bdd5a7db8704e74396eb05f2a6cae5",
+  "durationMs": 39586,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:16:45.956Z",
+    "articleHash": "3fbff3f3f6bbdd8059e03454beeb8bed5903d11b",
+    "questionsHash": "1d53adf4a8323f29",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What are some Git aliases for common tasks?",
+      "question": "practical .gitconfig settings to speed up daily git workflow",
       "anchor": ""
     },
     {
-      "question": "How can I create a new branch on the remote automatically when pushing?",
+      "question": "how to add a git undo alias that discards the last local commit",
       "anchor": "aliases"
     },
     {
-      "question": "What is the command to delete all dead branches in my Git repository?",
-      "anchor": "branches"
-    },
-    {
-      "question": "How do I sort my Git branches by the last commit date?",
+      "question": "git push auto create remote branch without -u",
       "anchor": "create-the-new-branch-on-the-remote-automatically"
     },
     {
-      "question": "How can I share Windows credentials with Linux for Git operations?",
+      "question": "automatically prune dead remote-tracking branches on git fetch",
       "anchor": "cleaning-dead-branches"
     },
     {
-      "question": "What is the command to force SSH instead of HTTPS globally in Git?",
+      "question": "sort git branch list by last commit date instead of alphabetical",
       "anchor": "sorting-branches-on-the-last-commit-date"
     },
     {
-      "question": "How do I prevent LF line endings from being converted to CRLF on Windows when using Git?",
-      "anchor": "credentials"
+      "question": "WSL2 share Windows Credential Manager with git",
+      "anchor": "sharing-windows-credentials-manager-with-linux"
     },
     {
-      "question": "What are some tips for customizing the Git workflow with a .gitconfig file?",
-      "anchor": ""
+      "question": "git use different credentials per folder work vs personal projects",
+      "anchor": "using-multiple-credentials-on-the-same-computer"
     },
     {
-      "question": "How can I create an alias to abandon the last local commit in Git?",
-      "anchor": "aliases"
+      "question": "force git to use SSH instead of HTTPS globally in gitconfig",
+      "anchor": "force-ssh-instead-of-https"
     },
     {
-      "question": "What is the command to automatically prune dead remote-tracking branches?",
-      "anchor": "branches"
+      "question": "git stop converting LF to CRLF on Windows",
+      "anchor": "prevent-auto-replacing-lf-with-crlf"
     },
     {
-      "question": "How do I sort my Git branches by their last commit date?",
-      "anchor": "create-the-new-branch-on-the-remote-automatically"
+      "question": "gitconfig tips WSL linux credential helper",
+      "anchor": "sharing-windows-credentials-manager-with-linux"
     }
   ]
 }

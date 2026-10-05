@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:30.000Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:40:50.551Z",
   "source": "index.md",
   "sourceHash": "1c72ce29eed437dd0eb95bfb35e21751bd425eb1",
+  "durationMs": 31749,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:01:21.448Z",
+    "articleHash": "3e404df474006875a28b89582e7bc158abda8bd6",
+    "questionsHash": "9db1c44ea6bb8e72",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I avoid too many function parameters in Bash scripts?",
+      "question": "bash function too many parameters clean code",
       "anchor": ""
     },
     {
-      "question": "What is a simple, robust associative array solution for Bash functions?",
+      "question": "how to pass multiple values to a bash function without positional arguments",
       "anchor": ""
     },
     {
-      "question": "Can you explain how to pass an object to a Bash function using an associative array instead?",
+      "question": "bash associative array as function parameter instead of multiple args",
       "anchor": ""
     },
     {
-      "question": "How does the clean-code principle apply to Bash scripts in terms of limiting function parameters?",
+      "question": "bash equivalent of passing an object to a function",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using an associative array over positional arguments for Bash functions?",
+      "question": "avoid positional argument order confusion in bash scripts",
       "anchor": ""
     },
     {
-      "question": "How do I create and use an associative array in a Bash script to pass multiple parameters to a function?",
+      "question": "bash function add new parameter without breaking existing callers",
       "anchor": ""
     },
     {
-      "question": "What are the advantages of using an associative array over positional arguments for Bash functions, particularly when dealing with complex data structures?",
+      "question": "declare -A pass to function bash",
       "anchor": ""
     },
     {
-      "question": "How can I define and use an associative array in a Bash script to pass multiple parameters to a function while ensuring that new fields can be added later without breaking existing call sites?",
+      "question": "clean code bash reduce function parameters",
+      "anchor": ""
+    },
+    {
+      "question": "why positional arguments are fragile in bash and what to use instead",
+      "anchor": ""
+    },
+    {
+      "question": "bash function 5 arguments how to clean up",
       "anchor": ""
     }
   ]

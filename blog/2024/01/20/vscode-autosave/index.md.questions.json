@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:49.464Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:47:43.729Z",
   "source": "index.md",
   "sourceHash": "21feda47eb269aed0f4c548e1ee189ffd398a02b",
+  "durationMs": 13167,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:13:38.764Z",
+    "articleHash": "1c1623a3edd6c7da5688f3317465977ff2a54056",
+    "questionsHash": "a80d71fa547f63c5",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I enable the Autosave feature in VSCode?",
+      "question": "vscode autosave",
       "anchor": ""
     },
     {
-      "question": "What is the default setting for Autosave in VSCode?",
+      "question": "how to enable autosave in vscode",
       "anchor": ""
     },
     {
-      "question": "Can you explain why Autosave is useful in VSCode?",
+      "question": "vscode save on focus change setting",
       "anchor": ""
     },
     {
-      "question": "How can I set Autosave to onFocusChange in VSCode?",
+      "question": "vscode settings.json autosave onFocusChange",
       "anchor": ""
     },
     {
-      "question": "What are some common mistakes people make when working with Autosave in VSCode?",
+      "question": "forgetting to save files in vscode",
       "anchor": ""
     },
     {
-      "question": "Why is it important to enable Autosave in VSCode?",
+      "question": "vscode auto save when switching tabs",
       "anchor": ""
     },
     {
-      "question": "How can I disable the Autosave feature in VSCode?",
+      "question": "vscode search replace multiple files unsaved",
       "anchor": ""
     },
     {
-      "question": "What are some alternative ways to manage file changes in VSCode?",
+      "question": "enable autosave vscode settings ui",
+      "anchor": ""
+    },
+    {
+      "question": "vscode auto save markdown files",
+      "anchor": ""
+    },
+    {
+      "question": "stop losing unsaved changes vscode",
       "anchor": ""
     }
   ]

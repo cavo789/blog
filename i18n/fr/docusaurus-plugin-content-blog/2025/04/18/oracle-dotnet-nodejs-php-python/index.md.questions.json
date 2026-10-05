@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:23:35.287Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e4024f64a7c41b126bf3347bdd7e31c748322e35",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "comment utiliser Oracle REST Data Services pour exposer Oracle en API REST",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no ORDS explanation given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:25:27.166Z",
+    "articleHash": "889836b5cd9cff7f3d3677ddaab2488f8250e2bd",
+    "questionsHash": "aff14703c8f0fdc4",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment se connecter à une base Oracle dans un container Docker depuis .NET NodeJS PHP et Python",
@@ -33,10 +51,6 @@
     {
       "question": "script Python et Dockerfile pour afficher les enregistrements d'Oracle",
       "anchor": "access-our-oracle-db-container-using-python"
-    },
-    {
-      "question": "comment utiliser Oracle REST Data Services pour exposer Oracle en API REST",
-      "anchor": "conclusion"
     }
   ]
 }

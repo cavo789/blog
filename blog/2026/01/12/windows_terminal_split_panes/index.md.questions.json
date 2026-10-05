@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:33.556Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:38:17.745Z",
   "source": "index.md",
   "sourceHash": "ee3f6f5664b7688f2d1d2f3ae5e8a1553d624111",
+  "durationMs": 27520,
+  "rejected": [
+    {
+      "question": "windows terminal close move split pane context menu",
+      "anchor": "control-panel-actions",
+      "reason": "not answered: Article covers keyboard shortcuts, not context menu actions for panes.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:34:20.122Z",
+    "articleHash": "fa5314412a713cd750e9dbcd6e41269835773147",
+    "questionsHash": "59705059b387b20d",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I configure Windows Terminal for multitasking with split panes?",
+      "question": "windows terminal split panes multiple projects one window",
       "anchor": ""
     },
     {
-      "question": "What are the two methods to create profiles in Windows Terminal for multitasking?",
+      "question": "how to open windows terminal settings json file",
+      "anchor": "open-windows-terminal-settings"
+    },
+    {
+      "question": "windows terminal split pane command wsl directories",
       "anchor": "create-a-new-profile-and-hardcode-the-command-line"
     },
     {
-      "question": "How can I hardcode command lines into new profiles in Windows Terminal?",
+      "question": "four quadrant layout windows terminal split pane",
+      "anchor": "create-a-new-profile-and-hardcode-the-command-line"
+    },
+    {
+      "question": "windows terminal workspace profile reuse existing profiles",
       "anchor": "create-a-workspace-profile-and-reuse-existing-profiles"
     },
     {
-      "question": "How do I reuse existing profiles in Windows Terminal to create complex workspace layouts?",
+      "question": "hide windows terminal profile from list background image",
+      "anchor": "create-a-workspace-profile-and-reuse-existing-profiles"
+    },
+    {
+      "question": "zoom in on one pane windows terminal",
       "anchor": "toggle-zoom-for-a-pane"
     },
     {
-      "question": "What are some keyboard shortcuts for managing panes in Windows Terminal?",
+      "question": "windows terminal keyboard shortcuts manage split panes",
       "anchor": "keyboard-shortcuts-to-manage-panes"
     },
     {
-      "question": "How can I toggle zoom in a pane in Windows Terminal?",
+      "question": "run same command all panes windows terminal broadcast",
       "anchor": "control-panel-actions"
-    },
-    {
-      "question": "What are some profile tricks that can be combined with panes in Windows Terminal?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the different ways to create layouts for multiple panes in Windows Terminal?",
-      "anchor": ""
     }
   ]
 }

@@ -2,10 +2,46 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:33:10.673Z",
-  "durationMs": 145852,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b0358291ff268e578a2c5b300518aba813ecd969",
+  "durationMs": 145852,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "ajouter un conteneur Adminer ou phpmyadmin à mon docker compose joomla",
+      "anchor": "",
+      "reason": "not answered: Only mentions the topic and links to another article for details.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "configurer un volume persistant pour les données de joomla dans docker",
+      "anchor": "",
+      "reason": "not answered: Only mentions the topic and links to another article for details.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "comment augmenter la limite de taille des fichiers uploadés dans joomla docker",
+      "anchor": "",
+      "reason": "not answered: Only mentions the topic and links to another article for details.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "modifier php.ini quand on utilise l'image officielle joomla sur docker",
+      "anchor": "",
+      "reason": "not answered: Only mentions the topic and links to another article for details.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:48:40.467Z",
+    "articleHash": "97f1c276f96c0fdd831e5f1c53971960e65e05d7",
+    "questionsHash": "11e3480dce374209",
+    "status": "applied",
+    "rejected": 4,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment lancer joomla avec docker en moins de 5 minutes",
@@ -21,22 +57,6 @@
     },
     {
       "question": "où récupérer le snippet docker compose officiel sur Docker Hub",
-      "anchor": ""
-    },
-    {
-      "question": "ajouter un conteneur Adminer ou phpmyadmin à mon docker compose joomla",
-      "anchor": ""
-    },
-    {
-      "question": "configurer un volume persistant pour les données de joomla dans docker",
-      "anchor": ""
-    },
-    {
-      "question": "comment augmenter la limite de taille des fichiers uploadés dans joomla docker",
-      "anchor": ""
-    },
-    {
-      "question": "modifier php.ini quand on utilise l'image officielle joomla sur docker",
       "anchor": ""
     },
     {

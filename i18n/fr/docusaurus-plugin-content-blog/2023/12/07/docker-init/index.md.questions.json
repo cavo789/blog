@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:48:58.794Z",
-  "durationMs": 143613,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ca6fa7134f3894629aa59362d4ece877b1adc1b7",
+  "durationMs": 143613,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:17:55.748Z",
+    "articleHash": "ecdff7b621a2e5027a7d730898436e443a996530",
+    "questionsHash": "a925e6f19c52a9c2",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment utiliser docker init pour php apache sous docker desktop 4.26",

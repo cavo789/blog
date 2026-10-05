@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:45:55.001Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:28:07.551Z",
   "source": "index.md",
   "sourceHash": "1f060dd284ca5e9aa253e0899b4263176f4de1ca",
+  "durationMs": 31475,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:55:48.328Z",
+    "articleHash": "ab03ca8140d445f4aafa8b14e73a6523701561a3",
+    "questionsHash": "b8f3edaf1950511b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I load environment variables from a .env file in Bash?",
+      "question": "source .env bash",
       "anchor": ""
     },
     {
-      "question": "What is the correct way to load a .env file's variables into a Bash script's environment?",
+      "question": "how to load .env file into bash script environment",
       "anchor": ""
     },
     {
-      "question": "How can I use an external configuration file in my Bash scripts to manage constants and reuse variables across applications like Laravel?",
+      "question": "bash env file value contains spaces not working",
       "anchor": ""
     },
     {
-      "question": "What is the best solution to avoid problems with spaces when loading environment variables from a .env file into a Bash script?",
+      "question": "export $(cat .env) unreliable with spaces",
       "anchor": ""
     },
     {
-      "question": "How can I use source to load an external file's variables into my Bash script's environment?",
+      "question": "reuse Laravel .env in a bash script",
       "anchor": ""
     },
     {
-      "question": "What are some best practices for using environment files in Bash scripts?",
+      "question": "bash source file variables removed when script exits",
       "anchor": ""
     },
     {
-      "question": "How can I compare two .env files to spot the key variables that might have been forgotten?",
+      "question": "bash externalize configuration to env file",
       "anchor": ""
     },
     {
-      "question": "What are some tools available for batch editing environment files in Bash scripts?",
+      "question": "source vs export cat env file bash",
+      "anchor": ""
+    },
+    {
+      "question": "bash script read .env file correctly",
+      "anchor": ""
+    },
+    {
+      "question": "load .env variables into bash without breaking spaces",
       "anchor": ""
     }
   ]

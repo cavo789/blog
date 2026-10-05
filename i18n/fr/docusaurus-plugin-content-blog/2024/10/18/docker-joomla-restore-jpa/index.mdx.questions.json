@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:53:41.429Z",
-  "durationMs": 143129,
   "source": "index.mdx",
-  "locale": "fr",
   "sourceHash": "42224ddbe093b77a1330a553bf7ede7b21d474e1",
+  "durationMs": 143129,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:54:16.244Z",
+    "articleHash": "030423a0fd1288f2a211f0d340624f1bcdd8c9bc",
+    "questionsHash": "1e5b7bf550d6bcfe",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment restaurer un site Joomla en local avec Docker et Akeeba Kickstart ?",
@@ -29,7 +39,7 @@
     },
     {
       "question": "Pourquoi construire une image PHP/Apache sur mesure via Dockerfile au lieu d'utiliser une image Joomla toute faite ?",
-      "anchor": "we-also-need-a-file-called-dockerfile"
+      "anchor": "why-it-works"
     },
     {
       "question": "Quel type d'archive Akeeba Backup faut-il récupérer pour la restauration ?",
@@ -45,7 +55,7 @@
     },
     {
       "question": "Finaliser la configuration de la base de données dans le navigateur après l'import Docker",
-      "anchor": "conclusion"
+      "anchor": "run-the-importation-process"
     }
   ]
 }

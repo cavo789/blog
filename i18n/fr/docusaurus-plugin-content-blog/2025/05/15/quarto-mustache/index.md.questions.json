@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:34:39.919Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "d9f9f756132293252dfa851f226704e651bd3e4d",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:28:55.197Z",
+    "articleHash": "8aec04feb634280b95dc075a0ea859068472c7d5",
+    "questionsHash": "f5a50522f964fa65",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment utiliser Mustache dans Quarto pour structurer une documentation statique ?",
@@ -20,7 +30,7 @@
     },
     {
       "question": "Quel est le flux de rendu HTML entre le Markdown source et un fichier partial inclus ?",
-      "anchor": "what-have-we-just-done"
+      "anchor": "lets-discover-the-basics"
     },
     {
       "question": "génération site statique 80 fonctions structure identique pipeline Quarto",

@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-20T16:44:01.258Z",
-  "durationMs": 199513,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c031d3556aba278a056e74fe817dae5a7581e4bd",
+  "durationMs": 199513,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Windows Terminal split panes affichage côte à côte",
+      "anchor": "going-further",
+      "reason": "not answered: Only links to another article; no split-pane instructions given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:11:59.300Z",
+    "articleHash": "08323c1698f0653cd6936f12166cccdbe2a89598",
+    "questionsHash": "3b8de2f8b3873ba9",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Windows Terminal remplacer console DOS classique",
@@ -34,10 +52,6 @@
     {
       "question": "configurer l'ouverture de plusieurs onglets au démarrage de Windows Terminal",
       "anchor": "open-multiple-tabs-during-the-startup-process"
-    },
-    {
-      "question": "Windows Terminal split panes affichage côte à côte",
-      "anchor": "going-further"
     }
   ]
 }

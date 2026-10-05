@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:29:56.470Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "acd2b96d22988c16ee77107a6a3efceb443cacb0",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "utiliser les panneaux divisés avec un profil ssh dans Windows Terminal",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no split-pane instructions given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:08:11.736Z",
+    "articleHash": "8733ef891c00c59c945b51b746dade89586eddba",
+    "questionsHash": "bb09634fe04fe951",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment ajouter un profil ssh à Windows Terminal pour accélérer les connexions serveur",
@@ -32,15 +50,11 @@
     },
     {
       "question": "adapter ce profil ssh à n'importe quel hébergement distant",
-      "anchor": "more-demos"
+      "anchor": "add-a-profile-for-any-ssh-connection"
     },
     {
       "question": "personnaliser l'apparence d'un profil avec une image de fond",
       "anchor": "adding-a-background-image-optional"
-    },
-    {
-      "question": "utiliser les panneaux divisés avec un profil ssh dans Windows Terminal",
-      "anchor": "conclusion"
     }
   ]
 }

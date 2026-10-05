@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-30T08:10:57.215Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:12:30.228Z",
   "source": "index.md",
   "sourceHash": "a587ff517544330ff74dfeeada9d89f4da4e37ca",
+  "durationMs": 22401,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:42:01.318Z",
+    "articleHash": "2d206575d52a0642042905af55ddd4e259a179b4",
+    "questionsHash": "499d5667af70e9cb",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What are the benefits of using Laravel Filament in a real project?",
-      "anchor": "why-bother-with-filament-in-a-real-project"
-    },
-    {
-      "question": "How does Filament simplify admin interface development with Laravel?",
-      "anchor": "why-bother-with-filament-in-a-real-project"
-    },
-    {
-      "question": "Why should I consider using Laravel Filament instead of Laravel Nova?",
-      "anchor": "why-bother-with-filament-in-a-real-project"
-    },
-    {
-      "question": "What are the main features and benefits of Laravel Filament?",
+      "question": "laravel filament vs nova free alternative",
       "anchor": ""
     },
     {
-      "question": "How does Filament generate CRUD screens from a single PHP class?",
-      "anchor": "why-bother-with-filament-in-a-real-project"
-    },
-    {
-      "question": "Can you explain how Filament handles authorization in relation to Laravel's policies?",
-      "anchor": "why-bother-with-filament-in-a-real-project"
-    },
-    {
-      "question": "What are the additional features and plugins available for Filament?",
+      "question": "TALL stack admin components laravel",
       "anchor": ""
     },
     {
-      "question": "How does Filament compare to other back-office tools like Nova or Backpack?",
-      "anchor": ""
+      "question": "generate CRUD screens from single Eloquent model class laravel",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "laravel admin panel without separate React or Vue frontend",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "filament laravel reuse existing policies for authorization",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "laravel back office many-to-many pivot table form",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "laravel admin panel spatie permissions plugin filament",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "laravel filament plugin import export impersonation multi-tenancy",
+      "anchor": "why-bother-with-filament-in-a-real-project"
+    },
+    {
+      "question": "laravel filament internal tooling vs customer facing UI",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "quick back office laravel filament worth it",
+      "anchor": "conclusion"
     }
   ]
 }

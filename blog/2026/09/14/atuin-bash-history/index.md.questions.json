@@ -1,53 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-13T18:03:40.458Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:18:12.365Z",
   "source": "index.md",
   "sourceHash": "4710f2e1b9ae346801626d83065ab53d5a57df39",
+  "durationMs": 23105,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:09:29.591Z",
+    "articleHash": "d51e87ff11ce59aed709266eb717fdb2283264cc",
+    "questionsHash": "98f2ecb331a33726",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is Atuin?",
+      "question": "shell history with timestamps exit codes working directory",
       "anchor": "what-is-atuin"
     },
     {
-      "question": "How does Atuin work with timestamps and context?",
+      "question": "what is atuin shell history replacement sqlite",
+      "anchor": "what-is-atuin"
+    },
+    {
+      "question": "try atuin in docker container without installing",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "Can I sync my Atuin history across multiple machines?",
-      "anchor": "installing-atuin"
-    },
-    {
-      "question": "What are the main features of Atuin's TUI?",
+      "question": "atuin install linux",
       "anchor": "just-use-homebrew"
     },
     {
-      "question": "How can I install Atuin on Bash and ZSH?",
+      "question": "atuin homebrew",
+      "anchor": "just-use-homebrew"
+    },
+    {
+      "question": "atuin winget windows",
       "anchor": "on-windows-winget"
     },
     {
-      "question": "Is Atuin compatible with Fish and Nushell?",
+      "question": "atuin install without apt or brew",
       "anchor": "without-a-package-manager"
     },
     {
-      "question": "What is the difference between Atuin and FZF history search?",
-      "anchor": "last-resort-the-official-one-liner"
-    },
-    {
-      "question": "How can I import my existing shell history into Atuin?",
+      "question": "atuin bash zsh shell hook setup",
       "anchor": "wiring-atuin-into-your-shell"
     },
     {
-      "question": "Can I configure Atuin to sync my history with a cloud service?",
-      "anchor": "bash"
-    },
-    {
-      "question": "What are some common use cases for Atuin?",
-      "anchor": "zsh"
-    },
-    {
-      "question": "How can I search for specific commands in Atuin's history?",
+      "question": "import existing .bash_history into atuin",
       "anchor": "import-your-existing-history"
+    },
+    {
+      "question": "atuin vs fzf history search",
+      "anchor": "atuin-vs-fzf-history"
+    },
+    {
+      "question": "atuin config filter by directory and host",
+      "anchor": "configuring-atuin"
     }
   ]
 }

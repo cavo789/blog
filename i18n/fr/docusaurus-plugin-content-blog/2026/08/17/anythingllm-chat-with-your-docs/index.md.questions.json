@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:39:01.783Z",
-  "durationMs": 178628,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "4c61959b107316e2400c0300660a5141478a8d32",
+  "durationMs": 178628,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:35:59.817Z",
+    "articleHash": "ef1b7c6735a362b63dad33633d94b2456fa446aa",
+    "questionsHash": "b3c29ded7498b9a7",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment transformer des docs éparpillés en base de connaissances interrogeable avec un LLM local",

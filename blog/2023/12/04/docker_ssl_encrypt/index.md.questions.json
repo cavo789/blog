@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:51:16.958Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:19:03.965Z",
   "source": "index.md",
   "sourceHash": "54a3db71ccf21ad5e977c46c0c8791f633e35a79",
+  "durationMs": 22196,
+  "rejected": [
+    {
+      "question": "git pre-commit hook gitleaks trufflehog refuse leaked credentials",
+      "anchor": "use-case",
+      "reason": "not answered: Only a passing mention with a link to another page; no setup provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:47:31.922Z",
+    "articleHash": "8f0658d0aa86b82e9e1859c14ddd41b550dbca46",
+    "questionsHash": "97d58906191c8ffe",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What is Docker used for in this article?",
+      "question": "encrypt file openssl docker no install needed linux windows",
       "anchor": ""
     },
     {
-      "question": "Why does the article use OpenSSL with Docker?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I encrypt a file using Docker and OpenSSL?",
+      "question": "docker openssl enc base64 text file output example",
       "anchor": "what-this-looks-like"
     },
     {
-      "question": "What are the benefits of using Docker for encryption?",
+      "question": "why does the openssl docker container leave no key material or temp files on my machine",
       "anchor": "why-it-works"
     },
     {
-      "question": "Can you explain how to decrypt files encrypted with Docker and OpenSSL?",
+      "question": "bash dos script openssl docker aes-256-cbc pbkdf2 encrypt decrypt",
       "anchor": "the-scripts"
     },
     {
-      "question": "How do I securely store secrets in Git repositories or cloud drives?",
+      "question": "openssl decrypt to stdout only no output file docker",
       "anchor": "decrypt-on-the-console-dont-write-a-file"
     },
     {
-      "question": "What are some common use cases for encrypting sensitive data using Docker and OpenSSL?",
+      "question": "encrypt sensitive file before pushing to github or google drive",
       "anchor": "use-case"
     },
     {
-      "question": "What are the arguments you can use with the openssl command in this article?",
+      "question": "openssl enc -aes-256-cbc -pbkdf2 -base64 -d -in -out -pass options explained",
       "anchor": "the-openssl-arguments-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "encrypt credentials file with docker openssl two scripts one password",
+      "anchor": "the-scripts"
+    },
+    {
+      "question": "windows batch script docker openssl password prompt encrypt file",
+      "anchor": "the-scripts"
+    },
+    {
+      "question": "docker image openssl ephemeral container removed after encrypt",
+      "anchor": "why-it-works"
     }
   ]
 }

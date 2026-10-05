@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:21:28.566Z",
-  "durationMs": 132713,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "bba839cf7be9a8492eb8d4b966d7ecc1d2e2ff90",
+  "durationMs": 132713,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "exécuter plusieurs gui docker simultanément sur un système wsl2",
+      "anchor": "conclusion",
+      "reason": "not answered: WSL2 mentioned in passing; no guidance on running multiple GUIs simultaneously.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:45:16.422Z",
+    "articleHash": "9277e6fc0b56ad0a165a87575b51b491bab224e4",
+    "questionsHash": "b38d31a03f5e7efc",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment afficher une interface graphique linux depuis un container docker sur la machine hôte",
@@ -34,10 +52,6 @@
     {
       "question": "image docker gimp et lancement de l'interface dans une fenêtre hôte",
       "anchor": "creating-our-own-gimp-docker-image"
-    },
-    {
-      "question": "exécuter plusieurs gui docker simultanément sur un système wsl2",
-      "anchor": "conclusion"
     }
   ]
 }

@@ -2,22 +2,32 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T19:50:16.126Z",
-  "durationMs": 179052,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "98cee616ed85058ffa5a9c3ed4537e1cc089dafb",
+  "durationMs": 179052,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:00:30.998Z",
+    "articleHash": "ad5c63d0f60076ff2727bac17a1c09c9156a8065",
+    "questionsHash": "29c8a9612f897faa",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
       "question": "docker persister les données entre l'hôte et le container",
-      "anchor": ""
+      "anchor": "what--v-does-for-you"
     },
     {
       "question": "comment synchroniser un dossier local avec un container php en cours d'exécution",
-      "anchor": ""
+      "anchor": "what--v-does-for-you"
     },
     {
       "question": "docker run -v $(pwd):/var/www/html sert à quoi exactement",
-      "anchor": "what--v-does-for-you"
+      "anchor": "why-it-works"
     },
     {
       "question": "synchroniser dossier local et container apache en direct",
@@ -25,7 +35,7 @@
     },
     {
       "question": "comment éviter que les fichiers créés par docker appartiennent à root sur l'hôte",
-      "anchor": "why-it-works"
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
       "question": "différence entre stockage en mémoire et bind mount dans docker",

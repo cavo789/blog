@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:28.048Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:51:51.174Z",
   "source": "index.md",
   "sourceHash": "495313d9b207a81f36bb820dd18ce8f1c23705f4",
+  "durationMs": 17900,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:11:43.560Z",
+    "articleHash": "41984691274c0925089ef2f59d0027440284c888",
+    "questionsHash": "b61e26f53e589226",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I connect to an SFTP server using WinSCP from VBA?",
+      "question": "WinSCP VBA upload file Excel",
       "anchor": ""
     },
     {
-      "question": "What are the steps to upload files securely using WinSCP in VBA?",
+      "question": "how to call WinSCP DLL from VBA code",
       "anchor": ""
     },
     {
-      "question": "How can I handle errors during file transfers with WinSCP in VBA?",
+      "question": "SFTP transfer from Excel VBA",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using WinSCP's .NET/COM library for VBA automation?",
+      "question": "WinSCP COM object VBA connect SSH",
       "anchor": ""
     },
     {
-      "question": "How can I download files from a remote server using WinSCP in VBA?",
+      "question": "automate FTP upload from MS Excel using WinSCP",
       "anchor": ""
     },
     {
-      "question": "What are some alternative methods to automate file transfers with WinSCP besides VBA?",
+      "question": "VBA WinSCP SSH host key fingerprint",
       "anchor": ""
     },
     {
-      "question": "How can I use WinSCP's scripting language for simple file transfers?",
+      "question": "how to upload file to remote server from Excel VBA",
       "anchor": ""
     },
     {
-      "question": "What are some examples of using WinSCP in Excel to automate file transfers?",
+      "question": "WinSCP .NET library VBA error handling",
+      "anchor": ""
+    },
+    {
+      "question": "call WinSCP from Excel macro SFTP",
+      "anchor": ""
+    },
+    {
+      "question": "VBA code transfer file SFTP WinSCP credentials",
       "anchor": ""
     }
   ]

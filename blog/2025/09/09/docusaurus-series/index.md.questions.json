@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:09:04.613Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:18:25.933Z",
   "source": "index.md",
   "sourceHash": "c5f698fe46c3933be470e5120870cdaed8fca4b3",
+  "durationMs": 27075,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:16:16.461Z",
+    "articleHash": "af0558f2005d263246c084f57b66871106c63250",
+    "questionsHash": "f8edca3ddefb3851",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I create a custom SeriesPosts component for organizing Docusaurus blog posts?",
+      "question": "docusaurus group blog posts into a series",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of using a custom SeriesPosts component in Docusaurus?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I create a helper function to scan Markdown files and extract properties for blog posts?",
+      "question": "how to build a series posts component in docusaurus",
       "anchor": "part-1---creation-of-the-seriesposts-component"
     },
     {
-      "question": "What is the purpose of the 'This article is part of...' message in the SeriesPosts component?",
+      "question": "docusaurus helper function scan blog markdown front matter",
       "anchor": "11-we-need-some-helpers"
     },
     {
-      "question": "How do I create a second helper function for fetching post data in the SeriesPosts component?",
-      "anchor": "part-1---creation-of-the-seriesposts-component"
+      "question": "how to show a \"this article is part of\" banner in docusaurus blog",
+      "anchor": "12-our-seriesposts-component"
     },
     {
-      "question": "What is the purpose of the 'series' property in blog posts and how does it work with the SeriesPosts component?",
-      "anchor": "11-we-need-some-helpers"
+      "question": "add series property to docusaurus blog post YAML front matter",
+      "anchor": "13-editing-our-articles"
     },
     {
-      "question": "How do I create a custom local plugin to handle dynamic series routes in Docusaurus?",
+      "question": "override BlogPostItem template docusaurus swizzling",
+      "anchor": "14-overriding-the-blogpostitem-template"
+    },
+    {
+      "question": "docusaurus blog series navigation page",
+      "anchor": "part-2---adding-a-navigation-to-series"
+    },
+    {
+      "question": "create SeriesCards component docusaurus",
+      "anchor": "22-creation-of-the-seriescards-component"
+    },
+    {
+      "question": "docusaurus local plugin for /series/slug dynamic route",
       "anchor": "25-handling-the-seriesslug-url"
     },
     {
-      "question": "What are some techniques used all over this series, and how do they work with the SeriesPosts component?",
-      "anchor": ""
+      "question": "docusaurus series.js data file customize series image and description",
+      "anchor": "part-3---adding-a-srcdataseriesjs-file-for-customization"
     }
   ]
 }

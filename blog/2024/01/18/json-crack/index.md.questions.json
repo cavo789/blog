@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:45.214Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:47:01.807Z",
   "source": "index.md",
   "sourceHash": "4acd0dea0ab6cf6bb376301c6db0d48c29365c11",
+  "durationMs": 26000,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:12:51.548Z",
+    "articleHash": "5cb9f13623f133d7b34b363200e52255815a3e46",
+    "questionsHash": "e63b931a57f34882",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How does JSON Crack render complex JSON data?",
+      "question": "visualize json as mind map",
       "anchor": ""
     },
     {
-      "question": "What is the free version of JSON Crack's limitation regarding JSON content lines?",
+      "question": "how to see deeply nested json as a tree diagram in browser",
       "anchor": ""
     },
     {
-      "question": "What are some other tools that can be used to generate fake JSON data?",
+      "question": "json crack free version line limit workaround",
       "anchor": ""
     },
     {
-      "question": "How does the free version of JSON Crack compare to Markmap in terms of functionality?",
+      "question": "vscode extension render json as visual diagram",
       "anchor": ""
     },
     {
-      "question": "What are some other diagram-as-code tools available besides JSON Crack and Markmap?",
+      "question": "json crack vs markmap difference",
       "anchor": ""
     },
     {
-      "question": "How can I represent Spider-Man as a JSON object using JSON Crack?",
+      "question": "diagram as code json structures",
       "anchor": ""
     },
     {
-      "question": "What are the advantages of using an image representation for JSON data?",
+      "question": "free online tool convert json to interactive mind map",
       "anchor": ""
     },
     {
-      "question": "How can I install the VSCode extension alternative for JSON Crack?",
+      "question": "json too complex to read as text visual alternative",
+      "anchor": ""
+    },
+    {
+      "question": "json crack no install browser",
+      "anchor": ""
+    },
+    {
+      "question": "read json object structure at a glance without drawing diagram",
       "anchor": ""
     }
   ]

@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:11.176Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:26:28.029Z",
   "source": "index.md",
   "sourceHash": "ba03cc684ccfab0cfb33b7eeab6358e7496d3ef6",
+  "durationMs": 17472,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:48:04.316Z",
+    "articleHash": "5a11b417590ed9a70ae9ea91df28d40d1a6ea2ba",
+    "questionsHash": "fcf27bb24ad6225d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I apply inline CSS styles in Quarto for HTML documents?",
+      "question": "quarto inline css span syntax []{}",
       "anchor": ""
     },
     {
-      "question": "What is the syntax for applying inline CSS styles in Quarto?",
+      "question": "how to color text in quarto without defining a css class",
       "anchor": ""
     },
     {
-      "question": "How do I apply a specific color to text using inline CSS in Quarto?",
+      "question": "quarto inline style not rendering in pdf or docx output",
       "anchor": ""
     },
     {
-      "question": "What is the syntax for applying background styles in Quarto?",
+      "question": "quick way to highlight a word with background color in quarto markdown",
       "anchor": ""
     },
     {
-      "question": "How do I apply different font sizes to text using inline CSS in Quarto?",
+      "question": "quarto inline css vs creating a full stylesheet class",
       "anchor": ""
     },
     {
-      "question": "What is the syntax for applying inline styles in Quarto for HTML documents without creating a CSS class?",
+      "question": "quarto span syntax apply css properties to inline text html",
       "anchor": ""
     },
     {
-      "question": "How do I apply multiple styles to text using inline CSS in Quarto?",
+      "question": "quarto inline style silently ignored word pdf",
       "anchor": ""
     },
     {
-      "question": "What is the syntax for applying inline styles in Quarto for HTML documents without affecting Word or PDF output?",
+      "question": "how to make text red in quarto without writing a stylesheet",
+      "anchor": ""
+    },
+    {
+      "question": "quarto inline css html only not docx",
+      "anchor": ""
+    },
+    {
+      "question": "quarto markdown quick text styling without css file",
       "anchor": ""
     }
   ]

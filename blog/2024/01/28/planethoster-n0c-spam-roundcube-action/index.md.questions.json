@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:31.882Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:56:16.315Z",
   "source": "index.md",
   "sourceHash": "dd03dbf40697bbebfbefa231f5b4da94679d4909",
+  "durationMs": 31560,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:20:38.835Z",
+    "articleHash": "ba5669f535afcec944fa9fe3f417d9bcfeae6a8f",
+    "questionsHash": "cce3d37a5bac3d18",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I automate RoundCube Sieve filters using GitHub Actions?",
-      "anchor": "adding-github-actions"
+      "question": "RoundCube spam filter automation github actions PlanetHoster",
+      "anchor": ""
     },
     {
-      "question": "What are the steps to create a RoundCube Sieve filter generator script?",
-      "anchor": "our-action-plan"
+      "question": "generate RoundCube sieve file from JSON domain list",
+      "anchor": "create-the-generation-script"
     },
     {
-      "question": "How can I deploy the generated RoundCube Sieve filter file using FTP?",
-      "anchor": "deploying-the-file-by-ftp"
-    },
-    {
-      "question": "What is the purpose of the JSON list in the RoundCube Sieve filter generator script?",
-      "anchor": "building-the-generator"
-    },
-    {
-      "question": "How do I create a sieve template for RoundCube filters?",
-      "anchor": "create"
-    },
-    {
-      "question": "What is the objective of creating a RoundCube Sieve filter generator script?",
+      "question": "how does RoundCube sieve file structure work for blocking sender domains",
       "anchor": "the-idea"
     },
     {
-      "question": "How can I automate the process of adding and deploying RoundCube Sieve filters using GitHub Actions?",
-      "anchor": "automating-it-with-github-actions-optional"
+      "question": "bash script read json array output sieve rules jq",
+      "anchor": "create-the-generation-script"
     },
     {
-      "question": "What is the structure of the generated RoundCube Sieve filter file?",
+      "question": "json file format for RoundCube blocklist domains",
       "anchor": "storing-the-list-of-values-in-a-json-file"
+    },
+    {
+      "question": "sieve template roundcube spam filter block sender",
+      "anchor": "create-our-template"
+    },
+    {
+      "question": "jq parse json generate .sieve file bash script",
+      "anchor": "create-the-generation-script"
+    },
+    {
+      "question": "upload .sieve file PlanetHoster N0C FTP roundcube",
+      "anchor": "deploying-the-file-by-ftp"
+    },
+    {
+      "question": "github actions workflow ftp deploy sieve file on push",
+      "anchor": "adding-github-actions"
+    },
+    {
+      "question": "github actions yaml workflow ftp credentials sieve deploy",
+      "anchor": "adding-github-actions"
+    },
+    {
+      "question": "push json github actions auto deploy roundcube filter",
+      "anchor": "everything-is-now-in-place-for-automation"
+    },
+    {
+      "question": "stop manually adding spam filters in RoundCube interface",
+      "anchor": "conclusion"
     }
   ]
 }

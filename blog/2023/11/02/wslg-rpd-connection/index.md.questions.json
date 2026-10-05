@@ -1,32 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:47:26.537Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:01:34.294Z",
   "source": "index.md",
   "sourceHash": "8ce2daa1874378783c591f8e9377de24ec043abb",
+  "durationMs": 30209,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:31:49.443Z",
+    "articleHash": "3e12d6a423b2e45bde72a28c0d80296ea7167249",
+    "questionsHash": "d016304980279f9c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I install xrdp on WSLg Ubuntu?",
+      "question": "RDP into WSL2 Ubuntu full desktop",
+      "anchor": ""
+    },
+    {
+      "question": "how to get a complete Linux desktop from WSL on Windows",
+      "anchor": ""
+    },
+    {
+      "question": "what does RDP to WSL look like with Xfce",
+      "anchor": "what-an-rdp-session-into-wsl-actually-looks-like"
+    },
+    {
+      "question": "xrdp port 3389 already in use WSL",
       "anchor": "get-xrdp-running"
     },
     {
-      "question": "What are the steps to configure xrdp to use a different port than the default?",
+      "question": "start xrdp service WSL2 systemctl",
       "anchor": "get-xrdp-running"
     },
     {
-      "question": "How do I connect to my WSLg Ubuntu instance using RDP from Windows?",
+      "question": "mstsc localhost:3390 WSL connection refused",
       "anchor": "connect-from-windows"
     },
     {
-      "question": "What are the steps to install a full Xfce desktop environment on my WSLg Ubuntu instance?",
+      "question": "connect to WSL from Windows RDP client",
+      "anchor": "connect-from-windows"
+    },
+    {
+      "question": "xrdp shows only bash console not desktop WSL",
       "anchor": "get-the-desktop-environment"
     },
     {
-      "question": "How do I set up the keyboard layout for RDP connections to my WSLg Ubuntu instance?",
+      "question": "configure xrdp xfce4-session .xsession WSL",
+      "anchor": "get-the-desktop-environment"
+    },
+    {
+      "question": "keyboard layout wrong in RDP WSL",
       "anchor": "set-your-keyboard"
     },
     {
-      "question": "What are the steps to enable and restart the Remote Desktop Protocol Server on my WSLg Ubuntu instance after installing Xfce?",
+      "question": "WSLg vs xrdp full desktop which is better",
       "anchor": "conclusion"
     }
   ]

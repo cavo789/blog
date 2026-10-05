@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-20T16:38:05.517Z",
-  "durationMs": 112378,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "82abfa4a4c1aecdc2f6aecfacbf72e6f1bea21ca",
+  "durationMs": 112378,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:57:32.448Z",
+    "articleHash": "52c3e0151d79cfcdfe4a9f17c8f47fafe6e755fb",
+    "questionsHash": "4aa4965f280c841e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "`docker compose` extra_hosts pour résoudre un alias hôte dans un autre container",
-      "anchor": ""
+      "anchor": "the-two-line-fix"
     },
     {
       "question": "comment ajouter une entrée hosts dans un service `docker compose` ?",
@@ -29,7 +39,7 @@
     },
     {
       "question": "pourquoi `curl` échoue-t-il vers `127.0.0.1:8080` depuis un container docker ?",
-      "anchor": "when-it-doesnt-work-and-why"
+      "anchor": "why-it-works"
     },
     {
       "question": "connecter un container docker au même réseau qu'un autre service",

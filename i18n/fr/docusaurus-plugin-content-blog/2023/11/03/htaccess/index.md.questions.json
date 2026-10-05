@@ -2,15 +2,29 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T19:53:23.188Z",
-  "durationMs": 153966,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "04bd93bf379118841a511404560396ad65b8aef8",
-  "questions": [
+  "durationMs": 153966,
+  "locale": "fr",
+  "rejected": [
     {
       "question": "Comment configurer .htaccess pour tester des redirections Apache en local avec Docker ?",
-      "anchor": ""
-    },
+      "anchor": "",
+      "reason": "not answered: Docker setup is a link to another article, not provided here",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:01:38.510Z",
+    "articleHash": "0ee845c5fb36f9f403b04ccaa55acb5b44088341",
+    "questionsHash": "6868164285e7ff9f",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 4
+  },
+  "questions": [
     {
       "question": "Exemples de règles Content Security Policy pour Apache",
       "anchor": "csp---content-security-policy"
@@ -25,15 +39,15 @@
     },
     {
       "question": "Forcer le HTTPS et le www avec HSTS preload dans .htaccess",
-      "anchor": "force"
+      "anchor": "force-display"
     },
     {
       "question": "Désactiver les erreurs Apache en production via .htaccess",
-      "anchor": "misc"
+      "anchor": "disable-error-reporting"
     },
     {
       "question": "Ajouter des en-têtes expires et activer les ETags pour la mise en cache",
-      "anchor": "compress-files-based-on-their-type-or-extensions"
+      "anchor": "add-expiration-expires-headers"
     },
     {
       "question": "Refuser l'accès à un dossier entier dans .htaccess",
@@ -45,7 +59,7 @@
     },
     {
       "question": "Configurer une redirection permanente ou temporaire vers un sous-dossier dans .htaccess",
-      "anchor": "redirect"
+      "anchor": "redirect-a-subfolder"
     },
     {
       "question": "Comment empêcher les moteurs de recherche d'indexer un répertoire via .htaccess ?",

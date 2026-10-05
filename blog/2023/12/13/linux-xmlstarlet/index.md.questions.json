@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:04.148Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:24:44.697Z",
   "source": "index.md",
   "sourceHash": "f91466b3e847028a8a63095dec2aece8443fc932",
+  "durationMs": 22143,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:52:49.148Z",
+    "articleHash": "42943d90ed8720afd927aeaf658a9d40de5351c0",
+    "questionsHash": "d3c82c6e625ddbe4",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I use xmlstarlet to filter XML data?",
-      "anchor": "understanding-the-xpath-expression"
-    },
-    {
-      "question": "What is the purpose of xmlstarlet in Linux command line?",
+      "question": "xmlstarlet linux XML command line tool",
       "anchor": ""
     },
     {
-      "question": "How can I install xmlstarlet on my system?",
-      "anchor": "conclusion"
+      "question": "extract one word from minified XML file without writing parser code",
+      "anchor": "a-wall-of-xml-in-one-word-out"
     },
     {
-      "question": "What are the steps to create a new file using xmlstarlet?",
-      "anchor": "lets-play"
+      "question": "xmlstarlet sel -t -v XPath attribute filter book category",
+      "anchor": "a-wall-of-xml-in-one-word-out"
     },
     {
-      "question": "How do I use XPath expressions with xmlstarlet to filter XML data?",
-      "anchor": "understanding-the-xpath-expression"
-    },
-    {
-      "question": "What is the difference between xmlstarlet and jq for Linux command line?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I beautify an XML file using xmlstarlet?",
+      "question": "pretty print XML file command line linux",
       "anchor": "beautifying-the-file"
     },
     {
-      "question": "What is the purpose of Docker in this article?",
+      "question": "xmlstarlet format --indent-spaces 4",
+      "anchor": "beautifying-the-file"
+    },
+    {
+      "question": "run xmlstarlet in docker container without installing locally",
       "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "install xmlstarlet apt",
+      "anchor": "installing-xmlstarlet"
+    },
+    {
+      "question": "xmlstarlet data.xml demo reproduce",
+      "anchor": "lets-play"
+    },
+    {
+      "question": "XPath //book[@category='children']/title how it works",
+      "anchor": "understanding-the-xpath-expression"
+    },
+    {
+      "question": "filter XML nodes by attribute value xpath expression",
+      "anchor": "understanding-the-xpath-expression"
+    },
+    {
+      "question": "xmlstarlet pipe bash script",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "xmlstarlet equivalent jq XML",
+      "anchor": "conclusion"
     }
   ]
 }

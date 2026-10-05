@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:13:49.755Z",
-  "durationMs": 178782,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ce56157ac4cfbd853d91df2c8083e846329706f5",
+  "durationMs": 178782,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:27:33.210Z",
+    "articleHash": "2e5676ec3eafea5ceb34432444c28b2411687d7c",
+    "questionsHash": "18322bb79f46c519",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Animer les blocs de commandes CLI dans un blog Docusaurus",

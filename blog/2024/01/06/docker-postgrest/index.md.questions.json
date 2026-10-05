@@ -1,57 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:43.417Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:44:18.865Z",
   "source": "index.md",
   "sourceHash": "b3590bd9b00bdceb885df800ac6fc6c19ce9c65a",
+  "durationMs": 23360,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:10:11.677Z",
+    "articleHash": "df1f903c79cfab9c9ebe29564003a6780cc328c6",
+    "questionsHash": "585d953f31cf880e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What is PostgREST?",
+      "question": "turn PostgreSQL into REST API without writing backend code",
       "anchor": "what-postgrest-does-for-you"
     },
     {
-      "question": "Why use PostgREST instead of writing queries in my application code?",
+      "question": "PostgREST table to JSON endpoint no controller no model",
+      "anchor": "what-postgrest-does-for-you"
+    },
+    {
+      "question": "replace ORM model layer with database schema as API",
       "anchor": "why-it-works"
     },
     {
-      "question": "How does PostgREST work with database permissions?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What is the difference between PostgREST and traditional RESTful APIs?",
-      "anchor": "what-postgrest-does-for-you"
-    },
-    {
-      "question": "Can I use PostgREST to query a PostgreSQL database without writing any backend code?",
-      "anchor": "what-postgrest-does-for-you"
-    },
-    {
-      "question": "How do I create and populate a PostgreSQL database for testing with Docker?",
-      "anchor": "lets-play"
-    },
-    {
-      "question": "What is the configuration file for PostgREST, and how do I set it up to use a different port?",
+      "question": "docker run postgres container for PostgREST local dev",
       "anchor": "step-1---create-and-populate-our-postgresql-database"
     },
     {
-      "question": "How can I stop the PostgREST service running in a Docker container?",
+      "question": "how to configure PostgREST with a custom database and port",
       "anchor": "step-2---install-and-execute-postgrest"
     },
     {
-      "question": "What are some common queries that can be made using PostgREST?",
-      "anchor": "more-queries"
-    },
-    {
-      "question": "Can I use filters with PostgREST to retrieve specific data from a table?",
+      "question": "PostgREST filter rows by column value equals",
       "anchor": "using-a-filter"
     },
     {
-      "question": "How do I query the API from a frontend application?",
+      "question": "calling PostgREST REST endpoint from React fetch",
       "anchor": "from-the-frontend"
     },
     {
-      "question": "What is under the hood of PostgREST, and how does it handle pagination, casting, and output formats?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+      "question": "PostgREST permissions anonymous role row level security",
+      "anchor": "permissions-required"
+    },
+    {
+      "question": "generate OpenAPI spec from PostgREST automatically",
+      "anchor": "openapi"
+    },
+    {
+      "question": "PostgREST inner join nested resource query",
+      "anchor": "using-inner-join"
+    },
+    {
+      "question": "PostgREST output CSV instead of JSON",
+      "anchor": "output-format"
+    },
+    {
+      "question": "cast a column to a different type in PostgREST query",
+      "anchor": "casting"
     }
   ]
 }

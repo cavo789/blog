@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:46:24.535Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:33:43.988Z",
   "source": "index.md",
   "sourceHash": "35c4d017d76ce7b9359552e8826902994a82f888",
+  "durationMs": 34407,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:00:50.248Z",
+    "articleHash": "ae8a297f43b4ce6022e44150780bce254ccb328d",
+    "questionsHash": "2076a0c738bc5ca1",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I convert Markdown to PowerPoint using Quarto?",
+      "question": "quarto markdown to powerpoint",
       "anchor": "from-markdown-to-powerpoint-in-one-command"
     },
     {
-      "question": "What is the command to render a markdown file as a PowerPoint presentation with Quarto?",
+      "question": "quarto render --to pptx",
       "anchor": "from-markdown-to-powerpoint-in-one-command"
     },
     {
-      "question": "How can I create a PowerPoint deck from a Markdown file using Quarto?",
+      "question": "quarto markdown h2 heading becomes slide title",
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
+    },
+    {
+      "question": "quarto markdown --- new slide separator syntax",
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
+    },
+    {
+      "question": "quarto pptx source file what structure to use",
       "anchor": "the-source-file"
     },
     {
-      "question": "What is the syntax rule for converting Markdown to PowerPoint slides with Quarto?",
-      "anchor": "from-markdown-to-powerpoint-in-one-command"
-    },
-    {
-      "question": "How do I use a source file in Quarto to create a PowerPoint presentation?",
+      "question": "quarto markdown slide deck example slides.md",
       "anchor": "the-source-file"
     },
     {
-      "question": "What are some tips and tricks for creating a PowerPoint deck from Markdown using Quarto?",
+      "question": "quarto render same markdown to pptx and revealjs",
       "anchor": "conclusion"
     },
     {
-      "question": "How can I run Quarto Markdown in Docker to create a PowerPoint presentation?",
-      "anchor": ""
+      "question": "quarto re-render powerpoint after editing markdown",
+      "anchor": "conclusion"
     },
     {
-      "question": "What is the difference between creating a PowerPoint deck and an online reveal.js slideshow with Quarto?",
-      "anchor": "from-markdown-to-powerpoint-in-one-command"
+      "question": "generate powerpoint deck from markdown without copy paste",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "quarto one file docs and slides no duplication",
+      "anchor": "conclusion"
     }
   ]
 }

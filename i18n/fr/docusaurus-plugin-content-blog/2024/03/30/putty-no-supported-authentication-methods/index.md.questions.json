@@ -2,10 +2,46 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:19:18.827Z",
-  "durationMs": 124259,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "78434e5966a9f9d02925fb0f155ee07bffd41b59",
+  "durationMs": 124259,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "configurer KeePass pour lancer PuTTY automatiquement avec identifiants",
+      "anchor": "",
+      "reason": "not answered: answer is in a linked article, not this one",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "ajouter profil SSH Windows Terminal à la place de PuTTY",
+      "anchor": "",
+      "reason": "not answered: answer is in a linked article, not this one",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "récupérer mot de passe WinSCP enregistré",
+      "anchor": "",
+      "reason": "not answered: answer is in a linked article, not this one",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "passer à l'authentification par clé SSH pour éviter les mots de passe",
+      "anchor": "",
+      "reason": "not answered: answer is in a linked article, not this one",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:11:16.687Z",
+    "articleHash": "759a2b8223ecd756c9fd2590c0ce73e5b63fdacf",
+    "questionsHash": "4804676de7f4276c",
+    "status": "applied",
+    "rejected": 4,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "PuTTY No supported authentication methods available registre",
@@ -21,22 +57,6 @@
     },
     {
       "question": "supprimer clé de registre PuTTY sessions par défaut",
-      "anchor": ""
-    },
-    {
-      "question": "configurer KeePass pour lancer PuTTY automatiquement avec identifiants",
-      "anchor": ""
-    },
-    {
-      "question": "ajouter profil SSH Windows Terminal à la place de PuTTY",
-      "anchor": ""
-    },
-    {
-      "question": "récupérer mot de passe WinSCP enregistré",
-      "anchor": ""
-    },
-    {
-      "question": "passer à l'authentification par clé SSH pour éviter les mots de passe",
       "anchor": ""
     },
     {

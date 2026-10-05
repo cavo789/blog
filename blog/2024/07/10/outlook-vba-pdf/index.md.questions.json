@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:35.229Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:41:38.901Z",
   "source": "index.md",
   "sourceHash": "f815b2d32803c738ef5e5bd1e7b330e6729e612e",
+  "durationMs": 19470,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:02:07.635Z",
+    "articleHash": "43dc26a8fa365be9ebe21cfb570850610f08051e",
+    "questionsHash": "23c90cbdd62dc789",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
-      "question": "How do I save emails as PDF in Microsoft Outlook using VBA?",
+      "question": "outlook vba save selected emails as pdf",
       "anchor": ""
     },
     {
-      "question": "What are the prerequisites for saving emails as PDF in Microsoft Outlook with VBA?",
+      "question": "macro to export multiple outlook emails to pdf archive",
       "anchor": "result"
     },
     {
-      "question": "How do I install the VBA macro to save emails as PDF in Microsoft Outlook?",
+      "question": "one-click vba button save outlook email as pdf",
+      "anchor": "installation-steps"
+    },
+    {
+      "question": "outlook vba pdf macro requires word installed",
       "anchor": "prerequisites"
     },
     {
-      "question": "What are the steps to save selected emails as PDF files in Microsoft Outlook using VBA?",
+      "question": "does outlook vba save pdf work with office online",
+      "anchor": "prerequisites"
+    },
+    {
+      "question": "add vba macro to outlook ribbon custom button",
       "anchor": "installation-steps"
     },
     {
-      "question": "How do I choose a folder and naming options when saving emails as PDF in Microsoft Outlook with VBA?",
+      "question": "how to paste vba code into outlook editor and add to toolbar",
+      "anchor": "installation-steps"
+    },
+    {
+      "question": "outlook vba save pdf folder picker dialog",
       "anchor": "the-folder-and-naming-dialogs"
     },
     {
-      "question": "What are the steps to save multiple selected emails as PDF files in Microsoft Outlook using VBA?",
-      "anchor": "installation-steps"
-    },
-    {
-      "question": "What is the purpose of the confirmation prompt when saving emails as PDF in Microsoft Outlook with VBA?",
+      "question": "name pdf file from email subject outlook macro",
       "anchor": "result"
     },
     {
-      "question": "How do I remove selected emails from Outlook after exporting them as PDF files using VBA in Microsoft Outlook?",
-      "anchor": "installation-steps"
+      "question": "outlook vba delete email after saving as pdf",
+      "anchor": "result"
     }
   ]
 }

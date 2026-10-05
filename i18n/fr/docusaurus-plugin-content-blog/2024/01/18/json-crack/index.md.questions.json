@@ -3,8 +3,50 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:31:19.206Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "fa0aae27644e25c53e8e1b42a0411d74c5f05d12",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "limite de lignes version gratuite json crack",
+      "anchor": "",
+      "reason": "not answered: Mentions the limit exists but never states the actual number of lines.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "transformer du markdown en mind map automatiquement",
+      "anchor": "",
+      "reason": "not answered: Only links to another article; no explanation given here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "linter et formater du json en ligne",
+      "anchor": "",
+      "reason": "not answered: Only links to another article; no linter usage shown.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "générer des données json factices pour les tests",
+      "anchor": "",
+      "reason": "not answered: Only links to another article; no method described.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "json crack vs markmap pour la doc-as-code",
+      "anchor": "",
+      "reason": "not answered: Passing mention only; no real comparison between the two tools.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:42:03.170Z",
+    "articleHash": "94d23a9d69862f869d796e4ecaa29d5c9a9dcbc2",
+    "questionsHash": "dddfcfc62512ac1d",
+    "status": "applied",
+    "rejected": 5,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment transformer du json en mind map interactive",
@@ -15,27 +57,7 @@
       "anchor": ""
     },
     {
-      "question": "limite de lignes version gratuite json crack",
-      "anchor": ""
-    },
-    {
-      "question": "transformer du markdown en mind map automatiquement",
-      "anchor": ""
-    },
-    {
-      "question": "linter et formater du json en ligne",
-      "anchor": ""
-    },
-    {
-      "question": "générer des données json factices pour les tests",
-      "anchor": ""
-    },
-    {
       "question": "outil gratuit pour visualiser des structures json complexes",
-      "anchor": ""
-    },
-    {
-      "question": "json crack vs markmap pour la doc-as-code",
       "anchor": ""
     },
     {

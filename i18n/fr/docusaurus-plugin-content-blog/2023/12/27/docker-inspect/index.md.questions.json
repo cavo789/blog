@@ -2,14 +2,38 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:40:34.421Z",
-  "durationMs": 137288,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "d65e9ad0e17919c612caff1e16c95923e95bc780",
+  "durationMs": 137288,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "[3] attacher une interface phpmyadmin ou adminer à un container existant",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no explanation given here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "[3] diagnostiquer pourquoi deux containers docker n'arrivent pas à communiquer",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no troubleshooting steps provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:31:43.352Z",
+    "articleHash": "ae20c2c4814369e58d259b586158190569dbcfd3",
+    "questionsHash": "d0d6378546177b2e",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "[0] `docker inspect` configuration json complète conteneur",
-      "anchor": ""
+      "anchor": "the-full-inspect-output"
     },
     {
       "question": "[0] comment afficher l'état et les détails techniques d'un objet Docker ?",
@@ -38,14 +62,6 @@
     {
       "question": "[2] retrouver le nom exact d'un container après sa création",
       "anchor": "the-full-inspect-output"
-    },
-    {
-      "question": "[3] attacher une interface phpmyadmin ou adminer à un container existant",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "[3] diagnostiquer pourquoi deux containers docker n'arrivent pas à communiquer",
-      "anchor": "conclusion"
     }
   ]
 }

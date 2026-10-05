@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:02:39.432Z",
-  "durationMs": 156382,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3774885d7d863a0a8fe0cc073aac1316de9e9a87",
+  "durationMs": 156382,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:06:56.386Z",
+    "articleHash": "6cc04e280d28f2cc78a78d3a0e8b99e88c894651",
+    "questionsHash": "28ea5c9036750d0c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "docker compose éviter erreurs Connection refused lors du démarrage des containers",

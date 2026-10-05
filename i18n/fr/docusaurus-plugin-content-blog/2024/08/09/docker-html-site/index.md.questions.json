@@ -2,18 +2,36 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:03:42.207Z",
-  "durationMs": 199727,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "6a4283e5ebbed32485b922ac26961698b224e91e",
+  "durationMs": 199727,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "commande powershell avec curl et tar pour décompresser un zip",
+      "anchor": "dont-have-a-site-to-try-this-on-yet",
+      "reason": "not answered: article uses Expand-Archive, not tar, for decompression",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:40:01.170Z",
+    "articleHash": "b0f1618bff4c3cd69810386519b53e1c82920eba",
+    "questionsHash": "c6581690e658a1d7",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "lancer un site html en local avec une seule commande docker",
-      "anchor": ""
+      "anchor": "result"
     },
     {
       "question": "comment éviter l'installation d'apache ou nginx pour un setup rapide",
-      "anchor": ""
+      "anchor": "why-it-works"
     },
     {
       "question": "docker run httpd avec montage de $(pwd) vers /usr/local/apache2/htdocs",
@@ -33,10 +51,6 @@
     },
     {
       "question": "télécharger un site statique gratuit pour tester docker",
-      "anchor": "dont-have-a-site-to-try-this-on-yet"
-    },
-    {
-      "question": "commande powershell avec curl et tar pour décompresser un zip",
       "anchor": "dont-have-a-site-to-try-this-on-yet"
     },
     {

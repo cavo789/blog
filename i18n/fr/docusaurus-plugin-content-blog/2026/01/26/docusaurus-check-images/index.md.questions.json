@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:32:22.041Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b5739b8c221c2c11783bbf4a72f23771fe73d90b",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:08:57.341Z",
+    "articleHash": "e73278ea312606b9ed081004c660ba1ccbbbb5bf",
+    "questionsHash": "946b99591e63fb31",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment forcer le lazy loading sur toutes les images d'un blog Docusaurus",
-      "anchor": ""
+      "anchor": "step-1-enforcing-lazy-loading-in-docusaurus"
     },
     {
       "question": "commande docker pour exécuter check-images.py avec Playwright",

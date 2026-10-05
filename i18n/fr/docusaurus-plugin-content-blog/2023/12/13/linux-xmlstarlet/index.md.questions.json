@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:02:31.848Z",
-  "durationMs": 143993,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "da6338d72bc968cc6a95832799f13a2029f85979",
+  "durationMs": 143993,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "utiliser `xmlstarlet` en pipe dans un script bash pour automatiser le traitement XML",
+      "anchor": "conclusion",
+      "reason": "not answered: Mentionné en passant, aucun exemple de script bash concret.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:21:40.676Z",
+    "articleHash": "250395a55ef084e5213d0d7f76bcc956f1829382",
+    "questionsHash": "47ce887bed65a41c",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "`xmlstarlet` est-il l'équivalent CLI de `jq` pour le XML sous Linux ?",
@@ -34,10 +52,6 @@
     {
       "question": "comment fonctionne le préfixe `//` dans une expression XPath ?",
       "anchor": "understanding-the-xpath-expression"
-    },
-    {
-      "question": "utiliser `xmlstarlet` en pipe dans un script bash pour automatiser le traitement XML",
-      "anchor": "conclusion"
     }
   ]
 }

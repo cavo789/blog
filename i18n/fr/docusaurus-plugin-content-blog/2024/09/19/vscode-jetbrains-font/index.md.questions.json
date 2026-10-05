@@ -2,14 +2,38 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:27:11.369Z",
-  "durationMs": 135241,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3c87cd977a7b6a0022c889e4ab303b64ec1ec388",
+  "durationMs": 135241,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "pourquoi JetBrains Mono est autorisée pour un usage commercial",
+      "anchor": "why-this-font",
+      "reason": "not answered: Article states the fact but gives no licensing reason.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "utiliser CodeSnap pour transformer une sélection de code en capture partageable",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a passing mention with a link; no usage instructions.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:46:54.799Z",
+    "articleHash": "11f78a56bbadf8971dbc2048288489ff421ecbdb",
+    "questionsHash": "48e8bd847ae6ea58",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "configurer vscode avec la police JetBrains Mono et activer les ligatures",
-      "anchor": ""
+      "anchor": "configure-vscode-to-use-jetbrains-mono-font"
     },
     {
       "question": "Comment personnaliser l'éditeur de code avec une police gratuite et lisible ?",
@@ -17,10 +41,6 @@
     },
     {
       "question": "police de code qui distingue clairement le O majuscule du chiffre 0",
-      "anchor": "why-this-font"
-    },
-    {
-      "question": "pourquoi JetBrains Mono est autorisée pour un usage commercial",
       "anchor": "why-this-font"
     },
     {
@@ -41,11 +61,7 @@
     },
     {
       "question": "recharger VSCode après modification de settings.json",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "utiliser CodeSnap pour transformer une sélection de code en capture partageable",
-      "anchor": "conclusion"
+      "anchor": "configure-vscode-to-use-jetbrains-mono-font"
     }
   ]
 }

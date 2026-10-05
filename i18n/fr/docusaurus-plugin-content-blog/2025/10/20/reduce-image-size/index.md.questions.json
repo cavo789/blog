@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:52:58.635Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "0abda9c57d3f82ecb79aea674b95f8a805c978b7",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:56:27.165Z",
+    "articleHash": "63a0a9296777d68cc8a678337b9f5223df60d611",
+    "questionsHash": "3ffab84474244d4d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "[0] `CaesiumCLT` pour compresser des images en ligne de commande",
@@ -12,7 +22,7 @@
     },
     {
       "question": "[0] Convertir des PNG en WEBP avec une seule commande CLI",
-      "anchor": ""
+      "anchor": "run-the-optimization-tool"
     },
     {
       "question": "[1] Lancer `CaesiumCLT` sur un répertoire d'images",

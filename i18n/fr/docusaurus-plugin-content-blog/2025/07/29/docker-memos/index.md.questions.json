@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:09:43.737Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b56cba697ac7dac597c0abee8ef46b2ab18fec00",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "documentation et configuration avancée memos",
+      "anchor": "more-info",
+      "reason": "not answered: only links to external documentation, no content provided",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:40:00.258Z",
+    "articleHash": "fcf67febdea284c363fa82efd55422cead42d1c6",
+    "questionsHash": "17cfe7f7be8ac5b3",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "quelle application de notes auto-hébergée déployer rapidement avec docker",
@@ -16,7 +34,7 @@
     },
     {
       "question": "memos créer note markdown checklist",
-      "anchor": "lets-create-a-few-more-tasks"
+      "anchor": "lets-install-memos"
     },
     {
       "question": "comment filtrer les notes memos par tag",
@@ -37,10 +55,6 @@
     {
       "question": "pourquoi memos remplace la boîte mail en pense bête",
       "anchor": "conclusions"
-    },
-    {
-      "question": "documentation et configuration avancée memos",
-      "anchor": "more-info"
     }
   ]
 }

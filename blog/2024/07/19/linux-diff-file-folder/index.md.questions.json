@@ -1,37 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:50.244Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:44:26.281Z",
   "source": "index.md",
   "sourceHash": "7e5591dc2ec0f2dc5420c8eb43b4bb5ba3e64d81",
+  "durationMs": 36052,
+  "rejected": [
+    {
+      "question": "delta pager readable diff output linux",
+      "anchor": "compare-two-folders",
+      "reason": "not answered: Only a link to another blog post; no delta usage shown.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:04:57.938Z",
+    "articleHash": "9fcd4b18e14329e7c18539ea3495240883682ab6",
+    "questionsHash": "afb7e35e9cde83f3",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I compare two files in Linux using the diff command?",
+      "question": "linux compare two folders command line diff",
+      "anchor": "compare-two-folders"
+    },
+    {
+      "question": "bash script repeated file comparisons industrial level",
+      "anchor": ""
+    },
+    {
+      "question": "diff two files same name different directories show only changes",
       "anchor": "compare-two-files"
     },
     {
-      "question": "What are some advanced bash scripts for comparing files or folders in Linux?",
-      "anchor": ""
+      "question": "compare file in folder A vs folder B terminal snippet",
+      "anchor": "compare-two-files"
     },
     {
-      "question": "How can I compare two folders and display only the differences between them?",
+      "question": "diff -r exclude 'Only in' output linux",
       "anchor": "compare-two-folders"
     },
     {
-      "question": "What are some specialized cases covered for comparing environment files in Linux?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I compare two versions of the same script using Linux commands?",
-      "anchor": ""
-    },
-    {
-      "question": "What is delta: a Syntax-Highlighted Pager for git diff and how does it make comparing files easier?",
+      "question": "bash compare two folders list only files with differences",
       "anchor": "compare-two-folders"
     },
     {
-      "question": "How can I compare two folders in Linux using the diff command?",
+      "question": "diff source folder vs target folder hide files only in source",
       "anchor": "compare-two-folders"
+    },
+    {
+      "question": "diff command beyond basic usage folder comparison",
+      "anchor": ""
     }
   ]
 }

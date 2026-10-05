@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:25.224Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:37:48.510Z",
   "source": "index.md",
   "sourceHash": "9109d4b0c2ee1370ea07e189fe970ba0aef317dd",
+  "durationMs": 19194,
+  "rejected": [
+    {
+      "question": "make help target print all available commands with descriptions",
+      "anchor": "conclusion",
+      "reason": "not answered: Article only links to another page for the help target.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:04:03.676Z",
+    "articleHash": "274f18e331dff9ff5e9e04f56d04503a9814f069",
+    "questionsHash": "635513c1283562b2",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is a Linux makefile?",
+      "question": "makefile to centralize docker commands linux",
       "anchor": ""
     },
     {
-      "question": "When should I use a Linux makefile?",
-      "anchor": "why-bother"
-    },
-    {
-      "question": "How do I create a basic makefile for Docker commands?",
-      "anchor": "whats-inside-the-makefile"
-    },
-    {
-      "question": "What are the benefits of using a Linux makefile for project setup?",
+      "question": "stop hunting shell history for docker run commands",
       "anchor": "one-word-instead-of-that-command"
     },
     {
-      "question": "How can I centralize Docker commands in a single file using a Linux makefile?",
+      "question": "replace 120-character docker run with a single make target",
+      "anchor": "one-word-instead-of-that-command"
+    },
+    {
+      "question": "make target that echoes credentials and URL when it runs",
       "anchor": "whats-inside-the-makefile"
     },
     {
-      "question": "What are the advantages of using a Linux makefile for project management?",
+      "question": "makefile won't work tabs vs spaces indentation",
+      "anchor": "whats-inside-the-makefile"
+    },
+    {
+      "question": "what are targets in a GNU makefile",
+      "anchor": "whats-inside-the-makefile"
+    },
+    {
+      "question": "too many docker commands to remember makefile solution",
       "anchor": "why-bother"
     },
     {
-      "question": "How can I automate project setup, logging, and environment management using a Linux makefile?",
-      "anchor": "whats-inside-the-makefile"
+      "question": "check if gnu make is installed linux",
+      "anchor": "why-bother"
     },
     {
-      "question": "What are the commands available in a Linux makefile?",
-      "anchor": "whats-inside-the-makefile"
+      "question": "keep docker commands in git repo instead of shell history",
+      "anchor": "conclusion"
     }
   ]
 }

@@ -1,42 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-18T15:45:51.246Z",
-  "durationMs": 4974,
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:33:51.507Z",
   "source": "index.md",
   "sourceHash": "d3523d77e2c7cdddce13f5098b1179a9893f5596",
+  "durationMs": 29343,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:55:27.700Z",
+    "articleHash": "a93b3a97e4f5ef0d50631864bc62e5c617996dde",
+    "questionsHash": "5c30f4c01a4a38da",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I synchronize files between my host and remote server using WinSCP?",
+      "question": "winscp script synchronize local folder remote ftp",
       "anchor": "the-script"
     },
     {
-      "question": "What are the different synchronization directions available in WinSCP?",
-      "anchor": "local--remote--both"
-    },
-    {
-      "question": "Can you explain how to modify the script for a full backup of my folders to Synology NAS using WinSCP?",
+      "question": "automated backup windows folder to synology nas",
       "anchor": ""
     },
     {
-      "question": "What are some additional WinSCP scripts available on this blog?",
+      "question": "winscp synchronize command script example ftp sftp",
+      "anchor": "the-script"
+    },
+    {
+      "question": "run winscp script from dos command line",
       "anchor": "how-to-use"
     },
     {
-      "question": "How does the Synchronize verb in WinSCP work and what options do I have for synchronization directions?",
+      "question": "winscp script configure ftp host port credentials",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "winscp synchronize what happens to deleted files on remote server",
+      "anchor": "more-info"
+    },
+    {
+      "question": "winscp sync copy new files but leave existing unchanged",
+      "anchor": "more-info"
+    },
+    {
+      "question": "winscp synchronize local remote both direction parameter",
       "anchor": "local--remote--both"
     },
     {
-      "question": "Can you provide an example of how to modify the script to synchronize files from a specific folder on my local machine to a remote server using WinSCP?",
-      "anchor": "the-script"
+      "question": "winscp bidirectional sync apply changes both ways",
+      "anchor": "local--remote--both"
     },
     {
-      "question": "What are some best practices for using WinSCP scripts for automated backups?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I modify the script to synchronize files from a remote server to my local machine using WinSCP?",
-      "anchor": "the-script"
+      "question": "winscp command line file sync sftp port 22",
+      "anchor": "how-to-use"
     }
   ]
 }

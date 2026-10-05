@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:15:19.454Z",
-  "durationMs": 181436,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "d145bc7adbf609dd7fe34d3b82fa7a8b8f73f5f0",
+  "durationMs": 181436,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "0: comment réutiliser des variables d'environnement entre un script bash et laravel",
+      "anchor": "",
+      "reason": "not answered: Laravel side only mentioned in passing, no method shown",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:24:44.937Z",
+    "articleHash": "184511ba62b3bb7539e53c0a362c337e542d1b28",
+    "questionsHash": "4103c2b29ef06243",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "0: comment charger un fichier .env dans un script bash avec source",
@@ -37,10 +55,6 @@
     },
     {
       "question": "0: la méthode la plus propre pour charger un .env dans un script bash",
-      "anchor": ""
-    },
-    {
-      "question": "0: comment réutiliser des variables d'environnement entre un script bash et laravel",
       "anchor": ""
     },
     {

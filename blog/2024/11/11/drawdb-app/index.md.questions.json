@@ -1,41 +1,52 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:08.085Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:11:42.561Z",
   "source": "index.md",
   "sourceHash": "76fdaf185a5b778776cb0e4938da0c04153902c2",
+  "durationMs": 36805,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:28:57.522Z",
+    "articleHash": "7017e87c7e380746f369d35f81225de7ae65235e",
+    "questionsHash": "4011c64c1a6adc5d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I create a dummy SQL file for drawdb-app?",
+      "question": "visualize database schema from sql dump",
+      "anchor": ""
+    },
+    {
+      "question": "how to import a postgresql .sql file into an ER diagram tool",
       "anchor": "create-and-import-a-dummy-sql-file"
     },
     {
-      "question": "What is the Docker image for drawdb-app?",
+      "question": "drawdb-app docker self-hosted",
       "anchor": "you-can-self-host-the-application-thanks-to-docker-if-you-want"
     },
     {
-      "question": "How do I export a database model as Markdown in drawdb-app?",
+      "question": "export database model as mermaid for docs pipeline",
       "anchor": "playing-with-exportation-feature"
     },
     {
-      "question": "What are the steps to import an SQL file into drawdb-app?",
-      "anchor": "create-and-import-a-dummy-sql-file"
+      "question": "how does drawdb auto-generate markdown from tables",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "Can I self-host drawdb-app using Docker?",
-      "anchor": "you-can-self-host-the-application-thanks-to-docker-if-you-want"
+      "question": "see all column types and foreign key references in one table view",
+      "anchor": "table-structure"
     },
     {
-      "question": "How do I check export features in drawdb-app?",
-      "anchor": "playing-with-exportation-feature"
-    },
-    {
-      "question": "What are the relationships between tables in a database model?",
+      "question": "many-to-one relationships between tables visualized",
       "anchor": "relationships"
     },
     {
-      "question": "What is the structure of the 'employees' table in a database model?",
-      "anchor": "table-structure"
+      "question": "database schema doc as code",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     }
   ]
 }

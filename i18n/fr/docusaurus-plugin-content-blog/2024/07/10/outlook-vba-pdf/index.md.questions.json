@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:30:20.511Z",
-  "durationMs": 164864,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e88ea36038ecaa8bae2817fecce79497f78f7d88",
+  "durationMs": 164864,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:30:45.974Z",
+    "articleHash": "47cd53ecec55391243169a7db9a1fd9340986c58",
+    "questionsHash": "2e4623a42d4b837e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Macro VBA Outlook pour exporter plusieurs emails sélectionnés en PDF",
@@ -45,7 +55,7 @@
     },
     {
       "question": "La macro propose-t-elle de conserver le sujet du mail comme nom de fichier PDF ?",
-      "anchor": "the-folder-and-naming-dialogs"
+      "anchor": "result"
     }
   ]
 }

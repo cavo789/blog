@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:27:30.445Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f16a6d953fd80bda27caf6a672e38cd376dfd57b",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "basculer le focus entre les panneaux divisés rapidement",
+      "anchor": "keyboard-shortcuts-to-manage-panes",
+      "reason": "not answered: No shortcut for switching focus between panes is mentioned.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:07:24.722Z",
+    "articleHash": "cbac8a5f47cf453efcfc6e1e7d87ba5cb6701dbb",
+    "questionsHash": "9e12fe355ea79639",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment diviser les panneaux dans Windows Terminal pour faire du multitâche avec WSL",
@@ -37,10 +55,6 @@
     {
       "question": "disposer quatre panneaux en quadrants dans un seul profil Windows Terminal",
       "anchor": "create-a-new-profile-and-hardcode-the-command-line"
-    },
-    {
-      "question": "basculer le focus entre les panneaux divisés rapidement",
-      "anchor": "keyboard-shortcuts-to-manage-panes"
     }
   ]
 }

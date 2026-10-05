@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:53:23.367Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:06:38.485Z",
   "source": "index.md",
   "sourceHash": "081abfa7df0694798126cb6ac5f9cd43c4cb801c",
+  "durationMs": 34455,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:59:22.403Z",
+    "articleHash": "f8627d24759f79fc96f2a104ba3eaca39b6b9304",
+    "questionsHash": "d4aaa8a244893f54",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I configure the PHP backend for my Docusaurus blog?",
+      "question": "docusaurus was this article helpful widget",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus reader feedback php react json self-contained",
       "anchor": "the-big-picture"
     },
     {
-      "question": "What is the purpose of the CORS block in the PHP script?",
-      "anchor": "step-1--the-php-backend"
-    },
-    {
-      "question": "How can I customize the email notification throttling settings?",
-      "anchor": "11--configuration"
-    },
-    {
-      "question": "What are the key constants and decisions made during configuration of the PHP backend?",
+      "question": "cors docusaurus localhost 3000 php origin rejected",
       "anchor": "12--cors"
     },
     {
-      "question": "How do I modify the swizzled Docusaurus component to inject the widget at the bottom of every post?",
-      "anchor": "step-3--the-css-module"
-    },
-    {
-      "question": "What are the two JSON files created by the PHP backend during runtime?",
-      "anchor": "all-files-at-a-glance"
-    },
-    {
-      "question": "How can I customize the email notification recipient address in the PHP script?",
+      "question": "php email throttle per article prevent inbox flood",
       "anchor": "13--email-notification-with-per-article-throttling"
     },
     {
-      "question": "What is the purpose of the admin dashboard page for monitoring approval rates across all articles?",
+      "question": "docusaurus css module widget blend with theme",
+      "anchor": "step-3--the-css-module"
+    },
+    {
+      "question": "how to load vote count on mount react docusaurus",
+      "anchor": "23--loading-counts-on-mount"
+    },
+    {
+      "question": "docusaurus swizzle inject component bottom blog post",
+      "anchor": "step-4--injecting-the-widget-via-swizzling"
+    },
+    {
+      "question": "docusaurus admin dashboard approval rate all articles",
       "anchor": "step-5--the-admin-dashboard"
+    },
+    {
+      "question": "docusaurus feedback widget security cors token",
+      "anchor": "security-considerations"
+    },
+    {
+      "question": "how to send a vote from react to php endpoint",
+      "anchor": "24--sending-a-vote"
     }
   ]
 }

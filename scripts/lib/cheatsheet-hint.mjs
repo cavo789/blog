@@ -51,6 +51,7 @@ const EQUIVALENTS = new Map([
   ["questions:review", { fn: "questions", args: (a) => ["review", ...a] }],
   ["questions:list", { fn: "questions", args: (a) => ["list", ...a] }],
   ["questions:status", { fn: "questions", args: (a) => ["status", ...a] }],
+  ["questions:triage", { fn: "questions", args: (a) => ["triage", ...a] }],
   ["questions:edit", { fn: "faq" }],
   ["eli5:bulk", { fn: "eli5", args: dropOption("--dir") }],
   ["translate", { fn: "translate" }],

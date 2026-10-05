@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:53:05.634Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:57:45.634Z",
   "source": "index.md",
   "sourceHash": "a17ed3fe3945d9283602b089f14d6bca947a8250",
+  "durationMs": 30005,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:50:45.522Z",
+    "articleHash": "47137e575c3bae43093dd52b2f7ffc4bf2c06bab",
+    "questionsHash": "c1f1fdd2a5f021be",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What are the benefits of moving ZSH functions to standalone files?",
-      "anchor": "the-secret-sauce-fpath-and-autoload"
-    },
-    {
-      "question": "How does the fpath and autoload mechanism work in ZSH?",
+      "question": "zshrc bloated 1500 lines slow startup how to reorganize",
       "anchor": "the-problem-with-the-monolith"
     },
     {
-      "question": "What is the purpose of the repo function?",
+      "question": "zsh jump to project by typing partial name without cd",
+      "anchor": "teleporting-to-a-project"
+    },
+    {
+      "question": "zsh function parsed into memory every new terminal tab performance",
+      "anchor": "the-problem-with-the-monolith"
+    },
+    {
+      "question": "zsh fpath autoload lazy load functions",
+      "anchor": "the-secret-sauce-fpath-and-autoload"
+    },
+    {
+      "question": "fzf zsh repo function switch between git projects and open editor",
       "anchor": "-the-super-function-repo-universal-project-navigator"
     },
     {
-      "question": "Why should I use standalone files for my ZSH functions?",
+      "question": "zsh function standalone file benefits over inline in zshrc",
       "anchor": "why-this-is-better-in-a-standalone-file"
     },
     {
-      "question": "How do I set up the repo function in ZSH?",
+      "question": "how to set up zsh modular function loading step by step",
       "anchor": "how-to-set-it-up"
     },
     {
-      "question": "What is the purpose of fzf and how does it work with the repo function?",
+      "question": "create zsh functions directory for autoload",
+      "anchor": "1-create-the-structure"
+    },
+    {
+      "question": "fpath line to add in .zshrc for custom functions folder",
+      "anchor": "2-configure-your-zshrc"
+    },
+    {
+      "question": "zsh repo function file naming no extension fzf",
+      "anchor": "3-create-the-repo-function-file"
+    },
+    {
+      "question": "run repo command zsh after sourcing zshrc",
       "anchor": "4-use-it"
     },
     {
-      "question": "How can I use the repo function to navigate my projects?",
-      "anchor": "-the-super-function-repo-universal-project-navigator"
-    },
-    {
-      "question": "What are some benefits of using standalone files for ZSH functions in terms of performance and maintainability?",
-      "anchor": "the-secret-sauce-fpath-and-autoload"
+      "question": "fzf fuzzy find zsh navigate between projects",
+      "anchor": "fast-search-fuzzy-find"
     }
   ]
 }

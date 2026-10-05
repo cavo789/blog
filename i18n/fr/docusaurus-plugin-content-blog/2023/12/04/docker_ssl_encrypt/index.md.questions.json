@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:43:12.001Z",
-  "durationMs": 147075,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ecedc81868eed24030a77a83ead942273446eb3a",
+  "durationMs": 147075,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:16:10.876Z",
+    "articleHash": "7dc9a5cb525a563bdffdecb7c5dd4eddfc877ac1",
+    "questionsHash": "8a8fb78092360352",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment chiffrer des fichiers sensibles avec docker et openssl",
-      "anchor": ""
+      "anchor": "what-this-looks-like"
     },
     {
       "question": "docker run --rm openssl enc aes-256-cbc pbkdf2 salt",

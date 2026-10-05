@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:08:47.684Z",
-  "durationMs": 167577,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "5a555f1099d855743bcb71384553564722a8df45",
+  "durationMs": 167577,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:06:41.000Z",
+    "articleHash": "f7b4ae8136cabc7099a6ecb16990025fcc1c49df",
+    "questionsHash": "73215b6b4bb549e2",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "frankenphp serveur php moderne docker joomla",
@@ -13,7 +23,7 @@
     },
     {
       "question": "lancer joomla en https avec frankenphp en deux commandes",
-      "anchor": "what-frankenphp-gives-you"
+      "anchor": "getting-it-running"
     },
     {
       "question": "pourquoi frankenphp est 3,5 fois plus rapide que php-fpm",
@@ -37,7 +47,7 @@
     },
     {
       "question": "architecture interne frankenphp et gestion du runtime php",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+      "anchor": "why-it-works"
     },
     {
       "question": "frankenphp développement local https joomla conclusion",

@@ -1,40 +1,51 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:07.047Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:37:02.920Z",
   "source": "index.md",
   "sourceHash": "4a72f57385189766daa5381fec1bc1f3a3335683",
+  "durationMs": 49160,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:45:01.283Z",
+    "articleHash": "baf15106d0fcd202c26c9f561420fa1bdd1ea418",
+    "questionsHash": "6092268cb4e4e829",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do you set up Heimdall on your computer?",
+      "question": "self-hosted web dashboard docker replace browser bookmarks",
       "anchor": ""
     },
     {
-      "question": "What is Docker used for in setting up Heimdall?",
+      "question": "heimdall docker-compose UID GID variables",
       "anchor": "creating-your-dashboard"
     },
     {
-      "question": "How can I customize the appearance of Heimdall's dashboard?",
+      "question": "how to start heimdall container docker compose up",
       "anchor": "running-the-dashboard"
     },
     {
-      "question": "How do I add links to my Heimdall dashboard?",
+      "question": "heimdall change background image first run",
       "anchor": "first-run"
     },
     {
-      "question": "What is the purpose of saving the configuration on disk in Heimdall?",
+      "question": "heimdall config not saved after removing docker container",
       "anchor": "saving-the-configuration-on-disk"
     },
     {
-      "question": "How can you organize your links using tags in Heimdall?",
+      "question": "heimdall create tags add applications favicon",
       "anchor": "adding-some-links"
     },
     {
-      "question": "What are some customizations you can make to Heimdall's dashboard?",
+      "question": "heimdall further customization options",
       "anchor": "more-customizations"
     },
     {
-      "question": "How do I add a new background image to my Heimdall dashboard?",
+      "question": "what to do next after heimdall basic setup",
       "anchor": "continue-your-journey"
     }
   ]

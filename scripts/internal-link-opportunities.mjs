@@ -30,11 +30,29 @@
  * carries fewer than `--min-links` internal links (default 1), so it can run in
  * CI or in a pre-commit hook. It accepts the article directory or its
  * `index.md`, inside `blog/` or in `.unpublished/`.
+ *
+ * With `--post`, when the local AnythingLLM instance answers, a third signal is
+ * added: how close in MEANING each candidate is (scripts/lib/anythingllm.mjs).
+ * The two lexical signals above cannot tell "command line" in a history article
+ * from an article about sftp on the command line; meaning can. Candidates the
+ * meaning confirms are listed first, and articles close in meaning but never
+ * named in the prose get a list of their own. Absent instance, CI, or `--no-ai`:
+ * the output is exactly the lexical one. The exit code never depends on it.
  */
 
 import { existsSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { SECTION_ROUTE, articleLinks, loadPosts, readPost } from "./lib/blog-corpus.mjs";
+import { parseFrontMatter } from "./lib/blog-corpus.mjs";
+import { connect, relatedToArticle } from "./lib/anythingllm.mjs";
+import { readFileSync } from "node:fs";
+
+/**
+ * Mean semantic similarity (see `relatedToArticle`) from which a target counts as a real
+ * neighbour. Calibrated on four articles: their true neighbours scored 0.68-0.77, the noise
+ * underneath 0.58-0.60.
+ */
+const SEMANTIC_CLOSE = 0.65;
 
 /** Words too generic to identify an article on their own. */
 const STOP_WORDS = new Set([
@@ -324,7 +342,7 @@ function resolvePostPath(input) {
  * Returns the report and whether the article carries enough internal links, so
  * the caller can turn it into an exit code for CI or a pre-commit hook.
  */
-function checkPost(file, posts, { minScore, top, minLinks }) {
+async function checkPost(file, posts, { minScore, top, minLinks, ai }) {
   if (!existsSync(file)) {
     return { ok: false, text: `${file}: no such article.` };
   }
@@ -341,6 +359,36 @@ function checkPost(file, posts, { minScore, top, minLinks }) {
   );
   const candidates = scoreCandidates(post, corpus, termsByPost, { minScore });
   const known = new Set(posts.map((other) => other.permalink));
+
+  // source path → { score, section } for every article AnythingLLM finds close in meaning.
+  let semantic = null;
+  if (ai) {
+    try {
+      const { data, body } = parseFrontMatter(readFileSync(file, "utf8"));
+      const related = await relatedToArticle(
+        ai,
+        { title: data.title, description: data.description ?? "", body },
+        { top: 40, exclude: [path.relative(process.cwd(), path.resolve(file))] },
+      );
+      semantic = new Map(related.map((hit) => [hit.source, hit]));
+    } catch (err) {
+      console.error(
+        `(AnythingLLM lookup failed, lexical suggestions only: ${err.message})`,
+      );
+    }
+  }
+  const relOf = (target) => path.relative(process.cwd(), path.resolve(target.file));
+  const closeness = (target) => semantic?.get(relOf(target))?.score ?? 0;
+
+  if (semantic) {
+    // Stable sort: among candidates the meaning confirms, and among the rest, the lexical
+    // score keeps deciding the order.
+    candidates.sort(
+      (a, b) =>
+        Number(closeness(b.target) >= SEMANTIC_CLOSE) -
+        Number(closeness(a.target) >= SEMANTIC_CLOSE),
+    );
+  }
   // Tag, archive and author pages are internal links, but they are not the
   // article-to-article links this check is about, and they resolve to no post.
   const linked = [...post.links].filter((link) => !SECTION_ROUTE.test(link));
@@ -392,6 +440,15 @@ function checkPost(file, posts, { minScore, top, minLinks }) {
       if (sharedTags.length > 0) {
         lines.push(`    shared tags: ${sharedTags.join(", ")}`);
       }
+
+      if (semantic) {
+        const meaning = closeness(target);
+        lines.push(
+          meaning >= SEMANTIC_CLOSE
+            ? `    meaning: close (${meaning.toFixed(2)}) — a likely good link`
+            : `    meaning: not close (${meaning ? meaning.toFixed(2) : "< 0.55"}) — the words match, the topic may not`,
+        );
+      }
     }
 
     lines.push("");
@@ -401,10 +458,37 @@ function checkPost(file, posts, { minScore, top, minLinks }) {
     lines.push("No candidate found automatically — pick related articles by hand.");
   }
 
+  if (semantic) {
+    const shown = new Set(candidates.slice(0, top).map(({ target }) => relOf(target)));
+    const byRel = new Map(corpus.map((other) => [relOf(other), other]));
+    const extra = [...semantic.values()]
+      .filter((hit) => hit.score >= SEMANTIC_CLOSE && !shown.has(hit.source))
+      .map((hit) => ({ hit, target: byRel.get(hit.source) }))
+      .filter(({ target }) => target && !post.links.has(target.permalink))
+      .slice(0, top);
+
+    lines.push("");
+    if (extra.length === 0) {
+      lines.push(
+        "Close in meaning (AnythingLLM): every close article is already linked or listed above.",
+      );
+    } else {
+      lines.push(
+        "Close in meaning, not linked (AnythingLLM) — may not be named in the prose:",
+      );
+      for (const { hit, target } of extra) {
+        lines.push(`  - ${target.title} — ${target.permalink} (${hit.score.toFixed(2)})`);
+        lines.push(
+          `    closest part: ${hit.section ? `"${hit.section}"` : "the article as a whole"}`,
+        );
+      }
+    }
+  }
+
   return { ok, text: lines.join("\n") };
 }
 
-function main() {
+async function main() {
   const args = process.argv.slice(2);
   const readFlag = (name, fallback) => {
     const index = args.indexOf(name);
@@ -428,10 +512,12 @@ function main() {
   }
 
   if (post) {
-    const result = checkPost(resolvePostPath(post), posts, {
+    const ai = args.includes("--no-ai") ? null : (await connect()).client;
+    const result = await checkPost(resolvePostPath(post), posts, {
       minScore,
       top,
       minLinks,
+      ai,
     });
 
     console.log(result.text);
@@ -455,4 +541,4 @@ function main() {
   console.log(markdown);
 }
 
-main();
+await main();

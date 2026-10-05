@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:32:54.907Z",
-  "durationMs": 135209,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "cc166d97aa6f15dc87d9797f9884d4f81694680f",
+  "durationMs": 135209,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:33:36.782Z",
+    "articleHash": "616c92b3e19645f9b72a03f3c0e8644d70845065",
+    "questionsHash": "117066a14caf7fa9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "ai-test terminal generateur tests unitaires ollama local",
@@ -13,7 +23,7 @@
     },
     {
       "question": "comment ai-test détecte les cas Bats, Pest ou Pytest manquants depuis un seul fichier",
-      "anchor": "what-ai-test-does-for-you"
+      "anchor": "the-logic-step-by-step"
     },
     {
       "question": "pourquoi l'outil ne propose que les tests manquants et valide dans un container jetable",

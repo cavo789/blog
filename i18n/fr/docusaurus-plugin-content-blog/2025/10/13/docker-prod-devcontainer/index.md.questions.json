@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:50:20.763Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "bba43914f183a40609a1fa63dafaf2513064e330",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:55:39.850Z",
+    "articleHash": "c89367f21a587776f5fa330bd79f84d71038befc",
+    "questionsHash": "ba5c4f5749b4bd79",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
       "question": "comment construire une seule image docker de base pour la prod et les devcontainers",
@@ -16,11 +26,11 @@
     },
     {
       "question": "structure de dossiers pour initialiser le projet docker prod",
-      "anchor": "step-1---we-have-to-create-the-production-docker-image"
+      "anchor": "lets-create-our-production-files"
     },
     {
       "question": "dockerfile minimal rootless surface d'attaque production",
-      "anchor": "creating-the-docker-production-image"
+      "anchor": "lets-create-our-production-files"
     },
     {
       "question": "docker run container prod port 8000 hello fastapi",
@@ -32,7 +42,7 @@
     },
     {
       "question": "dockerfile devcontainer utilisateur host synchronisation fichiers",
-      "anchor": "creating-the-devcontainer-image"
+      "anchor": "lets-create-our-devcontainer-files"
     },
     {
       "question": "vscode devcontainer bouton ouvrir le dossier dans le container",
@@ -44,7 +54,7 @@
     },
     {
       "question": "optimisation surface d'attaque et isolation dev/prod",
-      "anchor": "going-further"
+      "anchor": "what-does-a-perfect-separation-of-environments-mean"
     }
   ]
 }

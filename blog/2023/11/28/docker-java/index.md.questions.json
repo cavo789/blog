@@ -1,36 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:43.935Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:15:14.622Z",
   "source": "index.md",
   "sourceHash": "e54a6f1189f28b09ebd1c4ea74e2c687f8d7d7d1",
+  "durationMs": 27466,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:44:11.542Z",
+    "articleHash": "ae8a80d85fb8ab3d7b2af689a53bd37c0748c723",
+    "questionsHash": "094dc66bcb7fc646",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do you compile and run a Java application using Docker?",
+      "question": "run java docker no jdk install",
       "anchor": "two-commands-and-java-runs"
     },
     {
-      "question": "What are the steps to set up a Java development environment quickly without local installation?",
-      "anchor": ""
+      "question": "docker run javac compile then java execute same folder",
+      "anchor": "two-commands-and-java-runs"
     },
     {
-      "question": "Why does the Docker image already ship the full JDK, so javac and java are there in the exact version the image tag names?",
+      "question": "why does volume mount let container write .class file back to host directory",
       "anchor": "why-it-works"
     },
     {
-      "question": "How do you share your current folder with a folder called /app in the Docker container?",
-      "anchor": "the-source"
+      "question": "eclipse-temurin:21 docker image compile single Main.java",
+      "anchor": "two-commands-and-java-runs"
     },
     {
-      "question": "What is the purpose of the -u 1000:1000 flag when running a Docker container?",
-      "anchor": "under-the-hood-the-docker-run-flags-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How do you use Docker to call a REST API from Java and print the JSON response?",
+      "question": "java rest api call in docker container print json response",
       "anchor": "a-slightly-more-difficult-example-calling-a-rest-api"
     },
     {
-      "question": "What are some other languages you've played with using the same 'zero local install' Docker approach as this article?",
+      "question": "docker run -it --rm -v -w -u what each flag does",
+      "anchor": "under-the-hood-the-docker-run-flags-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "docker --rm flag remove exited container after script finishes",
+      "anchor": "under-the-hood-the-docker-run-flags-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "zero install java dev environment docker only",
+      "anchor": ""
+    },
+    {
+      "question": "docker container file ownership -u 1000:1000 java compilation",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "call jsonplaceholder from java in docker no local setup",
+      "anchor": "a-slightly-more-difficult-example-calling-a-rest-api"
+    },
+    {
+      "question": "docker java coding without touching host system at all",
       "anchor": "conclusion"
     }
   ]

@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:25:30.716Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "cd0e0d55dc5251722bac19e8e74ba1488c125847",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:37:52.250Z",
+    "articleHash": "f6d7eed924fe4d23b71c0e0ffa9980f8018f8cad",
+    "questionsHash": "155abd3db20fb74e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "astuces quarto pour améliorer un diaporama reveal.js",

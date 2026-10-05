@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:11:44.731Z",
-  "durationMs": 138519,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "004ff0740510dcbe7ae1de2bf0342ecd229dd995",
+  "durationMs": 138519,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Structurer mes scripts Bash avec une bannière et une fonction de logging",
+      "anchor": "",
+      "reason": "not answered: Logging function is only a link to another article, not shown here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:23:56.536Z",
+    "articleHash": "ef3601032ed6c5103b6b203d31d6440a7c033bf9",
+    "questionsHash": "d56f011c1a54d3f6",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment afficher une bannière ascii art dans un script Bash ?",
@@ -29,10 +47,6 @@
     },
     {
       "question": "exemple code bannière ascii bash",
-      "anchor": ""
-    },
-    {
-      "question": "Structurer mes scripts Bash avec une bannière et une fonction de logging",
       "anchor": ""
     },
     {

@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:05:09.851Z",
-  "durationMs": 102682,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "2136b79f739936ce6fa520805c8fde85b00489f8",
+  "durationMs": 102682,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:57:46.564Z",
+    "articleHash": "e38b7612cb25e01c27e0f6d822a9448dca8bbbc8",
+    "questionsHash": "1a60e96af3120865",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "vérifier syntaxe JSON en ligne sans installation",

@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:08:10.923Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "55b0fccaeee957175dda5b4e2ce6d1c1206fd635",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "code complet sous-routines connexion Excel SQL Server VBA",
+      "anchor": "the-list-of-features-optional-deep-dive--full-code-for-each-subroutine",
+      "reason": "not answered: Full clsData implementation is on GitHub, not inlined in the article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "limites Excel pour gros volumes de données SQL Server alternative",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a one-line mention with a link to another article for the alternative.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:20:56.318Z",
+    "articleHash": "00aded5a5bb3bd4fb0dfc5a39e1b77f1f3bef07c",
+    "questionsHash": "c8c0e6800a5aa3ab",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "tutoriel connexion Excel VBA SQL Server Docker",
@@ -27,10 +51,6 @@
       "anchor": "lets-play-with-copytosheet"
     },
     {
-      "question": "code complet sous-routines connexion Excel SQL Server VBA",
-      "anchor": "the-list-of-features-optional-deep-dive--full-code-for-each-subroutine"
-    },
-    {
       "question": "comment fonctionne la sous-routine CopyToSheet dans le code VBA",
       "anchor": "copytosheet-subroutine"
     },
@@ -41,10 +61,6 @@
     {
       "question": "exporter résultats requête SQL dans nouveau classeur Excel via VBA",
       "anchor": "runsqlandexportnewworkbook-subroutine"
-    },
-    {
-      "question": "limites Excel pour gros volumes de données SQL Server alternative",
-      "anchor": "conclusion"
     }
   ]
 }

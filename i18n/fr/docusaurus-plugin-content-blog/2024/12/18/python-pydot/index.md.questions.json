@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:45:06.960Z",
-  "durationMs": 281622,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b24010b31905a171ce32a7ab2a04e479e344a026",
+  "durationMs": 281622,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:07:13.961Z",
+    "articleHash": "0a0123725f09d190b1c68949115a051393f560f9",
+    "questionsHash": "d17cf5297d539075",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment générer un diagramme ETL avec pydot et Docker ?",

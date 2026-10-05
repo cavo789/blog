@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:53.382Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:42:30.933Z",
   "source": "index.md",
   "sourceHash": "9477824b7abda950037f32528b0cc8a30ddfe539",
+  "durationMs": 39205,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:37:43.081Z",
+    "articleHash": "6f5a6858fcf0d8d43b087d535cf832be28abf6da",
+    "questionsHash": "8da33eec76e6722e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I automate my GitHub README with blog posts using GitHub Actions?",
+      "question": "automate github profile readme with docusaurus rss feed",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the workflow YAML file in this article?",
+      "question": "github readme automatically lists latest blog posts",
       "anchor": "the-result"
     },
     {
-      "question": "How do I create a scheduled GitHub Action to update my README automatically?",
+      "question": "how to set up a cron-triggered github action that rewrites a section of readme.md",
       "anchor": "create-the-workflow-yaml-file"
     },
     {
-      "question": "What are the steps involved in creating and configuring the workflow YAML file for updating the README?",
+      "question": "rss readme action inputs template comment_tag max_posts",
       "anchor": "step-by-step-explanations"
     },
     {
-      "question": "How can I manually start a GitHub Action to update my README?",
+      "question": "where to place comment markers in readme for github action injection",
       "anchor": "updating-the-readmemd-file"
     },
     {
-      "question": "What are the different parts of the workflow YAML file and what do they do?",
+      "question": "github actions scheduled workflow fetch rss and update readme",
+      "anchor": "create-the-workflow-yaml-file"
+    },
+    {
+      "question": "github action yaml file structure for weekly readme update",
+      "anchor": "create-the-workflow-yaml-file"
+    },
+    {
+      "question": "how to configure the rss action to output an html template per entry",
       "anchor": "step-by-step-explanations"
     },
     {
-      "question": "How can I customize the HTML template used by the GitHub action to display my blog posts in a specific format?",
-      "anchor": "step-by-step-explanations"
-    },
-    {
-      "question": "What are the comment tags used to inject the dynamic blog list into the README.md file?",
+      "question": "github action replaces content between two comment tags in readme",
       "anchor": "updating-the-readmemd-file"
+    },
+    {
+      "question": "github profile readme blog section updates itself without manual editing",
+      "anchor": "the-result"
     }
   ]
 }

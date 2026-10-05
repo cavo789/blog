@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:50:44.950Z",
-  "durationMs": 130812,
   "source": "index.mdx",
-  "locale": "fr",
   "sourceHash": "bbd98089d78357ac5f483978c5f76cb521e06a7a",
+  "durationMs": 130812,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:53:23.665Z",
+    "articleHash": "8b674103d4d1da929b96a750a6d24bc2d2b95b6a",
+    "questionsHash": "2ee4c9a3595c916a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "automatisation développement local Joomla Docker compose.yaml Makefile",
@@ -33,7 +43,7 @@
     },
     {
       "question": "sauter l'assistant d'installation Joomla via .env",
-      "anchor": "advanced-configuration-for-joomla"
+      "anchor": "running-the-website-and-skip-the-installation-process"
     },
     {
       "question": "isoler plusieurs versions de Joomla sur une même machine",

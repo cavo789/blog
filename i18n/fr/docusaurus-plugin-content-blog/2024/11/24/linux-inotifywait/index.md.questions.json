@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:14:11.706Z",
-  "durationMs": 122845,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "bd7dbe4a10dc1c3ff244c11eeba20e8be55c7908",
+  "durationMs": 122845,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "docker compose up -d volume partagé script host container",
+      "anchor": "setting-up-the-demo-environment-optional--skip-if-you-already-have-python-and-a-folder-to-watch",
+      "reason": "not answered: Article uses docker run, not docker compose up -d",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Comment utiliser un compteur de fichiers comme barre de progression pour un script Python ?",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article, no explanation given",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:00:31.835Z",
+    "articleHash": "7b3616783ed86acac872453e8b4523e928a6fbe7",
+    "questionsHash": "6cd91cbe687da113",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment obtenir un compteur de fichiers mis à jour en temps réel dans un dossier Linux ?",
@@ -13,15 +37,11 @@
     },
     {
       "question": "inotifywait surveiller répertoire fichiers créés bash",
-      "anchor": ""
+      "anchor": "creating-the-monitorsh-script"
     },
     {
       "question": "Quel ordre suivre pour lancer le script de monitoring et le générateur de fichiers dans deux terminaux ?",
       "anchor": "running-the-scripts"
-    },
-    {
-      "question": "docker compose up -d volume partagé script host container",
-      "anchor": "setting-up-the-demo-environment-optional--skip-if-you-already-have-python-and-a-folder-to-watch"
     },
     {
       "question": "Comment monter un container Docker pour partager un dossier et un script Python avec l'hôte ?",
@@ -42,10 +62,6 @@
     {
       "question": "inotifywait monitor dossier fichiers nouveaux bash script",
       "anchor": "creating-the-monitorsh-script"
-    },
-    {
-      "question": "Comment utiliser un compteur de fichiers comme barre de progression pour un script Python ?",
-      "anchor": "conclusion"
     }
   ]
 }

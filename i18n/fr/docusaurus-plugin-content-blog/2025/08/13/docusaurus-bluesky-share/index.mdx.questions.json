@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:15:20.178Z",
   "source": "index.mdx",
-  "locale": "fr",
   "sourceHash": "63e6b508b577b27347468aa1928c6cd9dc034079",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:41:59.724Z",
+    "articleHash": "c43cde23f02728811ce05ce1372b8bf9822d1a8a",
+    "questionsHash": "4c3e80957b7d1042",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment ajouter un bouton de partage Bluesky sous les articles d'un blog Docusaurus ?",
@@ -24,7 +34,7 @@
     },
     {
       "question": "Structure de base d'un composant React personnalisé pour Docusaurus",
-      "anchor": "time-to-create-our-bluesky-docusaurus-component"
+      "anchor": "15-the-layout-of-our-bluesky-generic-component"
     },
     {
       "question": "Organisation du squelette du composant générique pour Bluesky",

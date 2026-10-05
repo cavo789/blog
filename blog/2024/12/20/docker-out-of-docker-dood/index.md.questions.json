@@ -1,49 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-10T07:08:23.275Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:25:22.722Z",
   "source": "index.md",
   "sourceHash": "f9c67fdfb25a4dc4395619da3432ab49e82d6cfa",
+  "durationMs": 75025,
+  "rejected": [
+    {
+      "question": "CI pipeline run docker build inside a container",
+      "anchor": "",
+      "reason": "not answered: CI pipeline setup is only linked to another article, not provided here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:37:49.109Z",
+    "articleHash": "33ca844798a1fa7ad91d1720d72b83205c9725d5",
+    "questionsHash": "306d0c8579d0eb01",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How can I run Docker commands from inside a container using Docker-out-of-Docker (DooD)?",
-      "anchor": ""
+      "question": "docker-out-of-docker vs docker-in-docker what's the difference",
+      "anchor": "special-thanks-"
     },
     {
-      "question": "What is Docker-out-of-Docker and how does it work?",
+      "question": "how to list host docker images from inside a running container",
       "anchor": "the-result-docker-commands-run-from-inside-a-container"
     },
     {
-      "question": "How do I install Docker-out-of-Docker on a Linux system?",
+      "question": "why does mounting /var/run/docker.sock let a container talk to the host daemon",
       "anchor": "why-it-works"
     },
     {
-      "question": "Why is Docker-out-of-Docker enabled, and what are its benefits?",
+      "question": "docker-compose DooD setup mount docker socket",
       "anchor": "installation"
     },
     {
-      "question": "What are some examples of using Docker-out-of-Docker in real-world scenarios?",
+      "question": "docker commands fail after removing docker.sock mount from container",
       "anchor": "docker-out-of-docker-dood-is-enabled-cool-but-why"
     },
     {
-      "question": "How can I create my own Docker image that runs as root or not, and configure it to allow Docker requests?",
+      "question": "how to run docker as non-root user inside a container",
       "anchor": "more-demos-running-the-container-as-an-unprivileged-user"
     },
     {
-      "question": "What are the security limits of Docker-out-of-Docker (DooD)?",
+      "question": "how does DooD work under the hood unix socket",
       "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "How can I run Docker commands from inside a container as an unprivileged user?",
+      "question": "what is group 1001 in docker socket context",
       "anchor": "what-is-this-group-1001"
     },
     {
-      "question": "What are some common real-world use cases for Docker-out-of-Docker (DooD)?",
+      "question": "DooD security risks of mounting docker socket in container",
       "anchor": "doods-security-limits"
-    },
-    {
-      "question": "How can I check why Docker-out-of-Docker is enabled and how to disable it?",
-      "anchor": "conclusion"
     }
   ]
 }

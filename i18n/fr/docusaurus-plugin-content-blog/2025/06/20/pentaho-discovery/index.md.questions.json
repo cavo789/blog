@@ -3,12 +3,30 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:52:07.862Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8ac835a78e357a3cb41ae1ee07b2cae987ac3649",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "quelles sont les prochaines étapes après la configuration initiale ?",
+      "anchor": "conclusion",
+      "reason": "not answered: Conclusion only says possibilities are vast; no concrete next steps listed.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:34:38.992Z",
+    "articleHash": "f2ab7767a651b9dbdd692227c6813afe8588c737",
+    "questionsHash": "a0772b99210b3ef1",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Pentaho Data Integration et interface Spoon : fonctionnement ETL",
-      "anchor": ""
+      "anchor": "why-it-works"
     },
     {
       "question": "installer PDI sous Linux au lieu de Windows",
@@ -32,7 +50,7 @@
     },
     {
       "question": "relier l'étape de lecture Excel à la sortie PostgreSQL dans le canevas de Spoon",
-      "anchor": "the-pieces-of-the-jigsaw-are-in-place-create-our-flow"
+      "anchor": "we-need-to-create-a-new-transformation-file"
     },
     {
       "question": "comment générer un nouveau fichier de transformation vierge dans PDI",
@@ -41,10 +59,6 @@
     {
       "question": "télécharger le fichier de transformation exemple du guide",
       "anchor": "download-the-transformation-file"
-    },
-    {
-      "question": "quelles sont les prochaines étapes après la configuration initiale ?",
-      "anchor": "conclusion"
     }
   ]
 }

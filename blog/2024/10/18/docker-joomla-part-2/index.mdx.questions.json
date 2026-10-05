@@ -1,53 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:51:28.480Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:06:09.509Z",
   "source": "index.mdx",
   "sourceHash": "6e83e776320dbf15e403c503075cc4ae7d007d89",
+  "durationMs": 34149,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:23:54.450Z",
+    "articleHash": "da93163f4438d2986b12282431fc7787a11cbecb",
+    "questionsHash": "159d92ef41159e86",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I create a Joomla website using Docker with advanced automation?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the benefits of using Docker for Joomla development?",
+      "question": "joomla docker compose makefile .env automation local dev",
       "anchor": "why-it-works"
     },
     {
-      "question": "How can I automate my Joomla site deployment process using Docker and Compose?",
-      "anchor": "create-the-three-configuration-files"
+      "question": "deploy joomla with docker in one command no manual database setup",
+      "anchor": "result"
     },
     {
-      "question": "What is the purpose of the .env configuration file in this Docker setup?",
+      "question": "joomla docker container crashes on boot database not ready depends_on healthcheck",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker compose joomla persistent mounted volumes keep site files on disk",
+      "anchor": "our-orchestration-file-composeyaml"
+    },
+    {
+      "question": "joomla docker .env file DB_HOST DB_PORT project_name configuration",
       "anchor": "well-use-a-configuration-file-called-env"
     },
     {
-      "question": "How do I manage multiple Joomla projects on the same machine using Docker and Compose?",
-      "anchor": "updated-composeyaml"
-    },
-    {
-      "question": "What is the role of the makefile in automating Joomla site deployment with Docker?",
+      "question": "makefile targets docker joomla up down clean",
       "anchor": "lets-make-our-lives-simpler-and-lazier-using-a-makefile"
     },
     {
-      "question": "How can I check the configuration before starting the Joomla website?",
-      "anchor": "before-starting"
+      "question": "docker joomla remove containers but keep database data free memory",
+      "anchor": "-or-lets-ask-him-to-remove-containers-free-more-memory"
     },
     {
-      "question": "What are the steps to wake up or keep my Joomla website running?",
-      "anchor": "check-our-configuration"
+      "question": "docker joomla full teardown remove containers and all files",
+      "anchor": "-or-lets-ask-him-to-suicide-remove-containers-and-files"
     },
     {
-      "question": "How do I stop and remove containers for a Joomla website in Docker?",
-      "anchor": "lets-wake-up-joomla"
+      "question": "skip joomla installation wizard docker preconfigure with environment variables",
+      "anchor": "running-the-website-and-skip-the-installation-process"
     },
     {
-      "question": "What is the purpose of the updated compose.yaml file in this Docker setup?",
-      "anchor": "updated-env"
+      "question": "run joomla 5.2 4.0 3.5 simultaneously same machine docker different ports",
+      "anchor": "starting-three-different-projects"
     },
     {
-      "question": "What are the steps to start multiple Joomla projects simultaneously using Docker and Compose?",
+      "question": "start all joomla docker projects single makefile command",
       "anchor": "start-all-three-projects-in-just-one-command"
+    },
+    {
+      "question": "docker logs joomla apache mysql php debug errors",
+      "anchor": "under-the-hood-docker-logs"
     }
   ]
 }

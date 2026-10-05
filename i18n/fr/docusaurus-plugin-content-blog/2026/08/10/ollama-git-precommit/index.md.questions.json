@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:35:29.802Z",
-  "durationMs": 121555,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b812b4c2374159e81bd657b3b7ccdfea5fe2afa6",
+  "durationMs": 121555,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:34:38.612Z",
+    "articleHash": "d4dece85b9ca26cfb406251404100ae6ae582fe0",
+    "questionsHash": "069f2d3a0137283b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "hook zsh local ollama avant git commit",

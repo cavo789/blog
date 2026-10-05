@@ -20,7 +20,7 @@
 - [Article Weight](feedback_article_weight.md) — pas d'empilement de post-mortems ni de setup non-standard ; un article doit donner envie de tester
 - [YAML Date Parsing](feedback_yaml_date_parsing.md) — frontmatter dates arrive as ISO strings after SSR; always use new Date(value), never concatenate
 - [TODO Folder Convention](project_todos_convention.md) — .todos/ est privé : écrire en français, format NNN-slug.md, sections Problème/Risque/Solution
-- [TODO Triage Feedback](feedback_todo_triage.md) — rejects reader-engagement TODOs (polls/Q&A/share/bookmarks/counters) as WONT_DO, low traffic
+- [TODO Triage Feedback](feedback_todo_triage.md) — rejects reader-engagement TODOs (polls/Q&A/share/bookmarks/counters, page « Profil » + localStorage global) as WONT_DO, low traffic ; chiffres du refus 2026-09-23 inclus
 - [Unpublished Plan Maintenance](feedback_unpublished_plan.md) — always keep .unpublished/plan.md in sync with drafts, written in French, never published
 - [Internal Linking Rule (new posts)](feedback_internal_linking.md) — tout nouveau post embarque 2-4 `<Link>` inline + lien réciproque ; jamais d'orphelin
 - [Internal Links Audit](project_internal_links.md) — run `internal-link-opportunities.mjs --stats`; verified baseline + the 4 traps that break naive greps
@@ -28,7 +28,7 @@
 - [i18n Architecture](project_i18n_architecture.md) — locale fr, les 5 plugins maison qui la portent, et l'invariant posts.ts qui lit blog/ et pas i18n/
 - [Devcontainer Structure](project_devcontainer_structure.md) — scripts/, COPY paths, bind-mounts, wiring points — tout ce qui doit rester synchronisé
 - [File Rename Completeness](feedback_file_rename_completeness.md) — grep exhaustif avant tout rename ; "terminé" = docker build passe, pas juste le fichier déplacé
-- [AnythingLLM Instance](project_anythingllm_instance.md) — 172.17.0.1:**3200** depuis le devcontainer, compose sur l'hôte, workspaces `blog` (257 EN) + `blog-fr` (103 FR), plafond d'embedding num_ctx 400
+- [AnythingLLM Instance](project_anythingllm_instance.md) — 172.17.0.1:**3200**, workspaces `blog`/`blog-fr` ; vector-search consommé par questions review (●◐○), links:check (meaning), ai-related ; embedder EN-only
 - [llms.txt Discoverability](project_llms_txt_discoverability.md) — head links + series-bundle link built 2026-08-11 ; directory submissions: llmstxt.site ✅, directory.llmstxt.cloud ✅, llmstxthub.com ❌ retry
 - [Dev Server Restart Authorization](feedback_dev_server_restart.md) — restart allowed for content verification IF ListAgents+broadcast to peer sessions first; curl can't verify dev-mode content, use Playwright
 - [Build Verification Trigger Gap](feedback_build_verification_trigger_gap.md) — build-verification.md rule doesn't auto-load on src/** edits ; default to isolated `.docusaurus-verify` build over safe_build.sh, which wipes the live dev server's `.docusaurus-dev/`
@@ -41,9 +41,10 @@
 - [Infima Dark Band Contrast](feedback_infima_dark_band_contrast.md) — en dark, aucun headroom entre les fonds Infima ; séparer par la bordure (emphasis-200), token déclaré sur le conteneur pas sur la carte
 - [Snippet Relative Paths](feedback_snippet_relative_paths.md) — `source=` toujours relatif à l'article (`./…`) ; le préfixe `.unpublished/<slug>` ou `blog/YYYY/MM/DD/` ne doit JAMAIS apparaître ; exception : sources du repo (src/, plugins/, .claude/)
 - [Navbar Width Budget](project_navbar_width_budget.md) — saturée entre 997-1260px ; repli de la recherche, dropdown « Plus » écarté, pas de nouvelle entrée prévue
-- [Ollama code-quality speed](project_ollama_code_quality_speed.md) — questions FR ≈ 150 s/article : 140 s de "thinking" ; think:false = 10x mais casse le schéma JSON (Ollama 0.18.2) ; num_ctx et think:"low" inutiles
+- [Ollama questions bench](project_ollama_code_quality_speed.md) — Ollama 0.34.3 (2026-09-23) : code-quality+thinking meilleur en FR ET EN (~30-36 s) ; = qualité de l'ancien 36B ; task-tiny inutilisable ; code-fast pire en FR
 - [Slug/Folder Seam](project_slug_folder_seam.md) — 27 dossiers ≠ slug front-matter ; dériver un slug d'un chemin casse en silence, utiliser slugFor()
 - [Build vs Dev Server Clear](project_build_devserver_clear_clash.md) — safe_build.sh et `start` font tous deux `yarn clear` : chacun détruit le codegen de l'autre
 - [Webpack Inline Image Trap](project_webpack_inline_image_trap.md) — importer une petite image de static/ l'inline en base64 (502 KB de chunk) ; withBaseUrl + require.context "weak"
 - [Webpack Prod Cache Isolation](project_webpack_prod_cache_isolation.md) — purger `node_modules/.cache/webpack/*-production-*` pour un build froid sans tuer le cache du serveur de dev ; un sidecar lu par un plugin remark n'invalide jamais le cache
 - [SSH Config Tips Publication](project_ssh_config_tips_publication.md) — article ssh-config-tips prévu 2026-10-02, 5 sections après fix devcontainer ProxyJump (`code.bosa.fgov.be` manquait des exceptions)
+- [Questions Triage](project_questions_triage.md) — `questions triage` : juge Ollama au lieu de la relecture manuelle, rejette sans supprimer, idempotent par tampon ; 1er run EN prévu 2026-09-24

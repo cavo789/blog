@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:12.836Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:37:46.232Z",
   "source": "index.md",
   "sourceHash": "b89c6048bc1dd375c883a1773f0f164aaffd8b16",
+  "durationMs": 25062,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:58:46.795Z",
+    "articleHash": "e631d3e707df315b9fc98240034f5cf0cbff5998",
+    "questionsHash": "ae79c99ab11328b4",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I generate a graph from compose.yaml?",
+      "question": "visualize docker compose.yaml as dependency graph",
       "anchor": ""
     },
     {
-      "question": "What is Docker Compose architecture visualization tool?",
-      "anchor": ""
-    },
-    {
-      "question": "Can you explain how to visualize Docker services and dependencies using `compose-viz`?",
+      "question": "compose-viz docker image generate architecture diagram",
       "anchor": "reproduce-it-yourself"
     },
     {
-      "question": "How does `compose-viz` generate a clear graph of Docker Compose architecture?",
-      "anchor": "a-more-complex-example"
-    },
-    {
-      "question": "What are the supported output formats for the generated graph with `compose-viz`?",
-      "anchor": "a-more-complex-example"
-    },
-    {
-      "question": "How can I generate an SVG instead of a PNG using `compose-viz`?",
-      "anchor": "a-more-complex-example"
-    },
-    {
-      "question": "What is the purpose of the `compose-viz` tool?",
+      "question": "see docker compose services and their dependencies as a picture",
       "anchor": ""
     },
     {
-      "question": "How do I visualize a Docker Compose architecture using `compose-viz`?",
+      "question": "how to run compose-viz on a compose file",
       "anchor": "reproduce-it-yourself"
+    },
+    {
+      "question": "compose-viz output SVG instead of PNG",
+      "anchor": "reproduce-it-yourself"
+    },
+    {
+      "question": "docker compose multi-service diagram showing ports volumes and links",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "understand complex docker compose architecture at a glance",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "which ports are exposed in my docker compose setup diagram",
+      "anchor": "a-more-complex-example"
+    },
+    {
+      "question": "resolve docker compose environment variables before generating diagram",
+      "anchor": "docker-config"
+    },
+    {
+      "question": "docker compose config merge multiple compose files",
+      "anchor": "docker-config"
     }
   ]
 }

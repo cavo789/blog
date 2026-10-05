@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-05T05:43:21.094Z",
+  "durationMs": 41839,
+  "source": "index.md",
+  "sourceHash": "52b2f7607a55d1c8edcf5b7ee41e06376713c94b",
+  "questions": [
+    {
+      "question": "docker image 1gb for a 5-file flask app why so big",
+      "anchor": ""
+    },
+    {
+      "question": "docker layer deletion opaque whiteout files still take space",
+      "anchor": "what-is-dive"
+    },
+    {
+      "question": "run dive via docker socket mount without installing binary",
+      "anchor": "running-dive--no-installation-needed"
+    },
+    {
+      "question": "dockerfile anti-patterns python flask bloated example",
+      "anchor": "the-patient-a-deliberately-terrible-dockerfile"
+    },
+    {
+      "question": "dive TUI efficiency score red deleted files wasted bytes",
+      "anchor": "the-diagnosis-what-dive-reveals"
+    },
+    {
+      "question": "apt-get install and apt-get clean in same RUN instruction docker",
+      "anchor": "fix-1--clean-up-the-apt-mess-in-the-same-layer"
+    },
+    {
+      "question": "how to reduce number of docker layers by combining RUN statements",
+      "anchor": "fix-2--fewer-layers-less-overhead"
+    },
+    {
+      "question": "multi-stage build python docker image size reduction 80 percent",
+      "anchor": "fix-3--the-multi-stage-build"
+    },
+    {
+      "question": "FROM scratch docker image single binary no OS",
+      "anchor": "bonus--from-scratch-the-absolute-minimum"
+    },
+    {
+      "question": "dive docker image size threshold fail build in CI pipeline",
+      "anchor": "dive-as-a-ci-quality-gate"
+    },
+    {
+      "question": "claude code automate docker dive fix loop",
+      "anchor": "claude-code--automate-the-entire-loop"
+    },
+    {
+      "question": "docker image bloat fix apt layers multi-stage step by step",
+      "anchor": "putting-it-all-together"
+    }
+  ]
+}

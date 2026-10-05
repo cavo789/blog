@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:53.078Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:58:59.428Z",
   "source": "index.md",
   "sourceHash": "e8c688ef6da07a74f3bc1e8c8a6dc16654021d6d",
+  "durationMs": 21277,
+  "rejected": [
+    {
+      "question": "docusaurus dockerfile multi-stage build",
+      "anchor": "create-a-dockerfile-file",
+      "reason": "not answered: Article shows a single-stage Dockerfile; no multi-stage build explained.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:23:33.336Z",
+    "articleHash": "5c14d2a2597bc3265ac439b4cd6c3215fdb84fea",
+    "questionsHash": "ab879b9927a1e731",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I create a Docker image for Docusaurus?",
+      "question": "run docusaurus without node installed",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus docker three files one command",
+      "anchor": "three-files-one-command"
+    },
+    {
+      "question": "how does docusaurus hot reload work inside a docker container",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of the .dockerignore file in this setup?",
+      "question": "build custom docusaurus docker image from scratch",
       "anchor": "create-your-own-docusaurus-image"
     },
     {
-      "question": "How do I mount my blog content folder inside the Docker container?",
+      "question": "what to put in .dockerignore for docusaurus project",
       "anchor": "create-a-dockerignore-file"
     },
     {
-      "question": "What are some tips for optimizing hot reload with Docusaurus and Docker?",
+      "question": "docker compose yaml for docusaurus dev server with volume mount",
       "anchor": "create-a-composeyaml-file"
     },
     {
-      "question": "How can I create multiple blog posts automatically using this setup?",
+      "question": "add markdown blog posts to docusaurus docker setup",
       "anchor": "create-simple-blog-items"
     },
     {
-      "question": "What is the default port number used by Docusaurus when running with Docker?",
+      "question": "docusaurus docker port 3000 change to 8080",
       "anchor": "run-docusaurus"
     },
     {
-      "question": "How do I change the port number used by Docusaurus when running with Docker?",
-      "anchor": "run-docusaurus"
+      "question": "docusaurus dockerfile explained line by line",
+      "anchor": "under-the-hood--the-dockerfile-line-by-line-skip-this-if-you-just-want-it-running"
     },
     {
-      "question": "What is the purpose of the compose.yaml file in this setup?",
-      "anchor": "create-a-composeyaml-file"
+      "question": "stop and restart docusaurus docker compose container",
+      "anchor": "stop-and-restart"
     }
   ]
 }

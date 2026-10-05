@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-20T16:52:50.990Z",
-  "durationMs": 173479,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3dfe71d2f506b312ca382c075a0f6e71a6dbd9bb",
+  "durationMs": 173479,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:46:22.119Z",
+    "articleHash": "ffa746c1f2a3ff630c45e0c2456e81a685c36058",
+    "questionsHash": "e6af1424acf76281",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "zsh functions traduire résumer documents confidentiels local ollama docling",
@@ -13,7 +23,7 @@
     },
     {
       "question": "ai-translate comment garder la mise en forme markdown intacte lors de la traduction",
-      "anchor": "demo--ai-translate"
+      "anchor": "ai-translate"
     },
     {
       "question": "ai-summarize extraire délais paiement et résiliation sans lire tout le contrat",
@@ -41,7 +51,7 @@
     },
     {
       "question": "récapitulatif rapide des commandes ai-translate ai-summarize et de l extraction docling",
-      "anchor": "all-files-at-a-glance"
+      "anchor": "key-takeaways"
     },
     {
       "question": "conclusion comment intégrer ai-translate et ai-summarize dans son workflow quotidien avec ollama",

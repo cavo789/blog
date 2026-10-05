@@ -3,8 +3,44 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:05:04.172Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "43981c20e655fc341e28e4ad7e3bc0fc1cf33b3d",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "bloquer un commit git si des marqueurs TODO ou TEMPORARY sont encore présents",
+      "anchor": "",
+      "reason": "not answered: Only links to another article; no hook setup instructions given.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "extension vscode pour afficher les erreurs et warnings inline comme Error Lens",
+      "anchor": "",
+      "reason": "not answered: Passing mention with a link; no installation or configuration details.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "exporter la liste de ses extensions VSCode pour les réinstaller sur une autre machine",
+      "anchor": "",
+      "reason": "not answered: Mentions custom tags exist but gives no configuration instructions.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "dashboard des corrections à faire et des annotations de code dans VSCode",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no export steps provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:19:52.333Z",
+    "articleHash": "8984a0b3f62f3df0ae1d33d173d55828199602e6",
+    "questionsHash": "5cfb8c8643e90635",
+    "status": "applied",
+    "rejected": 4,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "extension vscode todo tree pour lister les FIXME et TODO",
@@ -23,27 +59,11 @@
       "anchor": ""
     },
     {
-      "question": "bloquer un commit git si des marqueurs TODO ou TEMPORARY sont encore présents",
-      "anchor": ""
-    },
-    {
-      "question": "extension vscode pour afficher les erreurs et warnings inline comme Error Lens",
-      "anchor": ""
-    },
-    {
-      "question": "exporter la liste de ses extensions VSCode pour les réinstaller sur une autre machine",
-      "anchor": ""
-    },
-    {
       "question": "configurer des tags personnalisés pour les todo dans l’extension Todo Tree",
       "anchor": ""
     },
     {
       "question": "garder une trace des bidouilles temporaires et des blocs de code commentés pendant le debug",
-      "anchor": ""
-    },
-    {
-      "question": "dashboard des corrections à faire et des annotations de code dans VSCode",
       "anchor": ""
     }
   ]

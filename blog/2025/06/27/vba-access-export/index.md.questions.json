@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:35.382Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:01:06.364Z",
   "source": "index.md",
   "sourceHash": "e4c7117702c4d4918a950c448874dee5708083c8",
+  "durationMs": 30679,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:04:01.163Z",
+    "articleHash": "af50185a1037a5996eb479ccf268185b5a343534",
+    "questionsHash": "124cd9207eb97d11",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "Export forms from MS Access",
+      "question": "export ms access vba code to text files for git",
+      "anchor": ""
+    },
+    {
+      "question": "what does the exported access objects folder structure look like after running the script",
       "anchor": "sample"
     },
     {
-      "question": "How to export queries from MS Access",
+      "question": "vbs script export all access forms modules queries reports macros to disk",
       "anchor": "description"
     },
     {
-      "question": "VBA script for exporting modules in MS Access",
+      "question": "how to export access database objects with access running in hidden mode",
+      "anchor": "description"
+    },
+    {
+      "question": "where to save the vbs export script relative to the access database file",
       "anchor": "install"
     },
     {
-      "question": "Export reports from MS Access using VBS script",
+      "question": "command line run access export vbs with database name parameter",
+      "anchor": "sample"
+    },
+    {
+      "question": "edit config file before running access object export script",
       "anchor": "usage"
     },
     {
-      "question": "How to export macros from MS Access with a VBS script",
+      "question": "diff and track ms access database code changes in github",
       "anchor": "conclusion"
     },
     {
-      "question": "Version control MS Access database objects",
-      "anchor": ""
+      "question": "ms access .accdb internal objects to flat files version control",
+      "anchor": "description"
     },
     {
-      "question": "Exporting code objects in MS Access using VBS script",
-      "anchor": ""
+      "question": "access export script output one file per object subfolder backup",
+      "anchor": "sample"
     },
     {
-      "question": "How to export forms, queries, modules, reports, and macros from MS Access",
-      "anchor": ""
+      "question": "do i need to install anything extra for the access vbs export script",
+      "anchor": "install"
     }
   ]
 }

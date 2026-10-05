@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:57.429Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:23:50.653Z",
   "source": "index.md",
   "sourceHash": "767f5a3cc4edd1c136a409176600c9c22f4fa0b1",
+  "durationMs": 25082,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:45:49.084Z",
+    "articleHash": "071c5d91783cc9355fc43ad486aadd153f09e914",
+    "questionsHash": "7130bf835d97ad07",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How can I protect my proprietary PHP code using obfuscation?",
+      "question": "does PHP obfuscation still protect code from AI de-obfuscation",
       "anchor": ""
     },
     {
-      "question": "What are the potential drawbacks of using AI tools to de-obfuscate obfuscated PHP code?",
+      "question": "is code obfuscation pointless when Copilot can reverse it",
       "anchor": ""
     },
     {
-      "question": "Can you explain why obfuscating PHP code might still be necessary in today's AI era?",
+      "question": "php obfuscation AI test hangman game",
       "anchor": ""
     },
     {
-      "question": "How does the php_obfuscator script work and what are its features?",
+      "question": "generate PHP hangman game with Gemini AI",
       "anchor": "obtaining-a-previously-non-existent-code-ask-gemini"
     },
     {
-      "question": "Can you provide an example of a hangman game written in PHP that is obfuscated and still runs correctly?",
-      "anchor": "obtaining-a-previously-non-existent-code-ask-gemini"
-    },
-    {
-      "question": "What changes does the php_obfuscator script make to the original code?",
+      "question": "php_obfuscator script how to run rename function names random",
       "anchor": "obfuscate"
     },
     {
-      "question": "How can I use the php_obfuscator script to obfuscate my PHP code?",
+      "question": "strip whitespace and minify PHP identifiers to random strings",
       "anchor": "obfuscate"
     },
     {
-      "question": "What are some alternative tools for obfuscating PHP code besides the php_obfuscator script?",
+      "question": "Copilot de-obfuscate PHP code back to readable",
       "anchor": "make-the-code-readable-again-ask-copilot"
+    },
+    {
+      "question": "can AI rewrite obfuscated PHP with proper names and comments",
+      "anchor": "make-the-code-readable-again-ask-copilot"
+    },
+    {
+      "question": "ask Copilot to suggest readable version of minified PHP",
+      "anchor": "make-the-code-readable-again-ask-copilot"
+    },
+    {
+      "question": "PHP code protection obfuscation vs AI tools",
+      "anchor": ""
     }
   ]
 }

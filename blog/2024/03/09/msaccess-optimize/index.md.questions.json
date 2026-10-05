@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:50:00.031Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:12:16.801Z",
   "source": "index.md",
   "sourceHash": "d9c00485ef581547c27978c7300d10427450cabb",
+  "durationMs": 24353,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:35:29.425Z",
+    "articleHash": "0f9d522ff8332d797ac80cc2fda91a809b562b8d",
+    "questionsHash": "f52a2bf746eb40fb",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I add a primary key to each table in MS Access?",
-      "anchor": "ms-access---analyze-performance"
-    },
-    {
-      "question": "What are some common performance issues with MS Access databases and how can they be addressed?",
+      "question": "speed up slow MS Access database without redesigning",
       "anchor": ""
     },
     {
-      "question": "How do I create indexes on important fields to improve query performance in MS Access?",
+      "question": "how to run the performance analysis tool in MS Access 2016",
       "anchor": "ms-access---analyze-performance"
     },
     {
-      "question": "What are some best practices for designing tables and relationships in MS Access databases?",
-      "anchor": ""
+      "question": "MS Access optimization checklist for existing database",
+      "anchor": "do-it-yourself"
     },
     {
-      "question": "How can I optimize the size of fields in an MS Access database to improve performance?",
-      "anchor": "ms-access---analyze-performance"
+      "question": "add primary key and index to existing Access table",
+      "anchor": "tables"
     },
     {
-      "question": "What are some common pitfalls when adding primary keys to tables in MS Access and how can they be avoided?",
-      "anchor": "ms-access---analyze-performance"
+      "question": "Access text field declared 255 chars slowing query performance",
+      "anchor": "tables"
     },
     {
-      "question": "How do I use the relationships window in MS Access to create links between tables?",
-      "anchor": "ms-access---analyze-performance"
+      "question": "why do VBA functions in an Access query bypass the index",
+      "anchor": "queries"
     },
     {
-      "question": "What are some best practices for using data types and indexes in MS Access databases to improve performance?",
-      "anchor": ""
+      "question": "Access SQL filter WHERE before JOIN speed",
+      "anchor": "queries"
+    },
+    {
+      "question": "convert Access macro to VBA module for speed",
+      "anchor": "macros"
+    },
+    {
+      "question": "compile VBA modules in Access database performance",
+      "anchor": "modules"
+    },
+    {
+      "question": "compact MS Access .accdb file reduce size",
+      "anchor": "database"
     }
   ]
 }

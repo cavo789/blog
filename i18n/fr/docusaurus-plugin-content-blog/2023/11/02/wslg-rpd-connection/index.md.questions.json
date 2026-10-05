@@ -2,18 +2,42 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T19:46:44.012Z",
-  "durationMs": 223735,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "43b443916f85dca989f1a4c4c278ebd373784b78",
+  "durationMs": 223735,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Éditer ~/.xsession pour lancer xfce4-session automatiquement lors de la connexion xrdp",
+      "anchor": "get-the-desktop-environment",
+      "reason": "not answered: Article uses /etc/xrdp/startwm.sh, not ~/.xsession",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Alternative légère à un bureau complet sur WSL pour exécuter une seule application graphique",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article, no actual steps",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T11:59:37.061Z",
+    "articleHash": "b81280962418b06b2460ded4e9dd7162c82143f9",
+    "questionsHash": "7cebfc744ac9c556",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment obtenir un vrai bureau graphique sur WSL2 Ubuntu au lieu de la console bash par défaut ?",
-      "anchor": ""
+      "anchor": "get-the-desktop-environment"
     },
     {
       "question": "RDP WSL2 bureau Xfce vs fenêtres isolées WSLg",
-      "anchor": "what-an-rdp-session-into-wsl-actually-looks-like"
+      "anchor": "conclusion"
     },
     {
       "question": "Installer xrdp sur Ubuntu et changer le port vers 3390 pour éviter le conflit 3389",
@@ -24,16 +48,8 @@
       "anchor": "connect-from-windows"
     },
     {
-      "question": "Éditer ~/.xsession pour lancer xfce4-session automatiquement lors de la connexion xrdp",
-      "anchor": "get-the-desktop-environment"
-    },
-    {
       "question": "Configurer la disposition du clavier en AZERTY dans la session distante WSL",
       "anchor": "set-your-keyboard"
-    },
-    {
-      "question": "Alternative légère à un bureau complet sur WSL pour exécuter une seule application graphique",
-      "anchor": "conclusion"
     },
     {
       "question": "Commande pour stopper xrdp et libérer les ressources quand on n'en a plus besoin",

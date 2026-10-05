@@ -2,22 +2,32 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-20T16:49:27.459Z",
-  "durationMs": 111947,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ed5f00180174d36232827f8ece5c2adb8ec6aeaf",
+  "durationMs": 111947,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:42:41.559Z",
+    "articleHash": "3a333ad825b40ef5bf27302fe5a49439fea872ae",
+    "questionsHash": "98f5f5afa137eaa1",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "télécharger récursivement fichiers .php serveur FTP WinSCP",
-      "anchor": ""
+      "anchor": "the-script"
     },
     {
       "question": "Script WinSCP pour récupérer automatiquement une extension précise sur SFTP",
-      "anchor": ""
+      "anchor": "the-script"
     },
     {
       "question": "Automatiser le téléchargement de fichiers par type d'extension via WinSCP",
-      "anchor": ""
+      "anchor": "the-script"
     },
     {
       "question": "Quelle est la syntaxe du script WinSCP pour filtrer par extension lors d'un téléchargement récursif ?",

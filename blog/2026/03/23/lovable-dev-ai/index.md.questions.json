@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:02:22.620Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:48:27.697Z",
   "source": "index.md",
   "sourceHash": "d4993cbc27ea1cd095f6752e02068ba10967b2ff",
+  "durationMs": 22763,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:43:01.836Z",
+    "articleHash": "29d83b8309ee386773ae537f7be5e7e68d5e10ae",
+    "questionsHash": "3fcf5aa221937eca",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How does Lovable.dev help with full-stack app development?",
+      "question": "Lovable.dev build full-stack app from a single prompt",
       "anchor": ""
     },
     {
-      "question": "What is Marknotes, and how did you create it?",
+      "question": "AI code generator recreate legacy note-taking app FastAPI React Docker",
+      "anchor": ""
+    },
+    {
+      "question": "AI generated markdown viewer with Redis cache and Meilisearch search working result",
+      "anchor": "the-result-after-one-hour-and-a-half"
+    },
+    {
+      "question": "Lovable.dev one hour and a half dockerized app browsing disk files",
+      "anchor": "the-result-after-one-hour-and-a-half"
+    },
+    {
+      "question": "prompt to generate dockerized FastAPI React Redis Meilisearch markdown note app",
+      "anchor": "the-objective"
+    },
+    {
+      "question": "how to specify strict tech stack constraints in a Lovable.dev prompt",
+      "anchor": "the-objective"
+    },
+    {
+      "question": "fix AI-generated frontend Dockerfile error by pasting back into prompt",
       "anchor": "the-actual-path-there-successive-versions-and-errors"
     },
     {
-      "question": "Can AI code generators rebuild a full-stack note-taking app from a single prompt?",
-      "anchor": ""
+      "question": "Lovable.dev successive versions debugging Python backend error iterative",
+      "anchor": "the-actual-path-there-successive-versions-and-errors"
     },
     {
-      "question": "How does Lovable.dev's Docker-first architecture work for building applications?",
-      "anchor": "the-result-after-one-hour-and-a-half"
+      "question": "continue improving AI-generated full-stack code after initial successful build",
+      "anchor": "conclusion"
     },
     {
-      "question": "What are the key components of Lovable.dev's application, and how do they interact?",
-      "anchor": "the-objective"
-    },
-    {
-      "question": "How does Lovable.dev help with application deployment?",
-      "anchor": "the-result-after-one-hour-and-a-half"
-    },
-    {
-      "question": "What are the main features of Lovable.dev's application, and how do they work together?",
-      "anchor": "the-objective"
-    },
-    {
-      "question": "How does Lovable.dev help with app development using AI?",
-      "anchor": ""
+      "question": "Lovable.dev source code handoff to another AI platform for further development",
+      "anchor": "conclusion"
     }
   ]
 }

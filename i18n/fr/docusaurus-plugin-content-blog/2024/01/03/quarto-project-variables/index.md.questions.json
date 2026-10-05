@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:22:27.659Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "2edd77dd82ca09695b4dbe2e7074780fa2d89d0a",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "commande quarto render pour appliquer le fichier de configuration",
+      "anchor": "setting-it-up",
+      "reason": "not answered: Article donne quarto preview, pas quarto render",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:37:01.880Z",
+    "articleHash": "f95cf8de62edb378fe0027e9dbf0a781f4a50527",
+    "questionsHash": "6cca8eda10fa6649",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "quarto éviter hardcoding IP chemins emails doc technique",
@@ -12,11 +30,11 @@
     },
     {
       "question": "Comment centraliser les valeurs récurrentes dans un projet Quarto ?",
-      "anchor": ""
+      "anchor": "what-quarto-variables-do-for-you"
     },
     {
       "question": "syntaxe shortcodes {{< var key >}} et {{< meta key >}} dans le markdown",
-      "anchor": "what-quarto-variables-do-for-you"
+      "anchor": "setting-it-up"
     },
     {
       "question": "Mettre à jour automatiquement vingt occurrences dans ma doc Quarto avec un seul fichier",
@@ -24,10 +42,6 @@
     },
     {
       "question": "configurer _quarto.yml pour charger des variables externes",
-      "anchor": "setting-it-up"
-    },
-    {
-      "question": "commande quarto render pour appliquer le fichier de configuration",
       "anchor": "setting-it-up"
     },
     {

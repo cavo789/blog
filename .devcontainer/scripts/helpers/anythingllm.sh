@@ -14,9 +14,20 @@ function ai-index() {
 
 # @cat AnythingLLM
 # @cmd ai-search
-# @desc Ask the blog a question (ai-search which articles cover docker?)
+# @desc Query the AnythingLLM 'blog' workspace, manual only (ai-search which articles cover docker?)
 function ai-search() {
     .scripts/anythingllm-search.sh "$@"
+}
+
+# Ranking only — no chat model, no answer to wait for: which articles are closest in meaning
+# to a topic, an idea, or another article. /suggestions-add calls the same script to catch an
+# idea already covered under another name.
+#
+# @cat AnythingLLM
+# @cmd ai-related
+# @desc Articles closest in meaning to a text or --post <article> (ai-related "trivy image scan")
+function ai-related() {
+    node scripts/ai-related.mjs "$@"
 }
 
 # The French corpus lives in its own workspace: mixing two languages in one
@@ -37,7 +48,7 @@ function ai-index-fr() {
 
 # @cat AnythingLLM
 # @cmd ai-search-fr
-# @desc Ask the blog a question in French (ai-search-fr quels articles parlent de docker ?)
+# @desc Query the AnythingLLM 'blog-fr' workspace, manual only (ai-search-fr quels articles parlent de docker ?)
 function ai-search-fr() {
     ANYTHINGLLM_WORKSPACE=blog-fr \
         BLOG_DIR=i18n/fr/docusaurus-plugin-content-blog \

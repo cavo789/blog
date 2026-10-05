@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:29:22.340Z",
-  "durationMs": 257575,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ffa5c0aa54ca2af21cbd3dce6ef7cc298a392763",
+  "durationMs": 257575,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:28:24.909Z",
+    "articleHash": "56300bc0fe08bab37888864d85b0da9a5674b795",
+    "questionsHash": "a54130c8095e5206",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "comment ajouter un écran d'aide auto-documenté à un makefile",
@@ -13,7 +23,7 @@
     },
     {
       "question": "make help affiche liste targets et descriptions makefile",
-      "anchor": "what-you-will-get"
+      "anchor": "step-2---adding-the-help-target"
     },
     {
       "question": "makefile indentation tabulations vs espaces",
@@ -21,11 +31,11 @@
     },
     {
       "question": "makefile cible par défaut première action",
-      "anchor": "adding-the-default-action"
+      "anchor": "step-1---adding-the-default-action"
     },
     {
       "question": "ajouter target help makefile",
-      "anchor": "step-1---adding-the-default-action"
+      "anchor": "step-2---adding-the-help-target"
     },
     {
       "question": "make help usage makefile",

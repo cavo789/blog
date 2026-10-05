@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:14:40.305Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3721bed15c6663673f2afddf6224a0002a08dbf9",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Vérifier la connexion réseau Ollama et dépanner si les conteneurs Docker ne se joignent pas",
+      "anchor": "double-checking-the-connection",
+      "reason": "not answered: Docker troubleshooting steps are on a linked page, not in this article",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:23:26.788Z",
+    "articleHash": "bab32b0fbc4d260dde9dd29585afc9c81bfe3684",
+    "questionsHash": "bcde92eea2ec9435",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment mettre en place un serveur Ollama local pour y accéder depuis un autre ordinateur ?",
@@ -25,10 +43,6 @@
     {
       "question": "Ouvrir Open WebUI sur le navigateur du poste client pour voir les modèles IA",
       "anchor": "running-open-webui"
-    },
-    {
-      "question": "Vérifier la connexion réseau Ollama et dépanner si les conteneurs Docker ne se joignent pas",
-      "anchor": "double-checking-the-connection"
     },
     {
       "question": "Configurer VSCode pour utiliser Ollama comme backend d'assistant IA",

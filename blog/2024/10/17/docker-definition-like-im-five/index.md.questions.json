@@ -1,40 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:30.998Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:05:06.416Z",
   "source": "index.md",
   "sourceHash": "c81ff579a4f057c9cae93adafbbe9e13c3433423",
+  "durationMs": 34109,
+  "rejected": [
+    {
+      "question": "docker joomla mysql port config",
+      "anchor": "-and-to-an-example-such-as-joomla",
+      "reason": "not answered: Mentions port need but gives no actual port configuration details.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "docker devcontainer python",
+      "anchor": "some-more-information",
+      "reason": "not answered: No mention of DevContainers; only links to a Python image.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:22:50.666Z",
+    "articleHash": "e6c7eb469ba13665873a016ce7feeeb09d0862f8",
+    "questionsHash": "9b5dcb97992a8467",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is Docker used for?",
+      "question": "explain docker like im five",
       "anchor": ""
     },
     {
-      "question": "How can I explain Docker to a non-technical audience?",
+      "question": "what is docker actually for",
       "anchor": ""
     },
     {
-      "question": "Can you explain the culinary analogy used in this article about Docker?",
+      "question": "why does following exact setup instructions still give a different result",
       "anchor": "culinary-analogy"
     },
     {
-      "question": "What is the difference between Docker and virtual machines?",
+      "question": "reproducing exact dependency versions and file permissions across machines",
       "anchor": "lets-go-back-to-the-it-world"
     },
     {
-      "question": "How does Docker simplify the process of setting up a development environment?",
+      "question": "docker vs virtual machine difference",
       "anchor": "-and-docker"
     },
     {
-      "question": "Can you explain how Docker works with different operating systems?",
+      "question": "how docker runs a full linux environment on my mac",
+      "anchor": "-and-docker"
+    },
+    {
+      "question": "run joomla and mysql locally without installing everything separately",
       "anchor": "-and-to-an-example-such-as-joomla"
     },
     {
-      "question": "What are some examples of software that can be run using Docker?",
-      "anchor": "some-more-information"
-    },
-    {
-      "question": "How does Docker ensure that the same result is achieved every time a container is created?",
+      "question": "docker beyond the basics what else should i know",
       "anchor": "some-more-information"
     }
   ]

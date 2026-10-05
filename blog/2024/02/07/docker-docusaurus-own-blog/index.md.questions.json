@@ -1,33 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:53.897Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:00:07.071Z",
   "source": "index.md",
   "sourceHash": "9e2a6c2b22b9b8b92c9231ae6973e65778318b54",
+  "durationMs": 38848,
+  "rejected": [
+    {
+      "question": "where to put favicon logo in docusaurus docker static folder",
+      "anchor": "the-static-folder",
+      "reason": "not answered: Article shows favicon as URL in config, never says put it in static/",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:24:37.123Z",
+    "articleHash": "6d57aca5be77c4fc78b1beb2cd6701ce8b2d1b93",
+    "questionsHash": "aa792670e94a7ef8",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I customize my Docusaurus site's title, favicon, and URL?",
+      "question": "docusaurus docker customize blog files without rebuild",
+      "anchor": ""
+    },
+    {
+      "question": "how to edit docusaurus config from host when running in docker container",
       "anchor": "customize-the-name-title-icons-and-url-of-your-site"
     },
     {
-      "question": "What files should I copy out of the Docker container to edit them on my host?",
+      "question": "change docusaurus site title favicon navbar docker",
+      "anchor": "customize-the-name-title-icons-and-url-of-your-site"
+    },
+    {
+      "question": "docusaurus.config.js docker cp volume mount site branding",
+      "anchor": "customize-the-name-title-icons-and-url-of-your-site"
+    },
+    {
+      "question": "docusaurus src/pages folder structure custom routes",
       "anchor": "the-srcpages-folder"
     },
     {
-      "question": "How do I mount a file from the Docker container to my host so that changes are reflected in real-time?",
+      "question": "how to create a custom about page in docusaurus with docker",
+      "anchor": "the-srcpages-folder"
+    },
+    {
+      "question": "docusaurus static folder docker volume mount assets",
       "anchor": "the-static-folder"
     },
     {
-      "question": "What values should I set for the `siteMetadata` fields in the `_config.js` file to customize my Docusaurus site?",
-      "anchor": "you-now-have-the-basics"
+      "question": "docusaurus docker copy file from container mount volume edit",
+      "anchor": "customize-the-name-title-icons-and-url-of-your-site"
     },
     {
-      "question": "How do I create a custom page in my Docusaurus blog and add it to the navigation bar?",
+      "question": "docusaurus docker blog customization complete workflow",
       "anchor": "you-now-have-the-basics"
-    },
-    {
-      "question": "What files should I copy out of the Docker container to edit them on my host for site customization?",
-      "anchor": "the-srcpages-folder"
     }
   ]
 }

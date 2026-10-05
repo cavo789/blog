@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:29:11.218Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "d9c5cb436f941bdc1df7b3ae7c6481f42e5b9ed4",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:26:58.216Z",
+    "articleHash": "33b89d004f9b5cf44083cc43ee926bf5d17b0d19",
+    "questionsHash": "1134a2ffebc253bd",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "quarto extensions pour documentation et templating",

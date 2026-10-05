@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:00.014Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:49:43.403Z",
   "source": "index.md",
   "sourceHash": "0fbd8d77bc923450b2d3b150fb787c303fe12747",
+  "durationMs": 32216,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:15:06.858Z",
+    "articleHash": "e56a65cb55da61c2697cafde69a805565c74eef3",
+    "questionsHash": "62d7a1f24cdf19d0",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I blacklist and whitelist domains using cPanel's SpamAssassin?",
+      "question": "cPanel SpamAssassin user_prefs file location",
       "anchor": ""
     },
     {
-      "question": "What is the advanced method for directly editing the user_prefs file via FTP to manage SpamAssassin rules?",
+      "question": "how to blacklist a domain in cPanel spam filter",
       "anchor": ""
     },
     {
-      "question": "How can I use cPanel's Spam filter and white list options to define email patterns for spam management?",
+      "question": "edit SpamAssassin rules via FTP instead of web interface",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the user_prefs file in SpamAssassin, and how do I manipulate its entries?",
+      "question": "whitelist trusted domain cPanel spam",
       "anchor": ""
     },
     {
-      "question": "How can I use FTP to directly edit the SpamAssassin rules on my host company's server?",
+      "question": "stop spam at server level so all devices are protected",
       "anchor": ""
     },
     {
-      "question": "What are some tips for fighting spam directly at my host company, and why is this effective?",
+      "question": "SpamAssassin user_prefs sort and remove duplicates",
       "anchor": ""
     },
     {
-      "question": "How can I automate the generation of SpamAssassin rules using GitHub Actions?",
+      "question": "cPanel spam filter kill pattern domain syntax",
       "anchor": ""
     },
     {
-      "question": "What are some alternative methods to directly edit the SpamAssassin rules on my host company's server besides FTP?",
+      "question": "bulk manage spam blacklist rules self-hosted",
+      "anchor": ""
+    },
+    {
+      "question": "cPanel spam filter vs white list difference",
+      "anchor": ""
+    },
+    {
+      "question": "self-hosted email spam blocking server-side",
       "anchor": ""
     }
   ]

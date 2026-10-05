@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:37:45.991Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "393815cef34601423a089922c51fa95697eac09a",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:45:07.130Z",
+    "articleHash": "c3e0f01a0735359340bd5912a589a7929cbca8be",
+    "questionsHash": "1e2d72fa6aa6cdcf",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "sed mettre à jour variable .env si existe sinon ajouter",
-      "anchor": ""
+      "anchor": "the-one-liner"
     },
     {
       "question": "commande grep -q et sed -i pour .env idempotent",
@@ -44,7 +54,7 @@
     },
     {
       "question": "pourquoi cette approche sed est idempotente pour les scripts de déploiement",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     }
   ]
 }

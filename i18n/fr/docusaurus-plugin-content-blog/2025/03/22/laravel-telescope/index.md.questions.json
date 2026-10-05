@@ -3,17 +3,33 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:10:15.487Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ea0deaf2f72b4e68067445a4bb4869078196d107",
-  "questions": [
+  "locale": "fr",
+  "rejected": [
     {
       "question": "0: `composer require laravel/telescope --dev`",
-      "anchor": ""
+      "anchor": "",
+      "reason": "not answered: Article links to external docs; the composer command is never stated.",
+      "date": "2026-09-24"
     },
     {
       "question": "0: comment installer Telescope en dépendance de développement sur Laravel ?",
-      "anchor": ""
-    },
+      "anchor": "",
+      "reason": "not answered: Only mentions dev dependency; installation steps deferred to external documentation.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:21:42.690Z",
+    "articleHash": "b7ec903fb4bbf2bbf7f9d56e134c7bd57d3d7db1",
+    "questionsHash": "f2f895e4e4b47dea",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
+  "questions": [
     {
       "question": "0: Telescope affichage requêtes SQL brutes Eloquent",
       "anchor": ""

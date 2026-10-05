@@ -39,11 +39,23 @@ yarn links:check <path>
 It prints the internal links already present, marks with `!!` any link pointing to no published
 article (a wrong slug — fix those), and lists candidate targets ranked by score.
 
+When the local AnythingLLM instance answers, the output carries a second signal, **meaning**:
+
+- each word-based candidate gets a `meaning: close (0.xx)` or `meaning: not close` line, and the
+  close ones are listed first — a `not close` candidate matched on words only ("command line",
+  "file") and is usually noise;
+- a final list, *Close in meaning, not linked*, names articles about the same topic that the
+  word-based pass missed, with the section of this article they relate to — the place a link
+  would go.
+
+If that block is missing, AnythingLLM is off: the lexical list alone is still valid. A stale index
+(`ai-index` not run since the latest posts) can miss recent articles as targets.
+
 ## 3. Choose the links — judgment, not the score
 
 **The candidate list is a hint, not a spec.** It ranks on shared words and tags, so it happily
 proposes four unrelated posts that merely say "docker image", while missing the one link the prose
-is begging for. So:
+is begging for. The meaning signal narrows that gap; it does not close it. So:
 
 - Read the article. Look for the moments where it *names* something covered elsewhere: a tool, a
   prerequisite, a concept explained in an earlier post, a natural follow-up.

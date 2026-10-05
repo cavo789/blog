@@ -1,56 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T09:10:31.494Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:12:56.901Z",
   "source": "index.md",
   "sourceHash": "8f57401218635c73ccb6b67889d44bc06c37171e",
+  "durationMs": 32613,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:05:06.403Z",
+    "articleHash": "bae081956851bb591b03ba1a3c8b768fac0e6b1f",
+    "questionsHash": "d1dbdbef6e500490",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What are the five layers of Claude Code?",
+      "question": "claude code .claude folder layered workflow beyond slash commands",
       "anchor": ""
     },
     {
-      "question": "Why is a layered setup beneficial for Claude Code?",
+      "question": "claude code command calls agent which applies skill to review article",
       "anchor": "what-five-layers-look-like-in-practice"
     },
     {
-      "question": "How do I start using Claude Code with slash commands?",
+      "question": "why separate claude code skills agents rules hooks into different layers",
       "anchor": "why-a-layered-setup-works"
     },
     {
-      "question": "What are hooks in Claude Code and how do they work?",
+      "question": "claude code write first custom slash command",
       "anchor": "start-here-your-first-slash-command"
     },
     {
-      "question": "How can I encode standards using skills and agents in Claude Code?",
+      "question": "claude code hook block or auto-approve tool call without AI in the loop",
       "anchor": "draw-a-hard-line-hooks"
     },
     {
-      "question": "Can you explain the practical example of this blog's time-to-value check in Claude Code?",
+      "question": "claude code skill file define what good looks like agent enforces it",
       "anchor": "encode-your-standards-skills-checked-by-agents"
     },
     {
-      "question": "What are always-on rules in Claude Code and how do they work?",
+      "question": "claude code check if blog post front-loads value before install steps",
       "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
     },
     {
-      "question": "How can I use plain Bash scripts without involving the AI in Claude Code?",
+      "question": "claude code rule auto-loads when matching file opens no typing needed",
       "anchor": "always-on-no-invocation-needed-rules"
     },
     {
-      "question": "What is the purpose of wiring it all together in Claude Code?",
+      "question": "claude code wire commands hooks skills agents rules into one pipeline",
       "anchor": "wiring-it-all-together"
     },
     {
-      "question": "Can you explain how the reviewer agents can't edit in Claude Code?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How can I use a zero-token script in Claude Code?",
+      "question": "claude code read-only reviewer agent cannot edit files",
       "anchor": "why-the-reviewer-agents-cant-edit"
     },
     {
-      "question": "What is the conclusion of this article on Claude Code?",
+      "question": "claude code zero-token bash script count files increment ID instead of asking model",
       "anchor": "the-zero-token-script-one-more-time"
     }
   ]

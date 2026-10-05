@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:54.448Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:48:42.411Z",
   "source": "index.md",
   "sourceHash": "bcea6aa54f35da3e056da3f896ffdf47bb585fa1",
+  "durationMs": 29909,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:14:20.853Z",
+    "articleHash": "30e4b62d4fed1042e4e214ae7c67e54638f9f2ee",
+    "questionsHash": "a6a35378751d2a13",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I enable logging in WinSCP to retrieve a forgotten password?",
+      "question": "winscp retrieve saved password",
       "anchor": ""
     },
     {
-      "question": "What is the process for retrieving a stored password using plain text from the session log file in WinSCP?",
+      "question": "how to see a forgotten winscp password in plain text",
       "anchor": ""
     },
     {
-      "question": "How do I check if WinSCP provides an option to show stored passwords in plain text?",
+      "question": "winscp log passwords and sensitive information setting",
       "anchor": ""
     },
     {
-      "question": "What is the correct menu path to enable logging and retrieve a stored password in WinSCP?",
+      "question": "forgot winscp password where to find it in log",
       "anchor": ""
     },
     {
-      "question": "How do I find the session log file containing the plain-text password in WinSCP?",
+      "question": "winscp session .log file directory",
       "anchor": ""
     },
     {
-      "question": "What are some alternatives to storing passwords in WinSCP, such as using key-based authentication or KeePass?",
+      "question": "enable winscp logging to expose stored credential",
       "anchor": ""
     },
     {
-      "question": "How do I retrieve a stored password from the session log file in plain text using WinSCP?",
+      "question": "winscp password in plain text from session log",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of logging passwords and other sensitive information in WinSCP?",
+      "question": "winscp recover password without resetting account",
+      "anchor": ""
+    },
+    {
+      "question": "winscp logging preferences show password checkbox",
+      "anchor": ""
+    },
+    {
+      "question": "winscp double-click site to trigger log password",
       "anchor": ""
     }
   ]

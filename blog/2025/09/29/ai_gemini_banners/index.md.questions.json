@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:10.655Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:22:52.012Z",
   "source": "index.md",
   "sourceHash": "fece20467f3d8239c3fb05e07b94ef512fbc80bf",
+  "durationMs": 21598,
+  "rejected": [
+    {
+      "question": "Gemini TL;DR summaries Docusaurus AI-assisted content flagging",
+      "anchor": "",
+      "reason": "not answered: Only links to other articles; no explanation of the process given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:19:47.340Z",
+    "articleHash": "f2dfec83769916cad04dcc86967ed80db672afce",
+    "questionsHash": "07657ce1fd68e58e",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How does Google Gemini Nano Banana work for generating custom images?",
+      "question": "Gemini Nano Banana blog images meerkat",
       "anchor": ""
     },
     {
-      "question": "What are some practical tips for using Google Gemini to create custom images?",
+      "question": "how to use Gemini image-to-image to generate consistent character poses from one clipart",
       "anchor": ""
     },
     {
-      "question": "How did I use Google Gemini to generate the meerkat mascot and other custom images for my blog?",
+      "question": "Gemini free plan blog banner generation 16:9 aspect ratio prompt",
       "anchor": ""
     },
     {
-      "question": "What are some challenges I faced while using Google Gemini to create custom images?",
+      "question": "AI meerkat mascot pose sheet from single illustration",
       "anchor": ""
     },
     {
-      "question": "How can I optimize the use of Google Gemini's free plan for creating custom images on my blog?",
+      "question": "Gemini image generation keeps misspelling text workaround",
       "anchor": ""
     },
     {
-      "question": "What are some common mistakes to avoid when using Google Gemini to create custom images?",
+      "question": "upload reference images to Gemini for style consistency across blog banners",
       "anchor": ""
     },
     {
-      "question": "How can I use Google Gemini to generate automated TL;DR summaries for my blog posts?",
+      "question": "Docusaurus blog custom AI generated images Gemini workflow",
       "anchor": ""
     },
     {
-      "question": "What are some ways to indicate AI-assisted content on my Docusaurus blog using Google Gemini?",
+      "question": "Gemini prompt iteration meerkat dinosaur BlueSky wings",
+      "anchor": ""
+    },
+    {
+      "question": "recraft.ai alternative Gemini for blog images",
       "anchor": ""
     }
   ]

@@ -1,50 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-18T15:45:38.483Z",
-  "durationMs": 8028,
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:05:02.453Z",
   "source": "index.md",
   "sourceHash": "26e0c819ee350a1590907311a2a85af0c3e50eb0",
+  "durationMs": 38373,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:28:44.709Z",
+    "articleHash": "c22f3c6e02dcabc0d9b940539d55c2ad92457a12",
+    "questionsHash": "19a4a69f7557b27c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I access a host alias inside a Docker container?",
+      "question": "docker compose extra_hosts custom network connect containers",
       "anchor": "the-two-line-fix"
     },
     {
-      "question": "Why can't a Docker container reach another container on a different network?",
+      "question": "extra_hosts docker-compose.yml two line fix",
+      "anchor": "the-two-line-fix"
+    },
+    {
+      "question": "why docker container cannot reach container on different network",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of the `extra_hosts` property in Docker Compose?",
+      "question": "docker network create run apache container custom network",
       "anchor": "some-preparation-work"
     },
     {
-      "question": "How do I create a shared network between two Docker containers?",
+      "question": "docker compose second container curl localhost port 8080",
       "anchor": "creating-our-second-container"
     },
     {
-      "question": "What is the gateway IP of a Docker network?",
-      "anchor": "when-it-doesnt-work-and-why"
+      "question": "curl (7) Failed to connect from docker container to another container",
+      "anchor": "creating-our-second-container"
     },
     {
-      "question": "How do I connect a second container to a shared network in Docker Compose?",
+      "question": "docker compose networks attach service to existing network",
       "anchor": "we-need-to-run-the-second-container-on-the-same-network"
     },
     {
-      "question": "How can I reuse a host-side hosts-file alias inside a container using the `extra_hosts` property?",
+      "question": "docker network inspect gateway ip address",
       "anchor": "we-need-to-find-the-ip-of-the-network"
     },
     {
-      "question": "What is the difference between running a Docker container on its own network and the default network?",
+      "question": "docker compose extra_hosts gateway ip retry connection",
       "anchor": "try-again"
     },
     {
-      "question": "How do I access a host alias inside a Docker container using a custom network?",
+      "question": "docker extra_hosts map /etc/hosts alias into container",
       "anchor": "extra-use-case---aliases"
     },
     {
-      "question": "What is the purpose of the `docker compose run` command in Docker Compose?",
-      "anchor": "conclusion"
+      "question": "docker compose extra_hosts same network solution",
+      "anchor": "the-two-line-fix"
     }
   ]
 }

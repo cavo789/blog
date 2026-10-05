@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:30:55.011Z",
   "source": "index.mdx",
-  "locale": "fr",
   "sourceHash": "758aec2e5b877382b2e40278c92f668cb7d5e797",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "bonus : quelles options pour peaufiner le design des cartes ?",
+      "anchor": "extra",
+      "reason": "not answered: Bonus covers sorting posts, not card design options.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:47:49.285Z",
+    "articleHash": "4568442a5162c26c70d55f2bd120b8eeab0e67f5",
+    "questionsHash": "e0f787092f50ba14",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment passer d'une liste classique à des cartes pour le blog Docusaurus ?",
@@ -16,7 +34,7 @@
     },
     {
       "question": "vérifier le rendu des cartes avec un fichier .mdx",
-      "anchor": "nice-it-works-lets-continue-with-a-practical-sample"
+      "anchor": "using-the-reusable-card-component-of-docux"
     },
     {
       "question": "surcharger /blog/tags/tag avec un plugin local",
@@ -41,10 +59,6 @@
     {
       "question": "enregistrer le plugin personnalisé dans docusaurus.config.js",
       "anchor": "we-need-to-load-our-plugin"
-    },
-    {
-      "question": "bonus : quelles options pour peaufiner le design des cartes ?",
-      "anchor": "extra"
     }
   ]
 }

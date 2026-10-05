@@ -2,10 +2,52 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:46:47.080Z",
-  "durationMs": 106065,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "7865b75ed04124607e2bc70dd42d22a9adc663c6",
+  "durationMs": 106065,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "commande Linux pour installer les extensions VS Code depuis un fichier",
+      "anchor": "",
+      "reason": "not answered: Article pipes from command, not from a file.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "intégrer la liste des extensions VS Code dans un devcontainer",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no details here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "extension VS Code Error Lens pour afficher les erreurs inline",
+      "anchor": "",
+      "reason": "not answered: Passing mention with link to a separate article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "extension VS Code Todo Tree pour regrouper les TODO et FIXME",
+      "anchor": "",
+      "reason": "not answered: Passing mention with link to a separate article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "partager automatiquement les plugins VS Code avec une équipe",
+      "anchor": "",
+      "reason": "not answered: Delegates to a linked article; no instructions here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:19:25.336Z",
+    "articleHash": "90218d4230f134c801995e3018ea04828d02e05b",
+    "questionsHash": "0e5a69f29268f3aa",
+    "status": "applied",
+    "rejected": 5,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment récupérer la liste des extensions VS Code installées",
@@ -24,27 +66,7 @@
       "anchor": ""
     },
     {
-      "question": "commande Linux pour installer les extensions VS Code depuis un fichier",
-      "anchor": ""
-    },
-    {
-      "question": "intégrer la liste des extensions VS Code dans un devcontainer",
-      "anchor": ""
-    },
-    {
-      "question": "extension VS Code Error Lens pour afficher les erreurs inline",
-      "anchor": ""
-    },
-    {
-      "question": "extension VS Code Todo Tree pour regrouper les TODO et FIXME",
-      "anchor": ""
-    },
-    {
       "question": "automatiser le setup VS Code sur une nouvelle machine",
-      "anchor": ""
-    },
-    {
-      "question": "partager automatiquement les plugins VS Code avec une équipe",
       "anchor": ""
     }
   ]

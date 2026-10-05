@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:28:15.444Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "0a2709d6fb677bc49c6d4458ad427f8d5dfe1f94",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "réutiliser l'analyse du front matter pour un compteur Docusaurus",
+      "anchor": "",
+      "reason": "not answered: Implementation lives in a linked article, not here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "compter les articles Docusaurus avec les composants personnalisés et l'API du thème",
+      "anchor": "",
+      "reason": "not answered: No custom-component or theme-API method is described.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:40:14.987Z",
+    "articleHash": "842ac9c01d5154f6cecbe355ee71883bf636d062",
+    "questionsHash": "9634e7deca26207b",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment compter les articles du blog Docusaurus",
@@ -27,19 +51,11 @@
       "anchor": ""
     },
     {
-      "question": "réutiliser l'analyse du front matter pour un compteur Docusaurus",
-      "anchor": ""
-    },
-    {
       "question": "Docusaurus obtenir le nombre d'articles sans plugin",
       "anchor": ""
     },
     {
       "question": "comment compter les liens de la liste des articles Docusaurus ?",
-      "anchor": ""
-    },
-    {
-      "question": "compter les articles Docusaurus avec les composants personnalisés et l'API du thème",
       "anchor": ""
     },
     {

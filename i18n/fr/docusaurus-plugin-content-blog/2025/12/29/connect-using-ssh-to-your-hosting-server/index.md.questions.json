@@ -3,12 +3,30 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:21:39.604Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f302f93833e3c22dcc4995ce0699a18af61335ee",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "adapter la configuration ssh à un autre fournisseur d'hébergement",
+      "anchor": "more-demos",
+      "reason": "not answered: Article renvoie vers la documentation du fournisseur, ne détaille pas l'adaptation.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:05:40.512Z",
+    "articleHash": "3db2750ddc0163a119cb8ac1a1c1fcc419f5a6be",
+    "questionsHash": "37ee06a9da7407b5",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "comment configurer une connexion ssh sans mot de passe via un alias",
-      "anchor": ""
+      "anchor": "create-an-ssh-key-to-connect-to-planethoster"
     },
     {
       "question": "connexion ssh en une commande sans saisie de mot de passe",
@@ -31,16 +49,12 @@
       "anchor": "create-an-ssh-key-to-connect-to-planethoster"
     },
     {
-      "question": "adapter la configuration ssh à un autre fournisseur d'hébergement",
-      "anchor": "more-demos"
-    },
-    {
       "question": "que faire si ssh timeout ou ip blacklistée après plusieurs tentatives",
-      "anchor": "troubleshooting--tips"
+      "anchor": "first-just-try-with-a-manual-ssh-connection"
     },
     {
       "question": "valider le bon fonctionnement de l'alias ssh en une commande",
-      "anchor": "conclusion"
+      "anchor": "the-result"
     }
   ]
 }

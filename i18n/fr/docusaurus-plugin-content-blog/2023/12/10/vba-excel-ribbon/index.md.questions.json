@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:52:34.077Z",
-  "durationMs": 181985,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "84edba64cb2846e4c392f37a249a2c7fab6511f6",
+  "durationMs": 181985,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:18:50.490Z",
+    "articleHash": "8fb2c481c6af84b9bc2842e161cb665394521bdb",
+    "questionsHash": "5cdee5893aacb2fe",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment créer un ruban personnalisé dans Excel avec XML et VBA",
@@ -13,7 +23,7 @@
     },
     {
       "question": "XML onglet bouton champ saisie Excel",
-      "anchor": "what-were-going-to-build"
+      "anchor": "add-features"
     },
     {
       "question": "pourquoi un classeur xlsm est une archive ZIP et comment y injecter customUI.xml",
@@ -45,7 +55,7 @@
     },
     {
       "question": "recharger le ruban après modification XML classeur",
-      "anchor": "conclusion"
+      "anchor": "add-features"
     }
   ]
 }

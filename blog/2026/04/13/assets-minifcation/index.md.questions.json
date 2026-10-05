@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:17:52.213Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:51:24.971Z",
   "source": "index.md",
   "sourceHash": "d4e9b47ec1f5b202dce983c2d86fe325a16f5c51",
+  "durationMs": 35838,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:45:26.611Z",
+    "articleHash": "c342c1f2a1d082683f321633b384b3c05a45b8a8",
+    "questionsHash": "ee814bf110321af6",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is Docker used for in this asset pipeline?",
-      "anchor": "why-this-approach"
+      "question": "minify css js without node docker bash",
+      "anchor": ""
     },
     {
-      "question": "How do I install yq on my system?",
-      "anchor": "the-architecture"
-    },
-    {
-      "question": "What are the prerequisites before running the script?",
-      "anchor": "1-the-configuration-manifestyaml"
-    },
-    {
-      "question": "What is a Docker image flag and where can I find more information about it?",
-      "anchor": "2-the-orchestrator-script-buildsh"
-    },
-    {
-      "question": "How do I create example files for testing the pipeline?",
-      "anchor": "3-how-to-run-it"
-    },
-    {
-      "question": "What are the steps to set up the script and manifest file?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "What is a declarative YAML manifest and how does it work in this setup?",
+      "question": "one command asset minification pipeline docker",
       "anchor": "running-it"
     },
     {
-      "question": "How do I run the script to concatenate and minify files using Docker?",
+      "question": "why not use webpack for simple css minification no node",
+      "anchor": "why-this-approach"
+    },
+    {
+      "question": "bash concatenate files then docker minify workflow",
       "anchor": "the-architecture"
+    },
+    {
+      "question": "yaml manifest define css js bundles target input files",
+      "anchor": "1-the-configuration-manifestyaml"
+    },
+    {
+      "question": "build.sh yq parse yaml docker minifier",
+      "anchor": "2-the-orchestrator-script-buildsh"
+    },
+    {
+      "question": "install yq docker minify assets prerequisites setup",
+      "anchor": "3-how-to-run-it"
+    },
+    {
+      "question": "lightweight asset minification static site legacy php",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "reproducible css minification docker same output local ci",
+      "anchor": "why-this-approach"
+    },
+    {
+      "question": "go-based minifier docker faster than javascript tools",
+      "anchor": "why-this-approach"
     }
   ]
 }

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:02.938Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:32:39.323Z",
   "source": "index.md",
   "sourceHash": "bc878962fdc01776dcf4889cfc968a43ea864d91",
+  "durationMs": 26076,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:28:55.324Z",
+    "articleHash": "a5a542c4cf65e3b1213759d14809b01b132a96c0",
+    "questionsHash": "d2552f9d9c820970",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What are some of the key features of Zorin OS 18?",
+      "question": "switch from Windows 10 to Linux old PC",
       "anchor": ""
     },
     {
-      "question": "How does Zorin OS 18 compare to other Linux distributions for Windows users?",
+      "question": "Zorin OS 18 install USB F12 boot sequence",
       "anchor": ""
     },
     {
-      "question": "What are some of the benefits of using Zorin OS 18 as an alternative to Windows or macOS?",
+      "question": "Is Zorin OS free or do I need to pay for the Pro edition?",
       "anchor": ""
     },
     {
-      "question": "How do I install Zorin OS 18 on my old computer?",
+      "question": "Zorin OS 18 Windows-like desktop taskbar file manager",
       "anchor": ""
     },
     {
-      "question": "What are some of the preinstalled software that come with Zorin OS 18?",
-      "anchor": ""
+      "question": "run Windows applications on Zorin OS WINE",
+      "anchor": "what-can-make-the-differences"
     },
     {
-      "question": "How do I use Zorin OS 18 as a Windows alternative for gaming?",
-      "anchor": ""
+      "question": "Zorin OS gaming support",
+      "anchor": "what-can-make-the-differences"
     },
     {
-      "question": "What are some of the compatibility issues that users may encounter with Zorin OS 18?",
-      "anchor": ""
+      "question": "OneDrive built into Zorin OS",
+      "anchor": "what-can-make-the-differences"
     },
     {
-      "question": "How do I reformat my USB drive to be able to reuse it after installing Zorin OS 18?",
-      "anchor": ""
+      "question": "USB stick unreadable in Windows after formatting it in Zorin Linux",
+      "anchor": "what-can-make-the-differences"
+    },
+    {
+      "question": "Zorin OS 18 Ubuntu based what do I get out of the box",
+      "anchor": "what-can-make-the-differences"
+    },
+    {
+      "question": "Zorin OS preinstalled apps LibreOffice",
+      "anchor": "what-can-make-the-differences"
     }
   ]
 }

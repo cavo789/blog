@@ -2,18 +2,36 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:37:43.810Z",
-  "durationMs": 148784,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b81cf3d42f97dc4198db44fdb4a2a85ab89e860e",
+  "durationMs": 148784,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "docker run pgadmin network link container postgresql",
+      "anchor": "run-pgadmin",
+      "reason": "not answered: Section only notes pgadmin is for PostgreSQL; no docker run command given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:30:49.830Z",
+    "articleHash": "f437b9036bc0dfb8f838d7d7e50ce9e3b1a3f38a",
+    "questionsHash": "e15b743f058f729e",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "docker run interface web gestion base de données container éphémère",
-      "anchor": ""
+      "anchor": "one-command-your-database-in-a-browser"
     },
     {
       "question": "Comment accéder à une base SQL dans un container Docker sans toucher au fichier docker compose ?",
-      "anchor": ""
+      "anchor": "one-command-your-database-in-a-browser"
     },
     {
       "question": "docker run --rm --network --link -p port adminer commande unique",
@@ -34,10 +52,6 @@
     {
       "question": "Champs de connexion adminer : que mettre dans server, username, password et database ?",
       "anchor": "run-adminer"
-    },
-    {
-      "question": "docker run pgadmin network link container postgresql",
-      "anchor": "run-pgadmin"
     },
     {
       "question": "docker run phpmyadmin --link db:db -p 8089:80",

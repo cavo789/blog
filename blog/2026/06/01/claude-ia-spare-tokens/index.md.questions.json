@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-27T15:55:55.685Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:58:54.039Z",
   "source": "index.md",
   "sourceHash": "0584bb57556a991e813e5fcd4f6d2facefaa5c49",
+  "durationMs": 38693,
+  "rejected": [
+    {
+      "question": "cheapest Claude model for coding that still handles complex refactors",
+      "anchor": "model-choice",
+      "reason": "not answered: Article lists cost tiers but never states which model handles complex refactors.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:51:49.660Z",
+    "articleHash": "7bf8c3f8da389920f2981f97af9c1816b31e88bf",
+    "questionsHash": "1bac504c0eccf70b",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I reduce token consumption in Claude Code?",
+      "question": "claude code burning through token quota practical fixes",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using a CLAUDE.md file for context management in Claude Code?",
-      "anchor": "model-choice"
-    },
-    {
-      "question": "How can I optimize my data-fetching rules to reduce token consumption in Claude Code?",
-      "anchor": "claudemd-file"
-    },
-    {
-      "question": "What is the impact of off-peak and peak hours on token usage in Claude Code?",
-      "anchor": "off-peak-and-peak-hours"
-    },
-    {
-      "question": "How can I use the aggressive output mode to save tokens in Claude Code?",
-      "anchor": "output-mode"
-    },
-    {
-      "question": "What are some tips for reducing context consumption in Claude Code?",
+      "question": "how to shrink context window in Claude Code before each request",
       "anchor": "reducing-context"
     },
     {
-      "question": "What is the difference between restrictive and balanced data-fetching rules in Claude Code?",
+      "question": "CLAUDE.md telegraphic style reduce startup token cost",
       "anchor": "claudemd-file"
     },
     {
-      "question": "What is the recommended output mode for saving tokens in Claude Code?",
+      "question": "claude code grep specific lines instead of reading entire file",
+      "anchor": "data-fetching-rules"
+    },
+    {
+      "question": "aggressive output mode claude code shorter responses",
       "anchor": "output-mode"
+    },
+    {
+      "question": "stop Claude Code from returning whole file only diff",
+      "anchor": "code-generation"
+    },
+    {
+      "question": "anthropic rate limit peak hours vs off-peak token weighting",
+      "anchor": "off-peak-and-peak-hours"
+    },
+    {
+      "question": "claude code token budget extra optimization tips",
+      "anchor": "extra"
+    },
+    {
+      "question": "caveman claude code alternative without installing just paste prompt",
+      "anchor": "if-you-dont-want-to-install-caveman"
     }
   ]
 }

@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:53:17.384Z",
-  "durationMs": 183363,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "d96762da2ef9f8016ea6dc19c1a69dfc712c8cef",
+  "durationMs": 183363,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:35:10.305Z",
+    "articleHash": "2edd5aa2dfa476981e261298c8b352c0f07c5ed1",
+    "questionsHash": "20a1df430bc9d16f",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment installer wordpress avec docker en 3 commandes sans docker compose",
-      "anchor": ""
+      "anchor": "three-commands-one-wordpress-site"
     },
     {
       "question": "quelles commandes exécuter pour avoir l'assistant d'installation wordpress sur le port 8080",
@@ -37,7 +47,7 @@
     },
     {
       "question": "docker run en ligne de commande ou docker compose pour un site jetable",
-      "anchor": "conclusion"
+      "anchor": "three-commands-one-wordpress-site"
     }
   ]
 }

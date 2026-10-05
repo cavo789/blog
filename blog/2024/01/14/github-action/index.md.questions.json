@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-18T10:14:33.246Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:46:07.024Z",
   "source": "index.md",
   "sourceHash": "957fd966f770eb3450c57f8d6c017f4149d3a00c",
+  "durationMs": 25322,
+  "rejected": [
+    {
+      "question": "rsync over ssh github actions deploy",
+      "anchor": "why-i-moved-to-ssh",
+      "reason": "not answered: Mentions rsync/SSH conceptually but shows no workflow file or setup steps.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:11:57.417Z",
+    "articleHash": "d2e0a7a31e4385b05e25520cec066df2a8e10331",
+    "questionsHash": "1b6cc7883c701b82",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I automate my blog's deployment with GitHub Actions?",
+      "question": "github actions replace winscp manual deploy",
+      "anchor": ""
+    },
+    {
+      "question": "automate docusaurus blog deployment on every push",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "github actions deploy from web editor without local tools",
       "anchor": "what-a-deployment-looks-like-now"
     },
     {
-      "question": "What are the three ingredients needed to set up a GitHub Actions workflow for deploying a blog?",
+      "question": "github actions ftp deploy what do i need",
       "anchor": "three-ingredients"
     },
     {
-      "question": "How do I create a file in the repository and what is its content?",
+      "question": "github actions workflow file ftp secrets .github/workflows",
       "anchor": "setting-it-up"
     },
     {
-      "question": "What are the three repository secrets needed to store FTP credentials for automatic updates on every push?",
+      "question": "how to store ftp login password as repository secret",
       "anchor": "setting-it-up"
     },
     {
-      "question": "Why did I move from an FTP automation script to using GitHub Actions for deploying my blog?",
+      "question": "restricted ftp user only output folder deployment",
+      "anchor": "setting-it-up"
+    },
+    {
+      "question": "ftp sends password in clear text alternative",
       "anchor": "why-i-moved-to-ssh"
     },
     {
-      "question": "What are the benefits of using SSH over FTP for deploying a blog?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "How does the replacement use Git over SSH to deploy a blog?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "What is the difference between plain FTP and FTPS, and why should I use FTPS?",
+      "question": "ftp one file at a time slow deploy thousands of files",
       "anchor": "why-i-moved-to-ssh"
+    },
+    {
+      "question": "deployment as side effect of git push",
+      "anchor": "conclusion"
     }
   ]
 }

@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:47:35.880Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:03:35.475Z",
   "source": "index.md",
   "sourceHash": "7c2e2250d04aec9920528d358980671d4c29427b",
+  "durationMs": 19380,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:33:35.181Z",
+    "articleHash": "70e74005c7f1cf66018ce3805ce71533020b849f",
+    "questionsHash": "769528834b2fe9e5",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I implement Content Security Policy (CSP) headers for my Apache .htaccess file?",
+      "question": "htaccess tips and tricks apache",
+      "anchor": ""
+    },
+    {
+      "question": "how to set content security policy header in htaccess",
       "anchor": "csp---content-security-policy"
     },
     {
-      "question": "What are some best practices for securing files on my Apache server using the .htaccess file?",
-      "anchor": "files"
-    },
-    {
-      "question": "How can I block access to certain files based on their names and extensions in my Apache .htaccess file?",
+      "question": "htaccess block access to specific file names",
       "anchor": "block-access-to-some-files-based-on-their-names"
     },
     {
-      "question": "What is the correct syntax for forcing HTTPS and www with HSTS preload using the .htaccess file?",
-      "anchor": "force"
+      "question": "prevent downloading certain file extensions apache htaccess",
+      "anchor": "block-access-to-some-files-based-on-their-extensions"
     },
     {
-      "question": "How can I disable error reporting in my Apache server using the .htaccess file?",
-      "anchor": "misc"
+      "question": "block dotfiles and hidden directories htaccess",
+      "anchor": "block-access-to-hidden-files--directories"
     },
     {
-      "question": "What are some tips for optimizing my Apache server using the .htaccess file?",
-      "anchor": "optimization"
+      "question": "force browser to download pdf instead of displaying htaccess",
+      "anchor": "force-display"
     },
     {
-      "question": "How can I prevent script execution in a specific folder using the .htaccess file?",
-      "anchor": "stops-a-browser-from-trying-to-mime-sniff"
+      "question": "htaccess disable error messages like production mode",
+      "anchor": "disable-error-reporting"
     },
     {
-      "question": "What is the correct syntax for redirecting an entire site using the .htaccess file?",
+      "question": "gzip compress css and js files htaccess",
+      "anchor": "compress-files-based-on-their-type-or-extensions"
+    },
+    {
+      "question": "htaccess deny all access to folder",
+      "anchor": "deny-all-access"
+    },
+    {
+      "question": "prevent clickjacking and enable xss protection header htaccess",
+      "anchor": "avoid-clickjacking-and-enable-xss-protection-for-browsers"
+    },
+    {
+      "question": "redirect whole website to new domain htaccess permanent",
       "anchor": "redirect-an-entire-site"
+    },
+    {
+      "question": "stop google from indexing a folder htaccess",
+      "anchor": "disallow-indexing"
     }
   ]
 }

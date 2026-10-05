@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:37:58.832Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "61debc0ada2db93b516fdd6ea02df9d7a8a710be",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:10:44.898Z",
+    "articleHash": "5b3bce73d8052731f0a0ca74e458d37ffcfb9f94",
+    "questionsHash": "a63780aa8cf24fd3",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment mettre à jour automatiquement le README GitHub avec un flux RSS Docusaurus",
@@ -20,7 +30,7 @@
     },
     {
       "question": "template HTML pour formater les articles RSS dans le README.md",
-      "anchor": "the-result"
+      "anchor": "step-by-step-explanations"
     },
     {
       "question": "où placer le fichier workflow YAML et configurer le cron hebdomadaire",

@@ -1,40 +1,51 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:55.268Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:23:38.716Z",
   "source": "index.md",
   "sourceHash": "998ac7266923336535bd0cb86b68e708e0154446",
+  "durationMs": 52054,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:36:53.534Z",
+    "articleHash": "8cadca1aa37e31b53bc1b5a2cc4a43bc5919f2d9",
+    "questionsHash": "a46733351e073fa1",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I generate ETL flowcharts using Python and pydot?",
+      "question": "python pydot docker render diagram png",
       "anchor": ""
     },
     {
-      "question": "What is a diagram-as-code generator in Python?",
+      "question": "diagram as code ETL flowchart python library",
       "anchor": ""
     },
     {
-      "question": "How can I create an image of an ETL flowchart using Pydot and Docker?",
-      "anchor": ""
-    },
-    {
-      "question": "Can you provide examples of how to use Pydot for generating class diagrams in Python?",
+      "question": "pydot graphviz examples with rendered images",
       "anchor": "some-other-examples"
     },
     {
-      "question": "What is the purpose of the `f.i.` file mentioned in the article?",
+      "question": "pydot OOP class diagram python code",
       "anchor": "oop-classes"
     },
     {
-      "question": "How can I generate a decision flowchart using Pydot and Docker?",
+      "question": "python script generate data flow diagram image",
       "anchor": "data-flow"
     },
     {
-      "question": "Can you explain how to create a decision tree diagram using Pydot in Python?",
+      "question": "pydot decision flow diagram code",
       "anchor": "decision-flow"
     },
     {
-      "question": "What is the difference between `doc-as-code` and `diagram-as-code` generators?",
+      "question": "how to render a decision tree from python with pydot",
+      "anchor": "decision-tree"
+    },
+    {
+      "question": "pydot docker setup python graphviz",
       "anchor": ""
     }
   ]

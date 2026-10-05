@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:42.450Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:08:42.415Z",
   "source": "index.md",
   "sourceHash": "957475c6b0289ac64debd7086cdfc2d2658a5911",
+  "durationMs": 17964,
+  "rejected": [
+    {
+      "question": "view contents of joomla tables before dropping them read-only sql",
+      "anchor": "conclusion",
+      "reason": "not answered: links to another article for the read-only SQL view",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:32:04.345Z",
+    "articleHash": "979546d8562523cadf15002afebe96c34fa9d61c",
+    "questionsHash": "8885701a22e00c76",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How can I delete tables from my Joomla database using a specific prefix?",
+      "question": "delete joomla database tables by prefix php script",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the PHP utility script for deleting Joomla database tables by prefix?",
+      "question": "how to clean up leftover tables from a removed joomla component",
+      "anchor": ""
+    },
+    {
+      "question": "single page php tool to list and drop joomla tables matching a prefix",
       "anchor": "what-the-utility-looks-like"
     },
     {
-      "question": "How do I use the PHP utility script to delete Joomla database tables with a specific prefix?",
+      "question": "joomla table deletion utility no config file just type the prefix",
+      "anchor": "what-the-utility-looks-like"
+    },
+    {
+      "question": "upload php script next to configuration.php to delete joomla tables from browser",
       "anchor": "how-to-use-it"
     },
     {
-      "question": "What are some common prefixes used for old or removed components in Joomla databases?",
+      "question": "joomla database cleanup script ftp upload steps winSCP",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "how to run a php utility in browser to remove joomla tables by prefix",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "joomla leftover prefix tables clutter cleanup once a year",
       "anchor": "conclusion"
     },
     {
-      "question": "How can I safely remove the PHP utility script from my Joomla site after use?",
-      "anchor": "how-to-use-it"
-    },
-    {
-      "question": "What are some potential risks of using a PHP utility to delete Joomla database tables by prefix?",
-      "anchor": "what-the-utility-looks-like"
-    },
-    {
-      "question": "How can I verify which tables in my Joomla database match a specific prefix before deleting them?",
-      "anchor": "what-the-utility-looks-like"
-    },
-    {
-      "question": "What are some alternative methods for cleaning up old or removed components from a Joomla database?",
+      "question": "alternative to phpMyAdmin for deleting joomla tables by prefix",
       "anchor": "conclusion"
     }
   ]

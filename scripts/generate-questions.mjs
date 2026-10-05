@@ -49,10 +49,15 @@ const projectRoot = path.resolve(__dirname, "..");
 // address this project's other host-side tooling (AnythingLLM) already uses. Override with
 // OLLAMA_URL when running outside the devcontainer (e.g. `http://localhost:11434`).
 const OLLAMA_URL = process.env.OLLAMA_URL || "http://172.17.0.1:11434";
-// task-tiny is a 3B instruct model — plenty for extraction, not reasoning (see the TODO's
-// rationale), and fast enough to keep a 248-article bulk run to the ~45 min the TODO budgets.
-// Larger local models produced no better questions in manual comparison but ran ~10x slower.
-const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "task-tiny:latest";
+// code-quality with thinking, for every locale. Blind bench on Ollama 0.34.3 (2026-09-23),
+// 16 English outputs: code-quality 4.5/5 at ~36 s/article, think:false 4.0, code-fast 3.4,
+// task-tiny 1.9 — it mapped every question of a 31-heading article to the introduction.
+// Only thinking reaches the late headings: the prose below is capped at 4000 chars.
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "code-quality:latest";
+
+// The `code-quality` tag pointed to a different, ~5x slower model before the 2026-09-23 stack
+// upgrade. Timings recorded earlier would inflate every bulk-run estimate, so they are ignored.
+const TIMINGS_VALID_SINCE = "2026-09-23";
 
 // Seconds of idle between two articles in a bulk run. A full French corpus is hours of
 // uninterrupted GPU load, typically left running overnight — the pause costs ~16% of wall time
@@ -69,16 +74,14 @@ const MIN_VALID_QUESTIONS = 5;
 // Output language per locale. The instruction is spelled out in the prompt because a 3B model
 // otherwise drifts back to English whenever the article quotes English commands or titles.
 //
-// `model` is the per-locale default when OLLAMA_MODEL is not set. French uses the larger local
-// model: on the Docling pilot (2026-09-17), task-tiny wrote acceptable French but shifted the
-// heading index by one on 5 of 12 questions (a question about the GPU toolkit pointing at the
-// section before it), while code-quality mapped all 10 correctly — at ~2 min per article
-// instead of ~11 s, which is nothing for a corpus of a few translated articles.
+// `model` stays per locale so one language can diverge again; today both use the default.
+// French was on code-quality first: on the Docling pilot (2026-09-17), task-tiny shifted the
+// heading index by one on 5 of 12 questions, while code-quality mapped all 10 correctly.
 const LANGUAGES = {
   en: { name: "English", extra: "", model: OLLAMA_MODEL },
   fr: {
     name: "French",
-    model: process.env.OLLAMA_MODEL || "code-quality:latest",
+    model: OLLAMA_MODEL,
     extra: `
 - Write every question in natural French, the way a French-speaking developer would type it
   (tutoiement or impersonal phrasing, never a word-for-word translation of English).
@@ -410,7 +413,7 @@ function resolveTranslated(articleFile, locale) {
 
 /**
  * Past generation times for `model`, read back from the `durationMs` each sidecar records.
- * Sidecars written before that field existed simply don't count.
+ * Sidecars written before that field existed, or before TIMINGS_VALID_SINCE, simply don't count.
  */
 function pastDurations(model) {
   const durations = [];
@@ -421,7 +424,11 @@ function pastDurations(model) {
       if (!rel.endsWith(".questions.json")) continue;
       try {
         const sidecar = JSON.parse(fs.readFileSync(path.join(dir, rel), "utf-8"));
-        if (sidecar.model === model && Number.isFinite(sidecar.durationMs)) {
+        if (
+          sidecar.model === model &&
+          Number.isFinite(sidecar.durationMs) &&
+          sidecar.generated >= TIMINGS_VALID_SINCE
+        ) {
           durations.push(sidecar.durationMs);
         }
       } catch {
@@ -471,7 +478,7 @@ async function runLocalizedBulk({ locale, force, limit, dryRun, pause }) {
       `(${fresh.length} already fresh, ${skipped.length - fresh.length} not eligible).`,
   );
 
-  // A French run on the 36B model takes hours — say so before it starts, not after.
+  // A full run on code-quality takes hours — say so before it starts, not after.
   const model = LANGUAGES[locale]?.model;
   const history = model ? pastDurations(model) : [];
   if (model && targets.length > 0) {
@@ -635,7 +642,7 @@ Options:
 Environment:
   OLLAMA_URL    Ollama endpoint (default: http://172.17.0.1:11434 — the devcontainer's
                 bridge to the host)
-  OLLAMA_MODEL  Model name (default: task-tiny:latest; code-quality:latest for --locale fr)
+  OLLAMA_MODEL  Model name (default: code-quality:latest)
 `);
     process.exit(0);
   }

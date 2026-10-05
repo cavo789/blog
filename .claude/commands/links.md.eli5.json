@@ -1,20 +1,21 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:13:49.788Z",
+  "generated": "2026-10-05T05:42:18.385Z",
   "source": "links.md",
-  "sourceHash": "08ca3fc383ba2dd6e074b8b8dbf939a144d3f3d4",
+  "sourceHash": "94c9342bc67f4917b1c7d277c42383bb6db0b2c9",
   "lang": "markdown",
-  "summary": "This document describes a workflow for adding internal cross-links to blog articles. The process involves selecting articles to work on, running a checking tool to find linking candidates, manually choosing relevant links based on content (not just rankings), inserting them inline in the prose using a Link component, adding reciprocal links in older articles, verifying the links work, and reporting what was changed.",
+  "textLang": "en",
+  "summary": "This document describes a workflow for adding internal links to blog articles. The process involves selecting articles to work on, running a checking tool that suggests link targets, manually choosing the most relevant links based on the article's content (not just word matches), inserting those links inline in the prose, verifying they point to real articles, and finally reporting what was done.",
   "explanations": {
-    "16": "The slug is a short URL identifier for an article (like 'reactions' instead of the full path). This command searches all blog and draft folders to find which article has that slug.",
-    "26": "This command shows all files currently changed or newly added in git (the working tree), filtering to just index.md files in blog folders, and extracts just the file paths (the $NF part means 'last field').",
-    "30": "This is a fallback that looks at the previous commit (HEAD~1) compared to the current one (HEAD), finding articles that were Added, Created, or Modified, in case the working tree has no changes.",
-    "36": "This command runs a checking tool that reports which internal links already exist in an article, flags bad links with '!!' if they point to non-existent slugs, and suggests other articles that might be good targets.",
-    "44": "The ranking system suggests links based on keyword overlap and shared tags, but this can be misleading — it might suggest unrelated articles just because they mention the same tool, while missing the obvious connection the writing is actually making.",
-    "50": "The project memory map is a reference file that lists articles by their main category tag and series, helping you spot related posts that the automated ranking might have missed.",
-    "58": "This means the link should go where the term is first mentioned in the actual body text, not collected in a separate 'See also' section at the end, because a different component already handles related links at the page bottom.",
-    "61": "The Link component is already available globally in this project, so you don't need to write an import statement — just use it directly with the target slug and anchor text.",
-    "71": "After adding links, you run the same check command on all affected articles (including the older ones you added reciprocal links to) to ensure every link points to a real, published article."
+    "16": "The grep command searches through blog and draft folders for any index file whose frontmatter contains a `slug:` field matching the user's input, helping convert a slug name into an actual file path.",
+    "26": "This git command finds article files that have been recently modified or newly created in the working directory, then extracts just the file paths so we know which articles need link updates.",
+    "30": "This is a fallback: if nothing is currently edited, look at the last commit to see which articles were changed then, treating that as the work scope.",
+    "39": "The `!!` markers are visual warnings that flag links which point to non-existent article slugs — these are mistakes that need fixing before proceeding.",
+    "42": "AnythingLLM is an AI tool being used here to analyze semantic similarity, not just word overlap, to suggest better link targets than a purely lexical approach would find.",
+    "45": "A candidate with `meaning: not close` matched because it contains the same words as the current article, but the AI judged the actual topic or meaning as unrelated, so it's likely noise.",
+    "62": "This is a local file that maps out the blog's structure (main topics and series) so you can spot related articles the script may have underscored because they use different terminology.",
+    "73": "The `<Link>` component is a special React/Docusaurus tag that creates the actual hyperlink; you don't need to manually import it because it's registered globally in the project.",
+    "87": "Running the Docusaurus build catches broken internal links early because the build process validates all link targets exist, faster than finding them later when readers hit dead links."
   }
 }

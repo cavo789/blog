@@ -1,45 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:01:48.428Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:41:22.577Z",
   "source": "index.md",
   "sourceHash": "65503e73ee8b32e370e2adcb0a8a1c87e4eb8689",
+  "durationMs": 36258,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:36:59.777Z",
+    "articleHash": "a011eb38e7bf64772f68c73c50a7487383246e08",
+    "questionsHash": "a18f4e16ec28c6ed",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I automate tag management in Docusaurus using a Python script?",
+      "question": "docusaurus blog tag cleanup python script hundreds of posts",
+      "anchor": ""
+    },
+    {
+      "question": "list all tags by frequency docusaurus markdown",
       "anchor": "seeing-the-suggestions"
     },
     {
-      "question": "What are smart suggestions provided by the tag manager script for cleaning up tags?",
+      "question": "automate tag rename delete yaml frontmatter batch",
       "anchor": "the-solution-a-smart-tag-manager"
     },
     {
-      "question": "How can I run the tag management script using Docker and what command is used to list all tags?",
+      "question": "find case-insensitive and plural duplicate tags blog",
       "anchor": "smart-suggestions"
     },
     {
-      "question": "What are the three main functionalities of the tag manager script?",
+      "question": "docker run python script volume mount makefile",
       "anchor": "how-to-run-it-docker-first"
     },
     {
-      "question": "How can I rename or delete tags safely using the tag management script?",
+      "question": "python-frontmatter argparse batch process markdown",
       "anchor": "the-script"
     },
     {
-      "question": "What is the Docker image used to run the tag management script?",
+      "question": "docusaurus tags.js restrict allowed tag options",
       "anchor": "more-examples"
     },
     {
-      "question": "How can I configure a special file in Docusaurus to enforce stricter tag usage policies?",
+      "question": "prevent tag sprawl static site generator over time",
       "anchor": "conclusion"
     },
     {
-      "question": "What are the steps involved in running the Docker container for the tag management script?",
-      "anchor": "smart-suggestions"
+      "question": "make tags-manager ARGS list docusaurus",
+      "anchor": "seeing-the-suggestions"
     },
     {
-      "question": "How can I delete a specific tag using the tag management script?",
-      "anchor": "the-script"
+      "question": "merge singular plural tags across markdown files",
+      "anchor": "more-examples"
+    },
+    {
+      "question": "rename tag all posts docusaurus frontmatter",
+      "anchor": "more-examples"
+    },
+    {
+      "question": "makefile simplify docker run command python script",
+      "anchor": "how-to-run-it-docker-first"
     }
   ]
 }

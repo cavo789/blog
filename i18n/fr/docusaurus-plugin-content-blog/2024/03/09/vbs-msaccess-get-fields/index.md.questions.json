@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:30:36.370Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "2d450ecf134daf5df65b0fc4445aab6309c1f88e",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:05:18.135Z",
+    "articleHash": "965ba4aa005c83558bbfc7fabce9fad293811110",
+    "questionsHash": "d1cc216d5c6a5a11",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment optimiser la structure d'une base MS Access avec un script vbs",
-      "anchor": ""
+      "anchor": "what-to-do-with-the-numbers"
     },
     {
       "question": "à quoi ressemble le fichier Excel généré par le script d'audit MS Access",

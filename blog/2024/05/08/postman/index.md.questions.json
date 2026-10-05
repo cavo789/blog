@@ -1,49 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:48.272Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:32:53.281Z",
   "source": "index.md",
   "sourceHash": "044df3b3663ab782ea985f959f4b37ef2eb7edb0",
+  "durationMs": 26834,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:54:33.927Z",
+    "articleHash": "75b23817e6db1f13afea19cce9733422d75ef46a",
+    "questionsHash": "36b1cebafe763269",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I set up an environment in Postman?",
+      "question": "postman as unit test tool api regression testing",
       "anchor": ""
     },
     {
-      "question": "What is a collection in Postman, and how can I use it?",
+      "question": "postman environment variable base url placeholder",
+      "anchor": "creating-an-environment"
+    },
+    {
+      "question": "how to set default tests that run on every request in a postman collection",
       "anchor": "creating-a-collection"
     },
     {
-      "question": "How do I create a request in Postman with headers?",
+      "question": "postman soap request xml envelope action header content-type",
       "anchor": "creating-a-request"
     },
     {
-      "question": "How can I export and import collections in Postman?",
+      "question": "export postman collection json file import another machine",
       "anchor": "exporting--importing-a-collection"
     },
     {
-      "question": "What is an example of using Postman to call a SOAP web service?",
+      "question": "postman call european vat validation soap web service",
       "anchor": "real-world-example"
     },
     {
-      "question": "How do I perform checks on the response time and HTTP status code in Postman?",
-      "anchor": "some-checks"
-    },
-    {
-      "question": "What is an example of validating the presence or absence of specific words in the response body?",
+      "question": "postman assert responseTime below threshold",
       "anchor": "check-some-metrics-like-the-responsetime"
     },
     {
-      "question": "How can I make assertions on the absence of nodes in the response body using Postman?",
+      "question": "postman test http status code equals 200",
       "anchor": "controls-the-http-status-code"
     },
     {
-      "question": "How do I make assertions on the presence of specific nodes in the response body using Postman?",
-      "anchor": "ensure-the-response-returns-a-content-type"
+      "question": "how to validate postman response body is well-formed xml",
+      "anchor": "assert-the-response-is-a-valid-xml-string"
     },
     {
-      "question": "What is an example of checking the value of a given node in XML using Postman?",
-      "anchor": "assert-the-response-is-a-valid-xml-string"
+      "question": "postman assert xml node absent from soap response",
+      "anchor": "make-assertions-on-the-absence-of-nodes"
+    },
+    {
+      "question": "postman check value of specific xml node in response",
+      "anchor": "for-xml-check-the-value-of-a-given-node"
     }
   ]
 }

@@ -1,40 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:08.703Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:48:11.269Z",
   "source": "index.md",
   "sourceHash": "eda0da6564636fa5c408ab29bb42aed0b4e012bd",
+  "durationMs": 20931,
+  "rejected": [
+    {
+      "question": "sort bash functions alphabetically so generated docs stay readable",
+      "anchor": "going-further",
+      "reason": "not answered: Only links to another article; no sorting script or method provided here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "publish generated bash markdown documentation as a website with Quarto",
+      "anchor": "going-further",
+      "reason": "not answered: Only links to another article; no Quarto publishing steps provided here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:08:25.407Z",
+    "articleHash": "ea7dbd88ebac541874ef1651acb2b3bd45a38124",
+    "questionsHash": "980ac138764aea80",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "how to generate doc blocks",
-      "anchor": "result"
+      "question": "bash equivalent of phpDocumentor",
+      "anchor": ""
     },
     {
-      "question": "generate documentation from bash scripts",
-      "anchor": "result"
+      "question": "auto-generate markdown docs from bash function comment blocks",
+      "anchor": ""
     },
     {
-      "question": "bash script auto-generate documentation",
-      "anchor": "result"
-    },
-    {
-      "question": "how to create markdown files",
+      "question": "extract PHP-style docblocks from shell scripts and output structured markdown",
       "anchor": "how-to-reproduce-it"
     },
     {
-      "question": "create markdown file from bash script",
+      "question": "what does the generated bash documentation output look like per file",
+      "anchor": "result"
+    },
+    {
+      "question": "one markdown file per .sh script with table of contents and summary readme",
+      "anchor": "result"
+    },
+    {
+      "question": "how to parse docblock comments above bash functions and convert to markdown",
       "anchor": "how-to-reproduce-it"
     },
     {
-      "question": "generate documentation for bash scripts linux",
-      "anchor": "result"
+      "question": "run a bash script that scans a folder of .sh files and generates docs",
+      "anchor": "how-to-reproduce-it"
     },
     {
-      "question": "bash script generate doc blocks",
-      "anchor": "result"
-    },
-    {
-      "question": "how to parse function docblocks",
+      "question": "bash doc generator script chmod +x and execute",
       "anchor": "how-to-reproduce-it"
     }
   ]

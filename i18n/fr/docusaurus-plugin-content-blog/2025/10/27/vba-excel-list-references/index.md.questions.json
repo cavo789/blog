@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:56:37.982Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e6e7a198a09274c8f6845599a32b0537a26099e9",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:57:12.449Z",
+    "articleHash": "eada24e7ec2359c5df281190f370338bdf7d9c32",
+    "questionsHash": "7ae2b1ff1c17cb81",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "script vbs batch liste références vba excel",

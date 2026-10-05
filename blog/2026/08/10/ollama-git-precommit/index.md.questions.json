@@ -1,41 +1,56 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:18:09.548Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:08:49.693Z",
   "source": "index.md",
   "sourceHash": "90268e991f5b1031f817bc50f43ebc602c51a29f",
+  "durationMs": 35860,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:01:07.701Z",
+    "articleHash": "54bb83bb8f60c78c0a9503c6da64584d721b2d80",
+    "questionsHash": "05a25737bad5e929",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What does ai-review catch before you even write a commit message?",
+      "question": "local pre-commit AI review zsh no cloud",
+      "anchor": ""
+    },
+    {
+      "question": "catch magic numbers bloated methods staged diff terminal",
       "anchor": "what-ai-review-catches-before-you-even-write-a-commit-message"
     },
     {
-      "question": "Why is ai-review built this way?",
+      "question": "regex before LLM secrets scan cost optimization",
       "anchor": "why-its-built-this-way"
     },
     {
-      "question": "How do I install the three functions?",
+      "question": "add ai-review ai-secrets ai-commit zsh functions",
       "anchor": "installing-the-three-functions"
     },
     {
-      "question": "What does ai-secrets catch before you even write a commit message?",
+      "question": "real password leak vs password pattern false positive git diff",
       "anchor": "ai-secrets-catching-real-credentials"
     },
     {
-      "question": "How does ai-commit draft the Conventional Commits message for the diff I've just cleaned up?",
+      "question": "conventional commits message from staged diff ollama",
       "anchor": "ai-commit-writing-the-message-for-the-diff-youve-just-cleaned-up"
     },
     {
-      "question": "What is _git_staged_diff and why do I need it under the hood?",
+      "question": "zsh helper git staged diff guard clauses shared",
       "anchor": "under-the-hood-_git_staged_diff-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "How do I run ai-review, ai-secrets, and ai-commit together?",
+      "question": "ai-review ai-secrets ai-commit run order sequence",
       "anchor": "running-them-together"
     },
     {
-      "question": "What is the purpose of ai-review, ai-secrets, and ai-commit together?",
-      "anchor": ""
+      "question": "AI pre-commit check complement CI secrets scanner",
+      "anchor": "ai-secrets-catching-real-credentials"
     }
   ]
 }

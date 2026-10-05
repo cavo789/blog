@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:52:05.264Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:28:44.654Z",
   "source": "index.md",
   "sourceHash": "cd1a6caeb229e1592d1d66ac0e80346644ad16f4",
+  "durationMs": 30209,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:25:13.802Z",
+    "articleHash": "0360bda81e288255ef085bd761fc245a28c96a28",
+    "questionsHash": "35d90e417dac6447",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I create a Docker image for my Quarto project?",
+      "question": "quarto devcontainer vscode no host install",
+      "anchor": "lets-get-a-simple-quarto-project-first"
+    },
+    {
+      "question": "what three files do I need to create for a quarto devcontainer",
       "anchor": "well-need-to-create-three-files"
     },
     {
-      "question": "What is the purpose of the Dockerfile in this setup?",
-      "anchor": "extra-information-optional--skip-if-the-defaults-work-for-you"
-    },
-    {
-      "question": "How does Quarto work with Docker containers?",
-      "anchor": ""
-    },
-    {
-      "question": "What are the benefits of using a devcontainer for Quarto projects?",
-      "anchor": "opening-our-project-as-a-devcontainer"
-    },
-    {
-      "question": "Can I customize the pre-commit hooks in my devcontainer configuration?",
-      "anchor": "installation-of-pre-commit-hooks"
-    },
-    {
-      "question": "How do I install additional extensions in VSCode within a Devcontainer?",
-      "anchor": "installation-of-chromium"
-    },
-    {
-      "question": "What is the purpose of the .devcontainer folder in this setup?",
+      "question": "quarto devcontainer passwordless sudo for missing pdf dependencies",
       "anchor": "installation-of-sudo"
     },
     {
-      "question": "How can I quickly add dependencies using pre-commit hooks in my devcontainer?",
-      "anchor": "installation-of-pre-commit-hooks"
+      "question": "quarto docker chromium headless rendering",
+      "anchor": "installation-of-chromium"
+    },
+    {
+      "question": "code spell checker extension quarto devcontainer",
+      "anchor": "installation-of-code-spell-checker"
+    },
+    {
+      "question": "quarto devcontainer graphviz dot install",
+      "anchor": "installation-of-graphviz"
+    },
+    {
+      "question": "pre-commit hooks quarto devcontainer setup",
+      "anchor": "what-is-pre-commit"
+    },
+    {
+      "question": "open existing quarto project as devcontainer in vscode",
+      "anchor": "opening-our-project-as-a-devcontainer"
+    },
+    {
+      "question": "quarto auto regenerate preview on save devcontainer",
+      "anchor": "writing-our-documentation"
+    },
+    {
+      "question": "what does pre-commit actually do in a quarto documentation workflow",
+      "anchor": "what-is-pre-commit"
     }
   ]
 }

@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:01.309Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:53:20.202Z",
   "source": "index.md",
   "sourceHash": "fd8a2ba500e0deff71530b730e14e55e73451f94",
+  "durationMs": 44873,
+  "rejected": [
+    {
+      "question": "quarto-partials rendering pipeline explained",
+      "anchor": "what-have-we-just-done",
+      "reason": "not answered: Full pipeline detailed in linked article, not this one",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:58:02.334Z",
+    "articleHash": "217330761121f0bab0b5cecd2b9ff38598a533b1",
+    "questionsHash": "1b83e812fca2e093",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I use Mustache templating in Quarto?",
+      "question": "quarto mustache templating repetitive documentation",
+      "anchor": ""
+    },
+    {
+      "question": "how to install quarto-partials extension in docker",
       "anchor": "create-some-files"
     },
     {
-      "question": "What is the quarto-partials extension for?",
+      "question": "quarto include partial template inject variable from yaml frontmatter",
       "anchor": "lets-discover-the-basics"
     },
     {
-      "question": "How can I create a structured, repetitive documentation page using Mustache templating in Quarto?",
-      "anchor": "what-have-we-just-done"
-    },
-    {
-      "question": "What is the purpose of the quarto-partials extension in Quarto?",
+      "question": "quarto generate 80 function docs same chapter structure static site",
       "anchor": "my-use-case"
     },
     {
-      "question": "How can I use Mustache templating to include content from other pages or templates in my documentation using Quarto?",
+      "question": "quarto mustache conditional if variable is defined",
       "anchor": "testing-if-a-variable-is-defined-or-not-optional--skip-if-your-templates-dont-need-conditionals"
     },
     {
-      "question": "What is the syntax for including a variable in a Mustache template in Quarto?",
+      "question": "quarto-partials raw contents html escaping",
       "anchor": "raw-contents-optional--skip-unless-a-rendered-value-looks-wrongly-escaped"
     },
     {
-      "question": "How can I add frontmatter to my documentation using Quarto?",
+      "question": "quarto mustache logic-less templates replace manual documentation",
       "anchor": "conclusion"
     },
     {
-      "question": "What is the purpose of Docker in this article?",
-      "anchor": ""
+      "question": "quarto-partials extension website.yaml config",
+      "anchor": "create-some-files"
+    },
+    {
+      "question": "quarto docker apache port 8080 render website",
+      "anchor": "lets-discover-the-basics"
     }
   ]
 }

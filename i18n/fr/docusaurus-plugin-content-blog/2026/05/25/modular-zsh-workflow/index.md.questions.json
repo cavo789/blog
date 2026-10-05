@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:17:48.713Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c2f3d466c80454f1c92a16a111294f8739a09159",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Quelle est la procédure pour installer un gestionnaire de fonctions zsh externes ?",
+      "anchor": "how-to-set-it-up",
+      "reason": "not answered: Article uses built-in fpath/autoload, not a third-party function manager.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:24:15.425Z",
+    "articleHash": "ae3228f1aea726f2f56385cc800f03f68d1c27b3",
+    "questionsHash": "37ddaf3a206ea585",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Optimiser le démarrage de zsh en externalisant ses fonctions",
@@ -24,15 +42,11 @@
     },
     {
       "question": "Construire une fonction repo pour lister et ouvrir ses dépôts git avec fzf",
-      "anchor": "-the-super-function-repo-universal-project-navigator"
+      "anchor": "3-create-the-repo-function-file"
     },
     {
       "question": "Isoler sa logique zsh dans des fichiers séparés pour plus de clarté",
-      "anchor": "why-this-is-better-in-a-standalone-file"
-    },
-    {
-      "question": "Quelle est la procédure pour installer un gestionnaire de fonctions zsh externes ?",
-      "anchor": "how-to-set-it-up"
+      "anchor": "the-problem-with-the-monolith"
     },
     {
       "question": "Quelle arborescence de dossiers créer pour ranger ses scripts zsh autonomes ?",

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:43.246Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:55:36.667Z",
   "source": "index.md",
   "sourceHash": "d1ac67377ab74bab0575fb98ddc281e67ecf9977",
+  "durationMs": 19393,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:14:19.847Z",
+    "articleHash": "c0f929ce19f1a85028fb13cb56574a340286a82f",
+    "questionsHash": "c3e3c340eaf94c2d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I securely access a private Git repository during Docker build using SSH keys?",
-      "anchor": "preview"
+      "question": "docker build private github repo ssh key not in final image",
+      "anchor": ""
     },
     {
-      "question": "What is Docker's BuildKit feature and how does it work with secrets?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "Which key should I use to access a private repository during the Docker build process?",
-      "anchor": "which-key-to-use"
-    },
-    {
-      "question": "How do I create files for configuring Docker secret and compose.yaml?",
-      "anchor": "creating-files"
-    },
-    {
-      "question": "What is the purpose of the `compose.yaml` file in this article?",
-      "anchor": "composeyaml"
-    },
-    {
-      "question": "How do I create a Dockerfile for accessing private repositories during build?",
-      "anchor": "dockerfile"
-    },
-    {
-      "question": "What is the purpose of the `create the image and jump in the container` section in this article?",
+      "question": "how to verify ssh key is not present in docker image layers after build",
       "anchor": "create-the-image-and-jump-in-the-container"
     },
     {
-      "question": "How do I share my SSH key with the running container for ongoing work inside it?",
+      "question": "docker secret only available during build layer not persisted to image",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "which ssh private key to use for github in docker build",
+      "anchor": "which-key-to-use"
+    },
+    {
+      "question": "dockerfile and compose.yaml setup for ssh secret git clone",
+      "anchor": "creating-files"
+    },
+    {
+      "question": "docker compose.yaml secrets buildkit ssh key file path",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "RUN --mount=type=secret git clone private repo in dockerfile",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "docker build with ssh secret then exec into container",
+      "anchor": "create-the-image-and-jump-in-the-container"
+    },
+    {
+      "question": "bind mount ssh key into running docker container for git push",
       "anchor": "sharing-your-keys-also-with-the-container"
+    },
+    {
+      "question": "docker secret vs copying ssh key into image security difference",
+      "anchor": "why-it-works"
     }
   ]
 }

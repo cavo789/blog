@@ -1,41 +1,56 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:03.884Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:10:36.795Z",
   "source": "index.md",
   "sourceHash": "36e34eda072f89526995ad37860033f8383ea10b",
+  "durationMs": 29970,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:28:02.641Z",
+    "articleHash": "db1800b73a8c668ba5e4c14c9b46c62e5294b402",
+    "questionsHash": "719c9ec77b2be16d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is an online JSON linter tool?",
+      "question": "online json linter tree view code folding",
       "anchor": ""
     },
     {
-      "question": "How can I view a JSON string as a foldable, readable tree-view with code folding features?",
+      "question": "paste json string check syntax errors free tool",
       "anchor": ""
     },
     {
-      "question": "Where can I find the source code for the JSON Linter tool?",
+      "question": "how to validate json in browser without installing anything",
       "anchor": ""
     },
     {
-      "question": "What is the URL to access the online JSON linter tool?",
+      "question": "json linter open source github",
       "anchor": ""
     },
     {
-      "question": "How does the Chrome Addon work with JSON strings in web pages?",
+      "question": "inspect api json response collapsible structure online",
+      "anchor": ""
+    },
+    {
+      "question": "chrome extension format json response page",
       "anchor": "chrome-addon"
     },
     {
-      "question": "Can you recommend other tools for viewing and analyzing JSON data besides the online linter tool?",
-      "anchor": ""
+      "question": "json formatter chrome addon",
+      "anchor": "chrome-addon"
     },
     {
-      "question": "What are some use cases for using an online JSON linter tool?",
-      "anchor": ""
+      "question": "make chrome display raw json as readable tree",
+      "anchor": "chrome-addon"
     },
     {
-      "question": "How can I check for syntax errors in a JSON string using the online linter tool?",
-      "anchor": ""
+      "question": "auto format json api response in browser",
+      "anchor": "chrome-addon"
     }
   ]
 }

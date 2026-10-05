@@ -3,40 +3,50 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:49:23.993Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "7c247139521de2a0a5094ae2a9cb8c91a2a6508e",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:33:32.988Z",
+    "articleHash": "1388de2bd784d4b5513181856d21f7dfd072b8d3",
+    "questionsHash": "531d0303113f170b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 10
+  },
   "questions": [
     {
       "question": "comment exécuter docker run dans un job gitlab ci",
-      "anchor": ""
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "erreur cannot connect to the docker daemon dans le pipeline gitlab",
-      "anchor": ""
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "docker socket passthrough gitlab runner",
-      "anchor": "why-it-works"
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "comment faire communiquer le job ci avec le démon docker de l'host",
-      "anchor": "why-it-works"
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "modifier config.toml pour monter /var/run/docker.sock et /builds",
-      "anchor": "the-runner-configuration-file"
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "où ajouter les volumes dans config.toml du runner gitlab",
-      "anchor": "the-runner-configuration-file"
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "exemple pipeline gitlab ci avec executor docker et php lint",
-      "anchor": "understanding-the-process"
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "comment le runner docker monte les fichiers du projet dans le job",
-      "anchor": "understanding-the-process"
+      "anchor": "running-docker-out-of-docker"
     },
     {
       "question": "lancer des containers imbriqués avec Dagger.io dans gitlab",
@@ -48,11 +58,11 @@
     },
     {
       "question": "avantages de Docker-out-of-Docker par rapport à Docker-in-Docker",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     },
     {
       "question": "pourquoi éviter un moteur Docker-in-Docker dans le pipeline",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     }
   ]
 }

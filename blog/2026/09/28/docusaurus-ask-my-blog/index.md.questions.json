@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-05T05:43:48.527Z",
+  "durationMs": 27353,
+  "source": "index.md",
+  "sourceHash": "cab7fa6354d08cd4ff2c537bdae04b8f8a8ddb34",
+  "questions": [
+    {
+      "question": "blog search returns nothing because reader types different words than the article uses",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus search box that returns questions instead of page titles",
+      "anchor": "what-you-get"
+    },
+    {
+      "question": "static blog search without embeddings vector database or API key",
+      "anchor": "why-this-works-without-a-model-in-the-browser"
+    },
+    {
+      "question": "ollama JSON schema enforce structured question output for blog posts",
+      "anchor": "generating-the-questions"
+    },
+    {
+      "question": "serve question index as topic page search box and CLI three ways",
+      "anchor": "serving-2160-questions-three-different-ways"
+    },
+    {
+      "question": "docusaurus plugin build-time question index nodejs pipeline",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-the-questions"
+    },
+    {
+      "question": "query blog question index from terminal nodejs",
+      "anchor": "querying-the-index-from-the-command-line"
+    },
+    {
+      "question": "BM25 lexical ranking JavaScript implementation blog search",
+      "anchor": "bm25-in-forty-lines"
+    },
+    {
+      "question": "prevent duplicate questions in LLM-generated search index",
+      "anchor": "the-duplicate-problem"
+    },
+    {
+      "question": "hand-edit sidecar JSON files for generated blog content",
+      "anchor": "sidecars-are-meant-to-be-hand-edited"
+    },
+    {
+      "question": "detect stale question index when article headings change",
+      "anchor": "detecting-drift"
+    },
+    {
+      "question": "FAQ structured data schema on blog topic pages SEO",
+      "anchor": "the-topic-pages-carry-faq-structured-data"
+    }
+  ]
+}

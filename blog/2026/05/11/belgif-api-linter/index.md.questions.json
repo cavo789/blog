@@ -1,37 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:53:00.873Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:55:45.940Z",
   "source": "index.md",
   "sourceHash": "3c0bc70b1e96b5f34804b0087853649b33251de0",
+  "durationMs": 17411,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:48:57.435Z",
+    "articleHash": "d18b900f189d6cadf5a707d7c70d0adfd9d06a2b",
+    "questionsHash": "16f4ac34f35415fa",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I validate my FastAPI OpenAPI schema against the Belgif REST standards?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the Belgif REST standards and why are they important for Belgian public sector APIs?",
-      "anchor": "belgif-standards"
-    },
-    {
-      "question": "How do I install and run the official Belgif OpenAPI linter using Docker?",
-      "anchor": "installation--create-a-dummy-application"
-    },
-    {
-      "question": "What are some common linting errors that FastAPI applications may encounter when validating against the Belgif REST standards?",
-      "anchor": "adding-the-belgif-linter"
-    },
-    {
-      "question": "How can I resolve the most common linting errors caused by FastAPI's default behaviors to ensure my API gets a clean bill of health?",
+      "question": "FastAPI OpenAPI schema failing Belgif linter how to fix",
       "anchor": "fastapi-tips"
     },
     {
-      "question": "What are some best practices for designing robust APIs that comply with the Belgif REST standards?",
+      "question": "filter spectral warnings out of Belgif linter docker compose output",
+      "anchor": "seeing-the-linter-run"
+    },
+    {
+      "question": "what are Belgif REST standards Belgian government API guidelines",
+      "anchor": "belgif-standards"
+    },
+    {
+      "question": "create minimal FastAPI dummy app docker compose for Belgif compliance testing",
+      "anchor": "installation--create-a-dummy-application"
+    },
+    {
+      "question": "add Belgif OpenAPI linter to existing FastAPI project via docker compose",
+      "anchor": "adding-the-belgif-linter"
+    },
+    {
+      "question": "oas-tags error Belgif linter FastAPI tag management",
+      "anchor": "oas-tags---managing-tags"
+    },
+    {
+      "question": "FastAPI generates OpenAPI 3.1 but Belgif requires 3.0 downgrade fix",
+      "anchor": "oas-contra---dont-use-openapi-31-yet"
+    },
+    {
+      "question": "oas-descr title property must be removed FastAPI schema",
       "anchor": "oas-descr---title-property-has-to-be-removed"
     },
     {
-      "question": "How can I use the official Belgif OpenAPI linter via Docker and how to validate my FastAPI application against some potential errors?",
+      "question": "Belgif linter oas-comp component names UpperCamelCase FastAPI",
+      "anchor": "oas-comp---component-names-should-use-uppercamelcase-notation"
+    },
+    {
+      "question": "openapi-opid lowerCamelCase operationId Belgif requirement",
       "anchor": "openapi-opid---lowercamelcase-for-operationid"
+    },
+    {
+      "question": "custom openapi.py helper override FastAPI default schema generation for Belgif",
+      "anchor": "the-openapipy-helper"
     }
   ]
 }

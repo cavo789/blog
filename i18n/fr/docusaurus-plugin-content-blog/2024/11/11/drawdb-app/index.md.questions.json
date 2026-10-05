@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:07:59.339Z",
-  "durationMs": 136129,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3545803e12e2c61b02b9c27f0f462b66f41b3698",
+  "durationMs": 136129,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Intégrer drawdb-app dans un pipeline Documentation as Code",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to other articles for pipeline integration details.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:58:36.018Z",
+    "articleHash": "202b386451d7fda4d968f0e245d9d1da565ebf06",
+    "questionsHash": "59ff044b542ee5e5",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "drawdb-app générer diagramme ER visuel depuis un fichier sql",
@@ -34,10 +52,6 @@
     {
       "question": "Comment afficher les relations et les clés étrangères entre les tables ?",
       "anchor": "relationships"
-    },
-    {
-      "question": "Intégrer drawdb-app dans un pipeline Documentation as Code",
-      "anchor": "conclusion"
     }
   ]
 }

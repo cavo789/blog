@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:51:40.906Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:08:37.373Z",
   "source": "index.md",
   "sourceHash": "e2a4ec8cfcb37771797635f96d8ca4e585ca648d",
+  "durationMs": 32582,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:38:23.855Z",
+    "articleHash": "1a5b48984dec820823489826559f87f8cf3229cc",
+    "questionsHash": "d7515e28bf350ef6",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 6
+  },
   "questions": [
     {
-      "question": "What does FrankenPHP give you?",
-      "anchor": "what-frankenphp-gives-you"
-    },
-    {
-      "question": "Why is FrankenPHP faster than PHP-FPM?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "How do I set up a Joomla website using Docker and FrankenPHP?",
+      "question": "frankenphp joomla docker",
       "anchor": "getting-it-running"
     },
     {
-      "question": "What happens during the slow first-run MySQL connection warmup?",
+      "question": "modern php server joomla local development",
+      "anchor": "what-frankenphp-gives-you"
+    },
+    {
+      "question": "run joomla locally with frankenphp https",
+      "anchor": "getting-it-running"
+    },
+    {
+      "question": "frankenphp vs php-fpm why faster caddy",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker compose joomla frankenphp mysql setup",
+      "anchor": "getting-it-running"
+    },
+    {
+      "question": "frankenphp joomla prebuilt image docker",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "joomla docker mysql connection refused first boot wait",
       "anchor": "what-happens-during-those-long-minutes"
     },
     {
-      "question": "What does a real site look like on FrankenPHP?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How do I run a Joomla installation using Docker and FrankenPHP?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "Why is the database connection slow when running a Joomla website on FrankenPHP?",
+      "question": "frankenphp joomla dynamic port docker ps",
       "anchor": "what-happens-during-those-long-minutes"
     },
     {
-      "question": "What are the steps to set up a Joomla website using Docker and FrankenPHP?",
+      "question": "frankenphp single process php caddy architecture",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "frankenphp local development hosting limitation",
       "anchor": "getting-it-running"
     }
   ]

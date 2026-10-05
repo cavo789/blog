@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:37.565Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:27:45.298Z",
   "source": "index.md",
   "sourceHash": "cf7c9493a4936f91377a2867ef21f2722cab37ea",
+  "durationMs": 20807,
+  "rejected": [
+    {
+      "question": "export VBA references from Excel to text file",
+      "anchor": "",
+      "reason": "not answered: Script outputs to console only; no text-file export shown.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:24:11.538Z",
+    "articleHash": "4be7e288523aeb373926b2d7afae0bbc4f43deac",
+    "questionsHash": "c7358f95f03d6766",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How can I automate the process of retrieving VBA references in multiple Excel files?",
+      "question": "list all VBA references in Excel workbook",
       "anchor": ""
     },
     {
-      "question": "What is a small VBS automation script that can help me retrieve VBA references from multiple Excel files?",
+      "question": "how to get references list from xlsm file programmatically",
       "anchor": ""
     },
     {
-      "question": "How do I use my script to automate the process of retrieving VBA references in multiple Excel files?",
+      "question": "VBS script extract VBA references Excel",
       "anchor": ""
     },
     {
-      "question": "What is the output of my script when it retrieves VBA references from multiple Excel files?",
+      "question": "automate checking VBA references across folder of workbooks",
       "anchor": ""
     },
     {
-      "question": "How can I locate a folder on my hard disk where I have one or more Excel files with VBA modules?",
+      "question": "get references list from xlam add-in without opening VBE",
       "anchor": ""
     },
     {
-      "question": "What is the name of the file that I need to create in the folder to use my script?",
+      "question": "batch retrieve VBA references from multiple Excel files",
       "anchor": ""
     },
     {
-      "question": "How do I copy/paste the source code for my script into the created file?",
+      "question": "what references does my xlsm file use",
       "anchor": ""
     },
     {
-      "question": "What is the command that I need to run in a DOS or Powershell console to use my script?",
+      "question": "script to open Excel and read references without running macros",
+      "anchor": ""
+    },
+    {
+      "question": "find all external references in VBA modules Excel",
       "anchor": ""
     }
   ]

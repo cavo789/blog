@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:00:05.983Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c2890273e3d7a7ed170f33d5605c03b8970e6658",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:37:19.049Z",
+    "articleHash": "b314fbc7be039b6ad2ab1dcd23bbaa2aca728bc4",
+    "questionsHash": "9033349b2daadc7d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "lancer des tests bats avec docker run sans installation",
-      "anchor": ""
+      "anchor": "lets-start-with-a-little-hors-doeuvre"
     },
     {
       "question": "exemple de fichier .bats basique pour tester un script",

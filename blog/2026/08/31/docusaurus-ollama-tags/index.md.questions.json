@@ -1,53 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-30T08:31:56.140Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:13:53.746Z",
   "source": "index.md",
   "sourceHash": "fdbd201bdb753c39564b11f1ddc5d8d4dba1ab9b",
+  "durationMs": 27121,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:06:03.502Z",
+    "articleHash": "171138a3c7b955804eb12b891311fa64232735fd",
+    "questionsHash": "5b6799737ae50c0b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 6
+  },
   "questions": [
     {
-      "question": "How do I run the tag generation script?",
-      "anchor": "run-the-analyze-and-link-script"
-    },
-    {
-      "question": "What is the purpose of the analyze and link script?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How does the Ollama service work?",
-      "anchor": "installation"
-    },
-    {
-      "question": "Can I use this tool for Docusaurus-specific content?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What is the difference between the first and second scripts?",
+      "question": "auto tag markdown blog posts local LLM no cloud API",
       "anchor": ""
     },
     {
-      "question": "How do I test the Ollama service before running the tag generation script?",
-      "anchor": "installation"
-    },
-    {
-      "question": "Where can I find the generated tags for each post?",
-      "anchor": "run-the-analyze-and-link-script"
-    },
-    {
-      "question": "What is the relationship between the two scripts in this tool?",
-      "anchor": ""
-    },
-    {
-      "question": "How does the script compare tags across posts to suggest interlinks?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "Can I use this tool for any folder of Markdown files?",
+      "question": "how to automatically find which blog articles should link to each other",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of the LLM model in this tool?",
+      "question": "why split LLM tag generation and cross-post linking into separate scripts",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker devcontainer ollama python blog analyzer setup",
       "anchor": "installation"
+    },
+    {
+      "question": "devcontainer two containers ollama python docker compose",
+      "anchor": "installation"
+    },
+    {
+      "question": "docker exec ollama pull llama3:8b",
+      "anchor": "download-the-llm-model"
+    },
+    {
+      "question": "curl localhost 11444 api tags test ollama",
+      "anchor": "test-the-ollama-service"
+    },
+    {
+      "question": "run tag generation and link analysis scripts in vscode devcontainer",
+      "anchor": "run-the-tag-generation-script"
+    },
+    {
+      "question": "python script read markdown folder send to ollama save tags json",
+      "anchor": "copy-the-directory-structure-and-files"
+    },
+    {
+      "question": "compare generated tags across posts suggest related articles",
+      "anchor": "the-result"
+    },
+    {
+      "question": "docker compose network host port 11444 vs container port 11434",
+      "anchor": "run-the-tag-generation-script"
+    },
+    {
+      "question": "best ollama model size for generating tags from blog articles",
+      "anchor": "choosing-the-right-model"
     }
   ]
 }

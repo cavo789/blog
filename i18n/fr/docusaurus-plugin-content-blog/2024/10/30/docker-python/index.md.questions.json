@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:00:09.222Z",
-  "durationMs": 186181,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "706bd1c9b41e4811df41c83c1d1993c56599030b",
+  "durationMs": 186181,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:56:02.575Z",
+    "articleHash": "d4f0ba059c8fdcf0c9dbd8a57cde9c308613b549",
+    "questionsHash": "17d7c7946793aa1a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment configurer un devcontainer Python pour VSCode avec Docker ?",
@@ -13,7 +23,7 @@
     },
     {
       "question": "make up",
-      "anchor": "lets-see-it-running"
+      "anchor": "makefile"
     },
     {
       "question": "requirements.txt vide Python",

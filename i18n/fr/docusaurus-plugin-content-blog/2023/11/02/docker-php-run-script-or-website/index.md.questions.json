@@ -2,10 +2,46 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:57:26.005Z",
-  "durationMs": 127220,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "9469b6ced4b56ad86d1e328459db8bda3f8fd15b",
+  "durationMs": 127220,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "0: Modifier `php.ini` quand on utilise une image Docker PHP",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no actual php.ini instructions given.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "0: Initialiser un projet PHP avec `docker init`",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no docker init steps provided.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "0: Lancer des outils de qualité PHP via `jakzal/phpqa` sans installation locale",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no jakzal/phpqa command shown.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "0: Alternative légère Docker pour héberger un site HTML statique",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no HTML site Docker command given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T11:56:40.466Z",
+    "articleHash": "e7e9fa6f027806ab28f5a277e456c25e5fc13af1",
+    "questionsHash": "338dec455ca728c2",
+    "status": "applied",
+    "rejected": 4,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "0: `docker run` pour lancer un site PHP local sans Apache ni installation",
@@ -24,27 +60,11 @@
       "anchor": ""
     },
     {
-      "question": "0: Modifier `php.ini` quand on utilise une image Docker PHP",
-      "anchor": ""
-    },
-    {
-      "question": "0: Initialiser un projet PHP avec `docker init`",
-      "anchor": ""
-    },
-    {
-      "question": "0: Lancer des outils de qualité PHP via `jakzal/phpqa` sans installation locale",
-      "anchor": ""
-    },
-    {
       "question": "0: Commande `docker run` complète pour tester un `index.php` en local",
       "anchor": ""
     },
     {
       "question": "0: Synchroniser les fichiers locaux avec un container Docker PHP",
-      "anchor": ""
-    },
-    {
-      "question": "0: Alternative légère Docker pour héberger un site HTML statique",
       "anchor": ""
     }
   ]

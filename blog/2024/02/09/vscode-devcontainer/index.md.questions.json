@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:03.904Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:02:13.370Z",
   "source": "index.md",
   "sourceHash": "6811b6074752797e6054cc6224f65da06542c3d5",
+  "durationMs": 38791,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:26:19.452Z",
+    "articleHash": "bc972713b5c2bd4cd861c8f2385e31fd35bfaa50",
+    "questionsHash": "86d15f3df1c5a6ad",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I use a devcontainer for PHP development with preinstalled code quality tools?",
+      "question": "PHP devcontainer preinstalled code quality tools VSCode",
       "anchor": ""
     },
     {
-      "question": "What are some of the pre-installed quality and analysis tools in a devcontainer for PHP development?",
-      "anchor": "the-tools-pick-the-ones-you-need"
+      "question": "auto format PHP file on save without installing PHP on my machine",
+      "anchor": "what-a-devcontainer-does-for-you"
     },
     {
-      "question": "How does a devcontainer ensure that everyone on a team has the same consistent PHP development environment?",
+      "question": "how devcontainer Docker image and devcontainer.json work together for PHP",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of using a Docker image to carry tools in a devcontainer for PHP development?",
-      "anchor": "what-a-devcontainer-does-for-you"
-    },
-    {
-      "question": "How does VSCode attach itself to the container in a devcontainer for PHP development?",
+      "question": "download ready-made PHP devcontainer config files github",
       "anchor": "get-the-files"
     },
     {
-      "question": "What is the benefit of using a devcontainer for PHP development with preinstalled code quality tools?",
-      "anchor": ""
+      "question": "devcontainer.json PHP format on save Composer configuration",
+      "anchor": "3-create-the-devcontainerjson-file"
     },
     {
-      "question": "How does a devcontainer help in managing code quality issues in a team environment?",
-      "anchor": "what-a-devcontainer-does-for-you"
+      "question": "Dockerfile PHP devcontainer install code quality tools",
+      "anchor": "4-create-the-dockerfile-file"
     },
     {
-      "question": "What are the steps to create a new project using a devcontainer for PHP development with preinstalled code quality tools?",
-      "anchor": "1-create-the-project"
+      "question": "PHP-CS-Fixer auto fix on save VSCode devcontainer",
+      "anchor": "the-first-tool-weve-used-here-is-php-cs-fixer"
+    },
+    {
+      "question": "PHPCS PHPCBF PHP code style fixer setup",
+      "anchor": "the-second-set-of-tools-is-phpcbf-and-phpcs"
+    },
+    {
+      "question": "SonarLint PHP real-time bug detection devcontainer",
+      "anchor": "the-third-tool-is-sonarlint"
+    },
+    {
+      "question": "Intelephense PHP language server devcontainer",
+      "anchor": "the-fourth-tool-is-intelephense"
+    },
+    {
+      "question": "Rector PHP automated codebase upgrade refactoring",
+      "anchor": "the-best-for-last-the-fifth-tool-is-rector"
+    },
+    {
+      "question": "ms-azuretools.vscode-docker extension required before devcontainer",
+      "anchor": "2-install-first-the-ms-azuretoolsvscode-docker-vscode-extension"
     }
   ]
 }

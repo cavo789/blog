@@ -1,57 +1,72 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:55:56.622Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:00:52.160Z",
   "source": "index.md",
   "sourceHash": "0853d71b5ea441474f27e61988c8d3456f15f403",
+  "durationMs": 31306,
+  "rejected": [
+    {
+      "question": "install delta apt brew",
+      "anchor": "install",
+      "reason": "not answered: Article covers apt only; no brew install command provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:53:35.030Z",
+    "articleHash": "f4816f9d3d1424980e828880d533b8fdc8cc84a8",
+    "questionsHash": "225397cccb8a01f6",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How does Delta work with git diff?",
+      "question": "git diff hard to read no syntax highlighting",
+      "anchor": ""
+    },
+    {
+      "question": "why does git diff show everything as one big red green block",
       "anchor": "before-and-after"
     },
     {
-      "question": "What is delta's syntax highlighting feature?",
+      "question": "git diff highlights whole line when only one variable renamed",
+      "anchor": "before-and-after"
+    },
+    {
+      "question": "word-level diff git highlight exact changed characters",
+      "anchor": "the-same-line-with-delta"
+    },
+    {
+      "question": "what is delta git pager",
       "anchor": "what-is-delta"
     },
     {
-      "question": "Can you explain how Delta handles side-by-side views in git diffs?",
-      "anchor": "install"
-    },
-    {
-      "question": "How does delta highlight changes at the character level?",
+      "question": "delta docker build run demo",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What are some scenarios where word-level diff is particularly useful with delta?",
-      "anchor": "what-is-delta"
-    },
-    {
-      "question": "Can you describe how Delta intercepts and renders raw git diff output?",
+      "question": "configure git to use delta as pager",
       "anchor": "configure-git-to-use-delta"
     },
     {
-      "question": "How can I install Delta on my system?",
+      "question": "git diff side by side two columns",
       "anchor": "side-by-side-mode"
     },
     {
-      "question": "What are the benefits of using delta over other syntax-highlighting pagers like ripgrep or eza?",
-      "anchor": "navigation-between-hunks"
-    },
-    {
-      "question": "How do I configure git to use Delta as a pager replacement?",
-      "anchor": "side-by-side-mode"
-    },
-    {
-      "question": "What are some common configurations for side-by-side mode in Delta?",
-      "anchor": "configure-git-to-use-delta"
-    },
-    {
-      "question": "Can you explain how Delta handles navigation between diff hunks?",
-      "anchor": "navigation-between-hunks"
-    },
-    {
-      "question": "How does Delta compare to other syntax-highlighting pagers like ripgrep or eza in terms of functionality and ease of use?",
+      "question": "delta color theme",
       "anchor": "themes"
+    },
+    {
+      "question": "git diff next hunk previous hunk key binding",
+      "anchor": "navigation-between-hunks"
+    },
+    {
+      "question": "delta works with git log and git show",
+      "anchor": "delta-works-everywhere-git-does"
     }
   ]
 }

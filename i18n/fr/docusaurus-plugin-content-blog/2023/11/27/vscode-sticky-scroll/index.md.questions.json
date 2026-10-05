@@ -2,17 +2,37 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:26:22.097Z",
-  "durationMs": 144738,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "0831c37a7f3d0273c572f50f7030e642a15a390a",
+  "durationMs": 144738,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "vscode sticky scroll configurer les lignes de contexte",
+      "anchor": "",
+      "reason": "not answered: Article ne détaille pas comment configurer quelles lignes de contexte afficher",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "combiner le sticky scroll avec le folding de code dans vscode",
+      "anchor": "",
+      "reason": "not answered: Mention en passant avec lien vers un autre article, pas d'instructions",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:12:11.454Z",
+    "articleHash": "77ade72d80f5fff84de2032d2203afff0e500fe8",
+    "questionsHash": "c31c7ad91e56b480",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment activer le sticky scroll dans vscode",
-      "anchor": ""
-    },
-    {
-      "question": "vscode sticky scroll configurer les lignes de contexte",
       "anchor": ""
     },
     {
@@ -25,10 +45,6 @@
     },
     {
       "question": "savoir où on se trouve dans un fichier php ou markdown long",
-      "anchor": ""
-    },
-    {
-      "question": "combiner le sticky scroll avec le folding de code dans vscode",
       "anchor": ""
     },
     {

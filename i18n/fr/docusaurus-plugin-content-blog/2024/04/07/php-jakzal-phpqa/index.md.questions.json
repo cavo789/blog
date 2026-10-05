@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:28:26.510Z",
-  "durationMs": 133359,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "6e4bfd6814b2cd846b877b5fc255732b913b1263",
+  "durationMs": 133359,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "où trouver la liste exhaustive des outils disponibles dans l'image ?",
+      "anchor": "a-whole-host-of-other-tools-await-you",
+      "reason": "not answered: The exhaustive list is only on an external GitHub page, not in the article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:14:21.437Z",
+    "articleHash": "624e55313b3a92e3cd5781e9925dace9309eeeb0",
+    "questionsHash": "e3bc6c33d9aa5fa8",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "docker run jakzal/phpqa pour analyser du php sans installation",
@@ -30,10 +48,6 @@
     {
       "question": "PHP_CodeSniffer pour vérifier les standards de codage",
       "anchor": "php_codesniffer"
-    },
-    {
-      "question": "où trouver la liste exhaustive des outils disponibles dans l'image ?",
-      "anchor": "a-whole-host-of-other-tools-await-you"
     },
     {
       "question": "comment spécifier une version de php précise pour du code legacy avec jakzal/phpqa ?",

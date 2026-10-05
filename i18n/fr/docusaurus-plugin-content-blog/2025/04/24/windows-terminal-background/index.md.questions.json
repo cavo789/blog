@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:26:29.609Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "5aaaf63f60c33776a4fba5fe25afb08993cbe78a",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "utiliser Recraft.ai pour générer une image de fond Windows Terminal",
+      "anchor": "",
+      "reason": "not answered: Mentions Recraft.ai in passing; links to another article for details.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:26:15.328Z",
+    "articleHash": "d67ee33cffe335c45cfe9b854416aa69177517c0",
+    "questionsHash": "5589f7546bb56d29",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment mettre une image de fond dans Windows Terminal",
@@ -28,10 +46,6 @@
     },
     {
       "question": "comment parcourir et charger une image personnalisée pour le fond du terminal",
-      "anchor": ""
-    },
-    {
-      "question": "utiliser Recraft.ai pour générer une image de fond Windows Terminal",
       "anchor": ""
     },
     {

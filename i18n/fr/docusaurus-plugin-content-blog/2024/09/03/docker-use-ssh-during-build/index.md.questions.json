@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:15:51.572Z",
-  "durationMs": 187147,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "05364aae1134a8cbce0d05e32ef7a2a6bd8bbd4c",
+  "durationMs": 187147,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "ssh-add -l identifier la clé privée exacte liée à github",
+      "anchor": "which-key-to-use",
+      "reason": "not answered: Article uses ls and cat, never mentions ssh-add -l",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:43:38.057Z",
+    "articleHash": "f04885e5d35a33fb770ec0bc071732e97fb3bc60",
+    "questionsHash": "6573a63d44066d6e",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment cloner un repository github privé pendant le build docker sans inscrire la clé ssh dans l'image finale ?",
@@ -13,15 +31,11 @@
     },
     {
       "question": "Vérifier qu'aucune trace de la clé ssh n'apparaît dans l'image après le build",
-      "anchor": "preview"
+      "anchor": "create-the-image-and-jump-in-the-container"
     },
     {
       "question": "Pourquoi le montage éphémère de BuildKit évite les fuites contrairement à la suppression dans un layer ?",
       "anchor": "why-it-works"
-    },
-    {
-      "question": "ssh-add -l identifier la clé privée exacte liée à github",
-      "anchor": "which-key-to-use"
     },
     {
       "question": "Fichiers compose.yaml et Dockerfile nécessaires pour configurer le secret",

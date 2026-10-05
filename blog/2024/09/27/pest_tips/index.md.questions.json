@@ -1,45 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:07.838Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:00:38.241Z",
   "source": "index.md",
   "sourceHash": "1b8f43eaf36302edd09da3307659d326dc22337f",
+  "durationMs": 35524,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:18:27.502Z",
+    "articleHash": "b4faf705f3668f72ae298d22a54814e3907f61b6",
+    "questionsHash": "fad4c95fa8d59b94",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "What are some of the key features of Pest?",
-      "anchor": "result"
-    },
-    {
-      "question": "How do I install Pest in my PHP project?",
-      "anchor": "why-pest"
-    },
-    {
-      "question": "What is the expect syntax in Pest and how can it be used?",
-      "anchor": "installation"
-    },
-    {
-      "question": "What are datasets and how do I use them with Pest?",
-      "anchor": "writing-tests"
-    },
-    {
-      "question": "How can I reuse PHPUnit test cases in Pest without changes?",
-      "anchor": "introduction-about-pest"
-    },
-    {
-      "question": "What are some architectural testing features that Pest supports?",
-      "anchor": "our-first-tests"
-    },
-    {
-      "question": "What is snapshot testing and how can I use it with Pest?",
-      "anchor": "assertions"
-    },
-    {
-      "question": "How can I write global functions in a Pest test file?",
+      "question": "pest php expect syntax unit testing",
       "anchor": "expectations"
     },
     {
-      "question": "What are some tips and tricks for using Pest effectively?",
+      "question": "how to add pest to an existing php project with composer",
+      "anchor": "installation"
+    },
+    {
+      "question": "pest assertions $this assertSame phpunit",
+      "anchor": "assertions"
+    },
+    {
+      "question": "pest expect toBe vs toEqual strict type check",
+      "anchor": "our-first-tests"
+    },
+    {
+      "question": "pest php shared dataset multiple parameters",
       "anchor": "using-datasets"
+    },
+    {
+      "question": "can I run my existing phpunit test class inside pest without rewriting it",
+      "anchor": "reuse-phpunit-tests-cases-without-changes"
+    },
+    {
+      "question": "pest architectural test enforce no validation in controller",
+      "anchor": "architectural-tests"
+    },
+    {
+      "question": "pest php snapshot testing",
+      "anchor": "taking-snapshots"
+    },
+    {
+      "question": "pest dump variable in test like dd",
+      "anchor": "dump-and-die"
+    },
+    {
+      "question": "pest laravel plugin install",
+      "anchor": "laravel-plugin"
+    },
+    {
+      "question": "better pest vscode autocomplete extension",
+      "anchor": "visual-studio-code-add-on"
+    },
+    {
+      "question": "migrate phpunit tests to pest",
+      "anchor": "convert-from-phpunit"
     }
   ]
 }

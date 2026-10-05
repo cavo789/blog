@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:56:21.340Z",
-  "durationMs": 158404,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "4b14cccab0e0c822f9f48f59953fb2347df1793f",
+  "durationMs": 158404,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:38:24.023Z",
+    "articleHash": "d4ff72d3a807d0e31ecabefa19cc5c88a6875c6d",
+    "questionsHash": "42b4b662ad4fe2ec",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "scanner de virus gratuit pour Joomla maintenu par l'AFUJ",
@@ -45,7 +55,7 @@
     },
     {
       "question": "pourquoi il faut supprimer quickscan.php une fois le scan terminé",
-      "anchor": "conclusion"
+      "anchor": "run-the-scanner"
     }
   ]
 }

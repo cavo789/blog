@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:28:24.565Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "04e8756cea50979cf4f1c756ffc22f0df9ffbbc0",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:46:53.164Z",
+    "articleHash": "1ed8381369c0458bab6eb4f277b2b84335667e5e",
+    "questionsHash": "3da11205e6f08a17",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment ajouter une section articles liés sous les billets Docusaurus ?",
@@ -36,7 +46,7 @@
     },
     {
       "question": "relancer le serveur de développement après la surcharge de thème",
-      "anchor": "conclusion"
+      "anchor": "overriding-the-blogpostitem-template"
     }
   ]
 }

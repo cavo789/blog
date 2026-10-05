@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:06:14.253Z",
-  "durationMs": 118707,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "eb358500f85306a073fad57d21fa1f2ba3a992b8",
+  "durationMs": 118707,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Alternative au VBA pour automatiser WinSCP avec son propre langage",
+      "anchor": "",
+      "reason": "not answered: Article only links to other blog posts for the alternative.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:40:54.826Z",
+    "articleHash": "30a378324621ba05bf7918c4d6df3fccf8185cd3",
+    "questionsHash": "53959a16d1d2bfca",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment appeler la DLL WinSCP depuis un script VBA dans Excel ?",
@@ -29,10 +47,6 @@
     },
     {
       "question": "Vérifier l'empreinte clé SSH lors de l'initialisation de la session WinSCP",
-      "anchor": ""
-    },
-    {
-      "question": "Alternative au VBA pour automatiser WinSCP avec son propre langage",
       "anchor": ""
     },
     {

@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:52:43.494Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:46:39.965Z",
   "source": "index.md",
   "sourceHash": "6ad4853446a1a72331dcc0286404fdf08b3a2785",
+  "durationMs": 33059,
+  "rejected": [
+    {
+      "question": "docusaurus.config.js add AI author",
+      "anchor": "41-define-the-ai-author",
+      "reason": "not answered: Article uses authors.yml, not docusaurus.config.js",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:41:06.848Z",
+    "articleHash": "5889a03c81e02268dea1233f0a7dced014714aa3",
+    "questionsHash": "6ca7037d4801c5a6",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I show AI-assisted content in my Docusaurus blog?",
+      "question": "docusaurus blog show AI assisted badge",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of adding an 'AI Assisted' icon and co-author to a Docusaurus blog post?",
-      "anchor": "the-result"
+      "question": "how to display AI icon next to date and reading time in docusaurus post header",
+      "anchor": "33-modify-srcthemeblogpostitemheaderinfoindexjs"
     },
     {
-      "question": "How do I add an AI-assisted flag to my Docusaurus blog posts?",
-      "anchor": "why-do-this"
-    },
-    {
-      "question": "What components are involved in displaying the 'AI Assisted' icon and co-author on a Docusaurus blog post?",
+      "question": "docusaurus front matter flag ai_assisted",
       "anchor": "step-1-the-ai_assisted-front-matter"
     },
     {
-      "question": "How can I customize the 'AI Assisted' icon and co-author display in my Docusaurus blog posts?",
+      "question": "AIIcon react component docusaurus blog post",
       "anchor": "step-2-creating-the-aiicon-component"
     },
     {
-      "question": "How do I add an AI-assisted flag to my Docusaurus blog posts programmatically?",
+      "question": "docusaurus swizzle blog post header add custom component",
       "anchor": "step-3-displaying-the-icon-with-swizzling"
     },
     {
-      "question": "What is the role of swizzling in customizing Docusaurus theme components for AI-assisted content display?",
+      "question": "docusaurus BlogPostItem index.js pass front matter to header",
       "anchor": "31-modify-srcthemeblogpostitemindexjs"
     },
     {
-      "question": "How can I add a co-author to my Docusaurus blog posts programmatically?",
-      "anchor": "32-modify-srcthemeblogpostitemheaderindexjs"
+      "question": "docusaurus BlogPostItem Header Info render icon conditionally",
+      "anchor": "33-modify-srcthemeblogpostitemheaderinfoindexjs"
+    },
+    {
+      "question": "docusaurus add AI as co-author blog post",
+      "anchor": "step-4-adding-google-gemini-as-an-author"
+    },
+    {
+      "question": "docusaurus Authors component add author based on front matter",
+      "anchor": "43-modify-srcthemeblogpostitemheaderauthorsindexjs"
     }
   ]
 }

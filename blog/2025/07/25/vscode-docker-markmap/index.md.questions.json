@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:55.342Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:05:49.727Z",
   "source": "index.md",
   "sourceHash": "9c4b91fae3ca9a8f579b005c0cb504454ff7a8c4",
+  "durationMs": 63594,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:07:09.141Z",
+    "articleHash": "131aa20b31356c717b381b53e6790dcaf9be11f0",
+    "questionsHash": "0758833f0c99bc73",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I create an attractive mind map using Markmap and Quarto?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some ways to turn text into a diagram on this blog?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I render Markdown content as an HTML page using Quarto?",
+      "question": "markdown to interactive mindmap quarto docker",
       "anchor": "rendering-as-an-html-page-using-quarto"
     },
     {
-      "question": "What are the steps to create an attractive mind map using Markmap and Quarto?",
-      "anchor": ""
+      "question": "markmap online paste markdown preview",
+      "anchor": "render-the-markmap-online"
     },
     {
-      "question": "How do I customize the appearance of a mind map using VS Code?",
+      "question": "vscode markmap extension command palette open preview",
       "anchor": "installing-the-vscode-extension"
     },
     {
-      "question": "What are some other ways to turn text into a diagram on this blog besides Markmap and Quarto?",
+      "question": "markmap-vscode css config file customize rendering",
+      "anchor": "configuring-the-rendering"
+    },
+    {
+      "question": "quarto docker script convert markdown mindmap to standalone html",
+      "anchor": "rendering-as-an-html-page-using-quarto"
+    },
+    {
+      "question": "quarto docker image first run slow download",
+      "anchor": "rendering-as-an-html-page-using-quarto"
+    },
+    {
+      "question": "copy rendered mindmap into email or word document",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "generate attractive mindmap from plain markdown without local install",
       "anchor": ""
     },
     {
-      "question": "How do I render Markdown content as an HTML page using Quarto without installing any tools locally?",
-      "anchor": "rendering-as-an-html-page-using-quarto"
+      "question": "markmap vscode available layout and styling options",
+      "anchor": "configuring-the-rendering"
     },
     {
-      "question": "What are the benefits of rendering Markdown content as a web page using Quarto?",
-      "anchor": "rendering-as-an-html-page-using-quarto"
+      "question": "install markmap extension in vscode from marketplace",
+      "anchor": "installing-the-vscode-extension"
     }
   ]
 }

@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:08:15.447Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8e929a54bc6e1782a395a75dec17682e3b09d128",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "trouver d'autres exemples de plugins modifiant le html généré",
+      "anchor": "more-demos",
+      "reason": "not answered: Only a link to another article; no other examples provided.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "générer des bannières ascii art en ligne de commande avec bash",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no bash commands given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:00:55.366Z",
+    "articleHash": "dc7c42386df09d2c1a013689dd8fdcabf249bd23",
+    "questionsHash": "f1975c4d8b473663",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "injecter une bannière ascii art dans le code source de docusaurus",
@@ -12,7 +36,7 @@
     },
     {
       "question": "comment vérifier que le commentaire html est bien inséré après le body",
-      "anchor": "the-result"
+      "anchor": "time-to-test"
     },
     {
       "question": "comprendre le fonctionnement du hook postBuild sur les fichiers html générés",
@@ -20,7 +44,7 @@
     },
     {
       "question": "configurer docusaurus.config.js pour charger un plugin postBuild",
-      "anchor": "installation"
+      "anchor": "create-the-plugin-and-load-it"
     },
     {
       "question": "où placer le fichier contenant la bannière ascii et comment le nommer",
@@ -31,20 +55,12 @@
       "anchor": "create-the-plugin-and-load-it"
     },
     {
-      "question": "trouver d'autres exemples de plugins modifiant le html généré",
-      "anchor": "more-demos"
-    },
-    {
       "question": "lancer yarn docusaurus build et yarn docusaurus serve pour tester le résultat",
       "anchor": "time-to-test"
     },
     {
       "question": "pourquoi le plugin ne fonctionne qu'en mode build et pas en preview",
       "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "générer des bannières ascii art en ligne de commande avec bash",
-      "anchor": "conclusion"
     }
   ]
 }

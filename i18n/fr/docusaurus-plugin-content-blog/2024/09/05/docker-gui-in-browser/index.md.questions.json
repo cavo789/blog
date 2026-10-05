@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:18:42.513Z",
-  "durationMs": 137596,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "a89f6316213edf4070c1a6c6e4a015332515ecf5",
+  "durationMs": 137596,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "docker run GUI navigateur vs fenêtre bureau sur le poste",
+      "anchor": "conclusion",
+      "reason": "not answered: Window-mode variant only linked to another article, not explained here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Alternative docker run pour afficher les interfaces graphiques en mode fenêtre",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a link to another article; no command or explanation provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:44:26.883Z",
+    "articleHash": "eeb9aadae0615fec54b87815d7e41fbf5c6cdabc",
+    "questionsHash": "bbafb17a480369f9",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment lancer une app graphique Linux dans Docker et l'accéder via le navigateur ?",
@@ -38,14 +62,6 @@
     {
       "question": "Accéder à GIMP dans un onglet de navigateur avec docker run",
       "anchor": "start-gimp-in-your-browser"
-    },
-    {
-      "question": "docker run GUI navigateur vs fenêtre bureau sur le poste",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "Alternative docker run pour afficher les interfaces graphiques en mode fenêtre",
-      "anchor": "conclusion"
     }
   ]
 }

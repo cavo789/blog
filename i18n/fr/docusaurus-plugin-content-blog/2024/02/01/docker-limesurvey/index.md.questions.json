@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:48:06.152Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8a7d112e63558986a517d76857b9da3e4393ed9a",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:50:40.187Z",
+    "articleHash": "645558d64e33ded9b0320e7155e82dfd73bf8e40",
+    "questionsHash": "e2b73a53e92243ca",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment auto-héberger LimeSurvey avec Docker Compose ?",
@@ -12,7 +22,7 @@
     },
     {
       "question": "docker-compose.yml LimeSurvey port 8080",
-      "anchor": "limesurvey-running-in-two-minutes"
+      "anchor": "lets-play"
     },
     {
       "question": "docker compose up --detach LimeSurvey MySQL prêt",

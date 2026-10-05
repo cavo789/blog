@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T10:55:59.605Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f88a4e8825c187004e8063091446436060d9cef4",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Assembler plusieurs snippets en arborescence avec ProjectSetup",
+      "anchor": "go-further-with-projectsetup",
+      "reason": "not answered: Only a link to another article, no actual instructions or code provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:51:50.139Z",
+    "articleHash": "0ff95725ad993debb1654a9b2a2daaefbdae3237",
+    "questionsHash": "97226a8edcfd61a7",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "docusaurus afficher des snippets de code dynamiques dans le blog",
@@ -40,11 +58,7 @@
     },
     {
       "question": "configurer les chemins relatifs et absolus pour charger du code externe",
-      "anchor": "demo-get-content-from-the-disk"
-    },
-    {
-      "question": "Assembler plusieurs snippets en arborescence avec ProjectSetup",
-      "anchor": "go-further-with-projectsetup"
+      "anchor": "dont-copypaste-content-anymore"
     }
   ]
 }

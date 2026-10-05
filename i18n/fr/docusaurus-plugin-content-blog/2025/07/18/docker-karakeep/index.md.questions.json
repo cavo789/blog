@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:03:08.643Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8393e32bee4fa536ea32ec0c7dc9d87aa8dbd835",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:38:17.772Z",
+    "articleHash": "205779325a4ecb1db4d3f525f167b2a319ac45e3",
+    "questionsHash": "eeccfbda4723604a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "gestionnaire de favoris auto-hébergé avec moteur de recherche puissant",
@@ -32,7 +42,7 @@
     },
     {
       "question": "fonctionnalités avancées karakeep aperçu automatique et recherche",
-      "anchor": "extra-features"
+      "anchor": "why-it-works"
     },
     {
       "question": "comment exporter et importer ses données karakeep",

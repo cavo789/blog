@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:02:53.809Z",
-  "durationMs": 131229,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "175466b21c7b85646742a94d88fe215efb9da5f1",
+  "durationMs": 131229,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:56:55.039Z",
+    "articleHash": "7aafb4e3f78855ac21860a1c8b7f8387688ad1a3",
+    "questionsHash": "56fe2a832b08212e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment automatiser des transferts SFTP en ligne de commande sous Linux ?",
-      "anchor": ""
+      "anchor": "running-commands-on-the-sftp-server-then-exit"
     },
     {
       "question": "sftp ligne de commande sshpass proxy http port personnalisé",

@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:37.379Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:07:55.660Z",
   "source": "index.md",
   "sourceHash": "6c3789dbf698e1d3e962cc6d5ac2f90f0b16e470",
+  "durationMs": 30711,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:31:12.569Z",
+    "articleHash": "43b070a5c9b21045ae45be660a1fa29ec72f3858",
+    "questionsHash": "11b0052a63fc98df",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I rename a symbol in PHP using VSCode?",
+      "question": "free PHP refactoring extension VSCode",
+      "anchor": ""
+    },
+    {
+      "question": "PHP refactoring sample project two files setup",
+      "anchor": "create-sample-files"
+    },
+    {
+      "question": "docker run php:8.2 volume mount local project",
+      "anchor": "run-the-example"
+    },
+    {
+      "question": "PHP Refactor Tool extension install VSCode",
       "anchor": "refactoring"
     },
     {
-      "question": "What is the F2 key used for in VSCode for refactoring?",
-      "anchor": "refactoring"
-    },
-    {
-      "question": "How can I rename a class in PHP using VSCode?",
+      "question": "F2 rename PHP method updates all usages across files",
       "anchor": "rename-a-symbol"
     },
     {
-      "question": "What are some benefits of using the PHP Refactor Tool extension?",
-      "anchor": "run-the-example"
-    },
-    {
-      "question": "How do I extract a portion of code into a new method in PHP using VSCode?",
+      "question": "rename PHP class in VSCode file name changes too",
       "anchor": "rename-a-class"
     },
     {
-      "question": "What is Rector and how can it be used for refactoring across a whole codebase?",
-      "anchor": "run-the-example"
+      "question": "why renaming PHP file from VSCode Explorer doesn't update code",
+      "anchor": "rename-a-class"
     },
     {
-      "question": "How do I rename a symbol in PHP using the F2 key in VSCode?",
-      "anchor": "refactoring"
+      "question": "extract PHP code block into new method VSCode",
+      "anchor": "extract-to-a-new-method"
     },
     {
-      "question": "What are some tips for refactoring code to improve its quality and maintainability in PHP?",
-      "anchor": ""
+      "question": "PHP extract method automatic parameter detection local variables",
+      "anchor": "extract-to-a-new-method"
+    },
+    {
+      "question": "other PHP refactoring tools for VSCode",
+      "anchor": "other-extensions"
+    },
+    {
+      "question": "how to refactor PHP code in VSCode without breaking cross-file references",
+      "anchor": "rename-a-symbol"
     }
   ]
 }

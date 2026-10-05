@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T13:55:05.747Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "82ca97e55f8e29491f7f70605af8236fb6a6acbc",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "comment valider le schéma OpenAPI FastAPI avec les standards Belgif et explorer le framework ?",
+      "anchor": "discover-fastapi",
+      "reason": "not answered: Only links to external pages; no Belgif validation steps or framework exploration.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:16:16.200Z",
+    "articleHash": "1b1bd426ab39cf17d4b652f9b84f5ace1c686bbb",
+    "questionsHash": "081a2940aed26dc0",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment créer une api json avec FastAPI et Docker en moins d'une minute",
@@ -28,7 +46,7 @@
     },
     {
       "question": "comment modifier main.py pour créer un endpoint qui retourne une blague aléatoire ou précise ?",
-      "anchor": "lets-play---creating-a-joke-generator"
+      "anchor": "our-joke-generator"
     },
     {
       "question": "montage volume -v .:/app dans docker run pour le hot reload sans reconstruire l'image",
@@ -37,10 +55,6 @@
     {
       "question": "comment structurer et servir une liste de blagues via un endpoint FastAPI",
       "anchor": "our-joke-generator"
-    },
-    {
-      "question": "comment valider le schéma OpenAPI FastAPI avec les standards Belgif et explorer le framework ?",
-      "anchor": "discover-fastapi"
     }
   ]
 }

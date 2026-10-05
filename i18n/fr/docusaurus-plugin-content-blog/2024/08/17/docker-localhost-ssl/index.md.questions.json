@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T00:09:34.195Z",
-  "durationMs": 166584,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "324c4f4f6706f430a0e0676817d9c53cdf47b19b",
+  "durationMs": 166584,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:41:55.535Z",
+    "articleHash": "d05272572836181834372b42b649c905be3d62c7",
+    "questionsHash": "49e8f05c6f4ba8d1",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment configurer localhost Docker pour utiliser SSL sans avertissement navigateur",

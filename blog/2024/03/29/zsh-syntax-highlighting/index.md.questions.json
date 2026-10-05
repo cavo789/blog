@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:57:07.640Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:18:08.022Z",
   "source": "index.md",
   "sourceHash": "d57386bf21e75a8ae46438c88999445c21bca2b7",
+  "durationMs": 30386,
+  "rejected": [
+    {
+      "question": "wsl zsh real-time command validation before enter",
+      "anchor": "",
+      "reason": "not answered: Article never mentions WSL; only covers the Zsh plugin generally.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:40:31.359Z",
+    "articleHash": "45a94c266fe3256d265a991fa2b5fb1754c0ccf5",
+    "questionsHash": "70fa78cef438a027",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What does syntax highlighting do in the console?",
+      "question": "zsh color commands green red as you type",
       "anchor": ""
     },
     {
-      "question": "How can I install zsh-syntax-highlighting?",
-      "anchor": "installation"
-    },
-    {
-      "question": "Can you explain how syntax highlighting works in Zsh?",
+      "question": "terminal highlights typo in red before you press enter",
       "anchor": "what-syntax-highlighting-looks-like"
     },
     {
-      "question": "What are the benefits of using syntax highlighting in the console?",
-      "anchor": ""
+      "question": "zsh show invalid command red while typing not after failure",
+      "anchor": "what-syntax-highlighting-looks-like"
     },
     {
-      "question": "How does the plugin work to provide syntax highlighting?",
+      "question": "zsh-syntax-highlighting does it need a config file",
       "anchor": "how-to-use-it"
     },
     {
-      "question": "Can you describe how to use zsh-syntax-highlighting with Docker?",
+      "question": "zsh-syntax-highlighting no alias no option just works",
+      "anchor": "how-to-use-it"
+    },
+    {
+      "question": "dockerfile oh-my-zsh zsh-syntax-highlighting demo",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What are some examples of valid commands in Zsh that turn green?",
-      "anchor": "what-syntax-highlighting-looks-like"
+      "question": "docker build run zsh syntax highlighting test container",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How can I troubleshoot issues with syntax highlighting in Zsh?",
-      "anchor": ""
+      "question": "clone zsh-syntax-highlighting add to oh-my-zsh plugins zshrc",
+      "anchor": "installation"
+    },
+    {
+      "question": "zsh syntax highlighting vs autosuggestions plugin",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "zsh plugin green means valid red means fix before you run",
+      "anchor": "conclusion"
     }
   ]
 }

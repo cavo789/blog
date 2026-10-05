@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:53:58.119Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:15:30.152Z",
   "source": "index.md",
   "sourceHash": "164224e2b72b7512a48e61ab8ca18f5603570b1b",
+  "durationMs": 25097,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:32:16.876Z",
+    "articleHash": "08a52124559abc8fea63193740f1a7102701c44e",
+    "questionsHash": "2bda235a1cf9a994",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I set up a Python development environment on Windows using Docker and VSCode devcontainers?",
+      "question": "python devcontainer windows without installing python locally",
       "anchor": ""
     },
     {
-      "question": "What are the steps to create a Python Docker image for my project on Windows?",
+      "question": "where to run docker commands for python devcontainer windows cmd prompt",
       "anchor": "time-to-start"
     },
     {
-      "question": "How do I start a Docker container and enter it in Windows using VSCode devcontainers?",
+      "question": "docker build python image devcontainer",
       "anchor": "build-the-python-docker-image"
     },
     {
-      "question": "What are the commands to run Python scripts inside the Docker container on Windows?",
+      "question": "restart python docker container every morning windows",
       "anchor": "create-a-docker-container"
     },
     {
-      "question": "How do I add Python's addons in VSCode when using a Devcontainer on Windows?",
+      "question": "how to exec into a running python container from windows command line",
       "anchor": "entering-the-container"
     },
     {
-      "question": "What is the file/folder structure required for setting up a Python development environment on Windows using Docker and VSCode devcontainers?",
+      "question": "vscode attach devcontainer python windows",
       "anchor": "starting-vscode-and-start-your-developer-journey"
     },
     {
-      "question": "How do I create a DOS batch file to run commands like Python scripts inside the container on Windows?",
+      "question": "preinstalled vscode extensions in python devcontainer",
       "anchor": "can-i-add-pythons-addons-in-vscode"
     },
     {
-      "question": "What is the command to quit the Docker container and return to my MS-DOS console on Windows using VSCode devcontainers?",
+      "question": "devcontainer.json dockerfile python project folder structure",
       "anchor": "create-a-filefolder-structure"
+    },
+    {
+      "question": "replace makefile with batch script docker python windows",
+      "anchor": "create-our-dos-batch-file"
+    },
+    {
+      "question": "python devcontainer windows all config files overview",
+      "anchor": "our-configuration-right-now"
+    },
+    {
+      "question": "change python version in docker devcontainer",
+      "anchor": "can-i-use-another-version-of-python"
     }
   ]
 }

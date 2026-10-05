@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:12.785Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:44:31.809Z",
   "source": "index.md",
   "sourceHash": "9acfcf1247e2c6d6020428b80e3c169450d76f96",
+  "durationMs": 40353,
+  "rejected": [
+    {
+      "question": "excel vba sql server large dataset limitations pandas alternative",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a passing mention with a link to another article; no detail given.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:49:57.431Z",
+    "articleHash": "4a2c90307417da84dcbe30c12caa33db939bd10b",
+    "questionsHash": "c65862bdc8560ab3",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I connect to a SQL Server database using VBA in Excel?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "What are the steps to create a dummy database and run queries in SQL Server using Docker?",
-      "anchor": "download-sql-server-and-create-a-dummy-database"
-    },
-    {
-      "question": "How do I retrieve data from a SQL Server database into an Excel worksheet using VBA?",
+      "question": "excel vba connect sql server run query output to worksheet",
       "anchor": "lets-play-with-copytosheet"
     },
     {
-      "question": "What are the benefits of using a VBA class to handle data retrieval and output in Excel?",
+      "question": "vba sql server one-time data copy vs live query table refresh",
       "anchor": "why-it-works"
     },
     {
-      "question": "How do I create a new database in SQL Server using Docker and manage it with SSMS?",
+      "question": "docker run sql server 2022 container local dev",
       "anchor": "download-sql-server-and-create-a-dummy-database"
     },
     {
-      "question": "What are the steps to install and run Microsoft Excel VBA for accessing SQL Server databases?",
-      "anchor": "why-it-works"
+      "question": "vba class module adodb sql server connection string setup excel",
+      "anchor": "the-excel-part"
     },
     {
-      "question": "How do I use a custom VBA class to access records stored in SQL server and output these data in an Excel sheet?",
-      "anchor": "lets-play-with-copytosheet"
+      "question": "how to dump adodb recordset rows into excel cells with vba",
+      "anchor": "copytosheet-subroutine"
     },
     {
-      "question": "What are the steps to modify the connection string for accessing a SQL Server database using VBA in Excel?",
-      "anchor": "why-it-works"
+      "question": "excel vba sql server three export methods comparison",
+      "anchor": "the-list-of-features-optional-deep-dive--full-code-for-each-subroutine"
+    },
+    {
+      "question": "vba copyto sheet sql query results no live connection",
+      "anchor": "copytosheet-subroutine"
+    },
+    {
+      "question": "excel vba addquerytable sql server data refresh",
+      "anchor": "addquerytable-subroutine"
+    },
+    {
+      "question": "vba run select query export to separate new workbook sql server",
+      "anchor": "runsqlandexportnewworkbook-subroutine"
     }
   ]
 }

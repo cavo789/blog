@@ -2,18 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:40:11.691Z",
-  "durationMs": 173835,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "1612f001e833bdc179387382f63dc834c97631f4",
+  "durationMs": 173835,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:15:22.146Z",
+    "articleHash": "e8f1b8a54346f0466d86b5948e5f70c030e4ac04",
+    "questionsHash": "703e66069457025c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment compiler du Turbo Pascal 7.0 avec Docker sans installation locale ?",
-      "anchor": ""
+      "anchor": "hello-world"
     },
     {
       "question": "Image Docker fpc pour exécuter du code Pascal vieux de 30 ans",
-      "anchor": ""
+      "anchor": "hello-world"
     },
     {
       "question": "Récupérer du code TP7 dans l'archive SWAG et le faire tourner en 2023",

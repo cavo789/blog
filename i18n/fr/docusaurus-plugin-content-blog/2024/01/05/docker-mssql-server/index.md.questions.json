@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:26:52.062Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "146971df4a235dd5c2b323cf7cdd0eae360d32e8",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:38:39.695Z",
+    "articleHash": "95ba3c95aee9401868563a388250e8ec7feb3d3e",
+    "questionsHash": "fceed4d838028031",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment lancer MSSQL Server 2022 dans Docker avec docker run ?",

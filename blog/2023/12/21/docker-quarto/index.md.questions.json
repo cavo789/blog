@@ -1,41 +1,72 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:45:59.292Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:29:05.867Z",
   "source": "index.md",
   "sourceHash": "d5904c0b8aa30ca6b657bb27ef1647925a7b429d",
+  "durationMs": 29580,
+  "rejected": [
+    {
+      "question": "quarto extensions community features beyond basic render",
+      "anchor": "going-further",
+      "reason": "not answered: Only mentions extensions exist; details are in a linked article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:56:43.334Z",
+    "articleHash": "6d594cd61de533a288ed8f31c929d7fe46d1fc88",
+    "questionsHash": "abcb7826093b89fb",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I run Quarto Markdown in Docker?",
+      "question": "quarto docker render markdown to pdf html reveal.js no install",
       "anchor": ""
     },
     {
-      "question": "What is Quarto and how does it work?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I render a PDF from a Markdown file using Docker?",
+      "question": "how to render a markdown file to pdf using quarto docker image",
       "anchor": "render-your-first-pdf-without-installing-anything"
     },
     {
-      "question": "What are the different output formats supported by Quarto?",
-      "anchor": "the-source-file"
+      "question": "docker run -v .:/input quarto render --to pdf command",
+      "anchor": "render-your-first-pdf-without-installing-anything"
     },
     {
-      "question": "How do I create a custom Docker image for Quarto?",
+      "question": "quarto markdown source file same content different output formats",
       "anchor": "the-same-file-as-html-and-as-a-slideshow"
     },
     {
-      "question": "What is Markdown and how does it relate to Quarto?",
-      "anchor": ""
+      "question": "quarto reveal.js slide breaks ::: syntax multiple slides",
+      "anchor": "the-same-file-as-html-and-as-a-slideshow"
     },
     {
-      "question": "How can I generate a slideshow from a Markdown file using Quarto?",
+      "question": "convert quarto markdown to html and slideshow from one file",
+      "anchor": "the-same-file-as-html-and-as-a-slideshow"
+    },
+    {
+      "question": "build custom quarto docker image from dockerfile",
       "anchor": "build-your-own-image-optional--skip-it-if-the-official-one-is-enough"
     },
     {
-      "question": "What are the steps to deploy a Quarto-generated HTML file on a server?",
-      "anchor": "going-further"
+      "question": "quarto docker image official vs custom when to build your own",
+      "anchor": "build-your-own-image-optional--skip-it-if-the-official-one-is-enough"
+    },
+    {
+      "question": "doc-as-code quarto docker avoid local installation",
+      "anchor": ""
+    },
+    {
+      "question": "deploy quarto reveal.js slideshow html to ftp server",
+      "anchor": "the-same-file-as-html-and-as-a-slideshow"
+    },
+    {
+      "question": "quarto render quiet flag show only warnings docker",
+      "anchor": "render-your-first-pdf-without-installing-anything"
     }
   ]
 }

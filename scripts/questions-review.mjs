@@ -38,6 +38,14 @@
  *
  * In the devcontainer: `questions review`, `questions list <post>`, `questions status`
  * (see .devcontainer/scripts/interactive.sh), each accepting `--locale <code>`.
+ *
+ * Specificity (AnythingLLM, optional): when the local instance answers, every question is run
+ * through the locale's workspace as a vector search, and the review shows where the article
+ * being reviewed ranks for it. A question this article answers best is one worth keeping; one
+ * where another article ranks higher is at best borderline, and far down the list it is a
+ * generic question ("What is a container in Docker?") that sends the reader somewhere else.
+ * `g` deletes those in one go, `--generic` queues only the articles that still carry some.
+ * No instance, no key, or `--no-ai`: the review works exactly as before, without the marks.
  */
 
 import fs from "fs";
@@ -47,6 +55,7 @@ import { fileURLToPath } from "url";
 import { hashSource } from "./lib/eli5-hash.mjs";
 import { findPosts, parseFrontMatter } from "./lib/blog-corpus.mjs";
 import { extractHeadings, generateQuestions } from "./generate-questions.mjs";
+import { connect, indexStatus } from "./lib/anythingllm.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -97,6 +106,107 @@ const C = {
 };
 
 const RULE = "─".repeat(78);
+
+// ── Specificity (AnythingLLM) ────────────────────────────────────────────────
+
+// Where the reviewed article must rank, among all articles, for a question to count as its
+// own. Calibrated on 70 questions from 8 random articles (2026-09-23): rank 1 held 53 of them;
+// ranks 2-3 were real questions where a sibling article (same series) edged ahead; beyond 3
+// were the generic ones — "What is a container in Docker?", "How do you check if a command
+// is installed?" — each answered better by a dedicated article.
+const BORDERLINE_MAX_RANK = 3;
+// How many articles a search returns. A question whose article is not in this list at all is
+// as generic as one ranked 4th; the exact rank beyond it would add nothing.
+const SEARCH_DEPTH = 20;
+
+/** null when AnythingLLM is off; otherwise `{ search, workspace }` for the reviewed locale. */
+let ai = null;
+/** Question text → `{ rank, best }`, so a redraw after an edit only queries what changed. */
+const specificityCache = new Map();
+
+/** "specific" (rank 1), "borderline" (2-3) or "generic" (deeper, or not found). */
+function verdictOf({ rank }) {
+  if (rank === 1) return "specific";
+  if (rank !== null && rank <= BORDERLINE_MAX_RANK) return "borderline";
+  return "generic";
+}
+
+/** post.rel → whether the workspace actually holds that article (see `measureSpecificity`). */
+const inWorkspace = new Map();
+
+/**
+ * Whether marks can be trusted for this article. An article missing from the workspace would
+ * make every question look generic (its own document can never rank), so it gets no marks at
+ * all; a stale index still ranks well enough to be useful, with a warning in the header.
+ */
+const aiUsableFor = (post) =>
+  ai !== null &&
+  indexStatus(post.file, post.locale) !== "missing" &&
+  inWorkspace.get(post.rel) !== false;
+
+/** Fills the cache for every question of `post` not measured yet — in parallel, ~0.1 s each. */
+async function measureSpecificity(post) {
+  if (!aiUsableFor(post)) return;
+
+  // The indexer's state file is not proof: an upload that fails to vectorize (the embedder's
+  // context ceiling — `docling` in French, 2026-09-17) is still recorded as indexed. An
+  // article that does not come up for its own title is not really there.
+  if (!inWorkspace.has(post.rel)) {
+    try {
+      const hits = await ai.search(post.title, { top: SEARCH_DEPTH });
+      inWorkspace.set(
+        post.rel,
+        hits.some((hit) => hit.source === post.rel),
+      );
+    } catch {
+      return;
+    }
+    if (!inWorkspace.get(post.rel)) return;
+  }
+  const pending = (post.sidecar?.questions ?? [])
+    .map((q) => q.question)
+    .filter((text) => !specificityCache.has(`${post.rel}\0${text}`));
+
+  await Promise.all(
+    pending.map(async (text) => {
+      try {
+        const hits = await ai.search(text, { top: SEARCH_DEPTH });
+        const index = hits.findIndex((hit) => hit.source === post.rel);
+        specificityCache.set(`${post.rel}\0${text}`, {
+          rank: index === -1 ? null : index + 1,
+          best: hits[0] && index !== 0 ? hits[0] : null,
+        });
+      } catch {
+        // One failed lookup leaves that question unmarked; it is a hint, not a gate.
+      }
+    }),
+  );
+}
+
+const specificityOf = (post, text) =>
+  specificityCache.get(`${post.rel}\0${text}`) ?? null;
+
+/** Indices of the questions measured as generic — what `g` deletes and `--generic` looks for. */
+const genericIndices = (post) =>
+  (post.sidecar?.questions ?? [])
+    .map((q, i) => [q, i])
+    .filter(([q]) => {
+      const measured = specificityOf(post, q.question);
+      return measured !== null && verdictOf(measured) === "generic";
+    })
+    .map(([, i]) => i);
+
+function renderSpecificity(post, text) {
+  const measured = specificityOf(post, text);
+  if (!measured) return "";
+  const verdict = verdictOf(measured);
+  if (verdict === "specific") return `  ${C.green}●${C.reset}`;
+  const rank = measured.rank === null ? `>${SEARCH_DEPTH}` : `#${measured.rank}`;
+  const best = measured.best ? ` ${C.dim}< ${measured.best.slug}${C.reset}` : "";
+  return verdict === "borderline"
+    ? `  ${C.yellow}◐ ${rank}${C.reset}${best}`
+    : `  ${C.red}○ ${rank}${C.reset}${best}`;
+}
 
 // ── Corpus ───────────────────────────────────────────────────────────────────
 
@@ -243,8 +353,16 @@ function renderQuestions(post) {
     const anchor = q.anchor
       ? ` ${known ? C.dim : C.red}→ #${q.anchor}${known ? "" : " (unknown heading!)"}${C.reset}`
       : ` ${C.dim}→ (intro)${C.reset}`;
-    console.log(`  ${C.bold}[${i}]${C.reset} ${q.question}${anchor}`);
+    console.log(
+      `  ${C.bold}[${i}]${C.reset} ${q.question}${anchor}${renderSpecificity(post, q.question)}`,
+    );
   });
+
+  if (aiUsableFor(post)) {
+    console.log(
+      `  ${post.locale === DEFAULT_LOCALE ? "" : `${C.dim}(${post.locale}: the embedder is English-trained — about 2.5× more questions marked generic than in en; judge before deleting)${C.reset}\n  `}${C.green}●${C.reset}${C.dim} this article answers it best  ${C.reset}${C.yellow}◐${C.reset}${C.dim} a close article ranks higher  ${C.reset}${C.red}○${C.reset}${C.dim} generic — ${C.reset}${C.bold}g${C.reset}${C.dim} deletes these${C.reset}`,
+    );
+  }
 }
 
 function renderHeader(post, position) {
@@ -271,9 +389,31 @@ function renderHeader(post, position) {
     console.log(`${C.dim}${meta.join(" · ")}${C.reset}`);
   }
 
+  if (ai) {
+    const status =
+      inWorkspace.get(post.rel) === false
+        ? "missing"
+        : indexStatus(post.file, post.locale);
+    if (status === "missing") {
+      flags.push(
+        `${C.dim}not found in AnythingLLM '${ai.workspace}' — no specificity marks (never indexed, or its vectorization failed: see docker logs anythingllm)${C.reset}`,
+      );
+    } else if (status === "stale") {
+      flags.push(
+        `${C.dim}AnythingLLM index older than the article — marks may lag (ai-index${post.locale === DEFAULT_LOCALE ? "" : `-${post.locale}`})${C.reset}`,
+      );
+    }
+  }
+
   if (flags.length > 0) console.log(flags.join("  "));
   console.log(`${C.dim}${RULE}${C.reset}`);
   renderQuestions(post);
+}
+
+/** Measures what is not measured yet, then draws — the one entry point for a redraw. */
+async function show(post, position) {
+  await measureSpecificity(post);
+  renderHeader(post, position);
 }
 
 const HELP = `
@@ -282,6 +422,7 @@ const HELP = `
   ${C.bold}a${C.reset}           add a question by hand
   ${C.bold}e N${C.reset}         edit question N (text, then the heading it answers)
   ${C.bold}h N${C.reset}         change only the heading question N points to
+  ${C.bold}g${C.reset}           delete every question marked ${C.red}○${C.reset} generic (asks first) — needs AnythingLLM
   ${C.bold}r${C.reset}           regenerate this article's questions with Ollama (replaces all)
   ${C.bold}x${C.reset}           exclude this article — no questions, never regenerated
   ${C.bold}i${C.reset}           re-include a previously excluded article
@@ -356,13 +497,13 @@ const save = (post) => writeSidecar(post.sidecarPath, post.sidecar);
  * lose the deletions already made on this article.
  */
 async function reviewPost(rl, post, position) {
-  renderHeader(post, position);
+  await show(post, position);
 
   for (;;) {
     const questions = post.sidecar?.questions ?? [];
     const answer = (
       await rl.question(
-        `\n${C.blue}Enter${C.reset}=keep  ${C.blue}N…${C.reset}=delete  ${C.blue}a${C.reset}dd  ${C.blue}e${C.reset}dit  ${C.blue}r${C.reset}egenerate  e${C.blue}x${C.reset}clude  ${C.blue}s${C.reset}kip  ${C.blue}?${C.reset}  ${C.blue}q${C.reset}uit > `,
+        `\n${C.blue}Enter${C.reset}=keep  ${C.blue}N…${C.reset}=delete${aiUsableFor(post) ? `  ${C.blue}g${C.reset}eneric` : ""}  ${C.blue}a${C.reset}dd  ${C.blue}e${C.reset}dit  ${C.blue}r${C.reset}egenerate  e${C.blue}x${C.reset}clude  ${C.blue}s${C.reset}kip  ${C.blue}?${C.reset}  ${C.blue}q${C.reset}uit > `,
       )
     ).trim();
 
@@ -397,6 +538,39 @@ async function reviewPost(rl, post, position) {
       continue;
     }
 
+    if (command === "g") {
+      if (!aiUsableFor(post)) {
+        console.log(
+          `  ${C.yellow}No specificity marks for this article — AnythingLLM is off or the article is not indexed.${C.reset}`,
+        );
+        continue;
+      }
+      const generic = genericIndices(post);
+      if (generic.length === 0) {
+        console.log(`  ${C.dim}No question marked generic here.${C.reset}`);
+        continue;
+      }
+      for (const index of generic) {
+        console.log(`  ${C.red}[${index}]${C.reset} ${questions[index].question}`);
+      }
+      const confirm = (
+        await rl.question(`  Delete these ${generic.length} question(s)? [y/N] `)
+      )
+        .trim()
+        .toLowerCase();
+      if (confirm !== "y") {
+        console.log(`  ${C.dim}(nothing deleted)${C.reset}`);
+        continue;
+      }
+      for (const index of [...generic].sort((a, b) => b - a)) questions.splice(index, 1);
+      save(post);
+      console.log(
+        `  ${C.green}Removed ${generic.length} generic question(s)${C.reset}, ${questions.length} left.`,
+      );
+      await show(post, position);
+      continue;
+    }
+
     if (command === "x") {
       const reason = (
         await rl.question("  Why exclude it? (optional, Enter to skip): ")
@@ -424,7 +598,7 @@ async function reviewPost(rl, post, position) {
       console.log(
         `  ${C.green}Re-included${C.reset} — press ${C.bold}r${C.reset} to generate questions.`,
       );
-      renderHeader(post, position);
+      await show(post, position);
       continue;
     }
 
@@ -446,7 +620,7 @@ async function reviewPost(rl, post, position) {
       } catch (err) {
         console.log(`  ${C.red}❌ ${err.message}${C.reset}`);
       }
-      renderHeader(post, position);
+      await show(post, position);
       continue;
     }
 
@@ -459,7 +633,7 @@ async function reviewPost(rl, post, position) {
       const anchor = await askAnchor(rl, post, "");
       ensureSidecar(post).questions.push({ question: text, anchor });
       save(post);
-      renderHeader(post, position);
+      await show(post, position);
       continue;
     }
 
@@ -483,7 +657,7 @@ async function reviewPost(rl, post, position) {
       }
       target.anchor = await askAnchor(rl, post, target.anchor);
       save(post);
-      renderHeader(post, position);
+      await show(post, position);
       continue;
     }
 
@@ -505,7 +679,7 @@ async function reviewPost(rl, post, position) {
     console.log(
       `  ${C.green}Removed ${indices.length} question(s)${C.reset}, ${questions.length} left.`,
     );
-    renderHeader(post, position);
+    await show(post, position);
   }
 }
 
@@ -600,6 +774,9 @@ Options:
   --limit <n>       Stop the queue after n articles
   --locale <code>   Review the translated corpus for that locale (e.g. fr) instead of
                     blog/. Writes into the translated sidecars, never the English ones.
+  --generic         Only articles with at least one question marked generic by
+                    AnythingLLM (scans the queue first, a few seconds per 10 articles)
+  --no-ai           Skip the AnythingLLM specificity marks entirely
   --help, -h        Show this help
 
 Review state lives in each <article>.questions.json ("reviewed", "excluded"), so it is
@@ -631,6 +808,15 @@ const positionals = args.filter(
 
 const posts = loadCorpus(locale);
 
+if (!args.includes("--no-ai") && !args.includes("--status")) {
+  const connection = await connect({ locale });
+  ai = connection.client;
+  if (!ai && args.includes("--generic")) {
+    console.error(`Error: --generic needs AnythingLLM (${connection.reason}).`);
+    process.exit(1);
+  }
+}
+
 if (args.includes("--list")) {
   const reference = positionals[0];
   if (!reference) {
@@ -639,7 +825,7 @@ if (args.includes("--list")) {
   }
   const post = resolvePost(reference, posts);
   if (!post) process.exit(1);
-  renderHeader(post, "");
+  await show(post, "");
   console.log("");
   process.exit(0);
 }
@@ -697,6 +883,17 @@ try {
       queue = queue.filter((post) => !isReviewed(post));
     }
     if (tag) queue = queue.filter((post) => post.mainTag === tag);
+    if (args.includes("--generic")) {
+      const candidates = queue.filter(aiUsableFor);
+      for (const [index, post] of candidates.entries()) {
+        process.stdout.write(
+          `\r${C.dim}Measuring specificity… ${index + 1}/${candidates.length}${C.reset}`,
+        );
+        await measureSpecificity(post);
+      }
+      process.stdout.write("\r\x1b[K");
+      queue = candidates.filter((post) => genericIndices(post).length > 0);
+    }
     if (limit) queue = queue.slice(0, limit);
 
     if (queue.length === 0) {

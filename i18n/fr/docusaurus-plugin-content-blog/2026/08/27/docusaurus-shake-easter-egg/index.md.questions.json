@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:44:44.496Z",
-  "durationMs": 117308,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "626365faf2bc4c7e791b05a57a0bae68e3c16d31",
+  "durationMs": 117308,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:37:51.662Z",
+    "articleHash": "483895192153735314aac16d8f8c7da1fa0e50cb",
+    "questionsHash": "acd44cb5d0315b1c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "easter egg secousse téléphone Chrome PWA suricate plein écran",
-      "anchor": ""
+      "anchor": "shake-your-phone-see-what-happens"
     },
     {
       "question": "comment faire apparaître la mascotte en secouant le téléphone sans recharger la page",
@@ -45,7 +55,7 @@
     },
     {
       "question": "ajouter une vibration haptique à une animation déclenchée par capteur",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     }
   ]
 }

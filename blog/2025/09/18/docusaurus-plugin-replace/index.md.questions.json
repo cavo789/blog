@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:59.387Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:21:11.346Z",
   "source": "index.md",
   "sourceHash": "6698c5ce0a4675cd5ada8e36af970a9b9deea972",
+  "durationMs": 56540,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:17:50.752Z",
+    "articleHash": "9519c8698eeef6b5391388fd35cf1aec8eff51cc",
+    "questionsHash": "5562a602933a5ee6",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I create a Docusaurus remark plugin for replacing terms in my content?",
+      "question": "docusaurus auto replace text across all pages",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the plugin and how does it work with Markdown files?",
+      "question": "how to fix inconsistent capitalization across a docusaurus site",
       "anchor": ""
     },
     {
-      "question": "How can I add a custom Docusaurus remark plugin for replacing terms in my content?",
+      "question": "docusaurus remark plugin walk AST replace text",
       "anchor": "the-plugin"
     },
     {
-      "question": "What is the syntax of the search&replace plugin and how do I use it?",
+      "question": "docusaurus replace text only in paragraphs not code blocks or URLs",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "remark plugin case sensitive find replace docusaurus",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "docusaurus custom remark plugin normalize terminology",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "docusaurus.config.js add custom remark plugin",
       "anchor": "adding-the-plugin-in-your-configuration"
     },
     {
-      "question": "How can I register the custom Docusaurus remark plugin in my Docusaurus configuration?",
+      "question": "docusaurus plugin restart server see replacements in console",
       "anchor": "adding-the-plugin-in-your-configuration"
     },
     {
-      "question": "What are the potential risks of using a search&replace plugin for replacing terms in my content?",
+      "question": "docusaurus find replace without editing markdown source files",
       "anchor": ""
     },
     {
-      "question": "How can I ensure that the search&replace plugin only replaces specific words and not other parts of the text?",
-      "anchor": "adding-the-plugin-in-your-configuration"
+      "question": "docusaurus remark plugin search array replace pairs",
+      "anchor": "the-plugin"
     },
     {
-      "question": "What is the difference between a remark plugin and a Docusaurus remark plugin?",
-      "anchor": "the-plugin"
+      "question": "docusaurus consistent terminology plugin react",
+      "anchor": ""
     }
   ]
 }

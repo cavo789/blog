@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:55:40.301Z",
-  "durationMs": 126797,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "83e984a800cf3bf5a79ce6d62ad20fd9126ba61f",
+  "durationMs": 126797,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:21:50.976Z",
+    "articleHash": "68bf562ce0c7ddd3e7dfdfc946196391ef1d1a00",
+    "questionsHash": "a80444e71570d48a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment ajouter un logging horodaté et réutilisable à un script Bash prévu pour le cron ?",

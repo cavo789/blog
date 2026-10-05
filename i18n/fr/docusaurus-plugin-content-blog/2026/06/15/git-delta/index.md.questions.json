@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:10:17.614Z",
-  "durationMs": 170235,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "bf078190b8531d1e8a88e8fb9ca1f6be91f8c2ee",
+  "durationMs": 170235,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:26:42.668Z",
+    "articleHash": "78dfa2ca195ef84b0de5c46228b29b220f28ec05",
+    "questionsHash": "766d05093c6a6aeb",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Pourquoi utiliser delta à la place de less pour git diff ?",
@@ -13,7 +23,7 @@
     },
     {
       "question": "git diff sortie brute trop de bruit visuel",
-      "anchor": "a-changed-line-without-delta"
+      "anchor": "before-and-after"
     },
     {
       "question": "Comment delta met en évidence les mots modifiés ?",

@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:58.314Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:25:57.516Z",
   "source": "index.md",
   "sourceHash": "685bb9b8031aa6b70ef6c018ce023c3cee889657",
+  "durationMs": 29926,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:22:19.322Z",
+    "articleHash": "e70cd1014638e7e88e845978bb704e59f6101414",
+    "questionsHash": "df2961f752475a30",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I set up a secure production Docker image?",
-      "anchor": "step-1---we-have-to-create-the-production-docker-image"
+      "question": "one docker image production devcontainer clean separation",
+      "anchor": ""
     },
     {
-      "question": "What is the purpose of creating a devcontainer for development in VS Code?",
-      "anchor": "and-just-to-be-sure-checking-who-is-the-current-user-for-prod"
-    },
-    {
-      "question": "Can you explain how to create a minimal, secure production Docker image?",
-      "anchor": "step-1---we-have-to-create-the-production-docker-image"
-    },
-    {
-      "question": "How do I extend the production Docker image to include development tools and configurations for VS Code Devcontainers?",
-      "anchor": "and-just-to-be-sure-checking-who-is-the-current-user-for-prod"
-    },
-    {
-      "question": "What is the difference between a production Docker image and a devcontainer in this setup?",
+      "question": "how to keep linter and debugger out of production docker image to reduce attack surface",
       "anchor": "what-does-a-perfect-separation-of-environments-mean"
     },
     {
-      "question": "How do I create a user for file synchronization with the host in a production Docker image?",
-      "anchor": "step-1---we-have-to-create-the-production-docker-image"
+      "question": "single dockerfile no copy-paste builds both production and devcontainer image",
+      "anchor": "the-result"
     },
     {
-      "question": "What is the purpose of the .env file in this setup?",
-      "anchor": "what-does-a-perfect-separation-of-environments-mean"
+      "question": "build production docker image first then devcontainer extends it step by step",
+      "anchor": "step-2---override-or-extend-the-production-image-and-get-a-devcontainer-ready-one"
     },
     {
-      "question": "How do I create a Python script to illustrate some example functionality for the production Docker image?",
-      "anchor": "step-1---we-have-to-create-the-production-docker-image"
+      "question": "production .env file and dockerfile minimal python image",
+      "anchor": "lets-create-our-production-files"
+    },
+    {
+      "question": "docker build rootless minimal production image",
+      "anchor": "creating-the-docker-production-image"
+    },
+    {
+      "question": "run production container fastapi port 8000",
+      "anchor": "running-a-production-container"
+    },
+    {
+      "question": "verify non-root user in production docker container",
+      "anchor": "and-just-to-be-sure-checking-who-is-the-current-user-for-prod"
+    },
+    {
+      "question": "override production image to create devcontainer with dev tools",
+      "anchor": "step-2---override-or-extend-the-production-image-and-get-a-devcontainer-ready-one"
+    },
+    {
+      "question": "devcontainer.json extend existing production image add user and tools",
+      "anchor": "lets-create-our-devcontainer-files"
+    },
+    {
+      "question": "vscode devcontainer image built from production base",
+      "anchor": "creating-the-devcontainer-image"
+    },
+    {
+      "question": "open vscode in devcontainer after building image",
+      "anchor": "opening-the-container-using-vscode"
     }
   ]
 }

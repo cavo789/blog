@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:57:55.560Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "a26b88ef10495d82adac9c1e23414ffc6cd0ffe6",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:53:54.908Z",
+    "articleHash": "c29a8ab822734d8a592c750fbb5734c618247ec8",
+    "questionsHash": "c4d0108c4713f568",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "trucs et astuces pour rédiger des articles Docusaurus",

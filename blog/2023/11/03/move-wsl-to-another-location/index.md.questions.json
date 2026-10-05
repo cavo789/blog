@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:48:47.992Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:05:13.768Z",
   "source": "index.md",
   "sourceHash": "4a385abdfd3c5919be8a98cf260d5853a1b22443",
+  "durationMs": 14917,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:35:11.131Z",
+    "articleHash": "06800a5c99431e3297d2e3aeab8debf4e43745d5",
+    "questionsHash": "cbea5385306e6ed9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I move WSL2 distribution to another drive?",
+      "question": "move WSL distribution to D drive",
       "anchor": ""
     },
     {
-      "question": "What is the process for moving a WSL2 distribution to a new drive?",
+      "question": "wsl --export wsl --import change drive location",
       "anchor": ""
     },
     {
-      "question": "How can I relocate my Linux distribution from C: to D: using PowerShell commands?",
+      "question": "how to relocate WSL2 off C drive without losing data",
       "anchor": ""
     },
     {
-      "question": "What are the steps to move WSL2 distributions to a new drive using PowerShell?",
+      "question": "Docker Desktop WSL partition move to different disk",
       "anchor": ""
     },
     {
-      "question": "How do I transfer my Linux distribution from C: to D: using PowerShell commands?",
+      "question": "wsl unregister import another drive PowerShell admin",
       "anchor": ""
     },
     {
-      "question": "What is the method for moving WSL2 distributions to a new drive using PowerShell commands?",
+      "question": "C drive full WSL Linux distribution free up space",
       "anchor": ""
     },
     {
-      "question": "How do I move my Linux distribution from C: to D: using PowerShell commands?",
+      "question": "change WSL install location to second drive",
       "anchor": ""
     },
     {
-      "question": "What are the steps to move WSL2 distributions to a new drive using PowerShell commands?",
+      "question": "wsl --export tar file then import new path",
+      "anchor": ""
+    },
+    {
+      "question": "move Docker data WSL2 to D drive step by step",
+      "anchor": ""
+    },
+    {
+      "question": "relocate WSL distro without reinstalling packages",
       "anchor": ""
     }
   ]

@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:57.509Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:40:53.004Z",
   "source": "index.md",
   "sourceHash": "bc4e2d6f9b44cc11dbed2482c3100ac2eb06a082",
+  "durationMs": 63901,
+  "rejected": [
+    {
+      "question": "why excel ribbon dropdown doesn't update when I change the range",
+      "anchor": "why-it-works",
+      "reason": "not answered: Article states it updates; no troubleshooting for failure case.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:47:34.719Z",
+    "articleHash": "f7016eed7be4e760fb13d37655e4bab14e3f1bbd",
+    "questionsHash": "c4a93e28c4ad12bc",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I load an Excel range into a custom VBA Ribbon dropdown control?",
-      "anchor": "why-it-works"
+      "question": "excel ribbon dropdown from named range vba",
+      "anchor": ""
     },
     {
-      "question": "What is the purpose of using named ranges in this solution?",
+      "question": "name excel range and target cell for ribbon dropdown",
       "anchor": "lets-play"
     },
     {
-      "question": "How do I create a new sheet and add a list of values to it?",
+      "question": "custom ui editor add dropdown ribbon xlsx xml",
       "anchor": "adding-a-ribbon"
     },
     {
-      "question": "What is the purpose of naming cells in this solution?",
+      "question": "vba GetItems OnAction ribbon dropdown load from range",
       "anchor": "time-to-add-our-vba-code"
     },
     {
-      "question": "How do I create a new Excel file and save it with a specific extension?",
-      "anchor": "conclusion"
+      "question": "excel ribbon dropdown write selected value back to cell",
+      "anchor": "time-to-add-our-vba-code"
     },
     {
-      "question": "What is the purpose of using XML in this solution for the custom UI?",
+      "question": "populate excel ribbon dropdown dynamically from worksheet list",
       "anchor": ""
     },
     {
-      "question": "How do I add a new module to an Excel workbook using VBA?",
-      "anchor": ""
+      "question": "excel ribbon dropdown named range vs hardcoded xml values",
+      "anchor": "why-it-works"
     },
     {
-      "question": "What is the purpose of naming sheets in this solution?",
-      "anchor": ""
+      "question": "how to insert custom ribbon dropdown into xlsx file",
+      "anchor": "adding-a-ribbon"
+    },
+    {
+      "question": "excel ribbon vba function not found error after adding xml",
+      "anchor": "time-to-add-our-vba-code"
     }
   ]
 }

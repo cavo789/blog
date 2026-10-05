@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T19:00:44.587Z",
-  "durationMs": 178566,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "dc858fc03594f13f332c2330da10a5e25db0bd0b",
+  "durationMs": 178566,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "utiliser KeePassUrlHost et KeePassUrlPath dans l'entrée KeePass pour WinSCP",
+      "anchor": "start-winscp-from-keepass",
+      "reason": "not answered: Article uses {S:ip}/{S:path}, not KeePassUrlHost/KeePassUrlPath",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T11:57:30.114Z",
+    "articleHash": "1c4d4e676451a27295ebe12c65495b3433bd6ac9",
+    "questionsHash": "032652fec0b79913",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "détourner le champ URL de KeePass pour lancer un exécutable",
@@ -33,10 +51,6 @@
     },
     {
       "question": "ouvrir WinSCP sur chemin SFTP depuis KeePass",
-      "anchor": "start-winscp-from-keepass"
-    },
-    {
-      "question": "utiliser KeePassUrlHost et KeePassUrlPath dans l'entrée KeePass pour WinSCP",
       "anchor": "start-winscp-from-keepass"
     },
     {

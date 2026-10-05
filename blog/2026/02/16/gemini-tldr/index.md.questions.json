@@ -1,41 +1,56 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:52:27.576Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:43:46.528Z",
   "source": "index.md",
   "sourceHash": "419bddca74f37b860e5ee4b721cab2d90525d4ca",
+  "durationMs": 46436,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:38:32.900Z",
+    "articleHash": "49f37c468bead40c74d641fa2587725eaaf0067f",
+    "questionsHash": "23aa4eb844d86b06",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I automate TL;DR summaries for my blog posts using Google's Gemini AI and Python?",
+      "question": "automate TL;DR summaries Docusaurus blog Gemini AI",
       "anchor": ""
     },
     {
-      "question": "What is a TL;DR summary and why is it important for readers?",
-      "anchor": ""
+      "question": "how to reduce a long blog post to a few sentences with AI",
+      "anchor": "before-and-after"
     },
     {
-      "question": "How does the script work to generate TL;DR summaries using Gemini AI and Python?",
+      "question": "python script reads markdown calls Gemini injects summary back into file",
+      "anchor": "the-concept"
+    },
+    {
+      "question": "Docusaurus custom React component for article summary box",
       "anchor": "the-react-component"
     },
     {
-      "question": "What are the steps involved in running the automation script with Docker?",
+      "question": "google-genai python package summarize blog markdown",
+      "anchor": "the-automation-script"
+    },
+    {
+      "question": "docker run python gemini api mount project directory .env",
       "anchor": "running-with-docker"
     },
     {
-      "question": "How can I generate summaries for multiple blog posts at once using the script?",
+      "question": "run AI summary script on single file vs entire folder of posts",
       "anchor": "generating-summaries"
     },
     {
-      "question": "What is the purpose of the custom React component used to display TL;DR summaries in Docusaurus?",
-      "anchor": "the-react-component"
-    },
-    {
-      "question": "How can I handle errors related to rate limits when using Gemini AI for summarization?",
+      "question": "Gemini API 429 RESOURCE_EXHAUSTED error",
       "anchor": "error---429-resource_exhausted"
     },
     {
-      "question": "What is the folder structure used to organize blog posts in my project?",
-      "anchor": ""
+      "question": "how to add automatic AI-generated TL;DR to Docusaurus blog workflow",
+      "anchor": "conclusion"
     }
   ]
 }

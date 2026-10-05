@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-30T08:11:06.472Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:37:00.549Z",
   "source": "index.md",
   "sourceHash": "1683f67a3fe70b9f605a47f2e40777f1d057dd34",
+  "durationMs": 40807,
+  "rejected": [
+    {
+      "question": "wsln2 open phpdoc generated docs folder in windows explorer",
+      "anchor": "the-configuration-file",
+      "reason": "not answered: Opening folder in Explorer requires linked article, not this one",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:03:15.494Z",
+    "articleHash": "1339b44cc56b47ae4f3eb108c9d9db05605d279b",
+    "questionsHash": "2c0087d0a35511eb",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I generate PHP documentation using Docker?",
+      "question": "phpdoc docker image generate docs single command no install",
       "anchor": "one-command-a-full-documentation-website"
     },
     {
-      "question": "What is phpDocumentor and how does it work with Docker?",
+      "question": "generate browsable php documentation site from codebase zero setup",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "docker run phpdoc/phpdoc:3 scan folder output html",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "phpdocumentor container no local php dependency",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "generate php api docs with namespaces classes methods from source",
+      "anchor": "one-command-a-full-documentation-website"
+    },
+    {
+      "question": "phpdocumentor.xml config file structure",
       "anchor": "the-configuration-file"
     },
     {
-      "question": "Where can I find the configuration file for phpDocumentor?",
+      "question": "where to put phpdocumentor config file in project",
       "anchor": "the-configuration-file"
     },
     {
-      "question": "How do I run phpDocumentor using Docker?",
-      "anchor": "one-command-a-full-documentation-website"
+      "question": "php docblocks determine documentation site quality",
+      "anchor": "conclusion"
     },
     {
-      "question": "What is a browsable documentation site and how does it work?",
-      "anchor": "one-command-a-full-documentation-website"
-    },
-    {
-      "question": "What are the steps to generate documentation for a PHP codebase using Docker?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I access the generated documentation site after running phpDocumentor?",
-      "anchor": "one-command-a-full-documentation-website"
-    },
-    {
-      "question": "What is the configuration file for phpDocumentor and how do I create it?",
-      "anchor": "the-configuration-file"
+      "question": "inherited php project see where docs actually went",
+      "anchor": "conclusion"
     }
   ]
 }

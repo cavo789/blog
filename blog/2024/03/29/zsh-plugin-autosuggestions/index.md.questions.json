@@ -1,41 +1,56 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:53:09.037Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:17:08.803Z",
   "source": "index.md",
   "sourceHash": "e40e195c66a457e27e3609056530e0176599eb61",
+  "durationMs": 24002,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:39:40.812Z",
+    "articleHash": "3a22932b7a2edbf93cb7d75fe28ec4fbd068d6aa",
+    "questionsHash": "db97138e85ffd433",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I install the zsh-autosuggestions plugin?",
+      "question": "zsh autosuggestions plugin command history",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "wsl terminal suggest previous commands as i type zsh",
       "anchor": "installation"
     },
     {
-      "question": "What are the benefits of using the zsh-autosuggestions plugin?",
+      "question": "zsh gray text suggestion press tab to complete",
+      "anchor": "three-characters-and-the-command-is-already-there"
+    },
+    {
+      "question": "how to cycle between zsh command suggestions with arrow keys",
+      "anchor": "three-characters-and-the-command-is-already-there"
+    },
+    {
+      "question": "zsh-autosuggestions no configuration just reads history",
       "anchor": "why-it-works"
     },
     {
-      "question": "Can I use the zsh-autosuggestions plugin without installing Oh-My-Zsh?",
+      "question": "docker run zsh autosuggestions demo pre-seeded history",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How does the zsh-autosuggestions plugin learn from my history?",
+      "question": "install zsh-autosuggestions clone into oh my zsh plugins folder",
+      "anchor": "installation"
+    },
+    {
+      "question": "how to enable zsh-autosuggestions in .zshrc plugins array",
+      "anchor": "installation"
+    },
+    {
+      "question": "zsh autosuggestions gets smarter over time from daily history",
       "anchor": "why-it-works"
-    },
-    {
-      "question": "Can I customize the zsh-autosuggestions plugin to suggest commands from other sources?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I see the suggestions in action with Docker?",
-      "anchor": "seeing-it-in-action-with-docker"
-    },
-    {
-      "question": "What are some tips for using the zsh-autosuggestions plugin effectively?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "Can I use the zsh-autosuggestions plugin on a Windows Subsystem for Linux (WSL)?",
-      "anchor": ""
     }
   ]
 }

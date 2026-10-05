@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T10:48:19.528Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3f861a82141f4f73c9920263b2016d0fa29f3bcd",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:45:21.229Z",
+    "articleHash": "84670f1c3b8c4302abf645fb1d754a0b83e9ab78",
+    "questionsHash": "c01cd6023fe54cc9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "image Docker batteries-included docling conversion documents Markdown local",
@@ -40,7 +50,7 @@
     },
     {
       "question": "occupation disque des backends docling pour les cinq formats",
-      "anchor": "what-the-five-files-cost"
+      "anchor": "build-the-image"
     },
     {
       "question": "docling vs Markitdown différence architecture et gpu",

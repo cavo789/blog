@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:22:39.201Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "9d5fc7c7003f74ea46e4ec28664bb6e73031e3c7",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:44:53.168Z",
+    "articleHash": "ae74fefa4a7f310b052c663387f0b8ba5c52a0ff",
+    "questionsHash": "c3cffa973be4b7a6",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "docusaurus lazy loading images MDXComponents.js",

@@ -1,41 +1,56 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-10T07:07:58.536Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:15:21.347Z",
   "source": "index.md",
   "sourceHash": "60f3ca9681e78e6a9f08811450a1357700cda3ff",
+  "durationMs": 57860,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:06:52.076Z",
+    "articleHash": "68e07197b97be2a637fdc02e1f8aa00c376856ff",
+    "questionsHash": "04a6f0b9c9526033",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is lazydocker?",
-      "anchor": ""
-    },
-    {
-      "question": "How does lazydocker show Docker containers, images, volumes and networks?",
+      "question": "docker terminal dashboard live stats logs containers",
       "anchor": "the-dashboard-running"
     },
     {
-      "question": "What are the live stats and logs shown in lazydocker?",
+      "question": "lazydocker five panes live updating real containers",
+      "anchor": "the-dashboard-running"
+    },
+    {
+      "question": "lazydocker stream logs without typing docker logs compose grouping",
       "anchor": "what-lazydocker-actually-shows"
     },
     {
-      "question": "How do I containerize lazydocker?",
+      "question": "lazydocker dockerfile docker-cli mount docker.sock tty stdin",
       "anchor": "containerizing-it"
     },
     {
-      "question": "What is the global wrapper script for lazydocker?",
+      "question": "lazydocker not detecting compose.yaml in current folder wrapper script",
       "anchor": "the-global-wrapper"
     },
     {
-      "question": "How can I customize lazydocker's behavior?",
+      "question": "lazydocker customize panes keybindings",
       "anchor": "customize"
     },
     {
-      "question": "Is lazydocker compatible with Docker Desktop?",
+      "question": "lazydocker vs docker exec docker logs zsh one-liners when to use which",
       "anchor": "my-dex-function-vs-lazydocker"
     },
     {
-      "question": "What are the key takeaways from this article about lazydocker?",
+      "question": "docker desktop still needed with lazydocker terminal",
       "anchor": "does-docker-desktop-still-earn-its-place"
+    },
+    {
+      "question": "lazydocker containerized single binary no host install",
+      "anchor": "containerizing-it"
     }
   ]
 }

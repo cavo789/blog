@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:10:21.032Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "4f57909449f5e5c645f4de5eae8192c9743ddfc5",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:01:49.703Z",
+    "articleHash": "7cee1f760e97be39b61e71c688c0f9b447c7d079",
+    "questionsHash": "ed54e1b39ebed11c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Zorin OS 18 installation clé USB démarrage F12",
@@ -20,11 +30,11 @@
     },
     {
       "question": "Exécuter des logiciels Windows sur Zorin via WINE",
-      "anchor": ""
+      "anchor": "what-can-make-the-differences"
     },
     {
       "question": "Zorin OS 18 support gaming et compatibilité jeux",
-      "anchor": ""
+      "anchor": "what-can-make-the-differences"
     },
     {
       "question": "Clé USB formatée sous Linux incompatible Windows comment réparer",

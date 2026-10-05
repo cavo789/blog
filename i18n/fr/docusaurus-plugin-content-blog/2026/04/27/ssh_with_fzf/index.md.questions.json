@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:06:55.965Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "9f8827c71d28cb69cdf566cc96d019f3be6cae2b",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:20:44.989Z",
+    "articleHash": "ffb423ad6786254ea686037d91bbac06304cda01",
+    "questionsHash": "803e3791fb12d740",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment découper sa config SSH par projet pour éviter un fichier monolithique et ajouter de la documentation",
-      "anchor": ""
+      "anchor": "ssh-configuration"
     },
     {
       "question": "docker build -t sshf-demo . et docker run --rm -it sshf-demo pour tester la TUI dans un container jetable",

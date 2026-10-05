@@ -1,32 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:46:54.729Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:39:00.052Z",
   "source": "index.md",
   "sourceHash": "bc883af8ff8d51b8a3b5e8ae530335b9d4bc004d",
+  "durationMs": 42776,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:04:49.834Z",
+    "articleHash": "632e3c1a43d42e620017e3c37ac1530feb50d435",
+    "questionsHash": "25a2d0fbaf429914",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I open files like PDFs and HTML from my WSL Linux console using their default Windows application?",
+      "question": "open pdf from wsl terminal",
       "anchor": ""
     },
     {
-      "question": "What command can I use to open files like PDFs and HTML from my WSL Linux console with their default Windows application?",
+      "question": "how to launch windows default app from wsl console",
       "anchor": ""
     },
     {
-      "question": "How do I open a file in its default Windows application from the WSL Linux console?",
+      "question": "wsl open html file in browser without explorer",
       "anchor": ""
     },
     {
-      "question": "What is the command to open files like PDFs and HTML with their default Windows application from the WSL Linux console?",
+      "question": "powershell.exe open file from linux terminal",
       "anchor": ""
     },
     {
-      "question": "How do I open a file in its default Windows application using the WSL Linux console?",
+      "question": "wsl generated pdf open in windows",
       "anchor": ""
     },
     {
-      "question": "What command can I use to open files like PDFs and HTML with their default Windows application from my WSL Linux console?",
+      "question": "wsl start command open default browser",
+      "anchor": ""
+    },
+    {
+      "question": "wsl terminal open pdf without switching to windows",
+      "anchor": ""
+    },
+    {
+      "question": "quarto docker pdf open from wsl console",
+      "anchor": ""
+    },
+    {
+      "question": "wsl powershell.exe not recognized in bash script",
+      "anchor": ""
+    },
+    {
+      "question": "wsl open file windows explorer alternative",
+      "anchor": ""
+    },
+    {
+      "question": "wsl2 open file in windows from linux shell",
       "anchor": ""
     }
   ]

@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:25:23.166Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e87d78892d812d04da392eb1a19e893a19107be8",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "0: Comment forcer git à utiliser ssh globalement sans re-cloner ?",
+      "anchor": "",
+      "reason": "not answered: Answer is in a linked article, not provided here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "0: Utiliser la même clé ssh pour un serveur d'hébergement distant",
+      "anchor": "",
+      "reason": "not answered: Answer is in a linked article, not provided here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:03:27.144Z",
+    "articleHash": "eafa13d06d37de94d4e81bf20db7237d41017f12",
+    "questionsHash": "1ba2980c244b4095",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "0: Pourquoi privilégier le protocole ssh au lieu d'https pour github ?",
@@ -27,10 +51,6 @@
       "anchor": ""
     },
     {
-      "question": "0: Comment forcer git à utiliser ssh globalement sans re-cloner ?",
-      "anchor": ""
-    },
-    {
       "question": "0: où trouver le chemin de la clé publique id_ed25519.pub sous linux",
       "anchor": ""
     },
@@ -40,10 +60,6 @@
     },
     {
       "question": "0: comment ssh protège contre les attaques man in the middle",
-      "anchor": ""
-    },
-    {
-      "question": "0: Utiliser la même clé ssh pour un serveur d'hébergement distant",
       "anchor": ""
     }
   ]

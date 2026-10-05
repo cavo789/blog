@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:46:27.022Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e33a5fd2068f8afa0c45e8e31d3c65fdd1645773",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:32:34.492Z",
+    "articleHash": "f80b5d84e74f21032122a6acec0e0443ef4c6cb7",
+    "questionsHash": "f5780c81169bd8f3",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "gitlab ci cd pull image docker hub privée",
@@ -12,7 +22,7 @@
     },
     {
       "question": "comment faire docker login dans un pipeline gitlab pour une image privée",
-      "anchor": ""
+      "anchor": "your-gitlab-ciyml-file"
     },
     {
       "question": "pourquoi limiter le token docker hub à read:packages dans gitlab ci",
@@ -48,7 +58,7 @@
     },
     {
       "question": "éviter de committer les identifiants docker hub dans le pipeline gitlab",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     },
     {
       "question": "guide complet authentification image docker privée gitlab ci cd",

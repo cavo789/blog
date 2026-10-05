@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:31.084Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:13:26.503Z",
   "source": "index.md",
   "sourceHash": "cb75a9dbbdc7d1f2be67d98c71708e3dc2647f26",
+  "durationMs": 27577,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:42:45.179Z",
+    "articleHash": "cb29c7bb82da987d0b74d1672262b572174d0081",
+    "questionsHash": "f07985a21075686d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I open VSCode for any GitHub repository online?",
+      "question": "press dot on github to open vscode",
       "anchor": ""
     },
     {
-      "question": "What is a secret shortcut to start VSCode from any GitHub repository?",
+      "question": "github.dev url trick",
       "anchor": ""
     },
     {
-      "question": "Why would I need to open VSCode for any GitHub repository online?",
+      "question": "open github repo in vscode.dev without cloning",
+      "anchor": ""
+    },
+    {
+      "question": "vscode.dev open repository from github browser",
+      "anchor": ""
+    },
+    {
+      "question": "change github.com to github.dev in url",
+      "anchor": ""
+    },
+    {
+      "question": "edit github readme from phone without cloning",
       "anchor": "but-whats-the-point-why-would-i-need-it"
     },
     {
-      "question": "How can I quickly edit or fix a typo in a GitHub repository from anywhere using VSCode online?",
+      "question": "fix typo in github repo online no local setup",
       "anchor": "but-whats-the-point-why-would-i-need-it"
     },
     {
-      "question": "What are the three ways to code without a local VSCode, besides full VSCode in your browser via Docker and SSH Remote development with VSCode?",
-      "anchor": ""
+      "question": "make small change to github repo without git clone",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
     },
     {
-      "question": "Is it possible to open any GitHub repository online using VSCode?",
-      "anchor": ""
+      "question": "open someone else github repo in vscode online suggest pr",
+      "anchor": "but-whats-the-point-why-would-i-need-it"
     },
     {
-      "question": "What is the dot key shortcut for opening a GitHub repository in VSCode online?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I browse any GitHub repository like e.g. and open it in VSCode online using the dot key shortcut?",
+      "question": "lightest way to code online github without local vscode",
       "anchor": ""
     }
   ]

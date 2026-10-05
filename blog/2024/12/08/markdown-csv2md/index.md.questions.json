@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:43:17.866Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:20:49.858Z",
   "source": "index.md",
   "sourceHash": "85c4095b55b647f43a6c64ee4dddc9c2e89f6b98",
+  "durationMs": 58429,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:35:28.104Z",
+    "articleHash": "fea2f9848574d6d8a079147c2492009258b2e827",
+    "questionsHash": "edd4d137a8caef58",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I convert CSV to Markdown tables?",
+      "question": "csv to markdown table",
       "anchor": ""
     },
     {
-      "question": "What is CSV2MD and how does it work?",
+      "question": "paste csv content get formatted markdown table online",
       "anchor": ""
     },
     {
-      "question": "Can you explain the different options for converting CSV to Markdown tables with CSV2MD?",
+      "question": "convert csv with custom delimiter to markdown table",
       "anchor": "source-code"
     },
     {
-      "question": "How can I use CSV2MD to convert a CSV file to Markdown format?",
+      "question": "transpose csv into markdown table",
+      "anchor": "source-code"
+    },
+    {
+      "question": "csv2md",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using CSV2MD for converting CSV to Markdown tables?",
+      "question": "free csv to markdown converter no install",
       "anchor": ""
     },
     {
-      "question": "Are there any alternatives to CSV2MD for converting CSV to Markdown tables?",
+      "question": "excel csv copy paste markdown table",
       "anchor": ""
     },
     {
-      "question": "How can I learn more about CSV2MD and its features?",
-      "anchor": ""
+      "question": "csv2md github source code",
+      "anchor": "source-code"
     },
     {
-      "question": "What are some common use cases for converting CSV to Markdown tables using CSV2MD?",
+      "question": "where is csv2md repository hosted",
+      "anchor": "source-code"
+    },
+    {
+      "question": "csv to md table tool avonture",
       "anchor": ""
     }
   ]

@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:02:20.361Z",
-  "durationMs": 184008,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c80e5c11f4176c92450ce7ee39f5c429e8905115",
+  "durationMs": 184008,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:25:00.265Z",
+    "articleHash": "e22a20522ff213edc604f42971bacf56c26ddc70",
+    "questionsHash": "5ce1a038fd345155",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment réduire la consommation de tokens dans Claude Code",
@@ -41,7 +51,7 @@
     },
     {
       "question": "astuce bonus pour économiser des tokens sans installer de dépendances",
-      "anchor": "extra"
+      "anchor": "if-you-dont-want-to-install-caveman"
     },
     {
       "question": "alternative à caveman pour Claude Code",

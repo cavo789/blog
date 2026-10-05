@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:42:39.233Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "e4cc9b3be5ed48dfefe897f834090be451e03e68",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "déployer les règles de spam automatiquement avec GitHub Actions",
+      "anchor": "stay-in-touch",
+      "reason": "not answered: GitHub Actions workflow is in a separate linked article, not shown here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "trouver le workflow Exterminate them all pour bloquer le spam",
+      "anchor": "special-thanks",
+      "reason": "not answered: The workflow content is in a separate linked article, not in this one.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:47:56.166Z",
+    "articleHash": "0de6030e72957e80b6a5be0423fa15c2206bb62c",
+    "questionsHash": "26dc66ca080d16da",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment bloquer le spam sur PlanetHoster N0C sans SpamAssassin",
@@ -12,7 +36,7 @@
     },
     {
       "question": "automatiser les règles de filtrage email sur l'infrastructure N0C",
-      "anchor": ""
+      "anchor": "stay-in-touch"
     },
     {
       "question": "utiliser RoundCube pour filtrer les emails sur PlanetHoster même sans client mail",
@@ -28,7 +52,7 @@
     },
     {
       "question": "générer un fichier .sieve automatiquement depuis une liste JSON",
-      "anchor": "too-many-manual-actions"
+      "anchor": "stay-in-touch"
     },
     {
       "question": "dossier ftp où uploader le fichier .sieve sur PlanetHoster",
@@ -37,14 +61,6 @@
     {
       "question": "comment forcer les fins de ligne Unix dans un fichier .sieve pour PlanetHoster",
       "anchor": "where-to-put-our-file"
-    },
-    {
-      "question": "déployer les règles de spam automatiquement avec GitHub Actions",
-      "anchor": "stay-in-touch"
-    },
-    {
-      "question": "trouver le workflow Exterminate them all pour bloquer le spam",
-      "anchor": "special-thanks"
     }
   ]
 }

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:19:04.172Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:19:22.454Z",
   "source": "index.md",
   "sourceHash": "b8044a219e92fd152991299484e14d42b373d234",
+  "durationMs": 75586,
+  "rejected": [
+    {
+      "question": "pip install pandas openpyxl python csv excel",
+      "anchor": "installation",
+      "reason": "not answered: Article only mentions pip install pandas faker; openpyxl never appears.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:34:42.510Z",
+    "articleHash": "4127b565a9041679e674d0292efa78cba9e7a482",
+    "questionsHash": "5f7c963504bb0522",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I merge multiple CSV files into a single one using Pandas?",
+      "question": "merge multiple csv files python pandas",
+      "anchor": ""
+    },
+    {
+      "question": "pandas combine 5 yearly salary files into one dataframe with all employees",
       "anchor": "the-result-five-years-of-salaries-one-file"
     },
     {
-      "question": "What is an outer join in the context of merging CSV files with Pandas?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+      "question": "pandas merge keep rows only in some files don't drop new hires",
+      "anchor": "why-outer-and-not-inner-or-left"
     },
     {
-      "question": "How can I handle mismatched records when merging multiple CSV files using Pandas?",
-      "anchor": "the-result-five-years-of-salaries-one-file"
-    },
-    {
-      "question": "What is the purpose of renaming columns before merging them in Pandas?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How can I create a merged file from multiple yearly CSV files using Pandas?",
-      "anchor": "the-result-five-years-of-salaries-one-file"
-    },
-    {
-      "question": "What is the difference between an inner join and an outer join in Pandas when merging CSV files?",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
-    },
-    {
-      "question": "How can I handle employees who joined or left partway through in a merged file using Pandas?",
-      "anchor": "the-result-five-years-of-salaries-one-file"
-    },
-    {
-      "question": "What is the purpose of the `csv to Markdown table converter` mentioned in the article?",
+      "question": "python loop merge csv files sequentially rename columns before join",
       "anchor": "more-demos-the-merge-script-line-by-line"
+    },
+    {
+      "question": "pandas pd.merge how join works under the hood",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "pandas outer join vs inner join vs left join which rows survive",
+      "anchor": "why-outer-and-not-inner-or-left"
+    },
+    {
+      "question": "pandas merge column name collision rename before merging",
+      "anchor": "why-the-columns-dont-collide"
+    },
+    {
+      "question": "python pandas alternative to excel vlookup merge multiple files",
+      "anchor": "conclusion"
     }
   ]
 }

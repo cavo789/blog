@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:02:03.057Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "6d3f597fa19c126dbf02021cca582180e44dda2f",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:19:00.024Z",
+    "articleHash": "f231f57eeada768af9d336a81c22062659748f83",
+    "questionsHash": "402d5ceba158d442",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "pipeline léger pour minifier css et js sans node",
@@ -36,7 +46,7 @@
     },
     {
       "question": "avantages du pipeline assets reproductible pour les runners ci cd",
-      "anchor": "conclusion"
+      "anchor": "why-this-approach"
     }
   ]
 }

@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T13:52:15.417Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "56620e4f86b2337dbb6596e1d60407338ec9f74e",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Où trouver la dernière version du compose.yaml pour Heimdall ?",
+      "anchor": "continue-your-journey",
+      "reason": "not answered: Latest compose.yaml content must come from the external Docker Hub page.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:15:25.549Z",
+    "articleHash": "5e3a6b88043301be56e46c28a3a6cd44906b6a0d",
+    "questionsHash": "2a206090b0a0cce7",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "dashboard web auto-hébergé docker remplacer favoris navigateur",
@@ -32,11 +50,7 @@
     },
     {
       "question": "organiser les applications dans des dossiers et personnaliser l'affichage",
-      "anchor": "more-customizations"
-    },
-    {
-      "question": "Où trouver la dernière version du compose.yaml pour Heimdall ?",
-      "anchor": "continue-your-journey"
+      "anchor": "adding-some-links"
     }
   ]
 }

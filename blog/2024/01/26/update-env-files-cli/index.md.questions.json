@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:18:53.604Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:53:02.186Z",
   "source": "index.md",
   "sourceHash": "9ae62c4cb00a77ef51330ee16b25511556cb659a",
+  "durationMs": 26371,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:17:54.381Z",
+    "articleHash": "37cffdab76e3f53bdaf53ee8e168cfe94e481f9b",
+    "questionsHash": "432ee32e428eb023",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What is updateEnv for?",
+      "question": "batch update .env file multiple servers bash",
+      "anchor": ""
+    },
+    {
+      "question": "stop manually editing env files for deployment",
       "anchor": "what-updateenv-does-for-you"
     },
     {
-      "question": "Why does updateEnv work?",
+      "question": "bash function set multiple env vars at once show UPDATED ADDED status",
+      "anchor": "what-updateenv-does-for-you"
+    },
+    {
+      "question": "sed anchor variable name start of line so it doesn't match a longer name",
       "anchor": "why-it-works"
     },
     {
-      "question": "How do I use the updateEnv function?",
-      "anchor": "the-function"
-    },
-    {
-      "question": "What is a skip boolean in updateEnv?",
-      "anchor": "adding-a-skip-boolean"
-    },
-    {
-      "question": "What does updateEnv report?",
+      "question": "sed in-place replace or append line if missing env file",
       "anchor": "why-it-works"
     },
     {
-      "question": "How does updateEnv handle variable updates and additions?",
+      "question": "bash subshell sed update or append env variable value",
       "anchor": "the-function"
     },
     {
-      "question": "What is the purpose of the skip boolean in updateEnv?",
+      "question": "env file function skip adding variable if not already present",
       "anchor": "adding-a-skip-boolean"
     },
     {
-      "question": "How can I use updateEnv to manage environment variables across multiple servers?",
+      "question": "updateEnv skip boolean fourth argument bash",
+      "anchor": "adding-a-skip-boolean"
+    },
+    {
+      "question": "git clone then batch set environment variables per server bash",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "one list of env calls per environment after clone deployment",
       "anchor": "conclusion"
     }
   ]

@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:18:02.252Z",
-  "durationMs": 185756,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b76e94b4948f4ae74855483723bfc2b6e2afb717",
+  "durationMs": 185756,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "trouver la liste des icônes aws/Azure/GCP/K8S pour diagrams",
+      "anchor": "icons-and-other-tools-reference-skip-this-for-now",
+      "reason": "not answered: icon lists live on external diagrams.mingrammer.com pages, not in article",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "retrouver le code source de gtramontina/diagrams et les exemples officiels",
+      "anchor": "conclusion",
+      "reason": "not answered: source code and official examples are on external GitHub/docs pages",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:09:40.986Z",
+    "articleHash": "5c5610b7581dbeba80691bd678ba998b1b1f1ed0",
+    "questionsHash": "a0b3061f6d981eee",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment générer des diagrammes d'infrastructure en tant que code avec diagrams et docker",
@@ -32,16 +56,8 @@
       "anchor": "a-real-architecture"
     },
     {
-      "question": "trouver la liste des icônes aws/Azure/GCP/K8S pour diagrams",
-      "anchor": "icons-and-other-tools-reference-skip-this-for-now"
-    },
-    {
       "question": "liste des outils Mermaid PlantUML Graphviz Kroki DBML-renderer Structurizr",
       "anchor": "icons-and-other-tools-reference-skip-this-for-now"
-    },
-    {
-      "question": "retrouver le code source de gtramontina/diagrams et les exemples officiels",
-      "anchor": "conclusion"
     }
   ]
 }

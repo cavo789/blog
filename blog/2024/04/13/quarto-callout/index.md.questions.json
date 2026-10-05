@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:01.696Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:24:44.813Z",
   "source": "index.md",
   "sourceHash": "d269d4536c61453d5e57987447cb6412152645fa",
+  "durationMs": 25317,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:46:31.741Z",
+    "articleHash": "cfb4042fd2e0e85f6e2b646e62abc08f919ebd08",
+    "questionsHash": "d57f18d54d0badc6",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is a Quarto Callout Block?",
+      "question": "quarto callout block admonition",
+      "anchor": "syntax"
+    },
+    {
+      "question": "quarto equivalent of docusaurus admonition tip warning",
       "anchor": ""
     },
     {
-      "question": "How do I add a tip in a Quarto document?",
+      "question": "quarto tip caution warning box markdown",
       "anchor": "syntax"
     },
     {
-      "question": "Where can I find the syntax for Quarto callouts?",
+      "question": "quarto callout syntax tip caution",
       "anchor": "syntax"
     },
     {
-      "question": "What are some examples of Quarto callout types?",
+      "question": "how to add a highlighted tip box in quarto markdown",
       "anchor": "syntax"
     },
     {
-      "question": "How do I use a VSCode snippet to create a Quarto callout?",
+      "question": "quarto admonition pdf html revealjs output",
+      "anchor": "syntax"
+    },
+    {
+      "question": "quarto callout not standard markdown syntax",
+      "anchor": "syntax"
+    },
+    {
+      "question": "quarto callout vscode snippet",
       "anchor": "vscode-snippet"
     },
     {
-      "question": "What is the difference between Docusaurus and Quarto callouts?",
-      "anchor": ""
+      "question": "vscode interactive prompt quarto admonition type title body",
+      "anchor": "vscode-snippet"
     },
     {
-      "question": "Where can I find more information about Quarto's syntax for callouts?",
-      "anchor": "syntax"
-    },
-    {
-      "question": "How do I create a warning in a Quarto document?",
-      "anchor": "syntax"
+      "question": "quarto callout vscode ctrl space snippet markdown",
+      "anchor": "vscode-snippet"
     }
   ]
 }

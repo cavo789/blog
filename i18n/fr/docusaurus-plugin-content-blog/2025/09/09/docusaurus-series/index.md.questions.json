@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:34:06.541Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f8282d56edd490ef26dd7335d6985fbabe2bad14",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:48:58.477Z",
+    "articleHash": "0ba90717e5baffb31e87cc41e6d627e13df0ef9f",
+    "questionsHash": "394832b80200772c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment organiser mes articles Docusaurus en série pour améliorer le maillage interne et la navigation ?",
@@ -12,7 +22,7 @@
     },
     {
       "question": "Créer le composant SeriesPosts pour afficher la bannière de série sur chaque article",
-      "anchor": "part-1---creation-of-the-seriesposts-component"
+      "anchor": "12-our-seriesposts-component"
     },
     {
       "question": "Helpers pour scanner le front matter et extraire series et seriesOrder depuis les fichiers Markdown",
@@ -32,7 +42,7 @@
     },
     {
       "question": "Ajouter une page /series qui liste toutes les séries sous forme de cartes",
-      "anchor": "part-2---adding-a-navigation-to-series"
+      "anchor": "21-adding-a-new-page-to-show-all-series"
     },
     {
       "question": "Implémenter le composant SeriesCards pour afficher les séries en grille",

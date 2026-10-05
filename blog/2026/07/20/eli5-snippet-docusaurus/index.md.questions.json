@@ -1,57 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T16:47:02.233Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:05:34.308Z",
   "source": "index.md",
   "sourceHash": "7ca703cef2ac2b5f7d3de0d045e5fa626bfb1ca5",
+  "durationMs": 24063,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:58:14.158Z",
+    "articleHash": "98d94a88982fd8533b8a368ccf2415c91e477b5b",
+    "questionsHash": "327b0d71a5cd0fa9",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is AI-Powered Code Tooltips in Docusaurus?",
+      "question": "docusaurus code block hover tooltip AI generated at build time zero latency",
       "anchor": ""
     },
     {
-      "question": "How does this tool work with Claude?",
-      "anchor": ""
+      "question": "how to add a small floating badge to specific lines in a code snippet that reveals a plain-English explanation on hover",
+      "anchor": "how-the-renderer-works"
     },
     {
-      "question": "What are the three moving parts of the system?",
+      "question": "generate code explanations with Claude at authoring time and commit the JSON instead of calling the API in the browser",
       "anchor": "architecture"
     },
     {
-      "question": "What is the difference between AI calls happening at authoring time and read time?",
-      "anchor": "architecture"
-    },
-    {
-      "question": "How does language detection work in this tool?",
+      "question": "node script send code file to claude api get line-by-line json explanations skip trivial lines",
       "anchor": "step-1--the-annotation-script"
     },
     {
-      "question": "What are the key details of the prompt sent to Claude?",
-      "anchor": "step-1--the-annotation-script"
-    },
-    {
-      "question": "What is JSON cleaning and why is it important?",
-      "anchor": "step-1--the-annotation-script"
-    },
-    {
-      "question": "How does incremental generation work in this tool?",
-      "anchor": "step-1--the-annotation-script"
-    },
-    {
-      "question": "What is the usage of this tool?",
-      "anchor": "usage"
-    },
-    {
-      "question": "What are the options available for the batch script?",
+      "question": "what does the annotations.json file look like for code line tooltips",
       "anchor": "the-output-format"
     },
     {
-      "question": "How does the bulk script work?",
+      "question": "batch annotate all code files referenced in docusaurus markdown posts with AI in one pass",
       "anchor": "step-2--the-batch-script"
     },
     {
-      "question": "How does the skip rule work in this tool?",
-      "anchor": "how-the-bulk-script-works"
+      "question": "dry-run flag for code annotation script preview without making api calls",
+      "anchor": "phase-1--audit-with-dry-run"
+    },
+    {
+      "question": "how does the bulk script find which external code files to process by scanning markdown for code references",
+      "anchor": "how-it-finds-files-to-annotate"
+    },
+    {
+      "question": "skip regenerating if annotations json already exists idempotent annotation script",
+      "anchor": "the-skip-rule--idempotent-by-design"
+    },
+    {
+      "question": "react component overlay tooltip badge on specific lines of a code snippet renderer",
+      "anchor": "how-the-renderer-works"
+    },
+    {
+      "question": "known limitations of AI code tooltip system docusaurus claude",
+      "anchor": "known-limitations"
+    },
+    {
+      "question": "which claude model to use for generating code line explanations",
+      "anchor": "what-claude-model-to-use"
     }
   ]
 }

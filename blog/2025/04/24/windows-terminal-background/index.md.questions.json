@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:43.991Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:50:21.717Z",
   "source": "index.md",
   "sourceHash": "71885ae5bdfe2970ac35a9fa3e516af90232a6b6",
+  "durationMs": 28047,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:55:18.126Z",
+    "articleHash": "072c3c5198833cf6e5a36f97fd7d45e6ceb09be6",
+    "questionsHash": "151cac4a971a7f81",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I set a background image in Windows Terminal?",
+      "question": "windows terminal background image",
       "anchor": ""
     },
     {
-      "question": "What is Recraft.ai and how can I use it to create images for my Windows Terminal background?",
+      "question": "how to set a background picture in windows terminal",
       "anchor": ""
     },
     {
-      "question": "How do I customize the appearance of the Windows Terminal using Powerlevel 10k?",
+      "question": "windows terminal appearance section background",
       "anchor": ""
     },
     {
-      "question": "What are some other ways to customize my Windows Terminal besides setting a background image?",
+      "question": "change windows terminal black screen to custom image",
       "anchor": ""
     },
     {
-      "question": "How can I split the window into several panes in Windows Terminal?",
+      "question": "windows terminal profile background image browse button",
       "anchor": ""
     },
     {
-      "question": "How do I add a one-click SSH profile to my Windows Terminal?",
+      "question": "make windows terminal look less boring",
       "anchor": ""
     },
     {
-      "question": "What are some tips for using the Windows Terminal effectively?",
+      "question": "windows terminal live preview settings changes two tabs",
       "anchor": ""
     },
     {
-      "question": "How can I use the Recraft.ai image generator to create a custom background image for my Windows Terminal?",
+      "question": "windows terminal set background image step by step",
+      "anchor": ""
+    },
+    {
+      "question": "customize windows terminal background with a picture",
+      "anchor": ""
+    },
+    {
+      "question": "windows terminal background image where do I find the setting",
       "anchor": ""
     }
   ]

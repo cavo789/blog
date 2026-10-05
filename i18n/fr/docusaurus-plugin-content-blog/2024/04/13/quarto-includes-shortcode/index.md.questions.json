@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:37:13.255Z",
-  "durationMs": 99247,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "55d11c8ff76b039e4ac06f44a6d011a1340c63ec",
+  "durationMs": 99247,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:16:50.643Z",
+    "articleHash": "6054b1f1d223eba7a36a648a513e47c5ee09fe06",
+    "questionsHash": "43219b084dbdd22d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment découper un long document Quarto en plusieurs fichiers markdown ?",

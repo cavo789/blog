@@ -1,33 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:23.290Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:54:19.448Z",
   "source": "index.md",
   "sourceHash": "9da3df5dff899bac022819447d122bcdb1cc3dc2",
+  "durationMs": 48463,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:19:00.511Z",
+    "articleHash": "0cb46c819d4a63c4c7e457ccee5a86fbf445b66d",
+    "questionsHash": "e9ccff55b721f3c4",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How can I generate custom Sieve rules using RoundCube on PlanetHoster N0C?",
+      "question": "PlanetHoster N0C spam filtering no SpamAssassin",
+      "anchor": ""
+    },
+    {
+      "question": "self-hosted email spam blocking PlanetHoster N0C",
+      "anchor": ""
+    },
+    {
+      "question": "do RoundCube filter rules execute server-side without opening mail client",
       "anchor": "you-need-to-use-roundcube-for-the-filtering"
     },
     {
-      "question": "What is the Sieve rule format used by RoundCube for filtering spam on PlanetHoster N0C?",
+      "question": "PlanetHoster RoundCube filters vs cPanel spam rules",
+      "anchor": "you-need-to-use-roundcube-for-the-filtering"
+    },
+    {
+      "question": "sieve rule syntax block domain multiple",
       "anchor": "too-many-manual-actions"
     },
     {
-      "question": "Where do I upload the generated Sieve file to my FTP server on PlanetHoster N0C?",
-      "anchor": "where-to-put-our-file"
-    },
-    {
-      "question": "How can I create multiple rules in RoundCube for spam filtering on PlanetHoster N0C?",
+      "question": "generate sieve file from array of blocked domains",
       "anchor": "stay-in-touch"
     },
     {
-      "question": "What is the process to automate the creation of Sieve files using a script on PlanetHoster N0C?",
-      "anchor": "special-thanks"
+      "question": "sieve file Linux line endings save",
+      "anchor": "where-to-put-our-file"
     },
     {
-      "question": "How can I create custom Sieve rules using RoundCube for spam filtering on PlanetHoster N0C?",
-      "anchor": "you-need-to-use-roundcube-for-the-filtering"
+      "question": "PlanetHoster .sieve file FTP directory path",
+      "anchor": "where-to-put-our-file"
+    },
+    {
+      "question": "RoundCube sieve file doubled path FTP",
+      "anchor": "where-to-put-our-file"
+    },
+    {
+      "question": "bash script JSON to sieve file email filtering",
+      "anchor": "stay-in-touch"
+    },
+    {
+      "question": "automate RoundCube filter creation PlanetHoster",
+      "anchor": "stay-in-touch"
     }
   ]
 }

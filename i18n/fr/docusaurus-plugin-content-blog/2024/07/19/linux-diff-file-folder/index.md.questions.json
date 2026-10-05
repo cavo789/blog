@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:40:15.801Z",
-  "durationMs": 151166,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "7c937c02f2f47447507b2899a3fda16c5c519d34",
+  "durationMs": 151166,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "utiliser delta pour rendre la sortie de git diff plus lisible",
+      "anchor": "compare-two-folders",
+      "reason": "not answered: Only a link to another blog post, no delta explanation.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:33:42.107Z",
+    "articleHash": "3306f66dd73c65e85a7c24f9af1e2059eb97f7f3",
+    "questionsHash": "067896ca5540929b",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment comparer efficacement des fichiers ou dossiers sous linux avec diff",
@@ -33,10 +51,6 @@
     },
     {
       "question": "liste des fichiers présents dans un seul des deux dossiers comparés",
-      "anchor": "compare-two-folders"
-    },
-    {
-      "question": "utiliser delta pour rendre la sortie de git diff plus lisible",
       "anchor": "compare-two-folders"
     },
     {

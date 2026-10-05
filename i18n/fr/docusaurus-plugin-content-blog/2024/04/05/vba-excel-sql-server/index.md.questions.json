@@ -2,17 +2,43 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:25:39.794Z",
-  "durationMs": 178358,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "66ad2a5cfd55d4e655c7952ed3bbf89aa535fce7",
+  "durationMs": 178358,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "0: comment exécuter une requête SQL Server directement depuis une macro VBA dans MS Excel ?",
+      "anchor": "",
+      "reason": "not answered: L'article renvoie vers GitHub pour le code et les étapes.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "0: comment injecter le résultat d'une requête SQL dans une plage nommée MS Excel sans perdre la mise en page ?",
+      "anchor": "",
+      "reason": "not answered: Le code et les étapes détaillées sont sur GitHub, pas ici.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "0: quel est le fichier .bas nécessaire pour automatiser l'exécution de requêtes SQL Server dans MS Excel ?",
+      "anchor": "",
+      "reason": "not answered: L'article cite test.bas comme démo, pas comme fichier nécessaire.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:13:30.675Z",
+    "articleHash": "b5500b37539c68bb03e3c160cd6daee18709725c",
+    "questionsHash": "ab7a0bfe85b555af",
+    "status": "applied",
+    "rejected": 3,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "0: vba MS Excel SQL Server requete injection mise en forme",
-      "anchor": ""
-    },
-    {
-      "question": "0: comment exécuter une requête SQL Server directement depuis une macro VBA dans MS Excel ?",
       "anchor": ""
     },
     {
@@ -36,15 +62,7 @@
       "anchor": ""
     },
     {
-      "question": "0: comment injecter le résultat d'une requête SQL dans une plage nommée MS Excel sans perdre la mise en page ?",
-      "anchor": ""
-    },
-    {
       "question": "0: partager un fichier MS Excel avec requête SQL Server sans conserver les identifiants VBA",
-      "anchor": ""
-    },
-    {
-      "question": "0: quel est le fichier .bas nécessaire pour automatiser l'exécution de requêtes SQL Server dans MS Excel ?",
       "anchor": ""
     }
   ]

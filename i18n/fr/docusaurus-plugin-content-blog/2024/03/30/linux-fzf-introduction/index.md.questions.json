@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:16:41.220Z",
-  "durationMs": 232648,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f64325a21dcd1547e4db6a0f2f0cc9b73df0d86c",
+  "durationMs": 232648,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "pourquoi la recherche floue de fzf est plus rapide que ctrl+r natif",
+      "anchor": "",
+      "reason": "not answered: Article explains flexibility, not speed advantage over native ctrl+r",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:10:31.077Z",
+    "articleHash": "6a70623a16f449b8eff870c4451dc236da4166bc",
+    "questionsHash": "2ad46875583ed38a",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "fzf linux recherche floue historique bash",
@@ -30,10 +48,6 @@
     {
       "question": "changer de dossier rapidement avec alt+c dans fzf",
       "anchor": "keybindings"
-    },
-    {
-      "question": "pourquoi la recherche floue de fzf est plus rapide que ctrl+r natif",
-      "anchor": ""
     },
     {
       "question": "docker build fzf-demo terrain de jeu local",

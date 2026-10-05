@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-13T18:03:21.282Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:04:03.374Z",
   "source": "index.md",
   "sourceHash": "8688469f8bac8fa4bbc06d9b520657f800b59377",
+  "durationMs": 23889,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:21:50.856Z",
+    "articleHash": "e0f928781f124e49deed9bdd2082fa65266b3e23",
+    "questionsHash": "0c5d7aa784713230",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I view my Linux command line history?",
+      "question": "linux shell history management cheat sheet",
+      "anchor": ""
+    },
+    {
+      "question": "how to list all previously typed commands in bash terminal",
       "anchor": "getting-your-history"
     },
     {
-      "question": "Where is my Bash/ZSH history file located?",
+      "question": "where does zsh store its history file HISTFILE location",
       "anchor": "location-of-your-history"
     },
     {
-      "question": "What are the HISTIGNORE and HISTORY_IGNORE variables for Bash/ZSH?",
+      "question": "HISTIGNORE exclude commands containing password from bash history",
       "anchor": "histignore--history_ignore-variables"
     },
     {
-      "question": "How can I prevent specific commands from being saved in my history file?",
+      "question": "zsh leading space before command to skip saving in history",
       "anchor": "dont-put-a-specific-command-in-the-history"
     },
     {
-      "question": "How do I filter your history using grep in ZSH?",
+      "question": "pipe history to grep -i filter last 10 commands",
       "anchor": "using-grep-to-filter-your-history"
     },
     {
-      "question": "What is CTRL-R and how can I use it to search through my command history?",
+      "question": "ctrl+r interactive search shell history zsh",
       "anchor": "ctrl-r-is-your-friend"
     },
     {
-      "question": "How can I use zsh-autosuggestions to manage my command history more efficiently?",
+      "question": "zsh-autosuggestions plugin autocomplete previous commands",
       "anchor": "autosuggestions-in-the-console-using-zsh"
     },
     {
-      "question": "How do I delete specific entries from my Bash/ZSH history?",
+      "question": "delete one specific entry from .bash_history without rewriting whole file",
       "anchor": "delete-an-instruction-from-your-history"
+    },
+    {
+      "question": "HISTORY_IGNORE multiple patterns colon separator zsh",
+      "anchor": "histignore--history_ignore-variables"
     }
   ]
 }

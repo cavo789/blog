@@ -1,36 +1,67 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:48:43.245Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:00:35.427Z",
   "source": "index.md",
   "sourceHash": "7f4f8ec0308cf0ab95918d7b07bf477ef0c7b63c",
+  "durationMs": 59222,
+  "rejected": [
+    {
+      "question": "how to run Docusaurus with Docker without installing Node.js",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no steps given here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "devops developer notes blog markdown docker PHP",
+      "anchor": "",
+      "reason": "not answered: PHP is never mentioned in the article.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "Docusaurus site creation from scratch with docker",
+      "anchor": "",
+      "reason": "not answered: Only a link to another article; no steps given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:30:54.729Z",
+    "articleHash": "7efc9d1715b56302a60bec40fe86e6c4a5f0896a",
+    "questionsHash": "e3dadcf7494573d8",
+    "status": "applied",
+    "rejected": 3,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What are some of Christophe Avonture's blog topics?",
+      "question": "Docusaurus blog markdown github instant publish",
       "anchor": ""
     },
     {
-      "question": "How does Docusaurus work for Christophe Avonture's blog?",
+      "question": "static site generator keep writing .md push github auto publish",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of Christophe Avonture's blog?",
+      "question": "Docusaurus React SSG Facebook open source",
       "anchor": ""
     },
     {
-      "question": "What are some of Christophe Avonture's personal notes on Markdown, Docker, PHP development, and DevOps?",
+      "question": "publish markdown docs to internet without changing my workflow",
       "anchor": ""
     },
     {
-      "question": "What is the workflow for Christophe Avonture's blog posts?",
+      "question": "blog for technical notes markdown github docker devops",
       "anchor": ""
     },
     {
-      "question": "How can I create a Docusaurus site without installing Node.js?",
+      "question": "Docusaurus web programmer ict devops specialist notes",
       "anchor": ""
     },
     {
-      "question": "What are some of Christophe Avonture's skills as an ICT developer, web programmer, and DevOps specialist?",
+      "question": "Docusaurus personal blog launch markdown docker notes collection",
       "anchor": ""
     }
   ]

@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:20:52.200Z",
-  "durationMs": 168183,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f858f7d3db045998b8ed420accec505e98ec7d88",
+  "durationMs": 168183,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "configurer un devcontainer PHP avec linters et analyse statique",
+      "anchor": "the-good-way",
+      "reason": "not answered: Only a link to another article; no devcontainer setup instructions given.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "comment utiliser Rector et Tabnine pour détecter et compléter les setters PHP",
+      "anchor": "the-good-way",
+      "reason": "not answered: Rector and Tabnine only mentioned in passing with links to other pages.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:28:14.569Z",
+    "articleHash": "9b17e289ef5ea40921aa5d354df09a13c2459796",
+    "questionsHash": "3f33a436de50b5ed",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "pourquoi utiliser des propriétés privées PHP avec des accesseurs pour valider les données",
@@ -13,7 +37,7 @@
     },
     {
       "question": "quelle extension VSCode permet de générer les getters et setters PHP sans écrire de code",
-      "anchor": ""
+      "anchor": "see-the-extension-in-action"
     },
     {
       "question": "clic droit VSCode générer getters et setters PHP",
@@ -37,14 +61,6 @@
     },
     {
       "question": "passer à des propriétés privées PHP avec accesseurs et validation",
-      "anchor": "the-good-way"
-    },
-    {
-      "question": "configurer un devcontainer PHP avec linters et analyse statique",
-      "anchor": "the-good-way"
-    },
-    {
-      "question": "comment utiliser Rector et Tabnine pour détecter et compléter les setters PHP",
       "anchor": "the-good-way"
     }
   ]

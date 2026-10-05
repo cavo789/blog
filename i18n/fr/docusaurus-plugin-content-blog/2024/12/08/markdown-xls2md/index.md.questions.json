@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:39:51.979Z",
-  "durationMs": 170625,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "01fae66dc2ebcf8c3eeafc2ef59c65e979a68388",
+  "durationMs": 170625,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:06:28.009Z",
+    "articleHash": "896ecccd7531ed68b8342c66cdad4c94b99cc542",
+    "questionsHash": "f300c6ea2d259f44",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "convertir une plage Excel copiée en tableau Markdown propre",

@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:27:02.298Z",
-  "durationMs": 146996,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "689841dd96153154b096de72b57f1c6ba017e7f8",
+  "durationMs": 146996,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "tester un script bash avec bats après avoir modifié les paramètres",
+      "anchor": "",
+      "reason": "not answered: article only links to another page for bats testing details",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "organiser et trier les fonctions bash pour un code maintenable",
+      "anchor": "",
+      "reason": "not answered: article only links to another page for sorting functions",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:29:59.417Z",
+    "articleHash": "fc50805fb766244c8755e40bb7b30fd0a3f75958",
+    "questionsHash": "245b1848cd950867",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment passer plusieurs paramètres à une fonction bash sans passer d'objets",
@@ -29,14 +53,6 @@
     },
     {
       "question": "clean code bash limiter le nombre de paramètres de fonction",
-      "anchor": ""
-    },
-    {
-      "question": "tester un script bash avec bats après avoir modifié les paramètres",
-      "anchor": ""
-    },
-    {
-      "question": "organiser et trier les fonctions bash pour un code maintenable",
       "anchor": ""
     },
     {

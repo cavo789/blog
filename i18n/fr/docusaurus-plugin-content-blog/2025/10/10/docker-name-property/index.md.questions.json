@@ -3,20 +3,30 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:47:14.195Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f5cb94b3c264fbb86d68ba1285962746a8350368",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:54:33.844Z",
+    "articleHash": "2ae11a8c3a20a7ce374afa79c225266e3e4f35d1",
+    "questionsHash": "39c91593bb8af08e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "Comment regrouper plusieurs containers dans la vue Docker Desktop ?",
-      "anchor": ""
+      "anchor": "the-name-property-in-the-composeyaml-file"
     },
     {
       "question": "docker desktop organiser containers par projet",
-      "anchor": ""
+      "anchor": "the-name-property-in-the-composeyaml-file"
     },
     {
       "question": "transformer docker run en compose.yaml pour avoir une vue groupée",
-      "anchor": ""
+      "anchor": "the-name-property-in-the-composeyaml-file"
     },
     {
       "question": "ajouter name en haut de compose.yaml",

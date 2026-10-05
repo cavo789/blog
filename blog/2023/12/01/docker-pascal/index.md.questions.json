@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:58.625Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:18:13.073Z",
   "source": "index.md",
   "sourceHash": "8598a6ab85ff14eed2cbc5e2a7f4f4016665b4e8",
+  "durationMs": 18146,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:46:39.308Z",
+    "articleHash": "5dc12b142e80bc90fb22f5e286aafeacd1d62167",
+    "questionsHash": "2c52a979db03a287",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
-      "question": "How do you compile and run old Pascal code today?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the Free Pascal Compiler (FPC) used for in this article?",
-      "anchor": ""
-    },
-    {
-      "question": "Can you explain how to use Docker to compile and execute legacy Turbo Pascal programs?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the purpose of running old Turbo Pascal code today?",
-      "anchor": ""
-    },
-    {
-      "question": "How does the Free Pascal Compiler (FPC) differ from other compilers?",
+      "question": "run turbo pascal 7.0 code without installing anything on your machine",
       "anchor": "hello-world"
     },
     {
-      "question": "What are some examples of zero local install Docker approaches for running old code?",
-      "anchor": "convert-a-number-to-a-byte"
-    },
-    {
-      "question": "Can you provide a step-by-step guide on how to compile and run a legacy Turbo Pascal program using Docker and FPC?",
+      "question": "docker image free pascal compiler legacy .pas files",
       "anchor": "hello-world"
     },
     {
-      "question": "What are the benefits of running old code today, even if it's minimal and useless?",
+      "question": "how to compile 30-year-old pascal source in 2023 with zero local setup",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "docker fpc hello world pascal compile to exe",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "run a .pas file in a docker container and get a windows executable",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "fpc docker image mount current folder workdir compile",
+      "anchor": "hello-world"
+    },
+    {
+      "question": "pascal byte2bin docker run old school assignment",
       "anchor": "convert-a-number-to-a-byte"
+    },
+    {
+      "question": "convert a number to its byte binary representation in pascal via docker",
+      "anchor": "convert-a-number-to-a-byte"
+    },
+    {
+      "question": "run a 1992 pascal function that shifts bytes in a modern container",
+      "anchor": "convert-a-number-to-a-byte"
+    },
+    {
+      "question": "free pascal docker no install compile run exe",
+      "anchor": "hello-world"
     }
   ]
 }

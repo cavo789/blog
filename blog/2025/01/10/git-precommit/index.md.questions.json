@@ -1,41 +1,70 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:26.093Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:32:03.860Z",
   "source": "index.md",
   "sourceHash": "72e0f762a0a5f652297f80f2f0de61b527419c8f",
+  "durationMs": 61263,
+  "rejected": [
+    {
+      "question": ".pre-commit-config.yaml python black flake8 example",
+      "anchor": "adding-a-configuration-file",
+      "reason": "not answered: Article shows black config but never mentions flake8.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "add isort black flake8 multiple hooks to pre-commit config",
+      "anchor": "a-few-more-hooks",
+      "reason": "not answered: Config shows isort and black but flake8 is absent.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:42:38.331Z",
+    "articleHash": "807200e471ba182a90779ac428ec67ce58d7e656",
+    "questionsHash": "3e4686c502a6c2d8",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do Git pre-commit hooks work to enforce code quality standards locally?",
+      "question": "stop CI failing on trailing whitespace and quote style before I push",
+      "anchor": ""
+    },
+    {
+      "question": "pre-commit hook auto-fixes single vs double quotes in python file",
       "anchor": "the-result-a-commit-reformatted-before-it-even-happens"
     },
     {
-      "question": "What are some popular tools that build on top of Git pre-commit hooks for different programming languages?",
+      "question": "how does git pre-commit hook abort the commit if linting fails",
       "anchor": "why-it-works"
     },
     {
-      "question": "How can I configure pre-commit hooks to enforce code quality standards in a Python project?",
-      "anchor": "installation"
-    },
-    {
-      "question": "What are some common issues that Git pre-commit hooks can catch before committing?",
+      "question": "pip install pre-commit python",
       "anchor": "installing-pre-commit"
     },
     {
-      "question": "How do I manually fire a Git pre-commit hook to check for code quality standards?",
-      "anchor": "adding-a-configuration-file"
-    },
-    {
-      "question": "What are some best practices for using Git pre-commit hooks in a Python project?",
+      "question": "pre-commit run --all-files manually trigger hooks",
       "anchor": "manually-fire-the-hook"
     },
     {
-      "question": "How can I find more pre-commit hooks and write my own if needed?",
-      "anchor": "more-demos"
+      "question": "make pre-commit run automatically on every git commit",
+      "anchor": "install-hooks"
     },
     {
-      "question": "What is the purpose of the --no-verify flag in Git pre-commit hooks?",
-      "anchor": "install-hooks"
+      "question": "ready made pre-commit config for python 3.13 project",
+      "anchor": "a-ready-made-python-313-config"
+    },
+    {
+      "question": "write your own custom pre-commit hook",
+      "anchor": "search-for-hooks-and-write-your-own"
+    },
+    {
+      "question": "git commit --no-verify skip pre-commit hooks",
+      "anchor": "tip---no-verify"
     }
   ]
 }

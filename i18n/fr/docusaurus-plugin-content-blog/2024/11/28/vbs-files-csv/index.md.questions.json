@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:19:08.663Z",
-  "durationMs": 263617,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "347efe2de1fd395b707d2653567bd4ac49ec839d",
+  "durationMs": 263617,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "utiliser le CSV généré par VBScript dans Excel ou Pandas pour analyser les fichiers",
+      "anchor": "",
+      "reason": "not answered: Only mentions the possibility; Pandas details are on a linked page.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:01:28.937Z",
+    "articleHash": "6fcb1547cc9f007e9edac7c506845b3817694989",
+    "questionsHash": "aa84cc06b5c39dc9",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment exporter la liste des fichiers d'un dossier Windows en CSV avec un script",
@@ -25,10 +43,6 @@
     },
     {
       "question": "modifier le nom du fichier CSV de sortie dans le script VBScript",
-      "anchor": ""
-    },
-    {
-      "question": "utiliser le CSV généré par VBScript dans Excel ou Pandas pour analyser les fichiers",
       "anchor": ""
     },
     {

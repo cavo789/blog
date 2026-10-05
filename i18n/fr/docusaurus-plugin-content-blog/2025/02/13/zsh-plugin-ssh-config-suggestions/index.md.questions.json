@@ -3,12 +3,30 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T13:57:36.236Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "5929549a1dddedb1a6210d39b7c11d42fb97bfa1",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "ssh TAB completion ~/.ssh/config zsh",
+      "anchor": "use-it",
+      "reason": "duplicate of: zsh ssh config TAB completion plugin",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:17:03.410Z",
+    "articleHash": "42b0b02efc78b1804371a51e2c721b9de9d7b4f7",
+    "questionsHash": "b05d584bbc0ee9db",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment activer les autosuggestions ssh dans zsh ?",
-      "anchor": ""
+      "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
     },
     {
       "question": "zsh ssh config TAB completion plugin",
@@ -40,10 +58,6 @@
     },
     {
       "question": "Quelle touche faut-il appuyer après un espace pour voir les hôtes ssh ?",
-      "anchor": "use-it"
-    },
-    {
-      "question": "ssh TAB completion ~/.ssh/config zsh",
       "anchor": "use-it"
     }
   ]

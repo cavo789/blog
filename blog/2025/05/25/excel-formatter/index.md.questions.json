@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:09.767Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:55:25.051Z",
   "source": "index.md",
   "sourceHash": "136993811fcf984353bf5ba619b70a1defc3aef9",
+  "durationMs": 31184,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:59:44.023Z",
+    "articleHash": "79c97e18c98f759fdb45343619e92bf984fd58ce",
+    "questionsHash": "5cfcf100ae8cb598",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How does Excel Formula Beautifier work?",
-      "anchor": "how-to-use"
-    },
-    {
-      "question": "What is the purpose of Excel Formula Beautifier?",
+      "question": "excel formula beautifier self-hosted",
       "anchor": ""
     },
     {
-      "question": "Can you explain how to use the Excel Formula Beautifier tool?",
-      "anchor": "how-to-use"
-    },
-    {
-      "question": "How does Excel Formula Beautifier handle different separators in formulas?",
-      "anchor": "how-to-use"
-    },
-    {
-      "question": "What is the output format of the beautified Excel formula?",
-      "anchor": "how-to-use"
-    },
-    {
-      "question": "Can you provide an example of how to use the Excel Formula Beautifier tool?",
-      "anchor": "how-to-use"
-    },
-    {
-      "question": "What are some real-world applications for using Excel Formula Beautifier?",
+      "question": "how to make a long excel formula readable",
       "anchor": ""
     },
     {
-      "question": "How can I install and set up the Excel Formula Beautifier tool on my own?",
+      "question": "self-hosted tool to indent spreadsheet formulas",
+      "anchor": ""
+    },
+    {
+      "question": "tool to clarify nested IF logic in excel",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "format complex excel formula for debugging",
+      "anchor": ""
+    },
+    {
+      "question": "paste excel formula get indented output",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "excel formula beautifier how to use",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "auto-detect semicolon vs comma separator excel formula",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "beautify excel formula step by step",
+      "anchor": "how-to-use"
+    },
+    {
+      "question": "excel formula formatter specify separator manually",
       "anchor": "how-to-use"
     }
   ]

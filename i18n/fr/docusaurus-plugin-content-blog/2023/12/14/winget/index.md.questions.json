@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:05:27.428Z",
-  "durationMs": 142308,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3eaa93bdbd52e55ff8eb3255cbbaaef19bb2cef2",
+  "durationMs": 142308,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Lancer le scan et l'installation des patches en arrière-plan sur Windows",
+      "anchor": "",
+      "reason": "not answered: Article ne décrit pas l'exécution en arrière-plan, seulement en console.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:22:25.611Z",
+    "articleHash": "298988b91cb7116f848604a3a8f8bdccf3f6f4f9",
+    "questionsHash": "240a5bca31349d19",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment faire un upgrade batch de tous les programmes Windows avec winget ?",
@@ -13,10 +31,6 @@
     },
     {
       "question": "winget mettre à jour tous les softs obsolètes en une commande",
-      "anchor": ""
-    },
-    {
-      "question": "Lancer le scan et l'installation des patches en arrière-plan sur Windows",
       "anchor": ""
     },
     {

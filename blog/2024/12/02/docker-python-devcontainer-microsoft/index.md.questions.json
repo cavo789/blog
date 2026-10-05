@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:38.349Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:17:37.879Z",
   "source": "index.md",
   "sourceHash": "375f7739eb96b0b3095ab4f9c5c4ce202505e4c1",
+  "durationMs": 27724,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:33:52.220Z",
+    "articleHash": "5cc7f3fa5d45d65fc085dc048a976d98539ed7bf",
+    "questionsHash": "45a34828462b5829",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I set up a Python development environment using Docker and VSCode?",
+      "question": "devcontainer python wizard vscode",
       "anchor": ""
     },
     {
-      "question": "What is the fastest way to create a Python devcontainer with Docker and VSCode?",
+      "question": "how to set up python devcontainer without writing dockerfile manually",
       "anchor": ""
     },
     {
-      "question": "How do I use VSCode and Docker to automate the creation of a Python development environment?",
+      "question": "vscode dev containers add configuration files python",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using Devcontainers for Python development with Docker?",
+      "question": "docker python environment reproducible cross platform",
       "anchor": ""
     },
     {
-      "question": "How can I control exactly what goes into a Python devcontainer image by writing the files myself?",
+      "question": "reopen in container python devcontainer",
       "anchor": ""
     },
     {
-      "question": "What is the difference between using the Dev Containers wizard and writing the files yourself for creating a Python devcontainer?",
+      "question": "easiest way to get python docker dev environment",
       "anchor": ""
     },
     {
-      "question": "How can I create a ready-to-use Python environment in VSCode with Docker by following the Dev Containers wizard?",
+      "question": "devcontainer.json auto generate python",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of using the Dev Containers: Add Dev Container Configuration files... wizard for creating a Python devcontainer?",
+      "question": "vscode docker extension python setup",
+      "anchor": ""
+    },
+    {
+      "question": "python devcontainer terminal interpreter ready instantly",
+      "anchor": ""
+    },
+    {
+      "question": "docker python dev setup windows linux mac",
       "anchor": ""
     }
   ]

@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:03:01.247Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "04da776b5b4620a57abc58239059d884c50313b0",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "paramètre Git pour empêcher la réécriture silencieuse des fins de ligne entre Windows et Linux",
+      "anchor": "",
+      "reason": "not answered: The actual Git parameter is only in a linked article, not here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "pourquoi DOS ignore la casse par défaut dans les noms de fichiers",
+      "anchor": "",
+      "reason": "not answered: Article states the fact but gives no underlying reason why DOS does this.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:18:53.781Z",
+    "articleHash": "00c2d94be8226ca72e7e7f3a450a911fa77274da",
+    "questionsHash": "5f0a3df439b79dab",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment rendre un dossier Windows sensible à la casse",
@@ -35,15 +59,7 @@
       "anchor": ""
     },
     {
-      "question": "paramètre Git pour empêcher la réécriture silencieuse des fins de ligne entre Windows et Linux",
-      "anchor": ""
-    },
-    {
       "question": "Windows PowerShell fsutil.exe activer case sensitive dossier spécifique",
-      "anchor": ""
-    },
-    {
-      "question": "pourquoi DOS ignore la casse par défaut dans les noms de fichiers",
       "anchor": ""
     }
   ]

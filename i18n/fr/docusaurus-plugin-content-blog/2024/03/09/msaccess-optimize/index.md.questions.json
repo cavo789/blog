@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:28:42.820Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "cba79ea9b8e0b9bc06e39adebb9be4fab2fbb1f1",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "audit taille des champs access avec un script vbs",
+      "anchor": "do-it-yourself",
+      "reason": "not answered: The article links to another page for the actual VBS script.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:04:22.381Z",
+    "articleHash": "eadcd82e3d01545fb58905e8524729af0b59f20a",
+    "questionsHash": "0daf275ab49b54ef",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment accélérer une base msaccess existante sans tout refaire",
@@ -13,10 +31,6 @@
     {
       "question": "lancer l'analyseur de performance access 2016",
       "anchor": "ms-access---analyze-performance"
-    },
-    {
-      "question": "audit taille des champs access avec un script vbs",
-      "anchor": "do-it-yourself"
     },
     {
       "question": "ajouter clé primaire et index sur une table access",

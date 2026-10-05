@@ -1,56 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:18.945Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:45:17.213Z",
   "source": "index.md",
   "sourceHash": "1747cd9d8f2f999a94c32a18df477fb5f7598e5f",
+  "durationMs": 16369,
+  "rejected": [
+    {
+      "question": "laravel telescope install",
+      "anchor": "",
+      "reason": "not answered: No install command given; points to external docs.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:50:46.170Z",
+    "articleHash": "52b8d5051b2402766e061a495de657c52d16ea13",
+    "questionsHash": "581a1c5c528a74e6",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is Laravel Telescope?",
+      "question": "how to see raw SQL from eloquent queries in Laravel",
       "anchor": ""
     },
     {
-      "question": "How does Laravel Telescope help with debugging?",
+      "question": "laravel debug redis cache keys read vs write",
       "anchor": ""
     },
     {
-      "question": "What are the key features of Laravel Telescope?",
+      "question": "monitor laravel exceptions with full request context user URL post data",
       "anchor": ""
     },
     {
-      "question": "Where can I find more information about installing and using Laravel Telescope?",
+      "question": "laravel telescope on test server real time",
       "anchor": ""
     },
     {
-      "question": "How does Laravel Telescope provide real-time insights into my application's queries, exceptions, cache, and logs?",
+      "question": "how to inspect what a user is doing in a laravel app live",
       "anchor": ""
     },
     {
-      "question": "What is the default URL for retrieving data from Laravel Telescope?",
+      "question": "laravel debugging tool queries logs cache exceptions",
       "anchor": ""
     },
     {
-      "question": "How can I retrieve raw SQL from an eloquent model in Laravel Telescope?",
+      "question": "laravel telescope view events fired",
       "anchor": ""
     },
     {
-      "question": "What does Redis cache look like in Laravel Telescope?",
+      "question": "debug laravel app before user reports the bug",
       "anchor": ""
     },
     {
-      "question": "Can I use Laravel Telescope on a test server to monitor user activity and get full context?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I retrieve exceptions from the log in Laravel Telescope?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some other Laravel articles on this blog that mention Laravel Telescope?",
-      "anchor": ""
-    },
-    {
-      "question": "How does Laravel Filament complement Laravel Telescope?",
+      "question": "laravel telescope dev dependency",
       "anchor": ""
     }
   ]

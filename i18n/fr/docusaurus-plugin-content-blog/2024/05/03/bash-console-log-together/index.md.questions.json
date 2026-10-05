@@ -2,26 +2,36 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:00:09.263Z",
-  "durationMs": 235619,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "591a00e2750bb16d8ca689c7f329748dd71c0f86",
+  "durationMs": 235619,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:22:37.565Z",
+    "articleHash": "720294b79c189ed9e5bb8be7de7b05870f98074d",
+    "questionsHash": "ab87b5f34d776b34",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
       "question": "comment afficher la sortie d'un script bash sur la console et dans un fichier log en même temps ?",
-      "anchor": ""
+      "anchor": "why-it-works"
     },
     {
       "question": "bash script sortie console et fichier log simultané",
-      "anchor": ""
+      "anchor": "why-it-works"
     },
     {
       "question": "éviter le buffering de sortie dans un script bash long",
-      "anchor": ""
+      "anchor": "why-it-works"
     },
     {
       "question": "afficher ligne par ligne console et log bash",
-      "anchor": ""
+      "anchor": "why-it-works"
     },
     {
       "question": "vérifier que la sortie console et le fichier log sont synchronisés en temps réel",

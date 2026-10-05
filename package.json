@@ -22,6 +22,7 @@
     "questions:review": "node scripts/questions-review.mjs",
     "questions:list": "node scripts/questions-review.mjs --list",
     "questions:status": "node scripts/questions-review.mjs --status",
+    "questions:triage": "node scripts/questions-triage.mjs",
     "translate": "node scripts/translate-post.mjs",
     "translate:check": "node scripts/check-translation-freshness.mjs",
     "translate:plan": "node scripts/translate-plan.mjs",

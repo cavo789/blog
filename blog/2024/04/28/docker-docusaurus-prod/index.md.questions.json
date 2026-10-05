@@ -1,45 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:53:25.089Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:29:50.348Z",
   "source": "index.md",
   "sourceHash": "9363f656375fc35faabe2f21e7333cfbcc0ddaa1",
+  "durationMs": 28641,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:51:47.943Z",
+    "articleHash": "f575a62ddc67ec22860da68b713e2bca1ebe0628",
+    "questionsHash": "d1aa74d078714d5a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 6
+  },
   "questions": [
     {
-      "question": "How to create a Docker image for Docusaurus?",
+      "question": "docusaurus docker image single command run offline",
       "anchor": "result"
     },
     {
-      "question": "What are the benefits of using multi-stage Docker images for Docusaurus?",
-      "anchor": "create-a-dummy-blog-if-needed"
-    },
-    {
-      "question": "What is the size difference between the Node base stage and the final image in the multi-stage Dockerfile?",
-      "anchor": "prepare-our-docusaurus-installation-for-docker"
-    },
-    {
-      "question": "How does the multi-stage Dockerfile ensure an improved cache layer system for Docusaurus?",
+      "question": "how to shrink docusaurus docker image from 740MB to 87MB",
       "anchor": "create-a-dockerfile-file"
     },
     {
-      "question": "What are the different web servers available in the multi-stage Dockerfile and which one is recommended for creating a small, self-contained image?",
+      "question": "create minimal docusaurus blog with a few posts for docker testing",
+      "anchor": "create-a-dummy-blog-if-needed"
+    },
+    {
+      "question": "what to do in docusaurus project folder before writing dockerfile",
+      "anchor": "prepare-our-docusaurus-installation-for-docker"
+    },
+    {
+      "question": "docusaurus multi-stage dockerfile node alpine yarn build static server",
+      "anchor": "create-a-dockerfile-file"
+    },
+    {
+      "question": "dockerignore docusaurus exclude node_modules",
       "anchor": "create-a-dockerignore-file"
     },
     {
-      "question": "How to create a dummy blog if you don't have a Docusaurus installation yet?",
+      "question": "docusaurus docker build workflow recap",
       "anchor": "small-summary"
     },
     {
-      "question": "What are the steps to prepare your Docusaurus installation for Docker?",
+      "question": "docker build docusaurus image tag command",
       "anchor": "build-our-docker-image"
     },
     {
-      "question": "How to create a Dockerfile file for Docusaurus?",
-      "anchor": "and-use-it"
+      "question": "run docusaurus docker container on localhost port",
+      "anchor": "run-the-image-ie-create-a-container-and-run-the-site"
     },
     {
-      "question": "What are the stages in the multi-stage Dockerfile and what is their purpose?",
-      "anchor": "run-the-image-ie-create-a-container-and-run-the-site"
+      "question": "docker exec -it docusaurus container bash shell",
+      "anchor": "start-an-interactive-shell-session"
+    },
+    {
+      "question": "push docusaurus docker image to docker hub registry",
+      "anchor": "push-it-on-docker"
+    },
+    {
+      "question": "pull docusaurus image from docker hub",
+      "anchor": "retrieve-it-from-docker-hub"
     }
   ]
 }

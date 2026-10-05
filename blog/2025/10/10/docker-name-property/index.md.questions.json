@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T09:00:20.841Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:24:58.438Z",
   "source": "index.md",
   "sourceHash": "27f6a68ea5f3b8320a5c6ecb5ea582437e189777",
+  "durationMs": 28672,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:21:17.188Z",
+    "articleHash": "25fb85c5271c555901362273537e98baf0f5b703",
+    "questionsHash": "f76e97604e69c4dc",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I organize Docker containers into groups using compose.yaml?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the purpose of the name property in a Docker Compose file?",
+      "question": "docker desktop group containers together",
       "anchor": "the-name-property-in-the-composeyaml-file"
     },
     {
-      "question": "How can I group multiple tools together in Docker Desktop using compose.yaml?",
+      "question": "docker desktop start stop multiple containers at once",
       "anchor": ""
     },
     {
-      "question": "What are some benefits of organizing Docker containers into groups using compose.yaml?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I convert Docker commands to a compose file?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the difference between the name property in a Docker Compose file and the -n flag with docker run?",
+      "question": "compose.yaml name property group services docker desktop",
       "anchor": "the-name-property-in-the-composeyaml-file"
     },
     {
-      "question": "How can I store files and volumes in different folders for better organization?",
+      "question": "add name at top of docker-compose.yml to group containers",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "convert docker run to compose file for docker desktop grouping",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "docker desktop name field not showing in docker ps command",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "docker compose name vs --name flag difference",
+      "anchor": "the-name-property-in-the-composeyaml-file"
+    },
+    {
+      "question": "docker compose files in different folders same group",
       "anchor": "tools-can-be-located-in-different-folders"
     },
     {
-      "question": "What are some tips for managing Docker containers using compose.yaml?",
-      "anchor": ""
+      "question": "can I put compose.yaml in separate directories and still group in docker desktop",
+      "anchor": "tools-can-be-located-in-different-folders"
+    },
+    {
+      "question": "docker desktop windows only feature group containers",
+      "anchor": "the-name-property-in-the-composeyaml-file"
     }
   ]
 }

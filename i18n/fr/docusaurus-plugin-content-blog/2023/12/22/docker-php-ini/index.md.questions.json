@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:24:31.471Z",
-  "durationMs": 169517,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "dfc25b6294b068fc1a892480d6196dd7ef4e7525",
+  "durationMs": 169517,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:27:29.732Z",
+    "articleHash": "f5fe942a46550106b3a4e8cf2cdef33e886ff00c",
+    "questionsHash": "1cba72ffb0dd8522",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment surcharger les paramètres php.ini dans un container Docker",

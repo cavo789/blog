@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-17T13:17:24.747Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:22:01.285Z",
   "source": "index.md",
   "sourceHash": "fb5521e395a344d1b3b271a38cb1988cbdd8c9b5",
+  "durationMs": 20827,
+  "rejected": [
+    {
+      "question": "docusaurus project setup component assemble multiple code files into tree",
+      "anchor": "go-further-with-projectsetup",
+      "reason": "not answered: Only links to another article for ProjectSetup details.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:18:56.116Z",
+    "articleHash": "6da719ac52e393898e1e85784522bada174302e6",
+    "questionsHash": "f6d5ca46cb63fd63",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I create a custom React component to embed dynamic code snippets in my Docusaurus blog?",
-      "anchor": "the-summary-element"
-    },
-    {
-      "question": "What are some benefits of using the Snippets component over the native HTML approach for displaying code blocks in a Docusaurus blog?",
+      "question": "docusaurus custom code snippet component react",
       "anchor": "creation-of-our-snippets-component"
     },
     {
-      "question": "How does the LogoIcon component work to add language-specific icons and color distinction to code snippets?",
+      "question": "can I style the details summary element in docusaurus for better code blocks",
+      "anchor": "creation-of-our-snippets-component"
+    },
+    {
+      "question": "register custom react component in docusaurus theme config",
+      "anchor": "creation-of-our-snippets-component"
+    },
+    {
+      "question": "docux logoicon get language svg icon for code block",
       "anchor": "logoicon-of-docux"
     },
     {
-      "question": "What is the purpose of the Snippets plugin in Docusaurus, and how does it allow me to dynamically load code from source files into my articles?",
-      "anchor": "to-make-this-work-we-need-a-plugin"
-    },
-    {
-      "question": "How do I use the Snippets component to add a snippet to my blog post, and what is the expected rendering output?",
+      "question": "how to use a custom snippets component inside a docusaurus markdown post",
       "anchor": "using-the-snippets-component"
     },
     {
-      "question": "What are some best practices for using the Don't copy/paste content anymore approach with code snippets in Docusaurus blogs?",
+      "question": "docusaurus blog post read code from file on disk instead of pasting",
       "anchor": "dont-copypaste-content-anymore"
     },
     {
-      "question": "How does the Snippets plugin work to read and inject file content from the disk into my blog posts, and what are the two types of paths it supports?",
+      "question": "docusaurus remark plugin parse code block and inject file content",
       "anchor": "to-make-this-work-we-need-a-plugin"
     },
     {
-      "question": "What is the role of a plugin in Docusaurus for reading file content from the disk and injecting it into blog posts?",
+      "question": "docusaurus snippet component hardcoded content example",
       "anchor": "demo-hardcoded-content"
+    },
+    {
+      "question": "docusaurus plugin relative path from blog post read source file into article",
+      "anchor": "dont-copypaste-content-anymore"
     }
   ]
 }

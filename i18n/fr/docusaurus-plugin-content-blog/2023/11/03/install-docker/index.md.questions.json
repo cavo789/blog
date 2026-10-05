@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T19:56:26.201Z",
-  "durationMs": 149857,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "911878c903961d073b025e9224cfa546e3d549b2",
+  "durationMs": 149857,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:02:32.076Z",
+    "articleHash": "9586ec07c4a2c2a626608468ba61cbd21ecb66bb",
+    "questionsHash": "861c66db8e83202b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "installer docker desktop et lancer php apache sans configuration locale",
-      "anchor": ""
+      "anchor": "setting-it-up"
     },
     {
       "question": "Quelle commande docker pour démarrer un serveur php 8.3 apache en local ?",
@@ -33,11 +43,11 @@
     },
     {
       "question": "docker run --detach --name -p 80:80 php:8.3-apache explication des arguments",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+      "anchor": "setting-it-up"
     },
     {
       "question": "Développer en php localement avec docker pour éviter les conflits de versions",
-      "anchor": "conclusion"
+      "anchor": "changing-the-php-version-in-one-word"
     }
   ]
 }

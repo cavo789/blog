@@ -1,41 +1,56 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-01T16:45:42.321Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:10:49.498Z",
   "source": "index.md",
   "sourceHash": "3167d13ef717dfdf4f8f5c7a44b27900162c248a",
+  "durationMs": 30041,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:03:10.467Z",
+    "articleHash": "e02ecfa66d272a5bafd0fcda4752bdd60e3bc456",
+    "questionsHash": "cc9522441fdb843d",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What does this article generate?",
+      "question": "my docusaurus blog is unreadable to AI assistants what to do",
+      "anchor": ""
+    },
+    {
+      "question": "llms.txt index plus per-article markdown mirror plus per-series full-text bundle docusaurus",
       "anchor": "what-gets-generated"
     },
     {
-      "question": "Why degrade the MDX source instead of converting HTML to Markdown?",
+      "question": "why converting rendered HTML to markdown loses accordion and lazy-loaded content vs degrading MDX source",
       "anchor": "why-the-source-and-never-the-html"
     },
     {
-      "question": "How is this blog's content mirrored in plain Markdown?",
+      "question": "docusaurus build-time plugin generate plain markdown mirror from MDX source",
       "anchor": "building-it"
     },
     {
-      "question": "What are the benefits of generating a plain-Markdown mirror?",
+      "question": "degradation table map CodeBlock Callout custom MDX components to plain markdown",
       "anchor": "the-degradation-table"
     },
     {
-      "question": "Why does this article mention ChatGPT, Claude, and Perplexity?",
+      "question": "orchestrator iterate all MDX files batch export markdown docusaurus plugin",
       "anchor": "the-orchestrator"
     },
     {
-      "question": "How is this blog already set up to maintain a plain-Markdown mirror?",
+      "question": "unknown MDX component fallback rule never break markdown export build",
       "anchor": "the-one-rule-that-makes-this-safe"
     },
     {
-      "question": "What is the purpose of the /llms.txt index?",
+      "question": "how to make llms.txt discoverable by ChatGPT Claude Perplexity retrieval pipeline",
       "anchor": "making-it-discoverable"
     },
     {
-      "question": "How does this article propose making the export safe?",
-      "anchor": "conclusion"
+      "question": "docusaurus MDX to markdown static export plugin build step",
+      "anchor": "building-it"
     }
   ]
 }

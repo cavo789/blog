@@ -1,41 +1,66 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:47:11.616Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:41:00.029Z",
   "source": "index.md",
   "sourceHash": "a845c0fa289bdb8fb05ed1b271503272d6cef2bd",
-  "questions": [
+  "durationMs": 29202,
+  "rejected": [
     {
-      "question": "What is Powerlevel10k Zsh theme?",
-      "anchor": ""
+      "question": "powerlevel10k wsl windows terminal integration",
+      "anchor": "why-i-kept-it",
+      "reason": "not answered: Only a passing mention with a link to another page, no setup details.",
+      "date": "2026-09-24"
     },
     {
-      "question": "How do I test and customize Powerlevel10k without installing it?",
+      "question": "install powerlevel10k oh-my-zsh after testing in container",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to another article for actual installation steps.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:06:35.330Z",
+    "articleHash": "cbe4a69f02492eee0afa857993375662d7dcfd73",
+    "questionsHash": "6cfa2b42542708fa",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
+  "questions": [
+    {
+      "question": "test powerlevel10k risk-free docker before committing to install",
       "anchor": "try-it-without-installing-anything"
     },
     {
-      "question": "Why did you choose to use a Docker container for testing the Powerlevel10k theme?",
+      "question": "zsh prompt showing git branch modified files command time and user",
+      "anchor": "what-powerlevel10k-looks-like"
+    },
+    {
+      "question": "docker alpine one-liner test zsh theme wizard",
+      "anchor": "try-it-without-installing-anything"
+    },
+    {
+      "question": "run powerlevel10k config wizard in disposable container",
+      "anchor": "try-it-without-installing-anything"
+    },
+    {
+      "question": "zsh theme test container nothing stays on disk after exit",
+      "anchor": "try-it-without-installing-anything"
+    },
+    {
+      "question": "zsh prompt display command execution time and red error code",
       "anchor": "why-i-kept-it"
     },
     {
-      "question": "What are the benefits of using Powerlevel10k Zsh theme with Windows Terminal and Beyond the Monolith setup?",
-      "anchor": "conclusion"
+      "question": "powerlevel10k visual indicator am I in docker or local shell",
+      "anchor": "why-i-kept-it"
     },
     {
-      "question": "How does Powerlevel10k display the time taken by an instruction in the prompt?",
-      "anchor": "what-powerlevel10k-looks-like"
-    },
-    {
-      "question": "What does Powerlevel10k show on the right side of the prompt to indicate if an instruction has failed or succeeded?",
-      "anchor": "what-powerlevel10k-looks-like"
-    },
-    {
-      "question": "How do I install Oh-My-ZSH and Powerlevel10k after testing it in a Docker container?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some tips for optimizing commands using the Powerlevel10k Zsh theme?",
-      "anchor": "what-powerlevel10k-looks-like"
+      "question": "linux prompt theme sandbox test alpine container",
+      "anchor": "try-it-without-installing-anything"
     }
   ]
 }

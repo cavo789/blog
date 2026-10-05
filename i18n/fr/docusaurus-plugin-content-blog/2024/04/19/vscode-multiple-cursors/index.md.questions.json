@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:49:53.665Z",
-  "durationMs": 153238,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "68ab5b23768ef9aded4502515c4b45df1ee000a9",
+  "durationMs": 153238,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "sticky scroll et autosave VSCode",
+      "anchor": "",
+      "reason": "not answered: only mentioned in passing with links to other articles",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:20:10.073Z",
+    "articleHash": "d9ced0a9c8c241784c83f67ea320429c513c26e2",
+    "questionsHash": "bc67f5be5accc292",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "raccourci VSCode pour activer les curseurs multiples",
@@ -37,10 +55,6 @@
     },
     {
       "question": "avancer d'un mot avec curseurs multiples VSCode",
-      "anchor": ""
-    },
-    {
-      "question": "sticky scroll et autosave VSCode",
       "anchor": ""
     },
     {

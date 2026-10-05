@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:48:27.222Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:55:15.958Z",
   "source": "index.md",
   "sourceHash": "2592af837940d021126e82d551af453a7e91081c",
+  "durationMs": 27720,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:19:53.150Z",
+    "articleHash": "5ab75ac3465ccd5848bb9cf2fe4beda13a12cab9",
+    "questionsHash": "21cad2be56b329d3",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I self-host Matomo?",
+      "question": "self-host Matomo free",
       "anchor": ""
     },
     {
-      "question": "What is GDPR-compliant website analytics?",
+      "question": "Matomo install MySQL database wizard",
       "anchor": ""
     },
     {
-      "question": "How can I install Matomo on a subdomain?",
+      "question": "how to install Matomo on a subdomain via SSH",
       "anchor": ""
     },
     {
-      "question": "What are the steps to set up a MySQL database for Matomo?",
+      "question": "GDPR compliant self-hosted analytics setup",
       "anchor": ""
     },
     {
-      "question": "How do I run the installation wizard for Matomo?",
+      "question": "Matomo tracking script add to pages after install",
       "anchor": ""
     },
     {
-      "question": "What is Docusaurus?",
+      "question": "free self-hosted web analytics installation guide",
+      "anchor": ""
+    },
+    {
+      "question": "Matomo Docusaurus plugin",
       "anchor": "docusaurus"
     },
     {
-      "question": "How can I install a plugin for Docusaurus on my blog?",
+      "question": "add Matomo tracking to Docusaurus site",
       "anchor": "docusaurus"
     },
     {
-      "question": "How do I add the tracking script to my pages after installing Matomo?",
-      "anchor": ""
+      "question": "Docusaurus blog analytics self-hosted",
+      "anchor": "docusaurus"
+    },
+    {
+      "question": "Docusaurus plugin Matomo tracking script",
+      "anchor": "docusaurus"
     }
   ]
 }

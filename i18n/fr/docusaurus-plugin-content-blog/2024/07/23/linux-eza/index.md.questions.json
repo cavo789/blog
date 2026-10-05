@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:44:04.944Z",
-  "durationMs": 195796,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c204664f130c32bdff5af6e0c7aebc43e63474f3",
+  "durationMs": 195796,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "configurer l'alias eza dans .zshrc plutôt que .bashrc",
+      "anchor": "install-eza",
+      "reason": "not answered: Only links to another article for ZSH-specific setup; no .zshrc steps shown.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:34:33.265Z",
+    "articleHash": "2759b1c3e17c16885bf3a19f0d561d0eb3995c1f",
+    "questionsHash": "080b9c048599aa44",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "eza est-il le successeur de exa pour remplacer ls ?",
@@ -13,7 +31,7 @@
     },
     {
       "question": "comment configurer un alias pour utiliser eza à la place de ls",
-      "anchor": ""
+      "anchor": "install-eza"
     },
     {
       "question": "eza : alternative moderne à la commande ls sous Linux",
@@ -25,11 +43,11 @@
     },
     {
       "question": "comment afficher un header et des dates au format long-iso avec eza",
-      "anchor": "result"
+      "anchor": "install-eza"
     },
     {
       "question": "alias ls vers eza pour grouper les dossiers en premier",
-      "anchor": "result"
+      "anchor": "install-eza"
     },
     {
       "question": "tester eza dans un container Docker jetable sans installation locale",
@@ -45,10 +63,6 @@
     },
     {
       "question": "installer eza sur son poste de développement",
-      "anchor": "install-eza"
-    },
-    {
-      "question": "configurer l'alias eza dans .zshrc plutôt que .bashrc",
       "anchor": "install-eza"
     },
     {

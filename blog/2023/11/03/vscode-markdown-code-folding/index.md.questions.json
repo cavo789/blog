@@ -1,32 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T06:47:55.421Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:06:52.865Z",
   "source": "index.md",
   "sourceHash": "8cf2263378d4a3187a50f7f23499a74e562f5ce5",
+  "durationMs": 18267,
+  "rejected": [
+    {
+      "question": "custom foldable regions vscode markdown",
+      "anchor": "",
+      "reason": "not answered: article only links to another page for the answer",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "vscode markdown no folding toggle in settings",
+      "anchor": "",
+      "reason": "not answered: article does not discuss a settings toggle for folding",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:36:53.597Z",
+    "articleHash": "3fc1d08a747a520c97eb94b1c76fde474e11fd2f",
+    "questionsHash": "e468a0f804c9bd84",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I enable code folding in VSCode Markdown?",
+      "question": "markdown code folding not working vscode",
       "anchor": ""
     },
     {
-      "question": "Why might code folding not be working in VSCode's Markdown editor?",
+      "question": "why can't I fold code blocks in the markdown editor",
       "anchor": ""
     },
     {
-      "question": "What is the built-in extension that powers code folding in VSCode Markdown?",
+      "question": "vscode markdown sticky scroll disappeared",
       "anchor": ""
     },
     {
-      "question": "How can I enable code blocks and headings folding in VSCode's Markdown editor?",
+      "question": "enable markdown language features extension to fix folding",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using code folding in VSCode's Markdown editor?",
+      "question": "no fold arrows next to headings in markdown vscode",
       "anchor": ""
     },
     {
-      "question": "How can I troubleshoot why code folding is not working in VSCode's Markdown editor?",
+      "question": "markdown editor folding broken after vscode update",
+      "anchor": ""
+    },
+    {
+      "question": "how to make code blocks collapsible in markdown vscode",
+      "anchor": ""
+    },
+    {
+      "question": "markdown sticky scroll and code folding both stopped working",
       "anchor": ""
     }
   ]

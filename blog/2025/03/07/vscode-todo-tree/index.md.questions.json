@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:07.244Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:43:22.414Z",
   "source": "index.md",
   "sourceHash": "fb17c9416b3dccd67dc89e8ab885e44d0efb6a87",
+  "durationMs": 45748,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:49:08.770Z",
+    "articleHash": "a135af447d995bf9ed8c49e043947c20a1bbccef",
+    "questionsHash": "d511046b9e7a86ac",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is Todo Tree and how does it work?",
+      "question": "vscode extension show all TODO FIXME in one list",
       "anchor": ""
     },
     {
-      "question": "How can I use the Todo Tree extension in Visual Studio Code?",
+      "question": "how to see all temporary comments across my project in VSCode",
       "anchor": ""
     },
     {
-      "question": "Why should I use the Todo Tree extension?",
+      "question": "todo tree extension vscode sidebar",
       "anchor": ""
     },
     {
-      "question": "What are some common annotations like TODO, FIXME, and TEMPORARY in code?",
+      "question": "forgetting debugging comments in bash scripts need a reminder",
       "anchor": ""
     },
     {
-      "question": "How does Git pre-commit-hooks prevent commits with todo markers?",
+      "question": "vscode aggregate code annotations dashboard",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the Todo Tree extension for Visual Studio Code?",
+      "question": "click todo in vscode and jump to that line of code",
       "anchor": ""
     },
     {
-      "question": "How can I install and use the Todo Tree extension in Visual Studio Code?",
+      "question": "custom todo tags vscode extension beyond FIXME",
       "anchor": ""
     },
     {
-      "question": "What are some additional benefits of using the Todo Tree extension?",
+      "question": "track all TOFIX and TEMPORARY markers in large codebase",
+      "anchor": ""
+    },
+    {
+      "question": "vscode extension that lists every TODO comment in workspace",
+      "anchor": ""
+    },
+    {
+      "question": "where are all my FIXME comments in this project vscode",
       "anchor": ""
     }
   ]

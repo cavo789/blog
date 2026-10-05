@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:11:56.936Z",
-  "durationMs": 156060,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "33456884b39d470130eaa2848552962d510543be",
+  "durationMs": 156060,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:07:42.728Z",
+    "articleHash": "24db55ec2ae25a8ad0650dbc48296c84cb60e6c6",
+    "questionsHash": "425039e1199cff1e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment éviter de perdre les données de son site local quand on arrête et redémarre un container Docker ?",
-      "anchor": ""
+      "anchor": "what-a-volume-changes"
     },
     {
       "question": "docker compose redémarre et le compteur repart de zéro, comment le faire persister ?",
@@ -29,7 +39,7 @@
     },
     {
       "question": "bind mount dossier local et éviter les problèmes de permissions avec .bashrc",
-      "anchor": "mounted-volumes"
+      "anchor": "getting-your-own-files-back-from-a-mounted-volume"
     },
     {
       "question": "Comprendre le fonctionnement interne des volumes Docker",

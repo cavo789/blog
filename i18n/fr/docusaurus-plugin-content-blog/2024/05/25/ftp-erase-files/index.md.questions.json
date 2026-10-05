@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:10:56.169Z",
-  "durationMs": 113912,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "bd3ecbb457a3f565f4d83e5f782cee156753ca2e",
+  "durationMs": 113912,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:25:40.147Z",
+    "articleHash": "6e95bc3dda734d1f23405242d289334cc44e9fb8",
+    "questionsHash": "0d7d94fa702505f2",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "0: comment supprimer un dossier FTP en quelques secondes sans SSH",

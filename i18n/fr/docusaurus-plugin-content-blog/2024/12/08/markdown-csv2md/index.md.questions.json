@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:36:28.012Z",
-  "durationMs": 173855,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8418730cd6ff00ed6169b4ec1aa7f27ac0ad75d1",
+  "durationMs": 173855,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:05:36.760Z",
+    "articleHash": "736c881e3023b9c853f194caf505c187ac6c288d",
+    "questionsHash": "fc3bff81cf04b119",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment convertir du CSV en tableau Markdown avec csv2md",
@@ -13,7 +23,7 @@
     },
     {
       "question": "csv2md délimiteur transposition tableau",
-      "anchor": ""
+      "anchor": "source-code"
     },
     {
       "question": "coller du CSV dans csv2md.avonture.be et obtenir du Markdown",

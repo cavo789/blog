@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:42.479Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:31:57.581Z",
   "source": "index.md",
   "sourceHash": "32551b11d06886c65312a076d7ca7272354d636a",
+  "durationMs": 32263,
+  "rejected": [
+    {
+      "question": "bash tee vs while read for live logging",
+      "anchor": "result",
+      "reason": "not answered: Article never mentions tee or compares it to while read.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:53:44.188Z",
+    "articleHash": "60ba356f744ccbc24cf79389200e15fb30331178",
+    "questionsHash": "608e5784b2503799",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 6
+  },
   "questions": [
     {
-      "question": "How can I make Bash commands output to both the console and a log file simultaneously?",
-      "anchor": ""
-    },
-    {
-      "question": "What is the purpose of running a command with `tee` in Bash?",
-      "anchor": "result"
-    },
-    {
-      "question": "How does the `tee` command work to display output on both the console and a log file simultaneously?",
+      "question": "bash command output to console and log file at same time",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the difference between using `echo` and `tee` in Bash for outputting to the console and a log file simultaneously?",
-      "anchor": "result"
-    },
-    {
-      "question": "How can I use the `tee` command to display a list of files recursively in a directory on both the console and a log file?",
+      "question": "bash long running command show progress on screen and log",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is the main purpose of using `tee` in Bash for outputting to both the console and a log file simultaneously?",
-      "anchor": "result"
-    },
-    {
-      "question": "How can I use the `tee` command to display the output of a long-running command on both the console and a log file simultaneously, ensuring that the user is aware that the script is doing something?",
+      "question": "bash script cron log file and console output together",
       "anchor": "why-it-works"
     },
     {
-      "question": "What are some best practices for using `tee` in Bash to ensure that the output is displayed correctly on both the console and a log file simultaneously?",
-      "anchor": "result"
+      "question": "echo bash output to both terminal and logfile simultaneously",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "bash script shows output only after command finishes how to fix",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "real-time line by line bash output to screen and file",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "while read loop bash echo and append file each line",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "why does my bash redirect buffer output until end",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "bash pipe to while loop line by line no buffering",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "bash while read -r line echo append logfile",
+      "anchor": "why-it-works"
     }
   ]
 }

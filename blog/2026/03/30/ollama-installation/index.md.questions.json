@@ -1,57 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:55:22.345Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:49:24.959Z",
   "source": "index.md",
   "sourceHash": "b253c863d0bf4b3a14c55f0df44e461a818fcdfc",
+  "durationMs": 28091,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:43:55.622Z",
+    "articleHash": "0d02d375b995f2815ab22bcacac81c211b6b20b4",
+    "questionsHash": "6ae18717f3b0e048",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I install Ollama locally using Docker?",
-      "anchor": "canirunai"
-    },
-    {
-      "question": "What is the command to run an LLM model in Ollama?",
-      "anchor": "wslconfig-file"
-    },
-    {
-      "question": "Can I use a local LLM for code autocompletion and refactoring?",
-      "anchor": "should-i-speak-english-with-the-model"
-    },
-    {
-      "question": "How do I download an LLM model using Docker?",
-      "anchor": "installing-and-running-ollama"
-    },
-    {
-      "question": "What are the different types of LLM models available in Ollama?",
-      "anchor": "do-you-need-a-local-llm"
-    },
-    {
-      "question": "How does Ollama handle memory usage and free up RAM when not in use?",
-      "anchor": "remove-a-model"
-    },
-    {
-      "question": "What is the difference between using a terminal and typing questions directly on the command line with Ollama?",
+      "question": "run LLM locally for free no API quota docker",
       "anchor": ""
     },
     {
-      "question": "How can I integrate Ollama tools into my workflow using Open WebUI and VSCode extensions?",
-      "anchor": "using-a-vscode-extension"
-    },
-    {
-      "question": "What are some privacy benefits of running a local LLM on your host?",
-      "anchor": "do-you-need-a-local-llm"
-    },
-    {
-      "question": "How can I automate tasks without worrying about reaching quota limits when using Ollama?",
-      "anchor": "should-i-speak-english-with-the-model"
-    },
-    {
-      "question": "What are some use cases for running a local LLM on your host?",
+      "question": "docker exec ollama run llama3.1 terminal",
       "anchor": "try-it-in-your-terminal"
     },
     {
-      "question": "How can I remove a model from my local installation of Ollama?",
+      "question": "can I ask questions in French to ollama",
+      "anchor": "should-i-speak-english-with-the-model"
+    },
+    {
+      "question": "local LLM privacy keep codebase off AI servers",
+      "anchor": "do-you-need-a-local-llm"
+    },
+    {
+      "question": "install ollama with docker-compose",
+      "anchor": "installing-and-running-ollama"
+    },
+    {
+      "question": "ollama pull model how much RAM do I need",
+      "anchor": "download-an-llm-model"
+    },
+    {
+      "question": "ollama web interface browser UI",
+      "anchor": "using-a-web-interface"
+    },
+    {
+      "question": "VSCode Continue extension connect ollama local model",
+      "anchor": "using-a-vscode-extension"
+    },
+    {
+      "question": "free code autocompletion local LLM no cloud",
+      "anchor": "using-autocompletion"
+    },
+    {
+      "question": "ollama stop free up RAM",
       "anchor": "freeing-up-ram-with-ollama-stop"
+    },
+    {
+      "question": "wslconfig set memory limit for ollama docker container",
+      "anchor": "wslconfig-file"
     }
   ]
 }

@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:53:27.402Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T22:07:44.084Z",
   "source": "index.md",
   "sourceHash": "bda6a4e69ee5467618f18aaa9fb89de4b6e363af",
+  "durationMs": 35875,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T09:00:18.968Z",
+    "articleHash": "1739ed684c3a56f292afffee830c79205496378c",
+    "questionsHash": "1beb8ec586df493a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What does ai-test do?",
+      "question": "ollama generate missing unit tests from terminal",
+      "anchor": ""
+    },
+    {
+      "question": "one command bats test suite from a shell script local llm",
       "anchor": "what-ai-test-does-for-you"
     },
     {
-      "question": "Why should I use ai-test?",
-      "anchor": "why-it-works"
+      "question": "how does ai-test detect which test cases are already covered",
+      "anchor": "a-real-script-and-the-gaps-it-fills"
     },
     {
-      "question": "How do I install ai-test?",
+      "question": "ai-test zsh function install jq ollama docker dependencies",
       "anchor": "installing-it"
     },
     {
-      "question": "What is the ai-test command?",
+      "question": "ai command picker list all registered zsh functions",
       "anchor": "one-entry-point-ai"
     },
     {
-      "question": "Can I run ai-test without installing a test runner?",
+      "question": "append only the missing pest test cases to an existing test file",
+      "anchor": "a-real-script-and-the-gaps-it-fills"
+    },
+    {
+      "question": "same ai-test command generate pytest and pest tests locally",
+      "anchor": "the-same-command-in-php-and-in-python"
+    },
+    {
+      "question": "prompt instruction make local llm output only uncovered test cases",
+      "anchor": "the-logic-step-by-step"
+    },
+    {
+      "question": "where does ai-test save the generated test file for bats pest pytest",
+      "anchor": "where-the-file-gets-saved"
+    },
+    {
+      "question": "run bats tests in docker without installing bats",
       "anchor": "running-the-suite-without-installing-a-test-runner"
     },
     {
-      "question": "How can I write tests for code I haven't written yet?",
+      "question": "write bash script first then generate tests with local llm",
       "anchor": "write-for-the-test-you-havent-written-yet"
     },
     {
-      "question": "What model should I use with ai-test?",
+      "question": "which ollama model best for generating unit tests",
       "anchor": "choosing-your-model"
-    },
-    {
-      "question": "Where are generated tests saved?",
-      "anchor": "where-the-file-gets-saved"
     }
   ]
 }

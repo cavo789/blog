@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:53:19.338Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:19:12.613Z",
   "source": "index.md",
   "sourceHash": "13e8427e8b554ef7603f56720bf957614bb5deb5",
+  "durationMs": 35748,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:41:20.868Z",
+    "articleHash": "7f3b67a1c442b52cf3c594619fe2468bc3dd1109",
+    "questionsHash": "57aeecab9db1dcf7",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What is Fuzzy Finder?",
+      "question": "fzf fuzzy finder terminal what it does",
       "anchor": ""
     },
     {
-      "question": "How does CTRL + R work in the console with Fuzzy Finder?",
+      "question": "fzf docker pre-seeded history git clone search",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What are the keybindings available with Fuzzy Finder?",
-      "anchor": "keybindings"
-    },
-    {
-      "question": "What are some examples of using Fuzzy Finder for file selection?",
-      "anchor": "getting-a-list-of-files"
-    },
-    {
-      "question": "How does Fuzzy Finder enhance the history search in the console?",
+      "question": "install fzf bash script",
       "anchor": "installation"
     },
     {
-      "question": "Can you explain how to install Fuzzy Finder and its key bindings?",
+      "question": "fzf history search letters any order not sequential",
       "anchor": "playing-with-the-history"
     },
     {
-      "question": "What are some real-world applications of using Fuzzy Finder in the context of Docker?",
-      "anchor": ""
+      "question": "improve CTRL+R reverse search shell",
+      "anchor": "playing-with-the-history"
     },
     {
-      "question": "How does Fuzzy Finder handle searching for commands in the console history?",
+      "question": "fzf pick file pass to cat command",
+      "anchor": "getting-a-list-of-files"
+    },
+    {
+      "question": "fuzzy file picker subdirectories terminal",
+      "anchor": "getting-a-list-of-files"
+    },
+    {
+      "question": "fzf keybindings TAB multi-select",
+      "anchor": "keybindings"
+    },
+    {
+      "question": "fzf keyboard navigation up down filter",
+      "anchor": "getting-a-list-of-files"
+    },
+    {
+      "question": "run fzf in docker container no setup",
       "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "fzf install restart terminal config",
+      "anchor": "installation"
+    },
+    {
+      "question": "replace basic history search linux terminal",
+      "anchor": "playing-with-the-history"
     }
   ]
 }

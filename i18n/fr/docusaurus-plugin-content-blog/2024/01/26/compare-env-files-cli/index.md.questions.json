@@ -3,16 +3,40 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:39:13.818Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "48221db45c981b65b11c93e0b647909c1663aea9",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "intégrer la comparaison .env dans le workflow git",
+      "anchor": "conclusion",
+      "reason": "not answered: Only a passing suggestion to paste before commit; no git integration shown.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "automatiser la vérification de .env.example avant commit",
+      "anchor": "conclusion",
+      "reason": "not answered: No automation steps (hooks, CI) provided; only a manual suggestion.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:45:54.866Z",
+    "articleHash": "eea608f0d623693d2020f627650e31871ac54b9c",
+    "questionsHash": "a9217855bbc72d1c",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": ".env et .env.example désynchronisés comment les comparer",
-      "anchor": ""
+      "anchor": "the-one-liner-and-its-output"
     },
     {
       "question": "commande linux pour vérifier les variables d'environnement manquantes",
-      "anchor": ""
+      "anchor": "the-one-liner-and-its-output"
     },
     {
       "question": "commande bash diff grep sort pour comparer .env",
@@ -37,14 +61,6 @@
     {
       "question": "ajouter une clé dans .env et vérifier la sortie de diff",
       "anchor": "reproduce-it"
-    },
-    {
-      "question": "intégrer la comparaison .env dans le workflow git",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "automatiser la vérification de .env.example avant commit",
-      "anchor": "conclusion"
     }
   ]
 }

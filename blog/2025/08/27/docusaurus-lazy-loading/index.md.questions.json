@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:59:25.738Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:13:37.317Z",
   "source": "index.md",
   "sourceHash": "aa00dadc3fac732891f8a52bbac3bb3b044b1eac",
+  "durationMs": 34378,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:12:43.993Z",
+    "articleHash": "b8aafd81d3c59a972b703ee9ddb2cb6ccc4a25d8",
+    "questionsHash": "7517b7d4c5b52877",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How can I enable lazy loading for images in Docusaurus?",
+      "question": "docusaurus lazy load images",
       "anchor": ""
     },
     {
-      "question": "What is lazy loading and why is it important when working with Docusaurus?",
+      "question": "how to add loading=lazy to all img tags in docusaurus",
       "anchor": ""
     },
     {
-      "question": "How do I modify the rendering of <img> tags in Docusaurus to include lazy loading?",
+      "question": "docusaurus MDXComponents.js override img rendering",
       "anchor": ""
     },
     {
-      "question": "What are some additional attributes that can be applied to images when using lazy loading with Docusaurus?",
+      "question": "docusaurus blog images loading eagerly performance fix",
       "anchor": ""
     },
     {
-      "question": "How do I check if lazy loading is working correctly on my Docusaurus site?",
+      "question": "docusaurus customize img tag without creating a component",
       "anchor": ""
     },
     {
-      "question": "What are some best practices for implementing lazy loading in Docusaurus?",
+      "question": "docusaurus markdown images lazy load static site generation",
       "anchor": ""
     },
     {
-      "question": "How can I integrate custom styles with lazy loaded images in Docusaurus?",
+      "question": "docusaurus img tag extra attributes css style",
       "anchor": ""
     },
     {
-      "question": "What are some alternative approaches to implementing lazy loading for images in Docusaurus beyond using the <img> tag?",
+      "question": "docusaurus many articles slow page load images",
+      "anchor": ""
+    },
+    {
+      "question": "override docusaurus image generation mdx",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus MDXComponents img mapping lazy",
       "anchor": ""
     }
   ]

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:20.812Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:57:45.970Z",
   "source": "index.md",
   "sourceHash": "374aa192874a3da4b9a130efd8e699acaf4c8144",
+  "durationMs": 42770,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:01:29.922Z",
+    "articleHash": "348b28b37a8b63d48186dc527a67f805203d7629",
+    "questionsHash": "f47ac4279a58d0a7",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do I authenticate with Docker Hub in my GitLab CI/CD pipeline?",
+      "question": "gitlab ci pull private docker image docker hub",
+      "anchor": ""
+    },
+    {
+      "question": "docker pull authentication failed in gitlab pipeline private image",
+      "anchor": ""
+    },
+    {
+      "question": "why read-only docker hub token is safe for ci pipeline",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is a read-only token and how do I create one for accessing private images on Docker Hub?",
-      "anchor": "create-a-token"
-    },
-    {
-      "question": "How can I set up protected, masked CI/CD variables in GitLab to authenticate with Docker Hub?",
+      "question": "gitlab ci full debug tracing echo docker token variable",
       "anchor": "create-two-cicd-variables-in-your-repository-page"
     },
     {
-      "question": "What is the purpose of a read-only token when accessing private images on Docker Hub?",
+      "question": "docker hub access token read-only vs read/write private image access",
       "anchor": "create-a-token"
     },
     {
-      "question": "How do I connect to a private Docker image in my GitLab CI/CD pipeline using a read-only token and variables?",
+      "question": "docker hub create token for gitlab ci private images",
+      "anchor": "create-a-token"
+    },
+    {
+      "question": "gitlab ci variables docker credentials group level vs project level",
+      "anchor": "create-two-cicd-variables-in-your-repository-page"
+    },
+    {
+      "question": "gitlab ci/cd variable protected masked docker token hidden from logs",
+      "anchor": "create-two-cicd-variables-in-your-repository-page"
+    },
+    {
+      "question": "gitlab-ci.yml docker login pull private image syntax",
       "anchor": "your-gitlab-ciyml-file"
     },
     {
-      "question": "What are the benefits of using a read-only token for accessing private images on Docker Hub?",
-      "anchor": "create-a-token"
-    },
-    {
-      "question": "How can I create a new token in Docker Hub and what scope should I select to access private images?",
-      "anchor": "create-a-token"
-    },
-    {
-      "question": "What are the steps to add protected, masked CI/CD variables in GitLab for authentication with Docker Hub?",
-      "anchor": "create-two-cicd-variables-in-your-repository-page"
+      "question": "gitlab ci private docker image without committing credentials to repo",
+      "anchor": "why-it-works"
     }
   ]
 }

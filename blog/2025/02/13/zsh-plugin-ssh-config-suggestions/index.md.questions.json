@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:17.737Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:39:20.075Z",
   "source": "index.md",
   "sourceHash": "2723d6d7f582802eef5f627d32239f2dab638251",
+  "durationMs": 49553,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:46:44.278Z",
+    "articleHash": "7c65a05eb7e3ddbb083ac7b3e1f923861d119e03",
+    "questionsHash": "0d977442962a41ea",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What are SSH autosuggestions in ZSH?",
-      "anchor": "why-it-works"
-    },
-    {
-      "question": "How do I install the zsh-ssh-config-suggestions plugin?",
-      "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
-    },
-    {
-      "question": "What is the purpose of the zsh-ssh-config-suggestions plugin?",
+      "question": "zsh ssh autosuggest server aliases from config file",
       "anchor": ""
     },
     {
-      "question": "Why use SSH autosuggestions in ZSH?",
+      "question": "stop typing ssh server ip every time zsh",
+      "anchor": ""
+    },
+    {
+      "question": "does zsh-ssh-config-suggestions need a separate host list to maintain",
       "anchor": "why-it-works"
     },
     {
-      "question": "How does the zsh-ssh-config-suggestions plugin work?",
+      "question": "zsh plugin reads ~/.ssh/config aliases into completion system",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker demo zsh ssh plugin without connecting to real server",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What is a config file for SSH connections?",
-      "anchor": ""
+      "question": "dockerfile oh-my-zsh ssh config suggestions pre-baked aliases",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "How can I configure the zsh-ssh-config-suggestions plugin?",
+      "question": "install zsh-ssh-config-suggestions oh-my-zsh clone repo",
       "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
     },
     {
-      "question": "What are the benefits of using the zsh-ssh-config-suggestions plugin?",
-      "anchor": "why-it-works"
+      "question": "add zsh plugin to .zshrc plugins array for ssh suggestions",
+      "anchor": "installation-of-the-zsh-ssh-config-suggestions-plugin"
+    },
+    {
+      "question": "ssh + tab show all configured aliases zsh",
+      "anchor": "use-it"
+    },
+    {
+      "question": "how to list all ssh config aliases by pressing tab after typing ssh",
+      "anchor": "use-it"
     }
   ]
 }

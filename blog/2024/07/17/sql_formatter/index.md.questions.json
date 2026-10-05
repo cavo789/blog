@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:45.489Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:43:21.338Z",
   "source": "index.md",
   "sourceHash": "024213a61e1dc711065b9540e5f4cd9f2b2e9506",
+  "durationMs": 21515,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:04:08.789Z",
+    "articleHash": "9a1d60a36f2f2b057a7a7127083e3400d53be187",
+    "questionsHash": "a90437c5eb5d5567",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How can I format legacy SQL queries?",
+      "question": "sql formatter single line query",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the SQL Formatter tool?",
+      "question": "how to make unreadable legacy sql readable",
       "anchor": ""
     },
     {
-      "question": "Can you explain how to use the SQL Formatter tool?",
+      "question": "free self-hosted sql beautifier",
       "anchor": ""
     },
     {
-      "question": "Why is it important to format SQL queries before reviewing them?",
+      "question": "sql code reformat copy paste tool",
       "anchor": ""
     },
     {
-      "question": "What are some other tools available for formatting code in different languages?",
+      "question": "format ugly sql before code review",
       "anchor": ""
     },
     {
-      "question": "How does the SQL Formatter tool work with legacy SQL queries?",
+      "question": "sql formatter github source",
       "anchor": ""
     },
     {
-      "question": "Can you provide a demo of the SQL Formatter tool?",
+      "question": "beautify old database queries all on one line",
       "anchor": ""
     },
     {
-      "question": "What are some other self-hosted tools similar to the SQL Formatter?",
+      "question": "how to indent sql query with no line breaks",
+      "anchor": ""
+    },
+    {
+      "question": "self-hosted sql formatting tool like json prettier",
+      "anchor": ""
+    },
+    {
+      "question": "sql beautifier free online demo",
       "anchor": ""
     }
   ]

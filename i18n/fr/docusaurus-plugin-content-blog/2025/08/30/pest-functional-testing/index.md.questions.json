@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:25:43.140Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "2a018e172511e431eebeece7fb5f38000b4e5dd8",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "commande pour générer le Makefile de Pest",
+      "anchor": "lets-create-a-temporary-project",
+      "reason": "not answered: No generation command; the Makefile is written manually.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:45:59.925Z",
+    "articleHash": "1f3f65f46d55d7b35bbf5ba36adc5f641e29afac",
+    "questionsHash": "9c82e3f32a0177c1",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment configurer un environnement Docker pour les tests navigateur avec Pest v4 ?",
@@ -16,10 +34,6 @@
     },
     {
       "question": "créer un Dockerfile et un Makefile pour initialiser Pest dans un dossier temporaire",
-      "anchor": "lets-create-a-temporary-project"
-    },
-    {
-      "question": "commande pour générer le Makefile de Pest",
       "anchor": "lets-create-a-temporary-project"
     },
     {
@@ -52,7 +66,7 @@
     },
     {
       "question": "configurer les captures d'écran de Pest lors d'un échec de test",
-      "anchor": "in-depth-skip-this-if-you-just-want-to-use-it"
+      "anchor": "run-tests"
     }
   ]
 }

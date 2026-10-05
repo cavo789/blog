@@ -1,37 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:15.299Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:30:51.601Z",
   "source": "index.md",
   "sourceHash": "29dd7c933f798a3d33f82420793327dab5321183",
+  "durationMs": 22859,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:58:28.162Z",
+    "articleHash": "7ece30ee81c903a09d44c31aee61ffd55748ade9",
+    "questionsHash": "69fd1d11c58f2515",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I modify php.ini inside a Docker container?",
+      "question": "docker php.ini override volume mount",
+      "anchor": "step-one---update-your-yaml-file"
+    },
+    {
+      "question": "joomla docker maximum upload size error fix",
       "anchor": ""
     },
     {
-      "question": "What is the process to update php.ini in a Dockerized PHP site?",
+      "question": "how to change php upload limits in a dockerized site",
       "anchor": ""
     },
     {
-      "question": "How can I override the maximum file upload size in a Dockerized PHP site?",
-      "anchor": ""
+      "question": "compose.yaml volume mount php.ini over container default",
+      "anchor": "step-one---update-your-yaml-file"
     },
     {
-      "question": "What is the correct way to update php.ini inside a Docker container using a compose.yaml volume mount?",
-      "anchor": ""
+      "question": "add php.ini volume mapping to docker-compose file",
+      "anchor": "step-one---update-your-yaml-file"
     },
     {
-      "question": "How do I modify the php.ini file in a Dockerized PHP site to increase the maximum upload size?",
-      "anchor": ""
+      "question": "create custom php.ini for docker container upload limits",
+      "anchor": "step-two---create-your-own-phpini-file"
     },
     {
-      "question": "What is the process to update the php.ini file inside a Docker container using a compose.yaml volume mount?",
-      "anchor": ""
+      "question": "php.ini upload_max_filesize post_max_size docker",
+      "anchor": "step-two---create-your-own-phpini-file"
     },
     {
-      "question": "What is the correct way to update the php.ini file inside a Docker container using a compose.yaml volume mount?",
-      "anchor": ""
+      "question": "where to place php.ini file for docker volume mount",
+      "anchor": "step-two---create-your-own-phpini-file"
+    },
+    {
+      "question": "docker compose down up after editing php.ini",
+      "anchor": "step-three---restart-your-container"
+    },
+    {
+      "question": "does docker container reload php.ini on restart",
+      "anchor": "step-three---restart-your-container"
     }
   ]
 }

@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:18:05.132Z",
   "source": "index.mdx",
-  "locale": "fr",
   "sourceHash": "06de5b3869a03913a1d102954d0a8a91906515cd",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:43:14.419Z",
+    "articleHash": "5f2edabc2c9fbb01fc32f2443b093e8cdf3265f6",
+    "questionsHash": "6486f4da843d326f",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment intégrer les commentaires et les compteurs bluesky dans un blog docusaurus",
@@ -12,7 +22,7 @@
     },
     {
       "question": "facepile avatars fusionnés pour regrouper likes reposts et commentaires bluesky",
-      "anchor": "what-youll-get"
+      "anchor": "46-our-component-for-getting-the-number-of-likes-and-reposts"
     },
     {
       "question": "quelle est la structure du fichier composant react générique pour bluesky",
@@ -28,7 +38,7 @@
     },
     {
       "question": "gérer la déduplication et le tri des avatars likers reposteurs commentateurs bluesky",
-      "anchor": "46-our-component-for-getting-the-number-of-likes-and-reposts"
+      "anchor": "26-the-shared-data-fetching-hook"
     },
     {
       "question": "comment récupérer et afficher la liste complète des commentaires bluesky sur un article",

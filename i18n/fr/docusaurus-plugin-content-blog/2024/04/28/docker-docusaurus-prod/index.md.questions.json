@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:53:00.243Z",
-  "durationMs": 153239,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "da809f6abc2150a2e9789c8eefceb2a9fd1b6674",
+  "durationMs": 153239,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:20:58.383Z",
+    "articleHash": "4709d1f7ea29ab2b695c5550b2c102a9842fb020",
+    "questionsHash": "69723e97f2c48473",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment empaqueter un site Docusaurus complet dans une image Docker autonome ?",
@@ -29,7 +39,7 @@
     },
     {
       "question": "exécuter l'image Docker Docusaurus après compilation",
-      "anchor": "and-use-it"
+      "anchor": "run-the-image-ie-create-a-container-and-run-the-site"
     },
     {
       "question": "Quelle commande docker run pour exposer le site en local ?",

@@ -2,14 +2,32 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:19:50.972Z",
-  "durationMs": 161681,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b3fd4fa962fb72760169ec3aa874acc10155e742",
+  "durationMs": 161681,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "lancer rgf pour naviguer dans les résultats avec fzf",
+      "anchor": "rgf--interactive-search-with-fzf",
+      "reason": "not answered: Article renvoie vers un autre article pour la configuration réelle",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:29:21.853Z",
+    "articleHash": "2682b967f26afdf252f22d9e10a4828178048cc1",
+    "questionsHash": "63e6732001de140e",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Pourquoi passer à ripgrep sur WSL2 au lieu de grep ?",
-      "anchor": ""
+      "anchor": "ripgrep-vs-grep--a-side-by-side-look"
     },
     {
       "question": "ripgrep ignore automatiquement les fichiers binaires et le .gitignore",
@@ -22,10 +40,6 @@
     {
       "question": "configurer les alias rg dans ~/.zshrc",
       "anchor": "zsh-setup--zshrc"
-    },
-    {
-      "question": "lancer rgf pour naviguer dans les résultats avec fzf",
-      "anchor": "rgf--interactive-search-with-fzf"
     },
     {
       "question": "extraire toute la dette technique avec rgtodo",

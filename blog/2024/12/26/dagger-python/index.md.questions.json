@@ -1,57 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:06.129Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:26:41.226Z",
   "source": "index.md",
   "sourceHash": "c77003630ee08c64372d4bdaf23111da2a241978",
+  "durationMs": 49518,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:38:57.750Z",
+    "articleHash": "d2b39ccc33c80f13c0b30554fc03ad4644ce157b",
+    "questionsHash": "630b78198556c5e4",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 5
+  },
   "questions": [
     {
-      "question": "What is Dagger.io?",
-      "anchor": ""
-    },
-    {
-      "question": "How does Dagger.io automate CI workflows?",
-      "anchor": "the-result-a-working-pipeline-no-yaml-no-push"
-    },
-    {
-      "question": "Why use Dagger.io for CI/CD?",
+      "question": "stop pushing to CI just to check pylint errors locally",
       "anchor": "why-it-works"
     },
     {
-      "question": "How do I install Dagger.io?",
-      "anchor": "installation"
+      "question": "dagger pipeline python functions no yaml",
+      "anchor": "the-result-a-working-pipeline-no-yaml-no-push"
     },
     {
-      "question": "What are the objectives of Dagger.io?",
-      "anchor": "our-objectives"
+      "question": "why does dagger run identical code locally and on the gitlab runner",
+      "anchor": "why-it-works"
     },
     {
-      "question": "Why do we want Dagger.io?",
-      "anchor": "we-want-dagger"
-    },
-    {
-      "question": "How do I daggerize my application with Dagger.io?",
+      "question": "dagger init python project docker image from scratch",
       "anchor": "daggerize-our-application"
     },
     {
-      "question": "What are the demos of Dagger.io?",
-      "anchor": "more-demos"
+      "question": "python CI pipeline pylint black mypy ruff gitlab",
+      "anchor": "towards-the-universe-and-infinity"
     },
     {
-      "question": "How do I create a linting function with Dagger.io?",
+      "question": "how to daggerize an existing python repo",
+      "anchor": "daggerize-our-application"
+    },
+    {
+      "question": "dagger python function pylint step",
       "anchor": "create-our-linting-function"
     },
     {
-      "question": "How do I create a makefile for my pipeline with Dagger.io?",
+      "question": "makefile target dagger local lint",
       "anchor": "create-a-makefile"
     },
     {
-      "question": "How do I format the code using Black with Dagger.io?",
+      "question": "dagger black code formatter pipeline",
       "anchor": "formatting-the-code-using-black"
     },
     {
-      "question": "What is towards the universe and infinity in this article?",
-      "anchor": "towards-the-universe-and-infinity"
+      "question": "how dagger executes steps inside a container",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "gitlab CI dagger runner docker socket",
+      "anchor": "implementing-a-gitlab-ci-using-dagger"
+    },
+    {
+      "question": "dagger replace github actions for python",
+      "anchor": "why-it-works"
     }
   ]
 }

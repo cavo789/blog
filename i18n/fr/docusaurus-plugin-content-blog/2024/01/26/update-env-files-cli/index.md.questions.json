@@ -3,20 +3,44 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:41:00.468Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "837dc688482029af45328db128e5a42de46d81db",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "où coller la fonction updateEnv pour qu'elle soit permanente",
+      "anchor": "the-function",
+      "reason": "not answered: Article dit copier/coller en console, ne dit pas où la rendre permanente.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "workflow déploiement .env après docker compose",
+      "anchor": "conclusion",
+      "reason": "not answered: Aucune mention de docker compose dans l'article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:46:55.572Z",
+    "articleHash": "04c8de2c618a260ab627c7630a9b6524c401d287",
+    "questionsHash": "8d013dd221978541",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "mise à jour automatique fichier .env sans éditeur",
-      "anchor": ""
+      "anchor": "what-updateenv-does-for-you"
     },
     {
       "question": "déployer variables d'environnement cohérentes sur plusieurs serveurs linux",
-      "anchor": ""
+      "anchor": "conclusion"
     },
     {
       "question": "updateEnv bash retour statut mise à jour variables",
-      "anchor": "what-updateenv-does-for-you"
+      "anchor": "why-it-works"
     },
     {
       "question": "comment vérifier quelles clés ont été ajoutées ou modifiées après updateEnv",
@@ -35,16 +59,8 @@
       "anchor": "the-function"
     },
     {
-      "question": "où coller la fonction updateEnv pour qu'elle soit permanente",
-      "anchor": "the-function"
-    },
-    {
       "question": "drapeau skip pour ne pas créer variable absente .env",
       "anchor": "adding-a-skip-boolean"
-    },
-    {
-      "question": "workflow déploiement .env après docker compose",
-      "anchor": "conclusion"
     }
   ]
 }

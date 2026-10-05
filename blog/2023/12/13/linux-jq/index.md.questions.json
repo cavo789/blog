@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-30T08:11:01.849Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:23:53.820Z",
   "source": "index.md",
   "sourceHash": "76a2d64b07605c757f9cc7b000f7801668604673",
+  "durationMs": 42177,
+  "rejected": [
+    {
+      "question": "jq format LLM json response in bash script",
+      "anchor": "conclusion",
+      "reason": "not answered: Only mentioned in passing with a link to another post.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:51:54.928Z",
+    "articleHash": "78d361a56895e589087bb49d1e8918e40ffe7e24",
+    "questionsHash": "fb20d30f35e293c2",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What is jq used for in Linux?",
+      "question": "jq command line JSON processor pipe API response linux",
       "anchor": ""
     },
     {
-      "question": "How does jq pretty-print JSON data?",
+      "question": "same curl command add jq readable output",
       "anchor": "the-same-answer-twice"
     },
     {
-      "question": "What is the filter expression to retrieve a specific node from JSON using jq?",
+      "question": "jq filter .results[0].name extract specific node",
       "anchor": "filtering-the-output"
     },
     {
-      "question": "How do I see an example of jq in action with Docker?",
+      "question": "docker container jq preinstalled static json no network",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "What is the command to install jq on my system?",
+      "question": "check if jq installed linux command",
       "anchor": "installing-jq"
     },
     {
-      "question": "What are some free JSON APIs that can be used with jq?",
-      "anchor": "lets-play"
+      "question": "jq pretty print json without filter randomuser.me",
+      "anchor": "the-same-answer-twice"
     },
     {
-      "question": "How do I use jq without any arguments to prettify JSON output?",
-      "anchor": "conclusion"
+      "question": "how to extract single field from nested JSON array with jq",
+      "anchor": "filtering-the-output"
     },
     {
-      "question": "What are some practical applications of jq in shell scripting and debugging Docker containers?",
+      "question": "Dockerfile install jq sample.json build run",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "linux shell script JSON manipulation jq utility",
       "anchor": ""
     }
   ]

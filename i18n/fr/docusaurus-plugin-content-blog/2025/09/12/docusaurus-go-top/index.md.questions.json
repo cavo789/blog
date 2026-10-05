@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:37:36.835Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "60eafcea52e42bb93c7c76726cf416e1e71b6e2f",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:49:54.369Z",
+    "articleHash": "d245519519bc2c89aa5fcbb7980a7617da60a8be",
+    "questionsHash": "764c737164442078",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment ajouter un bouton retour en haut sur un blog Docusaurus",
@@ -44,7 +54,7 @@
     },
     {
       "question": "comment redémarrer le container docker après une surcharge de thème",
-      "anchor": "conclusion"
+      "anchor": "overriding-the-blogpostitem-page"
     }
   ]
 }

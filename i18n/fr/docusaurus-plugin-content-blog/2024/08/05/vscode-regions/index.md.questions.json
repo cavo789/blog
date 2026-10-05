@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:59:49.145Z",
-  "durationMs": 174458,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "d3f0e56f8ccf3ae22c3709677cafc9f17221a248",
+  "durationMs": 174458,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:39:13.313Z",
+    "articleHash": "6fafb6c5e3e518866f6f3fd335db9e52861c84cf",
+    "questionsHash": "8568c0301c40015f",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment activer le code folding avec les regions dans vscode",
-      "anchor": ""
+      "anchor": "code-folding-in-php"
     },
     {
       "question": "regions vscode replier blocs logiques sur une ligne",
@@ -41,7 +51,7 @@
     },
     {
       "question": "étendre le folding aux fichiers non supportés par défaut vscode",
-      "anchor": "conclusion"
+      "anchor": "what-to-do-when-vscode-didnt-support-these-tags-by-default"
     }
   ]
 }

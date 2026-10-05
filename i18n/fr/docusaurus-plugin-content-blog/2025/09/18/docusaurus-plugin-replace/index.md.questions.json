@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:40:13.807Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "836c5bab79a165a481ce2e70bfbcc5246d331d0b",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:50:42.942Z",
+    "articleHash": "3915c80182ba8dbb0f7af6b3add750f27ecf9536",
+    "questionsHash": "5395f98a7ffe8561",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment garantir une terminologie cohérente sur un site Docusaurus sans modifier les fichiers Markdown sources ?",
@@ -16,7 +26,7 @@
     },
     {
       "question": "Appliquer un recherche/remplacement sur l'arbre syntaxique de Docusaurus",
-      "anchor": ""
+      "anchor": "the-plugin"
     },
     {
       "question": "Comment structurer un plugin remark qui traverse l'AST Markdown avant le rendu HTML ?",

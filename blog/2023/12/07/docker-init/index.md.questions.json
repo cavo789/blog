@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:51:55.049Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:20:55.123Z",
   "source": "index.md",
   "sourceHash": "b0fb93c7506df8303a5bb649a5aa6b6bbad955f7",
+  "durationMs": 33914,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:49:06.580Z",
+    "articleHash": "b13402845adc49c269e6840b39cf71bd80605d27",
+    "questionsHash": "63797ce3d6e6c11f",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do you create a Docker container with PHP and Apache using Docker Desktop?",
-      "anchor": "composeyaml"
-    },
-    {
-      "question": "What is the purpose of the .dockerignore file when building a Docker image for a PHP application?",
-      "anchor": "dockerignore"
-    },
-    {
-      "question": "How can I run an interactive shell inside a running Docker container?",
-      "anchor": "enter-in-the-container"
-    },
-    {
-      "question": "What is the default port number used by the Docker container for Apache when using PHP with the new Docker init feature?",
-      "anchor": "dockerfile"
-    },
-    {
-      "question": "How do you specify the source folder in the Dockerfile when using the PHP+Apache template?",
-      "anchor": "run-the-container"
-    },
-    {
-      "question": "What is the recommended way to run a PHP script quickly without any generated files at all?",
+      "question": "docker init PHP Apache",
       "anchor": ""
     },
     {
-      "question": "How can I update the Dockerfile to use the correct image and copy the content of the current folder into the container's /html directory?",
+      "question": "containerize PHP app docker init wizard",
+      "anchor": ""
+    },
+    {
+      "question": "docker init compose.yaml PHP build context port",
+      "anchor": "composeyaml"
+    },
+    {
+      "question": "docker init Dockerfile PHP COPY . /var/www/html missing",
       "anchor": "dockerfile"
     },
     {
-      "question": "What is the purpose of the port number specified in the compose.yaml file when using PHP with Apache?",
-      "anchor": "composeyaml"
+      "question": "docker 4.26 init PHP Dockerfile www-data",
+      "anchor": "dockerfile"
+    },
+    {
+      "question": "docker compose up PHP Apache 8080",
+      "anchor": "run-the-container"
+    },
+    {
+      "question": "docker compose exec server bash PHP",
+      "anchor": "enter-in-the-container"
+    },
+    {
+      "question": "docker PHP container www-data home directory listing",
+      "anchor": "enter-in-the-container"
+    },
+    {
+      "question": "docker init .dockerignore PHP files not in image",
+      "anchor": "dockerignore"
+    },
+    {
+      "question": "why docker init excludes compose.yaml Dockerfile from container",
+      "anchor": "dockerignore"
     }
   ]
 }

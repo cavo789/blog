@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T23:24:01.971Z",
-  "durationMs": 156416,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "14e61f8290206dbbdcad100761ebb99b58ec904c",
+  "durationMs": 156416,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:29:13.201Z",
+    "articleHash": "f177400b9ad8dd04234b923da2d4feafbde6f5bd",
+    "questionsHash": "cb0e669fa3536313",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
       "question": "comment configurer Behat avec PHP et Docker pour des tests fonctionnels",
@@ -33,19 +43,19 @@
     },
     {
       "question": "configurer behat.yaml pour Mink et Chrome",
-      "anchor": "behatyaml"
+      "anchor": "installing-the-mink-extension"
     },
     {
       "question": "rédiger un scénario Gherkin dans Blog.feature",
-      "anchor": "blogfeature"
+      "anchor": "writing-your-steps-in-php"
     },
     {
       "question": "paramétrer compose.yaml pour lancer les tests dans Docker",
-      "anchor": "composeyaml"
+      "anchor": "set-up-the-project"
     },
     {
       "question": "où et comment structurer FeatureContext.php pour Behat ?",
-      "anchor": "featurecontextphp"
+      "anchor": "installing-the-mink-extension"
     }
   ]
 }

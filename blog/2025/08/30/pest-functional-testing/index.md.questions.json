@@ -1,53 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:53.457Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:15:04.272Z",
   "source": "index.md",
   "sourceHash": "bc6274212b78c7a509b4543f085fa28be979baba",
+  "durationMs": 57814,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:13:31.720Z",
+    "articleHash": "af5221a7bd6b1bb1f8e1dafb3148922e2ac7ce72",
+    "questionsHash": "0106271e09bed894",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What are functional tests?",
+      "question": "Pest v4 browser testing functional tests",
       "anchor": ""
     },
     {
-      "question": "How does Pest PHP work?",
-      "anchor": ""
-    },
-    {
-      "question": "What is a Docker-based testing environment?",
+      "question": "how to write functional tests with Pest that click buttons and fill forms",
       "anchor": "lets-create-a-temporary-project"
     },
     {
-      "question": "How do I create a Dockerfile for Pest v4?",
+      "question": "Pest v4 no ready Docker image create your own",
+      "anchor": "lets-create-a-temporary-project"
+    },
+    {
+      "question": "pest browser test case script structure",
+      "anchor": "lets-create-a-temporary-project"
+    },
+    {
+      "question": "build docker image for Pest v4 browser testing make build",
       "anchor": "create-the-image"
     },
     {
-      "question": "How do I create a Makefile for easy command execution with Pest v4?",
+      "question": "Pest v4 docker image 2GB slow build",
       "anchor": "create-the-image"
     },
     {
-      "question": "What is the purpose of the `pest.php` script in Pest v4?",
+      "question": "docker run pest container mount tests volume",
       "anchor": "create-the-container"
     },
     {
-      "question": "How do I build a Docker image for Pest v4?",
-      "anchor": "create-the-container"
+      "question": "Pest v4 screenshot on test failure automatically",
+      "anchor": "run-tests"
     },
     {
-      "question": "How do I create a Docker container for Pest v4?",
-      "anchor": "create-the-container"
+      "question": "Pest browser test doesn't stop on failure continues running",
+      "anchor": "run-tests"
     },
     {
-      "question": "How do I run all tests with Pest v4?",
-      "anchor": "create-the-container"
+      "question": "Pest v4 Playwright under the hood",
+      "anchor": "in-depth-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "What is the purpose of the `make build` command in the Dockerfile for Pest v4?",
-      "anchor": "create-the-image"
-    },
-    {
-      "question": "What is the purpose of the `make up` command to create a Docker container for Pest v4?",
-      "anchor": "create-the-container"
+      "question": "why does Pest v4 need NodeJS in Docker",
+      "anchor": "in-depth-skip-this-if-you-just-want-to-use-it"
     }
   ]
 }

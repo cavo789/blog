@@ -2,14 +2,24 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:35:00.657Z",
-  "durationMs": 151071,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "60493b9cf6bd850d9ee930780f6f974d1783853c",
+  "durationMs": 151071,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:16:02.759Z",
+    "articleHash": "8c7683b4ed75b45beb17ddc9936772dafcd47e15",
+    "questionsHash": "c38affa428149729",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "quarto callout encadré tips warnings",
-      "anchor": ""
+      "anchor": "syntax"
     },
     {
       "question": "équivalent admonition Docusaurus dans Quarto",
@@ -17,7 +27,7 @@
     },
     {
       "question": "comment créer des blocs mis en évidence dans un rapport Quarto ?",
-      "anchor": ""
+      "anchor": "syntax"
     },
     {
       "question": "syntaxe callout warning Quarto markdown",

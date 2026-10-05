@@ -2,18 +2,36 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:55:50.042Z",
-  "durationMs": 154699,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "4a7a18889993af2489ae52bee63421bf78e8b711",
+  "durationMs": 154699,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "brancher une cible de vérification de code Python dans un hook pre-commit et la CI",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to other articles; no actual pre-commit or CI config provided.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:10:17.644Z",
+    "articleHash": "3ccdca842abc56084a8e31357f175af3b71a3447",
+    "questionsHash": "09c28475861096e5",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment enchaîner plusieurs outils d'analyse statique Python dans un seul workflow qui s'arrête au premier échec ?",
-      "anchor": ""
+      "anchor": "installation"
     },
     {
       "question": "makefile cible unique neuf vérifications code Python arrêt au premier échec",
-      "anchor": "the-result-one-command-nine-checks-one-clear-failure-point"
+      "anchor": "installation"
     },
     {
       "question": "configuration makefile pour enchaîner Pylint Autoflake et isort",
@@ -42,10 +60,6 @@
     {
       "question": "remplacer Pylint Black et isort par Ruff pour accélérer la chaîne de qualité",
       "anchor": "extra---ruff-a-potential-replacement-for-several-tools"
-    },
-    {
-      "question": "brancher une cible de vérification de code Python dans un hook pre-commit et la CI",
-      "anchor": "conclusion"
     }
   ]
 }

@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T16:45:44.342Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:01:05.774Z",
   "source": "index.md",
   "sourceHash": "35d2c5881ce1d576881b92aa7cf0b14a82d9a108",
+  "durationMs": 29885,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:25:22.169Z",
+    "articleHash": "4660e26ba4df5dbe8d2d57d28b5d7a5202aad56c",
+    "questionsHash": "89ea8abd6c5c4124",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I add Admonitions to my Docusaurus articles?",
-      "anchor": "admonitions"
-    },
-    {
-      "question": "What is inline styling and how can I use it in Docusaurus articles?",
-      "anchor": "inline-style"
-    },
-    {
-      "question": "Can you explain the Highlight component and provide an example of its usage?",
-      "anchor": "highlight-component"
-    },
-    {
-      "question": "How do I highlight specific lines within a code block in my Docusaurus articles?",
-      "anchor": "highlight-lines"
-    },
-    {
-      "question": "What are some best practices for authoring Docusaurus articles?",
+      "question": "docusaurus blog post markdown essentials tips",
       "anchor": ""
     },
     {
-      "question": "How can I add a *Read More* link to my blog post in Docusaurus?",
+      "question": "what features should I use when writing docusaurus articles",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus blog read more link split introduction",
       "anchor": "read-more"
     },
     {
-      "question": "What is the purpose of the **Highlight component** in Docusaurus articles?",
+      "question": "how to add a read more separator in docusaurus blog post",
+      "anchor": "read-more"
+    },
+    {
+      "question": "docusaurus admonition tip warning callout box",
+      "anchor": "admonitions"
+    },
+    {
+      "question": "markdown admonition syntax docusaurus",
+      "anchor": "admonitions"
+    },
+    {
+      "question": "docusaurus inline style span text color",
+      "anchor": "inline-style"
+    },
+    {
+      "question": "change text color inline docusaurus blog",
+      "anchor": "inline-style"
+    },
+    {
+      "question": "docusaurus custom Highlight component colored text",
       "anchor": "highlight-component"
     },
     {
-      "question": "How can I control the tags associated with my Docusaurus articles?",
-      "anchor": ""
+      "question": "create highlight component docusaurus src/components",
+      "anchor": "highlight-component"
+    },
+    {
+      "question": "docusaurus highlight lines code block",
+      "anchor": "highlight-lines"
+    },
+    {
+      "question": "how to show edited lines in docusaurus code block",
+      "anchor": "highlight-lines"
     }
   ]
 }

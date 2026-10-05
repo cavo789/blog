@@ -57,6 +57,7 @@ export -f faq
 export -f questions
 export -f ai-index
 export -f ai-search
+export -f ai-related
 export -f ai-index-fr
 export -f ai-search-fr
 export -f run_ci

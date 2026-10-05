@@ -1,53 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:49.421Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:07:52.387Z",
   "source": "index.md",
   "sourceHash": "5671534b87fef6beaa5d8e87c7d0d8cc4f33004a",
+  "durationMs": 22709,
+  "rejected": [
+    {
+      "question": "keep data persistent docker linux desktop volumes",
+      "anchor": "conclusion",
+      "reason": "not answered: Only mentions volumes in passing, links to another page for details.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:25:38.884Z",
+    "articleHash": "b25fd73e0a600bda7b0a5a5c5d5eee8e4ddc07cb",
+    "questionsHash": "661191398cf9d396",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I run Lubuntu Desktop in Docker on Windows?",
-      "anchor": ""
+      "question": "run linux desktop in docker without vm",
+      "anchor": "result"
     },
     {
-      "question": "What are the steps to create a Dockerfile for running Lubuntu Desktop?",
+      "question": "disposable throwaway linux environment for learning in docker",
       "anchor": "why-it-works"
     },
     {
-      "question": "How do I install and configure VcXsrv on my Windows machine?",
+      "question": "docker container full ubuntu desktop on windows no trace left after",
+      "anchor": "result"
+    },
+    {
+      "question": "how x server renders docker gui output on windows host",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "x11 forwarding docker windows lightweight ubuntu gui",
       "anchor": "step-1---create-the-dockerfile"
     },
     {
-      "question": "What is the purpose of using Docker to run a Linux desktop in a container?",
+      "question": "dockerfile for lubuntu desktop image build",
+      "anchor": "step-1---create-the-dockerfile"
+    },
+    {
+      "question": "vcxsrv one large window setup for docker",
       "anchor": "step-2---install-windows-x-server"
     },
     {
-      "question": "How do I start and wait for the Lubuntu Desktop to display in my Docker container on Windows?",
+      "question": "install x server windows for docker graphical apps",
+      "anchor": "step-2---install-windows-x-server"
+    },
+    {
+      "question": "docker linux desktop container black screen waiting first boot",
       "anchor": "step-3---start-the-container"
     },
     {
-      "question": "What are some alternative methods to run graphical user interfaces in a Docker container without an X Server?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "How can I ensure the display quality when running Lubuntu Desktop in a Docker container on Windows?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some practical applications of running Lubuntu Desktop in a Docker container on Windows?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I troubleshoot issues when running Lubuntu Desktop in a Docker container on Windows?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some best practices for using Docker to run graphical user interfaces on Windows?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I use Docker volumes to persist data when running Lubuntu Desktop in a Docker container on Windows?",
-      "anchor": ""
+      "question": "lubuntu docker container slow to display desktop",
+      "anchor": "step-3---start-the-container"
     }
   ]
 }

@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:09:44.568Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "19e4792d9dbb66fe2ef30412123997ca7d2ddbc7",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "Dockerfile Markitdown : remplacer python:3.11 par python:3.11-slim pour réduire la taille de l'image",
+      "anchor": "create-our-docker-image",
+      "reason": "not answered: Article uses python:3.14-slim; no mention of 3.11 or slim substitution",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:21:37.089Z",
+    "articleHash": "a126aad24b4c35a54484b1f0b7a57af93f130b94",
+    "questionsHash": "15b8a00ddf745b3a",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "Comment convertir Word, Excel et PDF en Markdown avec Markitdown dans un container Docker isolé ?",
@@ -24,10 +42,6 @@
     },
     {
       "question": "Préparer le répertoire de travail avant de configurer l'installation de Markitdown",
-      "anchor": "installation"
-    },
-    {
-      "question": "Dockerfile Markitdown : remplacer python:3.11 par python:3.11-slim pour réduire la taille de l'image",
       "anchor": "create-our-docker-image"
     },
     {
@@ -40,7 +54,7 @@
     },
     {
       "question": "Utiliser le wrapper md-convert pour convertir des documents Office en Markdown propre depuis n'importe où",
-      "anchor": "conclusion"
+      "anchor": "using-a-binary"
     }
   ]
 }

@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:55:50.526Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:22:17.673Z",
   "source": "index.md",
   "sourceHash": "58e8ac3cec81760e1fc2cf56f5dd825cfb7dae8a",
+  "durationMs": 58840,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:36:09.045Z",
+    "articleHash": "249a96cdc547b59556e7b0c4c081513d362c4faf",
+    "questionsHash": "977b1e8b84b60759",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I convert an Excel range to Markdown using XLS2MD?",
+      "question": "excel to markdown table",
       "anchor": ""
     },
     {
-      "question": "What is XLS2MD and how does it work?",
+      "question": "convert copied excel cells to markdown table",
       "anchor": ""
     },
     {
-      "question": "Can you provide a demo of converting an Excel range to Markdown using XLS2MD?",
+      "question": "xls2md online converter",
       "anchor": ""
     },
     {
-      "question": "What are the steps to convert an Excel range to Markdown using XLS2MD?",
+      "question": "paste excel range into markdown",
       "anchor": ""
     },
     {
-      "question": "How can I use XLS2MD to convert a specific range in my Excel file to Markdown?",
+      "question": "excel range to markdown without csv",
+      "anchor": ""
+    },
+    {
+      "question": "free online excel to markdown table converter",
+      "anchor": ""
+    },
+    {
+      "question": "copy excel cells paste markdown table quarto",
+      "anchor": ""
+    },
+    {
+      "question": "xls2md github repository",
       "anchor": "source-code"
     },
     {
-      "question": "What are the benefits of using XLS2MD for converting Excel ranges to Markdown?",
-      "anchor": ""
-    },
-    {
-      "question": "Are there any limitations or requirements when using XLS2MD to convert Excel ranges to Markdown?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I share the converted Markdown table with others?",
+      "question": "xls2md source code vuejs",
       "anchor": "source-code"
+    },
+    {
+      "question": "excel to markdown table with live html preview",
+      "anchor": ""
     }
   ]
 }

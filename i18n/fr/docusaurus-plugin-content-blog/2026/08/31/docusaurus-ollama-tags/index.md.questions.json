@@ -2,10 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:51:02.510Z",
-  "durationMs": 160510,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "85a190ba7667c80c9369f0577042553e03d3a09b",
+  "durationMs": 160510,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "commande docker compose pour démarrer le projet et les deux containers associés",
+      "anchor": "installation",
+      "reason": "not answered: No explicit docker compose up command is given; startup is via devcontainer.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:40:12.881Z",
+    "articleHash": "ca57b961d24c81e9af9b305016cbcaf557f26c0f",
+    "questionsHash": "5ac2e1938497a094",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "comment tagger automatiquement et suggérer des liens internes sur des articles markdown avec un modèle local sans api cloud",
@@ -14,10 +32,6 @@
     {
       "question": "à quoi ressemblent les fichiers tags.json et links.json après l'exécution des deux scripts",
       "anchor": "the-result"
-    },
-    {
-      "question": "commande docker compose pour démarrer le projet et les deux containers associés",
-      "anchor": "installation"
     },
     {
       "question": "raccourci Ctrl + Shift + P et commande Visual Studio Code pour recharger le dossier dans un devcontainer",
@@ -33,15 +47,15 @@
     },
     {
       "question": "exécuter le script python qui envoie le contenu brut des fichiers markdown au modèle ollama",
-      "anchor": "more-demos"
-    },
-    {
-      "question": "lancer le second script pour comparer les tags et obtenir les suggestions de liens internes",
       "anchor": "run-the-tag-generation-script"
     },
     {
+      "question": "lancer le second script pour comparer les tags et obtenir les suggestions de liens internes",
+      "anchor": "run-the-analyze-and-link-script"
+    },
+    {
       "question": "critères pour remplacer llama3:8b par un autre modèle ollama compatible",
-      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+      "anchor": "choosing-the-right-model"
     },
     {
       "question": "avantages de l'analyse sémantique locale par rapport au tag manuel pour un blog docusaurus",

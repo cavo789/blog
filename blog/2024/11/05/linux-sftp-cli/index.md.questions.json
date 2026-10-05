@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:59.270Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:09:37.872Z",
   "source": "index.md",
   "sourceHash": "bd91e9c851d7020aad67d94475c21cd9d108c94b",
+  "durationMs": 24966,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:27:22.317Z",
+    "articleHash": "3bba2c53b07c84de82042f9a90d2047dc97adba0",
+    "questionsHash": "dc857f200e8c2e69",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I connect to an SFTP server using the command line?",
+      "question": "sftp linux command line sshpass proxy port",
+      "anchor": ""
+    },
+    {
+      "question": "how to connect to sftp server from terminal",
       "anchor": "how-to-run-an-sftp-connection"
     },
     {
-      "question": "What are some automation tips for connecting to SFTP servers using the Linux command line?",
+      "question": "sshpass sftp password automation script",
+      "anchor": "how-to-run-an-sftp-connection"
+    },
+    {
+      "question": "sftp ProxyCommand nc http proxy",
       "anchor": "using-a-proxy-server"
     },
     {
-      "question": "How can I configure an SFTP connection to use a proxy server?",
+      "question": "route sftp through corporate http proxy linux",
       "anchor": "using-a-proxy-server"
     },
     {
-      "question": "What is the syntax for specifying the port number when connecting to an SFTP server using the command line?",
+      "question": "nc --proxy-type http --proxy sftp %h %p",
+      "anchor": "using-a-proxy-server"
+    },
+    {
+      "question": "sftp -P custom port number",
       "anchor": "setting-the-port-number-to-use-for-the-sftp-server"
     },
     {
-      "question": "How can I run commands on an SFTP server and then exit after the operations are completed?",
+      "question": "sftp server running on non-standard port how to connect",
+      "anchor": "setting-the-port-number-to-use-for-the-sftp-server"
+    },
+    {
+      "question": "sftp here-document download files non-interactive",
       "anchor": "running-commands-on-the-sftp-server-then-exit"
     },
     {
-      "question": "What is the syntax for using sshpass to automate authentication when connecting to an SFTP server using the command line?",
-      "anchor": "using-a-proxy-server"
+      "question": "automate sftp cd ls get *.zip exit",
+      "anchor": "running-commands-on-the-sftp-server-then-exit"
     },
     {
-      "question": "How can I connect to a specific SFTP server using the Linux command line?",
-      "anchor": "how-to-run-an-sftp-connection"
-    },
-    {
-      "question": "What are some common commands used for connecting to an SFTP server using the Linux command line?",
+      "question": "sftp command line without GUI linux",
       "anchor": ""
     }
   ]

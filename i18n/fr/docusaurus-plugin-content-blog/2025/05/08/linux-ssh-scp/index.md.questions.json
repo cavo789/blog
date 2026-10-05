@@ -3,8 +3,32 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:32:12.161Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "74222488b13d169d723942d1ab3ea4071b0f4d1e",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "ouvrir une session ssh directement depuis microsoft terminal",
+      "anchor": "running-ssh-from-microsoft-terminal",
+      "reason": "not answered: Only recommends Microsoft Terminal; no command or steps to open SSH session.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "explorer les commandes ssh avancées pour gérer plusieurs hôtes",
+      "anchor": "going-further",
+      "reason": "not answered: Only links to other articles; no advanced multi-host commands explained.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:27:53.777Z",
+    "articleHash": "7113fa2902cc73d442cf5ee606c11db6bb2df610",
+    "questionsHash": "0da2a3c5b8734afb",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment se connecter à un serveur linux sans mot de passe ssh",
@@ -35,16 +59,8 @@
       "anchor": "copying-folders"
     },
     {
-      "question": "ouvrir une session ssh directement depuis microsoft terminal",
-      "anchor": "running-ssh-from-microsoft-terminal"
-    },
-    {
       "question": "configurer des alias de connexion ssh dans le fichier ~/.ssh/config",
       "anchor": "using-the-config-file"
-    },
-    {
-      "question": "explorer les commandes ssh avancées pour gérer plusieurs hôtes",
-      "anchor": "going-further"
     }
   ]
 }

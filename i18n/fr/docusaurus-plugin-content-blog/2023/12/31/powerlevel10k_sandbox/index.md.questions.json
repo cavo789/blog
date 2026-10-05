@@ -2,18 +2,48 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:56:23.710Z",
-  "durationMs": 153027,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f81dfb3ab8d6339ce9b6f2c7e191eb0223797b6e",
+  "durationMs": 153027,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "configurer powerlevel10k avec windows terminal et wsl",
+      "anchor": "why-i-kept-it",
+      "reason": "not answered: Mentions integration only; no configuration steps, links to another page.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "installer powerlevel10k après oh-my-zsh sur linux",
+      "anchor": "conclusion",
+      "reason": "not answered: Installation deferred to another blog post; no steps given here.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "documentation officielle configuration powerlevel10k zsh",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to external docs; no configuration content in article.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:36:06.101Z",
+    "articleHash": "fb8ca83fcd139dec8f8ee4f116ef7d1cf1399cd2",
+    "questionsHash": "2cbcf9548497f2c6",
+    "status": "applied",
+    "rejected": 3,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment tester powerlevel10k pour zsh sans installer quoi que ce soit",
-      "anchor": ""
+      "anchor": "try-it-without-installing-anything"
     },
     {
       "question": "sandbox docker alpine pour essayer le prompt zsh",
-      "anchor": ""
+      "anchor": "try-it-without-installing-anything"
     },
     {
       "question": "powerlevel10k affiche le temps de la commande et le statut git",
@@ -34,18 +64,6 @@
     {
       "question": "powerlevel10k temps d'exécution commande et indicateur exit code",
       "anchor": "why-i-kept-it"
-    },
-    {
-      "question": "configurer powerlevel10k avec windows terminal et wsl",
-      "anchor": "why-i-kept-it"
-    },
-    {
-      "question": "installer powerlevel10k après oh-my-zsh sur linux",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "documentation officielle configuration powerlevel10k zsh",
-      "anchor": "conclusion"
     }
   ]
 }

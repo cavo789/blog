@@ -1,36 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:55.135Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:11:23.618Z",
   "source": "index.md",
   "sourceHash": "fcf2c1f5e5e76e254d646d3545c4feebfa5f67b5",
+  "durationMs": 20204,
+  "rejected": [
+    {
+      "question": "existing github repo switch from https to ssh",
+      "anchor": "",
+      "reason": "not answered: Answer is in a linked article, not this one.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:34:25.045Z",
+    "articleHash": "14ce60c14c799ada279fe27d6bfe6eaf1871e074",
+    "questionsHash": "374ca5b3c8670b72",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I set up SSH keys for GitHub?",
+      "question": "why ssh is more secure than https for github",
       "anchor": ""
     },
     {
-      "question": "Why is connecting to GitHub over SSH more secure than HTTPS?",
+      "question": "ssh-keygen ed25519 github key pair",
       "anchor": ""
     },
     {
-      "question": "What are the steps to add an SSH key to my computer and connect to GitHub using SSH?",
+      "question": "add ssh key to github settings page",
       "anchor": ""
     },
     {
-      "question": "How do I verify that my SSH connection is set up correctly with GitHub?",
+      "question": "ssh-agent -s ssh-add id_ed25519",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using SSH instead of HTTPS for connecting to GitHub?",
+      "question": "ssh -T git@github.com test connection",
       "anchor": ""
     },
     {
-      "question": "How can I add an SSH key to my computer and connect to GitHub using SSH?",
+      "question": "git@ protocol github instead of https",
       "anchor": ""
     },
     {
-      "question": "What are the steps to set up SSH keys for GitHub?",
+      "question": "github ssh public key where to paste",
+      "anchor": ""
+    },
+    {
+      "question": "ssh github no password after setup",
+      "anchor": ""
+    },
+    {
+      "question": "ssh github passphrase optional",
       "anchor": ""
     }
   ]

@@ -1,49 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:57:50.391Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:51:15.922Z",
   "source": "index.md",
   "sourceHash": "4cecaa170b84877591c1d7e694610aab4bc5c3c8",
+  "durationMs": 25185,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:56:17.675Z",
+    "articleHash": "8e8bc07fd0b8c4020628f6500888f1780fc873d6",
+    "questionsHash": "a588bc24a59dc427",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What are some essential Quarto filters for partial content templating?",
-      "anchor": "gadenbuiequarto-partials"
-    },
-    {
-      "question": "How can I embed Font Awesome icons in my Quarto documents?",
-      "anchor": "example"
-    },
-    {
-      "question": "What is the purpose of including external code files in Quarto documents?",
-      "anchor": "quarto-extfontawesome"
-    },
-    {
-      "question": "How does the search-replace macro work in Quarto documents?",
-      "anchor": "quarto-extinclude-code-files"
-    },
-    {
-      "question": "What is the revealjs slideshow feature provided by shafayetShafee/code-fullscreen?",
-      "anchor": "quarto-extsearch-replace"
-    },
-    {
-      "question": "What are some common use cases for Quarto extensions in documentation workflows?",
+      "question": "quarto extensions documentation workflow markdown to pdf html revealjs",
       "anchor": ""
     },
     {
-      "question": "How can I create page templates and inject specific content using gadenbuie/quarto-partials?",
+      "question": "quarto partials template inject content multiple pages same layout",
       "anchor": "gadenbuiequarto-partials"
     },
     {
-      "question": "What are some examples of how to use Font Awesome icons in Quarto documents?",
-      "anchor": "example"
+      "question": "how to pass variables into a quarto partial template from yaml front matter",
+      "anchor": "gadenbuiequarto-partials"
     },
     {
-      "question": "How can I include external code files in my Quarto documents?",
+      "question": "font awesome icons quarto markdown github icon",
       "anchor": "quarto-extfontawesome"
     },
     {
-      "question": "What are some common search-replace macros used in Quarto documents?",
+      "question": "quarto include external code file snippet in document",
       "anchor": "quarto-extinclude-code-files"
+    },
+    {
+      "question": "quarto search replace macro define constant",
+      "anchor": "quarto-extsearch-replace"
+    },
+    {
+      "question": "quarto filter replace placeholder text with value at render time global _quarto.yml",
+      "anchor": "quarto-extsearch-replace"
+    },
+    {
+      "question": "quarto revealjs code block truncated only 25 lines fullscreen button",
+      "anchor": "shafayetshafeecode-fullscreen"
+    },
+    {
+      "question": "quarto template 60 pages same structure centralize one text change",
+      "anchor": "gadenbuiequarto-partials"
+    },
+    {
+      "question": "quarto-ext fontawesome yaml front matter setup",
+      "anchor": "quarto-extfontawesome"
+    },
+    {
+      "question": "revealjs long code not displaying all lines quarto fix",
+      "anchor": "shafayetshafeecode-fullscreen"
+    },
+    {
+      "question": "quarto partials mustache-like templating doc-as-code",
+      "anchor": "gadenbuiequarto-partials"
     }
   ]
 }

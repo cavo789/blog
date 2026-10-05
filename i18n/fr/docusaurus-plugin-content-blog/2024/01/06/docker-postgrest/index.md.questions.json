@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T10:52:58.973Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c754f1460f30f001f4ebe19b1de0bcc65fe9d43d",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:39:31.105Z",
+    "articleHash": "4e77821b62cc2726e1fc1c8d5292981198156451",
+    "questionsHash": "29cf8d57359857c3",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "migrer de Laravel vers PostgreSQL et PostgREST pour supprimer les requêtes",
@@ -12,7 +22,7 @@
     },
     {
       "question": "PostgREST transforme le schéma de la base en endpoints API",
-      "anchor": "what-postgrest-does-for-you"
+      "anchor": "why-it-works"
     },
     {
       "question": "docker run PostgreSQL et psql pour peupler une table avec un utilisateur dédié",

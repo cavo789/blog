@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-09-10T07:08:16.968Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:09:28.165Z",
   "source": "index.md",
   "sourceHash": "c4390601f590f78f940399e365fee1cd531586e8",
+  "durationMs": 22108,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:39:24.598Z",
+    "articleHash": "067ea9e60966552563e64e0c16cc972e01a7b452",
+    "questionsHash": "e5db47232979408b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How do volumes work in Docker?",
+      "question": "docker container data lost after restart how to persist",
       "anchor": "what-a-volume-changes"
     },
     {
-      "question": "What are the three strategies for managing data persistence in Docker?",
+      "question": "why does my docker container reset all data after docker stop",
+      "anchor": "what-a-volume-changes"
+    },
+    {
+      "question": "docker volume vs bind mount vs no volume",
       "anchor": "why-it-works"
     },
     {
-      "question": "What is a volume managed by Docker and how does it differ from other types of volumes?",
+      "question": "docker-compose alpine counter script demo",
       "anchor": "setting-up-the-demo"
     },
     {
-      "question": "How do I create and use a mounted volume in Docker?",
+      "question": "docker compose declare named volume for persistence",
+      "anchor": "volumes-managed-by-docker"
+    },
+    {
+      "question": "bind mount docker volume into project directory",
       "anchor": "mounted-volumes"
     },
     {
-      "question": "Where are the volumes managed by Docker stored on my system?",
+      "question": "how docker stores volumes internally on disk",
       "anchor": "location-of-the-volumes-managed-by-docker"
     },
     {
-      "question": "How can I access files in a Docker volume using Docker Desktop or VSCode?",
+      "question": "docker bind mount creates root-owned files how to fix",
+      "anchor": "getting-your-own-files-back-from-a-mounted-volume"
+    },
+    {
+      "question": "find where docker named volumes are stored on filesystem",
+      "anchor": "location-of-the-volumes-managed-by-docker"
+    },
+    {
+      "question": "docker desktop browse files inside a volume",
       "anchor": "accessing-files-in-the-volume-using-docker-desktop"
     },
     {
-      "question": "What is the difference between no volume at all and a mounted volume in Docker?",
-      "anchor": "why-it-works"
+      "question": "vscode docker extension access volume files",
+      "anchor": "accessing-files-in-the-volume-using-vscode"
     },
     {
-      "question": "How can I use volumes to persist data across container restarts?",
-      "anchor": "setting-up-the-demo"
+      "question": "which docker volume type to use for local dev",
+      "anchor": "conclusion"
     }
   ]
 }

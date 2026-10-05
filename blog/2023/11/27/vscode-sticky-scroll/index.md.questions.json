@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:44:35.484Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:14:18.451Z",
   "source": "index.md",
   "sourceHash": "a69e889b3952bf87601f23f1e15d68a156e6b3e2",
+  "durationMs": 23254,
+  "rejected": [
+    {
+      "question": "vscode sticky scroll not showing",
+      "anchor": "",
+      "reason": "not answered: No troubleshooting for when sticky scroll fails to display.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T05:43:25.888Z",
+    "articleHash": "7a02ba6138d2ffd58de1066fa5e783ba7bda350e",
+    "questionsHash": "e3ce3b00cd87fd9e",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I enable sticky scroll in VS Code?",
+      "question": "vscode sticky scroll enable",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of Sticky Scroll in VS Code?",
+      "question": "how to pin function names at top of editor in vscode",
       "anchor": ""
     },
     {
-      "question": "How does Sticky Scroll work with Markdown files?",
+      "question": "vscode show class name while scrolling php",
       "anchor": ""
     },
     {
-      "question": "Can I use Sticky Scroll with PHP or JavaScript code?",
+      "question": "sticky scroll settings.json",
       "anchor": ""
     },
     {
-      "question": "What are the benefits of using Sticky Scroll in VS Code?",
+      "question": "vscode keep heading visible while scrolling markdown",
       "anchor": ""
     },
     {
-      "question": "How does Sticky Scroll pair with code folding in VS Code?",
+      "question": "how to know where you are in a long file vscode",
       "anchor": ""
     },
     {
-      "question": "Can I customize which lines are pinned to the top of the editor?",
+      "question": "pin section headers top of editor vscode",
       "anchor": ""
     },
     {
-      "question": "What is the difference between Sticky Scroll and code folding in VS Code?",
+      "question": "vscode contextual lines pinned top while scrolling",
+      "anchor": ""
+    },
+    {
+      "question": "enable sticky scroll in vscode settings",
       "anchor": ""
     }
   ]

@@ -1,41 +1,64 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:52:29.543Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:40:02.043Z",
   "source": "index.md",
   "sourceHash": "58c62d38ce30dba028afe12f4dd2c5a773cbadd0",
+  "durationMs": 33222,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:05:42.664Z",
+    "articleHash": "3605ef62215d5f5d7a5f80affc5c369ccfde87a3",
+    "questionsHash": "a11ac28317b8d0fd",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
-      "question": "How do I install WordPress using Docker in three commands?",
+      "question": "docker run wordpress without docker-compose",
       "anchor": "three-commands-one-wordpress-site"
     },
     {
-      "question": "What is a shared network used for in Docker containers?",
+      "question": "install WordPress Docker three commands only",
+      "anchor": "three-commands-one-wordpress-site"
+    },
+    {
+      "question": "docker network create for wordpress and mysql containers",
       "anchor": "first-step-we-need-a-network"
     },
     {
-      "question": "Which database container should I use with WordPress? MySQL or MariaDB?",
+      "question": "docker run mysql 8.4 wordpress MYSQL_DATABASE MYSQL_USER env vars",
       "anchor": "second-step-we-need-a-database-container"
     },
     {
-      "question": "How do I create a WordPress site using the latest version of PHP and Apache?",
+      "question": "mariadb 11 container for wordpress docker run",
+      "anchor": "second-step-we-need-a-database-container"
+    },
+    {
+      "question": "wordpress docker WORDPRESS_DB_HOST connect to database container",
       "anchor": "third-step-we-need-wordpress"
     },
     {
-      "question": "What is phpMyAdmin used for in Docker containers?",
+      "question": "wordpress docker -p 8080:80 custom port",
+      "anchor": "third-step-we-need-wordpress"
+    },
+    {
+      "question": "phpmyadmin docker container connect existing mysql network",
       "anchor": "optional-start-phpmyadmin"
     },
     {
-      "question": "How can I remove all Docker containers at once?",
+      "question": "docker rm wordpress mysql phpmyadmin containers",
       "anchor": "remove-containers"
     },
     {
-      "question": "What are the environment variables used to configure WordPress settings in Docker?",
-      "anchor": "third-step-we-need-wordpress"
+      "question": "run WordPress site Docker no compose file no config editing",
+      "anchor": "three-commands-one-wordpress-site"
     },
     {
-      "question": "Why is it possible to run a new WordPress site in just three commands?",
-      "anchor": ""
+      "question": "docker run vs docker-compose WordPress throwaway site",
+      "anchor": "three-commands-one-wordpress-site"
     }
   ]
 }

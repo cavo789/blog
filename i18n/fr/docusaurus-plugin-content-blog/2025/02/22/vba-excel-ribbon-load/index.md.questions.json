@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:00:26.191Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "52b279fc195858afb5925b73acad71e3832f4d4a",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:18:01.068Z",
+    "articleHash": "71b018fc70a93c804d8310521b7f5d44e780c2db",
+    "questionsHash": "1f71a5aa21719b37",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment charger une liste déroulante dans un ruban personnalisé depuis une plage excel",
@@ -48,7 +58,7 @@
     },
     {
       "question": "avantages d'utiliser une plage excel dynamique dans un ruban vba",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     }
   ]
 }

@@ -3,8 +3,26 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:15:14.669Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3aa6bf6f24705bfbf788f83483bd8ca9938e90fd",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "utiliser Rector pour appliquer des refactorings automatiques sur tout le code source",
+      "anchor": "other-extensions",
+      "reason": "not answered: Article only links to another page for Rector usage.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:59:54.719Z",
+    "articleHash": "a0b939d18e5161c0bc302c3823b299661d93ef9f",
+    "questionsHash": "9a447072a640d3d0",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment refacturer du code php dans vscode gratuitement",
@@ -33,10 +51,6 @@
     {
       "question": "extraire vers une nouvelle méthode un bloc de code php dans vscode",
       "anchor": "extract-to-a-new-method"
-    },
-    {
-      "question": "utiliser Rector pour appliquer des refactorings automatiques sur tout le code source",
-      "anchor": "other-extensions"
     }
   ]
 }

@@ -2,10 +2,34 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T01:58:43.007Z",
-  "durationMs": 139610,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "dd3b61b40cd7104fb8064d0030b83fd165bdbb0a",
+  "durationMs": 139610,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "consulter la documentation swagger openapi des endpoints exposés",
+      "anchor": "swagger",
+      "reason": "not answered: Swagger section only links to an external blog post, no in-article explanation.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "valider le schéma openapi généré contre les standards belgif",
+      "anchor": "further-reading",
+      "reason": "not answered: Only a link to another article; no validation steps provided here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:24:39.495Z",
+    "articleHash": "aa32e2a9c3c86576f6af46bf74647251c5b0698e",
+    "questionsHash": "b7ada0f7d3433f86",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "exposer une base oracle en api restful avec ords dans docker",
@@ -38,14 +62,6 @@
     {
       "question": "appliquer pagination filtrage et tri via querystring dans les requêtes ords",
       "anchor": "using-paging-filtering-and-ordering-options-on-the-querystring-optional--skip-if-the-default-endpoint-is-enough"
-    },
-    {
-      "question": "consulter la documentation swagger openapi des endpoints exposés",
-      "anchor": "swagger"
-    },
-    {
-      "question": "valider le schéma openapi généré contre les standards belgif",
-      "anchor": "further-reading"
     }
   ]
 }

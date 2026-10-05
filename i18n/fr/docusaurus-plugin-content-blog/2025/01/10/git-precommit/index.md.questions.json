@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T13:43:04.289Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "c707bd7ad665a558292a70766f1fb2d0e9f2b06b",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:12:43.934Z",
+    "articleHash": "0aa1fdf4a53d3e6673961c37dd0c2ad47b6c69f8",
+    "questionsHash": "cd38a19b62b37beb",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "Comment éviter les échecs CI/CD en exécutant les vérifications de code localement ?",

@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:16:35.932Z",
-  "durationMs": 132823,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "3a205bc133227983864c37fa8173a331f09f11db",
+  "durationMs": 132823,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:28:25.400Z",
+    "articleHash": "be1c00fc33688862d3bb8effd6957bd02f615059",
+    "questionsHash": "f2d646f405d7379a",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "Comment utiliser git worktree pour travailler sur deux branches simultanément sans stasher ?",
@@ -13,7 +23,7 @@
     },
     {
       "question": "git stash fait perdre le contexte des fichiers ouverts et des containers Docker comment éviter",
-      "anchor": "the-stash-workflow-and-its-pain"
+      "anchor": "what-git-worktree-does"
     },
     {
       "question": "git worktree add créer un worktree sur une nouvelle branche depuis main",
@@ -25,7 +35,7 @@
     },
     {
       "question": "garder les stacks Docker en route pendant un hotfix en parallèle",
-      "anchor": "seeing-it-in-action-with-docker"
+      "anchor": "docker--worktrees-each-branch-gets-its-own-stack"
     },
     {
       "question": "Étape par étape comment corriger un bug en production sans quitter sa branche de feature ?",
@@ -45,7 +55,7 @@
     },
     {
       "question": "git worktree remove supprimer un worktree obsolète sans toucher à la branche",
-      "anchor": "prune-stale-worktrees"
+      "anchor": "remove-a-worktree"
     }
   ]
 }

@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:20:28.343Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "98ee71e174f4152eb97df83372e25c0c27112916",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:44:07.545Z",
+    "articleHash": "22e88ce763ae2fed25974ae059a234e8a4e3745c",
+    "questionsHash": "f3fcec17757671de",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment personnaliser le rendu des balises `<img>` dans Docusaurus avec un composant React ?",
@@ -24,7 +34,7 @@
     },
     {
       "question": "Mapper les images markdown vers un composant React dans docusaurus.config.js",
-      "anchor": "2-tell-docusaurus-about-our-component"
+      "anchor": "4-writing-and-registering-a-plugin-optional--only-if-you-have-hundreds-of-articles-like-me"
     },
     {
       "question": "Syntaxe MDX pour appeler le composant Image dans un article de blog",

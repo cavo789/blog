@@ -1,41 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:54:33.121Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:00:06.603Z",
   "source": "index.md",
   "sourceHash": "342cab5b6b2fa50916bfeb5ae02fe8ff633538a5",
+  "durationMs": 46684,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:03:09.776Z",
+    "articleHash": "9d65e4a57a6e493251ac8eae7058a5b520671ab9",
+    "questionsHash": "5634094724d2b029",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is Pentaho Data Integration (PDI/Kettle)?",
+      "question": "pentaho kettle excel to postgresql docker linux",
       "anchor": ""
     },
     {
-      "question": "How do I install Pentaho on Linux?",
+      "question": "pentaho spoon auto-generate SQL from transformation flow",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "install pentaho PDI linux java dependencies",
       "anchor": "installation-on-linux"
     },
     {
-      "question": "Where can I find the makefile for this tutorial?",
-      "anchor": "and-for-our-easiness-lets-create-a-makefile"
+      "question": "pentaho kettle command not found PATH linux",
+      "anchor": "adding-pentaho-to-the-path"
     },
     {
-      "question": "What is the purpose of using Docker in this tutorial?",
-      "anchor": "then-we-need-a-postgresql-database"
-    },
-    {
-      "question": "How do I create a new project in Pentaho?",
+      "question": "pentaho kettle project directory setup",
       "anchor": "lets-prepare-our-environment"
     },
     {
-      "question": "Where can I download the dummy Excel file for this tutorial?",
+      "question": "pentaho excel input step sample data spreadsheet",
       "anchor": "first-we-need-an-excel-file-to-load"
     },
     {
-      "question": "What is the name of the target table in PostgreSQL?",
+      "question": "docker-compose postgresql pentaho kettle",
       "anchor": "then-we-need-a-postgresql-database"
     },
     {
-      "question": "How do I create a new transformation file in Pentaho?",
+      "question": "makefile pentaho docker postgres",
+      "anchor": "and-for-our-easiness-lets-create-a-makefile"
+    },
+    {
+      "question": "start postgres docker container for pentaho",
+      "anchor": "lets-run-our-docker-container"
+    },
+    {
+      "question": "pentaho spoon excel input postgresql output flow",
+      "anchor": "the-pieces-of-the-jigsaw-are-in-place-create-our-flow"
+    },
+    {
+      "question": "pentaho create new transformation file",
       "anchor": "we-need-to-create-a-new-transformation-file"
+    },
+    {
+      "question": "pentaho kettle .ktr file download example",
+      "anchor": "download-the-transformation-file"
     }
   ]
 }

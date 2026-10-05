@@ -1,53 +1,68 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T19:53:11.948Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:59:51.143Z",
   "source": "index.md",
   "sourceHash": "930e1339316a3ae23dc2dd9687514cecb06fc27b",
+  "durationMs": 27395,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:52:41.641Z",
+    "articleHash": "829fa12b023527b30972a709bbbb1782e3b4abfd",
+    "questionsHash": "6dd265d905401e52",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What is FZF + ripgrep?",
+      "question": "fzf ripgrep bat interactive code search terminal preview",
+      "anchor": ""
+    },
+    {
+      "question": "fzf preview panel updates live with syntax highlighting as you scroll",
       "anchor": "seeing-the-preview-panel"
     },
     {
-      "question": "Why use ripgrep instead of grep?",
+      "question": "ripgrep vs grep why faster and ignores node_modules automatically",
       "anchor": "why-ripgrep-instead-of-grep"
     },
     {
-      "question": "What are the prerequisites for using FZF + ripgrep?",
-      "anchor": "prerequisites"
-    },
-    {
-      "question": "How do I install and configure FZF, ripgrep, and bat?",
-      "anchor": "ripgrep"
-    },
-    {
-      "question": "What is the rgf function in this article?",
+      "question": "bat syntax highlighting terminal preview panel",
       "anchor": "bat"
     },
     {
-      "question": "What are some real-world scenarios for using FZF + ripgrep?",
-      "anchor": "real-world-scenarios"
+      "question": "pipe rg output into fzf interactive filter",
+      "anchor": "step-1--connect-ripgrep-to-fzf"
     },
     {
-      "question": "How do I search for a specific environment variable in my codebase?",
+      "question": "fzf --preview bat highlight matching line yellow",
+      "anchor": "step-2--add-a-bat-preview-panel"
+    },
+    {
+      "question": "zsh function rgf open vscode at exact matching line number",
+      "anchor": "step-3--the-rgf-function"
+    },
+    {
+      "question": "find all TODO FIXME markers in project from terminal",
+      "anchor": "find-all-todos-in-the-project"
+    },
+    {
+      "question": "where is this function called ripgrep",
       "anchor": "track-down-where-a-function-is-called"
     },
     {
-      "question": "How can I track down where a function is called in my codebase?",
+      "question": "search hardcoded port value in codebase fzf",
       "anchor": "locate-a-hardcoded-value"
     },
     {
-      "question": "How do I locate hardcoded values in my codebase?",
-      "anchor": "search-within-a-specific-folder"
-    },
-    {
-      "question": "How can I search within a specific folder using FZF + ripgrep?",
-      "anchor": "going-further"
-    },
-    {
-      "question": "What are some advanced features of the rgf function in this article?",
+      "question": "bind rgf to keyboard shortcut zsh",
       "anchor": "bind-rgf-to-a-keyboard-shortcut"
+    },
+    {
+      "question": "ripgrep search only within a specific folder",
+      "anchor": "search-within-a-specific-folder"
     }
   ]
 }

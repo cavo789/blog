@@ -2,10 +2,20 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-18T02:42:13.827Z",
-  "durationMs": 158694,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "898a7ea31d42618fc2560d2f08e2e505d1c11c26",
+  "durationMs": 158694,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:36:50.803Z",
+    "articleHash": "d9584e5dad0f8e1201718de4f1a0f0dbc241e36d",
+    "questionsHash": "758cd1c61b861dab",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment rendre un site lisible par les assistants IA avec llms.txt",
@@ -41,7 +51,7 @@
     },
     {
       "question": "pourquoi exporter son contenu en markdown plutôt que de convertir le HTML",
-      "anchor": "conclusion"
+      "anchor": "why-the-source-and-never-the-html"
     }
   ]
 }

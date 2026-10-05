@@ -1,16 +1,65 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:49:46.316Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:09:44.288Z",
   "source": "index.md",
   "sourceHash": "b96eb6503c3f3d50342db038638d72289e394643",
+  "durationMs": 33040,
+  "rejected": [
+    {
+      "question": "free offline AI autocomplete VS Code that never uploads code",
+      "anchor": "",
+      "reason": "not answered: Article says Tabnine is no longer free; no alternative tool recommended.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "why did Tabnine stop being free",
+      "anchor": "bye-bye-tabnine",
+      "reason": "not answered: Article states what happened but gives no reason why.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:32:58.399Z",
+    "articleHash": "5ec2a0b32ffdb9d5b4b683a5cb1270db8722ff13",
+    "questionsHash": "68b8a6518f2d8977",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "What happened to Tabnine's free tier?",
+      "question": "Tabnine PHP setter prediction from property name",
       "anchor": ""
     },
     {
-      "question": "When did Tabnine stop offering its individual Dev plan?",
+      "question": "Tabnine predict next method call with parameter",
+      "anchor": ""
+    },
+    {
+      "question": "Tabnine privacy no cloud storage offline",
+      "anchor": ""
+    },
+    {
+      "question": "Tabnine free tier gone April 2025",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "is Tabnine still available for free individual developers",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "Tabnine $39 user month enterprise only",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "Tabnine individual Dev plan eliminated",
+      "anchor": "bye-bye-tabnine"
+    },
+    {
+      "question": "Tabnine autocomplete entire method call VS Code",
       "anchor": ""
     }
   ]

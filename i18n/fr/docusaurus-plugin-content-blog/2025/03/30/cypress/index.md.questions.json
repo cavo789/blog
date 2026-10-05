@@ -3,12 +3,22 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:12:51.178Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "5f8bc213e7c2e8e7a8f68fff8a6aa48a6d8e87da",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:22:33.272Z",
+    "articleHash": "8bc0cc21c3903fdd1f65fd2f661e19955120c852",
+    "questionsHash": "acbbb04187ec2480",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment installer Cypress pour des tests fonctionnels dans un container Docker",
-      "anchor": ""
+      "anchor": "lets-create-some-files-and-run-a-first-test"
     },
     {
       "question": "automatiser les tests end to end avec Cypress et nodejs",

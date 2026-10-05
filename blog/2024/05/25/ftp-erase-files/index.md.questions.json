@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:52:03.102Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:35:46.166Z",
   "source": "index.md",
   "sourceHash": "c84c47a5b4e0509ae7abf0bc79aa689e671f6a93",
+  "durationMs": 24071,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:57:00.633Z",
+    "articleHash": "ba73b4434190ba356323e75c63a613a7bfbec744",
+    "questionsHash": "8efedbaab733ac1b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I remove an entire website folder using FTP?",
+      "question": "delete all files via ftp slow alternative",
       "anchor": ""
     },
     {
-      "question": "What is a self-deleting PHP script for removing files and folders via FTP?",
+      "question": "php script delete entire folder from browser",
       "anchor": ""
     },
     {
-      "question": "How can I remove a website from my FTP client without using SSH?",
+      "question": "how to wipe a website directory without ssh",
       "anchor": ""
     },
     {
-      "question": "What is the purpose of the self-deleting PHP script for removing files and folders via FTP?",
+      "question": "upload php file then run in browser to delete folder",
       "anchor": ""
     },
     {
-      "question": "Is it safe to use a self-deleting PHP script to remove files and folders via FTP?",
+      "question": "delete folder in seconds instead of minutes ftp",
       "anchor": ""
     },
     {
-      "question": "How long does it take for the self-deleting PHP script to remove files and folders via FTP?",
+      "question": "self executing php script delete directory",
       "anchor": ""
     },
     {
-      "question": "What is the difference between using a self-deleting PHP script and deleting files and folders via an FTP client?",
+      "question": "how to empty a web root folder quickly",
       "anchor": ""
     },
     {
-      "question": "How do I delete a website folder using a self-deleting PHP script via FTP?",
+      "question": "php script delete everything in folder no confirmation",
+      "anchor": ""
+    },
+    {
+      "question": "alternative to rm -rf without ssh access",
+      "anchor": ""
+    },
+    {
+      "question": "how to run a php script via url to clean up server files",
       "anchor": ""
     }
   ]

@@ -2,22 +2,32 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T20:36:44.632Z",
-  "durationMs": 194020,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "6291379028453e5d58d0d79d194739c1536a195d",
+  "durationMs": 194020,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:14:35.546Z",
+    "articleHash": "0071f2dfbe39260f18743d1535352b1b8e1bf953",
+    "questionsHash": "227697b95a44d522",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
       "question": "comment assembler un hello world en x86 avec docker sans installation locale",
-      "anchor": ""
+      "anchor": "lets-play-in-ms-dos"
     },
     {
       "question": "image docker pour exécuter du code assembleur vintage sur linux et windows",
-      "anchor": ""
+      "anchor": "lets-play-in-ms-dos"
     },
     {
       "question": "esolang/x86asm-nasm docker",
-      "anchor": ""
+      "anchor": "lets-play-in-ms-dos"
     },
     {
       "question": "alternative à l'installation locale pour jouer avec l'assembleur x86",
@@ -25,7 +35,7 @@
     },
     {
       "question": "faire tourner un fichier asm dans un environnement docker moderne",
-      "anchor": ""
+      "anchor": "lets-play-in-ms-dos"
     },
     {
       "question": "commande docker run pour exécuter hello.asm dans une console dos",

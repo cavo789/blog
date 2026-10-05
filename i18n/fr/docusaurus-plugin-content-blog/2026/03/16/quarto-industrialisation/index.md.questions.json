@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:51:07.663Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ec80edfda956e5d691579975983e61b98774b886",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:15:15.363Z",
+    "articleHash": "b2667c59060f59a43fa167a4aa700a3f8a781e82",
+    "questionsHash": "004d6d4791147dbe",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "comment automatiser la documentation de plus de 50 projets avec quarto et Docker",

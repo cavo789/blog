@@ -1,41 +1,72 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-23T17:53:40.905Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:53:12.334Z",
   "source": "index.md",
   "sourceHash": "2583d7f8d7c18d2e99631d516b99f427cc5722ed",
+  "durationMs": 52262,
+  "rejected": [
+    {
+      "question": "docker-compose volume mount for SSL cert",
+      "anchor": "updating-our-composeyaml-file",
+      "reason": "not answered: Article uses Dockerfile COPY, not a volume mount for the SSL cert",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:12:41.236Z",
+    "articleHash": "4e9d1129556a058aaaa36a573cb9705f3d6fb9ae",
+    "questionsHash": "7d9e3c0f0c110f17",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I configure my localhost to use SSL?",
+      "question": "docker localhost https no browser warning",
       "anchor": ""
     },
     {
-      "question": "What tools are used to generate trusted certificates for Apache, Nginx, and PHP containers?",
+      "question": "how to generate a trusted SSL certificate for localhost with mkcert",
       "anchor": "create-the-ssl-certificate"
     },
     {
-      "question": "How can I update my Apache configuration file to use SSL?",
+      "question": "apache docker ssl certificate configuration",
       "anchor": "updating-our-apache-configuration-file"
     },
     {
-      "question": "What changes need to be made in the compose.yaml file to enable SSL for my Docker containers?",
-      "anchor": "updating-our-composeyaml-file"
-    },
-    {
-      "question": "How can I update my Dockerfile to include SSL configuration?",
+      "question": "dockerfile copy mkcert certificate to apache container",
       "anchor": "and-finally-updating-our-dockerfile-file"
     },
     {
-      "question": "What is the purpose of the mkcert tool in this guide?",
-      "anchor": "create-the-ssl-certificate"
+      "question": "nginx docker ssl mkcert setup",
+      "anchor": "bonus---configure-nginx-to-use-ssl"
     },
     {
-      "question": "How do I install the mkcert root CA into my browser when running outside WSL2?",
+      "question": "php container https ssl docker",
+      "anchor": "bonus---configure-php-to-use-ssl"
+    },
+    {
+      "question": "mkcert root CA install browser trust store",
       "anchor": "bonus---install-the-mkcert-root-ca-in-your-browser"
     },
     {
-      "question": "Where can I find the root CA file for mkcert?",
-      "anchor": "find-the-root-ca-file"
+      "question": "import mkcert CA into Windows from WSL2",
+      "anchor": "import-into-windows-from-wsl2-or-powershell"
+    },
+    {
+      "question": "curl https localhost docker container",
+      "anchor": "using-curl"
+    },
+    {
+      "question": "docker run both http and https same container",
+      "anchor": "ready-to-run-the-site-using-both-http-and-https"
+    },
+    {
+      "question": "linux system trust store mkcert root CA",
+      "anchor": "linux-system-trust-store-only"
     }
   ]
 }

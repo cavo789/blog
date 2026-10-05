@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-28T10:52:48.919Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T21:40:17.150Z",
   "source": "index.md",
   "sourceHash": "5ce9b9f298330baa62822dc4165f5de847f29f0e",
+  "durationMs": 41133,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T08:36:04.605Z",
+    "articleHash": "bbbcdc999be00c435d736796db7fb557ff7a3bad",
+    "questionsHash": "fd3ff3419d35f030",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I ensure all images on my Docusaurus blog are lazy-loaded?",
+      "question": "docusaurus blog enforce lazy loading all images and verify automatically",
+      "anchor": ""
+    },
+    {
+      "question": "docker run playwright python check-images script docusaurus",
       "anchor": "running-the-check"
     },
     {
-      "question": "What is lazy loading, and why is it important for performance?",
-      "anchor": ""
-    },
-    {
-      "question": "How can I automate the verification of lazy-loading behavior on my Docusaurus blog?",
+      "question": "override docusaurus mdx image component add loading lazy attribute",
       "anchor": "step-1-enforcing-lazy-loading-in-docusaurus"
     },
     {
-      "question": "What are some common challenges when implementing lazy loading in a Docusaurus site?",
-      "anchor": ""
+      "question": "how to automate checking every img tag has loading=lazy across hundreds of posts",
+      "anchor": "step-2-trust-but-verify"
     },
     {
-      "question": "How do I override the default image component in Docusaurus to enforce lazy loading?",
-      "anchor": "running-the-check"
+      "question": "why static html download not enough to verify lazy loading need scroll",
+      "anchor": "the-challenge-scrolling"
     },
     {
-      "question": "What are some best practices for optimizing images on a Docusaurus blog?",
-      "anchor": ""
+      "question": "python beautifulsoup parse rendered page check img loading attribute",
+      "anchor": "the-script"
     },
     {
-      "question": "How can I simulate user scrolling in Playwright to test lazy-loading behavior on my Docusaurus site?",
+      "question": "check image file size and dimensions python pillow docusaurus blog",
+      "anchor": "the-script"
+    },
+    {
+      "question": "docusaurus image lazy loading verification workflow docker python",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "docusaurus markdown image not lazy loading by default fix",
       "anchor": "step-1-enforcing-lazy-loading-in-docusaurus"
     },
     {
-      "question": "What are some common issues when implementing lazy loading in a Docusaurus blog, and how do I troubleshoot them?",
-      "anchor": ""
+      "question": "playwright headless browser simulate user reading scroll to bottom",
+      "anchor": "the-challenge-scrolling"
     }
   ]
 }

@@ -1,41 +1,66 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:54:21.979Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:03:10.546Z",
   "source": "index.md",
   "sourceHash": "5e6714f51b72ada10c0dd544d31980f506fcc455",
+  "durationMs": 20921,
+  "rejected": [
+    {
+      "question": "bash progress bar for parallel jobs",
+      "anchor": "",
+      "reason": "not answered: Article shows sequential loop, not parallel jobs with progress bar",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "bash progress bar CSV batch REST API upload",
+      "anchor": "time-to-run-the-code",
+      "reason": "not answered: Only mentions the use case in passing, no CSV/API code provided",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:20:55.325Z",
+    "articleHash": "4e2da18e1de22a825ff0dc262f950545340b7aee",
+    "questionsHash": "4b29fc6deba1e9f5",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "How do I create a progress bar in my Bash script on Linux?",
+      "question": "add visual progress indicator to bash loop linux",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "plain bash loop with live progress bar no external tools",
       "anchor": "result"
     },
     {
-      "question": "What are the three steps required to implement a live progress bar in a Bash script?",
+      "question": "how does bash progress bar work with echo signal from inside loop",
       "anchor": "why-it-works"
     },
     {
-      "question": "How can I source the progress_bar.sh script and use it to create a progress bar in my Bash script?",
-      "anchor": "create-demosh"
-    },
-    {
-      "question": "What is the purpose of the figure variable in the progress bar implementation?",
+      "question": "source progress bar helper script bash total count parameter",
       "anchor": "why-it-works"
     },
     {
-      "question": "How can I modify the progress bar to show a live counter when the number of items isn't known in advance?",
+      "question": "demo.sh bash progress bar example script",
       "anchor": "create-demosh"
     },
     {
-      "question": "What is an example of how to use the progress bar in a real-life script that reads a CSV file and uploads PDFs?",
+      "question": "reusable bash progress_bar.sh helper to source",
+      "anchor": "create-progress_barsh"
+    },
+    {
+      "question": "how to write a bash progress bar helper that reads echo signals",
+      "anchor": "create-progress_barsh"
+    },
+    {
+      "question": "run bash script with progress bar in terminal",
       "anchor": "time-to-run-the-code"
-    },
-    {
-      "question": "How can I log information using a log file when implementing this feature in a Bash script?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some advantages of using a progress bar in a Bash script?",
-      "anchor": "why-it-works"
     }
   ]
 }

@@ -1,40 +1,63 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T10:18:59.006Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T18:52:07.015Z",
   "source": "index.md",
   "sourceHash": "09967a726b08995c8b613e50a413760bd41415a1",
+  "durationMs": 24121,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:17:06.031Z",
+    "articleHash": "b069d878a35cadb866cd4f2b5a6b82d0de90975b",
+    "questionsHash": "240a49cca71ac7b4",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
-      "question": "How do I compare two .env files in Linux?",
-      "anchor": ""
+      "question": "compare .env .env.example linux terminal",
+      "anchor": "the-one-liner-and-its-output"
     },
     {
-      "question": "What is the purpose of using diff, grep, and sort to compare environment variables?",
+      "question": "forgot to add env variable to .env.example how to catch it",
+      "anchor": "the-one-liner-and-its-output"
+    },
+    {
+      "question": "diff two env files ignore comments sort order bash one-liner",
+      "anchor": "the-one-liner-and-its-output"
+    },
+    {
+      "question": "how to see which variables exist in .env but not .env.example",
+      "anchor": "the-one-liner-and-its-output"
+    },
+    {
+      "question": "plain diff env files too noisy comments blank lines",
       "anchor": "why-plain-diff-isnt-enough"
     },
     {
-      "question": "Why can't plain diff alone be used to compare environment files?",
+      "question": "exclude specific key from diff comparison env files",
       "anchor": "why-plain-diff-isnt-enough"
     },
     {
-      "question": "How do I reproduce the one-liner command to compare .env files in Linux?",
-      "anchor": "reproduce-it"
+      "question": "why does diff show commented variables as different",
+      "anchor": "why-plain-diff-isnt-enough"
     },
     {
-      "question": "What is a good practice for updating environment variables across different environments?",
+      "question": "test diff env files different line order same variables",
+      "anchor": "why-plain-diff-isnt-enough"
+    },
+    {
+      "question": "diff output two columns same key different values env",
+      "anchor": "the-one-liner-and-its-output"
+    },
+    {
+      "question": "bash check before commit env file missing variables",
       "anchor": "conclusion"
     },
     {
-      "question": "How can I add a new variable to my .env file and compare it with .env.example using the one-liner command?",
-      "anchor": "reproduce-it"
-    },
-    {
-      "question": "What is the difference between 'ALLOW_FEATURE_DO_THIS' and 'DATABASE_TYPE' in the example provided?",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "How can I batch edit environment variables across multiple files using a one-liner command?",
+      "question": "one-liner to run before git push to verify .env.example is up to date",
       "anchor": "conclusion"
     }
   ]

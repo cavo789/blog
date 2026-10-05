@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T18:06:06.506Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "097a1a0fae494c49cd723d697ab37c3ec99712ef",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:56:37.637Z",
+    "articleHash": "99e43fa08d44d266dd77bf0d00bc14d4bb893497",
+    "questionsHash": "8241aa32ca88ff69",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "comment récupérer l'email d'un compte github quand il est masqué ?",
@@ -12,7 +22,7 @@
     },
     {
       "question": "github email lookup outil en ligne",
-      "anchor": ""
+      "anchor": "using-web-interface"
     },
     {
       "question": "astuce pour contacter un dev github sans passer par une issue",

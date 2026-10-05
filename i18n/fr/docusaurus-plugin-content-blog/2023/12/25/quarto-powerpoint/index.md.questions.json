@@ -2,18 +2,28 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:34:41.701Z",
-  "durationMs": 129148,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "8790fade61fc78ae13d010410a3fc9e9c0448747",
+  "durationMs": 129148,
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:30:01.055Z",
+    "articleHash": "aafa9a126def620a44d0b18ccb15d476f4b7190e",
+    "questionsHash": "2e49b04c62341abd",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 4
+  },
   "questions": [
     {
       "question": "quarto convertir markdown en powerpoint",
-      "anchor": ""
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
     },
     {
       "question": "comment transformer sa doc markdown en diaporama pptx ?",
-      "anchor": ""
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
     },
     {
       "question": "quarto render slides.md --to pptx",
@@ -29,11 +39,11 @@
     },
     {
       "question": "syntaxe markdown pour créer des slides quarto",
-      "anchor": "the-source-file"
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
     },
     {
       "question": "saut de ligne pour nouvelle slide quarto markdown",
-      "anchor": "the-source-file"
+      "anchor": "from-markdown-to-powerpoint-in-one-command"
     },
     {
       "question": "comment structurer un fichier md pour quarto presentation",

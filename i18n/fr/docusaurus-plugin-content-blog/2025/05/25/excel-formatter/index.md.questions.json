@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T14:41:17.091Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "b6018a5746df8d98d1539e26a30d7dcebd7297b8",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:30:42.878Z",
+    "articleHash": "0831907d7b10f34e34c86c8385e265333a7dfab9",
+    "questionsHash": "c28ed09208570eff",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "outil auto-hébergé pour formater les formules Excel",
@@ -16,11 +26,11 @@
     },
     {
       "question": "Excel Formula Beautifier fonctionnalités",
-      "anchor": ""
+      "anchor": "how-to-use"
     },
     {
       "question": "indenter automatiquement une formule Excel complexe",
-      "anchor": ""
+      "anchor": "how-to-use"
     },
     {
       "question": "déboguer une longue formule Excel sans effort",

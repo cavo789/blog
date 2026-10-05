@@ -2,18 +2,36 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T22:09:02.633Z",
-  "durationMs": 149416,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "0784b154e51ded7cb2aa4796ac05e4318dd19b31",
+  "durationMs": 149416,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "quel plugin zsh propose des suggestions pour les hosts ssh",
+      "anchor": "conclusion",
+      "reason": "not answered: only a link to another article, no plugin name or details given",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T13:08:34.990Z",
+    "articleHash": "e43da71254196c120dbc0958b86490dade8398dd",
+    "questionsHash": "c64bb2cf5bdead1e",
+    "status": "applied",
+    "rejected": 1,
+    "anchorsMoved": 3
+  },
   "questions": [
     {
       "question": "comment activer les suggestions automatiques de commandes dans zsh",
-      "anchor": ""
+      "anchor": "installation"
     },
     {
       "question": "quel plugin Oh-My-Zsh affiche l'historique en gris pendant la frappe",
-      "anchor": ""
+      "anchor": "three-characters-and-the-command-is-already-there"
     },
     {
       "question": "accepter une suggestion zsh avec TAB ou faire défiler avec les flèches",
@@ -49,11 +67,7 @@
     },
     {
       "question": "comment l'historique shell impacte la pertinence des suggestions zsh",
-      "anchor": "conclusion"
-    },
-    {
-      "question": "quel plugin zsh propose des suggestions pour les hosts ssh",
-      "anchor": "conclusion"
+      "anchor": "why-it-works"
     }
   ]
 }

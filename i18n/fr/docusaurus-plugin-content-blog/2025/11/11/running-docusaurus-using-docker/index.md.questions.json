@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:03:19.512Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "f8cd7e7bc190d805f14846a970b1b101482bac44",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:59:09.075Z",
+    "articleHash": "aa61418a47f7a4bf1c9cc0cf57520e3063e84a1d",
+    "questionsHash": "3085eaf76019acaf",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
       "question": "Comment simplifier le développement d'un blog Docusaurus avec Docker et les DevContainers ?",
@@ -12,7 +22,7 @@
     },
     {
       "question": "Lancer un blog Docusaurus en local avec une image Docker",
-      "anchor": "create-the-base-docker-image"
+      "anchor": "build-and-run-the-production-image"
     },
     {
       "question": "TARGET=production make build et make up pour générer le site statique",

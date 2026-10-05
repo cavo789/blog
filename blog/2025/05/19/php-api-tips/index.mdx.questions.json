@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:58:05.358Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:54:24.800Z",
   "source": "index.mdx",
   "sourceHash": "a1048995997dfe9d18ea3330c40480f0f879f114",
+  "durationMs": 35538,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:58:59.357Z",
+    "articleHash": "1692ce16c98a83db22b9b9971bc2cfd5fe1a334b",
+    "questionsHash": "9502a9c171edb91c",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "What are best practices for designing REST APIs?",
-      "anchor": ""
-    },
-    {
-      "question": "How do I use plural nouns in URI construction?",
+      "question": "why do my REST API endpoints look semantically wrong",
       "anchor": "uniform-resource-identifier"
     },
     {
-      "question": "What HTTP verbs should I use for semantically correct endpoints?",
+      "question": "REST API core design principles",
+      "anchor": "main-concepts"
+    },
+    {
+      "question": "should REST API URLs use plural nouns or singular",
+      "anchor": "uniform-resource-identifier"
+    },
+    {
+      "question": "nested resource URI hierarchy REST API",
+      "anchor": "uniform-resource-identifier"
+    },
+    {
+      "question": "camelCase vs kebab-case in REST path segments",
+      "anchor": "uniform-resource-identifier"
+    },
+    {
+      "question": "which HTTP method to use for partial update in REST",
       "anchor": "verbs"
     },
     {
-      "question": "What are the recommended HTTP headers for API requests?",
-      "anchor": "expected-endpoints"
-    },
-    {
-      "question": "How can I filter data in REST APIs using query parameters?",
+      "question": "how to structure JSON error response with pagination in REST API",
       "anchor": "responses"
     },
     {
-      "question": "What is the hierarchy and relationship between collections in URI design?",
-      "anchor": "uniform-resource-identifier"
-    },
-    {
-      "question": "Why should I use the HTTP Accept header to inform the server about expected formats?",
-      "anchor": "expected-endpoints"
-    },
-    {
-      "question": "How can I handle multiple values for the same parameter in query parameters?",
+      "question": "what HTTP status codes to return for different REST API scenarios",
       "anchor": "responses"
+    },
+    {
+      "question": "what endpoints should a standard CRUD REST API expose",
+      "anchor": "verbs"
+    },
+    {
+      "question": "REST API design best practices references and tutorials",
+      "anchor": "some-lectures"
     }
   ]
 }

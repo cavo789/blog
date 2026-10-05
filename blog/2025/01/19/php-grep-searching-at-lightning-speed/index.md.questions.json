@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:56:30.857Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T20:33:51.014Z",
   "source": "index.md",
   "sourceHash": "432d283fe4766c1d77356dd1d875d193babf5333",
+  "durationMs": 78158,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:43:27.837Z",
+    "articleHash": "c4e6717a496bb3f625d81f262a9dbc893755a2e9",
+    "questionsHash": "ec0f08452cf631a8",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
-      "question": "How does php_grep work?",
+      "question": "fast regex search FTP server files",
       "anchor": "php_grep"
     },
     {
-      "question": "What is php_grep and how does it work?",
-      "anchor": "php_grep"
-    },
-    {
-      "question": "Can you explain how to use php_grep for searching files on an FTP server?",
-      "anchor": "php_grep"
-    },
-    {
-      "question": "What are the benefits of using php_grep over WinSCP's built-in search functionality?",
+      "question": "why is WinSCP file search so slow and what's faster",
       "anchor": ""
     },
     {
-      "question": "How does php_grep compare to other FTP search tools?",
-      "anchor": ""
-    },
-    {
-      "question": "What are some examples of how to use php_grep for searching specific file types?",
+      "question": "search text content across remote FTP files without downloading",
       "anchor": "php_grep"
     },
     {
-      "question": "Can you provide a step-by-step guide on how to install and use php_grep on an FTP server?",
+      "question": "WinSCP search files by text content",
+      "anchor": "winscp---search-for-text"
+    },
+    {
+      "question": "WinSCP Tools Commands Search PowerShell",
+      "anchor": "winscp---search-for-text"
+    },
+    {
+      "question": "WinSCP search returns all files not just matches",
+      "anchor": "winscp---search-for-text"
+    },
+    {
+      "question": "php_grep upload FTP server",
       "anchor": "php_grep"
     },
     {
-      "question": "What are some common use cases for using php_grep in an FTP environment?",
-      "anchor": ""
+      "question": "PHP script regex search remote files by extension",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "single PHP file search FTP server via URL",
+      "anchor": "php_grep"
+    },
+    {
+      "question": "php_grep filter results file type",
+      "anchor": "php_grep"
     }
   ]
 }

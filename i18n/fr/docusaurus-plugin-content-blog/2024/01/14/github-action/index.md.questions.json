@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T17:30:10.704Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "581c306c2b0f7c8c708d5012d24c2423f675f85f",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:41:09.030Z",
+    "articleHash": "13d868cac381662bbdf4ef089a13de32b5b1e810",
+    "questionsHash": "8bca63840ce2f9ed",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 5
+  },
   "questions": [
     {
       "question": "Comment automatiser le déploiement d'un blog en remplaçant les scripts FTP manuels par GitHub Actions ?",
@@ -16,11 +26,11 @@
     },
     {
       "question": "Quels secrets repository sont nécessaires pour le workflow FTP ?",
-      "anchor": "three-ingredients"
+      "anchor": "setting-it-up"
     },
     {
       "question": "Comment configurer un utilisateur FTP restreint au seul dossier de sortie ?",
-      "anchor": "three-ingredients"
+      "anchor": "setting-it-up"
     },
     {
       "question": "Emplacement du fichier de workflow dans le repository",
@@ -32,15 +42,15 @@
     },
     {
       "question": "Quelles sont les trois variables d'environnement attendues par le workflow ?",
-      "anchor": "why-i-moved-to-ssh"
+      "anchor": "setting-it-up"
     },
     {
       "question": "Commande git pour pousser le workflow et les secrets sur GitHub",
-      "anchor": "why-i-moved-to-ssh"
+      "anchor": "setting-it-up"
     },
     {
       "question": "Pourquoi le FTP pose problème pour le chiffrement et la performance des transferts ?",
-      "anchor": "conclusion"
+      "anchor": "why-i-moved-to-ssh"
     }
   ]
 }

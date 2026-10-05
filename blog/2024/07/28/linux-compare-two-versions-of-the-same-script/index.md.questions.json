@@ -1,41 +1,60 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:53:00.537Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:46:18.771Z",
   "source": "index.md",
   "sourceHash": "5d39182866c54fe363278526c487f10923ea2d19",
+  "durationMs": 36798,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T07:06:41.376Z",
+    "articleHash": "63b04160c7dc81868a7f751e2a17f5ed47c2f148",
+    "questionsHash": "d13e6690eb2e4824",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 1
+  },
   "questions": [
     {
-      "question": "What is a simple Linux command-line trick to compare two versions of the same Bash script?",
+      "question": "compare two versions of same bash script functions",
+      "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
+    },
+    {
+      "question": "side by side sorted function list showing what's new or missing in each bash file",
       "anchor": "result"
     },
     {
-      "question": "How can I identify missing or new functions across file versions or entire folders using a Bash script?",
+      "question": "example bash scripts with different function sets for testing",
       "anchor": "create-some-files-for-this-blog-post"
     },
     {
-      "question": "What is the command to retrieve all functions in a Bash script and sort them?",
+      "question": "grep awk extract all function declarations from a bash file",
       "anchor": "get-the-list-of-functions-in-a-bash-script"
     },
     {
-      "question": "How can I compare two versions of the same Bash script and highlight which functions are in one and not the other?",
+      "question": "which functions exist in one bash script but not the other",
       "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
     },
     {
-      "question": "What is the command to find the list of functions in both files, sort them, and compare which functions are in one version and which are not in the other?",
+      "question": "batch diff bash functions across two directories",
       "anchor": "compare-bash-scripts-in-two-folders"
     },
     {
-      "question": "How can I add new functions to a Bash script and remove existing ones to see changes in function differences?",
+      "question": "order independent comparison of bash script functions",
       "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
     },
     {
-      "question": "What is the command to compare two folders of Bash scripts and list which scripts are present only in one folder?",
+      "question": "bash function diff showing < and > indicators for additions and removals",
+      "anchor": "compare-the-two-versions-of-the-same-bash-script-and-shows-which-functions-are-in-one-and-not-the-other"
+    },
+    {
+      "question": "compare all .sh files in two folders find missing functions",
       "anchor": "compare-bash-scripts-in-two-folders"
     },
     {
-      "question": "How can I create a script to compare two versions of the same Bash script and highlight differences between them?",
-      "anchor": "create-some-files-for-this-blog-post"
+      "question": "list functions declared in a bash script without executing it",
+      "anchor": "get-the-list-of-functions-in-a-bash-script"
     }
   ]
 }

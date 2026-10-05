@@ -3,8 +3,18 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T16:48:05.023Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "ae959a0ff5c87f9f5a29f97191cb1cfdb32df4cb",
+  "locale": "fr",
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T15:14:20.220Z",
+    "articleHash": "052b23f919e052004f3a690579ac900789e5a082",
+    "questionsHash": "d5548018957c183e",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "ajouter un indicateur de contenu assisté par IA dans un blog Docusaurus",

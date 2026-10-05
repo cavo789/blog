@@ -2,17 +2,37 @@
   "version": 1,
   "model": "code-quality:latest",
   "generated": "2026-09-17T21:45:52.017Z",
-  "durationMs": 133693,
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "aed6c15fba5099d851a02c28ae12c4307ab6bd8d",
+  "durationMs": 133693,
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "quand est-il préférable d'utiliser un makefile plutôt que des scripts shell ?",
+      "anchor": "",
+      "reason": "not answered: No comparison between makefile and shell scripts is made.",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "rendre un makefile auto-documenté pour faciliter la prise en main ?",
+      "anchor": "conclusion",
+      "reason": "not answered: Only links to another article; no explanation given here.",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T12:33:31.022Z",
+    "articleHash": "73cd3ec5024164d46b3bfa4ae24882c8e3fff6b1",
+    "questionsHash": "fdd8a6d3c3ecc318",
+    "status": "applied",
+    "rejected": 2,
+    "anchorsMoved": 2
+  },
   "questions": [
     {
       "question": "comment centraliser les commandes docker complexes dans un projet linux",
-      "anchor": ""
-    },
-    {
-      "question": "quand est-il préférable d'utiliser un makefile plutôt que des scripts shell ?",
       "anchor": ""
     },
     {
@@ -21,7 +41,7 @@
     },
     {
       "question": "comment afficher les identifiants et l'url directement depuis une target ?",
-      "anchor": "one-word-instead-of-that-command"
+      "anchor": "whats-inside-the-makefile"
     },
     {
       "question": "makefile indentation tabulation ou espace obligatoire",
@@ -37,14 +57,10 @@
     },
     {
       "question": "pourquoi stocker les commandes de build dans un fichier plutôt que dans l'historique du shell ?",
-      "anchor": "why-bother"
-    },
-    {
-      "question": "versionner les commandes de projet dans le repository git",
       "anchor": "conclusion"
     },
     {
-      "question": "rendre un makefile auto-documenté pour faciliter la prise en main ?",
+      "question": "versionner les commandes de projet dans le repository git",
       "anchor": "conclusion"
     }
   ]

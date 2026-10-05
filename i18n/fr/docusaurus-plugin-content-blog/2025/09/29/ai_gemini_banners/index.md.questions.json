@@ -3,8 +3,50 @@
   "model": "code-quality:latest",
   "generated": "2026-09-17T15:42:20.310Z",
   "source": "index.md",
-  "locale": "fr",
   "sourceHash": "22c619f1147d09f6fc32d326b78faa7677e0b929",
+  "locale": "fr",
+  "rejected": [
+    {
+      "question": "optimiser son workflow avec la limite de 10 images par jour sur le plan gratuit Gemini",
+      "anchor": "",
+      "reason": "not answered: mentions the limit but gives no optimization strategy",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "compresser automatiquement les visuels générés en WebP avec CaesiumCLT",
+      "anchor": "",
+      "reason": "not answered: only mentions CaesiumCLT; details are in a linked article",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "migrer de recraft.ai vers Gemini pour créer une mascotte clipart",
+      "anchor": "",
+      "reason": "not answered: mentions recraft.ai in passing, no migration steps given",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "ajouter un badge contenu assisté par IA dans Docusaurus",
+      "anchor": "",
+      "reason": "not answered: links to another article for the actual implementation",
+      "date": "2026-09-24"
+    },
+    {
+      "question": "générer des résumés TL;DR automatisés pour un blog technique avec Gemini",
+      "anchor": "",
+      "reason": "not answered: links to another article for TL;DR generation details",
+      "date": "2026-09-24"
+    }
+  ],
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T14:52:50.167Z",
+    "articleHash": "8b8102892f23d0ba9352827eedee074bbd4ace9c",
+    "questionsHash": "923549e4f9ccd0b8",
+    "status": "applied",
+    "rejected": 5,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
       "question": "gemini image to image pose sheet suricate",
@@ -20,26 +62,6 @@
     },
     {
       "question": "pourquoi Gemini échoue sur le texte des images et comment le corriger",
-      "anchor": ""
-    },
-    {
-      "question": "optimiser son workflow avec la limite de 10 images par jour sur le plan gratuit Gemini",
-      "anchor": ""
-    },
-    {
-      "question": "compresser automatiquement les visuels générés en WebP avec CaesiumCLT",
-      "anchor": ""
-    },
-    {
-      "question": "migrer de recraft.ai vers Gemini pour créer une mascotte clipart",
-      "anchor": ""
-    },
-    {
-      "question": "ajouter un badge contenu assisté par IA dans Docusaurus",
-      "anchor": ""
-    },
-    {
-      "question": "générer des résumés TL;DR automatisés pour un blog technique avec Gemini",
       "anchor": ""
     },
     {

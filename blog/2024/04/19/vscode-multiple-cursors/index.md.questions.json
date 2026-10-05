@@ -1,40 +1,59 @@
 {
   "version": 1,
-  "model": "task-tiny:latest",
-  "generated": "2026-08-12T08:51:27.345Z",
+  "model": "code-quality:latest",
+  "generated": "2026-09-23T19:28:52.871Z",
   "source": "index.md",
   "sourceHash": "bcc50861ba6f3b725d733632fe504193a5747396",
+  "durationMs": 16865,
+  "triage": {
+    "version": 1,
+    "model": "code-quality:latest",
+    "date": "2026-09-24T06:50:43.588Z",
+    "articleHash": "63075b0932a94ba7b69b0ca9b19472a368a231bc",
+    "questionsHash": "ff6952484cd9f02b",
+    "status": "applied",
+    "rejected": 0,
+    "anchorsMoved": 0
+  },
   "questions": [
     {
-      "question": "How do I edit multiple lines in VSCode?",
+      "question": "vscode add - to beginning of every line at once",
       "anchor": ""
     },
     {
-      "question": "What is the Multiple Cursors feature in VSCode and how can it be used for bulk editing?",
+      "question": "shift alt i vscode what does this shortcut do",
       "anchor": ""
     },
     {
-      "question": "How do I use the Multiple Cursors feature to remove a prefix from each line in a file?",
+      "question": "remove first two characters from each line in vscode without find replace",
       "anchor": ""
     },
     {
-      "question": "How do I use the Multiple Cursors feature to enclose each line in double brackets?",
+      "question": "multiple cursors vs search and replace when should I use which",
       "anchor": ""
     },
     {
-      "question": "What is the difference between using search and replace and the Multiple Cursors feature for bulk editing?",
+      "question": "vscode bulk edit 100 lines simultaneously",
       "anchor": ""
     },
     {
-      "question": "How do I add a prefix to each line in a file using the Multiple Cursors feature?",
+      "question": "turn plain text lines into markdown bullet list in vscode",
       "anchor": ""
     },
     {
-      "question": "What are some other useful features of VSCode that can be discovered by accident?",
+      "question": "vscode multiple cursor mode press end to go to end of each line",
       "anchor": ""
     },
     {
-      "question": "How do I use sticky scroll in VSCode to always know which function or heading I'm inside of?",
+      "question": "how to wrap every line in double brackets vscode",
+      "anchor": ""
+    },
+    {
+      "question": "ctrl right multiple cursors move one word at a time",
+      "anchor": ""
+    },
+    {
+      "question": "vscode edit irregular prefix on many lines at once",
       "anchor": ""
     }
   ]
