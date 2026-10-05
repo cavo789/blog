@@ -13,6 +13,8 @@ ai_assisted: true
 draft: true
 ---
 
+<!-- ON PUBLISH: blog/2026/10/05/docusaurus-ask-my-blog-bubble links here through `/blog/?q=docker` while this post is a draft (a link to a draft breaks the production build). Point it back to `/blog/docusaurus-command-palette` in BOTH that article and its i18n/fr copy, then delete this comment. -->
+
 <!-- cspell:ignore cmdk maintag Pagefind pagefind combobox listbox aria activedescendant -->
 
 ![One Input, Six Modes: A Ctrl+K Command Palette for Docusaurus](/img/v2/command_palette.webp)

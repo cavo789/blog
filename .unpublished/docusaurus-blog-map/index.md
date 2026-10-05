@@ -12,6 +12,8 @@ language: en
 ai_assisted: true
 draft: true
 ---
+
+<!-- ON PUBLISH: blog/2026/10/05/docusaurus-ask-my-blog-bubble links here through `/map` while this post is a draft (a link to a draft breaks the production build). Point it back to `/blog/docusaurus-blog-map` in BOTH that article and its i18n/fr copy, then delete this comment. -->
 <!-- cspell:ignore maintag Bezier viewports -->
 
 ![Drawing a Map of My Own Blog](/img/v2/post_mindmaps.webp)
