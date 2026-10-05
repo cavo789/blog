@@ -195,6 +195,27 @@ RUN --mount=type=cache,target=/var/lib/apt/lists \
     esac && \
     chmod +x /usr/local/bin/mkcert
 
+# GitHub CLI — follows CI runs and reads their logs (`gh run watch`, `gh run view --log-failed`).
+# No `gh auth login`: gh reads GH_TOKEN, passed in from .env by compose.yaml's env_file.
+# Update the three ARGs together when bumping (checksums: gh_<version>_checksums.txt of the release).
+ARG GH_VERSION="2.102.0"
+ARG GH_SHA256_AMD64="bb766f710eef8ede859c18578c72c327597cd4c8a85b06001b1f3843c6019386"
+ARG GH_SHA256_ARM64="7862c86c72f43df3a2d93ddde6f473285b4e2af61b494849846827e513ef6484"
+
+RUN set -eux && \
+    ARCH=$(dpkg --print-architecture) && \
+    case "${ARCH}" in \
+      amd64) GH_SHA256="${GH_SHA256_AMD64}" ;; \
+      arm64) GH_SHA256="${GH_SHA256_ARM64}" ;; \
+      *) echo "No pinned gh checksum for ${ARCH}" >&2; exit 1 ;; \
+    esac && \
+    curl -sSL "https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_${ARCH}.tar.gz" -o /tmp/gh.tgz && \
+    echo "${GH_SHA256}  /tmp/gh.tgz" | sha256sum -c && \
+    tar -xzf /tmp/gh.tgz -C /tmp && \
+    install -m 0755 "/tmp/gh_${GH_VERSION}_linux_${ARCH}/bin/gh" /usr/local/bin/gh && \
+    rm -rf /tmp/gh.tgz "/tmp/gh_${GH_VERSION}_linux_${ARCH}" && \
+    gh --version
+
 USER "${OS_USERNAME}"
 
 RUN --mount=type=cache,target=/home/${OS_USERNAME}/.cache/pip,uid=${OS_USERID},gid=${OS_GROUPID} \
