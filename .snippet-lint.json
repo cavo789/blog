@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-09-25T14:20:52.317Z",
+  "generatedAt": "2026-10-05T05:54:07.611Z",
   "excluded": {
     ".unpublished/traefik/files/labels-openwebui.yaml": "compose fragment: an indented service block meant to be merged into an existing file",
     ".unpublished/traefik/files/labels-portainer.yaml": "compose fragment: an indented service block meant to be merged into an existing file",
@@ -12,7 +12,8 @@
     "blog/2024/07/28/linux-sort-functions-in-script/files/console.part2.sh": "outline: empty function bodies, the article shows the structure not the implementation",
     "blog/2024/07/28/linux-sort-functions-in-script/files/console.sh": "outline: empty function bodies, the article shows the structure not the implementation",
     "blog/2024/12/26/dagger-python/files/main.part8.py": "class-body fragment: the decorated method is shown without its enclosing class",
-    "blog/2026/03/30/ollama-installation/files/calculate_autocompleted.sh": "raw LLM output: the article's claim is that this script was produced entirely by accepting Ollama's autocompletions, so its warnings are the evidence — correcting them would falsify the demonstration (same case as vscode-tabnine/customer.php)"
+    "blog/2026/03/30/ollama-installation/files/calculate_autocompleted.sh": "raw LLM output: the article's claim is that this script was produced entirely by accepting Ollama's autocompletions, so its warnings are the evidence — correcting them would falsify the demonstration (same case as vscode-tabnine/customer.php)",
+    "blog/2026/09/24/docker-dive/files/Dockerfile.bad": "deliberate anti-example: the docker-dive article demonstrates the apt-lists waste with dive (1.19 GB start point); fixing it would break the article"
   },
   "files": {
     "blog/2023/11/02/docker-php-run-script-or-website/files/index.php": {
@@ -8189,6 +8190,236 @@
     },
     "blog/2026/09/21/ollama-ai-docs/files/terminal_translate_french.txt": {
       "hash": "11186472c4f2f227c733c085c70b9df0aef3922c",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/app.py": {
+      "hash": "65a312fde1c51d22173d8225d40868222aac4dc6",
+      "language": "python",
+      "linter": "ruff",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/dive-ci-config.yaml": {
+      "hash": "b49da73d6e163d7d868991307702265c3d0071c9",
+      "language": "yaml",
+      "linter": "yamllint",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/Dockerfile.bad": {
+      "hash": "3fa0513022c7e26d1418821083685f2f56e4357d",
+      "language": "dockerfile",
+      "linter": "hadolint",
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "line": 4,
+          "code": "DL3009",
+          "message": "Delete the apt lists (/var/lib/apt/lists) after installing something"
+        },
+        {
+          "severity": "warning",
+          "line": 5,
+          "code": "DL3008",
+          "message": "Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`"
+        },
+        {
+          "severity": "warning",
+          "line": 5,
+          "code": "DL3015",
+          "message": "Avoid additional packages by specifying `--no-install-recommends`"
+        },
+        {
+          "severity": "warning",
+          "line": 5,
+          "code": "DL3059",
+          "message": "Multiple consecutive `RUN` instructions. Consider consolidation."
+        },
+        {
+          "severity": "warning",
+          "line": 16,
+          "code": "DL3013",
+          "message": "Pin versions in pip. Instead of `pip install <package>` use `pip install <package>==<version>` or `pip install --requirement <requirements file>`"
+        },
+        {
+          "severity": "warning",
+          "line": 16,
+          "code": "DL3059",
+          "message": "Multiple consecutive `RUN` instructions. Consider consolidation."
+        },
+        {
+          "severity": "warning",
+          "line": 16,
+          "code": "DL3042",
+          "message": "Avoid use of cache directory with pip. Use `pip install --no-cache-dir <package>`"
+        },
+        {
+          "severity": "warning",
+          "line": 18,
+          "code": "DL3059",
+          "message": "Multiple consecutive `RUN` instructions. Consider consolidation."
+        }
+      ]
+    },
+    "blog/2026/09/24/docker-dive/files/Dockerfile.multistage": {
+      "hash": "e32a911321cd12ed663bbfd4518c6e0143864b65",
+      "language": "dockerfile",
+      "linter": "hadolint",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/Dockerfile.scratch": {
+      "hash": "05eeb6bd48f6f240320405bffd7b652d8be89942",
+      "language": "dockerfile",
+      "linter": "hadolint",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/Dockerfile.v2": {
+      "hash": "30c06ea6f91267ca571d87bfef3fee4f005dcbb8",
+      "language": "dockerfile",
+      "linter": "hadolint",
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "line": 4,
+          "code": "DL3008",
+          "message": "Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`"
+        },
+        {
+          "severity": "warning",
+          "line": 4,
+          "code": "DL3015",
+          "message": "Avoid additional packages by specifying `--no-install-recommends`"
+        },
+        {
+          "severity": "warning",
+          "line": 18,
+          "code": "DL3042",
+          "message": "Avoid use of cache directory with pip. Use `pip install --no-cache-dir <package>`"
+        },
+        {
+          "severity": "warning",
+          "line": 18,
+          "code": "DL3013",
+          "message": "Pin versions in pip. Instead of `pip install <package>` use `pip install <package>==<version>` or `pip install --requirement <requirements file>`"
+        },
+        {
+          "severity": "warning",
+          "line": 20,
+          "code": "DL3059",
+          "message": "Multiple consecutive `RUN` instructions. Consider consolidation."
+        }
+      ]
+    },
+    "blog/2026/09/24/docker-dive/files/Dockerfile.v3": {
+      "hash": "d2374160e0bdcf69c757ef6c290ae2e8a03ef81f",
+      "language": "dockerfile",
+      "linter": "hadolint",
+      "diagnostics": [
+        {
+          "severity": "warning",
+          "line": 4,
+          "code": "DL3008",
+          "message": "Pin versions in apt get install. Instead of `apt-get install <package>` use `apt-get install <package>=<version>`"
+        },
+        {
+          "severity": "warning",
+          "line": 4,
+          "code": "DL3013",
+          "message": "Pin versions in pip. Instead of `pip install <package>` use `pip install <package>==<version>` or `pip install --requirement <requirements file>`"
+        },
+        {
+          "severity": "warning",
+          "line": 4,
+          "code": "DL3042",
+          "message": "Avoid use of cache directory with pip. Use `pip install --no-cache-dir <package>`"
+        },
+        {
+          "severity": "warning",
+          "line": 4,
+          "code": "DL3015",
+          "message": "Avoid additional packages by specifying `--no-install-recommends`"
+        }
+      ]
+    },
+    "blog/2026/09/24/docker-dive/files/main.go": {
+      "hash": "4ae3c3cd2efacdbc979270e8b8dba1a41332750c",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".go — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/terminal_dive_bad.txt": {
+      "hash": "ce2c6bebdccf97c5c56aab3b6e3114ddef5eb913",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/terminal_dive_multistage.txt": {
+      "hash": "f3245ab7e381a76a2b5618bab98cd14bfeeb04cb",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/terminal_dive_scratch.txt": {
+      "hash": "e613de402e5228a3247490a77500c3b3a5150d2c",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/09/24/docker-dive/files/terminal_dive_v2.txt": {
+      "hash": "a3a6d0454ae329a14647c2af43de61c4e6739e6e",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/09/28/docusaurus-ask-my-blog/files/demo.questions.json": {
+      "hash": "d9a21e2a76fa8f662568c13432e275ba50b5f75f",
+      "language": "json",
+      "linter": "json-parse",
+      "diagnostics": []
+    },
+    "blog/2026/09/28/docusaurus-ask-my-blog/files/generate_demo.txt": {
+      "hash": "0b77b7974d02cab645e5ab01676ebd6f34f8938d",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/09/28/docusaurus-ask-my-blog/files/search_demo.txt": {
+      "hash": "d9bec75dbf412aad5607a289bb0207e527d659c6",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/10/01/ssh-config-tips/files/terminal_prod_banner.txt": {
+      "hash": "e61043540ffa95ddde2f13206b81352842e0b7c5",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/10/01/ssh-config-tips/files/terminal_remotecommand_test.txt": {
+      "hash": "a18dd9ba25cf2e9ba33452b2fd786b4c614a2198",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/10/01/ssh-config-tips/files/terminal_remotecommand.txt": {
+      "hash": "4bf75dd8b80980f7d695ba85846736164772170b",
+      "language": null,
+      "linter": null,
+      "unsupportedReason": ".txt — no linter wired",
+      "diagnostics": []
+    },
+    "blog/2026/10/01/ssh-config-tips/files/terminal_test_bastion.txt": {
+      "hash": "9dfa60afe625642a3d92e61efd834089a04bcbf8",
       "language": null,
       "linter": null,
       "unsupportedReason": ".txt — no linter wired",
