@@ -55,6 +55,7 @@ import { cmd } from "./lib/cheatsheet-hint.mjs";
 import { scanSnippetTags } from "./lib/snippet-scan.mjs";
 import { parseFrontMatter } from "./lib/blog-corpus.mjs";
 import { eli5Candidates } from "./lib/i18n-eligibility.mjs";
+import { orphanFixHint } from "./lib/orphan-hint.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -124,7 +125,7 @@ for (const jsonPath of files) {
 
   if (!fs.existsSync(sourcePath)) {
     console.warn(`⚠  ORPHANED — source missing for ${relJson}`);
-    console.warn(`   Fix with: rm ${relJson}`);
+    for (const line of orphanFixHint(relSource, relJson, projectRoot)) console.warn(line);
     orphaned++;
     continue;
   }
