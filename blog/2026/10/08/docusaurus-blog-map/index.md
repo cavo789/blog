@@ -6,27 +6,25 @@ image: /img/v2/post_mindmaps.webp
 series: Creating Docusaurus components
 mainTag: component
 tags: [docusaurus, react, component, nodejs, doc-as-code]
-date: 2026-10-13
+date: 2026-10-08
 description: Build an interactive map of your whole Docusaurus corpus — every article as a bubble wearing the site's mascot, sized by how many other posts link to it, positioned by a force-directed layout that runs at build time in Node so the browser never ships d3-force. Includes the plugin, the canvas component, and the plain-list fallback that keeps the page usable with JavaScript disabled.
 language: en
 ai_assisted: true
-draft: true
 ---
 
-<!-- ON PUBLISH: blog/2026/10/05/docusaurus-ask-my-blog-bubble links here through `/map` while this post is a draft (a link to a draft breaks the production build). Point it back to `/blog/docusaurus-blog-map` in BOTH that article and its i18n/fr copy, then delete this comment. -->
 <!-- cspell:ignore maintag Bezier viewports -->
 
 ![Drawing a Map of My Own Blog](/img/v2/post_mindmaps.webp)
 
 <TLDR>
-After 247 articles I could no longer answer simple questions about my own blog: which posts are hubs that everything links to, and which ones sit alone in a corner. So I built a `/map` page — a force-directed graph of the whole corpus, where each article is a dot sized by its in-degree and connected by three kinds of edge (real inline links, series neighbors, shared tags). The trick that makes it cheap: the layout runs **once, in Node, at build time**, so the browser receives final `(x, y)` coordinates and never loads a physics engine.
+After 262 articles I could no longer answer simple questions about my own blog: which posts are hubs that everything links to, and which ones sit alone in a corner. So I built a `/map` page — a force-directed graph of the whole corpus, where each article is a dot sized by its in-degree and connected by three kinds of edge (real inline links, series neighbors, shared tags). The trick that makes it cheap: the layout runs **once, in Node, at build time**, so the browser receives final `(x, y)` coordinates and never loads a physics engine.
 </TLDR>
 
-I write one article a week, and I have been doing it for a while. Somewhere around post number 150 I stopped being able to answer questions I should have known by heart: is that `fzf` article actually linked from anywhere? Which post is the one everything else points back to? Did the whole Quarto series end up isolated from the rest of the blog?
+I publish twice a week, on Mondays and Thursdays, and I have been doing it for a while. Somewhere around post number 150 I stopped being able to answer questions I should have known by heart: is that `fzf` article actually linked from anywhere? Which post is the one everything else points back to? Did the whole Quarto series end up isolated from the rest of the blog?
 
-I had the data — every article's frontmatter, every inline link — but no way to *look* at it. A list of 247 rows is not a way to look at anything.
+I had the data — every article's frontmatter, every inline link — but no way to *look* at it. A list of 262 rows is not a way to look at anything.
 
-So I built a page that draws the blog as a graph. Here is what came out of it.
+So I built [/map](/map) — a page that draws the blog as a graph. Here is how it works and how to build one.
 
 <!-- truncate -->
 
@@ -39,13 +37,13 @@ So I built a page that draws the blog as a graph. Here is what came out of it.
 
 ## What the Map Page Shows You
 
-One page, `/map`, one picture. Every published article is a bubble wearing the blog's mascot. The bigger the bubble, the more other articles link to it. Lines connect posts that are genuinely related, and hovering one dims everything that is not its neighbor:
+Every published article is a bubble. The bigger it is, the more other articles link to it. Lines connect posts that are genuinely related — hover one and everything that is not its direct neighbor dims away:
 
 ```plaintext title="/map"
 ┌─ Blog Map ──────────────────────────────────────────────────────────────────┐
 │                                                                             │
 │  Filter by topic  [ Top 120 most-linked articles  ▾ ]                       │
-│  247 articles · 25 series · 680 internal links                              │
+│  262 articles · 25 series · 680 internal links                              │
 │                                                                             │
 │                           Running Docusaurus with Docker                    │
 │         ·   ·                     ●                                         │
@@ -61,11 +59,11 @@ One page, `/map`, one picture. Every published article is a bubble wearing the b
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-The counters in that header are not decoration, they are the graph's own `meta` block. Everything the page draws is computed before the browser sees it, and you can dump it straight from the plugin:
+Three things worth doing on that page:
 
-<Terminal source="./files/graph_stats.txt" />
-
-That is the whole payload: 247 nodes, 1026 edges, 179 KB of JSON, and not a single line of layout math left to run in the browser.
+- **Filter by topic** using the dropdown to narrow the graph to one `mainTag`. The articles that share the tag but link to nothing around them stay visible — that is exactly the kind of orphan you would otherwise never notice.
+- **Hover a node** to see its title and highlight its direct connections. A cluster that looks dense from a distance often turns out to be two or three hubs with a lot of satellites that only link inward.
+- **Switch to list** at the bottom if you prefer prose over canvas, or if you have JavaScript disabled: every article is still there, grouped by series, fully indexed.
 
 ## Why Computing the Layout at Build Time Changes Everything
 
@@ -88,6 +86,12 @@ It reads the corpus through the same loader my <Link to="/blog/docusaurus-tags">
 
 <Snippet filename="plugins/blog-graph-plugin/index.mjs" source="plugins/blog-graph-plugin/index.mjs" defaultOpen={false} />
 
+Running it standalone shows what the payload looks like:
+
+<Terminal source="./files/graph_stats.txt" />
+
+262 nodes, 1026 edges, 179 KB of JSON — computed once at build time, never touched again by the browser.
+
 One decision in there is worth pulling out: **the node colors are not a new palette.** A post that belongs to a series reuses that series' own accent color from `src/data/series.js` — the same one the <Link to="/blog/docusaurus-series">series page</Link> themes its hero with. A post without a series falls back to the accent color automatically extracted from its banner image. Only a post with neither gets a neutral gray. The map therefore looks like the rest of the site for free, and a reader who already recognizes "the blue one is the Quarto series" recognizes it here too.
 
 ### The component
@@ -101,7 +105,7 @@ One decision in there is worth pulling out: **the node colors are not a new pale
   <Snippet filename="src/components/BlogGraph/styles.module.css" source="src/components/BlogGraph/styles.module.css" defaultOpen={false} />
 </ProjectSetup>
 
-Canvas, not SVG, and that is not a stylistic preference: 247 nodes plus a thousand edges as DOM elements makes every hover a layout recalculation over a thousand nodes. On a canvas, a hover is one full redraw of a few hundred shapes, which is nothing.
+Canvas, not SVG, and that is not a stylistic preference: 262 nodes plus a thousand edges as DOM elements makes every hover a layout recalculation over a thousand nodes. On a canvas, a hover is one full redraw of a few hundred shapes, which is nothing.
 
 Register the plugin in `docusaurus.config.js` and give it a page:
 
@@ -167,7 +171,7 @@ return Math.min(aspectHeight, densityHeight);
 
 ### Labels stacking on top of each other
 
-Drawing 247 titles is unreadable, so only the eight most-connected visible nodes keep a permanent label, plus the hovered node and its direct neighbors. Even that stacks when a filtered topic is crowded. `selectNonOverlappingLabels()` walks the candidates in priority order — hovered node first, then neighbors, then hubs — measures each one with `ctx.measureText()` and drops any label whose box would intersect one already placed. Lower-priority labels lose; the hovered one always wins.
+Drawing 262 titles is unreadable, so only the eight most-connected visible nodes keep a permanent label, plus the hovered node and its direct neighbors. Even that stacks when a filtered topic is crowded. `selectNonOverlappingLabels()` walks the candidates in priority order — hovered node first, then neighbors, then hubs — measures each one with `ctx.measureText()` and drops any label whose box would intersect one already placed. Lower-priority labels lose; the hovered one always wins.
 
 ### Canvas cannot hear a theme change
 

@@ -1,5 +1,4 @@
 {
-  "continue.enableTabAutocomplete": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.inlineSuggest.enabled": true,
   "search.exclude": {
@@ -65,19 +64,5 @@
     "activityBarTop.activeBorder": "#15202b",
     "statusBar.inactiveBackground": "#6ce32c"
   },
-  "peacock.remoteColor": "#6ce32c",
-  "markdownlint.ignore": ["**/.htaccess", "**/.dockerignore"],
-  "markdownlint.config": {
-    "MD010": false,
-    "MD033": false,
-    "MD034": false
-  },
-  "[Makefile]": {
-    "editor.foldingStrategy": "indentation",
-    "editor.foldingRegions": {
-      "start": "^# region",
-      "end": "^# endregion"
-    }
-  },
-  "cSpell.words": ["NOPASSWD"]
+  "peacock.remoteColor": "#6ce32c"
 }

@@ -225,9 +225,11 @@ Ouvrez (ou créez) `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\config` dan
 
 #### Copier votre clé privée SSH sur la VM {#copy-your-ssh-private-key-to-the-vm}
 
-Le client SSH de la VM a besoin de votre clé privée. Copiez-la manuellement via l'Explorateur (allez dans votre home Linux sous `\\wsl$\` et copiez `~/.ssh/`<Var name="sshKey">id_ed25519</Var> vers `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\`), ou lancez ce one-liner dans une session Powershell qui a accès à WSL :
+Le client SSH de la VM a besoin de votre clé privée. Parce que vous aurez probablement aussi besoin de votre clef publique dans le futur, copiez les deux manuellement via l'Explorateur (allez dans votre home Linux sous `\\wsl$\` et copiez `~/.ssh/`<Var name="sshKey">id_ed25519</Var> vers `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\`), ou lancez ce one-liner dans une session Powershell qui a accès à WSL :
 
 <Terminal title="%%vmUser=vm-user%%@%%vmIp=windows-vm-ip%%: ~" wrap={true}>
+$ wsl sh -c 'cp "$HOME/.ssh/%%sshKey=id_ed25519%%.pub" "/mnt/c/Users/$(cmd.exe /c echo %USERNAME% | tr -d "\r")/.ssh/%%sshKey=id_ed25519%%.pub"'
+
 $ wsl sh -c 'cp "$HOME/.ssh/%%sshKey=id_ed25519%%" "/mnt/c/Users/$(cmd.exe /c echo %USERNAME% | tr -d "\r")/.ssh/%%sshKey=id_ed25519%%"'
 </Terminal>
 

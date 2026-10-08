@@ -254,6 +254,18 @@ Before testing a full alias, verify the bastion itself is reachable and accepts 
 
 </AlertBox>
 
+<AlertBox variant="tip" title="Eliminate password prompts — push your public key to a server">
+
+Once the config is in place, authorize your key on any server with this PowerShell one-liner. Replace `project_test` with the alias or hostname you want to reach:
+
+<Terminal title="laptop: PowerShell" wrap={true}>
+$ Get-Content $env:USERPROFILE\\.ssh\\%%sshKey=id_ed25519%%.pub | ssh project_test "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+</Terminal>
+
+You will be prompted for the server password once. After that, `ssh project_test` connects silently. On Linux and macOS, `ssh-copy-id project_test` does the same thing.
+
+</AlertBox>
+
 <AlertBox variant="important" title="VSCode Remote Explorer does not work with RemoteCommand">
 
 VSCode Remote SSH injects its own server process during login. `RemoteCommand` replaces the remote shell before that injection can happen — the connection closes before VSCode gets a foothold. Use the plain `project_test` / `project_prod` aliases for Remote Explorer; navigate to the application directory from within VSCode once connected.

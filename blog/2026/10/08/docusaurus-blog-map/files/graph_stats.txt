@@ -9,7 +9,7 @@ import('./plugins/blog-graph-plugin/index.mjs').then(async m => {
   console.log('payload', JSON.stringify(graph).length, 'bytes');
 });"
 
-nodes   247
+nodes   262
 edges   1026 { link: 680, series: 144, tag: 202 }
-meta    { articleCount: 247, seriesCount: 25, linkCount: 680 }
+meta    { articleCount: 262, seriesCount: 25, linkCount: 680 }
 payload 183292 bytes

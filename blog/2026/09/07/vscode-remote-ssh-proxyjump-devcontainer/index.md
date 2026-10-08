@@ -203,6 +203,16 @@ With ProxyJump already configured in `~/.ssh/config`, `ssh-copy-id` works transp
 
 It asks for the Linux server password one last time, then adds your public key to `~/.ssh/authorized_keys` on the server. After that, the full chain is silent — no prompts at all.
 
+<AlertBox variant="tip" title="PowerShell: no ssh-copy-id available">
+
+`ssh-copy-id` is not available in Windows PowerShell. Run this one-liner instead — with ProxyJump already configured, it routes through the VM automatically:
+
+<Terminal title="laptop: PowerShell" wrap={true}>
+$ Get-Content $env:USERPROFILE\\.ssh\\%%sshKey=id_ed25519%%.pub | ssh %%linuxAlias=linux-test%% "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+</Terminal>
+
+</AlertBox>
+
 </Details>
 
 <QuickJump
@@ -225,11 +235,23 @@ Open (or create) `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\config` in No
 
 #### Copy your SSH private key to the VM
 
-The SSH client on the VM needs your private key. Copy it manually via Explorer (navigate to your Linux home under `\\wsl$\` and copy `~/.ssh/`<Var name="sshKey">id_ed25519</Var> to `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\`), or run this one-liner in a Powershell session that has access to WSL:
+The SSH client on the VM needs your private key. Because we can need your public key for later use, copy both manually via Explorer (navigate to your Linux home under `\\wsl$\` and copy `~/.ssh/`<Var name="sshKey">id_ed25519</Var> to `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\`), or run this one-liner in a Powershell session that has access to WSL:
 
 <Terminal title="%%vmUser=vm-user%%@%%vmIp=windows-vm-ip%%: ~" wrap={true}>
+$ wsl sh -c 'cp "$HOME/.ssh/%%sshKey=id_ed25519%%.pub" "/mnt/c/Users/$(cmd.exe /c echo %USERNAME% | tr -d "\r")/.ssh/%%sshKey=id_ed25519%%.pub"'
+
 $ wsl sh -c 'cp "$HOME/.ssh/%%sshKey=id_ed25519%%" "/mnt/c/Users/$(cmd.exe /c echo %USERNAME% | tr -d "\r")/.ssh/%%sshKey=id_ed25519%%"'
 </Terminal>
+
+#### Authorize your key on the Linux server
+
+With the public key now in `C:\Users\`<Var name="vmUser">vm-user</Var>`\.ssh\`, push it to the Linux server from PowerShell on the VM:
+
+<Terminal title="%%vmUser=vm-user%%@%%vmIp=windows-vm-ip%%: PowerShell" wrap={true}>
+$ Get-Content $env:USERPROFILE\\.ssh\\%%sshKey=id_ed25519%%.pub | ssh %%linuxAlias=linux-test%% "mkdir -p ~/.ssh && chmod 700 ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+</Terminal>
+
+You will be prompted for your Linux server password once — that is the last time. From now on, `ssh `<Var name="linuxAlias">linux-test</Var> from PowerShell connects without a password prompt. *(WSL users: `ssh-copy-id `<Var name="linuxAlias">linux-test</Var> does the same.)*
 
 #### Test the connection from the VM
 
