@@ -1,0 +1,3 @@
+Name               FullName                                                                SizeGB
+----               --------                                                                ------
+docker_data.vhdx   C:\Users\christophe\AppData\Local\Docker\wsl\disk\docker_data.vhdx     288.45
