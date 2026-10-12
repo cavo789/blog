@@ -117,7 +117,7 @@ For sure, grep's flags are powerful once you know them by heart. But ripgrep's s
 
 ## What is ripgrep?
 
-ripgrep (`rg` on the command line) is a line-oriented search tool built in Rust by Andrew Gallant (BurntSushi). Speed is its headline feature — benchmarks consistently show it outperforming grep, ag (the Silver Searcher), and ack by a wide margin on large codebases. But raw speed is only part of the story.
+ripgrep (`rg` on the command line) is a line-oriented search tool built in Rust by Andrew Gallant (BurntSushi). Speed is its headline feature — benchmarks consistently show it outperforming grep, ag (the Silver Searcher), and ack by a wide margin on large codebases — and <Link to="/blog/hyperfine">hyperfine</Link> lets you check that claim on your own machine. But raw speed is only part of the story.
 
 What makes ripgrep genuinely better for day-to-day use is its **smart defaults**:
 

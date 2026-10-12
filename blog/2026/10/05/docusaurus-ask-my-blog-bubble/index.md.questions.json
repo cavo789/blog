@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-12T10:38:36.937Z",
+  "durationMs": 44873,
+  "source": "index.md",
+  "sourceHash": "f95b1df80e4d4a2562afb8094f2d5df77b39a65b",
+  "questions": [
+    {
+      "question": "docusaurus floating chat bubble search",
+      "anchor": ""
+    },
+    {
+      "question": "visitor can't find my search feature docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "add floating button that opens existing search component docusaurus",
+      "anchor": "what-changed"
+    },
+    {
+      "question": "is a floating search button redundant if I already have a Ctrl+K palette and a search page",
+      "anchor": "why-three-doors-is-not-redundancy"
+    },
+    {
+      "question": "lazy mount search component only when floating panel opens react",
+      "anchor": "building-the-bubble"
+    },
+    {
+      "question": "docusaurus swizzle floating component layout",
+      "anchor": "building-the-bubble"
+    },
+    {
+      "question": "two independent floating dialogs both open at same time react",
+      "anchor": "the-two-overlays-problem"
+    },
+    {
+      "question": "prevent two overlays from stacking docusaurus pub-sub",
+      "anchor": "the-two-overlays-problem"
+    },
+    {
+      "question": "show keyboard shortcut hint exactly once per visitor docusaurus",
+      "anchor": "a-hint-that-is-allowed-to-appear-exactly-once-skip-this-if-you-just-want-the-bubble"
+    },
+    {
+      "question": "highest leverage feature to add to existing docusaurus search",
+      "anchor": "conclusion"
+    }
+  ]
+}

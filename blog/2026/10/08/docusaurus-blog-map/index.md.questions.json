@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-12T10:39:14.857Z",
+  "durationMs": 37835,
+  "source": "index.md",
+  "sourceHash": "3236cab7b20e92d8a58c533f3b093975c76905b0",
+  "questions": [
+    {
+      "question": "docusaurus blog corpus graph map all articles",
+      "anchor": ""
+    },
+    {
+      "question": "filter graph by tag find orphaned posts docusaurus",
+      "anchor": "what-the-map-page-shows-you"
+    },
+    {
+      "question": "force-directed layout build time node no d3-force shipped to browser",
+      "anchor": "why-computing-the-layout-at-build-time-changes-everything"
+    },
+    {
+      "question": "docusaurus plugin react canvas component interactive blog map",
+      "anchor": "building-it"
+    },
+    {
+      "question": "docusaurus plugin read frontmatter compute in-degree edges 300 ticks",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "react canvas draw force graph hover dim non-neighbors",
+      "anchor": "the-component"
+    },
+    {
+      "question": "blog graph three edge types inline links series neighbors shared tags",
+      "anchor": "the-three-kinds-of-connection"
+    },
+    {
+      "question": "d3-force deterministic layout sorted node order index not random",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-the-map"
+    },
+    {
+      "question": "canvas renders giant empty space when tag filter leaves only two nodes",
+      "anchor": "a-two-node-filter-got-a-giant-empty-canvas"
+    },
+    {
+      "question": "force graph labels stacking overlapping on top of each other",
+      "anchor": "labels-stacking-on-top-of-each-other"
+    },
+    {
+      "question": "canvas not updating when docusaurus switches to dark theme",
+      "anchor": "canvas-cannot-hear-a-theme-change"
+    },
+    {
+      "question": "site mascot as node icon on blog graph docusaurus",
+      "anchor": "the-meerkats"
+    }
+  ]
+}

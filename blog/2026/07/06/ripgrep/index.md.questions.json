@@ -1,68 +1,58 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T22:03:45.581Z",
+  "generated": "2026-10-12T10:40:03.209Z",
+  "durationMs": 24245,
   "source": "index.md",
-  "sourceHash": "7e8fe9e036c9d2fc6ce998515b2943dba2e8154a",
-  "durationMs": 22543,
-  "rejected": [
-    {
-      "question": "rg fzf interactive search zsh function",
-      "anchor": "rgf--interactive-search-with-fzf",
-      "reason": "not answered: Function code not shown; links to another article for full setup.",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T08:56:16.578Z",
-    "articleHash": "488c93ec6371f65e4b5e05ae50f7c5a79a1a0bf8",
-    "questionsHash": "8a112096e41b667d",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 2
-  },
+  "sourceHash": "51e6c41d284b55fff0c27b2a063ab173fd20d66b",
   "questions": [
     {
-      "question": "ripgrep vs grep speed comparison large codebase",
+      "question": "ripgrep faster than grep large project",
+      "anchor": ""
+    },
+    {
+      "question": "rg vs grep which flags do what side by side",
+      "anchor": "ripgrep-vs-grep--a-side-by-side-look"
+    },
+    {
+      "question": "Rust grep alternative that skips binary files and respects .gitignore by default",
       "anchor": "what-is-ripgrep"
     },
     {
-      "question": "why does ripgrep skip node_modules by default",
-      "anchor": "what-is-ripgrep"
+      "question": "try ripgrep in a docker container before installing locally",
+      "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "install ripgrep WSL2 Ubuntu",
+      "question": "install ripgrep WSL2 Ubuntu apt",
       "anchor": "installation-on-ubuntu--wsl2"
     },
     {
-      "question": "ripgreprc file where to put default flags",
+      "question": "ripgreprc config exclude node_modules and vendor directories",
       "anchor": "configuration--ripgreprc"
     },
     {
-      "question": "zsh functions directory ripgrep aliases",
+      "question": "zsh alias rg instead of grep .zshrc setup",
       "anchor": "zsh-setup--zshrc"
     },
     {
-      "question": "ripgrep find all TODO FIXME across project",
+      "question": "ripgrep fzf interactive fuzzy find in terminal",
+      "anchor": "rgf--interactive-search-with-fzf"
+    },
+    {
+      "question": "rg find all TODO and FIXME comments across a project",
       "anchor": "rgtodo--surface-all-technical-debt-at-once"
     },
     {
-      "question": "search env var usage ripgrep",
+      "question": "ripgrep track where an environment variable is used in codebase",
       "anchor": "rgenv--track-down-environment-variable-usage"
     },
     {
-      "question": "find function definition PHP codebase rg",
-      "anchor": "finding-a-function-definition-across-a-php-project"
-    },
-    {
-      "question": "bulk rename with rg sed",
+      "question": "bulk rename files using rg and sed",
       "anchor": "bulk-rename-with-rg--sed"
     },
     {
-      "question": "ripgrep max depth limit subdirectories",
-      "anchor": "limiting-search-depth"
+      "question": "ripgrep context lines around a match -C flag",
+      "anchor": "context-lines--understanding-code-around-a-match"
     }
   ]
 }

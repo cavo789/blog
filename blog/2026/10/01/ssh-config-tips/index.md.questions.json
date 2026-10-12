@@ -1,25 +1,21 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-10-05T05:47:59.319Z",
-  "durationMs": 32307,
+  "generated": "2026-10-12T10:41:20.100Z",
+  "durationMs": 48651,
   "source": "index.md",
-  "sourceHash": "0466bab7492f66289ed04da96bc5171144fbac11",
+  "sourceHash": "330fa3cb8125346fa01d65beed8fbacefd469298",
   "questions": [
     {
-      "question": "ssh config stop repeating ProxyJump IdentityFile every server",
+      "question": "repeating ProxyJump IdentityFile for every SSH server",
       "anchor": ""
     },
     {
-      "question": "ssh config short alias and full FQDN both work without -i flag",
+      "question": "ssh config short alias and FQDN both work without -i flag",
       "anchor": "the-config"
     },
     {
-      "question": "ssh config first value wins not last override like CSS",
-      "anchor": "how-ssh-reads-a-config-file"
-    },
-    {
-      "question": "does ssh Host pattern match what I type or the resolved hostname",
+      "question": "ssh config first value wins top to bottom not last like other tools",
       "anchor": "how-ssh-reads-a-config-file"
     },
     {
@@ -27,31 +23,31 @@
       "anchor": "the-five-sections"
     },
     {
-      "question": "add ssh hardening directives to global defaults without breaking alias overrides",
+      "question": "add ssh hardening directives to global defaults without changing existing logic",
       "anchor": "hardening-section-5-optional"
     },
     {
-      "question": "ssh alias not inheriting User from domain stanza why",
+      "question": "ssh alias doesn't inherit User from domain stanza why",
       "anchor": "why-each-alias-needs-its-own-user-line-skip-if-the-config-just-works-for-you"
     },
     {
-      "question": "ssh wildcard Host * accidentally catches personal servers on corporate machine",
+      "question": "ssh Host * wildcard matches corporate and personal servers",
       "anchor": "one-caveat-the-wildcard-is-truly-universal-skip-if-this-machine-is-corporate-only"
     },
     {
-      "question": "ssh RemoteCommand land directly as application user",
+      "question": "ssh RemoteCommand land directly as app user skip interactive shell",
       "anchor": "bonus-log-in-directly-as-another-user"
     },
     {
-      "question": "generate ssh config template ProxyJump all servers windows linux",
+      "question": "generate complete ssh config template with wildcard ProxyJump",
       "anchor": "generate-your-complete-config"
     },
     {
-      "question": "ssh config production environment bastion jump host warning",
+      "question": "ssh config production environment bastion warning",
       "anchor": "production-environment-warning"
     },
     {
-      "question": "ssh config same file works WSL and native Linux",
+      "question": "ssh config wildcards aliases domain stanzas automated login",
       "anchor": "conclusion"
     }
   ]

@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-12T10:39:38.886Z",
+  "durationMs": 23956,
+  "source": "index.md",
+  "sourceHash": "7d12afd01705feb862255a97f188e28127d34f50",
+  "questions": [
+    {
+      "question": "command line benchmarking tool compare two commands statistics",
+      "anchor": ""
+    },
+    {
+      "question": "hyperfine grep vs git grep",
+      "anchor": "a-first-benchmark"
+    },
+    {
+      "question": "install hyperfine ubuntu apt",
+      "anchor": "install"
+    },
+    {
+      "question": "why is my first benchmark run slower cold disk cache",
+      "anchor": "warmup-runs"
+    },
+    {
+      "question": "hyperfine limit number of runs for slow docker build",
+      "anchor": "controlling-run-count"
+    },
+    {
+      "question": "hyperfine pipe error shell syntax v2.0",
+      "anchor": "no-shell-by-default"
+    },
+    {
+      "question": "benchmark same command with different input sizes scaling",
+      "anchor": "benchmarking-with-variable-inputs"
+    },
+    {
+      "question": "hyperfine export results csv markdown json",
+      "anchor": "exporting-results"
+    },
+    {
+      "question": "is ripgrep actually faster than grep benchmark",
+      "anchor": "grep-vs-ripgrep--is-the-hype-justified"
+    },
+    {
+      "question": "hyperfine vs time command difference",
+      "anchor": "hyperfine-vs-time"
+    }
+  ]
+}
