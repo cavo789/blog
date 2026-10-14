@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T16:13:56.440Z",
+  "durationMs": 39119,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "4940b31985570898b8b949957d4ee33d3fb705e7",
+  "questions": [
+    {
+      "question": "transformer une phrase en diagramme mermaid ollama zsh",
+      "anchor": ""
+    },
+    {
+      "question": "générer un flowchart mermaid depuis une description texte libre sans yaml",
+      "anchor": "demo--plain-english-description"
+    },
+    {
+      "question": "diagramme mermaid docker-compose.yaml sans écrire de parser",
+      "anchor": "demo--an-existing-config-file"
+    },
+    {
+      "question": "exemples de prompts pour ai-diagram mermaid",
+      "anchor": "more-sentences-to-try"
+    },
+    {
+      "question": "diagramme mermaid tri des tickets de support",
+      "anchor": "support-ticket-triage"
+    },
+    {
+      "question": "flowchart mermaid connexion avec verrouillage de compte",
+      "anchor": "login-with-a-lockout"
+    },
+    {
+      "question": "diagramme mermaid processus commande e-commerce",
+      "anchor": "an-e-commerce-order"
+    },
+    {
+      "question": "ai-diagram vs docker-python-mermaid quand utiliser lequel",
+      "anchor": "where-this-actually-sits-next-to-docker-python-mermaid"
+    },
+    {
+      "question": "fonction ai-diagram zsh mode fichier vs mode texte libre",
+      "anchor": "the-ai-diagram-function"
+    },
+    {
+      "question": "menu ai zsh où est enregistrée la fonction",
+      "anchor": "registered-in-the-ai-menu"
+    },
+    {
+      "question": "installer ai-diagram zsh ollama",
+      "anchor": "installing-it"
+    }
+  ]
+}

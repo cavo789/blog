@@ -3,7 +3,7 @@ slug: ollama-ai-standup
 title: "ai-standup: Turn Yesterday's Commits Into a Daily Standup Update"
 authors: [christophe, claude]
 image: /img/v2/git_branches_status.webp
-mainTag: git
+mainTag: ai
 tags: [git, zsh, ai, ollama]
 date: 2026-12-31
 description: "A zsh function that scans yesterday's commits across every repo you work in and summarizes them into a short, ready-to-say standup update — reusing the same _ollama_query helper and ai dispatcher from the rest of this series."
@@ -67,6 +67,8 @@ ai-standup 14     # override: coming back from vacation
 
 ## The `ai-standup` Function
 
+No need to copy anything yet: the `.zsh` files shown in this article are here to be read, and [Installing It](#installing-it) at the end creates every one of them in `~/.zsh/fns/` for you.
+
 <Snippet filename="~/.zsh/fns/ai-standup.zsh" source="./files/ai-standup.zsh" defaultOpen={true} />
 
 For each repo in the list:
@@ -80,7 +82,9 @@ Once every repo has been scanned, the combined list goes to `_ollama_query` with
 
 ## Registered in the `ai` Menu
 
-Like every function in this series, `ai-standup` adds itself with one line — `AI_COMMANDS[standup]=...` — so it shows up next to `test` and `commit` the moment you run bare `ai`. Reachable as `ai standup` or directly as `ai-standup`.
+Like every function in this series, `ai-standup` adds itself with one line — `AI_COMMANDS[standup]=...` — so it shows up next to <Link to="/blog/ollama-test-generator">`test`</Link> and <Link to="/blog/ollama-git-precommit">`commit`</Link> the moment you run bare `ai`. Reachable as `ai standup` or directly as `ai-standup`.
+
+`_ollama_query` and the `AI_COMMANDS` registry live in the shared `_ollama.zsh` foundation introduced in <Link to="/blog/ollama-test-generator">ai-test</Link>. If you already followed an earlier article in this series, it's already sitting in `~/.zsh/fns/` and sourced by your autoloader — nothing more to do. Starting here instead? It is one of the files created in [Installing It](#installing-it) below.
 
 ## Key Takeaways
 
@@ -95,6 +99,33 @@ Like every function in this series, `ai-standup` adds itself with one line — `
     { content: "**Registers into `ai`** — reachable as `ai standup`, alongside every other function in the series" }
   ]}
 />
+
+## Installing It
+
+Everything runs on your machine: zsh, `curl` and `jq` (which builds the request sent to Ollama), and an Ollama server you can reach — see <Link to="/blog/ollama-installation">installing Ollama</Link> if you don't have one yet.
+
+**1. Create the files.** Every function of this series lives in its own file in `~/.zsh/fns/`. The one-liner below creates that folder and the two files in one go — or download the ZIP, or create each file by hand and paste its content. `_ollama.zsh` is the foundation the whole series shares: if an earlier article already gave it to you, the copy here is the same file.
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
+  <Snippet filename="ai-standup.zsh" source="./files/ai-standup.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed an earlier article of this series. Otherwise, add these lines at the end of `~/.zshrc` — they source every `.zsh` file in the folder, so the next function you add needs no change here:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh` in the current one), and check that the shell knows the new function:
+
+```zsh
+type ai-standup
+```
+
+`ai-standup is a shell function from …/ai-standup.zsh` means you're ready. `ai-standup not found` means step 2 is missing.
 
 ## Conclusion
 

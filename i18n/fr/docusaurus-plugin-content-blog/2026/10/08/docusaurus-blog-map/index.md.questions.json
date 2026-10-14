@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T16:11:48.849Z",
+  "durationMs": 26093,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "18197d5578ba1d8b0b0f9a219fc5f09552d5991a",
+  "questions": [
+    {
+      "question": "visualiser liens entre articles blog docusaurus graphe force-directed",
+      "anchor": ""
+    },
+    {
+      "question": "filtrer un graphe d'articles par tag pour repérer les orphelins docusaurus",
+      "anchor": "what-the-map-page-shows-you"
+    },
+    {
+      "question": "d3-force au build dans Node pas dans le navigateur docusaurus",
+      "anchor": "why-computing-the-layout-at-build-time-changes-everything"
+    },
+    {
+      "question": "construire carte interactive blog docusaurus plugin + composant canvas",
+      "anchor": "building-it"
+    },
+    {
+      "question": "plugin docusaurus extraire liens inline et frontmatter de tout le corpus",
+      "anchor": "the-plugin"
+    },
+    {
+      "question": "composant react canvas dessiner graphe force-directed pré-calculé sans animation",
+      "anchor": "the-component"
+    },
+    {
+      "question": "trois types d'arêtes graphe blog : liens inline, voisins de série, tags partagés",
+      "anchor": "the-three-kinds-of-connection"
+    },
+    {
+      "question": "layout force-directed déterministe : même build même positions docusaurus",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-the-map"
+    },
+    {
+      "question": "filtre deux nœuds canvas géant et vide graphe docusaurus",
+      "anchor": "a-two-node-filter-got-a-giant-empty-canvas"
+    },
+    {
+      "question": "libellés qui s'empilent les uns sur les autres canvas graphe d'articles",
+      "anchor": "labels-stacking-on-top-of-each-other"
+    },
+    {
+      "question": "canvas ne réagit pas au changement de thème dark mode docusaurus",
+      "anchor": "canvas-cannot-hear-a-theme-change"
+    },
+    {
+      "question": "mascotte suricate sur les bulles du graphe blog docusaurus",
+      "anchor": "the-meerkats"
+    }
+  ]
+}

@@ -1,61 +1,51 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-18T02:39:01.783Z",
+  "generated": "2026-10-14T16:18:46.524Z",
+  "durationMs": 48107,
   "source": "index.md",
-  "sourceHash": "4c61959b107316e2400c0300660a5141478a8d32",
-  "durationMs": 178628,
   "locale": "fr",
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:35:59.817Z",
-    "articleHash": "ef1b7c6735a362b63dad33633d94b2456fa446aa",
-    "questionsHash": "b3c29ded7498b9a7",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "1d2335fc2bf54b5938169924b3b2a731c10ef537",
   "questions": [
     {
-      "question": "comment transformer des docs éparpillés en base de connaissances interrogeable avec un LLM local",
+      "question": "discuter avec mes docs éparpillées markdown pdf excel ollama local",
       "anchor": ""
     },
     {
-      "question": "installer AnythingLLM sur une seule machine avec docker compose",
-      "anchor": "install"
+      "question": "comment poser une question floue sur un blog indexé avec AnythingLLM",
+      "anchor": "seeing-it-work"
     },
     {
-      "question": "quelles variables d'environnement configurer dans compose.yaml pour AnythingLLM",
+      "question": "compose.yaml AnythingLLM variables d'environnement ollama",
       "anchor": "the-composeyaml-file"
     },
     {
-      "question": "importer pdf markdown excel et powerpoint dans un workspace AnythingLLM",
-      "anchor": "ingest"
+      "question": "AnythingLLM workspace import pas de chemin fichier",
+      "anchor": "you-dont-give-it-a-path--and-that-surprises-everyone"
     },
     {
-      "question": "indexer une arborescence entière de projets en une seule commande",
+      "question": "indexer toute une arborescence de fichiers AnythingLLM une commande",
       "anchor": "indexing-a-whole-folder-tree-with-one-command"
     },
     {
-      "question": "interroger un workspace AnythingLLM depuis le terminal via l'api",
+      "question": "garder l'index AnythingLLM à jour nouveaux fichiers",
+      "anchor": "keeping-the-index-up-to-date"
+    },
+    {
+      "question": "rechercher dans un workspace AnythingLLM depuis le terminal",
       "anchor": "search"
     },
     {
-      "question": "script ai-blog-search pour indexer automatiquement un blog markdown",
+      "question": "ai-blog-search script portable ollama",
       "anchor": "ai-blog-search-the-portable-script"
     },
     {
-      "question": "garder les docs sur le pc pro et utiliser le gpu du pc maison avec AnythingLLM",
+      "question": "documents sur PC boulot GPU ollama à la maison AnythingLLM docker",
       "anchor": "two-machines"
     },
     {
-      "question": "modifier compose.yaml pour pointer vers un Ollama distant",
-      "anchor": "what-actually-changes-in-the-compose-file"
-    },
-    {
-      "question": "regénérer les workspaces AnythingLLM après un changement de config",
-      "anchor": "recreate-the-workspaces-this-time-for-real"
+      "question": "GPU ollama indisponible que faire AnythingLLM",
+      "anchor": "and-when-it-isnt-home"
     }
   ]
 }

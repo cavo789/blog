@@ -1,60 +1,50 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-20T16:52:50.990Z",
+  "generated": "2026-10-14T16:06:28.192Z",
+  "durationMs": 23741,
   "source": "index.md",
-  "sourceHash": "3dfe71d2f506b312ca382c075a0f6e71a6dbd9bb",
-  "durationMs": 173479,
   "locale": "fr",
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:46:22.119Z",
-    "articleHash": "ffa746c1f2a3ff630c45e0c2456e81a685c36058",
-    "questionsHash": "e6af1424acf76281",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 2
-  },
+  "sourceHash": "75360d1bf001daa548e78665fbc3d816cc22f985",
   "questions": [
     {
-      "question": "zsh functions traduire résumer documents confidentiels local ollama docling",
+      "question": "traduire document Word PDF en local sans cloud ollama zsh",
       "anchor": ""
     },
     {
-      "question": "ai-translate comment garder la mise en forme markdown intacte lors de la traduction",
-      "anchor": "ai-translate"
+      "question": "traduire un .docx vers le français avec ollama sans envoyer le fichier nulle part",
+      "anchor": "demo--ai-translate"
     },
     {
-      "question": "ai-summarize extraire délais paiement et résiliation sans lire tout le contrat",
+      "question": "résumer un contrat PDF en 4 points clés localement",
       "anchor": "demo--ai-summarize"
     },
     {
-      "question": "docling helper script gérer les chemins absolus et préserver le répertoire de travail dans un subshell",
+      "question": "Docling extraire texte Word PowerPoint Excel en markdown local",
       "anchor": "reusing-docling-for-extraction"
     },
     {
-      "question": "ai-translate fonction arguments langue par défaut et conservation de la structure markdown",
+      "question": "zsh function traduire document préserver titres listes tableaux markdown ollama",
       "anchor": "ai-translate"
     },
     {
-      "question": "ai-summarize personnaliser le nombre de points clés et forcer la réponse dans la langue du document",
+      "question": "résumer document privilégier décisions chiffres échéances langue source ollama",
       "anchor": "ai-summarize"
     },
     {
-      "question": "comment enregistrer ai-translate et ai-summarize dans le menu ai partagé",
+      "question": "ajouter fonction au menu ai zsh completion",
       "anchor": "registered-in-the-ai-menu"
     },
     {
-      "question": "à retenir pourquoi privilégier le traitement local pour les documents confidentiels et quels formats sont supportés",
+      "question": "pipeline local Docling + Ollama traduction résumé document",
       "anchor": "key-takeaways"
     },
     {
-      "question": "récapitulatif rapide des commandes ai-translate ai-summarize et de l extraction docling",
-      "anchor": "key-takeaways"
+      "question": "installer ai-translate ai-summarize zsh ollama docker compose",
+      "anchor": "installing-it"
     },
     {
-      "question": "conclusion comment intégrer ai-translate et ai-summarize dans son workflow quotidien avec ollama",
+      "question": "ne pas envoyer contrat client dans Google Translate alternative locale",
       "anchor": "conclusion"
     }
   ]

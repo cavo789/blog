@@ -1,57 +1,51 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-18T02:35:29.802Z",
+  "generated": "2026-10-14T16:17:28.470Z",
+  "durationMs": 26802,
   "source": "index.md",
-  "sourceHash": "b812b4c2374159e81bd657b3b7ccdfea5fe2afa6",
-  "durationMs": 121555,
   "locale": "fr",
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:34:38.612Z",
-    "articleHash": "d4dece85b9ca26cfb406251404100ae6ae582fe0",
-    "questionsHash": "069f2d3a0137283b",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "9040a312d2a46f61f156b1f1bb5c21d3d877e26c",
   "questions": [
     {
-      "question": "hook zsh local ollama avant git commit",
+      "question": "fonctions zsh ollama avant git commit local hors ligne",
       "anchor": ""
     },
     {
-      "question": "comment ai-review détecte-t-il les violations SOLID et les problèmes de nommage que les linters manquent ?",
+      "question": "détecter méthode qui fait trois choses à la fois dans diff stagé sans linter",
       "anchor": "what-ai-review-catches-before-you-even-write-a-commit-message"
     },
     {
-      "question": "pourquoi les trois fonctions partagent-elles _git_staged_diff et une regex préalable ?",
+      "question": "pourquoi vérifier les secrets après la revue de code et pas avant",
       "anchor": "why-its-built-this-way"
     },
     {
-      "question": "installer ai-review ai-secrets ai-commit dans zsh",
+      "question": "sourcer dossier .zsh ai-review ai-secrets ai-commit nouveau terminal",
       "anchor": "installing-the-three-functions"
     },
     {
-      "question": "ai-secrets filtre les faux positifs et identifie les vrais identifiants en dur",
+      "question": "distinguer vrai mot de passe de base de données faux positif dans diff git",
       "anchor": "ai-secrets-catching-real-credentials"
     },
     {
-      "question": "générer automatiquement un message Conventional Commits après nettoyage du diff",
+      "question": "rédiger message Conventional Commits avec ollama une fois le diff nettoyé",
       "anchor": "ai-commit-writing-the-message-for-the-diff-youve-just-cleaned-up"
     },
     {
-      "question": "comment fonctionne le helper _git_staged_diff pour les clauses de garde ?",
+      "question": "_git_staged_diff helper partagé clauses de garde zsh",
       "anchor": "under-the-hood-_git_staged_diff-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "ordre d'exécution des vérifications pre-commit : revue, secrets et message",
+      "question": "enchaîner ai-review puis ai-secrets puis ai-commit avant le commit",
       "anchor": "running-them-together"
     },
     {
-      "question": "intérêt de faire une pause et relire son diff localement avant de commiter",
-      "anchor": "conclusion"
+      "question": "barrière qualité git commit sans abonnement cloud ni SaaS",
+      "anchor": ""
+    },
+    {
+      "question": "regex peu coûteuse avant appel modèle ollama diff propre zéro coût",
+      "anchor": "why-its-built-this-way"
     }
   ]
 }

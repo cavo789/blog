@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T16:10:52.835Z",
+  "durationMs": 50987,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8f7c107275d58dd58d3edde94280ca510d6e6aeb",
+  "questions": [
+    {
+      "question": "bulle chat flottante docusaurus index questions",
+      "anchor": ""
+    },
+    {
+      "question": "comment ajouter un bouton flottant qui monte le composant de recherche existant dans docusaurus",
+      "anchor": "what-changed"
+    },
+    {
+      "question": "trois points d'entrée même index questions docusaurus justifié",
+      "anchor": "why-three-doors-is-not-redundancy"
+    },
+    {
+      "question": "composant react panneau flottant lazy mount corpus 468ko focus",
+      "anchor": "building-the-bubble"
+    },
+    {
+      "question": "deux overlays flottants indépendants s'ouvrent en même temps pub-sub",
+      "anchor": "the-two-overlays-problem"
+    },
+    {
+      "question": "hint première visite une seule fois raccourci clavier docusaurus",
+      "anchor": "a-hint-that-is-allowed-to-appear-exactly-once-skip-this-if-you-just-want-the-bubble"
+    },
+    {
+      "question": "ajout point d'entrée fonctionnalité déjà construite docusaurus rapport effort",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "bulle flottante qui suit le lecteur n'importe quelle page docusaurus",
+      "anchor": "what-changed"
+    },
+    {
+      "question": "composant volontairement mince rien monté quand panneau fermé docusaurus",
+      "anchor": "building-the-bubble"
+    },
+    {
+      "question": "synchroniser deux modales flottantes docusaurus ne pas ouvrir en même temps",
+      "anchor": "the-two-overlays-problem"
+    }
+  ]
+}

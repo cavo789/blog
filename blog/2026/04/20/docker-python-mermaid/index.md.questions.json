@@ -1,31 +1,21 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T21:52:29.846Z",
+  "generated": "2026-10-14T15:36:12.926Z",
+  "durationMs": 39864,
   "source": "index.md",
-  "sourceHash": "f2fed3ebb85c3f309077c1c531741c6cd1859a23",
-  "durationMs": 35677,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T08:46:25.515Z",
-    "articleHash": "48d7670db3a46ec0a972b2bbe2589878c353bf30",
-    "questionsHash": "b9974920b5e660f2",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 4
-  },
+  "sourceHash": "3c34ae225424c959f40f316b389355ce3dc807c5",
   "questions": [
     {
-      "question": "automate architecture diagrams from docker-compose mermaid python",
-      "anchor": "well-read-a-docker-composeyaml-and-create-a-mindmap"
+      "question": "auto generate architecture diagram from codebase without manual drawing",
+      "anchor": ""
     },
     {
-      "question": "how to generate a mindmap from compose.yaml with a single command",
-      "anchor": "well-read-a-docker-composeyaml-and-create-a-mindmap"
+      "question": "one command render compose.yaml into mindmap png",
+      "anchor": "the-result"
     },
     {
-      "question": "mermaid pseudocode rendered to transparent png",
+      "question": "why mermaid over draw.io for automated diagrams",
       "anchor": "why-mermaid"
     },
     {
@@ -33,35 +23,27 @@
       "anchor": "installation--lets-create-the-docker-image"
     },
     {
-      "question": "mermaid cli puppeteer config custom font color theme",
+      "question": "mermaid puppeteer config custom theme font colors",
       "anchor": "prepare-mermaid-rendering"
     },
     {
-      "question": "python script generate mermaid code and render to image",
+      "question": "python script generate mermaid pseudocode render image",
       "anchor": "finally-we-need-a-python-script"
     },
     {
-      "question": "parse docker-compose.yaml into mermaid mindmap python",
+      "question": "parse docker-compose.yaml generate visual mindmap",
       "anchor": "well-read-a-docker-composeyaml-and-create-a-mindmap"
     },
     {
-      "question": "mermaid diagram from project folder structure",
+      "question": "scan project folder structure create categorized mindmap diagram",
       "anchor": "another-example"
     },
     {
-      "question": "python script group files by category mermaid mindmap",
-      "anchor": "another-example"
+      "question": "dockerfile + puppeteer + theme + python script all files",
+      "anchor": "all-needed-files"
     },
     {
-      "question": "mermaid pie chart python script from codebase",
-      "anchor": "last-example"
-    },
-    {
-      "question": "docker python mermaid all project files structure",
-      "anchor": "another-example"
-    },
-    {
-      "question": "documentation as code auto-update diagrams when yaml changes",
+      "question": "documentation as code pipeline docker python mermaid",
       "anchor": "conclusion"
     }
   ]

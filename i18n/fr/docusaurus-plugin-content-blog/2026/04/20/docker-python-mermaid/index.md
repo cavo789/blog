@@ -152,4 +152,4 @@ Cette fois, un camembert :
 
 En combinant la puissance de parsing de Python avec l'élégance de rendu de Mermaid, nous avons transformé une documentation statique en un actif dynamique.
 
-Si l'approche *Documentation as Code* vous plaît, jetez un œil à deux autres de mes articles qui vont dans la même direction : <Link to="/blog/docker-diagram-as-code">Docker - Diagrams as code</Link> et <Link to="/blog/python-pydot">Python - Generate flows using pydot</Link>.
+Si l'approche *Documentation as Code* vous plaît, jetez un œil à deux autres de mes articles qui vont dans la même direction : <Link to="/blog/docker-diagram-as-code">Docker - Diagrams as code</Link> et <Link to="/blog/python-pydot">Python - Generate flows using pydot</Link>. Et quand il n'y a aucun parser à écrire — une phrase qui décrit un processus, un format de config pour lequel je n'ai pas de script — <Link to="/blog/ollama-ai-diagram">ai-diagram</Link> demande le Mermaid à un LLM local.

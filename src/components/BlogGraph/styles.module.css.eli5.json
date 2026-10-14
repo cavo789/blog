@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T16:19:53.980Z",
+  "source": "styles.module.css",
+  "sourceHash": "8c9f5f17e4f48cc9a76fada68b657e1bd11c8aa4",
+  "lang": "css",
+  "textLang": "en",
+  "summary": "This CSS file styles a data visualization or list interface with controls, a canvas area, and grouped item listings. It uses CSS custom properties (variables) for theming, includes responsive adjustments for mobile devices, and respects user preferences for reduced motion animations.",
+  "explanations": {
+    "20": "The `composes` keyword pulls in styles from a global CSS class called `mk-eyebrow` and merges them with the styles defined here — it's a way to reuse styles from elsewhere.",
+    "28": "`font-family: inherit` makes this element use the same font as its parent, rather than using the browser's default form font.",
+    "30": "`letter-spacing: 0` explicitly removes any letter spacing that might have been inherited from parent styles.",
+    "40": "`outline: none` removes the browser's default focus ring so the component can use a custom one below with the box-shadow.",
+    "50": "`font-variant-numeric: tabular-nums` makes numbers all the same width so they don't shift around when they change — useful for counters.",
+    "87": "The `[open]` selector targets `<details>` elements when they're expanded, so you can style them differently in their open vs. closed state.",
+    "93": "`repeat(auto-fill, minmax(240px, 1fr))` creates columns that are at least 240 pixels wide but grow to fill space, and automatically adds more columns as space allows.",
+    "98": "`min-width: 0` overrides the browser's default `min-width: auto` for grid items, allowing content to shrink below its natural width if needed.",
+    "131": "In the mobile media query, `flex-direction: column` stacks the controls vertically instead of horizontally.",
+    "141": "`white-space: normal` allows text to wrap on mobile, undoing the `white-space: nowrap` set earlier for desktop.",
+    "147": "This removes the `transition` animation for users who've enabled reduced motion in their accessibility settings, respecting their preference."
+  }
+}

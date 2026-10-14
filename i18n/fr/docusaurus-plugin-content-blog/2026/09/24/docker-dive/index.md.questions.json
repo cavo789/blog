@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T16:07:21.717Z",
+  "durationMs": 23602,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "edc258baab70008f621a9a8405dc23cb56b46b71",
+  "questions": [
+    {
+      "question": "réduire taille image docker sans toucher au code applicatif",
+      "anchor": ""
+    },
+    {
+      "question": "outil voir arborescence fichiers par layer docker en terminal",
+      "anchor": "what-is-dive"
+    },
+    {
+      "question": "docker run dive sans installer quoi que ce soit sur le host",
+      "anchor": "running-dive--no-installation-needed"
+    },
+    {
+      "question": "image docker 1 Go pour une app Flask avec 5 dépendances pourquoi",
+      "anchor": "the-patient-a-deliberately-terrible-dockerfile"
+    },
+    {
+      "question": "dive fichiers supprimés dans un layer mais toujours embarqués dans l'image finale",
+      "anchor": "the-diagnosis-what-dive-reveals"
+    },
+    {
+      "question": "apt-get install et apt-get clean dans le même RUN dockerfile",
+      "anchor": "fix-1--clean-up-the-apt-mess-in-the-same-layer"
+    },
+    {
+      "question": "fusionner plusieurs RUN en une seule instruction pour réduire les layers",
+      "anchor": "fix-2--fewer-layers-less-overhead"
+    },
+    {
+      "question": "multi-stage build docker réduire image de 80 %",
+      "anchor": "fix-3--the-multi-stage-build"
+    },
+    {
+      "question": "FROM scratch image docker un seul binaire et rien d'autre",
+      "anchor": "bonus--from-scratch-the-absolute-minimum"
+    },
+    {
+      "question": "dive dans le pipeline CI comme garde-fou sur la taille de l'image",
+      "anchor": "dive-as-a-ci-quality-gate"
+    },
+    {
+      "question": "claude code automatiser la boucle build docker + analyse dive",
+      "anchor": "claude-code--automate-the-entire-loop"
+    },
+    {
+      "question": "passer d'une image docker de 1 Go à un build compact étape par étape",
+      "anchor": "putting-it-all-together"
+    }
+  ]
+}

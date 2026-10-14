@@ -1,60 +1,51 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-17T17:04:26.789Z",
+  "generated": "2026-10-14T16:16:31.745Z",
+  "durationMs": 36134,
   "source": "index.md",
-  "sourceHash": "a16beb9e456ec0df3e0fa6f849ff4931ecba7a69",
   "locale": "fr",
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:19:54.785Z",
-    "articleHash": "80f11904e434a780e2674c0cc3147b31def65ccc",
-    "questionsHash": "0e23ea3f2d7bbb23",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 1
-  },
+  "sourceHash": "73d8123c478a0b75e331a7eb567909c461a3a8c4",
   "questions": [
     {
-      "question": "comment automatiser la documentation d'infrastructure avec docker et mermaid",
+      "question": "doc as code diagrammes architecture python mermaid docker",
       "anchor": ""
     },
     {
-      "question": "comment faire pour que le schéma png se mette à jour dès qu'on modifie le yaml ?",
+      "question": "mindmap PNG depuis compose.yaml sans outil de dessin",
       "anchor": "the-result"
     },
     {
-      "question": "transformer du pseudocode texte en image png avec le cli mermaid",
+      "question": "mermaid cli pseudocode vers image png",
       "anchor": "why-mermaid"
     },
     {
-      "question": "docker build image personnalisée python mermaid",
+      "question": "Dockerfile python mermaid cli docker build -t",
       "anchor": "installation--lets-create-the-docker-image"
     },
     {
-      "question": "configurer puppeteer et le style personnalisé pour le rendu mermaid",
+      "question": "mermaid puppeteer.json thème police couleurs",
       "anchor": "prepare-mermaid-rendering"
     },
     {
-      "question": "écrire un script python pour générer du pseudocode mermaid",
+      "question": "script python générer pseudocode mermaid",
       "anchor": "finally-we-need-a-python-script"
     },
     {
-      "question": "parser un compose.yaml avec python pour faire une mindmap",
+      "question": "lire docker compose.yaml générer mindmap",
       "anchor": "well-read-a-docker-composeyaml-and-create-a-mindmap"
     },
     {
-      "question": "générer un camembert ou parcourir une arborescence avec mermaid",
+      "question": "mermaid pie chart python docker exemple",
       "anchor": "more-examples"
     },
     {
-      "question": "où trouver le dockerfile et les scripts complets du projet ?",
-      "anchor": "all-needed-files"
+      "question": "mermaid diagramme arborescence dossiers python",
+      "anchor": "another-example"
     },
     {
-      "question": "garder la documentation à jour sans dessin manuel avec docker",
-      "anchor": "the-result"
+      "question": "tous les fichiers docker python mermaid",
+      "anchor": "all-needed-files"
     }
   ]
 }

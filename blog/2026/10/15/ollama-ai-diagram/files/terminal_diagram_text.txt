@@ -1,0 +1,11 @@
+$ ai-diagram "a user submits a contact form, the API validates the payload, saves it to Postgres, then sends a confirmation email via SMTP"
+
+```mermaid
+flowchart TD
+    A[User submits contact form] --> B[API validates payload]
+    B -->|Validation fails| C[Return validation errors]
+    B -->|Validation passes| D[Save to Postgres]
+    D --> E[Send confirmation email via SMTP]
+    E --> F[Email sent successfully]
+```
+Preview: https://mermaid.live/edit#base64:eyJjb2RlIjoiZmxvd2NoYXJ0IFREXG4gICAgQVtVc2VyIHN1Ym1pdHMgY29udGFjdCBmb3JtXSAtLT4gQltBUEkgdmFsaWRhdGVzIHBheWxvYWRdXG4gICAgQiAtLT58VmFsaWRhdGlvbiBmYWlsc3wgQ1tSZXR1cm4gdmFsaWRhdGlvbiBlcnJvcnNdXG4gICAgQiAtLT58VmFsaWRhdGlvbiBwYXNzZXN8IERbU2F2ZSB0byBQb3N0Z3Jlc11cbiAgICBEIC0tPiBFW1NlbmQgY29uZmlybWF0aW9uIGVtYWlsIHZpYSBTTVRQXVxuICAgIEUgLS0-IEZbRW1haWwgc2VudCBzdWNjZXNzZnVsbHldIn0

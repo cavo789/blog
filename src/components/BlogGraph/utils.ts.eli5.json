@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T16:19:42.766Z",
+  "source": "utils.ts",
+  "sourceHash": "afb86da88a6856cbb595e10559fdfb15fcedf6d5",
+  "lang": "typescript",
+  "textLang": "en",
+  "summary": "This file exports helper functions and constants for rendering a blog article graph visualization. It handles filtering which nodes and edges to display, calculating how to fit the graph onto a canvas, sizing text labels, and grouping articles by category. All the layout math is kept separate from UI code so it's easier to understand and modify.",
+  "explanations": {
+    "79": "The function accepts an optional object with mainTag and topN properties; if neither is passed, it uses empty defaults (the `= {}` at the end).",
+    "84": "We spread `nodes` into a new array before sorting because sorting mutates the original array — this way we don't accidentally change the input data.",
+    "90": "This takes a Set instead of an array for fast lookup: checking if a permalink exists in a Set is much quicker than searching through a list.",
+    "108": "If there are no visible nodes, we return a neutral transform (no scaling, no movement) to avoid crashes from trying to calculate a bounding box on empty data.",
+    "118": "We subtract and add the node's radius to find the edges of its circular boundary, not just its center point.",
+    "124": "The `Math.max(..., 1)` prevents division by zero later — if all nodes are at the same spot, we treat the span as 1 unit instead of 0.",
+    "128": "We take the minimum of two ratios to ensure the graph fits in both directions, then cap it at 4 so we never zoom in more than 4x.",
+    "143": "This returns null when there's fewer than 2 nodes because you need at least two points to define a meaningful width-to-height ratio.",
+    "203": "The `??` operator means 'use maxRatio if contentAspectRatio returned null' — a fallback when we don't have enough nodes to measure shape.",
+    "206": "We calculate density as a fraction (0 to 1) of how many visible nodes there are compared to the default view; fewer nodes get a smaller canvas.",
+    "208": "We use `Math.sqrt(density)` so the height shrinks gently with fewer nodes rather than dropping sharply — avoids jarring size jumps.",
+    "245": "The `!` tells TypeScript we know `degree.get(edge.source)` won't be undefined here because we initialized all node permalinks on line 243.",
+    "264": "If a node's permalink isn't in the degree map (shouldn't happen), we treat it as degree 0 — safer than crashing.",
+    "276": "Orphan nodes get a minimum size floor so they're still visible and clickable; connected nodes keep their data-driven size."
+  }
+}

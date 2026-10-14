@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T16:08:23.010Z",
+  "durationMs": 31374,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "85180e862fb69e4544d802f46f499efc70b9c503",
+  "questions": [
+    {
+      "question": "recherche blog statique ne trouve rien vocabulaire lecteur différent de celui de l'auteur",
+      "anchor": ""
+    },
+    {
+      "question": "page hub questions par sujet blog docusaurus",
+      "anchor": "what-you-get"
+    },
+    {
+      "question": "recherche sémantique dans le navigateur sans embedding sans clé d'API",
+      "anchor": "why-this-works-without-a-model-in-the-browser"
+    },
+    {
+      "question": "ollama local générer questions de recherche pour articles markdown",
+      "anchor": "generating-the-questions"
+    },
+    {
+      "question": "servir un index de questions sur blog statique trois manières différentes",
+      "anchor": "serving-2160-questions-three-different-ways"
+    },
+    {
+      "question": "interroger l'index de questions du blog depuis le terminal",
+      "anchor": "querying-the-index-from-the-command-line"
+    },
+    {
+      "question": "implémenter BM25 en quarante lignes de javascript sans dépendance",
+      "anchor": "bm25-in-forty-lines"
+    },
+    {
+      "question": "éviter les doublons dans les questions générées par le LLM",
+      "anchor": "the-duplicate-problem"
+    },
+    {
+      "question": "modifier à la main le fichier sidecar JSON des questions",
+      "anchor": "sidecars-are-meant-to-be-hand-edited"
+    },
+    {
+      "question": "détecter la dérive quand un article a changé et les questions sont obsolètes",
+      "anchor": "detecting-drift"
+    },
+    {
+      "question": "données structurées FAQ sur la page de sujet d'un blog",
+      "anchor": "the-topic-pages-carry-faq-structured-data"
+    }
+  ]
+}

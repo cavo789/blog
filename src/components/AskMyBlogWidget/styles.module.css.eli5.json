@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T16:19:02.107Z",
+  "source": "styles.module.css",
+  "sourceHash": "1dcf7a3dc1e5963ed385108132bd67fe17149242",
+  "lang": "css",
+  "textLang": "en",
+  "summary": "This stylesheet styles a floating chat bubble widget and its associated panel. The bubble is a circular button fixed in the bottom-right corner with a pulsing ring animation, and when activated it opens a panel above it containing a header with a mascot image and a close button, plus scrollable body content. The entire component scales down on mobile and hides animations for users who prefer reduced motion.",
+  "explanations": {
+    "7": "The bubble sits 106 pixels from the bottom, which is carefully calculated to be 16 pixels above a scroll-to-top button that's 60 pixels tall—this prevents accidental taps in the bottom-right corner.",
+    "8": "A z-index of 999 ensures this floating button appears above almost everything else on the page.",
+    "20": "This groups multiple CSS properties that will animate smoothly over 0.2 seconds when you hover over the button.",
+    "35": "This media query detects when a user has enabled 'reduce motion' in their OS settings, so we disable animations for them to avoid causing discomfort.",
+    "51": "The `inset` shorthand sets all four sides (top, right, bottom, left) to -4px simultaneously, expanding the ring outward from the button.",
+    "54": "The animation runs for 2.2 seconds total and repeats 3 times before stopping—the `ease-out` makes it slow down as it expands.",
+    "55": "This prevents the pulsing ring from interfering with mouse clicks or touch interactions.",
+    "100": "This sizes the panel to be at most 360 pixels wide, but shrinks it if the screen is too narrow (100vw minus 2rem of margins), ensuring it fits on mobile.",
+    "101": "Similarly, the panel's height is limited to 480 pixels but shrinks if needed, leaving at least 200 pixels of space at the bottom.",
+    "107": "The panel fades in and scales up slightly from a smaller size when it first appears, creating a polished entrance effect.",
+    "146": "This prevents the mascot image from shrinking if other content is trying to compress it.",
+    "147": "This ensures the image fills its circular container without distorting."
+  }
+}

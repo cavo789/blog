@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T14:50:22.524Z",
+  "source": "compose.yaml",
+  "sourceHash": "01e7c014d4b8f4b005e6528e9618508809908453",
+  "lang": "yaml",
+  "textLang": "en",
+  "summary": "This is a Docker Compose configuration that defines three services: an app built from the current directory, a PostgreSQL database, and a Redis cache. The app service waits for both the database and cache to be ready before starting, and it exposes port 8080 on the host to port 80 inside the container. The database stores its data persistently in a named volume so it survives container restarts.",
+  "explanations": {
+    "3": "This tells Docker to build the app service using the Dockerfile in the current directory (the dot means 'here').",
+    "4": "This ensures the app container won't start until the db and cache services are running and ready.",
+    "8": "The first number is the port on your computer, the second is the port inside the container — so visiting localhost:8080 reaches port 80 inside the app.",
+    "13": "This mounts a named volume into the database container so that data written to /var/lib/postgresql/data on the container is actually stored on your computer and persists between restarts."
+  }
+}

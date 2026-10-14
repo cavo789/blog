@@ -1,59 +1,49 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T22:20:08.373Z",
+  "generated": "2026-10-14T15:37:45.451Z",
+  "durationMs": 21205,
   "source": "index.md",
-  "sourceHash": "61d61b76cd15bc7f974fde622b19c9ee23c618cc",
-  "durationMs": 30955,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T09:11:38.832Z",
-    "articleHash": "59dfbf46d7d6b41c455e759d5c7523f4d2764770",
-    "questionsHash": "23cdad03537a0944",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 2
-  },
+  "sourceHash": "a16d18c8ff02436feb08fb391f9e1a12011f48d7",
   "questions": [
     {
-      "question": "translate confidential PDF locally without uploading to cloud",
+      "question": "translate PDF locally without uploading to cloud",
       "anchor": ""
     },
     {
-      "question": "zsh function translate docx contract to French Ollama",
+      "question": "zsh function translate docx to French keeping bold terms and headings intact",
       "anchor": "demo--ai-translate"
     },
     {
-      "question": "how to summarize a PowerPoint into bullet points using a local model",
-      "anchor": "ai-summarize"
+      "question": "summarize PowerPoint into bullet points offline",
+      "anchor": "demo--ai-summarize"
     },
     {
-      "question": "Docling docker extract text from pptx relative path subshell",
+      "question": "Docling extract text from office files to markdown locally docker",
       "anchor": "reusing-docling-for-extraction"
     },
     {
-      "question": "how to preserve markdown structure when Ollama translates a document",
+      "question": "ollama translate document preserve markdown structure headings tables lists",
       "anchor": "ai-translate"
     },
     {
-      "question": "Ollama summarize in source language not default English",
+      "question": "local AI summarize contract to 5 key points prioritize deadlines and action items",
       "anchor": "ai-summarize"
     },
     {
-      "question": "register zsh function in ai menu ai-test autoload",
+      "question": "register zsh function in ai menu",
       "anchor": "registered-in-the-ai-menu"
     },
     {
-      "question": "local document translation no GPU required Docling Docker laptop",
-      "anchor": "registered-in-the-ai-menu"
+      "question": "translate and summarize documents 100% locally no cloud API",
+      "anchor": "key-takeaways"
     },
     {
-      "question": "ai-translate ai-summarize all files zsh Ollama Docling",
-      "anchor": "all-files-at-a-glance"
+      "question": "install ai-translate ai-summarize zsh ollama setup",
+      "anchor": "installing-it"
     },
     {
-      "question": "alternative to pasting client contract into browser translator",
+      "question": "confidential HR document translation without third party servers",
       "anchor": "conclusion"
     }
   ]

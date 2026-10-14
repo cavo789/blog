@@ -3,7 +3,7 @@ slug: ollama-ai-ci
 title: "ai-ci: Ask a Local LLM Why Your GitLab Pipeline Failed"
 authors: [christophe, claude]
 image: /img/v2/gitlab.webp
-mainTag: gitlab
+mainTag: ai
 tags: [gitlab, git, ai, ollama, zsh]
 date: 2026-12-31
 description: "A zsh function that finds the last GitLab pipeline for the current branch, pulls the log of every failed job through the GitLab API, and asks a local Ollama model what broke and how to fix it — without leaving the terminal or waiting for the GitLab UI to load."
@@ -21,7 +21,7 @@ series: "Ollama daily use"
 This article adds `ai-ci` to the "Ollama daily use" series: it detects the current repository's GitLab project from the `origin` remote, finds the most recent pipeline for a given branch, pulls the log of every failed job through the GitLab API, and asks a local Ollama model to explain what broke and suggest a fix — all without opening a browser tab.
 </TLDR>
 
-I've covered [GitLab Docker-out-of-Docker](/blog/gitlab-docker-out-of-docker), [private image access](/blog/gitlab-using-private-images), and [SSH keys for runners](/blog/gitlab-runner-ssh-key) in previous articles — pipelines are a daily part of my work. And a daily part of *that* is the little ritual after a red pipeline notification: open the browser, find the project, find the pipeline, find the failed job, scroll to the actual error buried under forty lines of Composer/npm noise. Ninety seconds, every time, for something that's usually a one-line explanation once you find it.
+I've covered <Link to="/blog/gitlab-docker-out-of-docker">GitLab Docker-out-of-Docker</Link>, <Link to="/blog/gitlab-using-private-images">private image access</Link>, and <Link to="/blog/gitlab-runner-ssh-key">SSH keys for runners</Link> in previous articles — pipelines are a daily part of my work. And a daily part of *that* is the little ritual after a red pipeline notification: open the browser, find the project, find the pipeline, find the failed job, scroll to the actual error buried under forty lines of Composer/npm noise. Ninety seconds, every time, for something that's usually a one-line explanation once you find it.
 
 <!-- truncate -->
 
@@ -54,6 +54,8 @@ export GITLAB_TOKEN="glpat-xxxxxxxxxxxxxxxxxxxx"
 
 ## The `ai-ci` Function
 
+No need to copy anything yet: the `.zsh` files shown in this article are here to be read, and [Installing It](#installing-it) at the end creates every one of them in `~/.zsh/fns/` for you.
+
 <Snippet filename="~/.zsh/fns/ai-ci.zsh" source="./files/ai-ci.zsh" defaultOpen={true} />
 
 Step by step:
@@ -72,6 +74,8 @@ Sending an entire multi-megabyte log to the model wastes context window on Compo
 
 One line — `AI_COMMANDS[ci]=...` — and it's reachable as `ai ci` or directly as `ai-ci`, alongside every other function in the series.
 
+`_ollama_query` and the `AI_COMMANDS` registry live in the shared `_ollama.zsh` foundation introduced in <Link to="/blog/ollama-test-generator">ai-test</Link>. If you already followed an earlier article in this series, it's already sitting in `~/.zsh/fns/` and sourced by your autoloader — nothing more to do. Starting here instead? It is one of the files created in [Installing It](#installing-it) below.
+
 <AlertBox variant="caution" title="Self-hosted GitLab and custom certificates">
 If your GitLab instance sits behind a self-signed certificate, add `--insecure` to the `curl` calls (or better, install the corporate CA properly) — this function assumes a normally-trusted TLS setup.
 </AlertBox>
@@ -89,6 +93,33 @@ If your GitLab instance sits behind a self-signed certificate, add `--insecure` 
     { content: "**Registers into `ai`** — reachable as `ai ci`" }
   ]}
 />
+
+## Installing It
+
+Everything runs on your machine: zsh, `curl` and `jq` (which builds the request sent to Ollama), and an Ollama server you can reach — see <Link to="/blog/ollama-installation">installing Ollama</Link> if you don't have one yet.
+
+**1. Create the files.** Every function of this series lives in its own file in `~/.zsh/fns/`. The one-liner below creates that folder and the two files in one go — or download the ZIP, or create each file by hand and paste its content. `_ollama.zsh` is the foundation the whole series shares: if an earlier article already gave it to you, the copy here is the same file.
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
+  <Snippet filename="ai-ci.zsh" source="./files/ai-ci.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed an earlier article of this series. Otherwise, add these lines at the end of `~/.zshrc` — they source every `.zsh` file in the folder, so the next function you add needs no change here:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh` in the current one), and check that the shell knows the new function:
+
+```zsh
+type ai-ci
+```
+
+`ai-ci is a shell function from …/ai-ci.zsh` means you're ready. `ai-ci not found` means step 2 is missing.
 
 ## Conclusion
 

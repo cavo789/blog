@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T16:19:58.079Z",
+  "source": "demo.questions.json",
+  "sourceHash": "d9a21e2a76fa8f662568c13432e275ba50b5f75f",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier JSON décrit un ensemble de questions fréquemment posées générées automatiquement à partir d'un document Markdown sur l'ajout d'un bouton de retour vers le haut dans Docusaurus. Il contient des métadonnées comme la version, le modèle utilisé pour la génération, et un tableau de huit questions avec leurs ancres correspondantes pour la navigation.",
+  "explanations": {
+    "2": "version est fixé à 1 pour indiquer le format de ce fichier JSON, permettant de gérer les évolutions futures du schéma.",
+    "3": "model indique quel modèle d'IA a généré ces questions — task-tiny:latest est la version utilisée.",
+    "4": "generated enregistre l'horodatage ISO 8601 du moment où ce fichier a été créé automatiquement.",
+    "5": "source pointe vers index.md, le fichier Markdown original à partir duquel les questions ont été extraites.",
+    "6": "sourceHash stocke un hash SHA-1 du contenu source pour détecter si le fichier d'origine a changé depuis la génération.",
+    "10": "anchor est un identifiant pour lier directement à la section du document qui répond à la question correspondante.",
+    "26": "L'anchor 'how-it-works' apparaît ici pour la troisième fois, ce qui suggère que plusieurs questions pointent vers la même section."
+  }
+}

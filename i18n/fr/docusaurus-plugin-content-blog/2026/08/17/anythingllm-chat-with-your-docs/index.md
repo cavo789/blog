@@ -255,6 +255,8 @@ Le script ci-dessus est la version portable — il tourne dans un devcontainer, 
 
 <Snippet filename="~/.zsh/fns/ai-blog-search.zsh" source="./files/ai-blog-search.zsh" />
 
+Enregistrez-le sous `~/.zsh/fns/ai-blog-search.zsh`, à côté du `_ollama.zsh` partagé par la série, qui déclare le registre `AI_COMMANDS` auquel ce fichier s'ajoute. Les deux, ainsi que les trois lignes de `~/.zshrc` qui chargent le dossier, sont dans <Link to="/blog/ollama-test-generator#installing-it">les étapes d'installation d'ai-test</Link>. Ouvrez ensuite un nouveau terminal, et `ai-blog-search` est prêt.
+
 Voici un exemple d'utilisation :
 
 ![Searching for articles about Code Quality](./images/ai-blog-search.webp)

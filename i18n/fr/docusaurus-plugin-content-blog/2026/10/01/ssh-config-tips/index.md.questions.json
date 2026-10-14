@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T16:09:31.943Z",
+  "durationMs": 39020,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "f4f317b040c402818d31a584344581b5d9ec8490",
+  "questions": [
+    {
+      "question": "ssh config ProxyJump IdentityFile répéter dix serveurs bastion",
+      "anchor": ""
+    },
+    {
+      "question": "comment ssh gère alias court et FQDN sans flag -i",
+      "anchor": "the-config"
+    },
+    {
+      "question": "pourquoi ssh lit la config de haut en bas et la première valeur gagne",
+      "anchor": "how-ssh-reads-a-config-file"
+    },
+    {
+      "question": "ssh config bastion domaine alias exceptions structure cinq sections",
+      "anchor": "the-five-sections"
+    },
+    {
+      "question": "renforcer ssh config section 5 valeurs globales sans changer logique",
+      "anchor": "hardening-section-5-optional"
+    },
+    {
+      "question": "ssh alias User ligne obligatoire hostname résolu",
+      "anchor": "why-each-alias-needs-its-own-user-line-skip-if-the-config-just-works-for-you"
+    },
+    {
+      "question": "ssh wildcard * personnel professionnel séparer",
+      "anchor": "one-caveat-the-wildcard-is-truly-universal-skip-if-this-machine-is-corporate-only"
+    },
+    {
+      "question": "ssh RemoteCommand se connecter directement utilisateur applicatif",
+      "anchor": "bonus-log-in-directly-as-another-user"
+    },
+    {
+      "question": "générer config ssh complète wildcard ProxyJump automatiquement",
+      "anchor": "generate-your-complete-config"
+    },
+    {
+      "question": "ssh config wildcard production risque",
+      "anchor": "production-environment-warning"
+    }
+  ]
+}

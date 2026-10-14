@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T16:19:13.924Z",
+  "source": "index.mjs",
+  "sourceHash": "cde2efa92a0a8eb2a84d9e7e59ed6092919e0dfa",
+  "lang": "javascript",
+  "textLang": "en",
+  "summary": "This is a Docusaurus plugin that builds a force-directed graph of blog posts for a `/map` page. It reads all published articles, creates nodes for each post (sized and colored by importance and series membership) and edges representing links between posts, series continuity, and shared tags. The layout computation runs once at build time using a physics simulation so the final positions ship to the browser as static data, eliminating the need for heavy client-side libraries and ensuring the map works without JavaScript or animations.",
+  "explanations": {
+    "65": "This line reconstructs the `__dirname` variable (the directory containing this file) using modern ES modules, since `__dirname` isn't available by default when using `import` syntax.",
+    "95": "The `.filter(Boolean)` removes empty strings from the split result — if there are multiple spaces in a row, `split(/\\s+/)` creates empty strings which we don't want to count as words.",
+    "101": "We build a Set of all post URLs so we can quickly check later whether a link points to another post in our corpus or to an external site — only internal links matter for the graph.",
+    "107": "We skip self-links (a post linking to itself) and only create edges for links that point to posts we actually have in our collection.",
+    "121": "Sorting by date string works correctly because dates in ISO format (YYYY-MM-DD) sort alphabetically the same way they sort chronologically.",
+    "135": "We find which tags both posts share by filtering post i's tags to only those that also appear in post j's tag list.",
+    "152": "We initialize every post with an in-degree of 0, then increment only for actual link edges — this counts how many other posts link *to* each post, which determines its node size.",
+    "167": "This returns a function that will be called for each post; the function checks three sources in order (series color, banner color, fallback) and returns the first one it finds.",
+    "181": "Using square root scaling means a post linked from 4 other posts gets twice the radius of one linked from 1 post, rather than 4 times — this prevents highly-linked posts from visually dominating the map.",
+    "204": "We spread each edge object to create a shallow copy so we don't mutate the original edges during the simulation.",
+    "211": "For each edge type (link, series, tag), this tells the simulation how far apart the connected nodes want to be — link edges pull tighter (55 units) than tag edges (110 units).",
+    "214": "Tag edges get their strength scaled by their weight (number of shared tags) but capped at 0.6 so extremely high-weight pairs don't create unreasonably strong pulls.",
+    "223": "We immediately call `.stop()` so the simulation won't start animating on its own — we'll manually tick it forward instead.",
+    "260": "This regex extracts the post slug from the permalink URL (the part between `/blog/` and the trailing slash), which we use as a key to look up translations.",
+    "278": "If a translation exists for this post in the current locale, use its title; otherwise fall back to the English title — ensuring the map never shows untranslated labels.",
+    "302": "We filter edges before shipping to keep payload small: all edges power the layout, but the browser only ever renders tag edges with weight 3+, so we drop the weight-2 edges the layout used but the UI never shows."
+  }
+}

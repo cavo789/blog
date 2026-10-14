@@ -1,0 +1,12 @@
+$ ai
+
+ai >
+  ai-blog-search — ask your blog a question (RAG over every published article)
+  ai-commit  — draft a Conventional Commits message from staged changes
+  ai-diagram <description>|<file>  — turn a description or a config file into a Mermaid diagram
+  ai-explain [file|text]  — explain a script, an error or piped output in plain English
+  ai-review  — code review of staged changes (SOLID, magic constants, naming)
+  ai-secrets  — scan staged changes for hardcoded credentials
+  ai-summarize <file> [points]  — summarize a document locally (default: 5 points)
+  ai-test <file.sh|.php|.py>  — generate or complete a unit test suite
+  ai-translate <file> [language]  — translate a document locally (default: French)

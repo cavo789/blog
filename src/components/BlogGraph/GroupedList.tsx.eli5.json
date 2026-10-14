@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T16:19:47.255Z",
+  "source": "GroupedList.tsx",
+  "sourceHash": "0f53de083c577c776b331a5599e564138ddfd825",
+  "lang": "typescript",
+  "textLang": "en",
+  "summary": "This component renders a fallback list view of blog articles organized by their main category tag, shown when the fancy graph visualization isn't available or practical (like on phones or without JavaScript). It groups all the articles, displays each group with a header showing the tag name and article count, then lists the articles as clickable links beneath their group.",
+  "explanations": {
+    "23": "groupByMainTag is a helper function that takes the flat array of article nodes and reorganizes them into pairs of [tagName, articlesWithThatTag], so we can render one section per tag.",
+    "24": "useTagLabel is a hook that gives us a function to look up human-readable display names for tag IDs—like converting 'react' to 'React' or 'typescript' to 'TypeScript'.",
+    "28": "map with destructuring—we're iterating over each [mainTag, posts] pair and creating a section for each one. key={mainTag} tells React which sections stayed the same between renders.",
+    "33": "Special case: articles with no category tag get bucketed into 'other' by groupByMainTag, but 'other' isn't a real tag in the system, so we can't look up its translation like we do for real tags.",
+    "36": "For real tags, we call the tagLabel function we got from the hook to get the proper display name to show the user."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T16:12:47.400Z",
+  "durationMs": 28629,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "1af2c3f2a30060b99ac51eb90b77552987f77a51",
+  "questions": [
+    {
+      "question": "outil benchmark ligne de commande comparer performance deux commandes",
+      "anchor": ""
+    },
+    {
+      "question": "hyperfine grep -r vs git grep",
+      "anchor": "a-first-benchmark"
+    },
+    {
+      "question": "installer hyperfine ubuntu apt version 2.0",
+      "anchor": "install"
+    },
+    {
+      "question": "pourquoi le premier run d'un benchmark est plus lent, warmup cache disque",
+      "anchor": "warmup-runs"
+    },
+    {
+      "question": "hyperfine limiter nombre de runs pour un docker build lent",
+      "anchor": "controlling-run-count"
+    },
+    {
+      "question": "hyperfine erreur pipe shell syntax unquoted v2",
+      "anchor": "no-shell-by-default"
+    },
+    {
+      "question": "hyperfine benchmark avec argument d'entrée variable",
+      "anchor": "benchmarking-with-variable-inputs"
+    },
+    {
+      "question": "exporter résultats hyperfine en markdown csv json",
+      "anchor": "exporting-results"
+    },
+    {
+      "question": "ripgrep vraiment plus rapide que grep, benchmark",
+      "anchor": "grep-vs-ripgrep--is-the-hype-justified"
+    },
+    {
+      "question": "benchmark docker build deux stratégies Dockerfile hyperfine",
+      "anchor": "two-docker-build-strategies"
+    },
+    {
+      "question": "comprendre la sortie hyperfine : écart-type, pic mémoire, ratio",
+      "anchor": "interpreting-the-output"
+    },
+    {
+      "question": "hyperfine ou time bash, différence",
+      "anchor": "hyperfine-vs-time"
+    }
+  ]
+}

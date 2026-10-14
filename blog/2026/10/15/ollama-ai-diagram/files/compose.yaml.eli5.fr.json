@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T15:57:54.218Z",
+  "source": "compose.yaml",
+  "sourceHash": "01e7c014d4b8f4b005e6528e9618508809908453",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit trois services : une application web qui se construit à partir du répertoire courant, une base de données PostgreSQL, et un cache Redis. L'application dépend des deux autres services et expose le port 8080 de la machine hôte vers le port 80 du conteneur. Les données de la base de données sont persistées dans un volume nommé.",
+  "explanations": {
+    "3": "build: . signifie que Docker construira l'image de l'application à partir du Dockerfile présent dans le répertoire courant.",
+    "4": "depends_on spécifie que le service app ne doit démarrer qu'après que db et cache soient disponibles.",
+    "8": "La syntaxe \"8080:80\" mappe le port 8080 de ta machine locale vers le port 80 à l'intérieur du conteneur, donc tu accèdes à l'app via http://localhost:8080.",
+    "13": "db-data:/var/lib/postgresql/data crée un volume nommé qui persiste les données PostgreSQL même si le conteneur est arrêté ou supprimé."
+  }
+}

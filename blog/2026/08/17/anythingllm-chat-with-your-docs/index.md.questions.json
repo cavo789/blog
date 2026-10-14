@@ -1,68 +1,58 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T22:09:49.722Z",
+  "generated": "2026-10-14T15:37:24.173Z",
+  "durationMs": 30700,
   "source": "index.md",
-  "sourceHash": "b4efcee7292728c10bfc5f5ec5890f88a9b22301",
-  "durationMs": 30292,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T09:02:15.111Z",
-    "articleHash": "1780488d5195dd3369b704d96027867c38dfa791",
-    "questionsHash": "fe2dd26813f82809",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "66c53fa4b31c24850d1b7f8d322f6e9e844e9812",
   "questions": [
     {
-      "question": "self-hosted chat with my own PDFs and markdown files",
+      "question": "chat with my scattered project docs locally using ollama",
       "anchor": ""
     },
     {
-      "question": "ask a vague question about my blog and get the exact article back",
+      "question": "semantic search over my own blog posts instead of grep",
       "anchor": "seeing-it-work"
     },
     {
-      "question": "RAG that can read Excel and PowerPoint not just text",
+      "question": "self-hosted RAG that cites which file the answer came from",
       "anchor": "why-it-works"
     },
     {
-      "question": "docker compose AnythingLLM Ollama single machine",
+      "question": "anythingllm docker install single machine ollama",
       "anchor": "install"
     },
     {
-      "question": "AnythingLLM embedder returning nonsense results how to test",
+      "question": "anythingllm compose.yaml how to configure the ollama endpoint",
+      "anchor": "the-composeyaml-file"
+    },
+    {
+      "question": "how to check if the ollama embedder is actually producing useful vectors",
       "anchor": "check-that-your-embedder-actually-discriminates"
     },
     {
-      "question": "AnythingLLM no option to point at a folder why",
+      "question": "why does anythingllm not let me point at a folder path",
       "anchor": "you-dont-give-it-a-path--and-that-surprises-everyone"
     },
     {
-      "question": "batch index entire directory tree into AnythingLLM workspace script",
+      "question": "bulk index 200 markdown files into an anythingllm workspace one command",
       "anchor": "indexing-a-whole-folder-tree-with-one-command"
     },
     {
-      "question": "set custom system prompt per workspace AnythingLLM",
-      "anchor": "one-manual-step-the-workspace-system-prompt"
-    },
-    {
-      "question": "reindex updated documents in AnythingLLM without rebuilding",
-      "anchor": "keeping-the-index-up-to-date"
-    },
-    {
-      "question": "curl AnythingLLM chat API from terminal",
+      "question": "query an anythingllm workspace from the terminal with curl",
       "anchor": "search"
     },
     {
-      "question": "documents on work laptop GPU inference on home PC RAG setup",
+      "question": "documents on work laptop GPU at home anythingllm split setup",
       "anchor": "two-machines"
     },
     {
-      "question": "AnythingLLM compose file point Ollama to different host",
+      "question": "anythingllm compose file change ollama host to a remote machine",
       "anchor": "what-actually-changes-in-the-compose-file"
+    },
+    {
+      "question": "keep the anythingllm index up to date after adding new docs",
+      "anchor": "keeping-the-index-up-to-date"
     }
   ]
 }

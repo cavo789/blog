@@ -152,4 +152,4 @@ This time a Pie chart:
 
 By combining the parsing power of Python with the rendering elegance of Mermaid, we've turned static documentation into a dynamic asset.
 
-If you like the *Documentation as Code* approach, have a look at two other articles of mine going in the same direction: <Link to="/blog/docker-diagram-as-code">Docker - Diagrams as code</Link> and <Link to="/blog/python-pydot">Python - Generate flows using pydot</Link>.
+If you like the *Documentation as Code* approach, have a look at two other articles of mine going in the same direction: <Link to="/blog/docker-diagram-as-code">Docker - Diagrams as code</Link> and <Link to="/blog/python-pydot">Python - Generate flows using pydot</Link>. And when there is no parser to write at all — a sentence describing a process, a config format I have no script for — <Link to="/blog/ollama-ai-diagram">ai-diagram</Link> asks a local LLM for the Mermaid instead.

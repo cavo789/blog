@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T16:18:55.266Z",
+  "source": "index.tsx",
+  "sourceHash": "ec69b5c88b14b75b2993f3504909af8ae3a6a6ac",
+  "lang": "typescript",
+  "textLang": "en",
+  "summary": "This component renders a floating chat bubble that opens a panel containing an \"Ask my blog\" search interface. It shows a helpful hint animation on first visit, manages keyboard interactions like Escape to close and Tab to cycle focus within the panel, and integrates with the existing search system so the expensive question corpus only loads when the user actually opens it.",
+  "explanations": {
+    "22": "This string is used as a key to store in the browser's localStorage, allowing the component to remember whether the user has seen the hint before across page refreshes.",
+    "23": "This sets a 15-second delay in milliseconds before the first-time hint animation appears, staggered from the CommandPalette hint so both don't pop up simultaneously.",
+    "28": "This creates a reference to the panel DOM element so we can manipulate it later — for example, to find and focus the input field when the panel opens.",
+    "30": "This ref holds a cleanup function returned by setActiveOverlay, which we'll call later to remove the overlay backdrop when the panel closes.",
+    "35": "If the user has already seen the hint before (localStorage has that key), we skip the rest of this effect entirely by returning early.",
+    "36": "We schedule a function to run after 15 seconds; this is how we delay showing the hint until the page has settled.",
+    "45": "The question mark calls the cleanup function only if it exists — this prevents errors if clearOverlayRef is null.",
+    "46": "We programmatically move focus back to the bubble button after closing the panel, so keyboard users know where they are.",
+    "49": "This function either opens the panel or closes it depending on its current state — it's the toggle behavior for the bubble button.",
+    "56": "When opening the panel, we capture the cleanup function returned by setActiveOverlay so we can call it later to tear down the overlay.",
+    "62": "We find the input element inside the panel and focus it so the user can immediately start typing their question.",
+    "72": "We check if this was actually a Tab key and whether the panel exists; if either is false, we don't need to do anything special.",
+    "73": "This query selector finds all focusable elements inside the panel — buttons, links, inputs, and elements with custom tabindex values.",
+    "74": "The selector excludes elements with tabindex=\"-1\" because those are intentionally removed from keyboard navigation.",
+    "79": "If the user is Shift+Tabbing (going backwards) and they're already on the first focusable element, we wrap them to the last element instead.",
+    "82": "If the user is Tab-ing (going forwards) and they're on the last focusable element, we wrap them to the first element."
+  }
+}

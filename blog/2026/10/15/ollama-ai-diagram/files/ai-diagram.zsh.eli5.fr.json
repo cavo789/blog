@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T15:57:50.703Z",
+  "source": "ai-diagram.zsh",
+  "sourceHash": "95e63378a79b54ac7126a4525575e07de6c86f14",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction transforme une description en anglais simple ou un fichier de configuration existant en diagramme Mermaid. Elle envoie l'entrée à un modèle d'IA avec des instructions spécifiques sur la façon de structurer le diagramme, nettoie la réponse, puis affiche le résultat au format Markdown avec un lien d'aperçu.",
+  "explanations": {
+    "6": "AI_COMMANDS et AI_PARAMS sont des tableaux associatifs qui enregistrent cette commande dans un système d'aide ou de complément — elle stocke la description et le type de paramètre attendu.",
+    "17": "La condition teste si l'argument passé est un chemin vers un fichier existant ; si oui, on le lit, sinon on traite l'argument comme une description textuelle.",
+    "18": "cat lit le contenu du fichier dans la variable input pour l'envoyer au modèle.",
+    "21": "hint est une longue instruction qui change selon que l'entrée provient d'un fichier ou d'une description textuelle — elle guide le modèle sur le type de diagramme à générer et les règles de structure.",
+    "28": "Si ce n'est pas un fichier, tous les arguments restants ($*) sont concaténés comme une seule chaîne de description textuelle.",
+    "40": "_ollama_query envoie le prompt complet au modèle d'IA (via Ollama, un serveur local) et retourne la réponse.",
+    "51": "_ai_strip_fences extrait le bloc de code Mermaid depuis le texte en retirant les barrières Markdown (```) et tout ce qui pourrait traîner autour.",
+    "62": "Cela crée un objet JSON contenant le code Mermaid, l'encode en base64 URL-safe (en remplaçant + par - et / par _), puis construit une URL mermaid.live avec cet état encodé.",
+    "63": "L'URL d'aperçu est envoyée sur stderr pour ne pas polluer stdout — c'est utile si la sortie est redirigée vers un fichier Markdown."
+  }
+}

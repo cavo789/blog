@@ -1,20 +1,24 @@
 ---
 slug: ollama-ai-explain
-title: ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal
-description: 'The last function in the Ollama daily-use series: pipe any script, error message, or stack trace to ai-explain and get a plain-English explanation of what it does or what went wrong — entirely local, no cloud required.'
+title: "ai-explain: ELI5 for Scripts and Errors, Right in Your Terminal"
 authors: [christophe, claude]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
-draft: true
-series: Ollama daily use
-tags: [ai, linux, ollama, zsh, bash, docker, git]
-date: 2026-10-06
+tags: [ai, ollama, zsh, linux, bash, docker, git]
+date: 2026-12-31
+description: "The last function in the Ollama daily-use series: pipe any script, error message, or stack trace to ai-explain and get a plain-English explanation of what it does or what went wrong — entirely local, no cloud required."
+language: en
 ai_assisted: true
+draft: true
+series: "Ollama daily use"
 ---
-![ai-explain — ELI5 for Scripts and Errors, Right in Your Terminal](/img/v2/playing_with_ollama.webp)
+
+![ai-explain: ELI5 for Scripts and Errors, Right in Your Terminal](/img/v2/playing_with_ollama.webp)
+
+<!-- cspell:ignoreCase ai-test ai-commit ai-explain qwen ollama zshrc ERESOLVE -->
 
 <TLDR>
-`ai-explain` is the last function in the Ollama daily-use series. Pipe any script, log output, or stack trace to it — or give it a file path — and get a plain-English explanation: what the script does, what the error means, and what to fix. One function, two modes (file or pipe), zero cloud.
+`ai-explain` is the last function in the Ollama daily-use series. Pipe any script, log output, or stack trace to it — or give it a file path, or paste an error message as an argument — and get a plain-English explanation: what the script does, what the error means, and what to fix. One function, three input modes, zero cloud.
 </TLDR>
 
 You cloned a repository and found a Bash script that runs as part of the CI pipeline. Three hundred lines, no comments. You need to understand what it does before you modify it. You could read it carefully, look up the flags, trace the logic. Or you could pipe it through `ai-explain`.
@@ -27,88 +31,50 @@ Same story for stack traces. A React error in production with six frames of mini
 
 ## Explain a Script You Didn't Write
 
-<Terminal>
-ai-explain deploy.sh
-</Terminal>
+<Snippet filename="deploy.sh" source="./files/deploy.sh" defaultOpen={false} />
 
-```
-This script performs a zero-downtime deployment of the application:
+<Terminal source="./files/terminal_explain_script.txt" typewriter />
 
-1. **Checks prerequisites**: verifies that Docker, git, and curl are installed.
-   Exits with an error message if any is missing.
-
-2. **Pulls the latest code**: runs `git pull --rebase origin main`. If the
-   pull fails (e.g., merge conflict), the script exits immediately — it does
-   not proceed to deployment with stale code.
-
-3. **Builds the Docker image**: runs `docker build -t myapp:$(git rev-parse --short HEAD) .`
-   — the image tag is the short git commit hash, making rollbacks straightforward.
-
-4. **Updates the running container**: uses `docker compose up -d --no-deps app`
-   to restart only the `app` service without touching the database. The `--no-deps`
-   flag prevents cascading restarts.
-
-5. **Health check**: polls `http://localhost:8080/health` every 5 seconds for up
-   to 60 seconds. If the endpoint returns 200 within that window, prints "Deploy
-   successful." Otherwise prints "Health check failed" and exits with code 1.
-
-Side effect: the old image is not removed — run `docker image prune` manually
-to reclaim disk space after a few deployments.
-```
-
-That's the entire interaction: a file path in, a plain-English breakdown out.
+That's the entire interaction: a file path in, a plain-English breakdown out — prerequisites, the commit-hash image tag, the `--no-deps` restart, the 60-second health check and what happens when it times out.
 
 ## Why It Works
 
-`ai-explain` handles three input modes, checked in this order: piped input (so `cat file | ai-explain` always wins even if a filename is also passed), a file argument, or inline text for a quick one-liner — one function covers "explain this file" and "explain this error" without separate commands to remember.
+`ai-explain` handles three input modes, checked in this order: piped input (so `cat file | ai-explain` always wins even if a filename is also passed), an existing file, or inline text for a quick one-liner — one function covers "explain this file" and "explain this error" without separate commands to remember. The prompt asks for at most fifteen lines of plain text, never a copy of the input, and passes `uname -s` along so suggested commands match the platform you're actually on.
 
-## Installation
+## Installing It
 
-This function is part of the "Ollama daily use" series. It relies on the shared `_ollama.zsh` foundation introduced in the first article of the series (`ai-test`): the `_ollama_check` reachability guard, the `_ollama_query` HTTP client, and the `AI_COMMANDS` registry.
+Everything runs on your machine: zsh, `curl` and `jq` (which builds the request sent to Ollama), and an Ollama server you can reach — see <Link to="/blog/ollama-installation">installing Ollama</Link> if you don't have one yet.
 
-If you've been following the series and have `~/.zsh/fns/_ollama.zsh` already in place, you can install this function immediately. If not, start with the first article to get the foundation set up.
+**1. Create the files.** Every function of this series lives in its own file in `~/.zsh/fns/`. The one-liner below creates that folder and the two files in one go — or download the ZIP, or create each file by hand and paste its content. `_ollama.zsh` is the foundation the whole series shares, introduced in <Link to="/blog/ollama-test-generator">ai-test</Link>: if an earlier article already gave it to you, the copy here is the same file.
 
-<Snippet source="./files/ai-explain.zsh" language="zsh" />
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
+  <Snippet filename="ai-explain.zsh" source="./files/ai-explain.zsh" />
+</ProjectSetup>
 
-Save it to `~/.zsh/fns/ai-explain.zsh`. It loads automatically on the next shell startup if your `~/.zshrc` sources everything in `~/.zsh/fns/`.
+**2. Load the folder from `~/.zshrc`.** Already done if you followed an earlier article of this series. Otherwise, add these lines at the end of `~/.zshrc` — they source every `.zsh` file in the folder, so the next function you add needs no change here:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh` in the current one), and check that the shell knows the new function:
+
+```zsh
+type ai-explain
+```
+
+`ai-explain is a shell function from …/ai-explain.zsh` means you're ready. `ai-explain not found` means step 2 is missing.
 
 ## More Demos
 
 ### Explain a stack trace
 
-<Snippet source="./files/example-error.txt" language="text" />
+<Snippet filename="example-error.txt" source="./files/example-error.txt" defaultOpen={false} />
 
-<Terminal>
-ai-explain example-error.txt
-</Terminal>
-
-```
-This is a React TypeError occurring at runtime, not a build error.
-
-**What went wrong**: `ProductList` (in src/components/ProductList.jsx, line 42) calls
-`.map()` on a value that is `undefined`. In JavaScript, `.map()` is an Array method —
-if the value is not an array (here it's `undefined`), you get this exact error.
-
-**Why it's undefined**: the most common cause is that the component receives `products`
-(or whatever the prop name is) as `undefined` on the first render, before the data
-has loaded from the API. Line 42 tries to map over it immediately without checking first.
-
-**How to fix it**:
-
-Option 1 — defensive default:
-  const products = useProducts() ?? [];
-
-Option 2 — early return while loading:
-  if (!products) return <Loading />;
-
-Option 3 — conditional render:
-  {products?.map(p => <ProductCard key={p.id} {...p} />)}
-
-Option 1 is the cleanest if `undefined` and an empty list are semantically equivalent.
-Option 2 is better if you want to show a loading state. The error boundary React
-mentions is a separate concern — it catches errors after they happen; these options
-prevent the error from occurring.
-```
+<Terminal source="./files/terminal_explain_error.txt" typewriter />
 
 ### Pipe any command output
 
@@ -132,21 +98,11 @@ For commands that produce a lot of output, pipe through `tail` first to keep onl
 
 ### Use from the `ai` dispatcher
 
-Like every function in this series, `ai-explain` registers itself with the `AI_COMMANDS` registry. The `ai` dispatcher (from `_ollama.zsh`) lists all registered functions:
+Like every function in this series, `ai-explain` registers itself with the `AI_COMMANDS` registry. The `ai` dispatcher (from `_ollama.zsh`) lists every registered function — here with the published ones from this series installed:
 
-<Terminal>
-ai
-</Terminal>
+<Terminal source="./files/terminal_explain_menu.txt" />
 
-```
-> explain    Explain a script or error output in plain English
-  commit     Draft a Conventional Commits message from staged diff
-  review     Code review: SOLID, magic constants, naming
-  standup    Summarize git activity for standup
-  ...
-```
-
-Select `explain` and the dispatcher prompts you for a file path (via fzf or `read`). The parameter type `AI_PARAMS[explain]="file"` tells the dispatcher to use the file picker instead of a text prompt.
+Select `ai-explain` and the dispatcher opens its fzf file picker first: `AI_PARAMS[explain]="file"` tells it to ask for a file rather than a line of text.
 
 ## Under the Hood (skip this if you just want to use it)
 
@@ -162,17 +118,17 @@ It's also useful as a learning tool: pipe a script you wrote yourself and see if
 
 ## Conclusion
 
-`ai-explain` is the fourteenth and final function in the "Ollama daily use" series.
+`ai-explain` is the final function in the "Ollama daily use" series.
 
-The series started with `ai-test` (the foundation: `_ollama.zsh`, the dispatcher, the `AI_COMMANDS` registry) and added functions one by one — each solving a specific terminal workflow problem with a local LLM:
+The series started with <Link to="/blog/ollama-test-generator">`ai-test`</Link> (the foundation: `_ollama.zsh`, the dispatcher, the `AI_COMMANDS` registry) and added functions one by one — each solving a specific terminal workflow problem with a local LLM:
 
-- **Developer workflow**: `ai-commit`, `ai-review`, `ai-secrets`, `ai-standup`  
+- **Developer workflow**: <Link to="/blog/ollama-git-precommit">`ai-review`, `ai-secrets`, `ai-commit`</Link>, `ai-standup`
 - **Operations**: `ai-ci`, `ai-fix`
-- **Shell assistance**: `ai-ask`, `ai-data`, `ai-diagram`
-- **Document work**: `ai-translate`, `ai-summarize` (`ai-docs`)
-- **Diff analysis**: `ai-diff`
+- **Shell assistance**: `ai-ask`, `ai-data`, <Link to="/blog/ollama-ai-diagram">`ai-diagram`</Link>
+- **Document work**: <Link to="/blog/ollama-ai-docs">`ai-translate`, `ai-summarize`</Link>, `ai-diff`
+- **Your own documentation**: <Link to="/blog/anythingllm-chat-with-your-docs">`ai-blog-search`</Link>
 - **Explanation**: `ai-explain`
 
-All fourteen share the same `_ollama_query` foundation. Together they cover the moments in a development day where you'd normally reach for a browser search or a cloud AI — but where a local model is faster, more private, and just as accurate.
+All of them share the same `_ollama_query` foundation. Together they cover the moments in a development day where you'd normally reach for a browser search or a cloud AI — but where a local model is faster to reach and keeps everything on your machine.
 
-If you've installed all fourteen, run `ai` and see what your terminal knows how to do now.
+If you've installed them all, run `ai` and see what your terminal knows how to do now.

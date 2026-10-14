@@ -21,7 +21,7 @@ series: "Ollama daily use"
 This article adds `ai-ask` to the "Ollama daily use" series: the simplest function so far. Type a question in plain English, get the exact shell command back, printed to your terminal by a local Ollama model — no man page diving, no "linux find files containing text excluding gitignore" Google search, no context switch.
 </TLDR>
 
-While writing this very series, I caught myself doing the thing I do a dozen times a day without noticing: I wanted the command to search for a pattern across a folder tree while respecting `.gitignore`, and instead of just typing it, I opened a browser tab. I *know* the answer involves `rg` — I wrote [an entire article about it](/blog/ripgrep) — but recalling the exact flag combination from memory, at speed, isn't always instant. That's a silly reason to break flow.
+While writing this very series, I caught myself doing the thing I do a dozen times a day without noticing: I wanted the command to search for a pattern across a folder tree while respecting `.gitignore`, and instead of just typing it, I opened a browser tab. I *know* the answer involves `rg` — I wrote <Link to="/blog/ripgrep">an entire article about it</Link> — but recalling the exact flag combination from memory, at speed, isn't always instant. That's a silly reason to break flow.
 
 <!-- truncate -->
 
@@ -43,6 +43,8 @@ This is the function in the series most tempting to blindly copy-paste — resis
 
 No file to read, no git repository to inspect, no API to authenticate against — `ai-ask` is close to the smallest possible wrapper around `_ollama_query`:
 
+No need to copy anything yet: the `.zsh` files shown in this article are here to be read, and [Installing It](#installing-it) at the end creates every one of them in `~/.zsh/fns/` for you.
+
 <Snippet filename="~/.zsh/fns/ai-ask.zsh" source="./files/ai-ask.zsh" defaultOpen={true} />
 
 The only two things worth explaining:
@@ -53,6 +55,8 @@ The only two things worth explaining:
 ## Registered in the `ai` Menu
 
 One line — `AI_COMMANDS[ask]=...` — reachable as `ai ask "your question"` or directly as `ai-ask`, alongside every other function in the series.
+
+`_ollama_query` and the `AI_COMMANDS` registry live in the shared `_ollama.zsh` foundation introduced in <Link to="/blog/ollama-test-generator">ai-test</Link>. If you already followed an earlier article in this series, it's already sitting in `~/.zsh/fns/` and sourced by your autoloader — nothing more to do. Starting here instead? It is one of the files created in [Installing It](#installing-it) below.
 
 ## Key Takeaways
 
@@ -67,6 +71,33 @@ One line — `AI_COMMANDS[ask]=...` — reachable as `ai ask "your question"` or
     { content: "**Registers into `ai`** — reachable as `ai ask \"...\"`" }
   ]}
 />
+
+## Installing It
+
+Everything runs on your machine: zsh, `curl` and `jq` (which builds the request sent to Ollama), and an Ollama server you can reach — see <Link to="/blog/ollama-installation">installing Ollama</Link> if you don't have one yet.
+
+**1. Create the files.** Every function of this series lives in its own file in `~/.zsh/fns/`. The one-liner below creates that folder and the two files in one go — or download the ZIP, or create each file by hand and paste its content. `_ollama.zsh` is the foundation the whole series shares: if an earlier article already gave it to you, the copy here is the same file.
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
+  <Snippet filename="ai-ask.zsh" source="./files/ai-ask.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed an earlier article of this series. Otherwise, add these lines at the end of `~/.zshrc` — they source every `.zsh` file in the folder, so the next function you add needs no change here:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh` in the current one), and check that the shell knows the new function:
+
+```zsh
+type ai-ask
+```
+
+`ai-ask is a shell function from …/ai-ask.zsh` means you're ready. `ai-ask not found` means step 2 is missing.
 
 ## Conclusion
 

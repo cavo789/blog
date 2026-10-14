@@ -21,7 +21,7 @@ series: "Ollama daily use"
 This article adds `ai-data` to the "Ollama daily use" series: point it at a `.json` or `.csv` file, and it asks the local model for 5 practical `jq`/`awk` commands tailored to that file's actual field names — not generic examples. Pick one with `fzf`, and instead of running it for you, `ai-data` loads it onto your zsh command line with `print -z`, ready to read, edit, and only then execute. The goal isn't just an answer — it's leaving with a command you understand.
 </TLDR>
 
-I know `jq` well enough to be dangerous, and not well enough to write a `group_by` one-liner from memory on the first try. Every time, it's the same ritual: open the [jq manual](https://jqlang.org/manual/), squint at three examples that are almost what I need, adapt, get a syntax error, adjust the brackets, try again. `awk` is worse — I remember it exists, I remember it's powerful, and I remember approximately none of the syntax between uses.
+I know <Link to="/blog/linux-jq">`jq`</Link> well enough to be dangerous, and not well enough to write a `group_by` one-liner from memory on the first try. Every time, it's the same ritual: open the [jq manual](https://jqlang.org/manual/), squint at three examples that are almost what I need, adapt, get a syntax error, adjust the brackets, try again. `awk` is worse — I remember it exists, I remember it's powerful, and I remember approximately none of the syntax between uses.
 
 <!-- truncate -->
 
@@ -39,13 +39,15 @@ This is the group-by-and-count case from the start of this idea: total amount an
 
 ## The Idea — Suggestions, Not Answers
 
-Most functions in this series ask the model a question and print the answer. `ai-data` is different on purpose: it asks the model for **candidate commands**, shows them through `fzf`, and when you pick one, it doesn't run it — it drops it onto your prompt, editable, via zsh's `print -z`. You read the exact `jq` filter or `awk` script before it touches your data, and because you're the one hitting Enter, you actually absorb the syntax instead of just consuming the output.
+Most functions in this series ask the model a question and print the answer. `ai-data` is different on purpose: it asks the model for **candidate commands**, shows them through <Link to="/blog/linux-fzf-introduction">`fzf`</Link>, and when you pick one, it doesn't run it — it drops it onto your prompt, editable, via zsh's `print -z`. You read the exact `jq` filter or `awk` script before it touches your data, and because you're the one hitting Enter, you actually absorb the syntax instead of just consuming the output.
 
 <AlertBox variant="tip" title="print -z, in one sentence">
 `print -z "some command"` pushes a string onto zsh's editor buffer — the next prompt shows it pre-typed, exactly as if you'd typed it yourself, cursor ready, nothing executed yet.
 </AlertBox>
 
 ## The `ai-data` Function
+
+No need to copy anything yet: the `.zsh` files shown in this article are here to be read, and [Installing It](#installing-it) at the end creates every one of them in `~/.zsh/fns/` for you.
 
 <Snippet filename="~/.zsh/fns/ai-data.zsh" source="./files/ai-data.zsh" defaultOpen={true} />
 
@@ -66,6 +68,8 @@ Without `fzf` installed, `ai-data` just prints the five suggestions as plain tex
 
 One line — `AI_COMMANDS[data]=...` — reachable as `ai data <file>` or directly as `ai-data`, alongside every other function in the series.
 
+`_ollama_query` and the `AI_COMMANDS` registry live in the shared `_ollama.zsh` foundation introduced in <Link to="/blog/ollama-test-generator">ai-test</Link>. If you already followed an earlier article in this series, it's already sitting in `~/.zsh/fns/` and sourced by your autoloader — nothing more to do. Starting here instead? It is one of the files created in [Installing It](#installing-it) below.
+
 <AlertBox variant="caution" title="Sampling means the model can guess wrong on edge cases">
 Five rows won't reveal a rare `null` field, an inconsistent date format three rows down, or a stray extra column. The suggested commands are a strong starting point, not a guarantee — run them, check the row count looks sane, and adjust if the data has surprises the sample didn't show.
 </AlertBox>
@@ -83,6 +87,33 @@ Five rows won't reveal a rare `null` field, an inconsistent date format three ro
     { content: "**Registers into `ai`** — reachable as `ai data <file>`" }
   ]}
 />
+
+## Installing It
+
+Everything runs on your machine: zsh, `curl` and `jq` (which builds the request sent to Ollama), and an Ollama server you can reach — see <Link to="/blog/ollama-installation">installing Ollama</Link> if you don't have one yet.
+
+**1. Create the files.** Every function of this series lives in its own file in `~/.zsh/fns/`. The one-liner below creates that folder and the two files in one go — or download the ZIP, or create each file by hand and paste its content. `_ollama.zsh` is the foundation the whole series shares: if an earlier article already gave it to you, the copy here is the same file.
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
+  <Snippet filename="ai-data.zsh" source="./files/ai-data.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed an earlier article of this series. Otherwise, add these lines at the end of `~/.zshrc` — they source every `.zsh` file in the folder, so the next function you add needs no change here:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh` in the current one), and check that the shell knows the new function:
+
+```zsh
+type ai-data
+```
+
+`ai-data is a shell function from …/ai-data.zsh` means you're ready. `ai-data not found` means step 2 is missing.
 
 ## Conclusion
 

@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-14T15:38:15.576Z",
+  "durationMs": 30051,
+  "source": "index.md",
+  "sourceHash": "ad4a1885c7aef4a3155c2ff6eefbc3e5ad092bf5",
+  "questions": [
+    {
+      "question": "convert sentence to mermaid diagram no parser needed",
+      "anchor": ""
+    },
+    {
+      "question": "zsh function plain english to mermaid flowchart ollama",
+      "anchor": "demo--plain-english-description"
+    },
+    {
+      "question": "docker-compose.yaml to mermaid service graph local model",
+      "anchor": "demo--an-existing-config-file"
+    },
+    {
+      "question": "example prompts for generating mermaid diagrams from text",
+      "anchor": "more-sentences-to-try"
+    },
+    {
+      "question": "mermaid flowchart support ticket triage steps",
+      "anchor": "support-ticket-triage"
+    },
+    {
+      "question": "login lockout flowchart mermaid",
+      "anchor": "login-with-a-lockout"
+    },
+    {
+      "question": "e-commerce order flow mermaid diagram",
+      "anchor": "an-e-commerce-order"
+    },
+    {
+      "question": "ai-diagram vs docker-python-mermaid difference",
+      "anchor": "where-this-actually-sits-next-to-docker-python-mermaid"
+    },
+    {
+      "question": "how does the ai-diagram zsh function decide between file input and free-text input",
+      "anchor": "the-ai-diagram-function"
+    },
+    {
+      "question": "register ai-diagram in zsh ai menu",
+      "anchor": "registered-in-the-ai-menu"
+    },
+    {
+      "question": "when to use llm-generated mermaid vs parser-based diagram",
+      "anchor": "key-takeaways"
+    },
+    {
+      "question": "install ai-diagram zsh function setup",
+      "anchor": "installing-it"
+    }
+  ]
+}

@@ -54,6 +54,8 @@ Delivery deadlines, payment terms, the termination clause and which parts of the
 
 Both functions below share one job before they ever talk to Ollama: turning a document into plain text. I already built that piece in [my Docling article](/blog/docling) — `docling-convert file.docx` produces `file.md` locally, GPU-accelerated if you set it up that way. Rather than duplicate that logic twice, it lives in one small helper:
 
+No need to copy anything yet: the `.zsh` files shown in this article are here to be read, and [Installing It](#installing-it) at the end creates every one of them in `~/.zsh/fns/` for you.
+
 <Snippet filename="~/.zsh/fns/_ai-docs.zsh" source="./files/_ai-docs.zsh" defaultOpen={true} />
 
 <AlertBox variant="note" title="Markdown and text files skip conversion entirely">
@@ -80,9 +82,7 @@ Same extraction step, different prompt: a fixed number of bullet points (5 by de
 
 Two lines — `AI_COMMANDS[translate]=...` and `AI_COMMANDS[summarize]=...` — and both are reachable as `ai translate` / `ai summarize`, or directly as `ai-translate` / `ai-summarize`, alongside every other function in this series.
 
-Both functions call `_ollama_query` and register into `AI_COMMANDS`, which live in the shared `_ollama.zsh` foundation introduced in <Link to="/blog/ollama-test-generator">ai-test</Link>. If you already followed an earlier article in this series, it's already sitting in `~/.zsh/fns/` and sourced by your autoloader — nothing more to do. Starting here instead?
-
-<Snippet filename="~/.zsh/fns/_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
+Both functions call `_ollama_query` and register into `AI_COMMANDS`, which live in the shared `_ollama.zsh` foundation introduced in <Link to="/blog/ollama-test-generator">ai-test</Link>. If you already followed an earlier article in this series, it's already sitting in `~/.zsh/fns/` and sourced by your autoloader — nothing more to do. Starting here instead? It is one of the files created in [Installing It](#installing-it) below.
 
 <AlertBox variant="tip" title="Docling and Ollama don't have to be on the same machine">
 
@@ -122,9 +122,11 @@ flowchart TD
   ]}
 />
 
-## All Files at a Glance
+## Installing It
 
-All four files, together in one place — `_ollama.zsh` is the same shared foundation from earlier in the series, included here so the archive is complete on its own even if this is the first article of the series you're following. Download it or copy the one-liner to create everything straight into `~/.zsh/fns`:
+Everything runs on your machine: zsh, `curl` and `jq` (which builds the request sent to Ollama), and an Ollama server you can reach — see <Link to="/blog/ollama-installation">installing Ollama</Link> if you don't have one yet. For `.pdf`, `.docx`, `.pptx`, `.xlsx` and `.html` files, you also need `docling-convert`, from <Link to="/blog/docling">my Docling article</Link>.
+
+**1. Create the files.** Every function of this series lives in its own file in `~/.zsh/fns/`. The one-liner below creates that folder and the four files in one go — or download the ZIP, or create each file by hand and paste its content. `_ollama.zsh` is the foundation the whole series shares: if an earlier article already gave it to you, the copy here is the same file.
 
 <ProjectSetup folderName="~/.zsh/fns">
   <Snippet filename="_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
@@ -133,7 +135,21 @@ All four files, together in one place — `_ollama.zsh` is the same shared found
   <Snippet filename="ai-summarize.zsh" source="./files/ai-summarize.zsh" defaultOpen={false} />
 </ProjectSetup>
 
-If this is your first time setting up `~/.zsh/fns`, the autoloader itself — the `.zshrc` loop that sources every file in that folder — is covered in <Link to="/blog/ripgrep">my ripgrep article</Link>.
+**2. Load the folder from `~/.zshrc`.** Already done if you followed an earlier article of this series. Otherwise, add these lines at the end of `~/.zshrc` — they source every `.zsh` file in the folder, so the next function you add needs no change here:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh` in the current one), and check that the shell knows the new functions:
+
+```zsh
+type ai-translate ai-summarize
+```
+
+`ai-translate is a shell function from …/ai-translate.zsh` means you're ready. `ai-translate not found` means step 2 is missing.
 
 ## Conclusion
 

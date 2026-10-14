@@ -56,13 +56,29 @@ All three build on a shared `_ollama.zsh` foundation (introduced in [ai-test](/b
 
 <Snippet filename="~/.zsh/fns/_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
 
-Add the three functions on top of it:
+Add the three functions on top of it. Save each file in `~/.zsh/fns/` under the name shown above it (`mkdir -p ~/.zsh/fns` first if the folder doesn't exist yet), pasting its content:
 
 <Snippet filename="~/.zsh/fns/ai-review.zsh" source="./files/ai-review.zsh" defaultOpen={false} />
 
 <Snippet filename="~/.zsh/fns/ai-secrets.zsh" source="./files/ai-secrets.zsh" defaultOpen={false} />
 
 <Snippet filename="~/.zsh/fns/ai-commit.zsh" source="./files/ai-commit.zsh" defaultOpen={false} />
+
+If an earlier article of this series already made your `~/.zshrc` load that folder, there's nothing else to set up. Otherwise, add these lines at the end of `~/.zshrc` — they source every `.zsh` file in the folder:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+Then open a new terminal (or run `exec zsh`), and check that the shell knows the three functions:
+
+```zsh
+type ai-review ai-secrets ai-commit
+```
+
+Each one should answer `… is a shell function from …`; `not found` means the `~/.zshrc` loop is missing.
 
 ## `ai-secrets`: Catching Real Credentials
 

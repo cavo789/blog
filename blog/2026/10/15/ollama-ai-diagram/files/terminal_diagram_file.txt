@@ -1,0 +1,14 @@
+$ ai-diagram compose.yaml
+
+```mermaid
+graph TD
+  app["app · build · :8080"]
+  db["db · postgres:16"]
+  cache["cache · redis:7"]
+  db_data[("db-data")]
+
+  app -- "depends_on" --> db
+  app -- "depends_on" --> cache
+  db -- "volumes" --> db_data
+```
+Preview: https://mermaid.live/edit#base64:eyJjb2RlIjoiZ3JhcGggVERcbiAgYXBwW1wiYXBwIMK3IGJ1aWxkIMK3IDo4MDgwXCJdXG4gIGRiW1wiZGIgwrcgcG9zdGdyZXM6MTZcIl1cbiAgY2FjaGVbXCJjYWNoZSDCtyByZWRpczo3XCJdXG4gIGRiX2RhdGFbKFwiZGItZGF0YVwiKV1cblxuICBhcHAgLS0gXCJkZXBlbmRzX29uXCIgLS0-IGRiXG4gIGFwcCAtLSBcImRlcGVuZHNfb25cIiAtLT4gY2FjaGVcbiAgZGIgLS0gXCJ2b2x1bWVzXCIgLS0-IGRiX2RhdGEifQ

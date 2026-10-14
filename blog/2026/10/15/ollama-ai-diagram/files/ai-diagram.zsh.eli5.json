@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-14T15:27:26.010Z",
+  "source": "ai-diagram.zsh",
+  "sourceHash": "95e63378a79b54ac7126a4525575e07de6c86f14",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script takes either a plain-English description or a file path and uses an AI model to generate a Mermaid diagram from it. It sends the input to an AI service with specific instructions about diagram structure, then extracts the fenced code block from the response and prints it in a format ready to paste into Markdown, along with a preview link.",
+  "explanations": {
+    "6": "AI_COMMANDS is an associative array storing help text for this command so other parts of the script can display it to users.",
+    "7": "AI_PARAMS registers that this command takes 'text' as a parameter type, likely used for command-line parsing or validation elsewhere.",
+    "10": "[[ -z \"$1\" ]] checks if the first argument is empty (zero length); if it is, the function can't proceed.",
+    "17": "[[ -f \"$1\" ]] tests whether the argument is an actual file that exists, as opposed to a description string.",
+    "18": "cat reads the entire file contents into the input variable so it can be sent to the AI model.",
+    "21": "This long string becomes instructions for the AI model, tailored differently based on whether the input is a config file or a description.",
+    "28": "If not a file, treat all remaining arguments as a single description string (joining them with spaces).",
+    "40": "_ollama_query is a helper function that sends the prompt to an AI model and returns the result; the || return 1 means if that fails, exit this function immediately.",
+    "51": "_ai_strip_fences is a helper that extracts just the Mermaid code block from the model's response, removing any extra text the model may have added.",
+    "53": "print -r -- outputs literally without interpreting escape sequences or adding newlines; this ensures the markdown fence prints exactly as written.",
+    "62": "This creates a shareable preview link by converting the diagram code to base64 format that mermaid.live can read from its URL hash.",
+    "63": "print -r -- ... >&2 sends the preview link to stderr (error stream) so it doesn't mix with the main markdown output if redirected to a file."
+  }
+}

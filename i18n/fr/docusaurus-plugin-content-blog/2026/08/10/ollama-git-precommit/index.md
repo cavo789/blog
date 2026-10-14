@@ -56,13 +56,29 @@ Toutes les trois s'appuient sur une base commune `_ollama.zsh` (présentée dans
 
 <Snippet filename="~/.zsh/fns/_ollama.zsh" source="./files/_ollama.zsh" defaultOpen={false} />
 
-Ajoutez les trois fonctions par-dessus :
+Ajoutez les trois fonctions par-dessus. Enregistrez chaque fichier dans `~/.zsh/fns/` sous le nom indiqué juste au-dessus (`mkdir -p ~/.zsh/fns` d'abord si le dossier n'existe pas encore), en y collant son contenu :
 
 <Snippet filename="~/.zsh/fns/ai-review.zsh" source="./files/ai-review.zsh" defaultOpen={false} />
 
 <Snippet filename="~/.zsh/fns/ai-secrets.zsh" source="./files/ai-secrets.zsh" defaultOpen={false} />
 
 <Snippet filename="~/.zsh/fns/ai-commit.zsh" source="./files/ai-commit.zsh" defaultOpen={false} />
+
+Si un article précédent de cette série a déjà fait en sorte que votre `~/.zshrc` charge ce dossier, il n'y a rien de plus à configurer. Sinon, ajoutez ces lignes à la fin de `~/.zshrc` — elles sourcent chaque fichier `.zsh` du dossier :
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+Ouvrez ensuite un nouveau terminal (ou lancez `exec zsh`), et vérifiez que le shell connaît les trois fonctions :
+
+```zsh
+type ai-review ai-secrets ai-commit
+```
+
+Chacune doit répondre `… is a shell function from …` ; `not found` signifie que la boucle dans `~/.zshrc` manque.
 
 ## `ai-secrets` : détecter les vrais identifiants {#ai-secrets-catching-real-credentials}
 

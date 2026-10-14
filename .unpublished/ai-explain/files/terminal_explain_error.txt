@@ -1,0 +1,12 @@
+$ ai-explain example-error.txt
+
+The error happens because the code tries to call `.map()` on a variable that is `undefined` in the ProductList component. This occurs at line 42 of ProductList.jsx where it expects an array but gets nothing.
+
+To fix this, add a check to ensure the data exists before mapping:
+```jsx
+{products && products.map(product => (
+  <div key={product.id}>{product.name}</div>
+))}
+```
+
+If `products` is undefined, the component won't crash and will render nothing instead of throwing an error.
