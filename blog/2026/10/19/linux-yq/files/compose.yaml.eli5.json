@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-19T07:26:29.435Z",
+  "source": "compose.yaml",
+  "sourceHash": "3d143204d1f6fb8432fa33d10e6284da69bd7d71",
+  "lang": "yaml",
+  "textLang": "en",
+  "summary": "This is a Docker Compose configuration that defines two services: a web server running Nginx and a PostgreSQL database. The web service exposes port 8080, loads HTML files from the local filesystem, and depends on the database service to be running first. The database service persists its data in a named volume so information survives container restarts.",
+  "explanations": {
+    "5": "The port mapping '8080:80' means requests coming to your machine on port 8080 get forwarded to the container's port 80 where Nginx listens.",
+    "10": "This mounts your local './html' folder into the container's Nginx directory, and ':ro' makes it read-only so the container can't accidentally modify your files.",
+    "11": "This tells Docker Compose that the web service can't start until the db service is ready, ensuring the database is available when the app tries to connect.",
+    "21": "Instead of storing the database files temporarily in the container, this saves them to a persistent volume named 'db_data' so the data isn't lost when you stop the container."
+  }
+}

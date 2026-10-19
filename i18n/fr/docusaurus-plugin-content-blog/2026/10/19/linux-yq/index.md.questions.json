@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-19T07:30:41.394Z",
+  "durationMs": 30134,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "8f574f13539e5f7e98bc2152210ae4642df4ff4c",
+  "questions": [
+    {
+      "question": "yq yaml ligne de commande",
+      "anchor": ""
+    },
+    {
+      "question": "yq mikefarah vs yq python différence comportement",
+      "anchor": "what-yq-is--and-which-one"
+    },
+    {
+      "question": "tester yq docker run --rm sans rien installer",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "alias yq docker ~/.zshrc transparent",
+      "anchor": "install--or-just-alias"
+    },
+    {
+      "question": "yq extraire image service compose.yaml",
+      "anchor": "reading-values"
+    },
+    {
+      "question": "yq filtrer services qui ont ports compose",
+      "anchor": "filtering-and-selecting"
+    },
+    {
+      "question": "yq -i changer image nginx compose.yaml sur place",
+      "anchor": "editing-in-place"
+    },
+    {
+      "question": "yq lire stdin pipe cat yaml",
+      "anchor": "reading-from-stdin-and-piping"
+    },
+    {
+      "question": "extraire tous les mappings ports compose.yaml yq",
+      "anchor": "extract-all-port-mappings"
+    },
+    {
+      "question": "yq incrémenter version image fichier CI",
+      "anchor": "update-a-version-across-a-ci-file"
+    },
+    {
+      "question": "yq convertir yaml en json",
+      "anchor": "convert-yaml-to-json"
+    },
+    {
+      "question": "yq jq syntaxe commune yaml",
+      "anchor": "the-jq-crossover"
+    }
+  ]
+}

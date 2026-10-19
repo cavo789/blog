@@ -8,11 +8,13 @@ RUN apt-get update && \
         ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Install the yq static binary directly (avoids the distroless upstream
-# Docker image, which has no shell to play in). Pin the version so this
-# image keeps building the same way; bump it during a /freshness pass.
+# Install the yq static binary in a plain Ubuntu image, so the demo opens a
+# bash shell with yq on the PATH. TARGETARCH is set by BuildKit (amd64 or
+# arm64, Apple Silicon included). Pin the version so this image keeps
+# building the same way; bump it during a /freshness pass.
+ARG TARGETARCH=amd64
 RUN curl -fsSL -o /usr/local/bin/yq \
-    https://github.com/mikefarah/yq/releases/download/v4.53.6/yq_linux_amd64 && \
+    "https://github.com/mikefarah/yq/releases/download/v4.54.1/yq_linux_${TARGETARCH}" && \
     chmod +x /usr/local/bin/yq
 
 # The exact compose.yaml used throughout this article

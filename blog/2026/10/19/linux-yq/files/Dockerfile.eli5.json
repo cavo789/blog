@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-19T07:26:25.976Z",
+  "source": "Dockerfile",
+  "sourceHash": "1d6c2060ad0d8f816e29efbd31ac8b12a3ab463d",
+  "lang": "docker",
+  "textLang": "en",
+  "summary": "This Dockerfile creates an Ubuntu container with curl, ca-certificates, and the yq command-line tool pre-installed. It then bakes a Docker Compose configuration file into the image at /root/demo/compose.yaml that defines a two-service setup (nginx web server and PostgreSQL database), sets up a custom bash prompt to indicate you're in a container, and launches an interactive bash shell when the container starts.",
+  "explanations": {
+    "3": "This tells the package installer to skip interactive prompts during installation, so the build doesn't hang waiting for user input.",
+    "5": "The && chains commands together so they run in sequence within a single layer; if any command fails, the rest won't execute.",
+    "9": "After installing packages, we delete the package manager cache to reduce the final image size since we won't need it again.",
+    "15": "TARGETARCH is a special variable that BuildKit automatically sets to either amd64 or arm64 depending on what architecture the image is being built for.",
+    "16": "The -fsSL flags make curl fail silently on errors (-f), show no progress bar (-sS), and follow redirects (-L); -o specifies where to save the downloaded file.",
+    "17": "The ${TARGETARCH} variable is substituted here so we download the correct yq binary for the current architecture (amd64 or arm64).",
+    "18": "chmod +x makes the yq binary executable so it can actually run as a command.",
+    "22": "printf with %s\\n prints each argument on its own line, which is a reliable way to write multi-line text into a file.",
+    "47": "The > operator redirects all the printf output into the compose.yaml file.",
+    "52": "The >> appends to .bashrc rather than overwriting it; the PS1 line sets the shell prompt to show a whale emoji and other info to remind users they're in a container.",
+    "54": "The -i flag makes bash interactive, so you get a proper shell prompt instead of the container just exiting."
+  }
+}

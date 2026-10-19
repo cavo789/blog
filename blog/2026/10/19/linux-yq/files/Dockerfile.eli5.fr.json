@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-19T07:27:34.093Z",
+  "source": "Dockerfile",
+  "sourceHash": "1d6c2060ad0d8f816e29efbd31ac8b12a3ab463d",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile crée une image Ubuntu de base contenant yq (un outil de manipulation YAML) et un fichier compose.yaml prédéfini pour une démonstration. L'image démarre automatiquement un shell bash interactif dans le répertoire /root/demo, avec un prompt personnalisé qui indique clairement qu'on est à l'intérieur d'un conteneur.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive supprime les dialogues interactifs pendant l'installation des paquets, ce qui est essentiel en Docker où il n'y a pas d'interface utilisateur.",
+    "5": "apt-get update récupère les listes de paquets à jour, et apt-get install installe les dépendances ; l'ampersand && garantit que chaque commande n'exécute la suivante que si elle a réussi.",
+    "9": "rm -rf /var/lib/apt/lists/* supprime les fichiers de cache après l'installation pour réduire la taille de l'image Docker.",
+    "15": "ARG TARGETARCH permet de passer une valeur au moment du build (amd64 ou arm64) ; BuildKit la définit automatiquement selon l'architecture de la machine qui compile.",
+    "16": "curl -fsSL télécharge le binaire yq en mode silencieux (-s), sans barres de progression (-S), et échoue d'emblée sur erreur HTTP (-f).",
+    "17": "La variable ${TARGETARCH} est substituée par sa valeur (amd64 ou arm64) pour télécharger le bon binaire selon l'architecture.",
+    "18": "chmod +x rend le fichier yq exécutable puisqu'on en a besoin comme commande.",
+    "22": "printf '%s\\n' affiche chaque argument sur une ligne séparée, ce qui construit un fichier YAML bien formaté ligne par ligne.",
+    "47": "> /root/demo/compose.yaml redirige la sortie complète de printf dans un fichier, créant ainsi le fichier compose.yaml.",
+    "49": "WORKDIR change le répertoire par défaut du conteneur, de sorte que les commandes futures s'exécutent depuis /root/demo.",
+    "52": "echo ajoute une définition personnalisée du prompt (PS1) dans .bashrc, qui affiche un emoji baleine (🐳) pour signaler visuellement qu'on est dans un conteneur.",
+    "54": "CMD définit la commande par défaut lancée au démarrage du conteneur ; /bin/bash -i démarre un shell bash interactif."
+  }
+}

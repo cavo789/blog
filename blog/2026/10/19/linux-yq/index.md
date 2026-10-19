@@ -5,9 +5,9 @@ description: "yq is to YAML what jq is to JSON. Query and edit your Docker Compo
 authors: [christophe, claude]
 image: /img/v2/linux-yq.webp
 mainTag: linux
-draft: true
 tags: [bash, docker, linux]
-date: 2026-08-04
+date: 2026-10-19
+series: Modern CLI tools for your terminal
 ai_assisted: true
 ---
 
@@ -27,7 +27,7 @@ Meet `yq`.
 
 ## What yq is — and which one
 
-There are two tools named `yq`. This article covers [Mike Farah's `yq`](https://github.com/mikefarah/yq) (Go, Docker image `mikefarah/yq`), which has native YAML support and a `jq`-compatible syntax. The other one (`kislyuk/yq`) wraps `jq` after converting YAML to JSON — similar idea, different behavior for YAML-specific features like comments and multi-document files.
+There are two tools named `yq`. This article covers [Mike Farah's `yq`](https://github.com/mikefarah/yq) (Go, Docker image `mikefarah/yq`), which has native YAML support and a `jq`-compatible syntax. The other one (`kislyuk/yq`) wraps `jq` after converting YAML to JSON — similar idea, different behavior for YAML-specific features like comments and multi-document files. On Debian and Ubuntu, `apt install yq` installs that other one (`kislyuk/yq` 3.x), not the tool used here.
 
 If you have the Go version installed locally (`yq --version` returns something like `yq (https://github.com/mikefarah/yq/) version v4.x`), you're all set. Otherwise, the Docker approach below requires nothing extra.
 
@@ -64,16 +64,25 @@ sections below directly against it, no setup left to do.
 
 ## Install — or just alias
 
-The simplest approach requires no installation at all. Add this alias to your `~/.zshrc` or `~/.bashrc`:
+A package manager installs the Go version on every platform:
 
 <Terminal>
-echo 'alias yq="docker run --rm -i -v \"${PWD}\":/workdir mikefarah/yq"' >> ~/.zshrc
-source ~/.zshrc
+$ brew install yq            # macOS and Linux (Homebrew)
+$ winget install MikeFarah.yq  # Windows
 </Terminal>
 
-That alias mounts your current directory into the container and runs `yq` transparently. Every `yq` command below works with it exactly as written.
+No installation at all is also an option. Add this alias to your `~/.zshrc` or `~/.bashrc`:
 
-If you prefer a local binary, the [releases page](https://github.com/mikefarah/yq/releases) provides static binaries for Linux, macOS, and Windows — no runtime dependencies.
+<Terminal>
+{`cat >> ~/.zshrc <<'EOF'
+alias yq='docker run --rm -i -u "$(id -u):$(id -g)" -v "\${PWD}":/workdir mikefarah/yq:4'
+EOF
+source ~/.zshrc`}
+</Terminal>
+
+That alias mounts your current directory into the container and runs `yq` transparently, with your own user ID so that files edited with `-i` keep their owner. Every `yq` command below works with it exactly as written.
+
+The [releases page](https://github.com/mikefarah/yq/releases) also provides static binaries for Linux, macOS, and Windows — no runtime dependencies.
 
 ## Reading values
 
@@ -87,7 +96,7 @@ Read a single value:
 yq '.services.web.image' compose.yaml
 </Terminal>
 
-```
+```bash
 nginx:1.25
 ```
 
@@ -97,7 +106,7 @@ Read a nested value:
 yq '.services.db.environment.POSTGRES_DB' compose.yaml
 </Terminal>
 
-```
+```bash
 myapp_db
 ```
 
@@ -107,7 +116,7 @@ List all service names:
 yq '.services | keys' compose.yaml
 </Terminal>
 
-```
+```bash
 - web
 - db
 ```
@@ -118,7 +127,7 @@ Get all images across services:
 yq '.services.*.image' compose.yaml
 </Terminal>
 
-```
+```bash
 nginx:1.25
 postgres:16
 ```
@@ -135,7 +144,7 @@ yq '.services | with_entries(select(.value | has("ports")))' compose.yaml
 web:
   image: nginx:1.25
   ports:
-    - 8080:80
+    - "8080:80"
   ...
 ```
 
@@ -145,14 +154,14 @@ List all environment variable names for the `web` service:
 yq '.services.web.environment | keys' compose.yaml
 </Terminal>
 
-```
+```bash
 - APP_ENV
 - LOG_LEVEL
 ```
 
 ## Editing in place
 
-Update the `web` image version. The `-i` flag edits the file in place, just like `sed -i`:
+Update the `web` image version. The `-i` flag edits the file in place, just like <Link to="/blog/update-env-files-cli">`sed -i`</Link>:
 
 <Terminal>
 yq -i '.services.web.image = "nginx:1.27"' compose.yaml
@@ -170,8 +179,8 @@ Delete a key:
 yq -i 'del(.services.db.environment.POSTGRES_PASSWORD)' compose.yaml
 </Terminal>
 
-<AlertBox type="warning" title="yq modifies comments">
-Unlike JSON, YAML files often contain comments. `yq -i` preserves most comments, but reformats the file. Check the diff after editing if your file has important inline comments.
+<AlertBox variant="warning" title="yq -i reformats the file">
+`yq -i` keeps comments and quotes, but removes blank lines — the empty line between `web` and `db` is gone after the first edit. Check the diff before committing a hand-formatted file.
 </AlertBox>
 
 ## Reading from stdin and piping
@@ -196,7 +205,7 @@ curl -s https://example.com/config.yaml | yq '.database.host'
 yq '.services.*.ports[]' compose.yaml
 </Terminal>
 
-```
+```bash
 8080:80
 ```
 
@@ -206,16 +215,16 @@ yq '.services.*.ports[]' compose.yaml
 yq '.services | has("redis")' compose.yaml
 </Terminal>
 
-```
+```bash
 false
 ```
 
 ### Update a version across a CI file
 
-Given a `.gitlab-ci.yml` that references an image version in multiple places:
+Given a `.gitlab-ci.yml` that references an image version in multiple places, `..` walks every node of the file, whatever its depth:
 
 <Terminal>
-yq -i '(.[] | select(. == "node:20")).image = "node:22"' .gitlab-ci.yml
+yq -i '(.. | select(. == "node:20")) = "node:22"' .gitlab-ci.yml
 </Terminal>
 
 ### Merge two YAML files
@@ -237,11 +246,19 @@ yq -o json '.services.web' compose.yaml
 ```json
 {
   "image": "nginx:1.25",
-  "ports": ["8080:80"],
+  "ports": [
+    "8080:80"
+  ],
   "environment": {
     "APP_ENV": "production",
     "LOG_LEVEL": "info"
-  }
+  },
+  "volumes": [
+    "./html:/usr/share/nginx/html:ro"
+  ],
+  "depends_on": [
+    "db"
+  ]
 }
 ```
 
@@ -249,7 +266,7 @@ You can then pipe that output directly to `jq` for further processing.
 
 ## The jq crossover
 
-If you already use <Link to="/blog/linux-jq">`jq`</Link> for JSON, the `yq` syntax will feel immediately familiar. Most `jq` expressions work as-is:
+If you already use <Link to="/blog/linux-jq">`jq`</Link> for JSON, the `yq` syntax will feel immediately familiar. The everyday `jq` expressions work as-is:
 
 | Task | jq (JSON) | yq (YAML) |
 | ------ | ----------- | ----------- |
@@ -263,6 +280,6 @@ The main differences: `yq` adds `-i` for in-place edits and `-o` for output form
 
 ## Conclusion
 
-`yq` fills the gap that every `jq` user eventually feels: the same tool, but for YAML. With a Docker alias, there's nothing to install, and the syntax transfers directly from everything you already know. If your workflow involves `compose.yaml`, GitLab CI, GitHub Actions, or Kubernetes manifests, `yq` belongs in your toolkit alongside <Link to="/blog/linux-jq">`jq`</Link>.
+`yq` fills the gap that every `jq` user eventually feels: the same tool, but for YAML. With a Docker alias, there's nothing to install, and the syntax transfers directly from everything you already know. If your workflow involves `compose.yaml`, GitLab CI, GitHub Actions, or Kubernetes manifests, `yq` belongs in your toolkit alongside `jq` and its XML counterpart, <Link to="/blog/linux-xmlstarlet">`xmlstarlet`</Link>.
 
 The next time you reach for a text editor to check an image version or update a config key, reach for `yq` instead.

@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-19T07:30:11.127Z",
+  "durationMs": 24863,
+  "source": "index.md",
+  "sourceHash": "68434d6a8fafb1ca6c071b4313bf0b7a3bbc4300",
+  "questions": [
+    {
+      "question": "jq for yaml",
+      "anchor": ""
+    },
+    {
+      "question": "mikefarah yq vs python yq which one is jq compatible",
+      "anchor": "what-yq-is--and-which-one"
+    },
+    {
+      "question": "run yq in docker container without installing",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "yq docker alias zshrc mount current directory",
+      "anchor": "install--or-just-alias"
+    },
+    {
+      "question": "yq read nested value compose.yaml services",
+      "anchor": "reading-values"
+    },
+    {
+      "question": "yq -i update image tag in place",
+      "anchor": "editing-in-place"
+    },
+    {
+      "question": "curl yaml pipe to yq extract field",
+      "anchor": "reading-from-stdin-and-piping"
+    },
+    {
+      "question": "yq extract all port mappings from docker compose",
+      "anchor": "extract-all-port-mappings"
+    },
+    {
+      "question": "yq check if key exists yaml",
+      "anchor": "check-if-a-key-exists-before-using-it"
+    },
+    {
+      "question": "yq bump version number ci pipeline yaml",
+      "anchor": "update-a-version-across-a-ci-file"
+    },
+    {
+      "question": "yq convert yaml to json",
+      "anchor": "convert-yaml-to-json"
+    },
+    {
+      "question": "yq jq syntax for yaml files",
+      "anchor": "the-jq-crossover"
+    }
+  ]
+}
