@@ -215,3 +215,26 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions-write`.
 - Bridge naturel avec le cluster Docker du blog (21 articles publiés) et avec les drafts Portainer
   et lazydocker : les trois forment un trio "observer sa stack Docker" — Dozzle (logs seuls, web),
   lazydocker (TUI tout-en-un), Portainer (dashboard complet). À positionner clairement dans l'intro.
+
+### [ ] Miller (`mlr`) — interroger, agréger et convertir des CSV/TSV/JSON par nom de colonne
+
+- Idée de Christophe (2026-10-22), née de la publication de `/blog/ollama-ai-data` : `ai-data` détecte
+  déjà `mlr` et demande alors au modèle de le préférer à `awk` pour les group-by/agrégations — sans
+  qu'aucun article n'explique ce qu'est Miller. Vérifié par grep : `miller`/`mlr` n'apparaissent que
+  dans `ai-data` (`blog/` et `.unpublished/`) ; `ai-related` ne remonte rien au-dessus de 0,66
+  (`markdown-csv2md`, `linux-jq`) — pas de doublon.
+- Angle : `awk` qui connaît les noms de colonnes. Démo avant/après sur un même CSV — total et
+  nombre de commandes par région en `awk` (`$2`, `$3`, `NR>1`) puis en `mlr stats1 -a sum,count -f
+  amount -g region` ; ensuite filtres (`filter`), tri (`sort`), conversion de format
+  (`--icsv --ojson`, `--opprint` pour un affichage aligné), et le CSV → JSON qui alimente `jq`.
+- Place naturelle dans la série « Modern CLI tools for your terminal », comme quatrième membre de la
+  famille « un outil par format » : `/blog/linux-jq` (JSON), `/blog/linux-yq` (YAML),
+  `/blog/linux-xmlstarlet` (XML) — Miller pour le tabulaire. Lien réciproque évident depuis
+  `ai-data` (la branche `mlr` de la fonction).
+- **Chevauchement partiel avec le draft `duckdb-json-csv`**, qui se présente comme « l'outil quand
+  `awk`/`jq` ne suffisent plus ». À positionner explicitement : Miller couvre le palier
+  intermédiaire (agrégations, tri, conversion en une ligne, en flux), DuckDB celui des `JOIN` et
+  window functions en SQL. Les deux articles devraient se citer mutuellement.
+- Installation à vérifier avant rédaction (règle `safe-install-commands`) : disponibilité des
+  paquets `miller` (apt, brew, winget) et existence d'une image Docker officielle si l'on veut le
+  même pattern d'alias Docker que `linux-yq`.

@@ -1,61 +1,51 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-17T20:59:34.611Z",
+  "generated": "2026-10-22T07:15:37.722Z",
+  "durationMs": 58664,
   "source": "index.md",
-  "sourceHash": "0ca306224c86c4ae6112f8a17a9a71e29195cd73",
-  "durationMs": 196951,
   "locale": "fr",
-  "rejected": [
-    {
-      "question": "cas d utilisation de jq pour le debugging de containers et le parsing de réponses api",
-      "anchor": "conclusion",
-      "reason": "not answered: Docker debugging use case is only a link to another article",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T12:20:47.120Z",
-    "articleHash": "e0bba42b610d16e899957e0ac769505f1b91172a",
-    "questionsHash": "36ba945a4bd1c29f",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "8ff7606a7a470aef23e5c053ebef4c543c1eb6d3",
   "questions": [
     {
-      "question": "comment formater et parser du json en ligne de commande avec jq",
+      "question": "jq pipe curl sortie API JSON",
       "anchor": ""
     },
     {
-      "question": "pipe curl --silent vers jq pour afficher du json indenté",
+      "question": "curl --silent https://randomuser.me/api/ | jq",
       "anchor": "the-same-answer-twice"
     },
     {
-      "question": "filtre jq pour extraire un champ précis d une réponse api",
+      "question": "jq '.results[0].name' extraire un nœud du tableau",
       "anchor": "filtering-the-output"
     },
     {
-      "question": "utiliser jq dans un container docker sans installation locale",
+      "question": "Dockerfile jq sample.json container jetable démo",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "commande pour tester la version de jq installée sur le système",
+      "question": "jq --version vérifier si déjà installé",
       "anchor": "installing-jq"
     },
     {
-      "question": "formater du json brut sans expression de filtre avec jq",
+      "question": "jq randomuser.me API gratuite tester",
       "anchor": "lets-play"
     },
     {
-      "question": "syntaxe jq pour récupérer le premier élément d un tableau json",
-      "anchor": "filtering-the-output"
+      "question": "jq API JSON gratuite autre que randomuser.me",
+      "anchor": "lets-play"
     },
     {
-      "question": "docker run jq sample.json pour tester des filtres hors ligne",
-      "anchor": "seeing-it-in-action-with-docker"
+      "question": "jq docker logs LLM réponse JSON script shell",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "jq consommer sortie JSON dans un script shell",
+      "anchor": "conclusion"
+    },
+    {
+      "question": "manipuler JSON ligne de commande sans ouvrir un éditeur",
+      "anchor": ""
     }
   ]
 }

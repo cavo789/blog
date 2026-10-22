@@ -57,17 +57,20 @@ $sample"
     return 1
   fi
 
+  # "print -r" and never echo: zsh's echo expands escape sequences, and the
+  # "\n" of an awk printf would split the suggestion over two lines.
   if ! command -v fzf >/dev/null 2>&1; then
-    echo "$suggestions"
+    print -r -- "$suggestions"
     return 0
   fi
 
   local picked
-  picked=$(echo "$suggestions" | fzf --delimiter=' \|\|\| ' --with-nth=2 \
+  picked=$(print -r -- "$suggestions" | fzf --delimiter=' \|\|\| ' --with-nth=2 \
     --prompt="ai-data > " --height=40% --reverse)
 
   [[ -z "$picked" ]] && return 0
 
   local cmd="${picked%% \|\|\| *}"
-  print -z "$cmd"
+  # Same reason here: without -r, "\n" would reach the prompt as a real newline.
+  print -rz -- "$cmd"
 }

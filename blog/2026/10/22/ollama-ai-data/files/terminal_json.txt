@@ -1,0 +1,24 @@
+$ ai-data users.json
+
+→ Analyzing users.json (json)...
+
+ai-data >
+  5/5 ────────────────────────────────
+  Extract all user names from the JSON file
+  Count how many active users exist in the file
+  Display name and birth date for each user, separated by colon
+> Group users by active status and count them
+  Find names of users born in the 1990s
+
+$ jq 'group_by(.active) | map({"active": .[0].active, "count": length})' users.json
+
+[
+  {
+    "active": false,
+    "count": 1
+  },
+  {
+    "active": true,
+    "count": 2
+  }
+]

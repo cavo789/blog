@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-22T07:09:08.121Z",
+  "source": "ai-data.zsh",
+  "sourceHash": "f57e763a69b43532d6cc9d92c4004ee72d8d5740",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This function analyzes a JSON or CSV file by sending a sample to an AI model, which suggests five practical data-processing commands tailored to that file's actual fields. It then lets you pick one command via an interactive menu (fzf) and loads it into your shell prompt so you can review, edit, and run it yourself.",
+  "explanations": {
+    "18": "The syntax ${file:e:l} extracts the file extension (the :e part) and converts it to lowercase (the :l part)—this is a zsh-specific way to get 'json' or 'csv' from a filename.",
+    "24": "This jq command tests whether the JSON is an array by checking if its type equals 'array'; the -e flag makes jq exit with status 0 (success) or 1 (failure) instead of printing output.",
+    "25": "This grabs the first three elements from a JSON array (.[0:3]) and outputs them as compact JSON on one line (-c), which becomes the sample sent to the AI.",
+    "31": "This checks if the mlr command exists in the system PATH—if it does, the script suggests using Miller as a more powerful alternative to plain awk for CSV processing.",
+    "46": "The prompt is a multi-line string that tells the AI model what kind of commands to generate; the $ variables inside get replaced with actual values before sending it to the model.",
+    "60": "The comment explains that print -r (without interpretation) is needed instead of echo because echo in zsh expands escape sequences like \\n into actual newlines, which would mess up the formatting.",
+    "68": "fzf is an interactive menu tool; --delimiter tells it how to split each line (on the |||), and --with-nth=2 means show only the description part when displaying options.",
+    "73": "This extracts just the command part by removing everything from the first ||| onward (${var%% pattern} removes the longest match from the end).",
+    "75": "The -z flag loads the command into the shell's input buffer instead of executing it immediately, so you see it in your prompt and can edit it before pressing Enter."
+  }
+}

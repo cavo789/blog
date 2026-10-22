@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-22T07:10:50.587Z",
+  "source": "ai-data.zsh",
+  "sourceHash": "f57e763a69b43532d6cc9d92c4004ee72d8d5740",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction analyse un fichier JSON ou CSV, envoie un échantillon à une IA pour obtenir 5 commandes jq/awk pratiques et adaptées au fichier, puis les présente via fzf pour que tu en choisisses une — la commande choisie est alors chargée dans ta ligne de commande zsh sans l'exécuter, afin que tu puisses la lire, l'éditer et l'apprendre avant de la valider.",
+  "explanations": {
+    "7": "AI_COMMANDS est un dictionnaire qui enregistre la description de cette commande pour affichage ultérieur dans un menu d'aide.",
+    "18": "Le ${file:e:l} extrait l'extension du nom de fichier et la convertit en minuscules — c'est une syntaxe zsh spécifique pour obtenir l'extension.",
+    "24": "On teste si le JSON est un tableau (type == \"array\") en exécutant la commande jq en silence pour ne capturer que le code de sortie (résultat: 0 ou erreur).",
+    "25": "On prend les 3 premiers éléments du tableau JSON avec jq -c (sortie compacte) pour avoir un petit échantillon sans tout charger en mémoire.",
+    "31": "On vérifie si la commande mlr est disponible sur le système — si oui, on recommandera Miller comme outil plus puissant pour les opérations d'agrégation.",
+    "46": "La variable prompt construit un message pour l'IA qui explique précisément ce qu'on attend: exactement 5 commandes pratiques au format 'COMMANDE ||| description'.",
+    "53": "_ollama_query est une fonction (définie ailleurs) qui envoie le prompt à un modèle IA via Ollama et retourne les suggestions.",
+    "62": "On vérifie la présence de fzf — si absent, on affiche simplement les suggestions brutes ; si présent, on les propose dans un menu interactif.",
+    "68": "fzf est lancé avec --delimiter=' \\|\\|\\| ' pour découper chaque ligne à partir du séparateur ||| et --with-nth=2 pour afficher uniquement la description (la deuxième partie) dans l'interface.",
+    "73": "On extrait la commande elle-même en supprimant tout ce qui suit le séparateur ||| (le %% retire le motif le plus long à partir de la fin).",
+    "75": "print -rz charge la commande dans le buffer d'édition de zsh (l'option -z) sans l'exécuter, avec -r pour éviter que les caractères d'échappement comme \\n soient interprétés."
+  }
+}

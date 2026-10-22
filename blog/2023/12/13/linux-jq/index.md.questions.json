@@ -1,64 +1,50 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T18:23:53.820Z",
+  "generated": "2026-10-22T07:14:38.929Z",
+  "durationMs": 37796,
   "source": "index.md",
-  "sourceHash": "76a2d64b07605c757f9cc7b000f7801668604673",
-  "durationMs": 42177,
-  "rejected": [
-    {
-      "question": "jq format LLM json response in bash script",
-      "anchor": "conclusion",
-      "reason": "not answered: Only mentioned in passing with a link to another post.",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T05:51:54.928Z",
-    "articleHash": "78d361a56895e589087bb49d1e8918e40ffe7e24",
-    "questionsHash": "fb20d30f35e293c2",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 1
-  },
+  "sourceHash": "54a8fc51fbbb29e15ae1ebcd5af4a710370b0e51",
   "questions": [
     {
-      "question": "jq command line JSON processor pipe API response linux",
+      "question": "command line tool to manipulate JSON without python",
       "anchor": ""
     },
     {
-      "question": "same curl command add jq readable output",
+      "question": "jq linux JSON processor overview",
+      "anchor": ""
+    },
+    {
+      "question": "make curl JSON output pretty printed in terminal",
       "anchor": "the-same-answer-twice"
     },
     {
-      "question": "jq filter .results[0].name extract specific node",
+      "question": "jq filter extract name from results array",
       "anchor": "filtering-the-output"
     },
     {
-      "question": "docker container jq preinstalled static json no network",
+      "question": "jq dot notation access nested array property",
+      "anchor": "filtering-the-output"
+    },
+    {
+      "question": "docker container with jq preinstalled for testing",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "check if jq installed linux command",
+      "question": "how to check if jq is already installed on linux",
       "anchor": "installing-jq"
     },
     {
-      "question": "jq pretty print json without filter randomuser.me",
-      "anchor": "the-same-answer-twice"
+      "question": "jq random-user API example pipe",
+      "anchor": "lets-play"
     },
     {
-      "question": "how to extract single field from nested JSON array with jq",
-      "anchor": "filtering-the-output"
+      "question": "use jq in bash script to parse API JSON response",
+      "anchor": "conclusion"
     },
     {
-      "question": "Dockerfile install jq sample.json build run",
-      "anchor": "seeing-it-in-action-with-docker"
-    },
-    {
-      "question": "linux shell script JSON manipulation jq utility",
-      "anchor": ""
+      "question": "format LLM JSON output with jq in shell",
+      "anchor": "conclusion"
     }
   ]
 }

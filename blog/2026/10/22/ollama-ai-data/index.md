@@ -5,11 +5,10 @@ authors: [christophe, claude]
 image: /img/v2/json.webp
 mainTag: ai
 tags: [ai, ollama, zsh, fzf]
-date: 2026-12-31
+date: 2026-10-22
 description: "A zsh function that reads a JSON or CSV file, understands its actual fields, and suggests 5 practical jq/awk commands tailored to that exact file — picked via fzf, then loaded onto your command line (not run for you) so you see, edit and learn the exact command before pressing Enter."
 language: en
 ai_assisted: true
-draft: true
 series: "Ollama daily use"
 ---
 
@@ -21,7 +20,7 @@ series: "Ollama daily use"
 This article adds `ai-data` to the "Ollama daily use" series: point it at a `.json` or `.csv` file, and it asks the local model for 5 practical `jq`/`awk` commands tailored to that file's actual field names — not generic examples. Pick one with `fzf`, and instead of running it for you, `ai-data` loads it onto your zsh command line with `print -z`, ready to read, edit, and only then execute. The goal isn't just an answer — it's leaving with a command you understand.
 </TLDR>
 
-I know <Link to="/blog/linux-jq">`jq`</Link> well enough to be dangerous, and not well enough to write a `group_by` one-liner from memory on the first try. Every time, it's the same ritual: open the [jq manual](https://jqlang.org/manual/), squint at three examples that are almost what I need, adapt, get a syntax error, adjust the brackets, try again. `awk` is worse — I remember it exists, I remember it's powerful, and I remember approximately none of the syntax between uses.
+My use of <Link to="/blog/linux-jq">`jq`</Link> is still very basic; I'm nowhere near being able to write a `group_by` line of code on the first try.Every time, it’s the same routine: I have to fiddle around (and waste several minutes) just to get what I want—or even… I don’t even know that a certain feature exists. With `awk`, it's even worse: I know it exists and that it's incredibly powerful, but the syntax is just impossible.
 
 <!-- truncate -->
 
@@ -29,17 +28,17 @@ I know <Link to="/blog/linux-jq">`jq`</Link> well enough to be dangerous, and no
 
 <Terminal source="./files/terminal_json.txt" typewriter />
 
-Five suggestions, all referencing the real field names (`active`, `birth_date`, `name`) it saw in the sample — not placeholder examples from a `jq` tutorial. After picking the first one through `fzf`, that exact `jq` command was sitting at my prompt; I read it, it looked right, I pressed Enter.
+Five suggestions, listed by what they answer — every one of them built on the real field names (`active`, `birth_date`, `name`) the model saw in the sample, not on placeholders from a `jq` tutorial. Picking the fourth one in `fzf` left that exact `group_by` filter sitting at my prompt; I read it, it looked right, I pressed Enter.
 
 ## Demo — CSV
 
 <Terminal source="./files/terminal_csv.txt" typewriter />
 
-This is the group-by-and-count case from the start of this idea: total amount and order count per region, in one `awk` line I did not have memorized and now, having read it once at my own prompt, understand better than if I'd just seen the output.
+The model noticed on its own that `region` is the column worth grouping by, and answered with the classic `awk | sort | uniq -c` pipeline — the kind of line I recognize when I see it but never write from memory. Having read it once at my own prompt, I understand it better than if I'd just seen the output.
 
 ## The Idea — Suggestions, Not Answers
 
-Most functions in this series ask the model a question and print the answer. `ai-data` is different on purpose: it asks the model for **candidate commands**, shows them through <Link to="/blog/linux-fzf-introduction">`fzf`</Link>, and when you pick one, it doesn't run it — it drops it onto your prompt, editable, via zsh's `print -z`. You read the exact `jq` filter or `awk` script before it touches your data, and because you're the one hitting Enter, you actually absorb the syntax instead of just consuming the output.
+Most functions in this series ask the model a question and print the answer — <Link to="/blog/ollama-ai-diagram">ai-diagram</Link> prints a Mermaid block, ready to paste. `ai-data` is different on purpose: it asks the model for **candidate commands**, shows them through <Link to="/blog/linux-fzf-introduction">`fzf`</Link>, and when you pick one, it doesn't run it — it drops it onto your prompt, editable, via zsh's `print -z`. You read the exact `jq` filter or `awk` script before it touches your data, and because you're the one hitting Enter, you actually absorb the syntax instead of just consuming the output.
 
 <AlertBox variant="tip" title="print -z, in one sentence">
 `print -z "some command"` pushes a string onto zsh's editor buffer — the next prompt shows it pre-typed, exactly as if you'd typed it yourself, cursor ready, nothing executed yet.
@@ -58,7 +57,7 @@ Step by step:
 3. For CSV, check whether [`mlr`](https://miller.readthedocs.io/) (Miller) is installed — if so, the model is told it can suggest `mlr` for group-by/aggregation, which reads dramatically cleaner than the equivalent `awk`. If not, it sticks to `awk`/`sort`/`uniq`.
 4. Ask for exactly 5 commands, one per line, in a `COMMAND ||| description` format — deliberately not JSON output, because parsing five lines of "text before a triple-pipe" is trivial and doesn't risk the model wrapping its answer in markdown fences or extra commentary.
 5. Pipe the five lines into `fzf`, showing only the description (`--with-nth=2`) so you're choosing by *intent*, not by squinting at `jq` syntax first.
-6. On selection, `print -z` the chosen command's first field.
+6. On selection, `print -rz` the chosen command's first field.
 
 <AlertBox variant="note" title="No fzf? Still works">
 Without `fzf` installed, `ai-data` just prints the five suggestions as plain text — you copy the one you want manually. Same information, one less convenience.

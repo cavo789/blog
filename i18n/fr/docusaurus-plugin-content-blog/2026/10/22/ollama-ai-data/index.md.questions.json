@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-22T07:16:32.322Z",
+  "durationMs": 25475,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "c339a4a72799541d4382e5cdb30a0c842a04cdc0",
+  "questions": [
+    {
+      "question": "ollama local générer one-liner jq awk adapté à mes vrais champs",
+      "anchor": ""
+    },
+    {
+      "question": "jq filtre exact vrais noms de champs json fzf",
+      "anchor": "demo--json"
+    },
+    {
+      "question": "awk regrouper colonne csv suggestion LLM local",
+      "anchor": "demo--csv"
+    },
+    {
+      "question": "zsh print -z insérer commande dans prompt sans exécuter",
+      "anchor": "the-idea--suggestions-not-answers"
+    },
+    {
+      "question": "ai-data fonction zsh échantillon 3 éléments json 5 lignes csv prompt",
+      "anchor": "the-ai-data-function"
+    },
+    {
+      "question": "enregistrer ai-data dans menu ai zsh",
+      "anchor": "registered-in-the-ai-menu"
+    },
+    {
+      "question": "ai-data sans fzf affichage texte brut copier manuellement",
+      "anchor": "key-takeaways"
+    },
+    {
+      "question": "installer ai-data zsh ollama fzf",
+      "anchor": "installing-it"
+    },
+    {
+      "question": "série Ollama daily use jq awk zsh",
+      "anchor": "conclusion"
+    }
+  ]
+}

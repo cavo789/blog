@@ -1,0 +1,17 @@
+$ ai-data orders.csv
+
+→ Analyzing orders.csv (csv)...
+
+ai-data >
+  5/5 ────────────────────────────────
+  Show order IDs and amounts for EMEA region only
+  Calculate total sales amount across all orders
+> Count orders by region and display in descending order
+  Display all orders with amount greater than 100
+  Show first 10 orders with all fields
+
+$ awk -F, 'NR>1 {print $2}' orders.csv | sort | uniq -c | sort -nr
+
+      2 EMEA
+      2 APAC
+      1 AMER

@@ -259,4 +259,6 @@ Deux choses à retenir : `jq` seul rend n'importe quel JSON lisible, et `jq '.so
 
 `jq` devient vite un réflexe : je l'utilise dans <Link to="/blog/docker-networking-troubleshooting">Troubleshooting for Docker containers</Link> pour lire la sortie de `docker inspect`, et dans <Link to="/blog/docusaurus-ollama-tags">la création d'un analyseur d'articles de blog avec Ollama</Link> pour formater les réponses JSON du LLM local, par exemple.
 
+Et les jours où le filtre dont vous avez besoin — un `group_by`, un `select` sur une date — ne vous revient pas, <Link to="/blog/ollama-ai-data">ai-data</Link> demande à un LLM local cinq commandes `jq` adaptées à votre propre fichier, et dépose celle que vous choisissez dans votre prompt, prête à être relue avant de l'exécuter.
+
 Pour les fois où la console n'est pas le bon outil pour du JSON, ce blog en propose trois autres : <Link to="/blog/json-crack">Rendering a JSON file as a mind map</Link>, <Link to="/blog/json-lint">JSON - Online linter</Link> et <Link to="/blog/json-faker">JSON - Faker & Mockup</Link>.

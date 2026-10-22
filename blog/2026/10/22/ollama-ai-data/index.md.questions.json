@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-22T07:09:53.355Z",
+  "durationMs": 29082,
+  "source": "index.md",
+  "sourceHash": "951cf83683917723dcef9fd00224981c491fd501",
+  "questions": [
+    {
+      "question": "ollama write jq one-liner for my JSON file",
+      "anchor": ""
+    },
+    {
+      "question": "generate jq filter from actual field names not placeholders",
+      "anchor": "demo--json"
+    },
+    {
+      "question": "awk group by column CSV local LLM suggestion",
+      "anchor": "demo--csv"
+    },
+    {
+      "question": "zsh function that puts command on prompt without running it",
+      "anchor": "the-idea--suggestions-not-answers"
+    },
+    {
+      "question": "zsh detect JSON vs CSV from file extension",
+      "anchor": "the-ai-data-function"
+    },
+    {
+      "question": "sample first few rows CSV for LLM prompt context",
+      "anchor": "the-ai-data-function"
+    },
+    {
+      "question": "zsh ai menu registry autoload function",
+      "anchor": "registered-in-the-ai-menu"
+    },
+    {
+      "question": "fzf select by description not syntax LLM commands",
+      "anchor": "key-takeaways"
+    },
+    {
+      "question": "install ai-data zsh function ollama",
+      "anchor": "installing-it"
+    },
+    {
+      "question": "learn awk syntax by reading suggested command before pressing Enter",
+      "anchor": "conclusion"
+    }
+  ]
+}
