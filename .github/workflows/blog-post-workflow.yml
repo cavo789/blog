@@ -13,6 +13,9 @@ concurrency:
 
 jobs:
   update-readme-with-blog:
+    # A profile README lives in the repository named after its owner
+    # (cavo789/cavo789): anywhere else, there is no README to update.
+    if: github.repository == format('{0}/{0}', github.repository_owner)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

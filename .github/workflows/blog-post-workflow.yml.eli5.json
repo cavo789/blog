@@ -1,20 +1,22 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:01:23.416Z",
+  "generated": "2026-10-22T07:43:18.813Z",
   "source": "blog-post-workflow.yml",
-  "sourceHash": "6fa6a967b3e65f7adc0da4fbb78b4e8e226ad7bd",
+  "sourceHash": "2987abbc4ed4a73c31484b7aa26e084e44205101",
   "lang": "yaml",
-  "summary": "This GitHub Actions workflow automatically updates a README file with the latest blog posts every Monday at noon, or whenever someone manually triggers it. It fetches posts from an RSS feed and inserts them into the README between special comment markers, using pinned action versions for security.",
+  "textLang": "en",
+  "summary": "This GitHub Actions workflow automatically updates a profile README with the latest blog posts every Monday at noon UTC, or whenever someone manually triggers it. It fetches blog posts from an RSS feed and inserts them into the README using a table format, then commits the changes back to the repository.",
   "explanations": {
-    "4": "The cron syntax '0 12 * * 1' means run at minute 0, hour 12, on any day of month, any month, but only on Mondays (1 = Monday).",
-    "5": "workflow_dispatch lets someone manually trigger this workflow from the GitHub Actions tab, even outside the scheduled times.",
-    "8": "The 'contents: write' permission allows this workflow to commit changes back to the repository—without it, the workflow couldn't modify files.",
-    "24": "Rather than using a floating tag like 'v7.0.1' (which could point to different code), we pin to a specific commit SHA so the action code can never change unexpectedly.",
-    "28": "Similarly, this action is pinned to a specific commit SHA that the tag 'v1' currently points to, guaranteeing we use exactly that version of code.",
-    "30": "feed_list points to the RSS feed URL the workflow will parse to find blog posts.",
-    "31": "max_post_count limits the output to only the 10 most recent posts so the README doesn't get too cluttered.",
-    "32": "comment_tag_name specifies the HTML comment markers (BLOG-POST-LIST) that delimit where in your README the posts should be inserted.",
-    "34": "template defines the HTML structure for each blog post entry, with $title and $url replaced by actual values from the RSS feed."
+    "3": "The 'schedule' key tells GitHub to run this workflow on a timer using cron syntax, which is a standard way to express recurring schedules.",
+    "4": "This cron expression means 'at 12:00 PM UTC on every Monday' — the numbers represent minute, hour, day-of-month, month, and day-of-week respectively.",
+    "5": "Workflow_dispatch lets someone manually trigger this workflow from the GitHub web interface instead of waiting for the automatic schedule.",
+    "8": "The 'contents: write' permission allows this workflow to make changes and commit them to the repository — without this, it could only read files.",
+    "10": "Concurrency prevents multiple runs of this workflow from executing simultaneously, and 'cancel-in-progress' stops any already-running instance if a new one starts.",
+    "18": "This condition checks that the repository name matches the owner's username (like 'cavo789/cavo789'), because profile READMEs only exist in that special repository.",
+    "27": "Actions are pinned to specific commit hashes rather than version tags because this workflow has write access to the repository — a hash can't be moved to different code like a tag can.",
+    "31": "The 'uses' line references an action (a reusable workflow piece) that does the actual work of fetching blog posts and updating the README.",
+    "33": "This is the RSS feed URL where the workflow will pull blog posts from.",
+    "34": "This limits the workflow to showing only the 10 most recent blog posts instead of every post ever written."
   }
 }
