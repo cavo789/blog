@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-26T09:56:18.667Z",
+  "source": "compose.yaml",
+  "sourceHash": "615cd7327e0f5b2e27f1f9cdc14965dac41b34d4",
+  "lang": "yaml",
+  "textLang": "en",
+  "summary": "This is a Docker Compose configuration that sets up a service called open-webui. It pulls a pre-built container image, exposes it on port 4000, configures it to connect to an Ollama service, and creates persistent storage for the application's data.",
+  "explanations": {
+    "4": "The service will automatically restart if it crashes, unless you manually stop it.",
+    "6": "This maps port 4000 on your computer to port 8080 inside the container, so you access the app by visiting localhost:4000.",
+    "8": "This tells the container where to find the Ollama service (which provides the AI models); host.docker.internal is Docker's way of referring to your host machine from inside a container.",
+    "9": "This is a security key that the application uses for encryption; you should replace this placeholder with an actual random string before running in production.",
+    "11": "This creates a persistent storage volume so that the application's data survives even if the container is deleted and recreated.",
+    "13": "This adds a hostname mapping inside the container so it can properly resolve 'host.docker.internal' to your host machine's gateway."
+  }
+}

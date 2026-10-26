@@ -1,8 +1,8 @@
 """
-Open WebUI Function: Summarize selection
-Adds a button in the chat toolbar that summarizes the selected/pasted text.
+Open WebUI Tool: Summarize text
+Lets the model summarize pasted text on request.
 
-Install: Open WebUI → Workspace → Functions → + New Function → paste this file
+Install: Open WebUI → Workspace → Tools → + New Tool → paste this file
 """
 
 from pydantic import BaseModel

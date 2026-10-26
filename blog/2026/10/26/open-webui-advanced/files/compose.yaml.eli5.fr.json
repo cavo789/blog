@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-26T09:57:16.916Z",
+  "source": "compose.yaml",
+  "sourceHash": "615cd7327e0f5b2e27f1f9cdc14965dac41b34d4",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service Open WebUI qui s'exécute dans un conteneur. Le service expose un port local pour accéder à l'interface web, se connecte à un serveur Ollama en arrière-plan, et persiste ses données dans un volume Docker.",
+  "explanations": {
+    "4": "Le conteneur redémarrera automatiquement s'il s'arrête, sauf si on l'arrête explicitement.",
+    "6": "Le port 4000 de votre machine hôte est mappé au port 8080 du conteneur, donc vous accédez à l'application via localhost:4000.",
+    "8": "Cette variable d'environnement indique au WebUI où trouver le serveur Ollama — host.docker.internal permet au conteneur de communiquer avec les services sur la machine hôte.",
+    "9": "C'est une clé secrète utilisée pour chiffrer les données sensibles — il faut la remplacer par une chaîne aléatoire pour la sécurité en production.",
+    "11": "Les données de l'application sont sauvegardées dans un volume persistant nommé open-webui, ce qui signifie qu'elles survivent au redémarrage du conteneur.",
+    "13": "Cela fait correspondre le nom d'hôte host.docker.internal à la passerelle du réseau Docker, permettant ainsi la communication avec l'hôte."
+  }
+}

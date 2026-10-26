@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-26T09:56:49.921Z",
+  "durationMs": 26244,
+  "source": "index.md",
+  "sourceHash": "3690ad9bbd59e5f51e4c5770078dcf01b1e5fc58",
+  "questions": [
+    {
+      "question": "what can Open WebUI actually do besides chatting with Ollama",
+      "anchor": ""
+    },
+    {
+      "question": "docker compose Open WebUI Ollama volume persist data across restarts",
+      "anchor": "setup-reminder"
+    },
+    {
+      "question": "Open WebUI same Ollama model different system prompt and temperature preset",
+      "anchor": "model-presets--same-ollama-model-different-persona"
+    },
+    {
+      "question": "local RAG upload PDF and markdown Open WebUI grounded answers with citations",
+      "anchor": "knowledge--rag-on-your-local-documents"
+    },
+    {
+      "question": "Open WebUI web search toggle per message vs always on",
+      "anchor": "web-search-integration"
+    },
+    {
+      "question": "Open WebUI Python Tools vs admin Functions Pipes Filters Actions difference",
+      "anchor": "tools-and-functions--extend-open-webui-with-python"
+    },
+    {
+      "question": "call Open WebUI from a Python script using OpenAI-compatible API key",
+      "anchor": "api-keys--call-open-webui-from-scripts"
+    },
+    {
+      "question": "Open WebUI API returns 404 wrong model name in request",
+      "anchor": "4-pick-a-model-name-the-api-knows"
+    },
+    {
+      "question": "access Open WebUI from another laptop on the same network",
+      "anchor": "accessing-open-webui-from-other-devices"
+    },
+    {
+      "question": "Open WebUI curl endpoint summarize text from terminal",
+      "anchor": "seeing-it-work"
+    }
+  ]
+}

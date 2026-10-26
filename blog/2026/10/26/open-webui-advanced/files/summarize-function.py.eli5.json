@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-26T09:56:22.766Z",
+  "source": "summarize-function.py",
+  "sourceHash": "c1fcbc01e8924fe06e85b99decd551de7f7996a1",
+  "lang": "python",
+  "textLang": "en",
+  "summary": "This file defines a tool for Open WebUI that summarizes text by taking user input and generating a prompt instruction for an AI model. It uses a configuration system called Valves to let users customize the output language and maximum word count before the tool runs.",
+  "explanations": {
+    "8": "Pydantic is a Python library that helps validate and structure data—we're importing BaseModel, which is its base class for creating data structures with type checking.",
+    "12": "Valves is a nested class that defines configuration settings that will appear in Open WebUI's settings panel, with default values like 200 words and English language.",
+    "18": "In the __init__ method, we create an instance of Valves and store it as self.valves so the summarize method can access those settings later.",
+    "20": "The __user__ parameter is a dictionary that Open WebUI passes automatically to track who called the tool, but we don't use it here so it defaults to an empty dict."
+  }
+}

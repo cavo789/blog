@@ -1,0 +1,22 @@
+$ export TOKEN="sk-..."
+
+$ curl -s -H "Authorization: Bearer $TOKEN" http://localhost:4000/api/models | jq -r '.data[].id'
+code-quality:latest
+qwen2.5-coder:3b
+qwen3-coder:30b
+task-tiny:latest
+
+$ export MODEL="qwen2.5-coder:3b"
+
+$ curl -s -X POST http://localhost:4000/api/chat/completions \
+    -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+    -d '{
+      "model": "'"$MODEL"'",
+      "messages": [
+        {"role": "system", "content": "You summarize text in exactly 3 bullet points, focusing on decisions, numbers and deadlines."},
+        {"role": "user", "content": "Infra meeting, September 24. Present: Sarah, Tom, Lea. Tom presented the staging database status: still on Postgres 12, end of life is near. Decision: migrate staging to Postgres 16, deadline October 15. Lea asked about backups: weekly is no longer enough, the team agreed to switch to daily backups starting today. Sarah got the budget approved: 4,200 EUR for an external contractor to help with the migration. Action: Tom writes the rollback plan and reviews it with Sarah before October 1. Coffee machine on floor 2 is broken again."}
+      ]
+    }' | jq -r '.choices[0].message.content'
+- **Postgres Migration**: Staging database to migrate from Postgres 12 to Postgres 16 by October 15.
+- **Backup Change**: Weekly backups replaced with daily backups starting today.
+- **Budget Approval**: 4,200 EUR for an external contractor to help with migration.

@@ -176,6 +176,8 @@ Now, simply surf to `http://localhost:`<Var name="port_webui">4000</Var> and you
 
 Pay attention top left: you can see there the list of installed models.
 
+The chat window is only the surface: model presets, RAG on your documents, Python Tools and API keys are covered in <Link to="/blog/open-webui-advanced">Open WebUI — Beyond the Chat</Link>.
+
 ![The list of models is available in the Open WebUI interface](./images/open_webui_models.webp)
 
 ## Using a VSCode extension

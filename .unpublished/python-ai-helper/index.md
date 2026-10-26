@@ -6,7 +6,7 @@ authors: [christophe]
 mainTag: Python
 tags: [ai, python]
 image: /img/v2/python-ai-helper.webp
-date: 2026-12-31
+date: 2026-10-26
 draft: true
 ---
 

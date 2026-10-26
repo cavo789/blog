@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-26T09:57:55.012Z",
+  "durationMs": 30884,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d7d1bcf38edd57b9e7f9c2d5aa37256167142fb8",
+  "questions": [
+    {
+      "question": "Open WebUI RAG tools clés API workspace IA local",
+      "anchor": ""
+    },
+    {
+      "question": "Open WebUI API compatible OpenAI curl résumer notes de réunion",
+      "anchor": "seeing-it-work"
+    },
+    {
+      "question": "différence entre presets knowledge tools functions Open WebUI",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker compose up Open WebUI volume persistance données port 4000",
+      "anchor": "setup-reminder"
+    },
+    {
+      "question": "Open WebUI presets personas system prompt température même modèle Ollama",
+      "anchor": "model-presets--same-ollama-model-different-persona"
+    },
+    {
+      "question": "RAG documents PDF Markdown Open WebUI réponses sourcées",
+      "anchor": "knowledge--rag-on-your-local-documents"
+    },
+    {
+      "question": "activer recherche web Open WebUI par message ou par défaut dans un preset",
+      "anchor": "web-search-integration"
+    },
+    {
+      "question": "Open WebUI tools python functions pipes filters admin",
+      "anchor": "tools-and-functions--extend-open-webui-with-python"
+    },
+    {
+      "question": "appeler Open WebUI depuis un script avec clé API endpoint OpenAI",
+      "anchor": "api-keys--call-open-webui-from-scripts"
+    },
+    {
+      "question": "choisir le nom de modèle que l'API Open WebUI connaît pour curl",
+      "anchor": "4-pick-a-model-name-the-api-knows"
+    },
+    {
+      "question": "accéder à Open WebUI depuis un autre appareil sur le réseau local",
+      "anchor": "accessing-open-webui-from-other-devices"
+    }
+  ]
+}

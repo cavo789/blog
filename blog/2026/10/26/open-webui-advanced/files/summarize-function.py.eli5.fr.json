@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-26T09:57:20.775Z",
+  "source": "summarize-function.py",
+  "sourceHash": "c1fcbc01e8924fe06e85b99decd551de7f7996a1",
+  "lang": "python",
+  "textLang": "fr",
+  "summary": "Ce fichier définit un outil pour Open WebUI qui permet à un modèle de langage de résumer du texte fourni par l'utilisateur. La classe Tools contient des paramètres configurables (nombre maximum de mots et langue) ainsi qu'une méthode summarize qui construit une invite d'instruction spécifique au modèle.",
+  "explanations": {
+    "8": "BaseModel est une classe de pydantic qui facilite la validation et la sérialisation des données structurées en Python.",
+    "12": "Valves est une classe interne qui définit les paramètres de configuration affichés dans l'interface des paramètres du Tool.",
+    "14": "max_words est défini avec une valeur par défaut de 200, que l'utilisateur peut modifier dans l'interface.",
+    "18": "À l'initialisation de Tools, on crée une instance de Valves qui contiendra les valeurs de configuration actuelles.",
+    "20": "__user__ est un paramètre qui reçoit les informations sur l'utilisateur qui exécute la fonction, avec une valeur par défaut vide.",
+    "26": "La variable prompt utilise les f-strings pour interpoler les valeurs de configuration et le texte à résumer dans une chaîne d'instruction."
+  }
+}

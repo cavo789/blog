@@ -1,23 +1,13 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T21:49:24.959Z",
+  "generated": "2026-10-26T09:53:40.181Z",
+  "durationMs": 30897,
   "source": "index.md",
-  "sourceHash": "b253c863d0bf4b3a14c55f0df44e461a818fcdfc",
-  "durationMs": 28091,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T08:43:55.622Z",
-    "articleHash": "0d02d375b995f2815ab22bcacac81c211b6b20b4",
-    "questionsHash": "6ae18717f3b0e048",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "c4e9f7d1c0639c003114a2b08199b7e8b5e90081",
   "questions": [
     {
-      "question": "run LLM locally for free no API quota docker",
+      "question": "run LLM locally free no API quota",
       "anchor": ""
     },
     {
@@ -25,39 +15,43 @@
       "anchor": "try-it-in-your-terminal"
     },
     {
-      "question": "can I ask questions in French to ollama",
+      "question": "ollama model respond in French not just English",
       "anchor": "should-i-speak-english-with-the-model"
     },
     {
-      "question": "local LLM privacy keep codebase off AI servers",
+      "question": "local LLM privacy codebase not sent to cloud",
       "anchor": "do-you-need-a-local-llm"
     },
     {
-      "question": "install ollama with docker-compose",
+      "question": "install ollama docker-compose.yml",
       "anchor": "installing-and-running-ollama"
     },
     {
-      "question": "ollama pull model how much RAM do I need",
+      "question": "ollama pull model how much RAM needed",
       "anchor": "download-an-llm-model"
     },
     {
-      "question": "ollama web interface browser UI",
+      "question": "ollama 70b parameters RAM requirement",
+      "anchor": "more-power-needed"
+    },
+    {
+      "question": "open webui ollama docker setup",
       "anchor": "using-a-web-interface"
     },
     {
-      "question": "VSCode Continue extension connect ollama local model",
+      "question": "continue extension vscode ollama local model",
       "anchor": "using-a-vscode-extension"
     },
     {
-      "question": "free code autocompletion local LLM no cloud",
+      "question": "free local AI code autocompletion vscode",
       "anchor": "using-autocompletion"
     },
     {
-      "question": "ollama stop free up RAM",
+      "question": "ollama stop command free up RAM",
       "anchor": "freeing-up-ram-with-ollama-stop"
     },
     {
-      "question": "wslconfig set memory limit for ollama docker container",
+      "question": "wslconfig ollama docker memory limit",
       "anchor": "wslconfig-file"
     }
   ]

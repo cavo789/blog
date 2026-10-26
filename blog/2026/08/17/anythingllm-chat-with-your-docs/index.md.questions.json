@@ -1,58 +1,58 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-10-14T15:37:24.173Z",
-  "durationMs": 30700,
+  "generated": "2026-10-26T09:54:15.427Z",
+  "durationMs": 35174,
   "source": "index.md",
-  "sourceHash": "66c53fa4b31c24850d1b7f8d322f6e9e844e9812",
+  "sourceHash": "e2af55a62fb425263d616848aa144521c7b99c43",
   "questions": [
     {
-      "question": "chat with my scattered project docs locally using ollama",
+      "question": "chat with my own scattered docs markdown pdf excel without uploading to cloud",
       "anchor": ""
     },
     {
-      "question": "semantic search over my own blog posts instead of grep",
+      "question": "natural language query over indexed local articles and get back the exact source file name",
       "anchor": "seeing-it-work"
     },
     {
-      "question": "self-hosted RAG that cites which file the answer came from",
+      "question": "anythingllm vs open webui can both talk to the same ollama instance",
       "anchor": "why-it-works"
     },
     {
-      "question": "anythingllm docker install single machine ollama",
+      "question": "anythingllm docker compose single machine ollama setup",
       "anchor": "install"
     },
     {
-      "question": "anythingllm compose.yaml how to configure the ollama endpoint",
-      "anchor": "the-composeyaml-file"
-    },
-    {
-      "question": "how to check if the ollama embedder is actually producing useful vectors",
+      "question": "how do I verify the ollama embedder in anythingllm isn't silently returning garbage",
       "anchor": "check-that-your-embedder-actually-discriminates"
     },
     {
-      "question": "why does anythingllm not let me point at a folder path",
+      "question": "why does anythingllm not have an index-this-folder button",
       "anchor": "you-dont-give-it-a-path--and-that-surprises-everyone"
     },
     {
-      "question": "bulk index 200 markdown files into an anythingllm workspace one command",
+      "question": "script to bulk-index an entire folder tree of markdown quarto pdf docx into one anythingllm workspace",
       "anchor": "indexing-a-whole-folder-tree-with-one-command"
     },
     {
-      "question": "query an anythingllm workspace from the terminal with curl",
+      "question": "reindex updated documents in an existing anythingllm workspace",
+      "anchor": "keeping-the-index-up-to-date"
+    },
+    {
+      "question": "query anythingllm workspace from terminal curl without opening the web UI",
       "anchor": "search"
     },
     {
-      "question": "documents on work laptop GPU at home anythingllm split setup",
+      "question": "portable shell script anythingllm search api clickable results",
+      "anchor": "ai-blog-search-the-portable-script"
+    },
+    {
+      "question": "anythingllm documents on work pc gpu inference on home machine split setup",
       "anchor": "two-machines"
     },
     {
-      "question": "anythingllm compose file change ollama host to a remote machine",
+      "question": "anythingllm compose.yaml point ollama to a different host than the app container",
       "anchor": "what-actually-changes-in-the-compose-file"
-    },
-    {
-      "question": "keep the anythingllm index up to date after adding new docs",
-      "anchor": "keeping-the-index-up-to-date"
     }
   ]
 }
