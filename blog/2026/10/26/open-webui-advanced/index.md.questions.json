@@ -1,50 +1,54 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-10-26T09:56:49.921Z",
-  "durationMs": 26244,
+  "generated": "2026-10-26T10:03:52.456Z",
+  "durationMs": 27428,
   "source": "index.md",
-  "sourceHash": "3690ad9bbd59e5f51e4c5770078dcf01b1e5fc58",
+  "sourceHash": "ed67cb96b7a4e2ed35ea11df9e832d1f8e0bebc5",
   "questions": [
     {
-      "question": "what can Open WebUI actually do besides chatting with Ollama",
+      "question": "Open WebUI features beyond Ollama chat",
       "anchor": ""
     },
     {
-      "question": "docker compose Open WebUI Ollama volume persist data across restarts",
-      "anchor": "setup-reminder"
-    },
-    {
-      "question": "Open WebUI same Ollama model different system prompt and temperature preset",
+      "question": "same Ollama model different persona system prompt temperature preset",
       "anchor": "model-presets--same-ollama-model-different-persona"
     },
     {
-      "question": "local RAG upload PDF and markdown Open WebUI grounded answers with citations",
+      "question": "how to do RAG with local PDFs in Open WebUI",
       "anchor": "knowledge--rag-on-your-local-documents"
     },
     {
-      "question": "Open WebUI web search toggle per message vs always on",
-      "anchor": "web-search-integration"
+      "question": "what file types can I upload to Open WebUI knowledge base",
+      "anchor": "what-you-can-upload"
     },
     {
-      "question": "Open WebUI Python Tools vs admin Functions Pipes Filters Actions difference",
-      "anchor": "tools-and-functions--extend-open-webui-with-python"
+      "question": "Open WebUI web search enable admin settings",
+      "anchor": "admin-panel--settings--web-search"
     },
     {
-      "question": "call Open WebUI from a Python script using OpenAI-compatible API key",
-      "anchor": "api-keys--call-open-webui-from-scripts"
+      "question": "Python tools plugin Open WebUI extend",
+      "anchor": "tools-and-functions"
     },
     {
-      "question": "Open WebUI API returns 404 wrong model name in request",
+      "question": "call Open WebUI from script OpenAI compatible endpoint API key",
+      "anchor": "api-keys"
+    },
+    {
+      "question": "docker compose Open WebUI data volume persistence",
+      "anchor": "setup-reminder"
+    },
+    {
+      "question": "create new model preset Open WebUI workspace",
+      "anchor": "workspace--models---new-model"
+    },
+    {
+      "question": "Open WebUI API model name endpoint",
       "anchor": "4-pick-a-model-name-the-api-knows"
     },
     {
-      "question": "access Open WebUI from another laptop on the same network",
+      "question": "access Open WebUI from another machine on network",
       "anchor": "accessing-open-webui-from-other-devices"
-    },
-    {
-      "question": "Open WebUI curl endpoint summarize text from terminal",
-      "anchor": "seeing-it-work"
     }
   ]
 }
