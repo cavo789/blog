@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:14:31.772Z",
+  "source": ".htaccess",
+  "sourceHash": "eb770420ba313ad994eb82be629258e4cd6f646b",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Apache désactive l'énumération des répertoires et bloque l'accès direct à trois fichiers JSON spécifiques (typo-data.json, typo-ratelimit.json et typo-notifications.json) en interdisant tout accès HTTP à ces ressources sensibles.",
+  "explanations": {
+    "1": "Options -Indexes supprime la capacité du serveur à lister le contenu des répertoires quand aucun fichier index n'existe.",
+    "3": "FilesMatch utilise une expression régulière pour cibler exactement les trois fichiers JSON listés — les ^ et $ assurent que seuls ces noms exacts correspondent.",
+    "4": "Require all denied refuse l'accès à tous les utilisateurs sans exception pour les fichiers correspondant à la directive FilesMatch."
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-29T08:11:55.973Z",
+  "durationMs": 29995,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "3a8e886cb57c66f0e398c3a966e3b48c57f08ac9",
+  "questions": [
+    {
+      "question": "widget feedback Docusaurus sélection de texte sans base de données",
+      "anchor": ""
+    },
+    {
+      "question": "API PHP feedback blog statique Docusaurus sans Node",
+      "anchor": "part-1--the-php-api"
+    },
+    {
+      "question": "protéger fichiers JSON .htaccess signalements",
+      "anchor": "protect-the-json-files"
+    },
+    {
+      "question": "générer NONCE_SECRET IP_HASH_SALT openssl rand hex 32",
+      "anchor": "secrets"
+    },
+    {
+      "question": "composant React SSR-safe Docusaurus ne rend rien avant sélection",
+      "anchor": "ssr-safety-first"
+    },
+    {
+      "question": "machine à états React popover feedback",
+      "anchor": "state-machine"
+    },
+    {
+      "question": "4 types feedback lecteur faute typo info incorrecte contenu obsolète",
+      "anchor": "feedback-types"
+    },
+    {
+      "question": "positionner tooltip sous sélection texte React",
+      "anchor": "tooltip-positioning"
+    },
+    {
+      "question": "intégrer composant feedback Docusaurus",
+      "anchor": "part-3--wiring-into-docusaurus"
+    },
+    {
+      "question": "nonce HMAC anti-spam API PHP",
+      "anchor": "layer-3--hmac-nonce"
+    },
+    {
+      "question": "déduplication signalements feedback JSON",
+      "anchor": "layer-7--deduplication"
+    },
+    {
+      "question": "limitations widget feedback Docusaurus NAT hébergement mutualisé",
+      "anchor": "known-limitations"
+    }
+  ]
+}

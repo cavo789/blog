@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:14:43.051Z",
+  "source": "smoke_curl_command.txt",
+  "sourceHash": "54195b48a54176a424b970055a75d6f9bdaa4fbf",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script teste une API de signalement de typos en effectuant plusieurs vérifications : d'abord il récupère un jeton de sécurité (nonce) et l'utilise pour soumettre un rapport valide, puis il vérifie que l'endpoint admin fonctionne, que les données sont protégées, et qu'enfin les validations de sécurité rejettent bien les requêtes malformées ou non autorisées.",
+  "explanations": {
+    "2": "curl -s récupère silencieusement le contenu de l'URL, puis jq -r .nonce extrait et affiche le champ nonce sans les guillemets, le résultat étant stocké dans la variable NONCE.",
+    "5": "L'option -X POST force la méthode HTTP à POST, et -H ajoute un en-tête indiquant que le corps contient du JSON.",
+    "7": "Les caractères \\\" sont des guillemets échappés pour que le shell les transmette littéralement dans le JSON, et $NONCE substitue la valeur du jeton récupéré à l'étape 2.",
+    "11": "L'option -I demande un en-tête HTTP uniquement (sans le corps de réponse), pour vérifier que le serveur rejette l'accès au fichier de données."
+  }
+}

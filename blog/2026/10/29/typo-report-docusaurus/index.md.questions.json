@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-10-29T08:11:25.839Z",
+  "durationMs": 32866,
+  "source": "index.md",
+  "sourceHash": "55c74a28bb50fc5bae569c421f698512adabc325",
+  "questions": [
+    {
+      "question": "docusaurus reader feedback widget no database php",
+      "anchor": ""
+    },
+    {
+      "question": "how to let readers select text and report a typo on my blog",
+      "anchor": "see-it-in-action"
+    },
+    {
+      "question": "static site feedback form shared hosting no node docker",
+      "anchor": "why-php"
+    },
+    {
+      "question": "htaccess protect json files from public read",
+      "anchor": "protect-the-json-files"
+    },
+    {
+      "question": "docusaurus ssr crash react component touches window",
+      "anchor": "ssr-safety-first"
+    },
+    {
+      "question": "react state machine six phases feedback widget",
+      "anchor": "state-machine"
+    },
+    {
+      "question": "popover tooltip position below text selection overflow",
+      "anchor": "tooltip-positioning"
+    },
+    {
+      "question": "hmac nonce prevent replay attack php feedback api",
+      "anchor": "layer-3--hmac-nonce"
+    },
+    {
+      "question": "deduplicate feedback submissions same reader",
+      "anchor": "layer-7--deduplication"
+    },
+    {
+      "question": "shared hosting nat per-ip rate limit broken",
+      "anchor": "shared-hosting-nat"
+    },
+    {
+      "question": "admin dashboard view feedback reports by type docusaurus",
+      "anchor": "part-4--the-admin-dashboard"
+    },
+    {
+      "question": "honeypot type whitelist input validation php form",
+      "anchor": "layer-4--input-validation-type-whitelist-and-honeypot"
+    }
+  ]
+}

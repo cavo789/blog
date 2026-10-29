@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:14:34.600Z",
+  "source": "BlogPostItem.js",
+  "sourceHash": "21d7ad2a132138d8595f68a697491dc6829dbbb9",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce composant affiche un article de blog avec son en-tête, contenu et pied de page. Il intègre conditionnellement un composant TypoReport qui ne s'affiche que quand on consulte la page complète de l'article, permettant aux lecteurs de signaler des fautes de frappe.",
+  "explanations": {
+    "2": "On importe le composant TypoReport depuis le dossier des composants du site — c'est un composant qu'on va afficher pour permettre aux gens de signaler des erreurs.",
+    "5": "useBlogPost() est un hook personnalisé qui récupère les informations sur l'article actuel (metadata) et un booléen isBlogPostPage indiquant si on est sur la page complète ou sur une liste.",
+    "15": "La condition isBlogPostPage vérifie si on affiche un article individuel — si c'est le cas, on montre le TypoReport, sinon on le cache."
+  }
+}

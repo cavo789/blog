@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:13:55.854Z",
+  "source": "BlogPostItem.js",
+  "sourceHash": "21d7ad2a132138d8595f68a697491dc6829dbbb9",
+  "lang": "javascript",
+  "textLang": "en",
+  "summary": "This component renders a blog post with standard header, content, and footer sections. It conditionally includes a TypoReport component, but only when viewing the full blog post page rather than a preview or list.",
+  "explanations": {
+    "4": "This function accepts children (the content between the tags) and className (extra styling) as props.",
+    "5": "useBlogPost() is a custom hook that fetches blog-related data; we're extracting metadata and a boolean flag that tells us if we're on the actual blog post page.",
+    "15": "The && operator means 'only render TypoReport if isBlogPostPage is true'; this prevents showing the typo report on blog listing pages."
+  }
+}

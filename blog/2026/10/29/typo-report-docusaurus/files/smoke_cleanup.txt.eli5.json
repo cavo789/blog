@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:14:12.689Z",
+  "source": "smoke_cleanup.txt",
+  "sourceHash": "49e71109cb33ef945b8c6004eb378ec42f38ae31",
+  "lang": "plaintext",
+  "textLang": "en",
+  "summary": "This script initializes three JSON files in the api directory by creating each one with an empty object as its contents. These are likely placeholder data files for an application that handles typos, rate limiting, and notifications.",
+  "explanations": {}
+}

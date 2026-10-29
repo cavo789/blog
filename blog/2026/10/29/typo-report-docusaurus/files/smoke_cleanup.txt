@@ -1,0 +1,3 @@
+echo '{}' > api/typo-data.json
+echo '{}' > api/typo-ratelimit.json
+echo '{}' > api/typo-notifications.json

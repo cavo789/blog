@@ -1,0 +1,28 @@
+# 1. Fetch a nonce
+NONCE=$(curl -s "https://yourdomain.com/api/typo.php?nonce" | jq -r .nonce)
+
+# 2. Submit a test report
+curl -s -X POST "https://yourdomain.com/api/typo.php" \
+  -H "Content-Type: application/json" \
+  -d "{\"slug\":\"test/smoke\",\"text\":\"hello world\",\"type\":\"typo\",\"comment\":\"\",\"context\":\"\",\"website\":\"\",\"nonce\":\"$NONCE\"}"
+# → {"ok":true}
+
+# 3. Confirm the admin endpoint
+curl -s "https://yourdomain.com/api/typo.php?admin=YOUR_TOKEN" | jq .
+# → {"test/smoke": [{"type":"typo",...}]}
+
+# 4. Confirm .htaccess is protecting the file
+curl -I "https://yourdomain.com/api/typo-data.json"
+# → HTTP/1.1 403 Forbidden
+
+# 5. Confirm POST without a nonce is rejected
+curl -s -X POST "https://yourdomain.com/api/typo.php" \
+  -H "Content-Type: application/json" \
+  -d '{"slug":"test","text":"hello world","type":"typo","comment":"","context":"","website":""}'
+# → {"error":"Invalid nonce"}
+
+# 6. Confirm an invalid type is rejected
+curl -s -X POST "https://yourdomain.com/api/typo.php" \
+  -H "Content-Type: application/json" \
+  -d "{\"slug\":\"test\",\"text\":\"hello world\",\"type\":\"question\",\"comment\":\"\",\"context\":\"\",\"website\":\"\",\"nonce\":\"$NONCE\"}"
+# → {"error":"Invalid type"}

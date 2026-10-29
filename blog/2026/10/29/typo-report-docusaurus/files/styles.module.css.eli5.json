@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:13:53.262Z",
+  "source": "styles.module.css",
+  "sourceHash": "e7bec6984410101a6aded57fffb4fed6ade33e76",
+  "lang": "css",
+  "textLang": "en",
+  "summary": "This stylesheet styles a comment or feedback card interface with two main sections: a type selection popup and a form for submitting feedback. It includes styling for buttons, text inputs, status messages, and adapts the appearance for dark mode by increasing shadow contrast and adjusting background colors.",
+  "explanations": {
+    "2": "Position absolute removes this element from normal document flow so it can be placed precisely, typically used for popups or overlays.",
+    "3": "z-index 9999 stacks this element on top of nearly everything else on the page, ensuring the card appears above other content.",
+    "11": "var(--ifm-background-surface-color) is a CSS variable that holds the theme's background color; using variables makes it easy to swap themes.",
+    "31": "grid-template-columns: 1fr 1fr creates two equal-width columns; 1fr means each column takes one equal portion of available space.",
+    "36": "grid-column: 1 / -1 makes an element span from the first column to the last, taking up the full width of the grid.",
+    "51": "The transition property animates changes to background and border-color over 0.12 seconds, creating a smooth hover effect.",
+    "65": "line-height: 1 removes extra vertical space around the icon, keeping it compact with no padding above or below.",
+    "103": "overflow-wrap: break-word allows long words to break mid-word rather than overflow the container.",
+    "120": "margin-left: auto pushes this button to the right side of its container by consuming all available space on its left.",
+    "138": "resize: vertical lets users manually drag the bottom edge to make the textarea taller, but not wider.",
+    "146": "box-sizing: border-box ensures padding is included in the element's total width, preventing unexpected layout shifts.",
+    "156": "left: -9999px moves the element far off-screen; this is a honeypot field used to catch spam bots that auto-fill form fields.",
+    "164": "justify-content: flex-end aligns the buttons inside to the right side of their container.",
+    "265": "The rgb() function with a variable creates a semi-transparent color by adding /0.15 for 15% opacity, useful for layering in dark mode."
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T08:10:44.127Z",
+  "source": "index.tsx",
+  "sourceHash": "bd6ded64354bee48689b7697aa5b34421296875f",
+  "lang": "typescript",
+  "textLang": "en",
+  "summary": "This component lets readers highlight text on a page and submit typo or feedback reports. It manages a multi-step flow (select issue type → add optional comment → submit), prevents spam with local rate limiting and deduplication, and displays status messages as the report moves through submission.",
+  "explanations": {
+    "12": "This constant stores the key used to save reports in the browser's localStorage—the comment notes it will store objects with a timestamp and hash.",
+    "28": "This is a fast hash function that converts text into a short unique identifier, useful here to detect if the same typo report has already been submitted without needing cryptography.",
+    "37": "This retrieves stored reports from localStorage, parsing the JSON and returning an empty array if parsing fails or nothing is stored.",
+    "45": "This checks if the user has already submitted 5 or more reports in the last hour (3,600,000 milliseconds) to prevent spam.",
+    "50": "This checks if we've already seen this exact report before by hashing the page location and selected text together and looking it up in stored submissions.",
+    "58": "This keeps only reports submitted in the last 24 hours (86,400,000 milliseconds), so localStorage doesn't grow indefinitely with old data.",
+    "74": "This extracts the page path from the URL by removing leading and trailing slashes, or uses an empty string if no path is available.",
+    "87": "This stores roughly 100 characters before and after the selected text—it's sent along with the report to give context to whoever reviews it.",
+    "106": "By using an arrow function instead of `function`, TypeScript can narrow the `article` type inside this closure, so we don't need to add `!` assertions throughout.",
+    "110": "`getSelection()` returns what text the user currently has highlighted; `isCollapsed` means the selection has zero length (nothing selected).",
+    "127": "This positions the tooltip horizontally, capping it so it doesn't overflow off the right edge of the window by subtracting the tooltip width (296px).",
+    "134": "This is a separate `function` (not arrow) declaration for the mousedown handler; it closes the tooltip if the user clicks outside it.",
+    "152": "Before allowing the user to proceed, this checks both local rate limiting and whether this exact report was already sent, avoiding duplicate submissions.",
+    "182": "A honeypot is a hidden field that real users won't fill but bots will—if it has a value when submitted, the request is probably spam and should be rejected server-side.",
+    "218": "When the phase is idle (no selection active), the component returns `null` so nothing renders—this prevents flickering and is safe for server-side rendering.",
+    "220": "This looks up the icon and label for the currently selected feedback type so we can display it in the confirmation form."
+  }
+}

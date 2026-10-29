@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:13:57.949Z",
+  "source": "admin-tool.js",
+  "sourceHash": "4ed8a511ec4a835a333465ab0f8829d06e4e55e9",
+  "lang": "javascript",
+  "textLang": "en",
+  "summary": "This is a configuration object defining a navigation item or menu entry for a feedback reports feature. It specifies how the item should appear to users, what it does, and where it links to.",
+  "explanations": {
+    "2": "The curly braces create an object literal — a collection of key-value pairs that describe this single menu item.",
+    "6": "The accent property stores a hex color code that will likely be used to highlight or style this menu item in the UI."
+  }
+}

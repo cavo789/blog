@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:13:32.964Z",
+  "source": ".htaccess",
+  "sourceHash": "eb770420ba313ad994eb82be629258e4cd6f646b",
+  "lang": "plaintext",
+  "textLang": "en",
+  "summary": "This Apache configuration snippet prevents direct access to three specific JSON files by denying all requests to them. It uses a pattern match to identify the files and then blocks anyone from viewing them through the web server.",
+  "explanations": {
+    "1": "Options -Indexes disables directory listing, so if someone visits a folder URL, they won't see a list of files in that directory.",
+    "3": "FilesMatch uses a regex pattern (the ^ and $ anchors mean 'from start to end') to identify exactly these three filenames, nothing more and nothing less.",
+    "4": "Require all denied is the rule that actually blocks access — it tells the web server to reject every request for files matching the pattern above."
+  }
+}

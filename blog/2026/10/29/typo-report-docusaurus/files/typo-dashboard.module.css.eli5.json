@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T08:10:52.900Z",
+  "source": "typo-dashboard.module.css",
+  "sourceHash": "798ccef555b9bde66aeb4ebaae992cbc9eb93faf",
+  "lang": "css",
+  "textLang": "en",
+  "summary": "This stylesheet defines the complete layout and styling for a report management page with a dashboard section and a list of report cards. It uses CSS Flexbox for layout, applies a design system with CSS variables for colors, and includes both light and dark mode support with hardcoded colors for specific report type badges.",
+  "explanations": {
+    "3": "This centers the page content horizontally by setting left and right margins to auto, which works because max-width creates a constraint.",
+    "8": "Flexbox is being used to arrange child elements in a row; this will be used for the header layout.",
+    "9": "Align-items: baseline means items line up based on their text baseline, useful for mixing different sized text elements like a title and back link.",
+    "21": "This uses a CSS custom property (variable) defined elsewhere in the design system; the double-dash prefix indicates it's a variable, not a regular property.",
+    "36": "The gap property creates space between flex items, similar to margin but cleaner for flexible layouts.",
+    "41": "Flex: 1 means this input will grow to fill available space in its flex container.",
+    "43": "This creates a border using a color variable; solid means a regular unbroken line.",
+    "51": "Outline: none removes the browser's default focus ring, which they're replacing with a custom border color on line 52.",
+    "70": "Flex-wrap: wrap lets summary cards drop to the next line if there isn't enough horizontal space.",
+    "75": "Like the input field, flex: 1 makes cards grow to fill space, but min-width: 100px ensures they don't get too small.",
+    "78": "Background-surface-color is a softer background shade than the page background, creating visual separation for card components.",
+    "129": "Margin-left: auto pushes this link to the right side of the container by using all available left space.",
+    "140": "This creates a thick colored line on the left of report text as a visual accent; think of it like a highlighter bar.",
+    "152": "White-space: pre-wrap preserves line breaks and spaces in the text, useful for displaying code snippets or formatted context.",
+    "153": "Overflow-wrap: break-word forces long words to break onto the next line instead of overflowing the container.",
+    "164": "Inline-flex makes the badge display inline (like text) but with flexbox layout control, so it stays in the text flow.",
+    "224": "Transition: opacity 0.15s smoothly animates opacity changes over 150 milliseconds, creating a subtle hover effect.",
+    "250": "Background: none removes the default background, leaving only the border visible; this creates an outlined button style.",
+    "274": "The attribute selector [data-theme=\"dark\"] targets styles that only apply when dark mode is enabled."
+  }
+}

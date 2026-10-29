@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:14:11.321Z",
+  "source": "smoke_curl_command.txt",
+  "sourceHash": "54195b48a54176a424b970055a75d6f9bdaa4fbf",
+  "lang": "plaintext",
+  "textLang": "en",
+  "summary": "This is a shell script that tests a typo-reporting API endpoint. It fetches a security nonce token, submits a test report, verifies the admin dashboard works, confirms file protection is in place, and validates that the API correctly rejects requests missing a nonce or containing invalid data.",
+  "explanations": {
+    "2": "curl fetches data from the URL, -s silences progress output, and jq -r .nonce extracts just the nonce value as plain text (not JSON-formatted).",
+    "5": "-X POST tells curl to send a POST request instead of the default GET.",
+    "7": "The -d flag sends the JSON payload as the request body; $NONCE is replaced with the value we stored earlier.",
+    "11": "The ?admin=YOUR_TOKEN query parameter requests the admin view, which shows all collected reports organized by slug.",
+    "15": "-I tells curl to fetch only the HTTP headers, not the full response body, which is faster when you just want to check the status code.",
+    "19": "This test intentionally omits the nonce field to verify the API rejects unauthenticated requests.",
+    "27": "This test uses an invalid type value (\"question\" instead of an allowed type like \"typo\") to verify the API validates input correctly."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T08:09:42.465Z",
+  "source": "styles.module.css",
+  "sourceHash": "e7bec6984410101a6aded57fffb4fed6ade33e76",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fichier CSS structure l'interface d'une carte de sélection de type et d'un formulaire de commentaire. Il définit le style visuel de deux panneaux superposés (typeCard et form), chacun avec ses propres éléments interactifs, boutons et badges, puis applique des surcharges pour le mode sombre afin d'ajuster les ombres et les couleurs pour une meilleure lisibilité.",
+  "explanations": {
+    "2": "position: absolute place l'élément hors du flux normal du document pour le positionner librement dans la page.",
+    "3": "z-index: 9999 force cet élément à apparaître au-dessus de presque tous les autres éléments de la page.",
+    "11": "var(--ifm-background-surface-color) récupère une couleur depuis une variable CSS définie ailleurs, souvent par le thème du site.",
+    "15": "display: flex active le modèle flexbox pour organiser les enfants en colonne avec gap.",
+    "31": "grid-template-columns: 1fr 1fr crée deux colonnes de largeur égale dans la grille.",
+    "36": "grid-column: 1 / -1fait que l'élément s'étend sur toutes les colonnes de la grille.",
+    "51": "transition: permet une animation en douceur lors du changement de background et border-color.",
+    "65": "line-height: 1 supprime l'espace vertical supplémentaire autour du texte pour un dimensionnement plus serré.",
+    "96": "font-style: italic ajoute une emphase visuelle au texte prévisualisé.",
+    "99": "border-left: 3px solid ajoute une barre colorée sur le bord gauche pour délimiter visuellement le bloc.",
+    "103": "overflow-wrap: break-word permet au texte long de revenir à la ligne plutôt que de dépasser.",
+    "138": "resize: vertical autorise l'utilisateur à agrandir la zone de texte verticalement, mais pas horizontalement.",
+    "146": "box-sizing: border-box inclut le padding dans la largeur totale de 100%, évitant un débordement.",
+    "156": "left: -9999px place l'élément très loin à gauche, hors de l'écran, pour le cacher.",
+    "158": "pointer-events: none fait en sorte que cet élément ne capture pas les clics de souris.",
+    "265": "rgb(var(...) / 0.15) utilise une variable CSS contenant les composantes RGB et ajoute une transparence de 15% avec la syntaxe slash.",
+    "276": "Ces couleurs hexadécimales en mode sombre sont ajustées manuellement pour obtenir un meilleur contraste que les jetons standard du thème."
+  }
+}

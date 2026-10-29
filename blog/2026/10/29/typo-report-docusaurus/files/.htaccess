@@ -1,0 +1,5 @@
+Options -Indexes
+
+<FilesMatch "^(typo-data\.json|typo-ratelimit\.json|typo-notifications\.json)$">
+    Require all denied
+</FilesMatch>

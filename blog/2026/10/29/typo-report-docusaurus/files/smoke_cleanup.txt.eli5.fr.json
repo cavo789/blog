@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:14:39.029Z",
+  "source": "smoke_cleanup.txt",
+  "sourceHash": "49e71109cb33ef945b8c6004eb378ec42f38ae31",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce script initialise trois fichiers JSON dans le répertoire api en les créant avec un objet vide comme contenu. C'est une étape de configuration typique pour préparer l'environnement avant le démarrage d'une application qui utilise ces fichiers pour stocker des données.",
+  "explanations": {}
+}

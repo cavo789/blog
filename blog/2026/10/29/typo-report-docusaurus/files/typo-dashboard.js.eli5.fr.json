@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T08:09:51.200Z",
+  "source": "typo-dashboard.js",
+  "sourceHash": "b54fee1d11cfdcc25f0ad42e788d9d713ee14043",
+  "lang": "javascript",
+  "textLang": "fr",
+  "summary": "Ce fichier implémente un tableau de bord d'administration pour afficher et gérer les signalements de typos et autres problèmes de contenu. Il récupère les données d'une API en utilisant un token d'authentification stocké en local ou passé via l'URL, puis affiche les rapports groupés avec des statistiques, permettant de les marquer comme résolus ou de les supprimer.",
+  "explanations": {
+    "8": "STORAGE_KEY définit la clé localStorage où le token sera sauvegardé pour éviter de le saisir à chaque visite.",
+    "10": "TYPE_LABELS est un dictionnaire mappant chaque type de signalement à son icône emoji et son étiquette affichée.",
+    "21": "L'opérateur ?? retourne la valeur de droite si celle de gauche est null ou undefined, ici pour afficher un badge par défaut si le type n'existe pas.",
+    "23": "Les crochets accès dynamique [\\`type_${type}\\`] construisent le nom de classe CSS en incluant le type de rapport pour appliquer des styles spécifiques.",
+    "34": "report.ts est un timestamp en secondes, multiplié par 1000 pour le convertir en millisecondes que nécessite le constructeur Date.",
+    "41": "L'expression conditionnelle ajoute la classe 'resolved' au div si report.resolved est true, pour appliquer un style visuel différent.",
+    "71": "window.confirm() affiche une boîte de dialogue de confirmation ; onDelete n'est appelé que si l'utilisateur valide.",
+    "147": "window.location.hash récupère tout après le # dans l'URL ; slice(1) supprime le # lui-même.",
+    "152": "useCallback mémorise la fonction fetchData pour qu'elle ne soit recréée que si apiUrl change, évitant les re-rendus inutiles.",
+    "157": "encodeURIComponent échappe les caractères spéciaux du token pour le passer en toute sécurité dans l'URL de requête.",
+    "173": "Le try-catch vide capture les erreurs de localStorage (par exemple si le stockage est plein ou désactivé) sans interrompre l'exécution.",
+    "197": "setData reçoit une fonction au lieu d'une valeur directe, permettant d'accéder à l'état précédent et de le modifier sans perdre les autres slugs.",
+    "201": "L'opérateur spread { ...r, resolved: ... } crée une copie de l'objet rapport avec le champ resolved inversé.",
+    "232": "Object.entries(data) transforme l'objet imbriqué en tableau de paires [slug, reports], puis flatMap les aplatit dans une liste unique.",
+    "243": "reduce construit un objet compteur où chaque clé est un type de rapport et la valeur est le nombre d'occurrences."
+  }
+}

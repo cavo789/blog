@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T08:13:04.565Z",
+  "source": "typo-dashboard.module.css",
+  "sourceHash": "798ccef555b9bde66aeb4ebaae992cbc9eb93faf",
+  "lang": "css",
+  "textLang": "fr",
+  "summary": "Ce fichier CSS définit le design d'une page de rapports avec sections pour l'authentification, un récapitulatif statistique, et une liste de cartes de rapports. Il utilise un système de couleurs en thème clair et sombre pour les différents types de rapports (typo, incorrect, outdated, suggestion) et fournit des contrôles d'action comme la résolution ou la suppression de rapports.",
+  "explanations": {
+    "2": "max-width impose une largeur maximale de 860px pour que le contenu ne s'étire pas trop sur les grands écrans.",
+    "3": "margin: 0 auto centre horizontalement l'élément en donnant des marges égales à gauche et droite.",
+    "8": "display: flex active le mode flexbox, qui arrange les enfants en ligne par défaut et facilite l'alignement.",
+    "9": "align-items: baseline aligne les éléments enfants sur leur ligne de base (la ligne où repose le texte).",
+    "22": "text-decoration: none supprime le soulignement par défaut des liens.",
+    "41": "flex: 1 fait que l'input occupe tout l'espace disponible dans son conteneur flexbox.",
+    "51": "outline: none retire le contour du navigateur qui apparaît normalement au focus.",
+    "70": "flex-wrap: wrap permet aux éléments de passer à la ligne suivante s'il n'y a pas assez de place.",
+    "75": "flex: 1 fait que chaque carte grandit pour remplir l'espace disponible équitablement.",
+    "76": "min-width: 100px garantit que la carte ne rétrécit pas en dessous de 100px même avec flex: 1.",
+    "99": "flex-direction: column empile les cartes verticalement au lieu de les mettre côte à côte.",
+    "108": "display: flex combiné à flex-direction: column ici crée un conteneur vertical flexible pour les éléments du rapportCard.",
+    "129": "margin-left: auto pousse cet lien vers la droite en créant une marge automatique à gauche.",
+    "152": "white-space: pre-wrap préserve les espaces et sauts de ligne du texte brut original.",
+    "153": "overflow-wrap: break-word casse les mots trop longs pour qu'ils tiennent dans le conteneur.",
+    "164": "display: inline-flex crée un conteneur flexbox qui reste inline (n'occupe que l'espace nécessaire).",
+    "224": "transition: opacity 0.15s ajoute une animation douce de 150ms quand l'opacité change.",
+    "274": "[data-theme=\"dark\"] sélectionne les éléments quand l'attribut data-theme est défini à \"dark\", appliquant les couleurs du mode sombre."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-10-29T07:14:06.982Z",
+  "source": "typo-dashboard.js",
+  "sourceHash": "b54fee1d11cfdcc25f0ad42e788d9d713ee14043",
+  "lang": "javascript",
+  "textLang": "en",
+  "summary": "This is a dashboard component for viewing and managing user feedback reports (typos, suggestions, etc.) in a Docusaurus site. It authenticates with an admin token, fetches reports from an API, displays them in cards organized by page, and lets admins mark reports as resolved or delete them. The token can be passed via URL hash, restored from browser storage, or entered via a form.",
+  "explanations": {
+    "8": "This string is used as the key to store and retrieve the admin token from the browser's localStorage, so the user doesn't have to re-enter it every visit.",
+    "10": "This object maps each report type (typo, incorrect, etc.) to its display icon and human-readable label, so the UI can show consistent formatting everywhere.",
+    "21": "The ?? operator is a nullish coalescing fallback — if the type isn't found in TYPE_LABELS, it provides a question mark icon and uses the type string itself as the label.",
+    "23": "This dynamically builds a CSS class name by combining a base style with a type-specific style; the ?? '' ensures that if no type-specific style exists, an empty string is added instead of 'undefined'.",
+    "34": "The report.ts is stored as seconds since the Unix epoch, so it's multiplied by 1000 to convert to milliseconds for JavaScript's Date constructor.",
+    "71": "This asks the user to confirm before deleting; if they click 'Cancel', the onDelete function never runs.",
+    "145": "This effect runs once after the component mounts on the client; it checks the URL hash first, then localStorage, to pre-fill the token so the user can auto-login.",
+    "152": "useCallback memoizes the function so it only changes if apiUrl changes, preventing unnecessary re-runs of effects that depend on it.",
+    "157": "The token is URL-encoded to safely pass it as a query parameter in case it contains special characters.",
+    "172": "The try-catch with no handler silently ignores errors from localStorage (which can fail if storage is disabled or full), so the API call still succeeds even if token saving fails.",
+    "197": "Instead of re-fetching all reports, this updates the local state by creating a new object and toggling the resolved flag on the matching report — it's faster and avoids a network round-trip.",
+    "232": "This flattens the data structure from {slug: [reports]} into a single sorted array of all reports, adding the slug to each report so we know which page it came from.",
+    "243": "This counts how many reports exist for each type by looping through all reports and incrementing a counter for each type; it's used to show summary statistics.",
+    "273": "This loops through all defined report types and renders a summary card for each, even if there are zero reports of that type — showing 0 explicitly is clearer than omitting it."
+  }
+}
