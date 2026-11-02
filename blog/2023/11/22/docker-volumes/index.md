@@ -204,7 +204,7 @@ Now, the file will be yours:
 
 ### Location of the volumes managed by Docker
 
-Volumes are stored *somewhere* on the disk by Docker, you don't need to take care about this. And, above all, they are not saved in your project folder; let's check this:
+Volumes are stored *somewhere* on the disk by Docker (on Windows, inside a <Link to="/blog/wsl-docker-vhdx-cleanup">VHDX virtual disk that only grows</Link>), you don't need to take care about this. And, above all, they are not saved in your project folder; let's check this:
 
 <Terminal typewriter source="./files/terminal-6.txt" />
 

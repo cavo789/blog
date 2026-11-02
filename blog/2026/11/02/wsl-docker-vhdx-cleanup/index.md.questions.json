@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-02T07:52:29.152Z",
+  "durationMs": 21258,
+  "source": "index.md",
+  "sourceHash": "d3ebae2e211a6fe38159caa88915d800a8db1e64",
+  "questions": [
+    {
+      "question": "docker build cache eating disk space windows wsl2 180gb",
+      "anchor": ""
+    },
+    {
+      "question": "docker system prune freed space but windows disk still full wsl",
+      "anchor": "why-pruning-alone-is-not-enough"
+    },
+    {
+      "question": "docker builder prune --all --force",
+      "anchor": "step-1--clear-the-build-cache"
+    },
+    {
+      "question": "fstrim docker desktop vm wsl2 vhdx free blocks",
+      "anchor": "step-2--tell-the-vhdx-which-blocks-are-free-fstrim"
+    },
+    {
+      "question": "compact vhdx docker wsl2 choose method",
+      "anchor": "compact-the-vhdx--choose-your-path"
+    },
+    {
+      "question": "docker desktop reclaim disk space without admin rights wsl",
+      "anchor": "compact-non-admin"
+    },
+    {
+      "question": "sparseVhd docker wsl2 enable",
+      "anchor": "1-enable-sparsevhd"
+    },
+    {
+      "question": "automatic docker prune schedule windows task scheduler",
+      "anchor": "3-weekly-automatic-prune-via-windows-task-scheduler"
+    },
+    {
+      "question": "wsl service e_unexpected error after docker operations",
+      "anchor": "wslservicee_unexpected--the-wsl-service-is-stuck"
+    },
+    {
+      "question": "vhdx file size check after docker compact reboot",
+      "anchor": "verify-your-vhdx-files-after-a-reboot"
+    }
+  ]
+}

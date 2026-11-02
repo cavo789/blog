@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-02T07:58:48.024Z",
+  "durationMs": 34958,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "42da1269bfa96d152e1766c2a5d1fd5759999a5f",
+  "questions": [
+    {
+      "question": "docker build cache 180 go wsl2 disque plein windows",
+      "anchor": ""
+    },
+    {
+      "question": "vhdx docker revient à sa taille réelle après compactage",
+      "anchor": "after-the-fix"
+    },
+    {
+      "question": "pourquoi docker system prune ne libère pas l'espace du vhdx wsl2",
+      "anchor": "why-pruning-alone-is-not-enough"
+    },
+    {
+      "question": "docker builder prune --all --force",
+      "anchor": "step-1--clear-the-build-cache"
+    },
+    {
+      "question": "fstrim wsl2 docker vhdx blocs libres",
+      "anchor": "step-2--tell-the-vhdx-which-blocks-are-free-fstrim"
+    },
+    {
+      "question": "wsl --shutdown docker desktop avant compactage",
+      "anchor": "step-3--shut-down-docker-and-wsl"
+    },
+    {
+      "question": "diskpart compact vhdx docker desktop",
+      "anchor": "compact-admin"
+    },
+    {
+      "question": "docker desktop reset factory defaults libérer vhdx sans droits admin",
+      "anchor": "compact-non-admin"
+    },
+    {
+      "question": "activer sparseVhd docker desktop",
+      "anchor": "1-enable-sparsevhd"
+    },
+    {
+      "question": "vérifier taille vhdx docker powershell",
+      "anchor": "2-daily-size-check-in-your-terminal"
+    },
+    {
+      "question": "docker system prune hebdomadaire planificateur tâches windows",
+      "anchor": "3-weekly-automatic-prune-via-windows-task-scheduler"
+    },
+    {
+      "question": "wsl service E_UNEXPECTED docker desktop",
+      "anchor": "wslservicee_unexpected--the-wsl-service-is-stuck"
+    }
+  ]
+}

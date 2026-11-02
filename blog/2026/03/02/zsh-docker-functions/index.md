@@ -79,7 +79,7 @@ In the right pane, you can see the logs of the selected container in real-time. 
 
 ## Clean up unused Docker containers, images, volumes, and networks
 
-The dnuke function acts as an intelligent, interactive **Docker Cleanup Wizard** designed to reclaim disk space without the risk of blindly deleting resources. Unlike a standard `docker system prune`, `dnuke` first scans your environment and presents a dynamic **Execution Plan**, showing you exactly what can be cleaned up (stopped containers, dangling images, unused volumes, and build cache).
+The dnuke function acts as an intelligent, interactive **Docker Cleanup Wizard** designed to <Link to="/blog/wsl-docker-vhdx-cleanup">reclaim disk space</Link> without the risk of blindly deleting resources. Unlike a standard `docker system prune`, `dnuke` first scans your environment and presents a dynamic **Execution Plan**, showing you exactly what can be cleaned up (stopped containers, dangling images, unused volumes, and build cache).
 
 It processes cleanup in granular steps, allowing you to skip specific categories if needed. By default, it operates in a "safe" mode, targeting only dangling (untagged) images.
 

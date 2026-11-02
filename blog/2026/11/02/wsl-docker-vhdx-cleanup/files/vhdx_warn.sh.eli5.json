@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-02T07:50:03.008Z",
+  "source": "vhdx_warn.sh",
+  "sourceHash": "af6c3aed05cba292f2c09c04963186911b3e7036",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This function checks once per day if Docker's virtual disk file has grown over 150 GB, and if so, prints a warning message. It uses a timestamp file to avoid checking repeatedly on the same day, then retrieves the disk file size through Windows PowerShell and displays an alert if needed.",
+  "explanations": {
+    "2": "The stamp variable creates a unique filename based on today's date in the .cache directory — this file acts as a marker to track whether we've already run this check today.",
+    "3": "If the stamp file already exists, that means we've already checked today, so the function exits early to avoid redundant checks.",
+    "4": "Creating the stamp file marks that we've performed the check for today.",
+    "6": "We're running a PowerShell command through the Windows subsystem to get the Windows user's application data folder path, since this function needs to navigate Windows file paths from within WSL (Windows Subsystem for Linux).",
+    "8": "The tr command removes carriage returns and newlines from PowerShell's output, cleaning it up so we get just the folder path.",
+    "10": "The wslpath command converts the Windows-style path into a WSL-compatible Linux-style path so bash can work with it.",
+    "13": "The du command measures the file size in gigabytes, then cut extracts just the number part, and tr removes the 'G' suffix to leave us with a plain number.",
+    "14": "We compare the gigabyte value to 150, and if it's larger, print a warning message telling the user to run a Docker cleanup command."
+  }
+}

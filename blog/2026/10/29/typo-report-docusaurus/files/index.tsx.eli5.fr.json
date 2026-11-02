@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-02T07:50:13.176Z",
+  "source": "index.tsx",
+  "sourceHash": "bd6ded64354bee48689b7697aa5b34421296875f",
+  "lang": "typescript",
+  "textLang": "fr",
+  "summary": "Ce composant React affiche un widget de signalement de typos qui apparaît quand l'utilisateur sélectionne du texte dans un article. Il gère un flux multi-étapes (sélection du type de problème, confirmation avec commentaire optionnel, envoi) et inclut des protections côté client comme le rate-limiting par heure et la déduplication des signalements basée sur un hash du contenu.",
+  "explanations": {
+    "12": "Cette clé stocke dans le localStorage une liste d'objets contenant le timestamp et le hash de chaque signalement envoyé, pour vérifier les doublons et respecter les limites de débit.",
+    "28": "fnv1a est un algorithme de hachage simple et rapide (FNV-1a 32-bit) qui n'a pas besoin de crypto puisqu'on l'utilise juste pour dédupliquer les signalements en local.",
+    "32": "L'opération >>> 0 force le résultat en entier non-signé 32-bit, ce qui est nécessaire parce que JavaScript traite tous les nombres comme des flottants.",
+    "47": "On filtre les signalements stockés pour ne garder que ceux des 60 dernières minutes (3_600_000 ms), puis on vérifie si on en a atteint ou dépassé 5.",
+    "58": "On garde uniquement les signalements du dernier jour (86_400_000 ms) avant d'en ajouter un nouveau, sinon le localStorage grandirait indéfiniment.",
+    "74": "On extrait le slug (l'URL de la page sans les barres obliques au début et fin) des métadonnées, ou on utilise une chaîne vide si le permalink n'existe pas.",
+    "84": "nonceRef stocke un jeton unique reçu du serveur qu'on envoie avec chaque signalement pour empêcher les attaques CSRF.",
+    "87": "On stocke 100 caractères environ avant et après la sélection pour donner du contexte au serveur sur ce que l'utilisateur signale.",
+    "106": "Les fonctions fléchées préservent la portée (scope) de la variable article même après le return, ce qui permet au TypeScript de confirmer qu'article n'est pas null à l'intérieur.",
+    "111": "sel.isCollapsed est true quand l'utilisateur n'a rien sélectionné (le curseur est juste positionné), donc on ignore cet événement.",
+    "122": "On cherche l'index du texte sélectionné dans le contenu brut de l'article pour extraire le contexte autour.",
+    "127": "On limite le positionnement horizontal du tooltip pour qu'il ne dépasse pas l'écran (la largeur du tooltip est 296px).",
+    "135": "On vérifie si le clic est en dehors du widget de signalement ; si c'est le cas, on le ferme en passant à l'état idle.",
+    "140": "On utilise mouseup et touchend pour capturer les sélections sur desktop et mobile respectivement.",
+    "156": "Si le même texte sur la même page a déjà été signalé, on saute directement à done au lieu de montrer le formulaire.",
+    "182": "On extrait la valeur du champ honeypot (un champ caché que les bots remplissent automatiquement) pour l'envoyer au serveur."
+  }
+}

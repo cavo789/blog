@@ -1,68 +1,54 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T18:09:28.165Z",
+  "generated": "2026-11-02T07:50:44.613Z",
+  "durationMs": 31361,
   "source": "index.md",
-  "sourceHash": "c4390601f590f78f940399e365fee1cd531586e8",
-  "durationMs": 22108,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T05:39:24.598Z",
-    "articleHash": "067ea9e60966552563e64e0c16cc972e01a7b452",
-    "questionsHash": "e5db47232979408b",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 2
-  },
+  "sourceHash": "d9b0cd4002ee12ef75cd051a3becbb461a600fea",
   "questions": [
     {
-      "question": "docker container data lost after restart how to persist",
+      "question": "docker container data lost after restart",
+      "anchor": ""
+    },
+    {
+      "question": "why does my docker container reset all data when I stop and start it",
       "anchor": "what-a-volume-changes"
     },
     {
-      "question": "why does my docker container reset all data after docker stop",
-      "anchor": "what-a-volume-changes"
-    },
-    {
-      "question": "docker volume vs bind mount vs no volume",
+      "question": "docker volume vs bind mount vs no volume which should I use",
       "anchor": "why-it-works"
     },
     {
-      "question": "docker-compose alpine counter script demo",
+      "question": "docker compose minimal alpine image run shell script demo",
       "anchor": "setting-up-the-demo"
     },
     {
-      "question": "docker compose declare named volume for persistence",
+      "question": "docker-compose.yml declare named volume to persist data across restarts",
       "anchor": "volumes-managed-by-docker"
     },
     {
-      "question": "bind mount docker volume into project directory",
+      "question": "bind mount docker volume into project folder on host disk",
       "anchor": "mounted-volumes"
     },
     {
-      "question": "how docker stores volumes internally on disk",
-      "anchor": "location-of-the-volumes-managed-by-docker"
+      "question": "how docker volumes work under the hood wsl",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
     },
     {
-      "question": "docker bind mount creates root-owned files how to fix",
+      "question": "copy files out of docker mounted volume back to host directory",
       "anchor": "getting-your-own-files-back-from-a-mounted-volume"
     },
     {
-      "question": "find where docker named volumes are stored on filesystem",
+      "question": "where does docker store named volumes on disk",
       "anchor": "location-of-the-volumes-managed-by-docker"
     },
     {
-      "question": "docker desktop browse files inside a volume",
+      "question": "open and browse docker volume files in Docker Desktop",
       "anchor": "accessing-files-in-the-volume-using-docker-desktop"
     },
     {
-      "question": "vscode docker extension access volume files",
+      "question": "vscode docker extension access volume files in editor",
       "anchor": "accessing-files-in-the-volume-using-vscode"
-    },
-    {
-      "question": "which docker volume type to use for local dev",
-      "anchor": "conclusion"
     }
   ]
 }

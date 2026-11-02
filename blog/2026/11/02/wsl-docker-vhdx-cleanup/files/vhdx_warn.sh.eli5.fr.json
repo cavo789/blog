@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-02T07:54:30.231Z",
+  "source": "vhdx_warn.sh",
+  "sourceHash": "af6c3aed05cba292f2c09c04963186911b3e7036",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction vérifie une fois par jour si le fichier de disque Docker virtuel sur Windows dépasse 150 GB, et affiche un avertissement si c'est le cas. Elle utilise un fichier tampon daté pour éviter de relancer la vérification plusieurs fois dans la même journée.",
+  "explanations": {
+    "2": "On crée un chemin unique par jour en incluant la date du jour ; ce fichier servira de marqueur pour savoir si la vérification a déjà été faite.",
+    "3": "Si le fichier marqueur existe déjà, la fonction quitte immédiatement sans rien faire, ce qui économise du temps.",
+    "4": "On crée le fichier marqueur pour enregistrer que la vérification s'est exécutée aujourd'hui.",
+    "6": "powershell.exe est appelé pour récupérer le chemin du dossier LocalApplicationData de Windows, où Docker stocke ses fichiers.",
+    "8": "tr -d '\\r\\n' supprime les caractères de retour à la ligne que PowerShell ajoute, sinon le chemin serait invalide.",
+    "10": "wslpath convertit le chemin Windows en chemin reconnaissable par le sous-système Linux pour Windows.",
+    "13": "du -BG affiche la taille en gigabytes, cut -f1 extrait juste le nombre, et tr -d 'G' enlève la lettre 'G' pour qu'on ait un nombre pur.",
+    "14": "Si la taille dépasse 150 GB, on affiche un avertissement avec la taille actuelle et un conseil pour nettoyer Docker."
+  }
+}

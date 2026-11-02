@@ -1,60 +1,58 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T21:45:37.745Z",
+  "generated": "2026-11-02T07:51:17.136Z",
+  "durationMs": 32444,
   "source": "index.md",
-  "sourceHash": "ea14ec923b1f6d2c7447d6b94d2094801d6bc7d8",
-  "durationMs": 33944,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T08:40:20.574Z",
-    "articleHash": "1876d7a4b609c790883b07ea7742e62be18a0371",
-    "questionsHash": "6e80c26c3c702bb9",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "91d483ceee6bb11cb60b9b451fb85b8d9021897a",
   "questions": [
     {
-      "question": "zsh docker fzf functions terminal",
+      "question": "zsh fzf docker interactive management",
       "anchor": ""
     },
     {
-      "question": "how to exec into docker container without remembering its name",
+      "question": "how to exec into a running docker container without knowing its name or ID",
       "anchor": "start-a-new-terminal-session-in-a-running-docker-container"
     },
     {
-      "question": "stop multiple docker containers at once from terminal",
+      "question": "fzf multi-select stop docker containers",
       "anchor": "stop-one-or-more-running-docker-containers"
     },
     {
-      "question": "view docker container logs live in terminal",
+      "question": "view docker container logs interactively from terminal",
       "anchor": "access-logs-of-a-running-docker-container"
     },
     {
-      "question": "docker cleanup unused images volumes containers interactive",
+      "question": "docker cleanup wizard fzf prune containers images volumes",
       "anchor": "clean-up-unused-docker-containers-images-volumes-and-networks"
     },
     {
-      "question": "create new docker container zsh function",
+      "question": "zsh function create new docker container interactively",
       "anchor": "creating-a-new-container"
     },
     {
-      "question": "single zsh function manage all docker operations",
+      "question": "single command manage all docker containers zsh",
       "anchor": "one-to-rule-them-all"
     },
     {
-      "question": "install fzf debian zsh docker",
+      "question": "install zsh docker fzf functions .zshrc",
       "anchor": "how-to-install"
     },
     {
-      "question": "docker stop select containers tab multi-select",
+      "question": "docker exec fzf select container terminal session",
+      "anchor": "start-a-new-terminal-session-in-a-running-docker-container"
+    },
+    {
+      "question": "stop docker containers see resource usage first",
       "anchor": "stop-one-or-more-running-docker-containers"
     },
     {
-      "question": "docker exec root access fzf select container",
-      "anchor": "start-a-new-terminal-session-in-a-running-docker-container"
+      "question": "reclaim disk space docker unused resources fzf",
+      "anchor": "clean-up-unused-docker-containers-images-volumes-and-networks"
+    },
+    {
+      "question": "tail docker logs real time fzf",
+      "anchor": "access-logs-of-a-running-docker-container"
     }
   ]
 }

@@ -5,9 +5,8 @@ description: "Docker's build cache accumulates silently inside WSL2's VHDX virtu
 authors: [christophe, claude]
 image: /img/v2/docker-shrink-vhdx.webp
 mainTag: wsl
-draft: true
 tags: [docker, windows, wsl]
-date: 2026-10-01
+date: 2026-11-02
 ai_assisted: true
 ---
 
@@ -80,7 +79,7 @@ Images and volumes can also accumulate alongside the cache:
 - `docker volume prune` — removes volumes not attached to any container.
 
 <AlertBox variant="warning" title="Volumes hold data you cannot rebuild">
-Data inside a named volume cannot be reconstructed from a Dockerfile. If a volume holds a database, uploaded files, or a dev environment's persistent state, `docker volume prune` deletes it permanently. Run `docker volume ls` and confirm each volume before pruning.
+Data inside a <Link to="/blog/docker-volumes">named volume</Link> cannot be reconstructed from a Dockerfile. If a volume holds a database, uploaded files, or a dev environment's persistent state, `docker volume prune` deletes it permanently. Run `docker volume ls` and confirm each volume before pruning.
 </AlertBox>
 
 Run `docker system df` again to confirm the Build Cache row reads `0B` before moving on.
@@ -223,7 +222,7 @@ After the reset, verify the new `.vhdx` is sparse:
 fsutil sparse queryflag "$env:LOCALAPPDATA\Docker\wsl\disk\docker_data.vhdx"
 ```
 
-The expected output is `This file is set as sparse`. If it still reads `NOT set as sparse`, `sparseVhd=true` is not applying to Docker Desktop's data disk on your version — Option A (periodic compaction) remains the correct approach.
+The expected output is `This file is set as sparse`. If it still reads `NOT set as sparse`, `sparseVhd=true` is not applying to Docker Desktop's data disk on your version — the weekly prune below keeps the file from growing, and a one-time compaction by IT (the [admin path](#compact-admin)) remains available if you ever need the space back.
 
 #### Restore your saved data
 
@@ -278,6 +277,8 @@ $trigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At "08:00"
 Register-ScheduledTask -TaskName "Docker-Weekly-Prune" -Action $action -Trigger $trigger
 ```
 
+`wsl -e docker` runs the `docker` CLI inside your default WSL distribution, so that distribution must have Docker Desktop's WSL integration enabled (gear icon → **Resources → WSL integration**); otherwise the task fails without any visible error.
+
 The `--filter "until=168h"` flag keeps cache entries younger than one week, preserving rebuild speed for active projects while removing everything older.
 
 #### Verify and manage the task
@@ -328,7 +329,7 @@ Click directly on **Task Scheduler Library** in the left panel (not on one of it
 *Side note: if the Task Scheduler UI feels like a relic from the Windows NT era — dense, modal, nothing where you expect it — that's because it essentially is. The PowerShell cmdlets above get the job done faster.*
 
 <AlertBox variant="tip" title="taskschd.msc blocked on your machine?">
-Some corporate Group Policy configurations restrict access to the Task Scheduler UI. That restriction applies to the MMC snap-in only — it does not affect the task itself, which will still run on schedule. Use the PowerShell cmdlets below to inspect and manage it instead.
+Some corporate Group Policy configurations restrict access to the Task Scheduler UI. That restriction applies to the MMC snap-in only — it does not affect the task itself, which will still run on schedule. Use the PowerShell cmdlets above to inspect and manage it instead.
 </AlertBox>
 
 To change the retention window from 7 days to, say, 14 days:
