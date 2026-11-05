@@ -54,6 +54,8 @@ So, if you're running `docker run [something]` you'll have to convert the line t
 
 Easy and really handy.
 
+*No `compose.yaml` either because the container is a VS Code devcontainer? Two `runArgs` give it the same grouping: see <Link to="/blog/devcontainer-container-name">Devcontainer - Name Your Container and Group It in Docker Desktop</Link>.*
+
 ## Tools can be located in different folders
 
 Just to say, you can put your files, volumes, ... in different folders, it doesn't matter. On my disk, I have a `~/tools` folder with one directory per tool (one for Heimdall, one for Memos, one for Karakeep, ...) and it's not a problem at all.

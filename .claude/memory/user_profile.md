@@ -9,7 +9,7 @@ metadata:
 ---
 
 - **Name:** Christophe Avonture
-- **GitHub:** cavo789 / email: cavo789@gmail.com
+- **GitHub:** cavo789 / public email placeholder: no-reply@gmail.com (never write the real address in the repo)
 - **Bluesky:** avonture.be
 - **Role:** Technical blogger writing about Docker, WSL, Python, PHP, Quarto, Joomla, Docusaurus
 - **Languages:** Communicates in French with Claude; code/blog content must be in American English

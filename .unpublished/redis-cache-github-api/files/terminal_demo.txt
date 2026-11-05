@@ -1,0 +1,15 @@
+$ time ./repos.sh
+🐢 MISS — calling api.github.com
+78 public repositories, the 3 most recently pushed:
+  - media-hygiene
+  - blog
+  - cavo789
+real    0m0.477s
+
+$ time ./repos.sh
+⚡ HIT  — served from Redis (expires in 60 s)
+78 public repositories, the 3 most recently pushed:
+  - media-hygiene
+  - blog
+  - cavo789
+real    0m0.118s

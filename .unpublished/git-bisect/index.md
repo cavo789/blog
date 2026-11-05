@@ -178,7 +178,7 @@ After 6–7 iterations, git stops and tells you exactly which commit introduced 
 ```
 d8f3a21 is the first bad commit
 commit d8f3a21
-Author: Christophe Avonture <cavo789@gmail.com>
+Author: Christophe Avonture <no-reply@gmail.com>
 Date:   Mon May 19 14:32:10 2026 +0200
 
     chore: upgrade remark-gfm to v4

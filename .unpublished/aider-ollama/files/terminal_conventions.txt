@@ -1,0 +1,10 @@
+$ aider
+Tip: no need to name files, just describe the change.
+     Wrong file picked? /add <file> to point at it, /drop <file> to remove it, /ls to list them.
+Aider v0.86.2
+Model: ollama_chat/qwen2.5-coder:14b with diff edit format
+Git repo: .git with 3 files
+Repo-map: using 2048 tokens, auto refresh
+Added CONVENTIONS.md to the chat (read-only).
+
+> Review Scan-Photos.ps1 against the conventions and fix what does not comply.

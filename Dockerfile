@@ -270,7 +270,7 @@ LABEL org.opencontainers.image.title="blog-docusaurus" \
       org.opencontainers.image.description="Personal technical blog powered by Docusaurus 3.x" \
       org.opencontainers.image.vendor="cavo789" \
       org.opencontainers.image.licenses="MIT" \
-      org.opencontainers.image.authors="cavo789@gmail.com"
+      org.opencontainers.image.authors="no-reply@gmail.com"
 
 # Clean default Nginx content
 RUN rm -rf /usr/share/nginx/html/*

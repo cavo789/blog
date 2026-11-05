@@ -1,0 +1,6 @@
+> /ask Why does VID_2044.mp4 get its date from the file and not from exiftool?
+
+exiftool returned no DateTimeOriginal and no CreateDate for that file. Phones write the
+recording date in the QuickTime CreateDate tag, but many editors and messaging apps strip
+it when they re-encode or export a video. Get-ExifDates finds nothing, so Export-PhotoList
+falls back to the file creation date and sets DateSource to "file".

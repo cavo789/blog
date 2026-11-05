@@ -120,6 +120,8 @@ In the rest of this article, we'll come back to this file.
 
 <Snippet filename=".devcontainer/devcontainer.json" source="./files/devcontainer.json" />
 
+*VS Code gives such a container a random name like `serene_ganguly`. To force a stable name and group it in Docker Desktop, see <Link to="/blog/devcontainer-container-name">Devcontainer - Name Your Container and Group It in Docker Desktop</Link>.*
+
 ## 4. Create the Dockerfile file
 
 Please continue and create a second file called `Dockerfile` with this content:

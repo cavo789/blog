@@ -1,0 +1,10 @@
+> /run pwsh ./Scan-Photos.ps1
+Get-ChildItem: Cannot find path '/photos' because it does not exist.
+
+Add 0.1k tokens of command output to the chat? (Y)es/(N)o [Yes]: y
+
+> Fail with a clear message when rootFolder does not exist, instead of the raw exception.
+
+Scan-Photos.ps1
+Applied edit to Scan-Photos.ps1
+Commit 2d81f0c fix: Report a missing rootFolder with a clear error

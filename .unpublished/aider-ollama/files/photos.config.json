@@ -1,0 +1,6 @@
+{
+  "rootFolder": "/photos",
+  "outputFolder": "/reports",
+  "photoExtensions": [".jpg", ".jpeg", ".png", ".heic", ".tif", ".tiff"],
+  "videoExtensions": [".mp4", ".mov", ".avi", ".mkv"]
+}

@@ -101,7 +101,7 @@ apply it the same way as step 1 (list the proposed values, then `Edit`):
 | `org.opencontainers.image.description` | One line, derived from the project's own README/`CLAUDE.md` description or the Dockerfile's own header comment if it has one. |
 | `org.opencontainers.image.vendor` | Derive from git config user.name or `cavo789` — the blog's author. |
 | `org.opencontainers.image.licenses` | Always `MIT` — this repo's LICENSE file. |
-| `org.opencontainers.image.authors` | Always `cavo789@gmail.com` — fixed, not derived. |
+| `org.opencontainers.image.authors` | Always `no-reply@gmail.com` — fixed, not derived. |
 
 Title/version/description are judgment calls — say what each was derived from so the user can
 correct it in the same review pass; vendor/licenses/authors are constants, never ask about those.

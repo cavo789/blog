@@ -1,0 +1,12 @@
+$ ps1-sandbox Scan-Photos.ps1 /mnt/c/Photos
+7 files written to /reports/photos.csv
+
+$ cat reports/photos.csv
+"FullPath","Name","Type","SizeKB","DateTaken","DateSource"
+"/photos/2023/Christmas/IMG_0912.jpg","IMG_0912.jpg","photo","1488.2","2023-12-24 19:30:00","exif"
+"/photos/2023/Christmas/IMG_0913.jpg","IMG_0913.jpg","photo","1476.3","2023-12-24 19:31:44","exif"
+"/photos/2023/Christmas/VID_0920.mp4","VID_0920.mp4","video","11718.8","2026-11-04 10:55:31","file"
+"/photos/Scans/grandma_1978.png","grandma_1978.png","photo","4.7","2026-11-04 10:55:02","file"
+"/photos/2024/Tuscany/IMG_2041.jpg","IMG_2041.jpg","photo","1478.4","2024-06-18 09:42:17","exif"
+"/photos/2024/Tuscany/IMG_2042.jpg","IMG_2042.jpg","photo","1450.7","2024-06-18 11:05:02","exif"
+"/photos/2024/Tuscany/VID_2044.mp4","VID_2044.mp4","video","2929.7","2026-11-04 10:55:02","file"

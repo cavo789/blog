@@ -1,0 +1,4 @@
+$ time python3 repos.py
+⚡ HIT  — served from Redis (expires in 60 s)
+78 public repositories
+real    0m0.098s

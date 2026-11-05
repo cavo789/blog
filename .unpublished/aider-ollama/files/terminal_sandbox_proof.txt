@@ -1,0 +1,12 @@
+$ ps1-sandbox Delete-Everything.ps1 /mnt/c/Photos
+Remove-Item: /app/Delete-Everything.ps1:1
+Line |
+   1 |  Remove-Item -Recurse -Force /photos/2024
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Read-only file system : '/photos/2024/Tuscany/IMG_2042.jpg'
+     ... (same error for every file and folder)
+
+$ ls /mnt/c/Photos/2024/Tuscany
+IMG_2041.jpg
+IMG_2042.jpg
+VID_2044.mp4

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-05T12:57:01.559Z",
+  "durationMs": 21358,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "a36e8353d0586f854a1949e081540aa5773b49f5",
+  "questions": [
+    {
+      "question": "devcontainer VS Code nom aléatoire comment renommer",
+      "anchor": ""
+    },
+    {
+      "question": "runArgs .devcontainer.json passer flags à docker create",
+      "anchor": "the-two-lines"
+    },
+    {
+      "question": "devcontainer --name conflict container name already in use deux worktrees",
+      "anchor": "--name-a-stable-container-name"
+    },
+    {
+      "question": "script docker exec devcontainer nom qui change à chaque rebuild",
+      "anchor": "--name-a-stable-container-name"
+    },
+    {
+      "question": "regrouper devcontainer dans Docker Desktop comme un projet compose",
+      "anchor": "--label-grouping-in-docker-desktop"
+    },
+    {
+      "question": "com.docker.compose.project label devcontainer",
+      "anchor": "--label-grouping-in-docker-desktop"
+    },
+    {
+      "question": "docker compose stop ne gère pas devcontainer avec label",
+      "anchor": "--label-grouping-in-docker-desktop"
+    },
+    {
+      "question": "devcontainer compose.yaml name et project à la place de runArgs",
+      "anchor": "and-if-my-devcontainer-uses-composeyaml"
+    },
+    {
+      "question": "runArgs ignoré quand devcontainer utilise compose.yaml",
+      "anchor": "and-if-my-devcontainer-uses-composeyaml"
+    },
+    {
+      "question": "runArgs --name --label ajouter à chaque nouveau devcontainer",
+      "anchor": "conclusion"
+    }
+  ]
+}

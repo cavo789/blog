@@ -365,4 +365,4 @@ command.
 | ----------------------------------- | ------------------- |
 | `org.opencontainers.image.vendor`   | `cavo789`           |
 | `org.opencontainers.image.licenses` | `MIT`               |
-| `org.opencontainers.image.authors`  | `cavo789@gmail.com` |
+| `org.opencontainers.image.authors`  | `no-reply@gmail.com` |

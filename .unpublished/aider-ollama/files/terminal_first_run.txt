@@ -1,0 +1,31 @@
+$ mkdir photo-inventory && cd photo-inventory
+$ aider
+Tip: no need to name files, just describe the change.
+     Wrong file picked? /add <file> to point at it, /drop <file> to remove it, /ls to list them.
+No git repo found, create one to track aider's changes (recommended)? (Y)es/(N)o [Yes]: y
+Git repository created in /app
+Aider v0.86.2
+Model: ollama_chat/qwen2.5-coder:14b with whole edit format
+Git repo: .git with 0 files
+Repo-map: using 2048 tokens, auto refresh
+
+> Create a PowerShell script that scans a photo library recursively and creates photos.csv
+  with one row per photo or video: full path, name, type (photo/video), size in KB, date
+  taken from EXIF (use exiftool) or, if missing, the file creation date, and a column
+  saying where the date came from. The folders and the file extensions come from a JSON
+  configuration file. The script runs in a Linux container: the library is mounted
+  read-only on /photos, and /reports is the only writable folder.
+I'll create two files: photos.config.json with the folders and the extensions to scan,
+and Scan-Photos.ps1 with one function per step: Read-Config, Get-MediaFiles,
+Get-ExifDates (a single exiftool call for the whole tree) and Export-PhotoList.
+
+photos.config.json
+Create new file? (Y)es/(N)o [Yes]: y
+
+Scan-Photos.ps1
+Create new file? (Y)es/(N)o [Yes]: y
+
+Tokens: 2.7k sent, 1.1k received.
+Applied edit to photos.config.json
+Applied edit to Scan-Photos.ps1
+Commit 4c1e2a7 feat: Scan photo library and export photos.csv with EXIF dates

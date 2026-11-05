@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-05T12:53:08.956Z",
+  "durationMs": 21489,
+  "source": "index.md",
+  "sourceHash": "83f1a4e47cbebb7a4ef79c22f0c8e93553a51cad",
+  "questions": [
+    {
+      "question": "vscode devcontainer random container name fix",
+      "anchor": ""
+    },
+    {
+      "question": "why do my devcontainers show up as random names like serene_ganguly in docker desktop",
+      "anchor": ""
+    },
+    {
+      "question": "devcontainer.json runArgs pass docker create flags",
+      "anchor": "the-two-lines"
+    },
+    {
+      "question": "set stable container name devcontainer so docker exec works across rebuilds",
+      "anchor": "--name-a-stable-container-name"
+    },
+    {
+      "question": "container name already in use conflict devcontainer two checkouts",
+      "anchor": "--name-a-stable-container-name"
+    },
+    {
+      "question": "group devcontainer with compose containers in docker desktop",
+      "anchor": "--label-grouping-in-docker-desktop"
+    },
+    {
+      "question": "com.docker.compose.project label set manually without compose",
+      "anchor": "--label-grouping-in-docker-desktop"
+    },
+    {
+      "question": "docker desktop stop group containers together devcontainer label",
+      "anchor": "--label-grouping-in-docker-desktop"
+    },
+    {
+      "question": "devcontainer uses compose.yaml do I still need runArgs",
+      "anchor": "and-if-my-devcontainer-uses-composeyaml"
+    },
+    {
+      "question": "compose.yaml name project_name devcontainer service",
+      "anchor": "and-if-my-devcontainer-uses-composeyaml"
+    },
+    {
+      "question": "add runArgs name label to every new devcontainer after image key",
+      "anchor": "conclusion"
+    }
+  ]
+}

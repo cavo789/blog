@@ -1,68 +1,58 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T19:02:13.370Z",
+  "generated": "2026-11-05T12:50:56.283Z",
+  "durationMs": 37278,
   "source": "index.md",
-  "sourceHash": "6811b6074752797e6054cc6224f65da06542c3d5",
-  "durationMs": 38791,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T06:26:19.452Z",
-    "articleHash": "bc972713b5c2bd4cd861c8f2385e31fd35bfaa50",
-    "questionsHash": "86d15f3df1c5a6ad",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "dd73f654cfd0d50ccacb4d91369223411e935669",
   "questions": [
     {
-      "question": "PHP devcontainer preinstalled code quality tools VSCode",
+      "question": "php devcontainer vscode preinstalled code quality tools",
       "anchor": ""
     },
     {
-      "question": "auto format PHP file on save without installing PHP on my machine",
+      "question": "auto format php on save without installing php locally",
       "anchor": "what-a-devcontainer-does-for-you"
     },
     {
-      "question": "how devcontainer Docker image and devcontainer.json work together for PHP",
+      "question": "how does devcontainer keep php and composer inside the container",
       "anchor": "why-it-works"
     },
     {
-      "question": "download ready-made PHP devcontainer config files github",
+      "question": "download ready-made php devcontainer config github",
       "anchor": "get-the-files"
     },
     {
-      "question": "devcontainer.json PHP format on save Composer configuration",
+      "question": "ms-azuretools.vscode-docker extension required devcontainer",
+      "anchor": "2-install-first-the-ms-azuretoolsvscode-docker-vscode-extension"
+    },
+    {
+      "question": "devcontainer.json php features extensions settings example",
       "anchor": "3-create-the-devcontainerjson-file"
     },
     {
-      "question": "Dockerfile PHP devcontainer install code quality tools",
+      "question": "dockerfile php devcontainer composer phpcs phpcbf",
       "anchor": "4-create-the-dockerfile-file"
     },
     {
-      "question": "PHP-CS-Fixer auto fix on save VSCode devcontainer",
+      "question": "reopen folder in container vscode php",
+      "anchor": "5-reopen-in-the-container"
+    },
+    {
+      "question": "php-cs-fixer format on save vscode",
       "anchor": "the-first-tool-weve-used-here-is-php-cs-fixer"
     },
     {
-      "question": "PHPCS PHPCBF PHP code style fixer setup",
+      "question": "phpcs phpcbf auto fix coding standard violations",
       "anchor": "the-second-set-of-tools-is-phpcbf-and-phpcs"
     },
     {
-      "question": "SonarLint PHP real-time bug detection devcontainer",
-      "anchor": "the-third-tool-is-sonarlint"
-    },
-    {
-      "question": "Intelephense PHP language server devcontainer",
-      "anchor": "the-fourth-tool-is-intelephense"
-    },
-    {
-      "question": "Rector PHP automated codebase upgrade refactoring",
+      "question": "rector php automated refactoring codebase upgrade",
       "anchor": "the-best-for-last-the-fifth-tool-is-rector"
     },
     {
-      "question": "ms-azuretools.vscode-docker extension required before devcontainer",
-      "anchor": "2-install-first-the-ms-azuretoolsvscode-docker-vscode-extension"
+      "question": "php devcontainer team consistent coding style",
+      "anchor": "conclusion"
     }
   ]
 }

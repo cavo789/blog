@@ -1,0 +1,10 @@
+$ ps1-sandbox Scan-Photos.ps1 /mnt/c/Photos
+7 files written to /reports/photos.csv
+
+Folder                 Photos PhotosMB Videos VideosMB TotalMB
+------                 ------ -------- ------ -------- -------
+/photos/2023/Christmas      2    2.900      1   11.400  14.300
+/photos/2024/Tuscany        2    2.900      1    2.900   5.700
+/photos/Scans               1    0.000      0    0.000   0.000
+
+Folder summary written to /reports/folders.csv

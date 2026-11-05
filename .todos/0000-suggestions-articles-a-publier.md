@@ -164,7 +164,9 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions-write`.
      qualitative pilotée par Claude plutôt qu'un contrôle mécanique planifié.
 - Bridge naturel avec le plus gros cluster du blog (Docker) et avec la série BlueSky révisée ce jour.
 
-### [ ] Redis — cache d'une vraie API rate-limitée (GitHub, compte cavo789), avec une image Docker ready-to-use
+### [x] Redis — cache d'une vraie API rate-limitée (GitHub, compte cavo789), avec une image Docker ready-to-use
+
+**Draft written:** .unpublished/redis-cache-github-api/index.md (2026-11-04)
 
 - Idée de Christophe (2026-08-28, affinée le même jour). Vérifié par grep — aucun article dédié à
   Redis, toutes les mentions existantes sont de passage (Redis vu dans l'UI de
@@ -238,3 +240,17 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions-write`.
 - Installation à vérifier avant rédaction (règle `safe-install-commands`) : disponibilité des
   paquets `miller` (apt, brew, winget) et existence d'une image Docker officielle si l'on veut le
   même pattern d'alias Docker que `linux-yq`.
+
+### [ ] Python `http.server` — un serveur web en une ligne, puis une vraie page générée par script
+
+- Idée de Christophe (2026-11-04), inspirée de
+  [crea-troyes.fr/16004](https://blog.crea-troyes.fr/16004/serveur-python-creez-un-serveur-web-sur-le-port-8000-en-1/).
+  Démontrer que Python embarque un serveur web (`python3 -m http.server 8000`, module standard,
+  rien à installer), puis un script Python dont la sortie est une page web.
+- Deux temps : (1) une page basique pour la preuve immédiate ; (2) quelque chose de réellement
+  utile et propre — **cas d'usage encore à définir** avant rédaction.
+- Doublons vérifiés par grep (`http.server`, `SimpleHTTP`) : aucun article dédié. Seule mention, de
+  passage : le draft `.unpublished/oha-http-load-testing` utilise `http.server` comme cible de
+  bench. Recherche sémantique : rien ≥ 0.70 ; le plus proche est `/blog/python-fastapi` (0.68),
+  angle différent (API JSON avec framework) — à citer comme étape suivante quand on dépasse le
+  module standard.

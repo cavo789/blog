@@ -1,0 +1,9 @@
+# Global defaults, baked into the image ($HOME/.aider.conf.yml).
+# A .aider.conf.yml at the root of a project still overrides them.
+model: ollama_chat/qwen2.5-coder:14b
+model-settings-file: ~/.aider.model.settings.yml
+# A larger repo map helps the model find the files to edit by itself
+map-tokens: 2048
+auto-commits: true
+analytics-disable: true
+check-update: false

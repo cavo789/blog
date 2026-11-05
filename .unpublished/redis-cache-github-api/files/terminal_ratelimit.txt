@@ -1,0 +1,8 @@
+$ for i in {1..7}; do ./rate-limit.sh; done
+✅ call 1/5 accepted
+✅ call 2/5 accepted
+✅ call 3/5 accepted
+✅ call 4/5 accepted
+✅ call 5/5 accepted
+⛔ call 6 — limit of 5/min reached, try again in 60 s
+⛔ call 7 — limit of 5/min reached, try again in 60 s

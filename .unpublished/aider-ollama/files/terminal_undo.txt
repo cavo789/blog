@@ -1,0 +1,7 @@
+> /git log --oneline -2
+9b07d3e (HEAD -> main) feat: Add per-folder size summary in folders.csv
+4c1e2a7 feat: Scan photo library and export photos.csv with EXIF dates
+
+> /undo
+Removed: 9b07d3e feat: Add per-folder size summary in folders.csv
+Now at:  4c1e2a7 feat: Scan photo library and export photos.csv with EXIF dates

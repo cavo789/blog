@@ -1,0 +1,7 @@
+$ docker exec -it redis-cache redis-cli MONITOR
+OK
+1793816165.091238 [0 127.0.0.1:37336] "GET" "github:repos:cavo789"
+1793816165.939203 [0 127.0.0.1:37346] "SET" "github:repos:cavo789" "[{…4802 bytes of JSON…}]"
+1793816165.989869 [0 127.0.0.1:37358] "EXPIRE" "github:repos:cavo789" "60"
+1793816166.054608 [0 127.0.0.1:37366] "GET" "github:repos:cavo789"
+1793816166.110443 [0 127.0.0.1:37370] "TTL" "github:repos:cavo789"

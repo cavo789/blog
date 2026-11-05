@@ -1,0 +1,10 @@
+{
+  "name": "Docusaurus",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "runArgs": [
+    "--name=docusaurus",
+    "--label=com.docker.compose.project=blog"
+  ]
+}

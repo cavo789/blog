@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-05T12:54:36.019Z",
+  "source": "devcontainer.json",
+  "sourceHash": "999a8938b293cdbcbdafe7753f38136a1323c91d",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier de configuration Docker définit les paramètres pour construire et exécuter un conteneur Docusaurus. Il spécifie le chemin du Dockerfile à utiliser pour la construction et configure les arguments d'exécution du conteneur, notamment son nom et une étiquette de projet.",
+  "explanations": {
+    "4": "Le chemin ../Dockerfile indique où trouver le fichier de recette pour construire l'image Docker, en remontant d'un niveau de répertoire.",
+    "7": "Le nom du conteneur sera 'docusaurus' lors de son exécution, ce qui permet de le référencer facilement par son identifiant.",
+    "8": "L'étiquette com.docker.compose.project=blog associe ce conteneur à un projet Docker Compose spécifique nommé 'blog', utile pour grouper et gérer plusieurs conteneurs liés."
+  }
+}
