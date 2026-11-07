@@ -43,7 +43,9 @@ it at the end.
    advisories on the tool itself.
 3. **Run everything for real before writing.** Build the sandbox, run each command the article
    shows, and copy the real output. Test the mounted-project form as well as the demo. A command
-   that wasn't run must be presented as such, or removed. For a web UI, take a real screenshot with
+   that wasn't run must be presented as such, or removed. Anything only the author can settle
+   (their screenshot, a choice, a run on their machine) becomes an
+   `<!-- AUTHOR-CHECK(<kind>): … -->` marker, never a guess (contract in `/suggestions:review`). For a web UI, take a real screenshot with
    a Playwright container, and filter out the host's unrelated containers. Remember the DooD trap:
    `-v` paths resolve on the host, so feed test data through a named volume or stdin.
 4. **Clean up what the tests started**: containers (including those left behind by `act` and

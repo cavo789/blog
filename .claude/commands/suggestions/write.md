@@ -51,7 +51,8 @@ If the user picks none (cancels), stop without changing anything.
    Use `WebFetch` against the tool's real docs/repo rather than writing from training-data memory;
    this project's own history has caught stale claims before (e.g. a wrong config path, an EOL'd
    tool) — don't repeat that. If something can't be verified, say so explicitly in the draft rather
-   than presenting a guess as fact.
+   than presenting a guess as fact: leave an `<!-- AUTHOR-CHECK(<kind>): … -->` marker where the
+   answer belongs (contract in `/suggestions:review`, which resolves them with the author).
 
 4. **Derive a slug** (kebab-case, matching the blog's naming pattern) and **write
    `.unpublished/<slug>/index.md`** — full frontmatter (`draft: true`, `slug`, `title`, `description`,
