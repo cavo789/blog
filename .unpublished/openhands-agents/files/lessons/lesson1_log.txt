@@ -1,0 +1,8 @@
+$ find /projects -name "grades.py" -type f
+  /projects/school/grades.py
+[view] /projects/school/grades.py
+$ cd /projects/school && python3 grades.py
+  Class average: 17.0
+[edit] grades.py:  average = total / 4  →  average = total / len(grades)
+$ cd /projects/school && python3 grades.py
+  Class average: 13.6

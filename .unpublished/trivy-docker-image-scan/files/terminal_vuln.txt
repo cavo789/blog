@@ -1,0 +1,19 @@
+$ trivy fs --scanners vuln --severity HIGH,CRITICAL .
+requirements.txt (pip)
+======================
+Total: 3 (HIGH: 1, CRITICAL: 2)
+
+┌─────────┬────────────────┬──────────┬────────┬───────────────────┬───────────────┬────────────────────────────────────────────────────────────┐
+│ Library │ Vulnerability  │ Severity │ Status │ Installed Version │ Fixed Version │                           Title                            │
+├─────────┼────────────────┼──────────┼────────┼───────────────────┼───────────────┼────────────────────────────────────────────────────────────┤
+│ flask   │ CVE-2023-30861 │ HIGH     │ fixed  │ 2.0.1             │ 2.3.2, 2.2.5  │ flask: Possible disclosure of permanent session cookie due │
+│         │                │          │        │                   │               │ to missing Vary: Cookie...                                 │
+│         │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2023-30861                 │
+├─────────┼────────────────┼──────────┤        ├───────────────────┼───────────────┼────────────────────────────────────────────────────────────┤
+│ pyyaml  │ CVE-2020-14343 │ CRITICAL │        │ 5.3               │ 5.4           │ PyYAML: incomplete fix for CVE-2020-1747                   │
+│         │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2020-14343                 │
+│         ├────────────────┤          │        │                   ├───────────────┼────────────────────────────────────────────────────────────┤
+│         │ CVE-2020-1747  │          │        │                   │ 5.3.1         │ PyYAML: arbitrary command execution through                │
+│         │                │          │        │                   │               │ python/object/new when FullLoader is used                  │
+│         │                │          │        │                   │               │ https://avd.aquasec.com/nvd/cve-2020-1747                  │
+└─────────┴────────────────┴──────────┴────────┴───────────────────┴───────────────┴────────────────────────────────────────────────────────────┘

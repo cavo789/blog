@@ -1,8 +1,8 @@
 # Reader Review Journal
 
-Tracks articles already audited for reader-first structure, so each `/reader_review` session
+Tracks articles already audited for reader-first structure, so each `/review:reader` session
 continues where the last one stopped. Do not edit manually — maintained by the
-`/reader_review` command.
+`/review:reader` command.
 
 Target structure: `.claude/skills/blog-post-structure/SKILL.md`
 
@@ -482,3 +482,29 @@ Target structure: `.claude/skills/blog-post-structure/SKILL.md`
 | 2026-09-29 | ssh-config-tips | published | 8,3% (Terminal l. 52 sur un corps de 300 l.) — abstraction-avant-preuve 🔴 : Snippet config 34 lignes (l. 48) avant Terminal preuve (l. 52) ; redondance 🟠 « first-value-wins » x4 ; 2 deep-dives non signalés ; bruit narratif 🟢 ; Conclusion ✅ (restructured 2026-09-29 : swap Terminal/Snippet, warning dupliqué retiré l.81, 2 deep-dives marqués, "The Four" → "The Five", titre+desc SEO generator) | RESTRUCTURE → done | DONE/DONE_reader-ssh-config-tips.md |
 | 2026-10-09 | wsl-docker-vhdx-cleanup | draft | 1,7% (Terminal df_after.txt l. 51 sur un corps de 345 l., T=45) — aucun drapeau ; « VHDX ne rétrécit pas » x4 🟠 ; 1 AlertBox danger dupliquée (shutdown l. 128 + l. 148) 🟠 ; `## Why Pruning Alone Is Not Enough` sans signal « optionnel » (mineur, section utile) ; bruit narratif 🟢 ; Conclusion ✅ (3 liens sortants) | MINOR | — |
 | 2026-10-29 | docusaurus-typo-report-component | published | 1,7% mécanique (plaintext l. 37 / corps 347, T=31) mais **aucune image** → TTV réel 100% ; 9 couches sécurité non signalées avant le code ; « one-way » x5 🟠 ; Summary = bloc mort, pas de Conclusion ni lien ; bruit 🟠 l. 271 ; coquille l. 212 | RESTRUCTURE → done | DONE/DONE_reader-docusaurus-typo-report-component.md |
+| 2026-11-07 | trivy-docker-image-scan | draft | 5% (Terminal l. 32, T=24) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue (commande collable + chiffre immédiat) | OK | — |
+| 2026-11-07 | tmux-ssh-persistent-sessions | draft | 24% (1re sortie l. 49) → 3% après ajout d'une preuve en tête de chapitre, Dockerfile après la preuve ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ | MINOR → corrigé | — |
+| 2026-11-07 | gitleaks-secret-scanning | draft | 4% (Terminal dès l'ouverture du chapitre, sortie réelle) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | docusaurus-components-accessibility-audit | draft | 5% (Terminal réel avant le Dockerfile) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | TODO 0140-0142 (défauts réels des composants, pas la structure) |
+| 2026-11-07 | typos-languagetool-spellcheck | draft | 4% (Terminal réel avant le Dockerfile) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | act-github-actions-locally | draft | 5% (Terminal réel avant Dockerfile ; fichier de sortie manquant détecté et créé à l'audit) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | gitlab-ci-local-pipeline | draft | 3% (Terminal réel d'un job simple avant le Dockerfile) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | dozzle-docker-logs | draft | 3% (capture réelle en tête de chapitre) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | miller-csv-cli | draft | 3% (avant/après awk vs mlr en tête de chapitre) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | python-http-server | draft | 2% (capture réelle du résultat en tête de chapitre) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | kubernetes-mini-lab-kind | draft | 5% (Terminal réel self-healing avant le Dockerfile) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | kubernetes-concepts | draft | 6% (schéma puis Terminal) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ | OK | — |
+| 2026-11-07 | n8n-event-automation | draft | 4% (Terminal réel avant les fichiers) — aucun drapeau ; redondance 🟢 ; bruit 🟢 ; Conclusion ✅ ; test 30 s : je continue | OK | — |
+| 2026-11-07 | trivy-docker-image-scan | draft | 5% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | tmux-ssh-persistent-sessions | draft | 7% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | gitleaks-secret-scanning | draft | 6% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | docusaurus-components-accessibility-audit | draft | 10% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | typos-languagetool-spellcheck | draft | 6% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | act-github-actions-locally | draft | 9% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | gitlab-ci-local-pipeline | draft | 5% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | dozzle-docker-logs | draft | 10% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | miller-csv-cli | draft | 6% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | python-http-server | draft | 12% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | kubernetes-concepts | draft | 5% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | kubernetes-mini-lab-kind | draft | 6% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-07 | n8n-event-automation | draft | 10% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |

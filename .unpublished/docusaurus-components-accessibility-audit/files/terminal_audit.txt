@@ -1,0 +1,23 @@
+$ docker run --rm a11y-check https://www.avonture.be/blog/linux-yq/
+
+https://www.avonture.be/blog/linux-yq/
+4 kinds of problems
+
+[serious] color-contrast (22x): Elements must meet minimum color contrast ratio thresholds
+    .navbar__link--active
+    .terminal_qOWF:nth-child(14) > .terminal_header_VDXb > .terminal_left_ZACC > .terminal_title_boiB.mk-eyebr
+    .terminal_qOWF:nth-child(18) > .terminal_header_VDXb > .terminal_left_ZACC > .terminal_title_boiB.mk-eyebr
+
+[serious] label-content-name-mismatch (4x): Elements must have their visible text as part of their accessible
+    .button_lbxS
+    .blueskyButton_XbUc
+    .btnNeutral_Iqek
+
+[serious] link-in-text-block (3x): Links must be distinguishable without relying on color
+    p:nth-child(7) > a[target=_blank][rel=noopener noreferrer]
+    p:nth-child(22) > a[target=_blank][rel=noopener noreferrer]
+    a[href$=follow]
+
+[serious] nested-interactive (2x): Interactive controls must not be nested
+    .seriesBlogPost_bjUd:nth-child(2) > details > summary
+    .seriesBlogPost_bjUd:nth-child(5) > details > summary

@@ -1,0 +1,3 @@
+The README says `php invoice.php` should print 490.05 EUR, but it does not.
+Find the bug, write a PHPUnit test that reproduces it, fix the code,
+and prove the test passes. Commit your work.

@@ -86,7 +86,7 @@ file/service (`grep -h '^- \*\*Batch\*\*:' .todos/*.md | sort -u` first — reus
 After writing the TODOs, regenerate the plan:
 
 ```text
-/todo-plan
+/todos:plan
 ```
 
 Do not hand-edit `.todos/plan.md` — it is a regenerated projection. In the final report, give the

@@ -1,0 +1,32 @@
+services:
+  dozzle:
+    image: amir20/dozzle:v11.4.1
+    ports:
+      # Local machine only: anyone reaching this page can read your logs
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  # Two demo containers, so that there is something to read
+  web:
+    image: nginx:alpine
+
+  orders:
+    image: busybox:1.37
+    command:
+      - sh
+      - -c
+      - |
+        i=1000
+        while true; do
+          i=$$((i + 1))
+          echo "INFO order $$i accepted"
+          sleep 2
+          if [ $$((i % 5)) -eq 0 ]; then
+            echo "ERROR order $$i rejected: payment timeout" >&2
+          fi
+        done
+
+  traffic:
+    image: busybox:1.37
+    command: sh -c 'while true; do wget -qO- http://web/ >/dev/null; sleep 3; done'

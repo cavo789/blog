@@ -1,0 +1,24 @@
+services:
+  openhands:
+    build: .
+    image: openhands-local
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      AGENT_CANVAS_ALLOW_LAN_SESSION_KEY: "true"
+      # Commits made by the agent are signed with this identity.
+      GIT_AUTHOR_NAME: OpenHands
+      GIT_AUTHOR_EMAIL: no-reply@gmail.com
+      GIT_COMMITTER_NAME: OpenHands
+      GIT_COMMITTER_EMAIL: no-reply@gmail.com
+    extra_hosts:
+      # Lets the container reach Ollama running on your machine.
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Settings and conversations survive a restart.
+      - openhands-data:/home/openhands/.openhands
+      # Your projects: every sub-folder becomes a workspace.
+      - ./projects:/projects
+
+volumes:
+  openhands-data:

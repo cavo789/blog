@@ -1,6 +1,6 @@
 # Plan d'exécution des TODO
 
-> Généré par `/todo-plan` le 2026-09-23 — **ne pas éditer à la main**, ce fichier est régénéré
+> Généré par `/todos:plan` le 2026-09-23 — **ne pas éditer à la main**, ce fichier est régénéré
 > depuis `.todos/*.md` à chaque exécution. La priorité et le batch vivent dans les TODO eux-mêmes.
 >
 > TODO ouverts : 13 — Critical : 0 · High : 3 · Medium : 6 · Low : 4 · Verrouillés : 0
@@ -12,9 +12,9 @@
 
 | # | Lot | Priorité | TODO | Prompt |
 |---|-----|----------|------|--------|
-| 1 | i18n-fr | High | 3 | `/todo 0122 0134 0135` |
-| 2 | deploy-pipeline | Medium | 2 | `/todo 0091 0111` |
-| 3 | eli5-tooling | Medium | 2 | `/todo 0131 0133` |
+| 1 | i18n-fr | High | 3 | `/todos:run 0122 0134 0135` |
+| 2 | deploy-pipeline | Medium | 2 | `/todos:run 0091 0111` |
+| 3 | eli5-tooling | Medium | 2 | `/todos:run 0131 0133` |
 
 ## Lots
 
@@ -29,7 +29,7 @@ contrôle de fidélité à côté de `translate-validate.mjs` ; 0135 branche un 
 sur la passe que 0134 vient d'écrire et touche `translate-contract.mjs`. Les traiter séparément
 ferait charger `scripts/lib/` trois fois.
 
-**Prompt :** `/todo 0122 0134 0135`
+**Prompt :** `/todos:run 0122 0134 0135`
 
 | Ordre | ID | Priorité | Titre | Dépend |
 |-------|----|----------|-------|--------|
@@ -45,7 +45,7 @@ ferait charger `scripts/lib/` trois fois.
 aligne `run_ci build` sur le sanity-check de ce même fichier. Le second lit ce que le premier
 modifie.
 
-**Prompt:** `/todo 0091 0111`
+**Prompt:** `/todos:run 0091 0111`
 
 | Ordre | ID | Priorité | Titre | Dépend |
 |-------|----|----------|-------|--------|
@@ -60,7 +60,7 @@ modifie.
 0133 ajoute l'action `eli5 judge` dans ce même écran et s'appuie sur la plomberie Ollama que 0131
 vient de poser. Les séparer revient à rouvrir `ollama.sh` deux fois pour deux lignes voisines.
 
-**Prompt :** `/todo 0131 0133`
+**Prompt :** `/todos:run 0131 0133`
 
 | Ordre | ID | Priorité | Titre | Dépend |
 |-------|----|----------|-------|--------|
@@ -69,7 +69,7 @@ vient de poser. Les séparer revient à rouvrir `ollama.sh` deux fois pour deux 
 
 ## Isolés
 
-Un `/todo NNNN` chacun, dans sa propre session — priorité la plus haute d'abord. Ceux-ci ne
+Un `/todos:run NNNN` chacun, dans sa propre session — priorité la plus haute d'abord. Ceux-ci ne
 partagent aucun fichier avec un frère de batch (ou n'en déclarent pas encore) : il n'y a rien
 qu'un lot puisse économiser.
 
@@ -85,7 +85,7 @@ qu'un lot puisse économiser.
 ## Partiellement faits — reste à faire
 
 Clos en `PARTIAL`, avec le reliquat documenté sous leurs puces `### Not done`. **Non mis en file :**
-`/todo NNNN` ne les atteint plus. Listés pour que le reste reste visible — en relancer un signifie
+`/todos:run NNNN` ne les atteint plus. Listés pour que le reste reste visible — en relancer un signifie
 déposer un nouveau TODO pour ce qui manque.
 
 | ID | Titre | Fichier |

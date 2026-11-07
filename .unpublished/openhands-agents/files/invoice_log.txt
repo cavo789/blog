@@ -1,0 +1,35 @@
+$ pwd && ls -la
+[edit] view /projects/invoice/README.md
+[edit] view /projects/invoice/invoice.php
+[edit] view /projects/invoice/src/Invoice.php
+$ php invoice.php
+  Total with 10% discount: 532.40 EUR
+[edit] create /projects/invoice/tests/InvoiceTest.php
+$ mkdir -p tests
+[edit] create /projects/invoice/tests/InvoiceTest.php
+$ composer show | grep phpunit
+$ composer init --name=invoice/test --autoload-dev="App\Tests" --no-interaction
+$ composer init --name=invoice/test --no-interaction
+$ composer require --dev phpunit/phpunit
+[edit] str_replace /projects/invoice/composer.json
+[edit] view /projects/invoice/composer.json
+[edit] str_replace /projects/invoice/composer.json
+$ composer dump-autoload
+$ ./vendor/bin/phpunit tests/InvoiceTest.php
+  Failed asserting that 532.4 matches expected 490.05.
+  Tests: 1, Assertions: 1, Failures: 1.
+[edit] str_replace /projects/invoice/src/Invoice.php
+$ ./vendor/bin/phpunit tests/InvoiceTest.php
+  OK (1 test, 1 assertion)
+$ php invoice.php
+  Total with 10% discount: 490.05 EUR
+[edit] str_replace /projects/invoice/tests/InvoiceTest.php
+$ ./vendor/bin/phpunit tests/InvoiceTest.php
+  ...                                                                 3 / 3 (100%)
+  OK (3 tests, 3 assertions)
+$ git status
+$ git add .
+$ git commit -m "Fix invoice calculation bug and add tests" -m "Fixed the subtotal method to correctly apply per
+  [master (root-commit) eae631f] Fix invoice calculation bug and add tests
+  7 files changed, 2022 insertions(+)
+[finish]

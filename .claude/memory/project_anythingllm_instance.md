@@ -45,7 +45,7 @@ Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the ho
 `questions review` specificity marks (rank of the article for each question: 1 ●, 2-3 ◐, >3 ○;
 EN corpus: 147/2140 questions ○ on 88 articles, full `--generic` scan ≈ 2 min), `links:check`
 meaning signal (mean over title + per-section queries, ≥ 0.65 = neighbour), `ai-related`
-(free text: ≥ 0.78 covered, ≥ 0.70 overlap) used by `/suggestions-add`. `vector-search` is
+(free text: ≥ 0.78 covered, ≥ 0.70 overlap) used by `/suggestions:add`. `vector-search` is
 ≈ 0.1 s warm, ≈ 14 s cold (embedder load). Traps: 2 EN docs (`bash-parallel-tasks`,
 `gemini-tldr`) have no `docSource` in chunk metadata → resolved via the state file's
 `custom-documents/<slug>.md-…` location; FR marks ≈ 2.5× noisier (English embedder).

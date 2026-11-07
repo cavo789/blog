@@ -1,0 +1,13 @@
+$ act -j formatting
+[Code quality/formatting] ⭐ Run Main npx --yes prettier@3 --check .
+[Code quality/formatting]   | Checking formatting...
+[Code quality/formatting]   | [warn] app.js
+[Code quality/formatting]   | [warn] Code style issues found in the above file. Run Prettier with --write to fix.
+[Code quality/formatting]   ❌  Failure - Main npx --yes prettier@3 --check . [1.052805965s]
+[Code quality/formatting] 🏁  Job failed
+
+$ act -j lint
+[Code quality/lint]   | /demo/app.js
+[Code quality/lint]   |   3:13  error  'unknownVariable' is not defined  no-undef
+[Code quality/lint]   | ✖ 1 problem (1 error, 0 warnings)
+[Code quality/lint] 🏁  Job failed

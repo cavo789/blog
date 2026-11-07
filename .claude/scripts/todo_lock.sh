@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Advisory lock for /todo, so two Claude Code sessions sharing the same checked-out
+# Advisory lock for /todos:run, so two Claude Code sessions sharing the same checked-out
 # .todos/ (the common case: two terminals/sessions in the same devcontainer) don't
 # process the same TODO number at once.
 #
 # Locks are keyed by numeric *value*, not digit width — 055 and 0055 collide, same
-# as how /todo itself resolves a TODO number to a file ("matched by value, not by
+# as how /todos:run itself resolves a TODO number to a file ("matched by value, not by
 # digit width"). Implemented as a directory (mkdir is atomic: it fails if the
 # directory already exists, so two near-simultaneous `acquire` calls can't both
 # succeed), holding a single `since` file with a UTC timestamp.

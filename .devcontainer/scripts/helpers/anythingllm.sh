@@ -20,7 +20,7 @@ function ai-search() {
 }
 
 # Ranking only — no chat model, no answer to wait for: which articles are closest in meaning
-# to a topic, an idea, or another article. /suggestions-add calls the same script to catch an
+# to a topic, an idea, or another article. /suggestions:add calls the same script to catch an
 # idea already covered under another name.
 #
 # @cat AnythingLLM

@@ -1,0 +1,1 @@
+{ "project": { "path_with_namespace": "team/billing" }, "object_attributes": { "ref": "develop", "status": "failed", "url": "https://gitlab.example.com/team/billing/-/pipelines/456" } }

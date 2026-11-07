@@ -50,3 +50,4 @@
 - [SSH Config Tips Publication](project_ssh_config_tips_publication.md) — article ssh-config-tips prévu 2026-10-02, 5 sections après fix devcontainer ProxyJump (`code.bosa.fgov.be` manquait des exceptions)
 - [Questions Triage](project_questions_triage.md) — `questions triage` : juge Ollama au lieu de la relecture manuelle, rejette sans supprimer, idempotent par tampon ; 1er run EN prévu 2026-09-24
 - [No Real Email](feedback_no_real_email.md) — jamais l'email réel dans le repo ; placeholder no-reply@gmail.com (labels OCI, git log d'exemple)
+- [OpenHands Article](project_openhands_article.md) — 2 drafts (openhands-agents : 3 leçons Python + finale PHP ; openhands-laravel-upgrade) ; LLM réglé dans l UI, Dockerfile requis (UID), marqueurs AUTHOR-CHECK + /suggestions:review

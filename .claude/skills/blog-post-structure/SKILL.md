@@ -16,7 +16,7 @@ twice. The article must prove its value in that minute — not after the prerequ
 after the source code, not at 73% of the page.
 
 This skill defines the **canonical section order** for this blog. It is the single source of
-truth: `/reader_review` audits against it, `AGENTS.md` points at it. Do not restate the
+truth: `/review:reader` audits against it, `AGENTS.md` points at it. Do not restate the
 structure elsewhere — link here.
 
 It does **not** replace the writing conventions in `AGENTS.md` → *Blog Content Guidelines*
@@ -278,4 +278,4 @@ Each of these was measured on a real article of this blog:
     `grep -niE "found out|turns out|I tried|hard way|bit me|at first|I expected|I only know" <path>`
     First-person *judgment* stays (this blog's voice); first-person *chronology* goes.
 
-`/reader_review <path>` runs the same checks and puts a number on question 1.
+`/review:reader <path>` runs the same checks and puts a number on question 1.

@@ -233,7 +233,7 @@ Governance rules in `AGENTS.md` — treat as binding.
 - `lib/anythingllm.mjs` — vector search against the local AnythingLLM workspaces (`blog`,
   `blog-fr`), **no chat model involved**. Three optional consumers: the specificity marks of
   `questions review` (●/◐/○, `g`, `--generic`), the *meaning* signal of `links:check`, and
-  `ai-related.mjs` (used by `/suggestions-add`). `connect()` returns null under `CI`, with the
+  `ai-related.mjs` (used by `/suggestions:add`). `connect()` returns null under `CI`, with the
   container stopped or with `ANYTHINGLLM_DISABLE=1` — every consumer must then behave exactly as
   without it. The indexer's state file is not proof an article is searchable (a failed
   vectorization is still recorded): check that it comes up for its own title. The embedder
@@ -293,9 +293,9 @@ Status subfolders: `DONE/`, `PARTIAL/`, `BLOCKED/`, `WONT_DO/`.
 Language: **French** (private, never published).
 Format and numbering: **`todo-authoring`** skill — load it before writing any TODO.
 
-`0000-slug.md` files are the exception: standing aggregates, never processed by `/todo` or ranked by
-`/todo-plan`. `0000-suggestions-articles-a-publier.md` is the article-idea backlog — maintained by
-`/suggestions-add` (append) and `/suggestions-write` (pick + draft + mark done in place), distinct
+`0000-slug.md` files are the exception: standing aggregates, never processed by `/todos:run` or ranked by
+`/todos:plan`. `0000-suggestions-articles-a-publier.md` is the article-idea backlog — maintained by
+`/suggestions:add` (append) and `/suggestions:write` (pick + draft + delete the idea), distinct
 from `0000-freshness-journal.md`/`0000-reader-review-journal.md` which are pure logs.
 
 ### Auto-memory
@@ -308,9 +308,9 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 - **Agents** (`./claude/agents/`) are read-only reviewers run as isolated subagents. Each is only
   reachable through a matching slash command — there is no other discovery path.
 - **Commands** (`./claude/commands/`) are the only self-discoverable layer (`/` autocompletes them).
-  Review commands wrap the matching agent; workflow commands (`/todo`, `/todo-add`, `/todo-plan`,
-  `/suggestions-add`, `/suggestions-write`, `/freshness`, `/links`, `/refresh`, `/reader_review`,
-  `/review_blog`, `/deep_review`, `/tags-review`) drive direct implementation or batch processing.
+  Review commands wrap the matching agent; workflow commands (`/todos:run`, `/todos:add`, `/todos:plan`,
+  `/suggestions:add`, `/suggestions:write`, `/suggestions:iterate`, `/freshness`, `/links`, `/refresh`, `/review:reader`,
+  `/review:blog`, `/review:components`, `/review:tags`) drive direct implementation or batch processing.
 - **Skills** (`./claude/skills/`) are methodologies Claude loads by contextual trigger or because a
   command/agent explicitly binds one. Never typed directly.
 - **Rules** (`./claude/rules/`) load deterministically off a `paths:` glob — every time a matching
@@ -321,23 +321,24 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 
 | Command                         | Agent                                | Skill(s)                                                              |
 | ------------------------------- | ------------------------------------ | --------------------------------------------------------------------- |
-| `/bash-review`                  | `bash-best-practices-reviewer`       | `bash-best-practices`                                                 |
-| `/python-review`                | `python-best-practices-reviewer`     | `python-best-practices`                                               |
-| `/docker-review`                | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices`, `devcontainer-dockerfile-best-practices` |
+| `/review:bash`                  | `bash-best-practices-reviewer`       | `bash-best-practices`                                                 |
+| `/review:python`                | `python-best-practices-reviewer`     | `python-best-practices`                                               |
+| `/review:docker`                | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices`, `devcontainer-dockerfile-best-practices` |
 | `/docker-dive-optimization`     | *(none)*                             | `docker-image-slimming`                                               |
-| `/deep_review`                  | *(none)*                             | *(inline, see command)*                                               |
-| `/review_blog`                  | *(none)*                             | *(inline, see command)*                                               |
-| `/reader_review`                | *(none)*                             | `reader-first-docs`, `blog-post-structure`                            |
+| `/review:components`            | *(none)*                             | *(inline, see command)*                                               |
+| `/review:blog`                  | *(none)*                             | *(inline, see command)*                                               |
+| `/review:reader`                | *(none)*                             | `reader-first-docs`, `blog-post-structure`                            |
 | `/freshness`                    | *(none)*                             | *(inline, see command)*                                               |
 | `/links`                        | *(none)*                             | *(inline, see command)*                                               |
 | `/refresh`                      | *(none)*                             | *(inline, see command)*                                               |
-| `/todo`                         | *(none)*                             | `todo-authoring` (via lock scripts)                                   |
-| `/todo-add`                     | *(none)*                             | `todo-authoring`                                                      |
-| `/todo-plan`                    | *(none)*                             | *(inline, via `todo_parse_backlog.sh`)*                               |
-| `/suggestions-add`              | *(none)*                             | *(inline, see command)*                                               |
-| `/suggestions-write`            | *(none)*                             | `blog-post-structure`                                                 |
+| `/todos:run`                    | *(none)*                             | `todo-authoring` (via lock scripts)                                   |
+| `/todos:add`                    | *(none)*                             | `todo-authoring`                                                      |
+| `/todos:plan`                   | *(none)*                             | *(inline, via `todo_parse_backlog.sh`)*                               |
+| `/suggestions:add`              | *(none)*                             | *(inline, see command)*                                               |
+| `/suggestions:write`            | *(none)*                             | `blog-post-structure`                                                 |
+| `/suggestions:iterate`          | *(none)*                             | `blog-post-structure`, `safe-install-commands`                        |
 | *(no command — loaded by rule)* | *(none)*                             | `safe-install-commands`                                               |
-| `/tags-review`                  | *(none)*                             | *(inline, see command)*                                               |
+| `/review:tags`                  | *(none)*                             | *(inline, see command)*                                               |
 
 ### Rule → skill map
 
@@ -355,11 +356,11 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 
 `agents/reader-first-docs-reviewer.md` audits long-form docs (README, CONTRIBUTING) and uses the
 `reader-first-docs` skill, but has no corresponding command — it cannot be triggered via `/`.
-Note: `/reader_review` already handles *blog articles* via the same skill; this agent would
-cover *project docs*, a different scope. To activate it, add a `reader-first-docs-review.md`
+Note: `/review:reader` already handles *blog articles* via the same skill; this agent would
+cover *project docs*, a different scope. To activate it, add a `review/docs.md` (`/review:docs`)
 command.
 
-## OCI image labels (for `/docker-review`)
+## OCI image labels (for `/review:docker`)
 
 | Label                               | Value               |
 | ----------------------------------- | ------------------- |

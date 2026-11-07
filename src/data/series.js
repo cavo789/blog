@@ -79,6 +79,13 @@ const SERIES_DATA = [
     color: "#22c55e",
   },
   {
+    name: "Kubernetes first steps",
+    description:
+      "What Kubernetes solves for Docker users, then a hands-on lab in a throwaway local cluster.",
+    image: "/img/series/devops.webp",
+    color: "#326ce5",
+  },
+  {
     name: "MS Excel - Connect to a SQL Server database",
     description:
       "Use Excel to query SQL Server databases directly and automate reporting.",

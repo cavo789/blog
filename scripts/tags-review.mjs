@@ -19,10 +19,10 @@
  *   - a specific `<article>` is named (regenerate just that one row).
  *
  * Usage:
- *   node scripts/tags-review.mjs                 # new + never-generated articles only
- *   node scripts/tags-review.mjs --force          # regenerate every article's suggestion
- *   node scripts/tags-review.mjs <article>        # regenerate just one article's row
- *   node scripts/tags-review.mjs --status         # print pending rows, no Ollama calls
+ *   node scripts/review:tags.mjs                 # new + never-generated articles only
+ *   node scripts/review:tags.mjs --force          # regenerate every article's suggestion
+ *   node scripts/review:tags.mjs <article>        # regenerate just one article's row
+ *   node scripts/review:tags.mjs --status         # print pending rows, no Ollama calls
  *
  * In the devcontainer: `tags review [--force] [<article>]`, `tags review --status`.
  */
@@ -220,10 +220,10 @@ async function run() {
   if (args.includes("--help") || args.includes("-h")) {
     console.log(`
 Usage:
-  node scripts/tags-review.mjs                 # new + never-generated articles only
-  node scripts/tags-review.mjs --force         # regenerate every article's suggestion
-  node scripts/tags-review.mjs <article>       # regenerate just one article's row (path or slug)
-  node scripts/tags-review.mjs --status        # print the journal's pending rows, no Ollama calls
+  node scripts/review:tags.mjs                 # new + never-generated articles only
+  node scripts/review:tags.mjs --force         # regenerate every article's suggestion
+  node scripts/review:tags.mjs <article>       # regenerate just one article's row (path or slug)
+  node scripts/review:tags.mjs --status        # print the journal's pending rows, no Ollama calls
 
 Journal: .todos/0000-tags-review-journal.md — the Revu column is filled in by Claude during
 a review session with the author, not by this script.

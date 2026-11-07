@@ -1,0 +1,1 @@
+{ "repository": { "full_name": "cavo789/my-app" }, "workflow_run": { "head_branch": "main", "conclusion": "failure", "html_url": "https://github.com/cavo789/my-app/actions/runs/123" } }

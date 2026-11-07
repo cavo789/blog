@@ -70,6 +70,11 @@ const SERIES_FR = {
     description:
       "Maîtriser les concepts du test fonctionnel et automatiser efficacement les parcours d'interface.",
   },
+  "Kubernetes first steps": {
+    label: "Premiers pas avec Kubernetes",
+    description:
+      "Ce que Kubernetes résout pour les utilisateurs de Docker, puis un lab pratique dans un cluster local jetable.",
+  },
   "MS Excel - Connect to a SQL Server database": {
     label: "MS Excel — se connecter à une base SQL Server",
     description:

@@ -1,0 +1,17 @@
+services:
+  dashboard:
+    build: .
+    command: python /app/dashboard.py
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  # Three neighbors, so that there is something to display
+  web:
+    image: nginx:alpine
+  cache:
+    image: redis:8-alpine
+  broken:
+    image: busybox:1.37
+    command: sh -c "echo Something went wrong; exit 1"

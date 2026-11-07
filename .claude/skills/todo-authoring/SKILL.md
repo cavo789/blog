@@ -1,6 +1,6 @@
 ---
 name: todo-authoring
-description: Shared contract for filing a TODO into a project's `.todos/` backlog — ID numbering via `todo_next_id.sh`, the `NNNN-short-description.md` filename convention, the anti-duplication check, and the mandatory `Priority`/`Batch`/`Depends`/`Files` header bullets that `/todo-plan` parses. Every command or skill that files TODOs (`deep-code-review`, `focused-code-review`, `ux-onboarding-review`, `reader-first-docs`, `/docker-review`, `/todo-add`, …) loads this instead of restating it. Internal methodology — not invoked directly by a user.
+description: Shared contract for filing a TODO into a project's `.todos/` backlog — ID numbering via `todo_next_id.sh`, the `NNNN-short-description.md` filename convention, the anti-duplication check, and the mandatory `Priority`/`Batch`/`Depends`/`Files` header bullets that `/todos:plan` parses. Every command or skill that files TODOs (`deep-code-review`, `focused-code-review`, `ux-onboarding-review`, `reader-first-docs`, `/review:docker`, `/todos:add`, …) loads this instead of restating it. Internal methodology — not invoked directly by a user.
 disable-model-invocation: false
 ---
 
@@ -11,7 +11,7 @@ Generic across every command or skill that files work into `.todos/`. This skill
 *which* findings deserve a TODO or how many (exhaustive for `deep-code-review`, selective for
 `focused-code-review`/`reader-first-docs`/`ux-onboarding-review`) — that judgment call belongs to the
 calling command/skill. Load this skill before writing any TODO file; do not restate its rules inline
-in a command — a paraphrase drifts from the real contract and from what `/todo-plan`'s parser
+in a command — a paraphrase drifts from the real contract and from what `/todos:plan`'s parser
 actually expects.
 
 File one TODO per item, flat under `.todos/`.
@@ -29,7 +29,7 @@ File one TODO per item, flat under `.todos/`.
 - **Anti-duplication** — before writing, confirm no existing item (any folder) already covers it; if
   related, reference it and say whether to extend or chain rather than duplicate.
 
-Every TODO opens with `# NNNN — title`, then a bullet header the plan generator (`/todo-plan`) parses.
+Every TODO opens with `# NNNN — title`, then a bullet header the plan generator (`/todos:plan`) parses.
 The first four fields are mandatory and machine-readable:
 
 ```markdown
@@ -56,7 +56,7 @@ The first four fields are mandatory and machine-readable:
   touch; a one-member key is fine.
 - **Depends** — comma-separated bare `NNNN` IDs that must be implemented first, or `—` for none.
   Only real ordering constraints; "related to" belongs elsewhere. **Plain numeric IDs only** — never
-  a `[[wikilink]]` or a full `NNNN-slug.md` filename: `todo_parse_backlog.sh` and `/todo-plan` match
+  a `[[wikilink]]` or a full `NNNN-slug.md` filename: `todo_parse_backlog.sh` and `/todos:plan` match
   digits, so anything else silently drops the dependency instead of erroring.
 - **Files** — backtick-quoted paths touched by the fix, comma-separated. `TBD` only when the TODO is
   genuinely decision-only (no files identified yet).
@@ -64,6 +64,6 @@ The first four fields are mandatory and machine-readable:
 A caller may add its own extra mandatory fields on top of these four (e.g. `ux-onboarding-review`'s
 `Horizon`) — say so explicitly in that skill rather than leaving it implicit.
 
-After writing the TODOs, regenerate the execution plan with `/todo-plan` (it parses these bullets).
+After writing the TODOs, regenerate the execution plan with `/todos:plan` (it parses these bullets).
 Do not hand-edit `.todos/plan.md` — it is a regenerated projection. In the report, point to
 `.todos/plan.md` and quote the first prompt to run.

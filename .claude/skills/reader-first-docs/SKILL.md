@@ -1,20 +1,20 @@
 ---
 name: reader-first-docs
-description: Time-to-value audit methodology for Docusaurus blog articles — front-load proof, keep install/code before the first result visible, measure TTV mechanically from line positions. Defines the four passes (mechanical, repetition, author's-journey noise, qualitative), the metric thresholds, and the OK/MINOR/RESTRUCTURE verdict. Docusaurus-specific (MDX components, <!-- truncate --> anchor, AlertBox, Terminal, Snippet). For the audit workflow (journal, batch selection, TODO filing), invoke via /reader_review, not directly.
+description: Time-to-value audit methodology for Docusaurus blog articles — front-load proof, keep install/code before the first result visible, measure TTV mechanically from line positions. Defines the four passes (mechanical, repetition, author's-journey noise, qualitative), the metric thresholds, and the OK/MINOR/RESTRUCTURE verdict. Docusaurus-specific (MDX components, <!-- truncate --> anchor, AlertBox, Terminal, Snippet). For the audit workflow (journal, batch selection, TODO filing), invoke via /review:reader, not directly.
 disable-model-invocation: false
 ---
 
 # Reader-First Docs — Docusaurus Blog
 
 Load before auditing an article under `blog/` or `.unpublished/`. This skill defines the
-**methodology** only — what to measure and how to judge. The `/reader_review` command owns the
+**methodology** only — what to measure and how to judge. The `/review:reader` command owns the
 workflow: which articles to audit, in what order, and how to track progress across sessions.
 
 The target structure every article should converge toward is defined in `blog-post-structure` —
 load it too if the nature of a required restructure is unclear. While reading an article's
 `<Terminal>`/`<Snippet>` blocks for Pass 1 below, also note a value the reader would change (a
 port, a container name, a version) hardcoded and repeated across 2+ commands instead of declared
-once with `<Vars>` — `blog-post-structure`'s self-check names this explicitly; a `/reader_review`
+once with `<Vars>` — `blog-post-structure`'s self-check names this explicitly; a `/review:reader`
 pass is a natural place to catch an older article that predates the component.
 
 ## The principle: Time-to-Value (TTV)
@@ -163,7 +163,7 @@ Exactly one per article:
 `MINOR` never produces a TODO: a batch sweep over 40+ articles would bury real findings under
 one-line files for every article with a single flat ending.
 
-For `RESTRUCTURE`, file one TODO (format and language: see `/reader_review`). The proposed fix is
+For `RESTRUCTURE`, file one TODO (format and language: see `/review:reader`). The proposed fix is
 always a **reorder**, never a cut — name which existing section/line range each reordered block
 comes from, so nothing reads as discarded.
 

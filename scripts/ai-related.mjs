@@ -11,7 +11,7 @@
  * A vector search against the local AnythingLLM workspace (scripts/lib/anythingllm.mjs) — no
  * chat model, no API cost, well under a second once the embedder is loaded. Where `ai-search`
  * asks a model to *answer* from the blog, this only *ranks* it, which is what "have I already
- * written about this?" needs: `/suggestions-add` runs it on every new idea before recording
+ * written about this?" needs: `/suggestions:add` runs it on every new idea before recording
  * it, next to its keyword grep, because a grep only finds the words the idea happens to use.
  *
  * Text is compared chunk by chunk (best chunk wins); an article is compared section by section

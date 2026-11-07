@@ -1,0 +1,32 @@
+[
+  {
+    "id": "ciAlertsDemo01",
+    "name": "CI alerts",
+    "active": true,
+    "nodes": [
+      {
+        "id": "a1",
+        "name": "CI webhook",
+        "type": "n8n-nodes-base.webhook",
+        "typeVersion": 2,
+        "position": [0, 0],
+        "webhookId": "ci-alerts",
+        "parameters": { "httpMethod": "POST", "path": "ci", "responseMode": "lastNode" }
+      },
+      {
+        "id": "a2",
+        "name": "Normalize",
+        "type": "n8n-nodes-base.code",
+        "typeVersion": 2,
+        "position": [260, 0],
+        "parameters": {
+          "jsCode": "const body = $input.first().json.body;\nconst github = body.workflow_run;\nconst gitlab = body.object_attributes;\nconst alert = github\n  ? { platform: 'GitHub', project: body.repository.full_name, branch: github.head_branch, status: github.conclusion, url: github.html_url }\n  : { platform: 'GitLab', project: body.project.path_with_namespace, branch: gitlab.ref, status: gitlab.status, url: gitlab.url };\nalert.message = `${alert.platform}: ${alert.project} (${alert.branch}) is ${alert.status}`;\nreturn [{ json: alert }];"
+        }
+      }
+    ],
+    "connections": {
+      "CI webhook": { "main": [[{ "node": "Normalize", "type": "main", "index": 0 }]] }
+    },
+    "settings": {}
+  }
+]
