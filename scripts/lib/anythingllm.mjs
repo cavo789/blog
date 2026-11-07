@@ -1,6 +1,6 @@
 // Semantic lookups against the local AnythingLLM workspaces — vector search only, no LLM call.
 //
-// `ai-index` / `ai-index-fr` (.scripts/anythingllm-index.sh) embed every published article into
+// `ai-index` / `ai-index-fr` (scripts/anythingllm-index.sh) embed every published article into
 // one workspace per locale. `/api/v1/workspace/<slug>/vector-search` then answers "which
 // articles are closest in meaning to this text?" in about 0.1 s, without waking a chat model:
 // it only embeds the query. That is what the tooling here needs — a ranking, not a prose answer.

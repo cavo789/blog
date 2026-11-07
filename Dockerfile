@@ -253,7 +253,7 @@ COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" blog/              ./blog/
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" src/               ./src/
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" static/            ./static/
 COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" plugins/           ./plugins/
-COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" docusaurus.config.js sidebars.js ./
+COPY --chown="${OS_USERNAME}":"${OS_USERNAME}" docusaurus.config.js ./
 
 # Build the Docusaurus site into static HTML/CSS/JS
 RUN yarn build

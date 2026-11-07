@@ -19,7 +19,11 @@ on:
       - ".claude/**"
       - ".config/**"
       - ".devcontainer/**"
-      - ".scripts/**"
+      - "scripts/anythingllm-*"
+      - "scripts/check-spelling.*"
+      - "scripts/python_tldr/**"
+      - "scripts/tags-manager.*"
+      - "scripts/yaml-manager.*"
       - ".todos/**"
       - ".tools/**"
       - ".vscode/**"
@@ -30,7 +34,11 @@ on:
       - ".claude/**"
       - ".config/**"
       - ".devcontainer/**"
-      - ".scripts/**"
+      - "scripts/anythingllm-*"
+      - "scripts/check-spelling.*"
+      - "scripts/python_tldr/**"
+      - "scripts/tags-manager.*"
+      - "scripts/yaml-manager.*"
       - ".todos/**"
       - ".tools/**"
       - ".vscode/**"
@@ -138,7 +146,7 @@ jobs:
       # positive on `ARG USERNAME`). They stay readable in this job's log.
       #
       # Docker is only reached for files whose hash moved since the committed
-      # .snippet-lint.json — the linters run as containers (shellcheck, hadolint,
+      # scripts/.snippet-lint.json — the linters run as containers (shellcheck, hadolint,
       # yamllint, php, ruff) rather than being installed here. On a push that
       # touches no snippet, nothing is pulled and the job re-reports the stored
       # verdicts in under a second.

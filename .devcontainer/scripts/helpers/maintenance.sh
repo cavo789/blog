@@ -68,7 +68,7 @@ function snippets() {
         judge)
             shift
             # Pass 2 (TODO 0137): the obsolescence judge, ~9 s per file on the local GPU.
-            # Resumable by construction — every verdict is written to .snippet-lint.json as it
+            # Resumable by construction — every verdict is written to scripts/.snippet-lint.json as it
             # lands, and a later run only picks up what has no verdict yet.
             yarn snippets:lint --judge-only "$@"
             ;;

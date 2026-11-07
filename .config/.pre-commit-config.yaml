@@ -44,7 +44,7 @@ repos:
         # `measure`. There is no configuration that fixes this; the checker simply does not know
         # the language. The English sources these files are translated from are still checked.
         files: '\.(md|mdx)$'
-        exclude: '^(api|src/components/|plugins/|\.scripts/|\.claude/|\.github/|\.todos/|\.unpublished/|i18n/)'
+        exclude: '^(api|src/components/|plugins/|\scripts/|\.claude/|\.github/|\.todos/|\.unpublished/|i18n/)'
 
   # ── Markdown linter (uses existing .config/.markdownlint.json) ───────────
   - repo: https://github.com/DavidAnson/markdownlint-cli2
@@ -58,7 +58,7 @@ repos:
         # repeated once per batch, which is what made the output so verbose.
         require_serial: true
         # Internal files: memory, readmes, script docs, GitHub config, root README
-        exclude: '^(\.claude/|\.github/|\.todos/|\.unpublished/|api|src/components/.+/readme\.md|plugins/.+/readme\.md|\.scripts/|README\.md$|\.unpublished/.+/files/)'
+        exclude: '^(\.claude/|\.github/|\.todos/|\.unpublished/|api|src/components/.+/readme\.md|plugins/.+/readme\.md|\scripts/|README\.md$|\.unpublished/.+/files/)'
 
   # ── JS/JSX linting and formatting ────────────────────────────────────────
   - repo: local

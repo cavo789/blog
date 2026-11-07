@@ -2,7 +2,7 @@
 #
 # Index every blog post into an AnythingLLM workspace.
 #
-#   .scripts/anythingllm-index.sh          # from the root of the blog
+#   scripts/anythingllm-index.sh          # from the root of the blog
 #   ai-index                               # same thing, devcontainer shell
 #
 # Re-run it after publishing a new article: only new and modified posts are
@@ -11,7 +11,7 @@
 # KEEP IN SYNC with the copy published in the article:
 #   blog/2026/08/17/anythingllm-chat-with-your-docs/files/anythingllm-index.sh
 # Only this header block differs; everything below it must stay identical.
-# Check with:  diff <(tail -n +16 .scripts/anythingllm-index.sh) \
+# Check with:  diff <(tail -n +16 scripts/anythingllm-index.sh) \
 #                   <(tail -n +9 blog/2026/08/17/anythingllm-chat-with-your-docs/files/anythingllm-index.sh)
 
 set -o errexit

@@ -6,20 +6,20 @@
 # 3. Start a terminal, go to your blog and run the following command,
 #    docker run -it --rm -v ${PWD}:/app -w /app python sh -c "pip install google-genai python-dotenv  > /dev/null 2>&1 && /bin/bash"
 # 4. Inside the container, run:
-#    python .scripts/python_tldr/main.py <path-to-markdown-file-or-directory>
+#    python scripts/python_tldr/main.py <path-to-markdown-file-or-directory>
 #
 # Examples:
 #    Process the entire blog directory:
-#       python .scripts/python_tldr/main.py blog/
+#       python scripts/python_tldr/main.py blog/
 #
 #    Process a specific year i.e. all posts from 2026:
-#       python .scripts/python_tldr/main.py blog/2026/
+#       python scripts/python_tldr/main.py blog/2026/
 #
 #    Process a specific year and month i.e. all posts from January 2026:
-#       python .scripts/python_tldr/main.py blog/2026/01
+#       python scripts/python_tldr/main.py blog/2026/01
 #
 #    Process a single blog post:
-#       python .scripts/python_tldr/main.py blog/2026/01/05
+#       python scripts/python_tldr/main.py blog/2026/01/05
 
 import argparse
 import os

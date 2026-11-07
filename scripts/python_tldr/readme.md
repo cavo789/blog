@@ -46,25 +46,25 @@ Providing a TL;DR section at the beginning of a long blog post or documentation 
     - **Process the entire blog directory:**
 
       ```bash
-      python .scripts/python_tldr/main.py blog/
+      python scripts/python_tldr/main.py blog/
       ```
 
     - **Process all posts from a specific year (e.g., 2026):**
 
       ```bash
-      python .scripts/python_tldr/main.py blog/2026/
+      python scripts/python_tldr/main.py blog/2026/
       ```
 
     - **Process all posts from a specific month (e.g., January 2026):**
 
       ```bash
-      python .scripts/python_tldr/main.py blog/2026/01/
+      python scripts/python_tldr/main.py blog/2026/01/
       ```
 
     - **Process a single blog post:**
 
       ```bash
-      python .scripts/python_tldr/main.py blog/2026/01/some-post.md
+      python scripts/python_tldr/main.py blog/2026/01/some-post.md
       ```
 
 ## 🧪 Output

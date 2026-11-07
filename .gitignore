@@ -52,4 +52,4 @@ build-verify
 .translation-rejected/
 
 # Atomic-write scratch file of the snippet lint state — never a real artefact
-.snippet-lint.json.tmp
+scripts/.snippet-lint.json.tmp

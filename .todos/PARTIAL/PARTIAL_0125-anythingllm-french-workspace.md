@@ -11,7 +11,7 @@ n'utilise pas AnythingLLM. Les deux chantiers sont indépendants.
 ## Problème
 
 Signalé par l'auteur le 2026-09-16. Le workspace `blog` d'AnythingLLM est alimenté par
-`.scripts/anythingllm-index.sh`, qui lit `BLOG_DIR` (`blog/` par défaut) — donc **le corpus
+`scripts/anythingllm-index.sh`, qui lit `BLOG_DIR` (`blog/` par défaut) — donc **le corpus
 anglais uniquement**. Interroger le blog en français depuis AnythingLLM cherche dans des
 embeddings anglais et ne trouve rien de pertinent.
 
@@ -76,7 +76,7 @@ et n'est pas modifié par l'indexation française.
   compte 257 documents, soit la totalité du corpus publié.
 - Workspace `blog-fr` créé via l'API (`POST /api/v1/workspace/new`), avec les réglages du
   workspace anglais : `topN: 20`, `similarityThreshold: 0.2`, `openAiHistory: 20`, et le prompt
-  système de `.scripts/anythingllm-workspace-prompt.txt` appliqué verbatim.
+  système de `scripts/anythingllm-workspace-prompt.txt` appliqué verbatim.
 - `.gitignore` : `.anythingllm-indexed` remplacé par `.anythingllm-indexed*`, avec un commentaire
   nommant les deux fichiers. La ligne exacte précédente ne couvrait pas la variante française.
 - Corpus français indexé : **103 des 104 articles traduits**, 0 échec hors le cas ci-dessous.

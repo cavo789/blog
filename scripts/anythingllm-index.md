@@ -62,7 +62,7 @@ aiindex
 Or directly, from the root of the blog:
 
 ```bash
-.scripts/anythingllm-index.sh
+scripts/anythingllm-index.sh
 ```
 
 ## Output example

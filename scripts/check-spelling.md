@@ -21,7 +21,7 @@ The `check-spelling.sh` script is a localized quality assurance tool designed fo
 
 ## How to Use
 
-Run `make devcontainer` to start the development container with Docker Compose. Then open a terminal in the `blog` service and execute: `.scripts/check-spelling.sh`
+Run `make devcontainer` to start the development container with Docker Compose. Then open a terminal in the `blog` service and execute: `scripts/check-spelling.sh`
 
 This will analyze all Markdown files in the `blog/` directory and output any detected spelling or grammar issues along with their line numbers and suggestions.
 

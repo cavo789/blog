@@ -13,7 +13,7 @@ Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the ho
 - **From inside the blog devcontainer, AnythingLLM is at `http://172.17.0.1:3200`** (moved off the
   default 3001 on 2026-08-28; 3001 no longer answers). `localhost` and `host.docker.internal` both
   fail regardless of port. Verify with `curl http://172.17.0.1:3200/api/ping`.
-- The `.scripts/anythingllm-*.sh` port-probe is hardcoded to 3001 (kept in sync with the published
+- The `scripts/anythingllm-*.sh` port-probe is hardcoded to 3001 (kept in sync with the published
   article copy, which teaches the default). The non-default port is pinned via
   `ANYTHINGLLM_URL=http://172.17.0.1:3200` in the gitignored `.env`, which `.devcontainer/compose.yaml`
   injects as an env_file — so the scripts pick it up without being edited.
@@ -29,7 +29,7 @@ Christophe runs AnythingLLM + Ollama + Open WebUI as Docker containers on the ho
   space degrades retrieval in both): `blog` (257 English posts, `ai-index`, state
   `.anythingllm-indexed`) and `blog-fr` (103 translated posts, `ai-index-fr`, state
   `.anythingllm-indexed-fr`). Both carry the same settings — `topN` 20, threshold 0.2, and the
-  prompt from `.scripts/anythingllm-workspace-prompt.txt`. Re-run after publishing or translating.
+  prompt from `scripts/anythingllm-workspace-prompt.txt`. Re-run after publishing or translating.
   The `-fr` functions exist because four env vars must agree (`ANYTHINGLLM_WORKSPACE`, `BLOG_DIR`,
   `SITE_URL`, `STATE_FILE`); forgetting `SITE_URL` silently emits `/blog/` instead of `/fr/blog/`.
 - **Embedding ceiling, hit by French first:** the Ollama embedder runs at `num_ctx: 400` and the

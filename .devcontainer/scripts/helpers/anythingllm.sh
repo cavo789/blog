@@ -9,14 +9,14 @@
 # @cmd ai-index
 # @desc Push new/modified posts to the AnythingLLM 'blog' workspace
 function ai-index() {
-    .scripts/anythingllm-index.sh "$@"
+    scripts/anythingllm-index.sh "$@"
 }
 
 # @cat AnythingLLM
 # @cmd ai-search
 # @desc Query the AnythingLLM 'blog' workspace, manual only (ai-search which articles cover docker?)
 function ai-search() {
-    .scripts/anythingllm-search.sh "$@"
+    scripts/anythingllm-search.sh "$@"
 }
 
 # Ranking only — no chat model, no answer to wait for: which articles are closest in meaning
@@ -43,7 +43,7 @@ function ai-index-fr() {
         BLOG_DIR=i18n/fr/docusaurus-plugin-content-blog \
         SITE_URL=https://www.avonture.be/fr \
         STATE_FILE=.anythingllm-indexed-fr \
-        .scripts/anythingllm-index.sh "$@"
+        scripts/anythingllm-index.sh "$@"
 }
 
 # @cat AnythingLLM
@@ -53,5 +53,5 @@ function ai-search-fr() {
     ANYTHINGLLM_WORKSPACE=blog-fr \
         BLOG_DIR=i18n/fr/docusaurus-plugin-content-blog \
         SITE_URL=https://www.avonture.be/fr \
-        .scripts/anythingllm-search.sh "$@"
+        scripts/anythingllm-search.sh "$@"
 }

@@ -3,10 +3,10 @@
 # Ask the AnythingLLM 'blog' workspace a question and print the answer plus the
 # articles it came from, as clickable links.
 #
-#   .scripts/anythingllm-search.sh which articles cover docker?
+#   scripts/anythingllm-search.sh which articles cover docker?
 #   ai-search which articles cover docker?      # devcontainer shell
 #
-# Index first with .scripts/anythingllm-index.sh — this script only reads.
+# Index first with scripts/anythingllm-index.sh — this script only reads.
 
 set -o errexit
 set -o nounset

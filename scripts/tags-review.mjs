@@ -5,7 +5,7 @@
  * already tracked there with a fresh suggestion.
  *
  * This script only ever writes the journal — never an article's frontmatter. Applying a
- * decision is `tags set-tags <file> <tag1,tag2,...>` (.scripts/tags-manager.py), done from a
+ * decision is `tags set-tags <file> <tag1,tag2,...>` (scripts/tags-manager.py), done from a
  * Claude Code session that walks the journal's pending rows with the author (see CLAUDE.md,
  * "Auto-memory" / the freshness & reader-review journals this one mirrors).
  *

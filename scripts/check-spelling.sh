@@ -12,7 +12,7 @@
 #
 # Usage:
 #   1. Ensure your Docker services are up: `docker compose up -d`
-#   2. Run from the project root: `./.scripts/check-spelling.sh`
+#   2. Run from the project root: `./scripts/check-spelling.sh`
 #
 # Features:
 #   - Recursive globbing for all Markdown files in /blog.

@@ -221,7 +221,7 @@ Governance rules in `AGENTS.md` — treat as binding.
   perfectly valid and simply obsolete (`docker-compose` v1, `apt-key add`, `MAINTAINER`). It is
   opt-in, ~1.4 h over the corpus, `severity: "suggestion"`, and **never affects the exit code** —
   a verdict is a proposal to read. The two passes are independent: each carries its own hash in
-  `.snippet-lint.json`, and pass 2 additionally re-runs on a `JUDGE_PROMPT_VERSION` bump, so
+  `scripts/.snippet-lint.json`, and pass 2 additionally re-runs on a `JUDGE_PROMPT_VERSION` bump, so
   editing the prompt costs a judge sweep and never a 447-container one. Absent Ollama, `CI` or
   `OLLAMA_DISABLE=1` → pass 2 skips and pass 1 continues.
 - `lib/snippet-scan.mjs` — the single implementation of "find every `<Snippet>`/`<Terminal>`

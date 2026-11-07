@@ -1,0 +1,10 @@
+$ .claude/scripts/ollama_ask.sh code-quality:latest \
+    'Proofread this Markdown article. Report every misspelled word and every grammar mistake (typos included). Only real mistakes, no style advice. One per line: <exact wrong words> => <fix>. Nothing else.' \
+    index.md typos.txt
+code-quality:latest: 5299 tokens in, 25 out, 5.9 s -> typos.txt
+
+$ cat typos.txt
+lagre => large
+Docker don't => Docker doesn't
+imediately => immediately
+filess => files

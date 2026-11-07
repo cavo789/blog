@@ -5,7 +5,7 @@
 The `anythingllm-search.sh` script asks the AnythingLLM `blog` workspace a question in plain
 English (or French) and prints the answer followed by the articles behind it, as clickable links.
 
-Index first with `.scripts/anythingllm-index.sh` — this script only reads.
+Index first with `scripts/anythingllm-index.sh` — this script only reads.
 
 ## Two answers, on purpose
 
@@ -49,7 +49,7 @@ contain embedded documents.
 
 ```bash
 ai-search which articles cover docker?              # devcontainer shell
-.scripts/anythingllm-search.sh Ai-je du contenu sur joomla?
+scripts/anythingllm-search.sh Ai-je du contenu sur joomla?
 ```
 
 ## Output example

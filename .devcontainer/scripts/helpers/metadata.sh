@@ -9,14 +9,14 @@
 # @cmd tags
 # @desc Run the tags manager utility
 function tags() {
-    python3 .scripts/tags-manager.py "$@"
+    python3 scripts/tags-manager.py "$@"
 }
 
 # @cat Metadata
 # @cmd yaml
 # @desc Run the YAML front matter manager utility
 function yaml() {
-    python3 .scripts/yaml-manager.py "$@"
+    python3 scripts/yaml-manager.py "$@"
 }
 
 # @cat Metadata

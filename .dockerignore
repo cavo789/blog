@@ -37,7 +37,6 @@ localhost-key.pem
 .github/
 .claude/
 .todos/
-.scripts/
 .tools/
 .unpublished/
 .aiexclude

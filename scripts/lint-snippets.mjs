@@ -25,7 +25,7 @@
  *
  * ## State, and why a single file rather than 1000 sidecars
  *
- * `.snippet-lint.json` at the repository root holds path → hash → verdict for **every** scanned
+ * `scripts/.snippet-lint.json` holds path → hash → verdict for **every** scanned
  * file, UNSUPPORTED ones included, plus the `excluded` map. The sidecar shape used by ELI5 and
  * questions was considered and rejected for two reasons: it would add ~1000 files to the repo,
  * and, more importantly, the ELI5 `{"excluded": true}` marker already means "this snippet needs
@@ -142,7 +142,7 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
-const STATE_PATH = path.join(projectRoot, ".snippet-lint.json");
+const STATE_PATH = path.join(projectRoot, "scripts", ".snippet-lint.json");
 const STATE_VERSION = 1;
 
 /**
@@ -228,7 +228,7 @@ Other:
   --quiet              no progress output
   --help, -h           this screen
 
-State lives in .snippet-lint.json: one key per referenced file, a separate \`judge\` key per
+State lives in scripts/.snippet-lint.json: one key per referenced file, a separate \`judge\` key per
 file for pass 2, plus the hand-written \`excluded\` triage. The two passes carry their own
 hashes, so re-running one never re-analyses the other.
 `);
@@ -265,7 +265,7 @@ function loadState() {
     // `excluded` triage without a word.
     console.error(
       `${STATE_PATH} is not readable JSON (${err.message}).\n` +
-        `Restore it from git (git checkout -- .snippet-lint.json) rather than deleting it: it ` +
+        `Restore it from git (git checkout -- scripts/.snippet-lint.json) rather than deleting it: it ` +
         `carries the hand-written \`excluded\` triage, which no re-run can reconstruct.`,
     );
     process.exit(2);
