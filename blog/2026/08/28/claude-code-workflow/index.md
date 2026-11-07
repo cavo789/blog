@@ -65,10 +65,10 @@ its description matches the task at hand, without a command in the loop at all.
 Here's what a critical read of a blog post looks like today, once all five are in place, before it
 ever gets published:
 
-> */reader_review git-precommit*
+> */review:reader git-precommit*
 
 Claude doesn't need to be told, again, what "good" means for one of this blog's articles — the
-`reader-first-docs` skill already spells it out, and `/reader_review` applies it directly: what
+`reader-first-docs` skill already spells it out, and `/review:reader` applies it directly: what
 share of the article sits between `<!-- truncate -->` and the first real proof — actual command
 output, not just an install step?
 
@@ -80,7 +80,7 @@ That checklist — front-load the value, mark deep-dives as optional, keep insta
 first half — never had to be retyped, months after it was first written down.
 
 And one detail worth noting before anything else: not every command in this workflow relies on
-Claude at all. `/todo-add`, the command that files a new backlog entry, needs the next free ID
+Claude at all. `/todos:add`, the command that files a new backlog entry, needs the next free ID
 first — a pure counting problem, so instead of asking the model to scan `.todos/` and count, it
 calls a plain script:
 
@@ -129,19 +129,19 @@ more than they look:
   Git history and files, and nothing else — it cannot edit anything, even by mistake.
 
 Three real commands from this blog's own `.claude/commands/` show the same shape at different
-sizes. `/bash-review` is barely more than a pointer to the agent covered later in this article:
+sizes. `/review:bash` is barely more than a pointer to the agent covered later in this article:
 
-<Snippet filename=".claude/commands/bash-review.md" source=".claude/commands/bash-review.md" />
+<Snippet filename=".claude/commands/review/bash.md" source=".claude/commands/review/bash.md" />
 
 `/links` maintains this blog's own internal-linking convention — 2 to 4 inline links per article,
 plus a reciprocal link in the older post it points to:
 
 <Snippet filename=".claude/commands/links.md" source=".claude/commands/links.md" defaultOpen={false} />
 
-And `/todo-add` is the command standing behind the `todo_next_id.sh` script from earlier — its
+And `/todos:add` is the command standing behind the `todo_next_id.sh` script from earlier — its
 `allowed-tools` line names the script explicitly, so the command can call it but nothing else:
 
-<Snippet filename=".claude/commands/todo-add.md" source=".claude/commands/todo-add.md" defaultOpen={false} />
+<Snippet filename=".claude/commands/todos/add.md" source=".claude/commands/todos/add.md" defaultOpen={false} />
 
 ## Draw a Hard Line: Hooks
 
@@ -215,7 +215,7 @@ Two design choices carry more weight than the file's length suggests:
 - **`tools: Read, Grep, Glob, Bash`** — no `Edit`, no `Write`. This agent physically cannot change a
   file, which means a review can never accidentally turn into a rewrite, and a hostile string
   buried in a reviewed file can't talk it into one either.
-- **An agent is reachable only through a matching slash command** — `/bash-review` is the sole
+- **An agent is reachable only through a matching slash command** — `/review:bash` is the sole
   door in. There's no autocomplete entry for the agent itself; discoverability lives entirely at
   the command layer, review logic lives entirely at the agent layer.
 
@@ -227,7 +227,7 @@ to any language a project adds next.
 ### A Concrete Case: This Blog's Own Time-to-Value Check
 
 Every pairing so far reviews code. On this blog, before I publish an article, I run
-`/reader_review` — it loads the `reader-first-docs` skill and checks a post's structure. One of the
+`/review:reader` — it loads the `reader-first-docs` skill and checks a post's structure. One of the
 criteria it measures is Time-to-Value: within roughly the first 30 seconds of reading, a reader
 should already understand what the article covers and whether it's worth their time to keep going.
 A *high* TTV score means the opposite happened — the reader had to wade through too much text
@@ -252,7 +252,7 @@ one-liners for every post with a merely flat ending), 🔴 `RESTRUCTURE` at 30% 
 the only tier that files a TODO.
 
 <AlertBox variant="note" title="Not every skill pairs with an agent">
-`/reader_review` doesn't dispatch to an isolated agent the way `/bash-review` does — it needs
+`/review:reader` doesn't dispatch to an isolated agent the way `/review:bash` does — it needs
 `Write` access to log progress across a whole batch to `.todos/0000-reader-review-journal.md`, so
 it runs inline instead, same skill, no isolation layer. A `reader-first-docs-reviewer` agent does
 exist in this project, but it audits a different scope (long-form docs like a README, not blog
@@ -287,9 +287,9 @@ Once a few languages had the same skill → agent → command shape, the map bec
 
 | Command          | Agent                                | Skill                       |
 | ---------------- | ------------------------------------ | --------------------------- |
-| `/bash-review`   | `bash-best-practices-reviewer`       | `bash-best-practices`       |
-| `/python-review` | `python-best-practices-reviewer`     | `python-best-practices`     |
-| `/docker-review` | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices` |
+| `/review:bash`   | `bash-best-practices-reviewer`       | `bash-best-practices`       |
+| `/review:python` | `python-best-practices-reviewer`     | `python-best-practices`     |
+| `/review:docker` | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices` |
 
 Each row is independent and addable on its own — a fourth row for a new language costs one skill
 file, one agent file, and one command file, none of which touch the other three.

@@ -68,10 +68,10 @@ sans aucune command dans la boucle.
 Voici à quoi ressemble aujourd'hui une lecture critique d'un article de blog, une fois les cinq
 couches en place, avant même sa publication :
 
-> */reader_review git-precommit*
+> */review:reader git-precommit*
 
 On n'a plus besoin de réexpliquer à Claude ce que « bon » veut dire pour un article de ce blog — la
-skill `reader-first-docs` le détaille déjà, et `/reader_review` l'applique directement : quelle part
+skill `reader-first-docs` le détaille déjà, et `/review:reader` l'applique directement : quelle part
 de l'article se trouve entre `<!-- truncate -->` et la première vraie preuve — une sortie de
 commande réelle, pas seulement une étape d'installation ?
 
@@ -84,7 +84,7 @@ l'installation hors de la première moitié — n'a jamais eu à être retapée,
 écrite une première fois.
 
 Et un détail à souligner avant tout le reste : toutes les commands de ce workflow ne reposent pas
-sur Claude. `/todo-add`, la command qui ajoute une nouvelle entrée au backlog, a d'abord besoin du
+sur Claude. `/todos:add`, la command qui ajoute une nouvelle entrée au backlog, a d'abord besoin du
 prochain ID libre — un pur problème de comptage. Plutôt que de demander au modèle de parcourir
 `.todos/` et de compter, elle appelle un simple script :
 
@@ -138,21 +138,21 @@ comptent plus qu'ils n'y paraissent :
   l'historique Git et des fichiers, et rien d'autre — elle ne peut rien modifier, même par erreur.
 
 Trois commands réelles issues du dossier `.claude/commands/` de ce blog montrent la même forme à
-différentes tailles. `/bash-review` est à peine plus qu'un pointeur vers l'agent traité plus loin
+différentes tailles. `/review:bash` est à peine plus qu'un pointeur vers l'agent traité plus loin
 dans cet article :
 
-<Snippet filename=".claude/commands/bash-review.md" source=".claude/commands/bash-review.md" />
+<Snippet filename=".claude/commands/review/bash.md" source=".claude/commands/review/bash.md" />
 
 `/links` maintient la convention de maillage interne de ce blog — 2 à 4 liens inline par article,
 plus un lien réciproque dans l'article plus ancien vers lequel il pointe :
 
 <Snippet filename=".claude/commands/links.md" source=".claude/commands/links.md" defaultOpen={false} />
 
-Et `/todo-add` est la command derrière le script `todo_next_id.sh` vu plus haut — sa ligne
+Et `/todos:add` est la command derrière le script `todo_next_id.sh` vu plus haut — sa ligne
 `allowed-tools` nomme explicitement le script, si bien que la command peut l'appeler mais rien
 d'autre :
 
-<Snippet filename=".claude/commands/todo-add.md" source=".claude/commands/todo-add.md" defaultOpen={false} />
+<Snippet filename=".claude/commands/todos/add.md" source=".claude/commands/todos/add.md" defaultOpen={false} />
 
 ## Tracer une limite infranchissable : les hooks {#draw-a-hard-line-hooks}
 
@@ -232,7 +232,7 @@ Deux choix de conception pèsent plus lourd que la longueur du fichier ne le sug
   physiquement pas modifier un fichier, ce qui veut dire qu'une review ne peut jamais dériver
   accidentellement en réécriture, et qu'une chaîne hostile enfouie dans un fichier relu ne peut pas
   l'y pousser non plus.
-- **Un agent n'est accessible qu'à travers une slash command correspondante** — `/bash-review` est
+- **Un agent n'est accessible qu'à travers une slash command correspondante** — `/review:bash` est
   la seule porte d'entrée. Il n'y a aucune entrée d'autocomplétion pour l'agent lui-même ; la
   découvrabilité vit entièrement dans la couche command, la logique de review entièrement dans la
   couche agent.
@@ -245,7 +245,7 @@ forme qui passe à l'échelle pour n'importe quel langage ajouté ensuite.
 ### Un cas concret : le contrôle de Time-to-Value de ce blog {#a-concrete-case-this-blogs-own-time-to-value-check}
 
 Tous les couplages vus jusqu'ici relisent du code. Sur ce blog, avant de publier un article, je
-lance `/reader_review` — il charge la skill `reader-first-docs` et vérifie la structure du post. L'un
+lance `/review:reader` — il charge la skill `reader-first-docs` et vérifie la structure du post. L'un
 des critères mesurés est le Time-to-Value : dans les 30 premières secondes de lecture environ, un
 lecteur doit déjà comprendre ce que couvre l'article et s'il vaut la peine de continuer. Un score
 TTV *élevé* signifie l'inverse — le lecteur a dû traverser trop de texte avant d'arriver au moment
@@ -271,7 +271,7 @@ vraies trouvailles sous des one-liners pour chaque post à la conclusion simplem
 `RESTRUCTURE` à 30 % ou plus, le seul palier qui crée un TODO.
 
 <AlertBox variant="note" title="Toutes les skills ne vont pas de pair avec un agent">
-`/reader_review` ne délègue pas à un agent isolé comme le fait `/bash-review` — il a besoin d'un
+`/review:reader` ne délègue pas à un agent isolé comme le fait `/review:bash` — il a besoin d'un
 accès `Write` pour journaliser l'avancement d'un lot entier dans
 `.todos/0000-reader-review-journal.md`, donc il tourne inline, même skill, sans couche d'isolement.
 Un agent `reader-first-docs-reviewer` existe bien dans ce projet, mais il audite un autre périmètre
@@ -309,9 +309,9 @@ devenue la documentation :
 
 | Command          | Agent                                | Skill                       |
 | ---------------- | ------------------------------------ | --------------------------- |
-| `/bash-review`   | `bash-best-practices-reviewer`       | `bash-best-practices`       |
-| `/python-review` | `python-best-practices-reviewer`     | `python-best-practices`     |
-| `/docker-review` | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices` |
+| `/review:bash`   | `bash-best-practices-reviewer`       | `bash-best-practices`       |
+| `/review:python` | `python-best-practices-reviewer`     | `python-best-practices`     |
+| `/review:docker` | `dockerfile-best-practices-reviewer` | `dockerfile-best-practices` |
 
 Chaque ligne est indépendante et peut être ajoutée seule — une quatrième ligne pour un nouveau
 langage coûte un fichier skill, un fichier agent et un fichier command, dont aucun ne touche aux
