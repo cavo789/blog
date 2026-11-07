@@ -22,10 +22,11 @@ id_ecdsa*
 .pypirc
 *.p12
 *.pfx
-localhost.pem
-localhost-key.pem
+**/localhost.pem
+**/localhost-key.pem
 
 .config/
+!.config/nginx.conf
 .devcontainer/
 !.devcontainer/docker-entrypoint.sh
 !.devcontainer/scripts/interactive.sh
@@ -39,10 +40,7 @@ localhost-key.pem
 .todos/
 .tools/
 .unpublished/
-.aiexclude
 .prettierignore
-.prettierrc.json
-.stylelintrc.json
 eslint.config.mjs
 
 .gitignore
@@ -56,5 +54,3 @@ compose.yaml
 compose*.yaml
 Dockerfile
 Dockerfile*
-
-nginx.conf.eli5.json

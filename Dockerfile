@@ -284,7 +284,7 @@ COPY --from=build "${APP_HOME}"/build /usr/share/nginx/html
 RUN mkdir -p /etc/nginx/certs
 
 # Replace default Nginx config with custom one
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY .config/nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443

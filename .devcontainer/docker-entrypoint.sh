@@ -14,17 +14,18 @@ if [[ -f "${CAROOT}/rootCA.pem" ]]; then
     mkcert -install 2>/dev/null || true
 
     # Regenerate SSL certs if missing or if they don't cover 127.0.0.1
-    if [[ ! -f "${APP_HOME:-/opt/docusaurus}/localhost.pem" ]] || \
-       ! openssl x509 -in "${APP_HOME:-/opt/docusaurus}/localhost.pem" -noout -text 2>/dev/null | grep -q "127.0.0.1"; then
-        cd "${APP_HOME:-/opt/docusaurus}"
+    if [[ ! -f "${APP_HOME:-/opt/docusaurus}/.config/certs/localhost.pem" ]] || \
+       ! openssl x509 -in "${APP_HOME:-/opt/docusaurus}/.config/certs/localhost.pem" -noout -text 2>/dev/null | grep -q "127.0.0.1"; then
+        mkdir -p "${APP_HOME:-/opt/docusaurus}/.config/certs"
+        cd "${APP_HOME:-/opt/docusaurus}/.config/certs"
         mkcert -key-file localhost-key.pem -cert-file localhost.pem localhost 127.0.0.1
     fi
 fi
 
 # Run Docusaurus in the background
 HTTPS=true \
-SSL_CRT_FILE=localhost.pem \
-SSL_KEY_FILE=localhost-key.pem \
+SSL_CRT_FILE=.config/certs/localhost.pem \
+SSL_KEY_FILE=.config/certs/localhost-key.pem \
 yarn start --host 0.0.0.0 --port 3000 &
 
 # Keep the container running

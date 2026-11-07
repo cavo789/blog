@@ -1,6 +1,5 @@
 {
   "extends": "stylelint-config-standard",
-  "ignoreFiles": ["build/**", ".docusaurus/**", ".docusaurus-dev/**", "node_modules/**"],
   "defaultSeverity": "warning",
   "rules": {
     "color-no-hex": [
@@ -22,7 +21,9 @@
     "color-hex-length": null,
     "selector-pseudo-class-no-unknown": [
       true,
-      { "ignorePseudoClasses": ["global", "local"] }
+      {
+        "ignorePseudoClasses": ["global", "local"]
+      }
     ],
     "media-feature-range-notation": "prefix",
     "color-function-notation": "legacy",
@@ -30,7 +31,7 @@
     "declaration-block-no-shorthand-property-overrides": [
       true,
       {
-        "message": "A later shorthand (e.g. border) silently resets an earlier longhand (e.g. border-left-color) — see .todos/039-hardcoded-hex-colors-no-token-system.md."
+        "message": "A later shorthand (e.g. border) silently resets an earlier longhand (e.g. border-left-color) \u2014 see .todos/039-hardcoded-hex-colors-no-token-system.md."
       }
     ]
   }

@@ -13,7 +13,7 @@
     "src/**/*",
     "scripts/**/*",
     "docusaurus.config.js",
-    "playwright.config.ts",
+    "tests/playwright.config.ts",
     "tests/**/*"
   ]
 }

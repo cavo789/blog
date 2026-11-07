@@ -53,7 +53,7 @@ function start() {
         printf "🌍 Locale: %s\n" "${DOCUSAURUS_LOCALE}"
     fi
 
-    HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem \
+    HTTPS=true SSL_CRT_FILE=.config/certs/localhost.pem SSL_KEY_FILE=.config/certs/localhost-key.pem \
         DOCUSAURUS_GENERATED_FILES_DIR_NAME=.docusaurus-dev \
         yarn docusaurus start --host 0.0.0.0 --port "${port}" "${locale_args[@]}"
 }
