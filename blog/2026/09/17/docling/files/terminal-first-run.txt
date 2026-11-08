@@ -1,4 +1,4 @@
-$ cd /tmp/docling
+$ mkdir -p /tmp/docling && cd /tmp/docling
 
 $ curl -L --silent -o samples.zip https://www.avonture.be/files/docling/samples.zip
 

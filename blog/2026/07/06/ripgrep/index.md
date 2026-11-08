@@ -14,6 +14,8 @@ blueskyRecordKey: 3mpxent26jc2f
 updates:
   - date: 2026-08-22
     note: added a Docker-first demo to try before installing
+  - date: 2026-11-08
+    note: "The rc setup and the rgtodo/rgenv functions now come in a zsh and a bash version, in ~/.zsh/fns or ~/.bash/fns."
 ---
 
 ![ripgrep — The Search Tool That Changed My WSL2 Workflow](/img/v2/ripgrep.webp)
@@ -200,9 +202,12 @@ Each line is a default flag applied to every `rg` invocation. A few highlights w
 - `--max-filesize=10M` silently skips very large files (log dumps, generated assets) that would otherwise flood your results.
 - `--smart-case` is probably the most impactful setting: searches are case-insensitive by default, but the moment your pattern contains an uppercase letter ripgrep switches to exact case matching — exactly the behavior I want 95% of the time.
 
-## ZSH Setup — ~/.zshrc
+## Shell Setup — ~/.zshrc or ~/.bashrc
 
-With the config file in place, I add the environment variable, the function loader, and a handful of type-specific aliases to my `~/.zshrc`:
+With the config file in place, I add the environment variable, the function loader, and a handful of type-specific aliases to my shell's rc file. The content is the same for zsh and bash, except for the loader loop:
+
+<Tabs groupId="shell">
+<TabItem value="zsh" label="zsh" default>
 
 <Snippet
   filename="~/.zshrc (ripgrep section)"
@@ -210,11 +215,25 @@ With the config file in place, I add the environment variable, the function load
   defaultOpen={true}
 />
 
-The `for fn_file in ~/.zsh/fns/*.zsh` loop sources every function file in that directory automatically — so adding a new function is as simple as dropping a new `.zsh` file there, no need to touch `~/.zshrc` again.
+</TabItem>
+<TabItem value="bash" label="bash">
+
+<Snippet
+  filename="~/.bashrc (ripgrep section)"
+  source="./files/bashrc_snippet.sh"
+  defaultOpen={true}
+/>
+
+The `-r` test keeps an empty `~/.bash/fns/` folder from printing an error at every shell start.
+
+</TabItem>
+</Tabs>
+
+The `for fn_file` loop sources every function file in that directory automatically — so adding a new function is as simple as dropping a new file there, no need to touch your rc file again.
 
 The type-specific aliases (`rgp` for PHP, `rgt` for TypeScript, `rgm` for Markdown, and so on) save keystrokes when you know exactly what kind of file you are looking in. I reach for `rgp "getUser"` or `rgm "## Installation"` dozens of times per day.
 
-## ZSH Functions — ~/.zsh/fns/
+## Shell Functions — ~/.zsh/fns/ or ~/.bash/fns/
 
 Now this is where it gets fun. Here are three functions I have installed in my `~/.zsh/fns/` directory, each solving a real problem.
 
@@ -227,7 +246,7 @@ I covered this combination in detail in a dedicated article: [FZF + ripgrep: Int
 Every codebase has them lurking in comments: `TODO`, `FIXME`, `HACK`, `NOTE`, `XXX`. This function brings them all to the surface:
 
 <Snippet
-  filename="~/.zsh/fns/rgtodo.zsh"
+  filename="rgtodo.sh"
   source="./files/rgtodo.zsh"
   defaultOpen={false}
 />
@@ -241,7 +260,7 @@ Run `rgtodo` at the root of any project and you get a sorted, colorized list of 
 In Docker-heavy projects, environment variables end up scattered across `.env` files, `compose.yml`, PHP bootstraps, and Python configs. This function searches all of them in one shot:
 
 <Snippet
-  filename="~/.zsh/fns/rgenv.zsh"
+  filename="rgenv.sh"
   source="./files/rgenv.zsh"
   defaultOpen={false}
 />
@@ -249,6 +268,39 @@ In Docker-heavy projects, environment variables end up scattered across `.env` f
 `rgenv DB_PASSWORD` instantly shows every file that references that variable — whether it is defining it, consuming it, or passing it as a Docker secret. Invaluable when debugging configuration drift in complex multi-container setups.
 
 <Terminal source="./files/terminal_db_password.txt" wrap={true} typewriter />
+
+### Installing rgtodo and rgenv
+
+Both functions are plain shell code: the same files work in zsh and bash, only the folder differs. The loader loop is already in your rc file since the previous section.
+
+<Tabs groupId="shell">
+<TabItem value="zsh" label="zsh" default>
+
+**1. Create the files** in `~/.zsh/fns/`:
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="rgtodo.zsh" source="./files/rgtodo.zsh" defaultOpen={false} />
+  <Snippet filename="rgenv.zsh" source="./files/rgenv.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Open a new terminal** (or run `exec zsh`).
+
+</TabItem>
+<TabItem value="bash" label="bash">
+
+**1. Create the files** in `~/.bash/fns/`:
+
+<ProjectSetup folderName="~/.bash/fns">
+  <Snippet filename="rgtodo.sh" source="./files/rgtodo.zsh" defaultOpen={false} />
+  <Snippet filename="rgenv.sh" source="./files/rgenv.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Open a new terminal** (or run `exec bash`).
+
+</TabItem>
+</Tabs>
+
+Check that the shell knows them: `type rgtodo rgenv` must answer `… is a shell function` twice.
 
 ## Real-World Use Cases
 

@@ -9,13 +9,16 @@ date: 2026-09-17
 description: 'A Docker batteries-included setup for Docling, IBM''s document-conversion library: PDF, Word, PowerPoint, Excel and HTML files converted into clean Markdown, with GPU acceleration for machines with spare VRAM. A companion to my Markitdown article — same idea, a heavier engine underneath.'
 language: en
 ai_assisted: true
+updates:
+  - date: 2026-11-08
+    note: "docling-convert is now a shell function for zsh and bash (~/.zsh/fns or ~/.bash/fns); the Dockerfile and the conversion script live in ~/tools/docling."
 ---
 ![Docling - Convert PDF, Word, PowerPoint, Excel and HTML to Markdown, GPU-Accelerated](/img/v2/docling.webp)
 
 <!-- cspell:ignoreCase docling markitdown nvidia cudnn -->
 
 <TLDR>
-This article does for [Docling](https://github.com/docling-project/docling) exactly what <Link to="/blog/markitdown">my Markitdown article</Link> did for Markitdown: a Docker batteries-included image and a global `docling-convert` wrapper script, so converting a document to clean Markdown is one command from any folder. **The difference is what's under the hood — Docling uses dedicated layout, table-structure and OCR models instead of format-specific parsers, runs on GPU if you have one, and is built from the ground up for exactly the "sensitive document, must stay local" scenario this blog keeps coming back to.**
+This article does for [Docling](https://github.com/docling-project/docling) exactly what <Link to="/blog/markitdown">my Markitdown article</Link> did for Markitdown: a Docker batteries-included image and a `docling-convert` shell function for zsh or bash, so converting a document to clean Markdown is one command from any folder. **The difference is what's under the hood — Docling uses dedicated layout, table-structure and OCR models instead of format-specific parsers, runs on GPU if you have one, and is built from the ground up for exactly the "sensitive document, must stay local" scenario this blog keeps coming back to.**
 </TLDR>
 
 A friend who was reading <Link to="/blog/markitdown">my Markitdown article</Link> suggested I try [Docling](https://docling.ai/) instead — Microsoft-adjacent open-source project, IBM this time, same "convert office documents to Markdown" pitch, but built around actual layout-understanding models rather than per-format parsers. I have 24GB of VRAM sitting mostly idle on my AI server; if a tool can put it to work turning a badly-scanned PDF into something readable, that's worth ten minutes of testing.
@@ -24,7 +27,7 @@ A friend who was reading <Link to="/blog/markitdown">my Markitdown article</Link
 
 ## Converting Five Formats
 
-Once the image and the global wrapper are in place (we'll cover this below), converting a document is one command:
+Once the image and the `docling-convert` function are in place (we'll cover this below), converting a document is one command:
 
 <Terminal source="./files/terminal-1.txt" typewriter />
 
@@ -44,11 +47,15 @@ As always, I'll build a Docker image first — no Python, no `pip`, nothing inst
 
 ### Create our Docker image
 
-Let's create a new folder and jump into it: `mkdir -p /tmp/docling && cd $_`
+Two files get a permanent home, `~/tools/docling`, so the image can be rebuilt any time (new machine, `docker image prune`, a new Docling version): the `Dockerfile`, and `docling-convert.sh`, the script that drives a conversion (detailed below):
 
-Then please create a new file called `Dockerfile`:
-
+<ProjectSetup folderName="~/tools/docling" createFolder={true}>
+  <Guideline>
+    Now, run 'docker build -t docling ~/tools/docling' to create the Docker image.
+  </Guideline>
 <Snippet filename="Dockerfile" source="./files/Dockerfile" />
+<Snippet filename="docling-convert.sh" source="./files/docling-convert.sh" defaultOpen={false} />
+</ProjectSetup>
 
 `ARG DOCLING_VERSION` pins the exact release rather than letting `pip` grab whatever is newest at build time — Docling ships a new version every few days, and an unpinned build is a different image every time you rebuild it. Bump that `ARG` when you actually want the newer one.
 
@@ -58,23 +65,74 @@ Since spring 2026, `docling` on PyPI is a thin metapackage: installing it pulls 
 
 ### Build the image
 
-Unlike <Link to="/blog/markitdown">Markitdown</Link>, this setup needs no `compose.yaml`: the container is never run through Compose. Conversions go through the wrapper script below, which has to mount whichever directory you are standing in — something a Compose file sitting in `/tmp/docling` cannot do. So a plain build is all there is:
+No `compose.yaml` here: conversions go through a shell function that mounts whichever directory you are standing in, which a Compose file sitting in a fixed folder cannot do. So a plain build is all there is:
 
 <Terminal wrap={true} typewriter>
-$ docker build -t docling .
+$ docker build -t docling ~/tools/docling
 </Terminal>
 
 Expect this one to take noticeably longer than Markitdown's: PyTorch, its bundled CUDA libraries and the four baked-in models add up to an 8.3 GB image here. Those models are the part worth paying attention to — they are downloaded once, at build time, and they live *in* the image, so a `--rm` container starts with everything it needs and fetches nothing.
 
 Optionally, if you want to test it to make sure the image is correct, just run `docker run --rm docling --help` — [the documentation](https://docling-project.github.io/docling/) covers every flag it lists.
 
-### Create the global wrapper
+### Make `docling-convert` available everywhere
 
-Same pattern as `md-convert`, adapted for Docling's actual CLI shape. Run `sudo vi /usr/local/bin/docling-convert` and paste the content below in it:
+Same pattern as <Link to="/blog/markitdown">`md-convert`</Link>, adapted for Docling's actual CLI shape. The real work is done by `~/tools/docling/docling-convert.sh`, the script you just created next to the Dockerfile:
 
-<Snippet filename="/usr/local/bin/docling-convert" source="./files/docling-convert.sh" />
+<Snippet filename="~/tools/docling/docling-convert.sh" source="./files/docling-convert.sh" />
 
-Make it executable: `sudo chmod +x /usr/local/bin/docling-convert`.
+It stays a bash script on purpose: your shell only loads a short function that checks the script and the image are there, then runs the script with `bash`, whether your own shell is zsh or bash:
+
+<Snippet filename="docling-convert.sh" source="./files/docling-convert.fn.sh" defaultOpen={true} />
+
+<Tabs groupId="shell">
+<TabItem value="zsh" label="zsh" default>
+
+**1. Create the file** in `~/.zsh/fns/`:
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="docling-convert.zsh" source="./files/docling-convert.fn.sh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed one of my <Link to="/series/ollama-daily-use">"Ollama daily use"</Link> articles. Otherwise, add at the end of `~/.zshrc`:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh`).
+
+</TabItem>
+<TabItem value="bash" label="bash">
+
+**1. Create the file** in `~/.bash/fns/`:
+
+<ProjectSetup folderName="~/.bash/fns">
+  <Snippet filename="docling-convert.sh" source="./files/docling-convert.fn.sh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.bashrc`.** Add at the end of `~/.bashrc` (the `-r` test keeps an empty folder from printing an error):
+
+```bash title="~/.bashrc"
+for fn_file in ~/.bash/fns/*.sh; do
+  [[ -r "$fn_file" ]] && source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec bash`).
+
+</TabItem>
+</Tabs>
+
+Check that the shell knows the function: `type docling-convert` must answer `docling-convert is a shell function`.
+
+If the image or the script is missing, `docling-convert` prints the exact `docker build` command to run, or points back to this article when `~/tools/docling` is gone too.
+
+<AlertBox variant="note" title="Coming from the previous version of this article?">
+It installed `docling-convert` as a script in `/usr/local/bin/`. Remove it (`sudo rm /usr/local/bin/docling-convert`): the function takes over, and the old script would otherwise linger on your disk.
+</AlertBox>
 
 <AlertBox variant="note" title="Why a wrapper?">
 The script probes `docker info` for the NVIDIA runtime before adding `--gpus all`. That check is not decoration: `docker run --gpus all` doesn't degrade politely on a machine without the toolkit, it refuses to start the container at all. With the probe in place, the same script works on my GPU server and on my laptop — slower on the laptop, that's all, and nothing to configure on either. Setting that runtime up is optional and comes at the end of this article.
@@ -88,7 +146,7 @@ Time to check the whole chain holds together. The five files used throughout thi
 
 <DownloadButton file="/files/docling/samples.zip" label="samples.zip — the five files" title="report.pdf, contract.docx, slides.pptx, budget.xlsx, page.html" />
 
-Prefer to stay in the terminal? The archive sits at a fixed URL, so `curl` fetches it straight into the `/tmp/docling` folder we created earlier — unzipped into a `samples` subfolder, to keep the five documents apart from the `Dockerfile` already there:
+Prefer to stay in the terminal? The archive sits at a fixed URL, so `curl` fetches it straight into a scratch folder, `/tmp/docling`, unzipped into a `samples` subfolder:
 
 <Terminal title="The first real conversion" source="./files/terminal-first-run.txt" typewriter />
 

@@ -77,7 +77,7 @@ Mais bon, cette commande est franchement difficile à retenir, donc j'utilise pl
 
 Voici le script Python complet. Il utilise `argparse` pour gérer les arguments en ligne de commande et `python-frontmatter` pour analyser les fichiers.
 
-<Snippet filename=".scripts/tags-manager.py" source=".scripts/tags-manager.py" defaultOpen={false} />
+<Snippet filename=".scripts/tags-manager.py" source="scripts/tags-manager.py" defaultOpen={false} />
 
 ## D'autres exemples {#more-examples}
 

@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:13.166Z",
+  "source": "regions.json",
+  "sourceHash": "35c277a2aa579568d4c1994a16d017619f539057",
+  "lang": "json",
+  "textLang": "en",
+  "summary": "This is a list of three regional sales or operations teams, each with a geographic region code and the manager responsible for that region. It's the kind of data you'd use to look up who oversees a particular area or to iterate through all teams.",
+  "explanations": {}
+}

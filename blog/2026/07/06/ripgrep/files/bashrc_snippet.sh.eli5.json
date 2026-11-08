@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:30.852Z",
+  "source": "bashrc_snippet.sh",
+  "sourceHash": "58fb5f1f05a614f319d6ae18a731158539dd8431",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script sets up a ripgrep configuration file path, loads custom bash functions from a directory, and creates convenient search shortcuts for different file types. It's a configuration snippet that makes searching through code faster by letting you type short commands like 'rgp' instead of the full ripgrep command with type filters.",
+  "explanations": {
+    "1": "RIPGREP_CONFIG_PATH tells the ripgrep search tool where to find its configuration file, similar to how other tools look for .gitignore or .editorconfig.",
+    "5": "This loop runs through every .sh file in the ~/.bash/fns/ directory, preparing to load them as custom functions.",
+    "6": "[[ -r \"${fn_file}\" ]] checks if the file exists and is readable, then source loads it into the current shell so its functions become available. The && means 'only run source if the test succeeds'."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:59:49.462Z",
+  "source": "yq.sh",
+  "sourceHash": "efcaa90311bd091d74a0556864252faa43b4da3a",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction enveloppe l'outil yq dans un conteneur Docker pour l'utiliser sans installation locale. Elle vérifie d'abord que Docker est disponible, puis lance le conteneur en préservant l'utilisateur et le répertoire de travail courant pour que les modifications de fichiers conservent leurs permissions d'origine.",
+  "explanations": {
+    "8": "command -v vérifie si la commande docker existe dans le PATH ; le redirection >/dev/null 2>&1 supprime toute sortie pour ne tester que le code de retour.",
+    "9": "\\e[31m et \\e[0m sont des codes ANSI : le premier colore le texte en rouge, le second réinitialise la couleur ; >&2 envoie le message vers stderr au lieu de stdout.",
+    "14": "$(id -u):$(id -g) récupère l'UID et GID de l'utilisateur courant pour que le conteneur s'exécute avec les mêmes permissions, évitant les problèmes d'ownership sur les fichiers modifiés.",
+    "15": "${PWD}:/workdir mappe le répertoire de travail courant vers /workdir à l'intérieur du conteneur pour que yq accède aux fichiers locaux.",
+    "16": "$@ passe tous les arguments fournis à yq à la commande docker run, permettant de transmettre les options et fichiers à l'outil."
+  }
+}

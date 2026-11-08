@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:59:45.164Z",
+  "source": "docling-convert.fn.sh",
+  "sourceHash": "94849ae86967da666322d911bf1be96784333956",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction bash enveloppe l'outil docling en vérifiant d'abord que Docker est installé et que l'image Docker docling ainsi que le script de conversion existent sur la machine. Si tout est en place, elle exécute le vrai script de conversion; sinon, elle affiche les étapes pour configurer l'environnement.",
+  "explanations": {
+    "11": "Stocke le nom de l'image Docker qu'on va utiliser — c'est un label qu'on donnera à Docker pour identifier l'image.",
+    "12": "Crée le chemin complet vers le répertoire contenant le Dockerfile et le script de conversion, en utilisant ${HOME} pour obtenir le répertoire personnel de l'utilisateur courant.",
+    "15": "Conserve la chaîne ${HOME} littéralement (sans l'interpoler) pour que les messages d'erreur montrent un chemin que n'importe quel utilisateur peut copier, plutôt que le chemin spécifique à l'utilisateur courant.",
+    "19": "Vérifie que la commande docker existe et est accessible; >/dev/null 2>&1 jette tous les messages de sortie pour ne faire que tester la présence de la commande.",
+    "20": "Affiche un message d'erreur en rouge (le code ANSI \\e[31m colore en rouge, \\e[0m remet les couleurs par défaut) et l'envoie vers le flux d'erreur standard (>&2).",
+    "24": "Teste deux conditions : soit le script n'existe pas, soit l'image Docker n'est pas présente; si l'une ou l'autre est vraie, on affiche comment corriger le problème.",
+    "25": "Teste seulement l'existence du fichier script pour décider quel message d'erreur montrer — on veut expliquer précisément ce qui manque.",
+    "31": "Vérifie si les deux fichiers essentiels (Dockerfile et script) sont là, pour ne proposer que les deux étapes de construction au lieu de quatre.",
+    "43": "Lance le vrai script de conversion en passant tous les arguments de la fonction ($@) — par exemple, le nom du fichier à convertir."
+  }
+}

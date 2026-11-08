@@ -8,6 +8,9 @@ mainTag: devcontainer
 tags: [devcontainer, docker, vscode]
 date: 2026-11-05
 ai_assisted: true
+updates:
+  - date: 2026-11-08
+    note: Add a `-devcontainer` suffix to the container name and the group label
 ---
 
 ![Devcontainer - Name Your Container and Group It in Docker Desktop](/img/v2/devcontainer.webp)
@@ -15,7 +18,7 @@ ai_assisted: true
 <!-- cspell:ignore ganguly -->
 
 <TLDR>
-When VS Code builds a devcontainer from a `Dockerfile`, Docker picks a random name like `serene_ganguly` and the container lands, alone, somewhere in the Docker Desktop list. Two lines in the `runArgs` key of `devcontainer.json` fix both problems: `--name=docusaurus` gives the container a stable name, and `--label=com.docker.compose.project=blog` makes Docker Desktop group it with other containers, exactly like the `name:` key of a `compose.yaml` file.
+When VS Code builds a devcontainer from a `Dockerfile`, Docker picks a random name like `serene_ganguly` and the container lands, alone, somewhere in the Docker Desktop list. Two lines in the `runArgs` key of `devcontainer.json` fix both problems: `--name=docusaurus-devcontainer` gives the container a stable name, and `--label=com.docker.compose.project=blog-devcontainer` makes Docker Desktop group it, exactly like the `name:` key of a `compose.yaml` file. The `-devcontainer` suffix keeps development environments apart from the containers that run services.
 </TLDR>
 
 Open the container list of Docker Desktop after a few days of devcontainer work and you get something like `serene_ganguly`, `objective_hopper`, `vigilant_tesla`... Which one is my blog? Which one is my PHP project?
@@ -38,31 +41,31 @@ Rebuild the container (**Dev Containers: Rebuild Container** from the command pa
 
 ## `--name`: a stable container name
 
-`--name=docusaurus` is the `docker run` equivalent of `container_name:` in a compose file. The container is now always called `docusaurus`, so this works from any terminal, on every rebuild:
+`--name=docusaurus-devcontainer` is the `docker run` equivalent of `container_name:` in a compose file. The container is now always called `docusaurus-devcontainer`, so this works from any terminal, on every rebuild:
 
 ```bash
-docker exec -it docusaurus bash
-docker logs --follow docusaurus
+docker exec -it docusaurus-devcontainer bash
+docker logs --follow docusaurus-devcontainer
 ```
 
 <AlertBox variant="caution" title="One name, one container">
-A container name is unique on the Docker host. Open the same project twice (two clones, a git worktree, ...) and the second `docker run` fails with *Conflict. The container name "/docusaurus" is already in use*. Use one name per checkout, for instance `--name=docusaurus-${localWorkspaceFolderBasename}`.
+A container name is unique on the Docker host. Open the same project twice (two clones, a git worktree, ...) and the second `docker run` fails with *Conflict. The container name "/docusaurus-devcontainer" is already in use*. Use one name per checkout, for instance `--name=${localWorkspaceFolderBasename}-devcontainer`.
 </AlertBox>
 
 ## `--label`: grouping in Docker Desktop
 
 Docker Desktop doesn't group containers by magic: it reads the `com.docker.compose.project` label that Docker Compose sets on every container it creates. The `name:` key of a `compose.yaml` file is nothing more than the value of that label.
 
-Nothing stops you from setting the label yourself. With `--label=com.docker.compose.project=blog`, the devcontainer joins the `blog` group in Docker Desktop, next to any compose-managed container sharing the same project name — and can be stopped together with them.
+Nothing stops you from setting the label yourself. With `--label=com.docker.compose.project=blog-devcontainer`, the devcontainer joins the `blog-devcontainer` group in Docker Desktop — and can be stopped together with any other container carrying the same label.
 
-Pick the same value for everything that belongs together: `tools` for your daily tools, `blog` for the blog and its side containers, the customer name for a professional project, ...
+Pick the same value for everything that belongs together, and keep the `-devcontainer` suffix: on a real project, the `blog` group holds the containers that run services (a database, a reverse proxy, ...) while `blog-devcontainer` holds the environments you code in. One glance at Docker Desktop tells you which is which, and stopping one group never stops the other.
 
 <AlertBox variant="info" title="A Docker Desktop feature">
-Like the `name:` key, the grouping is only visible in Docker Desktop. `docker ps` still shows a flat list; filter it with `docker ps --filter label=com.docker.compose.project=blog`.
+Like the `name:` key, the grouping is only visible in Docker Desktop. `docker ps` still shows a flat list; filter it with `docker ps --filter label=com.docker.compose.project=blog-devcontainer`.
 </AlertBox>
 
 <AlertBox variant="caution" title="The label is not a real compose project">
-The container *looks* like part of a compose project, but it wasn't created by `docker compose`. Don't run `docker compose -p blog down` expecting a clean result: Compose will find a container carrying its label without the rest of the metadata it expects. Manage the devcontainer through VS Code, as before.
+The container *looks* like part of a compose project, but it wasn't created by `docker compose`. Don't run `docker compose -p blog-devcontainer down` expecting a clean result: Compose will find a container carrying its label without the rest of the metadata it expects. Manage the devcontainer through VS Code, as before.
 </AlertBox>
 
 ## And if my devcontainer uses compose.yaml?
@@ -73,4 +76,4 @@ Then you don't need `runArgs` at all (VS Code ignores it in that mode anyway): s
 
 ## Conclusion
 
-Two lines in `devcontainer.json`, and the random `serene_ganguly` becomes `docusaurus`, neatly filed under `blog` in Docker Desktop. I now add them to every new devcontainer, right after the `name` key.
+Two lines in `devcontainer.json`, and the random `serene_ganguly` becomes `docusaurus-devcontainer`, neatly filed under `blog-devcontainer` in Docker Desktop. I now add them to every new devcontainer, right after the `name` key.

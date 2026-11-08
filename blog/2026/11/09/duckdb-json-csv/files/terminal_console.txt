@@ -1,0 +1,25 @@
+$ duckdb
+Read-only: your files cannot be modified. Start with "duckdb --write" to save files.
+DuckDB v2.0.0 (Cyanoptera)
+Enter ".help" for usage hints.
+memory D SELECT * FROM 'orders.csv';
+┌──────────┬─────────┬────────┐
+│ order_id │ region  │ amount │
+│  int64   │ varchar │ double │
+├──────────┼─────────┼────────┤
+│     1001 │ EMEA    │  120.5 │
+│     1002 │ APAC    │   89.0 │
+│     1003 │ EMEA    │   45.2 │
+│     1004 │ AMER    │  300.0 │
+│     1005 │ APAC    │  60.75 │
+└──────────┴─────────┴────────┘
+memory D SELECT * FROM read_json_auto('users.json');
+┌───────────────┬────────────┬─────────┐
+│     name      │ birth_date │ active  │
+│    varchar    │    date    │ boolean │
+├───────────────┼────────────┼─────────┤
+│ Alice Martin  │ 1990-04-12 │ true    │
+│ Bruno Dupont  │ 1985-11-02 │ false   │
+│ Chloé Bernard │ 1998-07-23 │ true    │
+└───────────────┴────────────┴─────────┘
+memory D .quit

@@ -1,60 +1,58 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-18T02:47:48.641Z",
+  "generated": "2026-11-08T10:49:06.311Z",
+  "durationMs": 29313,
   "source": "index.md",
-  "sourceHash": "31b538bdc3acaf81398156fd2d9429c97673c463",
-  "durationMs": 150790,
   "locale": "fr",
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:39:02.471Z",
-    "articleHash": "3a2e6aa05f7b96b02b1f9f96e2df249c32b58aa1",
-    "questionsHash": "213e45a4aad2ca2a",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "4bed410ffbb13432b7c5097660a638cc17e3b8f1",
   "questions": [
     {
-      "question": ".claude/ de slash commands isolées à workflow en couches",
+      "question": "passer de slash commands à un workflow en couches dans Claude Code",
       "anchor": ""
     },
     {
-      "question": "Comment distinguer les composants automatiques des commandes manuelles dans l'organisation en couches ?",
+      "question": "commands hooks skills agents rules .claude/ comment ça s'articule",
       "anchor": "what-five-layers-look-like-in-practice"
     },
     {
-      "question": "Créer sa première slash command pour automatiser une tâche récurrente",
+      "question": "pourquoi séparer en couches plutôt que tout mettre dans une slash command Claude Code",
+      "anchor": "why-a-layered-setup-works"
+    },
+    {
+      "question": "tuto première slash command Claude Code pour un blog",
       "anchor": "start-here-your-first-slash-command"
     },
     {
-      "question": "Configurer un hook Claude Code pour bloquer ou valider un commit automatiquement",
+      "question": "hook Claude Code bloquer une action de façon déterministe sans passer par l'IA",
       "anchor": "draw-a-hard-line-hooks"
     },
     {
-      "question": "Encoder des standards dans une skill et les faire valider par un agent en contexte isolé",
+      "question": "encoder un standard de rédaction dans une skill et le faire vérifier par un agent",
       "anchor": "encode-your-standards-skills-checked-by-agents"
     },
     {
-      "question": "Comment vérifier que la valeur principale d'un article technique apparaît avant l'installation ?",
+      "question": "vérifier le time-to-value d'un article avec un agent reviewer Claude Code",
       "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
     },
     {
-      "question": "Rules toujours actives sans invocation : comment les activer à l'ouverture d'un fichier ?",
+      "question": "rule .claude/ qui se charge automatiquement sans taper de command",
       "anchor": "always-on-no-invocation-needed-rules"
     },
     {
-      "question": "Enchaîner commands, agents et skills pour un pipeline de review automatique",
+      "question": "enchaîner command → agent → skill dans un workflow Claude Code",
       "anchor": "wiring-it-all-together"
     },
     {
-      "question": "Pourquoi les agents reviewers doivent rester en lecture seule plutôt que d'éditer le code ?",
+      "question": "structure interne du dossier .claude/ avec agents hooks skills",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "pourquoi un agent reviewer Claude Code ne peut pas éditer des fichiers",
       "anchor": "why-the-reviewer-agents-cant-edit"
     },
     {
-      "question": "Quand privilégier un script Bash zéro token plutôt qu'un prompt IA pour compter des fichiers ?",
+      "question": "remplacer un appel IA par un script bash zéro token dans une slash command",
       "anchor": "the-zero-token-script-one-more-time"
     }
   ]

@@ -1,18 +1,28 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-18T13:04:33.180Z",
+  "generated": "2026-11-08T10:59:30.696Z",
   "source": "md-convert.sh",
-  "sourceHash": "a7393f49ae0a80cca452a88204c302495466611e",
+  "sourceHash": "c411a75e2fa5811f72527893dec5c54483e57df7",
   "lang": "bash",
   "textLang": "fr",
-  "summary": "Ce script bash lance un conteneur Docker isolé pour convertir des documents en Markdown. Il monte le répertoire courant en lecture seule, supprime toutes les capacités de sécurité du conteneur, et exécute le processus avec les mêmes permissions que l'utilisateur courant pour garantir la sécurité.",
+  "summary": "Cette fonction bash convertit un document du dossier courant en Markdown en utilisant une image Docker isolée appelée markitdown. Elle vérifie d'abord que docker est installé et que l'image existe, puis lance un conteneur avec des restrictions de sécurité strictes qui n'a accès qu'au répertoire courant et ne laisse aucune trace après la conversion.",
   "explanations": {
-    "5": "set -euo pipefail active trois modes stricts : -e quitte au premier erreur, -u traite les variables non définies comme des erreurs, et -o pipefail fait échouer un pipeline si une commande intermédiaire échoue.",
-    "7": "exec remplace le processus shell courant par docker run, ce qui signifie que le script devient le conteneur Docker et hérite de ses signaux.",
-    "8": "-v monte le répertoire courant ($PWD) vers /workspace dans le conteneur avec le flag cached pour optimiser les performances sur Docker Desktop.",
-    "9": "--read-only rend le système de fichiers racine du conteneur immuable, ce qui empêche toute modification accidentelle ou malveillante.",
-    "10": "--tmpfs crée un système de fichiers temporaire en mémoire pour /tmp avec des restrictions : size limite la taille, noexec empêche l'exécution de fichiers binaires, nosuid supprime le bit setuid.",
-    "14": "id -u et id -g récupèrent l'identifiant numérique de l'utilisateur et du groupe courants pour que le conteneur s'exécute avec les mêmes permissions."
+    "10": "On stocke le nom de l'image Docker dans une variable locale pour pouvoir la réutiliser plusieurs fois dans la fonction.",
+    "12": "On définit le chemin complet où le Dockerfile doit se trouver en utilisant la variable d'environnement ${HOME} qui représente le répertoire personnel de l'utilisateur.",
+    "15": "On crée une version du chemin avec ${HOME} littéral (pas substitué) pour que les messages affichés puissent être copiés-collés par n'importe quel utilisateur.",
+    "17": "On vérifie si la commande docker existe et est accessible ; les redirections vers /dev/null suppriment les messages de sortie.",
+    "22": "On utilise docker image inspect pour vérifier que l'image markitdown est déjà téléchargée et disponible localement.",
+    "25": "On teste si le fichier Dockerfile existe pour proposer des instructions différentes selon que l'utilisateur l'a déjà ou pas.",
+    "37": "On lance le conteneur Docker avec --rm (suppression automatique après arrêt) et -i (entrée interactive).",
+    "38": "On monte le répertoire courant (${PWD}) dans le conteneur sous le chemin /workspace pour que le conteneur puisse accéder au fichier à convertir.",
+    "39": "On définit /workspace comme répertoire de travail du conteneur, c'est-à-dire le répertoire par défaut où les commandes s'exécutent.",
+    "40": "L'option --read-only rend presque tout le système de fichiers du conteneur en lecture seule, augmentant la sécurité.",
+    "41": "On crée un système de fichiers temporaire en mémoire de 64 Mo pour /tmp avec les restrictions noexec (pas d'exécution) et nosuid (pas d'escalade de privilèges).",
+    "42": "On crée un autre système de fichiers temporaire de 16 Mo pour /run, nécessaire pour certaines applications.",
+    "43": "On supprime toutes les capacités Linux du conteneur pour minimiser les risques de sécurité.",
+    "44": "On empêche le conteneur d'acquérir de nouveaux privilèges, ce qui bloque certains vecteurs d'attaque.",
+    "45": "On exécute le conteneur avec les mêmes identifiants utilisateur et groupe que l'utilisateur courant (id -u pour l'UID, id -g pour le GID).",
+    "46": "On passe tous les arguments restants de la fonction ($@) à la commande docker, ce qui correspond au fichier à convertir."
   }
 }

@@ -338,6 +338,7 @@ These files are loaded at conversation start; run `/refresh` to update them afte
 | `/suggestions:write`            | *(none)*                             | `blog-post-structure`                                                 |
 | `/suggestions:iterate`          | *(none)*                             | `blog-post-structure`, `safe-install-commands`                        |
 | *(no command — loaded by rule)* | *(none)*                             | `safe-install-commands`                                               |
+| *(no command — contextual)*    | *(none)*                             | `shell-function-install`                                              |
 | `/review:tags`                  | *(none)*                             | *(inline, see command)*                                               |
 
 ### Rule → skill map

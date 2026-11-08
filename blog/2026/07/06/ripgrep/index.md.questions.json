@@ -1,58 +1,54 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-10-12T10:40:03.209Z",
-  "durationMs": 24245,
+  "generated": "2026-11-08T10:39:05.855Z",
+  "durationMs": 22337,
   "source": "index.md",
-  "sourceHash": "51e6c41d284b55fff0c27b2a063ab173fd20d66b",
+  "sourceHash": "77d76499c41da905e3fc8f361149b6e7a2973bcc",
   "questions": [
     {
-      "question": "ripgrep faster than grep large project",
+      "question": "faster grep alternative written in rust large codebase",
       "anchor": ""
     },
     {
-      "question": "rg vs grep which flags do what side by side",
+      "question": "ripgrep vs grep which flags replace -r -n -l -I",
       "anchor": "ripgrep-vs-grep--a-side-by-side-look"
     },
     {
-      "question": "Rust grep alternative that skips binary files and respects .gitignore by default",
-      "anchor": "what-is-ripgrep"
-    },
-    {
-      "question": "try ripgrep in a docker container before installing locally",
-      "anchor": "seeing-it-in-action-with-docker"
-    },
-    {
-      "question": "install ripgrep WSL2 Ubuntu apt",
+      "question": "install ripgrep WSL2 Ubuntu apt-get",
       "anchor": "installation-on-ubuntu--wsl2"
     },
     {
-      "question": "ripgreprc config exclude node_modules and vendor directories",
+      "question": ".ripgreprc config skip node_modules and binary files",
       "anchor": "configuration--ripgreprc"
     },
     {
-      "question": "zsh alias rg instead of grep .zshrc setup",
-      "anchor": "zsh-setup--zshrc"
+      "question": "zsh alias rg ripgrep .zshrc setup",
+      "anchor": "shell-setup--zshrc-or-bashrc"
     },
     {
-      "question": "ripgrep fzf interactive fuzzy find in terminal",
+      "question": "fzf interactive ripgrep search function rgf",
       "anchor": "rgf--interactive-search-with-fzf"
     },
     {
-      "question": "rg find all TODO and FIXME comments across a project",
+      "question": "find all TODO and FIXME comments across entire project",
       "anchor": "rgtodo--surface-all-technical-debt-at-once"
     },
     {
-      "question": "ripgrep track where an environment variable is used in codebase",
+      "question": "track which files reference a specific environment variable",
       "anchor": "rgenv--track-down-environment-variable-usage"
     },
     {
-      "question": "bulk rename files using rg and sed",
+      "question": "find function definition recursively in PHP project",
+      "anchor": "finding-a-function-definition-across-a-php-project"
+    },
+    {
+      "question": "bulk rename files using ripgrep and sed pipeline",
       "anchor": "bulk-rename-with-rg--sed"
     },
     {
-      "question": "ripgrep context lines around a match -C flag",
-      "anchor": "context-lines--understanding-code-around-a-match"
+      "question": "ripgrep limit search depth max-depth subdirectories",
+      "anchor": "limiting-search-depth"
     }
   ]
 }

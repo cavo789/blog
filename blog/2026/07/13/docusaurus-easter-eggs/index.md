@@ -178,7 +178,7 @@ The `visibilitychange` event and `document.hidden` are the standard way to detec
 
 This one is invisible unless you check the Network tab or run `curl -I`. It lives in `nginx.conf`, right in the HTTPS server block:
 
-<Snippet filename="nginx.conf" source="nginx.conf" defaultOpen={false} />
+<Snippet filename="nginx.conf" source=".config/nginx.conf" defaultOpen={false} />
 
 `add_header X-Powered-By "Meerkat-Sentry/1.0" always;` — a small, harmless header for anyone who inspects response headers out of habit.
 

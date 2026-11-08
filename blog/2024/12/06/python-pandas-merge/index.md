@@ -115,7 +115,7 @@ id;first_name;last_name;salary
 
 ## More Demos: The Merge Script, Line by Line
 
-Using Pandas, it's quite simple to loop over files and do a merge.
+Using Pandas, it's quite simple to loop over files and do a merge. (If you only need a one-off answer rather than a reusable script, <Link to="/blog/duckdb-json-csv">DuckDB</Link> runs the same join in plain SQL, directly against the CSV files.)
 
 <Snippet filename="merge.py" source="./files/merge.py" />
 

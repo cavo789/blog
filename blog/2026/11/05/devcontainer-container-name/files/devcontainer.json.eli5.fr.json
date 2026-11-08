@@ -1,15 +1,16 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-11-05T12:54:36.019Z",
+  "generated": "2026-11-08T10:41:36.595Z",
   "source": "devcontainer.json",
-  "sourceHash": "999a8938b293cdbcbdafe7753f38136a1323c91d",
+  "sourceHash": "53ad256267422e004fc0689d4507dbfa6ecf5e70",
   "lang": "json",
   "textLang": "fr",
-  "summary": "Ce fichier de configuration Docker définit les paramètres pour construire et exécuter un conteneur Docusaurus. Il spécifie le chemin du Dockerfile à utiliser pour la construction et configure les arguments d'exécution du conteneur, notamment son nom et une étiquette de projet.",
+  "summary": "Ce fichier de configuration définit les paramètres d'un conteneur de développement pour Docusaurus. Il spécifie le chemin vers le Dockerfile à construire et ajoute des arguments d'exécution pour nommer le conteneur et le taguer avec des labels Docker.",
   "explanations": {
-    "4": "Le chemin ../Dockerfile indique où trouver le fichier de recette pour construire l'image Docker, en remontant d'un niveau de répertoire.",
-    "7": "Le nom du conteneur sera 'docusaurus' lors de son exécution, ce qui permet de le référencer facilement par son identifiant.",
-    "8": "L'étiquette com.docker.compose.project=blog associe ce conteneur à un projet Docker Compose spécifique nommé 'blog', utile pour grouper et gérer plusieurs conteneurs liés."
+    "4": "Le chemin ../Dockerfile indique où trouver le fichier de construction du conteneur, situé un niveau de répertoire au-dessus du fichier courant.",
+    "6": "runArgs est un tableau d'arguments passés à la commande docker run au démarrage du conteneur.",
+    "7": "--name=docusaurus-devcontainer assigne un nom lisible au conteneur pour pouvoir le référencer facilement dans les commandes Docker.",
+    "8": "--label=com.docker.compose.project=blog-devcontainer ajoute une métadonnée au conteneur pour l'organiser logiquement dans Docker Compose."
   }
 }

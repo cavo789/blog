@@ -1,57 +1,57 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-10-19T07:30:11.127Z",
-  "durationMs": 24863,
+  "generated": "2026-11-08T10:41:30.554Z",
+  "durationMs": 24667,
   "source": "index.md",
-  "sourceHash": "68434d6a8fafb1ca6c071b4313bf0b7a3bbc4300",
+  "sourceHash": "724fd21c979af48f743503bf00146906ec89b763",
   "questions": [
     {
-      "question": "jq for yaml",
+      "question": "jq but for yaml command line",
       "anchor": ""
     },
     {
-      "question": "mikefarah yq vs python yq which one is jq compatible",
+      "question": "which yq to install mikefarah go vs python version",
       "anchor": "what-yq-is--and-which-one"
     },
     {
-      "question": "run yq in docker container without installing",
+      "question": "run yq inside a docker container without installing it on the host",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "yq docker alias zshrc mount current directory",
+      "question": "yq shell function alias that mounts current directory into container",
       "anchor": "install--or-just-alias"
     },
     {
-      "question": "yq read nested value compose.yaml services",
+      "question": "extract a specific service image tag from docker-compose.yaml in the terminal",
       "anchor": "reading-values"
     },
     {
-      "question": "yq -i update image tag in place",
+      "question": "yq filter compose services that have a ports key",
+      "anchor": "filtering-and-selecting"
+    },
+    {
+      "question": "how to change a value in a yaml file in place from the command line like jq -i",
       "anchor": "editing-in-place"
     },
     {
-      "question": "curl yaml pipe to yq extract field",
-      "anchor": "reading-from-stdin-and-piping"
-    },
-    {
-      "question": "yq extract all port mappings from docker compose",
+      "question": "get all port mappings from a docker-compose file",
       "anchor": "extract-all-port-mappings"
     },
     {
-      "question": "yq check if key exists yaml",
+      "question": "check if a key exists in yaml before running a replace command",
       "anchor": "check-if-a-key-exists-before-using-it"
     },
     {
-      "question": "yq bump version number ci pipeline yaml",
+      "question": "bump a version number across a CI pipeline yaml file without sed",
       "anchor": "update-a-version-across-a-ci-file"
     },
     {
-      "question": "yq convert yaml to json",
+      "question": "convert yaml to json in terminal without python or ruby",
       "anchor": "convert-yaml-to-json"
     },
     {
-      "question": "yq jq syntax for yaml files",
+      "question": "use jq query syntax directly on yaml files",
       "anchor": "the-jq-crossover"
     }
   ]

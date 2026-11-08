@@ -1,0 +1,12 @@
+
+👋 Welcome to the blog project
+
+Available commands:
+
+  serve    Start the dev server on http://localhost:3000
+  check    Run the full quality gate (lint, format, build)
+  db       Open a SQL shell in the database container
+
+Type welcome to see this list again.
+
+node ➜ /workspaces/blog $

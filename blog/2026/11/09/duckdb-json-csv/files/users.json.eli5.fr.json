@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T11:00:10.112Z",
+  "source": "users.json",
+  "sourceHash": "751997d91ff1f527e167afd98a50e90331e95e87",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier contient un tableau JSON avec trois objets représentant des personnes. Chaque objet stocke le nom, la date de naissance et un statut d'activité pour identifier les utilisateurs actifs ou inactifs.",
+  "explanations": {
+    "1": "Les crochets ouvrants définissent le début d'un tableau JSON qui contiendra plusieurs objets.",
+    "2": "Cet objet représente la première personne avec ses propriétés : name est le nom complet, birth_date est la date de naissance au format YYYY-MM-DD, et active est un booléen indiquant si la personne est active.",
+    "3": "Bruno a active défini à false, ce qui signifie qu'il n'est pas actif contrairement aux autres entrées.",
+    "5": "Les crochets fermants marquent la fin du tableau JSON."
+  }
+}

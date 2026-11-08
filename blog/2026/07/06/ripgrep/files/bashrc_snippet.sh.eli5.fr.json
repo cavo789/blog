@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:59:38.719Z",
+  "source": "bashrc_snippet.sh",
+  "sourceHash": "58fb5f1f05a614f319d6ae18a731158539dd8431",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script configure l'environnement bash pour ripgrep en pointant vers un fichier de configuration personnalisé, charge des fonctions bash réutilisables depuis un répertoire dédié, puis définit des raccourcis pour effectuer rapidement des recherches ripgrep filtrées par type de fichier.",
+  "explanations": {
+    "1": "RIPGREP_CONFIG_PATH indique à ripgrep où trouver son fichier de configuration personnalisé dans le répertoire home de l'utilisateur.",
+    "5": "La boucle parcourt tous les fichiers .sh présents dans ~/.bash/fns/ pour les charger comme fonctions réutilisables.",
+    "6": "[[ -r \"${fn_file}\" ]] vérifie que le fichier est lisible avant de le sourcer, évitant les erreurs si un fichier n'est pas accessible."
+  }
+}

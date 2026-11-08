@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T11:00:04.508Z",
+  "source": "duckdb.sh",
+  "sourceHash": "a168d0f0683cf0b972da0503b73212749299a50d",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction bash encapsule DuckDB dans Docker pour interroger des fichiers CSV, JSON ou Parquet du répertoire courant de manière sécurisée. Elle vérifie que Docker et l'image DuckDB sont disponibles, gère un mode lecture seule par défaut (sauf avec le flag --write), configure les options de terminal appropriées selon le contexte (interactif ou piped), puis lance le conteneur avec des restrictions de sécurité strictes.",
+  "explanations": {
+    "14": "image est le nom de l'image Docker à utiliser ; on le définit comme variable pour pouvoir le réutiliser facilement partout dans la fonction.",
+    "19": "On crée une version affichée du chemin avec ${HOME} littéral (pas remplacé par bash) pour que les utilisateurs voient la commande à copier telle quelle.",
+    "21": "On teste si docker existe en l'invoquant silencieusement (sans afficher de sortie) ; si la commande échoue, le code retour sera non-zéro.",
+    "26": "docker image inspect retourne zéro si l'image existe, non-zéro sinon ; le ! inverse le test pour entrer dans le bloc d'erreur.",
+    "43": "On récupère le premier argument sans le développer si absent (${1:-} vaut vide si $1 n'existe pas), ce qui évite une erreur de syntaxe.",
+    "50": "[[ -t 0 && -t 1 ]] teste si l'entrée (0) et la sortie (1) sont des terminaux interactifs; si oui, on active le mode pseudo-terminal complet.",
+    "52": "Cette condition affiche un avertissement uniquement si le mode est lecture seule, qu'il n'y a pas d'arguments, et que l'entrée vient d'un terminal (pas d'une pipe).",
+    "58": "docker run --rm lance le conteneur et le supprime automatiquement à la fin ; les variables entre guillemets se développent avant d'être passées à docker.",
+    "59": "-v monte le répertoire courant ($PWD) à /workspace dans le conteneur, avec ${mount_mode} qui vaut :ro (lecture seule) ou rien (lecture-écriture).",
+    "65": "$(id -u):$(id -g) récupère l'UID et GID de l'utilisateur courant pour que les fichiers créés dans le conteneur gardent les bonnes permissions.",
+    "69": "On capture le code de retour de docker run dans rc ; zsh réserve la variable $status donc on utilise un nom différent."
+  }
+}

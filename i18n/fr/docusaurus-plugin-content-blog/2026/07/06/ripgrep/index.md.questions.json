@@ -1,64 +1,54 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-18T02:19:50.972Z",
+  "generated": "2026-11-08T10:47:05.288Z",
+  "durationMs": 30027,
   "source": "index.md",
-  "sourceHash": "b3fd4fa962fb72760169ec3aa874acc10155e742",
-  "durationMs": 161681,
   "locale": "fr",
-  "rejected": [
-    {
-      "question": "lancer rgf pour naviguer dans les résultats avec fzf",
-      "anchor": "rgf--interactive-search-with-fzf",
-      "reason": "not answered: Article renvoie vers un autre article pour la configuration réelle",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:29:21.853Z",
-    "articleHash": "2682b967f26afdf252f22d9e10a4828178048cc1",
-    "questionsHash": "63e6732001de140e",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 1
-  },
+  "sourceHash": "1bd6850ab2060842ff01307b441ac53211155d09",
   "questions": [
     {
-      "question": "Pourquoi passer à ripgrep sur WSL2 au lieu de grep ?",
-      "anchor": "ripgrep-vs-grep--a-side-by-side-look"
+      "question": "ripgrep vs grep performance gros codebase",
+      "anchor": ""
     },
     {
-      "question": "ripgrep ignore automatiquement les fichiers binaires et le .gitignore",
-      "anchor": "what-is-ripgrep"
-    },
-    {
-      "question": "installation ripgrep Ubuntu WSL2",
+      "question": "installer ripgrep WSL2 ubuntu",
       "anchor": "installation-on-ubuntu--wsl2"
     },
     {
-      "question": "configurer les alias rg dans ~/.zshrc",
-      "anchor": "zsh-setup--zshrc"
+      "question": "fichier .ripgreprc configurer par défaut",
+      "anchor": "configuration--ripgreprc"
     },
     {
-      "question": "extraire toute la dette technique avec rgtodo",
+      "question": "alias rg .zshrc",
+      "anchor": "shell-setup--zshrc-or-bashrc"
+    },
+    {
+      "question": "rgf fzf recherche interactive",
+      "anchor": "rgf--interactive-search-with-fzf"
+    },
+    {
+      "question": "trouver toute la dette technique TODO FIXME d'un coup",
       "anchor": "rgtodo--surface-all-technical-debt-at-once"
     },
     {
-      "question": "chercher la définition d'une fonction dans un projet PHP",
+      "question": "rgenv variables d'environnement",
+      "anchor": "rgenv--track-down-environment-variable-usage"
+    },
+    {
+      "question": "chercher définition fonction PHP avec rg",
       "anchor": "finding-a-function-definition-across-a-php-project"
     },
     {
-      "question": "voir le code autour d'une correspondance avec les lignes de contexte",
-      "anchor": "context-lines--understanding-code-around-a-match"
+      "question": "référence image docker compose tous les fichiers",
+      "anchor": "searching-all-docker-compose-files-for-an-image-reference"
     },
     {
-      "question": "renommer des fichiers en masse avec rg et sed",
+      "question": "renommage en masse rg + sed",
       "anchor": "bulk-rename-with-rg--sed"
     },
     {
-      "question": "restreindre la profondeur de recherche récursive",
+      "question": "limiter profondeur recherche ripgrep",
       "anchor": "limiting-search-depth"
     }
   ]

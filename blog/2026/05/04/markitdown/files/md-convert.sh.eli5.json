@@ -1,20 +1,26 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:06:01.050Z",
+  "generated": "2026-11-08T10:56:00.283Z",
   "source": "md-convert.sh",
-  "sourceHash": "a7393f49ae0a80cca452a88204c302495466611e",
+  "sourceHash": "c411a75e2fa5811f72527893dec5c54483e57df7",
   "lang": "bash",
-  "summary": "This script launches a Docker container running the markitdown tool to convert documents to Markdown. It mounts your current directory into the container as a workspace, sets up strict security restrictions (read-only filesystem, dropped capabilities, unprivileged user), and passes along any arguments you give the script to the markitdown command inside the container.",
+  "textLang": "en",
+  "summary": "This function wraps the markitdown Docker image to safely convert documents to Markdown from your current folder. It first checks that Docker is installed and the image exists (with helpful setup instructions if not), then runs the container with strict security restrictions—the container can only see your current folder, runs as your user, and everything is thrown away when done.",
   "explanations": {
-    "5": "These are bash safety flags: -e exits on errors, -u errors on undefined variables, and -o pipefail catches failures in command pipelines.",
-    "7": "exec replaces the current shell process with docker, so when the container exits, the script exits too without spawning an extra process.",
-    "8": "This mounts your current working directory into the container at /workspace with caching enabled for performance.",
-    "9": "Makes the entire container filesystem read-only so the tool can't modify system files, only temp directories we explicitly allow.",
-    "10": "Creates a temporary writable in-memory filesystem at /tmp (64MB max) where the tool can write scratch data, but with noexec and nosuid flags to prevent executing code there.",
-    "11": "Similar temp filesystem at /run for the container's runtime needs.",
-    "12": "Removes all Linux capabilities from the container, starting from scratch and only allowing what Docker deems safe.",
-    "13": "Prevents the container from gaining new privileges (like escalating to root), even if a vulnerability is exploited.",
-    "14": "Runs the container as the current user (your UID and group ID) instead of root, so any files created have your ownership."
+    "10": "This stores the name of the Docker image we'll use, making it easy to reference in multiple places.",
+    "12": "This is the full path where the Dockerfile is stored on your machine, needed later if we have to rebuild the image.",
+    "15": "This version keeps the ${HOME} unexpanded so when we print it to the user, it shows literally as '${HOME}' instead of their actual home path—that way they can copy-paste the command for any user.",
+    "17": "This checks if the docker command exists and is runnable; the redirects send output to nowhere so we only care about the exit code.",
+    "22": "This asks Docker to describe the image without actually running it; if the image doesn't exist, this command fails.",
+    "25": "We check if the Dockerfile already exists at the expected location so we can give different instructions depending on whether they just need to rebuild or need to download it first.",
+    "37": "The docker run command starts here with --rm (delete container after it finishes) and -i (keep stdin open so we can pipe data in).",
+    "38": "This mounts your current folder into the container at /workspace, making your files accessible inside.",
+    "40": "This makes the entire filesystem read-only, so the container can't modify anything outside /tmp and /run.",
+    "41": "This creates a small temporary filesystem that's also locked down—noexec prevents running files from it, nosuid prevents privilege escalation.",
+    "43": "This removes all Linux capabilities from the container so it can't do powerful things like change file ownership or reload kernel modules.",
+    "44": "This prevents the container from gaining new privileges, like escalating to root.",
+    "45": "This runs the container as your user (same numeric ID) instead of as root, so even if something breaks, it can't do root-level damage.",
+    "46": "This passes any arguments you gave to md-convert directly to the Docker image's entry point."
   }
 }

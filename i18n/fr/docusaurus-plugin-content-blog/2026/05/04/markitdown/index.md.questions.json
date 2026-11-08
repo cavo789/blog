@@ -1,60 +1,51 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-17T17:09:44.568Z",
+  "generated": "2026-11-08T10:46:06.455Z",
+  "durationMs": 26932,
   "source": "index.md",
-  "sourceHash": "19e4792d9dbb66fe2ef30412123997ca7d2ddbc7",
   "locale": "fr",
-  "rejected": [
-    {
-      "question": "Dockerfile Markitdown : remplacer python:3.11 par python:3.11-slim pour réduire la taille de l'image",
-      "anchor": "create-our-docker-image",
-      "reason": "not answered: Article uses python:3.14-slim; no mention of 3.11 or slim substitution",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:21:37.089Z",
-    "articleHash": "a126aad24b4c35a54484b1f0b7a57af93f130b94",
-    "questionsHash": "15b8a00ddf745b3a",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 2
-  },
+  "sourceHash": "510bd15bbbf3c168ed805f62284c729d36c7224a",
   "questions": [
     {
-      "question": "Comment convertir Word, Excel et PDF en Markdown avec Markitdown dans un container Docker isolé ?",
+      "question": "convertir word excel pdf en markdown outil microsoft",
       "anchor": ""
     },
     {
-      "question": "Commande pour lancer la conversion d'un fichier Word en Markdown depuis un dossier spécifique",
+      "question": "md-convert convertir un docx en markdown depuis le terminal",
       "anchor": "first-conversion"
     },
     {
-      "question": "Créer et chmod +x le script md-convert pour accéder à Markitdown globalement",
-      "anchor": "using-a-binary"
-    },
-    {
-      "question": "Pourquoi utiliser Docker au lieu d'installer Python globalement pour Markitdown ?",
+      "question": "markitdown sans installer python ni dépendances globales",
       "anchor": "why-this-approach"
     },
     {
-      "question": "Préparer le répertoire de travail avant de configurer l'installation de Markitdown",
+      "question": "tuto installer markitdown docker pas à pas",
+      "anchor": "installation"
+    },
+    {
+      "question": "dockerfile markitdown microsoft docker build image",
       "anchor": "create-our-docker-image"
     },
     {
-      "question": "docker-compose.yml Markitdown : simplifier les commandes et ajouter des options de sécurité",
-      "anchor": "create-an-orchestration-file"
+      "question": "fonction zsh bash md-convert docker mount dossier courant",
+      "anchor": "make-md-convert-available-everywhere"
     },
     {
-      "question": "Exécuter docker compose build pour finaliser la construction de l'image Markitdown",
-      "anchor": "build-the-image"
+      "question": "image docker markitdown jetable supprimer après conversion",
+      "anchor": "conclusion"
     },
     {
-      "question": "Utiliser le wrapper md-convert pour convertir des documents Office en Markdown propre depuis n'importe où",
-      "anchor": "using-a-binary"
+      "question": "convertir xlsx en markdown docker sans python",
+      "anchor": ""
+    },
+    {
+      "question": "markitdown docker read-only sans privilèges",
+      "anchor": ""
+    },
+    {
+      "question": "commande ligne convertir csv json xml markdown markitdown",
+      "anchor": ""
     }
   ]
 }

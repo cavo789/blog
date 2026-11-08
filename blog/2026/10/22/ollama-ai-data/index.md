@@ -34,7 +34,7 @@ Five suggestions, listed by what they answer — every one of them built on the 
 
 <Terminal source="./files/terminal_csv.txt" typewriter />
 
-The model noticed on its own that `region` is the column worth grouping by, and answered with the classic `awk | sort | uniq -c` pipeline — the kind of line I recognize when I see it but never write from memory. Having read it once at my own prompt, I understand it better than if I'd just seen the output.
+The model noticed on its own that `region` is the column worth grouping by, and answered with the classic `awk | sort | uniq -c` pipeline — the kind of line I recognize when I see it but never write from memory. Having read it once at my own prompt, I understand it better than if I'd just seen the output. And when the question grows into a join or a window function, that's where <Link to="/blog/duckdb-json-csv">DuckDB</Link> takes over — one line of SQL, run straight against the same files.
 
 ## The Idea — Suggestions, Not Answers
 

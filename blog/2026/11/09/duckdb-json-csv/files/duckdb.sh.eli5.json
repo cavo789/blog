@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:29.153Z",
+  "source": "duckdb.sh",
+  "sourceHash": "a168d0f0683cf0b972da0503b73212749299a50d",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This bash function wraps DuckDB in a Docker container, letting you query CSV/JSON/Parquet files in your current folder from anywhere. It handles setup validation (checking Docker exists and the image is built), manages file permissions (read-only by default unless you pass --write), and runs the container with security constraints while preserving your terminal interaction.",
+  "explanations": {
+    "14": "This sets the name of the Docker image we'll use—it's a label that identifies the packaged DuckDB application.",
+    "18": "This disables a shellcheck warning because the next line intentionally uses single quotes to prevent the shell from expanding ${HOME} when setting the variable; we want the literal string for display purposes.",
+    "19": "We're storing the path as a string that still contains ${HOME} (unexpanded) so when we show error messages to the user, they see the generic form that works for any user, not the expanded home directory of whoever is currently running this.",
+    "21": "This checks if the docker command exists in the system by trying to run 'docker' and sending any output to /dev/null; if it fails, we abort with an error.",
+    "26": "This checks if the Docker image with our chosen name actually exists on this machine; if it doesn't, Docker will fail later, so we catch it here and give helpful instructions.",
+    "42": "We default to read-only mode by setting a suffix that will be added to the volume mount command; this prevents the container from modifying your actual files.",
+    "43": "If the first argument is --write, we remove the read-only restriction and use shift to discard that argument so it doesn't get passed to DuckDB itself.",
+    "50": "We check if both standard input and standard output are connected to a terminal; if so, we add -t to give DuckDB an interactive terminal, otherwise we omit it to allow piping.",
+    "52": "This warns the user that files are read-only, but only when no SQL command was passed (so it's interactive mode) and stdin is a terminal.",
+    "58": "docker run starts a new container; --rm automatically deletes it when done, and the flags after it configure networking, filesystem access, and security.",
+    "59": "This mounts your current working directory (PWD) into the container at /workspace, with the mount_mode suffix added—either :ro for read-only or empty for read-write.",
+    "62": "This creates a temporary filesystem in the container with a 256MB size limit, and forbids executing files or changing ownership within it, limiting what the container can do.",
+    "65": "This runs the container as the same user (by ID) who invoked the command, preventing privilege escalation and permission issues with files created inside the container.",
+    "69": "In zsh, $? is reserved, so we store the Docker exit code in rc to preserve it before other commands might overwrite it.",
+    "70": "If the command failed and files were read-only, we show a tip suggesting the user try again with --write in case the failure was due to write permissions."
+  }
+}

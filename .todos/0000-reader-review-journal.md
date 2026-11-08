@@ -508,3 +508,4 @@ Target structure: `.claude/skills/blog-post-structure/SKILL.md`
 | 2026-11-07 | kubernetes-concepts | draft | 5% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
 | 2026-11-07 | kubernetes-mini-lab-kind | draft | 6% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
 | 2026-11-07 | n8n-event-automation | draft | 10% mesuré (preuve avant tout Snippet) — ré-audit mécanique, remplace l'estimation précédente | OK | — |
+| 2026-11-08 | duckdb-json-csv | scheduled 2026-11-09 | 4% mesuré (Demo ligne 31) — ré-audit après ProjectSetup, onglets zsh/bash, --write | MINOR → OK (démo JOIN CSV+JSON ajoutée, section « DuckDB or jq/awk? » fusionnée ; redondance 🟢) | — |

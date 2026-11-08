@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T11:00:06.129Z",
+  "source": "orders.csv",
+  "sourceHash": "3d9764f310dae5ecb0128378b9f3dff86f87a639",
+  "lang": "csv",
+  "textLang": "fr",
+  "summary": "Ce fichier CSV contient un registre de commandes avec leurs identifiants, régions géographiques assignées et montants associés. Les en-têtes de colonne sont définis à la première ligne, suivis de cinq enregistrements de commandes répartis entre trois régions: EMEA, APAC et AMER.",
+  "explanations": {}
+}

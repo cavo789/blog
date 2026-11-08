@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:35.959Z",
+  "source": "docling-convert.fn.sh",
+  "sourceHash": "94849ae86967da666322d911bf1be96784333956",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This bash function wraps a Docker-based document converter tool. It checks that Docker is installed and that both the Docker image and a helper script exist before running the actual conversion; if anything is missing, it prints helpful instructions on how to set things up.",
+  "explanations": {
+    "11": "This creates a local variable that stores the Docker image name 'docling', making it reusable throughout the function instead of hardcoding it everywhere.",
+    "12": "This expands the home directory (~) to its full path now and stores it in a variable, so the script can reference an absolute path later.",
+    "14": "This tells the shell linter to ignore a warning on the next line because we intentionally want the ${HOME} to appear as literal text in messages, not be expanded.",
+    "15": "This stores the path as it should appear in user-facing messages — with ${HOME} shown as-is rather than expanded, so users can copy the command regardless of their username.",
+    "19": "This checks if the 'docker' command exists and is executable; the >/dev/null redirects suppress any output, and 2>&1 combines error and standard output.",
+    "24": "This checks if either the helper script is missing OR the Docker image doesn't exist by trying to inspect it; if either check fails, we need to provide setup instructions.",
+    "43": "This runs the actual conversion script with bash, passing through any arguments ($@) that were given to the function, like the filename to convert."
+  }
+}

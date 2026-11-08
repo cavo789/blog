@@ -4,7 +4,7 @@
     "dockerfile": "../Dockerfile"
   },
   "runArgs": [
-    "--name=docusaurus",
-    "--label=com.docker.compose.project=blog"
+    "--name=docusaurus-devcontainer",
+    "--label=com.docker.compose.project=blog-devcontainer"
   ]
 }

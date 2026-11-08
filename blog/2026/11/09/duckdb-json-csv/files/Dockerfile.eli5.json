@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:19.054Z",
+  "source": "Dockerfile",
+  "sourceHash": "83b6e18d8856318e9e010fe5c602492b0eb3e025",
+  "lang": "docker",
+  "textLang": "en",
+  "summary": "This Dockerfile creates a minimal Python 3.13 container with DuckDB CLI installed. It sets up environment variables to optimize Python's behavior in containers, downloads and installs the DuckDB command-line tool from GitHub, creates a non-root user called 'developer' for security, and configures the container to run DuckDB as the default command.",
+  "explanations": {
+    "1": "This special comment tells Docker to use an experimental syntax version that enables advanced features like heredocs and other modern Dockerfile capabilities.",
+    "5": "These environment variables tell Python not to create .pyc cache files, to print output immediately instead of buffering, and to skip checking for pip updates — all good practices for containers.",
+    "9": "These ARG lines define build-time variables that can be passed in when building (like `docker build --build-arg UID=2000`), allowing customization without editing the file.",
+    "15": "The RUN command chains multiple shell commands with && so they all run in one layer; if any command fails, the whole thing stops instead of continuing.",
+    "17": "The curl flags mean: fail on errors (-f), silently suppress progress (-s), show errors (-S), and follow redirects (-L); the pipe (|) feeds curl's output directly to tar without writing to disk first.",
+    "21": "Deleting the apt cache files after installing packages shrinks the final image size significantly since we don't need those files at runtime.",
+    "23": "This creates a Unix group and user called 'developer' with specific numeric IDs; the nologin shell prevents anyone from logging in as this user interactively.",
+    "28": "This switches from running as root to running as the 'developer' user, so the container won't have unnecessary privileges."
+  }
+}

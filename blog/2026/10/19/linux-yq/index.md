@@ -9,6 +9,9 @@ tags: [bash, docker, linux]
 date: 2026-10-19
 series: Modern CLI tools for your terminal
 ai_assisted: true
+updates:
+  - date: 2026-11-08
+    note: "The Docker alias is now a yq shell function for zsh and bash, in its own file (~/.zsh/fns or ~/.bash/fns)."
 ---
 
 ![yq — The YAML Processor You Already Know How to Use](/img/v2/linux-yq.webp)
@@ -71,16 +74,54 @@ $ brew install yq            # macOS and Linux (Homebrew)
 $ winget install MikeFarah.yq  # Windows
 </Terminal>
 
-No installation at all is also an option. Add this alias to your `~/.zshrc` or `~/.bashrc`:
+No installation at all is also an option: a small `yq` function runs the official image instead, in its own file in a folder your shell loads at startup (the organisation explained in <Link to="/blog/modular-zsh-workflow">my modular ZSH workflow</Link>):
 
-<Terminal>
-{`cat >> ~/.zshrc <<'EOF'
-alias yq='docker run --rm -i -u "$(id -u):$(id -g)" -v "\${PWD}":/workdir mikefarah/yq:4'
-EOF
-source ~/.zshrc`}
-</Terminal>
+<Snippet filename="yq.sh" source="./files/yq.sh" defaultOpen={true} />
 
-That alias mounts your current directory into the container and runs `yq` transparently, with your own user ID so that files edited with `-i` keep their owner. Every `yq` command below works with it exactly as written.
+It mounts your current directory into the container and runs `yq` transparently, with your own user ID so that files edited with `-i` keep their owner. Every `yq` command below works with it exactly as written. The code is the same for zsh and bash; only the folder and the loader differ.
+
+<Tabs groupId="shell">
+<TabItem value="zsh" label="zsh" default>
+
+**1. Create the file** in `~/.zsh/fns/`:
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="yq.zsh" source="./files/yq.sh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed one of my <Link to="/series/ollama-daily-use">"Ollama daily use"</Link> articles. Otherwise, add at the end of `~/.zshrc`:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh`).
+
+</TabItem>
+<TabItem value="bash" label="bash">
+
+**1. Create the file** in `~/.bash/fns/`:
+
+<ProjectSetup folderName="~/.bash/fns">
+  <Snippet filename="yq.sh" source="./files/yq.sh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.bashrc`.** Add at the end of `~/.bashrc` (the `-r` test keeps an empty folder from printing an error):
+
+```bash title="~/.bashrc"
+for fn_file in ~/.bash/fns/*.sh; do
+  [[ -r "$fn_file" ]] && source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec bash`).
+
+</TabItem>
+</Tabs>
+
+Check that the shell knows the function: `type yq` must answer `yq is a shell function`.
 
 The [releases page](https://github.com/mikefarah/yq/releases) also provides static binaries for Linux, macOS, and Windows — no runtime dependencies.
 

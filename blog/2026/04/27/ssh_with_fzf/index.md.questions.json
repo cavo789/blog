@@ -1,31 +1,25 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T21:53:51.033Z",
+  "generated": "2026-11-08T10:38:24.553Z",
+  "durationMs": 34298,
   "source": "index.md",
-  "sourceHash": "df93809865dd7a38ba069ee82a6f77401c8abcda",
-  "durationMs": 51591,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T08:47:14.283Z",
-    "articleHash": "0915f1e23847f60525012454ba529a38d89108e8",
-    "questionsHash": "79fefe2a2be37885",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "e54fa3179c4e3031ecd14980093b57b9a11492bb",
   "questions": [
     {
-      "question": "searchable TUI to pick SSH host without memorizing 50 servers",
+      "question": "fzf searchable ssh host list terminal",
       "anchor": ""
     },
     {
-      "question": "docker build sshf-demo container test fzf ssh selector",
+      "question": "can't remember 50 ssh hostnames need a searchable list in my terminal",
+      "anchor": ""
+    },
+    {
+      "question": "docker container test fzf ssh selector without connecting to real servers",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "fzf install git clone depth 1",
+      "question": "fzf install git clone depth 1 ~/.fzf/install",
       "anchor": "install-fzf"
     },
     {
@@ -33,27 +27,23 @@
       "anchor": "ssh-configuration"
     },
     {
-      "question": "amazing.conf ssh host documentation block",
+      "question": "organize ssh config by project subdirectory instead of one giant file",
+      "anchor": "ssh-configuration"
+    },
+    {
+      "question": "fzf preview pane show host metadata and documentation alongside the list",
       "anchor": "look-at-the-amazingconf-file"
     },
     {
-      "question": "add sshf function bash fzf interactive menu",
+      "question": "bash function fzf select ssh host press enter connect",
       "anchor": "add-the-sshf-function"
     },
     {
-      "question": "fzf filter ssh hosts by name project metadata",
+      "question": "fzf filter ssh hosts by project name pattern",
       "anchor": "using-filtering-options"
     },
     {
-      "question": "trigger ping or generate system inventory from fzf ssh menu",
-      "anchor": "my-real-use-case"
-    },
-    {
-      "question": "how to build a searchable terminal UI for picking which SSH server to connect to",
-      "anchor": ""
-    },
-    {
-      "question": "real use case sshf custom actions context info per host",
+      "question": "fzf ssh menu custom keybinding trigger ping or system inventory",
       "anchor": "my-real-use-case"
     }
   ]

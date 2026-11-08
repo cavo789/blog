@@ -1,71 +1,53 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T22:04:40.524Z",
+  "generated": "2026-11-08T10:39:33.064Z",
+  "durationMs": 27134,
   "source": "index.md",
-  "sourceHash": "0b94b9edc6637952fd751c6670a3109ad380846d",
-  "durationMs": 25192,
-  "rejected": [
-    {
-      "question": "inject ascii art into html comment after docusaurus build plugin",
-      "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source",
-      "reason": "not answered: Full plugin source is in a separate linked article, not here.",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T08:57:15.699Z",
-    "articleHash": "cc5f5adf40255995ca765bbff9c5a25c1a917bf1",
-    "questionsHash": "7a823ea0a5d13686",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 2
-  },
+  "sourceHash": "b943de7be0b4cfc820c3633d1e743df08ede8c7f",
   "questions": [
     {
-      "question": "docusaurus blog hidden easter eggs discoverable no popup",
+      "question": "docusaurus blog hidden easter eggs discoverable",
       "anchor": ""
     },
     {
-      "question": "styled console.log react component runs once per page load",
+      "question": "inject ascii art comment after doctype in docusaurus build output",
+      "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source"
+    },
+    {
+      "question": "docusaurus console.log %c styled message once per mount",
       "anchor": "2-a-consolelog-wink-for-devtools-visitors"
     },
     {
-      "question": "how to show a random 404 message from a pool in docusaurus",
+      "question": "docusaurus 404 page random rotating messages react",
       "anchor": "3-a-404-page-with-a-sense-of-humor"
     },
     {
-      "question": "konami code easter egg react docusaurus",
+      "question": "how to add a konami code easter egg to a docusaurus site",
       "anchor": "4-the-star-of-the-show-a-konami-code-easter-egg"
     },
     {
-      "question": "detect key sequence like up up down down in react component",
-      "anchor": "4-the-star-of-the-show-a-konami-code-easter-egg"
-    },
-    {
-      "question": "konami code key repeat race condition useEffect react",
+      "question": "keydown repeat event breaking konami code sequence",
       "anchor": "the-bug-that-nearly-killed-the-fun"
     },
     {
-      "question": "konami code fails on azerty keyboard layout",
+      "question": "konami code AZERTY keyboard layout arrow keys not matching",
       "anchor": "the-bug-a-real-user-found-that-automated-testing-missed"
     },
     {
-      "question": "swap favicon and document title when tab loses focus react",
+      "question": "document visibilitychange favicon swap docusaurus",
       "anchor": "5-tab-away-easter-egg-title-and-favicon-swap"
     },
     {
-      "question": "add custom http response header docusaurus easter egg",
+      "question": "docusaurus custom http response header",
       "anchor": "6-a-wink-in-the-http-headers"
     },
     {
-      "question": "hidden footer text only visible in print stylesheet css",
+      "question": "docusaurus print stylesheet hidden footer text",
       "anchor": "7-print-stylesheet-easter-egg"
     },
     {
-      "question": "docusaurus postBuild plugin race condition concurrency bug",
+      "question": "add html comment to sitemap.xml in docusaurus build",
       "anchor": "8-sitemapxml-gets-a-comment-too"
     }
   ]

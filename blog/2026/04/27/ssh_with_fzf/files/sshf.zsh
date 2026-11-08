@@ -13,11 +13,11 @@
 #   - Non-cluttered UI: Keeps the list clean while showing full docs on the right.
 #   - Robust Parsing: Handles complex multi-line SSH comment blocks.
 #
-# INSTALLATION:
-#   1. Save this file as ~/.zsh/sshf.zsh
-#   2. Add the following line to your ~/.zshrc:
-#           [[ -f ~/.zsh/sshf.zsh ]] && source ~/.zsh/sshf.zsh
-#   3. Restart your terminal or run: source ~/.zshrc
+# INSTALLATION (zsh and bash, same code):
+#   1. Save this file as ~/.zsh/fns/sshf.zsh (zsh) or ~/.bash/fns/sshf.sh (bash)
+#   2. Load that folder from ~/.zshrc or ~/.bashrc with a "for fn_file ..." loop
+#      (see https://www.avonture.be/blog/ssh-with-fuzzy-finder)
+#   3. Open a new terminal
 #
 # USAGE:
 #   $ sshf             # Opens interactive list

@@ -1,11 +1,11 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-11-05T12:57:01.559Z",
-  "durationMs": 21358,
+  "generated": "2026-11-08T10:53:20.581Z",
+  "durationMs": 30139,
   "source": "index.md",
   "locale": "fr",
-  "sourceHash": "a36e8353d0586f854a1949e081540aa5773b49f5",
+  "sourceHash": "7054ebf4ca781ac4a51459f06c24f4505f513c6d",
   "questions": [
     {
       "question": "devcontainer VS Code nom aléatoire comment renommer",
@@ -16,36 +16,44 @@
       "anchor": "the-two-lines"
     },
     {
-      "question": "devcontainer --name conflict container name already in use deux worktrees",
+      "question": "forcer un nom stable sur un devcontainer --name",
       "anchor": "--name-a-stable-container-name"
     },
     {
-      "question": "script docker exec devcontainer nom qui change à chaque rebuild",
+      "question": "container name already in use devcontainer deux clones du même repo",
       "anchor": "--name-a-stable-container-name"
     },
     {
-      "question": "regrouper devcontainer dans Docker Desktop comme un projet compose",
+      "question": "regrouper devcontainer dans Docker Desktop label compose",
       "anchor": "--label-grouping-in-docker-desktop"
     },
     {
-      "question": "com.docker.compose.project label devcontainer",
+      "question": "com.docker.compose.project label devcontainer VS Code",
       "anchor": "--label-grouping-in-docker-desktop"
     },
     {
-      "question": "docker compose stop ne gère pas devcontainer avec label",
+      "question": "docker compose stop ne fonctionne pas sur un devcontainer",
       "anchor": "--label-grouping-in-docker-desktop"
     },
     {
-      "question": "devcontainer compose.yaml name et project à la place de runArgs",
+      "question": "devcontainer avec compose.yaml comment nommer le container",
       "anchor": "and-if-my-devcontainer-uses-composeyaml"
     },
     {
-      "question": "runArgs ignoré quand devcontainer utilise compose.yaml",
+      "question": "runArgs ignoré devcontainer compose mode",
       "anchor": "and-if-my-devcontainer-uses-composeyaml"
     },
     {
-      "question": "runArgs --name --label ajouter à chaque nouveau devcontainer",
+      "question": "devcontainer.json runArgs --name --label exemple",
       "anchor": "conclusion"
+    },
+    {
+      "question": "Docker Desktop liste containers devcontainer comment organiser",
+      "anchor": ""
+    },
+    {
+      "question": "docker ps --filter label devcontainer",
+      "anchor": "--label-grouping-in-docker-desktop"
     }
   ]
 }

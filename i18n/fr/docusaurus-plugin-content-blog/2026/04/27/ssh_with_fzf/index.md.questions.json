@@ -1,51 +1,50 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-17T17:06:55.965Z",
+  "generated": "2026-11-08T10:45:10.723Z",
+  "durationMs": 38235,
   "source": "index.md",
-  "sourceHash": "9f8827c71d28cb69cdf566cc96d019f3be6cae2b",
   "locale": "fr",
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:20:44.989Z",
-    "articleHash": "ffb423ad6786254ea686037d91bbac06304cda01",
-    "questionsHash": "803e3791fb12d740",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 1
-  },
+  "sourceHash": "f41a496e01c4516e19bd11c3910f394cb495b165",
   "questions": [
     {
-      "question": "comment découper sa config SSH par projet pour éviter un fichier monolithique et ajouter de la documentation",
-      "anchor": "ssh-configuration"
+      "question": "sélecteur d'hosts SSH interactif FZF TUI",
+      "anchor": ""
     },
     {
-      "question": "docker build -t sshf-demo . et docker run --rm -it sshf-demo pour tester la TUI dans un container jetable",
+      "question": "50 hosts SSH dans un fichier monolithique ingérable",
+      "anchor": ""
+    },
+    {
+      "question": "tester sshf dans un container Docker sans rien installer",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "Quelle commande git utiliser pour cloner fzf et lancer le script d'installation ?",
+      "question": "git clone --depth 1 fzf install",
       "anchor": "install-fzf"
     },
     {
-      "question": "structurer ses hosts SSH dans des fichiers séparés par projet avec des blocs de documentation au-dessus des définitions",
+      "question": "découper ssh_config en fichiers par projet au lieu du monolithe",
       "anchor": "ssh-configuration"
     },
     {
-      "question": "à quoi ressemble un fichier amazing.conf et comment y placer les métadonnées contextuelles ?",
+      "question": "amazing.conf c'est quoi dans la config FZF SSH",
       "anchor": "look-at-the-amazingconf-file"
     },
     {
-      "question": "ajouter la fonction sshf à son .bashrc pour lancer le sélecteur d'hosts",
+      "question": "fonction shell sshf FZF ajouter dans .bashrc",
       "anchor": "add-the-sshf-function"
     },
     {
-      "question": "Comment filtrer la liste des hosts en temps réel dans fzf et afficher les infos contextuelles à droite ?",
+      "question": "options filtrage FZF hosts par nom projet métadonnée",
       "anchor": "using-filtering-options"
     },
     {
-      "question": "configurer des raccourcis clavier personnalisés dans fzf pour déclencher des actions avancées comme le ping ou un inventaire",
+      "question": "raccourcis clavier FZF déclencher ping sur un serveur",
+      "anchor": "my-real-use-case"
+    },
+    {
+      "question": "générer un inventaire système depuis le menu de recherche FZF",
       "anchor": "my-real-use-case"
     }
   ]

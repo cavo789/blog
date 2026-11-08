@@ -178,7 +178,7 @@ L'événement `visibilitychange` et `document.hidden` sont la manière standard 
 
 Celui-ci est invisible sauf si vous regardez l'onglet Network ou lancez `curl -I`. Il vit dans `nginx.conf`, en plein dans le bloc serveur HTTPS :
 
-<Snippet filename="nginx.conf" source="nginx.conf" defaultOpen={false} />
+<Snippet filename="nginx.conf" source=".config/nginx.conf" defaultOpen={false} />
 
 `add_header X-Powered-By "Meerkat-Sentry/1.0" always;` — un petit en-tête inoffensif pour qui inspecte les en-têtes de réponse par habitude.
 

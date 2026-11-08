@@ -1,0 +1,58 @@
+{
+  "name": "blog",
+  "build": { "dockerfile": "Dockerfile" },
+
+  // Tip 1 - a stable name, grouped in Docker Desktop
+  "runArgs": [
+    "--name=${localWorkspaceFolderBasename}-devcontainer",
+    "--label=com.docker.compose.project=${localWorkspaceFolderBasename}-devcontainer"
+  ],
+
+  // Tip 16 - features instead of hand-written apt-get lines
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Tip 5 - your files, your UID
+  "remoteUser": "node",
+  "updateRemoteUserUID": true,
+
+  // Tip 2 - one volume per project AND per user (USER on Linux, USERNAME on Windows)
+  "mounts": [
+    // Tip 3 - shell history survives a rebuild
+    "source=${localWorkspaceFolderBasename}-${localEnv:USER}${localEnv:USERNAME}-history,target=/commandhistory,type=volume",
+    // Tip 4 - extensions survive a rebuild
+    "source=${localWorkspaceFolderBasename}-${localEnv:USER}${localEnv:USERNAME}-vscode-extensions,target=/home/node/.vscode-server/extensions,type=volume",
+    // Tip 6 - your SSH config, read-only; the keys stay in the agent
+    "source=${localEnv:HOME}/.ssh/config,target=/home/node/.ssh/config,type=bind,readonly"
+  ],
+
+  // Tip 7 - your Git identity, read on the host (empty values are ignored)
+  "remoteEnv": {
+    "HOST_GIT_NAME": "${localEnv:GIT_AUTHOR_NAME}",
+    "HOST_GIT_EMAIL": "${localEnv:GIT_AUTHOR_EMAIL}"
+  },
+
+  // Tip 12 - the right hook for the right job
+  "initializeCommand": "test -f .env || cp .env.example .env",
+  "postCreateCommand": "bash .devcontainer/scripts/post-create.sh ${containerWorkspaceFolder}",
+
+  // Tip 14 - a real PID 1, and a container that outlives the window
+  "init": true,
+  "shutdownAction": "none",
+
+  // Tip 13 - named, auto-opened ports
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "Docusaurus", "onAutoForward": "openBrowser" }
+  },
+
+  // Tip 8 - the editor the TEAM needs (your taste goes in a profile, tip 9)
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+      "settings": { "editor.formatOnSave": true }
+    }
+  }
+}

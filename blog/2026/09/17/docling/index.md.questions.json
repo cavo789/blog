@@ -1,72 +1,54 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T22:19:07.630Z",
+  "generated": "2026-11-08T10:41:05.813Z",
+  "durationMs": 27247,
   "source": "index.md",
-  "sourceHash": "1ae004e981731e67f2e94b23a2474146f09cd73e",
-  "durationMs": 25452,
-  "rejected": [
-    {
-      "question": "docling table not rendering in markdown output",
-      "anchor": "if-that-table-doesnt-show-up",
-      "reason": "not answered: Section covers GPU diagnostics, not docling table rendering in output",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T09:10:42.083Z",
-    "articleHash": "4913ef3668cc7398e1eac8a2438ac84806e9c90a",
-    "questionsHash": "3bfa976ba7bbc481",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 1
-  },
+  "sourceHash": "766c45e55f6d41ab2fe9fc371d95f48aa204070e",
   "questions": [
     {
-      "question": "docling docker setup local document to markdown",
-      "anchor": "installation"
+      "question": "local pdf word powerpoint excel to markdown no online converter docker",
+      "anchor": ""
     },
     {
-      "question": "convert PDF Word PowerPoint Excel HTML to markdown one command",
+      "question": "convert pptx xlsx docx html to markdown single command",
       "anchor": "converting-five-formats"
     },
     {
-      "question": "why does docling use layout models for PDF but just parsers for DOCX",
+      "question": "docling pdf layout model vs format-specific parser difference",
       "anchor": "what-docling-does-differently"
     },
     {
-      "question": "docling dockerfile pin version metapackage extras",
+      "question": "docling pip install pulls pytorch heavy metapackage",
+      "anchor": "installation"
+    },
+    {
+      "question": "dockerfile pin docling version avoid breaking rebuild",
       "anchor": "create-our-docker-image"
     },
     {
-      "question": "docling docker image 8gb pytorch cuda models baked in at build time",
+      "question": "docling docker build 8.3gb pytorch cuda models",
       "anchor": "build-the-image"
     },
     {
-      "question": "docling wrapper script convert from any folder no compose",
-      "anchor": "create-the-global-wrapper"
+      "question": "zsh bash function docker mount current directory docling convert",
+      "anchor": "make-docling-convert-available-everywhere"
     },
     {
-      "question": "docling slow pipeline default model-based vs fast",
+      "question": "docling slow conversion pipeline why default",
       "anchor": "why-the-slow-pipeline-is-the-default"
     },
     {
-      "question": "docling GPU PDF conversion spare VRAM",
+      "question": "docling gpu acceleration pdf vram 24gb",
       "anchor": "optional--putting-a-gpu-behind-the-pdf-pipeline"
     },
     {
-      "question": "convert sensitive documents to markdown locally no cloud upload",
-      "anchor": "why-a-toolkit-is-needed-at-all"
+      "question": "docling table not showing in markdown output",
+      "anchor": "if-that-table-doesnt-show-up"
     },
     {
-      "question": "docling conversion time five office documents",
+      "question": "docling converted file sizes pdf docx pptx xlsx html",
       "anchor": "what-the-five-files-cost"
-    },
-    {
-      "question": "docling handle images in PDF markdown conversion",
-      "anchor": "a-word-on-images"
     }
   ]
 }

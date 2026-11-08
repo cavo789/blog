@@ -1,67 +1,59 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-18T02:23:35.865Z",
+  "generated": "2026-11-08T10:48:08.194Z",
+  "durationMs": 34128,
   "source": "index.md",
-  "sourceHash": "6d52a7b04fa890bd76a75389d00fa650c59d3a42",
-  "durationMs": 191536,
   "locale": "fr",
-  "rejected": [
-    {
-      "question": "Plugin Docusaurus pour injecter un commentaire HTML avec ASCII art après le doctype",
-      "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source",
-      "reason": "not answered: Full plugin source is in a linked article, not shown here.",
-      "date": "2026-09-24"
-    },
-    {
-      "question": "Résoudre un favicon flou en redessinant le cadrage du fichier image",
-      "anchor": "what-we-ended-up-with",
-      "reason": "not answered: Only mentioned in passing in the TLDR; no fix or explanation given.",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:30:20.492Z",
-    "articleHash": "2091c9ee20b8d90d8e6bd220ba785e5c3632efe5",
-    "questionsHash": "437256afae1a8ed7",
-    "status": "applied",
-    "rejected": 2,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "44ee36b0c6d5a3b71ca737d467e905319645c449",
   "questions": [
     {
-      "question": "Comment semer des easter eggs discrets sur un blog Docusaurus sans gêner la lecture ?",
+      "question": "easter eggs cachés blog docusaurus suricate",
       "anchor": ""
     },
     {
-      "question": "Comment utiliser console.log avec une directive console pour afficher un message stylé dans les DevTools ?",
+      "question": "comment insérer un ascii art en commentaire html juste après le doctype avec un plugin docusaurus",
+      "anchor": "1-the-one-that-started-it-all-an-ascii-art-meerkat-in-the-page-source"
+    },
+    {
+      "question": "console.log stylisé %c docusaurus",
       "anchor": "2-a-consolelog-wink-for-devtools-visitors"
     },
     {
-      "question": "Générer des messages 404 aléatoires sur un site Docusaurus",
+      "question": "page 404 messages aléatoires docusaurus react",
       "anchor": "3-a-404-page-with-a-sense-of-humor"
     },
     {
-      "question": "Déclencher un sprite via le code Konami dans un composant React",
+      "question": "code konami react easter egg sprite",
       "anchor": "4-the-star-of-the-show-a-konami-code-easter-egg"
     },
     {
-      "question": "Corriger une race condition de répétition de touche dans le handler Konami",
+      "question": "composant react hook keydown konami code",
+      "anchor": "the-component"
+    },
+    {
+      "question": "bug répétition de touche keydown handler konami code",
       "anchor": "the-bug-that-nearly-killed-the-fun"
     },
     {
-      "question": "Gérer l'incompatibilité clavier AZERTY pour les codes secrets",
+      "question": "code konami clavier azerty incompatibilité javascript",
       "anchor": "the-bug-a-real-user-found-that-automated-testing-missed"
     },
     {
-      "question": "Changer le titre et le favicon quand on quitte l'onglet",
+      "question": "comment changer le titre et la favicon quand l'utilisateur quitte l'onglet",
       "anchor": "5-tab-away-easter-egg-title-and-favicon-swap"
     },
     {
-      "question": "Cacher un message dans la feuille de style d'impression CSS",
+      "question": "en-tête http personnalisé docusaurus plugin",
+      "anchor": "6-a-wink-in-the-http-headers"
+    },
+    {
+      "question": "@media print docusaurus easter egg",
       "anchor": "7-print-stylesheet-easter-egg"
+    },
+    {
+      "question": "commentaire caché sitemap.xml docusaurus",
+      "anchor": "8-sitemapxml-gets-a-comment-too"
     }
   ]
 }

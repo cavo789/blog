@@ -1,58 +1,58 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-10-19T07:30:41.394Z",
-  "durationMs": 30134,
+  "generated": "2026-11-08T10:52:21.630Z",
+  "durationMs": 24129,
   "source": "index.md",
   "locale": "fr",
-  "sourceHash": "8f574f13539e5f7e98bc2152210ae4642df4ff4c",
+  "sourceHash": "7450c9e47f87c84ac01c5e17ae92968a4435f46b",
   "questions": [
     {
-      "question": "yq yaml ligne de commande",
+      "question": "yq yaml syntaxe jq",
       "anchor": ""
     },
     {
-      "question": "yq mikefarah vs yq python différence comportement",
+      "question": "différence yq Go MikeFarah et yq python kislyuk",
       "anchor": "what-yq-is--and-which-one"
     },
     {
-      "question": "tester yq docker run --rm sans rien installer",
+      "question": "lancer yq dans un container docker jetable sans installer",
       "anchor": "seeing-it-in-action-with-docker"
     },
     {
-      "question": "alias yq docker ~/.zshrc transparent",
+      "question": "alias shell yq docker zsh bash",
       "anchor": "install--or-just-alias"
     },
     {
-      "question": "yq extraire image service compose.yaml",
+      "question": "yq '.services.web.image' docker-compose",
       "anchor": "reading-values"
     },
     {
-      "question": "yq filtrer services qui ont ports compose",
-      "anchor": "filtering-and-selecting"
-    },
-    {
-      "question": "yq -i changer image nginx compose.yaml sur place",
+      "question": "yq modifier yaml in place",
       "anchor": "editing-in-place"
     },
     {
-      "question": "yq lire stdin pipe cat yaml",
+      "question": "cat config.yaml | yq stdin",
       "anchor": "reading-from-stdin-and-piping"
     },
     {
-      "question": "extraire tous les mappings ports compose.yaml yq",
+      "question": "extraire tous les mappings de ports docker-compose yq",
       "anchor": "extract-all-port-mappings"
     },
     {
-      "question": "yq incrémenter version image fichier CI",
+      "question": "yq vérifier si une clé existe avant de l'utiliser",
+      "anchor": "check-if-a-key-exists-before-using-it"
+    },
+    {
+      "question": "yq incrémenter version fichier CI",
       "anchor": "update-a-version-across-a-ci-file"
     },
     {
-      "question": "yq convertir yaml en json",
+      "question": "yq convert yaml json",
       "anchor": "convert-yaml-to-json"
     },
     {
-      "question": "yq jq syntaxe commune yaml",
+      "question": "yq jq pipeline ensemble",
       "anchor": "the-jq-crossover"
     }
   ]

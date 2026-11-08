@@ -1,0 +1,12 @@
+$ duckdb -c "CREATE TABLE o AS FROM 'orders.csv'; UPDATE o SET amount = round(amount * 1.21, 2) WHERE region = 'EMEA'; DELETE FROM o WHERE region = 'APAC'; COPY o TO 'orders_fixed.csv'"
+
+IO Error: Cannot open file "orders_fixed.csv": Read-only file system
+Tip: the current folder is read-only. If this failed while writing a file, run it again as: duckdb --write ...
+
+$ duckdb --write -c "CREATE TABLE o AS FROM 'orders.csv'; UPDATE o SET amount = round(amount * 1.21, 2) WHERE region = 'EMEA'; DELETE FROM o WHERE region = 'APAC'; COPY o TO 'orders_fixed.csv'"
+
+$ cat orders_fixed.csv
+order_id,region,amount
+1001,EMEA,145.81
+1003,EMEA,54.69
+1004,AMER,300.0

@@ -1,53 +1,49 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-11-05T12:53:08.956Z",
-  "durationMs": 21489,
+  "generated": "2026-11-08T10:43:25.644Z",
+  "durationMs": 35038,
   "source": "index.md",
-  "sourceHash": "83f1a4e47cbebb7a4ef79c22f0c8e93553a51cad",
+  "sourceHash": "bd9e55ca89c358e0b924f1fa5c0b3ba9c9dafa55",
   "questions": [
     {
-      "question": "vscode devcontainer random container name fix",
+      "question": "vscode devcontainer random name how to fix",
       "anchor": ""
     },
     {
-      "question": "why do my devcontainers show up as random names like serene_ganguly in docker desktop",
+      "question": "stop devcontainer from getting random names in docker desktop",
       "anchor": ""
     },
     {
-      "question": "devcontainer.json runArgs pass docker create flags",
+      "question": "devcontainer.json runArgs what flags can I pass",
       "anchor": "the-two-lines"
     },
     {
-      "question": "set stable container name devcontainer so docker exec works across rebuilds",
+      "question": "pass docker create arguments to vscode devcontainer",
+      "anchor": "the-two-lines"
+    },
+    {
+      "question": "devcontainer name conflict already in use",
       "anchor": "--name-a-stable-container-name"
     },
     {
-      "question": "container name already in use conflict devcontainer two checkouts",
+      "question": "force stable container name vscode devcontainer rebuild",
       "anchor": "--name-a-stable-container-name"
     },
     {
-      "question": "group devcontainer with compose containers in docker desktop",
+      "question": "how to make devcontainer appear in docker desktop group",
       "anchor": "--label-grouping-in-docker-desktop"
     },
     {
-      "question": "com.docker.compose.project label set manually without compose",
+      "question": "set com.docker.compose.project label on devcontainer",
       "anchor": "--label-grouping-in-docker-desktop"
     },
     {
-      "question": "docker desktop stop group containers together devcontainer label",
-      "anchor": "--label-grouping-in-docker-desktop"
-    },
-    {
-      "question": "devcontainer uses compose.yaml do I still need runArgs",
+      "question": "devcontainer with compose.yaml do I still need runArgs",
       "anchor": "and-if-my-devcontainer-uses-composeyaml"
     },
     {
-      "question": "compose.yaml name project_name devcontainer service",
-      "anchor": "and-if-my-devcontainer-uses-composeyaml"
-    },
-    {
-      "question": "add runArgs name label to every new devcontainer after image key",
+      "question": "devcontainer best practice name and group docker desktop",
       "anchor": "conclusion"
     }
   ]

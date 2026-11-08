@@ -1,64 +1,50 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-18T02:54:28.630Z",
+  "generated": "2026-11-08T10:50:16.113Z",
+  "durationMs": 41008,
   "source": "index.md",
-  "sourceHash": "5e5dbd6f175bd18b69d92b6c46976f41bc895b95",
-  "durationMs": 172785,
   "locale": "fr",
-  "rejected": [
-    {
-      "question": "Docker Desktop mérite t il encore sa place sur linux",
-      "anchor": "does-docker-desktop-still-earn-its-place",
-      "reason": "not answered: Article framed around Windows/WSL2, not Linux specifically",
-      "date": "2026-09-24"
-    }
-  ],
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T15:41:29.581Z",
-    "articleHash": "f7df9baf13604f8034593e0c0980b638c2666529",
-    "questionsHash": "555081f6ff601f6d",
-    "status": "applied",
-    "rejected": 1,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "6f7130618a20ce7a7717b19a7ac19fa39d77947d",
   "questions": [
     {
-      "question": "lazydocker dashboard terminal containerisé wrapper compose",
+      "question": "lazydocker en container sans installer sur le host",
       "anchor": ""
     },
     {
-      "question": "comment suivre les logs webpack et les métriques cpu mémoire Docker en temps réel",
+      "question": "lazydocker afficher logs webpack en streaming sans taper docker logs",
       "anchor": "the-dashboard-running"
     },
     {
-      "question": "navigation clavier vim et groupement des services compose dans l interface lazydocker",
+      "question": "lazydocker grouper containers par service compose.yaml navigation vim",
       "anchor": "what-lazydocker-actually-shows"
     },
     {
-      "question": "dockerfile lazydocker mount docker.sock et cli Docker",
+      "question": "containeriser lazydocker monter /var/run/docker.sock Docker CLI dans l'image base",
       "anchor": "containerizing-it"
     },
     {
-      "question": "script wrapper global pour lancer lazydocker avec le bon compose.yaml",
+      "question": "fonction zsh lazydocker lire compose.yaml du dossier courant bash",
       "anchor": "the-global-wrapper"
     },
     {
-      "question": "personnaliser les raccourcis et la config par défaut de lazydocker",
+      "question": "lazydocker personnaliser configuration affichage",
       "anchor": "customize"
     },
     {
-      "question": "lazydocker ou fonctions ZSH dex pour administrer les containers",
+      "question": "lazydocker vs mes fonctions zsh docker exec stop logs",
       "anchor": "my-dex-function-vs-lazydocker"
     },
     {
-      "question": "points clés du container et du wrapper lazydocker",
+      "question": "Docker Desktop encore utile si lazydocker dashboard terminal",
+      "anchor": "does-docker-desktop-still-earn-its-place"
+    },
+    {
+      "question": "lazydocker TTY alloc /var/run/docker.sock permissions root",
       "anchor": "key-takeaways"
     },
     {
-      "question": "transition vers lazydocker pour un workflow Docker plus léger",
+      "question": "lazydocker un seul binaire dashboard containers images volumes réseaux stats",
       "anchor": "conclusion"
     }
   ]

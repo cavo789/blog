@@ -1,15 +1,15 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-11-05T12:50:18.413Z",
+  "generated": "2026-11-08T10:56:08.143Z",
   "source": "devcontainer.json",
-  "sourceHash": "999a8938b293cdbcbdafe7753f38136a1323c91d",
+  "sourceHash": "53ad256267422e004fc0689d4507dbfa6ecf5e70",
   "lang": "json",
   "textLang": "en",
-  "summary": "This is a configuration file for a development container (likely for Visual Studio Code or a similar tool) that sets up a Docusaurus environment. It specifies which Dockerfile to use, gives the container a name, and adds metadata labels so Docker can organize and identify it.",
+  "summary": "This is a Docker development container configuration file that sets up a Docusaurus environment. It specifies which Dockerfile to use, names the container, and adds labels to organize it within a Docker Compose project.",
   "explanations": {
-    "4": "The '../Dockerfile' path points to a Dockerfile located one directory level up from this config file, which contains the instructions for building the container image.",
-    "6": "runArgs are command-line arguments passed to Docker when the container starts, similar to flags you'd add to a 'docker run' command.",
-    "8": "Labels are key-value pairs that tag the container with metadata; this particular label groups it with a Docker Compose project named 'blog' for easier management."
+    "4": "The path ../Dockerfile tells Docker to look for the Dockerfile one directory level up from the current location, which contains the instructions for building this container image.",
+    "6": "runArgs is a list of additional arguments that get passed to Docker when the container starts — these are options that customize how the container runs.",
+    "8": "The label is metadata (like a tag) that Docker uses to organize and identify containers; this one marks the container as part of the 'blog-devcontainer' project."
   }
 }

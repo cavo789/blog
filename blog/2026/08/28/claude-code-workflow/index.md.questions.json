@@ -1,63 +1,57 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T22:12:56.901Z",
+  "generated": "2026-11-08T10:40:06.560Z",
+  "durationMs": 33415,
   "source": "index.md",
-  "sourceHash": "8f57401218635c73ccb6b67889d44bc06c37171e",
-  "durationMs": 32613,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T09:05:06.403Z",
-    "articleHash": "bae081956851bb591b03ba1a3c8b768fac0e6b1f",
-    "questionsHash": "d1dbdbef6e500490",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "2c5618100b7403f7da4d01003008ea5af027aa07",
   "questions": [
     {
-      "question": "claude code .claude folder layered workflow beyond slash commands",
+      "question": "claude code .claude folder grew from slash commands to full layered setup",
       "anchor": ""
     },
     {
-      "question": "claude code command calls agent which applies skill to review article",
+      "question": "how do commands, hooks, skills, agents and rules chain together in a claude code workflow",
       "anchor": "what-five-layers-look-like-in-practice"
     },
     {
-      "question": "why separate claude code skills agents rules hooks into different layers",
+      "question": "why split claude code config into separate skill vs agent vs rule instead of one big system prompt",
       "anchor": "why-a-layered-setup-works"
     },
     {
-      "question": "claude code write first custom slash command",
+      "question": "first claude code slash command to stop re-typing project rules every session",
       "anchor": "start-here-your-first-slash-command"
     },
     {
-      "question": "claude code hook block or auto-approve tool call without AI in the loop",
+      "question": "claude code hook block or auto-approve tool call without asking the model",
       "anchor": "draw-a-hard-line-hooks"
     },
     {
-      "question": "claude code skill file define what good looks like agent enforces it",
+      "question": "encode review standards as claude skill then have isolated agent apply it",
       "anchor": "encode-your-standards-skills-checked-by-agents"
     },
     {
-      "question": "claude code check if blog post front-loads value before install steps",
+      "question": "claude code review blog post front-load real output before install steps time-to-value",
       "anchor": "a-concrete-case-this-blogs-own-time-to-value-check"
     },
     {
-      "question": "claude code rule auto-loads when matching file opens no typing needed",
+      "question": "claude code rule auto-loads when matching file opens no manual invocation needed",
       "anchor": "always-on-no-invocation-needed-rules"
     },
     {
-      "question": "claude code wire commands hooks skills agents rules into one pipeline",
+      "question": "wire claude code slash command to call agent which applies skill end to end",
       "anchor": "wiring-it-all-together"
     },
     {
-      "question": "claude code read-only reviewer agent cannot edit files",
+      "question": "claude code .claude folder file layout what goes where under the hood",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "make claude code reviewer agent read-only so it can't edit the files it checks",
       "anchor": "why-the-reviewer-agents-cant-edit"
     },
     {
-      "question": "claude code zero-token bash script count files increment ID instead of asking model",
+      "question": "claude code slash command call plain bash script to count IDs instead of spending tokens on AI",
       "anchor": "the-zero-token-script-one-more-time"
     }
   ]

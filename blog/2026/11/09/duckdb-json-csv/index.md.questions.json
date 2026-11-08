@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-08T11:00:35.591Z",
+  "durationMs": 25438,
+  "source": "index.md",
+  "sourceHash": "e71cf68c233148a11d6aad513f68abe9083f5748",
+  "questions": [
+    {
+      "question": "query csv and json with sql no database server",
+      "anchor": ""
+    },
+    {
+      "question": "duckdb join csv table with json file in one query",
+      "anchor": "demo"
+    },
+    {
+      "question": "sql engine that reads csv files directly and infers schema without import",
+      "anchor": "what-makes-duckdb-different"
+    },
+    {
+      "question": "duckdb cli docker image build no pip no apt",
+      "anchor": "installation"
+    },
+    {
+      "question": "duckdb docker quick start two minute setup",
+      "anchor": "try-it-in-two-minutes"
+    },
+    {
+      "question": "duckdb shell function zsh bash works from any folder",
+      "anchor": "make-duckdb-available-everywhere"
+    },
+    {
+      "question": "duckdb mount current directory read-only relative paths in sql",
+      "anchor": "working-with-duckdb"
+    },
+    {
+      "question": "duckdb interactive sql console docker",
+      "anchor": "the-interactive-console"
+    },
+    {
+      "question": "duckdb update delete csv --write flag",
+      "anchor": "update-and-delete-read-only-by-default---write-when-you-mean-it"
+    },
+    {
+      "question": "switch from jq to duckdb when you need a join or window function",
+      "anchor": "key-takeaways"
+    },
+    {
+      "question": "one-off sql query on local csv json files no import step",
+      "anchor": "conclusion"
+    }
+  ]
+}

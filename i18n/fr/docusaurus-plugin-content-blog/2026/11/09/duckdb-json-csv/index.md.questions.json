@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-08T11:01:35.764Z",
+  "durationMs": 27205,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "cc00fa98d41b5b155ee9e2ee9ef27765b19b866c",
+  "questions": [
+    {
+      "question": "DuckDB interroger CSV JSON en SQL sans serveur sans import",
+      "anchor": ""
+    },
+    {
+      "question": "fonction de fenêtrage ROW_NUMBER sur un fichier JSON en SQL",
+      "anchor": "demo"
+    },
+    {
+      "question": "DuckDB déduit les types de colonnes du CSV sans CREATE TABLE",
+      "anchor": "what-makes-duckdb-different"
+    },
+    {
+      "question": "installer DuckDB CLI en docker pas de package apt ni pip",
+      "anchor": "installation"
+    },
+    {
+      "question": "docker build -t duckdb-cli Dockerfile binaire officiel version figée",
+      "anchor": "try-it-in-two-minutes"
+    },
+    {
+      "question": "fonction shell duckdb dans .zshrc et .bashrc utilisable depuis n'importe quel dossier",
+      "anchor": "make-duckdb-available-everywhere"
+    },
+    {
+      "question": "duckdb SELECT FROM csv.json JOIN GROUP BY",
+      "anchor": "working-with-duckdb"
+    },
+    {
+      "question": "duckdb console interactive SQL -c",
+      "anchor": "the-interactive-console"
+    },
+    {
+      "question": "duckdb UPDATE DELETE --write modifier un CSV lecture seule par défaut",
+      "anchor": "update-and-delete-read-only-by-default---write-when-you-mean-it"
+    },
+    {
+      "question": "DuckDB au lieu de jq awk quand il faut une jointure",
+      "anchor": "duckdb-or-jqawk"
+    },
+    {
+      "question": "DuckDB points clés workflow quand l'utiliser",
+      "anchor": "key-takeaways"
+    }
+  ]
+}

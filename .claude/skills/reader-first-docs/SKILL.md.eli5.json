@@ -1,21 +1,25 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-16T17:08:47.736Z",
+  "generated": "2026-11-08T10:55:33.224Z",
   "source": "SKILL.md",
-  "sourceHash": "70cc3c012376e2e8d7a078fc1cb447c496b4a442",
+  "sourceHash": "81e09f3d8511183b2e5b2247e5cce8029fd6aaff",
   "lang": "markdown",
-  "summary": "This document defines a methodology for auditing Docusaurus blog articles to ensure readers encounter proof-of-value quickly rather than prerequisites or theory first. It establishes four mechanical passes (position-based metrics, repetition detection, author-journey noise, and a 30-second reader test) that produce one of three verdicts: OK (journal only), MINOR (note but no action), or RESTRUCTURE (file a TODO). The audit prioritizes reordering content, not cutting, and treats certain scaffolding like QuickJump components as invisible to measurements.",
+  "textLang": "en",
+  "summary": "This document defines a methodology for auditing Docusaurus blog articles to ensure readers see value quickly. It uses four passes—measuring where proof appears relative to setup steps, checking for repeated information, detecting author-journey narrative that discourages readers, and doing a quick qualitative read—to assign each article a verdict of OK, MINOR issue, or RESTRUCTURE needed. The goal is to front-load proof and keep the article moving.",
   "explanations": {
-    "39": "T represents the line number where `<!-- truncate -->` appears (the article excerpt boundary), and BODY is the total line count of the readable article body after that point — used as the denominator to compute how early proof appears as a percentage.",
-    "42": "QuickJump components are navigation aids that sit between the excerpt cutoff and real content; move the truncate marker past them before measuring, because they don't represent install work or proof and shouldn't inflate the body length artificially.",
-    "54": "Proof is the first concrete evidence the reader sees that the tool/technique actually works — things like a command output, a result image, or a diagram — not just setup instructions.",
-    "64": "If an article never shows a working result, assign 100% TTV to flag that the reader gets no value proof at all, regardless of article length.",
-    "68": "The TTV percentage is computed as (line number where proof starts minus line T) divided by total body length; thresholds are green below 15%, yellow 15–30%, red 30% or higher.",
-    "76": "Articles often repeat the same core idea multiple times across different sections, making them feel padded; Pass 2 mechanically counts how many times each main claim reappears in the body.",
-    "87": "This AWK command splits the article into sections (starting at line T) by heading level 2, then counts words per section so you can see which ones are disproportionately long relative to their content.",
-    "119": "This grep pattern finds common phrases that signal the author is narrating their own process of discovery (trial-and-error, surprise, learning the hard way) rather than teaching the reader.",
-    "127": "When an author says 'I found out the hard way,' that sentence should be cut because the article already demonstrates the workaround in code — the story adds nothing the reader needs.",
-    "151": "A high TTV metric doesn't save an article if the opening paragraph never explains what problem the tool solves; metrics make audits consistent but never override the gut check of whether a reader would keep reading."
+    "9": "This skill is a reference guide that explains *what* to measure and how, but it doesn't control *which* articles you audit or in what order—that's handled by the `/review:reader` command.",
+    "27": "The `<!-- truncate -->` marker is a Docusaurus feature that splits the article into a preview (shown on the blog listing page) and the full body (shown when someone clicks to read); only the body after this marker gets evaluated for time-to-value.",
+    "39": "T and E are shortcuts: T is the line number where the body begins, E is the last line of the file, and BODY is how many lines of actual content there are to work through.",
+    "41": "QuickJump is a navigation component at the top of the article body; it should not count toward install time or delay-to-value measurements, so if it appears right after truncate, move the truncate marker past it before calculating.",
+    "62": "Some Terminal blocks reference external files (like `source=\"./files/x.txt\"`); when you're unsure if it's just an install command, actually look at that file to confirm.",
+    "76": "Repetition here means the same information restated multiple times across the article, which makes readers feel like the piece is padded and needlessly long.",
+    "83": "Use grep to find each core claim's key phrase, count how many times it appears, and note where—this shows which facts are being hammered home and which sections are duplicating effort.",
+    "105": "Judge by information density, not raw length; a concise section that teaches nothing is worse than a long section full of useful details, so don't cut just to hit a word count.",
+    "111": "Author's journey is first-person narrative about the writer's discovery process ('I found out the hard way'); it's separate from repetition because each sentence is unique, so it won't be caught by Pass 2 yet still drives readers away.",
+    "127": "First-person *chronology* means narrating the order in which you discovered things; keep the facts you learned, but strip out the 'here's the story of how I learned it' wrapper.",
+    "142": "Read only the title, the description metadata at the top, and the first 40 lines after the truncate marker—this simulates how a real reader decides whether the article is worth their time.",
+    "161": "RESTRUCTURE is triggered by any one of several failure conditions (shown as separate checks with 'or')—if any of them is true, the article needs a TODO filed; TTV being too high alone is enough to require restructuring.",
+    "167": "When filing a RESTRUCTURE TODO for a reorder fix, always note which existing section you're moving and where it comes from, so the author knows nothing is being thrown away."
   }
 }

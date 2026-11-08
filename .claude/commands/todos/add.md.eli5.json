@@ -1,17 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-01T19:13:55.859Z",
+  "generated": "2026-11-08T10:55:23.081Z",
   "source": "add.md",
-  "sourceHash": "bdd856bfec742dd31dd08bfc6fec7e9a2058dc92",
+  "sourceHash": "a8438fe027eba3a88e866dc0e17d366bffff0005",
   "lang": "markdown",
-  "summary": "This is a markdown document that instructs an AI assistant how to capture a new task into a project's backlog. It defines a six-step procedure for creating a well-formed TODO file in the `.todos/` directory with a specific naming convention (four-digit ID plus slug), checking for duplicates, and filling in a standard template with priority, dependencies, and acceptance criteria.",
+  "textLang": "en",
+  "summary": "This is a instruction document for creating new task entries in a backlog system. It describes a six-step process: get a task description from the user, check the `.todos/` directory exists, scan existing tasks to avoid duplicates, generate the next sequential ID number, write a standardized markdown file with that ID and task details, then report back to the user.",
   "explanations": {
-    "4": "This line lists which tools the AI is allowed to use when executing this procedure — basic bash commands for listing and finding files, a custom script to generate the next ID number, and the ability to read and write files.",
-    "19": "The 'slug' is a URL-friendly version of the task name: all lowercase, using only letters, numbers, and hyphens, without words like 'a' or 'the' at the start, and kept short so the filename stays readable.",
-    "31": "Rather than manually counting existing IDs, always call this script because it searches through all TODO files (including ones in subfolders) and automatically returns the next sequential number padded to exactly 4 digits.",
-    "34": "Legacy IDs that were recorded in the old 3-digit format (like '099') are left unchanged — we never rename them to the new 4-digit width, we only use 4 digits for new IDs going forward.",
-    "38": "The filename itself is sacred and only contains the ID and slug; you must never put status like 'in-progress' or priority like 'urgent' in the filename because those belong in the file's metadata fields instead.",
-    "59": "The 'header bullets' are the YAML-like fields (Priority, Batch, etc.) at the top of the template that other tools like `/todos:plan` will parse and understand — they must stay in that exact format."
+    "4": "This line lists which tools the AI is allowed to use when following these instructions — basic bash commands for listing and finding files, a custom script to get the next ID number, and the ability to read and write files.",
+    "19": "The slug is a short, URL-friendly version of the task name using only lowercase letters, numbers, and hyphens (like 'add-user-login' instead of 'Add User Login').",
+    "31": "Rather than manually figuring out what number to use, always run this script which looks at all existing task files and returns the next available number, ensuring no conflicts.",
+    "33": "NNNN means a 4-digit number with leading zeros (like 0042), and the script pads shorter numbers with zeros automatically.",
+    "37": "The filename itself never changes — it's the permanent identity of the task. Information like priority or status goes inside the file as metadata, not in the filename.",
+    "43": "These bullet points are metadata fields that other tools parse; they're set to safe defaults here and the user can edit them later as the task evolves."
   }
 }

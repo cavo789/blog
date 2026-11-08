@@ -1,0 +1,5 @@
+$ devcontainer up --workspace-folder .
+[+] Building ...
+{"outcome":"success","containerId":"3f9c1e...","remoteUser":"node","remoteWorkspaceFolder":"/workspaces/blog"}
+$ devcontainer exec --workspace-folder . yarn build
+[SUCCESS] Generated static files in "build".

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:40.420Z",
+  "source": "yq.sh",
+  "sourceHash": "efcaa90311bd091d74a0556864252faa43b4da3a",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This bash function wraps the yq YAML editor tool inside a Docker container so you don't need to install it locally. It checks that Docker is available, then runs the yq container with your current user's permissions and mounts your working directory inside the container so files can be edited in place.",
+  "explanations": {
+    "8": "The 'command -v' checks if docker exists in your PATH, and '>/dev/null 2>&1' silently discards any output so we only care if the command succeeded or failed.",
+    "9": "The '\\e[31m' and '\\e[0m' are escape codes that make the error message print in red; '>&2' sends it to stderr (the error output stream) instead of stdout.",
+    "14": "This runs the container as your user (not root) by passing your user ID and group ID, so when yq modifies files with the -i flag, you remain the owner instead of root owning them.",
+    "15": "This mounts your current working directory (PWD) as '/workdir' inside the container, so yq can access and edit your files.",
+    "16": "The '\"$@\"' passes all arguments you give to the yq function directly to the docker command, so 'yq myfile.yaml' becomes 'docker run ... mikefarah/yq:4 myfile.yaml'."
+  }
+}

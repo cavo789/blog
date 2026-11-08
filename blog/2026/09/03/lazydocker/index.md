@@ -6,8 +6,11 @@ image: /img/v2/lazy-docker.webp
 mainTag: docker
 tags: [docker, linux]
 date: 2026-09-03
-description: "lazydocker is a single-binary terminal UI that shows every container, image, volume and network at a glance, with live stats and logs. This article containerizes it — no host install — and adds a global wrapper so it picks up whatever project's compose.yaml you're currently standing in."
+description: "lazydocker is a single-binary terminal UI that shows every container, image, volume and network at a glance, with live stats and logs. This article containerizes it — no host install — and adds a `lazydocker` shell function, for zsh or bash, so it picks up whatever project's compose.yaml you're currently standing in."
 language: en
+updates:
+  - date: 2026-11-08
+    note: "The /usr/local/bin wrapper script is now a lazydocker shell function for zsh and bash (~/.zsh/fns or ~/.bash/fns); config.yml is mounted automatically when present."
 ai_assisted: true
 ---
 
@@ -16,7 +19,7 @@ ai_assisted: true
 <!-- cspell:ignoreCase lazydocker jesseduffield alpine apk hjkl -->
 
 <TLDR>
-[lazydocker](https://github.com/jesseduffield/lazydocker) is a terminal UI that shows containers, images, volumes and networks side by side, with live CPU/memory stats and a log pane that updates as you move the selection — the same kind of glanceable dashboard `top` gives you for processes, but for Docker. This article containers it (of course), sharing the host's Docker socket the same way I explained in <Link to="/blog/docker-out-of-docker-dood">my Docker-out-of-Docker article</Link>, and adds one global wrapper script so running `lazydocker` from any project folder shows that project's containers, not a random flat list.
+[lazydocker](https://github.com/jesseduffield/lazydocker) is a terminal UI that shows containers, images, volumes and networks side by side, with live CPU/memory stats and a log pane that updates as you move the selection — the same kind of glanceable dashboard `top` gives you for processes, but for Docker. This article containers it (of course), sharing the host's Docker socket the same way I explained in <Link to="/blog/docker-out-of-docker-dood">my Docker-out-of-Docker article</Link>, and adds one shell function so running `lazydocker` from any project folder shows that project's containers, not a random flat list.
 </TLDR>
 
 In <Link to="/blog/zsh-docker-functions">a previous article</Link>, I shared the ZSH functions I use daily: `dex` to jump into a container, `dstop` to stop one, `dlogs` to tail its logs. They're fast, precisely because they assume I already know what I want — pick a container, do one thing, done.
@@ -71,11 +74,60 @@ Build it: `docker compose build`.
 
 If I only ever ran lazydocker from inside `~/tools/lazydocker`, it would show me... `~/tools/lazydocker`'s own container, which is not the point. The trick is mounting whatever directory you're *currently* in, so lazydocker's project-detection logic finds the right `compose.yaml`. That means the plain `docker compose run` I've used elsewhere doesn't work here — the compose file's own working directory would always win.
 
-A tiny wrapper script fixes it. It goes in `/usr/local/bin/` so it's on your `PATH` from every folder, and since that directory is root-owned, creating the file there needs `sudo`. Open it with `sudo vi /usr/local/bin/lazydocker` and paste in the content below (in `vi`: press <kbd>i</kbd>, paste, then <kbd>Esc</kbd> and `:wq` to save and quit):
+A small shell function fixes it: it mounts the folder you are standing in, and since it lives in a file your shell loads at startup (the organisation explained in <Link to="/blog/modular-zsh-workflow">my modular ZSH workflow</Link>), `lazydocker` works from every folder without touching `/usr/local/bin` or `sudo`:
 
-<Snippet filename="/usr/local/bin/lazydocker" source="./files/lazydocker.sh" />
+<Snippet filename="lazydocker.sh" source="./files/lazydocker.sh" defaultOpen={true} />
 
-Then make it executable: `sudo chmod +x /usr/local/bin/lazydocker`.
+The code is the same for zsh and bash; only the folder and the loader differ.
+
+<Tabs groupId="shell">
+<TabItem value="zsh" label="zsh" default>
+
+**1. Create the file** in `~/.zsh/fns/`:
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="lazydocker.zsh" source="./files/lazydocker.sh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed one of my <Link to="/series/ollama-daily-use">"Ollama daily use"</Link> articles. Otherwise, add at the end of `~/.zshrc`:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh`).
+
+</TabItem>
+<TabItem value="bash" label="bash">
+
+**1. Create the file** in `~/.bash/fns/`:
+
+<ProjectSetup folderName="~/.bash/fns">
+  <Snippet filename="lazydocker.sh" source="./files/lazydocker.sh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.bashrc`.** Add at the end of `~/.bashrc` (the `-r` test keeps an empty folder from printing an error):
+
+```bash title="~/.bashrc"
+for fn_file in ~/.bash/fns/*.sh; do
+  [[ -r "$fn_file" ]] && source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec bash`).
+
+</TabItem>
+</Tabs>
+
+Check that the shell knows the function: `type lazydocker` must answer `lazydocker is a shell function`.
+
+If the image is missing, the function prints the exact `docker compose build` command to run from `~/tools/lazydocker`, or points back to this article when that folder is gone too.
+
+<AlertBox variant="note" title="Coming from the previous version of this article?">
+It installed `lazydocker` as a script in `/usr/local/bin/`. Remove it (`sudo rm /usr/local/bin/lazydocker`): the function takes over, and the old script would otherwise linger on your disk.
+</AlertBox>
 
 From any project folder now — this Docusaurus repo, a client's API, wherever — running `lazydocker` opens the dashboard scoped to *that* folder's containers.
 
@@ -98,7 +150,7 @@ Both cases, both shells, in one file. Create `~/tools/lazydocker/config.yml`:
 
 All four entries use `attach: true` so lazydocker hands the terminal over to the shell rather than running the command in the background. `bash` and `sh` cover images that ship one or the other — Alpine-based images only have `sh`.
 
-Now tell both the compose file and the global wrapper to bind-mount that file on top of the named volume — Docker layers file mounts on top of volume mounts for overlapping paths, so `config.yml` wins while the volume still persists your pane layout and sort order:
+Now tell the compose file to bind-mount that file on top of the named volume — Docker layers file mounts on top of volume mounts for overlapping paths, so `config.yml` wins while the volume still persists your pane layout and sort order:
 
 ```yaml title="compose.yaml — updated volumes section"
 volumes:
@@ -108,15 +160,7 @@ volumes:
   - .:/workdir
 ```
 
-```bash title="/usr/local/bin/lazydocker — updated exec line"
-exec docker run --rm -it \
-    -v /var/run/docker.sock:/var/run/docker.sock \
-    -v lazydocker-config:/root/.config/jesseduffield/lazydocker \
-    -v "${HOME}/tools/lazydocker/config.yml:/root/.config/jesseduffield/lazydocker/config.yml" \
-    -v "${PWD}:/workdir" \
-    --workdir /workdir \
-    lazydocker
-```
+The `lazydocker` function needs no change: it already mounts `~/tools/lazydocker/config.yml` the moment that file exists.
 
 <AlertBox variant="note" title="Template variables">
 Each pane exposes its own object: `{{ .Container.ID }}` in the containers pane, `{{ .Image.Name }}` and `{{ .Image.Tag }}` in the images pane, `{{ .Service.Name }}` for services. The full list is in [lazydocker's Config.md](https://github.com/jesseduffield/lazydocker/blob/master/docs/Config.md).

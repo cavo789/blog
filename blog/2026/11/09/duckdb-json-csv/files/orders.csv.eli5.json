@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:10.292Z",
+  "source": "orders.csv",
+  "sourceHash": "3d9764f310dae5ecb0128378b9f3dff86f87a639",
+  "lang": "csv",
+  "textLang": "en",
+  "summary": "This is a CSV file containing order records with three columns: a unique order identifier, the geographic region where the order was placed, and the monetary amount of each order. It's a simple dataset that tracks sales across three regions: EMEA (Europe, Middle East, Africa), APAC (Asia-Pacific), and AMER (Americas).",
+  "explanations": {
+    "1": "The header row defines the three columns: order_id is a unique identifier for each order, region is the geographic area, and amount is the sale value in currency units."
+  }
+}

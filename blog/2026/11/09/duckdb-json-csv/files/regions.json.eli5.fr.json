@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T11:00:07.418Z",
+  "source": "regions.json",
+  "sourceHash": "35c277a2aa579568d4c1994a16d017619f539057",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier contient un tableau de trois objets représentant des régions géographiques avec leurs gestionnaires respectifs. Chaque entrée spécifie une région (EMEA, APAC, AMER) et le nom de la personne responsable de cette région.",
+  "explanations": {}
+}

@@ -77,7 +77,7 @@ But, for sure, that command is quite complex to remember, so I use a <Link to="/
 
 Here is the full Python script. It uses `argparse` to handle command-line arguments and `python-frontmatter` to parse the files.
 
-<Snippet filename=".scripts/tags-manager.py" source=".scripts/tags-manager.py" defaultOpen={false} />
+<Snippet filename=".scripts/tags-manager.py" source="scripts/tags-manager.py" defaultOpen={false} />
 
 ## More Examples
 

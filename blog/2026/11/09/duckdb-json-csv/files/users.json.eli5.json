@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-08T10:56:11.599Z",
+  "source": "users.json",
+  "sourceHash": "751997d91ff1f527e167afd98a50e90331e95e87",
+  "lang": "json",
+  "textLang": "en",
+  "summary": "This is a JSON array containing three person records, each with a name, birth date, and active status flag. It's a simple data structure you might use to store user information in a database or configuration file.",
+  "explanations": {}
+}

@@ -1,17 +1,23 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-03T06:52:19.097Z",
+  "generated": "2026-11-08T10:56:05.384Z",
   "source": "lazydocker.sh",
-  "sourceHash": "bf33c40c8385cda20924cc52cb3ad66c2b8c48aa",
+  "sourceHash": "d54e0cbfe54fed4fea042124a2121223de14e733",
   "lang": "bash",
-  "summary": "This script launches lazydocker (a Docker management UI) in a container, mounting your current working directory so it can see and manage any docker-compose files you have locally. It uses exec to replace the shell process with the Docker command, so when you exit lazydocker, you exit the script cleanly.",
+  "textLang": "en",
+  "summary": "This function runs lazydocker (a Docker management tool) inside a container, configured to see the current folder's compose.yaml file. It first checks that Docker is installed and that the lazydocker image exists locally, offering helpful instructions if either is missing. Then it launches the container with proper volume mounts so lazydocker can access Docker, your project files, and optional configuration.",
   "explanations": {
-    "7": "set -euo pipefail makes the script strict: it exits immediately if any command fails (-e), treats undefined variables as errors (-u), and fails if any command in a pipeline fails (-o pipefail).",
-    "9": "exec replaces the current shell process with the docker run command, so there's no lingering shell after lazydocker exits.",
-    "10": "This mounts the Docker daemon socket into the container so lazydocker inside the container can communicate with Docker on your host machine.",
-    "11": "This creates a named volume to persist lazydocker's configuration between runs, so your settings don't get lost when the container stops.",
-    "12": "This mounts your current directory (PWD = present working directory) into the container at /workdir so lazydocker can find your compose.yaml file.",
-    "13": "This tells the container to start with /workdir as its working directory, so lazydocker looks there first for docker-compose files."
+    "6": "This stores the Docker image name in a variable so we can reference it consistently throughout the function.",
+    "8": "This is the directory where the Dockerfile and compose.yaml files live on your computer, used for rebuilding the image if needed.",
+    "11": "This is the same path but shown as a literal string (with ${HOME} unexpanded) so when we print error messages, users can copy-paste the command exactly as written.",
+    "12": "This is the path inside the container where lazydocker stores its configuration files, so we can mount a volume there.",
+    "14": "This checks whether the docker command exists on your system; if it doesn't, the function stops immediately with an error.",
+    "15": "The escape codes (\\e[31m and \\e[0m) make the error text appear in red; >&2 sends the message to stderr (error output) instead of stdout.",
+    "19": "This checks if the lazydocker Docker image has already been built on this machine; if not, we show instructions on how to build it.",
+    "35": "This creates an empty array that will optionally hold volume mount flags if a config file exists.",
+    "37": "If a custom config file is found, we add the volume mount syntax to the array so it gets passed to docker run.",
+    "40": "The --rm flag deletes the container after it exits, -it keeps it interactive with a terminal attached, and the -v flags mount volumes.",
+    "43": "This unpacks the config_mount array into the docker run command; if the array is empty, nothing gets added, but if it has content, it gets inserted here."
   }
 }

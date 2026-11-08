@@ -1,0 +1,6 @@
+# Tip 3 - make bash write its history in the mounted volume
+ARG USERNAME=node
+RUN mkdir /commandhistory \
+    && touch /commandhistory/.bash_history \
+    && chown -R "${USERNAME}" /commandhistory \
+    && echo 'export PROMPT_COMMAND="history -a" HISTFILE=/commandhistory/.bash_history' >> "/home/${USERNAME}/.bashrc"

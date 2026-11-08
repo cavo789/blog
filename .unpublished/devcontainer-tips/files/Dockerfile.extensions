@@ -1,0 +1,5 @@
+# Tip 4 - create the folder BEFORE the volume is mounted on it,
+# so Docker copies its owner (node) into the new volume instead of root
+ARG USERNAME=node
+RUN mkdir -p "/home/${USERNAME}/.vscode-server/extensions" \
+    && chown -R "${USERNAME}" "/home/${USERNAME}/.vscode-server"

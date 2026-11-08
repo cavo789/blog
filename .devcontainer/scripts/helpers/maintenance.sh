@@ -35,7 +35,7 @@ function check() {
     # Format first so ELI5/translation freshness hashes are computed against the
     # final formatted content — avoids a stale→eli5 --force→format→stale cycle.
     printf "🖌️  Auto-formatting (Prettier) before hook run...\n"
-    yarn format || return 1
+    yarn --silent format --log-level warn || return 1
     printf "🔍 Running pre-commit hooks...\n"
     pre-commit run --all-files --config .config/.pre-commit-config.yaml
 }

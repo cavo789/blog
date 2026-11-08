@@ -17,6 +17,8 @@ blueskyRecordKey: 3mkhfxskcdk2z
 updates:
   - date: 2026-08-22
     note: added a Docker-first demo to try before installing
+  - date: 2026-11-08
+    note: "sshf now installs as its own file, ~/.zsh/fns or ~/.bash/fns, with a zsh/bash tab and its loader loop."
 ---
 ![Master your ssh command and select the host from a list](/img/v2/sshf.webp)
 
@@ -122,13 +124,54 @@ When the `MyAmazingApp_PROD` host is selected in the TUI, its associated doc-blo
 
 ## Add the sshf function
 
-For a quick test, you can just paste this in your `~/.bashrc` (or `~/.zshrc`); but if you're already splitting your shell config into pieces (see <Link to="/blog/modular-zsh-workflow">Beyond the Monolith</Link>), this is a perfect candidate for its own autoloaded function file.
+`sshf` gets its own file, in a folder your shell loads at startup (the organisation explained in <Link to="/blog/modular-zsh-workflow">Beyond the Monolith</Link>): your rc file stays short, and removing the tool is deleting one file.
 
-Edit your `~/.bashrc` (or `~/.zshrc`) file and append this function:
+<Snippet filename="sshf.sh" source="./files/sshf.zsh" defaultOpen={false} />
 
-<Snippet source="./files/sshf.zsh" defaultOpen={false} />
+The code is the same for zsh and bash; only the folder and the loader differ.
 
-Save the file and apply the changes by running `source ~/.bashrc` (or `source ~/.zshrc`).
+<Tabs groupId="shell">
+<TabItem value="zsh" label="zsh" default>
+
+**1. Create the file** in `~/.zsh/fns/`:
+
+<ProjectSetup folderName="~/.zsh/fns">
+  <Snippet filename="sshf.zsh" source="./files/sshf.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.zshrc`.** Already done if you followed one of my <Link to="/series/ollama-daily-use">"Ollama daily use"</Link> articles. Otherwise, add at the end of `~/.zshrc`:
+
+```zsh title="~/.zshrc"
+for fn_file in ~/.zsh/fns/*.zsh; do
+  source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec zsh`).
+
+</TabItem>
+<TabItem value="bash" label="bash">
+
+**1. Create the file** in `~/.bash/fns/`:
+
+<ProjectSetup folderName="~/.bash/fns">
+  <Snippet filename="sshf.sh" source="./files/sshf.zsh" defaultOpen={false} />
+</ProjectSetup>
+
+**2. Load the folder from `~/.bashrc`.** Add at the end of `~/.bashrc` (the `-r` test keeps an empty folder from printing an error):
+
+```bash title="~/.bashrc"
+for fn_file in ~/.bash/fns/*.sh; do
+  [[ -r "$fn_file" ]] && source "$fn_file"
+done
+```
+
+**3. Open a new terminal** (or run `exec bash`).
+
+</TabItem>
+</Tabs>
+
+Check that the shell knows the function: `type sshf` must answer `sshf is a shell function`.
 
 Return to your terminal, type `sshf`, and press <kbd>Enter</kbd>. The magic will now unfold.
 
