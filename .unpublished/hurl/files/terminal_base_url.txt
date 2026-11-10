@@ -1,0 +1,12 @@
+$ HURL_VARIABLE_username=emilys HURL_SECRET_password=emilyspass hurl --test --variable base_url=https://dummyjson.com *.hurl
+Success countries.hurl (1 request(s) in 96 ms)
+Success login.hurl (2 request(s) in 161 ms)
+Success users.hurl (1 request(s) in 170 ms)
+Success features.hurl (8 request(s) in 977 ms)
+--------------------------------------------------------------------------------
+Executed files:    4
+Executed requests: 12 (12.1/s)
+Succeeded files:   4 (100.0%)
+Failed files:      0 (0.0%)
+Duration:          991 ms (0h:0m:0s:991ms)
+

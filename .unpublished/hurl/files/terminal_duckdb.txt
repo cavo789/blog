@@ -1,0 +1,11 @@
+$ duckdb --write catalog.duckdb < load.sql
+┌─────────────────────┬───────┬──────────┐
+│      category       │ items │ in_stock │
+│       varchar       │ int64 │  int128  │
+├─────────────────────┼───────┼──────────┤
+│ kitchen-accessories │    30 │     1656 │
+│ groceries           │    27 │     1417 │
+│ sports-accessories  │    17 │      871 │
+│ smartphones         │    16 │      695 │
+│ mobile-accessories  │    14 │      531 │
+└─────────────────────┴───────┴──────────┘

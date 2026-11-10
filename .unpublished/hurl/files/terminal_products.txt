@@ -1,0 +1,8 @@
+$ hurl --test --variable username=emilys --secret password=emilyspass products.hurl
+Success products.hurl (2 request(s) in 134 ms)
+--------------------------------------------------------------------------------
+Executed files:    1
+Executed requests: 2 (14.6/s)
+Succeeded files:   1 (100.0%)
+Failed files:      0 (0.0%)
+Duration:          137 ms (0h:0m:0s:137ms)

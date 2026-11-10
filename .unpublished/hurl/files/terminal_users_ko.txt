@@ -1,0 +1,19 @@
+$ hurl --test users.hurl
+error: Assert failure
+  --> users.hurl:11:0
+   |
+   | GET https://dummyjson.com/users
+   | ...
+11 | jsonpath "$.total" == 200
+   |   actual:   integer <208>
+   |   expected: integer <200>
+   |
+
+Failure users.hurl (1 request(s) in 102 ms)
+--------------------------------------------------------------------------------
+Executed files:    1
+Executed requests: 1 (9.5/s)
+Succeeded files:   0 (0.0%)
+Failed files:      1 (100.0%)
+Duration:          105 ms (0h:0m:0s:105ms)
+

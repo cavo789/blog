@@ -1,0 +1,12 @@
+$ HURL_VARIABLE_username=emilys HURL_SECRET_password=emilyspass hurl --test --report-html report/ --report-junit junit.xml *.hurl
+Success countries.hurl (1 request(s) in 105 ms)
+Success users.hurl (1 request(s) in 137 ms)
+Success login.hurl (2 request(s) in 223 ms)
+Success features.hurl (8 request(s) in 971 ms)
+--------------------------------------------------------------------------------
+Executed files:    4
+Executed requests: 12 (12.2/s)
+Succeeded files:   4 (100.0%)
+Failed files:      0 (0.0%)
+Duration:          986 ms (0h:0m:0s:986ms)
+

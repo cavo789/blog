@@ -1,0 +1,5 @@
+$ API_USERNAME=emilys API_PASSWORD=emilyspass ./login-curl.sh
+{
+  "username": "emilys",
+  "email": "emily.johnson@x.dummyjson.com"
+}

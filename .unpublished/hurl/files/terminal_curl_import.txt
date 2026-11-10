@@ -1,0 +1,6 @@
+$ echo "curl -X POST https://dummyjson.com/auth/login -H 'Content-Type: application/json' -d '{\"username\":\"emilys\",\"password\":\"emilyspass\"}'" | hurlfmt --in curl
+POST https://dummyjson.com/auth/login
+Content-Type: application/json
+```
+{"username":"emilys","password":"emilyspass"}
+```

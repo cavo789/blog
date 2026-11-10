@@ -96,6 +96,7 @@
             "icon": "terminal-bash"
           }
         },
+        "terminal.integrated.defaultLocation": "editor",
         "terminal.integrated.defaultProfile.linux": "bash",
         "window.title": "${dirty}${rootName} ${separator} [DevContainer]",
         "workbench.colorTheme": "Visual Studio Light",

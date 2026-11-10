@@ -1,0 +1,18 @@
+$ hurl --test --variable username=emilys --secret password=oops login.hurl
+error: Assert status code
+  --> login.hurl:8:6
+   |
+   | POST https://dummyjson.com/auth/login
+   | ...
+ 8 | HTTP 200
+   |      ^^^ actual value is <400>
+   |
+
+Failure login.hurl (1 request(s) in 118 ms)
+--------------------------------------------------------------------------------
+Executed files:    1
+Executed requests: 1 (8.2/s)
+Succeeded files:   0 (0.0%)
+Failed files:      1 (100.0%)
+Duration:          122 ms (0h:0m:0s:122ms)
+

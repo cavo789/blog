@@ -1,0 +1,6 @@
+$ VERSION=8.0.1
+$ curl -LO "https://github.com/Orange-OpenSource/hurl/releases/download/${VERSION}/hurl_${VERSION}_amd64.deb"
+$ curl -LO "https://github.com/Orange-OpenSource/hurl/releases/download/${VERSION}/hurl_${VERSION}_amd64.deb.sha256"
+$ sha256sum -c "hurl_${VERSION}_amd64.deb.sha256"
+$ gh attestation verify "hurl_${VERSION}_amd64.deb" --repo Orange-OpenSource/hurl
+$ sudo apt install "./hurl_${VERSION}_amd64.deb"
