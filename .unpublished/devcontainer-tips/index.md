@@ -1,7 +1,7 @@
 ---
 slug: devcontainer-tips
-title: "Devcontainer - 19 Tips to Improve Your Daily Workflow"
-description: "Nineteen devcontainer tips I use every day: stable names, per-user volumes, cached extensions, your own Git identity and VS Code profile, the right lifecycle hook, prebuilt images and the devcontainer CLI."
+title: "Devcontainer - 20 Tips to Improve Your Daily Workflow"
+description: "Twenty devcontainer tips I use every day: stable names, per-user volumes, cached extensions, your own Git identity and VS Code profile, the right lifecycle hook, prebuilt images, the devcontainer CLI and host paths for Docker-outside-of-Docker."
 authors: [christophe]
 image: /img/v2/devcontainer.webp
 mainTag: devcontainer
@@ -11,13 +11,13 @@ date: 2026-11-12
 ai_assisted: true
 ---
 
-![Devcontainer - 19 Tips to Improve Your Daily Workflow](/img/v2/devcontainer.webp)
+![Devcontainer - 20 Tips to Improve Your Daily Workflow](/img/v2/devcontainer.webp)
 
-<!-- AUTHOR-CHECK(run): aucune des 19 astuces n'a été rejouée. Faire un « Rebuild Container » avec files/devcontainer.json + files/post-create.sh et vérifier chaque point, en priorité : 4 (owner du volume), 7 (remoteEnv visible dans postCreateCommand, y compris sous Remote SSH), 9 (profil réappliqué après rebuild, dev.containers.defaultExtensions lu depuis un profil non-Default), 14 (init + shutdownAction), 17 (commande qui génère devcontainer-lock.json), 18 (build --push puis "image:"), 19 (la commande « Dev Containers: Install devcontainer CLI » existe sous WSL, et où elle pose le binaire). files/terminal_cli.txt est illustratif : le remplacer par une vraie sortie. -->
+<!-- AUTHOR-CHECK(run): aucune des 20 astuces n'a été rejouée. Faire un « Rebuild Container » avec files/devcontainer.json + files/post-create.sh et vérifier chaque point, en priorité : 4 (owner du volume), 7 (remoteEnv visible dans postCreateCommand, y compris sous Remote SSH), 9 (profil réappliqué après rebuild, dev.containers.defaultExtensions lu depuis un profil non-Default), 14 (init + shutdownAction), 17 (commande qui génère devcontainer-lock.json), 18 (build --push puis "image:"), 19 (la commande « Dev Containers: Install devcontainer CLI » existe sous WSL, et où elle pose le binaire). files/terminal_cli.txt est illustratif : le remplacer par une vraie sortie. -->
 <!-- AUTHOR-CHECK(decision): date de publication à choisir (2026-11-12 est un placeholder). -->
 
 <TLDR>
-A devcontainer is a workstation described in a file, and most people only use a fraction of that file. Nineteen tips, grouped by what they give you: containers and volumes you can find, state that survives a rebuild, your identity and taste without imposing them on the team, hooks that don't slow down every reopening, and an environment built once and shared by everyone — CI included.
+A devcontainer is a workstation described in a file, and most people only use a fraction of that file. Twenty tips, grouped by what they give you: containers and volumes you can find, state that survives a rebuild, your identity and taste without imposing them on the team, hooks that don't slow down every reopening, and an environment built once and shared by everyone — CI included.
 </TLDR>
 
 I work in devcontainers every single day, and yet I only discovered a few days ago that two lines of `runArgs` give my container a real name instead of `serene_ganguly` — see <Link to="/blog/devcontainer-container-name">Devcontainer - Name Your Container and Group It in Docker Desktop</Link>. If I missed that one for years, I surely missed others.
@@ -147,6 +147,18 @@ Your light theme, your font size or the extension that colors brackets the way y
 
 The result: a dark theme in WSL, a light one as soon as you are in a container — so you always know at a glance where your terminal runs — while your colleague, opening the very same project, gets their own setup.
 
+One marker, though, helps everybody and imposes no taste: the window title. Put it in `devcontainer.json`, so every window opened in the container says so in the taskbar and in <kbd>Alt</kbd>+<kbd>Tab</kbd>:
+
+```json title=".devcontainer/devcontainer.json"
+"customizations": {
+  "vscode": {
+    "settings": {
+      "window.title": "${dirty}${rootName} ${separator} [DevContainer]"
+    }
+  }
+}
+```
+
 Extensions that run on the UI side (themes, icon packs, keymaps) work right away. For the ones that must run **inside** the container, list them in the profile's user settings: they are installed in every container you open, and only in yours.
 
 ```json title="settings.json (User, Devcontainer profile)"
@@ -203,6 +215,21 @@ A `yarn install` in `postStartCommand` costs you seconds at every reopening; in 
 
 `forwardPorts` is well known; `portsAttributes` much less. Give each port a `label` (it shows up in the **Ports** panel instead of a bare number) and choose what happens on auto-forward: `openBrowser`, `notify`, `silent` or `ignore`. `ignore` is perfect for the internal ports of a database you never want to see in the list.
 
+Two more attributes are worth adding to the port you open every day:
+
+```json title=".devcontainer/devcontainer.json"
+"portsAttributes": {
+  "3000": {
+    "label": "Docusaurus",
+    "onAutoForward": "openBrowser",
+    "protocol": "https",
+    "requireLocalPort": true
+  }
+}
+```
+
+`protocol` makes the browser open `https://` when the server inside uses TLS. `requireLocalPort` matters more than it looks: when port 3000 is already taken on your machine, VS Code silently forwards to 3001 instead — and your bookmark, your `.env` and your OAuth callback all point to a server that is not the one you think. With `requireLocalPort`, VS Code tells you the port is busy instead.
+
 ### 14. Let the container outlive the window, cleanly
 
 Two keys, two everyday annoyances.
@@ -236,6 +263,8 @@ One Bash script, versioned with the project, defines the commands and prints the
 
 `post-create.sh` adds one `source` line to `~/.bashrc`, so the script is loaded in **every** terminal — which is why it does not belong in `postAttachCommand`, whose output only lands in VS Code's log. And because the script is sourced from the repository rather than copied in the image, a command pushed by a colleague is there at your next terminal, without any rebuild. This very blog works that way: its devcontainer greets me with more than twenty commands, grouped by category.
 
+To make sure the newcomer actually sees it, open a terminal as soon as the window opens, instead of the *Welcome* page: `"workbench.startupEditor": "terminal"` in the `customizations.vscode.settings` of `devcontainer.json`.
+
 ## Build Once, Share With the Team
 
 ### 16. Use features instead of `RUN apt-get`
@@ -244,15 +273,15 @@ A *feature* is a packaged, versioned installer: one line in `features` and the t
 
 ### 17. Pin your features with a lockfile
 
-`ghcr.io/devcontainers/features/github-cli:1` means "the latest 1.x": a colleague who rebuilds next month may get a different version than yours. A `devcontainer-lock.json`, next to `devcontainer.json` and committed with it, records the exact version and digest of every feature:
+`ghcr.io/devcontainers/features/github-cli:1` means "the latest 1.x": a colleague who rebuilds next month may get a different version than yours. A `devcontainer-lock.json`, next to `devcontainer.json` and committed with it, records the exact version and digest of every feature. This is the one of this blog:
 
 ```json title=".devcontainer/devcontainer-lock.json"
 {
   "features": {
-    "ghcr.io/devcontainers/features/github-cli:1": {
-      "version": "1.0.14",
-      "resolved": "ghcr.io/devcontainers/features/github-cli@sha256:…",
-      "integrity": "sha256:…"
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "version": "1.10.0",
+      "resolved": "ghcr.io/devcontainers/features/docker-outside-of-docker@sha256:c2c2cf829505ead8e4892c88c31b6594ae94a2bbb209e16e1fac456c1a3a624e",
+      "integrity": "sha256:c2c2cf829505ead8e4892c88c31b6594ae94a2bbb209e16e1fac456c1a3a624e"
     }
   }
 }
@@ -289,9 +318,35 @@ The exact environment you develop in can then run your build from a plain termin
 
 "It works on my machine" becomes "it works in my container". `devcontainer up` honors `runArgs`, features and all the hooks above — and `devcontainer build` is the command behind tip 18. In a CI pipeline, where VS Code is absent, the CLI comes with the runner instead: the `devcontainers/ci` action on GitHub, or the npm package `@devcontainers/cli` in an image that already has Node.js.
 
+### 20. Give Docker the host path of the project
+
+With Docker-outside-of-Docker (tip 16), the `docker` command in the container talks to the **host's** Docker daemon. That daemon resolves every `-v` path on the host, not in the container — so this, typed in the devcontainer, mounts an empty folder:
+
+```bash
+docker run --rm -v "$PWD/files:/data" alpine ls /data
+```
+
+`$PWD` is `/workspaces/blog`, a path that only exists inside the container. The daemon creates it, empty, on the host, and the command runs on nothing, without any error.
+
+The fix is to tell the container where the project lives on the host:
+
+```json title=".devcontainer/devcontainer.json"
+"containerEnv": {
+  "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
+}
+```
+
+and to build the path from it:
+
+```bash
+docker run --rm -v "${HOST_PROJECT_DIR}/files:/data" alpine ls /data
+```
+
+Every script of the project that starts a container with a bind mount — a linter, a test database seeded from a file, a documentation build — then works the same way inside the devcontainer and on the host, where you simply set `HOST_PROJECT_DIR="$PWD"`.
+
 ## Conclusion
 
-A devcontainer is not just "my project in Docker": it is a workstation described in one file. Name the containers and the volumes so you can find them, keep what a rebuild would throw away, bring your identity and your taste without imposing them, put each command in the right hook, and build the image once for the whole team. Start with tips 1 and 3 — two minutes, and you'll feel the difference at the next rebuild. If your project also ships a production image, <Link to="/blog/docker-prod-devcontainer">sharing one Dockerfile between production and the devcontainer</Link> is the natural next step.
+A devcontainer is not just "my project in Docker": it is a workstation described in one file. Name the containers and the volumes so you can find them, keep what a rebuild would throw away, bring your identity and your taste without imposing them, put each command in the right hook, build the image once for the whole team, and give Docker the paths it actually sees. Start with tips 1 and 3 — two minutes, and you'll feel the difference at the next rebuild. If your project also ships a production image, <Link to="/blog/docker-prod-devcontainer">sharing one Dockerfile between production and the devcontainer</Link> is the natural next step.
 
 ## Appendix: Line Endings From a Windows Checkout
 
@@ -303,3 +358,5 @@ Not a devcontainer setting, but a devcontainer is where it shows up. A repositor
 *.bat text eol=crlf
 *.ps1 text eol=crlf
 ```
+
+`"files.eol": "\n"` in the `customizations.vscode.settings` of `devcontainer.json` completes it: new files created in VS Code get LF from the very first save.

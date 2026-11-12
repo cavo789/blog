@@ -28,6 +28,11 @@
     "source=${localEnv:HOME}/.ssh/config,target=/home/node/.ssh/config,type=bind,readonly"
   ],
 
+  // Tip 20 - the host path, for docker run -v from inside the container
+  "containerEnv": {
+    "HOST_PROJECT_DIR": "${localWorkspaceFolder}"
+  },
+
   // Tip 7 - your Git identity, read on the host (empty values are ignored)
   "remoteEnv": {
     "HOST_GIT_NAME": "${localEnv:GIT_AUTHOR_NAME}",
@@ -45,14 +50,25 @@
   // Tip 13 - named, auto-opened ports
   "forwardPorts": [3000],
   "portsAttributes": {
-    "3000": { "label": "Docusaurus", "onAutoForward": "openBrowser" }
+    "3000": {
+      "label": "Docusaurus",
+      "onAutoForward": "openBrowser",
+      "requireLocalPort": true
+    }
   },
 
   // Tip 8 - the editor the TEAM needs (your taste goes in a profile, tip 9)
   "customizations": {
     "vscode": {
       "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
-      "settings": { "editor.formatOnSave": true }
+      "settings": {
+        "editor.formatOnSave": true,
+        "files.eol": "\n",
+        // Tip 9 - a title that says where you are, for everyone
+        "window.title": "${dirty}${rootName} ${separator} [DevContainer]",
+        // Tip 15 - open on the cheatsheet
+        "workbench.startupEditor": "terminal"
+      }
     }
   }
 }

@@ -52,3 +52,4 @@
 - [MDX Terminal Braces](feedback_mdx_terminal_braces.md) — `${VAR}` dans un `<Terminal>` inline = crash « VAR is not defined » ; `source=` ; compile OK ≠ rendu OK
 - [No Real Email](feedback_no_real_email.md) — jamais l'email réel dans le repo ; placeholder no-reply@gmail.com (labels OCI, git log d'exemple)
 - [OpenHands Article](project_openhands_article.md) — 2 drafts (openhands-agents : 3 leçons Python + finale PHP ; openhands-laravel-upgrade) ; LLM réglé dans l UI, Dockerfile requis (UID), marqueurs AUTHOR-CHECK + /suggestions:review
+- [Minimal Host Tools](feedback_minimal_host_tools.md) — pas de npm/Node sur l hôte ; proposer d abord la commande VS Code / un container
