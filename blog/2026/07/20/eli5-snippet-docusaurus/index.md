@@ -53,6 +53,8 @@ That is what this feature does. A small `?` badge floats at the right edge of an
 
 The `?` badges appear only on lines that Claude decided are non-trivial. Blank lines, closing braces, and self-evident assignments are skipped automatically.
 
+The same idea works in the terminal: <Link to="/blog/ollama-ai-explain">`ai-explain`</Link> pipes a script or an error message to a local Ollama model and prints a plain-English explanation.
+
 ## Architecture
 
 The system has three moving parts that work independently:

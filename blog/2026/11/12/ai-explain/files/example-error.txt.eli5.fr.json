@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-12T07:18:39.112Z",
+  "source": "example-error.txt",
+  "sourceHash": "019dca839ece0e26f988a93e3442cc983b26659b",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Une erreur s'est produite dans le composant ProductList : le code essaie d'appeler la méthode map sur une valeur undefined. Cela signifie qu'une variable qu'on s'attend à être un tableau ne contient pas de données. React affiche une trace complète de l'appel depuis le rendu jusqu'à l'erreur, et suggère d'ajouter un error boundary pour gérer ce problème proprement.",
+  "explanations": {
+    "1": "Une TypeError est levée parce qu'on tente d'appeler .map() sur quelque chose qui n'existe pas (undefined) — généralement un tableau vide ou mal initialisé.",
+    "2": "Le fichier ProductList.jsx à la ligne 42 est le lieu exact où l'erreur se manifeste, c'est là qu'il faut chercher le problème.",
+    "8": "React te signale que l'erreur vient du composant ProductList, pour t'aider à identifier où ça casse.",
+    "9": "Un error boundary est un mécanisme React qui permet de rattraper les erreurs et d'afficher un message personnalisé à la place du crash blanc."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-12T07:18:31.287Z",
+  "source": "ai-explain.zsh",
+  "sourceHash": "09eb59439e0a5a080c6e92dd6207990128ebb926",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Cette fonction bash accepte une entrée de trois façons : texte piped via stdin, contenu d'un fichier existant, ou une chaîne passée en argument. Elle valide qu'il y a effectivement du contenu à traiter, puis envoie ce contenu à une IA via _ollama_query avec un prompt qui l'instruit à expliquer des scripts, des messages d'erreur ou des logs de manière pratique et concise.",
+  "explanations": {
+    "13": "[[ ! -t 0 ]] vérifie si le descripteur de fichier 0 (stdin) n'est pas un terminal — ce qui signifie que des données ont été piped à la fonction.",
+    "17": "(( $# > 0 )) teste si au moins un argument a été passé à la fonction ; si oui, tous les arguments sont concatenés dans input.",
+    "24": "[[ -z \"$input\" ]] vérifie si la variable input est vide, ce qui permettrait à la fonction de rejeter les cas où aucune entrée valide n'a été détectée.",
+    "37": "$(uname -s) exécute uname pour obtenir le nom du système d'exploitation et l'insère dans le prompt afin que l'IA ne suggère que des commandes pertinentes pour cette plateforme."
+  }
+}

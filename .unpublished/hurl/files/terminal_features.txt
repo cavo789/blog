@@ -6,4 +6,3 @@ Executed requests: 8 (2.0/s)
 Succeeded files:   1 (100.0%)
 Failed files:      0 (0.0%)
 Duration:          4002 ms (0h:0m:4s:2ms)
-

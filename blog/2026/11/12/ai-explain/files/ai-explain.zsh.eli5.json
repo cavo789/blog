@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-12T07:10:53.802Z",
+  "source": "ai-explain.zsh",
+  "sourceHash": "09eb59439e0a5a080c6e92dd6207990128ebb926",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This function explains scripts, error messages, or any text input using an AI model. It accepts input three ways in order of priority: piped data from stdin, a file path as an argument, or raw text as arguments. If input is received, it sends it to an AI query function with a carefully crafted prompt that instructs the AI to explain technical content plainly.",
+  "explanations": {
+    "13": "The test `[[ ! -t 0 ]]` checks if stdin is NOT a terminal (meaning data is being piped in). The `-t 0` checks if file descriptor 0, which is stdin, is connected to a terminal.",
+    "17": "The `(( $# > 0 ))` syntax is arithmetic evaluation in bash; it returns true if the number of arguments is greater than 0. This checks if any arguments were passed to the function.",
+    "18": "The `$*` expands to all the function arguments as a single string, which becomes the input text to explain when no file or piped input is found.",
+    "24": "This checks if the `input` variable is empty using `-z`. If nothing was captured from any source, the function should error out rather than send an empty prompt.",
+    "37": "The `$(uname -s)` runs a command to get the operating system name (like Linux or Darwin) and embeds it in the prompt string, so the AI only suggests OS-appropriate commands.",
+    "42": "This calls another function `_ollama_query` (defined elsewhere) with the constructed prompt, which actually sends the request to the AI model and returns the explanation."
+  }
+}

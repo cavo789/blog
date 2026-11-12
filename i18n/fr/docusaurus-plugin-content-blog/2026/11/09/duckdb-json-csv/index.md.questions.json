@@ -1,55 +1,55 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-11-08T11:01:35.764Z",
-  "durationMs": 27205,
+  "generated": "2026-11-12T07:16:41.645Z",
+  "durationMs": 30495,
   "source": "index.md",
   "locale": "fr",
-  "sourceHash": "cc00fa98d41b5b155ee9e2ee9ef27765b19b866c",
+  "sourceHash": "cdeff9e63fd207bf34c938f03fd6a11eb95fe7d1",
   "questions": [
     {
-      "question": "DuckDB interroger CSV JSON en SQL sans serveur sans import",
+      "question": "interroger CSV JSON en SQL sans base de données sans import",
       "anchor": ""
     },
     {
-      "question": "fonction de fenêtrage ROW_NUMBER sur un fichier JSON en SQL",
+      "question": "duckdb démo jointure entre CSV et JSON dans la même requête",
       "anchor": "demo"
     },
     {
-      "question": "DuckDB déduit les types de colonnes du CSV sans CREATE TABLE",
+      "question": "duckdb déduit les types de colonnes d'un CSV sans CREATE TABLE",
       "anchor": "what-makes-duckdb-different"
     },
     {
-      "question": "installer DuckDB CLI en docker pas de package apt ni pip",
+      "question": "pas de package apt ni pip pour duckdb CLI, docker build",
       "anchor": "installation"
     },
     {
-      "question": "docker build -t duckdb-cli Dockerfile binaire officiel version figée",
+      "question": "docker build -t duckdb-cli test rapide deux minutes",
       "anchor": "try-it-in-two-minutes"
     },
     {
-      "question": "fonction shell duckdb dans .zshrc et .bashrc utilisable depuis n'importe quel dossier",
+      "question": "fonction shell duckdb zsh bash accessible depuis n'importe quel dossier",
       "anchor": "make-duckdb-available-everywhere"
     },
     {
-      "question": "duckdb SELECT FROM csv.json JOIN GROUP BY",
+      "question": "duckdb GROUP BY sur un fichier CSV depuis le terminal",
       "anchor": "working-with-duckdb"
     },
     {
-      "question": "duckdb console interactive SQL -c",
+      "question": "duckdb console interactive",
       "anchor": "the-interactive-console"
     },
     {
-      "question": "duckdb UPDATE DELETE --write modifier un CSV lecture seule par défaut",
+      "question": "duckdb UPDATE DELETE --write lecture seule par défaut",
       "anchor": "update-and-delete-read-only-by-default---write-when-you-mean-it"
     },
     {
-      "question": "DuckDB au lieu de jq awk quand il faut une jointure",
-      "anchor": "duckdb-or-jqawk"
+      "question": "duckdb récapitulatif commandes principales",
+      "anchor": "key-takeaways"
     },
     {
-      "question": "DuckDB points clés workflow quand l'utiliser",
-      "anchor": "key-takeaways"
+      "question": "remplacer awk jq quand il faut une jointure et une fonction de fenêtrage en SQL",
+      "anchor": "conclusion"
     }
   ]
 }

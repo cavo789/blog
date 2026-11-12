@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-12T07:18:36.936Z",
+  "source": "deploy.sh",
+  "sourceHash": "1daa483c56b9a074148b3a14f4e541348fb2dd9e",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script automatise le déploiement d'une application en vérifiant d'abord que les outils nécessaires (docker, git, curl) sont disponibles, puis récupère le dernier code, construit une image Docker avec le hash du commit, lance un conteneur via docker compose, et enfin vérifie que l'application répond correctement sur son endpoint de santé pendant une minute.",
+  "explanations": {
+    "2": "set -euo pipefail configure bash pour quitter immédiatement en cas d'erreur (e), traiter les variables non définies comme des erreurs (u), et propager les erreurs dans les pipelines (o pipefail).",
+    "4": "Cette boucle parcourt chaque outil de la liste (docker, git, curl) pour les vérifier un par un.",
+    "5": "command -v vérifie si l'outil existe dans le PATH du système; les redirections >/dev/null 2>&1 supprimé toute sortie (stdout et stderr).",
+    "13": "$(git rev-parse --short HEAD) récupère les 7 premiers caractères du hash du commit actuel pour créer une étiquette unique à chaque build.",
+    "16": "APP_IMAGE=\"$tag\" exporte la variable d'environnement pour que docker compose puisse l'utiliser; --no-deps redémarre seulement le service 'app' sans recréer ses dépendances.",
+    "18": "$(seq 1 12) génère les nombres de 1 à 12, créant ainsi une boucle qui s'exécute 12 fois avec un délai de 5 secondes entre chaque itération (60 secondes au total).",
+    "19": "curl -s -o /dev/null -w '%{http_code}' envoie une requête silencieuse et retourne uniquement le code HTTP de la réponse (200 = succès)."
+  }
+}

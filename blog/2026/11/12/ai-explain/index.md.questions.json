@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-12T07:11:49.569Z",
+  "durationMs": 30573,
+  "source": "index.md",
+  "sourceHash": "5a69b5b124a0c34a403de3d6651f686633b3c462",
+  "questions": [
+    {
+      "question": "ollama explain script error terminal local no cloud",
+      "anchor": ""
+    },
+    {
+      "question": "explain 300 line bash script from cloned repo CI pipeline no comments",
+      "anchor": "explain-a-script-you-didnt-write"
+    },
+    {
+      "question": "ai-explain input priority piped beats file beats inline",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "install ai-explain zsh function ollama jq curl .zshrc source",
+      "anchor": "installing-it"
+    },
+    {
+      "question": "ollama terminal explain docker build RUN step failure",
+      "anchor": "more-demos"
+    },
+    {
+      "question": "explain minified react production stack trace six frames in terminal",
+      "anchor": "explain-a-stack-trace"
+    },
+    {
+      "question": "pipe npm install stderr to AI explanation zsh 2>&1",
+      "anchor": "pipe-any-command-output"
+    },
+    {
+      "question": "ai dispatcher fzf file picker zsh registered functions",
+      "anchor": "use-from-the-ai-dispatcher"
+    },
+    {
+      "question": "ai-explain prompt fifteen lines plain text OS passed to ollama",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "understand cryptic makefile one-liner command I found in repo",
+      "anchor": "when-ai-explain-is-most-useful"
+    },
+    {
+      "question": "local AI shell helper series zsh functions no cloud",
+      "anchor": "conclusion"
+    }
+  ]
+}

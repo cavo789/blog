@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-12T07:10:37.402Z",
+  "source": "deploy.sh",
+  "sourceHash": "1daa483c56b9a074148b3a14f4e541348fb2dd9e",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script automates a deployment workflow: it verifies that required tools are installed, pulls the latest code, builds a Docker image tagged with the current commit hash, starts the application container, then polls a health endpoint up to 12 times to confirm the deployment succeeded before exiting.",
+  "explanations": {
+    "2": "This line makes the script exit immediately if any command fails, treats undefined variables as errors, and prevents pipes from silently failing partway through — it's a safety net for scripting.",
+    "5": "The command -v checks if a tool exists in your system's PATH, and >/dev/null 2>&1 suppresses all output so we only care about the success or failure status.",
+    "13": "This creates a Docker image tag by combining 'myapp:' with the short form of the current git commit hash, so each build gets a unique identifier tied to the code version.",
+    "16": "We're passing the image tag as an environment variable to docker compose so it knows which image to run for the app service.",
+    "18": "This loop runs 12 times (seq 1 12 generates numbers 1 through 12), giving the app up to a minute to become healthy since each iteration sleeps 5 seconds.",
+    "19": "curl -w '%{http_code}' extracts just the HTTP status code from the response, and we check if it equals 200 to confirm the health endpoint is returning success."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-12T07:10:48.609Z",
+  "source": "_ollama.zsh",
+  "sourceHash": "5d2f5c8b6041d2943fb52817f7b2fff829ff8768",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This is a foundation file that provides shared utilities for a suite of AI-powered shell commands. It sets up helper functions for communicating with a local Ollama AI model, processing output, handling git operations, and collecting user input interactively. The file also defines an entry-point dispatcher function that lets users either run ai commands directly or browse them in an interactive menu.",
+  "explanations": {
+    "18": "This creates an associative array (a map) named AI_COMMANDS that will store the names and descriptions of all available ai-* functions, populated by each function as it loads.",
+    "19": "Similar to line 18, this creates an associative array AI_PARAMS to store what type of input each command expects (like file, language, number, etc.).",
+    "28": "This uses parameter expansion with a default value: if the OLLAMA_HOST environment variable isn't set, it defaults to http://localhost:11434.",
+    "39": "Similar to line 28, this sets the model to the OLLAMA_MODEL environment variable if it exists, otherwise defaults to qwen3-coder:30b.",
+    "49": "The 'print -r --' command prints the prompt exactly as-is without interpreting escape sequences, which is important for sending raw text to the AI model.",
+    "50": "The '-Rs' flags tell jq to read the entire input as one raw string (not JSON) and escape it properly, avoiding the 128KB argument limit that would crash if we passed the prompt as a shell argument.",
+    "69": "The [[ ]] test with the != operator and pattern '*'```'*' checks if the text contains at least one backtick triplet (markdown fence).",
+    "75": "The 'inside' variable toggles between 0 and 1 each time a fence line is encountered; 'next' skips printing that fence line itself.",
+    "98": "The ':A' modifier expands the path to its absolute form, resolving any ./ or ../ references.",
+    "99": "The '${PWD}/' pattern removes the current working directory prefix from the path, leaving only the relative portion.",
+    "107": "This line both tests the answer and returns its result: [[ ]] returns 0 (success) only if the answer starts with y or Y.",
+    "126": "This uses parameter expansion with a default: if AI_DIFF_MAX_CHARS isn't set, it defaults to 12000 characters.",
+    "143": "The (( )) arithmetic test returns 0 (success) if the diff size is less than or equal to the max, allowing the full diff to be returned.",
+    "158": "The '${summary[1,$max]}' syntax slices the string from character 1 to character $max, truncating it if it exceeds the ceiling.",
+    "172": "This initializes 'preview' to a simple fallback, then overwrites it if the bat syntax highlighter is found.",
+    "173": "The '&&' operator only runs the right side if the left side succeeds; if bat is found, preview becomes a more fancy command that uses bat or falls back to cat.",
+    "238": "(( ${+AI_COMMANDS[$cmd]} )) tests whether the key $cmd exists in the AI_COMMANDS array; ${+...} expands to 1 if the variable exists, 0 otherwise.",
+    "250": "The (ok) parameter expansion flag sorts the array keys alphabetically before iterating.",
+    "269": "(s: :) splits the AI_PARAMS value on spaces, so a value like 'file language' becomes two separate items to loop through.",
+    "284": "After reading a number, the code only adds it to args if it's non-empty, since empty input means the user chose to use the command's default.",
+    "295": "The \"${args[@]}\" expands each array element as a separate argument, so if args contains two items, they become two separate arguments to ai-${picked}."
+  }
+}

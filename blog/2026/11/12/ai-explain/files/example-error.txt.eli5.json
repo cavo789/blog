@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-12T07:10:57.576Z",
+  "source": "example-error.txt",
+  "sourceHash": "019dca839ece0e26f988a93e3442cc983b26659b",
+  "lang": "plaintext",
+  "textLang": "en",
+  "summary": "A React component called ProductList crashed because it tried to call the .map() method on something that doesn't exist (undefined). The error happened at line 42 of ProductList.jsx. React is suggesting you add an error boundary component to catch and handle this kind of error gracefully instead of crashing the whole app.",
+  "explanations": {
+    "1": "The code tried to use .map() on a variable that is undefined — like trying to iterate over something that was never set up or didn't load properly.",
+    "2": "This tells you exactly where the problem happened: in the ProductList component at line 42, column 32 of the source file.",
+    "9": "React is recommending you wrap components in an Error Boundary, which is a special React component that catches errors in child components and shows a fallback UI instead of crashing everything."
+  }
+}

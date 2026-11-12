@@ -3,6 +3,7 @@ $ ai
 ai >
   ai-blog-search — ask your blog a question (RAG over every published article)
   ai-commit  — draft a Conventional Commits message from staged changes
+  ai-data <file.json|file.csv>  — suggest jq/awk commands tailored to this file
   ai-diagram <description>|<file>  — turn a description or a config file into a Mermaid diagram
   ai-explain [file|text]  — explain a script, an error or piped output in plain English
   ai-review  — code review of staged changes (SOLID, magic constants, naming)

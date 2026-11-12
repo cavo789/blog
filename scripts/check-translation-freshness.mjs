@@ -28,6 +28,7 @@ import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { translatableHash, driftRatio } from "./lib/translate-hash.mjs";
+import { parseFrontMatter } from "./lib/blog-corpus.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const projectRoot = path.resolve(__dirname, "..");
@@ -65,9 +66,15 @@ function classify(sourcePath) {
   const translationPath = path.join(I18N_DIR, relative);
   const sidecarPath = `${translationPath}.translation.json`;
 
-  if (!fs.existsSync(translationPath)) return { state: "UNTRANSLATED", relative };
-
   const source = fs.readFileSync(sourcePath, "utf-8");
+
+  if (!fs.existsSync(translationPath)) {
+    // A `draft: true` article under blog/ is "ready, awaiting the go": it is translated after
+    // publication, so its missing translation is expected, not something to report.
+    const { data } = parseFrontMatter(source);
+    return { state: data.draft === "true" ? "DRAFT" : "UNTRANSLATED", relative };
+  }
+
   const currentHash = translatableHash(source);
 
   if (!fs.existsSync(sidecarPath)) {
@@ -106,14 +113,22 @@ const untracked = byState("UNTRACKED");
 const fresh = byState("FRESH");
 const untranslated = byState("UNTRANSLATED");
 
-// Only STALE and UNREADABLE are actionable. A missing translation is the normal state of this
-// corpus (4 of 257 translated) and must never be reported as a problem.
-const actionable = stale.length + unreadable.length;
+// STALE, UNREADABLE and UNTRANSLATED are actionable. A missing translation used to be the normal
+// state of the corpus (4 of 257 translated in 2026-09) and was silenced; since the corpus is fully
+// translated, a published article without its French version is precisely what must be surfaced —
+// it is how a forgotten `translate` went unnoticed through `check` on 2026-11-12. Drafts are
+// excluded upstream (state DRAFT). Still report-only: only --strict changes the exit code.
+const actionable = stale.length + unreadable.length + untranslated.length;
 
 if (!quiet || actionable > 0) {
   for (const item of stale) {
     console.log(
       `STALE      ${item.relative} — ${item.percent}% of translatable blocks changed`,
+    );
+  }
+  for (const item of untranslated) {
+    console.log(
+      `UNTRANSLATED ${item.relative} — no ${locale} translation; run: translate blog/${path.dirname(item.relative)}`,
     );
   }
   for (const item of unreadable) {

@@ -5,11 +5,10 @@ authors: [christophe, claude]
 image: /img/v2/playing_with_ollama.webp
 mainTag: ai
 tags: [ai, ollama, zsh, linux, bash, docker, git]
-date: 2026-12-31
-description: "The last function in the Ollama daily-use series: pipe any script, error message, or stack trace to ai-explain and get a plain-English explanation of what it does or what went wrong — entirely local, no cloud required."
+date: 2026-11-12
+description: "Another function in the Ollama daily-use series: pipe any script, error message, or stack trace to ai-explain and get a plain-English explanation of what it does or what went wrong — entirely local, no cloud required."
 language: en
 ai_assisted: true
-draft: true
 series: "Ollama daily use"
 ---
 
@@ -18,7 +17,7 @@ series: "Ollama daily use"
 <!-- cspell:ignoreCase ai-test ai-commit ai-explain qwen ollama zshrc ERESOLVE -->
 
 <TLDR>
-`ai-explain` is the last function in the Ollama daily-use series. Pipe any script, log output, or stack trace to it — or give it a file path, or paste an error message as an argument — and get a plain-English explanation: what the script does, what the error means, and what to fix. One function, three input modes, zero cloud.
+`ai-explain` is another function in the Ollama daily-use series. Pipe any script, log output, or stack trace to it — or give it a file path, or paste an error message as an argument — and get a plain-English explanation: what the script does, what the error means, and what to fix. One function, three input modes, zero cloud.
 </TLDR>
 
 You cloned a repository and found a Bash script that runs as part of the CI pipeline. Three hundred lines, no comments. You need to understand what it does before you modify it. You could read it carefully, look up the flags, trace the logic. Or you could pipe it through `ai-explain`.
@@ -118,17 +117,17 @@ It's also useful as a learning tool: pipe a script you wrote yourself and see if
 
 ## Conclusion
 
-`ai-explain` is the final function in the "Ollama daily use" series.
+`ai-explain` joins the "Ollama daily use" series.
 
 The series started with <Link to="/blog/ollama-test-generator">`ai-test`</Link> (the foundation: `_ollama.zsh`, the dispatcher, the `AI_COMMANDS` registry) and added functions one by one — each solving a specific terminal workflow problem with a local LLM:
 
 - **Developer workflow**: <Link to="/blog/ollama-git-precommit">`ai-review`, `ai-secrets`, `ai-commit`</Link>, `ai-standup`
 - **Operations**: `ai-ci`, `ai-fix`
-- **Shell assistance**: `ai-ask`, `ai-data`, <Link to="/blog/ollama-ai-diagram">`ai-diagram`</Link>
+- **Shell assistance**: `ai-ask`, <Link to="/blog/ollama-ai-data">`ai-data`</Link>, <Link to="/blog/ollama-ai-diagram">`ai-diagram`</Link>
 - **Document work**: <Link to="/blog/ollama-ai-docs">`ai-translate`, `ai-summarize`</Link>, `ai-diff`
 - **Your own documentation**: <Link to="/blog/anythingllm-chat-with-your-docs">`ai-blog-search`</Link>
 - **Explanation**: `ai-explain`
 
 All of them share the same `_ollama_query` foundation. Together they cover the moments in a development day where you'd normally reach for a browser search or a cloud AI — but where a local model is faster to reach and keeps everything on your machine.
 
-If you've installed them all, run `ai` and see what your terminal knows how to do now.
+The functions without a link are still to come. Run `ai` to see what your terminal already knows how to do.
