@@ -147,7 +147,7 @@
     "message": "Bonjour, je suis {name}"
   },
   "homepage.hero.description": {
-    "message": "Bienvenue dans mon jardin numérique. J'y partage des guides pratiques pour fluidifier vos workflows avec Docker, Linux, Python, PHP, Quarto, Docusaurus, …"
+    "message": "Bienvenue dans mon jardin numérique. Des guides pratiques et testés pour bâtir un environnement de développement reproductible : Docker, WSL, Linux, le terminal, VS Code — et, de plus en plus, les outils d'IA."
   },
   "homepage.hero.readBlog": {
     "message": "Lire le blog"

@@ -27,9 +27,9 @@ const HeroSection = ({ videoFileName }: Props): JSX.Element => {
           </h1>
           <p>
             <Translate id="homepage.hero.description">
-              Welcome to my digital garden. I share practical guides on
-              streamlining workflows with Docker, Linux, Python, PHP, Quarto,
-              Docusaurus, ...
+              Welcome to my digital garden. Practical, tested guides for
+              building a reproducible developer environment: Docker, WSL,
+              Linux, the terminal, VS Code — and, more and more, AI tools.
             </Translate>
           </p>
 
