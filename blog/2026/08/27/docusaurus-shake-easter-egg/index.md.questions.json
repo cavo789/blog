@@ -1,63 +1,57 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T22:11:54.532Z",
+  "generated": "2026-11-15T09:19:28.870Z",
+  "durationMs": 41385,
   "source": "index.md",
-  "sourceHash": "ac30b2b0ed6975ca409a7bc4cd1f4a1ef49bf48f",
-  "durationMs": 35292,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T09:04:09.036Z",
-    "articleHash": "f4c46bf284db515c8d75cb6b64f1ae9b22e07bf6",
-    "questionsHash": "cfdedd3e7b92ec75",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 2
-  },
+  "sourceHash": "b7f997e2ac51b7e5946370987086d5426c9825c5",
   "questions": [
     {
-      "question": "phone shake easter egg docusaurus react devicemotion",
+      "question": "phone shake easter egg docusaurus react",
       "anchor": ""
     },
     {
-      "question": "how to make phone shake trigger a full-screen overlay in android chrome",
-      "anchor": "installation"
+      "question": "how to show a full-screen overlay when the phone is shaken in Chrome for Android",
+      "anchor": "shake-your-phone-see-what-happens"
     },
     {
-      "question": "devicemotion jerk calculation between consecutive acceleration samples",
+      "question": "why use jerk instead of raw acceleration for shake detection",
       "anchor": "why-it-works"
     },
     {
-      "question": "why devicemotion requires a user gesture on ios safari before any reading",
+      "question": "ios safari devicemotion permission requires a user tap",
       "anchor": "why-ios-is-left-out-on-purpose"
     },
     {
-      "question": "add global shake detection component to docusaurus one line",
+      "question": "add shake detection component to docusaurus site",
       "anchor": "installation"
     },
     {
-      "question": "simulate devicemotion event from devtools console desktop no accelerometer",
+      "question": "simulate devicemotion shake event in devtools console without an accelerometer",
       "anchor": "testing-it-without-shaking-anything"
     },
     {
-      "question": "devicemotion handler not triggering on android what to check first",
+      "question": "devicemotion event not firing on Android — how to debug",
+      "anchor": "how-to-debug-if-the-shake-does-nothing"
+    },
+    {
+      "question": "Chrome for Android silently blocks motion sensor permission per site",
       "anchor": "1-allow-motion-sensors-for-the-site"
     },
     {
-      "question": "chrome android motion sensor permission blocked per site how to re-enable",
-      "anchor": "1-allow-motion-sensors-for-the-site"
-    },
-    {
-      "question": "watch raw devicemotion acceleration values in browser console",
+      "question": "log raw accelerometer x y z values from devicemotion in the browser console",
       "anchor": "2-watch-the-raw-sensor-data"
     },
     {
-      "question": "ai image generator transparent background rendered as opaque pixels png",
+      "question": "how to compute jerk from consecutive devicemotion samples normalized by delta-time",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "AI image generator rendered transparency checkerboard as opaque PNG pixels",
       "anchor": "the-image-was-the-hard-part-not-the-code"
     },
     {
-      "question": "tune jerk threshold for shake detection on a real phone",
+      "question": "shake detection triggers too easily — how to tune the jerk threshold on a real phone",
       "anchor": "tuning-the-jerk-threshold-on-a-real-phone"
     }
   ]

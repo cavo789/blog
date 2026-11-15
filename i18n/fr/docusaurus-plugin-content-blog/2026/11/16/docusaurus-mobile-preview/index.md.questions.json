@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-15T09:41:36.360Z",
+  "durationMs": 35824,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "14a1300b711841ea9e46c4838c150ec9f4053d12",
+  "questions": [
+    {
+      "question": "tester PWA shake gesture sur vrai téléphone sans déployer",
+      "anchor": ""
+    },
+    {
+      "question": "docusaurus devcontainer accessible téléphone même wifi sans plugin",
+      "anchor": ""
+    },
+    {
+      "question": "ipconfig adapter Wi-Fi adresse réseau local",
+      "anchor": "find-your-computers-ip-then-just-visit-it"
+    },
+    {
+      "question": "ouvrir site docusaurus local depuis téléphone navigateur",
+      "anchor": "find-your-computers-ip-then-just-visit-it"
+    },
+    {
+      "question": "ifconfig vs ipconfig adresse IP joignable par téléphone",
+      "anchor": "find-your-computers-ip-then-just-visit-it"
+    },
+    {
+      "question": "docusaurus dev server binding 0.0.0.0 toutes interfaces",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker port publié réseau local accessible téléphone",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "téléphone ne joint pas serveur local même réseau",
+      "anchor": "when-your-phone-cant-reach-it"
+    },
+    {
+      "question": "partage de connexion téléphone tester site local",
+      "anchor": "when-your-phone-cant-reach-it"
+    },
+    {
+      "question": "avertissement certificat non fiable docusaurus dev",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "origine certificat auto-signé serveur dev docusaurus",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "tester accéléromètre haptique PWA devcontainer",
+      "anchor": "conclusion"
+    }
+  ]
+}

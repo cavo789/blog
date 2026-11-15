@@ -44,6 +44,15 @@ The one-time setup lives in a small script, called by `postCreateCommand`:
 
 `runArgs` passes any flag to `docker run`. `--name` gives the container a name that never changes, so a script can target it: in a folder called `blog`, `docker exec -it blog-devcontainer bash` works on every rebuild. The `com.docker.compose.project` label groups the container in Docker Desktop.
 
+Because the name comes from the folder, a second copy of the same repository gets its own container, as long as it sits in a folder with another name:
+
+- `/home/me/repositories/my-project` → `my-project-devcontainer`
+- `/home/me/tmp/my-project-test` → `my-project-test-devcontainer`
+
+Clone it into a second folder called `my-project` and Docker refuses to create the container: the name is taken. That's the one rule to remember: every extra copy (a test install, a `git worktree`, a second clone) goes into a folder with another name. The same rule protects the volumes of tip 2, which are named after the folder too. And there a collision is silent: two copies would share the shell history, the extensions and the caches without a word.
+
+`devcontainer.json` can't edit a string and has no variable for the parent folder, so the folder name is the only lever. A devcontainer opened from a subfolder with a generic name (`documentation/developer_guide`) gets the same name in every repository: there, write a fixed name such as `my-project-guide-devcontainer`, and accept that two copies of that repository collide. Changing `runArgs` takes a **Rebuild Container**, and the old container must be removed by hand (`docker rm <old-name>`): the rebuild only knows the new name. Named volumes are kept.
+
 Both are built from `${localWorkspaceFolderBasename}`, and both end with `-devcontainer`: on a real project, the `blog` group holds the containers that run services (a database, a reverse proxy, ...), `blog-devcontainer` holds the environments you code in, and stopping one never stops the other. Full story in <Link to="/blog/devcontainer-container-name">Devcontainer - Name Your Container and Group It in Docker Desktop</Link>.
 
 ### 2. Name volumes after the project and the user
@@ -158,6 +167,42 @@ One marker, though, helps everybody and imposes no taste: the window title. Put 
   }
 }
 ```
+
+With several copies of the same repository (tip 1), the title must also say **which** one you are looking at: inside the container, the open folder is `/workspace` in every copy. Put the host path in it:
+
+<!-- TODO auteur : confirmer que ${localWorkspaceFolder} est bien remplacé dans window.title -->
+
+```json title=".devcontainer/devcontainer.json"
+"customizations": {
+  "vscode": {
+    "settings": {
+      "window.title": "My project — ${localWorkspaceFolder}${separator}${dirty}${activeEditorShort}"
+    }
+  }
+}
+```
+
+Two mechanisms run one after the other. When the container starts, the devcontainer replaces `${localWorkspaceFolder}` with the real path on the host. `${separator}`, `${dirty}` and `${activeEditorShort}` are left as they are, and VS Code fills them in afterwards.
+
+The terminal can show the same path, through an environment variable:
+
+```json title=".devcontainer/devcontainer.json"
+"containerEnv": {
+  "HOST_WORKSPACE": "${localWorkspaceFolder}",
+  "HOST_HOME": "${localEnv:HOME}"
+}
+```
+
+A welcome message (in `.bashrc` or a welcome script, see tip 15) prints it once, with the host's home shortened to `~`:
+
+```bash
+path="${HOST_WORKSPACE}"
+[[ -n "${HOST_HOME}" && ( "${path}" == "${HOST_HOME}" || "${path}" == "${HOST_HOME}/"* ) ]] \
+    && path="~${path#"${HOST_HOME}"}"
+printf 'Host: %s\n' "${path}"
+```
+
+The test on `"${HOST_HOME}/"*` keeps a home of `/home/me` from wrongly shortening `/home/meX/…`. The `~` can't go in `window.title`: `devcontainer.json` can insert a value, not transform it, so the title shows the full path. Keep the path out of the shell prompt: repeated on every command line, it is noise. Once in the title and once when the terminal opens is enough. Both settings apply only after a **Rebuild Container**. On Windows without WSL, `HOME` may be empty on the host (it is `USERPROFILE` there): the script then prints the full path, which is still correct.
 
 Extensions that run on the UI side (themes, icon packs, keymaps) work right away. For the ones that must run **inside** the container, list them in the profile's user settings: they are installed in every container you open, and only in yours.
 

@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-15T09:20:22.529Z",
+  "durationMs": 24751,
+  "source": "index.md",
+  "sourceHash": "447a5ae0955a8a018ec6d239adacbd9890243e9f",
+  "questions": [
+    {
+      "question": "test shake gesture on phone without deploying docusaurus",
+      "anchor": ""
+    },
+    {
+      "question": "test PWA add to home screen prompt real phone local devcontainer",
+      "anchor": ""
+    },
+    {
+      "question": "ipconfig which adapter to use phone access docker devcontainer",
+      "anchor": "find-your-computers-ip-then-just-visit-it"
+    },
+    {
+      "question": "WSL2 ip addr 172 address phone can't reach",
+      "anchor": "find-your-computers-ip-then-just-visit-it"
+    },
+    {
+      "question": "docusaurus dev server localhost only not reachable from phone 0.0.0.0",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "docker devcontainer port 3000 published wifi phone",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "why docusaurus dev server https motion sensors clipboard service workers",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "vs code ports panel vs docker port publishing phone access",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "phone can't access devcontainer ip same wifi",
+      "anchor": "when-your-phone-cant-reach-it"
+    },
+    {
+      "question": "phone hotspot workaround local dev server unreachable",
+      "anchor": "when-your-phone-cant-reach-it"
+    },
+    {
+      "question": "docusaurus self-signed cert warning phone browser where from",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    }
+  ]
+}

@@ -101,6 +101,8 @@ Standing up from a desk to physically shake a phone, twenty times in a row, to c
 
 Two calls, 150 ms apart, with a large enough jump between the two acceleration readings to cross the jerk threshold — that's the entire "physical" gesture, reduced to two numbers. This is also, honestly, how the screenshot above was produced: a headless browser, a mobile viewport, and this exact snippet dispatched through the page — not a real phone.
 
+Once the console version behaves, the final check belongs on a real device, and that doesn't require a deploy: the local dev server is [reachable from a phone on the same Wi-Fi](/blog/docusaurus-mobile-preview).
+
 ## How to Debug If the Shake Does Nothing
 
 Two checks, in order — both take under a minute and neither requires touching the code.

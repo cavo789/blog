@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-15T09:19:57.697Z",
+  "durationMs": 28677,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "972064942a6b9ed1ea81a8fdd68996d426916488",
+  "questions": [
+    {
+      "question": "expliquer un script bash ou une stack trace en langage clair dans le terminal sans passer par le cloud",
+      "anchor": ""
+    },
+    {
+      "question": "comprendre un script CI de 300 lignes sans commentaire avant de le modifier",
+      "anchor": "explain-a-script-you-didnt-write"
+    },
+    {
+      "question": "ai-explain ordre de priorité pipe fichier texte inline",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "installer ai-explain zsh .zshrc ollama fonction",
+      "anchor": "installing-it"
+    },
+    {
+      "question": "stack trace react production minifiée 6 frames expliquer en clair",
+      "anchor": "explain-a-stack-trace"
+    },
+    {
+      "question": "docker build échec étape RUN pipe 2>&1 ai-explain",
+      "anchor": "pipe-any-command-output"
+    },
+    {
+      "question": "appeler ai-explain depuis le dispatcher ai via le registre",
+      "anchor": "use-from-the-ai-dispatcher"
+    },
+    {
+      "question": "ai-explain prompt 15 lignes max plateforme shell",
+      "anchor": "under-the-hood-skip-this-if-you-just-want-to-use-it"
+    },
+    {
+      "question": "quand ai-explain est le plus utile par rapport à lire le code soi-même",
+      "anchor": "when-ai-explain-is-most-useful"
+    },
+    {
+      "question": "série ollama au quotidien ai-explain terminal local",
+      "anchor": "conclusion"
+    }
+  ]
+}
