@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:30:01.622Z",
+  "source": "products.hurl",
+  "sourceHash": "e16b70f0c304115d4d64a8bc73d9881a42f7505a",
+  "lang": "hurl",
+  "textLang": "en",
+  "summary": "This is a Hurl script that automates a two-step process: first it logs into an API to get an access token, then it uses that token to download a product catalog with specific fields, saves it to a file, and validates that the data looks reasonable (more than 100 products, all have titles, all have positive prices).",
+  "explanations": {
+    "7": "The double curly braces {{username}} mean this is a placeholder that Hurl will replace with an actual value from your environment or variables file at runtime.",
+    "12": "This line extracts the access token from the login response using a JSONPath expression and stores it in a variable named 'token' so we can use it in the next request.",
+    "16": "We're using the token we captured earlier as a Bearer token in the Authorization header, which is the standard way to authenticate subsequent requests.",
+    "18": "The 'limit: 0' query parameter is telling the server we want all products (0 means unlimited), rather than the default page size.",
+    "21": "The 'output' option saves the response body to a file named 'products.json' on disk.",
+    "24": "This assertion checks that the products array has more than 100 items; if it doesn't, the test fails.",
+    "25": "This assertion verifies that every product has a title field populated; the [?!@.title] syntax finds any products missing a title.",
+    "26": "This assertion ensures no products have a price of zero or negative, which would be data quality issues."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:52:26.666Z",
+  "source": "products.hurl",
+  "sourceHash": "e16b70f0c304115d4d64a8bc73d9881a42f7505a",
+  "lang": "hurl",
+  "textLang": "fr",
+  "summary": "Ce script Hurl automatise un export quotidien du catalogue produits. Il commence par s'authentifier auprès d'un serveur, capture le token d'accès, puis télécharge les produits avec des paramètres spécifiques tout en validant que le catalogue contient suffisamment de données complètes et valides.",
+  "explanations": {
+    "12": "jsonpath permet d'extraire une valeur depuis la réponse JSON (ici le accessToken) et de la stocker dans une variable nommée token pour l'utiliser dans les requêtes suivantes.",
+    "16": "Le token capturé précédemment est injecté dans l'en-tête Authorization sous la forme Bearer pour authentifier la requête GET suivante.",
+    "18": "limit: 0 signifie récupérer tous les produits disponibles sans limitation de nombre.",
+    "19": "select énumère les colonnes spécifiques à retourner dans la réponse, réduisant ainsi la taille du fichier exporté.",
+    "21": "output: products.json sauvegarde la réponse complète du serveur dans un fichier nommé products.json sur le disque.",
+    "24": "jsonpath \"$.products\" count > 100 vérifie que le tableau products contient plus de 100 éléments, garantissant un catalogue de taille minimale.",
+    "25": "jsonpath \"$.products[?!@.title]\" not exists s'assure qu'aucun produit n'est dépourvu de titre (le filtre ?!@.title sélectionne les objets sans propriété title).",
+    "26": "jsonpath \"$.products[?@.price <= 0]\" not exists valide qu'aucun produit n'a un prix zéro ou négatif, détectant les données invalides."
+  }
+}

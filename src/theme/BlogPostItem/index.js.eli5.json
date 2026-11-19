@@ -1,20 +1,18 @@
 {
   "version": 1,
   "model": "claude-haiku-4-5-20251001",
-  "generated": "2026-09-20T16:31:14.539Z",
+  "generated": "2026-11-19T14:31:45.431Z",
   "source": "index.js",
-  "sourceHash": "68e34ca133b615b647ca6cc6976ed8a5a03bf763",
+  "sourceHash": "6b51906d4006895b1911b5f7eb304547e6182c1a",
   "lang": "javascript",
   "textLang": "en",
-  "summary": "This component renders a blog post item that adapts based on whether you're viewing a single post or browsing a list. When viewing the full post, it shows additional elements like related posts, social sharing, and reader engagement tools. The component imports specialized sub-components to handle different sections of the post layout.",
+  "summary": "This component renders a blog post with different layouts depending on whether you're viewing the full post page or a card in a list. It uses Docusaurus hooks to detect which view you're in, then conditionally shows post-specific features like related posts, reactions, and social sharing only on the full post page, while always showing the core post content, header, and footer.",
   "explanations": {
-    "23": "This helper hook checks if we're on the actual blog post page versus a list view, then returns a CSS class name to add bottom spacing only in list view where multiple posts appear together.",
-    "24": "The useBlogPost hook gives us context about whether we're viewing a full post page or just seeing a preview card in a list.",
-    "25": "The conditional returns a margin class name if we're NOT on the blog post page, otherwise returns undefined which means no extra margin is added.",
-    "29": "We're extracting metadata about the current post and a flag indicating if the reader is on the full post page or just browsing a list.",
-    "34": "The ArticleActions component (buttons, sharing options, etc.) only displays on the full post page itself—not when the post appears as a card in a blog list.",
-    "46": "The TranslationNotice banner only shows on the full post page, before the main content, so translators can't accidentally modify it and it doesn't clutter the post list.",
-    "51": "This entire block of engagement components—Bluesky, related posts, typo reporting, reactions—only renders when someone is reading the full post, not when browsing the blog list.",
-    "64": "This TriedIt component renders unless the front matter explicitly sets tried_it to false, giving you the ability to hide it on specific posts."
+    "23": "This helper function checks if we're on the actual post page versus a list view, and returns a CSS class name for spacing only when it's a list view card.",
+    "29": "The useBlogPost hook gives us metadata about the current blog post and a flag telling us whether we're viewing the full post page or just a preview card.",
+    "30": "We're extracting frontMatter from the metadata object—that's the YAML or configuration data at the top of the markdown file that contains things like the author, date, and custom fields.",
+    "34": "The article actions (like share buttons or edit links) only make sense when someone is reading the full post, not when they're browsing a card in the blog list.",
+    "46": "This translation notice banner only displays on the full post page; it warns readers if the content has been translated and may not be the original.",
+    "55": "This checks if the frontMatter has a tried_it field, and only shows the TriedIt component if that field is not explicitly set to false—allowing posts to opt out of this feature."
   }
 }

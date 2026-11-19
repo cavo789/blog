@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:29:48.680Z",
+  "source": "users.hurl",
+  "sourceHash": "86949f09fccd2979eaea2144d5ac0d170d3c03b4",
+  "lang": "hurl",
+  "textLang": "en",
+  "summary": "This Hurl test file validates that a JSON API endpoint returns user data with required fields. It fetches all users from a dummy API, checks that the response is valid JSON with exactly 208 users, ensures every user has a first name, last name, and email address, verifies the email format matches a pattern, and confirms the response arrives within 5 seconds.",
+  "explanations": {
+    "4": "Setting limit to 0 means return all available records rather than a default page size.",
+    "5": "The 'select' parameter tells the API to only return these three specific fields for each user, reducing the response size.",
+    "9": "This checks that the 'users' field exists and is an array (collection) rather than null or a single object.",
+    "12": "The syntax '?!@.firstName' means 'find any users where firstName is missing or falsy' — if any are found, the test fails because we're asserting they should NOT exist.",
+    "13": "Same idea as line 12 but for lastName — checking that no users are missing this required field.",
+    "14": "Same idea but for email — the test ensures no user record is incomplete by lacking an email.",
+    "15": "The 'matches' operator checks that the email matches the regex pattern, ensuring emails follow the expected format like 'name@x.dummyjson.com'.",
+    "16": "This confirms the entire request and response cycle completed in under 5000 milliseconds, checking that performance is acceptable."
+  }
+}

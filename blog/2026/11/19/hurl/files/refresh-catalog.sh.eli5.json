@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:30:08.264Z",
+  "source": "refresh-catalog.sh",
+  "sourceHash": "57345d3afaca334aa5ee7d77f625bd99e4153430",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script refreshes a DuckDB database with the latest product catalog by running an API test with Hurl, then loading the validated results into the database. It's designed to run automatically from a cron job, using credentials from a .env file, and will safely skip the database update if the API test fails.",
+  "explanations": {
+    "4": "These flags make the script fail fast: -e stops on any error, -u errors on undefined variables, and -o pipefail catches failures in the middle of a pipe chain. This prevents partial updates to the database.",
+    "6": "This changes to the directory where the script lives, so all relative paths (like .env and products.hurl) are found correctly no matter where you call the script from.",
+    "10": "This loads API_USERNAME and API_PASSWORD variables from the .env file into the current shell session so the next command can use them.",
+    "15": "Hurl is an API testing tool that runs the HTTP requests defined in products.hurl; the --test flag makes it validate responses, and if any check fails, it exits with an error (which triggers the set -e from line 4).",
+    "21": "Docker runs the DuckDB command-line tool in a container, with --rm cleaning up after, -v mounting the current directory, and -u running as your user so you own the output files.",
+    "25": "This feeds the SQL commands from load.sql into DuckDB to insert the validated products.json data into the catalog.duckdb file."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:52:07.918Z",
+  "source": "countries.hurl",
+  "sourceHash": "08e44f9e9e001b66432e6c9ae0831766a193dbf9",
+  "lang": "hurl",
+  "textLang": "fr",
+  "summary": "Ce script Hurl télécharge un fichier CSV contenant une liste de pays depuis GitHub, le sauvegarde localement, puis vérifie que le téléchargement a réussi en contrôlant le code de réponse HTTP, le type de contenu, la taille du fichier et la présence de données attendues.",
+  "explanations": {
+    "2": "GET effectue une requête HTTP pour récupérer le fichier CSV à cette URL.",
+    "4": "output: countries.csv demande à Hurl de sauvegarder le contenu téléchargé dans un fichier nommé countries.csv au lieu de simplement l'afficher.",
+    "7": "On vérifie que l'en-tête Content-Type contient \"text/plain\", ce qui confirme que le serveur envoie bien un fichier texte.",
+    "8": "bytes count > 1000 s'assure que le fichier téléchargé fait plus de 1000 octets, vérifiant qu'il n'est pas vide ou corrompu.",
+    "11": "body split \"\\n\" count > 200 divise le contenu par les sauts de ligne, puis compte qu'il y a plus de 200 lignes, confirming que le fichier contient suffisamment de données de pays."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-19T14:32:21.021Z",
+  "durationMs": 35513,
+  "source": "index.md",
+  "sourceHash": "7aba9ae909d5f510c5e96a74c2430416119ae94a",
+  "questions": [
+    {
+      "question": "chain HTTP calls token passing without shell variables curl jq",
+      "anchor": ""
+    },
+    {
+      "question": "hurl log in get token then call protected endpoint in one file",
+      "anchor": "what-hurl-does-for-you"
+    },
+    {
+      "question": "install hurl on ubuntu no apt package",
+      "anchor": "installing-hurl"
+    },
+    {
+      "question": "hurl file structure method url headers query string sections",
+      "anchor": "anatomy-of-a-hurl-file"
+    },
+    {
+      "question": "hurl capture variable from JSON response and reuse it in the next request",
+      "anchor": "the---blanks"
+    },
+    {
+      "question": "pass an API key to hurl at runtime without writing it in the file",
+      "anchor": "filling-the-blanks-without-leaking-secrets"
+    },
+    {
+      "question": "hurl assertions check status code and a json field value",
+      "anchor": "assertions-the-checklist-on-every-answer"
+    },
+    {
+      "question": "hurl test an endpoint that returns a non-JSON response",
+      "anchor": "beyond-json"
+    },
+    {
+      "question": "run hurl as a CI test suite for a REST API",
+      "anchor": "for-the-api-developer-hurl-files-as-tests"
+    },
+    {
+      "question": "give a non-developer a readable script to call my API every night",
+      "anchor": "for-the-api-consumer-a-recipe-you-can-hand-over"
+    },
+    {
+      "question": "convert an existing curl+jq pipeline to a hurl file",
+      "anchor": "already-have-a-curl-command"
+    },
+    {
+      "question": "hurl vs curl vs GUI clients — when to use which",
+      "anchor": "hurl-curl-and-the-gui-clients"
+    }
+  ]
+}

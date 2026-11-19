@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:30:04.045Z",
+  "source": "load.sql",
+  "sourceHash": "f9fe9296d6a4c1c09b27f15fb7347aae9f0e9762",
+  "lang": "sql",
+  "textLang": "en",
+  "summary": "This script loads product data from a JSON file into a table, then queries it to show the top 5 product categories ranked by how many items are in stock, including a count of products per category.",
+  "explanations": {
+    "2": "unnest() flattens nested arrays in the JSON data so each product becomes its own row; recursive := true means it keeps flattening nested structures at any depth.",
+    "3": "read_json_auto() loads the JSON file and automatically figures out the column names and types based on what it finds.",
+    "5": "count(*) counts rows (products) and sum(stock) adds up the stock values to get a total inventory amount per category."
+  }
+}

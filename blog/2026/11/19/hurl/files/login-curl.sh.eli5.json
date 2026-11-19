@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:29:38.080Z",
+  "source": "login-curl.sh",
+  "sourceHash": "05270c6be7138ecc04374f19891dd59e199e9126",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script logs into an API by sending credentials, extracts the access token from the JSON response, then uses that token to call a protected endpoint and displays the username and email fields. It's a typical two-step authentication flow where you trade credentials for a temporary token that proves who you are.",
+  "explanations": {
+    "2": "This line makes the script exit immediately if any command fails or if you use an undefined variable—it prevents silent errors from cascading through the script.",
+    "5": "curl sends an HTTP request; --silent hides progress bars, and --fail makes curl exit with an error code if the server returns a 400+ status.",
+    "7": "The curly braces and backslashes construct a JSON string with the username and password variables substituted in; the backslashes escape the inner quotes so bash doesn't get confused.",
+    "8": "jq is a tool that parses JSON; --raw-output strips the quotes off the string so TOKEN contains just the token text, not quoted text.",
+    "13": "The jq filter '{username, email}' is shorthand that means \"extract and display only the username and email fields from the response object.\""
+  }
+}

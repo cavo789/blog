@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:29:41.582Z",
+  "source": "login.hurl",
+  "sourceHash": "84ac8ca0c4bbeaa954001f88982e9945e28696e3",
+  "lang": "hurl",
+  "textLang": "en",
+  "summary": "This Hurl script tests a login flow by first sending credentials to get an access token, then using that token to verify the authenticated user's identity. It demonstrates a common pattern where one HTTP request's response data feeds into the next request's headers.",
+  "explanations": {
+    "5": "The double curly braces {{username}} are placeholders that Hurl will replace with actual values from your environment or variables file when running the test.",
+    "10": "This captures the accessToken field from the JSON response and stores it in a variable named 'token' so we can reuse it in later requests.",
+    "14": "This uses the token we captured earlier, inserting it into the Authorization header with the Bearer scheme, which is the standard way to send OAuth-style tokens.",
+    "17": "This assertion checks that the username in the response matches the username we originally sent, confirming the server logged us in as the right user.",
+    "18": "This assertion verifies that the email field ends with the specific domain, using a pattern-matching check rather than an exact equality."
+  }
+}

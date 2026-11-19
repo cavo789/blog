@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:52:12.232Z",
+  "source": "features.hurl",
+  "sourceHash": "620496252f73b468a43682ad71197e2a33919df6",
+  "lang": "hurl",
+  "textLang": "fr",
+  "summary": "Ce fichier teste un service HTTP en envoyant plusieurs requêtes différentes et en vérifiant que les réponses correspondent aux attentes. Il montre comment tester une soumission de formulaire OAuth2, l'authentification basique, les en-têtes personnalisés avec des valeurs générées, les codes d'erreur, le contenu HTML et le suivi des redirections.",
+  "explanations": {
+    "3": "La section [Form] indique que les lignes suivantes doivent être envoyées comme données de formulaire URL-encodées dans le corps de la requête POST.",
+    "7": "La section [Asserts] commence les vérifications sur la réponse reçue — tout ce qui suit doit être vrai pour que le test réussisse.",
+    "8": "jsonpath est une syntaxe pour naviguer dans la structure JSON de la réponse et extraire une valeur spécifique, comme accéder à une clé imbriquée dans un objet.",
+    "13": "La section [BasicAuth] configure l'authentification HTTP basique en fournissant le nom d'utilisateur et le mot de passe pour cette requête.",
+    "21": "Les accolades {{newUuid}} sont un template qui sera remplacé par un identifiant unique généré automatiquement à chaque exécution du test.",
+    "24": "matches est un opérateur qui vérifie que la valeur correspond à une expression régulière — ici on s'assure que l'UUID généré a le bon format.",
+    "40": "La section [Options] modifie le comportement de la requête ; location: true indique de suivre automatiquement les redirections HTTP.",
+    "45": "redirects count permet de vérifier combien de sauts entre serveurs ont eu lieu avant d'arriver à la réponse finale."
+  }
+}

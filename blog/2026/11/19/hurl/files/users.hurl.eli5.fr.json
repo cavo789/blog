@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:52:35.370Z",
+  "source": "users.hurl",
+  "sourceHash": "86949f09fccd2979eaea2144d5ac0d170d3c03b4",
+  "lang": "hurl",
+  "textLang": "fr",
+  "summary": "Ce script teste une API d'utilisateurs pour vérifier que chaque utilisateur possède les trois champs obligatoires (prénom, nom, email) et que les données sont valides. Il envoie une requête GET avec des paramètres de filtrage, puis valide la réponse avec plusieurs assertions sur le contenu JSON et les performances.",
+  "explanations": {
+    "4": "limit: 0 signifie récupérer tous les utilisateurs sans limiter le nombre de résultats.",
+    "5": "select: firstName,lastName,email demande au serveur de ne retourner que ces trois champs pour chaque utilisateur.",
+    "9": "jsonpath \"$.users\" isCollection vérifie que la clé 'users' contient bien une collection (un tableau).",
+    "12": "jsonpath \"$.users[?!@.firstName]\" not exists cherche les utilisateurs sans firstName et affirme qu'aucun n'existe — donc tous ont ce champ.",
+    "15": "matches /^[a-z.]+@x\\.dummyjson\\.com$/ vérifie que l'email du premier utilisateur respecte le format spécifié par cette expression régulière."
+  }
+}

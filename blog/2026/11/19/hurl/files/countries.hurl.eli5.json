@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:29:56.956Z",
+  "source": "countries.hurl",
+  "sourceHash": "08e44f9e9e001b66432e6c9ae0831766a193dbf9",
+  "lang": "hurl",
+  "textLang": "en",
+  "summary": "This Hurl script downloads a CSV file of countries from GitHub, saves it locally, and then verifies the download was successful by checking the HTTP response status, content type, file size, and that it contains the expected CSV data.",
+  "explanations": {
+    "2": "This is making an HTTP GET request to the specified URL to download the file.",
+    "4": "The 'output' option tells Hurl to save the downloaded file to a local file named 'countries.csv'.",
+    "5": "This asserts that the HTTP response status code must be 200 (success); if it's anything else, the test fails.",
+    "7": "This checks that the response header 'Content-Type' includes the text 'text/plain', ensuring the server sent us the right type of data.",
+    "8": "This verifies the downloaded file is larger than 1000 bytes, so we know we got actual data and not an error message.",
+    "9": "This checks that the file starts with 'Name,Code', confirming it's a properly formatted CSV with the expected header row.",
+    "10": "This searches the entire file content to verify it contains 'Belgium,BE', ensuring the data we expect is actually in there.",
+    "11": "This splits the file by newline characters and counts the resulting lines to verify there are more than 200 rows of data."
+  }
+}

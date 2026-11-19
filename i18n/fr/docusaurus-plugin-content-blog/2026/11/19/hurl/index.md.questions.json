@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-19T14:55:12.873Z",
+  "durationMs": 28569,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d69c17be1c3cc7b9ea67311ce9158eb09f8603e4",
+  "questions": [
+    {
+      "question": "remplacer curl + jq + variable shell par un seul fichier texte pour appeler une API protégée",
+      "anchor": ""
+    },
+    {
+      "question": "capturer un token de login et le réutiliser dans la requête suivante avec hurl",
+      "anchor": "what-hurl-does-for-you"
+    },
+    {
+      "question": "installer hurl ubuntu .deb checksum",
+      "anchor": "installing-hurl"
+    },
+    {
+      "question": "anatomie d'un fichier .hurl exemple authentification",
+      "anchor": "anatomy-of-a-hurl-file"
+    },
+    {
+      "question": "comment remplir les champs {{ }} d'un fichier hurl à l'exécution",
+      "anchor": "the---blanks"
+    },
+    {
+      "question": "passer un mot de passe à hurl sans l'écrire dans le fichier",
+      "anchor": "filling-the-blanks-without-leaking-secrets"
+    },
+    {
+      "question": "assertions hurl vérifier le statut et le corps JSON de la réponse",
+      "anchor": "assertions-the-checklist-on-every-answer"
+    },
+    {
+      "question": "les prédicats hurl les plus courants",
+      "anchor": "the-predicates-you-will-use-most"
+    },
+    {
+      "question": "télécharger un fichier avec hurl et vérifier sa taille avant de l'enregistrer",
+      "anchor": "downloading-a-file-and-checking-it-first"
+    },
+    {
+      "question": "fichiers .hurl comme suite de tests API en CI",
+      "anchor": "for-the-api-developer-hurl-files-as-tests"
+    },
+    {
+      "question": "convertir une commande curl en fichier hurl",
+      "anchor": "already-have-a-curl-command"
+    },
+    {
+      "question": "hurl vs curl vs postman différence",
+      "anchor": "hurl-curl-and-the-gui-clients"
+    }
+  ]
+}

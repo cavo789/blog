@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:52:14.724Z",
+  "source": "load.sql",
+  "sourceHash": "f9fe9296d6a4c1c09b27f15fb7347aae9f0e9762",
+  "lang": "sql",
+  "textLang": "fr",
+  "summary": "Ce script crée une table products en dénestant les données JSON imbriquées du fichier products.json, puis interroge cette table pour afficher les 5 catégories de produits avec le plus de stock disponible, en listant le nombre d'articles et la quantité en stock pour chacune.",
+  "explanations": {
+    "2": "unnest() aplatit les structures imbriquées du JSON, et recursive := true indique de continuer à dénester tous les niveaux d'imbrication, pas seulement le premier.",
+    "3": "read_json_auto() lit le fichier JSON et détecte automatiquement le schéma des colonnes sans avoir à les déclarer manuellement.",
+    "5": "count(*) compte le nombre de produits par catégorie, tandis que sum(stock) additionne les quantités en stock."
+  }
+}

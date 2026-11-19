@@ -181,3 +181,5 @@ Let's update the `Get a random joke.bru` file like this:
 Bruno gives you a Postman-like workflow — collections, environments, assertions — without leaving your repository: every request is a `.bru` file you can diff, review, and version like the rest of your code. The GUI is where you explore and build a collection; the CLI, wrapped in your own Docker image, is what turns that same collection into a repeatable check.
 
 That repeatability is exactly what a CI pipeline wants. See <Link to="/blog/gitlab-docker-out-of-docker">GitLab - Running Docker-out-of-Docker in your CI</Link> to run this CLI image as a job, and <Link to="/blog/belgif-api-linter">Validate your OpenAPI schema against the Belgif REST standards</Link> to check the API's contract, not just its answers.
+
+And if you would rather skip the GUI altogether, <Link to="/blog/hurl">Hurl</Link> writes the same chained, asserted calls as a single plain-text file.

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:29:53.446Z",
+  "source": "features.hurl",
+  "sourceHash": "620496252f73b468a43682ad71197e2a33919df6",
+  "lang": "hurl",
+  "textLang": "en",
+  "summary": "This file demonstrates various HTTP testing scenarios using Hurl, a tool for testing APIs. It shows how to send different types of requests (form submissions, basic auth, custom headers), verify responses with assertions, handle redirects, and check HTML content—all in a readable, declarative format.",
+  "explanations": {
+    "3": "The [Form] section tells Hurl to send the data as form-encoded fields in the POST body, just like submitting an HTML form.",
+    "8": "jsonpath is a query language for JSON; this line extracts the value at $.form.grant_type from the response JSON and checks it equals 'client_credentials'.",
+    "13": "The [BasicAuth] section automatically encodes the username and password and adds the proper Authorization header to the request.",
+    "21": "The double curly braces {{newUuid}} is a template that gets replaced with a fresh UUID each time the test runs, so the trace ID is different every time.",
+    "24": "The 'matches' operator checks if the header value matches the regex pattern—in this case, verifying it's the word 'blog-' followed by a 36-character UUID.",
+    "34": "The 'header' assertion extracts a specific response header and checks it; 'contains' means the value just needs to include that substring, not be an exact match.",
+    "35": "xpath is for querying HTML/XML documents; this extracts the text inside the first h1 tag and asserts it equals that exact string.",
+    "41": "The 'location: true' option tells Hurl to automatically follow HTTP redirects instead of stopping at the first response."
+  }
+}

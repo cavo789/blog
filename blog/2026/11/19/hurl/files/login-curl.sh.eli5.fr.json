@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:52:18.660Z",
+  "source": "login-curl.sh",
+  "sourceHash": "05270c6be7138ecc04374f19891dd59e199e9126",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script effectue une authentification auprès d'une API en envoyant des identifiants, extrait le jeton d'accès de la réponse JSON, puis utilise ce jeton pour accéder à un endpoint protégé et affiche le nom d'utilisateur et l'email.",
+  "explanations": {
+    "2": "set -euo pipefail active trois modes stricts : e arrête le script au premier erreur, u détecte les variables non définies, et o pipefail propage les erreurs à travers les tubes.",
+    "5": "La variable TOKEN capture le résultat de curl combiné avec jq — curl envoie la requête, et jq extrait uniquement la valeur du champ accessToken sous forme de texte brut.",
+    "7": "Les ${API_USERNAME} et ${API_PASSWORD} sont des variables d'environnement substituées dans la chaîne JSON envoyée au serveur.",
+    "8": "jq --raw-output signifie « extrait '.accessToken' et affiche-le sans les guillemets JSON, juste le texte brut ».",
+    "12": "Le jeton stocké dans TOKEN est inséré dans l'en-tête Authorization avec le préfixe Bearer, ce qui indique au serveur que c'est un token d'authentification.",
+    "13": "jq '{username, email}' sélectionne uniquement les champs username et email de la réponse pour simplifier l'affichage."
+  }
+}

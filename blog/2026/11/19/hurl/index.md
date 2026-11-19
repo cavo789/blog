@@ -2,18 +2,17 @@
 slug: hurl
 title: "Hurl — Chain Your HTTP Calls in a Recipe Anyone Can Read"
 authors: [christophe, claude]
-image: /img/v2/api.webp
+image: /img/v2/hurl.webp
 series: Building and testing REST APIs
 mainTag: api
 tags: [api, tests, linux, windows]
 ai_assisted: true
-date: 2026-11-10
-draft: true
+date: 2026-11-19
 description: Hurl replaces the curl + jq + export dance with one plain-text .hurl file that logs in, keeps the token, calls the protected API and checks every answer with assertions. Readable by non-developers, runnable as a test suite by the API developer, and shippable to a customer who just wants the data in a database every night.
 language: en
 ---
 
-![Hurl — Chain Your HTTP Calls in a Recipe Anyone Can Read](/img/v2/api.webp)
+![Hurl — Chain Your HTTP Calls in a Recipe Anyone Can Read](/img/v2/hurl.webp)
 
 <!-- cspell:ignore hurl hurlfmt emilys emilyspass dummyjson httpbin jsonpath xpath Melville crontab -->
 
@@ -80,10 +79,10 @@ The checksum only proves the download was not truncated; the `gh attestation ver
 <Details label="Nothing to install: the Docker image">
 
 <Terminal wrap={true}>
-$ docker run --rm ghcr.io/orange-opensource/hurl:8.0.1 --version
+$ docker run --rm ghcr.io/orange-opensource/hurl:8.1.0 --version
 </Terminal>
 
-Then, in every command of this article, replace `hurl` by `docker run --rm -v "$PWD":/work -w /work ghcr.io/orange-opensource/hurl:8.0.1`. To pass the `HURL_VARIABLE_...` and `HURL_SECRET_...` variables of the test-suite chapter, add `-e HURL_VARIABLE_username -e HURL_SECRET_password` right after `--rm`: a container does not inherit your shell's environment.
+Then, in every command of this article, replace `hurl` by `docker run --rm -v "$PWD":/work -w /work ghcr.io/orange-opensource/hurl:8.1.0`. To pass the `HURL_VARIABLE_...` and `HURL_SECRET_...` variables of the test-suite chapter, add `-e HURL_VARIABLE_username -e HURL_SECRET_password` right after `--rm`: a container does not inherit your shell's environment.
 
 </Details>
 
@@ -91,10 +90,8 @@ Check it is on your `PATH`:
 
 <Terminal>
 $ hurl --version
-hurl 8.0.1 (x86_64-alpine-linux-musl) libcurl/8.17.0 OpenSSL/3.5.6 zlib/1.3.2 brotli/brotli/1.2.0 zstd/zstd/1.5.7 c-ares/1.34.6 libidn2/2.3.8 nghttp2/1.69.0 quic/nghttp3/1.13.1
+hurl 8.1.0 (x86_64-alpine-linux-musl) libcurl/8.23.0 OpenSSL/3.5.9 zlib/1.3.2 brotli/brotli/1.2.1 zstd/zstd/1.5.7 c-ares/1.34.9 libidn2/2.3.8 nghttp2/1.70.0
 </Terminal>
-
-<!-- AUTHOR-CHECK: the version line above comes from the Docker image (alpine/musl); replace it with the output of your own `hurl --version` once installed through brew/winget. 8.1.0 was released on 2026-10-28: bump VERSION and the image tag before publishing if it has proven stable. -->
 
 ## Anatomy of a `.hurl` File
 

@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-19T14:52:32.259Z",
+  "source": "refresh-catalog.sh",
+  "sourceHash": "57345d3afaca334aa5ee7d77f625bd99e4153430",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script bash automatise la mise à jour quotidienne d'une base de données DuckDB avec le catalogue produits du jour. Il charge les identifiants depuis un fichier .env, récupère et valide les données produits via Hurl, puis charge le fichier JSON validé dans la base de données en utilisant Docker.",
+  "explanations": {
+    "4": "set -euo pipefail fait échouer le script immédiatement si une commande retourne une erreur, si une variable non définie est utilisée, ou si une commande dans un pipeline échoue — cela protège contre les erreurs silencieuses.",
+    "6": "cd \"$(dirname \"$0\")\" change le répertoire courant vers le dossier où se trouve le script lui-même, pour s'assurer que les chemins relatifs (comme ./.env) fonctionnent peu importe d'où le script est appelé.",
+    "10": "source ./.env exécute le fichier .env dans le contexte du script courant, ce qui rend les variables d'environnement définies dedans accessibles au reste du script.",
+    "15": "hurl --test télécharge et valide les données en exécutant les assertions définies dans products.hurl; si une assertion échoue, Hurl n'écrit pas products.json et quitte avec un code d'erreur, ce qui arrête le script avant que la base de données ne soit modifiée.",
+    "21": "docker run --rm lance un conteneur Docker qui s'efface automatiquement après son exécution; les options -v, -w et -u montent le répertoire courant, définissent le répertoire de travail et fixent les permissions utilisateur pour éviter les problèmes de propriété de fichiers."
+  }
+}
