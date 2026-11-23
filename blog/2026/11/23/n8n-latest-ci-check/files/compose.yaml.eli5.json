@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:50:42.024Z",
+  "source": "compose.yaml",
+  "sourceHash": "cc187929fe8f070c5ac101f65eef90eddbe3e1a2",
+  "lang": "yaml",
+  "textLang": "en",
+  "summary": "This Docker Compose configuration sets up a single n8n service (a workflow automation tool) that runs continuously, exposes itself on localhost port 5678, stores its data in a persistent volume, and uses Brussels timezone. It's a minimal setup for running n8n locally.",
+  "explanations": {
+    "4": "The 'unless-stopped' policy means Docker will automatically restart the container if it crashes, but won't restart it if you explicitly stopped it.",
+    "6": "This binds port 5678 inside the container to 127.0.0.1:5678 on your machine, so only your local computer can access it (not from other machines on your network).",
+    "10": "Instead of storing data inside the container where it'd be lost when the container stops, this mounts a named volume so n8n's configuration persists between restarts."
+  }
+}

@@ -22,4 +22,13 @@ jusqu'à ce qu'une soit explicitement choisie via `/suggestions:write`.
 
 ## Idées
 
-*Aucune idée en attente. Ajoute-en une avec `/suggestions:add`.*
+### Série « Automate your tasks with n8n » (suite de `n8n-latest-ci-check`)
+
+Chaque article part du workflow *Latest CI* construit dans le n°1 et y ajoute une pièce.
+
+- **n8n : l'alerte sur le téléphone** — brancher la branche `true` du *If* sur ntfy / Telegram / e-mail (credentials dans l'UI).
+- **n8n : recevoir les webhooks GitHub et GitLab** — le workflow `CI alerts` (normalise GitHub + GitLab, déjà écrit : `.unpublished/n8n-everyday/files/ci-alerts.json`, retiré de l'article n°1 avec sa démo) branché pour de vrai ; exposition HTTPS, `WEBHOOK_URL`, authentification du nœud Webhook.
+- **n8n + Ollama** — nœuds Ollama de n8n : résumé RSS matinal, tri de mails, explication d'un log en échec ; lien avec la série « Ollama daily use ».
+- **n8n : surveiller sa machine** — Schedule + contrôle disque / conteneur, alerte.
+- **n8n : workflows dans Git** — export/import JSON, `n8n import:workflow`, une instance reconstruite à l'identique.
+- **n8n au quotidien** — la fonction shell `n8n` (up/stop/logs/status) retirée de l'article n°1, déjà écrite et testée bash + zsh : `.unpublished/n8n-everyday/files/n8n.sh`.

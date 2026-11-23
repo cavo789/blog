@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:52:32.605Z",
+  "source": "start.sh",
+  "sourceHash": "89d0384ae56b7087c7188c9a895d877cae8ced9b",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script démarre un conteneur n8n en arrière-plan en utilisant un fichier compose.yaml situé dans le même répertoire que le script, puis affiche l'URL d'accès.",
+  "explanations": {
+    "2": "set -euo pipefail active trois options de sécurité : -e arrête le script si une commande échoue, -u signale les variables non définie comme erreur, et -o pipefail propage les erreurs dans les tubes de commandes.",
+    "5": "$(dirname \"$0\") récupère le répertoire du script courant pour construire le chemin absolu vers compose.yaml, garantissant que la commande fonctionne peu importe d'où on l'exécute."
+  }
+}

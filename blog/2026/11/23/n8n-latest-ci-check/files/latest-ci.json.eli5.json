@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:50:48.813Z",
+  "source": "latest-ci.json",
+  "sourceHash": "9054deaee95061fc76f16dcdbfb2579f14471b37",
+  "lang": "json",
+  "textLang": "en",
+  "summary": "This is a workflow configuration for n8n (a workflow automation tool) that monitors GitHub CI runs. It fetches the latest workflow run from a GitHub repository, extracts key information like the workflow name and execution status, and then checks if that run failed. The workflow can be triggered either manually or on a schedule.",
+  "explanations": {
+    "14": "This is the GitHub API endpoint that retrieves the most recent CI workflow run from a specific repository, limited to just one result.",
+    "30": "This extracts the name of the workflow run from the API response and stores it in a variable called 'workflow' — the $json prefix means 'get this from the data flowing through'.",
+    "36": "This extracts the conclusion status (like 'success' or 'failure') from the first workflow run in the API response.",
+    "42": "This extracts the HTML URL link to the workflow run so you can view it in a browser.",
+    "67": "This is checking if the workflow's conclusion field equals the string 'failure', essentially asking 'did this CI run fail?'.",
+    "88": "This schedules the workflow to run automatically at regular intervals defined by the 'hours' field — meaning it will check GitHub periodically rather than only when manually triggered."
+  }
+}

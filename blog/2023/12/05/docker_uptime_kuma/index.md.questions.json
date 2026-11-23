@@ -1,59 +1,49 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T18:19:52.487Z",
+  "generated": "2026-11-21T19:53:25.427Z",
+  "durationMs": 52781,
   "source": "index.md",
-  "sourceHash": "e9b1f7f079a8585fac51418db232eea2a580f397",
-  "durationMs": 19790,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T05:48:21.711Z",
-    "articleHash": "676b07390c0e27c8aa8e18c3b90e989d8dc1fc8e",
-    "questionsHash": "33ac31998bcb5d76",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "1ff881bf61ea5a9e350e037aa3a2a90f404d3f83",
   "questions": [
+    {
+      "question": "free self-hosted website uptime monitoring docker",
+      "anchor": ""
+    },
+    {
+      "question": "monitor client websites for free without SaaS",
+      "anchor": ""
+    },
     {
       "question": "uptime kuma docker single command setup",
       "anchor": ""
     },
     {
-      "question": "how to self-host a free website uptime monitor for client sites",
+      "question": "how to persist monitored sites in uptime kuma across container restarts",
       "anchor": ""
     },
     {
-      "question": "docker volume flag to keep uptime kuma monitored sites after restart",
+      "question": "self-hosted monitoring tool notify mattermost when site down",
       "anchor": ""
     },
     {
-      "question": "uptime kuma mattermost webhook notification when site goes down",
+      "question": "how to configure email alerts in uptime kuma",
       "anchor": ""
     },
     {
-      "question": "free self-hosted tool to check if my client websites are online",
+      "question": "uptime kuma global settings language interface",
       "anchor": ""
     },
     {
-      "question": "uptime kuma email alert configuration per site",
+      "question": "docker run uptime kuma volume flag explained",
       "anchor": ""
     },
     {
-      "question": "self-hosted monitoring dashboard docker no cost",
+      "question": "track multiple websites uptime locally free tool",
       "anchor": ""
     },
     {
-      "question": "uptime kuma global settings change interface language",
-      "anchor": ""
-    },
-    {
-      "question": "docker run uptime kuma without writing data to disk",
-      "anchor": ""
-    },
-    {
-      "question": "monitor website uptime from outside self-hosted free tool",
+      "question": "self-hosted uptime monitor watch sites from outside",
       "anchor": ""
     }
   ]

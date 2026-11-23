@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:50:53.617Z",
+  "source": "run.sh",
+  "sourceHash": "82d55c9fe9587644555ebb913eebbb9dd7cca061",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script runs an n8n workflow by its ID from the command line without opening the editor, extracts the JSON output from a specific node (defaulting to 'Edit Fields'), and prints it. It uses Docker to run n8n on an alternate port, filters out log noise, and uses jq to navigate the JSON response structure.",
+  "explanations": {
+    "2": "These flags make the script fail immediately if any command fails, treat undefined variables as errors, and stop on pipe failures — this prevents silent failures.",
+    "12": "The ${1:?...} syntax requires the first argument to exist; if missing, it prints the usage message and exits.",
+    "13": "This sets node to the second argument if provided, otherwise defaults to 'Edit Fields'.",
+    "15": "This changes into the directory where the script lives, so relative paths in Docker commands work correctly.",
+    "20": "The -T flag disables pseudo-terminal allocation (n8n doesn't need it), and -e sets an environment variable telling n8n to use port 5690 instead of the default 5679 to avoid conflicts.",
+    "21": "The --rawOutput flag tells n8n to output just the data without formatting, and 2>/dev/null hides error messages.",
+    "22": "This sed command drops everything before the first '{', since n8n prints log lines before the JSON starts.",
+    "23": "jq uses --arg to pass the node name as a variable, then navigates deeply into the JSON structure to extract the final output data from that specific node."
+  }
+}

@@ -12,6 +12,11 @@
  * See TODO 0119.
  */
 const SERIES_FR = {
+  "Automate your tasks with n8n": {
+    label: "Automatiser ses tâches avec n8n",
+    description:
+      "Des automatisations auto-hébergées avec n8n : des workflows construits dans l'éditeur, déclenchés par des planifications et des webhooks, du contrôle de la CI aux alertes et aux LLM locaux.",
+  },
   "Bluesky Docusaurus component": {
     label: "Composant Bluesky pour Docusaurus",
     description: "Construire et intégrer des composants Bluesky dans Docusaurus.",

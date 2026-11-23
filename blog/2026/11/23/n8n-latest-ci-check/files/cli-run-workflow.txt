@@ -1,0 +1,9 @@
+$ chmod +x run.sh
+
+$ ./run.sh %%workflowId=yqIwJNvGEziTd6jW%%
+
+{
+  "workflow": "Code quality (ESLint + stylelint)",
+  "conclusion": "success",
+  "url": "https://github.com/cavo789/blog/actions/runs/44549119383"
+}

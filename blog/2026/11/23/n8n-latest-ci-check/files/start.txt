@@ -1,0 +1,3 @@
+cd ~/tools/n8n
+chmod +x start.sh
+./start.sh

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:52:17.593Z",
+  "source": "compose.yaml",
+  "sourceHash": "cc187929fe8f070c5ac101f65eef90eddbe3e1a2",
+  "lang": "yaml",
+  "textLang": "fr",
+  "summary": "Ce fichier Docker Compose définit un service n8n, une plateforme d'automatisation de workflows. Le service utilise l'image n8n version 2.46.6, redémarre automatiquement en cas de défaillance, expose le port 5678 en local, configure le fuseau horaire sur Bruxelles, et persiste les données dans un volume Docker nommé n8n_data.",
+  "explanations": {
+    "6": "127.0.0.1:5678:5678 signifie que le port 5678 du conteneur est accessible uniquement sur la machine locale (127.0.0.1) via le port 5678 — c'est pour des raisons de sécurité, pour éviter que le service soit accessible depuis le réseau.",
+    "10": "n8n_data:/home/node/.n8n monte le volume Docker n8n_data sur le répertoire /home/node/.n8n du conteneur, ce qui préserve les données de n8n même si le conteneur est arrêté ou supprimé."
+  }
+}

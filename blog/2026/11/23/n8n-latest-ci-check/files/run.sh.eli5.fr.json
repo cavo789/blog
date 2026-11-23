@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:52:29.882Z",
+  "source": "run.sh",
+  "sourceHash": "82d55c9fe9587644555ebb913eebbb9dd7cca061",
+  "lang": "bash",
+  "textLang": "fr",
+  "summary": "Ce script exécute un workflow n8n depuis le terminal sans ouvrir l'éditeur, récupère la sortie JSON d'un nœud spécifique et l'affiche. Il utilise Docker pour lancer n8n avec un port d'exécution alternatif, filtre les logs pour isoler le JSON, puis l'analyse avec jq pour extraire les données du nœud demandé.",
+  "explanations": {
+    "2": "set -euo pipefail active trois protections : -e arrête le script si une commande échoue, -u détecte les variables non définies, -o pipefail fait échouer le script si une commande dans un pipeline échoue.",
+    "12": "Le ${1:?...} récupère le premier argument (l'ID du workflow) et affiche le message d'usage si aucun argument n'est fourni.",
+    "13": "Le ${2:-Edit Fields} récupère le deuxième argument (nom du nœud) s'il existe, sinon utilise la valeur par défaut 'Edit Fields'.",
+    "15": "cd \"$(dirname \"$0\")\" change vers le répertoire du script lui-même pour s'assurer que les commandes relatives fonctionnent indépendamment de où le script est appelé.",
+    "20": "-e N8N_RUNNERS_BROKER_PORT=5690 passe une variable d'environnement au conteneur pour utiliser un port alternatif, sinon il y aurait conflit avec l'instance déjà en cours d'exécution.",
+    "21": "n8n execute --id=\"${id}\" --rawOutput exécute le workflow et renvoie la sortie brute en JSON ; 2>/dev/null masque les messages d'erreur stderr.",
+    "22": "sed -n '/^{/,$p' trouve la première ligne commençant par '{' et affiche tout depuis ce point jusqu'à la fin, supprimant ainsi les lignes de log avant le JSON.",
+    "23": "jq --arg node \"${node}\" passe le nom du nœud comme variable et l'utilise pour parcourir la structure JSON imbriquée jusqu'aux données finales."
+  }
+}

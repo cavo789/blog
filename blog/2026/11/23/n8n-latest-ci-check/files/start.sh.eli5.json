@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:50:44.386Z",
+  "source": "start.sh",
+  "sourceHash": "89d0384ae56b7087c7188c9a895d877cae8ced9b",
+  "lang": "bash",
+  "textLang": "en",
+  "summary": "This script starts an n8n service in the background using Docker Compose, then prints a message telling you where to access it. The script uses defensive settings to fail immediately if anything goes wrong.",
+  "explanations": {
+    "2": "These flags make the script exit immediately if any command fails, treat undefined variables as errors, and stop if any command in a pipe fails—this prevents silent failures.",
+    "5": "dirname \"$0\" gets the directory where this script itself is located, so Docker Compose can find the compose.yaml file even if you run the script from a different folder."
+  }
+}

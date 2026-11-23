@@ -1,5 +1,12 @@
 const SERIES_DATA = [
   {
+    name: "Automate your tasks with n8n",
+    description:
+      "Self-hosted automations with n8n: workflows built in the editor, triggered by schedules and webhooks, from CI checks to alerts and local LLMs.",
+    image: "/img/series/n8n.webp",
+    color: "#ea4b71",
+  },
+  {
     name: "Bluesky Docusaurus component",
     description: "Build and integrate Bluesky-powered components inside Docusaurus.",
     image: "/img/series/bluesky.webp",

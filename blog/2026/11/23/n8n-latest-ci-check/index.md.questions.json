@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-21T19:54:02.934Z",
+  "durationMs": 37420,
+  "source": "index.md",
+  "sourceHash": "a8d73164c8ccbfe63129c68f19baaeb5b186cb31",
+  "questions": [
+    {
+      "question": "self-hosted tool that watches CI pipeline and alerts me automatically",
+      "anchor": ""
+    },
+    {
+      "question": "n8n visual editor how nodes chain data between steps",
+      "anchor": "what-n8n-does-for-you"
+    },
+    {
+      "question": "why use n8n instead of a bash script with cron",
+      "anchor": "why-not-just-a-script"
+    },
+    {
+      "question": "install n8n docker named volume restart policy",
+      "anchor": "install-n8n"
+    },
+    {
+      "question": "n8n workflow check latest CI run github no code",
+      "anchor": "build-your-first-workflow-in-the-editor"
+    },
+    {
+      "question": "n8n create new workflow add trigger node in editor",
+      "anchor": "1-create-the-workflow-and-its-trigger"
+    },
+    {
+      "question": "n8n HTTP request node fetch github CI status API",
+      "anchor": "2-fetch-the-latest-run"
+    },
+    {
+      "question": "n8n edit fields node keep only specific columns from response",
+      "anchor": "3-keep-only-what-matters"
+    },
+    {
+      "question": "n8n if node route success vs failure to different outputs",
+      "anchor": "4-split-success-and-failure"
+    },
+    {
+      "question": "n8n schedule workflow run every 30 minutes",
+      "anchor": "run-it-on-a-schedule"
+    },
+    {
+      "question": "n8n CLI execute workflow from terminal",
+      "anchor": "run-it-from-the-terminal"
+    },
+    {
+      "question": "export n8n workflow as a JSON file",
+      "anchor": "3-export-it-as-a-file"
+    }
+  ]
+}

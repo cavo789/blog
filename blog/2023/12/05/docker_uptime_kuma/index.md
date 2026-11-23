@@ -56,4 +56,4 @@ On top of configuration items site by site, you'll also find in the *Profile -> 
 
 </AlertBox>
 
-Uptime Kuma watches your sites **from the outside**. For what happens on your own machine, <Link to="/blog/docker-healthy">Get health information from your running containers</Link> does the same job for your containers. And once you self-host a few such tools, <Link to="/blog/heimdall-dashboard">Heimdall</Link> is a nice way to gather them on a single homepage.
+Uptime Kuma watches your sites **from the outside**. For what happens on your own machine, <Link to="/blog/docker-healthy">Get health information from your running containers</Link> does the same job for your containers. And once you self-host a few such tools, <Link to="/blog/heimdall-dashboard">Heimdall</Link> is a nice way to gather them on a single homepage. And when a check should trigger more than a notification, <Link to="/blog/n8n-latest-ci-check">n8n</Link> lets you chain any action after it.

@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-21T19:57:32.213Z",
+  "durationMs": 36048,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "7a9e9c2f8332781b43610efe11d4ce4519f4f7e5",
+  "questions": [
+    {
+      "question": "vérifier dernier run CI github automatiquement sans code",
+      "anchor": ""
+    },
+    {
+      "question": "n8n comment fonctionne un workflow nodes",
+      "anchor": "what-n8n-does-for-you"
+    },
+    {
+      "question": "n8n ou simple script bash, quand ça vaut le coup ?",
+      "anchor": "why-not-just-a-script"
+    },
+    {
+      "question": "installer n8n docker",
+      "anchor": "install-n8n"
+    },
+    {
+      "question": "n8n éditeur visuel construire premier workflow",
+      "anchor": "build-your-first-workflow-in-the-editor"
+    },
+    {
+      "question": "n8n créer workflow trigger planification",
+      "anchor": "1-create-the-workflow-and-its-trigger"
+    },
+    {
+      "question": "n8n récupérer dernier run CI github API",
+      "anchor": "2-fetch-the-latest-run"
+    },
+    {
+      "question": "n8n node If séparer succès échec pipeline",
+      "anchor": "4-split-success-and-failure"
+    },
+    {
+      "question": "n8n exécuter workflow planifié",
+      "anchor": "run-it-on-a-schedule"
+    },
+    {
+      "question": "n8n lancer workflow depuis terminal",
+      "anchor": "run-it-from-the-terminal"
+    },
+    {
+      "question": "n8n exporter workflow fichier JSON",
+      "anchor": "3-export-it-as-a-file"
+    }
+  ]
+}

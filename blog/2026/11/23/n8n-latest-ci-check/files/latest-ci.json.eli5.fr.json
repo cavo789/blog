@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-21T19:52:23.493Z",
+  "source": "latest-ci.json",
+  "sourceHash": "9054deaee95061fc76f16dcdbfb2579f14471b37",
+  "lang": "json",
+  "textLang": "fr",
+  "summary": "Ce fichier définit un workflow n8n qui récupère les derniers résultats d'exécution CI depuis l'API GitHub. Le workflow peut être déclenché manuellement ou selon un horaire, appelle l'API GitHub pour obtenir les données d'exécution, extrait les informations pertinentes (nom, conclusion, URL), puis vérifie si l'exécution a échoué pour décider d'une action suivante.",
+  "explanations": {
+    "14": "L'URL pointe sur l'API GitHub pour récupérer les exécutions du workflow du dépôt blog de cavo789, en limitant à 1 résultat avec per_page=1.",
+    "30": "La syntaxe {{ $json.workflow_runs[0].name }} accède à la première exécution du workflow dans la réponse JSON et en extrait le nom.",
+    "36": "De même, cela extrait la conclusion (succès/échec) de la première exécution du workflow.",
+    "42": "Cela récupère l'URL HTML de la première exécution du workflow pour permettre d'accéder directement aux détails.",
+    "67": "La valeur extraite précédemment dans le champ conclusion est comparée à la chaîne « failure ».",
+    "75": "Le combinator « and » signifie que toutes les conditions de ce bloc doivent être vraies pour que le chemin de sortie « true » soit pris.",
+    "88": "interval avec field: « hours » signifie que le Schedule Trigger s'exécutera toutes les heures.",
+    "103": "Cette section mappe les connexions entre nœuds : quand on clique sur Execute workflow, cela déclenche la requête HTTP Request.",
+    "136": "Le Schedule Trigger est également connecté à HTTP Request, ce qui signifie que le workflow s'exécute aussi selon l'horaire défini."
+  }
+}

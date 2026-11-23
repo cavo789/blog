@@ -1,0 +1,5 @@
+$ cd ~/tools/n8n
+
+$ docker compose exec n8n n8n list:workflow
+
+%%workflowId=yqIwJNvGEziTd6jW%%|Latest CI

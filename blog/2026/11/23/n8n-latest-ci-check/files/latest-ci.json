@@ -1,0 +1,153 @@
+{
+  "name": "Latest CI",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [208, 96],
+      "id": "1b2bfdf4-19c0-4262-a524-e8bebb7cc233",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://api.github.com/repos/cavo789/blog/actions/runs?per_page=1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [448, 0],
+      "id": "c6211834-2a8f-4e23-a952-78f4ac74121f",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "22cedddd-f532-4991-9128-8dbeffe7b62e",
+              "name": "workflow",
+              "value": "={{ $json.workflow_runs[0].name }}",
+              "type": "string"
+            },
+            {
+              "id": "958f203a-ec34-4f63-925a-74dfd86a9cf5",
+              "name": "conclusion",
+              "value": "={{ $json.workflow_runs[0].conclusion }}",
+              "type": "string"
+            },
+            {
+              "id": "bae76e34-e3a6-461d-b1bf-5bf0befb6d40",
+              "name": "url",
+              "value": "={{ $json.workflow_runs[0].html_url }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [672, 0],
+      "id": "3e8cea42-1b96-40ec-b2c8-29fc17b09e10",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 4
+          },
+          "conditions": [
+            {
+              "id": "da3c59e7-fd26-48c3-bf2b-b96d5727a709",
+              "leftValue": "={{ $json.conclusion }}",
+              "rightValue": "failure",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.4,
+      "position": [896, 0],
+      "id": "ecf7fe4d-f35c-4384-a85d-af7d58a864ae",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.4,
+      "position": [208, -128],
+      "id": "c1b50fc8-b0b3-4fdf-a335-973a7d5c0f8a",
+      "name": "Schedule Trigger"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "pinData": {}
+}

@@ -1,0 +1,13 @@
+services:
+  n8n:
+    image: n8nio/n8n:2.46.6
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      - GENERIC_TIMEZONE=Europe/Brussels
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:
