@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-27T07:16:20.256Z",
+  "source": ".envrc-full",
+  "sourceHash": "a9699ca19798a40c479394fe6e582a5e9826d5f0",
+  "lang": "plaintext",
+  "textLang": "fr",
+  "summary": "Ce fichier direnv charge les variables d'environnement depuis un fichier .env, ajoute le répertoire scripts au PATH pour accéder facilement aux scripts du projet, et définit une variable d'environnement spécifique au projet. C'est une configuration automatique qui s'active quand on entre dans le répertoire.",
+  "explanations": {
+    "2": "dotenv lit le fichier .env à la racine du projet et expose toutes ses variables dans l'environnement shell courant.",
+    "5": "PATH_add ajoute ./scripts au début du PATH, ce qui permet d'exécuter les scripts du répertoire scripts directement sans écrire le chemin complet.",
+    "8": "export rend la variable APP_name accessible à tous les processus enfants lancés depuis ce shell, pas seulement au shell actuel."
+  }
+}

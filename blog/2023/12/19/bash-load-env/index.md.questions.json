@@ -1,59 +1,49 @@
 {
   "version": 1,
   "model": "code-quality:latest",
-  "generated": "2026-09-23T18:28:07.551Z",
+  "generated": "2026-11-27T07:08:33.477Z",
+  "durationMs": 37090,
   "source": "index.md",
-  "sourceHash": "1f060dd284ca5e9aa253e0899b4263176f4de1ca",
-  "durationMs": 31475,
-  "triage": {
-    "version": 1,
-    "model": "code-quality:latest",
-    "date": "2026-09-24T05:55:48.328Z",
-    "articleHash": "ab03ca8140d445f4aafa8b14e73a6523701561a3",
-    "questionsHash": "b8f3edaf1950511b",
-    "status": "applied",
-    "rejected": 0,
-    "anchorsMoved": 0
-  },
+  "sourceHash": "a29a013b1cffdb146e6f71deefc4629e6024e8bb",
   "questions": [
     {
       "question": "source .env bash",
       "anchor": ""
     },
     {
-      "question": "how to load .env file into bash script environment",
+      "question": "how to make .env variables accessible inside a bash script",
       "anchor": ""
     },
     {
-      "question": "bash env file value contains spaces not working",
+      "question": "bash .env value with spaces not loading correctly",
       "anchor": ""
     },
     {
-      "question": "export $(cat .env) unreliable with spaces",
+      "question": "export $(cat .env) breaks on spaces",
       "anchor": ""
     },
     {
-      "question": "reuse Laravel .env in a bash script",
+      "question": "reuse laravel .env variables in a bash script",
       "anchor": ""
     },
     {
-      "question": "bash source file variables removed when script exits",
+      "question": "externalize bash script config to .env file",
       "anchor": ""
     },
     {
-      "question": "bash externalize configuration to env file",
+      "question": "bash source .env subshell variables disappear after script exits",
       "anchor": ""
     },
     {
-      "question": "source vs export cat env file bash",
+      "question": "direnv auto load .env on cd into project",
       "anchor": ""
     },
     {
-      "question": "bash script read .env file correctly",
+      "question": "bash read all key=value pairs from file into environment",
       "anchor": ""
     },
     {
-      "question": "load .env variables into bash without breaking spaces",
+      "question": "source vs . command bash load env file",
       "anchor": ""
     }
   ]

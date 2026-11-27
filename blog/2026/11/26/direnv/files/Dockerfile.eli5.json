@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-27T07:12:47.766Z",
+  "source": "Dockerfile",
+  "sourceHash": "b26442cd769c6a4b067a07767bffb9877f3b3a6f",
+  "lang": "docker",
+  "textLang": "en",
+  "summary": "This Dockerfile creates an Ubuntu container with direnv installed and configured to automatically load environment variables in bash. It sets up a sample project directory called my-api with example environment files and a Docker Compose configuration, then configures the container to drop into an interactive bash shell with a custom prompt showing it's running in a container.",
+  "explanations": {
+    "3": "This tells the Ubuntu package installer to run in non-interactive mode so it won't prompt you for input during installation.",
+    "7": "Ubuntu's default Docker image has limited package repositories enabled; this sed command adds the 'universe' and 'multiverse' repositories so we can install packages like direnv that aren't in the default 'main' and 'restricted' repos.",
+    "12": "After installing packages, we delete the package cache to reduce the final image size since we won't need to download those packages again.",
+    "15": "This adds a command to bash's startup file that tells direnv to hook into bash, so direnv can automatically load/unload environment variables when you cd into directories.",
+    "21": "We create a .envrc file that tells direnv to load variables from a .env file; this file will appear as 'blocked' the first time direnv runs because it hasn't been explicitly approved yet.",
+    "33": "We're writing a multi-line Docker Compose configuration as a string into a file; the ${DB_PASSWORD} and ${DB_NAME} syntax means these will be replaced with actual values from the environment when the compose file is used.",
+    "39": "This customizes the bash prompt to show a whale emoji and the username/directory, making it visually obvious you're inside a container.",
+    "41": "The -i flag makes bash run in interactive mode so you get a prompt you can type into when the container starts."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-27T07:27:03.203Z",
+  "durationMs": 24298,
+  "source": "index.md",
+  "locale": "fr",
+  "sourceHash": "d8078d8c7d4661a213ce09832fc86eb351f8727e",
+  "questions": [
+    {
+      "question": "arrêter de taper source .env à chaque fois",
+      "anchor": ""
+    },
+    {
+      "question": "direnv .envrc blocked comment autoriser",
+      "anchor": "seeing-direnv-in-action"
+    },
+    {
+      "question": "tester direnv dans un container docker sans rien installer sur la machine",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "comment direnv se hook sur le cd dans zsh",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "installer direnv ubuntu apt hook .zshrc",
+      "anchor": "install"
+    },
+    {
+      "question": "fichier .envrc minimal juste dotenv",
+      "anchor": "what-goes-in-envrc"
+    },
+    {
+      "question": "docker compose récupère les mauvais identifiants base de données d'un autre projet",
+      "anchor": "the-docker-compose-use-case"
+    },
+    {
+      "question": "direnv plusieurs environnements dev staging prod",
+      "anchor": "multiple-environments"
+    },
+    {
+      "question": "direnv quoi commiter git .envrc .env",
+      "anchor": "what-to-commit"
+    },
+    {
+      "question": "direnv vscode terminal variables d'environnement",
+      "anchor": "direnv-and-vscode"
+    },
+    {
+      "question": "direnv vs source .env manuellement différence",
+      "anchor": "comparison-with-the-manual-approach"
+    }
+  ]
+}

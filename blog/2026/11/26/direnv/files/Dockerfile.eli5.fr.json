@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-27T07:16:27.746Z",
+  "source": "Dockerfile",
+  "sourceHash": "b26442cd769c6a4b067a07767bffb9877f3b3a6f",
+  "lang": "docker",
+  "textLang": "fr",
+  "summary": "Ce Dockerfile construit une image Ubuntu avec direnv préinstallé et configuré pour bash. Il configure les dépôts de paquets Ubuntu pour accéder à l'univers des paquets, puis crée un projet exemple my-api avec un fichier .envrc, des variables d'environnement et un fichier compose.yaml pour démontrer direnv en action.",
+  "explanations": {
+    "3": "DEBIAN_FRONTEND=noninteractive évite que apt-get pose des questions interactives lors de l'installation, ce qui permettrait au Dockerfile de s'exécuter sans intervention.",
+    "7": "sed -i modifie directement le fichier sources.list.d/ubuntu.sources pour ajouter les composants 'universe' et 'multiverse' afin que direnv (qui se trouve dans 'universe') devienne disponible à l'installation.",
+    "12": "rm -rf /var/lib/apt/lists/* supprime le cache des paquets téléchargés pour réduire la taille de l'image Docker.",
+    "15": "echo ... >> /root/.bashrc ajoute la commande d'initialisation de direnv à la fin du fichier de configuration bash, ce qui active direnv à chaque démarrage du shell.",
+    "21": "printf 'dotenv\n' crée un fichier .envrc contenant le texte 'dotenv', qui indique à direnv de charger les variables depuis le fichier .env.",
+    "22": "printf '%s\n' avec plusieurs lignes écrit chaque ligne d'environnement séquentiellement, qui sont redirigées vers le fichier .env.example.",
+    "33": "printf '...' suivi de > crée le fichier compose.yaml avec une configuration Docker Compose définissant un service PostgreSQL utilisant les variables d'environnement.",
+    "39": "echo ... >> /root/.bashrc ajoute un prompt PS1 personnalisé affichant une ancre emoji et des couleurs pour indiquer visuellement qu'on est dans un conteneur.",
+    "41": "CMD [\"/bin/bash\", \"-i\"] lance un bash interactif avec le flag -i quand le conteneur démarre, ce qui charge les fichiers de configuration comme .bashrc."
+  }
+}

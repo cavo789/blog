@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "model": "claude-haiku-4-5-20251001",
+  "generated": "2026-11-27T07:12:51.766Z",
+  "source": ".envrc-full",
+  "sourceHash": "a9699ca19798a40c479394fe6e582a5e9826d5f0",
+  "lang": "plaintext",
+  "textLang": "en",
+  "summary": "This configuration file sets up the development environment by loading variables from a .env file, adding a scripts directory to the system PATH so commands there can be run easily, and defining a project name variable that will be available to all processes.",
+  "explanations": {
+    "2": "This loads environment variables from a .env file into the current shell session, so sensitive config like database passwords don't need to be hardcoded.",
+    "5": "This adds the ./scripts folder to PATH, which means any executable files in that folder can be run from anywhere without typing the full path.",
+    "8": "The export keyword makes this variable available not just in this shell, but also to any child processes spawned from it, so your app can read APP_NAME as an environment variable."
+  }
+}

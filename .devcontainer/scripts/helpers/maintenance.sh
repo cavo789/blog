@@ -36,6 +36,18 @@ function check() {
     # final formatted content — avoids a stale→eli5 --force→format→stale cycle.
     printf "🖌️  Auto-formatting (Prettier) before hook run...\n"
     yarn --silent format --log-level warn || return 1
+    # pre-commit --all-files only sees files git knows about: a brand-new article
+    # (untracked) would be silently skipped and the run would still pass. Register
+    # untracked blog/i18n files with --intent-to-add — no content is staged, nothing
+    # is committed, but pre-commit now lints them.
+    local untracked
+    untracked=$(git ls-files --others --exclude-standard -- blog i18n) || return 1
+    if [[ -n "${untracked}" ]]; then
+        printf "➕ Registering untracked files so the hooks see them (git add --intent-to-add):\n"
+        printf '%s\n' "${untracked}" | sed 's/^/   /'
+        git ls-files -z --others --exclude-standard -- blog i18n |
+            xargs -0 git add --intent-to-add -- || return 1
+    fi
     printf "🔍 Running pre-commit hooks...\n"
     pre-commit run --all-files --config .config/.pre-commit-config.yaml
 }

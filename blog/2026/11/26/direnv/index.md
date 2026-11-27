@@ -5,9 +5,8 @@ description: "direnv automatically loads and unloads environment variables when 
 authors: [christophe, claude]
 image: /img/v2/direnv.webp
 mainTag: linux
-draft: true
 tags: [bash, docker, linux, zsh]
-date: 2026-08-11
+date: 2026-11-26
 ai_assisted: true
 ---
 
@@ -35,7 +34,7 @@ echo "dotenv" > .envrc
 The single word `dotenv` tells direnv to load the `.env` file in the same directory. Now create the `.env`:
 
 <Terminal>
-cp .env.example .env
+cp .env.example .env   # template shown in "The Docker Compose use case" below
 # edit .env with your local values
 </Terminal>
 
@@ -66,7 +65,7 @@ cd ..
 direnv: unloading
 </Terminal>
 
-<AlertBox type="info" title="The allow step is intentional">
+<AlertBox variant="info" title="The allow step is intentional">
 direnv requires explicit approval (`direnv allow`) each time `.envrc` changes. This prevents a cloned repository from automatically running arbitrary code in your shell without your knowledge.
 </AlertBox>
 
@@ -135,13 +134,16 @@ sudo apt install direnv
 
 Then hook it into your shell. This is a one-time setup:
 
+For ZSH (add to `~/.zshrc`):
+
 <Terminal>
-# For ZSH (add to ~/.zshrc)
 echo 'eval "$(direnv hook zsh)"' >> ~/.zshrc
 source ~/.zshrc
+</Terminal>
 
-# For Bash (add to ~/.bashrc)
+For Bash (add to `~/.bashrc`):
 
+<Terminal>
 echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
 source ~/.bashrc
 </Terminal>
@@ -164,7 +166,7 @@ But `.envrc` is a shell script. You can do more, including `PATH_add`:
 
 A typical project structure:
 
-```
+```text
 my-api/
   .env          ← actual secrets, git-ignored
   .env.example  ← template committed to git
@@ -191,16 +193,16 @@ When you `cd` into the project, `docker compose up` just works. When you switch 
 
 Direnv works perfectly with multiple `.env` files. A common pattern:
 
-```
+```text
 .env           ← local dev (git-ignored)
 .env.staging   ← staging values (may be committed if non-sensitive)
 .env.example   ← template (always committed)
 ```
 
-To temporarily switch environment without changing `.envrc`:
+To temporarily switch environment without changing `.envrc`, let Docker Compose read the other file for that one command:
 
 <Terminal>
-DIRENV_LOG_FORMAT="" dotenv_if_exists .env.staging direnv exec . docker compose up
+docker compose --env-file .env.staging up
 </Terminal>
 
 Or simpler — adjust `.envrc` directly and re-allow:
@@ -216,7 +218,7 @@ dotenv .env.staging
 
 The safe pattern:
 
-```
+```text
 .gitignore entries:
   .env
   .env.local
@@ -227,7 +229,7 @@ Committed:
   .env.example  ← documents all required variables, no real values
 ```
 
-<AlertBox type="warning" title="Never commit .env with real secrets">
+<AlertBox variant="warning" title="Never commit .env with real secrets">
 `.envrc` itself is safe to commit if it only contains `dotenv` or `PATH_add` calls. But `.env` with actual passwords or API keys must stay in `.gitignore`. Always.
 </AlertBox>
 

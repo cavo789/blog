@@ -1,0 +1,54 @@
+{
+  "version": 1,
+  "model": "code-quality:latest",
+  "generated": "2026-11-27T07:26:38.776Z",
+  "durationMs": 23412,
+  "source": "index.md",
+  "sourceHash": "b4f7593aca75456259d4b7aaef76e8d31f82fdc6",
+  "questions": [
+    {
+      "question": "forgetting to source .env in new terminal docker compose picks up wrong credentials",
+      "anchor": ""
+    },
+    {
+      "question": "direnv .envrc is blocked run allow",
+      "anchor": "seeing-direnv-in-action"
+    },
+    {
+      "question": "test direnv inside a docker container without touching my shell",
+      "anchor": "seeing-it-in-action-with-docker"
+    },
+    {
+      "question": "how does direnv hook into cd without a background daemon",
+      "anchor": "why-it-works"
+    },
+    {
+      "question": "install direnv ubuntu zsh hook",
+      "anchor": "install"
+    },
+    {
+      "question": "direnv .envrc layout prepend PATH safely",
+      "anchor": "what-goes-in-envrc"
+    },
+    {
+      "question": "auto load .env for docker-compose.yml no manual source",
+      "anchor": "the-docker-compose-use-case"
+    },
+    {
+      "question": "direnv switch between dev and staging .env files",
+      "anchor": "multiple-environments"
+    },
+    {
+      "question": "should I gitignore .envrc or commit it",
+      "anchor": "what-to-commit"
+    },
+    {
+      "question": "direnv not loading in VSCode integrated terminal",
+      "anchor": "direnv-and-vscode"
+    },
+    {
+      "question": "direnv vs just running source .env every time",
+      "anchor": "comparison-with-the-manual-approach"
+    }
+  ]
+}
